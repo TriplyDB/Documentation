@@ -30,8 +30,7 @@ metadata, and starting services.
      or Markdown.  You can also change the access level of the
      dataset, which is set to “Private” by default.
 
-[add-dataset-dialog.png]
-#+caption: The “Add dataset” dialog.
+![](add-dataset-dialog.png) The “Add dataset” dialog.
 
 ### Adding data
 
@@ -41,8 +40,7 @@ upload, URL upload, and data import.  The following screenshot shows
 the “Add data” view, with the three approaches displayed on top of one
 another.
 
-[add-data.png]
-#+caption: The “Add data” view.
+![](add-data.png) The “Add data” view.
 
 #### Adding data by file upload
 
@@ -69,8 +67,7 @@ TriplyDB will show an error message that indicates which part of the
 data is malformed (see screenshot).  If such malformed data is
 encountered, the RDF file must first be corrected and uploaded again.
 
-[[upload-error.png]]
-#+caption: Screenshot of an error message indicating syntactically malformed RDF data.
+![](upload-error.png) Screenshot of an error message indicating syntactically malformed RDF data.
 
 #### Adding data by URL upload
 
@@ -94,8 +91,7 @@ Metadata is entered from the dataset settings page, which is accessed
 by clicking on the “Dataset settings” (cog icon) option from the
 left-hand sidebar (see screenshot).
 
-[[cog-wheel.png]]
-#+caption: The dataset homepage looks empty without metadata.  Notice the cog wheel icon, which provides access to the “Dataset settings” page.
+![](cog-wheel.png) The dataset homepage looks empty without metadata.  Notice the cog wheel icon, which provides access to the “Dataset settings” page.
 
 The dataset settings page allows the following metadata to be entered:
 
@@ -107,15 +103,13 @@ The dataset settings page allows the following metadata to be entered:
   - The example resources for the dataset.
   - The license of the dataset.
 
-#+caption: The dataset settings page allows valious forms of dataset metadata to be added.
-#+name: dataset-settings-page
-[[dataset-settings-page.png]]
+
+![](dataset-settings-page.png) The dataset settings page allows valious forms of dataset metadata to be added.
+
 
 The same dataset looks nicer once metadata has been entered:
 
-#+caption: The dataset home page after metadata has been entered.
-#+name: dataset-homepage-with-metadata
-[[dataset-homepage-with-metadata.png]]
+![](dataset-homepage-with-metadata.png) The dataset home page after metadata has been entered.
 
 Search engines and social media applications can recognize the
 metadata that is entered for datasets in TriplyDB.  The following
@@ -123,9 +117,7 @@ screenshot shows the widget created by the Slack chat application upon
 entering a link to the dataset.  Notice that the chay application
 understands metadata properties like title, description, and image.
 
-#+caption: Widget created by the Slack chat application upon sharing a link to a dataset in TriplyDB.
-#+name: slack-widget
-[[slack-widget.png]]
+![](slack-widget.png) Widget created by the Slack chat application upon sharing a link to a dataset in TriplyDB.
 
 ### Starting services
 
@@ -142,8 +134,7 @@ The below screenshot shows the “Create service” page for a TriplyDB
 instance that allows SPARQL, Jena SPARQL, and ElasticSearch services
 to be created.
 
-[[create-service.png]]
-#+caption: The “Create service” page.  Notice that three different types of services can be created.
+![](create-service.png) The “Create service” page.  Notice that three different types of services can be created.
 
 It is possible to create multiple services for one dataset.
 
@@ -157,8 +148,7 @@ If data is added to and/or remove from the dataset later.  The service
 can also be synchronized by pressing the synchronization button that
 appears on the service widget.
 
-[[service-widget.png]]
-#+caption: An example of a service widget.
+![](service-widget.png) An example of a service widget.
 
 ## Tabular browser
 
@@ -180,7 +170,7 @@ in Triply and does not require running a dedicated service.
 
 TPF requests are sent to the following URI path:
 
-```uri
+```none
 https://api.INSTANCE/datasets/ACCOUNT/DATATSET/fragments
 ```
 
@@ -190,7 +180,7 @@ Since TPF replies distinguish between data and metadata that are
 stored in different graphs, it is recommended to request the TriG
 content type with the following HTTP request header:
 
-```http
+```none
 Accept: application/trig
 ```
 
@@ -391,8 +381,7 @@ select ?pokemon ?happiness {
 ```
 [Run this query online](https://api.demo.triply.cc/s/0lhnUC9v9)
 
-[[sparql-table-example.png]]
-#+caption: Screenshot of the SPARQL Table view over the above query.
+![](sparql-table-example.png) Screenshot of the SPARQL Table view over the above query.
 
 ### SPARQL Gallery
 
@@ -426,8 +415,7 @@ displaying a Pokémon.  (This SPARQL query also uses [[SPARQL
 Templates]] in order to simplify its syntax.)  This query can be [run
 online](https://demo.triply.cc/academy/pokemon/queries/gallery).
 
-[[pokemon-gallery.png]]
-#+caption: SPARQL Gallery view of a Pokémon query that uses SPARQL Templating.
+![](pokemon-gallery.png) SPARQL Gallery view of a Pokémon query that uses SPARQL Templating.
 
 ```sparql
 prefix def: <https://demo.triply.cc/academy/pokemon/def/>
@@ -762,7 +750,7 @@ ElasticSearch service has been created for that dataset.
 
 Text search requests are sent to the following URI path:
 
-```uri
+```none
 https://api.INSTANCE/datasets/ACCOUNT/DATASET/services/SERVICE/search
 ```
 
@@ -821,7 +809,7 @@ $ curl 'https://api.demo.triply.cc/datasets/academy/pokemon/services/text/search
 Triply API requests are always directed towards a specific URI path.
 URI paths will often have the following form:
 
-```uri
+```none
 https://api.INSTANCE/datasets/ACCOUNT/DATATSET/
 ```
 
@@ -836,7 +824,7 @@ Upper-case letter words must be replaced by the following values:
 Here is an example of an URI path that points to the Triply API for
 the Pokémon dataset:
 
-```uri
+```none
 https://api.demo.triply.cc/datasets/academy/pokemon/
 ```
 
@@ -846,7 +834,7 @@ Some API requests require the availability of a specific service over
 the dataset.  These requests are directed towards an URI path of the
 following form:
 
-```uri
+```none
 https://api.INSTANCE/datasets/ACCOUNT/DATASET/services/SERVICE/
 ```
 
@@ -861,7 +849,7 @@ Upper-case letter words must be replaced by the following values:
 Here is an example of an URI path that points to an SPARQL endpoint
 over the Pokémon dataset:
 
-```uri
+```none
 https://api.demo.triply.cc/datasets/academy/pokemon/services/pokemon/sparql
 ```
 
@@ -893,7 +881,7 @@ created within the TriplyDB UI in the following way:
 API tokens are used by specifying them in an HTTP request header as
 follows:
 
-```http
+```none
 Authorization: Bearer TOKEN
 ```
 
@@ -917,8 +905,7 @@ following steps bring up the admin settings page:
 This brings up the following admin settings page from which admin
 tasks can be performed:
 
-[[admin-settings.png]]
-#+caption: Screenshot of the admin settings page.
+![](admin-settings.png) Screenshot of the admin settings page.
 
 ### Create a new user
 
@@ -958,7 +945,7 @@ are provided for user account creation:
 Go to the “Accounts tab” to receive an overview of all accounts on the
 TriplyDB instance.
 
-```
+```none
 The type of account can be observed based on the following icons:
 
 | *Icon* | *Account type* |

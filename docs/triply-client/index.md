@@ -148,7 +148,7 @@ typing feedback in the editor and offering autocomplete suggestions:
 4. Start Atom over your script directory by running the following
    command from your `my_project` directory:
 
-   ```sh
+   ```bash
    atom .
    ```
 
@@ -813,7 +813,7 @@ One common appearance of this error is when the environment variable
 The current value of the environment variable can be tested by running
 the following command:
 
-```sh
+```bash
 echo $TRIPLY_API_TOKEN
 ```
 
@@ -825,6 +825,6 @@ has not been set.  This variable must be set to a Triply API URL.
 The current value of the environment variable can be tested by running
 the following command:
 
-```sh
+```bash
 echo $TRIPLY_API_URL
 ```
