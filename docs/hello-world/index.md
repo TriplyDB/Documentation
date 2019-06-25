@@ -39,7 +39,7 @@ the
 
 ## Headers
 
-```no-highlight
+```none
 # H1
 ## H2
 ### H3
@@ -78,7 +78,7 @@ Alternatively, for H1 and H2, an underline-ish style:
 
 ## Emphasis
 
-```no-highlight
+```none
 Emphasis, aka italics, with *asterisks* or _underscores_.
 
 Strong emphasis, aka bold, with **asterisks** or __underscores__.
@@ -102,7 +102,7 @@ Strikethrough uses two tildes. ~~Scratch this.~~
 
 In this example, leading and trailing spaces are shown with with dots: ⋅
 
-```no-highlight
+```none
 1. First ordered list item
 2. Another item
 ⋅⋅⋅⋅* Unordered sub-list.
@@ -146,7 +146,7 @@ spaces.\
 
 There are two ways to create links.
 
-```no-highlight
+```none
 [I'm an inline-style link](https://www.google.com)
 
 [I'm an inline-style link with title](https://www.google.com "Google's Homepage")
@@ -196,7 +196,7 @@ Some text to show that the reference links can follow later.
 
 ## Images
 
-```no-highlight
+```none
 Here's our logo (hover to see the title text):
 
 Inline-style:
@@ -225,7 +225,7 @@ Tables aren't part of the core Markdown spec, but they are part of our
 implementation. They are an easy way of adding tables to your email -- a task
 that would otherwise require copy-pasting from another application.
 
-```no-highlight
+```none
 Colons can be used to align columns.
 
 | Tables        | Are           | Cool  |
@@ -268,7 +268,7 @@ can also use inline Markdown.
 Footnotes are also not a core feature of markdown, but they're a common
 extension feature. The footnote syntax looks like this:
 
-```markdown
+```md
 This line has a footnote [^1]. Scroll down or click the link to see it.
 ```
 
@@ -280,7 +280,7 @@ This line has a footnote [^1]. Scroll down or click the link to see it.
 
 ## Blockquotes
 
-```no-highlight
+```none
 > Blockquotes are very handy in email to emulate reply text.
 > This line is part of the same quote.
 
@@ -325,7 +325,7 @@ You can also use raw HTML in your Markdown, and it'll mostly work pretty well.
 
 ## Horizontal Rule
 
-```
+```none
 Three or more...
 
 ---
@@ -361,7 +361,7 @@ Underscores
 
 Here are some things to try out:
 
-```
+```none
 Here's a line for us to start with.
 
 This line is separated from the one above by two newlines, so it will be a *separate paragraph*.
