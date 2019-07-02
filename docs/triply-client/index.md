@@ -1,22 +1,20 @@
 ---
-title: "Triply-DB"
+title: "Triply-Client"
 path: "/docs/triply-client"
 ---
 
-# Triply Client
-
 Triply Client is the programming library that makes it easy to
-interact with TriplyDB instances.  Triply Client allows you to
+interact with TriplyDB instances. Triply Client allows you to
 automate most operations that can be performed through the TriplyDB
 GUI.
 
-This document is a work in progress.  Please contact
+This document is a work in progress. Please contact
 [mailto:support@triply.cc](support@triply.cc) for more information.
 
 ## Getting started
 
 This section gets you up and running with the Triply Client by setting
-up a simple script.  The script will use Triply Client in order to
+up a simple script. The script will use Triply Client in order to
 interact with a specific TriplyDB instance.
 
 ### Installation
@@ -29,8 +27,8 @@ The following steps are needed in order to install Triply Client:
    Example for installation on recent Ubuntu versions:
 
    ```bash
-   $ sudo apt install nodejs npm # Debian-based, e.g., Ubuntu.
-   $ sudo dnf install nodejs npm # Red Hat-based, e.g., Fedora.
+   sudo apt install nodejs npm # Debian-based, e.g., Ubuntu.
+   sudo dnf install nodejs npm # Red Hat-based, e.g., Fedora.
    ```
 
 2. Create a Triply API Token through the TriplyDB GUI.
@@ -39,8 +37,8 @@ The following steps are needed in order to install Triply Client:
    variables:
 
    ```bash
-   $ export TRIPLY_API_TOKEN=<some-token>
-   $ export TRIPLY_API_URL=<some-url>
+   export TRIPLY_API_TOKEN=<some-token>
+   export TRIPLY_API_URL=<some-url>
    ```
 
    You can also add these lines to your `.profile` file in order to
@@ -54,7 +52,7 @@ that uses the Triply Client library:
 1. Create a directory for your project:
 
    ```bash
-   $ mkdir my_script
+   mkdir my_script
    ```
 
 2. Create a file called `package.json` with the following content
@@ -71,7 +69,7 @@ that uses the Triply Client library:
    the `my_script` directory:
 
    ```bash
-   $ npm install typescript @triply/client.js
+   npm install typescript @triply/client.js
    ```
 
 ### Create your first script
@@ -104,17 +102,16 @@ uses the Triply Client library:
    });
    ```
 
-
 2. Compile the TypeScript file into a corresponding JavaScript file:
 
    ```bash
-   $ ./node_modules/.bin/tsc script.ts
+   ./node_modules/.bin/tsc script.ts
    ```
 
-3. Run the JavaScript file:
+3 Run the JavaScript file:
 
    ```bash
-   $ node script.js
+   node script.js
    ```
 
 This should print the information of the current user to the terminal.
@@ -136,7 +133,7 @@ typing feedback in the editor and offering autocomplete suggestions:
    ```json
    {
      "compilerOptions": {
-       "lib": [ "es2015" ]
+       "lib": ["es2015"]
      }
    }
    ```
@@ -155,13 +152,13 @@ typing feedback in the editor and offering autocomplete suggestions:
 ## Reference
 
 This section documents all methods that are currently available in
-Triply Client.  Methods are grouped together for each object type to
+Triply Client. Methods are grouped together for each object type to
 which they apply.
 
 ### Code examples
 
 Every function in this reference section comes with at least one code
-example.  These code examples can be run by inserting them into the
+example. These code examples can be run by inserting them into the
 following basic script structure:
 
 ```typescript
@@ -220,42 +217,42 @@ with account objects.
 
 ### `Account`
 
-The `Account` class represents a TriplyDB account.  This can be either
+The `Account` class represents a TriplyDB account. This can be either
 a user or an organization.
 
 Accounts cannot be created or deleted through the Triply Client
-library.  See the [[TriplyDB documentation]] for how to create and
+library. See the [[TriplyDB documentation]] for how to create and
 delete accounts (users and organizations) through the web-based GUI.
 
 #### `addDataset(settings: object)`
 
 Argument `settings` is a JSON object with the following keys:
 
-  - `accessLevel` :: The access level of the dataset.  The following
-    values are supported:
+- `accessLevel` :: The access level of the dataset. The following
+  values are supported:
 
-    - `"private"` :: The dataset can only be accessed by the `Account`
-      object for which it is created.
+  - `"private"` :: The dataset can only be accessed by the `Account`
+    object for which it is created.
 
-    - `"internal"` :: The dataset can only be accessed by people who
-      are logged into the TriplyDB instance (denoted by the value of
-      environment variable `TRIPLY_API_URL`).
+  - `"internal"` :: The dataset can only be accessed by people who
+    are logged into the TriplyDB instance (denoted by the value of
+    environment variable `TRIPLY_API_URL`).
 
-    - `"public"` :: The dataset can be accessed by everybody.
+  - `"public"` :: The dataset can be accessed by everybody.
 
-  - `name` (optional) :: The name of the dataset.
+- `name` (optional) :: The name of the dataset.
 
-  - `description` (optional) :: The description of the dataset.
+- `description` (optional) :: The description of the dataset.
 
-  - `license` (optional) :: The license of the dataset.  The following
-    license strings are currently supported:
+- `license` (optional) :: The license of the dataset. The following
+  license strings are currently supported:
 
-    - `"CC-BY-SA"`
-    - `"CC0 1.0"`
-    - `"GFDL"`
-    - `"ODC-By"`
-    - `"ODC-ODbL"`
-    - `"PDDL"`
+  - `"CC-BY-SA"`
+  - `"CC0 1.0"`
+  - `"GFDL"`
+  - `"ODC-By"`
+  - `"ODC-ODbL"`
+  - `"PDDL"`
 
 ##### Example
 
@@ -263,8 +260,9 @@ The following code example creates a new dataset (called
 `"some-dataset"`) under a specific pre-existing account:
 
 ```typescript
-console.log(await client.getAccount("some-account")
-                        .addDataset({name: "some-dataset"}));
+console.log(
+  await client.getAccount("some-account").addDataset({ name: "some-dataset" })
+);
 ```
 
 #### `datasets()`
@@ -278,15 +276,14 @@ The following example code prints the list of datasets that belong to
 the specific account called `some-account`:
 
 ```typescript
-console.log(await client.getAccount("some-account")
-                        .datasets());
+console.log(await client.getAccount("some-account").datasets());
 ```
 
 #### `getDataset(datasetName: string)`
 
 Returns the dataset with the given `datasetName`.
 
-This function returns an object of type `Dataset`.  See section
+This function returns an object of type `Dataset`. See section
 [[Dataset]] for an overview of the methods that can be used with dataset
 objects.
 
@@ -295,8 +292,7 @@ objects.
 The following example code prints a specific dataset object:
 
 ```typescript
-console.log(await client.getAccount("some-account")
-                        .getDataset("some-dataset"));
+console.log(await client.getAccount("some-account").getDataset("some-dataset"));
 ```
 
 #### `info()`
@@ -316,19 +312,19 @@ Example output for running the above code:
 
 ```json
 {
-  avatarUrl: "https://www.gravatar.com/avatar/9bc28997dd1074e405e1c66196d5e117?d=mm",
-  accountName: "wouter",
-  uid: "5aafcb9639b170025c5e4b99",
-  name: "Wouter Beek",
-  type: "user",
-  createdAt: "Mon Mar 19 2018 14:39:18 GMT+0000 (Coordinated Universal Time)",
-  siteAdmin: true,
-  superAdmin: true,
-  email: "wouter@triply.cc",
-  updatedAt: "Tue Nov 27 2018 09:29:38 GMT+0000 (Coordinated Universal Time)",
-  authMethod: "password",
-  disabled: false,
-  verified: true
+  "avatarUrl": "https://www.gravatar.com/avatar/9bc28997dd1074e405e1c66196d5e117?d=mm",
+  "accountName": "wouter",
+  "uid": "5aafcb9639b170025c5e4b99",
+  "name": "Wouter Beek",
+  "type": "user",
+  "createdAt": "Mon Mar 19 2018 14:39:18 GMT+0000 (Coordinated Universal Time)",
+  "siteAdmin": true,
+  "superAdmin": true,
+  "email": "wouter@triply.cc",
+  "updatedAt": "Tue Nov 27 2018 09:29:38 GMT+0000 (Coordinated Universal Time)",
+  "authMethod": "password",
+  "disabled": false,
+  "verified": true
 }
 ```
 
@@ -356,8 +352,7 @@ The following example code renames a specific dataset from
 `some-account` to `new-name`:
 
 ```typescript
-console.log(await client.getAccount("some-account")
-                        .rename("new-name"));
+console.log(await client.getAccount("some-account").rename("new-name"));
 ```
 
 ### `Dataset`
@@ -369,9 +364,9 @@ The `Dataset` class represents a TriplyDB dataset.
 Creates a new service for this dataset.
 
 The `serviceType` argument specifies the type of service that is
-created.  The following values are supported:
+created. The following values are supported:
 
-  - `"sparql"` :: Starts a SPARQL service.
+- `"sparql"` :: Starts a SPARQL service.
 
 The `name` argument can be used to distinguish between different
 endpoints over the same dataset that are used for different tasks.
@@ -382,12 +377,13 @@ used with service objects.
 ##### Example
 
 The following example code starts two SPARQL endpoints over a specific
-dataset.  One endpoint will be used in the acceptance environment
+dataset. One endpoint will be used in the acceptance environment
 while the other endpoint will be used in the production system.
 
 ```typescript
-const dataset = await client.getAccount("some-account")
-                            .getDataset("some-dataset");
+const dataset = await client
+  .getAccount("some-account")
+  .getDataset("some-dataset");
 const acceptance = dataset.addService("sparql", "acceptance");
 const production = dataset.addService("sparql", "production");
 ```
@@ -403,21 +399,24 @@ The following example code retrieves the assets for a specific
 dataset:
 
 ```typescript
-console.log(await client.getAccount("some-account")
-                        .getDataset("some-dataset")
-                        .assets());
+console.log(
+  await client
+    .getAccount("some-account")
+    .getDataset("some-dataset")
+    .assets()
+);
 ```
 
 #### `delete()`
 
-Deletes the dataset.  This includes deleting the dataset metadata, all
+Deletes the dataset. This includes deleting the dataset metadata, all
 of its graphs, and all of its assets.
 
 Use the following functions in order to delete graphs while retaining
 dataset metadata and assets:
 
-  - [[`deleteGraph(graphName: string)`]]
-  - [[`Dataset.removeAllGraphs/0`]]
+- [[`deleteGraph(graphName: string)`]]
+- [[`Dataset.removeAllGraphs/0`]]
 
 ##### Example 1
 
@@ -425,9 +424,10 @@ The following example code deletes a specific dataset that is part of
 the account associated with the current Triply API Token:
 
 ```typescript
-await client.getAccount()
-            .getDataset("some-dataset")
-            .delete();
+await client
+  .getAccount()
+  .getDataset("some-dataset")
+  .delete();
 ```
 
 ##### Example 2
@@ -436,9 +436,10 @@ The following example code only deletes a specific dataset if it
 exists (notice the use of `try` and `catch`):
 
 ```typescript
-await client.getAccount()
-            .getDataset("some-dataset")
-            .delete();
+await client
+  .getAccount()
+  .getDataset("some-dataset")
+  .delete();
 ```
 
 #### `deleteGraph(graphName: string)`
@@ -451,9 +452,10 @@ The following example code deletes a specific graph from a specific
 dataset:
 
 ```typescript
-await client.getAccount()
-            .getDataset("some-dataset")
-            .deleteGraph("https://example.org/some-graph");
+await client
+  .getAccount()
+  .getDataset("some-dataset")
+  .deleteGraph("https://example.org/some-graph");
 ```
 
 #### `getServices()`
@@ -466,9 +468,12 @@ The following example code emits the services that are enabled for a
 specific dataset:
 
 ```typescript
-console.log(await client.getAccount("some-account")
-                        .getDataset("some-dataset")
-                        .getServices());
+console.log(
+  await client
+    .getAccount("some-account")
+    .getDataset("some-dataset")
+    .getServices()
+);
 ```
 
 #### `graphs()`
@@ -482,9 +487,12 @@ The following example code retrieves the graphs for a specific
 dataset:
 
 ```typescript
-console.log(await client.getAccount("some-account")
-                        .getDataset("some-dataset")
-                        .graphs());
+console.log(
+  await client
+    .getAccount("some-account")
+    .getDataset("some-dataset")
+    .graphs()
+);
 ```
 
 #### `import(fromDataset: Dataset, graphs: mapping)`
@@ -496,17 +504,17 @@ current/target dataset.
 ##### Example
 
 The following code example creates a new dataset “d2” and imports one
-graph from the existing dataset “d1”.  Notice that the graph can be
+graph from the existing dataset “d1”. Notice that the graph can be
 renamed as part of the import.
 
 ```typescript
-const dataset1 = await client.getAccount()
-                             .getDataset("some-dataset");
-const dataset2 = await client.getAccount()
-                             .addDataset({accessLevel: "private",
-                                          name: "other-dataset"});
-await dataset1.import(dataset2,
-                      {"https://example.org/dataset2/graph": "https://example.org/dataset1/graph"});
+const dataset1 = await client.getAccount().getDataset("some-dataset");
+const dataset2 = await client
+  .getAccount()
+  .addDataset({ accessLevel: "private", name: "other-dataset" });
+await dataset1.import(dataset2, {
+  "https://example.org/dataset2/graph": "https://example.org/dataset1/graph"
+});
 ```
 
 #### `importedGraphs()`
@@ -520,9 +528,12 @@ The following example code retrieves the imported graphs for a
 specific dataset:
 
 ```typescript
-console.log(await client.getAccount("some-account")
-                        .getDataset("some-dataset")
-                        .importedGraphs());
+console.log(
+  await client
+    .getAccount("some-account")
+    .getDataset("some-dataset")
+    .importedGraphs()
+);
 ```
 
 #### `query()`
@@ -538,9 +549,10 @@ The following code example retrieves the query object of a specific
 dataset:
 
 ```typescript
-const query = client.getAccount("some-account")
-                    .getDataset("some-dataset")
-                    .query();
+const query = client
+  .getAccount("some-account")
+  .getDataset("some-dataset")
+  .query();
 ```
 
 #### `removeAllGraphs()`
@@ -552,9 +564,10 @@ Removes all graphs from this dataset.
 The following code example removed all graphs from a specific dataset:
 
 ```typescript
-await client.getAccount("some-account")
-            .getDataset("some-dataset")
-            .removeAllGraphs();
+await client
+  .getAccount("some-account")
+  .getDataset("some-dataset")
+  .removeAllGraphs();
 ```
 
 #### `rename(newName: string)`
@@ -568,9 +581,10 @@ The following example code renames a specific dataset from
 `some-dataset` to `new-name`:
 
 ```typescript
-await client.getAccount("some-account")
-            .getDataset("some-dataset")
-            .rename("new-name");
+await client
+  .getAccount("some-account")
+  .getDataset("some-dataset")
+  .rename("new-name");
 ```
 
 #### `renameGraph(fromGraphName: string, toGraphName: string)`
@@ -585,10 +599,11 @@ The following example code renames a specific graph of a specific
 dataset:
 
 ```typescript
-const dataset = client.getAccount()
-                      .getDataset("some-dataset");
-await dataset.renameGraph("https://example.org/old-graph",
-                          "https://example.org/new-graph");
+const dataset = client.getAccount().getDataset("some-dataset");
+await dataset.renameGraph(
+  "https://example.org/old-graph",
+  "https://example.org/new-graph"
+);
 ```
 
 #### `upload(filePaths: string[])`
@@ -613,12 +628,13 @@ upload job of a specific dataset, and then performs the upload
 afterwards.
 
 ```typescript
-const dataset = client.getAccount()
-                      .getDataset("some-dataset");
-await dataset.upload("file.nq",   // Uploading an N-Quads file,
-                     "file.nt",   // and an N-Triples file,
-                     "file.trig", // and a TriG file,
-                     "file.ttl"); // and a Turtle file.
+const dataset = client.getAccount().getDataset("some-dataset");
+await dataset.upload(
+  "file.nq", // Uploading an N-Quads file,
+  "file.nt", // and an N-Triples file,
+  "file.trig", // and a TriG file,
+  "file.ttl"
+); // and a Turtle file.
 await dataset.getJob().exec();
 ```
 
@@ -636,29 +652,33 @@ The following example code uploads a PDF file documenting the
 corresponding dataset:
 
 ```typescript
-await client.getAccount()
-            .getDataset("some-dataset")
-            .uploadAsset("source.csv.gz",      // Upload source data,
-                         "documentation.pdf"); // and documentation.
+await client
+  .getAccount()
+  .getDataset("some-dataset")
+  .uploadAsset(
+    "source.csv.gz", // Upload source data,
+    "documentation.pdf"
+  ); // and documentation.
 ```
 
 ### `Query`
 
 The query object allows Triple Pattern (TP) queries to be formulated
-and executed.  The TP query paradigm is define in the SPARQL 1.1
+and executed. The TP query paradigm is define in the SPARQL 1.1
 specification: it allows triples to be matched by setting a
-combination of a subject, predicate, and/or object term.  TriplyDB
+combination of a subject, predicate, and/or object term. TriplyDB
 also allows the graph term to set.
 
 The following example code retrieves (at most) 100 subclass triples
 from a specific dataset:
 
 ```typescript
-await client.getAccount()
-            .getDataset("some-dataset")
-            .query()
-            .predicate("http://www.w3.org/2000/01/rdf-schema#subClassOf")
-            .limit(100);
+await client
+  .getAccount()
+  .getDataset("some-dataset")
+  .query()
+  .predicate("http://www.w3.org/2000/01/rdf-schema#subClassOf")
+  .limit(100);
 ```
 
 ### `Service`
@@ -678,10 +698,11 @@ Starts this service.
 The following code example starts a specific service:
 
 ```typescript
-await client.getAccount("some-account")
-            .getDataset("some-dataset")
-            .addService("sparql", "new-service")
-            .create();
+await client
+  .getAccount("some-account")
+  .getDataset("some-dataset")
+  .addService("sparql", "new-service")
+  .create();
 ```
 
 #### `getStatus()`
@@ -690,20 +711,21 @@ Returns the status of this service.
 
 The following service statuses are defined:
 
-  - removing
-  - running
-  - starting
-  - stopped
-  - stopping
+- removing
+- running
+- starting
+- stopped
+- stopping
 
 ##### Example
 
 The following example code prints the status of a specific service:
 
 ```typescript
-const service = await client.getAccount("some-account")
-                            .getDataset("some-dataset")
-                            .addService("sparql", "new-service");
+const service = await client
+  .getAccount("some-account")
+  .getDataset("some-dataset")
+  .addService("sparql", "new-service");
 console.log(service.getStatus());
 ```
 
@@ -717,9 +739,10 @@ The following example code prints information about a newly created
 service:
 
 ```typescript
-const service = await client.getAccount("some-account")
-                            .getDataset("some-dataset")
-                            .addService("sparql", "new-service");
+const service = await client
+  .getAccount("some-account")
+  .getDataset("some-dataset")
+  .addService("sparql", "new-service");
 console.log(service.info());
 ```
 
@@ -731,18 +754,18 @@ contents.
 Because services must be explicitly synchonized in TriplyDB, it is
 possible to have services that expose an older version of the dataset
 and services that expose a newer version of the dataset running next
-to one another.  There are two very common use cases for this:
+to one another. There are two very common use cases for this:
 
-  - The production version of an application or website runs on an
-    older service.  The data does not change, so the application keeps
-    working.  The acceptance version of the same application or
-    website runs on a newer service.  Once the acceptance version is
-    finished, it becomes the production version and a new services for
-    the new acceptance version is created, etc.
+- The production version of an application or website runs on an
+  older service. The data does not change, so the application keeps
+  working. The acceptance version of the same application or
+  website runs on a newer service. Once the acceptance version is
+  finished, it becomes the production version and a new services for
+  the new acceptance version is created, etc.
 
-  - An old service is used by legacy software.  New users are using
-    the newer endpoint over the current version of the data, but a
-    limited number of older users wants to use the legacy version.
+- An old service is used by legacy software. New users are using
+  the newer endpoint over the current version of the data, but a
+  limited number of older users wants to use the legacy version.
 
 ##### Example
 
@@ -750,9 +773,10 @@ The following example code checks whether a specific service is
 synchonized:
 
 ```typescript
-const service = await client.getAccount("some-account")
-                            .getDataset("some-dataset")
-                            .addService("sparql", "new-service");
+const service = await client
+  .getAccount("some-account")
+  .getDataset("some-dataset")
+  .addService("sparql", "new-service");
 console.log(service.isUpToDate());
 ```
 
@@ -765,41 +789,41 @@ Restarts this service.
 The following code example restarts a specific service:
 
 ```typescript
-await client.getAccount("some-account")
-            .getDataset("some-dataset")
-            .addService("sparql", "new-service")
-            .restart();
+await client
+  .getAccount("some-account")
+  .getDataset("some-dataset")
+  .addService("sparql", "new-service")
+  .restart();
 ```
 
 ## FAQ
 
-This section includes answers to frequently asked questions.  Please
+This section includes answers to frequently asked questions. Please
 contact [info@triply.cc](mailto:info@triply.cc) if you have a question
 that does not appear in this list.
 
 ### How to perform a SPARQL query?
 
 The SPARQL 1.1 Protocol standard specifies a native HTTP API for
-perfoming SPARQL requests.  Such requests can be performed with
-regular HTTP libraries.  Here we give an example using such an HTTP
+perfoming SPARQL requests. Such requests can be performed with
+regular HTTP libraries. Here we give an example using such an HTTP
 library:
 
 ```typescript
 import * as SuperAgent from "superagent";
 const reply = await SuperAgent.post("URL-OF-SOME-SPARQL-ENDPOINT")
-                              .set("Accept", "application/sparql-results+json")
-                              .set("Authorization",
-                                   "Bearer "+process.env.TRIPLY_API_TOKEN)
-                              .buffer(true)
-                              .send({"query": "select * { ?s ?p ?o } limit 1"});
-
+  .set("Accept", "application/sparql-results+json")
+  .set("Authorization", "Bearer " + process.env.TRIPLY_API_TOKEN)
+  .buffer(true)
+  .send({ query: "select * { ?s ?p ?o } limit 1" });
 ```
 
 ### What to do when the following error appears?
+
 #### Why must I set environment variable `TRIPLY_API_TOKEN`?
 
 It is common for scripts to be shared with others and/or get published
-online using services like Github and Gitlab.  Since the API token is
+online using services like Github and Gitlab. Since the API token is
 private, it must never be used in the TypeScript script file directly.
 
 #### Error: Unauthorized
@@ -820,7 +844,7 @@ echo $TRIPLY_API_TOKEN
 #### "No domain specified in configuration"
 
 This error indicates that the `TRIPLY_API_URL` environment variable
-has not been set.  This variable must be set to a Triply API URL.
+has not been set. This variable must be set to a Triply API URL.
 
 The current value of the environment variable can be tested by running
 the following command:

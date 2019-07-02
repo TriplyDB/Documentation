@@ -5,3 +5,8 @@
         link: /docs/triply-db
       - title: Client Client
         link: /docs/triply-client
+      - title: SPARQL IDE
+        link: /docs/sparql-ide
+      - title: Data Stories
+        link: /docs/data-stories
+        
