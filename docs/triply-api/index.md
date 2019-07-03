@@ -31,7 +31,7 @@ https://api.demo.triply.cc/datasets/academy/pokemon/
 
 Triple Pattern Fragments (TPF) is a community standard that allows
 individual Linked Datasets to be queries for Triply Patterns (TP), a
-subset of the more complex SPARQL query language.  The Triply API
+subset of the more complex SPARQL query language. The Triply API
 implements [Triple Pattern
 Fragments](http://www.hydra-cg.com/spec/latest/triple-pattern-fragments/)
 version 2019-01-18 and [Linked Data
@@ -65,8 +65,8 @@ Triple Pattern Fragments (TPF) uses the following query parameters in
 order to retrieve only those triples that adhere to a specified Triple
 Pattern:
 
-| *Key*       | *Value*                       | *Purpose*                                                                          |
-|-------------+-------------------------------+------------------------------------------------------------------------------------|
+| _Key_       | _Value_                       | _Purpose_                                                                          |
+| ----------- | ----------------------------- | ---------------------------------------------------------------------------------- |
 | `subject`   | A URL-encoded IRI.            | Only return triples where the given IRI appears in the subject position.           |
 | `predicate` | A URL-encoded IRI.            | Only return triples where the given IRI appears in the predicate position.         |
 | `object`    | A URL-encoded IRI or literal. | Only return triples where the given IRI or literal appears in the object position. |
@@ -110,6 +110,71 @@ https://api.demo.triply.cc/datasets/academy/pokemon/services/pokemon/sparql
 ### Jena
 
 ### Elastic
+
+The text search API returns a list of Linked Data entities based on a
+supplied text string. The text string is matched against the text in
+literals and IRIs that appear in the Linked Data description of the
+returned entities.
+
+The text search API is only available for a dataset after an
+ElasticSearch service has been created for that dataset.
+
+#### URI path
+
+Text search requests are sent to the following URI path:
+
+```none
+https://api.INSTANCE/datasets/ACCOUNT/DATASET/services/SERVICE/search
+```
+
+#### Reply format
+
+The reply format is a JSON object. Search results are returned in the
+JSON array that is stored under key sequence `"hits"/"hits"`. The
+order in which search results appear in the array is meaningful:
+better matches appear earlier.
+
+Every search result is represented by a JSON object. The name of the
+Linked Data entity is specified under key sequence `"_id"`.
+Properties of the Linked Data entity are stored as IRI keys. The
+values of these properties appear in a JSON array in order to allow
+more than one object term per predicate term (as is often the case in
+Linked Data).
+
+The following code snippet shows part of the reply for the below
+example request. The reply includes two results for search string
+“mew”, returning the Pokémon Mew (higher ranked result) and Mewtwo
+(lower ranked result).
+
+```json
+{
+  "hits": {
+    "hits": [
+      {
+        "_id": "https://triply.cc/academy/pokemon/id/pokemon/mew",
+        "http://open vocab org/terms/canonicalUri": [ "http://pokedex.dataincubator.org/pokemon/151" ],
+        "https://triply cc/academy/pokemon/def/baseAttack": [ 100 ],
+        "https://triply cc/academy/pokemon/def/name": [ "MEW", "MEW", "MEW", "MEW", "MEW", "ミュウ" ],
+        …
+      },
+      {
+        "_id": "https://triply.cc/academy/pokemon/id/pokemon/mewtwo",
+        "http://open vocab org/terms/canonicalUri": [ "http://pokedex.dataincubator.org/pokemon/150" ],
+        "https://triply cc/academy/pokemon/def/baseAttack": [ 110 ],
+        "https://triply cc/academy/pokemon/def/name": [ "MEWTU", "MEWTWO", "MEWTWO", "MEWTWO", "MEWTWO", "ミュウツー" ],
+        …
+      }
+    ]
+  },
+  …
+}
+```
+
+#### Example
+
+```bash
+curl 'https://api.demo.triply.cc/datasets/academy/pokemon/services/text/search?query=mew'
+```
 
 ## Authentication
 

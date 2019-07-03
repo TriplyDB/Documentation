@@ -2,17 +2,18 @@
 title: "Triply-DB"
 path: "/docs/triply-db"
 ---
+
 This document describes the TriplyDB product. This document is a
 work-in-process. Contact
 [support@triply.cc](mailto:support@triply.cc) for more information.
 
 ## Introduction
 
+TriplyDB is our high-performance Linked Data hosting and publishing product. TriplyDB allows you to easily upload datasets and expose them through multiple APIs (including SPARQL, RESTful, and text search). [Read More](/products/graph)
+
 ## Uploading Data
 
 This section explains how to create a Linked Dataset in TriplyDB.
-This includes setting the access level, uploading RDF data, setting
-metadata, and starting services.
 
 ### Creating a new dataset
 
@@ -31,12 +32,6 @@ metadata, and starting services.
 
 ![The “Add dataset” dialog](add-dataset-dialog.png) The “Add dataset” dialog.
 
-### Creating Data
-
-#### Best Practices
-
-#### Using assets
-
 ### Adding data
 
 Once the dataset is created, the “Add data” view is displayed (see
@@ -54,16 +49,27 @@ clicking on the cloud icon and selecting files through the “Open file”
 dialog, or by dragging-and-dropping files onto the cloud icon. The
 following RDF serialization formats are supported:
 
-- N-Quads 1.1, file name extension `nq`.
-- N-Triples 1.1, file name extension `nt`.
-- RDF/XML 1.1, file name extension `rdf`.
-- TriG, file name extension `trig`.
-- Turtle 1.1, file name extension `ttl`.
+| Serialization Format | Extensions     |
+| -------------------- | -------------- |
+| N-Quads 1.1          | `.nq`          |
+| N-Triples 1.1        | `.nt`          |
+| RDF/XML 1.1          | `.rdf`         |
+| TriG                 | `.trig`        |
+| Turtle 1.1           | `.ttl`         |
+| N3                   | `.n3`          |
+| OWL                  | `.owx`, `.owl` |
 
 One or more files can be uploaded. It is also possible to upload
 compressed files and archives. When the number of files exceeds
 1.000, it is better to upload one archive file that contains them all.
-This allows an arbitrary number of files to be uploaded.
+This allows an arbitrary number of files to be uploaded. The following archive/compression formats are supported:
+
+| archive/compression | Extensions    |
+| ------------------- | ------------- |
+| gzip                | `.gz`         |
+| bzip2               | `.bz2`        |
+| tar                 | `.xz` , `tar` |
+| ZIP                 | `.zip`        |
 
 ##### Adding malformed data
 
@@ -86,7 +92,15 @@ The third option for adding data is to import from datasets that are
 published in the same TriplyDB instance. This is done with the “Add
 data from an existing dataset” dropdown list (see screenshot).
 
+### Best Practices
+
+### Using Assets
+
+By adding assets to your datasets you are able expose data like images
+
 ## Publishing Data
+
+TriplyDB allows you to publish your data.
 
 ### Entering metadata
 
@@ -125,8 +139,7 @@ understands metadata properties like title, description, and image.
 
 ### Starting services
 
-By default, datasets in TriplyDB can be queried through the [[Triply
-Client]] as well as through the Linked Data Fragments API.
+By default, datasets in TriplyDB can be queried through the [Triply Client](/docs/triply-client) as well as through the Linked Data Fragments API.
 
 In order to allow additional query paradigms, specific services can be
 started from the “Create service” page. This page is accessed by
@@ -154,82 +167,62 @@ appears on the service widget.
 
 ![An example of a service widget](service-widget.png) An example of a service widget.
 
-## Viewing Table
+## Viewing Data
+
+TriplyDB offers several ways to explore your datasets.
 
 ### LinkedData Browser
 
+The linked data browser offers to traverse the data by focussing on node at the time and follow the graph to other points
+![Image of the linked Data Browser]()
+
 ### Tabular browser
 
-## Text search
+The tabular browser show the dataset in a table supported by [Triple Pattern Fragments (TPF)](/docs/triply-api#Triple-Pattern-Fragments-(TPF))
 
-### Text search GUI
+### SPARQL IDE
 
-### Text search API
+The SPARQL IDE to show your data on a map, graph a timeline and even more.
+[More Information](/docs/sparql-ide)
 
-The text search API returns a list of Linked Data entities based on a
-supplied text string. The text string is matched against the text in
-literals and IRIs that appear in the Linked Data description of the
-returned entities.
+### Text-Search
 
-The text search API is only available for a dataset after an
-ElasticSearch service has been created for that dataset.
+Text search allows your data the data to be searched like an search engine.
 
-#### URI path
+## Saved Queries
 
-Text search requests are sent to the following URI path:
+Saving queries allow you to create a link to an query which you are able to update as your data updates without having to recreate links.
 
-```none
-https://api.INSTANCE/datasets/ACCOUNT/DATASET/services/SERVICE/search
+### How to save a saved query
+
+There are two ways to create an save query.
+_You need to be logged in and have authorization rights on the dataset to use this feature_
+
+1. When working from the [Sparql-IDE](/docs/sparql-ide)
+2. Using the Saved Queries tab in a dataset
+
+Creating a saved query with the SPARQL-IDE is done by simple writing a query/visualization that you're happy with and hitting the save button
+![The save query button highlighted]()
+
+### Creating a new version
+
+Updating the saved query can be simply done by clicking a query in the Saved Queries tab and editing the query or the visualization. Hit the save button to save it as a new version
+
+### Using a saved query
+
+To use the saved query for example in Data Stories you can use the following link to share the **latest** version of the query
+
+```url
+https://demo.triply.cc/dbpedia/core/queries/Timelined-Cars-BETA
 ```
 
-#### Reply format
+To share a specific version use just add a slash and the version nu,ber
 
-The reply format is a JSON object. Search results are returned in the
-JSON array that is stored under key sequence `"hits"/"hits"`. The
-order in which search results appear in the array is meaningful:
-better matches appear earlier.
-
-Every search result is represented by a JSON object. The name of the
-Linked Data entity is specified under key sequence `"_id"`.
-Properties of the Linked Data entity are stored as IRI keys. The
-values of these properties appear in a JSON array in order to allow
-more than one object term per predicate term (as is often the case in
-Linked Data).
-
-The following code snippet shows part of the reply for the below
-example request. The reply includes two results for search string
-“mew”, returning the Pokémon Mew (higher ranked result) and Mewtwo
-(lower ranked result).
-
-```json
-{
-  "hits": {
-    "hits": [
-      {
-        "_id": "https://triply.cc/academy/pokemon/id/pokemon/mew",
-        "http://open vocab org/terms/canonicalUri": [ "http://pokedex.dataincubator.org/pokemon/151" ],
-        "https://triply cc/academy/pokemon/def/baseAttack": [ 100 ],
-        "https://triply cc/academy/pokemon/def/name": [ "MEW", "MEW", "MEW", "MEW", "MEW", "ミュウ" ],
-        …
-      },
-      {
-        "_id": "https://triply.cc/academy/pokemon/id/pokemon/mewtwo",
-        "http://open vocab org/terms/canonicalUri": [ "http://pokedex.dataincubator.org/pokemon/150" ],
-        "https://triply cc/academy/pokemon/def/baseAttack": [ 110 ],
-        "https://triply cc/academy/pokemon/def/name": [ "MEWTU", "MEWTWO", "MEWTWO", "MEWTWO", "MEWTWO", "ミュウツー" ],
-        …
-      }
-    ]
-  },
-  …
-}
+```url
+https://demo.triply.cc/dbpedia/core/queries/Timelined-Cars-BETA/6
 ```
 
-#### Example
-
-```bash
-curl 'https://api.demo.triply.cc/datasets/academy/pokemon/services/text/search?query=mew'
-```
+#### Using a saved query in Data Stories
 
 ## Admin tasks
 
@@ -289,7 +282,7 @@ TriplyDB instance.
 
 The type of account can be observed based on the following icons:
 
-| *Icon* | *Account type* |
-|--------|----------------|
+| _Icon_ | _Account type_ |
+| ------ | -------------- |
 |        | organization   |
 |        | user           |
