@@ -361,3 +361,25 @@ including the number of levels that is displayed.
 ### SPARQL Raw View
 
 ### SPARQL Timeline View
+
+The SPARQL timeline allows you to represent data in a Timeline ([example](https://demo.triply.cc/dbpedia/core/queries/Timelined-Cars-BETA))
+To get started with this visualization you need at least a result containing a `?eventStart` or `?eventDate` with either a `?eventDescription`, `?eventLabel` or a `?eventMedia`. (Combinations are also possible)
+The following parameters can be used, _Italic_ ones are experimental:
+
+| **Variable name**        | **Purpose**                                                                                                                                 |
+| ------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------- |
+| `?eventStart`            | A date when an event started                                                                                                                |
+| `?eventEnd`              | A date when an event Stopped                                                                                                                |
+| `?eventDate`             | A date when an event happened                                                                                                               |
+| `?eventDescription`      | Text/HTML about the event                                                                                                                   |
+| `?eventLabel`            | Text/HTML title                                                                                                                             |
+| `?eventMedia`            | Link to most forms of media see [documentation](https://timeline.knightlab.com/docs/media-types.html) for which type of links are supported |
+| _`?eventType`_           | Groups events                                                                                                                               |
+| _`?eventColor`_          | Colors event                                                                                                                                |
+| _`?eventBackground`_     | Background of the event when selected                                                                                                       |
+| _`?eventMediaCaption`_   | Caption of the Media                                                                                                                        |
+| _`?eventMediaCredit`_    | The credit of the Media                                                                                                                     |
+| _`?eventMediaThumbnail`_ | The thumbnail of Media                                                                                                                      |
+| _`?eventMediaAlt`_       | The Alt text of the Media                                                                                                                   |
+| _`?eventMediaTitle`_     | The Title of the Media                                                                                                                      |
+| _`?eventMediaLink`_      | The URL the image should link to                                                                                                            |

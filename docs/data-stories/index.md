@@ -10,6 +10,8 @@ Examples can be found [here](https://stories.triply.cc)
 
 ## Getting Started
 
+To get started with Data Stories contact us at [info@triply.cc](mailto:info@triply.cc)
+
 ### Minimal working example
 
 ```html
@@ -23,19 +25,27 @@ Examples can be found [here](https://stories.triply.cc)
       content="{{INSTANCE}} Data Stories ― {{STORY-TITLE}}"
     />
     <title>{{INSTANCE}} Data Stories ― {{STORY-TITLE}}</title>
-    <link rel="stylesheet" href="{{LINK-TO-STORIES-CSS}}"/>
-    <script src="{{LINK-TO-STORIES-JS}}"></script>
+    <link rel="stylesheet" href="{{LINK-TO-STORIES-CSS}}" />
   </head>
   <body>
-  <script>
-  </script>
+    <query
+      data-query-ref="test.rq"
+      endpoint="https://demo.triply.cc/datasets/academy/sparql/services/sparql/sparql"
+    >
+    </query>
+    <script src="{{LINK-TO-STORIES-JS}}"></script>
+    <script type="text/javascript">
+      window.onload = function() {
+        window.stories();
+      };
+    </script>
   </body>
 </html>
 ```
 
 ### Best Practices
 
-### Markup language declaration
+#### Markup language declaration
 
 Data Stories are written in HTML 5. This is declared at the beginning
 of the document:
@@ -44,7 +54,7 @@ of the document:
 <!DOCTYPE html>
 ```
 
-### Main natural language declaration
+#### Main natural language declaration
 
 The natural language in which most of the Data Story will be written
 is declared in the `lang` attribute of the outer `html` tag:
@@ -58,7 +68,7 @@ is declared in the `lang` attribute of the outer `html` tag:
 Specific (sub)sections of a Data Story that are written in another
 main natural language must declare this on the corresponding tag.
 
-### Encoding declaration
+#### Encoding declaration
 
 Since Data Stories are encoded in UTF-8, this is declared at the
 beginning of the `head` content:
@@ -75,7 +85,7 @@ Agents may apply limited lookahead in order to determine the document
 encoding. Placing the encoding declaration later in the `head`
 content may result in some User Agents not detecting it.
 
-### Metadata
+#### Metadata
 
 The `author` and `description` meta tags must both be supplied as
 children of the `head` tag, and their content must be structured
@@ -95,7 +105,7 @@ content as the `description` meta tag.
 </head>
 ```
 
-### Navigation bar
+#### Navigation bar
 
 Data Stories contain a navigation bar that allows users to return to
 the Data Stories overview page.
@@ -121,7 +131,7 @@ the Data Stories overview page.
 </body>
 ```
 
-### External links
+#### External links
 
 Links that appear in the Data Story and that link to other web pages
 must be specified in the following way:
@@ -213,3 +223,29 @@ The following attributes are defined on the `query` element:
   this attribute is present, the query editor is shown.
 
 ### Stacked story
+
+Stacked stories are an alternative to tell a story and uses a document.
+
+![Example of a stacked story](https://stories.triply.cc/pok%C3%A9mon/)
+
+A stacked story is initialized by an article tag with the following attributes
+
+```html
+<article data-stacked="true"></article>
+```
+
+Each item of the stacked story is a section with therein a header and a [query](#Query) element
+
+```html
+<article data-stacked="true">
+  <section data-title="Which Pokémon has the most experience?">
+    <header>
+      This SPARQL query shows the Pokémon, sorted by their experience.
+    </header>
+    <query data-query-ref="./query/gallery.rq" data-output="gallery"></query>
+    <section></section>
+  </section>
+</article>
+```
+
+The title of the section is set by the `data-title` attribute in the `section` element
