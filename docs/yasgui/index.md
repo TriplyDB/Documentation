@@ -1,6 +1,6 @@
 ---
-title: "Sparql IDE"
-path: "/docs/sparql-ide"
+title: "Yasgui"
+path: "/docs/yasgui"
 ---
 
 This section explains the use of SPARQL in TriplyDB. It provides

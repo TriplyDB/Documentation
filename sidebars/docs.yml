@@ -5,10 +5,9 @@
         link: /docs/triply-db
       - title: Triply API
         link: /docs/triply-api
-      - title: Client Client
+      - title: Triply Client
         link: /docs/triply-client
-      - title: SPARQL IDE
-        link: /docs/sparql-ide
+      - title: Yasgui
+        link: /docs/yasgui
       - title: Data Stories
         link: /docs/data-stories
-        
