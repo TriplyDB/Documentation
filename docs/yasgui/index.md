@@ -3,11 +3,10 @@ title: "Yasgui"
 path: "/docs/yasgui"
 ---
 
-This section explains the use of SPARQL in TriplyDB. It provides
+This section explains the use of SPARQL via Yasgui. Yasgui provides
 various advanced features for creating, sharing, and visualizing
 SPARQL queries and their results.
 
-## Introduction
 
 ## SPARQL Editor
 
@@ -42,7 +41,7 @@ newline.
 | `Shift + Tab`       | Auto-indents the current line or the lines involved in the current selection.                     |
 | `Tab`               | Indents the current line or the lines involved in the current selection.                          |
 
-### SPARQL Templates
+### Templates
 
 SPARQL has standardized capabilities for constructing complex strings
 and literals. This allows human-readable label and HTML widgets to be
@@ -118,7 +117,7 @@ order to generate galleries of HTML widgets.
 
 ## Visualizations
 
-### SPARQL Table
+### Table
 
 This view allows SPARQL results to be displayed in a table. Each
 column in the table corresponds to a variable that belongs to the
@@ -182,9 +181,9 @@ select ?pokemon ?happiness {
 
 [Run this query online](https://api.demo.triply.cc/s/0lhnUC9v9)
 
-![SPARQL Table view over the above query](sparql-table-example.png) Screenshot of the SPARQL Table view over the above query.
+![SPARQL Table view over the above query](sparql-table-example.png)
 
-### SPARQL Gallery
+### Gallery
 
 This view allows SPARQL results to be displayed in an HTML gallery.
 Each individual result corresponds to one HTML widget. Widgets are
@@ -216,7 +215,7 @@ displaying a Pokémon. (This SPARQL query also uses [[SPARQL
 Templates]] in order to simplify its syntax.) This query can be [run
 online](https://demo.triply.cc/academy/pokemon/queries/gallery).
 
-![SPARQL Gallery view of a Pokémon query that uses SPARQL Templating](pokemon-gallery.png) SPARQL Gallery view of a Pokémon query that uses SPARQL Templating.
+![SPARQL Gallery view of a Pokémon query that uses SPARQL Templating](pokemon-gallery.png)
 
 ```sparql
 prefix def: <https://demo.triply.cc/academy/pokemon/def/>
@@ -258,7 +257,7 @@ order by desc(?experience)
 limit 20
 ```
 
-### SPARQL 2D Map
+### 2D Map
 
 This view allows SPARQL results that contain GeoSPARQL semantics to be
 automatically interpreted and displayed on a 2D map.
@@ -304,7 +303,7 @@ See [colormap](https://www.npmjs.com/package/colormap).
 
 See [Color Brewer](http://colorbrewer2.org/#type=sequential&scheme=BuGn&n=3)
 
-### SPARQL 3D Map
+### 3D Map
 
 This view allows SPARQL results that contain GeoSPARQL semantics to be
 automatically interpreted and displayed on a 3D map.
@@ -331,9 +330,9 @@ This view recognizes the following SPARQL variable names:
 | `?xLabel`         | The textual or HTML content of the popups that appears when the shape that is bound to `?x` is clicked.                                                                   |
 | `?xOffset`        | The height in meters at which the 2.5D shape that is based on the 2D shape that is bound to `?x` starts. This variable is not needed if data is stored in native 3D.      |
 
-### SPARQL Charts
+### Charts
 
-### TreeMap
+#### TreeMap
 
 The TreeMap view can be used to display hierarchies that are retrieved
 using `select` queries. The result set must consist of the following
@@ -356,11 +355,11 @@ parent node.
 Several configuration choices can be made in the configuration dialog,
 including the number of levels that is displayed.
 
-### SPARQL Pivot Table
+### Pivot Table
 
-### SPARQL Raw View
+### Raw View
 
-### SPARQL Timeline View
+### Timeline View
 
 The SPARQL timeline allows you to represent data in a Timeline ([example](https://demo.triply.cc/dbpedia/core/queries/Timelined-Cars-BETA))
 To get started with this visualization you need at least a result containing a `?eventStart` or `?eventDate` with either a `?eventDescription`, `?eventLabel` or a `?eventMedia`. (Combinations are also possible)

@@ -10,7 +10,7 @@ Examples can be found [here](https://stories.triply.cc)
 
 ## Getting Started
 
-To get started with Data Stories contact us at [info@triply.cc](mailto:info@triply.cc)
+To get started with Data Stories contact us at [info@triply.cc](info@triply.cc)
 
 ### Minimal working example
 
@@ -20,18 +20,12 @@ To get started with Data Stories contact us at [info@triply.cc](mailto:info@trip
   <head>
     <meta charset="utf-8" />
     <meta name="author" content="{{FIRST-AUTHOR}}, {{SECOND-AUTHOR}}, …" />
-    <meta
-      name="description"
-      content="{{INSTANCE}} Data Stories ― {{STORY-TITLE}}"
-    />
+    <meta name="description" content="{{INSTANCE}} Data Stories ― {{STORY-TITLE}}" />
     <title>{{INSTANCE}} Data Stories ― {{STORY-TITLE}}</title>
     <link rel="stylesheet" href="{{LINK-TO-STORIES-CSS}}" />
   </head>
   <body>
-    <query
-      data-query-ref="test.rq"
-      endpoint="https://demo.triply.cc/datasets/academy/sparql/services/sparql/sparql"
-    >
+    <query data-query-ref="test.rq" endpoint="https://demo.triply.cc/datasets/academy/sparql/services/sparql/sparql">
     </query>
     <script src="{{LINK-TO-STORIES-JS}}"></script>
     <script type="text/javascript">
@@ -96,10 +90,7 @@ content as the `description` meta tag.
 <head>
   …
   <meta name="author" content="{{FIRST-AUTHOR}}, {{SECOND-AUTHOR}}, …" />
-  <meta
-    name="description"
-    content="{{INSTANCE}} Data Stories ― {{STORY-TITLE}}"
-  />
+  <meta name="description" content="{{INSTANCE}} Data Stories ― {{STORY-TITLE}}" />
   <title>{{INSTANCE}} Data Stories ― {{STORY-TITLE}}</title>
   …
 </head>
@@ -116,10 +107,7 @@ the Data Stories overview page.
     <div class="navbar-content">
       <div class="navbar-icon">
         <a class="navbar-brand" href="/">
-          <img
-            alt="{{INSTANCE}} Data Stories home"
-            src="/assets/imgs/{{INSTANCE}}-logo-square.png"
-          />
+          <img alt="{{INSTANCE}} Data Stories home" src="/assets/imgs/{{INSTANCE}}-logo-square.png" />
         </a>
       </div>
       <div class="navbar-title">
@@ -167,59 +155,63 @@ Data Stories defines the following two HTML elements:
 The following attributes are defined on a `<div class="story">`
 element:
 
-- `data-endpoint` :: The URI of the SPARQL endpoint against which
-  all queries in the Data Story are executed.
 
-- `data-output` :: The output format that is used to display SPARQL
+- `data-endpoint`: The URI of the SPARQL endpoint against which all queries in the Data Story are executed.
+
+- `data-output`: The output format that is used to display SPARQL
   result sets in. The following values are
   supported:
 
-  - `boolean` :: Shows the result of an `ask` query.
+  <dl>
+    <dt>raw</dt>
+    <dd>The textual content of the HTTP reply body. For
+      example, the SPARQL result set serialized in XML, JSON,
+      or CSV.</dd>
 
-  - `error` :: Display the error value.
-
-  - `gallery` :: Shows HTML widgets in card rows.
-
-  - `gchart` :: Shows a UI for selecting numeric properties in order
-    to generate various diagrams.
-
-  - `geo` :: Shows GeoSPARQL results on a 2D map.
-
-  - `geo3d` :: Shows GeoSPARQL results on a 3D map.
-
-  - `pivot` :: Shows a UI for selecting numeric properties in order
-    to generate various diagrams and pivot tables.
-
-  - `raw` :: The textual content of the HTTP reply body. For
-    example, the SPARQL result set serialized in XML, JSON,
-    or CSV.
-
-  - `table` :: Shows the results in rows of an HTML table. This is
-    the default value.
+    <dt>table</dt>
+    <dd>Shows the results in rows of an HTML table. This is
+      the default value.</dd>
+    <dt>boolean</dt>
+    <dd>Shows the result of an `ask` query.</dd>
+    <dt>error</dt>
+    <dd>Display the error value.</dd>
+    <dt>gallery</dt>
+    <dd>Shows HTML widgets in card rows.</dd>
+    <dt>gchart</dt>
+    <dd>Shows a UI for selecting numeric properties in order
+      to generate various diagrams.</dd>
+    <dt>geo</dt>
+    <dd>Shows GeoSPARQL results on a 2D map.</dd>
+    <dt>geo3d</dt>
+    <dd>Shows GeoSPARQL results on a 3D map.</dd>
+    <dt>pivot</dt>
+    <dd>Shows a UI for selecting numeric properties in order
+      to generate various diagrams and pivot tables.</dd>
+  </dl>
 
 ### Query
 
 The following attributes are defined on the `query` element:
 
-- `data-config-ref="URI"` :: The URI of a saved query in TriplyDB.
+- `data-config-ref="URI"`: The URI of a saved query in TriplyDB.
 
-- `data-config="URI"` :: A URI that encodes a query together with
+- `data-config="URI"`: A URI that encodes a query together with
   the configuration of a specific view. These URIs can be
   created within the SPARQL IDE.
 
-- `data-endpoint="URI"` :: The URI of the SPARQL endpoint against
+- `data-endpoint="URI"`: The URI of the SPARQL endpoint against
   which a particular query is evaluated. When absent, the value
   of this attribute on the `<div class="story">` tag is used.
 
-- `data-query-ref="URI"` :: An absolute or relative URI to a file
+- `data-query-ref="URI"`: An absolute or relative URI to a file
   that stores a SPARQL query.
 
-- `data-output="VALUE"` :: The output format that is used to display
+- `data-output="VALUE"`: The output format that is used to display
   the SPARQL result set. When absent, the value of this
   attribute on the `<div class="story">` tag is used. See the
   documentation of the Story element for the supported values.
 
-- `data-show-query` :: By default, the query editor is hidden. When
+- `data-show-query`: By default, the query editor is hidden. When
   this attribute is present, the query editor is shown.
 
 ### Stacked story

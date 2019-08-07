@@ -2,6 +2,7 @@
 title: "Data schema stub"
 date: "2000-01-01"
 path: "/data-schema/"
+draft: true
 meta_title: "Data schema stub"
 meta_description: "This is a data schema stub for Gatsby.js and is not used. It must exist for builds to function"
 toc: false
