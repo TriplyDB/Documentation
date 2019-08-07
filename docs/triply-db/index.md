@@ -1,6 +1,6 @@
 ---
 title: "Triply-DB"
-path: "/docs/triply-db"
+path: "/docs/triply-db-getting-started"
 ---
 
 This document describes the TriplyDB product. This document is a
@@ -26,11 +26,11 @@ This section explains how to create a Linked Dataset in TriplyDB.
    enter a dataset name that consists of alphanumeric characters
    (`A-Za-z0-9`) and hyphens (`-`).
 
-4. Optionally enter a dataset description. This can be either test
+4. Optionally enter a dataset description. This can be either text
    or Markdown. You can also change the access level of the
    dataset, which is set to “Private” by default.
 
-![The “Add dataset” dialog](add-dataset-dialog.png) The “Add dataset” dialog.
+![The “Add dataset” dialog](add-dataset-dialog.png)
 
 ### Adding data
 
@@ -40,7 +40,7 @@ upload, URL upload, and data import. The following screenshot shows
 the “Add data” view, with the three approaches displayed on top of one
 another.
 
-![The “Add data” view](add-data.png) The “Add data” view.
+![The “Add data” view](add-data.png)
 
 #### Adding data by file upload
 
@@ -78,7 +78,7 @@ TriplyDB will show an error message that indicates which part of the
 data is malformed (see screenshot). If such malformed data is
 encountered, the RDF file must first be corrected and uploaded again.
 
-![Screenshot of an error message indicating syntactically malformed RDF data](upload-error.png) Screenshot of an error message indicating syntactically malformed RDF data.
+![Screenshot of an error message indicating syntactically malformed RDF data](upload-error.png)
 
 #### Adding data by URL upload
 
@@ -151,7 +151,7 @@ The below screenshot shows the “Create service” page for a TriplyDB
 instance that allows SPARQL, Jena SPARQL, and ElasticSearch services
 to be created.
 
-![The “Create service” page](create-service.png) The “Create service” page. Notice that three different types of services can be created.
+![The “Create service” page](create-service.png) Notice that three different types of services can be created.
 
 It is possible to create multiple services for one dataset.
 
@@ -165,7 +165,7 @@ If data is added to and/or remove from the dataset later. The service
 can also be synchronized by pressing the synchronization button that
 appears on the service widget.
 
-![An example of a service widget](service-widget.png) An example of a service widget.
+![An example of a service widget](service-widget.png)
 
 ## Viewing Data
 

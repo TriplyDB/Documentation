@@ -1,6 +1,6 @@
 ---
-title: "Triply-Client"
-path: "/docs/triply-client"
+title: "Triply Javascript Client"
+path: "/docs/triply-client-js"
 ---
 
 Triply Client is the programming library that makes it easy to
@@ -9,7 +9,7 @@ automate most operations that can be performed through the TriplyDB
 GUI.
 
 This document is a work in progress. Please contact
-[mailto:support@triply.cc](support@triply.cc) for more information.
+[support@triply.cc](mailto:support@triply.cc) for more information.
 
 ## Getting started
 
@@ -108,7 +108,7 @@ uses the Triply Client library:
    ./node_modules/.bin/tsc script.ts
    ```
 
-3 Run the JavaScript file:
+3. Run the JavaScript file:
 
    ```bash
    node script.js
@@ -181,7 +181,7 @@ run().catch(e => {
 The following subsections document the various Triply Client
 functions.
 
-### `Client`
+### Client
 
 #### `getAccount()`
 

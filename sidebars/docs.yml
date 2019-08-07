@@ -1,13 +1,17 @@
 - groups:
-  - group: Triply
+  - group: Triply-DB
     items:
-      - title: Client DB
-        link: /docs/triply-db
-      - title: Triply API
+      - title: Getting started
+        link: /docs/triply-db-getting-started
+      - title: API
         link: /docs/triply-api
-      - title: Triply Client
-        link: /docs/triply-client
-      - title: Yasgui
+      - title: Javascript Client
+        link: /docs/triply-client-js
+  - group: Yasgui
+    items:
+      - title: Introduction
         link: /docs/yasgui
       - title: Data Stories
         link: /docs/data-stories
+      # - title: For developers
+      #   link: /docs/yasgui-api
