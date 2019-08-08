@@ -24,7 +24,7 @@ Here is an example of an URI path that points to the Triply API for
 the Pokémon dataset:
 
 ```none
-https://api.demo.triply.cc/datasets/academy/pokemon/
+https://api.triplydb.com/datasets/academy/pokemon/
 ```
 
 ### Triple Pattern Fragments (TPF)
@@ -75,7 +75,7 @@ Pattern:
 
 ```bash
 curl -G \
-       'https://api.demo.triply.cc/datasets/academy/pokemon/fragments' \
+       'https://api.triplydb.com/datasets/academy/pokemon/fragments' \
        --data-urlencode 'predicate=http://www.w3.org/2000/01/rdf-schema#label' \
        -H 'Accept: application/trig'
 ```
@@ -102,7 +102,7 @@ Here is an example of an URI path that points to an SPARQL endpoint
 over the Pokémon dataset:
 
 ```none
-https://api.demo.triply.cc/datasets/academy/pokemon/services/pokemon/sparql
+https://api.triplydb.com/datasets/academy/pokemon/services/pokemon/sparql
 ```
 
 ### Sparql
@@ -173,7 +173,7 @@ example request. The reply includes two results for search string
 #### Example
 
 ```bash
-curl 'https://api.demo.triply.cc/datasets/academy/pokemon/services/text/search?query=mew'
+curl 'https://api.triplydb.com/datasets/academy/pokemon/services/text/search?query=mew'
 ```
 
 ## Authentication

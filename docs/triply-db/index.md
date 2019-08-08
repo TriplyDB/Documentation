@@ -213,13 +213,13 @@ Updating the saved query can be simply done by clicking a query in the Saved Que
 To use the saved query for example in Data Stories you can use the following link to share the **latest** version of the query
 
 ```url
-https://demo.triply.cc/dbpedia/core/queries/Timelined-Cars-BETA
+https://triplydb.com/dbpedia/core/queries/Timelined-Cars-BETA
 ```
 
 To share a specific version use just add a slash and the version nu,ber
 
 ```url
-https://demo.triply.cc/dbpedia/core/queries/Timelined-Cars-BETA/6
+https://triplydb.com/dbpedia/core/queries/Timelined-Cars-BETA/6
 ```
 
 #### Using a saved query in Data Stories

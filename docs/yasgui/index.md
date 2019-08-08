@@ -58,10 +58,10 @@ Finally, in order to return an HTML literal we need to first bind the
 concatenated string to some variable `?lex`, and then apply the
 `strdt` function in order to construct a literal with datatype IRI
 `rdf:HTML`. You can [try this query
-online](https://demo.triply.cc/academy/pokemon/queries/sparql-html).
+online](https://triplydb.com/academy/pokemon/queries/sparql-html).
 
 ```sparql
-prefix def: <https://demo.triply.cc/academy/pokemon/def/>
+prefix def: <https://triplydb.com/academy/pokemon/def/>
 prefix foaf: <http://xmlns.com/foaf/0.1/>
 prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>
@@ -91,10 +91,10 @@ SPARQL Template. Notice that this removes the need for concatenating
 (`concat/n`), explicit to-string conversion (`str/1`), and also allows
 the HTML literal to be constructed more easily (no `strdt/2` needed).
 You can [try this query
-online](https://demo.triply.cc/academy/pokemon/queries/sparql-templating/2).
+online](https://triplydb.com/academy/pokemon/queries/sparql-templating/2).
 
 ```sparql
-prefix def: <https://demo.triply.cc/academy/pokemon/def/>
+prefix def: <https://triplydb.com/academy/pokemon/def/>
 prefix foaf: <http://xmlns.com/foaf/0.1/>
 prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>
@@ -169,8 +169,8 @@ sort widget next to the `happiness` header, the results can be
 (inversely) sorted based on the happiness values.
 
 ```sparql
-prefix def: <https://demo.triply.cc/academy/pokemon/def/>
-prefix id: <https://demo.triply.cc/academy/pokemon/id/pokemon/>
+prefix def: <https://triplydb.com/academy/pokemon/def/>
+prefix id: <https://triplydb.com/academy/pokemon/id/pokemon/>
 prefix type: <https://triply.cc/academy/pokemon/id/type/>
 select ?pokemon ?happiness {
   ?pokemon
@@ -179,7 +179,7 @@ select ?pokemon ?happiness {
 }
 ```
 
-[Run this query online](https://api.demo.triply.cc/s/0lhnUC9v9)
+[Run this query online](https://api.triplydb.com/s/0lhnUC9v9)
 
 ![SPARQL Table view over the above query](sparql-table-example.png)
 
@@ -213,12 +213,12 @@ The following SPARQL query binds an HTML string consisting of a header
 `?widget` variable. This results in a gallery with 25 widgets, each
 displaying a Pokémon. (This SPARQL query also uses [[SPARQL
 Templates]] in order to simplify its syntax.) This query can be [run
-online](https://demo.triply.cc/academy/pokemon/queries/gallery).
+online](https://triplydb.com/academy/pokemon/queries/gallery).
 
 ![SPARQL Gallery view of a Pokémon query that uses SPARQL Templating](pokemon-gallery.png)
 
 ```sparql
-prefix def: <https://demo.triply.cc/academy/pokemon/def/>
+prefix def: <https://triplydb.com/academy/pokemon/def/>
 prefix foaf: <http://xmlns.com/foaf/0.1/>
 prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>
@@ -361,7 +361,7 @@ including the number of levels that is displayed.
 
 ### Timeline View
 
-The SPARQL timeline allows you to represent data in a Timeline ([example](https://demo.triply.cc/dbpedia/core/queries/Timelined-Cars-BETA))
+The SPARQL timeline allows you to represent data in a Timeline ([example](https://triplydb.com/dbpedia/core/queries/Timelined-Cars-BETA))
 To get started with this visualization you need at least a result containing a `?eventStart` or `?eventDate` with either a `?eventDescription`, `?eventLabel` or a `?eventMedia`. (Combinations are also possible)
 The following parameters can be used, _Italic_ ones are experimental:
 
