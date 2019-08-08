@@ -25,7 +25,7 @@ To get started with Data Stories contact us at [info@triply.cc](info@triply.cc)
     <link rel="stylesheet" href="{{LINK-TO-STORIES-CSS}}" />
   </head>
   <body>
-    <query data-query-ref="test.rq" endpoint="https://demo.triply.cc/datasets/academy/sparql/services/sparql/sparql">
+    <query data-query-ref="test.rq" endpoint="https://triplydb.com/datasets/academy/sparql/services/sparql/sparql">
     </query>
     <script src="{{LINK-TO-STORIES-JS}}"></script>
     <script type="text/javascript">
