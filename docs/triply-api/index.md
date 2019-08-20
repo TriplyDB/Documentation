@@ -1,7 +1,50 @@
 ---
-title: "Triply-API"
+title: "Triply API"
 path: "/docs/triply-api"
 ---
+
+Each Triply instance has a fully RESTfull API. All functionality, from managing
+the Triply instance to working with your data, is done through the API. This
+document describes the genral setup of the API, contact
+[support@triply.cc](mailto:support@triply.cc) for more information.
+
+## Authentication
+
+When a dataset is published publicly, most of the read operation on
+that dataset can be performed without authentication.
+
+Write operations and read operations on datasets that are published
+internally or privately require authentication.
+
+### Creating an API token
+
+Authentication is implemented through API tokens. An API token can be
+created within the TriplyDB UI in the following way:
+
+1. Log into your TriplyDB instance.
+2. Click on the user menu in the top-right corner and click on “User settings”.
+3. Go to the “API tokens” tab.
+4. Click the “Create token” button, enter a description for the
+   token (e.g., “test-token”) and select the appropriate access
+   rights.
+5. Click on “Create” and copy the created API token (a lengthy
+   string of characters). This string is only shown once, upon
+   creation, and must not be shared with others. (Other users
+   can create their own token in the here described way.)
+
+### Using the API token
+
+API tokens are used by specifying them in an HTTP request header as
+follows:
+
+```none
+Authorization: Bearer TOKEN
+```
+
+In the above, `TOKEN` should be replaced by your personal API token (a
+lengthy sequence of characters). See [Creating an API token](#Creating-an-API-token) for
+information on how to create an API token.
+
 
 ## Datasets
 
@@ -30,7 +73,7 @@ https://api.triplydb.com/datasets/academy/pokemon/
 ### Triple Pattern Fragments (TPF)
 
 Triple Pattern Fragments (TPF) is a community standard that allows
-individual Linked Datasets to be queries for Triply Patterns (TP), a
+individual Linked Datasets to be queried for Triply Patterns (TP), a
 subset of the more complex SPARQL query language. The Triply API
 implements [Triple Pattern
 Fragments](http://www.hydra-cg.com/spec/latest/triple-pattern-fragments/)
@@ -175,40 +218,3 @@ example request. The reply includes two results for search string
 ```bash
 curl 'https://api.triplydb.com/datasets/academy/pokemon/services/text/search?query=mew'
 ```
-
-## Authentication
-
-When a dataset is published publicly, most of the read operation on
-that dataset can be performed without authentication.
-
-Write operations and read operations on datasets that are published
-internally or privately require authentication.
-
-### Creating an API token
-
-Authentication is implemented through API tokens. An API token can be
-created within the TriplyDB UI in the following way:
-
-1. Log into your TriplyDB instance.
-2. Click on the user menu in the top-right corner and click on “User settings”.
-3. Go to the “API tokens” tab.
-4. Click the “Create token” button, enter a description for the
-   token (e.g., “test-token”) and select the appropriate access
-   rights.
-5. Click on “Create” and copy the created API token (a lengthy
-   string of characters). This string is only shown once, upon
-   creation, and must not be shared with others. (Other users
-   can create their own token in the here described way.)
-
-### Using the API token
-
-API tokens are used by specifying them in an HTTP request header as
-follows:
-
-```none
-Authorization: Bearer TOKEN
-```
-
-In the above, `TOKEN` should be replaced by your personal API token (a
-lengthy sequence of characters). See [Creating an API token](#Creating-an-API-token) for
-information on how to create an API token.

@@ -1,5 +1,5 @@
 - groups:
-  - group: Triply-DB
+  - group: TriplyDB
     items:
       - title: Getting started
         link: /docs/triply-db-getting-started

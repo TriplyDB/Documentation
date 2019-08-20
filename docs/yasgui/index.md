@@ -292,16 +292,9 @@ See [MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value).
 
 Strings of the form `{{PALETTE}},{{VALUE}}`, where `{{VALUE}}` is a
 floating-point number between 0.0 and 1.0 and `{{PALETTE}}` is the
-name of a color palette. The following two libraries define the
-supported color palette names:
-
-####### colormap
-
-See [colormap](https://www.npmjs.com/package/colormap).
-
-####### Color Brewer
-
-See [Color Brewer](http://colorbrewer2.org/#type=sequential&scheme=BuGn&n=3)
+name of a color palette. Supported colors libraries are
+[colormap](https://www.npmjs.com/package/colormap) and
+[Color Brewer](http://colorbrewer2.org/#type=sequential&scheme=BuGn&n=3)
 
 ### 3D Map
 
