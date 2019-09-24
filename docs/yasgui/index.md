@@ -354,7 +354,7 @@ including the number of levels that is displayed.
 
 ### Timeline View
 
-The SPARQL timeline allows you to represent data in a Timeline ([example](https://triplydb.com/dbpedia/core/queries/Timelined-Cars-BETA))
+The SPARQL timeline allows you to represent data in a Timeline ([example](https://triplydb.com/wikimedia/dbpedia/queries/Timelined-Cars))
 To get started with this visualization you need at least a result containing a `?eventStart` or `?eventDate` with either a `?eventDescription`, `?eventLabel` or a `?eventMedia`. (Combinations are also possible)
 The following parameters can be used, _Italic_ ones are experimental:
 
