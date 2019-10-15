@@ -258,30 +258,30 @@ maxLines = 30;
 
 ### Writing a Yasr plugin
 
-To register a Yasr plugin, add it to Yasr by running `Yasr.registerPlugin(pluginName: string, plugin: Plugin)`. Below is an example implementation for rendering the result of an ASK query, which returns either `true` or `false`. See also the implementations of the [Table](http://unpkg.com/@triply/yasr/src/plugins/table/) and [Raw Response](http://unpkg.com/@triply/yasr/src/plugins/response/) plugins.
+To register a Yasr plugin, add it to Yasr by running `Yasr.registerPlugin(pluginName: string, plugin: Plugin)`. Below is an example implementation for rendering the result of an ASK query, which returns either `true` or `false`. See also the implementations of the [Table](https://github.com/TriplyDB/Yasr/tree/master/src/plugins/table/) and [Raw Response](https://github.com/TriplyDB/Yasr/tree/master/src/plugins/response/) plugins.
 
-```ts
-import Yasr from "../../";
-import { Plugin } from "../";
-require("./index.scss");
-export interface PluginConfig {}
+```js
+class Boolean {
+  // A priority value. If multiple plugin support rendering of a result, this value is used
+  // to select the correct plugin
+  priority = 10;
 
-export default class Boolean implements Plugin<PluginConfig> {
-  private yasr: Yasr;
-  public priority = 10;
+  // Whether to show a select-button for this plugin
   hideFromSelection = true;
-  constructor(yasr: Yasr) {
+
+  constructor(yasr) {
     this.yasr = yasr;
   }
+
+  // Draw the resultset. This plugin simply draws the string 'True' or 'False'
   draw() {
     const el = document.createElement("div");
-    el.className = "booleanResult";
-    const boolVal = this.yasr.results.getBoolean();
-    const textEl = document.createElement("span");
-    textEl.textContent = boolVal ? "True" : "False";
-    el.appendChild(textEl);
+    el.textContent = this.yasr.results.getBoolean() ? "True" : "False";
     this.yasr.resultsEl.appendChild(el);
   }
+
+  // A required function, used to indicate whether this plugin can draw the current
+  // resultset from yasr
   canHandleResults() {
     return (
       this.yasr.results.getBoolean &&
@@ -289,8 +289,8 @@ export default class Boolean implements Plugin<PluginConfig> {
       || this.yasr.results.getBoolean() == false)
     );
   }
-  getIcon() {
-    return document.createElement("");
-  }
 }
+
+//Register the plugin to Yasr
+Yasr.registerPlugin("MyBooleanPlugin", Boolean);
 ```
