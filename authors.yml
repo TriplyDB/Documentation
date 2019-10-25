@@ -1,12 +1,23 @@
-- id: gbosch
-  name: "Gerwin Bosch"
-  url: http://www.gerwinbosch.nl
-  icon: https://en.gravatar.com/userimage/131756201/565bd1bda6941b21b20cfe0d4d613311
-- id: wbeek
-  name: "Wouter Beek"
-  url: https://www.triply.cc
-  icon: https://www.gravatar.com/avatar/9bc28997dd1074e405e1c66196d5e117
 - id: triply
   name: "Triply"
   url: https://www.triply.cc
-  icon: https://console.nightly.triply.cc/imgs/logos/logo.svg
+  icon: https://triplydb.com/imgs/logos/logo.svg
+- id: dnikolopoulos
+  name: Dimitris Nikolopoulos
+- id: ekultrop
+  name: Eirik Kultrop
+- id: gbosch
+  name: "Gerwin Bosch"
+  url: //gerwinbosch.nl
+- id: jduyne
+  name: Jurriaan Duyne
+- id: lrietveld
+  name: Laurens Rietveld
+- id: tdgroot
+  name: Thomas de groot
+- id: tbohlken
+  name: Thomas Bohlken
+- id: wbeek
+  name: "Wouter Beek"
+- id: rweber
+  name: Ruben Weber
