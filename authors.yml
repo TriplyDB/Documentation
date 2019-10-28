@@ -2,6 +2,7 @@
   name: "Triply"
   url: https://www.triply.cc
   icon: https://triplydb.com/imgs/logos/logo.svg
+  twitter: triplydb
 - id: dnikolopoulos
   name: Dimitris Nikolopoulos
 - id: ekultrop
@@ -9,6 +10,7 @@
 - id: gbosch
   name: "Gerwin Bosch"
   url: //gerwinbosch.nl
+  twitter: BoschGerwin
 - id: jduyne
   name: Jurriaan Duyne
 - id: lrietveld
