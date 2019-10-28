@@ -191,13 +191,34 @@ displayed in rows and columns to make up a widget gallery.
 
 #### Variables
 
-| **Variable name** | **Purpose**                             |
-| ----------------- | --------------------------------------- |
-| `?widget`         | A literal with datatype IRI `rdf:HTML`. |
+The gallery will render an item based on variables in the following table:
+
+| **Variable name**    | **Purpose**                                                             |
+| -------------------- | ----------------------------------------------------------------------- |
+| `?widget`            | The text or HTML content                                 |
+| `?widgetLabel`       | Title of the widget. Also used as the alternative text for the image    |
+| `?widgetLabelLink`   | A url which converts the title into a link, depends on `?widgetLabel` |
+| `?widgetImage`       | A url of an image to display                                            |
+| `?widgetImageCaption`     | A text description of the image, depends on `?widgetImage`    |
+| `?widgetDescription` | A text description                                                      |
+
+Each item requires at least one of the variables which don't depend on a different variable.
+
+#### Format
+
+The widget will display the variables in the following order:
+
+```markdown
+- widgetLabel / widgetLabelLink
+- widgetImage
+  - widgetImageCaption
+- WidgetDescription
+- Widget
+```
 
 #### Styling
 
-Sometimes the cards do not have the required size. In such cases the
+In order to display most content nicely the render of the `?widget` view is limited by height. This might not always be desired. In such cases the
 following style tweaks can help to make them the right size:
 
 ```sparql
