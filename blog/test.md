@@ -1,7 +1,7 @@
 ---
 title: "Test blogpost"
 path: "/blog/test"
-date: "2019-10-22 14:20"
+date: "2019-10-22T14:20:00"
 author: gbosch
 ---
 
