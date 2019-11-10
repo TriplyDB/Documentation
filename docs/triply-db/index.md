@@ -3,13 +3,9 @@ title: "TriplyDB"
 path: "/docs/triply-db-getting-started"
 ---
 
-This document describes the TriplyDB product. This document is a
-work-in-process. Contact
-[support@triply.cc](mailto:support@triply.cc) for more information.
-
 ## Introduction
 
-TriplyDB is our high-performance Linked Data hosting and publishing product. TriplyDB allows you to easily upload datasets and expose them through multiple APIs (including SPARQL, RESTful, and text search). [Read More](/products/triplydb).
+TriplyDB is a new and fast-moving Linked Data Knowledge Graph product.  TriplyDB allows you to easily upload datasets and expose them through multiple APIs (including SPARQL, RESTful, text search, analytics, etc). [Read More](/products/triplydb).
 
 ## Uploading Data
 
