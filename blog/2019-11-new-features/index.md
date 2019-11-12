@@ -9,7 +9,7 @@ In our first blog post we look back at some of the core features that were added
 
 ## Metadata for all!
 
-Metadata is where Linked Data shines.  Unfortunately, many Linked Data products make it difficult to enter and maintain up-to-date metadata information.  TriplyDB now automatically generates metadata for every entity that is stored in the database.  See Figure 1 for an example.  Besides automatically generated metadata, TriplyDB also offers an easy-to-use web UI where users can specify additional metadata at the dataset, user, organization, and data catalog level.
+Metadata is where Linked Data shines.  Unfortunately, many Linked Data products make it difficult to enter and maintain up-to-date metadata information.  TriplyDB now automatically generates metadata for every entity that is stored in the database.  See Figure 1 for an example.  Besides automatically generated metadata, TriplyDB also offers an easy-to-use web interface where users can specify additional metadata at the dataset, user, organization, and data catalog level.
 
 ![Figure 1 ― Example of a social media widget for sharing a TriplyDB URL.](social-share.png)
 
@@ -25,12 +25,12 @@ Browsing Knowledge Graphs now looks better and is more snappy than ever before: 
 
 ## Up to speed
 
-TriplyDB has a very snappy web UI.  Gone are the performance issues that are common in other Linked Data products.  Over the last couple of months we have increased TriplyDB performance in the following ways:
+TriplyDB has a very snappy web interface.  Gone are the performance issues that are common in other Linked Data products.  Over the last couple of months we have increased TriplyDB performance in the following ways:
 
   - Images are now served over an **image proxy**.  This reduces page loads for datasets that contain high-resolution images with up to 90%.
   - By adopting Node.js Clustering mechanisms, TriplyDB is able to process **more requests**, resulting in better browsing performance overall.
   - By adopting [WebPack](https://webpack.js.org/) for **server-side rendering**, TriplyDB is able to reduce the [time-to-first-meaningful-paint](https://developers.google.com/web/fundamentals/performance/user-centric-performance-metrics#first_meaningful_paint_and_hero_element_timing).
-  - By re-engineered its database model, TriplyDB now needs to perform **fewer database lookups** for common tasks, resulting in better performance overall.
+  - By re-engineering its database model, TriplyDB now needs to perform **fewer database lookups** for common tasks, resulting in better performance overall.
   - The JavaScript bundle size for TriplyDB was reduced by 30%, resulting a **faster** [time-to-interactive](https://developers.google.com/web/fundamentals/performance/user-centric-performance-metrics#time_to_interactive).
 
 ## More Fun With SPARQL
@@ -48,7 +48,7 @@ SPARQL is the standardized query language for Linked Data Knowledge Graphs.  Wit
 
 ## Dereferencing
 
-One of the crucial features of Linked Data is that entities in the database are identified by URLs that can be entered in a web browser for easy lookup.  TriplyDB now includes an easy-to-use web UI that allows administrators to define rules for dereferencing URLs.  These rules determine which URLs dereference to which dataset in TriplyDB (see Figure 5).
+One of the crucial features of Linked Data is that entities in the database are identified by URLs that can be entered in a web browser for easy lookup.  TriplyDB now includes an easy-to-use web interface that allows administrators to define rules for dereferencing URLs.  These rules determine which URLs dereference to which dataset in TriplyDB (see Figure 5).
 
 ![Figure 5 ― Overview of the admin interface for defining URL dereferencing rules.](url-dereference-rules.png)
 
@@ -62,7 +62,7 @@ Those were the big ones!  There are also 100+ smaller features that have been ad
 
   - Users and organizations can now ‘pin’ their most important datasets, so that they are more visible to visitors.
   - SPARQL services are now able to more efficiently synchronize to changes in the underlying dataset.
-  - The UI for setting API token access levels was completely redesigned.
+  - The web interface for setting API token access levels was completely redesigned.
   - Descriptions for datasets, users, organizations, and data catalogs now supports [Markdown](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet) headings, links, lists, and textual markup.
   - It is now possible to upload data in the RDF/XML serialization format.
   - It is now possible to upload data in more encodings (e.g., UTF-16 with Byte Order Mark), and in more compression formats (e.g., Bzip2).
