@@ -3,9 +3,8 @@ title: "Yasgui API Reference"
 path: "/docs/yasgui-api"
 ---
 
-This section explains how to include the Yasgui in your website.
 Yasgui consists of three components: Yasqe (a SPARQL Query Editor), Yasr (a SPARQL result visualizer), and Yasgui which binds the former together.
-Here you can find documentation on ways to configure and extend these components as suitable to your use-case.
+Here you can find documentation on ways to include, configure and extend these components as suitable to your use-case.
 
 ![Overview of Yasgui Components](yasgui.png).
 
@@ -32,7 +31,7 @@ And pass a second argument to the Yasgui initializer to specify the default endp
 ```js
 const yasgui = Yasgui(
   document.getElementById("yasgui"),
-  {yasqe:{sparql:{endpoint:'http://example.com/sparql'}}}
+  {yasqe:{requestOpts:{endpoint:'http://example.com/sparql'}}}
 );
 ```
 Note: If you've already opened the Yasgui page before, you must first clear your local-storage cache before you will see the changes taking effect.
@@ -48,7 +47,7 @@ These are persistent as the user switches between tabs.
 // Add a new Tab. Returns the new Tab object.
 yasgui.addTab(
   true // set as active tab
-  { name:'my new tab', id: "tab_id_x" }
+  { name:'my new tab' }
 )
 
 // Get a Tab. Returns the current Tab if no tab id is given.
@@ -156,12 +155,6 @@ yasqe.collapsePrefixes(true)
 Here are some configurable fields for Yasqe. They can accessed and set through `Yasqe.defaults` and `yasqe.options`. The configuration object extends the [CodeMirror config](https://codemirror.net/doc/manual.html#config), meaning fields like for example `tabSize` may also be set.  
 
 ```ts
-// the sparql mode to use
-mode = 'sparql11'
-
-// whether to collapse prefixes on page load
-collapsePrefixesOnLoad = true
-
 // number of seconds to persist query input, stored in the browser
 // set to 0 to always load the default query on page load
 persistencyExpire // default: 30 days
@@ -176,7 +169,7 @@ requestOpts: {
 
 ## Yasr
 
-Yasr is an extendable library which helps you present SPARQL results. The main class of Yasr is responsible for gluing the different output plugins together, and providing utilities such as SPARQL result parsers.
+Yasr is an extendable library that renders SPARQL results. Yasr is responsible for gluing the different visualization plugins together, and providing utilities such as SPARQL result parsers.
 
 ### Yasr API
 
