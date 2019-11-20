@@ -15,7 +15,7 @@ SPARQL queries and their results.
 
 The Yasgui SPARQL editor is a query editor that offers syntax highlighting, syntax validation, autocompletion, a variety of different SPARQL result visualizations, with a plugin architecture that [enables customization](/docs/yasgui-api).
 
-By default, the query editor provides autcomplete suggestions via the  [LOV](https://lov.linkeddata.es/dataset/lov/) API.
+By default, the query editor provides autcomplete suggestions via the [LOV](https://lov.linkeddata.es/dataset/lov/) API.
 Website maintainers can add their own autocompletion logic as well. For example, the Yasgui integration in [TriplyDB](https://triplydb.com) uses the TriplyDB API to more accurately provide suggestions based on the underlying data.
 
 Sharing queries now involves less than having to copy/past complete SPARQL queries. Instead, you can share your query (and the corresponding visualization settings) using a simple URL.
@@ -170,8 +170,6 @@ select ?pokemon ?happiness {
 }
 ```
 
-
-
 ![SPARQL Table view over the above query](sparql-table-example.png)
 
 ### Response {#response}
@@ -196,7 +194,6 @@ The gallery will render an item based on variables in the following table:
 | `?widgetImage`        | A url of an image to display                                          |
 | `?widgetImageCaption` | A text description of the image, depends on `?widgetImage`            |
 | `?widgetDescription`  | A text description                                                    |
-
 
 #### Format
 
@@ -277,7 +274,6 @@ The chart plugin renders geographical, temporal and numerical data in interactiv
 
 The chart also plugin includes a treemap representation, that is suitable for displaying hierarchies. To use the treemap plugin, you must use the following projection variables in your SPARQL query (in this order):
 
-
 | `?node`                   | `?parent`                                                                                                          | `?size`                                                                                   | `?color`                                                                         |
 | ------------------------- | ------------------------------------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
 | The label of a tree node. | Either the label of the node that is the parent of `?node`, or the value `UNDEF` in case `?node` is the root node. | (optional) :: For leaf nodes, a positive integer indicating the relative size of `?node`. | (optional) :: For leaf nodes, a double indicating the relative color of `?node`. |
@@ -302,7 +298,7 @@ This view recognizes the following SPARQL variable names:
 | `?x`              | An arbitrary variable name that is bound to literals with datatype IRI `geo:wktLiteral`, and whose name is the prefix of the other variable names in this table. |
 | `?xColor`         | The color of the shape bound to `?x`.                                                                                                                            |
 | `?xLabel`         | The text or HTML content of popups that appear when clicking the shape bound to `?x`.                                                                            |
-| `?xTooltip`         | ???                                                                      |
+| `?xTooltip`       | Text content that will appear when the shape of bound to `?x` is hovered                                                                                         |
 
 ##### Color values
 
