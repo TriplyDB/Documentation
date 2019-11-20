@@ -13,19 +13,17 @@ SPARQL queries and their results.
 
 ## SPARQL Editor {#sparql-editor}
 
-The SPARQL editor or Yasqe is a query editor which offers syntax highlighting, checking and autocompletion of URIs vocabularies. The editor itself of three main components; the query editor, the run button and a share button.
+The Yasgui SPARQL editor is a query editor that offers syntax highlighting, syntax validation, autocompletion, a variety of different SPARQL result visualizations, with a plugin architecture that [enables customization](/docs/yasgui-api).
 
-The query editor uses [LOV](https://lov.linkeddata.es/dataset/lov/) to supply autocomplete suggestions for your library. When the SPARQL Editor is integrated in TriplyDB it will scope itself the the available URIs in the dataset you're currently querying.
+By default, the query editor provides autcomplete suggestions via the  [LOV](https://lov.linkeddata.es/dataset/lov/) API.
+Website maintainers can add their own autocompletion logic as well. For example, the Yasgui integration in [TriplyDB](https://triplydb.com) uses the TriplyDB API to more accurately provide suggestions based on the underlying data.
 
-The share button will generate a link which will contain your query and other settings from both the editor and the visualizer to make sure the people who receive your link will see the same thing as you do.
+Sharing queries now involves less than having to copy/past complete SPARQL queries. Instead, you can share your query (and the corresponding visualization settings) using a simple URL.
 
 ### Supported key combinations
 
 The following table enumerates the key combinations that are supported
-by the SPARQL Editor. We sometimes use the notion of a **group**,
-which is either one word (space-delimited sequence of non-space
-characters), a sequences of multiple whitespace characters, or one
-newline.
+by the SPARQL Editor.
 
 | **Key combination** | **Behavior**                                                                                      |
 | ------------------- | ------------------------------------------------------------------------------------------------- |
@@ -60,7 +58,7 @@ constructing such labels and widgets is a bit cumbersome.
 #### SPARQL-concat
 
 For example, the following SPARQL query returns HTML widgets that can
-be displayed in a web browser (see [SPARQL Gallery][#gallery]). It uses the
+be displayed in a web browser (see [SPARQL Gallery](#gallery)). It uses the
 `concat` function which allows an arbitrary number of string arguments
 to be concatenated into one string. Notice that this requires
 extensive quoting for each argument (e.g., `'<h3>'`), as well as
@@ -130,7 +128,7 @@ order to generate galleries of HTML widgets.
 
 ## Visualizations {#visualizations}
 
-The Yasgui visualization library or Yasr offers various ways to explore your data with different visualizations. These visualization can be used in [Data stories](/docs/stories), or downloaded for other use.
+The Yasgui visualization library (also called Yasr) offers various ways to explore your data with different visualizations. A number of visualizations are MIT licensed, where others (the 'pro' plugins) are restricted in license.
 
 ### Table {#table}
 
@@ -148,13 +146,13 @@ the following features:
 | ----------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | **Abbreviations** | The SPARQL Table uses the prefix declarations in the SPARQL query in order to abbreviate IRIs that appear in table cells.                                                                                                                                                                                                                                     |
 | **Filter**        | By entering a search string into the “Filter query results” field, the table will only display result rows in which the entered search string appears.                                                                                                                                                                                                        |
-| **Indices**       | The first column in the table indicates the index of each row in thevSPARQL result set.                                                                                                                                                                                                                                                                       |
+| **Indices**       | The first column in the table indicates the index of each row in the SPARQL result set.                                                                                                                                                                                                                                                                       |
 | **Pagination**    | By default the Table displays at most 50 rows. This maximum value can be changed to 10, 100, 1.000, or “All”.                                                                                                                                                                                                                                                 |
 | **Sorting**       | A sort widget appears to the right of each header label. By pressing on the upward pointing arrow of he sort widget, rows will be sorted based on the lexicographic order of the values within the corresponding column. By pressing the downward pointing arrow of the sort widget, rows will be inversely sorted according to the same lexicographic order. |
 
 #### Table Example
 
-The following SPARQL query returns a table of Pokémon dragons (column
+The following SPARQL query (or [see here](https://api.triplydb.com/s/0lhnUC9v9)) returns a table of Pokémon dragons (column
 `pokemon`) and their happiness (column `happiness`). Notice that the
 prefix for `id` is not used in the query, but is used in order to
 abbreviate the IRI syntax in the `pokemon` column. By clicking on the
@@ -172,15 +170,15 @@ select ?pokemon ?happiness {
 }
 ```
 
-[Run this query online](https://api.triplydb.com/s/0lhnUC9v9)
+
 
 ![SPARQL Table view over the above query](sparql-table-example.png)
 
-### Response View {#response}
+### Response {#response}
 
 This view shows the body of the response and offers a easy way to download the result as a file.
 
-### Gallery PRO {#gallery}
+### Gallery (pro) {#gallery}
 
 This view allows SPARQL results to be displayed in an HTML gallery.
 Each individual result corresponds to one HTML widget. Widgets are
@@ -192,30 +190,29 @@ The gallery will render an item based on variables in the following table:
 
 | **Variable name**     | **Purpose**                                                           |
 | --------------------- | --------------------------------------------------------------------- |
-| `?widget`             | The text or HTML content                                              |
+| `?widget`             | The text or HTML content.                                             |
 | `?widgetLabel`        | Title of the widget. Also used as the alternative text for the image  |
 | `?widgetLabelLink`    | A url which converts the title into a link, depends on `?widgetLabel` |
 | `?widgetImage`        | A url of an image to display                                          |
 | `?widgetImageCaption` | A text description of the image, depends on `?widgetImage`            |
 | `?widgetDescription`  | A text description                                                    |
 
-Each item requires at least one of the variables which don't depend on a different variable.
 
 #### Format
 
 The widget will display the variables in the following order:
 
 ```markdown
-- widgetLabel / widgetLabelLink
-- widgetImage
-  - widgetImageCaption
-- WidgetDescription
-- Widget
+- ?widgetLabel or ?widgetLabelLink
+- ?widgetImage
+  - ?widgetImageCaption
+- ?widgetDescription
+- ?widget
 ```
 
 #### Styling
 
-In order to display most content nicely the render of the `?widget` view is limited by height. This might not always be desired. In such cases the following style tweaks can help to make them the right size:l
+The `?widget` display is restricted in height. This might not always be desired. In such cases the following style tweaks can help to make them the right size:
 
 ```sparql
 bind('''<div style="max-height:unset; width:275px;">
@@ -274,15 +271,12 @@ order by desc(?experience)
 limit 20
 ```
 
-### Chart PRO {#charts}
+### Chart (pro) {#charts}
 
-Chart offers a way to show numerical data in nice and interactive charts. With the use of Google Charts you are able to easily represent numerical data in bar-, line- and pie charts and many variants of these.
+The chart plugin renders geographical, temporal and numerical data in interactive charts such as bar-, line- and pie charts.
 
-#### TreeMap
+The chart also plugin includes a treemap representation, that is suitable for displaying hierarchies. To use the treemap plugin, you must use the following projection variables in your SPARQL query (in this order):
 
-The TreeMap view differs from most charts and can be used to display hierarchies that are retrieved
-using `select` queries. The result set must consist of the following
-columns (in this order):
 
 | `?node`                   | `?parent`                                                                                                          | `?size`                                                                                   | `?color`                                                                         |
 | ------------------------- | ------------------------------------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
@@ -292,11 +286,9 @@ Once the TreeMap is drawn it is possible to navigate the tree with the
 mouse: left clicking on a node will drill down into the corresponding
 subtree; right clicking on a node will move up to the subtree of its
 parent node.
+The chart configuration enables tweaking the treemap properties such as the number of displayed hierarchy levels.
 
-Several configuration choices can be made in the configuration dialog,
-including the number of levels that is displayed.
-
-### 2D Map PRO {#geo}
+### 2D Map (pro) {#geo}
 
 This view allows SPARQL results that contain GeoSPARQL semantics to be
 automatically interpreted and displayed on a 2D map.
@@ -310,18 +302,18 @@ This view recognizes the following SPARQL variable names:
 | `?x`              | An arbitrary variable name that is bound to literals with datatype IRI `geo:wktLiteral`, and whose name is the prefix of the other variable names in this table. |
 | `?xColor`         | The color of the shape bound to `?x`.                                                                                                                            |
 | `?xLabel`         | The text or HTML content of popups that appear when clicking the shape bound to `?x`.                                                                            |
+| `?xTooltip`         | ???                                                                      |
 
 ##### Color values
 
-Variable `?xColor` can bind values of the following types:
+Variable `?xColor` must include a value of the following types:
 
 - [CSS color names](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value).
 - [RGB color codes](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value).
 - [HSL color codes](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value).
-- Gradients
-  - Strings of the form `{{PALETTE}},{{VALUE}}`, where `{{VALUE}}` is a floating-point number between 0.0 and 1.0 and `{{PALETTE}}` is the name of a color palette. We support color schemes from the [Colormap](https://www.npmjs.com/package/colormap) and [Color Brewer](http://colorbrewer2.org/#type=sequential&scheme=BuGn&n=3) libraries
+- **Gradients**: Strings of the form `{{PALETTE}},{{VALUE}}`, where `{{VALUE}}` is a floating-point number between 0.0 and 1.0 and `{{PALETTE}}` is the name of a color palette. We support color schemes from the [Colormap](https://www.npmjs.com/package/colormap) and [Color Brewer](http://colorbrewer2.org/#type=sequential&scheme=BuGn&n=3) libraries
 
-### 3D Map PRO {#geo-3d}
+### 3D Map (pro) {#geo-3d}
 
 This view allows SPARQL results that contain GeoSPARQL semantics to be
 automatically interpreted and displayed on a 3D globe. It supports both 3D and 2.5D visualizations, depending on whether the GeoSPARQL data is stored in native 3D or in 2D
@@ -338,14 +330,13 @@ This view recognizes the following SPARQL variable names:
 | `?xLabel`         | The textual or HTML content of the popups that appears when the shape that is bound to `?x` is clicked.                                                                   |
 | `?xOffset`        | The height in meters at which the 2.5D shape that is based on the 2D shape that is bound to `?x` starts. This variable is not needed if data is stored in native 3D.      |
 
-### Pivot Table PRO {#pivot}
+### Pivot Table (pro) {#pivot}
 
-This view allows SPARQL results to be displayed in a pivot table.
-You are able construct a pivot table using the query values as columns or rows.
+This view renders SPARQL results in an interactive pivot table where you are able to aggregate the results by dragging your binding variables to columns or rows.
 
-### Timeline View PRO {#timeline}
+### Timeline View (pro) {#timeline}
 
-The SPARQL timeline allows you to represent data in a Timeline ([example](https://triplydb.com/wikimedia/dbpedia/queries/timeline-cars))
+The SPARQL timeline renders the SPARQL results on a Timeline ([example](https://triplydb.com/wikimedia/dbpedia/queries/timeline-cars))
 To get started with this visualization you need at least a result containing a `?eventStart` or `?eventDate` with either a `?eventDescription`, `?eventLabel` or a `?eventMedia`. (Combinations are also possible)
 The following parameters can be used, Parameters in _Italic_ are experimental:
 
