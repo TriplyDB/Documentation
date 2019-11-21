@@ -24,7 +24,7 @@ To get started with Data Stories contact us at [info@triply.cc](info@triply.cc)
     <link rel="stylesheet" href="{{LINK-TO-STORIES-CSS}}" />
   </head>
   <body>
-    <query data-query-ref="test.rq" endpoint="https://triplydb.com/datasets/academy/sparql/services/sparql/sparql">
+    <query data-query-ref="test.rq" data-endpoint="https://triplydb.com/academy/sparql/sparql/sparql">
     </query>
     <script src="{{LINK-TO-STORIES-JS}}"></script>
     <script type="text/javascript">
@@ -35,7 +35,6 @@ To get started with Data Stories contact us at [info@triply.cc](info@triply.cc)
   </body>
 </html>
 ```
-
 
 ## Components
 
@@ -123,7 +122,7 @@ A stacked story is initialized by an article tag with the following attributes
 <article data-stacked="true"></article>
 ```
 
-Each item of the stacked story is a section with therein a header and a [query](#Query) element
+Each item of the stacked story is a section with therein a header and a [query](#query) element
 
 ```html
 <article data-stacked="true">
