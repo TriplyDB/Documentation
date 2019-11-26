@@ -152,23 +152,22 @@ the following features:
 
 #### Table Example
 
-The following SPARQL query (or [see here](https://api.triplydb.com/s/0lhnUC9v9)) returns a table of Pokémon dragons (column
+The following SPARQL query (or [see here](https://triplydb.com/academy/pokemon/queries/table-example/)) returns a table of Pokémon dragons (column
 `pokemon`) and their happiness (column `happiness`). Notice that the
-prefix for `id` is not used in the query, but is used in order to
+prefix for `pokemon` is not used in the query, but is used in order to
 abbreviate the IRI syntax in the `pokemon` column. By clicking on the
 sort widget next to the `happiness` header, the results can be
 (inversely) sorted based on the happiness values.
 
 ```sparql
-prefix def: <https://triplydb.com/academy/pokemon/def/>
-prefix id: <https://triplydb.com/academy/pokemon/id/pokemon/>
-prefix type: <https://triply.cc/academy/pokemon/id/type/>
+PREFIX pokemon: <https://triplydb.com/academy/pokemon/id/pokemon/>
+PREFIX type: <https://triplydb.com/academy/pokemon/id/type/>a
+PREFIX vocab: <https://triplydb.com/academy/pokemon/vocab/>
 select ?pokemon ?happiness {
   ?pokemon
-    def:type type:dragon;
-    def:happiness ?happiness.
-}
-```
+    vocab:type type:dragon;
+    vocab:happiness ?happiness.
+}```
 
 ![SPARQL Table view over the above query](sparql-table-example.png)
 
