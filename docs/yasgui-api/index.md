@@ -172,7 +172,10 @@ yasqe.getQueryType();
 yasqe.getPrefixesFromQuery();
 
 // Add prefixes to the query.
-yasqe.addPrefixes({ dbo: "http://dbpedia.org/ontology/" /*...*/ });
+yasqe.addPrefixes({ dbo: "http://dbpedia.org/ontology/" });
+
+// Remove prefixes to the query.
+yasqe.removePrefixes({ dbo: "http://dbpedia.org/ontology/" });
 
 // set size of input area
 yasqe.setSize(500, 300);
