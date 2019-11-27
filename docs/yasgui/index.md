@@ -167,7 +167,8 @@ select ?pokemon ?happiness {
   ?pokemon
     vocab:type type:dragon;
     vocab:happiness ?happiness.
-}```
+}
+```
 
 ![SPARQL Table view over the above query](sparql-table-example.png)
 
