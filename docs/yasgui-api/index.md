@@ -101,41 +101,42 @@ Yasgui.defaults.yasqe.resizeable = true;
 // Whether to autofocus on Yasqe on page load
 Yasgui.defaults.autofocus = true;
 
+// Use the default endpoint when a new tab is opened
+Yasgui.defaults.copyEndpointOnNewTab = false;
+
 // Configuring which endpoints appear in the catalogue list
-const yasgui = new Yasgui(document.getElementById("yasgui"), {
-  endpointCatalogueOptions: {
-    getData: () => {
-      return [
-        {
-          name: "dbpedia",
-          endpoint: "https://dbpedia.org/sparql"
-        },
-        {
-          name: "wikidata",
-          endpoint: "https://query.wikidata.org"
-        }
-        // ...
-      ];
-    },
-    // The endpoint keyword is required, so no need to specify it here
-    keys: ["name"],
-    renderItem: (data, source) => {
-      // Create a nice element
-      const contentDiv = document.createElement("div");
-      contentDiv.style.display = "flex";
-      contentDiv.style.flexDirection = "column";
-      const endpointSpan = document.createElement("span");
-      // data.matches contains data about on which part of the fields the endpoint has been matched
-      endpointSpan.innerHTML = data.matches.endpoint.reduce(
-        (current, object) => (object.highlight ? current + object.text.bold() : current + object.text),
-        ""
-      );
-      contentDiv.appendChild(endpointSpan);
-      // Make sure to append your element to the source!
-      source.appendChild(contentDiv);
-    }
+Yasgui.defaults.endpointCatalogueOptions = {
+  getData: () => {
+    return [
+      {
+        name: "dbpedia",
+        endpoint: "https://dbpedia.org/sparql"
+      },
+      {
+        name: "wikidata",
+        endpoint: "https://query.wikidata.org"
+      }
+      // ...
+    ];
+  },
+  // The endpoint keyword is required, so no need to specify it here
+  keys: ["name"],
+  renderItem: (data, source) => {
+    // Create a nice element
+    const contentDiv = document.createElement("div");
+    contentDiv.style.display = "flex";
+    contentDiv.style.flexDirection = "column";
+    const endpointSpan = document.createElement("span");
+    // data.matches contains data about on which part of the fields the endpoint has been matched
+    endpointSpan.innerHTML = data.matches.endpoint.reduce(
+      (current, object) => (object.highlight ? current + object.text.bold() : current + object.text),
+      ""
+    );
+    contentDiv.appendChild(endpointSpan);
+    // Make sure to append your element to the source!
+    source.appendChild(contentDiv);
   }
-});
+};
 ```
 
 ## Yasqe
