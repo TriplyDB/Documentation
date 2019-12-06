@@ -126,6 +126,31 @@ limit 25
 SPARQL Templates can be combined with the [SPARQL Gallery](#gallery) feature in
 order to generate galleries of HTML widgets.
 
+### Rendering HTML {#htmlRender}
+
+To distinguish between text and `HTML` result values the visualization library checks for the `rdf:HTML` datatype.
+
+The following query will return as plain text
+
+```sparql
+select * {
+  bind('<p>Test</p>' as ?widget)
+}
+```
+
+![The result is interpreted as plain text and will not parse the HTML](./html-plain.png)
+
+This query will render the result as `HTML`
+
+```sparql
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+select * {
+  bind('<p>Test</p>'^^rdf:HTML as ?widget)
+}
+```
+
+![The result is interpreted as HTML](./html-rendered.png)
+
 ## Visualizations {#visualizations}
 
 The Yasgui visualization library (also called Yasr) offers various ways to explore your data with different visualizations. A number of visualizations are MIT licensed, where others (the 'pro' plugins) are restricted in license.
@@ -136,6 +161,8 @@ This view allows SPARQL results to be displayed in a table. Each
 column in the table corresponds to a variable that belongs to the
 outer projection. Each row in the table corresponds to one query
 result. Each cell contains an RDF term or `NULL`.
+
+The table doesn't render values as HTML yet
 
 #### Features
 
@@ -186,22 +213,23 @@ displayed in rows and columns to make up a widget gallery.
 
 The gallery will render an item based on variables in the following table:
 
-| **Variable name**     | **Purpose**                                                           |
-| --------------------- | --------------------------------------------------------------------- |
-| `?widget`             | The text or HTML content.                                             |
-| `?widgetLabel`        | Title of the widget. Also used as the alternative text for the image  |
-| `?widgetLabelLink`    | A url which converts the title into a link, depends on `?widgetLabel` |
-| `?widgetImage`        | A url of an image to display                                          |
-| `?widgetImageCaption` | A text description of the image, depends on `?widgetImage`            |
-| `?widgetDescription`  | A text description                                                    |
+| **Variable name**     | **Purpose**                                                                       |
+| --------------------- | --------------------------------------------------------------------------------- |
+| `?widget`             | The text or [HTML](#htmlRender) content. meant for creating widget from scrap     |
+| `?widgetLabel`        | Title of the widget. Also used as the alternative text for the image              |
+| `?widgetLabelLink`    | A url which converts the title into a link, depends on `?widgetLabel`             |
+| `?widgetImage`        | A url of an image to display                                                      |
+| `?widgetImageLink`    | A url which adds a link to the image, depends on `?widgetImage`                   |
+| `?widgetImageCaption` | A text or [HTML](#htmlRender) description of the image, depends on `?widgetImage` |
+| `?widgetDescription`  | A text or [HTML](#htmlRender) description, meant for adding links and             |
 
 #### Format
 
 The widget will display the variables in the following order:
 
 ```markdown
-- ?widgetLabel or ?widgetLabelLink
-- ?widgetImage
+- ?widgetLabel and ?widgetLabelLink
+- ?widgetImage and ?widgetImageLink
   - ?widgetImageCaption
 - ?widgetDescription
 - ?widget
@@ -297,8 +325,8 @@ This view recognizes the following SPARQL variable names:
 | ----------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `?x`              | An arbitrary variable name that is bound to literals with datatype IRI `geo:wktLiteral`, and whose name is the prefix of the other variable names in this table. |
 | `?xColor`         | The color of the shape bound to `?x`.                                                                                                                            |
-| `?xLabel`         | The text or HTML content of popups that appear when clicking the shape bound to `?x`.                                                                            |
-| `?xTooltip`       | Text content that will appear when the shape of bound to `?x` is hovered                                                                                         |
+| `?xLabel`         | The text or [HTML](#htmlRender) content of popups that appear when clicking the shape bound to `?x`.                                                             |
+| `?xTooltip`       | Text or [HTML](#htmlRender) that will appear when the shape of bound to `?x` is hovered                                                                          |
 
 ##### Color values
 
@@ -323,7 +351,7 @@ This view recognizes the following SPARQL variable names:
 | `?x`              | An arbitrary variable name that is bound to 2D or 3D literals with datatype IRI `geo:wktLiteral`, and whose name is the prefix of the other variable names in this table. |
 | `?xColor`         | The color of the shape bound to `?x`.                                                                                                                                     |
 | `?xHeight`        | The height in meters of the 2.5D shape that is based on the 2D shape that is bound to `?x`. This variable is not needed if data is stored in native 3D.                   |
-| `?xLabel`         | The textual or HTML content of the popups that appears when the shape that is bound to `?x` is clicked.                                                                   |
+| `?xLabel`         | The textual or [HTML](#htmlRender) content of the popups that appears when the shape that is bound to `?x` is clicked.                                                    |
 | `?xOffset`        | The height in meters at which the 2.5D shape that is based on the 2D shape that is bound to `?x` starts. This variable is not needed if data is stored in native 3D.      |
 
 ### Pivot Table (pro) {#pivot}
@@ -341,14 +369,14 @@ The following parameters can be used, Parameters in _Italic_ are experimental:
 | `?eventStart`            | A date when an event started                                                                                                                |
 | `?eventEnd`              | A date when an event Stopped                                                                                                                |
 | `?eventDate`             | A date when an event happened                                                                                                               |
-| `?eventDescription`      | Text/HTML about the event                                                                                                                   |
-| `?eventLabel`            | Text/HTML title                                                                                                                             |
+| `?eventDescription`      | Text/[HTML](#htmlRender) about the event                                                                                                    |
+| `?eventLabel`            | Text/[HTML](#htmlRender) title                                                                                                              |
 | `?eventMedia`            | Link to most forms of media see [documentation](https://timeline.knightlab.com/docs/media-types.html) for which type of links are supported |
 | _`?eventType`_           | Groups events                                                                                                                               |
 | _`?eventColor`_          | Colors event                                                                                                                                |
 | _`?eventBackground`_     | Background of the event when selected                                                                                                       |
-| _`?eventMediaCaption`_   | Caption of the Media                                                                                                                        |
-| _`?eventMediaCredit`_    | The credit of the Media                                                                                                                     |
+| _`?eventMediaCaption`_   | Text/[HTML](#htmlRender) caption of the Media                                                                                               |
+| _`?eventMediaCredit`_    | Text/[HTML](#htmlRender) credit of the Media                                                                                                |
 | _`?eventMediaThumbnail`_ | The thumbnail of Media                                                                                                                      |
 | _`?eventMediaAlt`_       | The Alt text of the Media                                                                                                                   |
 | _`?eventMediaTitle`_     | The Title of the Media                                                                                                                      |
