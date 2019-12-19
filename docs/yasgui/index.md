@@ -351,8 +351,21 @@ This view recognizes the following SPARQL variable names:
 | `?x`              | An arbitrary variable name that is bound to 2D or 3D literals with datatype IRI `geo:wktLiteral`, and whose name is the prefix of the other variable names in this table. |
 | `?xColor`         | The color of the shape bound to `?x`.                                                                                                                                     |
 | `?xHeight`        | The height in meters of the 2.5D shape that is based on the 2D shape that is bound to `?x`. This variable is not needed if data is stored in native 3D.                   |
-| `?xLabel`         | The textual or [HTML](#htmlRender) content of the popups that appears when the shape that is bound to `?x` is clicked.                                                    |
+| `?xLabel`         | The text or [HTML](#htmlRender) content of the popups that appears when the shape that is bound to `?x` is clicked.                                                    |
 | `?xOffset`        | The height in meters at which the 2.5D shape that is based on the 2D shape that is bound to `?x` starts. This variable is not needed if data is stored in native 3D.      |
+
+### Geo Events (pro) {#geo-events}
+
+The SPARQL Geo Events plugin renders geographical events as a story map ([example](https://api.triplydb.com/s/USQ5oNpL)). This view recognizes the following SPARQL variable names:
+
+| **Variable name**    | **Purpose**                                                                                                                                                         |
+| -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `?eventLocation` (required)    | A `geo:wktLiteral`                                           |
+| `?eventLabel`        | Text or [HTML](#htmlRender) event label.                                                                                             |
+| `?eventDescription`  | Text or [HTML](#htmlRender) event description.                                                                         |
+| `?eventMedia`        | A URL pointing to a media source. Supported media types are described [here](https://github.com/NUKnightLab/StoryMapJS/blob/master/source/js/media/VCO.MediaType.js). |
+| `?eventMediaCaption` | Text or [HTML](#htmlRender) media caption.                                                                                                      |
+| `?eventMediaCredit`  | Text or [HTML](#htmlRender) media credit.                                                                                                        |
 
 ### Pivot Table (pro) {#pivot}
 
