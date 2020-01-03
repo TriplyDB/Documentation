@@ -5,7 +5,7 @@ path: "/docs/triply-db-getting-started"
 
 ## Introduction
 
-TriplyDB is a new and fast-moving Linked Data Knowledge Graph product.  TriplyDB allows you to easily upload datasets and expose them through multiple APIs (including SPARQL, RESTful, text search, analytics, etc). [Read More](/products/triplydb).
+TriplyDB is a new and fast-moving Linked Data Knowledge Graph product. TriplyDB allows you to easily upload datasets and expose them through multiple APIs (including SPARQL, RESTful, text search, analytics, etc). [Read More](/products/triplydb).
 
 ## Uploading Data
 
@@ -242,11 +242,17 @@ https://triplydb.com/dbpedia/core/queries/Timelined-Cars-BETA
 
 #### Using a saved query in Data Stories
 
+You can use a saved query in your datastory by defining a `<query>` element. within the
+query element you define the `data-config-ref="URI"` with the URI of a saved query in TriplyDB.
+
+For more in depth tutorial on how to create your own datastory you can read our
+documentation on [datastories](/docs/data-stories).
+
 ## Admin tasks
 
 Admin tasks are performed within the admin settings page (accessed by
 clicking on the user menu in top-right corner and selecting the “Admin settings”
- menu item).
+menu item).
 
 This brings up the following admin settings page from which admin
 tasks can be performed:
@@ -293,7 +299,7 @@ TriplyDB instance.
 
 The type of account can be observed based on the following icons:
 
-| _Icon_                     | _Account type_ |
-| -------------------------- | -------------- |
-| ![](organizationnn.png)    | organization   |
-| ![](user.png)              | user           |
+| _Icon_                  | _Account type_ |
+| ----------------------- | -------------- |
+| ![](organizationnn.png) | organization   |
+| ![](user.png)           | user           |
