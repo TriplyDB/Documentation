@@ -352,7 +352,11 @@ This view recognizes the following SPARQL variable names:
 | `?xColor`         | The color of the shape bound to `?x`.                                                                                                                                     |
 | `?xHeight`        | The height in meters of the 2.5D shape that is based on the 2D shape that is bound to `?x`. This variable is not needed if data is stored in native 3D.                   |
 | `?xLabel`         | The text or [HTML](#htmlRender) content of the popups that appears when the shape that is bound to `?x` is clicked.                                                       |
+<<<<<<< HEAD
 | `?xZ`             | The height in meters at which the 2.5D shape that is based on the 2D shape that is bound to `?x` starts. This variable is not needed if data is stored in native 3D.      |
+=======
+| `?xOffset`        | The height in meters at which the 2.5D shape that is based on the 2D shape that is bound to `?x` starts. This variable is not needed if data is stored in native 3D.      |
+>>>>>>> fdbf2f77343d2767adcb6fddeb4c1c73ec7f4af4
 
 ### Geo Events (pro) {#geo-events}
 
@@ -360,7 +364,11 @@ The SPARQL Geo Events plugin renders geographical events as a story map ([exampl
 
 | **Variable name**           | **Purpose**                                                                                                                                                           |
 | --------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+<<<<<<< HEAD
 | `?eventLocation` (required) | A `geo:wktLiteral`                                                                                                                                                    |
+=======
+| `?eventLocation` (required) | A `geo:wktLiteral`. The pin will appear in the center of mass of the shape.                                                                                            |
+>>>>>>> fdbf2f77343d2767adcb6fddeb4c1c73ec7f4af4
 | `?eventLabel`               | Text or [HTML](#htmlRender) event label.                                                                                                                              |
 | `?eventDescription`         | Text or [HTML](#htmlRender) event description.                                                                                                                        |
 | `?eventMedia`               | A URL pointing to a media source. Supported media types are described [here](https://github.com/NUKnightLab/StoryMapJS/blob/master/source/js/media/VCO.MediaType.js). |
