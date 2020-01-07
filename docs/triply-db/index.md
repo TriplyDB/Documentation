@@ -299,7 +299,7 @@ TriplyDB instance.
 
 The type of account can be observed based on the following icons:
 
-| _Icon_                  | _Account type_ |
-| ----------------------- | -------------- |
-| ![](organizationnn.png) | organization   |
-| ![](user.png)           | user           |
+| _Icon_                | _Account type_ |
+| --------------------- | -------------- |
+| ![](organization.png) | organization   |
+| ![](user.png)         | user           |
