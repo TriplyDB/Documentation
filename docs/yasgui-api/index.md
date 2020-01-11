@@ -8,6 +8,13 @@ Here you can find documentation on ways to include, configure and extend these c
 
 ![Overview of Yasgui Components](yasgui.png).
 
+## About Yasgui Pro {#pro}
+
+Yasgui, Yasqe and Yasr are all [open source](https://github.com/TriplyDB/Yasgui) and MIT licensed.
+Triply provides additional plugins that are free to use via [https://yasgui.triply.cc](https://yasgui.triply.cc).
+To use pro plugins in your tool or on your website, contact us at [info@triply.cc](info@triply.cc).
+
+
 ## Installation
 
 To include Yasgui in your webpage, all that's needed is importing the Yasgui JavaScript and CSS files, and initializing a Yasgui object:
