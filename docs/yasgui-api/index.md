@@ -17,6 +17,8 @@ To use pro plugins in your tool or on your website, contact us at [info@triply.c
 
 ## Installation
 
+### On a webpage {#web}
+
 To include Yasgui in your webpage, all that's needed is importing the Yasgui JavaScript and CSS files, and initializing a Yasgui object:
 
 ```html
@@ -51,6 +53,23 @@ const yasgui = new Yasgui(document.getElementById("yasgui"), {
 ```
 
 Note: If you've already opened the Yasgui page before, you must first clear your local-storage cache before you will see the changes taking effect.
+
+### React {#react}
+
+To include Yasgui in React, use the following snippet. This snippet assumes a React repository configured via [create-react-app](https://github.com/facebook/create-react-app), and a minimum React version of 16.8.
+
+```js
+import Yasgui from "@triply/yasgui";
+import "@triply/yasgui/build/yasgui.min.css";
+export default function App() {
+  useEffect(() => {
+    const yasgui = new Yasgui(document.getElementById("yasgui"));
+    return () => {};
+  }, []);
+
+  return <div id="yasgui" />;
+}
+```
 
 ## API Reference
 
