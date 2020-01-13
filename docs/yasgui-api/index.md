@@ -233,7 +233,7 @@ Yasr is an extendable library that renders SPARQL results. Yasr is responsible f
 // - a plain response string
 // - a SuperAgent response
 // - or an object with the specified keys
-yasr.setresponse({
+yasr.setResponse({
   data: "...";
   contentType: "application/sparql-results+json";
   status: 200;
