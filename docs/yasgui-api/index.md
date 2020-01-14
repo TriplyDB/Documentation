@@ -48,7 +48,7 @@ And pass a second argument to the Yasgui initializer to specify the default endp
 
 ```js
 const yasgui = new Yasgui(document.getElementById("yasgui"), {
-  requestOpts: { endpoint: "http://example.com/sparql" },
+  requestConfig: { endpoint: "http://example.com/sparql" },
   copyEndpointOnNewTab: false  
 });
 ```
