@@ -53,6 +53,8 @@ const yasgui = new Yasgui(document.getElementById("yasgui"), {
 });
 ```
 
+
+
 Note: If you've already opened the Yasgui page before, you must first clear your local-storage cache before you will see the changes taking effect.
 
 ### React {#react}
@@ -121,29 +123,44 @@ yasgui.on("queryResponse", (instance: Yasgui, tab: tab) => {});
 
 This configuration object is accessible/changeable via `Yasgui.defaults` or `yasgui.config`. You can pass these along when initializing Yasgui as well. To change settings to the Yasqe and Yasr components used by Yasgui, you are best off changing the `Yasgui.Yasqe.defaults` and `Yasgui.Yasr.defaults` objects before initializing Yasgui.
 
+
 ```js
-// Allow resizing of the Yasqe editor
-Yasgui.defaults.yasqe.resizeable = true;
+{
+  /**
+   * Change the default request configuration, such as the headers
+   * and default yasgui endpoint.
+   * For more information, see the requestConfig typescript interface here:
+   * https://github.com/TriplyDB/Yasgui/blob/ae17f9e754c8e55cff1a9aff8091bbb020c35dc0/packages/yasqe/src/index.ts#L924
+   */
+  requestConfig: {
+    endpoint: 'https://example.org/sparql',
+    headers: {
+      'key': 'value'
+    }
+  },
+  // Allow resizing of the Yasqe editor
+  resizeable: true,
 
-// Whether to autofocus on Yasqe on page load
-Yasgui.defaults.autofocus = true;
+  // Whether to autofocus on Yasqe on page load
+  autofocus: true,
 
-// Use the default endpoint when a new tab is opened
-Yasgui.defaults.copyEndpointOnNewTab = false;
+  // Use the default endpoint when a new tab is opened
+  copyEndpointOnNewTab: false,
 
-// Configuring which endpoints appear in the endpoint catalogue list
-Yasgui.defaults.endpointCatalogueOptions.getData = () => {
-    return [
-      {
-        endpoint: "https://dbpedia.org/sparql"
-      },
-      {
-        endpoint: "https://query.wikidata.org"
-      }
-      // ...
-    ];
+  // Configuring which endpoints appear in the endpoint catalogue list
+  endpointCatalogueOptions.getData: () => {
+      return [
+        {
+          endpoint: "https://dbpedia.org/sparql"
+        },
+        {
+          endpoint: "https://query.wikidata.org"
+        }
+        // ...
+      ];
+    }
   }
-};
+}
 ```
 
 ## Yasqe
