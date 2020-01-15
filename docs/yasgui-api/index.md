@@ -129,14 +129,17 @@ This configuration object is accessible/changeable via `Yasgui.defaults` or `yas
   /**
    * Change the default request configuration, such as the headers
    * and default yasgui endpoint.
-   * For more information, see the requestConfig typescript interface here:
-   * https://github.com/TriplyDB/Yasgui/blob/ae17f9e754c8e55cff1a9aff8091bbb020c35dc0/packages/yasqe/src/index.ts#L924
+   * Define these fields as plain values, or as a getter function
    */
   requestConfig: {
     endpoint: 'https://example.org/sparql',
-    headers: {
+    //Example of using a getter function to define the headers field:
+    headers: () => ({
       'key': 'value'
-    }
+    }),
+    method: 'POST',
+
+
   },
   // Allow resizing of the Yasqe editor
   resizeable: true,
