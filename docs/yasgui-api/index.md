@@ -8,7 +8,16 @@ Here you can find documentation on ways to include, configure and extend these c
 
 ![Overview of Yasgui Components](yasgui.png).
 
+## About Yasgui Pro {#pro}
+
+Yasgui, Yasqe and Yasr are all [open source](https://github.com/TriplyDB/Yasgui) and MIT licensed.
+Triply provides additional plugins that are free to use via [https://yasgui.triply.cc](https://yasgui.triply.cc).
+To use pro plugins in your tool or on your website, contact us at [info@triply.cc](info@triply.cc).
+
+
 ## Installation
+
+### On a webpage {#web}
 
 To include Yasgui in your webpage, all that's needed is importing the Yasgui JavaScript and CSS files, and initializing a Yasgui object:
 
@@ -39,11 +48,31 @@ And pass a second argument to the Yasgui initializer to specify the default endp
 
 ```js
 const yasgui = new Yasgui(document.getElementById("yasgui"), {
-  yasqe: { requestOpts: { endpoint: "http://example.com/sparql" } }
+  requestConfig: { endpoint: "http://example.com/sparql" },
+  copyEndpointOnNewTab: false  
 });
 ```
 
+
+
 Note: If you've already opened the Yasgui page before, you must first clear your local-storage cache before you will see the changes taking effect.
+
+### React {#react}
+
+To include Yasgui in React, use the following snippet. This snippet assumes a React repository configured via [create-react-app](https://github.com/facebook/create-react-app), and a minimum React version of 16.8.
+
+```js
+import Yasgui from "@triply/yasgui";
+import "@triply/yasgui/build/yasgui.min.css";
+export default function App() {
+  useEffect(() => {
+    const yasgui = new Yasgui(document.getElementById("yasgui"));
+    return () => {};
+  }, []);
+
+  return <div id="yasgui" />;
+}
+```
 
 ## API Reference
 
@@ -94,49 +123,44 @@ yasgui.on("queryResponse", (instance: Yasgui, tab: tab) => {});
 
 This configuration object is accessible/changeable via `Yasgui.defaults` or `yasgui.config`. You can pass these along when initializing Yasgui as well. To change settings to the Yasqe and Yasr components used by Yasgui, you are best off changing the `Yasgui.Yasqe.defaults` and `Yasgui.Yasr.defaults` objects before initializing Yasgui.
 
+
 ```js
-// Allow resizing of the Yasqe editor
-Yasgui.defaults.yasqe.resizeable = true;
-
-// Whether to autofocus on Yasqe on page load
-Yasgui.defaults.autofocus = true;
-
-// Use the default endpoint when a new tab is opened
-Yasgui.defaults.copyEndpointOnNewTab = false;
-
-// Configuring which endpoints appear in the catalogue list
-Yasgui.defaults.endpointCatalogueOptions = {
-  getData: () => {
-    return [
-      {
-        name: "dbpedia",
-        endpoint: "https://dbpedia.org/sparql"
-      },
-      {
-        name: "wikidata",
-        endpoint: "https://query.wikidata.org"
-      }
-      // ...
-    ];
+{
+  /**
+   * Change the default request configuration, such as the headers
+   * and default yasgui endpoint.
+   * For more information, see the requestConfig typescript interface here:
+   * https://github.com/TriplyDB/Yasgui/blob/ae17f9e754c8e55cff1a9aff8091bbb020c35dc0/packages/yasqe/src/index.ts#L924
+   */
+  requestConfig: {
+    endpoint: 'https://example.org/sparql',
+    headers: {
+      'key': 'value'
+    }
   },
-  // The endpoint keyword is required, so no need to specify it here
-  keys: ["name"],
-  renderItem: (data, source) => {
-    // Create a nice element
-    const contentDiv = document.createElement("div");
-    contentDiv.style.display = "flex";
-    contentDiv.style.flexDirection = "column";
-    const endpointSpan = document.createElement("span");
-    // data.matches contains data about on which part of the fields the endpoint has been matched
-    endpointSpan.innerHTML = data.matches.endpoint.reduce(
-      (current, object) => (object.highlight ? current + object.text.bold() : current + object.text),
-      ""
-    );
-    contentDiv.appendChild(endpointSpan);
-    // Make sure to append your element to the source!
-    source.appendChild(contentDiv);
+  // Allow resizing of the Yasqe editor
+  resizeable: true,
+
+  // Whether to autofocus on Yasqe on page load
+  autofocus: true,
+
+  // Use the default endpoint when a new tab is opened
+  copyEndpointOnNewTab: false,
+
+  // Configuring which endpoints appear in the endpoint catalogue list
+  endpointCatalogueOptions.getData: () => {
+      return [
+        {
+          endpoint: "https://dbpedia.org/sparql"
+        },
+        {
+          endpoint: "https://query.wikidata.org"
+        }
+        // ...
+      ];
+    }
   }
-};
+}
 ```
 
 ## Yasqe
@@ -226,7 +250,7 @@ Yasr is an extendable library that renders SPARQL results. Yasr is responsible f
 // - a plain response string
 // - a SuperAgent response
 // - or an object with the specified keys
-yasr.setresponse({
+yasr.setResponse({
   data: "...";
   contentType: "application/sparql-results+json";
   status: 200;

@@ -153,7 +153,6 @@ select * {
 
 ## Visualizations {#visualizations}
 
-The Yasgui visualization library (also called Yasr) offers various ways to explore your data with different visualizations. A number of visualizations are MIT licensed, where others (the 'pro' plugins) are restricted in license.
 
 ### Table {#table}
 
@@ -161,8 +160,6 @@ This view allows SPARQL results to be displayed in a table. Each
 column in the table corresponds to a variable that belongs to the
 outer projection. Each row in the table corresponds to one query
 result. Each cell contains an RDF term or `NULL`.
-
-The table doesn't render values as HTML yet
 
 #### Features
 
@@ -312,7 +309,7 @@ subtree; right clicking on a node will move up to the subtree of its
 parent node.
 The chart configuration enables tweaking the treemap properties such as the number of displayed hierarchy levels.
 
-### 2D Map (pro) {#geo}
+### 2D Map ([pro](/docs/yasgui-api#pro)) {#geo}
 
 This view allows SPARQL results that contain GeoSPARQL semantics to be
 automatically interpreted and displayed on a 2D map.
@@ -337,7 +334,7 @@ Variable `?xColor` must include a value of the following types:
 - [HSL color codes](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value).
 - **Gradients**: Strings of the form `{{PALETTE}},{{VALUE}}`, where `{{VALUE}}` is a floating-point number between 0.0 and 1.0 and `{{PALETTE}}` is the name of a color palette. We support color schemes from the [Colormap](https://www.npmjs.com/package/colormap) and [Color Brewer](http://colorbrewer2.org/#type=sequential&scheme=BuGn&n=3) libraries
 
-### 3D Map (pro) {#geo-3d}
+### 3D Map ([pro](/docs/yasgui-api#pro)) {#geo-3d}
 
 This view allows SPARQL results that contain GeoSPARQL semantics to be
 automatically interpreted and displayed on a 3D globe. It supports both 3D and 2.5D visualizations, depending on whether the GeoSPARQL data is stored in native 3D or in 2D
@@ -354,25 +351,25 @@ This view recognizes the following SPARQL variable names:
 | `?xLabel`         | The text or [HTML](#htmlRender) content of the popups that appears when the shape that is bound to `?x` is clicked.                                                       |
 | `?xZ`             | The height in meters at which the 2.5D shape that is based on the 2D shape that is bound to `?x` starts. This variable is not needed if data is stored in native 3D.      |
 
-### Geo Events (pro) {#geo-events}
+### Geo Events ([pro](/docs/yasgui-api#pro)) {#geo-events}
 
 The SPARQL Geo Events plugin renders geographical events as a story map ([example](https://api.triplydb.com/s/USQ5oNpL)). This view recognizes the following SPARQL variable names:
 
 | **Variable name**           | **Purpose**                                                                                                                                                           |
 | --------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `?eventLocation` (required) | A `geo:wktLiteral`                                                                                                                                                    |
-| `?eventLocation` (required) | A `geo:wktLiteral`. The pin will appear in the center of mass of the shape.                                                                                           |
+| `?eventLocation` (required) | A `geo:wktLiteral`.                                                                                          |
 | `?eventLabel`               | Text or [HTML](#htmlRender) event label.                                                                                                                              |
 | `?eventDescription`         | Text or [HTML](#htmlRender) event description.                                                                                                                        |
 | `?eventMedia`               | A URL pointing to a media source. Supported media types are described [here](https://github.com/NUKnightLab/StoryMapJS/blob/master/source/js/media/VCO.MediaType.js). |
 | `?eventMediaCaption`        | Text or [HTML](#htmlRender) media caption.                                                                                                                            |
 | `?eventMediaCredit`         | Text or [HTML](#htmlRender) media credit.                                                                                                                             |
 
-### Pivot Table (pro) {#pivot}
+
+### Pivot Table ([pro](/docs/yasgui-api#pro)) {#pivot}
 
 This view renders SPARQL results in an interactive pivot table where you are able to aggregate the results by dragging your binding variables to columns or rows.
 
-### Timeline View (pro) {#timeline}
+### Timeline View ([pro](/docs/yasgui-api#pro)) {#timeline}
 
 The SPARQL timeline renders the SPARQL results on a Timeline ([example](https://triplydb.com/wikimedia/dbpedia/queries/timeline-cars))
 To get started with this visualization you need at least a result containing a `?eventStart` or `?eventDate` with either a `?eventDescription`, `?eventLabel` or a `?eventMedia`. (Combinations are also possible)

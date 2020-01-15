@@ -9,7 +9,7 @@ Examples of such stories can be found [here](https://stories.triply.cc)
 
 ## Getting Started
 
-To get started with Data Stories contact us at [info@triply.cc](info@triply.cc)
+To get started with Data Stories contact us at [info@triply.cc](info@triply.cc).
 
 ### Minimal working example
 
