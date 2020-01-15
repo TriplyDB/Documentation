@@ -353,7 +353,6 @@ This view recognizes the following SPARQL variable names:
 | `?xHeight`        | The height in meters of the 2.5D shape that is based on the 2D shape that is bound to `?x`. This variable is not needed if data is stored in native 3D.                   |
 | `?xLabel`         | The text or [HTML](#htmlRender) content of the popups that appears when the shape that is bound to `?x` is clicked.                                                       |
 | `?xZ`             | The height in meters at which the 2.5D shape that is based on the 2D shape that is bound to `?x` starts. This variable is not needed if data is stored in native 3D.      |
-| `?xOffset`        | The height in meters at which the 2.5D shape that is based on the 2D shape that is bound to `?x` starts. This variable is not needed if data is stored in native 3D.      |
 
 ### Geo Events (pro) {#geo-events}
 
