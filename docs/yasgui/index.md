@@ -153,7 +153,6 @@ select * {
 
 ## Visualizations {#visualizations}
 
-
 ### Table {#table}
 
 This view allows SPARQL results to be displayed in a table. Each
@@ -200,7 +199,7 @@ select ?pokemon ?happiness {
 
 This view shows the body of the response and offers a easy way to download the result as a file.
 
-### Gallery (pro) {#gallery}
+### Gallery ([pro](/docs/yasgui-api#pro)) {#gallery}
 
 This view allows SPARQL results to be displayed in an HTML gallery.
 Each individual result corresponds to one HTML widget. Widgets are
@@ -293,7 +292,7 @@ order by desc(?experience)
 limit 20
 ```
 
-### Chart (pro) {#charts}
+### Chart ([pro](/docs/yasgui-api#pro)) {#charts}
 
 The chart plugin renders geographical, temporal and numerical data in interactive charts such as bar-, line- and pie charts.
 
@@ -309,7 +308,7 @@ subtree; right clicking on a node will move up to the subtree of its
 parent node.
 The chart configuration enables tweaking the treemap properties such as the number of displayed hierarchy levels.
 
-### 2D Map ([pro](/docs/yasgui-api#pro)) {#geo}
+### Geo ([pro](/docs/yasgui-api#pro)) {#geo}
 
 This view allows SPARQL results that contain GeoSPARQL semantics to be
 automatically interpreted and displayed on a 2D map.
@@ -334,7 +333,7 @@ Variable `?xColor` must include a value of the following types:
 - [HSL color codes](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value).
 - **Gradients**: Strings of the form `{{PALETTE}},{{VALUE}}`, where `{{VALUE}}` is a floating-point number between 0.0 and 1.0 and `{{PALETTE}}` is the name of a color palette. We support color schemes from the [Colormap](https://www.npmjs.com/package/colormap) and [Color Brewer](http://colorbrewer2.org/#type=sequential&scheme=BuGn&n=3) libraries
 
-### 3D Map ([pro](/docs/yasgui-api#pro)) {#geo-3d}
+### Geo-3D ([pro](/docs/yasgui-api#pro)) {#geo-3d}
 
 This view allows SPARQL results that contain GeoSPARQL semantics to be
 automatically interpreted and displayed on a 3D globe. It supports both 3D and 2.5D visualizations, depending on whether the GeoSPARQL data is stored in native 3D or in 2D
@@ -364,12 +363,11 @@ The SPARQL Geo Events plugin renders geographical events as a story map ([exampl
 | `?eventMediaCaption`        | Text or [HTML](#htmlRender) media caption.                                                                                                                            |
 | `?eventMediaCredit`         | Text or [HTML](#htmlRender) media credit.                                                                                                                             |
 
-
 ### Pivot Table ([pro](/docs/yasgui-api#pro)) {#pivot}
 
 This view renders SPARQL results in an interactive pivot table where you are able to aggregate the results by dragging your binding variables to columns or rows.
 
-### Timeline View ([pro](/docs/yasgui-api#pro)) {#timeline}
+### Timeline ([pro](/docs/yasgui-api#pro)) {#timeline}
 
 The SPARQL timeline renders the SPARQL results on a Timeline ([example](https://triplydb.com/wikimedia/dbpedia/queries/timeline-cars))
 To get started with this visualization you need at least a result containing a `?eventStart` or `?eventDate` with either a `?eventDescription`, `?eventLabel` or a `?eventMedia`. (Combinations are also possible)
