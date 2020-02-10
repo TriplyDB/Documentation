@@ -151,8 +151,12 @@ This configuration object is accessible/changeable via `Yasgui.defaults` or `yas
   copyEndpointOnNewTab: false,
 
   // Configuring which endpoints appear in the endpoint catalogue list
-  endpointCatalogueOptions.getData: () => {
+  endpointCatalogueOptions {
+    getData: () => {
       return [
+        //List of objects should contain the endpoint field
+        //Feel free to include any other fields (e.g. a description or icon
+        //that you'd like to use when rendering)
         {
           endpoint: "https://dbpedia.org/sparql"
         },
@@ -161,7 +165,16 @@ This configuration object is accessible/changeable via `Yasgui.defaults` or `yas
         }
         // ...
       ];
-    }
+    },
+    //Data object keys that are used for filtering. The 'endpoint' key already used by default
+    keys: [],
+    //Data argument contains a `value` property for the matched data object
+    //Source argument is the suggestion DOM element to append your rendered item to
+    renderItem: (data, source) => {
+        const contentDiv = document.createElement("div");
+        contentDiv.innerText = data.value.endpoint;
+        source.appendChild(contentDiv);
+      }
   }
 }
 ```
