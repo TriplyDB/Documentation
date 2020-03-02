@@ -14,6 +14,8 @@ next:
 sidebar: "data-schema-stub"
 keywords:
     - data-schema-stub
+redirect_from:
+    - docs/stub
 ---
 
  “This is a data schema stub for Gatsby.js and is not used. It must exist for builds to function”
