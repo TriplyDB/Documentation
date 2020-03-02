@@ -16,49 +16,66 @@ This section explains how to create a Linked Dataset in TriplyDB.
 1. Log into a TriplyDB instance.
 
 2. Click the `+` button on the dataset pane that appears on the
-   right-hand side of the screen.
+   right-hand side of the home screen.
 
-3. This brings up the dialog for creating a new dataset. You must
-   enter a dataset name that consists of alphanumeric characters
-   (`A-Za-z0-9`) and hyphens (`-`).
+3. This brings up the dialog for creating a new dataset.  Enter a
+   dataset name that consists of alphanumeric characters (`A-Za-z0-9`)
+   and hyphens (`-`).
 
-4. Optionally enter a dataset description. This can be either text
-   or Markdown. You can also change the access level of the
-   dataset, which is set to “Private” by default.
+4. Optionally, enter a dataset display name.  This name will be used
+   in the GUI and will be exposed in dataset metadata.
+
+5. Optionally, enter a description. You can use richt text formatting
+   features by using Markdown.  See [our section about Markdown]() for
+   details.
+
+6. Optionally, change the access level for the dataset.  By default
+   this is set to “Private”.  See [dataset access levels]() for more
+   information.
+
+7. Optionally, select the account under which the dataset will be
+   published.  This allows you to publish datasets under an
+   organization account to which you are a member.  The default
+   account is your user account.
 
 ![The “Add dataset” dialog](add-dataset-dialog.png)
 
 ### Adding data
 
 Once the dataset is created, the “Add data” view is displayed (see
-screenshot). In this view data can be added in three ways: file
-upload, URL upload, and data import. The following screenshot shows
-the “Add data” view, with the three approaches displayed on top of one
-another.
+screenshot). In this view data can be added in three ways:
+  1. file upload
+  2. URL upload
+  3. data import
+
+The following screenshot shows the “Add data” view, with the three
+approaches displayed on top of one another.
 
 ![The “Add data” view](add-data.png)
 
 #### Adding data by file upload
 
-In this view RDF files can be uploaded, either by
-clicking on the cloud icon and selecting files through the “Open file”
-dialog, or by dragging-and-dropping files onto the cloud icon. The
-following RDF serialization formats are supported:
+In this view local RDF files can be uploaded, either by clicking on
+the cloud icon and selecting files through the “Open file” dialog, or
+by dragging-and-dropping files onto the cloud icon. The following RDF
+serialization formats are currently supported:
 
 | Serialization Format | Extensions     |
 | -------------------- | -------------- |
-| N-Quads 1.1          | `.nq`          |
-| N-Triples 1.1        | `.nt`          |
-| RDF/XML 1.1          | `.rdf`         |
+| N-Quads              | `.nq`          |
+| N-Triples            | `.nt`          |
+| RDF/XML              | `.rdf`         |
 | TriG                 | `.trig`        |
-| Turtle 1.1           | `.ttl`         |
+| Turtle               | `.ttl`         |
 | N3                   | `.n3`          |
 | OWL                  | `.owx`, `.owl` |
 
-One or more files can be uploaded. It is also possible to upload
-compressed files and archives. When the number of files exceeds
-1.000, it is better to upload one archive file that contains them all.
-This allows an arbitrary number of files to be uploaded. The following archive/compression formats are supported:
+Up to 1,000 separate files can be uploaded in one go.  It is also
+possible to upload compressed files and archives.  When the number of
+files exceeds 1,000, it is more efficient to combine them in archives
+and upload those.  This allows an arbitrary number of files to be
+uploaded. The following archive/compression formats are currently
+supported:
 
 | archive/compression | Extensions    |
 | ------------------- | ------------- |
@@ -66,15 +83,6 @@ This allows an arbitrary number of files to be uploaded. The following archive/c
 | bzip2               | `.bz2`        |
 | tar                 | `.xz` , `tar` |
 | ZIP                 | `.zip`        |
-
-##### Adding malformed data
-
-TriplyDB only allows valid data to be added. If data is malformed,
-TriplyDB will show an error message that indicates which part of the
-data is malformed (see screenshot). If such malformed data is
-encountered, the RDF file must first be corrected and uploaded again.
-
-![Screenshot of an error message indicating syntactically malformed RDF data](upload-error.png)
 
 #### Adding data by URL upload
 
@@ -88,21 +96,42 @@ The third option for adding data is to import from datasets that are
 published in the same TriplyDB instance. This is done with the “Add
 data from an existing dataset” dropdown list (see screenshot).
 
-### Using Assets
+#### Adding malformed data
 
-To expose data with content, such as images, you can upload these as assets to your
-dataset. The assets can be referenced in your dataset via their URL.
+TriplyDB only allows valid RDF data to be added. If data is malformed,
+TriplyDB will show an error message that indicates which part of the
+RDF data is malformed (see screenshot). If such malformed data is
+encountered, the RDF file must first be corrected and uploaded again.
 
-## Exposing Data
+![Screenshot of an error message indicating syntactically malformed RDF data](upload-error.png)
+
+TriplyDB follows the Linked Data standards strictly.  Many triple
+stores allow incorrect RDF data to be added.  This may seem convenient
+during the loading phase, but often results in errors when
+standards-compliant tools start using the data.
+
+### Assets: binary data
+
+Not all data can be stores as RDF data.  For example images and video
+files use a binary format.  Such files can also be stored in TriplyDB
+and can be integrated into the Knowledge Grapk.
+
+## Publishing data
 
 With TriplyDB you can easily make your data available to the outside world.
 
 ### Publishing your dataset
 
-You can publish your dataset by simply setting the visibility to `Public` in the settings menu
-of your dataset. Not only will this allow anyone to visit your dataset in the TriplyDB instance,
-it will also allow your services to be queried by anyone and make your data visible to
-search engines for instance.
+You can publish your dataset by setting the visibility to “Public” in
+the dataset settings menu.  Making a dataset public in TriplyDB has
+the following consequences:
+
+  1. The dataset can be searched for an visited by anybody on the web.
+  2. The dataset will be indexed by web search engines such as [Google
+     Dataset Search]().
+  3. Any services that are started for that dataset will be available
+     to anybody on the web.  This includes [SPARQL](), [text
+     search](), and [Linked Data Fragments]().
 
 ### Entering metadata
 
@@ -186,20 +215,61 @@ to other nodes in the graph.
 
 ### Tabular browser
 
-The tabular browser show the dataset in a table supported by [Triple Pattern Fragments (TPF)](/docs/triply-api#triple-pattern-fragments-tpf).
+The tabular browser shows the dataset at the triple level.  The first
+three columns represent the subject, predicate, and object position of
+the triple.  The fourth column represents the graph to which the
+triple belongs.
+
+![Image of the Linked Data Table]()
+
+Queries in the Linked Data Table can also be performed automatically
+through the [Statements API]() and the [Triple Pattern Fragments
+API](/docs/triply-api#triple-pattern-fragments-tpf).
 
 ### SPARQL IDE
 
-When a dataset has a running SPARQL service, the data can be viewed using the
-SPARQL IDE. The SPARQL IDE is an extended version of [YASGUI](/docs/yasgui) with
-the extended functionality of [saving queries](#saved-queries).
+When a dataset has a running SPARQL service, the data can be queried
+from the SPARQL IDE.  The SPARQL IDE is an extended version of the
+Open Source [Yasgui](/docs/yasgui) query editor.
+
+#### Saving a SPARQL query
+
+It is often useful to save a SPARQL query for later use.  This is
+achieved by clicking on the save icon in the top-right corner of the
+SPARQL Editor.  Doing so will create a [Save Query](#saved-queries).
+
+#### Sharing a SPARQL query
+
+It is sometimes useful to share a SPARQL query with somebody else, or
+to have a cURL command that can be used to run the same SPARQL query
+from a command line.  This is achieved by clicking on the share icon
+in the top-right corner of the SPARQL Editor.  This brings us a dialog
+from which the SPARQL query can be copied in the following three forms:
+
+  1. The URL-encoded SPARQL query.  This is a long URL that includes
+     the endpoint, the query, and visualization settings.  Notice that
+     this URL can be quite long for complex queries and/or
+     visualizations.  Long URLs are not supported by some application
+     that cut off a URL after a maximum length (often 1,024
+     characters).  Use one of the other two options or use [Saved
+     Queries]() to avoid such restrictions.
+
+  2. A short URL that redirects to the full URL-encoded SPARQL query.
+
+  3. A cURL command that can be copy/pasted into a terminal
+     application that supports this command.  cURL is often used by
+     programmers to test HTTP(S) requests.
+
+[Saved Queries]() are a more modern way of sharing SPARQL queries.
+They do not have any of the technical limitations that occur with
+URL-encoded queries.
 
 ### Text Search
 
-When a dataset has a running ElasticSearch service, Text Search can help you
-exploring a dataset. Text Search works like a search engine and returns any node
-that contains your search term, or contains the search term in any of it's
-properties.
+When a dataset has a running ElasticSearch service, textual searches
+can be performed over the entire dataset.  Text Search works like a
+search engine and returns any node that contains your search term, or
+contains the search term in any of it's properties.
 
 ## Saved Queries
 
