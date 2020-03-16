@@ -224,38 +224,45 @@ delete accounts (users and organizations) through the web-based GUI.
 
 Argument `settings` is a JSON object with the following keys:
 
-- `accessLevel` :: The access level of the dataset. The following
-  values are supported:
-
-  - `"private"` :: The dataset can only be accessed by the
-    [`Account`](#account) object for which it is created.
-
-  - `"internal"` :: The dataset can only be accessed by people who
-    are logged into the TriplyDB instance (denoted by the value of
-    environment variable `TRIPLY_API_URL`).
-
-  - `"public"` :: The dataset can be accessed by everybody.
-
-- `name` (optional) :: The name of the dataset.
-
-- `description` (optional) :: The description of the dataset.
-
-- `license` (optional) :: The license of the dataset. The following
-  license strings are currently supported:
-
-  - `"CC-BY-SA"`
-  - `"CC0 1.0"`
-  - `"GFDL"`
-  - `"ODC-By"`
-  - `"ODC-ODbL"`
-  - `"PDDL"`
+<dl>
+  <dt>accessLevel (required)</dt>
+  <dd>
+    The access level of the dataset. The following values are supported:
+    <dl>
+      <dt><code>"private"</code></dt>
+      <dd>The dataset can only be accessed by the <a href="#account"><code>Account</code></a> object for which it is created.</dd>
+      <dt><code>"internal"</code></dt>
+      <dd>The dataset can only be accessed by people who are logged into the TriplyDB instance (denoted by the value of environment variable <code>TRIPLY_API_URL</code>).
+      <dt><code>"public"</code></dt>
+      <dd>The dataset can be accessed by everybody.</dd>
+    </dl>
+  </dd>
+  <dt>name (optional)</dt>
+  <dd>The name of the dataset.</dd>
+  <dt>description (optional)</dt>
+  <dd>The description of the dataset.</dd>
+  <dt>license (optional)</dt>
+  <dd>
+    The license of the dataset. The following license strings are currently supported:
+    <ul>
+      <li><code>"CC-BY-SA"</code></li>
+      <li><code>"CC0 1.0"</code></li>
+      <li><code>"GFDL"</code></li>
+      <li><code>"ODC-By"</code></li>
+      <li><code>"ODC-ODbL"</code></li>
+      <li><code>"PDDL"</code></li>
+    </ul>
+  </dd>
+</dl>
 
 The following code example creates a new dataset (called
 `"some-dataset"`) under a specific pre-existing account:
 
 ```typescript
 console.log(
-  await client.getAccount("some-account").addDataset({ name: "some-dataset" })
+  await client.getAccount("some-account")
+              .addDataset({accessLevel: "private",
+                           name: "some-dataset"})
 );
 ```
 
