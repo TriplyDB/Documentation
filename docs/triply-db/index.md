@@ -238,14 +238,22 @@ at the time. The node is describe using it's properties, which can be followed
 to other nodes in the graph.
 ![Image of the linked Data Browser](linked-data-browser.png)
 
-## Tabular browser
+## Linked Data Table
 
-The tabular browser shows the dataset at the triple level.  The first
+The Linked Data Table shows a dataset at the triple level.  The first
 three columns represent the subject, predicate, and object position of
 the triple.  The fourth column represents the graph to which the
 triple belongs.
 
-![Image of the Linked Data Table]()
+![Image of the Linked Data Table](linked-data-table.png)
+
+The Linked Data Table can be used to perform simple queries by filling
+in the subject, predicate, object, and/or graph using the text field.
+
+Terms in the Linked Data Table can be dragged and dropped between
+columns.  This allows a simple form of graph navigation.  For example,
+an object term can be dragged to the subject column in order to
+show the triples in which that term appears in the subject position.
 
 Queries in the Linked Data Table can also be performed automatically
 through the [Statements API]() and the [Triple Pattern Fragments
