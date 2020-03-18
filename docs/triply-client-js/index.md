@@ -222,7 +222,14 @@ delete accounts (users and organizations) through the web-based GUI.
 
 #### Account.addDataset(settings: object)
 
-Argument `settings` is a JSON object with the following keys:
+Adds a new dataset to the given `Account`.  The account can either be
+a user or organization.
+
+This only works if the used Triply Token gives write access to the
+account.
+
+Argument `settings` is a JSON object with the following keys.  The
+<code>accessLevel</code> and <code>name</code> keys are required.
 
 <dl>
   <dt><code>accessLevel</code> (required)</dt>
@@ -239,7 +246,7 @@ Argument `settings` is a JSON object with the following keys:
   </dd>
   <dt><code>displayName</code> (optional)</dt>
   <dd>The human-readable name of the dataset.  This name may contain spaces and other non-alphanumeric characters.</dd>
-  <dt><code>name</code> (optional)</dt>
+  <dt><code>name</code> (required)</dt>
   <dd>The internal name of the dataset.  This name is restricted to alphanumeric characters and hyphens.</dd>
   <dt><code>description</code> (optional)</dt>
   <dd>The description of the dataset.  This description can make use of Markdown layout (see the <a href="/docs/triply-db-getting-started/#markdown-support">Markdown reference</a>) for details.</dd>
