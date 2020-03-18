@@ -405,7 +405,7 @@ created. The following values are supported:
 The `name` argument can be used to distinguish between different
 endpoints over the same dataset that are used for different tasks.
 
-See section [Service](#service) for an overview of the methods that
+See section [`Service`](#service) for an overview of the methods that
 can be used with service objects.
 
 The following example code starts two SPARQL endpoints over a specific
@@ -479,6 +479,27 @@ await client
   .getAccount()
   .getDataset("some-dataset")
   .deleteGraph("https://example.org/some-graph");
+```
+
+#### Dataset.exists()
+
+Returns whether the dataset still exists.
+
+Datasets can seize exist when the [Dataset.delete()](#datasetdelete)
+function is called, when the
+[Dataset.rename(string)](#datasetrenamenewname-string) function is
+called, or when somebody deletes the dataset from the [Triply
+Console](/docs/triply-db-getting-started).
+
+The following example code prints `true` in case the dataset still
+exists, and prints `false` otherwise:
+
+```typescript
+console.log(
+  await client
+    .getAccount("some-account")
+    .getDataset("some-dataset")
+    .exists());
 ```
 
 #### Dataset.getServices()
