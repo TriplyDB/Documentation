@@ -133,7 +133,7 @@ typing feedback in the editor and offering autocomplete suggestions:
    ```json
    {
      "compilerOptions": {
-       "lib": ["es2015"]
+       "lib": ["es2017"]
      }
    }
    ```
