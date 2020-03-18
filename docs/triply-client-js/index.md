@@ -278,16 +278,32 @@ console.log(
 
 #### Account.datasets()
 
-Returns the list of datasets for this account that are accessible to
-the user associated with the given Triply Token.
+Returns the list of datasets for this account.  This only includes
+datasets that are accessible for the used Triply Token.
 
 The following example code prints the list of datasets that belong to
-the specific account called `some-account`:
+the account named `some-account`:
 
 ```typescript
 console.log(await client
   .getAccount("some-account")
   .datasets());
+```
+
+#### Account.exists()
+
+Returns whether the account still exists.
+
+While it is not possible to delete accounts with Triply Client,
+accounts can be removed through the Triply Console.
+
+The following example code prints `true` in case the account (still)
+exists, and prints `false` otherwise:
+
+```typescript
+console.log(await client
+  .getAccount("some-account")
+  .exists())
 ```
 
 #### Account.getDataset(datasetName: string)
@@ -527,6 +543,24 @@ console.log(
     .getDataset("some-dataset")
     .importedGraphs()
 );
+```
+
+#### Dataset.owner
+
+Returns the account object of the owner of the dataset.
+
+The owner is either a user or an organization.
+
+The following example code prints the account of the owner of the
+dataset with name `some-dataset` (this will be the account with name
+`some-account`):
+
+```typescript
+console.log(
+  await client
+    .getAccount("some-account")
+    .getDataset("some-dataset")
+    .owner)
 ```
 
 #### Dataset.query()
