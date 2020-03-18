@@ -194,8 +194,8 @@ current Triply API Token:
 console.log(await client.getAccount());
 ```
 
-See section [[Account]] for an overview of the methods that can be used
-with account objects.
+See section [`Account`](#account) for an overview of the methods that
+can be used with account objects.
 
 #### Client.getAccount(accountName: string)
 
@@ -208,8 +208,8 @@ The following example code returns a specific account called
 console.log(await client.getAccount("some-account"));
 ```
 
-See section [[Account]] for an overview of the methods that can be used
-with account objects.
+See section [`Account`](#account) for an overview of the methods that
+can be used with account objects.
 
 ### Account
 
@@ -217,7 +217,8 @@ The [`Account`](#account) class represents a TriplyDB account. This
 can be either a user or an organization.
 
 Accounts cannot be created or deleted through the Triply Client
-library. See the [[TriplyDB documentation]] for how to create and
+library.  See the [Triply Console
+documentation](/docs/triply-db-getting-started) for how to create and
 delete accounts (users and organizations) through the web-based GUI.
 
 #### Account.addDataset(settings: object)
@@ -404,8 +405,8 @@ created. The following values are supported:
 The `name` argument can be used to distinguish between different
 endpoints over the same dataset that are used for different tasks.
 
-See section [[Service]] for an overview of the methods that can be
-used with service objects.
+See section [Service](#service) for an overview of the methods that
+can be used with service objects.
 
 The following example code starts two SPARQL endpoints over a specific
 dataset. One endpoint will be used in the acceptance environment
@@ -554,8 +555,8 @@ Returns the account object of the owner of the dataset.
 The owner is either a user or an organization.
 
 The following example code prints the account of the owner of the
-dataset with name `some-dataset` (this will be the account with name
-`some-account`):
+dataset with name `some-dataset`.  (This will be the account with name
+`some-account`.)
 
 ```typescript
 console.log(
@@ -746,10 +747,10 @@ console.log(service.getStatus());
 
 #### Service.info()
 
-Returns information about this service.
+Returns an overview of the service in the form of a JSON object.
 
-The following example code prints information about a newly created
-service:
+The following example code prints information about the newly created
+service (named `new-service`):
 
 ```typescript
 const service = await client
