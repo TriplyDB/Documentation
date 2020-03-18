@@ -272,7 +272,7 @@ console.log(
   await client
     .getAccount("some-account")
     .addDataset({accessLevel: "private",
-                 name: "some-dataset"})
+                 name: "some-dataset"});
 );
 ```
 
@@ -285,9 +285,10 @@ The following example code prints the list of datasets that belong to
 the account named `some-account`:
 
 ```typescript
-console.log(await client
-  .getAccount("some-account")
-  .datasets());
+console.log(
+  await client
+    .getAccount("some-account")
+    .datasets());
 ```
 
 #### Account.exists()
@@ -301,9 +302,10 @@ The following example code prints `true` in case the account (still)
 exists, and prints `false` otherwise:
 
 ```typescript
-console.log(await client
-  .getAccount("some-account")
-  .exists())
+console.log(
+  await client
+    .getAccount("some-account")
+    .exists());
 ```
 
 #### Account.getDataset(datasetName: string)
@@ -317,22 +319,24 @@ used with dataset objects.
 The following example code prints a specific dataset object:
 
 ```typescript
-console.log(await client
-  .getAccount("some-account")
-  .getDataset("some-dataset"));
+console.log(
+  await client
+    .getAccount("some-account")
+    .getDataset("some-dataset"));
 ```
 
 #### Account.info()
 
-Returns information about the account.
+Returns an overview of the account in the form of a JSON object.
 
-The following example code prints information about the account
-associated with the current Triply API Token:
+The following example code prints an overview of account that is
+associated with the used Triply Token:
 
 ```typescript
-console.log(await client
-  .getAccount()
-  .info());
+console.log(
+  await client
+    .getAccount()
+    .info());
 ```
 
 Example output for running the above code:
@@ -363,9 +367,10 @@ The following example code prints the name of the account associated
 with the current Triply API Token:
 
 ```typescript
-console.log(await client
-  .getAccount()
-  .name());
+console.log(
+  await client
+    .getAccount()
+    .name());
 ```
 
 #### Account.rename(newName: string)
@@ -377,9 +382,10 @@ The following example code renames a specific dataset from
 `some-account` to `new-name`:
 
 ```typescript
-console.log(await client
-  .getAccount("some-account")
-  .rename("new-name"));
+console.log(
+  await client
+    .getAccount("some-account")
+    .rename("new-name"));
 ```
 
 ### Dataset
@@ -426,8 +432,7 @@ console.log(
   await client
     .getAccount("some-account")
     .getDataset("some-dataset")
-    .assets()
-);
+    .assets());
 ```
 
 #### Dataset.delete()
@@ -487,8 +492,7 @@ console.log(
   await client
     .getAccount("some-account")
     .getDataset("some-dataset")
-    .getServices()
-);
+    .getServices());
 ```
 
 #### Dataset.graphs()
@@ -504,8 +508,7 @@ console.log(
   await client
     .getAccount("some-account")
     .getDataset("some-dataset")
-    .graphs()
-);
+    .graphs());
 ```
 
 #### Dataset.import(fromDataset: Dataset, graphs: mapping)
@@ -541,8 +544,7 @@ console.log(
   await client
     .getAccount("some-account")
     .getDataset("some-dataset")
-    .importedGraphs()
-);
+    .importedGraphs());
 ```
 
 #### Dataset.owner
@@ -560,7 +562,7 @@ console.log(
   await client
     .getAccount("some-account")
     .getDataset("some-dataset")
-    .owner)
+    .owner);
 ```
 
 #### Dataset.query()
