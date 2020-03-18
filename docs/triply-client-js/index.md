@@ -225,7 +225,7 @@ delete accounts (users and organizations) through the web-based GUI.
 Argument `settings` is a JSON object with the following keys:
 
 <dl>
-  <dt>accessLevel (required)</dt>
+  <dt><code>accessLevel</code> (required)</dt>
   <dd>
     The access level of the dataset. The following values are supported:
     <dl>
@@ -237,11 +237,13 @@ Argument `settings` is a JSON object with the following keys:
       <dd>The dataset can be accessed by everybody.</dd>
     </dl>
   </dd>
-  <dt>name (optional)</dt>
-  <dd>The name of the dataset.</dd>
-  <dt>description (optional)</dt>
-  <dd>The description of the dataset.</dd>
-  <dt>license (optional)</dt>
+  <dt><code>displayName</code> (optional)</dt>
+  <dd>The human-readable name of the dataset.  This name may contain spaces and other non-alphanumeric characters.</dd>
+  <dt><code>name</code> (optional)</dt>
+  <dd>The internal name of the dataset.  This name is restricted to alphanumeric characters and hyphens.</dd>
+  <dt><code>description</code> (optional)</dt>
+  <dd>The description of the dataset.  This description can make use of Markdown layout (see the <a href="/docs/triply-db-getting-started/#markdown-support">Markdown reference</a>) for details.</dd>
+  <dt><code>license</code> (optional)</dt>
   <dd>
     The license of the dataset. The following license strings are currently supported:
     <ul>
@@ -260,9 +262,10 @@ The following code example creates a new dataset (called
 
 ```typescript
 console.log(
-  await client.getAccount("some-account")
-              .addDataset({accessLevel: "private",
-                           name: "some-dataset"})
+  await client
+    .getAccount("some-account")
+    .addDataset({accessLevel: "private",
+                 name: "some-dataset"})
 );
 ```
 
@@ -275,7 +278,9 @@ The following example code prints the list of datasets that belong to
 the specific account called `some-account`:
 
 ```typescript
-console.log(await client.getAccount("some-account").datasets());
+console.log(await client
+  .getAccount("some-account")
+  .datasets());
 ```
 
 #### Account.getDataset(datasetName: string)
@@ -283,13 +288,15 @@ console.log(await client.getAccount("some-account").datasets());
 Returns the dataset with the given `datasetName`.
 
 This function returns an object of type [`Dataset`](#dataset). See
-section [[Dataset]] for an overview of the methods that can be used
-with dataset objects.
+[this section](#dataset) for an overview of the methods that can be
+used with dataset objects.
 
 The following example code prints a specific dataset object:
 
 ```typescript
-console.log(await client.getAccount("some-account").getDataset("some-dataset"));
+console.log(await client
+  .getAccount("some-account")
+  .getDataset("some-dataset"));
 ```
 
 #### Account.info()
@@ -300,7 +307,9 @@ The following example code prints information about the account
 associated with the current Triply API Token:
 
 ```typescript
-console.log(await client.getAccount().info());
+console.log(await client
+  .getAccount()
+  .info());
 ```
 
 Example output for running the above code:
@@ -331,7 +340,9 @@ The following example code prints the name of the account associated
 with the current Triply API Token:
 
 ```typescript
-console.log(await client.getAccount().name());
+console.log(await client
+  .getAccount()
+  .name());
 ```
 
 #### Account.rename(newName: string)
@@ -343,7 +354,9 @@ The following example code renames a specific dataset from
 `some-account` to `new-name`:
 
 ```typescript
-console.log(await client.getAccount("some-account").rename("new-name"));
+console.log(await client
+  .getAccount("some-account")
+  .rename("new-name"));
 ```
 
 ### Dataset
