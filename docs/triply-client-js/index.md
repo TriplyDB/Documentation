@@ -667,6 +667,49 @@ await dataset.renameGraph(
 );
 ```
 
+#### Dataset.update(settings: object)
+
+Updates the metadata for a specific dataset.
+
+The following keys are supported:
+
+<dl>
+  <dt><code>accessLevel</code> (required)</dt>
+  <dd>
+    The access level of the dataset. The following values are supported:
+    <dl>
+      <dt><code>"private"</code></dt>
+      <dd>The dataset can only be accessed by the <a href="#account"><code>Account</code></a> object for which it is created.</dd>
+      <dt><code>"internal"</code></dt>
+      <dd>The dataset can only be accessed by people who are logged into the TriplyDB instance (denoted by the value of environment variable <code>TRIPLY_API_URL</code>).
+      <dt><code>"public"</code></dt>
+      <dd>The dataset can be accessed by everybody.</dd>
+    </dl>
+  </dd>
+  <dt><code>description</code> (optional)</dt>
+  <dd>The description of the dataset.  This description can make use of Markdown layout (see the <a href="/docs/triply-db-getting-started/#markdown-support">Markdown reference</a>) for details.</dd>
+  <dt><code>displayName</code> (optional)</dt>
+  <dd>The human-readable name of the dataset.  This name may contain spaces and other non-alphanumeric characters.</dd>
+  <dt><code>exampleResources</code></dt>
+  <dd></dd>
+  <dt><code>license</code> (optional)</dt>
+  <dd>
+    The license of the dataset. The following license strings are currently supported:
+    <ul>
+      <li><code>"CC-BY-SA"</code></li>
+      <li><code>"CC0 1.0"</code></li>
+      <li><code>"GFDL"</code></li>
+      <li><code>"ODC-By"</code></li>
+      <li><code>"ODC-ODbL"</code></li>
+      <li><code>"PDDL"</code></li>
+    </ul>
+  </dd>
+  <dt><code>name</code> (required)</dt>
+  <dd>The internal name of the dataset.  This name is restricted to alphanumeric characters and hyphens.</dd>
+  <dt><code>topics</code></dt>
+  <dd></dd>
+</dl>
+
 #### Dataset.upload(filePaths: string[])
 
 Adds the given file paths to the current upload job.
