@@ -583,6 +583,10 @@ console.log(
     .importFromUrl("http://www.w3.org/2002/07/owl#"));
 ```
 
+#### Dataset.info()
+
+Returns an overview of the dataset in the form of a JSON object.
+
 #### Dataset.owner
 
 Returns the account object of the owner of the dataset.
