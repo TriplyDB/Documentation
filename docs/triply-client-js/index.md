@@ -569,6 +569,20 @@ console.log(
     .importedGraphs());
 ```
 
+#### Dataset.importFromUrl(url: string)
+
+Adds one or more RDF graphs that are stored at the given URL to the dataset.
+
+The following example code adds the OWL vocabulary to the dataset:
+
+```typescript
+console.log(
+  await client
+    .getAccount("some-account")
+    .getDataset("some-dataset")
+    .importFromUrl("http://www.w3.org/2002/07/owl#"));
+```
+
 #### Dataset.owner
 
 Returns the account object of the owner of the dataset.
