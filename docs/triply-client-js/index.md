@@ -245,12 +245,10 @@ Argument `settings` is a JSON object with the following keys.  The
       <dd>The dataset can be accessed by everybody.</dd>
     </dl>
   </dd>
-  <dt><code>displayName</code> (optional)</dt>
-  <dd>The human-readable name of the dataset.  This name may contain spaces and other non-alphanumeric characters.</dd>
-  <dt><code>name</code> (required)</dt>
-  <dd>The internal name of the dataset.  This name is restricted to alphanumeric characters and hyphens.</dd>
   <dt><code>description</code> (optional)</dt>
   <dd>The description of the dataset.  This description can make use of Markdown layout (see the <a href="/docs/triply-db-getting-started/#markdown-support">Markdown reference</a>) for details.</dd>
+  <dt><code>displayName</code> (optional)</dt>
+  <dd>The human-readable name of the dataset.  This name may contain spaces and other non-alphanumeric characters.</dd>
   <dt><code>license</code> (optional)</dt>
   <dd>
     The license of the dataset. The following license strings are currently supported:
@@ -263,6 +261,8 @@ Argument `settings` is a JSON object with the following keys.  The
       <li><code>"PDDL"</code></li>
     </ul>
   </dd>
+  <dt><code>name</code> (required)</dt>
+  <dd>The internal name of the dataset.  This name is restricted to alphanumeric characters and hyphens.</dd>
 </dl>
 
 The following code example creates a new dataset (called
