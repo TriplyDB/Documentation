@@ -440,6 +440,10 @@ Creates a copy of the current dataset.  The owner (user or
 organization) of he copy is specified with parameter `account`.  The
 name of the copy is specified with parameter `dataset`.
 
+This operation does not overwrite existing datasets: if the copied-to
+dataset already exists, a new dataset with suffix `-1` will be
+created.
+
 #### Dataset.delete()
 
 Deletes the dataset. This includes deleting the dataset metadata, all
