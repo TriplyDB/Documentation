@@ -197,9 +197,9 @@ console.log(await client.getAccount());
 See section [`Account`](#account) for an overview of the methods that
 can be used with account objects.
 
-#### Client.getAccount(accountName: string)
+#### Client.getAccount(name: string)
 
-Returns the account with the given `accountName`.
+Returns the account with the given `name`.
 
 The following example code returns a specific account called
 `some-acount`:
@@ -221,7 +221,7 @@ library.  See the [Triply Console
 documentation](/docs/triply-db-getting-started) for how to create and
 delete accounts (users and organizations) through the web-based GUI.
 
-#### Account.addDataset(settings: object)
+#### Account.addDataset(metadata: object)
 
 Adds a new dataset to the given `Account`.  The account can either be
 a user or organization.
@@ -229,8 +229,8 @@ a user or organization.
 This only works if the used Triply Token gives write access to the
 account.
 
-Argument `settings` is a JSON object with the following keys.  The
-<code>accessLevel</code> and <code>name</code> keys are required.
+Argument `metadata` is a JSON object that specifies the dataset
+metadata.  It has the following keys:
 
 <dl>
   <dt><code>accessLevel</code> (required)</dt>
@@ -273,8 +273,7 @@ console.log(
   await client
     .getAccount("some-account")
     .addDataset({accessLevel: "private",
-                 name: "some-dataset"});
-);
+                 name: "some-dataset"}));
 ```
 
 #### Account.datasets()
@@ -309,9 +308,9 @@ console.log(
     .exists());
 ```
 
-#### Account.getDataset(datasetName: string)
+#### Account.getDataset(name: string)
 
-Returns the dataset with the given `datasetName`.
+Returns the dataset with the given `name`.
 
 This function returns an object of type [`Dataset`](#dataset). See
 [this section](#dataset) for an overview of the methods that can be
@@ -374,10 +373,9 @@ console.log(
     .name());
 ```
 
-#### Account.rename(newName: string)
+#### Account.rename(name: string)
 
-Renames the account from its current name to the specified new name
-(`newName`).
+Renames the account from its current name to the specified new `name`.
 
 The following example code renames a specific dataset from
 `some-account` to `new-name`:
@@ -393,14 +391,14 @@ console.log(
 
 The [`Dataset`](#dataset) class represents a TriplyDB dataset.
 
-#### Dataset.addService(serviceType: string, name: string)
+#### Dataset.addService(type: string, name: string)
 
 Creates a new service for this dataset.
 
-The `serviceType` argument specifies the type of service that is
-created. The following values are supported:
+The service type is specified with the `type` parameter, which
+supports the following values:
 
-- `"sparql"` :: Starts a SPARQL service.
+  - `"sparql"` :: Starts a SPARQL service.
 
 The `name` argument can be used to distinguish between different
 endpoints over the same dataset that are used for different tasks.
@@ -444,7 +442,7 @@ of its graphs, and all of its assets.
 Use the following functions in order to delete graphs while retaining
 dataset metadata and assets:
 
-- [Dataset.deleteGraph(graphName: string)](#datasetdeletegraphgraphname-string)
+- [Dataset.deleteGraph(graphName: string)](#datasetdeletegraphname-string)
 - [Dataset.removeAllGraphs()](#datasetremoveallgraphs)
 
 The following example code deletes a specific dataset that is part of
@@ -467,7 +465,7 @@ await client
   .delete();
 ```
 
-#### Dataset.deleteGraph(graphName: string)
+#### Dataset.deleteGraph(name: string)
 
 Deletes a specific graph that belongs to this dataset.
 
@@ -487,7 +485,7 @@ Returns whether the dataset still exists.
 
 Datasets can seize exist when the [Dataset.delete()](#datasetdelete)
 function is called, when the
-[Dataset.rename(string)](#datasetrenamenewname-string) function is
+[Dataset.rename(string)](#datasetrenamename-string) function is
 called, or when somebody deletes the dataset from the [Triply
 Console](/docs/triply-db-getting-started).
 
@@ -533,10 +531,10 @@ console.log(
     .graphs());
 ```
 
-#### Dataset.import(fromDataset: Dataset, graphs: mapping)
+#### Dataset.import(from: Dataset, graphs: mapping)
 
 `mapping` is a JSON object whose keys are existing graph names in the
-`fromDataset` and whose values are new graph names in the
+`from` dataset, and whose values are new graph names in the
 current/target dataset.
 
 The following code example creates a new dataset “d2” and imports one
@@ -544,13 +542,17 @@ graph from the existing dataset “d1”. Notice that the graph can be
 renamed as part of the import.
 
 ```typescript
-const dataset1 = await client.getAccount().getDataset("some-dataset");
+const dataset1 = await client
+  .getAccount()
+  .getDataset("some-dataset");
 const dataset2 = await client
   .getAccount()
-  .addDataset({ accessLevel: "private", name: "other-dataset" });
-await dataset1.import(dataset2, {
-  "https://example.org/dataset2/graph": "https://example.org/dataset1/graph"
-});
+  .addDataset({accessLevel: "private",
+               name: "other-dataset"});
+await dataset1
+  .import(dataset2,
+          {"https://example.org/dataset2/graph":
+           "https://example.org/dataset1/graph"});
 ```
 
 #### Dataset.importedGraphs()
@@ -587,24 +589,6 @@ console.log(
 
 Returns an overview of the dataset in the form of a JSON object.
 
-#### Dataset.owner
-
-Returns the account object of the owner of the dataset.
-
-The owner is either a user or an organization.
-
-The following example code prints the account of the owner of the
-dataset with name `some-dataset`.  (This will be the account with name
-`some-account`.)
-
-```typescript
-console.log(
-  await client
-    .getAccount("some-account")
-    .getDataset("some-dataset")
-    .owner);
-```
-
 #### Dataset.query()
 
 Retrieves the query object for this dataset.
@@ -635,10 +619,10 @@ await client
   .removeAllGraphs();
 ```
 
-#### Dataset.rename(newName: string)
+#### Dataset.rename(name: string)
 
 Renames the dataset from its current name to the name specified with
-`newName`.
+`name`.
 
 The following example code renames a specific dataset from
 `some-dataset` to `new-name`:
@@ -650,17 +634,19 @@ await client
   .rename("new-name");
 ```
 
-#### Dataset.renameGraph(fromGraphName: string, toGraphName: string)
+#### Dataset.renameGraph(from: string, to: string)
 
-Renames a graph of this dataset.
-
-`fromGraphName` and `toGraphName` must be valid IRIs.
+Renames a graph of this dataset, where `from` is the current graph
+name and `to` is the new graph name.  The string arguments for `from`
+and `to` must be valid IRIs.
 
 The following example code renames a specific graph of a specific
 dataset:
 
 ```typescript
-const dataset = client.getAccount().getDataset("some-dataset");
+const dataset = client
+  .getAccount()
+  .getDataset("some-dataset");
 await dataset.renameGraph(
   "https://example.org/old-graph",
   "https://example.org/new-graph"
