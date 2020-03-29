@@ -750,14 +750,17 @@ await client
 
 ### Query
 
-The query object allows Triple Pattern (TP) queries to be formulated
-and executed. The TP query paradigm is define in the SPARQL 1.1
-specification: it allows triples to be matched by setting a
-combination of a subject, predicate, and/or object term. TriplyDB
-also allows the graph term to set.
+The query object allows Quad Queries to be performed.  Quad Queries
+allow statements to be matched by setting a combination of a subject,
+predicate, object, and/or graph term.
 
-The following example code retrieves (at most) 100 subclass triples
-from a specific dataset:
+Quad Queries are an extension of the Triple Pattern queries that are
+defined in the [SPARQL 1.1
+Query](https://www.w3.org/TR/sparql11-query/#QSynTriples)
+specification.
+
+The following example code retrieves (at most) 100 triples with term
+`rdfs:subClassOf` in the predicate position:
 
 ```typescript
 await client
@@ -765,8 +768,42 @@ await client
   .getDataset("some-dataset")
   .query()
   .predicate("http://www.w3.org/2000/01/rdf-schema#subClassOf")
-  .limit(100);
+  .limit(100)
+  .exec();
 ```
+
+#### Query.count()
+
+Returns the number of results for the current query.
+
+#### Query.exec()
+
+Execute the query according to the current query configuration.
+
+#### Query.graph(iri: string)
+
+Sets the graph term for this query.  If the graph term is set, then
+only triples in that graph are returned by the query.
+
+#### Query.limit(results: number)
+
+Sets the maximum number of results (`results`) obtained by running
+this query.
+
+#### Query.object(name: string)
+
+Sets the object term for this query.  If the object term is set, then
+only triples with that object term are returned by the query.
+
+#### Query.predicate(iri: string)
+
+Sets the predicate term for this query.  If the predicate term is set,
+then only triples with that predicate term are returned by the query.
+
+#### Query.subject(iri: string)
+
+Sets the subject term for this query.  If the subject term is set,
+then only triples with that subject term are returned by the query.
 
 ### Service
 
@@ -893,7 +930,7 @@ const reply = await SuperAgent.post("URL-OF-SOME-SPARQL-ENDPOINT")
   .set("Accept", "application/sparql-results+json")
   .set("Authorization", "Bearer " + process.env.TRIPLY_API_TOKEN)
   .buffer(true)
-  .send({ query: "select * { ?s ?p ?o } limit 1" });
+  .send({query: "select * { ?s ?p ?o } limit 1"});
 ```
 
 ### What to do when the following error appears?
