@@ -619,21 +619,6 @@ await client
   .removeAllGraphs();
 ```
 
-#### Dataset.rename(name: string)
-
-Renames the dataset from its current name to the name specified with
-`name`.
-
-The following example code renames a specific dataset from
-`some-dataset` to `new-name`:
-
-```typescript
-await client
-  .getAccount("some-account")
-  .getDataset("some-dataset")
-  .rename("new-name");
-```
-
 #### Dataset.renameGraph(from: string, to: string)
 
 Renames a graph of this dataset, where `from` is the current graph
@@ -653,9 +638,9 @@ await dataset.renameGraph(
 );
 ```
 
-#### Dataset.update(settings: object)
+#### Dataset.update(metadata: object)
 
-Updates the metadata for a specific dataset.
+Updates the `metadata` for a specific dataset.
 
 The following keys are supported:
 
@@ -759,8 +744,8 @@ defined in the [SPARQL 1.1
 Query](https://www.w3.org/TR/sparql11-query/#QSynTriples)
 specification.
 
-The following example code retrieves (at most) 100 triples with term
-`rdfs:subClassOf` in the predicate position:
+The following example code retrieves (at most) 100 triples that have
+term `rdfs:subClassOf` in the predicate position:
 
 ```typescript
 await client
