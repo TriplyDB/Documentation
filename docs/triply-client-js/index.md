@@ -434,6 +434,12 @@ console.log(
     .assets());
 ```
 
+#### Dataset.copy(account: string, dataset: string)
+
+Creates a copy of the current dataset.  The owner (user or
+organization) of he copy is specified with parameter `account`.  The
+name of the copy is specified with parameter `dataset`.
+
 #### Dataset.delete()
 
 Deletes the dataset. This includes deleting the dataset metadata, all
