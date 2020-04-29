@@ -369,7 +369,7 @@ This view renders SPARQL results in an interactive pivot table where you are abl
 
 ### Timeline ([pro](/docs/yasgui-api#pro)) {#timeline}
 
-The SPARQL timeline renders the SPARQL results on a Timeline ([example](https://triplydb.com/wikimedia/dbpedia/queries/timeline-cars))
+The SPARQL timeline renders the SPARQL results on a Timeline ([example](https://triplydb.com/wikimedia/-/queries/timeline-cars/))
 To get started with this visualization you need at least a result containing a `?eventStart` or `?eventDate` with either a `?eventDescription`, `?eventLabel` or a `?eventMedia`. (Combinations are also possible)
 The following parameters can be used, Parameters in _Italic_ are experimental:
 

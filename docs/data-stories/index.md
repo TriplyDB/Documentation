@@ -19,12 +19,18 @@ To get started with Data Stories contact us at [info@triply.cc](info@triply.cc).
   <head>
     <meta charset="utf-8" />
     <meta name="author" content="{{FIRST-AUTHOR}}, {{SECOND-AUTHOR}}, …" />
-    <meta name="description" content="{{INSTANCE}} Data Stories ― {{STORY-TITLE}}" />
+    <meta
+      name="description"
+      content="{{INSTANCE}} Data Stories ― {{STORY-TITLE}}"
+    />
     <title>{{INSTANCE}} Data Stories ― {{STORY-TITLE}}</title>
     <link rel="stylesheet" href="{{LINK-TO-STORIES-CSS}}" />
   </head>
   <body>
-    <query data-query-ref="test.rq" data-endpoint="https://triplydb.com/academy/sparql/sparql/sparql">
+    <query
+      data-config-ref="https://triplydb.com/academy/sparql/queries/sparql-query"
+      data-endpoint="https://triplydb.com/academy/sparql/sparql/sparql"
+    >
     </query>
     <script src="{{LINK-TO-STORIES-JS}}"></script>
     <script type="text/javascript">
@@ -50,7 +56,6 @@ Data Stories defines the following two HTML elements:
 
 The following attributes are defined on a `<div class="story">`
 element:
-
 
 - `data-endpoint`: The URI of the SPARQL endpoint against which all queries in the Data Story are executed.
 
