@@ -133,7 +133,7 @@ typing feedback in the editor and offering autocomplete suggestions:
    ```json
    {
      "compilerOptions": {
-       "lib": ["es2015"]
+       "lib": ["es2017"]
      }
    }
    ```
@@ -183,11 +183,9 @@ functions.
 
 ### Client
 
-#### `getAccount()`
+#### Client.getAccount()
 
 Returns the account associated with the current Triply API Token.
-
-##### Example
 
 The following example code returns the account associated with the
 current Triply API Token:
@@ -196,14 +194,12 @@ current Triply API Token:
 console.log(await client.getAccount());
 ```
 
-See section [[Account]] for an overview of the methods that can be used
-with account objects.
+See section [`Account`](#account) for an overview of the methods that
+can be used with account objects.
 
-#### `getAccount(accountName: string)`
+#### Client.getAccount(name: string)
 
-Returns the account with the given `accountName`.
-
-##### Example
+Returns the account with the given `name`.
 
 The following example code returns a specific account called
 `some-acount`:
@@ -212,100 +208,135 @@ The following example code returns a specific account called
 console.log(await client.getAccount("some-account"));
 ```
 
-See section [[Account]] for an overview of the methods that can be used
-with account objects.
+See section [`Account`](#account) for an overview of the methods that
+can be used with account objects.
 
-### `Account`
+### Account
 
-The `Account` class represents a TriplyDB account. This can be either
-a user or an organization.
+The [`Account`](#account) class represents a TriplyDB account. This
+can be either a user or an organization.
 
 Accounts cannot be created or deleted through the Triply Client
-library. See the [[TriplyDB documentation]] for how to create and
+library.  See the [Triply Console
+documentation](/docs/triply-db-getting-started) for how to create and
 delete accounts (users and organizations) through the web-based GUI.
 
-#### `addDataset(settings: object)`
+#### Account.addDataset(metadata: object)
 
-Argument `settings` is a JSON object with the following keys:
+Adds a new dataset to the given `Account`.  The account can either be
+a user or organization.
 
-- `accessLevel` :: The access level of the dataset. The following
-  values are supported:
+This only works if the used Triply Token gives write access to the
+account.
 
-  - `"private"` :: The dataset can only be accessed by the `Account`
-    object for which it is created.
+Argument `metadata` is a JSON object that specifies the dataset
+metadata.  It has the following keys:
 
-  - `"internal"` :: The dataset can only be accessed by people who
-    are logged into the TriplyDB instance (denoted by the value of
-    environment variable `TRIPLY_API_URL`).
-
-  - `"public"` :: The dataset can be accessed by everybody.
-
-- `name` (optional) :: The name of the dataset.
-
-- `description` (optional) :: The description of the dataset.
-
-- `license` (optional) :: The license of the dataset. The following
-  license strings are currently supported:
-
-  - `"CC-BY-SA"`
-  - `"CC0 1.0"`
-  - `"GFDL"`
-  - `"ODC-By"`
-  - `"ODC-ODbL"`
-  - `"PDDL"`
-
-##### Example
+<dl>
+  <dt><code>accessLevel</code> (required)</dt>
+  <dd>
+    The access level of the dataset. The following values are supported:
+    <dl>
+      <dt><code>"private"</code></dt>
+      <dd>The dataset can only be accessed by the <a href="#account"><code>Account</code></a> object for which it is created.</dd>
+      <dt><code>"internal"</code></dt>
+      <dd>The dataset can only be accessed by people who are logged into the TriplyDB instance (denoted by the value of environment variable <code>TRIPLY_API_URL</code>).
+      <dt><code>"public"</code></dt>
+      <dd>The dataset can be accessed by everybody.</dd>
+    </dl>
+  </dd>
+  <dt><code>description</code> (optional)</dt>
+  <dd>The description of the dataset.  This description can make use of Markdown layout (see the <a href="/docs/triply-db-getting-started/#markdown-support">Markdown reference</a>) for details.</dd>
+  <dt><code>displayName</code> (optional)</dt>
+  <dd>The human-readable name of the dataset.  This name may contain spaces and other non-alphanumeric characters.</dd>
+  <dt><code>license</code> (optional)</dt>
+  <dd>
+    The license of the dataset. The following license strings are currently supported:
+    <ul>
+      <li><code>"CC-BY-SA"</code></li>
+      <li><code>"CC0 1.0"</code></li>
+      <li><code>"GFDL"</code></li>
+      <li><code>"ODC-By"</code></li>
+      <li><code>"ODC-ODbL"</code></li>
+      <li><code>"PDDL"</code></li>
+    </ul>
+  </dd>
+  <dt><code>name</code> (required)</dt>
+  <dd>The internal name of the dataset.  This name is restricted to alphanumeric characters and hyphens.</dd>
+</dl>
 
 The following code example creates a new dataset (called
 `"some-dataset"`) under a specific pre-existing account:
 
 ```typescript
 console.log(
-  await client.getAccount("some-account").addDataset({ name: "some-dataset" })
-);
+  await client
+    .getAccount("some-account")
+    .addDataset({accessLevel: "private",
+                 name: "some-dataset"}));
 ```
 
-#### `datasets()`
+#### Account.datasets()
 
-Returns the list of datasets for this account that are accessible to
-the user associated with the given Triply Token.
-
-##### Example
+Returns the list of datasets for this account.  This only includes
+datasets that are accessible for the used Triply Token.
 
 The following example code prints the list of datasets that belong to
-the specific account called `some-account`:
+the account named `some-account`:
 
 ```typescript
-console.log(await client.getAccount("some-account").datasets());
+console.log(
+  await client
+    .getAccount("some-account")
+    .datasets());
 ```
 
-#### `getDataset(datasetName: string)`
+#### Account.exists()
 
-Returns the dataset with the given `datasetName`.
+Returns whether the account still exists.
 
-This function returns an object of type `Dataset`. See section
-[[Dataset]] for an overview of the methods that can be used with dataset
-objects.
+While it is not possible to delete accounts with Triply Client,
+accounts can be removed through the Triply Console.
 
-##### Example
+The following example code prints `true` in case the account (still)
+exists, and prints `false` otherwise:
+
+```typescript
+console.log(
+  await client
+    .getAccount("some-account")
+    .exists());
+```
+
+#### Account.getDataset(name: string)
+
+Returns the dataset with the given `name`.
+
+This function returns an object of type [`Dataset`](#dataset). See
+[this section](#dataset) for an overview of the methods that can be
+used with dataset objects.
 
 The following example code prints a specific dataset object:
 
 ```typescript
-console.log(await client.getAccount("some-account").getDataset("some-dataset"));
+console.log(
+  await client
+    .getAccount("some-account")
+    .getDataset("some-dataset"));
 ```
 
-#### `info()`
+#### Account.info()
 
-Returns information about the account.
+Returns an overview of the account in the form of a JSON object.
 
-##### Example
-
-The following example code prints information about the account
-associated with the current Triply API Token:
+The following example code prints an overview of account that is
+associated with the used Triply Token:
 
 ```typescript
-console.log(await client.getAccount().info());
+console.log(
+  await client
+    .getAccount()
+    .info());
 ```
 
 Example output for running the above code:
@@ -328,53 +359,52 @@ Example output for running the above code:
 }
 ```
 
-#### `name()`
+#### Account.name()
 
 Returns the name of the account.
-
-##### Example
 
 The following example code prints the name of the account associated
 with the current Triply API Token:
 
 ```typescript
-console.log(await client.getAccount().name());
+console.log(
+  await client
+    .getAccount()
+    .name());
 ```
 
-#### `rename(newName: string)`
+#### Account.rename(name: string)
 
-Renames the account from its current name to the specified new name
-(`newName`).
-
-##### Example
+Renames the account from its current name to the specified new `name`.
 
 The following example code renames a specific dataset from
 `some-account` to `new-name`:
 
 ```typescript
-console.log(await client.getAccount("some-account").rename("new-name"));
+console.log(
+  await client
+    .getAccount("some-account")
+    .rename("new-name"));
 ```
 
-### `Dataset`
+### Dataset
 
-The `Dataset` class represents a TriplyDB dataset.
+The [`Dataset`](#dataset) class represents a TriplyDB dataset.
 
-#### `addService(serviceType: oneof("sparql"), name: string)`
+#### Dataset.addService(type: string, name: string)
 
 Creates a new service for this dataset.
 
-The `serviceType` argument specifies the type of service that is
-created. The following values are supported:
+The service type is specified with the `type` parameter, which
+supports the following values:
 
-- `"sparql"` :: Starts a SPARQL service.
+  - `"sparql"` :: Starts a SPARQL service.
 
 The `name` argument can be used to distinguish between different
 endpoints over the same dataset that are used for different tasks.
 
-See section [[Service]] for an overview of the methods that can be
-used with service objects.
-
-##### Example
+See section [`Service`](#service) for an overview of the methods that
+can be used with service objects.
 
 The following example code starts two SPARQL endpoints over a specific
 dataset. One endpoint will be used in the acceptance environment
@@ -388,12 +418,10 @@ const acceptance = dataset.addService("sparql", "acceptance");
 const production = dataset.addService("sparql", "production");
 ```
 
-#### `assets()`
+#### Dataset.assets()
 
 Returns an array with objects that represent the assets that belong to
 this dataset.
-
-##### Example
 
 The following example code retrieves the assets for a specific
 dataset:
@@ -403,11 +431,20 @@ console.log(
   await client
     .getAccount("some-account")
     .getDataset("some-dataset")
-    .assets()
-);
+    .assets());
 ```
 
-#### `delete()`
+#### Dataset.copy(account: string, dataset: string)
+
+Creates a copy of the current dataset.  The owner (user or
+organization) of he copy is specified with parameter `account`.  The
+name of the copy is specified with parameter `dataset`.
+
+This operation does not overwrite existing datasets: if the copied-to
+dataset already exists, a new dataset with suffix `-1` will be
+created.
+
+#### Dataset.delete()
 
 Deletes the dataset. This includes deleting the dataset metadata, all
 of its graphs, and all of its assets.
@@ -415,10 +452,8 @@ of its graphs, and all of its assets.
 Use the following functions in order to delete graphs while retaining
 dataset metadata and assets:
 
-- [[`deleteGraph(graphName: string)`]]
-- [[`Dataset.removeAllGraphs/0`]]
-
-##### Example 1
+- [Dataset.deleteGraph(graphName: string)](#datasetdeletegraphname-string)
+- [Dataset.removeAllGraphs()](#datasetremoveallgraphs)
 
 The following example code deletes a specific dataset that is part of
 the account associated with the current Triply API Token:
@@ -430,8 +465,6 @@ await client
   .delete();
 ```
 
-##### Example 2
-
 The following example code only deletes a specific dataset if it
 exists (notice the use of `try` and `catch`):
 
@@ -442,11 +475,9 @@ await client
   .delete();
 ```
 
-#### `deleteGraph(graphName: string)`
+#### Dataset.deleteGraph(name: string)
 
 Deletes a specific graph that belongs to this dataset.
-
-##### Example
 
 The following example code deletes a specific graph from a specific
 dataset:
@@ -458,11 +489,30 @@ await client
   .deleteGraph("https://example.org/some-graph");
 ```
 
-#### `getServices()`
+#### Dataset.exists()
+
+Returns whether the dataset still exists.
+
+Datasets can seize exist when the [Dataset.delete()](#datasetdelete)
+function is called, when the
+[Dataset.rename(string)](#datasetrenamename-string) function is
+called, or when somebody deletes the dataset from the [Triply
+Console](/docs/triply-db-getting-started).
+
+The following example code prints `true` in case the dataset still
+exists, and prints `false` otherwise:
+
+```typescript
+console.log(
+  await client
+    .getAccount("some-account")
+    .getDataset("some-dataset")
+    .exists());
+```
+
+#### Dataset.getServices()
 
 Returns an array of objects that represent TriplyDB services.
-
-##### Example
 
 The following example code emits the services that are enabled for a
 specific dataset:
@@ -472,16 +522,13 @@ console.log(
   await client
     .getAccount("some-account")
     .getDataset("some-dataset")
-    .getServices()
-);
+    .getServices());
 ```
 
-#### `graphs()`
+#### Dataset.graphs()
 
 Returns an array with objects that represent the graphs that belong to
 this dataset.
-
-##### Example
 
 The following example code retrieves the graphs for a specific
 dataset:
@@ -491,38 +538,37 @@ console.log(
   await client
     .getAccount("some-account")
     .getDataset("some-dataset")
-    .graphs()
-);
+    .graphs());
 ```
 
-#### `import(fromDataset: Dataset, graphs: mapping)`
+#### Dataset.import(from: Dataset, graphs: mapping)
 
 `mapping` is a JSON object whose keys are existing graph names in the
-`fromDataset` and whose values are new graph names in the
+`from` dataset, and whose values are new graph names in the
 current/target dataset.
-
-##### Example
 
 The following code example creates a new dataset “d2” and imports one
 graph from the existing dataset “d1”. Notice that the graph can be
 renamed as part of the import.
 
 ```typescript
-const dataset1 = await client.getAccount().getDataset("some-dataset");
+const dataset1 = await client
+  .getAccount()
+  .getDataset("some-dataset");
 const dataset2 = await client
   .getAccount()
-  .addDataset({ accessLevel: "private", name: "other-dataset" });
-await dataset1.import(dataset2, {
-  "https://example.org/dataset2/graph": "https://example.org/dataset1/graph"
-});
+  .addDataset({accessLevel: "private",
+               name: "other-dataset"});
+await dataset1
+  .import(dataset2,
+          {"https://example.org/dataset2/graph":
+           "https://example.org/dataset1/graph"});
 ```
 
-#### `importedGraphs()`
+#### Dataset.importedGraphs()
 
 Returns an array with objects that represent the imported graphs that
 belong to this dataset.
-
-##### Example
 
 The following example code retrieves the imported graphs for a
 specific dataset:
@@ -532,18 +578,33 @@ console.log(
   await client
     .getAccount("some-account")
     .getDataset("some-dataset")
-    .importedGraphs()
-);
+    .importedGraphs());
 ```
 
-#### `query()`
+#### Dataset.importFromUrl(url: string)
+
+Adds one or more RDF graphs that are stored at the given URL to the dataset.
+
+The following example code adds the OWL vocabulary to the dataset:
+
+```typescript
+console.log(
+  await client
+    .getAccount("some-account")
+    .getDataset("some-dataset")
+    .importFromUrl("http://www.w3.org/2002/07/owl#"));
+```
+
+#### Dataset.info()
+
+Returns an overview of the dataset in the form of a JSON object.
+
+#### Dataset.query()
 
 Retrieves the query object for this dataset.
 
-See section [[Query]] for an overview of the methods that can be used
-with query objects.
-
-##### Example
+See section [Query](#query) for an overview of the methods that can be
+used with query objects.
 
 The following code example retrieves the query object of a specific
 dataset:
@@ -555,11 +616,9 @@ const query = client
   .query();
 ```
 
-#### `removeAllGraphs()`
+#### Dataset.removeAllGraphs()
 
 Removes all graphs from this dataset.
-
-##### Example
 
 The following code example removed all graphs from a specific dataset:
 
@@ -570,43 +629,69 @@ await client
   .removeAllGraphs();
 ```
 
-#### `rename(newName: string)`
+#### Dataset.renameGraph(from: string, to: string)
 
-Renames the dataset from its current name to the name specified with
-`newName`.
-
-##### Example
-
-The following example code renames a specific dataset from
-`some-dataset` to `new-name`:
-
-```typescript
-await client
-  .getAccount("some-account")
-  .getDataset("some-dataset")
-  .rename("new-name");
-```
-
-#### `renameGraph(fromGraphName: string, toGraphName: string)`
-
-Renames a graph of this dataset.
-
-`fromGraphName` and `toGraphName` must be valid IRIs.
-
-##### Example
+Renames a graph of this dataset, where `from` is the current graph
+name and `to` is the new graph name.  The string arguments for `from`
+and `to` must be valid IRIs.
 
 The following example code renames a specific graph of a specific
 dataset:
 
 ```typescript
-const dataset = client.getAccount().getDataset("some-dataset");
+const dataset = client
+  .getAccount()
+  .getDataset("some-dataset");
 await dataset.renameGraph(
   "https://example.org/old-graph",
   "https://example.org/new-graph"
 );
 ```
 
-#### `upload(filePaths: string[])`
+#### Dataset.update(metadata: object)
+
+Updates the `metadata` for a specific dataset.
+
+The following keys are supported:
+
+<dl>
+  <dt><code>accessLevel</code> (required)</dt>
+  <dd>
+    The access level of the dataset. The following values are supported:
+    <dl>
+      <dt><code>"private"</code></dt>
+      <dd>The dataset can only be accessed by the <a href="#account"><code>Account</code></a> object for which it is created.</dd>
+      <dt><code>"internal"</code></dt>
+      <dd>The dataset can only be accessed by people who are logged into the TriplyDB instance (denoted by the value of environment variable <code>TRIPLY_API_URL</code>).
+      <dt><code>"public"</code></dt>
+      <dd>The dataset can be accessed by everybody.</dd>
+    </dl>
+  </dd>
+  <dt><code>description</code> (optional)</dt>
+  <dd>The description of the dataset.  This description can make use of Markdown layout (see the <a href="/docs/triply-db-getting-started/#markdown-support">Markdown reference</a>) for details.</dd>
+  <dt><code>displayName</code> (optional)</dt>
+  <dd>The human-readable name of the dataset.  This name may contain spaces and other non-alphanumeric characters.</dd>
+  <dt><code>exampleResources</code></dt>
+  <dd></dd>
+  <dt><code>license</code> (optional)</dt>
+  <dd>
+    The license of the dataset. The following license strings are currently supported:
+    <ul>
+      <li><code>"CC-BY-SA"</code></li>
+      <li><code>"CC0 1.0"</code></li>
+      <li><code>"GFDL"</code></li>
+      <li><code>"ODC-By"</code></li>
+      <li><code>"ODC-ODbL"</code></li>
+      <li><code>"PDDL"</code></li>
+    </ul>
+  </dd>
+  <dt><code>name</code> (required)</dt>
+  <dd>The internal name of the dataset.  This name is restricted to alphanumeric characters and hyphens.</dd>
+  <dt><code>topics</code></dt>
+  <dd></dd>
+</dl>
+
+#### Dataset.upload(filePaths: string[])
 
 Adds the given file paths to the current upload job.
 
@@ -614,14 +699,13 @@ The files must contain RDF data and must be encoded in one of the
 following standardized RDF serialization formats: N-Quads, N-Triples,
 TriG, Turtle.
 
-Use function [[`Dataset.uploadAsset/2`]] in order to upload files that do not
-contain RDF data.
+Use function
+[`Dataset.uploadAsset`](#datasetuploadassetassetname-string-filepath-string)
+in order to upload files that do not contain RDF data.
 
 Once the required files have been added to the current upload job, the
 upload job can be executed with method `getJob().exec()` (see the
 following example).
-
-##### Example
 
 The following example code adds four RDF document to the current
 upload job of a specific dataset, and then performs the upload
@@ -638,15 +722,13 @@ await dataset.upload(
 await dataset.getJob().exec();
 ```
 
-#### `uploadAsset(assetName: string, filePath: string)`
+#### Dataset.uploadAsset(assetName: string, filePath: string)
 
 Uploads a file that does not contain RDF data as an asset.
 
 Assets can be source data files prior to running an ETL process,
 documentation files describing the dataset, or media files
 (audio/image/video) that are referenced by the RDF graph.
-
-##### Example
 
 The following example code uploads a PDF file documenting the
 corresponding dataset:
@@ -661,16 +743,19 @@ await client
   ); // and documentation.
 ```
 
-### `Query`
+### Query
 
-The query object allows Triple Pattern (TP) queries to be formulated
-and executed. The TP query paradigm is define in the SPARQL 1.1
-specification: it allows triples to be matched by setting a
-combination of a subject, predicate, and/or object term. TriplyDB
-also allows the graph term to set.
+The query object allows Quad Queries to be performed.  Quad Queries
+allow statements to be matched by setting a combination of a subject,
+predicate, object, and/or graph term.
 
-The following example code retrieves (at most) 100 subclass triples
-from a specific dataset:
+Quad Queries are an extension of the Triple Pattern queries that are
+defined in the [SPARQL 1.1
+Query](https://www.w3.org/TR/sparql11-query/#QSynTriples)
+specification.
+
+The following example code retrieves (at most) 100 triples that have
+term `rdfs:subClassOf` in the predicate position:
 
 ```typescript
 await client
@@ -678,22 +763,55 @@ await client
   .getDataset("some-dataset")
   .query()
   .predicate("http://www.w3.org/2000/01/rdf-schema#subClassOf")
-  .limit(100);
+  .limit(100)
+  .exec();
 ```
 
-### `Service`
+#### Query.count()
+
+Returns the number of results for the current query.
+
+#### Query.exec()
+
+Execute the query according to the current query configuration.
+
+#### Query.graph(iri: string)
+
+Sets the graph term for this query.  If the graph term is set, then
+only triples in that graph are returned by the query.
+
+#### Query.limit(results: number)
+
+Sets the maximum number of results (`results`) obtained by running
+this query.
+
+#### Query.object(name: string)
+
+Sets the object term for this query.  If the object term is set, then
+only triples with that object term are returned by the query.
+
+#### Query.predicate(iri: string)
+
+Sets the predicate term for this query.  If the predicate term is set,
+then only triples with that predicate term are returned by the query.
+
+#### Query.subject(iri: string)
+
+Sets the subject term for this query.  If the subject term is set,
+then only triples with that subject term are returned by the query.
+
+### Service
 
 Service objects describe specific functionalities that can be started,
 stopped, and restarted over datasets in TriplyDB.
 
-Service objects are obtained through the [[`Dataset.addService/2`]]
-and [[`Dataset.getServices/0`]] functions.
+Service objects are obtained through the
+[`Dataset.addService`](datasetaddserviceservicetype-string-name-string)
+and [`Dataset.getServices`](#datasetgetservices) functions.
 
-#### `create()`
+#### Service.create()
 
 Starts this service.
-
-##### Example
 
 The following code example starts a specific service:
 
@@ -705,7 +823,7 @@ await client
   .create();
 ```
 
-#### `getStatus()`
+#### Service.getStatus()
 
 Returns the status of this service.
 
@@ -717,8 +835,6 @@ The following service statuses are defined:
 - stopped
 - stopping
 
-##### Example
-
 The following example code prints the status of a specific service:
 
 ```typescript
@@ -729,14 +845,12 @@ const service = await client
 console.log(service.getStatus());
 ```
 
-#### `info()`
+#### Service.info()
 
-Returns information about this service.
+Returns an overview of the service in the form of a JSON object.
 
-##### Example
-
-The following example code prints information about a newly created
-service:
+The following example code prints information about the newly created
+service (named `new-service`):
 
 ```typescript
 const service = await client
@@ -746,7 +860,7 @@ const service = await client
 console.log(service.info());
 ```
 
-#### `isUpToDate()`
+#### Service.isUpToDate()
 
 Returns whether this service is synchronized with the dataset
 contents.
@@ -767,8 +881,6 @@ to one another. There are two very common use cases for this:
   the newer endpoint over the current version of the data, but a
   limited number of older users wants to use the legacy version.
 
-##### Example
-
 The following example code checks whether a specific service is
 synchonized:
 
@@ -780,11 +892,9 @@ const service = await client
 console.log(service.isUpToDate());
 ```
 
-#### `restart()`
+#### Service.restart()
 
 Restarts this service.
-
-##### Example
 
 The following code example restarts a specific service:
 
@@ -815,7 +925,7 @@ const reply = await SuperAgent.post("URL-OF-SOME-SPARQL-ENDPOINT")
   .set("Accept", "application/sparql-results+json")
   .set("Authorization", "Bearer " + process.env.TRIPLY_API_TOKEN)
   .buffer(true)
-  .send({ query: "select * { ?s ?p ?o } limit 1" });
+  .send({query: "select * { ?s ?p ?o } limit 1"});
 ```
 
 ### What to do when the following error appears?
