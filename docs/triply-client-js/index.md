@@ -71,6 +71,11 @@ that uses the Triply Client library:
    ```bash
    npm install typescript @triply/client.js
    ```
+4. Create your typescript project configuration:
+
+```bash
+./node_modules/.bin/tsc --init
+```
 
 ### Create your first script
 
@@ -105,7 +110,7 @@ uses the Triply Client library:
 2. Compile the TypeScript file into a corresponding JavaScript file:
 
    ```bash
-   ./node_modules/.bin/tsc script.ts
+   ./node_modules/.bin/tsc
    ```
 
 3. Run the JavaScript file:
