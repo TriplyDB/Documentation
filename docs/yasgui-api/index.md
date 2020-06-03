@@ -14,10 +14,25 @@ Yasgui, Yasqe and Yasr are all [open source](https://github.com/TriplyDB/Yasgui)
 Triply provides additional plugins that are free to use via [https://yasgui.triply.cc](https://yasgui.triply.cc).
 To use pro plugins in your tool or on your website, contact us at [info@triply.cc](info@triply.cc).
 
-
 ## Installation
 
-### On a webpage {#web}
+### Via package managers
+
+To include Yasgui in a project include the package run the commands below.
+
+#### npm
+
+```sh
+npm i @triply/yasgui
+```
+
+#### yarn
+
+```sh
+yarn add @triply/yasgui
+```
+
+### Via cdn {#web}
 
 To include Yasgui in your webpage, all that's needed is importing the Yasgui JavaScript and CSS files, and initializing a Yasgui object:
 
@@ -53,26 +68,7 @@ const yasgui = new Yasgui(document.getElementById("yasgui"), {
 });
 ```
 
-
-
 Note: If you've already opened the Yasgui page before, you must first clear your local-storage cache before you will see the changes taking effect.
-
-### React {#react}
-
-To include Yasgui in React, use the following snippet. This snippet assumes a React repository configured via [create-react-app](https://github.com/facebook/create-react-app), and a minimum React version of 16.8.
-
-```js
-import Yasgui from "@triply/yasgui";
-import "@triply/yasgui/build/yasgui.min.css";
-export default function App() {
-  useEffect(() => {
-    const yasgui = new Yasgui(document.getElementById("yasgui"));
-    return () => {};
-  }, []);
-
-  return <div id="yasgui" />;
-}
-```
 
 ## API Reference
 
@@ -382,4 +378,23 @@ class Boolean {
 
 //Register the plugin to Yasr
 Yasr.registerPlugin("MyBooleanPlugin", Boolean);
+```
+
+## FAQ
+
+### Using Yasgui in react
+
+To include Yasgui in React, use the following snippet. This snippet assumes a React repository configured via [create-react-app](https://github.com/facebook/create-react-app), and a minimum React version of 16.8.
+
+```js
+import Yasgui from "@triply/yasgui";
+import "@triply/yasgui/build/yasgui.min.css";
+export default function App() {
+  useEffect(() => {
+    const yasgui = new Yasgui(document.getElementById("yasgui"));
+    return () => {};
+  }, []);
+
+  return <div id="yasgui" />;
+}
 ```
