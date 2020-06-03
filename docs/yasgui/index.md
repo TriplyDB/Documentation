@@ -11,6 +11,22 @@ This section explains the use of SPARQL via Yasgui. Yasgui provides
 various advanced features for creating, sharing, and visualizing
 SPARQL queries and their results.
 
+## Installation
+
+Below are instructions on how to include Yasgui in your project. If you only want to install Yasr or Yasqe, replace yasgui in the commands below
+
+### npm
+
+```sh
+npm i @triply/yasgui
+```
+
+### yarn
+
+```sh
+yarn add @triply/yasgui
+```
+
 ## SPARQL Editor {#sparql-editor}
 
 The Yasgui SPARQL editor is a query editor that offers syntax highlighting, syntax validation, autocompletion, a variety of different SPARQL result visualizations, with a plugin architecture that [enables customization](/docs/yasgui-api).
