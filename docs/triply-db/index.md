@@ -6,8 +6,8 @@ path: "/docs/triply-db-getting-started"
 # Introduction
 
 TriplyDB allows you to store, publish, and use Linked Data Knowledge
-Graphs.  TriplyDB makes it easy to upload Linked Data and expose it
-through various APIs (SPARQL, ElasticSeach, LDF, REST).  [Read
+Graphs. TriplyDB makes it easy to upload Linked Data and expose it
+through various APIs (SPARQL, ElasticSeach, LDF, REST). [Read
 More](/products/triplydb)
 
 # Uploading Data
@@ -23,24 +23,24 @@ The following steps allow a new Lined Dataset to be created:
 2. Click the `+` button on the dataset pane that appears on the
    right-hand side of the home screen.
 
-3. This brings up the dialog for creating a new dataset.  Enter a
+3. This brings up the dialog for creating a new dataset. Enter a
    dataset name that consists of alpha-numeric characters
    (`A-Za-z0-9`) and hyphens (`-`).
 
-4. Optionally, enter a dataset display name.  This name will be used
+4. Optionally, enter a dataset display name. This name will be used
    in the GUI and will be exposed in dataset metadata.
 
-5. Optionally, enter a dataset description.  You can use richt text
-   formatting by using Markdown.  See [our section about
+5. Optionally, enter a dataset description. You can use richt text
+   formatting by using Markdown. See [our section about
    Markdown](#markdown-support) for details.
 
-6. Optionally, change the access level for the dataset.  By default
-   this is set to “Private”.  See [dataset access
+6. Optionally, change the access level for the dataset. By default
+   this is set to “Private”. See [dataset access
    levels](#access-levels) for more information.
 
 7. Optionally, select the account under which the dataset will be
-   published.  This allows you to publish datasets under an
-   organization account to which you are a member.  The default
+   published. This allows you to publish datasets under an
+   organization account to which you are a member. The default
    account is your user account.
 
 ![The “Add dataset” dialog](add-dataset-dialog.png)
@@ -52,7 +52,7 @@ indexed by popular search engines (see [Metadata](#metadata)).
 ## Adding data
 
 Once the dataset is created, the “Add data” view is displayed (see
-screenshot).  In this view data can be added in three ways:
+screenshot). In this view data can be added in three ways:
 
 <dl>
   <dt>File upload</dt>
@@ -68,21 +68,21 @@ displayed on top of one another.](add-data.png)
 
 The “Add data” view is also available for existing datasets:
 
-  1. Go to the “Graphs” view by clicking on the graph icon in the
-     left-hand sidebar.
+1. Go to the “Graphs” view by clicking on the graph icon in the
+   left-hand sidebar.
 
-  2. Click the “Import a new graph” button.
+2. Click the “Import a new graph” button.
 
 ### Adding data: File upload
 
 The file upload feature allows you to upload RDF files from your local
-machine.  This can be done in either of two ways:
+machine. This can be done in either of two ways:
 
-  - Click on the cloud icons to open a dialog that allows local RDF
-    files from your machine to be selected.
+- Click on the cloud icons to open a dialog that allows local RDF
+  files from your machine to be selected.
 
-  - Drag-and-drop RDF files from your local machine onto the cloud
-    icon.
+- Drag-and-drop RDF files from your local machine onto the cloud
+  icon.
 
 The following RDF serialization formats are currently supported:
 
@@ -94,10 +94,10 @@ The following RDF serialization formats are currently supported:
 | TriG                     | `.trig`                |
 | Turtle                   | `.ttl`, `.n3`          |
 
-Up to 1,000 separate files can be uploaded in one go.  It is also
-possible to upload compressed files and archives.  When the number of
+Up to 1,000 separate files can be uploaded in one go. It is also
+possible to upload compressed files and archives. When the number of
 files exceeds 1,000, it is more efficient to combine them in archives
-and upload those.  This allows an arbitrary number of files to be
+and upload those. This allows an arbitrary number of files to be
 uploaded. The following archive/compression formats are currently
 supported:
 
@@ -130,15 +130,15 @@ encountered, the RDF file must first be corrected and uploaded again.
 
 ![Screenshot of an error message indicating syntactically malformed RDF data](upload-error.png)
 
-TriplyDB follows the Linked Data standards strictly.  Many triple
-stores allow incorrect RDF data to be added.  This may seem convenient
+TriplyDB follows the Linked Data standards strictly. Many triple
+stores allow incorrect RDF data to be added. This may seem convenient
 during the loading phase, but often results in errors when
 standards-compliant tools start using the data.
 
 ## Assets: binary data
 
-Not all data can be stores as RDF data.  For example images and video
-files use a binary format.  Such files can also be stored in TriplyDB
+Not all data can be stores as RDF data. For example images and video
+files use a binary format. Such files can also be stored in TriplyDB
 and can be integrated into the Knowledge Grapk.
 
 # Publishing data
@@ -148,15 +148,15 @@ With TriplyDB you can easily make your data available to the outside world.
 ## Publishing your dataset
 
 You can publish your dataset by setting the visibility to “Public” in
-the dataset settings menu.  Making a dataset public in TriplyDB has
+the dataset settings menu. Making a dataset public in TriplyDB has
 the following consequences:
 
-  1. The dataset can be searched for an visited by anybody on the web.
-  2. The dataset will be indexed by web search engines such as [Google
-     Dataset Search]().
-  3. Any services that are started for that dataset will be available
-     to anybody on the web.  This includes [SPARQL](), [text
-     search](), and [Linked Data Fragments]().
+1. The dataset can be searched for an visited by anybody on the web.
+2. The dataset will be indexed by web search engines such as [Google
+   Dataset Search]().
+3. Any services that are started for that dataset will be available
+   to anybody on the web. This includes [SPARQL](), [text
+   search](), and [Linked Data Fragments]().
 
 ## Entering metadata
 
@@ -240,9 +240,9 @@ to other nodes in the graph.
 
 ## Linked Data Table
 
-The Linked Data Table shows a dataset at the triple level.  The first
+The Linked Data Table shows a dataset at the triple level. The first
 three columns represent the subject, predicate, and object position of
-the triple.  The fourth column represents the graph to which the
+the triple. The fourth column represents the graph to which the
 triple belongs.
 
 ![Image of the Linked Data Table](linked-data-table.png)
@@ -251,7 +251,7 @@ The Linked Data Table can be used to perform simple queries by filling
 in the subject, predicate, object, and/or graph using the text field.
 
 Terms in the Linked Data Table can be dragged and dropped between
-columns.  This allows a simple form of graph navigation.  For example,
+columns. This allows a simple form of graph navigation. For example,
 an object term can be dragged to the subject column in order to
 show the triples in which that term appears in the subject position.
 
@@ -262,36 +262,36 @@ API](/docs/triply-api#triple-pattern-fragments-tpf).
 ## SPARQL IDE
 
 When a dataset has a running SPARQL service, the data can be queried
-from the SPARQL IDE.  The SPARQL IDE is an extended version of the
+from the SPARQL IDE. The SPARQL IDE is an extended version of the
 Open Source [Yasgui](/docs/yasgui) query editor.
 
 ### Saving a SPARQL query
 
-It is often useful to save a SPARQL query for later use.  This is
+It is often useful to save a SPARQL query for later use. This is
 achieved by clicking on the save icon in the top-right corner of the
-SPARQL Editor.  Doing so will create a [Save Query](#saved-queries).
+SPARQL Editor. Doing so will create a [Save Query](#saved-queries).
 
 ### Sharing a SPARQL query
 
 It is sometimes useful to share a SPARQL query with somebody else, or
 to have a cURL command that can be used to run the same SPARQL query
-from a command line.  This is achieved by clicking on the share icon
-in the top-right corner of the SPARQL Editor.  This brings us a dialog
+from a command line. This is achieved by clicking on the share icon
+in the top-right corner of the SPARQL Editor. This brings us a dialog
 from which the SPARQL query can be copied in the following three forms:
 
-  1. The URL-encoded SPARQL query.  This is a long URL that includes
-     the endpoint, the query, and visualization settings.  Notice that
-     this URL can be quite long for complex queries and/or
-     visualizations.  Long URLs are not supported by some application
-     that cut off a URL after a maximum length (often 1,024
-     characters).  Use one of the other two options or use [Saved
-     Queries]() to avoid such restrictions.
+1. The URL-encoded SPARQL query. This is a long URL that includes
+   the endpoint, the query, and visualization settings. Notice that
+   this URL can be quite long for complex queries and/or
+   visualizations. Long URLs are not supported by some application
+   that cut off a URL after a maximum length (often 1,024
+   characters). Use one of the other two options or use [Saved
+   Queries]() to avoid such restrictions.
 
-  2. A short URL that redirects to the full URL-encoded SPARQL query.
+2. A short URL that redirects to the full URL-encoded SPARQL query.
 
-  3. A cURL command that can be copy/pasted into a terminal
-     application that supports this command.  cURL is often used by
-     programmers to test HTTP(S) requests.
+3. A cURL command that can be copy/pasted into a terminal
+   application that supports this command. cURL is often used by
+   programmers to test HTTP(S) requests.
 
 [Saved Queries]() are a more modern way of sharing SPARQL queries.
 They do not have any of the technical limitations that occur with
@@ -300,9 +300,52 @@ URL-encoded queries.
 ## Text Search
 
 When a dataset has a running ElasticSearch service, textual searches
-can be performed over the entire dataset.  Text Search works like a
+can be performed over the entire dataset. Text Search works like a
 search engine and returns any node that contains your search term, or
 contains the search term in any of it's properties.
+
+## Insights
+
+Insights are developed for linked datasets to give an overview about the linked
+dataset. The insights page holds two views, the Class-frequency and the
+Class-hierarchy view.
+
+### Class-frequency
+
+The class frequency diagram shows how often classes and properties appear in a
+graph. The selector on the top of the visualization selects the graph for which
+the Class-frequency is drawn.
+The visualization shows the top 10 class occurences in the specific graph. The
+specific amount occurences can be seen when hovering over the specific bar, also
+showing the complete IRI/prefixed IRI. When clicking on a specific class the node
+will expand and show the top 10 predicates sorted by count of use.
+
+### Class-hierarchy
+
+The class hierarchy diagram shows the hierarchy of the dataset in three
+different visualizations. Each of the diagrams are created by the
+`rdfs:subClassOf` relations and the classes in the dataset.
+We have three different visualization methods for the classHierarchy:
+
+- Bubbles visualization
+- Treemap visualization
+- Sunburst visualization
+
+All three visualization are interactive in two ways. It is possible to hover
+over, which will show information about the layer the mouse is on, or to click,
+where the visualization zooms in a one or more layers. For each visualization it
+is also possible to zoom out. either by clicking outside of the bubble for the
+Bubbles visualization. For the Sunburst visualization zooming out occurs when
+the middle is clicked. For the Treemap zooming out occurs by clicking on one
+of the higher layers on the top of the visualization.
+
+Important to note is that each Class needs to have instances connected to that
+class via `rdf:type`. Thus only the classes that have instances or classes that
+are parentClasses via `rdfs:subClassOf` relation with a class with instances are
+shown in the diagram.
+Also important to note, the class hierarchy also doesn't show if the class
+hierarchy contains circles. Meaning that a parentClass is also via one or more
+`rdfs:subClassOf` relations a childClass of a different class.
 
 # Saved Queries
 
@@ -414,18 +457,18 @@ The type of account can be observed based on the following icons:
 TriplyDB uses the following access levels for datasets, queries, and
 stories.
 
-| **Access level** | **Description** | **Icon** |
-| ---------------- | --------------- | -------- |
-| Private          | The dataset/query/story is only visible to you. | ![](private.png) |
+| **Access level** | **Description**                                                                           | **Icon**          |
+| ---------------- | ----------------------------------------------------------------------------------------- | ----------------- |
+| Private          | The dataset/query/story is only visible to you.                                           | ![](private.png)  |
 | Internal         | The dataset/query/story is only visible to people who are logged in to the same TriplyDB. | ![](internal.png) |
-| Public           | The dataset/query/story is vivible to everybody on the Internet. | ![](public.png) |
+| Public           | The dataset/query/story is vivible to everybody on the Internet.                          | ![](public.png)   |
 
 ### Access level dependencies
 
 The access levels for datasets, queries, and stories may affect each
-other.  For example, if a public query references a private dataset,
+other. For example, if a public query references a private dataset,
 other users will be able to view the query string, but none of the
-query results.  TriplyDB always uses the most conservative access
+query results. TriplyDB always uses the most conservative access
 level in such cases, ensuring that information is never exposed
 unintentionally.
 
@@ -433,56 +476,61 @@ unintentionally.
 
 These access levels are often used for the following workflow:
 
-  - You create a new dataset/query/story starts with access level
-    ‘Private’.
-  - As the dataset/query/story progresses, give it access level
-    ‘Internal’ to receive feedback from other users.
-  - Once the dataset/query/story is ready, give it access level
-    ‘Public’ to publish it to the world.
+- You create a new dataset/query/story starts with access level
+  ‘Private’.
+- As the dataset/query/story progresses, give it access level
+  ‘Internal’ to receive feedback from other users.
+- Once the dataset/query/story is ready, give it access level
+  ‘Public’ to publish it to the world.
 
 ## Markdown support
 
 Triply allows rich text formatting to be used in the following places:
 
-  - Dataset description
-  - Account description
-  - Saved Query description
-  - Data Story elements
-  - Site welcome message
+- Dataset description
+- Account description
+- Saved Query description
+- Data Story elements
+- Site welcome message
 
 The following Markdown elements are supported:
 
 ### Headings
 
-Headings are used to divide a text into different sections.  The hash
+Headings are used to divide a text into different sections. The hash
 character (`#`) at the beginning of a line indicates a heading is
-used.  Multiple hash characters indicate nested headings.
+used. Multiple hash characters indicate nested headings.
 
 ```md
 # Heading 1
+
 ## Heading 2
+
 ### Heading 3
+
 #### Heading 4
+
 ##### Heading 5
+
 ###### Heading 6
 ```
 
 ### Text styling
 
-| *Style*       | *Syntax*            | *Output*          |
+| _Style_       | _Syntax_            | _Output_          |
 | ------------- | ------------------- | ----------------- |
 | Bold          | `**bold**`          | **bold**          |
-| Italic        | `*italic*`          | *italic*          |
+| Italic        | `*italic*`          | _italic_          |
 | Strikethrough | `~~strikethrough~~` | ~~strikethrough~~ |
 
 ### Hyperlinks
 
-| *Style*     | *Syntax*                     | *Output*                   |
+| _Style_     | _Syntax_                     | _Output_                   |
 | ----------- | ---------------------------- | -------------------------- |
 | Raw URL     | `<https://triply.cc>`        | <https://triply.cc>        |
 | Labeled URL | `[label](https://triply.cc)` | [label](https://triply.cc) |
 
-Notice that URLs can also be relative.  This allows you to refer to
+Notice that URLs can also be relative. This allows you to refer to
 other datasets, saved queries, etc. by using relative paths.
 
 ### Code
@@ -526,15 +574,15 @@ select * {
 #### Code language
 
 The opening backticks are optionally following by the name of the code
-language.  The following code languages are supported:
+language. The following code languages are supported:
 
-| **Language** | **Syntax**     |
-|------------- | -------------- |
-| SPARQL       | `sparql`       |
-| Turtle       | `ttl`          |
-| TypeScript   | `typescript`   |
-| R            | `r`            |
-| Python       | `python`       |
+| **Language** | **Syntax**   |
+| ------------ | ------------ |
+| SPARQL       | `sparql`     |
+| Turtle       | `ttl`        |
+| TypeScript   | `typescript` |
+| R            | `r`          |
+| Python       | `python`     |
 
 The other supported languages are: Bash (`bash`), C (`c`), C++
 (`cpp`), C# (`csharp`), Extended Backus-Naur Form (`ebnf`), Go (`go`),
