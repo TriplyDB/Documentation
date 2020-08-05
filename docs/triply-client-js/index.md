@@ -1,12 +1,12 @@
 ---
-title: "Triply Javascript Client"
+title: "Triply Client"
 path: "/docs/triply-client-js"
 ---
 
 Triply Client is the programming library that makes it easy to
-interact with TriplyDB instances. Triply Client allows you to
+interact with TriplyDB instances.  Triply Client allows you to
 automate most operations that can be performed through the TriplyDB
-GUI.
+GUI.  Triply Client is implemented in TypeScript/JavaScript.
 
 This document is a work in progress. Please contact
 [support@triply.cc](mailto:support@triply.cc) for more information.
@@ -36,7 +36,7 @@ The following steps are needed in order to install Triply Client:
 3. In your current terminal session, export the following environment
    variables:
 
-   ```bash
+   ```sh
    export TRIPLY_API_TOKEN=<some-token>
    export TRIPLY_API_URL=<some-url>
    ```
@@ -94,7 +94,7 @@ uses the Triply Client library:
    async function run() {
      // Our first Triply Client request: obtain information of the
      // current user.
-     console.log(await client.getAccount().info());
+     console.log(await client.getAccount());
    }
    run().catch(e => {
      console.error(e);
@@ -104,13 +104,13 @@ uses the Triply Client library:
 
 2. Compile the TypeScript file into a corresponding JavaScript file:
 
-   ```bash
+   ```sh
    ./node_modules/.bin/tsc script.ts
    ```
 
 3. Run the JavaScript file:
 
-   ```bash
+   ```sh
    node script.js
    ```
 
@@ -126,26 +126,22 @@ typing feedback in the editor and offering autocomplete suggestions:
 
 1. Install the [Atom](https://atom.io) text editor.
 
-2. In order to let Atom use the correct TypeScript version, add a file
-   called `tsconfig.json` with the following contents to your project
-   directory:
+2. In order to let Atom use the correct TypeScript version, make the following
+   changes in the `tsconfig.json` file:
 
    ```json
-   {
-     "compilerOptions": {
-       "lib": ["es2017"]
-     }
-   }
+   "target": "es2020",
+   "lib": ["es2020"],
    ```
 
 3. From within the Atom preferences page, install the
-   [atom-typescript](https://atom.io/packages/atom-typescript)
+   [`atom-typescript`](https://atom.io/packages/atom-typescript)
    package.
 
 4. Start Atom over your script directory by running the following
    command from your `my_project` directory:
 
-   ```bash
+   ```sh
    atom .
    ```
 
@@ -947,7 +943,7 @@ One common appearance of this error is when the environment variable
 The current value of the environment variable can be tested by running
 the following command:
 
-```bash
+```sh
 echo $TRIPLY_API_TOKEN
 ```
 
@@ -959,6 +955,6 @@ has not been set. This variable must be set to a Triply API URL.
 The current value of the environment variable can be tested by running
 the following command:
 
-```bash
+```sh
 echo $TRIPLY_API_URL
 ```
