@@ -272,6 +272,39 @@ console.log(
                  name: "some-dataset"}));
 ```
 
+#### Account.addOrganization(metadata: object)
+
+Adds a new organization for which `Account` will be the owner.
+Accounts can be either users or organizations, but only users are able
+to create organizations.
+
+This only works if the used Triply Token gives write access to the
+account.
+
+Argument `metadata` is a JSON object that specifies the dataset
+metadata.  It has the following keys:
+
+<dl>
+  <dt><code>displayName</code> (optional)</dt>
+  <dd>The human-readable name of the dataset.  This name may contain spaces and other non-alphanumeric characters.</dd>
+  <dt><code>name</code> (required)</dt>
+  <dd>The internal name of the dataset.  This name is restricted to alphanumeric characters and hyphens.</dd>
+  <dt><code>description</code> (optional)</dt>
+  <dd>The description of the dataset.  This description can make use of Markdown layout (see the <a href="/docs/triply-db-getting-started/#markdown-support">Markdown reference</a>) for details.</dd>
+</dl>
+
+The following code example created a new organization (called
+`some-organization`) for which the user named `some-user` is the
+owner:
+
+```typscript
+console.log(
+  await client
+    .getAccount("some-user")
+    .addOrganization({"name": "some-organization",
+                      "displayName": "Some Organization"});
+```
+
 #### Account.datasets()
 
 Returns the list of datasets for this account.  This only includes
