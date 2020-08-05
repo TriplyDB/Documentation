@@ -126,8 +126,14 @@ typing feedback in the editor and offering autocomplete suggestions:
 
 1. Install the [Atom](https://atom.io) text editor.
 
-2. In order to let Atom use the correct TypeScript version, make the following
-   changes in the `tsconfig.json` file:
+2. Generate a `tsconfig.json` file with the following command:
+
+   ```sh
+   ./node_modules/.bin/tsc --init
+   ```
+
+3. In order to let Atom use the correct TypeScript version, make the
+   following changes in the `tsconfig.json` file:
 
    ```json
    "target": "es2020",
