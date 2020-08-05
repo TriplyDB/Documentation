@@ -22,13 +22,13 @@ interact with a specific TriplyDB instance.
 The following steps are needed in order to install Triply Client:
 
 1. Install [Node.js](https://nodejs.org) and
-   [NPM](https://www.npmjs.com).
+   [Yarn](https://yarnpkg.com).
 
    Example for installation on recent Ubuntu versions:
 
-   ```bash
-   sudo apt install nodejs npm # Debian-based, e.g., Ubuntu.
-   sudo dnf install nodejs npm # Red Hat-based, e.g., Fedora.
+   ```sh
+   sudo apt install nodejs yarn # Debian-based, e.g., Ubuntu.
+   sudo dnf install nodejs yarn # Red Hat-based, e.g., Fedora.
    ```
 
 2. Create a Triply API Token through the TriplyDB GUI.
@@ -51,25 +51,25 @@ that uses the Triply Client library:
 
 1. Create a directory for your project:
 
-   ```bash
+   ```sh
    mkdir my_script
+   cd my_script
    ```
 
-2. Create a file called `package.json` with the following content
-   within the `my_script` directory:
+2. Inside your newly created directory, run the following command to
+   initialize your project.  You will be asked several questions to
+   set up a professional project (e.g., software license).  Add flag
+   `-y` for a simplified setup, using default askers to the questions.
 
-   ```json
-   {
-     "name": "script",
-     "version": "1.0.0"
-   }
+   ```sh
+   yarn init
    ```
 
 3. Install the TypeScript and Triply Client dependencies from within
-   the `my_script` directory:
+   your newly created directory:
 
-   ```bash
-   npm install typescript @triply/client.js
+   ```sh
+   yarn add typescript @triply/client.js
    ```
 
 ### Create your first script
