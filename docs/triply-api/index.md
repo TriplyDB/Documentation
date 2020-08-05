@@ -5,7 +5,7 @@ path: "/docs/triply-api"
 
 Each Triply instance has a fully RESTfull API. All functionality, from managing
 the Triply instance to working with your data, is done through the API. This
-document describes the genral setup of the API, contact
+document describes the general setup of the API, contact
 [support@triply.cc](mailto:support@triply.cc) for more information.
 
 ## Authentication
