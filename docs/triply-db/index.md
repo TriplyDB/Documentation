@@ -236,7 +236,7 @@ TriplyDB offers several ways to explore your datasets.
 The linked data browser offers to traverse the data by focusing on one node
 at the time. The node is describe using it's properties, which can be followed
 to other nodes in the graph.
-![Image of the linked Data Browser](linked-data-browser.png)
+![Image of the linked Data Browser](ld-browser.png)
 
 ## Linked Data Table
 
@@ -245,7 +245,7 @@ three columns represent the subject, predicate, and object position of
 the triple.  The fourth column represents the graph to which the
 triple belongs.
 
-![Image of the Linked Data Table](linked-data-table.png)
+![Image of the Linked Data Table](ld-table.png)
 
 The Linked Data Table can be used to perform simple queries by filling
 in the subject, predicate, object, and/or graph using the text field.
