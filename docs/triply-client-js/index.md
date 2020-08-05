@@ -104,8 +104,8 @@ uses the Triply Client library:
 
 2. Compile the TypeScript file into a corresponding JavaScript file:
 
-   ```sh
-   ./node_modules/.bin/tsc script.ts
+   ```bash
+   ./node_modules/.bin/tsc
    ```
 
 3. Run the JavaScript file:
