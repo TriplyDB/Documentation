@@ -56,23 +56,23 @@ the Triply Client library:
    cd my_project
    ```
 
-2. Inside your newly created directory, run the following command to initialize
-your project.  You will be asked several questions to set up a professional
-project (e.g., software license).  Add flag `-y` for a simplified setup, using
-default askers to the questions.
+2. Inside your newly created directory, run the following command to
+initialize the package configuration.  You will be asked several
+questions to set up a professional project (e.g., software license).
+(Add flag `-y` for a simplified setup, using default answers to these
+questions.)
 
    ```sh
    yarn init
    ```
 
-3. Install the TypeScript and Triply Client dependencies from within your newly
-created directory:
+3. Add the TypeScript and Triply Client dependencies:
 
    ```sh
    yarn add typescript @triply/client.js
    ```
 
-4. Create the `tsconfig.json` file with the following command:
+4. Run the following command to initialize the project configuration:
 
    ```sh
    ./node_modules/.bin/tsc --init
