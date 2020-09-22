@@ -85,9 +85,13 @@ element:
     <dd>Shows GeoSPARQL results on a 2D map.</dd>
     <dt>geo3d</dt>
     <dd>Shows GeoSPARQL results on a 3D map.</dd>
+    <dt>geo-events</dt>
+    <dd>Shows events with a geospatial component on a timeline/map.</dd>
     <dt>pivot</dt>
     <dd>Shows a UI for selecting numeric properties in order
       to generate various diagrams and pivot tables.</dd>
+    <dt>timeline<dt>
+    <dd>Shows events on a timeline.</dd>
   </dl>
 
 ### Query {#query}
