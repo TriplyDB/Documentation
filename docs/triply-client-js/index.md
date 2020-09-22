@@ -52,8 +52,8 @@ the Triply Client library:
 1. Create a directory for your project:
 
    ```sh
-   mkdir my_script
-   cd my_script
+   mkdir my_project
+   cd my_project
    ```
 
 2. Inside your newly created directory, run the following command to initialize
@@ -70,6 +70,12 @@ created directory:
 
    ```sh
    yarn add typescript @triply/client.js
+   ```
+
+4. Create the `tsconfig.json` file with the following command:
+
+   ```sh
+   ./node_modules/.bin/tsc --init
    ```
 
 ### Create your first script
@@ -105,7 +111,7 @@ Triply Client library:
 2. Compile the TypeScript file into a corresponding JavaScript file:
 
    ```bash
-   ./node_modules/.bin/tsc index.ts
+   ./node_modules/.bin/tsc
    ```
 
 3. Run the JavaScript file:
@@ -126,13 +132,7 @@ editor and offering autocomplete suggestions:
 
 1. Install the [Atom](https://atom.io) text editor.
 
-2. Generate a `tsconfig.json` file with the following command:
-
-   ```sh
-   ./node_modules/.bin/tsc --init
-   ```
-
-3. In order to let Atom use the correct TypeScript version, make the following
+2. In order to let Atom use the correct TypeScript version, make the following
 changes in the `tsconfig.json` file:
 
    ```json
@@ -140,10 +140,10 @@ changes in the `tsconfig.json` file:
    "lib": ["es2020"],
    ```
 
-4. From within the Atom preferences page, install the
+3. From within the Atom preferences page, install the
 [`atom-typescript`](https://atom.io/packages/atom-typescript) package.
 
-5. Start Atom over your script directory by running the following command from
+4. Start Atom over your script directory by running the following command from
 your `my_project` directory:
 
    ```sh
