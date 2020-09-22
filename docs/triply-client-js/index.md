@@ -78,7 +78,7 @@ Once you have performed the installation and project setup, perform the
 following steps in order to create and run your first script that uses the
 Triply Client library:
 
-1. Create a file called `script.ts` and add the following contents:
+1. Create a file called `index.ts` and add the following contents:
 
    ```typescript
    // Import the Triply Client.
@@ -105,13 +105,13 @@ Triply Client library:
 2. Compile the TypeScript file into a corresponding JavaScript file:
 
    ```bash
-   ./node_modules/.bin/tsc
+   ./node_modules/.bin/tsc index.ts
    ```
 
 3. Run the JavaScript file:
 
    ```sh
-   node script.js
+   node index.js
    ```
 
 This should print the information of the current user to the terminal.  The
