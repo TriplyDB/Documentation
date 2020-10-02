@@ -196,6 +196,19 @@ The following example returns an object describing the used TriplyDB instance:
 console.log(client.getApiInfo());
 ```
 
+#### Client.getAccount(accountName: string)
+
+Returns the account with the given `accountName`.
+
+The following example returns the account called `acme`:
+
+```typescript
+console.log(await client.getAccount("acme"));
+```
+
+See section [`Account`](#account) for an overview of the methods that
+can be used with account objects.
+
 #### Client.getDataset(accountName: string, datasetName: string)
 
 Returns the dataset with name `datasetName` that is published by the account
@@ -209,10 +222,9 @@ console.log(client.getDataset("john-doe", "cats"));
 ```
 
 This function is a shorthand for a combination of the [`Client.getAccount(name:
-string)`](#clientgetaccountname-string) or the [`Client.getUser(name:
-string)`](#clientgetusername-string) call, and the [`Account.getDataset(name:
+string)`](#clientgetaccountname-string) and the [`Account.getDataset(name:
 string)`](#accountgetdatasetname-string) call.  Therefore, the following example
-returns the same result as the above example:
+returns the same result as the above one:
 
 ```typescript
 console.log(client.getUser("john-doe").getDataset("cats"));
@@ -225,7 +237,7 @@ Returns the organization with the given `name`.
 The following example returns the organization called `acme`:
 
 ```typescript
-console.log(await client.getAccount("acme"));
+console.log(await client.getOrganization("acme"));
 ```
 
 See section [`Organization`](#organization) for an overview of the methods that
@@ -233,7 +245,7 @@ can be used with organization objects.
 
 #### Client.getUser()
 
-Returns the account associated with the current Triply Token.
+Returns the user associated with the current Triply Token.
 
 The following example code returns the user associated with the current Triply
 Token:
@@ -245,9 +257,9 @@ console.log(await client.getUser());
 See section [`User`](#user) for an overview of the methods that can be used with
 user objects.
 
-#### Client.getUser(name: string)
+#### Client.getUser(userName: string)
 
-Returns the user with the given `name`.
+Returns the user with the given `userName`.
 
 The following example returns the user with name `john-doe`:
 
@@ -257,6 +269,62 @@ console.log(await client.getAccount("john-doe"));
 
 See section [`User`](#user) for an overview of the methods that can be used with
 user objects.
+
+### Account
+
+The `Account` class denotes a TriplyDB account.  Accounts can be either organizations ([`Organization`](#organization)) or users ([`User`](#user)).
+
+#### Account.asOrg()
+
+If the account is an organization, returns
+
+#### Account.getInfo()
+
+Returns an overview of the account in the form of a JSON object.
+
+The following example code prints an overview of account that is
+associated with the used Triply Token:
+
+```typescript
+console.log(
+  await client
+    .getAccount()
+    .getInfo());
+```
+
+Example output for running the above code:
+
+```json
+{
+  "avatarUrl": "https://www.gravatar.com/avatar/9bc28997dd1074e405e1c66196d5e117?d=mm",
+  "accountName": "wouter",
+  "uid": "5aafcb9639b170025c5e4b99",
+  "name": "Wouter Beek",
+  "type": "user",
+  "createdAt": "Mon Mar 19 2018 14:39:18 GMT+0000 (Coordinated Universal Time)",
+  "siteAdmin": true,
+  "superAdmin": true,
+  "email": "wouter@triply.cc",
+  "updatedAt": "Tue Nov 27 2018 09:29:38 GMT+0000 (Coordinated Universal Time)",
+  "authMethod": "password",
+  "disabled": false,
+  "verified": true
+}
+```
+
+#### Account.getName()
+
+Returns the name of the account.
+
+The following example code prints the name of the account associated with the
+current Triply Token:
+
+```typescript
+console.log(
+  await client
+    .getAccount()
+    .name());
+```
 
 ### Organization
 
@@ -534,54 +602,6 @@ The following example prints the list of pinned datasets for the user named
 ```typescript
 const user = await client.getUser("john-doe");
 console.log(await user.getPinnedDatasets());
-```
-
-#### Account.info()
-
-Returns an overview of the account in the form of a JSON object.
-
-The following example code prints an overview of account that is
-associated with the used Triply Token:
-
-```typescript
-console.log(
-  await client
-    .getAccount()
-    .info());
-```
-
-Example output for running the above code:
-
-```json
-{
-  "avatarUrl": "https://www.gravatar.com/avatar/9bc28997dd1074e405e1c66196d5e117?d=mm",
-  "accountName": "wouter",
-  "uid": "5aafcb9639b170025c5e4b99",
-  "name": "Wouter Beek",
-  "type": "user",
-  "createdAt": "Mon Mar 19 2018 14:39:18 GMT+0000 (Coordinated Universal Time)",
-  "siteAdmin": true,
-  "superAdmin": true,
-  "email": "wouter@triply.cc",
-  "updatedAt": "Tue Nov 27 2018 09:29:38 GMT+0000 (Coordinated Universal Time)",
-  "authMethod": "password",
-  "disabled": false,
-  "verified": true
-}
-```
-
-#### Account.name()
-
-Returns the name of the account.
-
-The following example code prints the name of the account associated with the
-current Triply Token:
-
-```typescript
-console.log(
-  await client
-    .getAccount()
-    .name());
 ```
 
 #### Account.rename(name: string)
