@@ -31,7 +31,8 @@ The following steps are needed in order to install Triply Client:
    sudo dnf install nodejs yarn # Red Hat-based, e.g., Fedora.
    ```
 
-2. Create a Triply Token through the TriplyDB GUI.
+2. Create a Triply Token through the TriplyDB GUI. 
+B: what is a Triply Token? How is it created through TriplyDB GUI?
 
 3. In your current terminal session, export the following environment
    variables:
