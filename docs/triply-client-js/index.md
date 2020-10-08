@@ -31,9 +31,10 @@ The following steps are needed in order to install Triply Client:
    sudo dnf install nodejs yarn # Red Hat-based, e.g., Fedora.
    ```
 
-2. Create a Triply API Token through the TriplyDB GUI. 
+2. Create an API token through the TriplyDB GUI.
 
-To create a Token, go to user settings in TriplyDB, then press on 'API tokens', where you'll be able to create a token.
+To create an API token, go to user settings in TriplyDB, then click on
+“API tokens”, where you'll be able to create a token.
 
 3. In your current terminal session, export the following environment
    variables (make sure there aren't any spaces after =):
@@ -71,7 +72,7 @@ questions.)
 3. Add the TypeScript and Triply Client dependencies:
 
    ```sh
-   yarn add typescript @triply/client.js
+   yarn add typescript @triply/triplydb
    ```
 
 4. Run the following command to initialize the project configuration:
@@ -90,7 +91,7 @@ Triply Client library:
 
    ```typescript
    // Import the Triply Client.
-   import Client from "@triply/client.js/build/src/App";
+   import Client from "@triply/triplydb";
 
    // Configure the Triply Client.
    const client = Client.get({
@@ -122,8 +123,8 @@ Triply Client library:
    node index.js
    ```
 
-This should print the information of the current user to the terminal.  The
-current user is determined by the Triply Token that was set in the
+This should print the information of the current user to the terminal.
+The current user is determined by the API token that was set in the
 `TRIPLY_API_TOKEN` environment variable.
 
 ### Using the Atom text editor (optional)
@@ -166,7 +167,7 @@ example. These code examples can be run by inserting them into the
 following basic script structure:
 
 ```typescript
-import Client from "@triply/client.js/build/src/App";
+import Client from "@triply/triplydb";
 const client = Client.get({
   url: process.env.TRIPLY_API_TOKEN,
   token: process.env.TRIPLY_API_URL
@@ -192,12 +193,12 @@ Instances of `Client` are specific client connections with a
 #### Client.getApiInfo()
 
 Returns information about the TriplyDB instance that is associated with the
-current Triply Token.
+current API token.
 
 The following example returns an object describing the used TriplyDB instance:
 
 ```typescript
-console.log(client.getApiInfo());
+console.log(await client.getApiInfo());
 ```
 
 #### Client.getAccount(accountName: string)
@@ -244,22 +245,22 @@ The following example returns the organization called `acme`:
 console.log(await client.getOrganization("acme"));
 ```
 
-See section [`Organization`](#organization) for an overview of the methods that
-can be used with organization objects.
+See section [`Organization`](#organization) for an overview of the
+methods that can be used with organization objects.
 
 #### Client.getUser()
 
-Returns the user associated with the current Triply Token.
+Returns the user associated with the current API token.
 
-The following example code returns the user associated with the current Triply
-Token:
+The following example code returns the user associated with the
+current API token:
 
 ```typescript
 console.log(await client.getUser());
 ```
 
-See section [`User`](#user) for an overview of the methods that can be used with
-user objects.
+See section [`User`](#user) for an overview of the methods that can be
+used with user objects.
 
 #### Client.getUser(userName: string)
 
@@ -287,7 +288,7 @@ If the account is an organization, returns
 Returns an overview of the account in the form of a JSON object.
 
 The following example code prints an overview of account that is
-associated with the used Triply Token:
+associated with the used API token:
 
 ```typescript
 console.log(
@@ -320,8 +321,8 @@ Example output for running the above code:
 
 Returns the name of the account.
 
-The following example code prints the name of the account associated with the
-current Triply Token:
+The following example code prints the name of the account associated
+with the current API token:
 
 ```typescript
 console.log(
@@ -338,7 +339,7 @@ The `Organization` class denotes a TriplyDB organization.
 
 Adds a new dataset to the `Organization`.
 
-This only works if the used Triply Token gives write access to the
+This only works if the used API token gives write access to the
 `Organization`.
 
 Argument `metadata` is a JSON object that specifies the dataset metadata.  It
@@ -421,8 +422,8 @@ console.log(organization.getDataset("dogs"));
 
 #### Organization.getDatasets()
 
-Returns the list of datasets for the `Organization`.  This only includes
-datasets that are accessible under the used Triply Token.
+Returns the list of datasets for the `Organization`.  This only
+includes datasets that are accessible under the used API token.
 
 The following example prints the list of datasets that belong to the
 organization named `acme`:
@@ -458,7 +459,8 @@ create and delete users through the web-based GUI.
 
 Adds a new dataset for the given `User`.
 
-This only works if the used Triply Token gives write access to the user account.
+This only works if the used API token gives write access to the user
+account.
 
 Argument `metadata` is a JSON object that specifies the dataset metadata.  It
 has the following keys:
@@ -510,7 +512,8 @@ console.log(user.addDataset({name: "cats"}));
 
 Creates a new organization for which `User` will be the owner.
 
-This only works if the used Triply Token includes write access for the `User`.
+This only works if the used API token includes write access for the
+`User`.
 
 Argument `metadata` is a JSON object that specifies the organization metadata.
 It has the following keys:
@@ -567,8 +570,8 @@ console.log(await user.getDataset("cats"));
 
 #### User.getDatasets()
 
-Returns the list of datasets for this `User`.  This only includes datasets that
-are accessible under the Triply Token.
+Returns the list of datasets for this `User`.  This only includes
+datasets that are accessible under the API token.
 
 The following example prints the list of datasets that belong to the user named
 `john-doe`:
@@ -690,8 +693,8 @@ dataset metadata and assets:
 - [Dataset.deleteGraph(graphName: string)](#datasetdeletegraphname-string)
 - [Dataset.removeAllGraphs()](#datasetremoveallgraphs)
 
-The following example code deletes a specific dataset that is part of the
-account associated with the current Triply Token:
+The following example code deletes a specific dataset that is part of
+the account associated with the current API token:
 
 ```typescript
 await client
@@ -1167,20 +1170,20 @@ const reply = await SuperAgent.post("URL-OF-SOME-SPARQL-ENDPOINT")
 
 #### Why must I set environment variable `TRIPLY_API_TOKEN`?
 
-It is common for scripts to be shared with others and/or get published online
-using services like Github and Gitlab.  Since the Triply token is private, it
-must never be used in the TypeScript script file directly.
+It is common for scripts to be shared with others and/or get published
+online using services like Github and Gitlab.  Since the API token is
+private, it must never be used in the TypeScript script file directly.
 
 #### Error: Unauthorized
 
-This error appears whenever an operation is performed for which the user denoted
-by the current Triply Token is not authorized.
+This error appears whenever an operation is performed for which the
+user denoted by the current API token is not authorized.
 
 One common appearance of this error is when the environment variable
-`TRIPLY_API_TOKEN` is not set to a Triply Token.
+`TRIPLY_API_TOKEN` is not set to an API token.
 
-The current value of the environment variable can be tested by running the
-following command:
+The current value of the environment variable can be tested by running
+the following command:
 
 ```sh
 echo $TRIPLY_API_TOKEN
