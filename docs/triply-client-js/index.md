@@ -145,12 +145,7 @@ changes in the `tsconfig.json` file:
 3. From within the Atom preferences page, install the
 [`atom-typescript`](https://atom.io/packages/atom-typescript) package.
 
-If you wish to run your script within Atom, install the package Script. Furthermore, in terminal, reach your project, and install ts-node
-
-  ```sh
-   cd my_project
-   sudo npm install -g ts-node
-   ```
+If you wish to run your scripts within Atom, you may install the package Script.
 
 4. Start Atom over your script directory by running the following command from
 your `my_project` directory:
