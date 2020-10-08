@@ -36,10 +36,10 @@ The following steps are needed in order to install Triply Client:
 To create a Token, go to user settings in TriplyDB, then press on 'API tokens', where you'll be able to create a token.
 
 3. In your current terminal session, export the following environment
-   variables:
+   variables (make sure there aren't any spaces after =):
 
    ```sh
-   export TRIPLY_API_TOKEN=<some-token>
+   export TRIPLY_API_TOKEN=<your-token>
    export TRIPLY_API_URL=<some-url>
    ```
 
@@ -110,13 +110,13 @@ Triply Client library:
    });
    ```
 
-2. Compile the TypeScript file into a corresponding JavaScript file:
+2. Compile the TypeScript file into a corresponding JavaScript file by writing in the terminal:
 
    ```bash
    ./node_modules/.bin/tsc
    ```
 
-3. Run the JavaScript file:
+3. Run the JavaScript file by writing in the terminal:
 
    ```sh
    node index.js
@@ -144,6 +144,13 @@ changes in the `tsconfig.json` file:
 
 3. From within the Atom preferences page, install the
 [`atom-typescript`](https://atom.io/packages/atom-typescript) package.
+
+If you wish to run your script within Atom, install the package Script. Furthermore, in terminal, reach your project, and install ts-node
+
+  ```sh
+   cd my_project
+   sudo npm install -g ts-node
+   ```
 
 4. Start Atom over your script directory by running the following command from
 your `my_project` directory:
