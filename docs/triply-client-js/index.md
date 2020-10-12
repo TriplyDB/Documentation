@@ -169,8 +169,8 @@ following basic script structure:
 ```typescript
 import Client from "@triply/triplydb";
 const client = Client.get({
-  url: process.env.TRIPLY_API_TOKEN,
-  token: process.env.TRIPLY_API_URL
+  url: process.env.TRIPLY_API_URL,
+  token: process.env.TRIPLY_API_TOKEN
 });
 async function run() {
   // This is where operations that use the Triply API are performed.
