@@ -127,7 +127,7 @@ This should print the information of the current user to the terminal.
 The current user is determined by the API token that was set in the
 `TRIPLY_API_TOKEN` environment variable.
 
-### Using the Atom text editor (optional)
+### Using the Atom text editor (recommended)
 
 The Atom text editor provides advanced support for programming in TypeScript,
 which makes it easier to use Triply Client by showing typing feedback in the
@@ -188,7 +188,7 @@ functions.
 
 ### Client
 
-Instances of `Client` are specific client connections with a
+Instances of `Client` are specific client connections with a TriplyDB user.
 
 #### Client.getApiInfo()
 
@@ -203,9 +203,9 @@ console.log(await client.getApiInfo());
 
 #### Client.getAccount(accountName: string)
 
-Returns the account with the given `accountName`.
+Returns details about the account with the given `accountName`.
 
-The following example returns the account called `acme`:
+The following example refers to an account called `acme`:
 
 ```typescript
 console.log(await client.getAccount("acme"));
@@ -277,11 +277,17 @@ user objects.
 
 ### Account
 
-The `Account` class denotes a TriplyDB account.  Accounts can be either organizations ([`Organization`](#organization)) or users ([`User`](#user)).
+The `Account` class denotes a TriplyDB account.  Accounts can be either organizations ([`Organization`](#organization)) or users ([`User`](#user)). This class refers to client.getAccount()
 
 #### Account.asOrg()
 
-If the account is an organization, returns
+If the account is an organization, returns information about the account. Otherwise,results in the error: "This is a user. Cannot fetch this as an organization."
+
+Best used as the following:
+```typescript
+  console.log(
+  (await client.getAccount()).asOrg());
+```
 
 #### Account.getInfo()
 
@@ -292,9 +298,7 @@ associated with the used API token:
 
 ```typescript
 console.log(
-  await client
-    .getAccount()
-    .getInfo());
+await (await client.getAccount()).getInfo());
 ```
 
 Example output for running the above code:
@@ -326,9 +330,9 @@ with the current API token:
 
 ```typescript
 console.log(
-  await client
-    .getAccount()
-    .name());
+    await (await client
+      .getAccount())
+      .getName());
 ```
 
 ### Organization
