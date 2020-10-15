@@ -37,11 +37,10 @@ To create an API token, go to user settings in TriplyDB, then click on
 “API tokens”, where you'll be able to create a token.
 
 3. In your current terminal session, export the following environment
-   variables (make sure there aren't any spaces after =):
+   variables (ensure there aren't any spaces after =):
 
    ```sh
    export TRIPLY_API_TOKEN=<your-token>
-   export TRIPLY_API_URL=<some-url>
    ```
 
    You can also add these lines to your `.profile` file in order to add these
@@ -96,7 +95,6 @@ Triply Client library:
    // Configure the Triply Client.
    const client = Client.get({
      token: process.env.TRIPLY_API_TOKEN,
-     url: process.env.TRIPLY_API_URL
    });
 
    // Perform Triply Client requests within an async context.
@@ -169,7 +167,6 @@ following basic script structure:
 ```typescript
 import Client from "@triply/triplydb";
 const client = Client.get({
-  url: process.env.TRIPLY_API_URL,
   token: process.env.TRIPLY_API_TOKEN
 });
 async function run() {
