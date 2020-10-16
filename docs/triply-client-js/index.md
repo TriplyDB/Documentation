@@ -660,14 +660,12 @@ dataset. One endpoint will be used in the acceptance environment
 while the other endpoint will be used in the production system.
 
 ```typescript
-const dataset = await client
-  .getAccount("some-account")
-  .getDataset("some-dataset");
+const dataset = await (await client.getAccount()).getDataset("dataset name");
 const acceptance = dataset.addService("sparql", "acceptance");
 const production = dataset.addService("sparql", "production");
 ```
 
-#### Dataset.assets()
+#### Dataset.getAssets()
 
 Returns an array with objects that represent the assets that belong to
 this dataset.
@@ -676,18 +674,24 @@ The following example code retrieves the assets for a specific
 dataset:
 
 ```typescript
-console.log(
-  await client
-    .getAccount("some-account")
-    .getDataset("some-dataset")
-    .assets());
+  console.log(await (await client
+      .getAccount())
+      .getDataset("dataset name")
+      .getAssets());
 ```
 
 #### Dataset.copy(account: string, dataset: string)
 
 Creates a copy of the current dataset.  The owner (user or
-organization) of he copy is specified with parameter `account`.  The
+organization) of the copy is specified with parameter `account`.  The
 name of the copy is specified with parameter `dataset`.
+
+```typescript
+  console.log(await (await client
+      .getAccount())
+      .getDataset("original dataset name")
+      .copy("account name","copy dataset name"));
+```
 
 This operation does not overwrite existing datasets: if the copied-to
 dataset already exists, a new dataset with suffix `-1` will be
@@ -716,6 +720,7 @@ await client
 
 The following example code only deletes a specific dataset if it
 exists (notice the use of `try` and `catch`):
+Benny: no try and catch...
 
 ```typescript
 await client
@@ -724,7 +729,7 @@ await client
   .delete();
 ```
 
-#### Dataset.deleteGraph(name: string)
+#### Dataset.deleteGraph(name: string) REVISION STOPPED HERE
 
 Deletes a specific graph that belongs to this dataset.
 
