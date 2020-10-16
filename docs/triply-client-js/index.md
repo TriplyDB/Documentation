@@ -408,7 +408,7 @@ prints `false` otherwise:
 ```typescript
 const organization = await client.getOrganization("acme");
 // Perform several tasks.
-console.log(await organization.exists());
+console.log(await (await organization).exists());}
 ```
 
 #### Organization.getDataset(name: string)
@@ -423,7 +423,7 @@ The following example prints a specific dataset object:
 
 ```typescript
 const organization = client.getOrganization("acme");
-console.log(organization.getDataset("dogs"));
+console.log((await organization).getDataset("dogs"));
 ```
 
 #### Organization.getDatasets()
@@ -435,7 +435,7 @@ The following example prints the list of datasets that belong to the
 organization named `acme`:
 
 ```typescript
-const organization = await client.getOrganization("acme");
+  const organization = await client.getOrganization("acme");
 console.log(await organization.getDatasets());
 ```
 
@@ -455,7 +455,11 @@ console.log(await organization.getPinnedDatasets());
 
 ### User
 
-The [`User`](#user) class represents a TriplyDB user.
+The [`User`](#user) class represents a TriplyDB user. It is accessed via:
+
+```typescript
+client.getUser(<user name>);
+```
 
 Users cannot be created or deleted through the Triply Client library.  See the
 [Triply Console documentation](/docs/triply-db-getting-started) for how to
@@ -507,11 +511,12 @@ has the following keys:
 </dl>
 
 The following code example creates a new dataset (called `cats`) for the user
-with name `john-doe`:
+with name `john-doe`, with private access, a description, display name, and a license:
 
 ```typescript
 const user = await client.getUser("john-doe");
-console.log(user.addDataset({name: "cats"}));
+  console.log(await(user.addDataset({accessLevel: "private", description:"cats > dogs", displayName: "Cats", license:"PDDL", name: "cats"})));
+
 ```
 
 #### User.createOrganization(metadata: object)
