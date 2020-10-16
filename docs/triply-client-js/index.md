@@ -407,8 +407,7 @@ prints `false` otherwise:
 
 ```typescript
 const organization = await client.getOrganization("acme");
-// Perform several tasks.
-console.log(await (await organization).exists());}
+console.log(await (organization).exists());
 ```
 
 #### Organization.getDataset(name: string)
@@ -543,10 +542,11 @@ It has the following keys:
 The following example creates an organization with name `acme` for which the
 user with name `john-doe` will be the owner.  Notice that in addition to the required internal name (`"accountName": "acme"`), an optional display name (`"name": "Acme Corporation"`) is specified as well.
 
+BENNY: even after changing add into create, it doesn't work. 'UnhandledPromiseRejectionWarning: Error: Unauthorized.'
 ```typescript
 const user = await client.getUser("john-doe");
-console.log(user.addOrganization({"accountName": "acme",
-                                  "name": "Acme Corporation"}));
+console.log(user.createOrganization({"accountName": "acme",
+                                    "name": "Acme Corporation"}));
 ```
 
 #### User.exists()
@@ -561,7 +561,6 @@ prints `false` otherwise:
 
 ```typescript
 const user = await client.getUser("john-doe");
-// Perform several tasks.
 console.log(await user.exists());
 ```
 
@@ -576,7 +575,7 @@ The following example prints a specific dataset object:
 
 ```typescript
 const user = await client.getUser("john-doe");
-console.log(await user.getDataset("cats"));
+console.log(user.getDataset("cats"));
 ```
 
 #### User.getDatasets()
@@ -629,6 +628,7 @@ Renames the account from its current name to the specified new `name`.
 The following example code renames a specific dataset from
 `some-account` to `new-name`:
 
+Benny: rename does not exist. And shouldn't this refer to user? (rename doesn't exist for either)
 ```typescript
 console.log(
   await client
