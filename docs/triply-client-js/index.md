@@ -336,6 +336,11 @@ console.log(
 
 The `Organization` class denotes a TriplyDB organization.
 
+An 'Organization' class is obtained via:
+```typescript
+console.log(await client.getOrganization(<organization's name in triplyDB>));
+```
+
 #### Organization.addDataset(metadata: object)
 
 Adds a new dataset to the `Organization`.
@@ -382,11 +387,11 @@ has the following keys:
 </dl>
 
 The following code example creates a new dataset (called `dogs`) under the
-`acme` organization:
+`acme` organization, with private access, a description, a display name, and a license:
 
 ```typescript
-const organization = await client.getOrganization("acme");
-console.log(await organization.addDataset({name: "dogs"}));
+const organization = client.getOrganization("acme");
+console.log((await organization).addDataset({accessLevel: "private", description:"puppies", displayName:"Doggos", license:"PDDL", name:"dogs"}));
 ```
 
 #### Organization.exists()
