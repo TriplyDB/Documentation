@@ -729,7 +729,7 @@ await client
   .delete();
 ```
 
-#### Dataset.deleteGraph(name: string) REVISION STOPPED HERE
+#### Dataset.deleteGraph(name: string) REVISION STOPPED HERE!
 
 Deletes a specific graph that belongs to this dataset.
 
