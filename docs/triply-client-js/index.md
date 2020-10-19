@@ -1111,7 +1111,7 @@ The following code example starts a specific service:
 
 #### Service.getStatus()
 
-BENNY: doesn't exist; you can get the status if you create
+BENNY: doesn't exist; you can get the status if you create the service inside console.log()
 
 Returns the status of this service.
 
