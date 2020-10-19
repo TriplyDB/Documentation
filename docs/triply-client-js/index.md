@@ -932,6 +932,7 @@ The following keys are supported:
   <dt><code>displayName</code> (optional)</dt>
   <dd>The human-readable name of the dataset.  This name may contain spaces and other non-alphanumeric characters.</dd>
   <dt><code>exampleResources</code></dt>
+   BENNY: what does this refer to?
   <dd></dd>
   <dt><code>license</code> (optional)</dt>
   <dd>
@@ -948,8 +949,19 @@ The following keys are supported:
   <dt><code>name</code> (required)</dt>
   <dd>The internal name of the dataset.  This name is restricted to alphanumeric characters and hyphens.</dd>
   <dt><code>topics</code></dt>
+   BENNY: what does this refer to?
   <dd></dd>
 </dl>
+
+Example: updating the dataset's access level, description, display name, license, and name.
+
+```typescript
+  const dataset = (await client
+    .getAccount())
+    .getDataset("original dataset name");
+dataset.update({accessLevel:"private",description:"desc", displayName:"disp", license:"PDDL", name:"updated name"})
+
+```
 
 #### Dataset.upload(filePaths: string[])
 
