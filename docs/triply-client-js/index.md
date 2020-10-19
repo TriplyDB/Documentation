@@ -31,9 +31,9 @@ The following steps are needed in order to install Triply Client:
    sudo dnf install nodejs yarn # Red Hat-based, e.g., Fedora.
    ```
 
-2. Create an API token through the TriplyDB GUI.
+2. Create an API token through the TriplyDB GUI. See [this video](https://youtu.be/ACfOY2a_VVM) for instructions on how to do it.
 
-To create an API token, go to user settings in TriplyDB, then click on
+In short, to create an API token, go to user settings in TriplyDB, then click on
 “API tokens”, where you'll be able to create a token.
 
 3. In your current terminal session, export the following environment
@@ -729,7 +729,7 @@ await client
   .delete();
 ```
 
-#### Dataset.deleteGraph(name: string) REVISION STOPPED HERE!
+#### Dataset.deleteGraph(name: string)
 
 Deletes a specific graph that belongs to this dataset.
 
@@ -737,8 +737,8 @@ The following example code deletes a specific graph from a specific
 dataset:
 
 ```typescript
-await client
-  .getAccount()
+ (await client
+  .getAccount())
   .getDataset("some-dataset")
   .deleteGraph("https://example.org/some-graph");
 ```
@@ -747,7 +747,7 @@ await client
 
 Returns whether the dataset still exists.
 
-Datasets can seize exist when the [Dataset.delete()](#datasetdelete)
+Datasets can still be considered to exist when the [Dataset.delete()](#datasetdelete)
 function is called, when the
 [Dataset.rename(string)](#datasetrenamename-string) function is
 called, or when somebody deletes the dataset from the [Triply
@@ -758,8 +758,8 @@ exists, and prints `false` otherwise:
 
 ```typescript
 console.log(
-  await client
-    .getAccount("some-account")
+await (await client
+    .getAccount())
     .getDataset("some-dataset")
     .exists());
 ```
@@ -773,13 +773,13 @@ specific dataset:
 
 ```typescript
 console.log(
-  await client
-    .getAccount("some-account")
+await (await client
+    .getAccount())
     .getDataset("some-dataset")
     .getServices());
 ```
 
-#### Dataset.graphs()
+#### Dataset.getGraphs()
 
 Returns an array with objects that represent the graphs that belong to
 this dataset.
@@ -789,43 +789,53 @@ dataset:
 
 ```typescript
 console.log(
-  await client
-    .getAccount("some-account")
+await (await client
+    .getAccount())
     .getDataset("some-dataset")
-    .graphs());
+    .getGraphs());
 ```
 
-#### Dataset.import(from: Dataset, graphs: mapping)
+#### Dataset.importFromDataset(from: Dataset, graphs: mapping)
 
-`mapping` is a JSON object whose keys are existing graph names in the
-`from` dataset, and whose values are new graph names in the
-current/target dataset.
+`graphs:mapping` is a JSON object taking existing graph names (graphs) in the
+`from` dataset, and mapping them into a new named graph in the Dateset into which they are imported.
 
 The following code example creates a new dataset “d2” and imports one
 graph from the existing dataset “d1”. Notice that the graph can be
 renamed as part of the import.
 
 ```typescript
-const dataset1 = await client
-  .getAccount()
-  .getDataset("some-dataset");
-const dataset2 = await client
-  .getAccount()
-  .addDataset({accessLevel: "private",
-               name: "other-dataset"});
-await dataset1
-  .import(dataset2,
-          {"https://example.org/dataset2/graph":
-           "https://example.org/dataset1/graph"});
+  const dataset1 = (await client
+    .getAccount())
+    .getDataset("some-dataset");
+  const dataset2 = await (await client
+    .getAccount())
+    .addDataset({accessLevel: "private",
+                 name: "other-dataset"});
+  await dataset1
+    .importFromDataset(dataset2,
+            {"https://example.org/dataset2/graph":
+             "https://example.org/dataset1/graph"});
+```
+Note that you can also import from URLs with
+
+```typescript
+dataset1.importFromUrls(urls:"url")
+```
+and you can also import from files with
+
+```typescript
+dataset1.FromFiles(files:"direction to file")
 ```
 
-#### Dataset.importedGraphs()
+#### Dataset.importedGraphs() - DEPRACATED
 
 Returns an array with objects that represent the imported graphs that
 belong to this dataset.
 
 The following example code retrieves the imported graphs for a
 specific dataset:
+BENNY: nothing like this seems to exist at this point.
 
 ```typescript
 console.log(
@@ -835,23 +845,19 @@ console.log(
     .importedGraphs());
 ```
 
-#### Dataset.importFromUrl(url: string)
-
-Adds one or more RDF graphs that are stored at the given URL to the dataset.
-
-The following example code adds the OWL vocabulary to the dataset:
-
-```typescript
-console.log(
-  await client
-    .getAccount("some-account")
-    .getDataset("some-dataset")
-    .importFromUrl("http://www.w3.org/2002/07/owl#"));
-```
-
 #### Dataset.info()
 
 Returns an overview of the dataset in the form of a JSON object.
+
+Example:
+
+```typescript
+  console.log(
+    await (await client
+      .getAccount())
+      .getDataset("dataset")
+      .getInfo());
+```
 
 #### Dataset.query()
 
@@ -864,10 +870,10 @@ The following code example retrieves the query object of a specific
 dataset:
 
 ```typescript
-const query = client
-  .getAccount("some-account")
-  .getDataset("some-dataset")
-  .query();
+  const query = (await client
+    .getAccount("some-account"))
+    .getDataset("some-dataset")
+    .query();
 ```
 
 #### Dataset.removeAllGraphs()
@@ -877,10 +883,10 @@ Removes all graphs from this dataset.
 The following code example removed all graphs from a specific dataset:
 
 ```typescript
-await client
-  .getAccount("some-account")
-  .getDataset("some-dataset")
-  .removeAllGraphs();
+  await (await client
+    .getAccount("some-account"))
+    .getDataset("some-dataset")
+    .removeAllGraphs();
 ```
 
 #### Dataset.renameGraph(from: string, to: string)
@@ -893,13 +899,13 @@ The following example code renames a specific graph of a specific
 dataset:
 
 ```typescript
-const dataset = client
-  .getAccount()
-  .getDataset("some-dataset");
-await dataset.renameGraph(
-  "https://example.org/old-graph",
-  "https://example.org/new-graph"
-);
+  const dataset = (await client
+    .getAccount())
+    .getDataset("some-dataset");
+  await dataset.renameGraph(
+    "https://example.org/old-graph",
+    "https://example.org/new-graph"
+  );
 ```
 
 #### Dataset.update(metadata: object)
