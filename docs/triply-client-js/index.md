@@ -1095,19 +1095,23 @@ and [`Dataset.getServices`](#datasetgetservices) functions.
 
 #### Service.create()
 
+BENNY: seems like there's no need for create()? addService already adds service, so I get an error because the service already exists...
+
 Starts this service.
 
 The following code example starts a specific service:
 
 ```typescript
-await client
-  .getAccount("some-account")
-  .getDataset("some-dataset")
-  .addService("sparql", "new-service")
-  .create();
+  (await (await client
+    .getAccount("some-account"))
+    .getDataset("some-dataset")
+    .addService("sparql", "new-service"))
+    .create();
 ```
 
 #### Service.getStatus()
+
+BENNY: doesn't exist; you can get the status if you create
 
 Returns the status of this service.
 
@@ -1129,7 +1133,7 @@ const service = await client
 console.log(service.getStatus());
 ```
 
-#### Service.info()
+#### Service.getInfo()
 
 Returns an overview of the service in the form of a JSON object.
 
@@ -1137,12 +1141,22 @@ The following example code prints information about the newly created
 service (named `new-service`):
 
 ```typescript
-const service = await client
-  .getAccount("some-account")
-  .getDataset("some-dataset")
-  .addService("sparql", "new-service");
-console.log(service.info());
+  const service = await (await client
+    .getAccount("some-account"))
+    .getDataset("some-dataset")
+    .addService("sparql", "new-service");
+  console.log(service.getInfo());
 ```
+
+Another way to get information about existing services:
+```typescript
+  console.log(await (await client
+    .getAccount())
+    .getDataset("dataset")
+    .getServices()
+  );
+```
+
 
 #### Service.isUpToDate()
 
@@ -1169,14 +1183,16 @@ The following example code checks whether a specific service is
 synchonized:
 
 ```typescript
-const service = await client
-  .getAccount("some-account")
-  .getDataset("some-dataset")
-  .addService("sparql", "new-service");
-console.log(service.isUpToDate());
+  const service = await (await client
+    .getAccount("some-account"))
+    .getDataset("some-dataset")
+    .addService("sparql", "new-service");
+  console.log(service.isUpToDate());
 ```
 
 #### Service.restart()
+
+BENNY: Doesn't exist.
 
 Restarts this service.
 
