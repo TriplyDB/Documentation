@@ -965,6 +965,8 @@ dataset.update({accessLevel:"private",description:"desc", displayName:"disp", li
 
 #### Dataset.upload(filePaths: string[])
 
+BENNY: dataset.upload does not exist. Maybe should be importFromFiles? Also, dataset.getJob() doesn't exist.
+
 Adds the given file paths to the current upload job.
 
 The files must contain RDF data and must be encoded in one of the
@@ -989,8 +991,8 @@ await dataset.upload(
   "file.nq", // Uploading an N-Quads file,
   "file.nt", // and an N-Triples file,
   "file.trig", // and a TriG file,
-  "file.ttl"
-); // and a Turtle file.
+  "file.ttl" // and a Turtle file.
+);
 await dataset.getJob().exec();
 ```
 
@@ -1006,13 +1008,13 @@ The following example code uploads a PDF file documenting the
 corresponding dataset:
 
 ```typescript
-await client
-  .getAccount()
-  .getDataset("some-dataset")
-  .uploadAsset(
-    "source.csv.gz", // Upload source data,
-    "documentation.pdf"
-  ); // and documentation.
+  (await client
+    .getAccount())
+    .getDataset("some-dataset")
+    .uploadAsset(
+      "source.csv.gz", // Upload source data,
+      "documentation.pdf" // and documentation.
+    );
 ```
 
 ### Query
@@ -1030,32 +1032,17 @@ The following example code retrieves (at most) 100 triples that have
 term `rdfs:subClassOf` in the predicate position:
 
 ```typescript
-await client
-  .getAccount()
-  .getDataset("some-dataset")
-  .query()
-  .predicate("http://www.w3.org/2000/01/rdf-schema#subClassOf")
-  .limit(100)
-  .exec();
+  (await client
+    .getAccount())
+    .getDataset("some-dataset")
+    .query()
+    .subject("sub")
+    .predicate("http://www.w3.org/2000/01/rdf-schema#subClassOf")
+    .object("obj")
+    .limit(100) // Sets the maximum number of results obtained
+    .exec(); // executes the query
 ```
 
-#### Query.count()
-
-Returns the number of results for the current query.
-
-#### Query.exec()
-
-Execute the query according to the current query configuration.
-
-#### Query.graph(iri: string)
-
-Sets the graph term for this query.  If the graph term is set, then
-only triples in that graph are returned by the query.
-
-#### Query.limit(results: number)
-
-Sets the maximum number of results (`results`) obtained by running
-this query.
 
 #### Query.object(name: string)
 
@@ -1071,6 +1058,31 @@ then only triples with that predicate term are returned by the query.
 
 Sets the subject term for this query.  If the subject term is set,
 then only triples with that subject term are returned by the query.
+
+#### Query.count()
+
+Returns the number of results for the current query. Example:
+```typescript
+  (await client
+    .getAccount())
+    .getDataset("some-dataset")
+    .query()
+    .count();
+```
+
+#### Query.graph(graph iri: string)
+
+Sets the graph term for this query.  If the graph term is set, then
+only triples in that graph are returned by the query. Example:
+
+```typescript
+  (await client
+    .getAccount())
+    .getDataset("some-dataset")
+    .query()
+    .graph("graph iri")
+    .exec();
+```
 
 ### Service
 
