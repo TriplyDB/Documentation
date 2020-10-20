@@ -286,6 +286,26 @@ Best used as the following:
   (await client.getAccount()).asOrg());
 ```
 
+#### Account.asUser()
+
+If the account is a user, returns information about the account. Otherwise,results in the error: "This is an organization. Cannot fetch this as a user."
+
+Best used as the following:
+```typescript
+  console.log(
+  (await client.getAccount()).asUser());
+```
+
+#### Account.exists()
+
+If the account exists, returns true. Otherwise, returns false.
+
+Best used as the following:
+```typescript
+  console.log(
+  await (await account).exists());
+```
+
 #### Account.getInfo()
 
 Returns an overview of the account in the form of a JSON object.
@@ -331,6 +351,22 @@ console.log(
       .getAccount())
       .getName());
 ```
+
+#### Account.getName()
+
+Returns the name of the account.
+
+The following example code prints the name of the account associated
+with the current API token:
+
+```typescript
+console.log(
+    await (await client
+      .getAccount())
+      .getName());
+```
+
+BENNY: add other account functions
 
 ### Organization
 
