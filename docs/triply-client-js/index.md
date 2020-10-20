@@ -542,7 +542,6 @@ It has the following keys:
 The following example creates an organization with name `acme` for which the
 user with name `john-doe` will be the owner.  Notice that in addition to the required internal name (`"accountName": "acme"`), an optional display name (`"name": "Acme Corporation"`) is specified as well.
 
-BENNY: even after changing add into create, it doesn't work. 'UnhandledPromiseRejectionWarning: Error: Unauthorized.'
 ```typescript
 const user = await client.getUser("john-doe");
 console.log(user.createOrganization({"accountName": "acme",
@@ -712,14 +711,15 @@ The following example code deletes a specific dataset that is part of
 the account associated with the current API token:
 
 ```typescript
-await client
-  .getAccount()
-  .getDataset("some-dataset")
-  .delete();
+  (await client
+    .getAccount())
+    .getDataset("some-dataset")
+    .delete();
 ```
 
 The following example code only deletes a specific dataset if it
 exists (notice the use of `try` and `catch`):
+
 Benny: no try and catch...
 
 ```typescript
@@ -835,6 +835,7 @@ belong to this dataset.
 
 The following example code retrieves the imported graphs for a
 specific dataset:
+
 BENNY: nothing like this seems to exist at this point.
 
 ```typescript
