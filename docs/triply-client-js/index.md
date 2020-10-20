@@ -620,21 +620,6 @@ const user = await client.getUser("john-doe");
 console.log(await user.getPinnedDatasets());
 ```
 
-#### Account.rename(name: string)
-
-Renames the account from its current name to the specified new `name`.
-
-The following example code renames a specific dataset from
-`some-account` to `new-name`:
-
-Benny: rename does not exist. And shouldn't this refer to user? (rename doesn't exist for either)
-```typescript
-console.log(
-  await client
-    .getAccount("some-account")
-    .rename("new-name"));
-```
-
 ### Dataset
 
 The [`Dataset`](#dataset) class represents a TriplyDB dataset.
@@ -715,18 +700,6 @@ the account associated with the current API token:
     .getAccount())
     .getDataset("some-dataset")
     .delete();
-```
-
-The following example code only deletes a specific dataset if it
-exists (notice the use of `try` and `catch`):
-
-Benny: no try and catch...
-
-```typescript
-await client
-  .getAccount()
-  .getDataset("some-dataset")
-  .delete();
 ```
 
 #### Dataset.deleteGraph(name: string)
@@ -817,33 +790,18 @@ renamed as part of the import.
             {"https://example.org/dataset2/graph":
              "https://example.org/dataset1/graph"});
 ```
-Note that you can also import from URLs with
+Note that you can also import from URLs with:
 
 ```typescript
 dataset1.importFromUrls(urls:"url")
 ```
-and you can also import from files with
+and you can also import from files with:
+(The files must contain RDF data and must be encoded in one of the
+following standardized RDF serialization formats: N-Quads, N-Triples,
+TriG, Turtle.)
 
 ```typescript
 dataset1.FromFiles(files:"direction to file")
-```
-
-#### Dataset.importedGraphs() - DEPRACATED
-
-Returns an array with objects that represent the imported graphs that
-belong to this dataset.
-
-The following example code retrieves the imported graphs for a
-specific dataset:
-
-BENNY: nothing like this seems to exist at this point.
-
-```typescript
-console.log(
-  await client
-    .getAccount("some-account")
-    .getDataset("some-dataset")
-    .importedGraphs());
 ```
 
 #### Dataset.info()
@@ -964,39 +922,6 @@ dataset.update({accessLevel:"private",description:"desc", displayName:"disp", li
 
 ```
 
-#### Dataset.upload(filePaths: string[])
-
-BENNY: dataset.upload does not exist. Maybe should be importFromFiles? Also, dataset.getJob() doesn't exist.
-
-Adds the given file paths to the current upload job.
-
-The files must contain RDF data and must be encoded in one of the
-following standardized RDF serialization formats: N-Quads, N-Triples,
-TriG, Turtle.
-
-Use function
-[`Dataset.uploadAsset`](#datasetuploadassetassetname-string-filepath-string)
-in order to upload files that do not contain RDF data.
-
-Once the required files have been added to the current upload job, the
-upload job can be executed with method `getJob().exec()` (see the
-following example).
-
-The following example code adds four RDF document to the current
-upload job of a specific dataset, and then performs the upload
-afterwards.
-
-```typescript
-const dataset = client.getAccount().getDataset("some-dataset");
-await dataset.upload(
-  "file.nq", // Uploading an N-Quads file,
-  "file.nt", // and an N-Triples file,
-  "file.trig", // and a TriG file,
-  "file.ttl" // and a Turtle file.
-);
-await dataset.getJob().exec();
-```
-
 #### Dataset.uploadAsset(assetName: string, filePath: string)
 
 Uploads a file that does not contain RDF data as an asset.
@@ -1094,27 +1019,14 @@ Service objects are obtained through the
 [`Dataset.addService`](datasetaddserviceservicetype-string-name-string)
 and [`Dataset.getServices`](#datasetgetservices) functions.
 
-#### Service.create()
-
-BENNY: seems like there's no need for create()? addService already adds service, so I get an error because the service already exists...
-
-Starts this service.
-
 The following code example starts a specific service:
 
 ```typescript
   (await (await client
     .getAccount("some-account"))
     .getDataset("some-dataset")
-    .addService("sparql", "new-service"))
-    .create();
+    .addService("sparql", "new-service"));
 ```
-
-#### Service.getStatus()
-
-BENNY: doesn't exist; you can get the status if you create the service inside console.log()
-
-Returns the status of this service.
 
 The following service statuses are defined:
 
@@ -1123,16 +1035,6 @@ The following service statuses are defined:
 - starting
 - stopped
 - stopping
-
-The following example code prints the status of a specific service:
-
-```typescript
-const service = await client
-  .getAccount("some-account")
-  .getDataset("some-dataset")
-  .addService("sparql", "new-service");
-console.log(service.getStatus());
-```
 
 #### Service.getInfo()
 
@@ -1189,22 +1091,6 @@ synchonized:
     .getDataset("some-dataset")
     .addService("sparql", "new-service");
   console.log(service.isUpToDate());
-```
-
-#### Service.restart()
-
-BENNY: Doesn't exist.
-
-Restarts this service.
-
-The following code example restarts a specific service:
-
-```typescript
-await client
-  .getAccount("some-account")
-  .getDataset("some-dataset")
-  .addService("sparql", "new-service")
-  .restart();
 ```
 
 ## FAQ
