@@ -352,22 +352,6 @@ console.log(
       .getName());
 ```
 
-#### Account.getName()
-
-Returns the name of the account.
-
-The following example code prints the name of the account associated
-with the current API token:
-
-```typescript
-console.log(
-    await (await client
-      .getAccount())
-      .getName());
-```
-
-BENNY: add other account functions
-
 ### Organization
 
 The `Organization` class denotes a TriplyDB organization.
@@ -487,6 +471,27 @@ named `acme`:
 const organization = await client.getOrganization("acme");
 console.log(await organization.getPinnedDatasets());
 ```
+
+#### Organization.addMembers()
+
+Adds members for the given `Organization`, with role of either member or owner.
+
+The following example adds user of name "Bugs" to the organization "acme", wi
+
+```typescript
+const organization = await client.getOrganization("acme");
+console.log(organization.addMembers({user:"bugs", role:"member"}));
+```
+
+#### Organization.delete()
+
+Deletes the organization.
+
+```typescript
+const organization = await client.getOrganization("acme");
+console.log(organization.delete());
+```
+
 
 ### User
 
@@ -926,8 +931,6 @@ The following keys are supported:
   <dd>The description of the dataset.  This description can make use of Markdown layout (see the <a href="/docs/triply-db-getting-started/#markdown-support">Markdown reference</a>) for details.</dd>
   <dt><code>displayName</code> (optional)</dt>
   <dd>The human-readable name of the dataset.  This name may contain spaces and other non-alphanumeric characters.</dd>
-  <dt><code>exampleResources</code></dt>
-   BENNY: what does this refer to?
   <dd></dd>
   <dt><code>license</code> (optional)</dt>
   <dd>
@@ -943,8 +946,6 @@ The following keys are supported:
   </dd>
   <dt><code>name</code> (required)</dt>
   <dd>The internal name of the dataset.  This name is restricted to alphanumeric characters and hyphens.</dd>
-  <dt><code>topics</code></dt>
-   BENNY: what does this refer to?
   <dd></dd>
 </dl>
 
@@ -1153,12 +1154,6 @@ const reply = await SuperAgent.post("URL-OF-SOME-SPARQL-ENDPOINT")
 
 ### What to do when the following error appears?
 
-#### Why must I set environment variable `TRIPLY_API_TOKEN`?
-
-It is common for scripts to be shared with others and/or get published
-online using services like Github and Gitlab.  Since the API token is
-private, it must never be used in the TypeScript script file directly.
-
 #### Error: Unauthorized
 
 This error appears whenever an operation is performed for which the
@@ -1172,16 +1167,4 @@ the following command:
 
 ```sh
 echo $TRIPLY_API_TOKEN
-```
-
-#### "No domain specified in configuration"
-
-This error indicates that the `TRIPLY_API_URL` environment variable
-has not been set. This variable must be set to a Triply API URL.
-
-The current value of the environment variable can be tested by running
-the following command:
-
-```sh
-echo $TRIPLY_API_URL
 ```
