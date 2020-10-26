@@ -705,6 +705,19 @@ dataset:
       .getAssets());
 ```
 
+#### Dataset.getPrefixes()
+
+Returns the prefixes that are defined for the dataset.
+
+Example:
+
+```typescript
+  console.log(await (await client
+      .getAccount())
+      .getDataset("dataset name")
+      .getPrefixes());
+```
+
 #### Dataset.copy(account: string, dataset: string)
 
 Creates a copy of the current dataset.  The owner (user or
