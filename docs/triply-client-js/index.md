@@ -185,7 +185,14 @@ functions.
 
 ### Client
 
-Instances of `Client` are specific client connections with a TriplyDB user.
+Instances of `Client` are specific client connections with a TriplyDB user. They are declared via:
+
+```typescript
+import Client from "@triply/triplydb";
+const client = Client.get({
+  token: process.env.TRIPLY_API_TOKEN
+});
+```
 
 #### Client.getApiInfo()
 
@@ -274,7 +281,12 @@ user objects.
 
 ### Account
 
-The `Account` class denotes a TriplyDB account.  Accounts can be either organizations ([`Organization`](#organization)) or users ([`User`](#user)). This class refers to client.getAccount()
+The `Account` class denotes a TriplyDB account.  Accounts can be either organizations ([`Organization`](#organization)) or users ([`User`](#user)). 
+
+The `Account` class refers to: 
+```typescript
+client.getAccount()
+```
 
 #### Account.asOrg()
 
@@ -303,7 +315,7 @@ If the account exists, returns true. Otherwise, returns false.
 Best used as the following:
 ```typescript
   console.log(
-  await (await account).exists());
+  await (await client.getAccount()).exists());
 ```
 
 #### Account.getInfo()
@@ -347,9 +359,7 @@ with the current API token:
 
 ```typescript
 console.log(
-    await (await client
-      .getAccount())
-      .getName());
+    await (await client.getAccount()).getName());
 ```
 
 ### Organization
@@ -358,7 +368,7 @@ The `Organization` class denotes a TriplyDB organization.
 
 An 'Organization' class is obtained via:
 ```typescript
-console.log(await client.getOrganization(<organization's name in triplyDB>));
+console.log(await client.getOrganization("organization's name in triplyDB"));
 ```
 
 #### Organization.addDataset(metadata: object)
@@ -416,11 +426,7 @@ console.log((await organization).addDataset({accessLevel: "private", description
 
 #### Organization.exists()
 
-Returns whether the account still exists.
-
-While it is not possible to delete organizations with Triply Client,
-organizations can be deleted ― possibly by somebody else ― through the Triply
-GUI.
+Returns whether the organization still exists.
 
 The following example code prints `true` in case the account (still) exists, and
 prints `false` otherwise:
@@ -461,7 +467,7 @@ console.log(await organization.getDatasets());
 #### Organization.getPinnedDatasets()
 
 Returns the list of datasets that are pinned for the given `Organization`.  The
-order in the reflects the order in which the datasets appear on the organization
+order reflects the order in which the datasets appear on the organization
 page in the Triply GUI.
 
 The following example prints the list of pinned datasets for the organization
@@ -498,7 +504,7 @@ console.log(organization.delete());
 The [`User`](#user) class represents a TriplyDB user. It is accessed via:
 
 ```typescript
-client.getUser(<user name>);
+client.getUser("user name");
 ```
 
 Users cannot be created or deleted through the Triply Client library.  See the
