@@ -518,7 +518,7 @@ Adds a new dataset for the given `User`.
 This only works if the used API token gives write access to the user
 account.
 
-Argument `metadata` is a JSON object that specifies the dataset metadata.  It
+Argument `metadata` is a JSON object that specifies the dataset's metadata.  It
 has the following keys:
 
 <dl>
@@ -567,9 +567,7 @@ const user = await client.getUser("john-doe");
 
 #### User.createOrganization(metadata: object)
 
-Creates a new organization for which `User` will be the owner.
-
-This only works if the used API token includes write access for the
+Creates a new organization for which `User` will be the owner. This only works if the used API token includes write access for the
 `User`.
 
 Argument `metadata` is a JSON object that specifies the organization metadata.
@@ -644,7 +642,7 @@ Returns the list of organizations for which the `User` is a member.
 The order in the list reflects the order in which the organizations appear on
 the user page in the Triply GUI.
 
-The following example prints the list of organization for the user named
+The following example prints the list of organizationo for which the user named
 `john-doe` is a member:
 
 ```typescript
@@ -1182,7 +1180,7 @@ One common appearance of this error is when the environment variable
 `TRIPLY_API_TOKEN` is not set to an API token.
 
 The current value of the environment variable can be tested by running
-the following command:
+the following command in the terminal:
 
 ```sh
 echo $TRIPLY_API_TOKEN
