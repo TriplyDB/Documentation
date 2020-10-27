@@ -677,6 +677,8 @@ The service type is specified with the `type` parameter, which
 supports the following values:
 
   - `"sparql"` :: Starts a SPARQL service.
+  - `"sparql-jena"` :: Starts a SPARQL JENA service.
+  - `"elasticsearch"` :: Starts an Elastic Search service.
 
 The `name` argument can be used to distinguish between different
 endpoints over the same dataset that are used for different tasks.
@@ -1090,6 +1092,18 @@ The following service statuses are defined:
 - stopped
 - stopping
 
+#### Service.delete()
+
+Deletes a service. Example:
+
+```typescript
+  const service = await (await client
+      .getAccount("some-account"))
+      .getDataset("some-dataset")
+      .addService("sparql", "new-service");
+service.delete()
+```
+
 #### Service.getInfo()
 
 Returns an overview of the service in the form of a JSON object.
@@ -1110,8 +1124,7 @@ Another way to get information about existing services:
   console.log(await (await client
     .getAccount())
     .getDataset("dataset")
-    .getServices()
-  );
+    .getServices());
 ```
 
 
