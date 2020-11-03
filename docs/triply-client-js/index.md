@@ -60,9 +60,9 @@ the Triply Client library:
 
 2. Inside your newly created directory, run the following command to
 initialize the package configuration.  You will be asked several
-questions to set up a professional project (e.g., software license).
+questions to set up a professional [yarn project](https://classic.yarnpkg.com/en/docs/creating-a-project/) (e.g., software license).
 (Add flag `-y` for a simplified setup, using default answers to these
-questions.)
+questions.) 
 
    ```sh
    yarn init
@@ -74,7 +74,7 @@ questions.)
    yarn add typescript @triply/triplydb
    ```
 
-4. Run the following command to initialize the project configuration:
+4. The following command will initialize the project configuration and create a [tsconfig.json](https://www.typescriptlang.org/docs/handbook/tsconfig-json.html) file:
 
    ```sh
    ./node_modules/.bin/tsc --init
@@ -86,7 +86,13 @@ Once you have performed the installation and project setup, perform the
 following steps in order to create and run your first script that uses the
 Triply Client library:
 
-1. Create a file called `index.ts` and add the following contents:
+1. Create a file called `index.ts` using for example the following command: 
+
+```
+cat > index.ts
+```
+
+2. Add the following contents to `index.ts`:
 
    ```typescript
    // Import the Triply Client.
@@ -109,13 +115,13 @@ Triply Client library:
    });
    ```
 
-2. Compile the TypeScript file into a corresponding JavaScript file by writing in the terminal:
+3. Compile the TypeScript file into a corresponding JavaScript file by writing in the terminal:
 
    ```bash
    ./node_modules/.bin/tsc
    ```
 
-3. Run the JavaScript file by writing in the terminal:
+4. Run the JavaScript file by writing in the terminal:
 
    ```sh
    node index.js
@@ -142,7 +148,7 @@ changes in the `tsconfig.json` file:
    ```
 
 3. From within the Atom preferences page, install the
-[`atom-typescript`](https://atom.io/packages/atom-typescript) package.
+[`atom-typescript`](https://atom.io/packages/atom-typescript) package. You can use ```Crtl + ,``` to go to your settings, and then navigate to “Install”. 
 
 If you wish to run your scripts within Atom, you may install the package Script.
 
@@ -162,7 +168,7 @@ Client. Methods are grouped together for each object type to which they apply.
 
 Every function in this reference section comes with at least one code
 example. These code examples can be run by inserting them into the
-following basic script structure:
+following basic script structure that can be put in typescript files in your project:
 
 ```typescript
 import Client from "@triply/triplydb";
