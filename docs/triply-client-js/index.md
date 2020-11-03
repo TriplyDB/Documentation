@@ -242,7 +242,7 @@ string)`](#accountgetdatasetname-string) call.  Therefore, the following example
 returns the same result as the above one:
 
 ```typescript
-console.log(client.getUser("john-doe").getDataset("cats"));
+console.log((await client.getUser("john-doe")).getDataset("cats"));
 ```
 
 #### Client.getOrganization(name: string)
