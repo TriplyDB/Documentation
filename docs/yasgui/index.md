@@ -248,7 +248,7 @@ The following SPARQL query binds an HTML string consisting of a header
 `?widget` variable. This results in a gallery with 25 widgets, each
 displaying a Pokémon. (This SPARQL query also uses [[SPARQL
 Templates]] in order to simplify its syntax.) This query can be [run
-online](https://triplydb.com/academy/pokemon/queries/gallery).
+online](https://triplydb.com/academy/-/queries/gallery).
 
 ![SPARQL Gallery view of a Pokémon query that uses SPARQL Templating](pokemon-gallery.png)
 
