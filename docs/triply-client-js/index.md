@@ -859,7 +859,7 @@ renamed as part of the import.
 Note that you can also import from URLs with:
 
 ```typescript
-dataset1.importFromUrls(urls:"url")
+dataset1.importFromUrls(["url", "url", "url"])
 ```
 and you can also import from files with:
 (The files must contain RDF data and must be encoded in one of the
@@ -867,7 +867,7 @@ following standardized RDF serialization formats: N-Quads, N-Triples,
 TriG, Turtle.)
 
 ```typescript
-dataset1.FromFiles(files:"direction to file")
+dataset1.importFromFiles(["direction to file", "direction to file"])
 ```
 
 #### Dataset.info()
