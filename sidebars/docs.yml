@@ -6,7 +6,7 @@
       - title: API
         link: /docs/triply-api
       - title: Javascript Client
-        link: /docs/triply-client-js
+        link: /docs/triplydb-js
   - group: Yasgui
     items:
       - title: Introduction
