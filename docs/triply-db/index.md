@@ -199,7 +199,7 @@ understands metadata properties like title, description, and image.
 
 ## Starting services
 
-By default, datasets in TriplyDB can be queried through the [Triply Client](/docs/triply-client) as well as through the Linked Data Fragments API.
+By default, datasets in TriplyDB can be queried through [TriplyDB-js](/docs/triplydb-js) as well as through the Linked Data Fragments API.
 
 In order to allow additional query paradigms, specific services can be
 started from the “Create service” page. This page is accessed by
