@@ -1,11 +1,11 @@
 ---
-title: "Triply Client"
-path: "/docs/triply-client-js"
+title: "TriplyDB-js"
+path: "/docs/triplydb-js"
 ---
 
-Triply Client is the programming library that makes it easy to interact with
-TriplyDB instances.  Triply Client allows you to automate most operations that
-can be performed through the TriplyDB GUI.  Triply Client is implemented in
+TriplyDB-js is the programming library that makes it easy to interact with
+TriplyDB instances.  TriplyDB-js allows you to automate most operations that
+can be performed through the TriplyDB GUI.  TriplyDB-js is implemented in
 TypeScript/JavaScript.
 
 This document is a work in progress. Please contact
@@ -13,13 +13,13 @@ This document is a work in progress. Please contact
 
 ## Getting started
 
-This section gets you up and running with the Triply Client by setting up a
-simple script. The script will use Triply Client in order to interact with a
+This section gets you up and running with the TriplyDB-js by setting up a
+simple script. The script will use TriplyDB-js in order to interact with a
 specific TriplyDB instance.
 
 ### Installation
 
-The following steps are needed in order to install Triply Client:
+The following steps are needed in order to install TriplyDB-js:
 
 1. Install [Node.js](https://nodejs.org) and
    [Yarn](https://yarnpkg.com).
@@ -46,10 +46,10 @@ In short, to create an API token, go to user settings in TriplyDB, then click on
    You can also add these lines to your `.profile` file in order to add these
    environment variables to every future terminal session.
 
-### Setting up a Triply Client project
+### Setting up a TriplyDB-js project
 
 The following steps are needed in order to setup a TypeScript project that uses
-the Triply Client library:
+the TriplyDB-js library:
 
 1. Create a directory for your project:
 
@@ -68,7 +68,7 @@ questions.)
    yarn init
    ```
 
-3. Add the TypeScript and Triply Client dependencies:
+3. Add the TypeScript and TriplyDB-js dependencies:
 
    ```sh
    yarn add typescript @triply/triplydb
@@ -84,7 +84,7 @@ questions.)
 
 Once you have performed the installation and project setup, perform the
 following steps in order to create and run your first script that uses the
-Triply Client library:
+TriplyDB-js library:
 
 1. Create a file called `index.ts` using for example the following command: 
 
@@ -95,17 +95,17 @@ cat > index.ts
 2. Add the following contents to `index.ts`:
 
    ```typescript
-   // Import the Triply Client.
+   // Import the TriplyDB-js.
    import Client from "@triply/triplydb";
 
-   // Configure the Triply Client.
+   // Configure the TriplyDB-js.
    const client = Client.get({
      token: process.env.TRIPLY_API_TOKEN,
    });
 
-   // Perform Triply Client requests within an async context.
+   // Perform TriplyDB-js requests within an async context.
    async function run() {
-     // Our first Triply Client request: obtain information of the
+     // Our first TriplyDB-js request: obtain information of the
      // current user.
      console.log(await client.getAccount());
    }
@@ -134,7 +134,7 @@ The current user is determined by the API token that was set in the
 ### Using the Atom text editor (recommended)
 
 The Atom text editor provides advanced support for programming in TypeScript,
-which makes it easier to use Triply Client by showing typing feedback in the
+which makes it easier to use TriplyDB-js by showing typing feedback in the
 editor and offering autocomplete suggestions:
 
 1. Install the [Atom](https://atom.io) text editor.
@@ -186,7 +186,7 @@ run().catch(e => {
 });
 ```
 
-The following subsections document the various Triply Client
+The following subsections document the various TriplyDB-js
 functions.
 
 ### Client
@@ -513,7 +513,7 @@ The [`User`](#user) class represents a TriplyDB user. It is accessed via:
 client.getUser("user name");
 ```
 
-Users cannot be created or deleted through the Triply Client library.  See the
+Users cannot be created or deleted through the TriplyDB-js library.  See the
 [Triply Console documentation](/docs/triply-db-getting-started) for how to
 create and delete users through the web-based GUI.
 
@@ -603,7 +603,7 @@ console.log(user.createOrganization({"accountName": "acme",
 
 Returns whether the `User` still exists.
 
-While it is not possible to delete users with Triply Client, they can be deleted
+While it is not possible to delete users with TriplyDB-js, they can be deleted
 ― possibly by somebody else ― through the Triply Console.
 
 The following example code prints `true` in case the account (still) exists, and
