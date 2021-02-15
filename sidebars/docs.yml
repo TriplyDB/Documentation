@@ -11,7 +11,5 @@
     items:
       - title: Introduction
         link: /docs/yasgui
-      - title: Data Stories
-        link: /docs/data-stories
       - title: For developers
         link: /docs/yasgui-api
