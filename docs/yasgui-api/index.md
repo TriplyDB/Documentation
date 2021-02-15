@@ -8,11 +8,10 @@ Here you can find documentation on ways to include, configure and extend these c
 
 ![Overview of Yasgui Components](yasgui.png).
 
-## About Yasgui Pro {#pro}
+## About additional plugins {#triplyDbPlugins}
 
 Yasgui, Yasqe and Yasr are all [open source](https://github.com/TriplyDB/Yasgui) and MIT licensed.
-Triply provides additional plugins that are free to use via [https://yasgui.triply.cc](https://yasgui.triply.cc).
-To use pro plugins in your tool or on your website, contact us at [info@triply.cc](info@triply.cc).
+Triply provides additional plugins that are free to use via [https://yasgui.triply.cc](https://yasgui.triply.cc) or via [TriplyDB](triplydb.com).
 
 ## Installation
 
@@ -64,7 +63,7 @@ And pass a second argument to the Yasgui initializer to specify the default endp
 ```js
 const yasgui = new Yasgui(document.getElementById("yasgui"), {
   requestConfig: { endpoint: "http://example.com/sparql" },
-  copyEndpointOnNewTab: false  
+  copyEndpointOnNewTab: false,
 });
 ```
 
@@ -118,7 +117,6 @@ yasgui.on("queryResponse", (instance: Yasgui, tab: tab) => {});
 ### Configuration {#yasgui-config}
 
 This configuration object is accessible/changeable via `Yasgui.defaults` or `yasgui.config`. You can pass these along when initializing Yasgui as well. To change settings to the Yasqe and Yasr components used by Yasgui, you are best off changing the `Yasgui.Yasqe.defaults` and `Yasgui.Yasr.defaults` objects before initializing Yasgui.
-
 
 ```js
 {
@@ -196,7 +194,7 @@ yasqe.query({
   reqMethod: "POST", // or "GET"
   headers: { Accept: "..." /*...*/ },
   args: { arg1: "val1" /*...*/ },
-  withCredentials: false
+  withCredentials: false,
 });
 
 // get whether we're in query or update mode
@@ -340,7 +338,7 @@ maxLines = 30;
 
 To register a Yasr plugin, add it to Yasr by running `Yasr.registerPlugin(pluginName: string, plugin: Plugin)`. Below is an example implementation for rendering the result of an ASK query, which returns either `true` or `false`. See also the implementations of the [Table](https://github.com/TriplyDB/YASGUI.YASR/blob/gh-pages/src/table.js) and [Raw Response](https://github.com/TriplyDB/YASGUI.YASR/blob/gh-pages/src/rawResponse.js) plugins.
 
-```js
+```ts
 class Boolean {
   // A priority value. If multiple plugin support rendering of a result, this value is used
   // to select the correct plugin
@@ -386,7 +384,7 @@ Yasr.registerPlugin("MyBooleanPlugin", Boolean);
 
 To include Yasgui in React, use the following snippet. This snippet assumes a React repository configured via [create-react-app](https://github.com/facebook/create-react-app), and a minimum React version of 16.8.
 
-```js
+```ts
 import Yasgui from "@triply/yasgui";
 import "@triply/yasgui/build/yasgui.min.css";
 export default function App() {
