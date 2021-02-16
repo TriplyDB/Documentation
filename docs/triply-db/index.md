@@ -343,12 +343,6 @@ is also possible to zoom out:
 
 **Note that the class hierarchy does not automatically update to reflect changes in the data. When the data has changed, the page must be [refreshed](https://www.wikihow.com/Refresh-a-Page#Refreshing-on-Desktop).**
 
-
-ShowsUp(x):
-
-- y instanceOf x
-- y subclassOf x & ShowsUp(y)
-
 - A class only appears in the class hierarchy tab if it has instances (connected to the class via `rdf:type`), or if at least one of it's subclasses appear in the class hierarchy tab.
 - The class hierarchy cannot be shown if it contains a cycle, meaning that some class is (indirectly) its own subclass.
 
