@@ -307,20 +307,20 @@ contains the search term in any of it's properties.
 ## Insights
 
 Insights are developed for linked datasets to give an overview about the linked
-dataset. The insights page holds two views, the Class-frequency and the
-Class-hierarchy view.
+dataset. The insights page holds two views, the class frequency and the
+class hierarchy view.
 
-### Class-frequency
+### Class frequency
 
 The class frequency diagram shows how often classes and properties appear in a
-graph. The selector on the top of the visualization selects the graph for which
-the Class-frequency is drawn.
-The visualization shows the top 10 class occurences in the specific graph. The
-specific amount occurences can be seen when hovering over the specific bar, also
-showing the complete IRI/prefixed IRI. When clicking on a specific class the node
-will expand and show the top 10 predicates sorted by count of use.
+graph. The drop-down on the top of the visualization selects the graph for which
+the class frequency is drawn.
+The visualization shows the 10 most frequent classes in the selected graph. The
+exact number of occurrences can be seen when hovering over the bar of a class, also
+showing the complete IRI/prefixed IRI. When clicking on the bar of a class the node
+will expand and show the 10 most frequent predicates of that class.
 
-### Class-hierarchy
+### Class hierarchy
 
 The class hierarchy diagram shows the hierarchy of the dataset in three
 different visualizations. Each of the diagrams are created by the
@@ -331,21 +331,27 @@ We have three different visualization methods for the classHierarchy:
 - Treemap visualization
 - Sunburst visualization
 
-All three visualization are interactive in two ways. It is possible to hover
-over, which will show information about the layer the mouse is on, or to click,
-where the visualization zooms in a one or more layers. For each visualization it
-is also possible to zoom out. either by clicking outside of the bubble for the
-Bubbles visualization. For the Sunburst visualization zooming out occurs when
-the middle is clicked. For the Treemap zooming out occurs by clicking on one
-of the higher layers on the top of the visualization.
+All three visualization are interactive in two ways. It is possible to hover over them, which will show information about the layer the mouse is on, or to click on them,
+so the visualization zooms in a one or more layers. For each visualization it
+is also possible to zoom out:
 
-Important to note is that each Class needs to have instances connected to that
-class via `rdf:type`. Thus only the classes that have instances or classes that
-are parentClasses via `rdfs:subClassOf` relation with a class with instances are
-shown in the diagram.
-Also important to note, the class hierarchy also doesn't show if the class
-hierarchy contains circles. Meaning that a parentClass is also via one or more
-`rdfs:subClassOf` relations a childClass of a different class.
+- Bubbles visualization: click the outside of the bubble
+- Treemap visualization: use the breadcrumbs trail shown above the visualisation
+- Sunburst visualization: click the innermost circle of the visualisation
+
+#### When does the class hierarchy show?
+
+**Note that the class hierarchy does not automatically update to reflect changes in the data. When the data has changed, the page must be [refreshed](https://www.wikihow.com/Refresh-a-Page#Refreshing-on-Desktop).**
+
+
+ShowsUp(x):
+
+- y instanceOf x
+- y subclassOf x & ShowsUp(y)
+
+- A class only appears in the class hierarchy tab if it has instances (connected to the class via `rdf:type`), or if at least one of it's subclasses appear in the class hierarchy tab.
+- The class hierarchy cannot be shown if it contains a cycle, meaning that some class is (indirectly) its own subclass.
+
 
 # Saved Queries
 
