@@ -306,8 +306,7 @@ contains the search term in any of it's properties.
 
 ## Insights
 
-Insights are developed for linked datasets to give an overview about the linked
-dataset. The insights page holds two views, the class frequency and the
+The insights page has been developed to give you a succinct overview of the linked data at hand. It holds two views: the class frequency and the
 class hierarchy view.
 
 ### Class frequency
@@ -341,7 +340,7 @@ is also possible to zoom out:
 
 #### When does the class hierarchy show?
 
-**Note that the class hierarchy does not automatically update to reflect changes in the data. When the data has changed, the page must be [refreshed](https://www.wikihow.com/Refresh-a-Page#Refreshing-on-Desktop).**
+**Note that the class hierarchy does not automatically update to reflect changes in the data. When the data has changed, the page must be refreshed.**
 
 - A class only appears in the class hierarchy tab if it has instances (connected to the class via `rdf:type`), or if at least one of it's subclasses appear in the class hierarchy tab.
 - The class hierarchy cannot be shown if it contains a cycle, meaning that some class is (indirectly) its own subclass.
