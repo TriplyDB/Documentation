@@ -37,18 +37,18 @@ In short, to create an API token, go to user settings in TriplyDB, then click on
 “API tokens”, where you'll be able to create a token.
 
 3. In your current terminal session, export the following environment
-   variables (ensure there aren't any spaces after =):
+   variables (ensure there aren't any spaces around the `=`):
 
    ```sh
    export TRIPLY_API_TOKEN=<your-token>
    ```
 
-   You can also add these lines to your `.profile` file in order to add these
+   You can also add this line to your `.profile` file, to add the
    environment variables to every future terminal session.
 
 ### Setting up a TriplyDB-js project
 
-The following steps are needed in order to setup a TypeScript project that uses
+The following steps are needed in order to set-up a TypeScript project that uses
 the TriplyDB-js library:
 
 1. Create a directory for your project:
