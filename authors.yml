@@ -23,3 +23,11 @@
   name: "Wouter Beek"
 - id: rweber
   name: Ruben Weber
+- id: mpvharmelen
+  name: Martin van Harmelen
+- id: rdehaan
+  name: Rosaline de Haan
+- id: dnakou
+  name: Dionysia Nakou
+- id: rdehaanmpvharmelendnakou
+  name: Rosaline de Haan, Martin van Harmelen and Dionysia Nakou

@@ -1,16 +1,15 @@
 ---
 title: "TriplyDB.js"
-path: "/docs/triply-client-js"
+path: "/docs/triplydb-js"
 ---
 
-**TriplyDB.js** is the official programming library for interacting with [TriplyDB](https://triply.cc/docs/triply-db-getting-started) instances.  TriplyDB.js allows you to automate most operations that
-can be performed through the TriplyDB GUI.  TriplyDB.js is implemented in [TypeScript](https://www.typescriptlang.org).
+**TriplyDB.js** is the official programming library for interacting with [TriplyDB](https://triply.cc/docs/triply-db-getting-started).  TriplyDB.js allows you to automate most operations that can be performed through the TriplyDB GUI.  TriplyDB.js is implemented in [TypeScript](https://www.typescriptlang.org).
 
-This document is a work in progress. Please contact [support@triply.cc](mailto:support@triply.cc) for questions and suggestions.
+Please contact [support@triply.cc](mailto:support@triply.cc) for questions and suggestions.
 
 ## Getting started
 
-This section gets you up to speed with TriplyDB.js by setting up a simple client script.  Most of these steps are generic for setting up a Yarn-based TypeScript project.
+In this section we set up a simple project that uses TriplyDB.js.  Most of these steps are generic for setting up a Yarn-based TypeScript project.
 
 1. Install [Node.js](https://nodejs.org) and [Yarn](https://yarnpkg.com) on your system.
 
@@ -21,121 +20,137 @@ This section gets you up to speed with TriplyDB.js by setting up a simple client
    cd my_project
    ```
 
-3. Inside your newly created directory, initialize a standard [Yarn project](https://classic.yarnpkg.com/en/docs/creating-a-project/).  This will create a `package.json` file.
+3. Inside your newly created directory, initialize a standard [Yarn project](https://classic.yarnpkg.com/en/docs/creating-a-project/):
 
    ```sh
    yarn init -y
    ```
 
-4. Add TypeScript and TriplyDB.js as dependencies.
+   This will create a `package.json` file.
+
+4. Add TypeScript and TriplyDB.js as dependencies:
 
    ```sh
    yarn add typescript @triply/triplydb
    ```
 
-5. Initialize a default TypeScript project.  This will create a [tsconfig.json](https://www.typescriptlang.org/docs/handbook/tsconfig-json.html) file.
+5. Initialize a default TypeScript project:
 
    ```sh
    ./node_modules/.bin/tsc --init
    ```
 
-6. Create an API token through the TriplyDB GUI.  Log into your TriplyDB account, go to your user settings, and into the “API tokens” tab.
+   This create a [tsconfig.json](https://www.typescriptlang.org/docs/handbook/tsconfig-json.html) file.
+
+6. Create an API token through the TriplyDB GUI: log into your TriplyDB account, go to your user settings page, and select the “API tokens” tab.
 
    See [this video](https://youtu.be/ACfOY2a_VVM) for instructions on how to create an API token.
 
-7. Create a file called `index.ts` in your favorite text editor.  Add the following content, where `"API_TOKEN"` is your API token created in the previous step.
+7. Create a file called `main.ts` in your favorite text editor.  Add the following content, where `"API_TOKEN"` is your API token created in the previous step.
 
    ```typescript
-   // Import the TriplyDB.js library.
-   import Client from "@triply/triplydb";
-   // Set your API token.
-   const client = Client.get({
-     token: "API_TOKEN"
-   });
-   // All requests are performed asynchronously.
+   import Client from "@triply/triplydb"
+   const client = Client.get({ token: "API_TOKEN" })
    async function run() {
-     // Example request: obtain information about the current user.
-     console.log(await client.getAccount());
+     console.log(await client.getAccount())
    }
-   // Run the program + error handling.
    run().catch(e => {
-     console.error(e);
-     process.exit(1);
+     console.error(e)
+     process.exit(1)
    });
    ```
 
-8. Transpile the TypeScript file (`index.ts`) into a JavaScript file (`index.js`).
+8. Transpile the TypeScript file (`main.ts`) into a JavaScript file (`main.js`):
 
    ```sh
    ./node_modules/.bin/tsc
    ```
 
-9. Run the JavaScript file (`index.js`) inside the Node.js runtime.
+9. Run the JavaScript file (`main.js`):
 
    ```sh
-   node index.js
+   node main.js
    ```
 
    This should print your user name.
 
 ### Securing your API token
 
-Notice that your API token was included in your script in step 7.
+Notice that your API token was included in your script (step 7).  This was done to have a working script quickly, but is not a good practice!
 
-If you want to share your script with others, for example by checking it into version control, it is advised to load the API token from your development environment instead.
+For example, if you would publish you script on the web, or share it in some other way, people would be able to see your API token and obtain access to your TriplyDB account.
 
-One way in which this can be done is by storing your API token into the environment variable `TRIPLY_API_TOKEN`.  In Linux and macOS this can be done with the following command (ensure that no spaces appear after the `=` character):
+This is why it is advised to load the API token from your development environment instead.  TriplyDB.js uses the environment variable `TRIPLY_API_TOKEN` to this effect.
+
+#### Setting an environment variable in macOS or Linux
+
+In macOS and Linux, the environment varialbe is set as follows:
 
 ```sh
-export TRIPLY_API_TOKEN=<your-token>
+export TRIPLY_API_TOKEN=<my-token>
 ```
 
-On Linux, you can also add the `export` command to your `.profile` file.  This will make your API token available in future sessions.
+Make sure that no whitespace appears around the `=` character.  This is a common mistake.
+
+On Linux, you can add the `export` command to your `.profile` file.  This is file is typically present in your home directory (`~/.profile`).  This will automatically run the `export` command whenever a new terminal session starts.
 
 Once the API token is configured as an environment variable, you can read it from your script in the following way:
 
 ```typescript
-// Get your API token.
-const client = Client.get({
-  token: process.env.TRIPLY_API_TOKEN
-});
+const client = Client.get({ token: process.env.TRIPLY_API_TOKEN });
 ```
+
+#### Setting an environment variable in Windows
 
 ### Using the Atom text editor
 
-The Atom text editor provides advanced support for programming in TypeScript, which makes it easier to use TriplyDB.js by showing typing feedback in the editor and offering auto-complete suggestions:
+The [Atom](https://atom.io) text editor provides advanced support for programming in TypeScript.  This will make it easier to use TriplyDB.js, since the editor will provide various forms of feedback.  You can set-up Atom in the following way:
 
-1. Install the [Atom](https://atom.io) text editor.
+1. Install the [Atom](https://atom.io) text editor on your system.
 
-2. In order to let Atom use the correct TypeScript version, make the following changes in the `tsconfig.json` file:
+2. Open file `tsconfig.json`, and make sure the following settings are included:
 
    ```json
    "target": "es2020",
    "lib": ["es2020"],
    ```
 
-3. From within the Atom preferences page, install the [`atom-typescript`](https://atom.io/packages/atom-typescript) package.  You can use the `Crtl` + `,` key combination in order to open the preferences page; then navigate to “Install”.
+   This will ensure that you use the latest version of TypeScript.
 
-4. Start Atom over your project directory with the following command:
+3. From within the Atom preferences page, install the [`atom-typescript`](https://atom.io/packages/atom-typescript) package.  You can use the `Crtl+,` key combination in order to open the preferences page.  Then navigate to “Install”.
+
+4. Start Atom from your project directory:
 
    ```sh
    cd my_project
    atom .
    ```
 
-5. If you wish to run your scripts within Atom, you may install the package [Script](https://atom.io/packages/script).
+5. You can also install package [Script](https://atom.io/packages/script) to run your script from within the editor environment.
+
+## Common use cases
+
+### Creating a new dataset
+
+### Updating an existing dataset
+
+### Starting a service
+
+### Running a query
+
+### Uploading query results
+
+### Creating an organization with members
 
 ## Reference
 
-This section documents all methods that are currently available in TriplyDB.js.
+This section documents all object types and methods in TriplyDB.js.
 
 Every method in this reference section comes with at least one code example.  These code examples can be run by inserting them into the following code snippet.  See the [Getting started](#getting-started) section on how to get this script up and running on your system.
 
 ```typescript
 import Client from "@triply/triplydb";
-const client = Client.get({
-  token: process.env.TRIPLY_API_TOKEN
-});
+const client = Client.get({ token: process.env.TRIPLY_API_TOKEN });
 async function run() {
   // This is where the code examples in this reference should be placed.
 }
@@ -172,33 +187,33 @@ classDiagram
 
 ### Client
 
-Instances of `Client` are specific client connections with a TriplyDB instance.  A client connection is created by loading an API token:
+Instances of the `Client` object type are specific client connections that are set-up with a TriplyDB instance.  A client connection is created by loading an API token:
 
 ```typescript
 import Client from "@triply/triplydb";
-const client = Client.get({
-  token: process.env.TRIPLY_API_TOKEN
-});
+const client = Client.get({ token: process.env.TRIPLY_API_TOKEN });
 ```
+
+Typically one TriplyDB.js script has exactly one client object.
 
 #### Client.getAccount()
 
-Returns the account that is associated with the current API token.
+Returns the account object that is associated with the current API token.
 
 See [`Client.getAccount(name: string)`](#clientgetaccountname-string) for more information.
 
 #### Client.getAccount(name: string)
 
-Returns details about the account with the given `name`.
+Returns the TriplyDB account with the given `name`.
 
 There are two kinds of accounts:
-  - When `name` is a user name, a [User](#user) object is returned.
-  - When `name` is an organization name, an [Organization](#organization) object is returned.
+  - When `name` is the name of a user, a [User](#user) object is returned.
+  - When `name` is the name of an organization, an [Organization](#organization) object is returned.
 
-The following example refers to an organization account called `acme`:
+The following example stores an organization account called `acme`:
 
 ```typescript
-console.log(await client.getAccount("acme"));
+const account = await client.getAccount("acme")
 ```
 
 See section [`Account`](#account) for an overview of the methods for account objects.
@@ -210,14 +225,14 @@ Returns the dataset with name `datasetName` that is published by the account wit
 The following example returns the dataset called `animals` published by the user called `john-doe`:
 
 ```typescript
-console.log(client.getDataset("john-doe", "animals"));
+console.log(client.getDataset("john-doe", "animals"))
 ```
 
 This function is a shorthand for a combination of the [`Client.getAccount(name: string)`](#clientgetaccountname-string) and [`Account.getDataset(name: string)`](#accountgetdatasetname-string) calls.  Therefore, the following example returns the same result as the above one:
 
 ```typescript
 console.log((await client.getUser("john-doe"))
-                         .getDataset("animals"));
+                         .getDataset("animals"))
 ```
 
 #### Client.getInfo()
@@ -300,7 +315,7 @@ The information returned by this function includes the following values:
 The following example returns an object that describes the current TriplyDB instance:
 
 ```typescript
-console.log(await client.getInfo());
+console.log(await client.getInfo())
 ```
 
 #### Client.getOrganization(name: string)
@@ -343,7 +358,7 @@ Returns the user with the given `name`.
 The following example returns the user with name `john-doe`:
 
 ```typescript
-console.log(await client.getUser("john-doe"));
+console.log(await client.getUser("john-doe"))
 ```
 
 See section [`User`](#user) for an overview of the methods for user objects.
@@ -375,7 +390,7 @@ The following example succeeds, because `"acme"` is an organization.
 
 ```typescript
 console.log(await client.getAccount("acme")
-                        .asOrg());
+                        .asOrg())
 ```
 
 #### Account.asUser()
@@ -386,7 +401,7 @@ Best used as the following:
 
 ```typescript
 console.log(await client.getAccount()
-                        .asUser());
+                        .asUser())
 ```
 
 #### Account.exists()
@@ -397,7 +412,7 @@ Best used as the following:
 
 ```typescript
 console.log(await client.getAccount()
-                        .exists());
+                        .exists())
 ```
 
 #### Account.getInfo()
@@ -409,7 +424,7 @@ associated with the used API token:
 
 ```typescript
 console.log(await client.getAccount()
-                        .getInfo());
+                        .getInfo())
 ```
 
 Example output for running the above code:
@@ -578,7 +593,7 @@ The following example prints the list of datasets that belong to the organizatio
 
 ```typescript
 console.log(await client.getOrganization("acme")
-                        .getDatasets());
+                        .getDatasets())
 ```
 
 #### Organization.getMembers()
@@ -604,7 +619,7 @@ The following example prints the list of pinned datasets for the organization na
 
 ```typescript
 console.log(await client.getOrganization("acme")
-                        .getPinnedDatasets());
+                        .getPinnedDatasets())
 ```
 
 #### Organization.removeMembers([User | string])

@@ -52,7 +52,7 @@ Triply API requests are always directed towards a specific URI path.
 URI paths will often have the following form:
 
 ```none
-https://api.INSTANCE/datasets/ACCOUNT/DATATSET/
+https://api.INSTANCE/datasets/ACCOUNT/DATASET/
 ```
 
 Upper-case letter words must be replaced by the following values:
