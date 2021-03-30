@@ -1,174 +1,135 @@
 ---
-title: "Triply Client"
+title: "TriplyDB.js"
 path: "/docs/triply-client-js"
 ---
 
-Triply Client is the programming library that makes it easy to interact with
-TriplyDB instances.  Triply Client allows you to automate most operations that
-can be performed through the TriplyDB GUI.  Triply Client is implemented in
-TypeScript/JavaScript.
+**TriplyDB.js** is the official programming library for interacting with [TriplyDB](https://triply.cc/docs/triply-db-getting-started) instances.  TriplyDB.js allows you to automate most operations that
+can be performed through the TriplyDB GUI.  TriplyDB.js is implemented in [TypeScript](https://www.typescriptlang.org).
 
-This document is a work in progress. Please contact
-[support@triply.cc](mailto:support@triply.cc) for more information.
+This document is a work in progress. Please contact [support@triply.cc](mailto:support@triply.cc) for questions and suggestions.
 
 ## Getting started
 
-This section gets you up and running with the Triply Client by setting up a
-simple script. The script will use Triply Client in order to interact with a
-specific TriplyDB instance.
+This section gets you up to speed with TriplyDB.js by setting up a simple client script.  Most of these steps are generic for setting up a Yarn-based TypeScript project.
 
-### Installation
+1. Install [Node.js](https://nodejs.org) and [Yarn](https://yarnpkg.com) on your system.
 
-The following steps are needed in order to install Triply Client:
-
-1. Install [Node.js](https://nodejs.org) and
-   [Yarn](https://yarnpkg.com).
-
-   Example for installation on recent Ubuntu versions:
-
-   ```sh
-   sudo apt install nodejs yarn # Debian-based, e.g., Ubuntu.
-   sudo dnf install nodejs yarn # Red Hat-based, e.g., Fedora.
-   ```
-
-2. Create an API token through the TriplyDB GUI. See [this video](https://youtu.be/ACfOY2a_VVM) for instructions on how to do it.
-
-In short, to create an API token, go to user settings in TriplyDB, then click on
-“API tokens”, where you'll be able to create a token.
-
-3. In your current terminal session, export the following environment
-   variables (ensure there aren't any spaces after =):
-
-   ```sh
-   export TRIPLY_API_TOKEN=<your-token>
-   ```
-
-   You can also add these lines to your `.profile` file in order to add these
-   environment variables to every future terminal session.
-
-### Setting up a Triply Client project
-
-The following steps are needed in order to setup a TypeScript project that uses
-the Triply Client library:
-
-1. Create a directory for your project:
+2. Create a directory for your project:
 
    ```sh
    mkdir my_project
    cd my_project
    ```
 
-2. Inside your newly created directory, run the following command to
-initialize the package configuration.  You will be asked several
-questions to set up a professional [yarn project](https://classic.yarnpkg.com/en/docs/creating-a-project/) (e.g., software license).
-(Add flag `-y` for a simplified setup, using default answers to these
-questions.) 
+3. Inside your newly created directory, initialize a standard [Yarn project](https://classic.yarnpkg.com/en/docs/creating-a-project/).  This will create a `package.json` file.
 
    ```sh
-   yarn init
+   yarn init -y
    ```
 
-3. Add the TypeScript and Triply Client dependencies:
+4. Add TypeScript and TriplyDB.js as dependencies.
 
    ```sh
    yarn add typescript @triply/triplydb
    ```
 
-4. The following command will initialize the project configuration and create a [tsconfig.json](https://www.typescriptlang.org/docs/handbook/tsconfig-json.html) file:
+5. Initialize a default TypeScript project.  This will create a [tsconfig.json](https://www.typescriptlang.org/docs/handbook/tsconfig-json.html) file.
 
    ```sh
    ./node_modules/.bin/tsc --init
    ```
 
-### Create your first script
+6. Create an API token through the TriplyDB GUI.  Log into your TriplyDB account, go to your user settings, and into the “API tokens” tab.
 
-Once you have performed the installation and project setup, perform the
-following steps in order to create and run your first script that uses the
-Triply Client library:
+   See [this video](https://youtu.be/ACfOY2a_VVM) for instructions on how to create an API token.
 
-1. Create a file called `index.ts` using for example the following command: 
-
-```
-cat > index.ts
-```
-
-2. Add the following contents to `index.ts`:
+7. Create a file called `index.ts` in your favorite text editor.  Add the following content, where `"API_TOKEN"` is your API token created in the previous step.
 
    ```typescript
-   // Import the Triply Client.
+   // Import the TriplyDB.js library.
    import Client from "@triply/triplydb";
-
-   // Configure the Triply Client.
+   // Set your API token.
    const client = Client.get({
-     token: process.env.TRIPLY_API_TOKEN,
+     token: "API_TOKEN"
    });
-
-   // Perform Triply Client requests within an async context.
+   // All requests are performed asynchronously.
    async function run() {
-     // Our first Triply Client request: obtain information of the
-     // current user.
+     // Example request: obtain information about the current user.
      console.log(await client.getAccount());
    }
+   // Run the program + error handling.
    run().catch(e => {
      console.error(e);
      process.exit(1);
    });
    ```
 
-3. Compile the TypeScript file into a corresponding JavaScript file by writing in the terminal:
+8. Transpile the TypeScript file (`index.ts`) into a JavaScript file (`index.js`).
 
-   ```bash
+   ```sh
    ./node_modules/.bin/tsc
    ```
 
-4. Run the JavaScript file by writing in the terminal:
+9. Run the JavaScript file (`index.js`) inside the Node.js runtime.
 
    ```sh
    node index.js
    ```
 
-This should print the information of the current user to the terminal.
-The current user is determined by the API token that was set in the
-`TRIPLY_API_TOKEN` environment variable.
+   This should print your user name.
 
-### Using the Atom text editor (recommended)
+### Securing your API token
 
-The Atom text editor provides advanced support for programming in TypeScript,
-which makes it easier to use Triply Client by showing typing feedback in the
-editor and offering autocomplete suggestions:
+Notice that your API token was included in your script in step 7.
+
+If you want to share your script with others, for example by checking it into version control, it is advised to load the API token from your development environment instead.
+
+One way in which this can be done is by storing your API token into the environment variable `TRIPLY_API_TOKEN`.  In Linux and macOS this can be done with the following command (ensure that no spaces appear after the `=` character):
+
+```sh
+export TRIPLY_API_TOKEN=<your-token>
+```
+
+On Linux, you can also add the `export` command to your `.profile` file.  This will make your API token available in future sessions.
+
+Once the API token is configured as an environment variable, you can read it from your script in the following way:
+
+```typescript
+// Get your API token.
+const client = Client.get({
+  token: process.env.TRIPLY_API_TOKEN
+});
+```
+
+### Using the Atom text editor
+
+The Atom text editor provides advanced support for programming in TypeScript, which makes it easier to use TriplyDB.js by showing typing feedback in the editor and offering auto-complete suggestions:
 
 1. Install the [Atom](https://atom.io) text editor.
 
-2. In order to let Atom use the correct TypeScript version, make the following
-changes in the `tsconfig.json` file:
+2. In order to let Atom use the correct TypeScript version, make the following changes in the `tsconfig.json` file:
 
    ```json
    "target": "es2020",
    "lib": ["es2020"],
    ```
 
-3. From within the Atom preferences page, install the
-[`atom-typescript`](https://atom.io/packages/atom-typescript) package. You can use ```Crtl + ,``` to go to your settings, and then navigate to “Install”. 
+3. From within the Atom preferences page, install the [`atom-typescript`](https://atom.io/packages/atom-typescript) package.  You can use the `Crtl` + `,` key combination in order to open the preferences page; then navigate to “Install”.
 
-If you wish to run your scripts within Atom, you may install the package Script.
-
-4. Start Atom over your script directory by running the following command from
-your `my_project` directory:
+4. Start Atom over your project directory with the following command:
 
    ```sh
+   cd my_project
    atom .
    ```
 
+5. If you wish to run your scripts within Atom, you may install the package [Script](https://atom.io/packages/script).
+
 ## Reference
 
-This section documents all methods that are currently available in Triply
-Client. Methods are grouped together for each object type to which they apply.
+This section documents all methods that are currently available in TriplyDB.js.
 
-### Code examples
-
-Every function in this reference section comes with at least one code
-example. These code examples can be run by inserting them into the
-following basic script structure that can be put in typescript files in your project:
+Every method in this reference section comes with at least one code example.  These code examples can be run by inserting them into the following code snippet.  See the [Getting started](#getting-started) section on how to get this script up and running on your system.
 
 ```typescript
 import Client from "@triply/triplydb";
@@ -176,9 +137,7 @@ const client = Client.get({
   token: process.env.TRIPLY_API_TOKEN
 });
 async function run() {
-  // This is where operations that use the Triply API are performed.
-  // All code examples that are given in this document must be placed
-  // in this location in order to be executed.
+  // This is where the code examples in this reference should be placed.
 }
 run().catch(e => {
   console.error(e);
@@ -186,12 +145,34 @@ run().catch(e => {
 });
 ```
 
-The following subsections document the various Triply Client
-functions.
+The following subsections document the various TriplyDB.js object types.  Each object type comes with its own methods.
+
+```mermaid
+classDiagram
+  class Account {
+    asOrg()
+    asUser()
+  }
+  class Client {
+    getInfo()
+  }
+  Client --> Account: getAccount
+  Client --> Dataset: getDataset
+  Client --> Organization: getOrganization
+  Client --> User: getUser
+  class Dataset {
+  }
+  class Organization {
+  }
+  Account <|-- Organization
+  class User {
+  }
+  Account <|-- User
+```
 
 ### Client
 
-Instances of `Client` are specific client connections with a TriplyDB user. They are declared via:
+Instances of `Client` are specific client connections with a TriplyDB instance.  A client connection is created by loading an API token:
 
 ```typescript
 import Client from "@triply/triplydb";
@@ -200,54 +181,133 @@ const client = Client.get({
 });
 ```
 
-#### Client.getApiInfo()
+#### Client.getAccount()
 
-Returns information about the TriplyDB instance that is associated with the
-current API token.
+Returns the account that is associated with the current API token.
 
-The following example returns an object describing the used TriplyDB instance:
+See [`Client.getAccount(name: string)`](#clientgetaccountname-string) for more information.
 
-```typescript
-console.log(await client.getApiInfo());
-```
+#### Client.getAccount(name: string)
 
-#### Client.getAccount(accountName: string)
+Returns details about the account with the given `name`.
 
-Returns details about the account with the given `accountName`.
+There are two kinds of accounts:
+  - When `name` is a user name, a [User](#user) object is returned.
+  - When `name` is an organization name, an [Organization](#organization) object is returned.
 
-The following example refers to an account called `acme`:
+The following example refers to an organization account called `acme`:
 
 ```typescript
 console.log(await client.getAccount("acme"));
 ```
 
-See section [`Account`](#account) for an overview of the methods that
-can be used with account objects.
+See section [`Account`](#account) for an overview of the methods for account objects.
 
 #### Client.getDataset(accountName: string, datasetName: string)
 
-Returns the dataset with name `datasetName` that is published by the account
-with name `accountName`.
+Returns the dataset with name `datasetName` that is published by the account with name `accountName`.
 
-The following example returns the dataset called `cats` published by the user
-called `john-doe`:
+The following example returns the dataset called `animals` published by the user called `john-doe`:
 
 ```typescript
-console.log(client.getDataset("john-doe", "cats"));
+console.log(client.getDataset("john-doe", "animals"));
 ```
 
-This function is a shorthand for a combination of the [`Client.getAccount(name:
-string)`](#clientgetaccountname-string) and the [`Account.getDataset(name:
-string)`](#accountgetdatasetname-string) call.  Therefore, the following example
-returns the same result as the above one:
+This function is a shorthand for a combination of the [`Client.getAccount(name: string)`](#clientgetaccountname-string) and [`Account.getDataset(name: string)`](#accountgetdatasetname-string) calls.  Therefore, the following example returns the same result as the above one:
 
 ```typescript
-console.log((await client.getUser("john-doe")).getDataset("cats"));
+console.log((await client.getUser("john-doe"))
+                         .getDataset("animals"));
+```
+
+#### Client.getInfo()
+
+Returns information about the TriplyDB instance that is associated with the current API token.
+
+The information returned by this function includes the following values:
+
+<dl>
+  <dt><code>apiUrl</code></dt>
+  <dd>The URL to the application programming interface (API) of the TriplyDB site.</dd>
+  <dt><code>branding</code></dt>
+  <dd>An object that contains the various branding settings for this TriplyDB instance.  It consists of the following values:
+    <dl>
+      <dt><code>banner</code></dt>
+      <dd>A URL to the image that is used for the banner on the homepage.</dd>
+      <dt><code>description</code></dt>
+      <dd>A text-only description of the TriplyDB site that is used for metadata.</dd>
+      <dt><code>logo</code></dt>
+      <dd>A URL to the image that is used as the square logo for the TriplyDB site.</dd>
+      <dt><code>logoLg</code></dt>
+      <dd>A URL to the image that is used as the landscape logo for the TriplyDB site.</dd>
+      <dt><code>name</code></dt>
+      <dd>The name of the TriplyDB site.  Typically one or two words.</dd>
+      <dt><code>tagline</code></dt>
+      <dd>A short description of the TriplyDB site.  Typically one sentence.</dd>
+      <dt><code>welcomeText</code></dt>
+      <dd>A description of the TriplyDB site that appears on the homepage (supports Markdown).</dd>
+    </dl>
+  </dd>
+  <dt><code>buildDate</code></dt>
+  <dd>TODO</dd>
+  <dt><code>buidlId</code></dt>
+  <dd>TODO</dd>
+  <dt><code>consoleUrl</code></dt>
+  <dd>The URL graphical user interface (GUI) of the TriplyDB site.</dd>
+  <dt><code>contactEmail</code></dt>
+  <dd>The email address that users of the TriplyDB site can use to contact the administrators.</dd>
+  <dt><code>enabledOauth</code></dt>
+  <dd>Zero or more OAuth providers that can be used to log into the TriplyDB site.  Examples of possible values are <code>"github"</code> and <code>"google"</code>.</dd>
+  <dt><code>elasticServicesEnabled</code></dt>
+  <dd>Indicates whether ElasticSearch services can be created on the TriplyDB site.</dd>
+  <dt><code>exampleDatasets</code></dt>
+  <dd>Zero or more dataset objects.  These are the datasets that are displayed on the homepage.  These datasets appear in the order in which they appear on the homepage.</dd>
+  <dt><code>isGeneralPublicInstance</code></dt>
+  <dd>Indicates whether account creation is open for external users.</dd>
+  <dt><code>jenaServicesEnabled</code></dt>
+  <dd>Indicates whether Jena services can be created on the TriplyDB site.</dd>
+  <dt><code>passwordSignup</code></dt>
+  <dd>Indicates whether it is possible to sign up for an account on this TriplyDB site using an email and password combination.</dd>
+  <dt><code>prefixes</code></dt>
+  <dd>Zero or more prefix declaration objects.  These are the prefix declaration that are defined at the generic site level.  These prefix declarations can be extended and overwritten at the specific dataset level.</dd>
+  <dt><code>starterDataset</code></dt>
+  <dd>The dataset that is used as the started dataset for new users on the TriplyDB site.</dd>
+  <dt><code>triplydb</code>
+  <dd>TODO
+    <dl>
+      <dt><code>numAvailableAccounts</code></dt>
+      <dd>The number of available accounts on the TriplyDB site.</dd>
+      <dt><code>serviceExpirationDays</code></dt>
+      <dd>The number of days after which unused services are suspended.  Service suspension does not affect data publication.</dd>
+      <dt><code>serviceStatementLimit</code></dt>
+      <dd>The maximum number of statements that a user is allowed to make available in services on this TriplyDB site.</dd>
+      <dt><code>userAssetByteLimit</code></dt>
+      <dd>The maximum size for assets that a user is able to upload.  This is represented in bytes.</dd>
+      <dt><code>userGraphLimit</code></dt>
+      <dd>The maximum number of graphs that one dataset is allowed to have on this TriplyDB site.</dd>
+      <dt><code>userServiceLimit</code></dt>
+      <dd>The maximum number of services that users are allowed to create on this TriplyDB site.</dd>
+      <dt><code>userStatementLimit</code></dt>
+      <dd>The maximum number of statementsthat a user is allowed to publish on this TriplyDB site.</dd>
+    </dl>
+  </dd>
+  <dt><code>version</code></dt>
+  <dd>The version identifier for the TriplyDB site.</dd>
+  <dt><code>virtuosoServicesEnabled</code></dt>
+  <dd>Indicates whether Virtuoso services can be created on the TriplyDB site.</dd>
+</dl>
+
+The following example returns an object that describes the current TriplyDB instance:
+
+```typescript
+console.log(await client.getInfo());
 ```
 
 #### Client.getOrganization(name: string)
 
 Returns the organization with the given `name`.
+
+This is identical to method `Client.getAccount(name: string)`, but only works for *organization* accounts.
 
 The following example returns the organization called `acme`:
 
@@ -256,52 +316,66 @@ console.log(await client.getOrganization("acme"));
 ```
 
 See section [`Organization`](#organization) for an overview of the
-methods that can be used with organization objects.
+methods for organization objects.
 
 #### Client.getUser()
 
-Returns the user associated with the current API token.
+Returns the current user.
 
-The following example code returns the user associated with the
-current API token:
+The current user is the one that is associated with the current API token.
+
+This method is identical to [`Client.getAccount()`](#clientgetaccount).
+
+See [`Client.getUser(name: string)`](#clientgetusername-string) for more information.
+
+The following example code returns the current user:
 
 ```typescript
 console.log(await client.getUser());
 ```
 
-See section [`User`](#user) for an overview of the methods that can be
-used with user objects.
+See section [`User`](#user) for an overview of the methods for user objects.
 
-#### Client.getUser(userName: string)
+#### Client.getUser(name: string)
 
-Returns the user with the given `userName`.
+Returns the user with the given `name`.
 
 The following example returns the user with name `john-doe`:
 
 ```typescript
-console.log(await client.getAccount("john-doe"));
+console.log(await client.getUser("john-doe"));
 ```
 
-See section [`User`](#user) for an overview of the methods that can be used with
-user objects.
+See section [`User`](#user) for an overview of the methods for user objects.
 
 ### Account
 
-The `Account` class denotes a TriplyDB account.  Accounts can be either organizations ([`Organization`](#organization)) or users ([`User`](#user)). 
+The `Account` class denotes a TriplyDB account.
 
-The `Account` class refers to: 
-```typescript
-client.getAccount()
-```
+Accounts can be either organizations ([`Organization`](#organization)) or users ([`User`](#user)).
+
+Account objects can be obtained from the following methods:
+
+  - [`Client.getAccount()`](#clientgetaccount)
+  - [`Client.getAccount(name: string)`](#clientgetaccountname-string)
 
 #### Account.asOrg()
 
-If the account is an organization, returns information about the account. Otherwise,results in the error: "This is a user. Cannot fetch this as an organization."
+Succeeds if the account is an organization ([`Organization`](#organization)).
 
-Best used as the following:
+If the account is an organization, returns information about the account. TODO
+
+If the account is not an organization but a user, calling this methid results in the following error:
+
+```
+This is a user. Cannot fetch this as an organization.
+```
+
+The following example succeeds, because `"acme"` is an organization.
+
 ```typescript
-  console.log(
-  (await client.getAccount()).asOrg());
+console.log(await client.getAccount("acme")
+                        .asOrg());
 ```
 
 #### Account.asUser()
@@ -309,9 +383,10 @@ Best used as the following:
 If the account is a user, returns information about the account. Otherwise,results in the error: "This is an organization. Cannot fetch this as a user."
 
 Best used as the following:
+
 ```typescript
-  console.log(
-  (await client.getAccount()).asUser());
+console.log(await client.getAccount()
+                        .asUser());
 ```
 
 #### Account.exists()
@@ -319,9 +394,10 @@ Best used as the following:
 If the account exists, returns true. Otherwise, returns false.
 
 Best used as the following:
+
 ```typescript
-  console.log(
-  await (await client.getAccount()).exists());
+console.log(await client.getAccount()
+                        .exists());
 ```
 
 #### Account.getInfo()
@@ -332,26 +408,26 @@ The following example code prints an overview of account that is
 associated with the used API token:
 
 ```typescript
-console.log(
-await (await client.getAccount()).getInfo());
+console.log(await client.getAccount()
+                        .getInfo());
 ```
 
 Example output for running the above code:
 
 ```json
 {
-  "avatarUrl": "https://www.gravatar.com/avatar/9bc28997dd1074e405e1c66196d5e117?d=mm",
   "accountName": "wouter",
-  "uid": "5aafcb9639b170025c5e4b99",
-  "name": "Wouter Beek",
-  "type": "user",
+  "authMethod": "password",
+  "avatarUrl": "https://www.gravatar.com/avatar/9bc28997dd1074e405e1c66196d5e117?d=mm",
   "createdAt": "Mon Mar 19 2018 14:39:18 GMT+0000 (Coordinated Universal Time)",
+  "disabled": false,
+  "email": "wouter@triply.cc",
+  "name": "Wouter Beek",
   "siteAdmin": true,
   "superAdmin": true,
-  "email": "wouter@triply.cc",
+  "type": "user",
+  "uid": "5aafcb9639b170025c5e4b99",
   "updatedAt": "Tue Nov 27 2018 09:29:38 GMT+0000 (Coordinated Universal Time)",
-  "authMethod": "password",
-  "disabled": false,
   "verified": true
 }
 ```
@@ -360,46 +436,44 @@ Example output for running the above code:
 
 Returns the name of the account.
 
-The following example code prints the name of the account associated
-with the current API token:
+The following example code prints the name of the current account:
 
 ```typescript
-console.log(
-    await (await client.getAccount()).getName());
+console.log(await client.getAccount()
+                        .getName())
 ```
 
 ### Organization
 
 The `Organization` class denotes a TriplyDB organization.
 
-An 'Organization' class is obtained via:
-```typescript
-console.log(await client.getOrganization("organization's name in triplyDB"));
-```
+Organizations can be obtained via the following methods:
+
+  - [`Client.getOrganization()`](#clientgetorganization)
+  - [`Client.getOrganization(name: string)`](#clientgetorganizationname-string)
 
 #### Organization.addDataset(metadata: object)
 
-Adds a new dataset to the `Organization`.
+Adds a new dataset to the organization.
 
-This only works if the used API token gives write access to the
-`Organization`.
+This only succeed if the current API token gives write access to the
+organization.
 
-Argument `metadata` is a JSON object that specifies the dataset metadata.  It
-has the following keys:
+Argument `metadata` is a JSON object that specifies the dataset metadata.  It has the following keys:
 
 <dl>
-  <dt><code>accessLevel</code> (required)</dt>
+  <dt><code>accessLevel</code> (optional)</dt>
   <dd>
     <p>The access level of the dataset. The following values are supported:</p>
     <dl>
-      <dt><code>"private"</code></dt>
+      <dt><code>"private"</code> (default)</dt>
       <dd>The dataset can only be accessed by organization members.</dd>
       <dt><code>"internal"</code></dt>
       <dd>The dataset can only be accessed by users that are logged into the TriplyDB instance.
       <dt><code>"public"</code></dt>
       <dd>The dataset can be accessed by everybody.</dd>
     </dl>
-    <p>When no access level is specified, the most conservative access level (<code>private</code>) is used.</p>
+    <p>When no access level is specified, the most restrictive access level (<code>private</code>) is used.</p>
   </dd>
   <dt><code>description</code> (optional)</dt>
   <dd>The description of the dataset.  This description can make use of Markdown (see the <a href="/docs/triply-db-getting-started/#markdown-support">Markdown reference</a>) for details.</dd>
@@ -415,125 +489,165 @@ has the following keys:
       <li><code>"ODC-By"</code></li>
       <li><code>"ODC-ODbL"</code></li>
       <li><code>"PDDL"</code></li>
+      <li><code>"Node"</code> (default)</li>
     </ul>
-    <p>If no license is provided, the license is given value <code>"None"</code>.</p>
+    <p>If no license is provided, the value <code>"None"</code> is used.</p>
   </dd>
   <dt><code>name</code> (required)</dt>
-  <dd>The internal name of the dataset.  This name can only contain alphanumeric characters and hyphens.</dd>
+  <dd>The name of the dataset.  This name must only contain alphanumeric characters and hyphens (<code>[A-Za-z0-9-]</code>).</dd>
 </dl>
 
-The following code example creates a new dataset (called `dogs`) under the
-`acme` organization, with private access, a description, a display name, and a license:
+The following code example creates a new dataset called `dogs` under the `acme` organization, with private access, a description, a display name, and a license:
 
 ```typescript
-const organization = client.getOrganization("acme");
-console.log((await organization).addDataset({accessLevel: "private", description:"puppies", displayName:"Doggos", license:"PDDL", name:"dogs"}));
+console.log(await client.getOrganization("acme")
+                        .addDataset({accessLevel: "private",
+                                     description:"A dataset about dogs.",
+                                     displayName:"Doggos",
+                                     license:"PDDL",
+                                     name:"dogs"}));
+```
+
+#### Organization.addMembers([{user: string, role: string}])
+
+Adds one or more members to the given organization.
+
+For each member a role must be specified:
+
+DEFAULT?
+
+<dl>
+  <dt><code>"member"</code></dt>
+  <dd>A regular member that is allowed to read and write the datasets that are published under the organization.</dd>
+  <dt><code>"owner"</code></dt>
+  <dd>An owner of the organization.  Owners have all the rights of regular users, plus the ability to add/remove users to/from the organization, the ability to change the roles of existing users, and the ability to delete the organization.</dd>
+</dl>
+
+The following example adds a user with name name `"bugs-bunny"` to the organization `"acme"`:
+
+```typescript
+console.log(await client.getOrganization("acme")
+                        .addMembers({user:"bugs-bunny",
+                                     role:"member"}))
+```
+
+#### Organization.delete()
+
+Deletes the given organization.
+
+The only succeeds if the current API token includes ownership rights for the given organization.
+
+The following example deletes the organization called `"acme"`:
+
+```typescript
+console.log(await client.getOrganization("acme")
+                        .delete())
 ```
 
 #### Organization.exists()
 
 Returns whether the organization still exists.
 
-The following example code prints `true` in case the account (still) exists, and
-prints `false` otherwise:
+The following example code prints `true` in case the account (still) exists, and prints `false` otherwise:
 
 ```typescript
 const organization = await client.getOrganization("acme");
+// Some code in between.  The organization could have been deleted in the
+// meantime.
 console.log(await (organization).exists());
 ```
 
 #### Organization.getDataset(name: string)
 
-Returns the dataset with the given `name` that is published by the given
-`Organization`.
+Returns the dataset with the given `name` that is published by the given `Organization`.
 
-This function returns an object of type [`Dataset`](#dataset).  See that section
-for an overview of the methods that can be called on dataset objects.
+This function returns an object of type [`Dataset`](#dataset).  See that section for an overview of the methods that can be called on dataset objects.
 
 The following example prints a specific dataset object:
 
 ```typescript
-const organization = client.getOrganization("acme");
-console.log((await organization).getDataset("dogs"));
+console.log(client.getOrganization("acme")
+                  .getDataset("dogs"));
 ```
 
 #### Organization.getDatasets()
 
-Returns the list of datasets for the `Organization`.  This only
-includes datasets that are accessible under the used API token.
+Returns the list of datasets for the `Organization`.  This only includes datasets that are accessible under the used API token.
 
-The following example prints the list of datasets that belong to the
-organization named `acme`:
+The following example prints the list of datasets that belong to the organization named `acme`:
 
 ```typescript
-  const organization = await client.getOrganization("acme");
-console.log(await organization.getDatasets());
+console.log(await client.getOrganization("acme")
+                        .getDatasets());
+```
+
+#### Organization.getMembers()
+
+Returns the list of members for the given organization.
+
+Members of organization are TriplyDB [users](#user).
+
+```typescript
+console.log(await client.getOrganization("acme")
+                        .getMembers())
 ```
 
 #### Organization.getPinnedDatasets()
 
-Returns the list of datasets that are pinned for the given `Organization`.  The
-order reflects the order in which the datasets appear on the organization
-page in the Triply GUI.
+Returns the list of datasets that are pinned by the given Organization.
 
-The following example prints the list of pinned datasets for the organization
-named `acme`:
+A pinned dataset is a dataset that is displayed in a more prominent way than other datasets.
+
+The order in which the pinned datasets are returned reflects the order in which they appear on the organization homepage.
+
+The following example prints the list of pinned datasets for the organization named `"acme"`:
 
 ```typescript
-const organization = await client.getOrganization("acme");
-console.log(await organization.getPinnedDatasets());
+console.log(await client.getOrganization("acme")
+                        .getPinnedDatasets());
 ```
 
-#### Organization.addMembers()
+#### Organization.removeMembers([User | string])
 
-Adds members for the given `Organization`, with role of either member or owner.
+Removes one or more users.
 
-The following example adds user of name "Bugs" to the organization "acme", wi
+The array may include names of users (`string`) or user objects ([`User`](#user)).
 
-```typescript
-const organization = await client.getOrganization("acme");
-console.log(organization.addMembers({user:"bugs", role:"member"}));
-```
-
-#### Organization.delete()
-
-Deletes the organization.
+The following example removes two users: one user is removed by name and another is removed by object:
 
 ```typescript
-const organization = await client.getOrganization("acme");
-console.log(organization.delete());
+const acme = await client.getOrganization("acme")
+const bunny = await acme.getMember("bugs-bunny")
+await acme.removeMembers([bunny, "daffy-duck"])
 ```
 
 
 ### User
 
-The [`User`](#user) class represents a TriplyDB user. It is accessed via:
+The [`User`](#user) class represents a TriplyDB user.
 
-```typescript
-client.getUser("user name");
-```
+Users can be obtained with the following methods:
 
-Users cannot be created or deleted through the Triply Client library.  See the
-[Triply Console documentation](/docs/triply-db-getting-started) for how to
-create and delete users through the web-based GUI.
+  - [`Client.getUser()`](#clientgetuser)
+  - [`Client.getUser(name: string)`](#clientgetusername-string)
+
+Users cannot be created or deleted through the TriplyDB.js library.  See the [Triply Console documentation](/docs/triply-db-getting-started) for how to create and delete users through the web-based GUI.
 
 #### User.addDataset(metadata: object)
 
 Adds a new dataset for the given `User`.
 
-This only works if the used API token gives write access to the user
-account.
+This only works if the used API token gives write access to the user account.
 
-Argument `metadata` is a JSON object that specifies the dataset's metadata.  It
-has the following keys:
+Argument `metadata` is a JSON object that specifies the dataset's metadata.  It has the following keys:
 
 <dl>
   <dt><code>accessLevel</code> (optional)</dt>
   <dd>
     <p>The access level of the dataset. The following values are supported:</p>
     <dl>
-      <dt><code>"private"</code></dt>
-      <dd>The dataset can only be accessed by the <a href="#user"><code>User</code></a> for whom this dataset is created.</dd>
+      <dt><code>"private"</code> (default)</dt>
+      <dd>The dataset can only be accessed by the user for whom this dataset is created.</dd>
       <dt><code>"internal"</code></dt>
       <dd>The dataset can only be accessed by users that are logged into the TriplyDB instance.
       <dt><code>"public"</code></dt>
@@ -562,70 +676,67 @@ has the following keys:
   <dd>The internal name of the dataset.  This name can only contain alphanumeric characters and hyphens.</dd>
 </dl>
 
-The following code example creates a new dataset (called `cats`) for the user
-with name `john-doe`, with private access, a description, display name, and a license:
+The following code example creates a new dataset (called `animals`) for the user with name `john-doe`, with private access, a description, display name, and a license:
 
 ```typescript
-const user = await client.getUser("john-doe");
-  console.log(await(user.addDataset({accessLevel: "private", description:"cats > dogs", displayName: "Cats", license:"PDDL", name: "cats"})));
-
+console.log(await client.getUser("john-doe")
+                        .addDataset({accessLevel: "private",
+                                     description:"A dataset about animals.",
+                                     displayName: "animals",
+                                     license:"PDDL",
+                                     name: "animals"})));
 ```
 
 #### User.createOrganization(metadata: object)
 
-Creates a new organization for which `User` will be the owner. This only works if the used API token includes write access for the
-`User`.
+Creates a new organization for which `User` will be the owner. This only works if the used API token includes write access for the `User`.
 
-Argument `metadata` is a JSON object that specifies the organization metadata.
-It has the following keys:
+Argument `metadata` is a JSON object that specifies the organization metadata.  It has the following keys:
 
 <dl>
   <dt><code>accountName</code> (required)</dt>
   <dd>The internal name of the organization.  This name can only contain alphanumeric characters and hyphens.</dd>
   <dt><code>description</code> (optional)</dt>
   <dd>The description of the organization.  This description can make use of Markdown layout (see the <a href="/docs/triply-db-getting-started/#markdown-support">Markdown reference</a>) for details.</dd>
-  <dt><code>email</code></dt>
+  <dt><code>email</code> (optional)</dt>
   <dd>The email address at which the organization can be reached.</dd>
   <dt><code>name</code> (optional)</dt>
   <dd>The human-readable name of the organization.  This name may contain spaces and other non-alphanumeric characters.</dd>
 </dl>
 
-The following example creates an organization with name `acme` for which the
-user with name `john-doe` will be the owner.  Notice that in addition to the required internal name (`"accountName": "acme"`), an optional display name (`"name": "Acme Corporation"`) is specified as well.
+The following example creates an organization with name `acme` for which the user with name `john-doe` will be the owner.  Notice that in addition to the required internal name (`"accountName": "acme"`), an optional display name (`"name": "Acme Corporation"`) is specified as well.
 
 ```typescript
-const user = await client.getUser("john-doe");
-console.log(user.createOrganization({"accountName": "acme",
-                                    "name": "Acme Corporation"}));
+console.log(await client.getUser("john-doe")
+                        .createOrganization({
+                          accountName: "acme",
+                          name: "Acme Corporation"}));
 ```
 
 #### User.exists()
 
 Returns whether the `User` still exists.
 
-While it is not possible to delete users with Triply Client, they can be deleted
-― possibly by somebody else ― through the Triply Console.
+While it is not possible to delete users with TriplyDB.js, they can be deleted ― possibly by somebody else ― through the Triply Console.
 
-The following example code prints `true` in case the account (still) exists, and
-prints `false` otherwise:
+The following example code prints `true` in case the account (still) exists, and prints `false` otherwise:
 
 ```typescript
-const user = await client.getUser("john-doe");
-console.log(await user.exists());
+console.log(await client.getUser("john-doe")
+                        .exists());
 ```
 
 #### User.getDataset(name: string)
 
 Returns the dataset with the given `name` that is published by the given `User`.
 
-This function returns an object of type [`Dataset`](#dataset).  See that section
-for an overview of the methods that can be called on those dataset objects.
+This function returns an object of type [`Dataset`](#dataset).  See that section for an overview of the methods that can be called on those dataset objects.
 
 The following example prints a specific dataset object:
 
 ```typescript
-const user = await client.getUser("john-doe");
-console.log(user.getDataset("cats"));
+console.log(await client.getUser("john-doe")
+                        .getDataset("animals"));
 ```
 
 #### User.getDatasets()
@@ -637,19 +748,17 @@ The following example prints the list of datasets that belong to the user named
 `john-doe`:
 
 ```typescript
-const user = await client.getUser("john-doe");
-console.log(await user.getDatasets());
+console.log(await client.getUser("john-doe")
+                        .getDatasets());
 ```
 
 #### User.getOrganizations()
 
 Returns the list of organizations for which the `User` is a member.
 
-The order in the list reflects the order in which the organizations appear on
-the user page in the Triply GUI.
+The order in the list reflects the order in which the organizations appear on the user page in the Triply GUI.
 
-The following example prints the list of organizationo for which the user named
-`john-doe` is a member:
+The following example prints the list of organizationo for which the user named `"john-doe"` is a member:
 
 ```typescript
 const user = await client.getuser("john-doe");
@@ -660,20 +769,25 @@ console.log(await user.getOrganizations());
 
 Returns the list of datasets that are pinned for the given `User`.
 
-The order in the list reflects the order in which the datasets appear on the
-user page in the Triply GUI.
+The order in the list reflects the order in which the datasets appear on the user page in the Triply GUI.
 
-The following example prints the list of pinned datasets for the user named
-`john-doe`:
+The following example prints the list of pinned datasets for the user named `"john-doe"`:
 
 ```typescript
 const user = await client.getUser("john-doe");
 console.log(await user.getPinnedDatasets());
 ```
 
+
 ### Dataset
 
 The [`Dataset`](#dataset) class represents a TriplyDB dataset.
+
+#### Dataset.addPrefixes(prefixes: {[key: string]: string})
+
+```typescript
+
+```
 
 #### Dataset.addService(type: string, name: string)
 
@@ -686,15 +800,11 @@ supports the following values:
   - `"sparql-jena"` :: Starts a SPARQL JENA service.
   - `"elasticsearch"` :: Starts an Elastic Search service.
 
-The `name` argument can be used to distinguish between different
-endpoints over the same dataset that are used for different tasks.
+The `name` argument can be used to distinguish between different endpoints over the same dataset that are used for different tasks.
 
-See section [`Service`](#service) for an overview of the methods that
-can be used with service objects.
+See section [`Service`](#service) for an overview of the methods that can be used with service objects.
 
-The following example code starts two SPARQL endpoints over a specific
-dataset. One endpoint will be used in the acceptance environment
-while the other endpoint will be used in the production system.
+The following example code starts two SPARQL endpoints over a specific dataset.  One endpoint will be used in the acceptance environment while the other endpoint will be used in the production system.
 
 ```typescript
 const dataset = await (await client.getAccount()).getDataset("dataset name");
@@ -702,39 +812,9 @@ const acceptance = dataset.addService("sparql", "acceptance");
 const production = dataset.addService("sparql", "production");
 ```
 
-#### Dataset.getAssets()
-
-Returns an array with objects that represent the assets that belong to
-this dataset.
-
-The following example code retrieves the assets for a specific
-dataset:
-
-```typescript
-  console.log(await (await client
-      .getAccount())
-      .getDataset("dataset name")
-      .getAssets());
-```
-
-#### Dataset.getPrefixes()
-
-Returns the prefixes that are defined for the dataset.
-
-Example:
-
-```typescript
-  console.log(await (await client
-      .getAccount())
-      .getDataset("dataset name")
-      .getPrefixes());
-```
-
 #### Dataset.copy(account: string, dataset: string)
 
-Creates a copy of the current dataset.  The owner (user or
-organization) of the copy is specified with parameter `account`.  The
-name of the copy is specified with parameter `dataset`.
+Creates a copy of the current dataset.  The owner (user or organization) of the copy is specified with parameter `account`.  The name of the copy is specified with parameter `dataset`.
 
 ```typescript
   console.log(await (await client
@@ -743,17 +823,13 @@ name of the copy is specified with parameter `dataset`.
       .copy("account name","copy dataset name"));
 ```
 
-This operation does not overwrite existing datasets: if the copied-to
-dataset already exists, a new dataset with suffix `-1` will be
-created.
+This operation does not overwrite existing datasets: if the copied-to dataset already exists, a new dataset with suffix `-1` will be created.
 
 #### Dataset.delete()
 
-Deletes the dataset. This includes deleting the dataset metadata, all
-of its graphs, and all of its assets.
+Deletes the dataset. This includes deleting the dataset metadata, all of its graphs, and all of its assets.
 
-Use the following functions in order to delete graphs while retaining
-dataset metadata and assets:
+Use the following functions in order to delete graphs while retaining dataset metadata and assets:
 
 - [Dataset.deleteGraph(graphName: string)](#datasetdeletegraphname-string)
 - [Dataset.removeAllGraphs()](#datasetremoveallgraphs)
@@ -762,86 +838,155 @@ The following example code deletes a specific dataset that is part of
 the account associated with the current API token:
 
 ```typescript
-  (await client
-    .getAccount())
-    .getDataset("some-dataset")
-    .delete();
+await client.getAccount())
+            .getDataset("some-dataset")
+            .delete()
 ```
 
 #### Dataset.deleteGraph(name: string)
 
-Deletes a specific graph that belongs to this dataset.
+Deletes the graph that has the given `name` and that belongs to this dataset.
 
-The following example code deletes a specific graph from a specific
+In linked data, graph names (`name`) are IRIs.
+
+The following example deletes the cats graph from the animals
 dataset:
 
 ```typescript
- (await client
-  .getAccount())
-  .getDataset("some-dataset")
-  .deleteGraph("https://example.org/some-graph");
+await client.getAccount()
+            .getDataset("animals")
+            .deleteGraph("https://example.org/cats")
 ```
 
 #### Dataset.exists()
 
-Returns whether the dataset still exists.
+Returns whether or not the dataset still exists in the TriplyDB instance.
 
-Datasets can still be considered to exist when the [Dataset.delete()](#datasetdelete)
-function is called, when the
-[Dataset.rename(string)](#datasetrenamename-string) function is
-called, or when somebody deletes the dataset from the [Triply
-Console](/docs/triply-db-getting-started).
+Datasets can still be considered to not exist when the [`Dataset.delete()`](#datasetdelete) function is called or when somebody deletes the dataset from the [Triply GUI](/docs/triply-db-getting-started).
 
-The following example code prints `true` in case the dataset still
-exists, and prints `false` otherwise:
+The following example code prints `true` in case the dataset still exists, and `false` otherwise:
 
 ```typescript
 console.log(
-await (await client
-    .getAccount())
-    .getDataset("some-dataset")
+  await (await client
+    .getUser())
+    .getDataset("animals")
     .exists());
 ```
 
-#### Dataset.getServices()
+#### Dataset.getAsset(name: string, version: number)
 
-Returns an array of objects that represent TriplyDB services.
+Returns the asset with the given `name` for this dataset.
 
-The following example code emits the services that are enabled for a
-specific dataset:
+Optionally allows the version number (`version`) of the asset to be specified.  If the version number is abscent, the latest version of the assert with the given `name` is returned.
+
+The following example returns the original version of an image of a dog from the animals dataset:
 
 ```typescript
 console.log(
-await (await client
-    .getAccount())
-    .getDataset("some-dataset")
-    .getServices());
+  await client.getUser()
+              .getDataset("animals")
+              .getAsset("dog.png", 1))
+```
+
+#### Dataset.getAssets()
+
+Returns zero or more assets that belong to this dataset.
+
+Assets are binary files that can be stored along with the graph-based data.  Common examples include documents, images and videos.
+
+The following example retrieves the assets for a specific dataset:
+
+```typescript
+console.log(
+  await (await client
+    .getUser())
+    .getDataset("animals")
+    .getAssets());
+```
+
+#### Dataset.getGraph(name: string)
+
+Returns the graph with the given `name` that belongs to this dataset.
+
+In linked data, graph names (`name`) are IRIs.
+
+The following example retrieves the graph about cats from the dataset about animals:
+
+```typescript
+console.log(
+  await (await client
+    .getUser()
+    .getDataset("animals")
+    .getGraph("https://example.com/cats"))
 ```
 
 #### Dataset.getGraphs()
 
-Returns an array with objects that represent the graphs that belong to
-this dataset.
+Returns zero or more graphs that belong to the dataset.
 
-The following example code retrieves the graphs for a specific
+The following example code retrieves the graphs for the `animals`
 dataset:
 
 ```typescript
 console.log(
-await (await client
-    .getAccount())
-    .getDataset("some-dataset")
+  await (await client
+    .getUser())
+    .getDataset("animals")
     .getGraphs());
+```
+
+#### Dataset.getInfo()
+
+Returns an overview of the dataset in the form of a JSON object.
+
+The following example prints the information from the `animals` dataset of the current user:
+
+```typescript
+console.log(
+  await (await client
+    .getUser())
+    .getDataset("animals")
+    .getInfo());
+```
+
+#### Dataset.getPrefixes()
+
+Returns zero or more prefix declarations that hold for this dataset.
+
+This contains prefix declarations that are generic and configured for this TriplyDB instance, and prefix declarations that are defined for this specific dataset.
+
+The following example prints the prefix declarations that hold for the animals dataset:
+
+```typescript
+console.log(
+  await (await client
+    .getUser())
+    .getDataset("animals")
+    .getPrefixes());
+```
+
+#### Dataset.getServices()
+
+Returns zero or more objects that represent TriplyDB services.
+
+See section [`Service`](#service) for an overview of the methods for service objects.
+
+The following example code returns the services for the `animals` dataset of the current user:
+
+```typescript
+console.log(
+await (await client
+  .getUser())
+  .getDataset("animals")
+  .getServices()); //ERROR
 ```
 
 #### Dataset.importFromDataset(from: Dataset, graphs: mapping)
 
-`graphs:mapping` is a JSON object taking existing graph names (graphs) in the
-`from` dataset, and mapping them into a new named graph in the Dateset into which they are imported.
+`graphs:mapping` is a JSON object taking existing graph names (graphs) in the `from` dataset, and mapping them into a new named graph in the Dateset into which they are imported.
 
-The following code example creates a new dataset “d2” and imports one
-graph from the existing dataset “d1”. Notice that the graph can be
-renamed as part of the import.
+The following code example creates a new dataset “d2” and imports one graph from the existing dataset “d1”. Notice that the graph can be renamed as part of the import.
 
 ```typescript
   const dataset1 = (await client
@@ -856,12 +1001,18 @@ renamed as part of the import.
             {"https://example.org/dataset2/graph":
              "https://example.org/dataset1/graph"});
 ```
+
+#### Dataset.importFromUrls(urls: list(string))
+
 Note that you can also import from URLs with:
 
 ```typescript
 dataset1.importFromUrls(["url", "url", "url"])
 ```
-and you can also import from files with:
+
+#### Dataset.importFromFiles(files: list(string))
+
+And you can also import from files with:
 (The files must contain RDF data and must be encoded in one of the
 following standardized RDF serialization formats: N-Quads, N-Triples,
 TriG, Turtle.)
@@ -870,18 +1021,10 @@ TriG, Turtle.)
 dataset1.importFromFiles(["direction to file", "direction to file"])
 ```
 
-#### Dataset.info()
-
-Returns an overview of the dataset in the form of a JSON object.
-
-Example:
-
-```typescript
-  console.log(
-    await (await client
-      .getAccount())
-      .getDataset("dataset")
-      .getInfo());
+```
+const app = App.get({token: token})
+const account = await app.getAccount("laurensrietveld")
+await account.getDataset("test").importFromFiles("./test.nt")
 ```
 
 #### Dataset.query()
@@ -903,14 +1046,14 @@ dataset:
 
 #### Dataset.removeAllGraphs()
 
-Removes all graphs from this dataset.
+Removes all graphs from the dataset.
 
-The following code example removed all graphs from a specific dataset:
+The following code example removes all graphs from the `animals` dataset:
 
 ```typescript
   await (await client
-    .getAccount("some-account"))
-    .getDataset("some-dataset")
+    .getUser())
+    .getDataset("animals")
     .removeAllGraphs();
 ```
 
@@ -984,9 +1127,11 @@ dataset.update({accessLevel:"private",description:"desc", displayName:"disp", li
 
 ```
 
-#### Dataset.uploadAsset(assetName: string, filePath: string)
+#### Dataset.uploadAsset(name: string, file: string)
 
-Uploads a file that does not contain RDF data as an asset.
+Uploads a binary file (asset). that does not contain RDF data as an asset.
+
+If you want to upload RDF data into one or more graphs, use [Dataset.upload]
 
 Assets can be source data files prior to running an ETL process,
 documentation files describing the dataset, or media files
@@ -1187,6 +1332,11 @@ const reply = await SuperAgent.post("URL-OF-SOME-SPARQL-ENDPOINT")
   .buffer(true)
   .send({query: "select * { ?s ?p ?o } limit 1"});
 ```
+
+### What is the latests version of TriplyDB.js?
+
+The latest version of TriplyDB.js can be found in [the NPM
+repository](https://www.npmjs.com/package/@triply/triplydb).
 
 ### What to do when the following error appears?
 
