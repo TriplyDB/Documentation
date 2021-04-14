@@ -7,7 +7,7 @@ path: "/docs/triplydb-js"
 
 Please contact [support@triply.cc](mailto:support@triply.cc) for questions and suggestions.
 
-## Getting started
+# 1. Getting started
 
 In this section we set up a simple project that uses TriplyDB.js.  Most of these steps are generic for setting up a Yarn-based TypeScript project.
 
@@ -57,7 +57,7 @@ In this section we set up a simple project that uses TriplyDB.js.  Most of these
    run().catch(e => {
      console.error(e)
      process.exit(1)
-   });
+   })
    ```
 
 8. Transpile the TypeScript file (`main.ts`) into a JavaScript file (`main.js`):
@@ -74,7 +74,7 @@ In this section we set up a simple project that uses TriplyDB.js.  Most of these
 
    This should print your user name.
 
-### Securing your API token
+## 1.1 Securing your API token
 
 Notice that your API token was included in your script (step 7).  This was done to have a working script quickly, but is not a good practice!
 
@@ -82,7 +82,7 @@ For example, if you would publish you script on the web, or share it in some oth
 
 This is why it is advised to load the API token from your development environment instead.  TriplyDB.js uses the environment variable `TRIPLY_API_TOKEN` to this effect.
 
-#### Setting an environment variable in macOS or Linux
+### 1.1.1 Setting an environment variable in macOS or Linux
 
 In macOS and Linux, the environment varialbe is set as follows:
 
@@ -97,12 +97,12 @@ On Linux, you can add the `export` command to your `.profile` file.  This is fil
 Once the API token is configured as an environment variable, you can read it from your script in the following way:
 
 ```typescript
-const client = Client.get({ token: process.env.TRIPLY_API_TOKEN });
+const client = Client.get({ token: process.env.TRIPLY_API_TOKEN })
 ```
 
-#### Setting an environment variable in Windows
+### 1.1.2 Setting an environment variable in Windows
 
-### Using the Atom text editor
+## 1.2 Using the Atom text editor
 
 The [Atom](https://atom.io) text editor provides advanced support for programming in TypeScript.  This will make it easier to use TriplyDB.js, since the editor will provide various forms of feedback.  You can set-up Atom in the following way:
 
@@ -128,36 +128,36 @@ The [Atom](https://atom.io) text editor provides advanced support for programmin
 
 5. You can also install package [Script](https://atom.io/packages/script) to run your script from within the editor environment.
 
-## Common use cases
+# 2. Common use cases
 
-### Creating a new dataset
+## 2.1 Creating a new dataset
 
-### Updating an existing dataset
+## 2.2 Updating an existing dataset
 
-### Starting a service
+## 2.3 Starting a service
 
-### Running a query
+## 2.4 Running a query
 
-### Uploading query results
+## 2.5 Uploading query results
 
-### Creating an organization with members
+## 2.6 Creating an organization with members
 
-## Reference
+# 3. Reference
 
 This section documents all object types and methods in TriplyDB.js.
 
 Every method in this reference section comes with at least one code example.  These code examples can be run by inserting them into the following code snippet.  See the [Getting started](#getting-started) section on how to get this script up and running on your system.
 
 ```typescript
-import Client from "@triply/triplydb";
-const client = Client.get({ token: process.env.TRIPLY_API_TOKEN });
+import Client from "@triply/triplydb"
+const client = Client.get({token: process.env.TRIPLY_API_TOKEN})
 async function run() {
   // This is where the code examples in this reference should be placed.
 }
 run().catch(e => {
-  console.error(e);
-  process.exit(1);
-});
+  console.error(e)
+  process.exit(1)
+})
 ```
 
 The following subsections document the various TriplyDB.js object types.  Each object type comes with its own methods.
@@ -185,24 +185,33 @@ classDiagram
   Account <|-- User
 ```
 
-### Client
+## 3.1 Client
 
-Instances of the `Client` object type are specific client connections that are set-up with a TriplyDB instance.  A client connection is created by loading an API token:
+Instances of the `Client` object type are specific client connections that are set-up with a TriplyDB instance.  Client connections can be created with and with setting an API Token.
+
+Without setting an API Token the client object can be used to perform read-only operations over public data.  The following creates a client object without setting an API Token:
 
 ```typescript
-import Client from "@triply/triplydb";
-const client = Client.get({ token: process.env.TRIPLY_API_TOKEN });
+import Client from "@triply/triplydb"
+const client = Client.get({url: "https://api.triplydb.com"})
 ```
 
-Typically one TriplyDB.js script has exactly one client object.
+When an API Token is specified, the access level of the token and the credentials of the user account for which the token was created determine the operations that can be performened.  This may include read operations over private data, write operations, and management operations.  The following create a client object with a specific API Token:
 
-#### Client.getAccount()
+```typescript
+import Client from "@triply/triplydb"
+const client = Client.get({token: process.env.TRIPLY_API_TOKEN})
+```
+
+It is typical for one TriplyDB.js script to have exactly one client object.
+
+### Client.getAccount()
 
 Returns the account object that is associated with the current API token.
 
 See [`Client.getAccount(name: string)`](#clientgetaccountname-string) for more information.
 
-#### Client.getAccount(name: string)
+### Client.getAccount(name: string)
 
 Returns the TriplyDB account with the given `name`.
 
@@ -210,15 +219,15 @@ There are two kinds of accounts:
   - When `name` is the name of a user, a [User](#user) object is returned.
   - When `name` is the name of an organization, an [Organization](#organization) object is returned.
 
-The following example stores an organization account called `acme`:
+The following example retrieves an organization called `acme`:
 
 ```typescript
 const account = await client.getAccount("acme")
 ```
 
-See section [`Account`](#account) for an overview of the methods for account objects.
+See section [`Account`](#account) for an overview of the methods that can be used with account objects.
 
-#### Client.getDataset(accountName: string, datasetName: string)
+### Client.getDataset(accountName: string, datasetName: string)
 
 Returns the dataset with name `datasetName` that is published by the account with name `accountName`.
 
@@ -228,16 +237,18 @@ The following example returns the dataset called `animals` published by the user
 console.log(client.getDataset("john-doe", "animals"))
 ```
 
-This function is a shorthand for a combination of the [`Client.getAccount(name: string)`](#clientgetaccountname-string) and [`Account.getDataset(name: string)`](#accountgetdatasetname-string) calls.  Therefore, the following example returns the same result as the above one:
+This function is a shorthand for a combination of the [`Client.getAccount(name: string)`](#clientgetaccountname-string) function and [`Account.getDataset(name: string)`](#accountgetdatasetname-string) function.  The following example returns the same result as the previous example:
 
 ```typescript
 console.log((await client.getUser("john-doe"))
                          .getDataset("animals"))
 ```
 
-#### Client.getInfo()
+### Client.getInfo()
 
-Returns information about the TriplyDB instance that is associated with the current API token.
+Returns information about the TriplyDB instance for which a client connection was established.
+
+The TriplyDB instance for which a client connection was established is either identified by setting the API Token or the URL property when creating the client object.
 
 The information returned by this function includes the following values:
 
@@ -318,7 +329,7 @@ The following example returns an object that describes the current TriplyDB inst
 console.log(await client.getInfo())
 ```
 
-#### Client.getOrganization(name: string)
+### Client.getOrganization(name: string)
 
 Returns the organization with the given `name`.
 
@@ -327,31 +338,30 @@ This is identical to method `Client.getAccount(name: string)`, but only works fo
 The following example returns the organization called `acme`:
 
 ```typescript
-console.log(await client.getOrganization("acme"));
+console.log(await client.getOrganization("acme"))
 ```
 
-See section [`Organization`](#organization) for an overview of the
-methods for organization objects.
+See section [`Organization`](#organization) for an overview of the methods for organization objects.
 
-#### Client.getUser()
+### Client.getUser()
 
 Returns the current user.
 
-The current user is the one that is associated with the current API token.
+The current user is the one that is associated with the current API token.  This only works if an API Token was specified when creating the client object.
 
 This method is identical to [`Client.getAccount()`](#clientgetaccount).
 
-See [`Client.getUser(name: string)`](#clientgetusername-string) for more information.
+This function has the same behavior as [`Client.getUser(name: string)`](#clientgetusername-string) if `name` is identical to the account name of the current user.
 
-The following example code returns the current user:
+The following example code retrieves to the current user:
 
 ```typescript
-console.log(await client.getUser());
+console.log(await client.getUser())
 ```
 
 See section [`User`](#user) for an overview of the methods for user objects.
 
-#### Client.getUser(name: string)
+### Client.getUser(name: string)
 
 Returns the user with the given `name`.
 
@@ -363,7 +373,7 @@ console.log(await client.getUser("john-doe"))
 
 See section [`User`](#user) for an overview of the methods for user objects.
 
-### Account
+## 3.2 Account
 
 The `Account` class denotes a TriplyDB account.
 
@@ -374,7 +384,7 @@ Account objects can be obtained from the following methods:
   - [`Client.getAccount()`](#clientgetaccount)
   - [`Client.getAccount(name: string)`](#clientgetaccountname-string)
 
-#### Account.asOrg()
+### Account.asOrg()
 
 Succeeds if the account is an organization ([`Organization`](#organization)).
 
@@ -393,7 +403,7 @@ console.log(await client.getAccount("acme")
                         .asOrg())
 ```
 
-#### Account.asUser()
+### Account.asUser()
 
 If the account is a user, returns information about the account. Otherwise,results in the error: "This is an organization. Cannot fetch this as a user."
 
@@ -404,7 +414,7 @@ console.log(await client.getAccount()
                         .asUser())
 ```
 
-#### Account.exists()
+### Account.exists()
 
 If the account exists, returns true. Otherwise, returns false.
 
@@ -415,7 +425,7 @@ console.log(await client.getAccount()
                         .exists())
 ```
 
-#### Account.getInfo()
+### Account.getInfo()
 
 Returns an overview of the account in the form of a JSON object.
 
@@ -447,7 +457,7 @@ Example output for running the above code:
 }
 ```
 
-#### Account.getName()
+### Account.getName()
 
 Returns the name of the account.
 
@@ -458,7 +468,7 @@ console.log(await client.getAccount()
                         .getName())
 ```
 
-### Organization
+## 3.3 Organization
 
 The `Organization` class denotes a TriplyDB organization.
 
@@ -467,7 +477,7 @@ Organizations can be obtained via the following methods:
   - [`Client.getOrganization()`](#clientgetorganization)
   - [`Client.getOrganization(name: string)`](#clientgetorganizationname-string)
 
-#### Organization.addDataset(metadata: object)
+### 3.3.1 Organization.addDataset(metadata: object)
 
 Adds a new dataset to the organization.
 
@@ -523,7 +533,7 @@ console.log(await client.getOrganization("acme")
                                      name:"dogs"}));
 ```
 
-#### Organization.addMembers([{user: string, role: string}])
+### 3.3.2 Organization.addMembers([{user: string, role: string}])
 
 Adds one or more members to the given organization.
 
@@ -546,7 +556,7 @@ console.log(await client.getOrganization("acme")
                                      role:"member"}))
 ```
 
-#### Organization.delete()
+### 3.3.3 Organization.delete()
 
 Deletes the given organization.
 
@@ -559,7 +569,7 @@ console.log(await client.getOrganization("acme")
                         .delete())
 ```
 
-#### Organization.exists()
+### Organization.exists()
 
 Returns whether the organization still exists.
 
