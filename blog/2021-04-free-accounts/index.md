@@ -1,12 +1,13 @@
 ---
-title: "Introducing free user accounts for TriplyDB"
+title: "Introducing Free User Accounts for TriplyDB"
 path: "/blog/2021-04-free-accounts"
 date: "2021-04-22T19:30:00"
 author: tdegrootkdentlerdnakou
 ---
 
-## The deal 
 We are proud to announce that Triply is going public, by giving away a limited number of free accounts for TriplyDB. This is the first time that individual users can store, explore and share their own linked data on the web, without the need to install anything. You can link your data to other datasets, reuse open data and publish your own knowledge graphs, queries and data stories. 
+
+## The deal 
 
 The number of free accounts we are giving away is limited. So whether you are a student, a researcher, a business owner, a linked open data enthusiast or a data geek, head over to [triplydb.com][] and create your own, free account now! You can register easily via Google or GitHub. Our free accounts are restricted to open data and a maximum of one million triples. 
 
