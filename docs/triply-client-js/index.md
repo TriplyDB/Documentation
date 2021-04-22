@@ -50,7 +50,7 @@ In this section we set up a simple project that uses TriplyDB.js.  Most of these
 
    ```typescript
    import Client from "@triply/triplydb"
-   const client = Client.get({ token: "API_TOKEN" })
+   const client = Client.get({token: "API_TOKEN"})
    async function run() {
      console.log(await client.getAccount())
    }
@@ -87,7 +87,7 @@ This is why it is advised to load the API token from your development environmen
 In macOS and Linux, the environment varialbe is set as follows:
 
 ```sh
-export TRIPLY_API_TOKEN=<my-token>
+export TRIPLY_API_TOKEN={my-token}
 ```
 
 Make sure that no whitespace appears around the `=` character.  This is a common mistake.
@@ -97,7 +97,7 @@ On Linux, you can add the `export` command to your `.profile` file.  This is fil
 Once the API token is configured as an environment variable, you can read it from your script in the following way:
 
 ```typescript
-const client = Client.get({ token: process.env.TRIPLY_API_TOKEN })
+const client = Client.get({token: process.env.TRIPLY_API_TOKEN})
 ```
 
 ### 1.1.2 Setting an environment variable in Windows
@@ -168,7 +168,7 @@ process.on("unhandledRejection", (reason, p) => {
 
 # 3. Reference
 
-This section documents all object types and methods in TriplyDB.js.
+This section documents all class and methods supported by TriplyDB.js.
 
 Every method in this reference section comes with at least one code example.  These code examples can be run by inserting them into the following code snippet.  See the [Getting started](#getting-started) section on how to get this script up and running on your system.
 
@@ -180,6 +180,14 @@ async function run() {
 }
 run().catch(e => {
   console.error(e)
+  process.exit(1)
+})
+process.on("uncaughtException", function (err) {
+  console.error("Uncaught exception", err)
+  process.exit(1)
+})
+process.on("unhandledRejection", (reason, p) => {
+  console.error("Unhandled Rejection at: Promise", p, "reason:", reason)
   process.exit(1)
 })
 ```
@@ -211,16 +219,16 @@ classDiagram
 
 ## 3.1 Client
 
-Instances of the `Client` object type are specific client connections that are set-up with a TriplyDB instance.  Client connections can be created with and with setting an API Token.
+Instances of the `Client` class are specific client connections that are set-up with a TriplyDB instance.  Client connections can be created with and with setting an API token.
 
-Without setting an API Token the client object can be used to perform read-only operations over public data.  The following creates a client object without setting an API Token:
+Without setting an API token the client object can be used to perform read-only operations over public data.  The following creates a client object without setting an API token:
 
 ```typescript
 import Client from "@triply/triplydb"
 const client = Client.get({url: "https://api.triplydb.com"})
 ```
 
-When an API Token is specified, the access level of the token and the credentials of the user account for which the token was created determine the operations that can be performened.  This may include read operations over private data, write operations, and management operations.  The following create a client object with a specific API Token:
+When an API token is specified, the access level of the token and the credentials of the user account for which the token was created determine the operations that can be performened.  This may include read operations over private data, write operations, and management operations.  The following create a client object with a specific API token:
 
 ```typescript
 import Client from "@triply/triplydb"
@@ -260,7 +268,7 @@ The TriplyDB instance for which a client connection was established is either id
 The following example returns an object that describes the current TriplyDB instance:
 
 ```typescript
-console.log(await client.getInfo())
+console.log(await client.getApiInfo())
 ```
 
 ### Client.getDataset(accountName: string, datasetName: string)
@@ -270,18 +278,14 @@ Returns the dataset with name `datasetName` that is published by the account wit
 The following example returns the dataset called `animals` published by the user called `john-doe`:
 
 ```typescript
-console.log(client.getDataset("john-doe", "animals"))
+const dataset = client.getDataset("john-doe", "animals")
 ```
 
 This function is a shorthand for a combination of the [`Client.getAccount(name: string)`](#clientgetaccountname-string) function and [`Account.getDataset(name: string)`](#accountgetdatasetname-string) function.  The following example returns the same result as the previous example:
 
 ```typescript
-console.log((await client.getUser("john-doe"))
-                         .getDataset("animals"))
-
-console.log((await
-  client.getUser("john-doe"))
-    .getDataset("animals"))
+const user = await client.getUser("john-doe")
+const dataset = user.getDataset("animals")
 ```
 
 ### Client.getOrganization(name: string)
@@ -293,7 +297,7 @@ This is identical to method `Client.getAccount(name: string)`, but only works fo
 The following example returns the organization called `acme`:
 
 ```typescript
-console.log(await client.getOrganization("acme"))
+const org = await client.getOrganization("acme")
 ```
 
 See section [`Organization`](#organization) for an overview of the methods for organization objects.
@@ -302,7 +306,7 @@ See section [`Organization`](#organization) for an overview of the methods for o
 
 Returns the current user.
 
-The current user is the one that is associated with the current API token.  This only works if an API Token was specified when creating the client object.
+The current user is the one that is associated with the current API token.  This only works if an API token was specified when creating the client object.
 
 This method is identical to [`Client.getAccount()`](#clientgetaccount).
 
@@ -311,7 +315,7 @@ This function has the same behavior as [`Client.getUser(name: string)`](#clientg
 The following example code retrieves to the current user:
 
 ```typescript
-console.log(await client.getUser())
+const user = await client.getUser()
 ```
 
 See section [`User`](#user) for an overview of the methods for user objects.
@@ -323,18 +327,16 @@ Returns the user with the given `name`.
 The following example returns the user with name `john-doe`:
 
 ```typescript
-console.log(await client.getUser("john-doe"))
+const user = await client.getUser("john-doe")
 ```
 
 See section [`User`](#user) for an overview of the methods for user objects.
 
 ## 3.2 Account
 
-The `Account` class denotes a TriplyDB account.
+Instances of the `Account` class denote an account in TriplyDB.  Accounts are either organizations ([`Organization`](#organization)) or users ([`User`](#user)).
 
-Accounts can be either organizations ([`Organization`](#organization)) or users ([`User`](#user)).
-
-Account objects can be obtained from the following methods:
+Account objects are obtained by using the following methods:
 
   - [`Client.getAccount()`](#clientgetaccount)
   - [`Client.getAccount(name: string)`](#clientgetaccountname-string)
@@ -351,33 +353,65 @@ If the account is not an organization but a user, calling this methid results in
 This is a user. Cannot fetch this as an organization.
 ```
 
-The following example succeeds, because `"acme"` is an organization.
+The following example succeeds, because `"acme"` is an organization:
 
 ```typescript
-console.log(await client.getAccount("acme")
-                        .asOrg())
+const account = await client.getAccount("acme")
+const org = account.asOrg
 ```
 
 ### Account.asUser()
 
-If the account is a user, returns information about the account. Otherwise,results in the error: "This is an organization. Cannot fetch this as a user."
+If the account is a user, returns information about the account. Otherwise,results in the following error message:
 
-Best used as the following:
-
-```typescript
-console.log(await client.getAccount()
-                        .asUser())
+```
+This is an organization. Cannot fetch this as a user.
 ```
 
-### Account.exists()
+The following example succeeds, because [`Client.getAccount()`](#client-getaccount) always returns a user account:
+
+```typescript
+const account = await client.getAccount()
+const user = account.asUser()
+```
+
+### Account.exists() 🚧
 
 If the account exists, returns true. Otherwise, returns false.
 
 Best used as the following:
 
 ```typescript
-console.log(await client.getAccount()
-                        .exists())
+const account = await client.getAccount()
+console.log(account.exists())
+```
+
+#### Account.getDataset(name: string)
+
+Returns the dataset with the given `name` that is published under the given `Account`.
+
+The following example prints a specific dataset object:
+
+```typescript
+const org = await client.getOrganization("acme")
+const dataset = org.getDataset("dogs")
+```
+
+See section [`Dataset`](#dataset) for an overview of the methods that can be used with dataset objects.
+
+#### Account.getDatasets()
+
+Returns an interator for the datasets under the `Account`.
+
+This only includes datasets that are accessible under the used API token.
+
+The following example prints information for every accessible dataset under the `acme` account:
+
+```typescript
+const org = await client.getOrganization("acme")
+for await (const dataset of org.getDatasets()) {
+  console.log(await dataset.getInfo())
+}
 ```
 
 ### Account.getInfo()
@@ -388,39 +422,19 @@ The following example code prints an overview of account that is
 associated with the used API token:
 
 ```typescript
-console.log(await client.getAccount()
-                        .getInfo())
-```
-
-Example output for running the above code:
-
-```json
-{
-  "accountName": "wouter",
-  "authMethod": "password",
-  "avatarUrl": "https://www.gravatar.com/avatar/9bc28997dd1074e405e1c66196d5e117?d=mm",
-  "createdAt": "Mon Mar 19 2018 14:39:18 GMT+0000 (Coordinated Universal Time)",
-  "disabled": false,
-  "email": "wouter@triply.cc",
-  "name": "Wouter Beek",
-  "siteAdmin": true,
-  "superAdmin": true,
-  "type": "user",
-  "uid": "5aafcb9639b170025c5e4b99",
-  "updatedAt": "Tue Nov 27 2018 09:29:38 GMT+0000 (Coordinated Universal Time)",
-  "verified": true
-}
+const account = await client.getAccount()
+console.log(account.getInfo())
 ```
 
 ### Account.getName()
 
 Returns the name of the account.
 
-The following example code prints the name of the current account:
+The following example prints the name of the current account:
 
 ```typescript
-console.log(await client.getAccount()
-                        .getName())
+const account = await client.getAccount()
+console.log(account.getName())
 ```
 
 ## 3.3 Organization
