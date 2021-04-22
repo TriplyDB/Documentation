@@ -251,6 +251,18 @@ const account = await client.getAccount("acme")
 
 See section [`Account`](#account) for an overview of the methods that can be used with account objects.
 
+### Client.getApiInfo()
+
+Returns information about the TriplyDB instance for which a client connection was established.
+
+The TriplyDB instance for which a client connection was established is either identified by setting the API token or by setting the URL property when creating the client object.
+
+The following example returns an object that describes the current TriplyDB instance:
+
+```typescript
+console.log(await client.getInfo())
+```
+
 ### Client.getDataset(accountName: string, datasetName: string)
 
 Returns the dataset with name `datasetName` that is published by the account with name `accountName`.
@@ -266,91 +278,10 @@ This function is a shorthand for a combination of the [`Client.getAccount(name: 
 ```typescript
 console.log((await client.getUser("john-doe"))
                          .getDataset("animals"))
-```
 
-### Client.getInfo()
-
-Returns information about the TriplyDB instance for which a client connection was established.
-
-The TriplyDB instance for which a client connection was established is either identified by setting the API Token or the URL property when creating the client object.
-
-The information returned by this function includes the following values:
-
-<dl>
-  <dt><code>apiUrl</code></dt>
-  <dd>The URL to the application programming interface (API) of the TriplyDB site.</dd>
-  <dt><code>branding</code></dt>
-  <dd>An object that contains the various branding settings for this TriplyDB instance.  It consists of the following values:
-    <dl>
-      <dt><code>banner</code></dt>
-      <dd>A URL to the image that is used for the banner on the homepage.</dd>
-      <dt><code>description</code></dt>
-      <dd>A text-only description of the TriplyDB site that is used for metadata.</dd>
-      <dt><code>logo</code></dt>
-      <dd>A URL to the image that is used as the square logo for the TriplyDB site.</dd>
-      <dt><code>logoLg</code></dt>
-      <dd>A URL to the image that is used as the landscape logo for the TriplyDB site.</dd>
-      <dt><code>name</code></dt>
-      <dd>The name of the TriplyDB site.  Typically one or two words.</dd>
-      <dt><code>tagline</code></dt>
-      <dd>A short description of the TriplyDB site.  Typically one sentence.</dd>
-      <dt><code>welcomeText</code></dt>
-      <dd>A description of the TriplyDB site that appears on the homepage (supports Markdown).</dd>
-    </dl>
-  </dd>
-  <dt><code>buildDate</code></dt>
-  <dd>TODO</dd>
-  <dt><code>buidlId</code></dt>
-  <dd>TODO</dd>
-  <dt><code>consoleUrl</code></dt>
-  <dd>The URL graphical user interface (GUI) of the TriplyDB site.</dd>
-  <dt><code>contactEmail</code></dt>
-  <dd>The email address that users of the TriplyDB site can use to contact the administrators.</dd>
-  <dt><code>enabledOauth</code></dt>
-  <dd>Zero or more OAuth providers that can be used to log into the TriplyDB site.  Examples of possible values are <code>"github"</code> and <code>"google"</code>.</dd>
-  <dt><code>elasticServicesEnabled</code></dt>
-  <dd>Indicates whether ElasticSearch services can be created on the TriplyDB site.</dd>
-  <dt><code>exampleDatasets</code></dt>
-  <dd>Zero or more dataset objects.  These are the datasets that are displayed on the homepage.  These datasets appear in the order in which they appear on the homepage.</dd>
-  <dt><code>isGeneralPublicInstance</code></dt>
-  <dd>Indicates whether account creation is open for external users.</dd>
-  <dt><code>jenaServicesEnabled</code></dt>
-  <dd>Indicates whether Jena services can be created on the TriplyDB site.</dd>
-  <dt><code>passwordSignup</code></dt>
-  <dd>Indicates whether it is possible to sign up for an account on this TriplyDB site using an email and password combination.</dd>
-  <dt><code>prefixes</code></dt>
-  <dd>Zero or more prefix declaration objects.  These are the prefix declaration that are defined at the generic site level.  These prefix declarations can be extended and overwritten at the specific dataset level.</dd>
-  <dt><code>starterDataset</code></dt>
-  <dd>The dataset that is used as the started dataset for new users on the TriplyDB site.</dd>
-  <dt><code>triplydb</code>
-  <dd>TODO
-    <dl>
-      <dt><code>numAvailableAccounts</code></dt>
-      <dd>The number of available accounts on the TriplyDB site.</dd>
-      <dt><code>serviceExpirationDays</code></dt>
-      <dd>The number of days after which unused services are suspended.  Service suspension does not affect data publication.</dd>
-      <dt><code>serviceStatementLimit</code></dt>
-      <dd>The maximum number of statements that a user is allowed to make available in services on this TriplyDB site.</dd>
-      <dt><code>userAssetByteLimit</code></dt>
-      <dd>The maximum size for assets that a user is able to upload.  This is represented in bytes.</dd>
-      <dt><code>userGraphLimit</code></dt>
-      <dd>The maximum number of graphs that one dataset is allowed to have on this TriplyDB site.</dd>
-      <dt><code>userServiceLimit</code></dt>
-      <dd>The maximum number of services that users are allowed to create on this TriplyDB site.</dd>
-      <dt><code>userStatementLimit</code></dt>
-      <dd>The maximum number of statementsthat a user is allowed to publish on this TriplyDB site.</dd>
-    </dl>
-  </dd>
-  <dt><code>version</code></dt>
-  <dd>The version identifier for the TriplyDB site.</dd>
-  <dt><code>virtuosoServicesEnabled</code></dt>
-  <dd>Indicates whether Virtuoso services can be created on the TriplyDB site.</dd>
-</dl>
-
-The following example returns an object that describes the current TriplyDB instance:
-
-```typescript
-console.log(await client.getInfo())
+console.log((await
+  client.getUser("john-doe"))
+    .getDataset("animals"))
 ```
 
 ### Client.getOrganization(name: string)
