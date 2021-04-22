@@ -278,7 +278,7 @@ Returns the dataset with name `datasetName` that is published by the account wit
 The following example returns the dataset called `animals` published by the user called `john-doe`:
 
 ```typescript
-const dataset = client.getDataset("john-doe", "animals")
+const dataset = await client.getDataset("john-doe", "animals")
 ```
 
 This function is a shorthand for a combination of the [`Client.getAccount(name: string)`](#clientgetaccountname-string) function and [`Account.getDataset(name: string)`](#accountgetdatasetname-string) function.  The following example returns the same result as the previous example:
@@ -357,7 +357,7 @@ The following example succeeds, because `"acme"` is an organization:
 
 ```typescript
 const account = await client.getAccount("acme")
-const org = account.asOrg
+const org = account.asOrg()
 ```
 
 ### Account.asUser()
@@ -426,15 +426,42 @@ const account = await client.getAccount()
 console.log(account.getInfo())
 ```
 
-### Account.getName()
+The information object for accounts contains the following keys:
 
-Returns the name of the account.
+<dl>
+  <dt><code>avatarUrl</code></dt>
+  <dd>A URL to the account image.</dd>
+  <dt><code>accountName</code></dt>
+  <dd>The URL-friendly name of the account.</dd>
+  <dt><code>name</code><dt>
+  <dd>The human-readable display name of the account</dd>
+  <dt><code>description</code></dt>
+  <dd>The human-readable description of the account.</dd>
+  <dt><code>createdAt</code></dt>
+  <dd>The date and time on which the account was created.</dd>
+  <dt><code>datasetCount</code></dt>
+  <dd>The number of datasets for the account.</dd>
+  <dt><code>queryCount</code></dt>
+  <dd>The number of queries for the account.</dd>
+  <dt><code>storyCount</code></dt>
+  <dd>The number of stories for the account</dd>
+  <dt><code>pinnedDatasets</code></dt>
+  <dd>An array containing the pinned dataset for the account.</dd>
+  <dt><code>pinnedItems</code></dt>
+  <dd>An array containing the pinned items (datasets, stories and queries) for the account.</dd>
+  <dt><code>type</code></dt>
+  <dd>The account type: either <code>organization</code> or <code>user</code>.</dd>
+  <dt><code>role</code></dt>
+  <dd>The role of the account</dd>
+  <dt><code>orgs</code></dt>
+  <dd>For user accounts: an array of organization of which the user is a member.</dd>
+</dl>
 
-The following example prints the name of the current account:
+These keys can be accessed individually.  For example, the following code prints the name of the current account:
 
 ```typescript
 const account = await client.getAccount()
-console.log(account.getName())
+console.log((await account.getInfo()).name)
 ```
 
 ## 3.3 Organization
