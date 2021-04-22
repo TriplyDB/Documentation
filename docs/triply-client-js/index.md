@@ -128,6 +128,30 @@ The [Atom](https://atom.io) text editor provides advanced support for programmin
 
 5. You can also install package [Script](https://atom.io/packages/script) to run your script from within the editor environment.
 
+## 1.3 Improved error handling
+
+The script that was shown earlier in this section includes minimal error handling:
+
+```typescript
+run().catch(e => {
+  console.error(e)
+  process.exit(1)
+})
+```
+
+The following code can be added to the end of the script to use more advanced error handling:
+
+```typescript
+process.on("uncaughtException", function (err) {
+  console.error("Uncaught exception", err)
+  process.exit(1)
+})
+process.on("unhandledRejection", (reason, p) => {
+  console.error("Unhandled Rejection at: Promise", p, "reason:", reason)
+  process.exit(1)
+})
+```
+
 # 2. Common use cases
 
 ## 2.1 Creating a new dataset
