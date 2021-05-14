@@ -152,6 +152,12 @@ process.on("unhandledRejection", (reason, p) => {
 })
 ```
 
+By default, error messages will refer to code lines that appear in the JavaScript files.  Since we write our code in TypeScript, it would be better to see the code lines that appear in the corresponding TypeScript files.  This is achieved by adding the following line at the beginning of the main script:
+
+```typescript
+require("source-map-support/register")
+```
+
 # 2. Common use cases
 
 ## 2.1 Creating a new dataset
