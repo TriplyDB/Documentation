@@ -318,7 +318,7 @@ Every method in this reference section comes with at least one code example.  Th
 
 ```typescript
 import Client from "@triply/triplydb"
-const client = Client.get({token: process.env.TRIPLY_API_TOKEN})
+const app = Client.get({token: process.env.TRIPLY_API_TOKEN})
 async function run() {
   // This is where the code examples in this reference should be placed.
 }
@@ -369,14 +369,14 @@ Without setting an API token the client object can be used to perform read-only 
 
 ```typescript
 import Client from "@triply/triplydb"
-const client = Client.get({url: "https://api.triplydb.com"})
+const app = Client.get({url: "https://api.triplydb.com"})
 ```
 
 When an API token is specified, the access level of the token and the credentials of the user account for which the token was created determine the operations that can be performened.  This may include read operations over private data, write operations, and management operations.  The following create a client object with a specific API token:
 
 ```typescript
 import Client from "@triply/triplydb"
-const client = Client.get({token: process.env.TRIPLY_API_TOKEN})
+const app = Client.get({token: process.env.TRIPLY_API_TOKEN})
 ```
 
 It is typical for one TriplyDB.js script to have exactly one client object.
@@ -398,7 +398,7 @@ There are two kinds of accounts:
 The following example retrieves an organization called `acme`:
 
 ```typescript
-const account = await client.getAccount("acme")
+const account = await app.getAccount("acme")
 ```
 
 See section [`Account`](#account) for an overview of the methods that can be used with account objects.
@@ -412,7 +412,7 @@ The TriplyDB instance for which a client connection was established is either id
 The following example returns an object that describes the current TriplyDB instance:
 
 ```typescript
-console.log(await client.getApiInfo())
+console.log(await app.getApiInfo())
 ```
 
 ### Client.getDataset(accountName: string, datasetName: string)
@@ -422,13 +422,13 @@ Returns the dataset with name `datasetName` that is published by the account wit
 The following example returns the dataset called `animals` published by the user called `john-doe`:
 
 ```typescript
-const dataset = await client.getDataset("john-doe", "animals")
+const dataset = await app.getDataset("john-doe", "animals")
 ```
 
 This function is a shorthand for a combination of the [`Client.getAccount(name: string)`](#clientgetaccountname-string) function and [`Account.getDataset(name: string)`](#accountgetdatasetname-string) function.  The following example returns the same result as the previous example:
 
 ```typescript
-const user = await client.getUser("john-doe")
+const user = await app.getUser("john-doe")
 const dataset = user.getDataset("animals")
 ```
 
@@ -441,7 +441,7 @@ This is identical to method `Client.getAccount(name: string)`, but only works fo
 The following example returns the organization called `acme`:
 
 ```typescript
-const org = await client.getOrganization("acme")
+const org = await app.getOrganization("acme")
 ```
 
 See section [`Organization`](#organization) for an overview of the methods for organization objects.
@@ -459,7 +459,7 @@ This function has the same behavior as [`Client.getUser(name: string)`](#clientg
 The following example code retrieves to the current user:
 
 ```typescript
-const user = await client.getUser()
+const user = await app.getUser()
 ```
 
 See section [`User`](#user) for an overview of the methods for user objects.
@@ -471,7 +471,7 @@ Returns the user with the given `name`.
 The following example returns the user with name `john-doe`:
 
 ```typescript
-const user = await client.getUser("john-doe")
+const user = await app.getUser("john-doe")
 ```
 
 See section [`User`](#user) for an overview of the methods for user objects.
@@ -500,7 +500,7 @@ This is a user. Cannot fetch this as an organization.
 The following example succeeds, because `"acme"` is an organization:
 
 ```typescript
-const account = await client.getAccount("acme")
+const account = await app.getAccount("acme")
 const org = account.asOrg()
 ```
 
@@ -515,7 +515,7 @@ This is an organization. Cannot fetch this as a user.
 The following example succeeds, because [`Client.getAccount()`](#client-getaccount) always returns a user account:
 
 ```typescript
-const account = await client.getAccount()
+const account = await app.getAccount()
 const user = account.asUser()
 ```
 
@@ -526,7 +526,7 @@ If the account exists, returns true. Otherwise, returns false.
 Best used as the following:
 
 ```typescript
-const account = await client.getAccount()
+const account = await app.getAccount()
 console.log(account.exists())
 ```
 
@@ -537,7 +537,7 @@ Returns the dataset with the given `name` that is published under the given `Acc
 The following example prints a specific dataset object:
 
 ```typescript
-const org = await client.getOrganization("acme")
+const org = await app.getOrganization("acme")
 const dataset = org.getDataset("dogs")
 ```
 
@@ -552,7 +552,7 @@ This only includes datasets that are accessible under the used API token.
 The following example prints information for every accessible dataset under the `acme` account:
 
 ```typescript
-const org = await client.getOrganization("acme")
+const org = await app.getOrganization("acme")
 for await (const dataset of org.getDatasets()) {
   console.log(await dataset.getInfo())
 }
@@ -566,7 +566,7 @@ The following example code prints an overview of account that is
 associated with the used API token:
 
 ```typescript
-const account = await client.getAccount()
+const account = await app.getAccount()
 console.log(account.getInfo())
 ```
 
@@ -604,7 +604,7 @@ The information object for accounts contains the following keys:
 These keys can be accessed individually.  For example, the following code prints the name of the current account:
 
 ```typescript
-const account = await client.getAccount()
+const account = await app.getAccount()
 console.log((await account.getInfo()).name)
 ```
 
@@ -620,7 +620,7 @@ Organizations can be obtained via the following methods:
 Alternatively, organizations are obtained by obtaining an account, and then casting to to an organization:
 
 ```typescript
-const account client.getAccount("acme")
+const account app.getAccount("acme")
 const org = account.asOrg()
 ```
 
@@ -671,7 +671,7 @@ Argument `metadata` is a JSON object that specifies the dataset metadata.  It ha
 The following code example creates a new dataset called `dogs` under the `acme` organization, with private access, a description, a display name, and a license:
 
 ```typescript
-const org = await client.getOrganization("acme")
+const org = await app.getOrganization("acme")
 const dataset = await org.addDataset({
   accessLevel: "private",
   description: "A dataset about dogs.",
@@ -699,7 +699,7 @@ DEFAULT?
 The following example adds a user with name name `"bugs-bunny"` to the organization `"acme"`:
 
 ```typescript
-const org = await client.getOrganization("acme")
+const org = await app.getOrganization("acme")
 await org.addMembers({user: "bugs-bunny",
                       role: "member"})
 ```
@@ -713,7 +713,7 @@ Succeeds if the current API token includes ownership rights for the given organi
 The following example deletes the organization called `"acme"`:
 
 ```typescript
-const org = await client.getOrganization("acme")
+const org = await app.getOrganization("acme")
 org.delete()
 ```
 
@@ -724,7 +724,7 @@ Returns whether the organization still exists.
 The following example code prints `true` in case the account (still) exists, and prints `false` otherwise:
 
 ```typescript
-const organization = await client.getOrganization("acme")
+const organization = await app.getOrganization("acme")
 // Some code in between; the organization could have been deleted in the
 // meantime.
 console.log(await (organization).exists())
@@ -739,7 +739,7 @@ This function returns an object of type [`Dataset`](#dataset).  See that section
 The following example prints a specific dataset object:
 
 ```typescript
-const org = await client.getOrganization("acme")
+const org = await app.getOrganization("acme")
 const dataset = org.getDataset("dogs")
 ```
 
@@ -750,7 +750,7 @@ Returns the list of datasets for the `Organization`.  This only includes dataset
 The following example prints the list of datasets that belong to the organization named `acme`:
 
 ```typescript
-const org = await client.getOrganization("acme")
+const org = await app.getOrganization("acme")
 for await (const dataset of org.getDatasets()) {
   console.log(dataset)
 }
@@ -776,7 +776,7 @@ A membership contains the following components:
 Memberships of organization are TriplyDB [users](#user).
 
 ```typescript
-const org = await client.getOrganization("acme")
+const org = await app.getOrganization("acme")
 for (const membership of await org.getMembers()) {
   console.log(user)
 }
@@ -793,7 +793,7 @@ The order in which the pinned datasets are returned reflects the order in which 
 The following example prints the list of pinned datasets for the organization named `"acme"`:
 
 ```typescript
-const organization = await client.getOrganization("acme")
+const organization = await app.getOrganization("acme")
 console.log(organization.getPinnedDatasets())
 ```
 
@@ -806,7 +806,7 @@ The array may include names of users (`string`) or user objects ([`User`](#user)
 The following example removes two users: one user is removed by name and another is removed by object:
 
 ```typescript
-const acme = await client.getOrganization("acme")
+const acme = await app.getOrganization("acme")
 const bunny = await acme.getMember("bugs-bunny")
 await acme.removeMembers([bunny, "daffy-duck"])
 ```
@@ -868,7 +868,7 @@ Argument `metadata` is a JSON object that specifies the dataset's metadata.  It 
 The following code example creates a new dataset (called `animals`) for the user with name `john-doe`, with private access, a description, display name, and a license:
 
 ```typescript
-const user = await client.getUser("john-doe")
+const user = await app.getUser("john-doe")
 const dataset = await user.addDataset({
   accessLevel: "private",
   description: "A dataset about animals.",
@@ -898,7 +898,7 @@ Argument `metadata` is a JSON object that specifies the organization metadata.  
 The following example creates an organization with name `acme` for which the user with name `john-doe` will be the owner.  Notice that in addition to the required internal name (`"accountName": "acme"`), an optional display name (`"name": "Acme Corporation"`) is specified as well.
 
 ```typescript
-const user = await client.getUser("john-doe")
+const user = await app.getUser("john-doe")
 const organization = await user.createOrganization({accountName: "acme",
                                                     name: "Acme Corporation"})
 ```
@@ -912,7 +912,7 @@ While it is not possible to delete users with TriplyDB.js, they can be deleted �
 The following example code prints `true` in case the account (still) exists, and prints `false` otherwise:
 
 ```typescript
-const user = await client.getUser("john-doe")
+const user = await app.getUser("john-doe")
 console.log(user.exists())
 ```
 
@@ -925,7 +925,7 @@ This function returns an object of type [`Dataset`](#dataset).  See that section
 The following example prints a specific dataset object:
 
 ```typescript
-const user = await client.getUser("john-doe")
+const user = await app.getUser("john-doe")
 console.log(user.getDataset("animals"))
 ```
 
@@ -937,7 +937,7 @@ The following example prints the list of datasets that belong to the user named
 `john-doe`:
 
 ```typescript
-const user = await client.getUser("john-doe")
+const user = await app.getUser("john-doe")
 for await (const dataset of user.getDatasets()) {
   console.log((await dataset.getInfo()).name)
 }
@@ -952,7 +952,7 @@ The order in the list reflects the order in which the organizations appear on th
 The following example prints the list of organizationo for which the user named `"john-doe"` is a member:
 
 ```typescript
-const user = await client.getuser("john-doe")
+const user = await app.getuser("john-doe")
 console.log(await user.getOrganizations())
 ```
 
@@ -965,7 +965,7 @@ The order in the list reflects the order in which the datasets appear on the use
 The following example prints the list of pinned datasets for the user named `"john-doe"`:
 
 ```typescript
-const user = await client.getUser("john-doe")
+const user = await app.getUser("john-doe")
 console.log(await user.getPinnedDatasets())
 ```
 
@@ -997,7 +997,7 @@ See section [`Service`](#service) for an overview of the methods that can be use
 The following example code starts two SPARQL endpoints over a specific dataset.  One endpoint will be used in the acceptance environment while the other endpoint will be used in the production system.
 
 ```typescript
-const account = await client.getAccount()
+const account = await app.getAccount()
 const dataset = await account.getDataset("cats")
 const acceptance = dataset.addService("sparql", "acceptance")
 const production = dataset.addService("sparql", "production")
@@ -1008,7 +1008,7 @@ const production = dataset.addService("sparql", "production")
 Creates a copy of the current dataset.  The owner (user or organization) of the copy is specified with parameter `account`.  The name of the copy is specified with parameter `dataset`.
 
 ```typescript
-const account = await client.getAccount()
+const account = await app.getAccount()
 const dataset = account.getDataset("animals")
 console.log(await dataset.copy("new-account", "new-dataset"))
 ```
@@ -1028,7 +1028,7 @@ The following example code deletes a specific dataset that is part of
 the account associated with the current API token:
 
 ```typescript
-const account = await client.getAccount()
+const account = await app.getAccount()
 const dataset = await account.getDataset("some-dataset")
 dataset.delete()
 ```
@@ -1043,7 +1043,7 @@ The following example deletes the cats graph from the animals
 dataset:
 
 ```typescript
-const account = await client.getAccount()
+const account = await app.getAccount()
 const dataset = await account.getDataset("animals")
 dataset.deleteGraph("https://example.org/cats")
 ```
@@ -1057,7 +1057,7 @@ Datasets can still be considered to not exist when the [`Dataset.delete()`](#dat
 The following example code prints `true` in case the dataset still exists, and `false` otherwise:
 
 ```typescript
-const user = await client.getUser()
+const user = await app.getUser()
 const dataset = user.getDataset("animals")
 console.log(await dataset.exists())
 ```
@@ -1071,7 +1071,7 @@ Optionally allows the version number (`version`) of the asset to be specified.  
 The following example returns the original version of an image of a dog from the animals dataset:
 
 ```typescript
-const user = await client.getUser()
+const user = await app.getUser()
 const dataset = user.getDataset("animals")
 console.log(dataset.getAsset("dog.png", 1))
 ```
@@ -1085,7 +1085,7 @@ Assets are binary files that can be stored along with the graph-based data.  Com
 The following example retrieves the assets for a specific dataset:
 
 ```typescript
-const user = await client.getUser()
+const user = await app.getUser()
 const dataset = user.getDataset("animals")
 for await (const asset of dataset.getAssets()) {
   console.log(asset)
@@ -1101,7 +1101,7 @@ In linked data, graph names (`name`) are IRIs.
 The following example retrieves the graph about cats from the dataset about animals:
 
 ```typescript
-const user = await client.getUser()
+const user = await app.getUser()
 const dataset = await user.getDataset("animals")
 const graph = dataset.getGraph("https://example.com/cats")
 console.log(graph)
@@ -1115,7 +1115,7 @@ The following example code retrieves the graphs for the `animals`
 dataset:
 
 ```typescript
-const user = await client.getUser()
+const user = await app.getUser()
 const dataset = await user.getDataset("animals")
 console.log(dataset.getGraphs())
 ```
@@ -1127,7 +1127,7 @@ Returns an overview of the dataset in the form of a JSON object.
 The following example prints the information from the `animals` dataset of the current user:
 
 ```typescript
-const user = await client.getUser()
+const user = await app.getUser()
 const dataset = await user.getDataset("animals")
 console.log(dataset.getInfo())
 ```
@@ -1141,7 +1141,7 @@ This contains prefix declarations that are generic and configured for this Tripl
 The following example prints the prefix declarations that hold for the animals dataset:
 
 ```typescript
-const user = await client.getUser()
+const user = await app.getUser()
 const dataset = user.getDataset("animals")
 for await (const prefix of dataset.getPrefixes()) {
   console.log(prefix)
@@ -1157,7 +1157,7 @@ See section [`Service`](#service) for an overview of the methods for service obj
 The following example code returns the services for the `animals` dataset of the current user:
 
 ```typescript
-const user = await client.getUser()
+const user = await app.getUser()
 const dataset = await user.getDataset("animals")
 for await (const service of dataset.getServices()) {
   console.log(service)
@@ -1171,7 +1171,7 @@ for await (const service of dataset.getServices()) {
 The following code example creates a new dataset “d2” and imports one graph from the existing dataset “d1”. Notice that the graph can be renamed as part of the import.
 
 ```typescript
-const account = await client.getAccount()
+const account = await app.getAccount()
 const dataset1 = await account.getDataset("some-dataset")
 const dataset2 = await account.addDataset({accessLevel: "private",
                                            name: "other-dataset"})
@@ -1216,7 +1216,7 @@ The following code example retrieves the query object of a specific
 dataset:
 
 ```typescript
-const account = await client.getAccount("acme")
+const account = await app.getAccount("acme")
 const query = account.query()
 ```
 
@@ -1227,7 +1227,7 @@ Removes all graphs from the dataset.
 The following code example removes all graphs from the `animals` dataset:
 
 ```typescript
-const user = await client.getUser()
+const user = await app.getUser()
 const dataset = await user.getDataset("animals")
 dataset.removeAllGraphs();
 ```
@@ -1242,7 +1242,7 @@ The following example code renames a specific graph of a specific
 dataset:
 
 ```typescript
-const account = await client.getAccount()
+const account = await app.getAccount()
 const dataset = await account.getDataset("some-dataset")
 await dataset.renameGraph("https://example.org/old-graph",
                           "https://example.org/new-graph")
@@ -1292,7 +1292,7 @@ The following keys are supported:
 Example: updating the dataset's access level, description, display name, license, and name.
 
 ```typescript
-const account = await client.getAccount()
+const account = await app.getAccount()
 const dataset = account.getDataset("original dataset name")
 dataset.update({accessLevel: "private",
                 description: "desc",
@@ -1314,7 +1314,7 @@ documentation files describing the dataset, or media files
 The following example code uploads a compressed CSV file with source data and a PDF file with documentation information about a specific dataset:
 
 ```typescript
-const account = await client.getAccount()
+const account = await app.getAccount()
 const dataset = await account.getDataset("some-dataset")
 dataset.uploadAsset("source.csv.gz", "documentation.pdf")
 ```
@@ -1334,7 +1334,7 @@ The following example code retrieves (at most) 100 triples that have
 term `rdfs:subClassOf` in the predicate position:
 
 ```typescript
-const account = await client.getAccount()
+const account = await app.getAccount()
 const dataset = await account.getDataset("some-dataset")
 dataset
   .query()
@@ -1365,7 +1365,7 @@ then only triples with that subject term are returned by the query.
 
 Returns the number of results for the current query. Example:
 ```typescript
-const account = await client.getAccount()
+const account = await app.getAccount()
 const dataset = await account.getDataset("some-dataset")
 const numberOfResults = dataset.query().count()
 ```
@@ -1376,7 +1376,7 @@ Sets the graph term for this query.  If the graph term is set, then
 only triples in that graph are returned by the query. Example:
 
 ```typescript
-const account = await client.getAccount()
+const account = await app.getAccount()
 const dataset = account.getDataset("some-dataset")
 dataset.query().graph("https://example.com/graph").exec()
 ```
@@ -1393,7 +1393,7 @@ and [`Dataset.getServices`](#datasetgetservices) functions.
 The following code example starts a specific service:
 
 ```typescript
-const account = await client.getAccount("some-account")
+const account = await app.getAccount("some-account")
 const dataset = account.getDataset("some-dataset")
 dataset.addService("sparql", "new-service")
 ```
@@ -1411,7 +1411,7 @@ The following service statuses are defined:
 Deletes a service. Example:
 
 ```typescript
-const user = await client.getAccount("some-account")
+const user = await app.getAccount("some-account")
 const dataset = await user.getDataset("some-dataset")
 const service = dataset.addService("sparql", "new-service")
 service.delete()
@@ -1425,7 +1425,7 @@ The following example code prints information about the newly created
 service (named `new-service`):
 
 ```typescript
-const account = await client.getAccount("some-account")
+const account = await app.getAccount("some-account")
 const dataset = await account.getDataset("some-dataset")
 const service = dataset.addService("sparql", "new-service")
 console.log(service.getInfo())
@@ -1434,7 +1434,7 @@ console.log(service.getInfo())
 Another way to get information about existing services:
 
 ```typescript
-const account = await client.getAccount()
+const account = await app.getAccount()
 const dataset = await account.getDataset("dataset")
 console.log(dataset.getServices())
 ```
@@ -1464,7 +1464,7 @@ The following example code checks whether a specific service is
 synchonized:
 
 ```typescript
-const account = await client.getAccount("some-account")
+const account = await app.getAccount("some-account")
 const dataset = await account.getDataset("some-dataset")
 const service = await dataset.addService("sparql", "new-service")
 console.log(service.isUpToDate())
