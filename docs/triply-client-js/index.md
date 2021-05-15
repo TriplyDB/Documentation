@@ -57,7 +57,7 @@ We start by setting up a read-only project.  This allows us to focus on setting 
    import Client from "@triply/triplydb"
    const app = Client.get({url: "https://api.triplydb.com"})
    async function run() {
-     console.log(await app.getApiInfo())
+     console.log((await app.getApiInfo()).branding.name)
    }
    run().catch(e => {
      console.error(e)
@@ -70,7 +70,7 @@ We start by setting up a read-only project.  This allows us to focus on setting 
      - Line 1 (`import`) loads the TriplyDB.js library.
      - Line 2 creates a handle (`app`) to the TriplyDB catalog <https://triplydb.com>.  Every TriplyDB catalog has a specific API URL.  In this case the API URL is <https://api.triplydb.com>.
      - Line 3 defines the main function (`run()`).
-     - Line 4 writes information about the TriplyDB catalog that you connected to in line 2.
+     - Line 4 writes the name of the TriplyDB catalog that you connected to in line 2.
      - Line 6 runs the main function (`run()`) and performs basic error handling.
 
 7. Transpile the TypeScript file (`main.ts`) into a JavaScript file (`main.js`):
@@ -92,8 +92,6 @@ You can extend this script with TriplyDB.js functions that read public (meta)dat
 ## 1.2 Read/write project
 
 In the previous section we set up a read-only project that uses TriplyDB.js and accesses public data at <https://triplydb.com>.  In this section we extend the project to obtain read/write access based on your account in a TriplyDB catalog.
-
-See [this video](https://youtu.be/ACfOY2a_VVM) for instructions on how to create an API token.
 
 1. Go to the TriplyDB catalog that you have an account for that you want your project to interact with.  You may have a free account at <https://triplydb.com>.  You may also have accounts for other TriplyDB catalogs on the Internet or within your organization.
 
@@ -123,7 +121,7 @@ See [this video](https://youtu.be/ACfOY2a_VVM) for instructions on how to create
    import Client from "@triply/triplydb"
    const app = Client.get({token: "{api-token}"})
    async function run() {
-     console.log(await app.getUser())
+     console.log((await (await app.getUser()).getInfo()).name)
    }
    run().catch(e => {
      console.error(e)
@@ -134,7 +132,7 @@ See [this video](https://youtu.be/ACfOY2a_VVM) for instructions on how to create
    Notice the following details:
 
      - Line 2 specifies the API Token instead of the TriplyDB catalog URL.  The URL is part of the information included in the API Token.
-     - Line 4 prints information for the user account for which the API Token was created.
+     - Line 4 prints the name of the user who created the API Token that was configured in line 2.
      - Other lines are identical to the read-only script.
 
 11. Transpile and run:
@@ -158,7 +156,7 @@ TriplyDB.js is able to look for an externally specified API Token.  This is achi
 import Client from "@triply/triplydb"
 const app = Client.get({token: process.env.TRIPLYDB_TOKEN})
 async function run() {
-  console.log(await app.getUser())
+  console.log((await (await app.getUser()).getInfo()).name)
 }
 run().catch(e => {
   console.error(e)
