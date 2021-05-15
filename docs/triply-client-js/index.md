@@ -170,19 +170,19 @@ We explain several specific approaches for setting the API Token through an envi
 
 ### 1.3.1 Windows 🚧
 
-1. In the directory of your project (`my_project` in the above example), create a text file called `.ratt-private`.
+1. Go to the “View advanced system settings” dialog.
 
-   Make sure that the text file (`.ratt-private`) is visible to you.  By default, the Windows file explorer hides files that start with a dot.  This can be changed in the file explorer application.
+   One way to get to this dialog is by pressing the Windows-key; this opens up the Start menu.  Then type part of the string “View advanced system settings” in order to issue a Windows search.  This will bring up the dialog as one of the top search options.
 
-2. Open the text file (`.ratt-private`) in a text editor.
+2. Click on the “Environment Variables” button.  This opens the “Environment Variables” dialog.
 
-3. Add the following line, replacing `{api-token}` with the API Token created in the previous section.
+3. Click on the “New…” button in the “User variables” section.  This opens the “New User Variable” dialog.
 
-   ```
-   TRIPLYDB_TOKEN={api-token}
-   ```
+4. Enter “TRIPLYDB_TOKEN” in the variable name field.
 
-    Make sure that no whitespace appears around the `=` character.  This is a common mistake.
+5. Paste your API Token in the variable value field.
+
+6. Click “OK” three times to to save the environment variable and close the various dialogs.
 
 ### 1.3.2 macOS or Linux (preferred approach)
 
