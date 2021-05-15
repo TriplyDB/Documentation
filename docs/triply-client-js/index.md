@@ -483,6 +483,62 @@ Account objects are obtained by using the following methods:
   - [`Client.getAccount()`](#clientgetaccount)
   - [`Client.getAccount(name: string)`](#clientgetaccountname-string)
 
+### Account.addDataset(metadata: obkect)
+
+Adds a new dataset to the account.
+
+This only succeeds if the current API token gives write access to the organization.
+
+Argument `metadata` is a JSON object that specifies the dataset metadata.  It has the following keys:
+
+<dl>
+  <dt><code>accessLevel</code> (optional)</dt>
+  <dd>
+    <p>The access level of the dataset. The following values are supported:</p>
+    <dl>
+      <dt><code>"private"</code> (default)</dt>
+      <dd>The dataset can only be accessed by organization members.</dd>
+      <dt><code>"internal"</code></dt>
+      <dd>The dataset can only be accessed by users that are logged into the TriplyDB instance.
+      <dt><code>"public"</code></dt>
+      <dd>The dataset can be accessed by everybody.</dd>
+    </dl>
+    <p>When no access level is specified, the most restrictive access level (<code>private</code>) is used.</p>
+  </dd>
+  <dt><code>description</code> (optional)</dt>
+  <dd>The human-readable description of the dataset.  This description can make use of Markdown (see the <a href="/docs/triply-db-getting-started/#markdown-support">Markdown reference</a>) for details.</dd>
+  <dt><code>displayName</code> (optional)</dt>
+  <dd>The human-readable name of the dataset.  This name may contain spaces and other non-alphanumeric characters.</dd>
+  <dt><code>license</code> (optional)</dt>
+  <dd>
+    <p>The license of the dataset.  The following license strings are currently supported:</p>
+    <ul>
+      <li><code>"CC-BY-SA"</code></li>
+      <li><code>"CC0 1.0"</code></li>
+      <li><code>"GFDL"</code></li>
+      <li><code>"ODC-By"</code></li>
+      <li><code>"ODC-ODbL"</code></li>
+      <li><code>"PDDL"</code></li>
+      <li><code>"None"</code> (default)</li>
+    </ul>
+  </dd>
+  <dt><code>name</code> (required)</dt>
+  <dd>The name of the dataset.  This name must only contain alphanumeric characters and hyphens (<code>[A-Za-z0-9-]</code>).</dd>
+</dl>
+
+The following code example creates a new dataset called `dogs` under the `acme` organization, with private access, a description, a display name, and a license:
+
+```typescript
+const account = await app.getAccount("acme")
+const dataset = await account.addDataset({
+  accessLevel: "private",
+  description: "A dataset about dogs.",
+  displayName: "Doggos",
+  license: "PDDL",
+  name: "dogs"
+})
+```
+
 ### Account.asOrg()
 
 Succeeds if the account is an organization ([`Organization`](#organization)).
@@ -626,58 +682,7 @@ const org = account.asOrg()
 
 Adds a new dataset to the organization.
 
-This only succeeds if the current API token gives write access to the organization.
-
-Argument `metadata` is a JSON object that specifies the dataset metadata.  It has the following keys:
-
-<dl>
-  <dt><code>accessLevel</code> (optional)</dt>
-  <dd>
-    <p>The access level of the dataset. The following values are supported:</p>
-    <dl>
-      <dt><code>"private"</code> (default)</dt>
-      <dd>The dataset can only be accessed by organization members.</dd>
-      <dt><code>"internal"</code></dt>
-      <dd>The dataset can only be accessed by users that are logged into the TriplyDB instance.
-      <dt><code>"public"</code></dt>
-      <dd>The dataset can be accessed by everybody.</dd>
-    </dl>
-    <p>When no access level is specified, the most restrictive access level (<code>private</code>) is used.</p>
-  </dd>
-  <dt><code>description</code> (optional)</dt>
-  <dd>The human-readable description of the dataset.  This description can make use of Markdown (see the <a href="/docs/triply-db-getting-started/#markdown-support">Markdown reference</a>) for details.</dd>
-  <dt><code>displayName</code> (optional)</dt>
-  <dd>The human-readable name of the dataset.  This name may contain spaces and other non-alphanumeric characters.</dd>
-  <dt><code>license</code> (optional)</dt>
-  <dd>
-    <p>The license of the dataset.  The following license strings are currently supported:</p>
-    <ul>
-      <li><code>"CC-BY-SA"</code></li>
-      <li><code>"CC0 1.0"</code></li>
-      <li><code>"GFDL"</code></li>
-      <li><code>"ODC-By"</code></li>
-      <li><code>"ODC-ODbL"</code></li>
-      <li><code>"PDDL"</code></li>
-      <li><code>"Node"</code> (default)</li>
-    </ul>
-    <p>If no license is provided, the value <code>"None"</code> is used.</p>
-  </dd>
-  <dt><code>name</code> (required)</dt>
-  <dd>The name of the dataset.  This name must only contain alphanumeric characters and hyphens (<code>[A-Za-z0-9-]</code>).</dd>
-</dl>
-
-The following code example creates a new dataset called `dogs` under the `acme` organization, with private access, a description, a display name, and a license:
-
-```typescript
-const org = await app.getOrganization("acme")
-const dataset = await org.addDataset({
-  accessLevel: "private",
-  description: "A dataset about dogs.",
-  displayName: "Doggos",
-  license: "PDDL",
-  name: "dogs"
-})
-```
+This function is inherited from the `Account` class.  See [`Account.addDataset(metadata: object)`](#accountadddatasetmetadata-object) for more information.
 
 ### Organization.addMembers([{user: string, role: string}]) 🚧
 
@@ -822,59 +827,9 @@ Users cannot be created or deleted through the TriplyDB.js library.  See the [Tr
 
 #### User.addDataset(metadata: object)
 
-Adds a new dataset for the given `User`.
+Adds a new dataset to the user's account.
 
-This only works if the used API token gives write access to the user account.
-
-Argument `metadata` is a JSON object that specifies the dataset's metadata.  It has the following keys:
-
-<dl>
-  <dt><code>accessLevel</code> (optional)</dt>
-  <dd>
-    <p>The access level of the dataset. The following values are supported:</p>
-    <dl>
-      <dt><code>"private"</code> (default)</dt>
-      <dd>The dataset can only be accessed by the user for whom this dataset is created.</dd>
-      <dt><code>"internal"</code></dt>
-      <dd>The dataset can only be accessed by users that are logged into the TriplyDB instance.
-      <dt><code>"public"</code></dt>
-      <dd>The dataset can be accessed by everybody.</dd>
-    </dl>
-    <p>When no access level is specified, the most conservative access level (<code>private</code>) is used.</p>
-  </dd>
-  <dt><code>description</code> (optional)</dt>
-  <dd>The description of the dataset.  This description can make use of Markdown layout (see the <a href="/docs/triply-db-getting-started/#markdown-support">Markdown reference</a>) for details.</dd>
-  <dt><code>displayName</code> (optional)</dt>
-  <dd>The human-readable name of the dataset.  This name may contain spaces and other non-alphanumeric characters.</dd>
-  <dt><code>license</code> (optional)</dt>
-  <dd>
-    <p>The license of the dataset. The following license strings are currently supported:</p>
-    <ul>
-      <li><code>"CC-BY-SA"</code></li>
-      <li><code>"CC0 1.0"</code></li>
-      <li><code>"GFDL"</code></li>
-      <li><code>"ODC-By"</code></li>
-      <li><code>"ODC-ODbL"</code></li>
-      <li><code>"PDDL"</code></li>
-    </ul>
-    <p>If no license is provided, the license is given value <code>"None"</code>.</p>
-  </dd>
-  <dt><code>name</code> (required)</dt>
-  <dd>The internal name of the dataset.  This name can only contain alphanumeric characters and hyphens.</dd>
-</dl>
-
-The following code example creates a new dataset (called `animals`) for the user with name `john-doe`, with private access, a description, display name, and a license:
-
-```typescript
-const user = await app.getUser("john-doe")
-const dataset = await user.addDataset({
-  accessLevel: "private",
-  description: "A dataset about animals.",
-  displayName: "animals",
-  license: "PDDL",
-  name: "animals"
-})
-```
+This function is inherited from the `Account` class.  See [`Account.addDataset(metadata: object)`](#accountadddatasetmetadata-object) for more information.
 
 #### User.createOrganization(metadata: object)
 
