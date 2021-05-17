@@ -91,13 +91,13 @@ You can extend this script with TriplyDB.js functions that read public (meta)dat
 
 ## 1.2 Read/write project
 
-In the previous section we set up a read-only project that uses TriplyDB.js and accesses public data at <https://triplydb.com>.  In this section we extend the project to obtain read/write access based on your account in a TriplyDB catalog.
+In the previous section we set up a read-only project that uses TriplyDB.js and accesses public data at <https://triplydb.com>.  In this section we extend the project to configure read/write permissions that are tried to your user account in a TriplyDB catalog.
 
 1. Go to the TriplyDB catalog that you have an account for that you want your project to interact with.  You may have a free account at <https://triplydb.com>.  You may also have accounts for other TriplyDB catalogs on the Internet or within your organization.
 
 2. Log into the TriplyDB catalog that you want your application to interact with.  For example <https://triplydb.com>.
 
-3. Go to your user settings page.  This page is accessed by clicking on the user menu in the top-right corner and choosing “User settings”.
+3. Go to your user settings page.  This page is reached by clicking on the user menu in the top-right corner and choosing “User settings”.
 
 4. Go to the “API Tokens” tab.
 
@@ -105,11 +105,13 @@ In the previous section we set up a read-only project that uses TriplyDB.js and 
 
 6. Enter a name that describes the purpose of the token.  For example, the name of your application (`my_project` in the above example) is a good name for the token.
 
-7. Choose the access level that is sufficient for what you want to do with your application:
+7. Choose the permission level that is sufficient for what you want to do with your application:
 
-   - Specify “Read access” if your application must access non-public data in the TriplyDB catalog.  (For access to public data you do not need an API Token.)
-   - Specify “Write access” if your application must change (meta)data in the TriplyDB catalog.
-   - Specify “Management access” if your application must be able to create one or more organizations within the TriplyDB catalog.
+   - Specify “Read permission” if your application must access non-public data in the TriplyDB catalog.  (For access to public data you do not need an API Token.)
+
+   - Specify “Write permission” if your application must change (meta)data in the TriplyDB catalog.
+
+   - Specify “Management permission” if your application must be able to create one or more organizations within the TriplyDB catalog.
 
 8. Click the “Create” button to create your token.  The token (a long sequence of characters) will now appear in a dialog.
 
@@ -168,7 +170,7 @@ The API Token can be externally specfied through the environment variable `TRIPL
 
 We explain several specific approaches for setting the API Token through an environment variable.  Let us know via <mailto:support@triply.cc> if the here documented approaches do not work for you.
 
-### 1.3.1 Windows 🚧
+### 1.3.1 Windows
 
 1. Go to the “View advanced system settings” dialog.
 
@@ -308,6 +310,29 @@ process.on("unhandledRejection", (reason, p) => {
 
 ## 2.6 Creating an organization with members
 
+# 3. Access
+
+Accessibility is a key component of each TriplyDB catalog:
+  - Datasets, queries and stories are published within accounts.
+  - Accounts are either organizations or users.
+  - Users are members of organizations.
+  - Every dataset, query and story has one of the following access levels: private, internal, public.
+  - Users can create API Tokens with either of the following permission levels: read, write, manage.
+
+## 3.1 No API Token
+
+It is possible to use TriplyDB.js without creating and configuring an API Token.  In such cases the API URL for a TriplyDB catalog must be specified when creating the TriplyDB [`Client`](#client) handle.  For example:
+
+```typescript
+const app = Client.get({url: "https://api.triplydb.com"})
+```
+
+When no API Token is configured, your script is able to access all public datasets, queries and stories on the specified TriplyDB catalog.
+
+## 3.2 Read API Token
+
+When an API Token with read permissions
+
 # 3. Reference
 
 This section documents all class and methods supported by TriplyDB.js.
@@ -315,6 +340,7 @@ This section documents all class and methods supported by TriplyDB.js.
 Every method in this reference section comes with at least one code example.  These code examples can be run by inserting them into the following code snippet.  See the [Getting started](#getting-started) section on how to get this script up and running on your system.
 
 ```typescript
+require("source-map-support/register")
 import Client from "@triply/triplydb"
 const app = Client.get({token: process.env.TRIPLY_API_TOKEN})
 async function run() {
@@ -342,6 +368,8 @@ classDiagram
     asOrg()
     asUser()
   }
+  Account --> Query: getQuery
+  Account --> Story: getStory
   class Client {
     getInfo()
   }
@@ -354,6 +382,10 @@ classDiagram
   class Organization {
   }
   Account <|-- Organization
+  class Query {
+  }
+  class Story {
+  }
   class User {
   }
   Account <|-- User
@@ -379,21 +411,17 @@ const app = Client.get({token: process.env.TRIPLY_API_TOKEN})
 
 It is typical for one TriplyDB.js script to have exactly one client object.
 
-### Client.getAccount()
-
-Returns the account object that is associated with the current API token.
-
-See [`Client.getAccount(name: string)`](#clientgetaccountname-string) for more information.
-
-### Client.getAccount(name: string)
+### 3.1.1 Client.getAccount(name?: string)
 
 Returns the TriplyDB account with the given `name`.
+
+Is `name` is omitted, the TriplyDB account that is associated with the current API token is returned.
 
 There are two kinds of accounts:
   - When `name` is the name of a user, a [User](#user) object is returned.
   - When `name` is the name of an organization, an [Organization](#organization) object is returned.
 
-The following example retrieves an organization called `acme`:
+The following example returns an organization called `acme`:
 
 ```typescript
 const account = await app.getAccount("acme")
@@ -401,7 +429,7 @@ const account = await app.getAccount("acme")
 
 See section [`Account`](#account) for an overview of the methods that can be used with account objects.
 
-### Client.getApiInfo()
+### 3.1.2 Client.getApiInfo()
 
 Returns information about the TriplyDB instance for which a client connection was established.
 
@@ -413,7 +441,7 @@ The following example returns an object that describes the current TriplyDB inst
 console.log(await app.getApiInfo())
 ```
 
-### Client.getDataset(accountName: string, datasetName: string)
+### 3.1.3 Client.getDataset(accountName: string, datasetName: string)
 
 Returns the dataset with name `datasetName` that is published by the account with name `accountName`.
 
@@ -423,14 +451,14 @@ The following example returns the dataset called `animals` published by the user
 const dataset = await app.getDataset("john-doe", "animals")
 ```
 
-This function is a shorthand for a combination of the [`Client.getAccount(name: string)`](#clientgetaccountname-string) function and [`Account.getDataset(name: string)`](#accountgetdatasetname-string) function.  The following example returns the same result as the previous example:
+This method is a shorthand for a combination of the [`Client.getAccount(name: string)`](#clientgetaccountname-string) method and [`Account.getDataset(name: string)`](#accountgetdatasetname-string) method.  The following example returns the same result as the previous example:
 
 ```typescript
 const user = await app.getUser("john-doe")
 const dataset = user.getDataset("animals")
 ```
 
-### Client.getOrganization(name: string)
+### 3.1.4 Client.getOrganization(name: string)
 
 Returns the organization with the given `name`.
 
@@ -444,7 +472,7 @@ const org = await app.getOrganization("acme")
 
 See section [`Organization`](#organization) for an overview of the methods for organization objects.
 
-### Client.getUser()
+### 3.1.5 Client.getUser()
 
 Returns the current user.
 
@@ -452,9 +480,9 @@ The current user is the one that is associated with the current API token.  This
 
 This method is identical to [`Client.getAccount()`](#clientgetaccount).
 
-This function has the same behavior as [`Client.getUser(name: string)`](#clientgetusername-string) if `name` is identical to the account name of the current user.
+This method has the same behavior as [`Client.getUser(name: string)`](#clientgetusername-string) if `name` is identical to the account name of the current user.
 
-The following example code retrieves to the current user:
+The following example code returns to the current user:
 
 ```typescript
 const user = await app.getUser()
@@ -462,7 +490,7 @@ const user = await app.getUser()
 
 See section [`User`](#user) for an overview of the methods for user objects.
 
-### Client.getUser(name: string)
+### 3.1.6 Client.getUser(name: string)
 
 Returns the user with the given `name`.
 
@@ -483,7 +511,7 @@ Account objects are obtained by using the following methods:
   - [`Client.getAccount()`](#clientgetaccount)
   - [`Client.getAccount(name: string)`](#clientgetaccountname-string)
 
-### Account.addDataset(metadata: obkect)
+### 3.2.1 Account.addDataset(metadata: obkect)
 
 Adds a new dataset to the account.
 
@@ -539,7 +567,35 @@ const dataset = await account.addDataset({
 })
 ```
 
-### Account.asOrg()
+### 3.2.2 Account.addQuery(name: string, endpoint: Service, metadata?: object) 🚧
+
+This method is available but has an unknown API.
+
+```typescript
+export interface QueryMetaUpdate {
+  name?: string;
+  displayName?: string;
+  description?: string;
+  accessLevel?: AccessLevel;
+  dataset?: string;
+  preferredService?: string;
+  autoselectService?: boolean;
+}
+export declare type QueryCreate = MarkRequired<QueryMetaUpdate, "name"> & Partial<QueryVersionUpdate> & {
+  generateNewName?: boolean;
+}
+export interface QueryVersionUpdate {
+  requestConfig: QueryRequestConfig;
+  renderConfig?: QueryRenderConfig;
+  variables?: VariableConfig[];
+}
+```
+
+### 3.2.3 Account.addStory(name: string, metadata?: object) 🚧
+
+This method is not yet available.
+
+### 3.2.4 Account.asOrg()
 
 Succeeds if the account is an organization ([`Organization`](#organization)).
 
@@ -558,7 +614,7 @@ const account = await app.getAccount("acme")
 const org = account.asOrg()
 ```
 
-### Account.asUser()
+### 3.2.5 Account.asUser()
 
 If the account is a user, returns information about the account. Otherwise,results in the following error message:
 
@@ -573,7 +629,9 @@ const account = await app.getAccount()
 const user = account.asUser()
 ```
 
-### Account.exists() 🚧
+### 3.2.6 Account.exists() 🚧
+
+This method is present but has unknown behavior.
 
 If the account exists, returns true. Otherwise, returns false.
 
@@ -584,24 +642,38 @@ const account = await app.getAccount()
 console.log(account.exists())
 ```
 
-#### Account.getDataset(name: string)
+Returns whether the organization still exists.
 
-Returns the dataset with the given `name` that is published under the given `Account`.
-
-The following example prints a specific dataset object:
+The following example code prints `true` in case the account (still) exists, and prints `false` otherwise:
 
 ```typescript
-const org = await app.getOrganization("acme")
-const dataset = org.getDataset("dogs")
+const organization = await app.getOrganization("acme")
+// Some code in between; the organization could have been deleted in the
+// meantime.
+console.log(await (organization).exists())
 ```
 
-See section [`Dataset`](#dataset) for an overview of the methods that can be used with dataset objects.
+#### 3.2.7 Account.getDataset(name: string)
 
-#### Account.getDatasets()
+Returns the dataset with the given `name` that belongs to this [`Account`](#account).
 
-Returns an interator for the datasets under the `Account`.
+This method returns an object of type [`Dataset`](#dataset).  See section [`Dataset`](#dataset) for an overview of the methods that can be used with dataset objects.
 
-This only includes datasets that are accessible under the used API token.
+The following example prints the metadata of a specific dataset:
+
+```typescript
+const account = await app.getAccount("acme")
+const dataset = account.getDataset("dogs")
+console.log(await dataset.getInfo())
+```
+
+#### 3.2.8 Account.getDatasets()
+
+Returns an interator with the accessible datasets that belong to this [`Account`](#account).
+
+Only datasets
+
+This only includes datasets that are accessible with the currently used API token.
 
 The following example prints information for every accessible dataset under the `acme` account:
 
@@ -612,7 +684,7 @@ for await (const dataset of org.getDatasets()) {
 }
 ```
 
-### Account.getInfo()
+### 3.2.9 Account.getInfo()
 
 Returns an overview of the account in the form of a JSON object.
 
@@ -662,9 +734,73 @@ const account = await app.getAccount()
 console.log((await account.getInfo()).name)
 ```
 
+### 3.2.9 Account.getQuery(name: string)
+
+Returns the TriplyDB query with the given `name`.
+
+The following example returns a query called `animal-gallery` for the current account:
+
+```typescript
+const account = await app.getAccount()
+const query = await account.getQuery("animal-gallery")
+```
+
+See section [`Query`](#query) for an overview of the methods for query objects.
+
+### 3.2.10 Account.getQueries()
+
+Returns an iterator with the queries that belong to the account.
+
+The following example prints the names of the queries that belong to the current account:
+
+```typescript
+const account = await app.getAccount()
+for await (const query of account.getQueries()) {
+  console.log((await query.getInfo()).name)
+}
+```
+
+See section [`Query`](#query) for an overview of the methods for query objects.
+
+### 3.2.11 Account.getStory(name: string)
+
+See section [`Story`](#story) for an overview of the methods for story objects.
+
+### 3.2.12 Account.getStories()
+
+Returns an iterator with the queries that belong to the account.
+
+The following example prints the names of the queries that belong to the current account:
+
+```typescript
+const account = await app.getAccount()
+for await (const query of account.getQueries()) {
+  console.log((await query.getInfo()).name)
+}
+```
+
+See section [`Story`](#story) for an overview of the methods for story objects.
+
+### 3.2.13 Account.getPinnedItems
+
+### 3.2.14 Account.pinItems
+
+### 3.2.15 Account.setAvatar(file: string)
+
+Sets a new image that characterizes the account.  A cicular version of this image is displayed inside the TriplyDB GUI.  This image is also disclosed in account metadata.
+
+The following example uploads the local image in file `logo.svg` and set it as the characterizing image for the current account:
+
+```typescript
+const account = app.getAccount()
+await account.setAvatar("logo.svg")
+```
+
+### 3.2.16 Account.update
+
 ## 3.3 Organization
 
-Instances of the `Organization` class denote an organization in TriplyDB.
+Instances of the [`Organization`](#organization) class denote an organization in TriplyDB.
 
 Organizations can be obtained via the following methods:
 
@@ -678,13 +814,9 @@ const account app.getAccount("acme")
 const org = account.asOrg()
 ```
 
-### Organization.addDataset(metadata: object)
+Every method that can be applied to an [`Account`](#account) can also be applied to an [`Organization`](#organization).  See section [`Account`](#account) for an overview of these methods.  The remainder of this section documents the methods that are specific for organizations.
 
-Adds a new dataset to the organization.
-
-This function is inherited from the `Account` class.  See [`Account.addDataset(metadata: object)`](#accountadddatasetmetadata-object) for more information.
-
-### Organization.addMembers([{user: string, role: string}]) 🚧
+### 3.3.1 Organization.addMembers([{user: string, role: string}]) 🚧
 
 Adds one or more members to the given organization.
 
@@ -707,7 +839,7 @@ await org.addMembers({user: "bugs-bunny",
                       role: "member"})
 ```
 
-### Organization.delete()
+### 3.3.2 Organization.delete()
 
 Deletes the given organization from the TriplyDB instance.
 
@@ -720,33 +852,7 @@ const org = await app.getOrganization("acme")
 org.delete()
 ```
 
-### Organization.exists() 🚧
-
-Returns whether the organization still exists.
-
-The following example code prints `true` in case the account (still) exists, and prints `false` otherwise:
-
-```typescript
-const organization = await app.getOrganization("acme")
-// Some code in between; the organization could have been deleted in the
-// meantime.
-console.log(await (organization).exists())
-```
-
-#### Organization.getDataset(name: string)
-
-Returns the dataset with the given `name` that is published by the given `Organization`.
-
-This function returns an object of type [`Dataset`](#dataset).  See that section for an overview of the methods that can be called on dataset objects.
-
-The following example prints a specific dataset object:
-
-```typescript
-const org = await app.getOrganization("acme")
-const dataset = org.getDataset("dogs")
-```
-
-#### Organization.getDatasets()
+#### 3.3.6 Organization.getDatasets()
 
 Returns the list of datasets for the `Organization`.  This only includes datasets that are accessible under the used API token.
 
@@ -829,7 +935,7 @@ Users cannot be created or deleted through the TriplyDB.js library.  See the [Tr
 
 Adds a new dataset to the user's account.
 
-This function is inherited from the `Account` class.  See [`Account.addDataset(metadata: object)`](#accountadddatasetmetadata-object) for more information.
+This method is inherited from the `Account` class.  See [`Account.addDataset(metadata: object)`](#accountadddatasetmetadata-object) for more information.
 
 #### User.createOrganization(metadata: object)
 
@@ -873,7 +979,7 @@ console.log(user.exists())
 
 Returns the dataset with the given `name` that is published by the given `User`.
 
-This function returns an object of type [`Dataset`](#dataset).  See that section for an overview of the methods that can be called on those dataset objects.
+This method returns an object of type [`Dataset`](#dataset).  See that section for an overview of the methods that can be called on those dataset objects.
 
 The following example prints a specific dataset object:
 
@@ -972,7 +1078,7 @@ This operation does not overwrite existing datasets: if the copied-to dataset al
 
 Deletes the dataset. This includes deleting the dataset metadata, all of its graphs, and all of its assets.
 
-Use the following functions in order to delete graphs while retaining dataset metadata and assets:
+Use the following methods in order to delete graphs while retaining dataset metadata and assets:
 
 - [Dataset.deleteGraph(graphName: string)](#datasetdeletegraphname-string)
 - [Dataset.removeAllGraphs()](#datasetremoveallgraphs)
@@ -1005,7 +1111,7 @@ dataset.deleteGraph("https://example.org/cats")
 
 Returns whether or not the dataset still exists in the TriplyDB instance.
 
-Datasets can still be considered to not exist when the [`Dataset.delete()`](#datasetdelete) function is called or when somebody deletes the dataset from the [Triply GUI](/docs/triply-db-getting-started).
+Datasets can still be considered to not exist when the [`Dataset.delete()`](#datasetdelete) method is called or when somebody deletes the dataset from the [Triply GUI](/docs/triply-db-getting-started).
 
 The following example code prints `true` in case the dataset still exists, and `false` otherwise:
 
@@ -1035,7 +1141,7 @@ Returns zero or more assets that belong to this dataset.
 
 Assets are binary files that can be stored along with the graph-based data.  Common examples include documents, images and videos.
 
-The following example retrieves the assets for a specific dataset:
+The following example returns the assets for a specific dataset:
 
 ```typescript
 const user = await app.getUser()
@@ -1051,7 +1157,7 @@ Returns the graph with the given `name` that belongs to this dataset.
 
 In linked data, graph names (`name`) are IRIs.
 
-The following example retrieves the graph about cats from the dataset about animals:
+The following example returns the graph about cats from the dataset about animals:
 
 ```typescript
 const user = await app.getUser()
@@ -1064,7 +1170,7 @@ console.log(graph)
 
 Returns zero or more graphs that belong to the dataset.
 
-The following example code retrieves the graphs for the `animals`
+The following example code returns the graphs for the `animals`
 dataset:
 
 ```typescript
@@ -1160,12 +1266,12 @@ await account.getDataset("test").importFromFiles("./test.nt")
 
 #### Dataset.query()
 
-Retrieves the query object for this dataset.
+Returns the query object for this dataset.
 
 See section [Query](#query) for an overview of the methods that can be
 used with query objects.
 
-The following code example retrieves the query object of a specific
+The following code example returns the query object of a specific
 dataset:
 
 ```typescript
@@ -1283,7 +1389,7 @@ defined in the [SPARQL 1.1
 Query](https://www.w3.org/TR/sparql11-query/#QSynTriples)
 specification.
 
-The following example code retrieves (at most) 100 triples that have
+The following example code returns (at most) 100 triples that have
 term `rdfs:subClassOf` in the predicate position:
 
 ```typescript
@@ -1336,12 +1442,12 @@ dataset.query().graph("https://example.com/graph").exec()
 
 ### 3.7 Service
 
-Service objects describe specific functionalities that can be started,
+Service objects describe specific methodalities that can be started,
 stopped, and restarted over datasets in TriplyDB.
 
 Service objects are obtained through the
 [`Dataset.addService`](datasetaddserviceservicetype-string-name-string)
-and [`Dataset.getServices`](#datasetgetservices) functions.
+and [`Dataset.getServices`](#datasetgetservices) methods.
 
 The following code example starts a specific service:
 
