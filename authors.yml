@@ -16,7 +16,7 @@
 - id: lrietveld
   name: Laurens Rietveld
 - id: tdgroot
-  name: Thomas de groot
+  name: Thomas de Groot
 - id: tbohlken
   name: Thomas Bohlken
 - id: wbeek
@@ -31,3 +31,5 @@
   name: Dionysia Nakou
 - id: rdehaanmpvharmelendnakou
   name: Rosaline de Haan, Martin van Harmelen and Dionysia Nakou
+- id: tdegrootkdentlerdnakou
+  name: Thomas de Groot, Kathrin Dentler and Dionysia Nakou

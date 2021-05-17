@@ -139,7 +139,7 @@ standards-compliant tools start using the data.
 
 Not all data can be stores as RDF data. For example images and video
 files use a binary format. Such files can also be stored in TriplyDB
-and can be integrated into the Knowledge Grapk.
+and can be integrated into the Knowledge Graph.
 
 # Publishing data
 

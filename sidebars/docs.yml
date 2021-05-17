@@ -1,5 +1,6 @@
 - groups:
   - group: TriplyDB
+    tagline: Learn how to integrate TriplyDB in your workflow
     items:
       - title: Getting started
         link: /docs/triply-db-getting-started
@@ -8,6 +9,7 @@
       - title: Javascript Client
         link: /docs/triplydb-js
   - group: Yasgui
+    tagline: Learn about the SPARQL editor
     items:
       - title: Introduction
         link: /docs/yasgui
