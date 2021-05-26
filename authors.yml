@@ -29,7 +29,11 @@
   name: Rosaline de Haan
 - id: dnakou
   name: Dionysia Nakou
+- id: kdentler
+  name: Kathrin Dentler
 - id: rdehaanmpvharmelendnakou
   name: Rosaline de Haan, Martin van Harmelen and Dionysia Nakou
 - id: tdegrootkdentlerdnakou
   name: Thomas de Groot, Kathrin Dentler and Dionysia Nakou
+- id: tdegrootmpvharmelen
+  name: Thomas de Groot and Martin van Harmelen
