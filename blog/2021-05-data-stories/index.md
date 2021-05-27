@@ -49,7 +49,7 @@ Select “Go to dataset”, to explore the data, or select “Try this query you
 
 The [Iris data story](https://triplydb.com/Triply/-/stories/the-iris-dataset) presents information about the three different species of the Iris flower. It showcases that data analytics and storytelling interact well within a data story, and how rendering the underlying data via charts helps in communicating your message:
 
-![Iris data story](iris-data-story.png)
+![Interactive scatterplot showing the instances of each Iris species in a different color. The user can select the x and y axis from options including petal and sepal width and length.](iris-data-story.png)
 
 In this chart, your audience can not only explore the patterns of the data, but also interact with the visualization, by explicitly choosing the x and y axis measurements out of predefined options. 
 
@@ -57,7 +57,7 @@ In this chart, your audience can not only explore the patterns of the data, but 
 
 TriplyDB is a user-friendly, performant and stable platform, designed for potentially very large knowledge graphs. It does not only allow you to store and manage your data, but also provides various methods for story telling. First of all, the TriplyDB data stories discussed in this blog post. Next to that, the *[Insights][]* page can provide an overview of your data by presenting the class hierarchies and frequencies that occur in your data. With [LD-Browser][], you can explore your data thoroughly and navigate through your knowledge graph. Finally, TriplyDB also supports Elastic search and SPARQL querying.
 
-Are you just getting started in the world of data stories? Create your free user account over at [triplydb.com][]. If you have any questions feel free to contact us at [info@triply.cc][].
+Are you just getting started in the world of data stories? Create your free user account over at [triplydb.com][]. If you have any questions, feel free to contact us at [info@triply.cc][].
 
 
 [triplydb.com]: https://triplydb.com
