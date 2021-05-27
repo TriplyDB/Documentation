@@ -1,5 +1,5 @@
 ---
-title: "Data stories"
+title: "Data Stories"
 path: "/blog/2021-05-data-stories"
 date: "2021-05-26T21:30:00"
 author: tdegrootmpvharmelen
