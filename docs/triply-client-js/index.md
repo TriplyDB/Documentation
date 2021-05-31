@@ -1204,3 +1204,56 @@ the following command in the terminal:
 ```sh
 echo $TRIPLY_API_TOKEN
 ```
+
+### How to get the results of a saved query using TriplyDB-js?
+
+There are several reasons for choosing TriplyDB-js to get results of saved queries in a TriplyDB instance. That is why a new functionality was added that allows retreiving reliably a large number of results as the output of a large ```construct``` or ```select``` query. This functionality can be implemented following the next steps:
+
+1. Import ```Triplydb``` library.
+2. Set your parameters, regarding the TriplyDB instance and the account in which you have saved the query as well as the name of the query. Also, if the query is not public, you should also set your API token. 
+  Optionally, query parameters can be set.
+  
+2. Get the results of a query by setting a ```results``` variable. If query parameters have not being set, then the corresponding variable, i.e. ```optionalQueryParameters```, should be omitted.
+ Note that for ```construct``` queries, we use ```.statements()```, while for ```select``` queries, we use ```.bindings()```.
+ 
+3. Optionally, the results can be iterated per quad in a ```for``` loop.
+
+4. Save the results to a file or load them to memory for further manipulation.
+
+An example script could be the one below:
+
+```typescript
+import Triplydb from '@triply/triplydb';
+
+async function run(){
+const triplydb = Triplydb.get(url: "..",{token: process.env['API_TOKEN']})
+
+const account = await triplydb.getAccount("account-name");
+const query = await account.getQuery("name-of-some-query")
+
+// Query parameters (optional, can also be left out)
+const optionalQueryParameters = {
+  someQueryParameter: "value of a query parameter"
+}
+
+// for construct and describe queries
+const results = query.results(optionalQueryParameters).statements()
+
+// for select queries
+const results = query.results(optionalQueryParameters).bindings()
+
+// Iterating over the results per quad
+for await (const row of results) {
+  // execute something
+}
+
+// saving the results to file
+await results.toFile("path/to/some/file")
+//OR
+//await query.results().statements().toFile('path/to/some/file')
+
+// loading all results into memory
+const array = await results.toArray()
+}
+```
+
