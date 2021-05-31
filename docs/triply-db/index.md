@@ -562,7 +562,7 @@ used. Multiple hash characters indicate nested headings.
 | _Style_       | _Syntax_            | _Output_          |
 | ------------- | ------------------- | ----------------- |
 | Bold          | `**bold**`          | **bold**          |
-| Italic        | `*italic*`          | _italic_          |
+| Italic        | `_italic_`          | _italic_          |
 | Strikethrough | `~~strikethrough~~` | ~~strikethrough~~ |
 
 ### Hyperlinks
