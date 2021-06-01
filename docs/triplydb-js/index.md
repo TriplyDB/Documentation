@@ -1207,7 +1207,7 @@ echo $TRIPLY_API_TOKEN
 
 ### How do I get the results of a saved query using TriplyDB-js?
 
-There are several reasons for choosing TriplyDB-js to get results of saved queries of a TriplyDB instance. That is why a new functionality was added that allows retrieving reliably a large number of results as the output of a large ```construct``` or ```select``` query. This functionality can be used following the next steps:
+To reliably retrieve a large number of results as the output of a ```construct``` or ```select``` query, follow these steps:
 
 1. Import the triplydb library.
    ```typescript
