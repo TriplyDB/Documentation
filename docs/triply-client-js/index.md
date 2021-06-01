@@ -1221,7 +1221,7 @@ There are several reasons for choosing TriplyDB-js to get results of saved queri
 	const account = await client.getAccount("account-name");
 	const query = await account.getQuery("name-of-some-query")
 	```
-	Also, if the query is not public, you should set your API token rather than the URL.
+	If the query is not public, you should set your API token rather than the URL.
 	```typescript
 
 	const client = Client.get({token: process.env['TRIPLY_API_TOKEN']})
