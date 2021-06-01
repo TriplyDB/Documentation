@@ -1231,8 +1231,7 @@ There are several reasons for choosing TriplyDB-js to get results of saved queri
     
 	
 	
-3. Do not forget that we perform TriplyDB-js requests within an [async context](
-/#create-your-first-script). That is:
+3. Do not forget that we perform TriplyDB-js requests within an [async context](#create-your-first-script). That is:
 
 	```typescript
 
