@@ -1209,51 +1209,74 @@ echo $TRIPLY_API_TOKEN
 
 There are several reasons for choosing TriplyDB-js to get results of saved queries in a TriplyDB instance. That is why a new functionality was added that allows retreiving reliably a large number of results as the output of a large ```construct``` or ```select``` query. This functionality can be implemented following the next steps:
 
-1. Import ```Triplydb``` library.
-2. Set your parameters, regarding the TriplyDB instance and the account in which you have saved the query as well as the name of the query. Also, if the query is not public, you should also set your API token. 
-  Optionally, query parameters can be set.
+1. Import Triplydb library.
+   ```typescript
+   import Client from '@triply/triplydb';
+   ```
+
+2. Set your parameters, regarding the TriplyDB instance and the account in which you have saved the query as well as the name of the query.
+
+	```typescript
+	const client= Client.get({url: ".."})
+	const account = await client.getAccount("account-name");
+	const query = await account.getQuery("name-of-some-query")
+	```
+	Also, if the query is not public, you should set your API token rather than the URL.
+	```typescript
+
+	const client = Client.get({token: process.env['TRIPLY_API_TOKEN']})
+	```
+
   
-2. Get the results of a query by setting a ```results``` variable. If query parameters have not being set, then the corresponding variable, i.e. ```optionalQueryParameters```, should be omitted.
- Note that for ```construct``` queries, we use ```.statements()```, while for ```select``` queries, we use ```.bindings()```.
+    
+	
+	
+3. Do not forget that we perform TriplyDB-js requests within an [async context](https://github.com/TriplyDB/Documentation/blob/master/docs/triply-client-js/index.md#create-your-first-script). That is:
+
+	```typescript
+
+	async function run(){
+	//execute the main body 
+	}
+	```
+  
+4. Get the results of a query by setting a ```results``` variable.
+   More specifically, for construct queries:
+
+	```typescript
+	const results = query.results().statements()
+	```
+	For select queries:
+	```typescript
+	const results = query.results().bindings()
+	```
+	Note that for ```construct``` queries, we use ```.statements()```, while for ```select``` queries, we use ```.bindings()```.
  
-3. Optionally, the results can be iterated per quad in a ```for``` loop.
+	Additionally, saved queries can have "API variables" that allow you to specify variables that are used in the query. Thus, if you have query parameters, pass their values as the first argument to `results` as follows:
+	```typescript
+	// For construct queries
+	const results = query.results({someVariable: "value of someVariable", anotherVariable: "value of anotherVariable"}).statements()
+	//For select queries:
+	const results = query.results({someVariable: "value of someVariable", anotherVariable: "value of anotherVariable"}).bindings()
+	```
+5. Optionally, the results can be iterated per quad in a ```for``` loop.
+   ```typescript
+   // Iterating over the results per quad
+   for await (const row of results) {
+     // execute something
+   }
+   ```
 
-4. Save the results to a file or load them to memory for further manipulation.
+6. Save the results to a file or load them to memory for further manipulation. Note that results can be saved in a file using `.toFile` only in the case of `construct` queries.
 
-An example script could be the one below:
+   ```typescript
 
-```typescript
-import Triplydb from '@triply/triplydb';
-
-async function run(){
-const triplydb = Triplydb.get(url: "..",{token: process.env['API_TOKEN']})
-
-const account = await triplydb.getAccount("account-name");
-const query = await account.getQuery("name-of-some-query")
-
-// Query parameters (optional, can also be left out)
-const optionalQueryParameters = {
-  someQueryParameter: "value of a query parameter"
-}
-
-// for construct and describe queries
-const results = query.results(optionalQueryParameters).statements()
-
-// for select queries
-const results = query.results(optionalQueryParameters).bindings()
-
-// Iterating over the results per quad
-for await (const row of results) {
-  // execute something
-}
-
-// saving the results to file
-await results.toFile("path/to/some/file")
-//OR
-//await query.results().statements().toFile('path/to/some/file')
-
-// loading all results into memory
-const array = await results.toArray()
-}
-```
+   // Saving the results of a construct query to file
+   await results.toFile("path/to/some/file")
+   ```
+   ```typescript
+   // Loading results of a construct or select query into memory
+   const array = await results.toArray()
+   }
+   ```
 
