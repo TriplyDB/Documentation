@@ -399,7 +399,7 @@ A TriplyDB data story is a way of communicating information about your linked da
 ##Creating a data story
 You can create your own data story via the [stories](https://triplydb.com/me/-/stories) tab on TriplyDB. If this is your first time creating a data story, your view will look something like the image below. If you already are a proud owner of a data story, you will find it here. To create a new one, you can click the orange "Create story" button and you’ll see the same form.
 
-![Form for adding a new story](Create-datastory-UI.png)
+![Form for adding a new story](Create-datastory-UI-2.png)
 
 In this form, you can fill in the name of the story and you can set the access level for a data story. When everything is set, press the "Create story" button.This will take you to a new page where you can customize the data story.
 
@@ -433,7 +433,7 @@ Data sometimes needs accompanying text to be completely understandable. TriplyDB
 ## Sharing and embedding
 Before you know it, you will have created your first data story. Congratulations! Now it is time to share it with the world, but don’t forget to set the access level to “public”. Then you have two options:
 1. You can simply share the URL.
-2. You can embed the data story on your own webpage. Scroll to the end of the story you want to embed and click the “</> Embed” button for a copy-pasteable code snippet. 
+2. You can embed the data story on your own webpage. Scroll to the end of the story you want to embed and click the “</> Embed” button for a copy-pasteable code snippet.
 
 
 # Admin tasks
