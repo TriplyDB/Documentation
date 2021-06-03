@@ -401,7 +401,7 @@ You can create your own data story via the [stories](https://triplydb.com/me/-/s
 
 ![Form for adding a new story](Create-datastory-UI-2.png)
 
-In this form, you can fill in the name of the story and you can set the access level for a data story. When everything is set, press the "Create story" button.This will take you to a new page where you can customize the data story.
+In this form, you can fill in the title and set the access level for a data story. When everything is set, press the "Create story" button.This will take you to a new page where you can customize the data story.
 
 ## Editing a data story
 As shown in the image below, in the top right corner of the page, there is a menu button. Here you will find the following:
