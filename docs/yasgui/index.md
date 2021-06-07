@@ -68,7 +68,7 @@ Finally, in order to return an HTML literal we need to first bind the
 concatenated string to some variable `?lex`, and then apply the
 `strdt` function in order to construct a literal with datatype IRI
 `rdf:HTML`. You can [try this query
-online](https://triplydb.com/academy/pokemon/queries/sparql-html).
+online](https://triplydb.com/academy/-/queries/sparql-html).
 
 ```sparql
 prefix def: <https://triplydb.com/academy/pokemon/def/>
@@ -103,7 +103,7 @@ SPARQL Template. Notice that this removes the need for concatenating
 (`concat/n`), explicit to-string conversion (`str/1`), and also allows
 the HTML literal to be constructed more easily (no `strdt/2` needed).
 You can [try this query
-online](https://triplydb.com/academy/pokemon/queries/sparql-templating/2).
+online](https://triplydb.com/academy/-/queries/sparql-templating).
 
 ```sparql
 prefix def: <https://triplydb.com/academy/pokemon/def/>
@@ -176,7 +176,7 @@ the following features:
 
 #### Table Example
 
-The following SPARQL query (or [see here](https://triplydb.com/academy/pokemon/queries/table-example/)) returns a table of Pokémon dragons (column
+The following SPARQL query (or [see here](https://triplydb.com/academy/-/queries/table-example)) returns a table of Pokémon dragons (column
 `pokemon`) and their happiness (column `happiness`). Notice that the
 prefix for `pokemon` is not used in the query, but is used in order to
 abbreviate the IRI syntax in the `pokemon` column. By clicking on the
@@ -378,7 +378,7 @@ This view renders SPARQL results in an interactive pivot table where you are abl
 
 ### Timeline ([TriplyDB Plugin](/docs/yasgui-api#triplyDbPlugins)) {#timeline}
 
-The SPARQL timeline renders the SPARQL results on a Timeline ([example](https://triplydb.com/wikimedia/-/queries/timeline-cars/))
+The SPARQL timeline renders the SPARQL results on a Timeline ([example](https://triplydb.com/DBpedia-association/-/queries/timeline-cars))
 To get started with this visualization you need at least a result containing a `?eventStart` or `?eventDate` with either a `?eventDescription`, `?eventLabel` or a `?eventMedia`. (Combinations are also possible)
 The following parameters can be used, Parameters in _Italic_ are experimental:
 

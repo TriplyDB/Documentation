@@ -1571,3 +1571,79 @@ the following command in the terminal:
 ```sh
 echo $TRIPLY_API_TOKEN
 ```
+
+### How do I get the results of a saved query using TriplyDB-js?
+
+To reliably retrieve a large number of results as the output of a ```construct``` or ```select``` query, follow these steps:
+
+1. Import the triplydb library.
+   ```typescript
+   import Client from '@triply/triplydb';
+   ```
+
+2. Set your parameters, regarding the TriplyDB instance and the account in which you have saved the query as well as the name of the query.
+
+	```typescript
+	const client= Client.get({url: ".."})
+	const account = await client.getAccount("account-name");
+	const query = await account.getQuery("name-of-some-query")
+	```
+	If the query is not public, you should set your API token rather than the URL.
+	```typescript
+
+	const client = Client.get({token: process.env['TRIPLY_API_TOKEN']})
+	```
+
+  
+    
+	
+	
+3. Do not forget that we perform TriplyDB-js requests within an [async context](#create-your-first-script). That is:
+
+	```typescript
+
+	async function run() {
+    // your code goes here 
+	}
+  run()
+	```
+  
+4. Get the results of a query by setting a ```results``` variable.
+   More specifically, for construct queries:
+
+	```typescript
+	const results = query.results().statements()
+	```
+	For select queries:
+	```typescript
+	const results = query.results().bindings()
+	```
+	Note that for ```construct``` queries, we use ```.statements()```, while for ```select``` queries, we use ```.bindings()```.
+ 
+	Additionally, saved queries can have "API variables" that allow you to specify variables that are used in the query. Thus, if you have query parameters, pass their values as the first argument to `results` as follows:
+	```typescript
+	// For construct queries
+	const results = query.results({someVariable: "value of someVariable", anotherVariable: "value of anotherVariable"}).statements()
+	// For select queries:
+	const results = query.results({someVariable: "value of someVariable", anotherVariable: "value of anotherVariable"}).bindings()
+	```
+5. To read the results you have three options:
+  1. You can iterate through the results per quad in a ```for``` loop.
+   ```typescript
+   // Iterating over the results per quad
+   for await (const row of results) {
+     // execute something
+   }
+   ```
+  2. Save the results to a file. Note that results can be saved in a file using `.toFile` only in the case of `construct` queries.
+   ```typescript
+   // Saving the results of a construct query to file
+   await results.toFile("path/to/some/file")
+   ```
+  3. Load the results into memory. Note that this is often not necessary and that large amounts of data can cause your program to run out of memory.
+
+   ```typescript
+   // Loading results of a construct or select query into memory
+   const array = await results.toArray()
+   ```
+
