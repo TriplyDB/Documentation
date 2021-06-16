@@ -45,6 +45,22 @@ In the above, `TOKEN` should be replaced by your personal API token (a
 lengthy sequence of characters). See [Creating an API token](#Creating-an-API-token) for
 information on how to create an API token.
 
+## Exporting linked data
+
+Every TriplyDB API path that returns Linked Data provides a number of serializations to choose from. We support the following serializations:
+
+| Serialization                                       | Media type              | File extension |
+| --------------------------------------------------- | ----------------------- | -------------- |
+| [TriG](https://www.w3.org/TR/trig/)                 | `application/trig`      | `.trig`        |
+| [N-Triples](https://www.w3.org/TR/n-triples/)       | `application/n-triples` | `.nt`          |
+| [N-Quads](https://www.w3.org/TR/n-quads/)           | `application/n-quads`   | `.nq`          |
+| [Turtle](https://www.w3.org/TR/turtle/)             | `text/turtle`           | `.ttl`         |
+| [JSON-LD](https://json-ld.org/spec/latest/json-ld/) | `application/ld+json`   | `.jsonld`      |
+
+To request a serialization, use one of the following mechanisms:
+
+1. Add an `Accept` header to the request. E.g. `Accept: application/n-triples`
+2. Add the extension to the URL path. E.g. https://api.triplydb.com/datasets/Triply/iris/download.nt
 
 ## Datasets
 
