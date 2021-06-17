@@ -5,7 +5,7 @@ date: "2019-11-12T14:20:00"
 author: wbeek
 ---
 
-In our first blog post we look back at some of the core features that were added to TriplyDB over the last couple of months.  TriplyDB is a new and fast-moving Linked Data Knowledge Graph product.  Read more about TriplyDB over at <https://triply.cc/triplydb>.  Many of the here described features were developed in collaboration with our great customers.
+In our first blog post we look back at some of the core features that were added to TriplyDB over the last couple of months.  TriplyDB is a new and fast-moving Linked Data Knowledge Graph product.  Read more about [TriplyDB](https://triply.cc/triplydb).  Many of the here described features were developed in collaboration with our great customers.
 
 ## Metadata for all!
 
