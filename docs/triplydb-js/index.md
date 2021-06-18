@@ -1051,7 +1051,9 @@ for await (const query of account.getQueries()) {
 
 See section [`Story`](#story) for an overview of the methods for story objects.
 
-### 3.2.14 Account.pinItems
+### 3.2.14 Account.pinItems(items: array[Dataset|Story|Query])
+
+TODO: How does one specify an array in TS?
 
 ### 3.2.15 Account.setAvatar(file: string)
 
