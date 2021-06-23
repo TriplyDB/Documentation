@@ -31,7 +31,7 @@ A checkbox for turning compact mode on and off has been added. This causes the i
 
 ## Documentation page redesign + search
 We are continuously working on our [documentation pages][] to help people find the information they need to use our products to the full extent. For this reason, we improved the documentation pages to give people a better overview of the documentation. If this overview is not sufficient, a search bar can be used to search through all available documentation.
-![Documentation page redesign](documentation-page-redesign.gif)
+![Documentation page redesign](documentation-page-redesign.png)
 
 ## Final Notes
 These features are just some of our favourites! There are many more, big and small, that have been added. Check them out yourself over at [TriplyDB][] or contact us at [info@triply.cc][]. 
