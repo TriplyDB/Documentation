@@ -2,7 +2,7 @@
 title: "New TriplyDB Features (June 2021)"
 path: "/blog/2021-06-new-features"
 date: "2021-06-23T21:20:00"
-# author: TODO
+author: tdegrootrdehaan
 ---
 
 Hello all, three months have passed since the last TriplyDB feature blog and since then we have already created several new features for you to enjoy. TriplyDB is a fast moving linked data platform and we are continuously looking for ways to improve your experience with our software. Let us show you some of the new features we developed recently:
