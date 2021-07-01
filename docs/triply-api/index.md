@@ -178,6 +178,10 @@ returned entities.
 The text search API is only available for a dataset after an
 ElasticSearch service has been created for that dataset.
 
+Two types of searches can be performed: a simple search, and a custom 
+search. Simple searches require one search term for a fuzzy match. Custom
+searches accept a JSON object conforming to [the elasticsearch query DSL](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl.html).
+
 #### URI path
 
 Text search requests are sent to the following URI path:
@@ -229,8 +233,27 @@ example request. The reply includes two results for search string
 }
 ```
 
-#### Example
+#### Examples
 
+##### Simple search
+Perform a search for the string *mew*:
 ```bash
-curl 'https://api.triplydb.com/datasets/academy/pokemon/services/text/search?query=mew'
+curl 'https://api.triplydb.com/datasets/academy/pokemon/services/search/search?query=mew'
+```
+
+##### Custom search
+Perform a search using the custom query:
+```json
+{
+  "query": {
+    "simple_query_string": {
+      "query": "pikachu"
+    }
+  }
+}
+```
+```bash
+curl -X POST 'https://api.triplydb.com/datasets/academy/pokemon/services/search/search' \
+     -d '{"query":{"simple_query_string":{"query":"pikachu"}}}' \
+     -H 'content-type: application/json'
 ```
