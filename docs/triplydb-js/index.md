@@ -638,36 +638,6 @@ const me = (await client.getAccount()).asUser()
 
 This method returns a user object.  See section [`User`](#user) for an overview of the methods that can be called on such objects.
 
-### 3.1.6 `Client.toString()`
-
-Emits a human-readable representation of this client object in the form of a string.
-
-#### Examples
-
-The following example writes a human-readable representation of the current client connection to the screen.
-
-```typescript
-console.log(client)
-```
-
-This is an example of the output of this call:
-
-```
-TriplyDB catalog ‘TriplyDB’:
-  - Tagline: The Network Effect for Your Data
-  - Description: Store, explore and share linked data with TriplyDB
-  - Version: 21.05.1 (build date: May 20th, 2021)
-
-  Locations:
-    - GUI location: https://triplydb.com
-    - API location: https://triplydb.com
-    - Contact email: mailto:info@triply.cc
-
-  Legal:
-    - General terms: https://triply.cc/pdf/triplydb/general-terms-of-use.pdf
-    - Privacy policy: https://triply.cc/pdf/triplydb/privacy-policy.pdf
-```
-
 ## 3.2 Account
 
 Instances of the `Account` class denote an account in TriplyDB.  Accounts are either organizations (see the [`Organization`](#organization) section) or users (see the [`User`](#user) section).
@@ -864,6 +834,10 @@ const me = await client.getUser()
 
 This method returns an organization object.  See section [`Organization`](#organization) for an overview of the methods that can be called on such objects.
 
+### 3.2.6 Account.ensureDataset(name: string, UNKNOWN)
+
+TODO
+
 ### 3.2.6 Account.exists() 🚨
 
 Returns `true` if this account still exists in the TriplyDB catalog, and returns `false` otherwise.
@@ -1004,16 +978,31 @@ for await (const item of await account.getPinnedItems()) {
 }
 ```
 
+🚨 does not work ATM <https://issues.triply.cc/issues/5387>
+
+#### See also
+
+This function returns various types of objects.  Each object type has different functionalities:
+
+- See section [`Dataset`](#dataset) for an overview of the methods for dataset objects.
+- See section [`Query`](#query) for an overview of the methods for query objects.
+- See section [`Story`](#story) for an overview of the methods for story objects.
+
 ### 3.2.10 Account.getQuery(name: string)
 
 Returns the TriplyDB query with the given `name`.
 
-The following example returns a query called `animal-gallery` for the Triply account:
+#### Examples
+
+The following example prints the query string for a query called `animal-gallery` that belongs to the account called `Triply`:
 
 ```typescript
 const account = await client.getAccount("Triply")
 const query = await account.getQuery("animal-gallery")
+console.log((await query.getInfo()).requestConfig?.payload.query)
 ```
+
+#### See also
 
 See section [`Query`](#query) for an overview of the methods for query objects.
 
@@ -1021,7 +1010,9 @@ See section [`Query`](#query) for an overview of the methods for query objects.
 
 Returns an iterator with the queries that belong to the account.
 
-The following example prints the names of the queries that belong to the Triply account:
+#### Examples
+
+The following example prints the names of the queries that belong to the account called `Triply`:
 
 ```typescript
 const account = await client.getAccount("Triply")
@@ -1029,25 +1020,49 @@ for await (const query of account.getQueries()) {
   console.log((await query.getInfo()).name)
 }
 ```
+
+#### See also
 
 See section [`Query`](#query) for an overview of the methods for query objects.
 
 ### 3.2.12 Account.getStory(name: string)
 
+Returns the TriplyDB story with the given `name`.
+
+#### Examples
+
+The following example prints the paragraphs in the story called `the-iris-dataset` that is published under the account called `Triply`.  Stories are sequences of paragraphs and queries.  This program prints the paragraphs in the sequence in which they appear in the story.
+
+```typescript
+const account = await client.getAccount("Triply")
+const story = await account.getStory("the-iris-dataset")
+for (const element of (await story.getInfo()).content) {
+  if (element.type = "paragraph") {
+    console.log(element.paragraph)
+  }
+}
+```
+
+#### See also
+
 See section [`Story`](#story) for an overview of the methods for story objects.
 
 ### 3.2.13 Account.getStories()
 
-Returns an iterator with the queries that belong to the account.
+Returns an iterator with the TriplyDB stories that belong to the account.
+
+#### Examples
 
 The following example prints the names of the queries that belong to the Triply account:
 
 ```typescript
 const account = await client.getAccount("Triply")
-for await (const query of account.getQueries()) {
-  console.log((await query.getInfo()).name)
+for await (const story of account.getStories()) {
+  console.log((await story.getInfo()).name)
 }
 ```
+
+#### See also
 
 See section [`Story`](#story) for an overview of the methods for story objects.
 
@@ -1059,6 +1074,8 @@ TODO: How does one specify an array in TS?
 
 Sets a new image that characterizes the account.  A circular version of this image is displayed inside the TriplyDB GUI.  This image is also disclosed in account metadata.
 
+#### Examples
+
 The following example uploads the local image in file `logo.svg` and set it as the characterizing image for the Triply account:
 
 ```typescript
@@ -1066,9 +1083,11 @@ const account = client.getAccount("Triply")
 await account.setAvatar("logo.svg")
 ```
 
-### 3.2.16 Account.update
+### 3.2.16 Account.update(metadata: object)
 
 Updates the metadata for this account.
+
+TODO
 
 ## 3.3 Organization
 
@@ -1624,7 +1643,7 @@ The following code example removes all graphs from the `animals` dataset:
 ```typescript
 const user = await client.getUser()
 const dataset = await user.getDataset("animals")
-dataset.removeAllGraphs();
+dataset.removeAllGraphs()
 ```
 
 #### Dataset.renameGraph(from: string, to: string)
@@ -1981,68 +2000,78 @@ echo $TRIPLYDB_TOKEN
 To reliably retrieve a large number of results as the output of a ```construct``` or ```select``` query, follow these steps:
 
 1. Import the triplydb library.
+
    ```typescript
-   import Client from '@triply/triplydb';
+   import Client from '@triply/triplydb'
    ```
 
 2. Set your parameters, regarding the TriplyDB catalog and the account in which you have saved the query as well as the name of the query.
 
-	```typescript
-	const client= Client.get({url: ".."})
-	const account = await client.getAccount("account-name");
-	const query = await account.getQuery("name-of-some-query")
-	```
-	If the query is not public, you should set your API token rather than the URL.
-	```typescript
+   ```typescript
+   const client= Client.get({url: ".."})
+   const account = await client.getAccount("account-name")
+   const query = await account.getQuery("name-of-some-query")
+   ```
 
-	const client = Client.get({token: process.env['TRIPLYDB_TOKEN']})
-	```
+   If the query is not public, you should set your API token rather than the URL.
+   ```typescript
+   const client = Client.get({token: process.env['TRIPLYDB_TOKEN']})
+   ```
 
 3. Do not forget that we perform TriplyDB-js requests within an [async context](#create-your-first-script). That is:
 
-	```typescript
-
-	async function run() {
-    // your code goes here
-	}
-  run()
-	```
+   ```typescript
+   async function run() {
+     // your code goes here
+   }
+   run()
+   ```
 
 4. Get the results of a query by setting a ```results``` variable.
    More specifically, for construct queries:
 
-	```typescript
-	const results = query.results().statements()
-	```
-	For select queries:
-	```typescript
-	const results = query.results().bindings()
-	```
-	Note that for ```construct``` queries, we use ```.statements()```, while for ```select``` queries, we use ```.bindings()```.
+   ```typescript
+   const results = query.results().statements()
+   ```
 
-	Additionally, saved queries can have "API variables" that allow you to specify variables that are used in the query. Thus, if you have query parameters, pass their values as the first argument to `results` as follows:
-	```typescript
-	// For construct queries
-	const results = query.results({someVariable: "value of someVariable", anotherVariable: "value of anotherVariable"}).statements()
-	// For select queries:
-	const results = query.results({someVariable: "value of someVariable", anotherVariable: "value of anotherVariable"}).bindings()
-	```
+   For select queries:
+
+   ```typescript
+   const results = query.results().bindings()
+   ```
+
+   Note that for ```construct``` queries, we use ```.statements()```, while for ```select``` queries, we use ```.bindings()```.
+
+   Additionally, saved queries can have "API variables" that allow you to specify variables that are used in the query. Thus, if you have query parameters, pass their values as the first argument to `results` as follows:
+
+   ```typescript
+   // For construct queries
+   const results = query.results({someVariable: "value of someVariable", anotherVariable: "value of anotherVariable"}).statements()
+   // For select queries:
+   const results = query.results({someVariable: "value of someVariable", anotherVariable: "value of anotherVariable"}).bindings()
+   ```
+
 5. To read the results you have three options:
-  1. You can iterate through the results per quad in a ```for``` loop.
-   ```typescript
-   // Iterating over the results per quad
-   for await (const row of results) {
-     // execute something
-   }
-   ```
-  2. Save the results to a file. Note that results can be saved in a file using `.toFile` only in the case of `construct` queries.
-   ```typescript
-   // Saving the results of a construct query to file
-   await results.toFile("path/to/some/file")
-   ```
-  3. Load the results into memory. Note that this is often not necessary and that large amounts of data can cause your program to run out of memory.
 
-   ```typescript
-   // Loading results of a construct or select query into memory
-   const array = await results.toArray()
-   ```
+   1. You can iterate through the results per quad in a `for` loop.
+
+      ```typescript
+      // Iterating over the results per quad
+      for await (const row of results) {
+        // execute something
+      }
+      ```
+
+     2. Save the results to a file. Note that results can be saved in a file using `.toFile` only in the case of `construct` queries.
+
+      ```typescript
+      // Saving the results of a construct query to file
+      await results.toFile("path/to/some/file")
+      ```
+
+     3. Load the results into memory. Note that this is often not necessary and that large amounts of data can cause your program to run out of memory.
+
+      ```typescript
+      // Loading results of a construct or select query into memory
+      const array = await results.toArray()
+      ```
