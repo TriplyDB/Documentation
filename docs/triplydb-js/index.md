@@ -200,7 +200,7 @@ const client = Client.get({
 });
 ```
 
-#### Client.getApiInfo()
+#### Client.getInfo()
 
 Returns information about the TriplyDB instance that is associated with the
 current API token.
@@ -208,7 +208,7 @@ current API token.
 The following example returns an object describing the used TriplyDB instance:
 
 ```typescript
-console.log(await client.getApiInfo());
+console.log(await client.getInfo());
 ```
 
 #### Client.getAccount(accountName: string)
@@ -224,26 +224,18 @@ console.log(await client.getAccount("acme"));
 See section [`Account`](#account) for an overview of the methods that
 can be used with account objects.
 
-#### Client.getDataset(accountName: string, datasetName: string)
+#### Client.getAccounts()
 
-Returns the dataset with name `datasetName` that is published by the account
-with name `accountName`.
+Returns details about all the accounts on the TriplyDB instance.
 
-The following example returns the dataset called `cats` published by the user
-called `john-doe`:
+The following example returns all accounts:
 
 ```typescript
-console.log(client.getDataset("john-doe", "cats"));
+console.log(await client.getAccounts());
 ```
 
-This function is a shorthand for a combination of the [`Client.getAccount(name:
-string)`](#clientgetaccountname-string) and the [`Account.getDataset(name:
-string)`](#accountgetdatasetname-string) call.  Therefore, the following example
-returns the same result as the above one:
-
-```typescript
-console.log((await client.getUser("john-doe")).getDataset("cats"));
-```
+See section [`Account`](#account) for an overview of the methods that
+can be used with account objects.
 
 #### Client.getOrganization(name: string)
 
@@ -291,49 +283,36 @@ The `Account` class denotes a TriplyDB account.  Accounts can be either organiza
 
 The `Account` class refers to: 
 ```typescript
-client.getAccount()
+client.getAccount();
 ```
 
-#### Account.asOrg()
+#### Account.asOrganization()
 
-If the account is an organization, returns information about the account. Otherwise,results in the error: "This is a user. Cannot fetch this as an organization."
+Ensures that the account is an organization. If it's not, the following error is raised: "This is a user. Cannot fetch this as an organization."
 
 Best used as the following:
 ```typescript
-  console.log(
-  (await client.getAccount()).asOrg());
+console.log((await client.getAccount("acme")).asOrganization());
 ```
 
 #### Account.asUser()
 
-If the account is a user, returns information about the account. Otherwise,results in the error: "This is an organization. Cannot fetch this as a user."
+Ensures that the account is a user. If it's not, the following error is raised: "This is an organization. Cannot fetch this as a user."
 
 Best used as the following:
 ```typescript
-  console.log(
-  (await client.getAccount()).asUser());
-```
-
-#### Account.exists()
-
-If the account exists, returns true. Otherwise, returns false.
-
-Best used as the following:
-```typescript
-  console.log(
-  await (await client.getAccount()).exists());
+console.log((await client.getAccount()).asUser());
 ```
 
 #### Account.getInfo()
 
 Returns an overview of the account in the form of a JSON object.
 
-The following example code prints an overview of account that is
+The following example code prints an overview of the account that is
 associated with the used API token:
 
 ```typescript
-console.log(
-await (await client.getAccount()).getInfo());
+console.log(await (await client.getAccount()).getInfo());
 ```
 
 Example output for running the above code:
@@ -356,39 +335,28 @@ Example output for running the above code:
 }
 ```
 
-#### Account.getName()
-
-Returns the name of the account.
-
-The following example code prints the name of the account associated
-with the current API token:
-
-```typescript
-console.log(
-    await (await client.getAccount()).getName());
-```
-
 ### Organization
 
 The `Organization` class denotes a TriplyDB organization.
 
-An 'Organization' class is obtained via:
+An `Organization` class is obtained via:
 ```typescript
 console.log(await client.getOrganization("organization's name in triplyDB"));
 ```
 
-#### Organization.addDataset(metadata: object)
+#### Organization.addDataset(name: string, metadata: object)
 
 Adds a new dataset to the `Organization`.
 
-This only works if the used API token gives write access to the
-`Organization`.
+This only works if the used API token gives write access to the `Organization`.
 
-Argument `metadata` is a JSON object that specifies the dataset metadata.  It
-has the following keys:
+Argument _`name`_ is the internal name of the dataset.  This name can only contain alphanumeric characters and hyphens.
+
+Argument `metadata` is an optional JSON object that specifies the dataset metadata.  It
+has the following keys, all of which are optional:
 
 <dl>
-  <dt><code>accessLevel</code> (required)</dt>
+  <dt><code>accessLevel</code></dt>
   <dd>
     <p>The access level of the dataset. The following values are supported:</p>
     <dl>
@@ -401,11 +369,11 @@ has the following keys:
     </dl>
     <p>When no access level is specified, the most conservative access level (<code>private</code>) is used.</p>
   </dd>
-  <dt><code>description</code> (optional)</dt>
+  <dt><code>description</code></dt>
   <dd>The description of the dataset.  This description can make use of Markdown (see the <a href="/docs/triply-db-getting-started/#markdown-support">Markdown reference</a>) for details.</dd>
-  <dt><code>displayName</code> (optional)</dt>
+  <dt><code>displayName</code></dt>
   <dd>The human-readable name of the dataset.  This name may contain spaces and other non-alphanumeric characters.</dd>
-  <dt><code>license</code> (optional)</dt>
+  <dt><code>license</code></dt>
   <dd>
     <p>The license of the dataset.  The following license strings are currently supported:</p>
     <ul>
@@ -418,28 +386,16 @@ has the following keys:
     </ul>
     <p>If no license is provided, the license is given value <code>"None"</code>.</p>
   </dd>
-  <dt><code>name</code> (required)</dt>
-  <dd>The internal name of the dataset.  This name can only contain alphanumeric characters and hyphens.</dd>
+  <dt><code>prefixes</code></dt>
+  <dd>IRI prefixes to be applied to the dataset. This is an object with the prefixes as keys, and the IRI's as values.</dd>
 </dl>
 
 The following code example creates a new dataset (called `dogs`) under the
-`acme` organization, with private access, a description, a display name, and a license:
-
-```typescript
-const organization = client.getOrganization("acme");
-console.log((await organization).addDataset({accessLevel: "private", description:"puppies", displayName:"Doggos", license:"PDDL", name:"dogs"}));
-```
-
-#### Organization.exists()
-
-Returns whether the organization still exists.
-
-The following example code prints `true` in case the account (still) exists, and
-prints `false` otherwise:
+`acme` organization, with private access, a description, a display name, a license and one prefix:
 
 ```typescript
 const organization = await client.getOrganization("acme");
-console.log(await (organization).exists());
+console.log(await organization.addDataset("dogs", { description: "puppies", displayName: "Doggos", license: "PDDL", prefixes: { dc: "http://purl.org/dc/elements/1.1/" } }));
 ```
 
 #### Organization.getDataset(name: string)
@@ -453,8 +409,8 @@ for an overview of the methods that can be called on dataset objects.
 The following example prints a specific dataset object:
 
 ```typescript
-const organization = client.getOrganization("acme");
-console.log((await organization).getDataset("dogs"));
+const organization = await client.getOrganization("acme");
+console.log(await organization.getDataset("dogs"));
 ```
 
 #### Organization.getDatasets()
@@ -466,33 +422,54 @@ The following example prints the list of datasets that belong to the
 organization named `acme`:
 
 ```typescript
-  const organization = await client.getOrganization("acme");
+const organization = await client.getOrganization("acme");
 console.log(await organization.getDatasets());
 ```
 
-#### Organization.getPinnedDatasets()
+#### Organization.getPinnedItems()
 
-Returns the list of datasets that are pinned for the given `Organization`.  The
-order reflects the order in which the datasets appear on the organization
-page in the Triply GUI.
+Returns the list of datasets, stories and queries that are pinned for the given `Organization`.  The
+order reflects the order in which they appear on the organization page in the Triply GUI.
 
-The following example prints the list of pinned datasets for the organization
+The following example prints the list of pinned items for the organization
 named `acme`:
 
 ```typescript
 const organization = await client.getOrganization("acme");
-console.log(await organization.getPinnedDatasets());
+console.log(await organization.getPinnedItems());
 ```
 
-#### Organization.addMembers()
+#### Organization.addMember(user: User | string, role: Role)
 
-Adds members for the given `Organization`, with role of either member or owner.
+Adds a member to the given `Organization`, with role of either member or owner.
 
-The following example adds user of name "Bugs" to the organization "acme", wi
+The `user` argument can be a user object, or the account name of the user which should be 
+added to the organization.
+
+The `role` argument can be either `"member"` or `"owner"`. `"member"` will be chosen by default, if
+no argument is given.
+
+The following example adds user with name "Bugs" to the organization "acme", as a member.
 
 ```typescript
 const organization = await client.getOrganization("acme");
-console.log(organization.addMembers({user:"bugs", role:"member"}));
+console.log(await organization.addMember("Bugs"));
+```
+
+#### Organization.removeMember(user: User | string)
+
+Removes a member from the given `Organization`, if they are a part of it.
+
+The `user` argument can be a user object, or the account name of the user which should be 
+remove from the organization.
+
+If the user isn't a part of the organization, an error is thrown.
+
+The following example removes the user with name "Bugs" from the organization "acme".
+
+```typescript
+const organization = await client.getOrganization("acme");
+await organization.removeMember("Bugs");
 ```
 
 #### Organization.delete()
@@ -501,7 +478,7 @@ Deletes the organization.
 
 ```typescript
 const organization = await client.getOrganization("acme");
-console.log(organization.delete());
+console.log(await organization.delete());
 ```
 
 
@@ -510,25 +487,27 @@ console.log(organization.delete());
 The [`User`](#user) class represents a TriplyDB user. It is accessed via:
 
 ```typescript
-client.getUser("user name");
+console.log(await client.getUser("user name"));
 ```
 
 Users cannot be created or deleted through the TriplyDB-js library.  See the
 [Triply Console documentation](/docs/triply-db-getting-started) for how to
 create and delete users through the web-based GUI.
 
-#### User.addDataset(metadata: object)
+#### User.addDataset(name: string, metadata: object)
 
 Adds a new dataset for the given `User`.
 
 This only works if the used API token gives write access to the user
 account.
 
-Argument `metadata` is a JSON object that specifies the dataset's metadata.  It
-has the following keys:
+Argument _`name`_ is the internal name of the dataset. This name can only contain alphanumeric characters and hyphens.
+
+Argument _`metadata`_ is an optional JSON object that specifies the dataset's metadata. It
+has the following keys, all of which are optional:
 
 <dl>
-  <dt><code>accessLevel</code> (optional)</dt>
+  <dt><code>accessLevel</code></dt>
   <dd>
     <p>The access level of the dataset. The following values are supported:</p>
     <dl>
@@ -541,11 +520,11 @@ has the following keys:
     </dl>
     <p>When no access level is specified, the most conservative access level (<code>private</code>) is used.</p>
   </dd>
-  <dt><code>description</code> (optional)</dt>
+  <dt><code>description</code></dt>
   <dd>The description of the dataset.  This description can make use of Markdown layout (see the <a href="/docs/triply-db-getting-started/#markdown-support">Markdown reference</a>) for details.</dd>
-  <dt><code>displayName</code> (optional)</dt>
+  <dt><code>displayName</code></dt>
   <dd>The human-readable name of the dataset.  This name may contain spaces and other non-alphanumeric characters.</dd>
-  <dt><code>license</code> (optional)</dt>
+  <dt><code>license</code></dt>
   <dd>
     <p>The license of the dataset. The following license strings are currently supported:</p>
     <ul>
@@ -558,60 +537,43 @@ has the following keys:
     </ul>
     <p>If no license is provided, the license is given value <code>"None"</code>.</p>
   </dd>
-  <dt><code>name</code> (required)</dt>
-  <dd>The internal name of the dataset.  This name can only contain alphanumeric characters and hyphens.</dd>
+  <dt><code>prefixes</code></dt>
+  <dd>IRI prefixes to be applied to the dataset. This is an object with the prefixes as keys, and the IRI's as values.</dd>
 </dl>
 
 The following code example creates a new dataset (called `cats`) for the user
-with name `john-doe`, with private access, a description, display name, and a license:
+with name `john-doe`, with private access, a description, display name, a license and one prefix:
 
 ```typescript
 const user = await client.getUser("john-doe");
-  console.log(await(user.addDataset({accessLevel: "private", description:"cats > dogs", displayName: "Cats", license:"PDDL", name: "cats"})));
-
+console.log(await(user.addDataset({ accessLevel: "private", description: "cats > dogs", displayName: "Cats", license: "PDDL", prefixes: { dc: "http://purl.org/dc/elements/1.1/" } })));
 ```
 
-#### User.createOrganization(metadata: object)
+#### User.createOrganization(accountName: string, info: object)
 
 Creates a new organization for which `User` will be the owner. This only works if the used API token includes write access for the
 `User`.
 
-Argument `metadata` is a JSON object that specifies the organization metadata.
+The _`accountName`_ argument is the internal name of the organization. This name can only contain alphanumeric characters and hyphens.
+
+The optional _`info`_ argument is a JSON object that specifies the organization metadata.
 It has the following keys:
 
 <dl>
-  <dt><code>accountName</code> (required)</dt>
-  <dd>The internal name of the organization.  This name can only contain alphanumeric characters and hyphens.</dd>
-  <dt><code>description</code> (optional)</dt>
+  <dt><code>description</code></dt>
   <dd>The description of the organization.  This description can make use of Markdown layout (see the <a href="/docs/triply-db-getting-started/#markdown-support">Markdown reference</a>) for details.</dd>
   <dt><code>email</code></dt>
   <dd>The email address at which the organization can be reached.</dd>
-  <dt><code>name</code> (optional)</dt>
+  <dt><code>name</code></dt>
   <dd>The human-readable name of the organization.  This name may contain spaces and other non-alphanumeric characters.</dd>
 </dl>
 
 The following example creates an organization with name `acme` for which the
-user with name `john-doe` will be the owner.  Notice that in addition to the required internal name (`"accountName": "acme"`), an optional display name (`"name": "Acme Corporation"`) is specified as well.
+user with name `john-doe` will be the owner.  Notice that in addition to the required internal name (`"acme"`), an optional display name (`name: "Acme Corporation"`) is specified as well.
 
 ```typescript
 const user = await client.getUser("john-doe");
-console.log(user.createOrganization({"accountName": "acme",
-                                    "name": "Acme Corporation"}));
-```
-
-#### User.exists()
-
-Returns whether the `User` still exists.
-
-While it is not possible to delete users with TriplyDB-js, they can be deleted
-― possibly by somebody else ― through the Triply Console.
-
-The following example code prints `true` in case the account (still) exists, and
-prints `false` otherwise:
-
-```typescript
-const user = await client.getUser("john-doe");
-console.log(await user.exists());
+console.log(await user.createOrganization("acme", { name: "Acme Corporation" }));
 ```
 
 #### User.getDataset(name: string)
@@ -625,7 +587,7 @@ The following example prints a specific dataset object:
 
 ```typescript
 const user = await client.getUser("john-doe");
-console.log(user.getDataset("cats"));
+console.log(await user.getDataset("cats"));
 ```
 
 #### User.getDatasets()
@@ -656,24 +618,51 @@ const user = await client.getuser("john-doe");
 console.log(await user.getOrganizations());
 ```
 
-#### User.getPinnedDatasets()
+#### User.getPinnedItems()
 
-Returns the list of datasets that are pinned for the given `User`.
+Returns the list of datasets, stories and queries that are pinned for the given `User`.
 
-The order in the list reflects the order in which the datasets appear on the
-user page in the Triply GUI.
+The order in the list reflects the order in which they appear on the user page in the Triply GUI.
 
-The following example prints the list of pinned datasets for the user named
-`john-doe`:
+The following example prints the list of pinned items for the user named `john-doe`:
 
 ```typescript
 const user = await client.getUser("john-doe");
-console.log(await user.getPinnedDatasets());
+console.log(await user.getPinnedItems());
 ```
 
 ### Dataset
 
 The [`Dataset`](#dataset) class represents a TriplyDB dataset.
+
+#### Dataset.addPrefixes(prefixes: object)
+
+Adds IRI prefixes to the dataset. 
+
+The _`prefixes`_ argument is an object, with prefixes as keys, and their corresponding IRI's as values.
+
+The following example code applies the `dc` and `foaf` prefixes to the specified dataset.
+
+```typescript
+const dataset = await (await client.getAccount()).getDataset("dataset-name");
+await dataset.addPrefixes({
+  dc:   "http://purl.org/dc/elements/1.1/",
+  foaf: "http://xmlns.com/foaf/0.1/"
+});
+```
+
+#### Dataset.removePrefixes(prefixes: string[])
+
+Removes IRI prefixes from the dataset. 
+
+The `prefixes` argument is a string array, containing the prefix labels to be removed. 
+
+The following example code removes the `dc` and `foaf` prefixes from the specified dataset.
+
+```typescript
+const dataset = await (await client.getAccount()).getDataset("dataset-name");
+await dataset.removePrefixes(["dc", "foaf"]);
+```
 
 #### Dataset.addService(type: string, name: string)
 
@@ -697,9 +686,9 @@ dataset. One endpoint will be used in the acceptance environment
 while the other endpoint will be used in the production system.
 
 ```typescript
-const dataset = await (await client.getAccount()).getDataset("dataset name");
-const acceptance = dataset.addService("sparql", "acceptance");
-const production = dataset.addService("sparql", "production");
+const dataset = await (await client.getAccount()).getDataset("dataset-name");
+const acceptance = await dataset.addService("sparql", "acceptance");
+const production = await dataset.addService("sparql", "production");
 ```
 
 #### Dataset.getAssets()
@@ -711,10 +700,8 @@ The following example code retrieves the assets for a specific
 dataset:
 
 ```typescript
-  console.log(await (await client
-      .getAccount())
-      .getDataset("dataset name")
-      .getAssets());
+const dataset = await (await client.getAccount()).getDataset("dataset-name");
+console.log(await dataset.getAssets());
 ```
 
 #### Dataset.getPrefixes()
@@ -724,10 +711,8 @@ Returns the prefixes that are defined for the dataset.
 Example:
 
 ```typescript
-  console.log(await (await client
-      .getAccount())
-      .getDataset("dataset name")
-      .getPrefixes());
+const dataset = await (await client.getAccount()).getDataset("dataset-name");
+console.log(await dataset.getPrefixes());
 ```
 
 #### Dataset.copy(account: string, dataset: string)
@@ -737,10 +722,8 @@ organization) of the copy is specified with parameter `account`.  The
 name of the copy is specified with parameter `dataset`.
 
 ```typescript
-  console.log(await (await client
-      .getAccount())
-      .getDataset("original dataset name")
-      .copy("account name","copy dataset name"));
+const dataset = await (await client.getAccount()).getDataset("dataset-name");
+console.log(await dataset.copy("account name", "copy dataset name"));
 ```
 
 This operation does not overwrite existing datasets: if the copied-to
@@ -762,10 +745,8 @@ The following example code deletes a specific dataset that is part of
 the account associated with the current API token:
 
 ```typescript
-  (await client
-    .getAccount())
-    .getDataset("some-dataset")
-    .delete();
+const dataset = await (await client.getAccount()).getDataset("dataset-name");
+await dataset.delete();
 ```
 
 #### Dataset.deleteGraph(name: string)
@@ -776,31 +757,8 @@ The following example code deletes a specific graph from a specific
 dataset:
 
 ```typescript
- (await client
-  .getAccount())
-  .getDataset("some-dataset")
-  .deleteGraph("https://example.org/some-graph");
-```
-
-#### Dataset.exists()
-
-Returns whether the dataset still exists.
-
-Datasets can still be considered to exist when the [Dataset.delete()](#datasetdelete)
-function is called, when the
-[Dataset.rename(string)](#datasetrenamename-string) function is
-called, or when somebody deletes the dataset from the [Triply
-Console](/docs/triply-db-getting-started).
-
-The following example code prints `true` in case the dataset still
-exists, and prints `false` otherwise:
-
-```typescript
-console.log(
-await (await client
-    .getAccount())
-    .getDataset("some-dataset")
-    .exists());
+const dataset = await (await client.getAccount()).getDataset("dataset-name");
+await dataset.deleteGraph("https://example.org/some-graph");
 ```
 
 #### Dataset.getServices()
@@ -811,11 +769,8 @@ The following example code emits the services that are enabled for a
 specific dataset:
 
 ```typescript
-console.log(
-await (await client
-    .getAccount())
-    .getDataset("some-dataset")
-    .getServices());
+const dataset = await (await client.getAccount()).getDataset("dataset-name");
+console.log(await dataset.getServices());
 ```
 
 #### Dataset.getGraphs()
@@ -827,11 +782,8 @@ The following example code retrieves the graphs for a specific
 dataset:
 
 ```typescript
-console.log(
-await (await client
-    .getAccount())
-    .getDataset("some-dataset")
-    .getGraphs());
+const dataset = await (await client.getAccount()).getDataset("dataset-name");
+console.log(await dataset.getGraphs());
 ```
 
 #### Dataset.importFromDataset(from: Dataset, graphs: mapping)
@@ -844,17 +796,9 @@ graph from the existing dataset “d1”. Notice that the graph can be
 renamed as part of the import.
 
 ```typescript
-  const dataset1 = (await client
-    .getAccount())
-    .getDataset("some-dataset");
-  const dataset2 = await (await client
-    .getAccount())
-    .addDataset({accessLevel: "private",
-                 name: "other-dataset"});
-  await dataset1
-    .importFromDataset(dataset2,
-            {"https://example.org/dataset2/graph":
-             "https://example.org/dataset1/graph"});
+const dataset1 = await (await client.getAccount()).getDataset("dataset-name");
+const dataset2 = await (await client.getAccount()).addDataset({ accessLevel: "private", name: "other-dataset" });
+await dataset1.importFromDataset(dataset2, { "https://example.org/dataset2/graph": "https://example.org/dataset1/graph" });
 ```
 Note that you can also import from URLs with:
 
@@ -877,29 +821,10 @@ Returns an overview of the dataset in the form of a JSON object.
 Example:
 
 ```typescript
-  console.log(
-    await (await client
-      .getAccount())
-      .getDataset("dataset")
-      .getInfo());
+const dataset = await (await client.getAccount()).getDataset("dataset-name");
+console.log(await dataset.getInfo());
 ```
 
-#### Dataset.query()
-
-Retrieves the query object for this dataset.
-
-See section [Query](#query) for an overview of the methods that can be
-used with query objects.
-
-The following code example retrieves the query object of a specific
-dataset:
-
-```typescript
-  const query = (await client
-    .getAccount("some-account"))
-    .getDataset("some-dataset")
-    .query();
-```
 
 #### Dataset.removeAllGraphs()
 
@@ -908,10 +833,8 @@ Removes all graphs from this dataset.
 The following code example removed all graphs from a specific dataset:
 
 ```typescript
-  await (await client
-    .getAccount("some-account"))
-    .getDataset("some-dataset")
-    .removeAllGraphs();
+const dataset = await (await client.getAccount()).getDataset("dataset-name");
+await dataset.removeAllGraphs();
 ```
 
 #### Dataset.renameGraph(from: string, to: string)
@@ -924,13 +847,11 @@ The following example code renames a specific graph of a specific
 dataset:
 
 ```typescript
-  const dataset = (await client
-    .getAccount())
-    .getDataset("some-dataset");
-  await dataset.renameGraph(
-    "https://example.org/old-graph",
-    "https://example.org/new-graph"
-  );
+const dataset = await (await client.getAccount()).getDataset("dataset-name");
+await dataset.renameGraph(
+  "https://example.org/old-graph",
+  "https://example.org/new-graph"
+);
 ```
 
 #### Dataset.update(metadata: object)
@@ -977,11 +898,8 @@ The following keys are supported:
 Example: updating the dataset's access level, description, display name, license, and name.
 
 ```typescript
-  const dataset = (await client
-    .getAccount())
-    .getDataset("original dataset name");
-dataset.update({accessLevel:"private",description:"desc", displayName:"disp", license:"PDDL", name:"updated name"})
-
+const dataset = await (await client.getAccount()).getDataset("original dataset name");
+await dataset.update({ accessLevel: "private", description: "desc", displayName: "disp", license: "PDDL", name: "updated name"})
 ```
 
 #### Dataset.uploadAsset(assetName: string, filePath: string)
@@ -992,84 +910,13 @@ Assets can be source data files prior to running an ETL process,
 documentation files describing the dataset, or media files
 (audio/image/video) that are referenced by the RDF graph.
 
-The following example code uploads a PDF file documenting the
+The following example code uploads source CSV data, as well as a PDF file documenting the
 corresponding dataset:
 
 ```typescript
-  (await client
-    .getAccount())
-    .getDataset("some-dataset")
-    .uploadAsset(
-      "source.csv.gz", // Upload source data,
-      "documentation.pdf" // and documentation.
-    );
-```
-
-### Query
-
-The query object allows Quad Queries to be performed.  Quad Queries
-allow statements to be matched by setting a combination of a subject,
-predicate, object, and/or graph term.
-
-Quad Queries are an extension of the Triple Pattern queries that are
-defined in the [SPARQL 1.1
-Query](https://www.w3.org/TR/sparql11-query/#QSynTriples)
-specification.
-
-The following example code retrieves (at most) 100 triples that have
-term `rdfs:subClassOf` in the predicate position:
-
-```typescript
-  (await client
-    .getAccount())
-    .getDataset("some-dataset")
-    .query()
-    .subject("sub")
-    .predicate("http://www.w3.org/2000/01/rdf-schema#subClassOf")
-    .object("obj")
-    .limit(100) // Sets the maximum number of results obtained
-    .exec(); // executes the query
-```
-
-
-#### Query.object(name: string)
-
-Sets the object term for this query.  If the object term is set, then
-only triples with that object term are returned by the query.
-
-#### Query.predicate(iri: string)
-
-Sets the predicate term for this query.  If the predicate term is set,
-then only triples with that predicate term are returned by the query.
-
-#### Query.subject(iri: string)
-
-Sets the subject term for this query.  If the subject term is set,
-then only triples with that subject term are returned by the query.
-
-#### Query.count()
-
-Returns the number of results for the current query. Example:
-```typescript
-  (await client
-    .getAccount())
-    .getDataset("some-dataset")
-    .query()
-    .count();
-```
-
-#### Query.graph(graph iri: string)
-
-Sets the graph term for this query.  If the graph term is set, then
-only triples in that graph are returned by the query. Example:
-
-```typescript
-  (await client
-    .getAccount())
-    .getDataset("some-dataset")
-    .query()
-    .graph("graph iri")
-    .exec();
+const dataset = await (await client.getAccount()).getDataset("dataset-name");
+await dataset.uploadAsset("source-data", "source.csv.gz");
+await dataset.uploadAsset("documentation", "documentation.pdf");
 ```
 
 ### Service
@@ -1084,10 +931,8 @@ and [`Dataset.getServices`](#datasetgetservices) functions.
 The following code example starts a specific service:
 
 ```typescript
-  (await (await client
-    .getAccount("some-account"))
-    .getDataset("some-dataset")
-    .addService("sparql", "new-service"));
+const dataset = await (await client.getAccount()).getDataset("dataset-name");
+await dataset.addService("sparql", "new-service");
 ```
 
 The following service statuses are defined:
@@ -1103,11 +948,9 @@ The following service statuses are defined:
 Deletes a service. Example:
 
 ```typescript
-  const service = await (await client
-      .getAccount("some-account"))
-      .getDataset("some-dataset")
-      .addService("sparql", "new-service");
-service.delete()
+const dataset = await (await client.getAccount()).getDataset("dataset-name");
+const service = await dataset.addService("sparql", "new-service");
+await service.delete();
 ```
 
 #### Service.getInfo()
@@ -1118,19 +961,15 @@ The following example code prints information about the newly created
 service (named `new-service`):
 
 ```typescript
-  const service = await (await client
-    .getAccount("some-account"))
-    .getDataset("some-dataset")
-    .addService("sparql", "new-service");
-  console.log(service.getInfo());
+const dataset = await (await client.getAccount()).getDataset("dataset-name");
+const service = await dataset.addService("sparql", "new-service");
+console.log(await service.getInfo());
 ```
 
 Another way to get information about existing services:
 ```typescript
-  console.log(await (await client
-    .getAccount())
-    .getDataset("dataset")
-    .getServices());
+const dataset = await (await client.getAccount()).getDataset("dataset-name");
+console.log(await dataset.getServices());
 ```
 
 
@@ -1159,11 +998,9 @@ The following example code checks whether a specific service is
 synchonized:
 
 ```typescript
-  const service = await (await client
-    .getAccount("some-account"))
-    .getDataset("some-dataset")
-    .addService("sparql", "new-service");
-  console.log(service.isUpToDate());
+const dataset = await (await client.getAccount()).getDataset("dataset-name");
+const service = await dataset.addService("sparql", "new-service");
+console.log(await service.isUpToDate());
 ```
 
 ## FAQ
@@ -1217,7 +1054,7 @@ To reliably retrieve a large number of results as the output of a ```construct``
 2. Set your parameters, regarding the TriplyDB instance and the account in which you have saved the query as well as the name of the query.
 
 	```typescript
-	const client= Client.get({url: ".."})
+	const client = Client.get({url: ".."})
 	const account = await client.getAccount("account-name");
 	const query = await account.getQuery("name-of-some-query")
 	```
