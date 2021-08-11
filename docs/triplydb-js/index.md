@@ -423,9 +423,16 @@ organization named `acme`:
 
 ```typescript
 const organization = await client.getOrganization("acme");
-console.log(await organization.getDatasets());
+console.log(await (await organization.getDatasets()).toArray());
 ```
+or alternatively iterate directly over the results
 
+```typescript
+const organization = await client.getOrganization("acme");
+for await (const dataset of organization.getDatasets()) {
+  console.log(dataset)
+}
+```
 #### Organization.getPinnedItems()
 
 Returns the list of datasets, stories and queries that are pinned for the given `Organization`.  The
@@ -600,7 +607,16 @@ The following example prints the list of datasets that belong to the user named
 
 ```typescript
 const user = await client.getUser("john-doe");
-console.log(await user.getDatasets());
+console.log(await (await user.getDatasets()).toArray());
+```
+
+Alternatively you can directly iterate over the request
+
+```typescript
+const user = await client.getUser("john-doe");
+for await (const dataset of user.getDatasets()) {
+  console.log(dataset)
+}
 ```
 
 #### User.getOrganizations()
