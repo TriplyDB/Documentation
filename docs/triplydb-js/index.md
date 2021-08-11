@@ -423,7 +423,7 @@ organization named `acme`:
 
 ```typescript
 const organization = await client.getOrganization("acme");
-console.log(await (await organization.getDatasets()).toArray());
+console.log(await organization.getDatasets().toArray());
 ```
 or alternatively iterate directly over the results
 
@@ -607,7 +607,7 @@ The following example prints the list of datasets that belong to the user named
 
 ```typescript
 const user = await client.getUser("john-doe");
-console.log(await (await user.getDatasets()).toArray());
+console.log(await user.getDatasets().toArray());
 ```
 
 Alternatively you can directly iterate over the request
