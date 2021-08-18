@@ -731,6 +731,22 @@ const dataset = await (await client.getAccount()).getDataset("dataset-name");
 console.log(await dataset.getPrefixes());
 ```
 
+#### Dataset.clear(...resourceType: string)
+
+Removes one or more resource types from the current dataset. 
+
+The resources are specified by the [rest parameter](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/rest_parameters) `resourceType`, which supports the following values :
+- `"assets"` :: Removes all assets in the dataset.
+- `"graphs"` :: Removes all graphs in the dataset.
+- `"services"` :: Removes all services in the datset.
+
+The following example code removes all graphs and services for a specific dataset:
+
+```typescript
+const dataset = await (await client.getAccount()).getDataset("dataset-name");
+await dataset.clear("graphs", "services");
+```
+
 #### Dataset.copy(account: string, dataset: string)
 
 Creates a copy of the current dataset.  The owner (user or
