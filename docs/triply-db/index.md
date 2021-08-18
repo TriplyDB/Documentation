@@ -38,12 +38,8 @@ The following steps allow a new Lined Dataset to be created:
    this is set to “Private”. See [dataset access
    levels](#access-levels) for more information.
 
-7. Optionally, select the account under which the dataset will be
-   published. This allows you to publish datasets under an
-   organization account to which you are a member. The default
-   account is your user account.
 
-![The “Add dataset” dialog](add-dataset-dialog.png)
+![The “Add dataset” dialog](createdataset.png)
 
 When datasets are Public (see [Access Levels](#access-levels)), they
 automatically expose metadata and are automatically crawled and
