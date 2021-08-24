@@ -62,7 +62,7 @@ the TriplyDB-js library:
 initialize the package configuration.  You will be asked several
 questions to set up a professional [yarn project](https://classic.yarnpkg.com/en/docs/creating-a-project/) (e.g., software license).
 (Add flag `-y` for a simplified setup, using default answers to these
-questions.) 
+questions.)
 
    ```sh
    yarn init
@@ -86,7 +86,7 @@ Once you have performed the installation and project setup, perform the
 following steps in order to create and run your first script that uses the
 TriplyDB-js library:
 
-1. Create a file called `index.ts` using for example the following command: 
+1. Create a file called `index.ts` using for example the following command:
 
 ```
 cat > index.ts
@@ -148,7 +148,7 @@ changes in the `tsconfig.json` file:
    ```
 
 3. From within the Atom preferences page, install the
-[`atom-typescript`](https://atom.io/packages/atom-typescript) package. You can use ```Crtl + ,``` to go to your settings, and then navigate to “Install”. 
+[`atom-typescript`](https://atom.io/packages/atom-typescript) package. You can use ```Crtl + ,``` to go to your settings, and then navigate to “Install”.
 
 If you wish to run your scripts within Atom, you may install the package Script.
 
@@ -279,9 +279,9 @@ user objects.
 
 ### Account
 
-The `Account` class denotes a TriplyDB account.  Accounts can be either organizations ([`Organization`](#organization)) or users ([`User`](#user)). 
+The `Account` class denotes a TriplyDB account.  Accounts can be either organizations ([`Organization`](#organization)) or users ([`User`](#user)).
 
-The `Account` class refers to: 
+The `Account` class refers to:
 ```typescript
 client.getAccount();
 ```
@@ -450,7 +450,7 @@ console.log(await organization.getPinnedItems());
 
 Adds a member to the given `Organization`, with role of either member or owner.
 
-The `user` argument can be a user object, or the account name of the user which should be 
+The `user` argument can be a user object, or the account name of the user which should be
 added to the organization.
 
 The `role` argument can be either `"member"` or `"owner"`. `"member"` will be chosen by default, if
@@ -467,7 +467,7 @@ console.log(await organization.addMember("Bugs"));
 
 Removes a member from the given `Organization`, if they are a part of it.
 
-The `user` argument can be a user object, or the account name of the user which should be 
+The `user` argument can be a user object, or the account name of the user which should be
 remove from the organization.
 
 If the user isn't a part of the organization, an error is thrown.
@@ -653,7 +653,7 @@ The [`Dataset`](#dataset) class represents a TriplyDB dataset.
 
 #### Dataset.addPrefixes(prefixes: object)
 
-Adds IRI prefixes to the dataset. 
+Adds IRI prefixes to the dataset.
 
 The _`prefixes`_ argument is an object, with prefixes as keys, and their corresponding IRI's as values.
 
@@ -669,9 +669,9 @@ await dataset.addPrefixes({
 
 #### Dataset.removePrefixes(prefixes: string[])
 
-Removes IRI prefixes from the dataset. 
+Removes IRI prefixes from the dataset.
 
-The `prefixes` argument is a string array, containing the prefix labels to be removed. 
+The `prefixes` argument is a string array, containing the prefix labels to be removed.
 
 The following example code removes the `dc` and `foaf` prefixes from the specified dataset.
 
@@ -733,7 +733,7 @@ console.log(await dataset.getPrefixes());
 
 #### Dataset.clear(...resourceType: string)
 
-Removes one or more resource types from the current dataset. 
+Removes one or more resource types from the current dataset.
 
 The resources are specified by the [rest parameter](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/rest_parameters) `resourceType`, which supports the following values :
 - `"assets"` :: Removes all assets in the dataset.
@@ -1096,20 +1096,20 @@ To reliably retrieve a large number of results as the output of a ```construct``
 	const client = Client.get({token: process.env['TRIPLY_API_TOKEN']})
 	```
 
-  
-    
-	
-	
+
+
+
+
 3. Do not forget that we perform TriplyDB-js requests within an [async context](#create-your-first-script). That is:
 
 	```typescript
 
 	async function run() {
-    // your code goes here 
+    // your code goes here
 	}
   run()
 	```
-  
+
 4. Get the results of a query by setting a ```results``` variable.
    More specifically, for construct queries:
 
@@ -1121,7 +1121,7 @@ To reliably retrieve a large number of results as the output of a ```construct``
 	const results = query.results().bindings()
 	```
 	Note that for ```construct``` queries, we use ```.statements()```, while for ```select``` queries, we use ```.bindings()```.
- 
+
 	Additionally, saved queries can have "API variables" that allow you to specify variables that are used in the query. Thus, if you have query parameters, pass their values as the first argument to `results` as follows:
 	```typescript
 	// For construct queries
@@ -1148,4 +1148,3 @@ To reliably retrieve a large number of results as the output of a ```construct``
    // Loading results of a construct or select query into memory
    const array = await results.toArray()
    ```
-

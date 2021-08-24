@@ -6,7 +6,7 @@
         link: /docs/triply-db-getting-started
       - title: API
         link: /docs/triply-api
-      - title: Javascript Client
+      - title: TriplyDB-JS
         link: /docs/triplydb-js
   - group: Yasgui
     tagline: Learn about the SPARQL editor

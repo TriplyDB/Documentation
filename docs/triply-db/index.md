@@ -241,7 +241,7 @@ three columns represent the subject, predicate, and object position of
 the triple. The fourth column represents the graph to which the
 triple belongs.
 
-![Image of the Linked Data Table](ld-table.png)
+![Image of the Linked Data Table](linked-data-table.png)
 
 The Linked Data Table can be used to perform simple queries by filling
 in the subject, predicate, object, and/or graph using the text field.
