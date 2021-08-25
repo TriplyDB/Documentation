@@ -38,12 +38,8 @@ The following steps allow a new Lined Dataset to be created:
    this is set to “Private”. See [dataset access
    levels](#access-levels) for more information.
 
-7. Optionally, select the account under which the dataset will be
-   published. This allows you to publish datasets under an
-   organization account to which you are a member. The default
-   account is your user account.
 
-![The “Add dataset” dialog](add-dataset-dialog.png)
+![The “Add dataset” dialog](createdataset.png)
 
 When datasets are Public (see [Access Levels](#access-levels)), they
 automatically expose metadata and are automatically crawled and
@@ -245,7 +241,7 @@ three columns represent the subject, predicate, and object position of
 the triple. The fourth column represents the graph to which the
 triple belongs.
 
-![Image of the Linked Data Table](ld-table.png)
+![Image of the Linked Data Table](linked-data-table.png)
 
 The Linked Data Table can be used to perform simple queries by filling
 in the subject, predicate, object, and/or graph using the text field.
