@@ -7,6 +7,8 @@ author: triply # see `author` section below
 
 Reply to "[Why I Don't Use OWL Anymore](https://www.topquadrant.com/owl-blog/)" by Irene Polikoff - In recent years, many linked data experts have reflected on the use of SHACL in relation to the use of OWL. At Triply, we use SHACL and OWL together for almost all projects, and are surprised by the recent push for SHACL as an OWL replacement. Below, we describe why we think that push is misguided.
 
+![Flying owl](flying-owl.jpg)
+
 ## Commonalities and differences
 
 The Web Ontology Language (OWL) was standardized in 2004, with significant updates in 2009 (OWL 2). The purpose of OWL is to encode meaning on the web and it is based on a long tradition of formal logic.
@@ -18,7 +20,7 @@ OWL and SHACL are both part of the same linked data ecosystem. As such, they hav
  1. Both OWL and SHACL use graph-shaped RDF data.
  2. Both OWL and SHACL are open standards, which allows them to be used across tools and vendors.
  3. Both OWL and SHACL can be used to encode some aspects of meaning.
- 4. OWL operates under the Open World Assumption (OWA), and SHACL under the Closed World Assumption (CWA). Therefore,
+ 4. OWL operates under the Open World Assumption (OWA), and SHACL under the Closed World Assumption (CWA).
  5. OWL is optimized for global, open systems, and SHACL for local, closed systems.
  6. OWL is descriptive, while SHACL is prescriptive.
  7. OWL can be used for reasoning, and SHACL can be used for validation.
