@@ -226,12 +226,12 @@ can be used with account objects.
 
 #### Client.getAccounts()
 
-Returns details about all the accounts on the TriplyDB instance.
+Returns an [async iterator](#async-iterators) over all the accounts on the TriplyDB instance.
 
 The following example returns all accounts:
 
 ```typescript
-console.log(await client.getAccounts());
+console.log(await client.getAccounts().toArray())
 ```
 
 See section [`Account`](#account) for an overview of the methods that
@@ -415,7 +415,7 @@ console.log(await organization.getDataset("dogs"));
 
 #### Organization.getDatasets()
 
-Returns the list of datasets for the `Organization`.  This only
+Returns an [async iterator](#async-iterators) over the datasets for an `Organization`.  This only
 includes datasets that are accessible under the used API token.
 
 The following example prints the list of datasets that belong to the
@@ -425,14 +425,7 @@ organization named `acme`:
 const organization = await client.getOrganization("acme");
 console.log(await organization.getDatasets().toArray());
 ```
-or alternatively iterate directly over the results
 
-```typescript
-const organization = await client.getOrganization("acme");
-for await (const dataset of organization.getDatasets()) {
-  console.log(dataset)
-}
-```
 #### Organization.getPinnedItems()
 
 Returns the list of datasets, stories and queries that are pinned for the given `Organization`.  The
@@ -599,7 +592,7 @@ console.log(await user.getDataset("cats"));
 
 #### User.getDatasets()
 
-Returns the list of datasets for this `User`.  This only includes
+Returns an [async iterator](#async-iterators) over the datasets for this `User`.  This only includes
 datasets that are accessible under the API token.
 
 The following example prints the list of datasets that belong to the user named
@@ -608,15 +601,6 @@ The following example prints the list of datasets that belong to the user named
 ```typescript
 const user = await client.getUser("john-doe");
 console.log(await user.getDatasets().toArray());
-```
-
-Alternatively you can directly iterate over the request
-
-```typescript
-const user = await client.getUser("john-doe");
-for await (const dataset of user.getDatasets()) {
-  console.log(dataset)
-}
 ```
 
 #### User.getOrganizations()
@@ -709,7 +693,7 @@ const production = await dataset.addService("sparql", "production");
 
 #### Dataset.getAssets()
 
-Returns an array with objects that represent the assets that belong to
+Returns an [async iterator](#async-iterators) over the assets that belong to
 this dataset.
 
 The following example code retrieves the assets for a specific
@@ -717,7 +701,7 @@ dataset:
 
 ```typescript
 const dataset = await (await client.getAccount()).getDataset("dataset-name");
-console.log(await dataset.getAssets());
+console.log(await dataset.getAssets().toArray());
 ```
 
 #### Dataset.getPrefixes()
@@ -795,19 +779,19 @@ await dataset.deleteGraph("https://example.org/some-graph");
 
 #### Dataset.getServices()
 
-Returns an array of objects that represent TriplyDB services.
+Returns an [async iterator](#async-iterators) over TriplyDB services under a dataset.
 
 The following example code emits the services that are enabled for a
 specific dataset:
 
 ```typescript
 const dataset = await (await client.getAccount()).getDataset("dataset-name");
-console.log(await dataset.getServices());
+console.log(await dataset.getServices().toArray());
 ```
 
 #### Dataset.getGraphs()
 
-Returns an array with objects that represent the graphs that belong to
+Returns an [async iterator](#async-iterators) over graphs that belong to
 this dataset.
 
 The following example code retrieves the graphs for a specific
@@ -815,7 +799,7 @@ dataset:
 
 ```typescript
 const dataset = await (await client.getAccount()).getDataset("dataset-name");
-console.log(await dataset.getGraphs());
+console.log(await dataset.getGraphs().toArray());
 ```
 
 #### Dataset.importFromDataset(from: Dataset, graphs: mapping)
@@ -1148,3 +1132,37 @@ To reliably retrieve a large number of results as the output of a ```construct``
    // Loading results of a construct or select query into memory
    const array = await results.toArray()
    ```
+
+## Async iterators
+
+TriplyDB-js makes use of async iterators for retrieving lists of objects.
+Async iterators are a method of fetching and iterating through large lists, 
+without having to first fetch the whole set. 
+
+An example of an async iterator in TriplyDB-js is `client.getAccounts()`. 
+The following code illustrates how it can be used. 
+
+```typescript
+for await (let account of client.getAccounts()){
+  console.log(account)
+}
+```
+
+For cases where you want the complete list, you can use the `toArray` function of the iterator.
+
+```typescript
+const accounts = await iterator.getAccounts()
+```
+
+TriplyDB-js returns async iterators from the following functions:
+
+ - `client.getAccounts()`
+ - `account.getQueries()`
+ - `account.getStories()`
+ - `account.getDatasets()`
+ - `dataset.getServices()`
+ - `dataset.getAssets()`
+ - `dataset.getGraphs()`
+ - `dataset.getStatements()`
+ - `query.results().statements()` (for CONSTRUCT and DESCRIBE queries)
+ - `query.results().bindings()` (for SELECT queries)
