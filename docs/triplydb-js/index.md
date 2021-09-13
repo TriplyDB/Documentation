@@ -1151,15 +1151,15 @@ for await (let account of client.getAccounts()){
 For cases where you want the complete list, you can use the `toArray` function of the iterator.
 
 ```typescript
-const accounts = await iterator.getAccounts().toArray()
+const accounts = await client.getAccounts().toArray()
 ```
 
 TriplyDB-js returns async iterators from the following functions:
 
  - [`client.getAccounts()`](#clientgetaccounts)
+ - [`account.getDatasets()`](#usergetdatasets)
  - `account.getQueries()`
  - `account.getStories()`
- - [`account.getDatasets()`](#usergetdatasets)
  - [`dataset.getServices()`](#datasetgetservices)
  - [`dataset.getAssets()`](#datasetgetassets)
  - [`dataset.getGraphs()`](#datasetgetgraphs)
