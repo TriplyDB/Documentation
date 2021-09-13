@@ -610,7 +610,7 @@ Returns the list of organizations for which the `User` is a member.
 The order in the list reflects the order in which the organizations appear on
 the user page in the Triply GUI.
 
-The following example prints the list of organizationo for which the user named
+The following example prints the list of organizations for which the user named
 `john-doe` is a member:
 
 ```typescript
@@ -805,7 +805,7 @@ console.log(await dataset.getGraphs().toArray());
 #### Dataset.importFromDataset(from: Dataset, graphs: mapping)
 
 `graphs:mapping` is a JSON object taking existing graph names (graphs) in the
-`from` dataset, and mapping them into a new named graph in the Dateset into which they are imported.
+`from` dataset, and mapping them into a new named graph in the dataset into which they are imported.
 
 The following code example creates a new dataset “d2” and imports one
 graph from the existing dataset “d1”. Notice that the graph can be
@@ -941,7 +941,7 @@ Service objects describe specific functionalities that can be started,
 stopped, and restarted over datasets in TriplyDB.
 
 Service objects are obtained through the
-[`Dataset.addService`](datasetaddserviceservicetype-string-name-string)
+[`Dataset.addService`](#datasetaddserviceservicetype-string-name-string)
 and [`Dataset.getServices`](#datasetgetservices) functions.
 
 The following code example starts a specific service:
@@ -994,7 +994,7 @@ console.log(await dataset.getServices());
 Returns whether this service is synchronized with the dataset
 contents.
 
-Because services must be explicitly synchonized in TriplyDB, it is
+Because services must be explicitly synchronized in TriplyDB, it is
 possible to have services that expose an older version of the dataset
 and services that expose a newer version of the dataset running next
 to one another. There are two very common use cases for this:
@@ -1011,7 +1011,7 @@ to one another. There are two very common use cases for this:
   limited number of older users wants to use the legacy version.
 
 The following example code checks whether a specific service is
-synchonized:
+synchronized:
 
 ```typescript
 const dataset = await (await client.getAccount()).getDataset("dataset-name");
@@ -1028,7 +1028,7 @@ that does not appear in this list.
 ### How to perform a SPARQL query?
 
 The SPARQL 1.1 Protocol standard specifies a native HTTP API for
-perfoming SPARQL requests. Such requests can be performed with
+performing SPARQL requests. Such requests can be performed with
 regular HTTP libraries. Here we give an example using such an HTTP
 library:
 
@@ -1136,11 +1136,11 @@ To reliably retrieve a large number of results as the output of a ```construct``
 ## Async iterators
 
 TriplyDB-js makes use of async iterators for retrieving lists of objects.
-Async iterators are a method of fetching and iterating through large lists, 
-without having to first fetch the whole set. 
+Async iterators are a method of fetching and iterating through large lists,
+without having to first fetch the whole set.
 
-An example of an async iterator in TriplyDB-js is `client.getAccounts()`. 
-The following code illustrates how it can be used. 
+An example of an async iterator in TriplyDB-js is `client.getAccounts()`.
+The following code illustrates how it can be used.
 
 ```typescript
 for await (let account of client.getAccounts()){
@@ -1151,18 +1151,18 @@ for await (let account of client.getAccounts()){
 For cases where you want the complete list, you can use the `toArray` function of the iterator.
 
 ```typescript
-const accounts = await iterator.getAccounts()
+const accounts = await iterator.getAccounts().toArray()
 ```
 
 TriplyDB-js returns async iterators from the following functions:
 
- - `client.getAccounts()`
+ - [`client.getAccounts()`](#clientgetaccounts)
  - `account.getQueries()`
  - `account.getStories()`
- - `account.getDatasets()`
- - `dataset.getServices()`
- - `dataset.getAssets()`
- - `dataset.getGraphs()`
+ - [`account.getDatasets()`](#usergetdatasets)
+ - [`dataset.getServices()`](#datasetgetservices)
+ - [`dataset.getAssets()`](#datasetgetassets)
+ - [`dataset.getGraphs()`](#datasetgetgraphs)
  - `dataset.getStatements()`
  - `query.results().statements()` (for CONSTRUCT and DESCRIBE queries)
  - `query.results().bindings()` (for SELECT queries)
