@@ -3,11 +3,10 @@ title: "Why We Use OWL Every Day At Triply"
 path: "/blog/2021-08-why-we-use-owl"
 date: "2021-08-30T16:00:00"
 author: triply # see `author` section below
+banner: flying-owl.jpg
 ---
 
 Reply to "[Why I Don't Use OWL Anymore](https://www.topquadrant.com/owl-blog/)" by Irene Polikoff - In recent years, many linked data experts have reflected on the use of SHACL in relation to the use of OWL. At Triply, we use SHACL and OWL together for almost all projects, and are surprised by the recent push for SHACL as an OWL replacement. Below, we describe why we think that push is misguided.
-
-![Flying owl](flying-owl.jpg)
 
 ## Commonalities and differences
 
