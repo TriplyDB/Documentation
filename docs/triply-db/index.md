@@ -392,7 +392,7 @@ documentation on [datastories](/docs/data-stories).
 # Data stories
 A TriplyDB data story is a way of communicating information about your linked data along with explanatory text while also being able to integrate query results.
 
-##Creating a data story
+## Creating a data story
 You can create your own data story via the [stories](https://triplydb.com/me/-/stories) tab on TriplyDB. If this is your first time creating a data story, your view will look something like the image below. If you already are a proud owner of a data story, you will find it here. To create a new one, you can click the orange "Create story" button and you’ll see the same form.
 
 ![Form for adding a new story](Create-datastory-UI-2.png)
