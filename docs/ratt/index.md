@@ -7,8 +7,12 @@ path: "/docs/ratt"
 
 
 # Introduction
-RATT is a typescript based script that allows transforming different types of data to linked data.   
-Extract-Transform-Load (ETL)
+RATT is a typescript based script that allows transforming different types of data to linked data. <!-- shortly mention Extract-Transform-Load (ETL) here as well -->
+
+This documentation **assumes prior knowledge**:
+- Typescript knowledge (node.js/yarn packages) <!--Maybe add some documentation about most used commands, or links to external documentation. --> 
+- Limited familiarity with linked data and TriplyDB
+
 
 # ETL example <!-- Create a short ETL example with core concepts, making it easier for a user to understand what an ETL is. -->
 
