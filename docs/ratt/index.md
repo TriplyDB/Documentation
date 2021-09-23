@@ -3,7 +3,7 @@ title: "RATT"
 path: "/docs/ratt"
 ---
 
-<span style="color:red">Note: RATT license is included in a TriplyDB license. Contact info@triply.cc for more information</span>
+**<span style="color:red">Note: RATT license is included in a TriplyDB license. Contact info@triply.cc for more information</span>**
 
 
 # Introduction
