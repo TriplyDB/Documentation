@@ -32,13 +32,62 @@ Let's first initialize a package handler to help us install our package later in
 ```bash
 yarn init
 ```
-Now install Express in the `my-ETL-project` directory and save it in the dependencies list. For example:
+Now install `@triply/ratt` in the `my-ETL-project` directory and save it in the dependencies list:
 
 ```bash
 yarn add @triply/ratt
 ```
 
+You've now installed the `@triply/ratt` dependency for for your `node.js` project and you are ready to build your first ETL.
+
 # ETL example <!-- Create a short ETL example with core concepts, making it easier for a user to understand what an ETL is. -->
+
+
+
+Embedded in the code block below is one of the simpelest ETL that can transform data to linked data. The ETL transforms a csv with two columns, into linked data with the transformation tooling in RATT. 
+
+```typescript
+import { Ratt, CliContext } from "@triply/ratt";
+import mw from "@triply/ratt/lib/middlewares";
+
+export default async function (cliContext: CliContext): Promise<Ratt> {
+  const app = new Ratt({
+    cliContext,
+    defaultGraph: "https://example.org/example",
+    sources: { in: Ratt.Source.file("./hello-world.csv") },
+    destinations: { out: Ratt.Destination.file("./hello-world.ttl"})},
+  });
+  app.use(mw.fromCsv(app.sources.in)) // Extract 
+  app.use( 
+    mw.addQuad(mw.toIri("id"), app.prefix.rdfs("label"), mw.toLiteral("label"))) 
+  ) // Transform 
+  app.use(mw.toRdf(app.destinations.out)); // Load 
+  return app;
+}
+```
+
+
+
+| id    | label |
+| ----- | ----- |
+| 00001 | Anna  |
+| 00002 | Bob   |
+| 00003 | Carol |
+
+
+
+```turtle
+prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+<00001> rdfs:label "Anna" .
+<00002> rdfs:label "Bob" .
+<00003> rdfs:label "Carol" .
+```
+
+### Running the ETL
+
+First create a directory to store the ETL in. Most of the time the directory is called `src`. Make sure you've followed the steps in how to install RATT, to hold all the dependencies.
+
 
 # Core Concepts <!-- Maybe move to a different space in the documentation -->
 
