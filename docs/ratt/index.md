@@ -38,13 +38,13 @@ Now install `@triply/ratt` in the `my-ETL-project` directory and save it in the 
 yarn add @triply/ratt
 ```
 
-You've now installed the `@triply/ratt` dependency for for your `node.js` project and you are ready to build your first ETL.
+You've now installed the `@triply/ratt` dependency for for your `node.js` project and after you've set up your `tsconfig.json` file >>TODO<< you are ready to build your first ETL.
 
-# ETL example <!-- Create a short ETL example with core concepts, making it easier for a user to understand what an ETL is. -->
+# Your first ETL <!-- Create a short ETL example with core concepts, making it easier for a user to understand what an ETL is. -->
 
+To help you get started we've created a small ETL script that you can use to kickstart the creation of your own ETL.
 
-
-Embedded in the code block below is one of the simpelest ETL that can transform data to linked data. The ETL transforms a csv with two columns, into linked data with the transformation tooling in RATT. 
+Embedded in the code block below is one of the simpelest ETL that can transform data to linked data. This ETL contains the building blocks for your first ETL. The ETL loads a CSV from a file. Create a single triple per row in CSV. The ETL then stores the linked data to a linked data file.
 
 ```typescript
 import { Ratt, CliContext } from "@triply/ratt";
@@ -57,16 +57,22 @@ export default async function (cliContext: CliContext): Promise<Ratt> {
     sources: { in: Ratt.Source.file("./hello-world.csv") },
     destinations: { out: Ratt.Destination.file("./hello-world.ttl"})},
   });
-  app.use(mw.fromCsv(app.sources.in)) // Extract 
-  app.use( 
-    mw.addQuad(mw.toIri("id"), app.prefix.rdfs("label"), mw.toLiteral("label"))) 
-  ) // Transform 
-  app.use(mw.toRdf(app.destinations.out)); // Load 
+  app.use(mw.fromCsv(app.sources.in)) // Extract
+  app.use(
+    mw.addQuad(mw.toIri("id"), app.prefix.rdfs("label"), mw.toLiteral("label"))) // Transform
+  )
+  app.use(mw.toRdf(app.destinations.out)); // Load
   return app;
 }
 ```
 
+### Running the ETL
 
+We assume that you've followed the steps in how to install RATT. Then we need to create a directory to store the ETL in. Most of the time the directory is called `src`.
+
+Open up your favorite integrated development environment and create a file called `main.ts` in your `src` directory. Copy paste the code snippet from the above ETL in the `main.ts` file to set up the ETL.
+
+Next up, copy paste the table below in a your favorite table structured software program, e.g. Excel, libre office calc and save the file at the location defined in the source, `./hello-world.csv`. Alternatively you can download the file >>TODO<<.   
 
 | id    | label |
 | ----- | ----- |
@@ -74,7 +80,17 @@ export default async function (cliContext: CliContext): Promise<Ratt> {
 | 00002 | Bob   |
 | 00003 | Carol |
 
+Now we that we are all set up we are ready to run the ETL script. But before we can start the ETL we first need to compile the typescript into javascript. To do this you'll need to run execute the following command from the command line interface:
 
+```bash
+yarn build
+```
+Now we can execute the ETL script. To execute the ETL script we are going to make use of a Runner, which will be explained in the chapter >>TODO<<. To run the ETL we execute the following command:
+
+```bash
+yarn run ratt ./lib/main.js
+```
+This executes the function that we've defined in the `main.ts` script. Taking the CSV, streaming through the CSV row by row and transforming each row according to the `addQuad` function in linked data. To finally result in the following linked data:
 
 ```turtle
 prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>
@@ -84,21 +100,11 @@ prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 <00003> rdfs:label "Carol" .
 ```
 
-### Running the ETL
-
-First create a directory to store the ETL in. Most of the time the directory is called `src`. Make sure you've followed the steps in how to install RATT, to hold all the dependencies.
-
-
-# Core Concepts <!-- Maybe move to a different space in the documentation -->
-
-## Runner
-## RATT app
-## Middlewares
-## Context and Store
+You've now created an ran your first ETL with RATT. So let's dive into the ETL structure to explain what all of the components are, and how each component works in the ETL.
 
 
 # ETL Structure
-ETL stands for Extract, Transform, Load. Below we go deeper into these individual concepts one by one.
+ETL stands for Extract, Transform, Load. In the following section we go into more detail for each of the three components. Explaining how each component works, what configurations you can set and how the components can work together to create an ETL.
 
 ## Extracting data
 
@@ -249,3 +255,22 @@ app.use(
 )
 ```
 ## Loading Data
+
+
+# Core Concepts <!-- Maybe move to a different space in the documentation -->
+
+Now with the ETL structure explained we can dive a bit more into detail how the structure of the ETL is used and or what for example a RATT Runner is.
+
+## RATT app
+
+
+## Runner
+
+
+## Middlewares
+
+The most common occurrence in your ETL are the middlewares. Middlewares are essentially reusable pieces of code that executes a certain long and/or complex piece of functionality. An middleware is a piece of code that transforms a record and can be invoked with app.use().
+
+You can recognize all the middleware in this document by the prefix `mw.` that is before each middleware function.
+
+## Context and Store
