@@ -7,7 +7,7 @@ This page explains how an environment variable can be specified on different ope
 
 Environment variables are necessary for configuring private [API Tokens](#api-token) that ― for security reasons ― must not be included in source files.
 
-## Configure an environment variable on Windows
+## Configuration in Windows
 
 On Windows you can configure an environment variable by following these steps:
 
@@ -29,7 +29,7 @@ On Windows you can configure an environment variable by following these steps:
 
 6. Click “OK” three times to to save the environment variable and close the various dialogs.
 
-<h2 id='macos-or-linux-preferred-approach'>Configure an environment variable on macOS or Linux (preferred approach)</h2>
+## Configuration with direnv
 
 On macOS and Linux it is possible to limit the scope of environment variables to a specific directory (and its subdirectories).  This means that these environment variables are only specified when you are within a specific project directory.
 
@@ -61,13 +61,13 @@ This is the preferred approach for setting environment variables.  It requires t
 
    This creates a scope for the specified environment variable that is tied to your project directory (and its subdirectories).
 
-5. If you use version management, make sure the exclude file `.envrc` from this.
+5. Make sure to exclude file `.envrc` from version management.
 
-   For example, if you use Git for version management you can add a line containing `.envrc` to a file called `.gitignore` in your project directory.
+   In Git you can add a line containing `.envrc` to a file called `.gitignore` in your project directory.
 
-## Configure an environment variable on macOS or Linux (alternative approach)
+## Configuration without direnv
 
-The preferred approach for setting environment variables on macOS and Linux is documented in the [previous subsection](#macos-or-linux-preferred-approach).  However, if you are using macOS or Linux and are unable to install the [direnv](https://direnv.net) extension, then you can still configure environment variables without using direnv.
+The preferred approach for setting environment variables on macOS and Linux is documented in the [previous subsection](#configuration-using-direnv).  However, if you are using macOS or Linux and are unable to install the [direnv](https://direnv.net) extension, then you can still configure environment variables without using direnv.
 
 This requirements the following steps:
 

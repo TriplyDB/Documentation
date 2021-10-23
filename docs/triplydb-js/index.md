@@ -103,51 +103,33 @@ In the [previous section](#setting-up-a-read-only-project) we set up a read-only
 
 In this section we extend the project to configure read/write permissions that are tied to your user account in a TriplyDB instance.  This allows you to read non-public data to which you have access, and it allows you to write data in datasets and organizations to which you have access.
 
-1. Go to the TriplyDB instance that you have an account for that you want your project to interact with.  You may have a free account at <https://triplydb.com>.  You may also have accounts for other TriplyDB instances on the Internet or within your organization.
+1. Following the steps on [this page](../generics/api-token) to create and configure a TriplyDB API Token with write permissions.
 
-2. Log into the TriplyDB instance that you want your application to interact with.  For example <https://triplydb.com>.
+   Write permissions are needed in order to publish data from a RATT pipeline.
 
-3. Go to your user settings page.  This page is reached by clicking on the user menu in the top-right corner and choosing “User settings”.
+   After following these steps an environment variable called `TRIPLYDB_TOKEN` will be available.
 
-4. Go to the “API tokens” tab.
+2. Change the contents of `main.ts` to the following:
 
-5. Click on “Create token”.
+   ```typescript
+   import Client from '@triply/triplydb'
+   const client = Client.get({token: process.env.TRIPLYDB_TOKEN})
+   async function run() {
+     console.log((await (await client.getUser()).getInfo()).name)
+   }
+   run().catch(e => {
+     console.error(e)
+     process.exit(1)
+   })
+   ```
 
-6. Enter a name that describes the purpose of the token.  For example, the name of your application (`my_project` in the above example) is a good name for the token.
+   Notice the following changes:
 
-7. Choose the permission level that is sufficient for what you want to do with your application:
+   - Line 2 reads the API token from the environment.
+   - Line 4 prints the name of the user who created the API token that was configured in line 2.
+   - Other lines are identical to the [read-only script](#setting-up-a-read-only-project).
 
-   - Specify “Read permission” if your application must access non-public data in the TriplyDB instance.  (For access to public data you do not need an API token.)
-
-   - Specify “Write permission” if your application must change (meta)data in the TriplyDB instance.
-
-   - Specify “Management permission” if your application must be able to create one or more organizations within the TriplyDB instance.
-
-8. Click the “Create” button to create your token.  The token (a long sequence of characters) will now appear in a dialog.
-
-9. Copy the token.  For security reasons, the token will only be shown to you this one time.
-
-10. Change the contents of `main.ts` to the following, replacing `{api-token}` with the API token copied in the previous step.
-
-    ```typescript
-    import Client from '@triply/triplydb'
-    const client = Client.get({token: '{api-token}'})
-    async function run() {
-      console.log((await (await client.getUser()).getInfo()).name)
-    }
-    run().catch(e => {
-      console.error(e)
-      process.exit(1)
-    })
-    ```
-
-    Notice the following details:
-
-    - Line 2 specifies the API token.  We no longer need to specify the URL of the TriplyDB instance, because this information is included in the API token.
-    - Line 4 prints the name of the user who created the API token that was configured in line 2.
-    - Other lines are identical to the [read-only script](#setting-up-a-read-only-project).
-
-11. Transpile and run:
+3. Transpile and run:
 
     ```sh
     ./node_modules/.bin/tsc
@@ -158,122 +140,17 @@ In this section we extend the project to configure read/write permissions that a
 
 You can extend this script with TriplyDB.js functions that read/write (meta)data accessible through the API token.
 
-### Setting up a secure read/write project
+### Next steps for your project
 
-In the [previous section](#setting-up-a-read-write-project) we set up a project that can read/write data in TriplyDB instances.  To keep the instructions minimal, we included the API token inside the script (step 10).  In this section we extend the project to configure the API token in a safer way.
+The previous two sections have resulted in a minimal TriplyDB.js script that is able to interact with a TriplyDB instance.
 
-TriplyDB.js is able to look for an externally specified API token.  This is achieved by changing line 2 in the script from the [previous section](#setting-up-a-read-write-project):
+You can extend this script with other functions that are support by TriplyDB.js, and by TypeScript that you add for your custom application.  See [the next section](#reference) for the full reference of classes and methods supported by TriplyDB.js.
 
-```typescript
-import Client from '@triply/triplydb'
-const client = Client.get({token: process.env.TRIPLYDB_TOKEN})
-async function run() {
-  console.log((await (await client.getUser()).getInfo()).name)
-}
-run().catch(e => {
-  console.error(e)
-  process.exit(1)
-})
-```
+#### Editor support
 
-The API token can be externally specfied through the environment variable `TRIPLYDB_TOKEN`.  Setting an envrionement variable is a robust approach for excluding sensitive token information from your script.  There are several ways in which environment variables can be set.  Which way is optimal for you depends on your development environement.
+See [this page](../generics/editor) for information about how to configure a text editor that supports you to editing TriplyDB.js scripts.
 
-We explain several specific approaches for setting the API token through an environment variable.  Let us know via [support@triply.cc](mailto:support@triply.cc) if the here documented approaches do not work for you.
-
-#### Windows
-
-On Windows you can configure an API token by following these steps:
-
-1. Go to the “View advanced system settings” dialog.
-
-   One way to get to this dialog is by pressing the Windows-key; this opens up the Start menu.  Then type part of the string “View advanced system settings” in order to issue a Windows search.  This will bring up the dialog as one of the top search options.
-
-2. Click on the “Environment Variables” button.  This opens the “Environment Variables” dialog.
-
-3. Click on the “New…” button in the “User variables” section.  This opens the “New User Variable” dialog.
-
-4. Enter “TRIPLYDB_TOKEN” in the variable name field.
-
-5. Copy/paste your API token in the variable value field.
-
-6. Click “OK” three times to to save the environment variable and close the various dialogs.
-
-#### macOS or Linux (preferred approach)
-
-On macOS and Linux you can configure an API token with environment variables.  It is a best practice to specify such environment variables within a directory scope.  This means that these environment variables are only specified when you are within a your TriplyDB.js project directory.
-
-This is the preferred approach for setting the API token.  It requires the follows steps:
-
-1. Install the [direnv](https://direnv.net) extension.
-
-2. Enter the directory of your project (`my_project` in the above example).
-
-3. Run the following command, where `{api-token}` is your API token:
-
-   ```sh
-   echo export TRIPLYDB_TOKEN={api-token} > .envrc
-   ```
-
-   This creates a file called `.direnv`.
-
-   Make sure that no whitespace appears around the `=` character; this is a common mistake.
-
-4. Run the following command:
-
-   ```sh
-   direnv allow
-   ```
-
-#### macOS or Linux (alternative approach)
-
-The preferred approach for setting the API token on macOS and Linux is documented in the [previous subsection](#macos-or-linux-preferred-approach).  However, if you are using macOS or Linux and are unable to install the [direnv](https://direnv.net) extension, then you still configure the API token without using direnv.
-
-This requirements the following steps:
-
-1. Look for a text file called `~/.profile` in your user directory and open it in a text editor.
-
-2. Add the following content, replacing `{api-token}` with your API token:
-
-   ```sh
-   export TRIPLYDB_TOKEN={api-token}
-   ```
-
-   Make sure that no whitespace appears around the `=` character; this is a common mistake.
-
-3. Restart your terminal session.  This is typically achieved by executing the `exit` command in your current terminal window, and opening a new terminal window afterwards.
-
-### Editor support
-
-When editing the TypeScript files in your application (`main.ts` in the above example), it is useful to receive good feedback from your text editor.  This section explains how to configure text editors that provide assistance for editing applications that use TriplyDB.js.
-
-You can set-up a text editor in the following way:
-
-1. Install a text editor like [Atom](https://atom.io) or [Visual Studio Code](https://code.visualstudio.com).
-
-2. Open file `tsconfig.json` in your TriplyDB.js project, and make sure the following settings are included:
-
-   ```json
-   'target': 'es2017',
-   'lib': ['es6'],
-   ```
-
-   This ensures that a recent enough version of TypeScript is used.
-
-3. You can start the text editor within your TriplyDB.js project by running `atom .` or `code .`
-
-#### Atom-specific configuration
-
-The following additional configuration steps can be performed in the [Atom](https://atom.io) text editor:
-
-1. Go to the Atom settings page (`Ctrl + ,`).
-
-2. Go the the “Install” page.
-
-3. Install the [`atom-typescript`](https://atom.io/packages/atom-typescript) package.  This provides additional support for programming in TypeScript.
-
-4. Install the [Script](https://atom.io/packages/script) package.  This allows you to run your TriplyDB.js script from within the text editor.
-
-### Improved error handling
+#### Improved error handling
 
 In the previous sections we made use of minimal error handling (see below).  This section explains how error handling can be extended and improved.
 
@@ -284,7 +161,7 @@ run().catch(e => {
 })
 ```
 
-#### Better error lines
+##### Better error lines
 
 By default, error messages emitted by Node.js refer to code lines that appear in the transpiled JavaScript files.  Since we write our code in TypeScript, it is better to see the corresponding code lines for the TypeScript files.  This is achieved by adding the following line at the beginning of the main script (`main.ts` in the above example):
 
@@ -292,7 +169,7 @@ By default, error messages emitted by Node.js refer to code lines that appear in
 require('source-map-support/register')
 ```
 
-#### Better error messages
+##### Better error messages
 
 The following code can be added to the end of your application file (`main.ts` in the above examples) to use more advanced error handling:
 
