@@ -3,130 +3,251 @@ title: "RATT"
 path: "/docs/ratt"
 ---
 
-**<span style="color:red">Note: RATT license is included in a TriplyDB license. Contact info@triply.cc for more information</span>**
+**<span style="color:red">Note: RATT is distributed under the TriplyDB license.  Contact info@triply.cc for more information.</span>**
 
-# Introduction
-RATT is a typescript based library that allows transforming data to linked data via Extract-Transform-Load (ETL) pipelines. RATT is a typescript package that works together with TriplyDB software to create an integral data pipeline.
+RATT is a library that is optimized for building production-grade linked data pipelines.  It is used in combination with TriplyDB to create large-scale Knowledge Graphs.
 
-RATT is designed as library with which a user can quickly and efficiently transform their source data into linked data, via a set of core principles. These principles are loading the data into a standard record frame, manipulating parts of the record via standard functions, creating linked data, querying linked data from memory, and uploading data to the triple store.   
+RATT is written and used in TypeScript, a type-safe language that transpiles to JavaScript. RATT is designed as library with which a user can quickly and efficiently transform their source data into linked data, via a set of core principles. These principles are loading the data into a standard record frame, manipulating parts of the record via standard functions, creating linked data, querying linked data from memory, and uploading data to the triple store.
 
- <!-- shortly mention Extract-Transform-Load (ETL) here as well -->
+## Getting started
 
-This documentation **assumes prior knowledge** for the following topics:
-- Typescript knowledge ([Node.js](https://nodejs.org/)/[yarn](https://yarnpkg.com/)) <!--Maybe add some documentation about most used commands, or links to external documentation. -->
-- Limited familiarity with linked data and TriplyDB
+This section gets you up and running with RATT by setting up increasingly more complex pipelines.  These pipelines will use RATT to connect data sources to an integrated linked data knowledge that is published in a TriplyDB instance.  Some of the documented steps are generic for setting up a modern TypeScript project, while others are specific for using RATT.
 
-# Getting started
+### Setting up a minimal pipeline
 
-The only prerequisites to use RATT are `Node.js` and a package handler such as `npm` or `yarn`.
+In this section we set up a RATT pipeline that creates one single triple.  This pipeline is purposefully minimal, which allows us to focus on the installation and configuration steps.
 
-Assuming that you've already installed the `Node.js`, let's start with creating a directory where we will host our RATT application.
+1. Install [Node.js](https://nodejs.org) and [Yarn](https://yarnpkg.com).
 
-```bash
-mkdir my-ETL-project
-cd my-ETL-project
-```
+   On Linux, installation works as follows:
 
-Let's first initialize a package handler to help us install our package later in the process. Running the `yarn init` command will start an interactive session with which you create a `package.json`. The `package.json` holds a number of things, such as the name and version of your application.
+   ```sh
+   sudo apt install nodejs yarn # Ubuntu, Debian
+   sudo dnf install nodejs yarn # Red Hat, Fedora
+   ```
 
-```bash
-yarn init
-```
-Now install `@triply/ratt` in the `my-ETL-project` directory and save it in the dependencies list:
+2. Create a directory for your pipeline:
 
-```bash
-yarn add @triply/ratt
-```
+   ```sh
+   mkdir my_pipeline
+   cd my_pipeline
+   ```
 
-You've now installed the `@triply/ratt` dependency for for your `node.js` project and after you've set up your `tsconfig.json` file >>TODO<< you are ready to build your first ETL.
+3. Inside your newly created directory, initialize a standard [Yarn project](https://classic.yarnpkg.com/en/docs/creating-a-project/):
 
-# Your first ETL <!-- Create a short ETL example with core concepts, making it easier for a user to understand what an ETL is. -->
+   ```sh
+   yarn init -y
+   ```
 
-To help you get started we've created a small ETL script that you can use to kickstart the creation of your own ETL.
+   This creates a `package.json` file.  You can optionally edit this file to enter metadata for your project.
 
-Embedded in the code block below is one of the simpelest ETL that can transform data to linked data. This ETL contains the building blocks for your first ETL. The ETL loads a CSV from a file. Create a single triple per row in CSV. The ETL then stores the linked data to a linked data file.
+4. Add TypeScript and RATT as dependencies to your pipeline:
 
-```typescript
-import { Ratt, CliContext } from "@triply/ratt";
-import mw from "@triply/ratt/lib/middlewares";
+   ```sh
+   yarn add typescript @triply/ratt
+   ```
 
-export default async function (cliContext: CliContext): Promise<Ratt> {
-  const app = new Ratt({
-    cliContext,
-    defaultGraph: "https://example.org/example",
-    sources: { in: Ratt.Source.file("./hello-world.csv") },
-    destinations: { out: Ratt.Destination.file("./hello-world.ttl"})},
-  });
-  app.use(mw.fromCsv(app.sources.in)) // Extract
-  app.use(
-    mw.addQuad(mw.toIri("id"), app.prefix.rdfs("label"), mw.toLiteral("label"))) // Transform
-  )
-  app.use(mw.toRdf(app.destinations.out)); // Load
-  return app;
-}
-```
+5. Initialize a default TypeScript project:
 
-### Running the ETL
+   ```sh
+   ./node_modules/.bin/tsc --init
+   ```
 
-We assume that you've followed the steps in how to install RATT. Then we need to create a directory to store the ETL in. Most of the time the directory is called `src`.
+   This creates a [tsconfig.json](https://www.typescriptlang.org/docs/handbook/tsconfig-json.html) file.  You can optionally edit this file to tweak how TypeScript code is transpiled into JavaScript code.
 
-Open up your favorite integrated development environment and create a file called `main.ts` in your `src` directory. Copy paste the code snippet from the above ETL in the `main.ts` file to set up the ETL.
+6. Create a file called `main.ts` in a text editor, and copy/paste the following code into that file:
 
-Next up, copy paste the table below in a your favorite table structured software program, e.g. Excel, libre office calc and save the file at the location defined in the source, `./hello-world.csv`. Alternatively you can download the file >>TODO<<.   
+   ```ts
+   import { Ratt } from '@triply/ratt'
+   import mw from '@triply/ratt/lib/middlewares'
 
-| id    | label |
+   export default async function (): Promise<Ratt> {
+     const app = new Ratt({
+       defaultGraph: ''
+     })
+     app.use(
+       mw.addQuad(
+         app.prefix.rdfs('Class'),
+         app.prefix.rdf('type'),
+         app.prefix.rdfs('Class')),
+       mw.toRdf(Ratt.Destination.file('example.ttl')),
+     )
+     return app
+   }
+   ```
+
+   The meaning of this code snippet is as follows:
+
+     - Lines 1-2 load the RATT library.
+     - Line 4 creates the main function that will run the pipeline.
+     - Lines 5-7 specifies the RATT configuration for this pipeline.  Because this is a simple pipeline we do not need to specify a non-empty default graph name.
+     - Lines 8-14 specify the steps that are performed in the pipeline.  These steps are performed in sequence.
+       - Lines 9-12 create one linked data statement (“The class of all classes is itself a class.”).
+       - Line 13 writes the statement to a local file.
+
+7. Transpile the TypeScript file (`main.ts`) into a JavaScript file (`main.js`):
+
+   ```sh
+   ./node_modules/.bin/tsc
+   ```
+
+8. Run the JavaScript file (`main.js`) as a RATT pipeline:
+
+   ```sh
+   yarn ratt main.js
+   ```
+
+   This should create a file called `example.ttl` that contains the one created statement.  Contact <mailto:support@triply.cc> if this does not work on your system.
+
+In the next section we extend this minimal pipeline by uploading the results to a TriplyDB instance.
+
+### Publish to TriplyDB
+
+In the [previous section](#setting-up-a-minimal-pipeline) we set up a minimal pipeline in RATT.  In this section we extend the pipeline to publish the results in a TriplyDB instance.
+
+1. Following the steps on [this page](../generics/api-token) to create and configure a TriplyDB API Token.
+
+2. Once the API Token is configured, open file `main.ts` in a text editor and add the following content:
+
+   ```ts
+   import { CliContext, Ratt } from '@triply/ratt'
+   import mw from '@triply/ratt/lib/middlewares'
+
+   export default async function (cliContext: CliContext): Promise<Ratt> {
+     const app = new Ratt({
+       cliContext,
+       defaultGraph: '',
+     })
+     app.use(
+       mw.addQuad(
+         app.prefix.rdfs('Class'),
+         app.prefix.rdf('type'),
+         app.prefix.rdfs('Class')),
+       mw.toRdf(Ratt.Destination.TriplyDb.rdf('example')),
+     )
+     return app
+   }
+   ```
+
+   The code snippet contains the following changes relative to the code from [the previous section](#setting-up-a-minimal-pipeline):
+
+     - Line 1 also imports `CliContext` from the RATT library.
+     - Line 4 includes argument `cliContext: CliContext` and line 6 includes `cliContext`, so that the API Token can be read from the Command-Line Interface (CLI).
+     - Line 14 publishes the data that is generated in a TriplyDB dataset called `'example'`.  This dataset is added to the account that is associated with the configured API Token.
+
+3. Transpile the code with `./node_modules/.bin/tsc`
+
+4. Run the pipeline with `yarn ratt main.js`
+
+### Connect a data source
+
+This section extends the pipeline from [the previous section](#publish-to-triplydb) by connecting a data source.  RATT can connect to database systems and web APIs, but to keep things simple we will use the following tabular input data from a local file:
+
+| ID    | NAME  |
 | ----- | ----- |
 | 00001 | Anna  |
 | 00002 | Bob   |
 | 00003 | Carol |
 
-Now we that we are all set up we are ready to run the ETL script. But before we can start the ETL we first need to compile the typescript into javascript. To do this you'll need to run execute the following command from the command line interface:
+1. Create a text file called `example.csv` in a text editor, and copy/paste the following source data into that file:
 
-```bash
-yarn build
-```
-Now we can execute the ETL script. To execute the ETL script we are going to make use of a Runner, which will be explained in the chapter >>TODO<<. To run the ETL we execute the following command:
+   ```csv
+   ID,NAME
+   00001,Anna
+   00002,Bob
+   00003,Carol
+   ```
 
-```bash
-yarn run ratt ./lib/main.js
-```
-This executes the function that we've defined in the `main.ts` script. Taking the CSV, streaming through the CSV row by row and transforming each row according to the `addQuad` function in linked data. To finally result in the following linked data:
+2. Open text file `main.ts` and add the following content:
 
+   ```ts
+   import { CliContext, Ratt } from '@triply/ratt'
+   import mw from '@triply/ratt/lib/middlewares'
+
+   export default async function (cliContext: CliContext): Promise<Ratt> {
+     const app = new Ratt({
+       cliContext,
+       defaultGraph: '',
+       prefixes: {
+         person: Ratt.prefixer('https://example.com/id/person/'),
+       },
+     })
+     app.use(
+       mw.fromCsv(Ratt.Source.file('example.csv')),
+       mw.addQuad(
+         mw.toIri('ID', {prefix: app.prefix.person}),
+         app.prefix.rdfs('label'),
+         mw.toLiteral('NAME')),
+       mw.toRdf(Ratt.Destination.file('example.ttl')),
+     )
+     return app
+   }
+   ```
+
+   Notice the following changes:
+
+     - Lines 8-10 declare an IRI prefix.  Such prefixes are common in RATT pipelines, because this makes it easier to work with lengthy IRIs.
+     - Line 13 connects the tabular source data to the pipleline.  Every row in the table will be processed as a RATT record.
+     - Lines 14-17 create a one linked data statement that is based on the source data.
+       - Line 15 creates an universally unique identifier (IRI) based on the value in the `'ID'` column and the declared `person` prefix.
+       - Line 17 creates a string literal based on the value in the `'NAME'` column.
+
+3. Transpile the code with `./node_modules/.bin/tsc`
+
+4. Run the pipeline with `yarn ratt main.js`
+
+The RATT script will give you a link to the uploaded dataset.  This dataset contains the graph content as displayed in [Figure 1](#connect-a-data-source).
+
+<figure id='connect-a-data-source'>
+  <img src='connect-a-data-source.png' width='450'>
+  <figcaption>
+    Figure 1 - A visualization of the graph that is created by this example RATT pipeline.
+  </figcaption>
+</figure>
+
+<!--
 ```turtle
+prefix person: <https://example.com/id/person/>
 prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 
-<00001> rdfs:label "Anna" .
-<00002> rdfs:label "Bob" .
-<00003> rdfs:label "Carol" .
+person:00001 rdfs:label 'Anna'.
+person:00002 rdfs:label 'Bob'.
+person:00003 rdfs:label 'Carol'.
 ```
+-->
 
-You've now created an ran your first ETL with RATT. So let's dive into the ETL structure to explain what all of the components are, and how each component works in the ETL.
+## ETL Structure
 
-
-# ETL Structure
 ETL stands for Extract, Transform, Load. In the following section we go into more detail for each of the three components. Explaining how each component works, what configurations you can set and how the components can work together to create an ETL.
 
-## Extracting data
+### Extracting data
 
 RATT uses connectors to tap into data from various sources.  This section explains how different kinds of sources can be connected to RATT.
 
 Pro Tip: It is important to never change a data source manually.  Since manual changes cannot be stored, reproduced or rolled back they are always a bad idea.  Instead, try to perform all modifications in RATT.  That way your changes are stored in the Git history of your RATT repository.  It is also possible to roll back your changes if needed.
 
-### Extract from static files
+#### Static source data
 
 Source data is often available in static files.  For example one or more Excel files with tabular data.
 
-#### Upload static source data as TriplyDB Assets
+##### Use TriplyDB Assets for static source data
 
 If your ETL needs to connect to static data files, it is best practice to first upload these as [TriplyDB Assets](#todo).  This has the following benefits:
 
-1. **Shareable** TriplyDB Assets can be added to any TriplyDB Dataset.  This means that collaborators that have access to a dataset will also have access to the static data files that are needed to create the linked data in that dataset.
-2. **Secure** TriplyDB Assets are accessible under the same access levels as the TriplyDB Dataset to which they belong.  This means that you can share static data files in a secure way with your collaborators.
-3. **Versioned** TriplyDB Assets are versioned.  If a new version of the same static file becomes available, this file can be uploaded to the same TriplyDB Asset.  If there are problems with the new data files them your collaborators can always roll back to an earlier version of the source data.
-4. **Transparent** All collaborators have access to the same TriplyDB Assets.  This makes it transparent which static data files are needed, and which versions are available.  This is much more transparent than having to share (versions of) files over email or by other indirect means.
-5. **Backed-up** TriplyDB instances that are maintained by Triply are also backed up regularly.  This includes the static data files that are uploaded as TriplyDB Assets.  This is much more secure than storing static data files on a local laptop that can break, or where files can get lost otherwise.
+<dl>
+  <dt>Shareable</dt>
+  <dd>TriplyDB Assets can be added to any TriplyDB Dataset.  This means that collaborators that have access to a dataset will also have access to the static data files that are needed to create the linked data in that dataset.</dd>
+  <dt>Secure</dt>
+  <dd>TriplyDB Assets are accessible under the same access levels as the TriplyDB Dataset to which they belong.  This means that you can share static data files in a secure way with your collaborators.</dd>
+  <dt>Versioned</dt>
+  <dd>TriplyDB Assets are versioned.  If a new version of the same static file becomes available, this file can be uploaded to the same TriplyDB Asset.  If there are problems with the new data files them your collaborators can always roll back to an earlier version of the source data.</dd>
+  <dt>Transparent</dt>
+  <dd>All collaborators have access to the same TriplyDB Assets.  This makes it transparent which static data files are needed, and which versions are available.  This is much more transparent than having to share (versions of) files over email or by other indirect means.</dd>
+  <dt>Backed-up</dt>
+  <dd>TriplyDB instances that are maintained by Triply are also backed up regularly.  This includes the static data files that are uploaded as TriplyDB Assets.  This is much more secure than storing static data files on a local laptop that can break, or where files can get lost otherwise.</dd>
+</dl>
 
-#### Extract from Microsoft Excel files (XLSX)
+##### Microsoft Excel files (XLSX)
 
 Microsoft Excel (file name extension `.xlsx`) is a popular file format for storing static tabular source data.
 
@@ -138,7 +259,7 @@ app.use(
 )
 ```
 
-#### Extract from Comma Separated Values files (CSV)
+#### Comma Separated Values files (CSV)
 
 Comma Separated Values (file name extension `.csv`) is a popular file format for storing static tabular source data.
 
@@ -150,7 +271,7 @@ app.use(
 )
 ```
 
-##### Comma Separated Values (CSV) support
+##### Standards-compliance
 
 RATT supports the official CSV standard: [RFC 4180](https://datatracker.ietf.org/doc/html/rfc4180).  Unfortunately, there are some 'CSV' files our there that do not follow the RFC 4180 standard.  If your 'CSV' file does not follow the official CSV standard, then RATT may or may not process your static data file correctly.
 
@@ -208,9 +329,9 @@ app.use(
 )
 ```
 
-#### Use data from publically accessible URLs
+#### Data from publicly accessible URLs
 
-Some people like to work with publically accessible URLs on the Internet.  This is generally a bad idea, because this cannot be used for data that is not known to have a public license.  Because a lot of data has no clear license, this approach can almost never be used legitimately.  Still, if you understand the implications of using publicly accessible URLs, you can connect them to your ETL.
+Some people like to work with publicly accessible URLs on the Internet.  This is generally a bad idea, because this cannot be used for data that is not known to have a public license.  Because a lot of data has no clear license, this approach can almost never be used legitimately.  Still, if you understand the implications of using publicly accessible URLs, you can connect them to your ETL.
 
 The following example connects to a remote CSV file from a public URL from RATT:
 
@@ -220,7 +341,8 @@ app.use(
 )
 ```
 
-## Transforming Data
+### Transforming Data
+
 Source data does not always have the correct form for direct use in RDF triples.  For example:
 
 - A simple value may needs to be split up into multiple values.
@@ -244,7 +366,7 @@ When we plot these two factors onto a table, we get the following overview of th
 
 This function has the following signature:
 
-### Change an existing entry in-place (`mw.change`)
+#### Change an existing entry in-place (`mw.change`)
 
 ```ts
 app.use(
@@ -254,23 +376,29 @@ app.use(
     change: value => value+'zzz'}),
 )
 ```
-## Loading Data
 
+### Loading Data
 
-# Core Concepts <!-- Maybe move to a different space in the documentation -->
+TODO
+
+<!--
+## Core Concepts
+
+TODO: Maybe move to a different space in the documentation
 
 Now with the ETL structure explained we can dive a bit more into detail how the structure of the ETL is used and or what for example a RATT Runner is.
 
-## RATT app
+### RATT app
 
 
-## Runner
+### Runner
 
 
-## Middlewares
+### Middlewares
 
 The most common occurrence in your ETL are the middlewares. Middlewares are essentially reusable pieces of code that executes a certain long and/or complex piece of functionality. An middleware is a piece of code that transforms a record and can be invoked with app.use().
 
 You can recognize all the middleware in this document by the prefix `mw.` that is before each middleware function.
 
-## Context and Store
+### Context and Store
+-->
