@@ -446,6 +446,18 @@ const user = account.asUser()
 
 This method returns a user object.  See section [`User`](#user) for an overview of the methods that can be called on such objects.
 
+#### Client.isCompatibleWith(minimumVersion: string)
+
+Succeeds iff the currently connected to TriplyDB instance has a version that is identical to or higher than the given minimum version.
+
+##### Arguments
+
+- Argument `minimumVersion` must be a string that uses Semantic Versioning.  For example `'1.2.3'`.
+
+##### See also
+
+To inspect the current version of the conntected-to TriplyDB instance, use [`Client.getInfo()`](#clientgetinfo).
+
 ### Account
 
 Instances of the `Account` class denote TriplyDB accounts.  Accounts can be either organizations ([`Organization`](#organization)) or users ([`User`](#user)).
