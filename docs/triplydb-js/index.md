@@ -59,7 +59,7 @@ In this section we set up a read-only project.  This allows us to focus on setti
 
 6. Create a file called `main.ts` in a text editor.  Add the following content in this file:
 
-   ```typescript
+   ```ts
    import Client from '@triply/triplydb'
    const client = Client.get({url: 'https://api.triplydb.com'})
    async function run() {
@@ -111,7 +111,7 @@ In this section we extend the project to configure read/write permissions that a
 
 2. Change the contents of `main.ts` to the following:
 
-   ```typescript
+   ```ts
    import Client from '@triply/triplydb'
    const client = Client.get({token: process.env.TRIPLYDB_TOKEN})
    async function run() {
@@ -154,7 +154,7 @@ See [this page](../generics/editor) for information about how to configure a tex
 
 In the previous sections we made use of minimal error handling (see below).  This section explains how error handling can be extended and improved.
 
-```typescript
+```ts
 run().catch(e => {
   console.error(e)
   process.exit(1)
@@ -165,7 +165,7 @@ run().catch(e => {
 
 By default, error messages emitted by Node.js refer to code lines that appear in the transpiled JavaScript files.  Since we write our code in TypeScript, it is better to see the corresponding code lines for the TypeScript files.  This is achieved by adding the following line at the beginning of the main script (`main.ts` in the above example):
 
-```typescript
+```ts
 require('source-map-support/register')
 ```
 
@@ -173,7 +173,7 @@ require('source-map-support/register')
 
 The following code can be added to the end of your application file (`main.ts` in the above examples) to use more advanced error handling:
 
-```typescript
+```ts
 process.on('uncaughtException', function (err) {
   console.error('Uncaught exception', err)
   process.exit(1)
@@ -190,7 +190,7 @@ This section documents all classes and methods that are available in TriplyDB.js
 
 Every method in this reference section comes with at least one code example.  These code examples can be run by inserting them into the following snippet.  See the [Getting started](#getting-started) section on how to get this script up and running on your system.
 
-```typescript
+```ts
 require('source-map-support/register')
 import Client from '@triply/triplydb';
 const client = Client.get({token: process.env.TRIPLYDB_TOKEN})
@@ -268,7 +268,7 @@ Client connections can be created with and without setting an API token.  When n
 
 The following snippet creates a `Client` object with read-only access to the TriplyDB instance at <https://triplydb.com>:
 
-```typescript
+```ts
 import Client from '@triply/triplydb'
 const client = Client.get({url: 'https://api.triplydb.com'})
 ```
@@ -295,7 +295,7 @@ The allowed operations many include:
 
 The following creates a `Client` object with an API token that is made available through an environment variable (see section [Setting up a secure read/write project](#setting-up-a-secure-read-write-project)):
 
-```typescript
+```ts
 import Client from '@triply/triplydb'
 const client = Client.get({token: process.env.TRIPLYDB_TOKEN})
 ```
@@ -312,13 +312,13 @@ If `name` is omitted, the TriplyDB account that is associated with the current A
 
 - The following snippet returns the account called `'Triply'`.
 
-  ```typescript
+  ```ts
   const account = await client.getAccount('Triply')
   ```
 
 - The following snippet returns the current account.  This is the account for which the currently configured API token was created.
 
-  ```typescript
+  ```ts
   const account = await client.getAccount()
   ```
 
@@ -340,7 +340,7 @@ Returns an [async iterator](#async-iterator) over all accounts in the TriplyDB i
 
 The following snippet returns all accounts:
 
-```typescript
+```ts
 console.log(await client.getAccounts().toArray())
 ```
 
@@ -357,13 +357,13 @@ Information is returned in a dictionary object.  Individual keys can be accessed
 
 - The following snippet prints the contact email for the TriplyDB instance to which `client` is currently connected.
 
-```typescript
+```ts
 console.log((await client.getInfo()).contactEmail)
 ```
 
 - The following snippet returns an object describing the used TriplyDB instance:
 
-```typescript
+```ts
 console.log(await client.getInfo());
 ```
 
@@ -381,7 +381,7 @@ This method is similar to [`Client.getAccount(name?: string)`](#clientgetaccount
 
 The following snippet returns the organization called `'Triply'`:
 
-```typescript
+```ts
 const organization = await client.getOrganization('Triply')
 ```
 
@@ -398,7 +398,7 @@ This method is a shorthand for calling the following two methods:
 
 The following snippet returns the same result as the previous example, but uses two methods instead of one:
 
-```typescript
+```ts
 const account = await client.getAccount('Triply')
 const organization = account.asOrganization()
 ```
@@ -417,13 +417,13 @@ If `name` is omitted, the TriplyDB user that is associated with the current API 
 
 The following snippet returns the user with name `'somebody'`:
 
-```typescript
+```ts
 const user = await client.getUser('somebody')
 ```
 
 The following snippet returns the user for which the API token was created.  This only works if an API token was configured when creating the [`Client`](#client) object `client`:
 
-```typescript
+```ts
 const me = await client.getUser()
 ```
 
@@ -437,7 +437,7 @@ This method is a shorthand for the following two methods:
 
 The following snippet returns the same result as the previous examples, but uses two methods instead of one:
 
-```typescript
+```ts
 const account = await client.getAccount('somebody')
 const user = account.asUser()
 ```
@@ -522,7 +522,7 @@ The following snippet creates a new dataset called `'iris'` under the account ca
   - The dataset has a display name.
   - The dataset has the PDDL license.
 
-```typescript
+```ts
 const account = await client.getAccount('Triply')
 const dataset = await account.addDataset({
   description: 'A multivariate dataset that quantifies morphologic variation of Iris flowers.',
@@ -731,7 +731,7 @@ Calling this method on an `Organization` object does nothing.
 
 The following snippet retrieves the account named `'Triply'` and casts it to an organization:
 
-```typescript
+```ts
 const account = await client.getAccount('Triply')
 const organization = account.asOrganization()
 ```
@@ -742,7 +742,7 @@ This method is not needed if the organization is directly retrieved with the spe
 
 The following snippet returns the same result as the above example, but in a more direct way:
 
-```typescript
+```ts
 const organization = await client.getOrganization('Triply')
 ```
 
@@ -762,7 +762,7 @@ Calling this method on a [`User`](#user) object does nothing.
 
 The following snippet retrieves the account that represents the current user, and casts it to a user object:
 
-```typescript
+```ts
 const account = await client.getAccount()
 const user = account.asUser()
 ```
@@ -773,7 +773,7 @@ This method is not needed if the user is directly retrieved with the specializat
 
 The following snippet returns the same result as the above example, but in a more direct way:
 
-```typescript
+```ts
 const user = await client.getUser()
 ```
 
@@ -785,7 +785,7 @@ This method returns an organization object.  See section [`Organization`](#organ
 
 Deletes this account.  This also deletes all datasets, stories and queries that belong to this account.
 
-```typescript
+```ts
 const account = await client.getAccount('Neo4j')
 await account.delete()
 ```
@@ -798,7 +798,7 @@ Returns the dataset with the given `name` that is published by this account.
 
 The following snippet prints the name of the Iris dataset that is published by the Triply account:
 
-```typescript
+```ts
 const account = await client.getAccount('Triply')
 const dataset = await triply.getDataset('iris')
 console.log((await dataset.getInfo()).name)
@@ -824,7 +824,7 @@ The iterator only includes datasets that are accessible for the current connecti
 
 - The following snippet prints the names of all accessible dataset under the Triply account:
 
-  ```typescript
+  ```ts
   const account = await client.getAccount('Triply')
   for await (const dataset of account.getDatasets()) {
     console.log((await dataset.getInfo()).name)
@@ -833,7 +833,7 @@ The iterator only includes datasets that are accessible for the current connecti
 
 - The following snippet prints the list of names of all accessible datasets under the Triply account:
 
-  ```typescript
+  ```ts
   const account = await client.getAccount('Triply')
   console.log(await account.getDatasets().toArray())
   ```
@@ -879,7 +879,7 @@ The information object for accounts includes the following keys:
 
 - The following snippet prints the full information object for the account called ‘Triply’:
 
-  ```typescript
+  ```ts
   const account = await client.getAccount('Triply')
   console.log(await account.getInfo())
   ```
@@ -903,7 +903,7 @@ The information object for accounts includes the following keys:
 
 - The following snippet prints the name of the account called ‘Triply’:
 
-  ```typescript
+  ```ts
   const account = await client.getAccount('Triply')
   console.log((await account.getInfo()).name)
   ```
@@ -922,7 +922,7 @@ The order in which the pinned datasets are returned reflects the order in which 
 
 The following snippet prints the names of the items that are pinned on the Triply account page:
 
-```typescript
+```ts
 const account = await client.getAccount('Triply')
 for await (const item of account.getPinnedItems()) {
   console.log((await item.getInfo()).name)
@@ -945,7 +945,7 @@ Returns the TriplyDB query with the given `name`.
 
 The following snippet prints the query string for a query called `animal-gallery` that belongs to the account called `Triply`:
 
-```typescript
+```ts
 const account = await client.getAccount('Triply')
 const query = await account.getQuery('animal-gallery')
 console.log((await query.getInfo()).requestConfig?.payload.query)
@@ -971,7 +971,7 @@ The iterator only includes datasets that are accessible for the current connecti
 
 The following snippet prints the names of the queries that belong to the account called `Triply`:
 
-```typescript
+```ts
 const account = await client.getAccount('Triply')
 for await (const query of account.getQueries()) {
   console.log((await query.getInfo()).name)
@@ -990,7 +990,7 @@ Returns the TriplyDB story with the given `name`.
 
 The following snippet prints the paragraphs in the story called `the-iris-dataset` that is published under the account called `Triply`.  Stories are sequences of paragraphs and queries.  This program prints the paragraphs in the sequence in which they appear in the story.
 
-```typescript
+```ts
 const account = await client.getAccount('Triply')
 const story = await account.getStory('the-iris-dataset')
 ```
@@ -1007,7 +1007,7 @@ Returns an iterator with the TriplyDB stories that belong to the account.
 
 The following snippet prints the names of the queries that belong to the Triply account:
 
-```typescript
+```ts
 const account = await client.getAccount('Triply')
 for await (const story of account.getStories()) {
   console.log((await story.getInfo()).name)
@@ -1034,7 +1034,7 @@ A circular version of this image is displayed inside the TriplyDB GUI.  This ima
 
 The following snippet uploads the local image in file `logo.svg` and set it as the characterizing image for the Triply account:
 
-```typescript
+```ts
 const account = await client.getAccount('Triply')
 await account.setAvatar('logo.svg')
 ```
@@ -1057,7 +1057,7 @@ The `prefixes` argument is a dictionary object whose keys are aliases and whose 
 
 The following snippet adds prefix declarations for aliases `id` and `def` to the Iris dataset:
 
-```typescript
+```ts
 const organization = await client.getOrganization('Triply')
 const dataset = await organization.getDataset(iris)
 await dataset.addPrefixes({
@@ -1089,7 +1089,7 @@ The `name` argument can be used to distinguish between different endpoints over 
 
 The following snippet starts two SPARQL endpoints over a specific dataset. One endpoint will be used in the acceptance environment while the other endpoint will be used in the production system.
 
-```typescript
+```ts
 const account = await client.getAccount()
 const dataset = await account.getDataset('my-dataset')
 const acceptance = await dataset.addService('sparql', 'acceptance')
@@ -1121,7 +1121,7 @@ The resources are specified by the [rest parameter](https://developer.mozilla.or
 
 The following example code removes all graphs and services for a specific dataset:
 
-```typescript
+```ts
 const account = await client.getAccount()
 const dataset = await account.getDataset('my-dataset')
 await dataset.clear('graphs', 'services')
@@ -1137,7 +1137,7 @@ This operation does not overwrite existing datasets: if the copied-to dataset al
 
 ##### Examples
 
-```typescript
+```ts
 const account = await client.getAccount()
 const dataset = await account.getDataset('my-dataset')
 console.log(await dataset.copy('account name', 'copy dataset name'))
@@ -1153,7 +1153,7 @@ This includes deleting the dataset metadata, all of its graphs, all of its servi
 
 The following snippet deletes a specific dataset that is part of the account associated with the current API token:
 
-```typescript
+```ts
 const account = await client.getAccount()
 const dataset = await account.getDataset('my-dataset')
 await dataset.delete()
@@ -1176,7 +1176,7 @@ Graph names are IRIs.
 
 The following snippet deletes a specific graph from a specified dataset:
 
-```typescript
+```ts
 const account = await client.getAccount()
 const dataset = await account.getDataset('my-dataset')
 await dataset.deleteGraph('https://example.org/some-graph')
@@ -1192,7 +1192,7 @@ Optionally allows the version number (`version`) of the asset to be specified.  
 
 The following snippet returns the original version of an image of a dog from the animals dataset:
 
-```typescript
+```ts
 const user = await client.getUser()
 const dataset = user.getDataset('my-dataset')
 const asset = await dataset.getAsset('file.png', 1)
@@ -1214,7 +1214,7 @@ Assets are binary files that are stored together with data graphs.  Common examp
 
 - The following snippet prints the assets for a specific dataset:
 
-```typescript
+```ts
 const user = await client.getUser()
 const dataset = user.getDataset('my-dataset')
 for await (const asset of dataset.getAssets()) {
@@ -1224,7 +1224,7 @@ for await (const asset of dataset.getAssets()) {
 
 - The following snippet prints the list of assets for a specific dataset:
 
-```typescript
+```ts
 const account = await client.getAccount()
 const dataset = await account.getDataset('my-dataset')
 console.log(await dataset.getAssets().toArray())
@@ -1246,7 +1246,7 @@ Graph names are IRIs.
 
 The following snippet returns the graph about cats from the dataset about animals:
 
-```typescript
+```ts
 const user = await client.getUser()
 const dataset = await user.getDataset('animals')
 const graph = dataset.getGraph('https://example.com/cats')
@@ -1260,7 +1260,7 @@ Returns an [async iterator](#async-iterator) over graphs that belong to this dat
 
 The following snippet retrieves the graphs for a specific dataset:
 
-```typescript
+```ts
 const account = await client.getAccount()
 const dataset = await account.getDataset('my-dataset')
 console.log(await dataset.getGraphs().toArray())
@@ -1276,7 +1276,7 @@ Information is returned in a dictionary object.  Individual keys can be accessed
 
 The following snippet prints the information from the specified dataset of the current user:
 
-```typescript
+```ts
 const user = await client.getUser()
 const dataset = await user.getDataset('my-dataset')
 console.log(await dataset.getInfo())
@@ -1295,7 +1295,7 @@ The following snippet prints the prefix declarations that hold for the animals d
 
 TODO
 
-```typescript
+```ts
 const user = await client.getUser()
 const dataset = user.getDataset('my-dataset')
 for await (const prefix of dataset.getPrefixes()) {
@@ -1324,7 +1324,7 @@ See section [`Service`](#service) for an overview of the methods for service obj
 
 - The following snippet emits the services that are enabled for a specific dataset:
 
-```typescript
+```ts
 const account = await client.getAccount()
 const dataset = await account.getDataset('my-dataset')
 for await (const service of dataset.getServices()) {
@@ -1334,7 +1334,7 @@ for await (const service of dataset.getServices()) {
 <!--
 - TODO
 
-```typescript
+```ts
 const account = await client.getAccount()
 const dataset = await account.getDataset('my-dataset')
 console.log(await dataset.getServices().toArray())
@@ -1349,7 +1349,7 @@ console.log(await dataset.getServices().toArray())
 
 The following snippet creates a new dataset (`dataset2`) and imports one graph from an existing dataset (`dataset1`). Notice that the graph can be renamed as part of the import.
 
-```typescript
+```ts
 const account = await client.getAccount()
 const dataset1 = await account.getDataset('my-dataset')
 const dataset2 = await account.addDataset('other-dataset')
@@ -1370,7 +1370,7 @@ The files must contain RDF data and must be encoded in one of the following stan
 
 ##### Examples
 
-```typescript
+```ts
 const account = await client.getAccount('Triply')
 const dataset = await account.getDataset(iris)
 await dataset.importFromFiles('test.nt')
@@ -1389,7 +1389,7 @@ The URLs must provide access to RDF data.
 
 ##### Examples
 
-```typescript
+```ts
 dataset1.importFromUrls(['url1','url2','url3'])
 ```
 
@@ -1404,7 +1404,7 @@ See section [Query](#query) for an overview of the methods that can be used with
 
 The following snippet returns the query object of a specific dataset:
 
-```typescript
+```ts
 const account = await client.getAccount('acme')
 const query = account.query()
 ```
@@ -1418,7 +1418,7 @@ Removes all graphs from this dataset.
 
 The following snippet removed all graphs from a specific dataset:
 
-```typescript
+```ts
 const user = await client.getUser()
 const dataset = await user.getDataset('my-dataset')
 await dataset.removeAllGraphs()
@@ -1434,7 +1434,7 @@ The `prefixes` argument is a string array, containing the prefix labels to be re
 
 The following snippet removes the `dc` and `foaf` prefixes from the specified dataset.
 
-```typescript
+```ts
 const account = await client.getAccount()
 const dataset = await account.getDataset('my-dataset')
 await dataset.removePrefixes(['def','id'])
@@ -1448,7 +1448,7 @@ Renames a graph of this dataset, where `from` is the current graph name and `to`
 
 The following snippet renames a specific graph of a specific dataset:
 
-```typescript
+```ts
 const account = await client.getAccount()
 const dataset = await account.getDataset('my-dataset')
 await dataset.renameGraph(
@@ -1501,7 +1501,7 @@ The `metadata` argument takes a dictionary object with the following optional ke
 
 The following snippet updates the dataset's access level, description, display name and license:
 
-```typescript
+```ts
 const account = await client.getAccount()
 const dataset = await account.getDataset('my-dataset')
 dataset.update({
@@ -1530,7 +1530,7 @@ There are several use cases for assets:
 
 The following snippet uploads a source CSV data file and a PDF documentation file:
 
-```typescript
+```ts
 const account = await client.getAccount()
 const dataset = await account.getDataset('my-dataset')
 await dataset.uploadAsset('my-source-data', 'source.csv.gz')
@@ -1545,13 +1545,13 @@ Instances of the [`Organization`](#organization) class denote organizations in T
 
 Organizations are obtained with method [`Client.getOrganization(name: string)`](#clientgetorganizationname-string):
 
-```typescript
+```ts
 const organization = await client.getOrganization('Triply')
 ```
 
 Alternatively, organizations are obtained by first obtaining an account ([`Client.getAccount(name?: string)`](#clientgetaccountname-string)) and then casting it to an organization ([`Account.asOrganization()`](#accountasorganization)):
 
-```typescript
+```ts
 const account = await client.getAccount('Triply')
 const organization = account.asOrganization()
 ```
@@ -1587,7 +1587,7 @@ Adds a member to the given `Organization`, with the given `role` of either membe
 
 The following snippet adds user John Doe to the Triply organization as a regular member.
 
-```typescript
+```ts
 const organization = await client.getOrganization('Triply')
 console.log(await organization.addMember('john-doe'))
 ```
@@ -1643,7 +1643,7 @@ A membership contains the following components:
 
 ##### Examples
 
-```typescript
+```ts
 const org = await client.getOrganization('acme')
 for (const membership of await org.getMembers()) {
   console.log(user)
@@ -1676,14 +1676,14 @@ The user must be a current member of the organization for this method to succeed
 
 - The following snippet removes John Doe from the Triply organization, using a string argument:
 
-```typescript
+```ts
 const organization = await client.getOrganization('Triply')
 await organization.removeMember('john-doe')
 ```
 
 - The following snippet removes John Doe from the Triply organization, using a [`User`](#user) object:
 
-```typescript
+```ts
 const organization = await client.getOrganization('Triply')
 const user = await client.getUser('john-doe')
 await organization.removeMember(user)
@@ -1710,7 +1710,7 @@ Quad Queries are an extension of the Triple Pattern queries that are defined in 
 
 The following snippet returns (at most) 100 triples that have term `rdfs:subClassOf` in the predicate position:
 
-```typescript
+```ts
 const account = await client.getAccount()
 const dataset = await account.getDataset('my-dataset')
 dataset
@@ -1781,7 +1781,7 @@ Returns the number of results for the current query.
 
 ##### Examples
 
-```typescript
+```ts
 const account = await client.getAccount()
 const dataset = await account.getDataset('my-dataset')
 const numberOfResults = dataset.query().count()
@@ -1793,7 +1793,7 @@ Sets the graph term for this query.  If the graph term is set, then only triples
 
 ##### Examples
 
-```typescript
+```ts
 const account = await client.getAccount()
 const dataset = await account.getDataset('my-dataset')
 dataset.query().graph('https://example.com/graph').exec()
@@ -1833,7 +1833,7 @@ Deletes a service.
 
 ##### Examples
 
-```typescript
+```ts
 const user = await client.getAccount('my-account')
 const dataset = await user.getDataset('my-dataset')
 const service = await dataset.addService('sparql', 'my-service')
@@ -1850,7 +1850,7 @@ Information is returned in a dictionary object.  Individual keys can be accessed
 
 - The following snippet prints information about the newly created service (named `my-service`):
 
-```typescript
+```ts
 const account = await client.getAccount()
 const dataset = await account.getDataset('my-dataset')
 const service = await dataset.addService('sparql', 'my-service')
@@ -1859,7 +1859,7 @@ console.log(await service.getInfo())
 
 - Another way to get information about existing services:
 
-```typescript
+```ts
 const account = await client.getAccount()
 const dataset = await account.getDataset('my-dataset')
 console.log(await dataset.getServices())
@@ -1881,7 +1881,7 @@ Because services must be explicitly synchronized in TriplyDB, it is possible to 
 
 The following snippet checks whether a specific service is synchronized:
 
-```typescript
+```ts
 const account = await client.getAccount()
 const dataset = await account.getDataset('my-dataset')
 const service = await dataset.addService('sparql', 'my-service')
@@ -1900,7 +1900,7 @@ Information is returned in a dictionary object.  Individual keys can be accessed
 
 The following snippet prints the paragraphs that appear in a data story:
 
-```typescript
+```ts
 for (const element of (await story.getInfo()).content) {
   if (element.type = 'paragraph') {
     console.log(element.paragraph)
@@ -1916,14 +1916,14 @@ Instances of the [`User`](#user) class denote users in TriplyDB.
 
 Users are obtained with method [`Client.getUser(name?: string)`](#clientgetusername-string):
 
-```typescript
+```ts
 const user = client.getUser('john-doe')
 const user = client.getUser()
 ```
 
 Alternatively, users are obtained by first obtaining an account ([`Client.getAccount(name?: string)`](#clientgetaccountname-string)) and then casting it to a use ([`Account.asUser()`](#accountasuser)):
 
-```typescript
+```ts
 const account = await client.getAccount('john-doe')
 const user = account.asUser()
 ```
@@ -1981,7 +1981,7 @@ This method requires an API token with write access for this user.
 
 The following snippet creates a new organization for which John Doe will be the owner.  Notice that both a required URL-friendly name (`'my-organization'`) and an optional display name (`'My Organization'`) are specified.
 
-```typescript
+```ts
 const user = await client.getUser('john-doe')
 await user.createOrganization(my-organization, {name: 'My Organization'}))
 ```
@@ -2039,7 +2039,7 @@ The information object for users includes the following keys:
 
 The following snippet prints an overview of account that is associated with the used API token:
 
-```typescript
+```ts
 const user = await client.getUser()
 console.log(await user.getInfo())
 ```
@@ -2056,7 +2056,7 @@ The order in the list reflects the order in which the organizations appear on th
 
 The following snippet prints the list of organizations that John Doe is a member of:
 
-```typescript
+```ts
 const user = await client.getUser('john-doe')
 for await (const organization of await user.getOrganizations()) {
   console.log((await organization.getInfo()).name)
@@ -2095,7 +2095,7 @@ The SPARQL 1.1 Protocol standard specifies a native HTTP API for performing SPAR
 
 Here we give an example indicating how such an HTTP library can be used:
 
-```typescript
+```ts
 import * as SuperAgent from 'superagent'
 const reply =
   await SuperAgent.post('SPARQL_ENDPOINT')
@@ -2130,13 +2130,13 @@ To reliably retrieve a large number of results as the output of a `construct` or
 
 1. Import the triplydb library.
 
-   ```typescript
+   ```ts
    import Client from '@triply/triplydb'
    ```
 
 2. Set your parameters, regarding the TriplyDB instance and the account in which you have saved the query as well as the name of the query.
 
-   ```typescript
+   ```ts
    const client = Client.get({url: 'https://api.triplydb.com'})
    const account = await client.getAccount('account-name')
    const query = await account.getQuery('name-of-some-query')
@@ -2144,13 +2144,13 @@ To reliably retrieve a large number of results as the output of a `construct` or
 
    If the query is not public, you should set your API token rather than the URL.
 
-   ```typescript
+   ```ts
    const client = Client.get({token: process.env.TRIPLYDB_TOKEN})
    ```
 
 3. Do not forget that we perform TriplyDB.js requests within an [async context](#create-your-first-script). That is:
 
-   ```typescript
+   ```ts
    async function run() {
      // Your code goes here.
    }
@@ -2159,13 +2159,13 @@ To reliably retrieve a large number of results as the output of a `construct` or
 
 4. Get the results of a query by setting a `results` variable.  More specifically, for construct queries:
 
-   ```typescript
+   ```ts
    const results = query.results().statements()
    ```
 
    For select queries:
 
-   ```typescript
+   ```ts
    const results = query.results().bindings()
    ```
 
@@ -2173,7 +2173,7 @@ To reliably retrieve a large number of results as the output of a `construct` or
 
    Additionally, saved queries can have 'API variables' that allow you to specify variables that are used in the query. Thus, if you have query parameters, pass their values as the first argument to `results` as follows:
 
-   ```typescript
+   ```ts
    // For SPARQL construct queries.
    const results = query.results({
      someVariable: 'value of someVariable',
@@ -2190,7 +2190,7 @@ To reliably retrieve a large number of results as the output of a `construct` or
 
    5a. Iterate through the results per row in a `for`-loop:
 
-      ```typescript
+      ```ts
       // Iterating over the results per row
       for await (const row of results) {
         // execute something
@@ -2199,14 +2199,14 @@ To reliably retrieve a large number of results as the output of a `construct` or
 
    5b. Save the results to a file.  This is only supported form SPARQL `construct` queries:
 
-      ```typescript
+      ```ts
       // Saving the results of a SPARQL construct query to a file.
       await results.toFile('my-file.nt')
       ```
 
    5c. Load all results into memory.  Note that this is almost never used.  If you want to process results, then option 5a is better; if you want to persist results, then option 5b is better.
 
-      ```typescript
+      ```ts
       // Loading results for a SPARQL construct or SPARQL select query into memory.
       const array = await results.toArray()
       ```
@@ -2217,7 +2217,7 @@ TriplyDB.js makes use of async iterators for retrieving lists of objects.  Async
 
 An example of an async iterator in TriplyDB.js is [`Client.getAccounts()`](#clientgetaccounts).  The following code illustrates how it can be used.
 
-```typescript
+```ts
 for await (let account of client.getAccounts()) {
   console.log(account)
 }
@@ -2225,7 +2225,7 @@ for await (let account of client.getAccounts()) {
 
 For cases where you want the complete list, you can use the `toArray` function of the iterator.
 
-```typescript
+```ts
 const accounts = await client.getAccounts().toArray()
 ```
 
