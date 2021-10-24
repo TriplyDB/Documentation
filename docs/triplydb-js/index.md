@@ -966,7 +966,7 @@ for await (const item of account.getPinnedItems()) {
 
 ##### See also
 
-This function returns various types of objects.  Each class has different functionalities:
+This method returns various types of objects.  Each class has different functionalities:
 
 - See section [`Dataset`](#dataset) for an overview of the methods for dataset objects.
 - See section [`Query`](#query) for an overview of the methods for query objects.
@@ -2274,7 +2274,7 @@ For cases where you want the complete list, you can use the `toArray` function o
 const accounts = await client.getAccounts().toArray()
 ```
 
-TriplyDB.js returns async iterators from the following functions:
+TriplyDB.js returns async iterators from the following methods:
 
  - [`Client.getAccounts()`](#clientgetaccounts)
  - [`Account.getDatasets()`](#accountgetdatasets)
