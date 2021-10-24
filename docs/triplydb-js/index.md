@@ -1467,7 +1467,7 @@ The `prefixes` argument is a string array, containing the prefix labels to be re
 
 ##### Examples
 
-The following snippet removes the `dc` and `foaf` prefixes from the specified dataset.
+The following snippet removes the `def` and `id` prefixes from the specified dataset.
 
 ```ts
 const account = await client.getAccount()
