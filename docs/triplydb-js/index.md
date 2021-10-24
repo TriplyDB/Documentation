@@ -1418,6 +1418,40 @@ console.log(await dataset.getServices().toArray())
 -->
 
 
+#### Dataset.getStatements({subject?: string, predicate?: string, object?: string, graph?: string})
+
+Returns an [async iterator](#async-iterator) with statements (quadruples) that fit the specified pattern.
+
+##### Arguments
+
+- `subject`, if specified, is the subject term that should be matched.
+- `predicate`, if specified, is the predicate term that should be matched.
+- `objectr`, if specified, is the object term that should be matched.
+- `graph`, if specified, is the graph name that should be matched.
+
+##### Example
+
+- The following prints all statements in the dataset:
+
+```ts
+const user = client.getUser()
+const dataset = await user.getDataset('my-dataset')
+for await (const statement: dataset.getStatements()) {
+  console.log(statement)
+}
+```
+
+- The following prints the description of the 'Amsterdam' resource in the DBpedia dataset:
+
+```ts
+const association = client.getOrganization('DBpedia-association')
+const dbpedia = association.getDataset('dbpedia')
+for await (const statement: dbpedia.getStatements({subject: 'http://dbpedia.org/resource/Amsterdam'}) {
+  console.log(statement)
+}
+```
+
+
 #### Dataset.importFromDataset(from: Dataset, graphs: object, overwrite?: boolean)
 
 Imports one or more named graphs from a different dataset into this dataset.
