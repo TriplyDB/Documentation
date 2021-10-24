@@ -1601,7 +1601,7 @@ Adds a new TriplyDB dataset with the given `name` to the current organization.
 
 Inherited from [`Account.addDataset(name: string, metadata?: object)`](#accountadddatasetname-string-metadata-object).
 
-#### Organization.addMember(user: User|string, role: Role)
+#### Organization.addMember(user: User|string, role?: Role)
 
 Adds a member to the given `Organization`, with the given `role` of either member or owner.
 
@@ -1609,7 +1609,7 @@ Adds a member to the given `Organization`, with the given `role` of either membe
 
 - The `user` argument can be a user object, or the account name of the user which should be added to the organization.
 
--The `role` argument can be either `'member'` or `'owner'`. `'member'` will be chosen by default, if no argument is given.
+-The `role` argument can be either `'member'` or `'owner'`.  If this argument is not specified, then `'member'` used as the default.
 
 <dl>
   <dt><code>'member'</code></dt>
