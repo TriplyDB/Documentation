@@ -1840,27 +1840,24 @@ dataset.query().graph('https://example.com/graph').exec()
 
 Service objects describe specific functionalities that can be started, stopped, and restarted over datasets in TriplyDB.
 
-Service objects are obtained through the [`Dataset.addService`](#datasetaddserviceservicetype-string-name-string) and [`Dataset.getServices`](#datasetgetservices) functions.
+Service objects are obtained through the the following methods:
+- [`Dataset.addService`](#datasetaddserviceservicetype-string-name-string)
+- [`Dataset.getServices`](#datasetgetservices)
 
-##### Examples
+A service always has one of the following statuses:
 
-The following snippet starts a specific service:
-
-```typescript
-const account = await client.getAccount('my-account')
-const dataset = await account.getDataset('my-dataset')
-await dataset.addService('sparql', 'my-service')
-```
-
-##### Status
-
-The following service statuses are defined:
-
-- removing
-- running
-- starting
-- stopped
-- stopping
+<dl>
+  <dt>Removing</dt>
+  <dd>The service is being removed.</dd>
+  <dt>Running</dt>
+  <dd>The service is running normally.</dd>
+  <dt>Starting</dt>
+  <dd>The service is starting up.</dd>
+  <dt>Stopped</dt>
+  <dd>The services has been stopped in the past.  It cannot be used at the moment, but it can be enable again if needed.</dd>
+  <dt>Stopping</dt>
+  <dd>The service is currently being stopped.</dd>
+</dl>
 
 #### Service.delete()
 
