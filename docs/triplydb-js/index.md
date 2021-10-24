@@ -1863,26 +1863,16 @@ Inherited from [`Account.update(metadata: object)`](#accountupdatemetadata-objec
 
 
 
-<!-- TODO: This object type is no longer supported?
 ### Query
+<!--
+TODO: Document what a query is and how it can be obtained.
+-->
 
-The query object allows Quad Queries to be performed.  Quad Queries allow statements to be matched by setting a combination of a subject, predicate, object, and/or graph term.
 
-Quad Queries are an extension of the Triple Pattern queries that are defined in the [SPARQL 1.1 Query](https://www.w3.org/TR/sparql11-query/#QSynTriples) specification.
+#### Query.delete()
 
-The following snippet returns (at most) 100 triples that have term `rdfs:subClassOf` in the predicate position:
+Permanently deletes this query and all of its versions.
 
-```ts
-const account = await client.getAccount()
-const dataset = await account.getDataset('my-dataset')
-dataset
-  .query()
-  .subject('sub')
-  .predicate('http://www.w3.org/2000/01/rdf-schema#subClassOf')
-  .object('obj')
-  .limit(100)
-  .exec()
-```
 
 #### Query.getInfo()
 
@@ -1925,42 +1915,29 @@ The returned dictionary object includes the following keys:
   <dd>The date/time at which the query was last modified.</dd>
 </dl>
 
-#### Query.object(name: string)
 
-Sets the object term for this query.  If the object term is set, then only triples with that object term are returned by the query.
+#### Query.getString(apiVariables?: object)
 
-#### Query.predicate(iri: string)
+Returns the query string of the current version of this query.
 
-Sets the predicate term for this query.  If the predicate term is set, then only triples with that predicate term are returned by the query.
+Optionally, arguments can be spefified for the API variables to this query.
 
-#### Query.subject(iri: string)
 
-Sets the subject term for this query.  If the subject term is set, then only triples with that subject term are returned by the query.
+<!--
+TODO: Document this method.
+#### Query.results(apiVariables?: object, options?: object)
+-->
 
-#### Query.count()
 
-Returns the number of results for the current query.
+<!--
+TODO: Document this method.
+#### Query.update(metadata: object)
+-->
 
-##### Examples
 
-```ts
-const account = await client.getAccount()
-const dataset = await account.getDataset('my-dataset')
-const numberOfResults = dataset.query().count()
-```
-
-#### Query.graph(graph iri: string)
-
-Sets the graph term for this query.  If the graph term is set, then only triples in that graph are returned by the query.
-
-##### Examples
-
-```ts
-const account = await client.getAccount()
-const dataset = await account.getDataset('my-dataset')
-dataset.query().graph('https://example.com/graph').exec()
-```
-
+<!--
+TODO: Document this method.
+#### Query.useVersion(version: number|'latest')
 -->
 
 
