@@ -1968,7 +1968,7 @@ A service always has one of the following statuses:
 
 #### Service.delete()
 
-Deletes a service.
+Permanently deletes this service.
 
 ##### Examples
 
@@ -2045,6 +2045,23 @@ console.log(await service.isUpToDate())
 <!--
 TODO: Document what stories are and how to obtain them.
 --->
+
+
+#### Story.delete()
+
+Deletes this story.  This deletes all paragraphs that belong to this story.
+
+This *does not* delete the queries that are linked into this story.  If you also want to delete the queries, then this must be done with distinct calls of [`Query.delete()`](#querydelete).
+
+##### Examples
+
+The following code example deletes a story called 'example-story' under the current user's account:
+
+```ts
+const user = await client.getUser()
+const story = await user.getStory('example-story')
+await story.delete()
+```
 
 
 #### Story.getInfo()
