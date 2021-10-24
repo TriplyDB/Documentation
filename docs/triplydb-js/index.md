@@ -802,6 +802,30 @@ const account = await client.getAccount('Neo4j')
 await account.delete()
 ```
 
+#### Account.ensureDataset(name: string, metadata?: object)
+
+Ensures that there is a dataset with the given `name` and with the specified `metadata`.
+
+Calling this method ensures that the necessary changes (if any) are made in the connected-to TriplyDB instance that result in an end state in which a dataset with the given `name` and `metadata` exists.
+
+This method is useful in practice, because it removes the burned on the programmer to have to write custom code for checking for the existence of a dataset, and conditionally create a new dataset or make metadata changes to an existing dataset.
+
+The changes made as a result of calling this method depend on the current state of the connected-to TriplyDB instance:
+
+- If this account does not yet have a dataset with the given `name`, then the behavior is identical to calling [`Account.addDataset(name: string, metadata?: object)`](#accountadddatasetname-string-metadata-object) with the same arguments.
+- If this account already has a dataset with the given `name`, but with different `metadata` specified for it, then the behavior is identical to calling [`Account.getDataset(name: string)`](#accountgetdatasetname-string) and [`Dataset.update(metadata: object)`](#datasetupdatemetadata-object).
+- If this account already has a dataset with the given `name` and with the same `metadata`, then this method makes no changes.
+
+<!--
+##### Examples
+
+TODO
+-->
+
+##### See also
+
+The meaning of the argument to this method are identifical to those of the [`Account.addDataset(name: string, metadata?: object)`](#accountadddatasetname-string-metadata-object) method.
+
 #### Account.getDataset(name: string)
 
 Returns the dataset with the given `name` that is published by this account.
