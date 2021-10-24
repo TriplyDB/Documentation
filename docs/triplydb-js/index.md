@@ -9,9 +9,12 @@ TriplyDB.js is implemented in [TypeScript](https://www.typescriptlang.org).  Typ
 
 Please contact [support@triply.cc](mailto:support@triply.cc) for questions and suggestions.
 
+
+
 ## Getting started
 
 This section gets you up and running with TriplyDB.js by setting up increasingly more complex scripts.  These scripts will use TriplyDB.js to interact with one or more TriplyDB instances.  Some of the documented steps are generic for setting up a modern TypeScript project, while others are specific for interacting with TriplyDB instances.
+
 
 ### Setting up a read-only project
 
@@ -97,6 +100,7 @@ You can extend this script with TriplyDB.js functions that read public (meta)dat
 
 It is also possible to read non-public data to which you have access.  This is done by using an API Token.  The next section explains how such tokens are created and configured.
 
+
 ### Setting up a read/write project
 
 In the [previous section](#setting-up-a-read-only-project) we set up a read-only project that uses TriplyDB.js and accesses public data at <https://triplydb.com>.
@@ -139,6 +143,7 @@ In this section we extend the project to configure read/write permissions that a
     This should print the name of the user account for which the API token was created.
 
 You can extend this script with TriplyDB.js functions that read/write (meta)data accessible through the API token.
+
 
 ### Next steps for your project
 
@@ -183,6 +188,8 @@ process.on('unhandledRejection', (reason, p) => {
   process.exit(1)
 })
 ```
+
+
 
 ## Reference
 
@@ -260,6 +267,8 @@ classDiagram
   Account <|-- User
 ```
 
+
+
 ### Client
 
 Instances of the `Client` class are specific client connections that are set-up with a TriplyDB instance.
@@ -302,6 +311,7 @@ const client = Client.get({token: process.env.TRIPLYDB_TOKEN})
 
 It is typical for one TriplyDB.js script to have exactly one `Client` object.
 
+
 #### Client.getAccount(name?: string)
 
 Returns the TriplyDB account with the given `name`.
@@ -331,6 +341,7 @@ Class [`Account`](#account) has two specializations: class [`Organization`](#org
 - Method [`Client.getOrganization(name: string)`](#clientgetorganizationname-string) returns an organization object.
 
 - Method [`Client.getUser(name?: string)`](#clientgetusername-string) returns a user object.
+
 
 #### Client.getAccounts()
 
@@ -943,6 +954,7 @@ The information object for accounts includes the following keys:
   console.log((await account.getInfo()).name)
   ```
 
+
 #### Account.getPinnedItems()
 
 Returns the list of datasets, stories and queries that are pinned for the current account.
@@ -972,6 +984,7 @@ This method returns various types of objects.  Each class has different function
 - See section [`Query`](#query) for an overview of the methods for query objects.
 - See section [`Story`](#story) for an overview of the methods for story objects.
 
+
 #### Account.getQuery(name: string)
 
 Returns the TriplyDB query with the given `name`.
@@ -989,6 +1002,7 @@ console.log((await query.getInfo()).requestConfig?.payload.query)
 ##### See also
 
 See section [`Query`](#query) for an overview of the methods for query objects.
+
 
 #### Account.getQueries()
 
@@ -1017,6 +1031,7 @@ for await (const query of account.getQueries()) {
 
 See section [`Query`](#query) for an overview of the methods for query objects.
 
+
 #### Account.getStory(name: string)
 
 Returns the TriplyDB story with the given `name`.
@@ -1033,6 +1048,7 @@ const story = await account.getStory('the-iris-dataset')
 ##### See also
 
 See section [`Story`](#story) for an overview of the methods for story objects.
+
 
 #### Account.getStories()
 
@@ -1053,11 +1069,19 @@ for await (const story of account.getStories()) {
 
 See section [`Story`](#story) for an overview of the methods for story objects.
 
+
 #### Account.pinItems(items: array[Dataset|Story|Query])
 
 Pins the given datasets, stores, and/or queries to the home page of this account.
 
 The pinned elements can be seen by people who visit the account online.  They are also included in the account metadata.
+
+<!--
+##### Examples
+
+TODO
+-->
+
 
 #### Account.setAvatar(file: string)
 
@@ -1074,13 +1098,22 @@ const account = await client.getAccount('Triply')
 await account.setAvatar('logo.svg')
 ```
 
+
 #### Account.update(metadata: object)
 
 Updates the metadata for this account.
 
+<!--
+TODO: Document the keys supported in `metadata`.
+-->
+
+
+
 ### Dataset
 
 The [`Dataset`](#dataset) class represents a TriplyDB dataset.
+
+
 
 #### Dataset.addPrefixes(prefixes: object)
 
@@ -1100,6 +1133,7 @@ await dataset.addPrefixes({
   id:  'https://triplydb.com/Triply/iris/id/'
 })
 ```
+
 
 #### Dataset.addService(type: string, name: string)
 
@@ -1135,6 +1169,7 @@ const production = await dataset.addService('sparql', 'production')
 
 See section [`Service`](#service) for an overview of the methods that can be used with service objects.
 
+
 #### Dataset.clear(...resourceType: string)
 
 Removes one or more resource types from the current dataset.
@@ -1162,6 +1197,7 @@ const dataset = await account.getDataset('my-dataset')
 await dataset.clear('graphs', 'services')
 ```
 
+
 #### Dataset.copy(account: string, dataset: string)
 
 Creates a copy of the current dataset.
@@ -1177,6 +1213,7 @@ const account = await client.getAccount()
 const dataset = await account.getDataset('my-dataset')
 console.log(await dataset.copy('account name', 'copy dataset name'))
 ```
+
 
 #### Dataset.delete()
 
@@ -1201,6 +1238,7 @@ Sometimes it is more useful to only delete the graphs that belong to a dataset, 
 - [Dataset.deleteGraph(graphName: string)](#datasetdeletegraphname-string)
 - [Dataset.removeAllGraphs()](#datasetremoveallgraphs)
 
+
 #### Dataset.deleteGraph(name: string)
 
 Deletes the graph with the given `name` from this dataset.
@@ -1216,6 +1254,7 @@ const account = await client.getAccount()
 const dataset = await account.getDataset('my-dataset')
 await dataset.deleteGraph('https://example.org/some-graph')
 ```
+
 
 #### Dataset.getAsset(name: string, version?: number)
 
@@ -1236,8 +1275,9 @@ const asset = await dataset.getAsset('file.png', 1)
 <!--
 ##### See also
 
-TODO
+TODO: Add this section
 -->
+
 
 #### Dataset.getAssets()
 
@@ -1268,8 +1308,9 @@ console.log(await dataset.getAssets().toArray())
 <!--
 ##### See also
 
-TODO
+TODO: Add this section
 -->
+
 
 #### Dataset.getGraph(name: string)
 
@@ -1286,6 +1327,7 @@ const user = await client.getUser()
 const dataset = await user.getDataset('animals')
 const graph = dataset.getGraph('https://example.com/cats')
 ```
+
 
 #### Dataset.getGraphs()
 
@@ -1317,6 +1359,7 @@ const dataset = await user.getDataset('my-dataset')
 console.log(await dataset.getInfo())
 ```
 
+
 #### Dataset.getPrefixes()
 
 Returns the prefixes that are defined for this dataset.
@@ -1328,7 +1371,7 @@ The following snippet prints the prefix declarations that hold for the animals d
 <!--
 ##### Examples
 
-TODO
+TODO: Finish this section.
 
 ```ts
 const user = await client.getUser()
@@ -1366,8 +1409,9 @@ for await (const service of dataset.getServices()) {
   console.log(service)
 }
 ```
+
 <!--
-- TODO
+- TODO: Finish this example.
 
 ```ts
 const account = await client.getAccount()
@@ -1375,6 +1419,7 @@ const dataset = await account.getDataset('my-dataset')
 console.log(await dataset.getServices().toArray())
 ```
 -->
+
 
 #### Dataset.importFromDataset(from: Dataset, graphs: object, overwrite?: boolean)
 
@@ -1406,6 +1451,7 @@ await dataset1.importFromDataset(
   {'https://example.org/dataset2/graph': 'https://example.org/dataset1/graph'})
 ```
 
+
 #### Dataset.importFromFiles(files: list(string))
 
 Imports one or more files into this dataset.
@@ -1425,6 +1471,7 @@ await dataset.importFromFiles('test.nt')
 await dataset.importFromFiles(['file.nq','file.tar.gz'])
 ```
 
+
 #### Dataset.importFromUrls(urls: list(string))
 
 Imports one or more URLs into this dataset.
@@ -1441,7 +1488,8 @@ The URLs must provide access to RDF data.
 dataset1.importFromUrls(['url1','url2','url3'])
 ```
 
-<!--
+
+<!--TODO: Is this method no longer supported?
 #### Dataset.query()
 
 Returns the query object for this dataset.
@@ -1458,6 +1506,7 @@ const query = account.query()
 ```
 -->
 
+
 #### Dataset.removeAllGraphs()
 
 Removes all graphs from this dataset.
@@ -1471,6 +1520,7 @@ const user = await client.getUser()
 const dataset = await user.getDataset('my-dataset')
 await dataset.removeAllGraphs()
 ```
+
 
 #### Dataset.removePrefixes(prefixes: string[])
 
@@ -1488,6 +1538,7 @@ const dataset = await account.getDataset('my-dataset')
 await dataset.removePrefixes(['def','id'])
 ```
 
+
 #### Dataset.renameGraph(from: string, to: string)
 
 Renames a graph of this dataset, where `from` is the current graph name and `to` is the new graph name.  The string arguments for `from` and `to` must be valid IRIs.
@@ -1504,6 +1555,7 @@ await dataset.renameGraph(
   'https://example.org/new-graph'
 )
 ```
+
 
 #### Dataset.update(metadata: object)
 
@@ -1560,6 +1612,7 @@ dataset.update({
 })
 ```
 
+
 #### Dataset.uploadAsset(assetName: string, filePath: string)
 
 Uploads a file that does not contain RDF data as an asset.
@@ -1585,6 +1638,8 @@ await dataset.uploadAsset('my-source-data', 'source.csv.gz')
 await dataset.uploadAsset('my-documentation', 'documentation.pdf')
 ```
 
+
+
 ### Organization
 
 Instances of the [`Organization`](#organization) class denote organizations in TriplyDB.
@@ -1608,11 +1663,13 @@ const organization = account.asOrganization()
 
 `Organization` is a subclass of [`Account`](#account), from which it inherits most of its methods.
 
+
 #### Organization.addDataset(name: string, metadata?: object)
 
 Adds a new TriplyDB dataset with the given `name` to the current organization.
 
 Inherited from [`Account.addDataset(name: string, metadata?: object)`](#accountadddatasetname-string-metadata-object).
+
 
 #### Organization.addMember(user: User|string, role?: Role)
 
@@ -1640,11 +1697,13 @@ const organization = await client.getOrganization('Triply')
 console.log(await organization.addMember('john-doe'))
 ```
 
+
 #### Organization.addQuery(metadata: object)
 
 Adds a new TriplyDB query to the current organization.
 
 Inherited from [`Account.addQuery(metadata: object)`](#accountaddquerymetadata-object).
+
 
 #### Organization.addStory(name: string, metadata?: object)
 
@@ -1652,11 +1711,13 @@ Adds a new TriplyDB story with the given `name` to the current organization.
 
 Inherited from [`Account.addStory(name: string, metadata?: object)`](#accountaddstoryname-string-metadata-object).
 
+
 #### Organization.delete()
 
 Deletes this account.  This also deletes all datasets, stories and queries that belong to this organization.
 
 Inherited from [`Account.delete()`](#accountdelete).
+
 
 #### Organization.getDataset(name: string)
 
@@ -1664,11 +1725,13 @@ Returns the dataset with the given `name` that is published by this organization
 
 Inherited from [`Account.getDataset(name: string)`](#accountgetdatasetname-string).
 
+
 #### Organization.getDatasets()
 
 Returns an [async iterator](#async-iterator) over the accessible datasets that belong to this organization.
 
 Inherited from [`Account.getDatasets()`](#accountgetdatasets).
+
 
 #### Organization.getMembers()
 
@@ -1702,11 +1765,13 @@ for (const membership of await org.getMembers()) {
 
 Memberships of organization are TriplyDB [users](#user).
 
+
 #### Organization.getPinnedItems()
 
 Returns the list of datasets, stories and queries that are pinned for the current organization.
 
 Inherited from [`Account.getPinnedItems()`](#accountgetpinneditems).
+
 
 #### Organization.removeMember(user: User|string)
 
@@ -1737,11 +1802,13 @@ const user = await client.getUser('john-doe')
 await organization.removeMember(user)
 ```
 
+
 #### Organization.setAvatar(file: string)
 
 Sets a new image that characterized this organization.
 
 Inherited from [`Account.setAvatar(file: string)`](#accountsetavatarfile-string).
+
 
 #### Organization.update(metadata: object)
 
@@ -1749,7 +1816,9 @@ Updates the metadata for this account.
 
 Inherited from [`Account.update(metadata: object)`](#accountupdatemetadata-object).
 
-<!--
+
+
+<!-- TODO: This object type is no longer supported?
 ### Query
 
 The query object allows Quad Queries to be performed.  Quad Queries allow statements to be matched by setting a combination of a subject, predicate, object, and/or graph term.
@@ -1849,6 +1918,8 @@ dataset.query().graph('https://example.com/graph').exec()
 
 -->
 
+
+
 ### Service
 
 Service objects describe specific functionalities that can be started, stopped, and restarted over datasets in TriplyDB.
@@ -1872,6 +1943,7 @@ A service always has one of the following statuses:
   <dd>The service is currently being stopped.</dd>
 </dl>
 
+
 #### Service.delete()
 
 Deletes a service.
@@ -1884,6 +1956,7 @@ const dataset = await user.getDataset('my-dataset')
 const service = await dataset.addService('sparql', 'my-service')
 await service.delete()
 ```
+
 
 #### Service.getInfo()
 
@@ -1910,6 +1983,7 @@ const dataset = await account.getDataset('my-dataset')
 console.log(await dataset.getServices())
 ```
 
+
 #### Service.isUpToDate()
 
 Returns whether this service is synchronized with the dataset contents.
@@ -1933,7 +2007,23 @@ const service = await dataset.addService('sparql', 'my-service')
 console.log(await service.isUpToDate())
 ```
 
+
+<!--TODO: Document this method.
+#### Service.update()
+-->
+
+
+<!--TODO: Document this method.
+#### Service.waitUntilRunning()
+-->
+
+
+
 ### Story
+<!--
+TODO: Document what stories are and how to obtain them.
+--->
+
 
 #### Story.getInfo()
 
@@ -1952,6 +2042,8 @@ for (const element of (await story.getInfo()).content) {
   }
 }
 ```
+
+
 
 ### User
 
@@ -1981,11 +2073,13 @@ const user = account.asUser()
 
 Users cannot be created or deleted through the TriplyDB.js library.  See the [Triply Console documentation](/docs/triply-db-getting-started) for how to create and delete users through the web-based GUI.
 
+
 #### User.addDataset(name: string, metadata?: object)
 
 Adds a new TriplyDB dataset with the given `name` to the current account.
 
 Inherited from [`Account.addDataset(name: string, metadata?: object)`](#accountadddatasetname-string-metadata-object).
+
 
 #### User.addQuery(metadata: object)
 
@@ -1993,11 +2087,13 @@ Adds a new TriplyDB query to the current user.
 
 Inherited from [`Account.addQuery(metadata: object)`](#accountaddquerymetadata-object).
 
+
 #### User.addStory(name: string, metadata?: object)
 
 Adds a new TriplyDB story with the given `name` to the current user.
 
 Inherited from [`Account.addStory(name: string, metadata?: object)`](#accountaddstoryname-string-metadata-object).
+
 
 #### User.createOrganization(name: string, metadata?: object)
 
@@ -2031,17 +2127,20 @@ const user = await client.getUser('john-doe')
 await user.createOrganization(my-organization, {name: 'My Organization'}))
 ```
 
+
 #### User.getDataset(name: string)
 
 Returns the TriplyDB dataset with the given `name` that is published by this user.
 
 Inherited from [`Account.getDataset(name: string)`](#accountgetdatasetname-string).
 
+
 #### User.getDatasets()
 
 Returns an [async iterator](#async-iterator) over the accessible datasets for the current user.
 
 Inherited from [`Account.getDatasets()`](#accountgetdatasets).
+
 
 #### User.getInfo()
 
@@ -2089,6 +2188,7 @@ const user = await client.getUser()
 console.log(await user.getInfo())
 ```
 
+
 #### User.getOrganizations()
 
 Returns an [async iterator](#async-iterator) over the organizations that this user is a member of.
@@ -2112,11 +2212,13 @@ for await (const organization of await user.getOrganizations()) {
 
 The [async iterator](#async-iterator) contains organization objects.  See the section about the [`Organization`](#organization) class for methods that can be used on such objects.
 
+
 #### User.getPinnedItems()
 
 Returns the list of datasets, stories and queries that are pinned for the current user.
 
 Inherited from [`Account.getPinnedItems()`](#accountgetpinneditems).
+
 
 #### User.setAvatar(file: string)
 
@@ -2124,11 +2226,14 @@ Sets a new image that characterized this user.
 
 Inherited from [`Account.setAvatar(file: string)`](#accountsetavatarfile-string).
 
+
 #### User.update(metadata: object)
 
 Updates the metadata for this user.
 
 Inherited from [`Account.update(metadata: object)`](#accountupdatemetadata-object).
+
+
 
 ## FAQ
 
