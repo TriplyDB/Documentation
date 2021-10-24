@@ -804,14 +804,6 @@ const user = await client.getUser()
 
 This method returns an organization object.  See section [`Organization`](#organization) for an overview of the methods that can be called on such objects.
 
-#### Account.delete()
-
-Deletes this account.  This also deletes all datasets, stories and queries that belong to this account.
-
-```ts
-const account = await client.getAccount('Neo4j')
-await account.delete()
-```
 
 #### Account.ensureDataset(name: string, metadata?: object)
 
@@ -1721,7 +1713,14 @@ Inherited from [`Account.addStory(name: string, metadata?: object)`](#accountadd
 
 Deletes this account.  This also deletes all datasets, stories and queries that belong to this organization.
 
-Inherited from [`Account.delete()`](#accountdelete).
+##### Examples
+
+The following code example deletes the specified organization:
+
+```ts
+const organization = await client.getOrganization('Neo4j')
+await organization.delete()
+```
 
 
 #### Organization.ensureDataset(name: string, metadata?: object)
