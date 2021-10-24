@@ -1376,9 +1376,22 @@ console.log(await dataset.getServices().toArray())
 ```
 -->
 
-#### Dataset.importFromDataset(from: Dataset, graphs: mapping)
+#### Dataset.importFromDataset(from: Dataset, graphs: object, overwrite?: boolean)
 
-`graphs:mapping` is a dictionary object taking existing graph names (graphs) in the `from` dataset, and mapping them into a new named graph in the dataset into which they are imported.
+Imports one or more named graphs from a different dataset into this dataset.
+
+Data reuse is an important principle in linked data.  This functionality makes it very easy to pull in vocabularies and datasets from other places.
+
+Changes in the `from` dataset are not automatically reflected in this dataset.  If you want to synchronize with changes made in the imported-from dataset, the graphs must be explicitly imported.  This protects this dataset against unanticipated changes in the imported-from dataset, while still being able to stay in sync with the imported-from dataset if this is explicitly requested.
+
+##### Arguments
+
+- Argument `from` is the dataset object from which one or more graph are imported over to this dataset.
+- Argument `graphs` is an object with keys and values that implements a mapping from existing graph names (keys) to newly created graph names (values).  Each keys must be an existing graph name in the `from` dataset.  Each value must is the corresponding graph name in this dataset.
+<!-- https://issues.triply.cc/issues/5783
+If this argument is not specified, then graph names in the `from` dataset are identical to graph names in this dataset.
+-->
+- Argument `overwrite` optionally determines whether existing graph names in this dataset are allowed to be silently overwritten.  If this argument is not specified, then `false` is used as the default value.
 
 ##### Examples
 
