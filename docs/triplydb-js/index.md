@@ -1101,6 +1101,47 @@ TODO: Document the keys supported in `metadata`.
 
 
 
+<!-- TODO: Document what an asset is and how it can be obtained.
+### Asset
+-->
+
+
+<!-- TOOD: Document this method.
+#### Asset.addVersion(path: File|string)
+-->
+
+
+<!-- TOOD: Document this method.
+#### Asset.delete()
+-->
+
+
+<!-- TOOD: Document this method.
+#### Asset.getInfo(version?: number)
+-->
+
+
+<!-- TOOD: Document this method.
+#### Asset.getVersionInfo(version: number)
+-->
+
+
+<!-- TOOD: Document this method.
+#### Asset.selectVersion(version: number)
+-->
+
+
+<!-- TOOD: Document this method.
+#### Asset.toFile(path: string, version?: number)
+-->
+
+
+<!-- TOOD: Document this method.
+#### Asset.toStream(version?: number)
+-->
+
+
+
 ### Dataset
 
 The [`Dataset`](#dataset) class represents a TriplyDB dataset.
@@ -1248,6 +1289,11 @@ await dataset.deleteGraph('https://example.org/some-graph')
 ```
 
 
+<!-- TODO: Document this method.
+#### Dataset.describe(iri: string|NamedNode)
+-->
+
+
 #### Dataset.getAsset(name: string, version?: number)
 
 Returns the asset with the given `name` for this dataset.
@@ -1310,6 +1356,11 @@ Returns the graph with the given `name` that belongs to this dataset.
 
 Graph names are IRIs.
 
+<!--
+TODO: What is a graph?  Is it a string or an object?  What can one do with a graph?
+      Why is the graph differen from the `name` argument?
+-->
+
 ##### Examples
 
 The following snippet returns the graph about cats from the dataset about animals:
@@ -1334,6 +1385,7 @@ const account = await client.getAccount()
 const dataset = await account.getDataset('my-dataset')
 console.log(await dataset.getGraphs().toArray())
 ```
+
 
 #### Dataset.getInfo()
 
@@ -1373,6 +1425,7 @@ for await (const prefix of dataset.getPrefixes()) {
 }
 ```
 -->
+
 
 #### Dataset.getService(name: string)
 
@@ -1452,7 +1505,26 @@ for await (const statement: dbpedia.getStatements({subject: 'http://dbpedia.org/
 ```
 
 
+<!-- TOOD: Document this method.
+#### Dataset.graphsToFile
+-->
+
+
+<!-- TOOD: Document this method.
+#### Dataset.graphsToStore
+-->
+
+
+<!-- TOOD: Document this method.
+#### Dataset.graphsToStream
+-->
+
+
 #### Dataset.importFromDataset(from: Dataset, graphs: object, overwrite?: boolean)
+<!--
+TODO: This may document the deprecated version of this method?
+      Please check and update this.
+-->
 
 Imports one or more named graphs from a different dataset into this dataset.
 
@@ -1464,7 +1536,7 @@ Changes in the `from` dataset are not automatically reflected in this dataset.  
 
 - Argument `from` is the dataset object from which one or more graph are imported over to this dataset.
 - Argument `graphs` is an object with keys and values that implements a mapping from existing graph names (keys) to newly created graph names (values).  Each keys must be an existing graph name in the `from` dataset.  Each value must is the corresponding graph name in this dataset.
-<!-- https://issues.triply.cc/issues/5783
+<!-- <https://issues.triply.cc/issues/5783>
 If this argument is not specified, then graph names in the `from` dataset are identical to graph names in this dataset.
 -->
 - Argument `overwrite` optionally determines whether existing graph names in this dataset are allowed to be silently overwritten.  If this argument is not specified, then `false` is used as the default value.
@@ -1501,6 +1573,11 @@ const dataset = await account.getDataset(iris)
 await dataset.importFromFiles('test.nt')
 await dataset.importFromFiles(['file.nq','file.tar.gz'])
 ```
+
+
+<!-- TODO: Add documentation.
+#### Dataset.importFromStore(store: n3.Store)
+-->
 
 
 #### Dataset.importFromUrls(urls: list(string))
@@ -1668,6 +1745,41 @@ const dataset = await account.getDataset('my-dataset')
 await dataset.uploadAsset('my-source-data', 'source.csv.gz')
 await dataset.uploadAsset('my-documentation', 'documentation.pdf')
 ```
+
+
+<!-- TODO: Document what a graph is and how it is obtained.
+### Graph
+-->
+
+
+<!-- TODO: Document this method.
+#### Graph.delete()
+-->
+
+
+<!-- TODO: Document this method.
+#### Graph.getInfo()
+-->
+
+
+<!-- TODO: Document this method.
+#### Graph.rename(name: string)
+-->
+
+
+<!-- TODO: Document this method.
+#### Graph.toFile(path: string, options?: object)
+-->
+
+
+<!-- TODO: Document this method.
+#### Graph.toStore()
+-->
+
+
+<!-- TODO: Document this method.
+#### Graph.toStream(type: 'compressed'|'rdf-js')
+-->
 
 
 
@@ -1978,6 +2090,12 @@ const dataset = await user.getDataset('my-dataset')
 const service = await dataset.addService('sparql', 'my-service')
 await service.delete()
 ```
+
+<!-- <https://issues.triply.cc/issues/5783>
+#### See also
+
+If you only want to temporarily disable this service, use 'stop' instead.
+-->
 
 
 #### Service.getInfo()
