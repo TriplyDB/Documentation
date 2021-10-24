@@ -144,11 +144,11 @@ You can extend this script with TriplyDB.js functions that read/write (meta)data
 
 The previous two sections have resulted in a minimal TriplyDB.js script that is able to interact with a TriplyDB instance.
 
-You can extend this script with other functions that are support by TriplyDB.js, and by TypeScript that you add for your custom application.  See [the next section](#reference) for the full reference of classes and methods supported by TriplyDB.js.
+You can extend this script with other functions that are supported by TriplyDB.js, and by TypeScript that you add for your custom application.  See [the next section](#reference) for the full reference of classes and methods supported by TriplyDB.js.
 
 #### Editor support
 
-See [this page](../generics/editor) for information about how to configure a text editor that supports you to editing TriplyDB.js scripts.
+See [this page](../generics/editor) for information about how to configure a text editor that supports editing TriplyDB.js scripts.
 
 #### Improved error handling
 
@@ -351,7 +351,7 @@ can be used with account objects.
 
 Returns information about the TriplyDB instance that the [`Client`](#client) is connected to.
 
-Informations is returned in a dictionary object.  Individual keys can be accessed for specific information values.
+Information is returned in a dictionary object.  Individual keys can be accessed for specific information values.
 
 ##### Examples
 
@@ -464,7 +464,7 @@ The optional `metadata` argument is used to specify the metadata for the dataset
 
 Creating a new dataset only succeeds if an API token is configured that provides write access to the current account.
 
-The default access level for a newly created dataset is `private`.  If you want to publish dataset with a different access level, you must specify the `accessLevel` key in the `metadata` argument.
+The default access level for a newly created dataset is `private`.  If you want to publish a dataset with a different access level, you must specify the `accessLevel` key in the `metadata` argument.
 
 ##### Arguments
 
@@ -640,7 +640,7 @@ Instances of `Variable` are objects that can have the following keys:
   <dd>The datatype IRI for the literal variable.</dd>
   <dt><code>language: string</code> (optional if <code>termType='Literal'</code></dt>
   <dd>The language tag for the literal variable.  Setting this implies that the dataset IRI is <code>rdf:langString</code>.</dt>
-  <dt><code>defaultValue: string</cpde> (optional)</dt>
+  <dt><code>defaultValue: string</code> (optional)</dt>
   <dd>The default string value for the </dd>
   <dt><code>name: string</code> (required)</dt>
   <dd>A SPARQL variable name.  The variable name must appear in the query string.  The question mark (<code>?</code>) or dollar sign (<code>$</code>) is not included.</dd>
@@ -687,7 +687,7 @@ Adds a new data story.
   <dt><code>content: StoryElementUpdate[]</code> (optional)</dt>
   <dd>A list if story elements.</dd>
   <dt><code>displayName: string</code> (optional)</dt>
-  <dd>The human-readalble name of the data story.  This name may include spaces and other characters that are not allowed in the URL-friendly name.</dd>
+  <dd>The human-readable name of the data story.  This name may include spaces and other characters that are not allowed in the URL-friendly name.</dd>
   <dt><code>name: string</code> (required)</dt>
   <dd>The URL-friendly name of the data story.  The name must only contain alphanumeric characters and hyphens (`[A-Za-z0-9\-]`).</dd>
 </dl>
@@ -818,7 +818,7 @@ The iterator only includes datasets that are accessible for the current connecti
 
 - If no API token is configured, the iterator will include all and only public datasets belonging to this account.
 
-- If an API token is configured, the iterator will include all public and internal datasets belonging to this account, and will include all private datasets beloning to this account if the API token gives read access to the account.
+- If an API token is configured, the iterator will include all public and internal datasets belonging to this account, and will include all private datasets belonging to this account if the API token gives read access to the account.
 
 ##### Examples
 
@@ -842,7 +842,7 @@ The iterator only includes datasets that are accessible for the current connecti
 
 Returns information about this account.
 
-Informations is returned in a dictionary object.  Individual keys can be accessed for specific information values.
+Information is returned in a dictionary object.  Individual keys can be accessed for specific information values.
 
 <!--
 The information object for accounts includes the following keys:
@@ -957,7 +957,7 @@ See section [`Query`](#query) for an overview of the methods for query objects.
 
 #### Account.getQueries()
 
-Returns an [async iterator](#async-iterator) wover the accessible queries that belong to the account.
+Returns an [async iterator](#async-iterator) over the accessible queries that belong to the account.
 
 ##### Access restrictions
 
@@ -965,7 +965,7 @@ The iterator only includes datasets that are accessible for the current connecti
 
 - If no API token is configured, the iterator will include all and only public queries belonging to this account.
 
-- If an API token is configured, the iterator will include all public and internal queries that belonging to this account, and will include all private queries that belong to this account if the API token gives read access to the account.
+- If an API token is configured, the iterator will include all public and internal queries that belong to this account, and will include all private queries that belong to this account if the API token gives read access to the account.
 
 ##### Examples
 
@@ -1114,7 +1114,7 @@ The resources are specified by the [rest parameter](https://developer.mozilla.or
   <dt><code>'graphs'</code></dt>
   <dd>Removes all graphs in the dataset.</dd>
   <dt><code>'services'</code></dt>
-  <dd>Removes all services in the datset.</dd>
+  <dd>Removes all services in the dataset.</dd>
 </dl>
 
 ##### Examples
@@ -1168,7 +1168,7 @@ Sometimes it is more useful to only delete the graphs that belong to a dataset, 
 
 #### Dataset.deleteGraph(name: string)
 
-Deletes the graph which the given `name` from this dataset.
+Deletes the graph with the given `name` from this dataset.
 
 Graph names are IRIs.
 
@@ -1186,7 +1186,7 @@ await dataset.deleteGraph('https://example.org/some-graph')
 
 Returns the asset with the given `name` for this dataset.
 
-Optionally allows the version number (`version`) of the asset to be specified.  If the version number is abscent, the latest version of the assert with the given `name` is returned.
+Optionally allows the version number (`version`) of the asset to be specified.  If the version number is absent, the latest version of the assert with the given `name` is returned.
 
 ##### Examples
 
@@ -1270,7 +1270,7 @@ console.log(await dataset.getGraphs().toArray())
 
 Returns information about this dataset.
 
-Informations is returned in a dictionary object.  Individual keys can be accessed for specific information values.
+Information is returned in a dictionary object.  Individual keys can be accessed for specific information values.
 
 ##### Examples
 
@@ -1381,7 +1381,7 @@ await dataset.importFromFiles(['file.nq','file.tar.gz'])
 
 Imports one or more URLs into this dataset.
 
-The URLs mist provide access to RDF data.
+The URLs must provide access to RDF data.
 
 <!--
 ##### Supported URLs
@@ -1568,7 +1568,7 @@ Inherited from [`Account.addDataset(name: string, metadata?: object)`](#accounta
 
 #### Organization.addMember(user: User|string, role: Role)
 
-Adds a member to the given `Organization`, with role of either member or owner.
+Adds a member to the given `Organization`, with the given `role` of either member or owner.
 
 ##### Arguments
 
@@ -1620,7 +1620,7 @@ Inherited from [`Account.getDataset(name: string)`](#accountgetdatasetname-strin
 
 Returns an [async iterator](#async-iterator) over the accessible datasets that belong to this organization.
 
-Inherired from [`Account.getDatasets()`](#accountgetdatasets).
+Inherited from [`Account.getDatasets()`](#accountgetdatasets).
 
 #### Organization.getMembers()
 
@@ -1844,7 +1844,7 @@ await service.delete()
 
 Returns information about this service.
 
-Informations is returned in a dictionary object.  Individual keys can be accessed for specific information values.
+Information is returned in a dictionary object.  Individual keys can be accessed for specific information values.
 
 ##### Examples
 
@@ -1873,9 +1873,9 @@ Returns whether this service is synchronized with the dataset contents.
 
 Because services must be explicitly synchronized in TriplyDB, it is possible to have services that expose an older version of the dataset and services that expose a newer version of the dataset running next to one another.  There are two very common use cases for this:
 
-- The production version of an application or website runs on an older service. The data does not change, so the application keeps working.  The acceptance version of the same application or website runs on a newer service. Once the acceptance version is finished, it becomes the production version and a new services for the new acceptance version is created, etc.
+- The production version of an application or website runs on an older service. The data does not change, so the application keeps working.  The acceptance version of the same application or website runs on a newer service. Once the acceptance version is finished, it becomes the production version and a new service for the new acceptance version is created, etc.
 
-- An old service is used by legacy software. New users are using the newer endpoint over the current version of the data, but a limited number of older users wants to use the legacy version.
+- An old service is used by legacy software. New users are using the newer endpoint over the current version of the data, but a limited number of older users want to use the legacy version.
 
 ##### Examples
 
@@ -1894,7 +1894,7 @@ console.log(await service.isUpToDate())
 
 Returns information about this data story.
 
-Informations is returned in a dictionary object.  Individual keys can be accessed for specific information values.
+Information is returned in a dictionary object.  Individual keys can be accessed for specific information values.
 
 ##### Examples
 
@@ -1979,7 +1979,7 @@ This method requires an API token with write access for this user.
 
 ##### Examples
 
-The following snippet creates an new organization for which the John Doe will be the owner.  Notice that both a required URL-friendly name (`'my-organization'`) and an optional display name (`'My Organization'`) are specified.
+The following snippet creates a new organization for which John Doe will be the owner.  Notice that both a required URL-friendly name (`'my-organization'`) and an optional display name (`'My Organization'`) are specified.
 
 ```typescript
 const user = await client.getUser('john-doe')
@@ -2002,7 +2002,7 @@ Inherited from [`Account.getDatasets()`](#accountgetdatasets).
 
 Returns information about this user.
 
-Informations is returned in a dictionary object.  Individual keys can be accessed for specific information values.
+Information is returned in a dictionary object.  Individual keys can be accessed for specific information values.
 
 <!--
 The information object for users includes the following keys:
@@ -2204,7 +2204,7 @@ To reliably retrieve a large number of results as the output of a `construct` or
       await results.toFile('my-file.nt')
       ```
 
-   5c. Load all results into memory.  Note that this is almost never used.  If you want to process result then option 5a is better; if you want to persist results then option 5b is better.
+   5c. Load all results into memory.  Note that this is almost never used.  If you want to process results, then option 5a is better; if you want to persist results, then option 5b is better.
 
       ```typescript
       // Loading results for a SPARQL construct or SPARQL select query into memory.
