@@ -1889,7 +1889,6 @@ Returns an [async iterator](#async-iterator) over the accessible datasets that b
 
 Inherited from [`Account.getDatasets()`](#accountgetdatasets).
 
-
 #### Organization.getMembers()
 
 Returns the list of memberships for the given organization.
