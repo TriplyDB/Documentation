@@ -307,9 +307,26 @@ app.use(
 )
 ```
 
-#### File compression for plain text files
+#### Iterate over *all* Assets
 
-It is best practice to compress static files that are plain text files. Compression is applied prior to uploading such files are [TriplyDB Assets](#).
+While it is possible to explicitly specify one or more source file that are uploaded as [TriplyDB Assets](#assets), RATT also allows *all* Assets to be used in an easy way:
+
+```ts
+const app = new Ratt({
+  sources: {
+    one: Ratt.Source.TriplyDb.asset(dataset),
+    two: Ratt.Source.TriplyDb.asset(account, dataset),
+  }
+})
+```
+
+Source `one` provides an iterator over all Assets in the `dataset` that is published under the user account associated with the current API Token.
+
+Source `two` provides an iterator over all Assets in the `dataset` that is published under the specified `account`.
+
+<h4 id='compression'>File compression for plain text files</h4>
+
+It is a best practice to compress static data files if they are plain text files.  Compression should be applied prior to uploading such files as [TriplyDB Assets](#assets).
 
 The following command shows how a local CSV file can be compressed using GNU Zip (`.gz`):
 
