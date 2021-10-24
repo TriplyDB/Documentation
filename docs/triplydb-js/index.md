@@ -815,7 +815,7 @@ await account.delete()
 
 #### Account.ensureDataset(name: string, metadata?: object)
 
-Ensures that there is a dataset with the given `name` and with the specified `metadata`.
+Ensures the existence of a dataset with the given `name` and with the specified `metadata`.
 
 Calling this method ensures that the necessary changes (if any) are made in the connected-to TriplyDB instance that result in an end state in which a dataset with the given `name` and `metadata` exists.
 
@@ -1724,6 +1724,13 @@ Deletes this account.  This also deletes all datasets, stories and queries that 
 Inherited from [`Account.delete()`](#accountdelete).
 
 
+#### Organization.ensureDataset(name: string, metadata?: object)
+
+Ensures the existence of a dataset with the given `name` and with the specified `metadata`.
+
+Inherited from [`Account.ensureDataset(name: string, metadata?: object)`](#accountensuredatasetname-string-metadata-object).
+
+
 #### Organization.getDataset(name: string)
 
 Returns the dataset with the given `name` that is published by this organization.
@@ -2131,6 +2138,13 @@ The following snippet creates a new organization for which John Doe will be the 
 const user = await client.getUser('john-doe')
 await user.createOrganization(my-organization, {name: 'My Organization'}))
 ```
+
+
+#### User.ensureDataset(name: string, metadata?: object)
+
+Ensures the existence of a dataset with the given `name` and with the specified `metadata`.
+
+Inherited from [`Account.ensureDataset(name: string, metadata?: object)`](#accountensuredatasetname-string-metadata-object).
 
 
 #### User.getDataset(name: string)
