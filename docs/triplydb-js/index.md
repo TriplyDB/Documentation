@@ -1384,13 +1384,18 @@ for await (const prefix of dataset.getPrefixes()) {
 
 #### Dataset.getService(name: string)
 
-<!--
-TODO
+Returns the serivce with the given `name` for this dataset.
 
 ##### Examples
 
-TODO
--->
+The following snippet retrieves the acceptance service for the product catalog of an imaginary company:
+
+```ts
+const organization = client.getOrganization('some-company')
+const dataset = organization.getDataset('product-catalog')
+const service = dataset.getService('acceptance')
+```
+
 
 #### Dataset.getServices()
 
