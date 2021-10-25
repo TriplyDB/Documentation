@@ -763,7 +763,7 @@ Instances of `Variable` are objects that can have the following keys:
   <dd>The datatype IRI for the literal variable.</dd>
   <dt><code>language: string</code> (optional if <code>termType='Literal'</code></dt>
   <dd>The language tag for the literal variable.  Setting this implies that the dataset IRI is <code>rdf:langString</code>.</dt>
-  <dt><code>defaultValue: string</cpde> (optional)</dt>
+  <dt><code>defaultValue: string</code> (optional)</dt>
   <dd>The default string value for the </dd>
   <dt><code>name: string</code> (required)</dt>
   <dd>A SPARQL variable name.  The variable name must appear in the query string.  The question mark (<code>?</code>) or dollar sign (<code>$</code>) is not included.</dd>
