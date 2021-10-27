@@ -79,7 +79,7 @@ Upper-case letter words must be replaced by the following values:
   organization.
 - `DATASET` :: The name of a specific dataset.
 
-Here is an example of an URI path that points to the Triply API for
+Here is an example of a URI path that points to the Triply API for
 the Pokémon dataset:
 
 ```none
@@ -142,7 +142,7 @@ curl -G \
 ## Services
 
 Some API requests require the availability of a specific service over
-the dataset. These requests are directed towards an URI path of the
+the dataset. These requests are directed towards a URI path of the
 following form:
 
 ```none
@@ -157,7 +157,7 @@ Upper-case letter words must be replaced by the following values:
 - See the previous section for [Datasets](#Datasets) to learn the meaning of
   `INSTANCE`, `ACCOUNT`, and `DATASET`.
 
-Here is an example of an URI path that points to an SPARQL endpoint
+Here is an example of a URI path that points to a SPARQL endpoint
 over the Pokémon dataset:
 
 ```none
