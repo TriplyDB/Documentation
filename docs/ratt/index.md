@@ -102,14 +102,14 @@ return app
 }
 ```
 
-   The meaning of this code snippet is as follows:
+The meaning of this code snippet is as follows:
 
-   - Lines 1-2 load the RATT library.
-   - Line 4 creates the main function that will run the pipeline.
-   - Lines 5-7 specifies the RATT configuration for this pipeline.  Because this is a simple pipeline we only need to specify a standard graph name.  Because we will not store the graph name in this pipeline, we can specify an empty standard graph name.
-   - Lines 8-14 specify the steps that are performed in the pipeline.  These steps are performed in sequence.
-       - Lines 9-12 create one linked data statement (“The class of all classes is itself a class.”).
-       - Line 13 writes the statement to a local file.
+- Lines 1-2 load the RATT library.
+- Line 4 creates the main function that will run the pipeline.
+- Lines 5-7 specifies the RATT configuration for this pipeline.  Because this is a simple pipeline we only need to specify a standard graph name.  Because we will not store the graph name in this pipeline, we can specify an empty standard graph name.
+- Lines 8-14 specify the steps that are performed in the pipeline.  These steps are performed in sequence.
+  - Lines 9-12 create one linked data statement (“The class of all classes is itself a class.”).
+  - Line 13 writes the statement to a local file.
 
 7. Transpile the TypeScript file (`main.ts`) into a JavaScript file (`main.js`):
 
@@ -516,7 +516,7 @@ app.use(
 
 In linked data it is common to reuse existing vocabularies and datasets.  Such external vocabularies and datasets use their own IRIs, so it is a good idea to declare prefixes for them whenever they are used in RATT.
 
-The following example adds a prefix declaration for the [Friend of a Friend](https://triplydb.com/w3c/foaf) (FOAF) and [Resource Description Framework](https://triplydb.com/w3c/rdf) vocabularies to the `prefix` object:
+The following example adds a prefix declaration for the [Friend of a Friend](https://triplydb.com/none/foaf) (FOAF) and [Resource Description Framework](https://triplydb.com/w3c/rdf) vocabularies to the `prefix` object:
 
 ```ts
 const prefix = {
@@ -1491,7 +1491,7 @@ const dataset = 'example'
 
 const prefix = {
   graph: Ratt.prefixer('https://triplydb.com/'+account+'/'+dataset+'/graph'),
-}
+}https://issues.triply.cc/issues/5603
 const graph = {
   model: prefix.graph('model'),
 }
