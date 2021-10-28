@@ -25,7 +25,7 @@ This documentation assumes that the reader has the following prior knowledge:
 - A basic understanding of TypeScript/JavaScript.
 - A basic familiarity with linked data and the TriplyDB product.
 
-
+ 
 
 ## Getting started
 
@@ -76,7 +76,7 @@ In this section we set up a RATT pipeline that creates one single triple.  This 
 
 6. Create a file called `main.ts` in a text editor, and copy/paste the following code into that file:
 
-   ```ts
+```ts
   // line 1-2 load the RATT library
  import { Ratt } from '@triply/ratt' 
  import mw from '@triply/ratt/lib/middlewares'
@@ -100,7 +100,7 @@ mw.toRdf(Ratt.Destination.file('example.ttl')),
    )
 return app
 }
-  ```
+```
 
    The meaning of this code snippet is as follows:
 
