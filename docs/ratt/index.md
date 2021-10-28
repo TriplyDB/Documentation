@@ -77,23 +77,30 @@ In this section we set up a RATT pipeline that creates one single triple.  This 
 6. Create a file called `main.ts` in a text editor, and copy/paste the following code into that file:
 
    ```ts
-   import { Ratt } from '@triply/ratt'
-   import mw from '@triply/ratt/lib/middlewares'
+  // line 1-2 load the RATT library
+ import { Ratt } from '@triply/ratt' 
+ import mw from '@triply/ratt/lib/middlewares'
 
-   export default async function (): Promise<Ratt> {
-     const app = new Ratt({
-       defaultGraph: ''
-     })
-     app.use(
-       mw.addQuad(
-         app.prefix.rdfs('Class'),
-         app.prefix.rdf('type'),
-         app.prefix.rdfs('Class')),
-       mw.toRdf(Ratt.Destination.file('example.ttl')),
-     )
-     return app
-   }
-   ```
+ export default async function (): Promise<Ratt> {
+ // Line 4 creates the main function that will run the pipeline.
+   const app = new Ratt({
+// Lines 5-7 specifies the RATT configuration for this pipeline.  Because this is a simple pipeline we only need to specify a standard graph name.  Because we will not store the graph name in this pipeline, we can specify an empty standard graph name.
+     defaultGraph: ''
+   })
+   app.use(
+     mw.addQuad(
+// Lines 8-14 specify the steps that are performed in the pipeline.  These steps are performed in sequence.
+// Lines 9-12 create one linked data statement (“The class of all classes is itself a class.”).
+// Line 13 writes the statement to a local file.
+
+  app.prefix.rdfs('Class'),
+  app.prefix.rdf('type'),
+  app.prefix.rdfs('Class')),
+mw.toRdf(Ratt.Destination.file('example.ttl')),
+   )
+return app
+}
+  ```
 
    The meaning of this code snippet is as follows:
 
@@ -131,11 +138,13 @@ In the [previous section](#setting-up-a-minimal-pipeline) we set up a minimal pi
 
 2. Once the API Token is configured, open file `main.ts` in a text editor and add the following content:
 
-   ```ts
-   import { CliContext, Ratt } from '@triply/ratt'
-   import mw from '@triply/ratt/lib/middlewares'
+ ```ts
+ // Line 1 also imports `CliContext` from the RATT library.
+ import { CliContext, Ratt } from '@triply/ratt'
+ import mw from '@triply/ratt/lib/middlewares'
 
-   export default async function (cliContext: CliContext): Promise<Ratt> {
+ export default async function (cliContext: CliContext): Promise<Ratt> {
+ // Line 4 includes argument `cliContext: CliContext` and line 6 includes `cliContext`, so that the API Token can be read from the Command-Line Interface (CLI).
      const app = new Ratt({
        cliContext,
        defaultGraph: '',
@@ -145,6 +154,7 @@ In the [previous section](#setting-up-a-minimal-pipeline) we set up a minimal pi
          app.prefix.rdfs('Class'),
          app.prefix.rdf('type'),
          app.prefix.rdfs('Class')),
+ // Line 14 publishes the data that is generated in a TriplyDB dataset called `'example'`.  This dataset is added to the account that is associated with the configured API Token.
        mw.toRdf(Ratt.Destination.TriplyDb.rdf('example')),
      )
      return app
