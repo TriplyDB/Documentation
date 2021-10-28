@@ -596,10 +596,10 @@ app.use(
 
 Source data does not always have the correct form for direct use in RDF triples.  For example:
 
-- A simple value with a separator may needs to be split into multiple values (e.g., from `'apple, orange'` to `'apple'` and `'orange'`).
-- Multiple values may need to be combined into one value (e.g., street name and house number may be concatenated into an address).
 - Values may need to be mapped onto a prepared list of IRIs or literals (e.g. from country names to country-denoting IRIs).
 - Values may need to be translated into standards-compliant formats (e.g., from country name to ISO 3166 country codes).
+- Multiple values may need to be combined into one value (e.g., street name and house number may be concatenated into an address).
+- A simple value with a separator may need to be split into multiple values (e.g., from `'apple, orange'` to `'apple'` and `'orange'`).
 - Values may need to be cleaned because they are dirty in the source (e.g., from `'001 '` to `1`).
 
 When we transform values in a RATT record, we must think about the following two factors:
@@ -629,7 +629,7 @@ The following sections explain how these 4 transformation functions work.
 
 <h3 id="change">Change an existing entry in-place (<code>change</code>)</h3>
 
-The `change` function allows the value of existing entry to be modified in-place.  This is typically done to clean a value or to map string values into IRIs.
+The `change` function allows the value of an existing entry to be modified in-place.  This is typically done to clean a value or to map string values into IRIs.
 
 #### Function signature
 
@@ -649,7 +649,7 @@ The function can be configured in the following ways:
 - `VALUE_TYPE` must be one of the following type-denoting strings:
   - `'array'` an array whose elements have type `any`.
   - `'boolean'` a Boolean value (`true` or `false`).
-  - `'iri'` an universal idetnifier / IRI term.
+  - `'iri'` a universal identifier / IRI term.
   - `'literal'` an RDF literal term.
   - `'number'` a natural number or floating-point number.
   - `'string'` a sequence of characters.
@@ -658,7 +658,7 @@ The function can be configured in the following ways:
 
 #### Error conditions
 
-This function emits an error is the specified key (`KEY_NAME`) does not exist in the RATT record.  Use [`copy`](#copy) if you want to create a new entry based on an existing one.
+This function emits an error if the specified key (`KEY_NAME`) does not exist in the RATT record.  Use [`copy`](#copy) if you want to create a new entry based on an existing one.
 
 #### Use cases
 
@@ -666,7 +666,7 @@ This section provides common use cases where the `change` function is applied.  
 
 ##### Add padding
 
-Sometimes a target value must have a specific length.  If the source value does not have that length, it may be padded with leaving characters to fit the target length.
+Sometimes a target value must have a specific length.  If the source value does not have that length, it may be padded with leading characters to fit the target length.
 
 A concrete linked data example is years before the year 1000.  Such years are often represented by fewer digits, but the [XML Schema Datatypes standard](https://www.w3.org/TR/xmlschema11-2/#rf-lexicalMappings-datetime) requires that all years are represented with at least 4 digits.
 
@@ -677,7 +677,7 @@ Suppose we have the following table of input data:
 | 00000001 |  612 |
 | 00000002 | 1702 |
 
-We can ensure that all years with have at least 4 digits by calling the following function:
+We can ensure that all years will have at least 4 digits by calling the following function:
 
 ```ts
 mw.change({
@@ -718,7 +718,7 @@ mw.change({
   change: value => value as number / 1}),
 ```
 
-Notice that the type must be set to `'unknown'` because a string is not allowed to be case to a number in TypeScript (because not every string *can* be cast to a number).
+Notice that the type must be set to `'unknown'` because a string is not allowed to be cast to a number in TypeScript (because not every string *can* be cast to a number).
 
 After the `change` has been applied, the RATT record looks like this:
 
@@ -748,7 +748,7 @@ This approach is used when:
 
 Because the translation from source values to linked data terms is known ahead of time, a translation table can be constructed.
 
-We use the following example, where Dutch names of countries are translated to linked data IRIs:
+We use the following example, where English names of countries are translated to linked data IRIs:
 
 | Source value | Linked data term |
 | ------------ | ---------------- |
@@ -783,7 +783,7 @@ Sometimes a value in the source data contains a concatenation of multiple smalle
 
 ###### Source format considerations
 
-In tabular source data the concatenation of multiple values is not uncommon.  Depending on how you look at it, such concatenations may be considered a data quality issue.  Tree-shaped source formats often do allow multiple values to be stored natively.  For example JSON and XML.  If your tabular source data often contains multiple values in one cell, consider changing the source format to more reliably represent the encoded information.
+In tabular source data the concatenation of multiple values is not uncommon.  Depending on how you look at it, such concatenations may be considered a data quality issue.  Tree-shaped source formats often do allow multiple values to be stored natively, for example JSON and XML.  If your tabular source data often contains multiple values in one cell, consider changing the source format to more reliably represent the encoded information.
 
 ###### When to use?
 
@@ -813,7 +813,7 @@ The following values must be added for a concrete application:
 - `SEPARATOR` must be the string that separates the multiple values (e.g., `,` or `;` are commonly used for this).
 
 Notice the following details about this implementation:
-- The `map` function is called immediately after splitting, to ensure that such whitespace is remove from the newly split values.
+- The `map` function is called immediately after splitting, to ensure that surrounding whitespace is removed from the newly split values.
 - The `filter` function is called to remove empty strings from the results.  Such empty value are almost never stored in linked data.
 
 Notice that the functional style of programming allows us to perform multiple tasks concisely using maps and filters.
@@ -855,7 +855,7 @@ A *variant* is a value that does not always have the same type.  Variants appear
 
 If variants are very common then it may be a good idea to look for better source data.  But if that is not feasible, the `change` value can be used to change such variants into uniform values.
 
-Notice that this use case only works for values that have a known set of potential types.  If the source data contains values whose types can vary arbitrarily, then there is no point is using the data.  This means that the source data inherently has no structure, and that traditional transformations cannot be applied.
+Notice that this use case only works for values that have a known set of potential types.  If the source data contains values whose types can vary arbitrarily, then there is no point in using the data.  This means that the source data inherently has no structure, and that traditional transformations cannot be applied.
 
 ##### When to use?
 
