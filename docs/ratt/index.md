@@ -77,7 +77,7 @@ In this section we set up a RATT pipeline that creates one single triple.  This 
 6. Create a file called `main.ts` in a text editor, and copy/paste the following code into that file:
 
 ```ts
-  // line 1-2 load the RATT library
+  // lines 1-2 load the RATT library
  import { Ratt } from '@triply/ratt' 
  import mw from '@triply/ratt/lib/middlewares'
 
@@ -104,10 +104,10 @@ return app
 
    The meaning of this code snippet is as follows:
 
-     - Lines 1-2 load the RATT library.
-     - Line 4 creates the main function that will run the pipeline.
-     - Lines 5-7 specifies the RATT configuration for this pipeline.  Because this is a simple pipeline we only need to specify a standard graph name.  Because we will not store the graph name in this pipeline, we can specify an empty standard graph name.
-     - Lines 8-14 specify the steps that are performed in the pipeline.  These steps are performed in sequence.
+   - Lines 1-2 load the RATT library.
+   - Line 4 creates the main function that will run the pipeline.
+   - Lines 5-7 specifies the RATT configuration for this pipeline.  Because this is a simple pipeline we only need to specify a standard graph name.  Because we will not store the graph name in this pipeline, we can specify an empty standard graph name.
+   - Lines 8-14 specify the steps that are performed in the pipeline.  These steps are performed in sequence.
        - Lines 9-12 create one linked data statement (“The class of all classes is itself a class.”).
        - Line 13 writes the statement to a local file.
 
@@ -202,12 +202,17 @@ This section extends the pipeline from [the previous section](#publish-to-triply
        cliContext,
        defaultGraph: '',
        prefixes: {
+// lines 8-10 declare an IRI prefix.  Such prefixes are common in RATT pipelines, because this makes it easier to work with lengthy IRIs
          person: Ratt.prefixer('https://example.com/id/person/'),
        },
      })
      app.use(
        mw.fromCsv(Ratt.Source.file('example.csv')),
+// line 13 connects the tabular source data to the pipleline.  Every row in the table will be processed as a RATT record.
        mw.addQuad(
+// lines 14-17 create a one linked data statement that is based on the source data.
+// Line 15 creates an universally unique identifier (IRI) based on the value in the `'ID'` column and the declared `person` prefix.
+// Line 17 creates a string literal based on the value in the `'NAME'` column.
          mw.toIri('ID', {prefix: app.prefix.person}),
          app.prefix.rdfs('label'),
          mw.toLiteral('NAME')),
@@ -260,7 +265,7 @@ RATT Connectors generate RATT Records.  The RATT Records are used to configure t
 
 <h3 id='assets'>Static source data</h3>
 
-Source data is often available in static files.  For example, a pipeline may make use of a Microsoft Excel file and a collection of ESRI ShapeFiles.  Or a pipeline may use a relational datase in addition to a set of CSV text files that store information that is not in the relational dataset.
+Source data is often available in static files.  For example, a pipeline may make use of a Microsoft Excel file and a collection of ESRI ShapeFiles.  Or a pipeline may use a relational database in addition to a set of CSV text files that store information that is not in the relational dataset.
 
 If your pipeline needs to connect to static data files, it is a best practice to upload such files as TriplyDB Assets.  This has the following benefits:
 
