@@ -138,13 +138,13 @@ In the [previous section](#setting-up-a-minimal-pipeline) we set up a minimal pi
 
 2. Once the API Token is configured, open file `main.ts` in a text editor and add the following content:
 
- ```ts
- // Line 1 also imports `CliContext` from the RATT library.
+```ts
+// Line 1 also imports `CliContext` from the RATT library.
  import { CliContext, Ratt } from '@triply/ratt'
  import mw from '@triply/ratt/lib/middlewares'
 
  export default async function (cliContext: CliContext): Promise<Ratt> {
- // Line 4 includes argument `cliContext: CliContext` and line 6 includes `cliContext`, so that the API Token can be read from the Command-Line Interface (CLI).
+// Line 4 includes argument `cliContext: CliContext` and line 6 includes `cliContext`, so that the API Token can be read from the Command-Line Interface (CLI).
      const app = new Ratt({
        cliContext,
        defaultGraph: '',
@@ -159,13 +159,13 @@ In the [previous section](#setting-up-a-minimal-pipeline) we set up a minimal pi
      )
      return app
    }
- ```
+```
 
-   The code snippet contains the following changes relative to the code from [the previous section](#setting-up-a-minimal-pipeline):
+The code snippet contains the following changes relative to the code from [the previous section](#setting-up-a-minimal-pipeline):
 
-     - Line 1 also imports `CliContext` from the RATT library.
-     - Line 4 includes argument `cliContext: CliContext` and line 6 includes `cliContext`, so that the API Token can be read from the Command-Line Interface (CLI).
-     - Line 14 publishes the data that is generated in a TriplyDB dataset called `'example'`.  This dataset is added to the account that is associated with the configured API Token.
+   - Line 1 also imports `CliContext` from the RATT library.
+   - Line 4 includes argument `cliContext: CliContext` and line 6 includes `cliContext`, so that the API Token can be read from the Command-Line Interface (CLI).
+   - Line 14 publishes the data that is generated in a TriplyDB dataset called `'example'`.  This dataset is added to the account that is associated with the configured API Token.
 
 3. Transpile the code with `./node_modules/.bin/tsc`
 
@@ -193,36 +193,36 @@ This section extends the pipeline from [the previous section](#publish-to-triply
 
 2. Open text file `main.ts` and add the following content:
 
-   ```ts
-   import { CliContext, Ratt } from '@triply/ratt'
-   import mw from '@triply/ratt/lib/middlewares'
+ ```ts
+ import { CliContext, Ratt } from '@triply/ratt'
+ import mw from '@triply/ratt/lib/middlewares'
 
-   export default async function (cliContext: CliContext): Promise<Ratt> {
-     const app = new Ratt({
-       cliContext,
-       defaultGraph: '',
-       prefixes: {
+ export default async function (cliContext: CliContext): Promise<Ratt> {
+   const app = new Ratt({
+     cliContext,
+     defaultGraph: '',
+     prefixes: {
 // lines 8-10 declare an IRI prefix.  Such prefixes are common in RATT pipelines, because this makes it easier to work with lengthy IRIs
-         person: Ratt.prefixer('https://example.com/id/person/'),
-       },
-     })
-     app.use(
-       mw.fromCsv(Ratt.Source.file('example.csv')),
+       person: Ratt.prefixer('https://example.com/id/person/'),
+    },
+   })
+   app.use(
+     mw.fromCsv(Ratt.Source.file('example.csv')),
 // line 13 connects the tabular source data to the pipleline.  Every row in the table will be processed as a RATT record.
-       mw.addQuad(
+     mw.addQuad(
 // lines 14-17 create a one linked data statement that is based on the source data.
 // Line 15 creates an universally unique identifier (IRI) based on the value in the `'ID'` column and the declared `person` prefix.
 // Line 17 creates a string literal based on the value in the `'NAME'` column.
-         mw.toIri('ID', {prefix: app.prefix.person}),
-         app.prefix.rdfs('label'),
-         mw.toLiteral('NAME')),
-       mw.toRdf(Ratt.Destination.file('example.ttl')),
-     )
-     return app
-   }
-   ```
+       mw.toIri('ID', {prefix: app.prefix.person}),
+       app.prefix.rdfs('label'),
+       mw.toLiteral('NAME')),
+     mw.toRdf(Ratt.Destination.file('example.ttl')),
+   )
+   return app
+ }
+```
 
-   Notice the following changes:
+Notice the following changes:
 
      - Lines 8-10 declare an IRI prefix.  Such prefixes are common in RATT pipelines, because this makes it easier to work with lengthy IRIs.
      - Line 13 connects the tabular source data to the pipleline.  Every row in the table will be processed as a RATT record.
@@ -316,9 +316,9 @@ This connector also handles CSV variants that use a cell separator that is not c
 
 #### Standards-compliance
 
-RATT supports the official CSV standard: [RFC 4180](https://datatracker.ietf.org/doc/html/rfc4180).  Unfortunately, there are some ‘CSV’ files our there that do not follow the RFC 4180 standard.  Strictly speaking these files are not CSV files, although they may look similar to CSV files in some parts.
+RATT supports the official CSV standard: [RFC 4180](https://datatracker.ietf.org/doc/html/rfc4180).  Unfortunately, there are some ‘CSV’ files that do not follow the RFC 4180 standard.  Strictly speaking these files are not CSV files, although they may look similar to CSV files in some parts.
 
-If your files do not follow the official CSV standard, then RATT may or may not be able to process your tabluar data files correctly.  In general, it is a good idea to correct tabular data files that deviate from the CSV standard.  Such files are likely to cause issues in other data processing tools too.
+If your files do not follow the official CSV standard, then RATT may or may not be able to process your tabular data files correctly.  In general, it is a good idea to correct tabular data files that deviate from the CSV standard.  Such files are likely to cause issues in other data processing tools too.
 
 #### Known limitations of CSV/TSV
 
@@ -326,7 +326,7 @@ While CSV/TSV files are often used in practice, they come with significant limit
 
 Specifically, CSV/TSV does not allow the type of values to be specified.  All values have type `'string'`.
 
-This is specifically an issue when tabular data contains numeric information.  Such numeric information will only be available as strings.  These strings must be explictly transformed to number in RATT (see the [`change` function](#change)).
+This is specifically an issue when tabular data contains numeric information.  Such numeric information will only be available as strings.  These strings must be explicitly transformed to number in RATT (see the [`change` function](#change)).
 
 More advanced tabular formats like [Microsoft Excel](#xlsx) *are* able to store the types of values.
 
@@ -466,7 +466,7 @@ RATT has a special function that creates prefixes.  It works as follows:
 const ALIAS = Ratt.prefixer(IRI_PREFIX)
 ```
 
-This allows a potentially complex and long `IRI_PREFIX` to be use through a short and simple object called `ALIAS`.
+This allows a potentially complex and long `IRI_PREFIX` to be used through a short and simple object called `ALIAS`.
 
 To distinguish objects that denote prefix declarations from objects that denote other things, it is common to place prefix declarations into an object called `prefix`:
 
@@ -503,7 +503,7 @@ Notice that this is significantly shorter than specifying the full IRIs:
 
 ```ts
 app.use(
-  // “John known Mary.”
+  // “John knowns Mary.”
   mw.addQuad(
     mw.toIri('https://example.com/john'),
     mw.toIri('https://example.com/knows'),
@@ -553,7 +553,7 @@ app.use(
 
 Because the `foaf` and `ex` objects have been declared at the start of the pipeline, the rest of the pipeline can use autocompletion for IRIs terms.  This works by typing the namespace alias and a dot (for example: `foaf.`) and pressing `Ctrl + SPC` (control and space at the same time).  In [properly configured text editors](../generics/editor) this will bring up a list of autocomplete results.
 
-Notice that the RATT notation for statements is purposefully close the widely used Turtle/TriG syntax.
+Notice that the RATT notation for statements is purposefully close to the widely used Turtle/TriG syntax.
 
 ```trig
 prefix ex: <https://example.com/>
