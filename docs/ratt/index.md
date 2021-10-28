@@ -11,7 +11,7 @@ RATT is written and used in TypeScript, a type-safe language that transpiles to 
 
 <dl>
   <dt>Backend-agnostic</dt>
-  <dd>RATT has connectors for a large number of source system.  The pipeline code makes use of a unified RATT record.  This ensures that configuration is independent of the source system structure.  Changing the source system often only requires the use of a new RATT connector that generates identical RATT records.</dd>
+  <dd>RATT has connectors for a large number of source systems.  The pipeline code makes use of a unified RATT record.  This ensures that configuration is independent of the source system structure.  Changing the source system often only requires the use of a new RATT connector that generates identical RATT records.</dd>
   <dt>Extensible</dt>
   <dd>Since RATT is implemented in TypeScript, it has access to all TypeScript and JavaScript libraries.</dd>
   <dt>Scalable</dt>
@@ -1316,7 +1316,7 @@ The `validateShacl` function can optionally be given the `terminateOn` option.  
   <dd>Halt validation when the first SHACL Violation or SHACL Warning or SHACL Informational message is encountered.</dd>
 </dl>
 
-The following example code lets validation run for the full dataset, regarless of how many violations/warnings/informations messages are encountered:
+The following example code lets validation run for the full dataset, regardless of how many violations/warnings/informations messages are encountered:
 
 ```ts
 app.use(
@@ -1388,7 +1388,7 @@ yarn ratt ./lib/main.js --head 1
 yarn ratt ./lib/main.js --head 10
 ```
 
-The above commands processes only the first record and the first 10 records, respectively.
+The above commands process only the first record and the first 10 records, respectively.
 
 #### Specify a range of records
 
@@ -1418,7 +1418,7 @@ yarn ratt ./lib/main.js --fromRecordId 26 --head 1
 When RATT is run normally, the following information is displayed:
 
 <!-- <https://issues.triply.cc/issues/5600>
-- The the number of SHACL Violations, Warnings and Informational messages encountered.
+- The number of SHACL Violations, Warnings and Informational messages encountered.
 -->
 - The number of added triples.
 - The runtime of the script.
@@ -1462,7 +1462,7 @@ The RATT Context is specified when the `Ratt` object is instantiated.  This ofte
 
 ### Configuring the standard graph
 
-When we call `mw.addQuad` with 3 arguments, a triple is created and placed in an named graph that is chosen by RATT.  You can change the name of this default graph by specifying it in the RATT context.  Notice that graph names must be IRIs:
+When we call `mw.addQuad` with 3 arguments, a triple is created and placed in a named graph that is chosen by RATT.  You can change the name of this default graph by specifying it in the RATT context.  Notice that graph names must be IRIs:
 
 ```ts
 const app = new Ratt({
@@ -1586,7 +1586,7 @@ When working on a pipeline it is best to at least run it in the following two mo
   <dt>Acceptance mode</dt>
   <dd>Upload the result of the pipeline to the user account for which the API Token was created.</dd>
   <dt>Production mode</dt>
-  <dd>Upload thre result of the pipeline to the organization where the production version of the data is published.</dd>
+  <dd>Upload the result of the pipeline to the organization where the production version of the data is published.</dd>
 </dl>
 
 Having multiple modes ensures that the production version of a dataset is not accidentally overwritten during development.
@@ -1633,7 +1633,7 @@ You can check for updated by running the following command in your project direc
 yarn upgrade-interactive
 ```
 
-This will display the list of packages for which updates are available.  If RATT appears in this list, notice the old and new version numbers.  These numbers are used in the next section to access the impact of upgrading.
+This will display the list of packages for which updates are available.  If RATT appears in this list, notice the old and new version numbers.  These numbers are used in the next section to assess the impact of upgrading.
 
 ### Assess the impact of upgrading
 
