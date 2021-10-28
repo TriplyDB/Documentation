@@ -15,3 +15,8 @@
         link: /docs/yasgui
       - title: For developers
         link: /docs/yasgui-api
+  - group: RATT
+    tagline: Learn about RATT
+    items:
+     - title: RATT
+       link: /docs/ratt

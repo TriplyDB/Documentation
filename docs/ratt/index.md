@@ -1,4 +1,4 @@
-individual---
+---
 title: "RATT"
 path: "/docs/ratt"
 ---
@@ -1781,4 +1781,3 @@ const xsd = {
   string: prefix.xsd('string'),
 }
 ```
-
