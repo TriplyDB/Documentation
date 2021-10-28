@@ -159,7 +159,7 @@ In the [previous section](#setting-up-a-minimal-pipeline) we set up a minimal pi
      )
      return app
    }
-   ```
+ ```
 
    The code snippet contains the following changes relative to the code from [the previous section](#setting-up-a-minimal-pipeline):
 
