@@ -738,7 +738,7 @@ Notice that the empty string was not cast to a number (because it does not encod
 
 <h5 id="translation-table">Change values using a known translation table</h5>
 
-We sometimes want to translated a finite set of known values in the source data to corresponding linked data terms.
+We sometimes want to translate a finite set of known values in the source data to corresponding linked data terms.
 
 ###### When to use?
 
@@ -819,7 +819,7 @@ The following values must be added for a concrete application:
 
 Notice the following details about this implementation:
 - The `map` function is called immediately after splitting, to ensure that surrounding whitespace is removed from the newly split values.
-- The `filter` function is called to remove empty strings from the results.  Such empty value are almost never stored in linked data.
+- The `filter` function is called to remove empty strings from the results.  Such empty values are almost never stored in linked data.
 
 Notice that the functional style of programming allows us to perform multiple tasks concisely using maps and filters.
 
@@ -950,7 +950,7 @@ app.use(
 )
 ```
 
-This function copies the value from ‘foo’ to ‘bar’.  The `type` key ensures that the value in ‘foo’ is cast to the specified type prior to being copy.
+This function copies the value from ‘foo’ to ‘bar’.  The `type` key ensures that the value in ‘foo’ is cast to the specified type prior to being copied.
 
 The optional `change` key allows the cast value to be transformed prior to storing it in ‘bar’.  Leaving the `change` key out results in a direct copy in which the value is not modified.
 
@@ -1020,7 +1020,7 @@ This function emits an error if `NEW_KEY` already exists in the current RATT rec
 
 #### Use cases
 
-A common use case for `add` is to create a new column that combined values from two or more entires.
+A common use case for `add` is to create a new column that combines values from two or more entries.
 
 For example, a RATT Record may contain a column for the first name and a column for the last name of persons:
 
@@ -1052,11 +1052,11 @@ After this `add` transformation, the RATT Record looks as follows:
 
 ### Record-wide transformations
 
-So far this section has described value-level transformations.  This subsection decribes transformations that are applies that the RATT Record level.  These transformations can also be applied at the value level, but would be repetitive to apply multiple times.
+So far this section has described value-level transformations.  This subsection decribes transformations that are applied to the RATT Record level.  These transformations can also be applied at the value level, but would be repetitive to apply multiple times.
 
 #### Remove trailing whitespace
 
-Whitespace at the beginning or end of value is almost never useful.  At the same time, such superfluous whitespace often appears in several parts of the source data.  Since it would be inefficient to remove trailing whitespace on a per-key basis, it is better to remove is for all keys at once.
+Whitespace at the beginning or end of value is almost never useful.  At the same time, such superfluous whitespace often appears in several parts of the source data.  Since it would be inefficient to remove trailing whitespace on a per-key basis, it is better to remove it for all keys at once.
 
 The following example code removes training whitespace from all values in the current RATT Record:
 
@@ -1070,7 +1070,7 @@ app.use(
 
 ## Create statements
 
-After source data has is connected and transformed, the RATT Record is ready to be transformed to linked data.  Linked data statements are assertions or factual statements that consist of 3 terms (triple) or 4 terms (quadruples).
+After source data is connected and transformed, the RATT Record is ready to be transformed to linked data.  Linked data statements are assertions or factual statements that consist of 3 terms (triple) or 4 terms (quadruples).
 
 Statements are created with the `mw.addQuad` function.  Calls to this function are part of the pipeline, and must appear inside the scope of `app.use`.
 
@@ -1136,7 +1136,7 @@ app.use(
 ```
 
 Notice the following details:
-- `mw.toIri` is used to create a dyanmic IRI term.
+- `mw.toIri` is used to create a dynamic IRI term.
 - Arguments `Country` and `Inhabitants` allow values for these keys to be used from processed RATT Records.
 - The IRI prefix for the subject term is specified with constant `prefix.id`.
 - `mw.toLiteral` is used to create a dynamic literal term.
@@ -1226,7 +1226,7 @@ app.use(
 )
 ```
 
-Because missing values are very common in source data, RATT introduces special support for when the value for a specific key is missing.  Instead of having to write `context => context.isNotEmpty('foo')` one can simple write the key name instead.  The above example is equivalent to the following:
+Because missing values are very common in source data, RATT introduces special support for when the value for a specific key is missing.  Instead of having to write `context => context.isNotEmpty('foo')` one can simply write the key name instead.  The above example is equivalent to the following:
 
 ```ts
 app.use(
