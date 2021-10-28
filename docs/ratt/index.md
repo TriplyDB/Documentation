@@ -224,11 +224,11 @@ This section extends the pipeline from [the previous section](#publish-to-triply
 
 Notice the following changes:
 
-     - Lines 8-10 declare an IRI prefix.  Such prefixes are common in RATT pipelines, because this makes it easier to work with lengthy IRIs.
-     - Line 13 connects the tabular source data to the pipleline.  Every row in the table will be processed as a RATT record.
-     - Lines 14-17 create a one linked data statement that is based on the source data.
-       - Line 15 creates an universally unique identifier (IRI) based on the value in the `'ID'` column and the declared `person` prefix.
-       - Line 17 creates a string literal based on the value in the `'NAME'` column.
+- Lines 8-10 declare an IRI prefix.  Such prefixes are common in RATT pipelines, because this makes it easier to work with lengthy IRIs.
+- Line 13 connects the tabular source data to the pipleline.  Every row in the table will be processed as a RATT record.
+- Lines 14-17 create a one linked data statement that is based on the source data.
+  - Line 15 creates an universally unique identifier (IRI) based on the value in the `'ID'` column and the declared `person` prefix.
+  - Line 17 creates a string literal based on the value in the `'NAME'` column.
 
 3. Transpile the code with `./node_modules/.bin/tsc`
 
