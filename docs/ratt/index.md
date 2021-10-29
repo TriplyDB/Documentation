@@ -733,7 +733,7 @@ After the `change` has been applied, the RATT record looks like this:
 | Germany     | 83190556    |
 | Netherlands | 17650200    |
 
-Notice that the empty string was not cast to a number (because it does not encode a number) and now has value `null`.  Most of the time, this is exactly the behavior that you want in a linked data pipeline, because no statements will be created for null values.  See the [section on working with null values](#nullvalues) for more information.
+Notice that the empty string was not cast to a number (because it does not encode a number) and now has value `null`.  Most of the time, this is exactly the behavior that you want in a linked data pipeline, because no statements will be created for null values.  See the [section on working with null values](https://github.com/TriplyDB/Documentation/blob/feature/ratt/docs/ratt/index.md#null-values) for more information.
 
 
 <h5 id="translation-table">Change values using a known translation table</h5>
