@@ -5,7 +5,7 @@ path: "/docs/ratt"
 
 **RATT is distributed under the TriplyDB license.  Contact [info@triply.cc](mailto:info@triply.cc) for more information.**
 
-RATT is a [TypeScript package](https://www.npmjs.com/package/@triply/ratt) that is developed by Triply.  RATT makes it possible to develop and maintain production-grade linked data pipelines.  It is used in combination with a TriplyDB license and instance to create large-scale Knowledge Graphs.
+RATT is a [TypeScript package](https://www.npmjs.com/package/@triply/ratt) that is developed by Triply.  RATT makes it possible to develop and maintain production-grade linked data pipelines.  It is used in combination with a TriplyDB license and instance to create large-scale knowledge graphs.
 
 RATT is written and used in TypeScript, a type-safe language that transpiles to JavaScript.  It has the following properties that set it apart from other linked data pipeline approaches:
 
@@ -658,8 +658,8 @@ The function can be configured in the following ways:
   - `'literal'` an RDF literal term.
   - `'number'` a natural number or floating-point number.
   - `'string'` a sequence of characters.
-  - `'any'` an undetermined type.
-- `FUNCTION_BODY` the body of a function, ending with a `return` statement that returns the new value.
+  - `'unknown'` an unknown type.
+- `FUNCTION_BODY` a function body that returns the new value.
 
 #### Error conditions
 
@@ -712,6 +712,7 @@ For example, assume the following input table using strings to encode the number
 | ----------- | ------------- |
 | France      | ''            |
 | Germany     | '83190556'    |
+| Italy       | 'empty'       |
 | Netherlands | '17650200'    |
 
 We can cast values with the `'Inhabitants'` key to a number in the following way:
@@ -720,7 +721,7 @@ We can cast values with the `'Inhabitants'` key to a number in the following way
 mw.change({
   key: 'Inhabitants',
   type: 'unknown',
-  change: value => value as number / 1}),
+  change: value => +(value as number)}),
 ```
 
 Notice that the type must be set to `'unknown'` because a string is not allowed to be cast to a number in TypeScript (because not every string *can* be cast to a number).
@@ -729,11 +730,14 @@ After the `change` has been applied, the RATT record looks like this:
 
 | Country     | Inhabitants |
 | ----------- | ----------- |
-| France      | null        |
+| France      | 0           |
 | Germany     | 83190556    |
+| Italy       | null        |
 | Netherlands | 17650200    |
 
-Notice that the empty string was not cast to a number (because it does not encode a number) and now has value `null`.  Most of the time, this is exactly the behavior that you want in a linked data pipeline, because no statements will be created for null values.  See the [section on working with null values](https://github.com/TriplyDB/Documentation/blob/feature/ratt/docs/ratt/index.md#null-values) for more information.
+Notice that strings that encode a number are correctly transformed, and non-empty strings that do not encode a number are transformed to `null`.  Most of the time, this is exactly the behavior that you want in a linked data pipeline.  When [creating statements](#create-statements) later, no statement will be created for entries that have value `null`.  See the [section on working with null values](#null-values) for more information.
+
+Also notice that the empty string is cast to the number zero.  Most of the time, this is *not* what you want.  If you want to prevent this transformation from happening, and you almost certainly do, you must [proces this data conditionally](#process-data-conditionally).
 
 
 <h5 id="translation-table">Change values using a known translation table</h5>
@@ -769,7 +773,7 @@ The translation table can be implemented with a `switch`-statement.  Every `case
 
 ```ts
 mw.change({
-  key: keys.country_of_birth,
+  key: 'Source value',
   type: 'string',
   change: value => {
     switch(value) {
@@ -1068,7 +1072,7 @@ app.use(
 
 
 
-## Create statements
+<h2 id='create-statements'>Create statements</h2>
 
 After source data is connected and transformed, the RATT Record is ready to be transformed to linked data.  Linked data statements are assertions or factual statements that consist of 3 terms (triple) or 4 terms (quadruples).
 
@@ -1163,13 +1167,13 @@ app.use(
 
 
 
-## Process data conditionally
+<h2 id='process-data-conditionally'>Process data conditionally</h2>
 
 Source data often contains optional values.  These are values that appear in some, but not all records.
 
-Source data often contains 'special' values to denote the absence of a value.  Common examples are values such as `NULL` or the empty string (`""`) or 'clear' outliers such as `9999` for a missing year.  We call such values ‘null values’.
+Source data often contains 'special' values to denote the absence of a value.  Common examples are values such as `'NULL'` or the empty string (`''`) or 'clear' outliers such as `9999` for a missing year.  We call such values ‘null values’.
 
-The `mw.when` function supports the creation of triples under certain conditions.  The first argument that this function takes establishes whether or not a certain condition is met.  After that one or more additional statement arguments appear that will only be called if the condition is satisfied.  The generic structure of `mw.when` is as follows:
+The `mw.when` function supports the creation of triples under certain conditions.  The first argument that this function takes establishes whether or not a certain condition is met.  After that, one or more additional statement arguments appear that will only be called if the condition is satisfied.  The generic structure of `mw.when` is as follows:
 
 ```ts
 app.use(
@@ -1189,7 +1193,7 @@ Notice that it is often useful to specify multiple statements under the same con
 2. The first statement asserts one triple based on the optional value, and the second statement asserts a second triple based on the same optional value.
 
 
-### Null values
+<h3 id='null-values'>Null values</h3>
 
 If a key contains a null value in some records, then we need to specifically identify the criteria under which a triple must be added.
 
@@ -1316,7 +1320,7 @@ The `validateShacl` function can optionally be given the `terminateOn` option.  
   <dd>Halt validation when the first SHACL Violation or SHACL Warning or SHACL Informational message is encountered.</dd>
 </dl>
 
-The following example code lets validation run for the full dataset, regardless of how many violations/warnings/informations messages are encountered:
+The following example code lets validation run for the full dataset, regardless of how many violations, warnings, and/or information messages are encountered:
 
 ```ts
 app.use(
@@ -1429,7 +1433,7 @@ It is possible to also show the following additional information by specifying t
 - In case of an error, the first 20 values from the last processed RATT record.
 - In case of an error, the full stack trace.
 
-Example of using the `--verbose` flag:
+The following example shows how the `--verbose` flag can be used:
 
 ```sh
 yarn ratt ./lib/main.js --verbose
