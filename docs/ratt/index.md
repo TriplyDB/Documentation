@@ -127,7 +127,7 @@ In the next section we extend this minimal pipeline by uploading the results to 
 
 In the [previous section](#setting-up-a-minimal-pipeline) we set up a minimal pipeline in RATT.  In this section we extend the pipeline to publish the results in a TriplyDB instance.
 
-1. [Configure a TriplyDB API Token](api-token) with write permissions.
+1. [Configure a TriplyDB API Token](https://triply.cc/docs/triply-api#creating-an-api-token) with write permissions.
 
    Write permissions are needed in order to publish data from a RATT pipeline.
 
