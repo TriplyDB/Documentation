@@ -5,7 +5,7 @@ path: "/docs/ratt"
 
 **RATT is distributed under the TriplyDB license.  Contact [info@triply.cc](mailto:info@triply.cc) for more information.**
 
-RATT is a [TypeScript package](https://www.npmjs.com/package/@triply/ratt) that is developed by Triply.  RATT makes it possible to develop and maintain production-grade linked data pipelines.  It is used in combination with a TriplyDB license and instance to create large-scale knowledge graphs.
+RATT is a [TypeScript package](https://www.npmjs.com/package/@triply/ratt) that is developed by [Triply](https://triply.cc).  RATT makes it possible to develop and maintain production-grade linked data pipelines.  It is used in combination with a [TriplyDB license and instance](https://triply.cc/subscriptions) to create large-scale knowledge graphs.
 
 RATT is written and used in TypeScript, a type-safe language that transpiles to JavaScript.  It has the following properties that set it apart from other linked data pipeline approaches:
 
@@ -23,9 +23,9 @@ RATT is written and used in TypeScript, a type-safe language that transpiles to 
 This documentation assumes that the reader has the following prior knowledge:
 
 - A basic understanding of TypeScript/JavaScript.
-- A basic familiarity with linked data and the TriplyDB product.
+- A basic familiarity with linked data and the [TriplyDB product](https://triply.cc/triplydb).
 
- 
+
 
 ## Getting started
 
@@ -76,40 +76,35 @@ In this section we set up a RATT pipeline that creates one single triple.  This 
 
 6. Create a file called `main.ts` in a text editor, and copy/paste the following code into that file:
 
-```ts
-  // lines 1-2 load the RATT library
- import { Ratt } from '@triply/ratt' 
- import mw from '@triply/ratt/lib/middlewares'
+   ```ts
+   // Load the RATT library and the RATT Middlewared (mw).
+   import {Ratt} from '@triply/ratt'
+   import mw from '@triply/ratt/lib/middlewares'
 
- export default async function (): Promise<Ratt> {
- // Line 4 creates the main function that will run the pipeline.
-   const app = new Ratt({
-// Lines 5-7 specifies the RATT configuration for this pipeline.  Because this is a simple pipeline we only need to specify a standard graph name.  Because we will not store the graph name in this pipeline, we can specify an empty standard graph name.
-     defaultGraph: ''
-   })
-   app.use(
-     mw.addQuad(
-// Lines 8-14 specify the steps that are performed in the pipeline.  These steps are performed in sequence.
-// Lines 9-12 create one linked data statement (“The class of all classes is itself a class.”).
-// Line 13 writes the statement to a local file.
-
-  app.prefix.rdfs('Class'),
-  app.prefix.rdf('type'),
-  app.prefix.rdfs('Class')),
-mw.toRdf(Ratt.Destination.file('example.ttl')),
-   )
-return app
-}
-```
-
-The meaning of this code snippet is as follows:
-
-- Lines 1-2 load the RATT library.
-- Line 4 creates the main function that will run the pipeline.
-- Lines 5-7 specifies the RATT configuration for this pipeline.  Because this is a simple pipeline we only need to specify a standard graph name.  Because we will not store the graph name in this pipeline, we can specify an empty standard graph name.
-- Lines 8-14 specify the steps that are performed in the pipeline.  These steps are performed in sequence.
-  - Lines 9-12 create one linked data statement (“The class of all classes is itself a class.”).
-  - Line 13 writes the statement to a local file.
+   // The main function that will run the pipeline.
+   export default async function (): Promise<Ratt> {
+     // The RATT configuration for this pipeline.
+     // Because this is a simple pipeline we only need to specify a
+     // standard graph name.  Because we will not store the graph
+     // name in this pipeline, we can specify an empty standard
+     // graph name.
+     const app = new Ratt({
+       defaultGraph: ''
+     })
+     // The steps that are performed in the pipeline are specified
+     // in 'app.use'.  These steps are performed in sequence.
+     app.use(
+       // Create one linked data statement:
+       // “The class of all classes is itself a class.”
+       mw.addQuad(
+         app.prefix.rdfs('Class'),
+         app.prefix.rdf('type'),
+         app.prefix.rdfs('Class')),
+       // Writes the linked data statements to a local file.
+       mw.toRdf(Ratt.Destination.file('example.ttl')))
+     return app
+   }
+   ```
 
 7. Transpile the TypeScript file (`main.ts`) into a JavaScript file (`main.js`):
 
@@ -123,7 +118,7 @@ The meaning of this code snippet is as follows:
    yarn ratt main.js
    ```
 
-   This should create a file called `example.ttl` that contains the one created statement.  Contact <mailto:support@triply.cc> if this does not work on your system.
+   This should create a file called `example.ttl` that contains the one created statement.  Contact [support@triply.cc](mailto:support@triply.cc) if this does not work on your system.
 
 In the next section we extend this minimal pipeline by uploading the results to a TriplyDB instance.
 
@@ -132,20 +127,24 @@ In the next section we extend this minimal pipeline by uploading the results to 
 
 In the [previous section](#setting-up-a-minimal-pipeline) we set up a minimal pipeline in RATT.  In this section we extend the pipeline to publish the results in a TriplyDB instance.
 
-1. Following the steps on [this page](../generics/api-token) to create and configure a TriplyDB API Token with write permissions.
+1. [Configure a TriplyDB API Token](api-token) with write permissions.
 
    Write permissions are needed in order to publish data from a RATT pipeline.
 
 2. Once the API Token is configured, open file `main.ts` in a text editor and add the following content:
 
-```ts
-// Line 1 also imports `CliContext` from the RATT library.
- import { CliContext, Ratt } from '@triply/ratt'
- import mw from '@triply/ratt/lib/middlewares'
+   ```ts
+   // Also import `CliContext` from the RATT library.
+   import {CliContext, Ratt} from '@triply/ratt'
+   import mw from '@triply/ratt/lib/middlewares'
 
- export default async function (cliContext: CliContext): Promise<Ratt> {
-// Line 4 includes argument `cliContext: CliContext` and line 6 includes `cliContext`, so that the API Token can be read from the Command-Line Interface (CLI).
+   // Includes argument `cliContext: CliContext` for reading the
+   // API Token environment variable as well as Command-Line
+   // Interface (CLI) options.
+   export default async function (cliContext: CliContext): Promise<Ratt> {
      const app = new Ratt({
+       // Includes `cliContext` in the RATT content to process CLI
+       // options.
        cliContext,
        defaultGraph: '',
      })
@@ -154,18 +153,13 @@ In the [previous section](#setting-up-a-minimal-pipeline) we set up a minimal pi
          app.prefix.rdfs('Class'),
          app.prefix.rdf('type'),
          app.prefix.rdfs('Class')),
- // Line 14 publishes the data that is generated in a TriplyDB dataset called `'example'`.  This dataset is added to the account that is associated with the configured API Token.
-       mw.toRdf(Ratt.Destination.TriplyDb.rdf('example')),
-     )
+       // Publishes the linked data data statements to a TriplyDB
+       // dataset called 'example'.  This dataset is added to the
+       // account that is associated with the configured API Token.
+       mw.toRdf(Ratt.Destination.TriplyDb.rdf('example')))
      return app
    }
-```
-
-The code snippet contains the following changes relative to the code from [the previous section](#setting-up-a-minimal-pipeline):
-
-   - Line 1 also imports `CliContext` from the RATT library.
-   - Line 4 includes argument `cliContext: CliContext` and line 6 includes `cliContext`, so that the API Token can be read from the Command-Line Interface (CLI).
-   - Line 14 publishes the data that is generated in a TriplyDB dataset called `'example'`.  This dataset is added to the account that is associated with the configured API Token.
+   ```
 
 3. Transpile the code with `./node_modules/.bin/tsc`
 
@@ -182,6 +176,8 @@ This section extends the pipeline from [the previous section](#publish-to-triply
 | 00002 | Bob   |
 | 00003 | Carol |
 
+We then perform the following steps to build a pipelines that processes this data source:
+
 1. Create a text file called `example.csv` in a text editor, and copy/paste the following source data into that file:
 
    ```csv
@@ -193,55 +189,46 @@ This section extends the pipeline from [the previous section](#publish-to-triply
 
 2. Open text file `main.ts` and add the following content:
 
- ```ts
- import { CliContext, Ratt } from '@triply/ratt'
- import mw from '@triply/ratt/lib/middlewares'
+   ```ts
+   import {CliContext, Ratt} from '@triply/ratt'
+   import mw from '@triply/ratt/lib/middlewares'
 
- export default async function (cliContext: CliContext): Promise<Ratt> {
-   const app = new Ratt({
-     cliContext,
-     defaultGraph: '',
-     prefixes: {
-// lines 8-10 declare an IRI prefix.  Such prefixes are common in RATT pipelines, because this makes it easier to work with lengthy IRIs
-       person: Ratt.prefixer('https://example.com/id/person/'),
-    },
-   })
-   app.use(
-     mw.fromCsv(Ratt.Source.file('example.csv')),
-// line 13 connects the tabular source data to the pipleline.  Every row in the table will be processed as a RATT record.
-     mw.addQuad(
-// lines 14-17 create a one linked data statement that is based on the source data.
-// Line 15 creates an universally unique identifier (IRI) based on the value in the `'ID'` column and the declared `person` prefix.
-// Line 17 creates a string literal based on the value in the `'NAME'` column.
-       mw.toIri('ID', {prefix: app.prefix.person}),
-       app.prefix.rdfs('label'),
-       mw.toLiteral('NAME')),
-     mw.toRdf(Ratt.Destination.file('example.ttl')),
-   )
-   return app
- }
-```
-
-Notice the following changes:
-
-- Lines 8-10 declare an IRI prefix.  Such prefixes are common in RATT pipelines, because this makes it easier to work with lengthy IRIs.
-- Line 13 connects the tabular source data to the pipleline.  Every row in the table will be processed as a RATT record.
-- Lines 14-17 create a one linked data statement that is based on the source data.
-  - Line 15 creates an universally unique identifier (IRI) based on the value in the `'ID'` column and the declared `person` prefix.
-  - Line 17 creates a string literal based on the value in the `'NAME'` column.
+   export default async function (cliContext: CliContext): Promise<Ratt> {
+     const app = new Ratt({
+       cliContext,
+       defaultGraph: '',
+       // Declare an IRI prefix.
+       prefixes: {
+         person: Ratt.prefixer('https://example.com/id/person/'),
+       },
+     })
+     app.use(
+       // Connects the tabular source data to the pipeline.
+       // Every row in the table is processed as a RATT record.
+       mw.fromCsv(Ratt.Source.file('example.csv')),
+       // Create a linked data statement that is based on the
+			 // source data.
+       mw.addQuad(
+         // Create a universally unique identifier (IRI) based
+         // on the value in the 'ID' column and the declared
+				 // 'person' prefix.
+         mw.toIri('ID', {prefix: app.prefix.person}),
+         app.prefix.rdfs('label'),
+         // Create a string literal based on the value in the
+				 // 'NAME' column.
+         mw.toLiteral('NAME')),
+       mw.toRdf(Ratt.Destination.file('example.ttl')))
+     return app
+   }
+   ```
 
 3. Transpile the code with `./node_modules/.bin/tsc`
 
 4. Run the pipeline with `yarn ratt main.js`
 
-The RATT script will give you a link to the uploaded dataset.  This dataset contains the graph content as displayed in [Figure 1](#connect-a-data-source).
+The RATT script will give you a link to the uploaded dataset.  This dataset contains the following graph content:
 
-<figure id='connect-a-data-source'>
-  <img src='connect-a-data-source.png' width='450'>
-  <figcaption>
-    Figure 1 - A visualization of the graph that is created by this example RATT pipeline.
-  </figcaption>
-</figure>
+![](connect-a-data-source.png)
 
 <!--
 ```turtle
@@ -263,9 +250,11 @@ RATT Connectors are modules that allow various backend systems to be connected t
 RATT Connectors generate RATT Records.  The RATT Records are used to configure the rest of the pipeline.  This decouples pipeline configuration from source system structure.  This is one of the essential features of RATT that set it apart from most other pipeline systems.
 
 
-<h3 id='assets'>Static source data</h3>
+<h3 id='assets'>Use Assets for static source data</h3>
 
-Source data is often available in static files.  For example, a pipeline may make use of a Microsoft Excel file and a collection of ESRI ShapeFiles.  Or a pipeline may use a relational database in addition to a set of CSV text files that store information that is not in the relational dataset.
+*Assets* are a feature of TriplyDB that allows storage of arbitrary files, including source data files.
+
+Source data is often made available in static files.  For example, a pipeline may make use of a [Microsoft Excel](#excel) file and a collection of ESRI ShapeFiles.  Or a pipeline may use a relational database in addition to a set of CSV text files that store information that is not in the relational dataset.
 
 If your pipeline needs to connect to static data files, it is a best practice to upload such files as TriplyDB Assets.  This has the following benefits:
 
@@ -283,7 +272,7 @@ If your pipeline needs to connect to static data files, it is a best practice to
 </dl>
 
 
-<h3 id='xlsx'>Microsoft Excel (XLSX) files</h3>
+<h3 id='excel'>Microsoft Excel (XLSX) files</h3>
 
 Microsoft Excel (file name extension `.xlsx`) is a popular file format for storing tabular source data.
 
@@ -328,27 +317,23 @@ Specifically, CSV/TSV does not allow the type of values to be specified.  All va
 
 This is specifically an issue when tabular data contains numeric information.  Such numeric information will only be available as strings.  These strings must be explicitly transformed to number in RATT (see the [`change` function](#change)).
 
-More advanced tabular formats like [Microsoft Excel](#xlsx) *are* able to store the types of values.
+More advanced tabular formats like [Microsoft Excel](#excel) *are* able to store the types of values.
 
+<!-- TODO
+<h3 id='shapefile'>ShapeFile (ESRI ArcGIS)</h3>
+-->
 
-### ShapeFile (ESRI ArcGIS)
-
-TODO
-
-
+<!-- TODO
 ### JSON
+-->
 
-TODO
-
-
+<!-- TODO
 ### XML
+-->
 
-TODO
-
-
+<!-- TODO
 ### PostgreSQL
-
-TODO
+-->
 
 
 ### Specify multiple source files
@@ -389,7 +374,7 @@ app.use(
 ```
 
 
-### Iterate over *all* Assets
+### Iterate over all Assets
 
 While it is possible to explicitly specify one or more source file that are uploaded as [TriplyDB Assets](#assets), RATT also allows *all* Assets to be used in an easy way:
 
@@ -413,7 +398,7 @@ It is a best practice to compress static data files if they are plain text files
 The following command shows how a local CSV file can be compressed using GNU Zip (`.gz`):
 
 ```sh
-$ gzip my-table.csv
+gzip my-table.csv
 ```
 
 Running this command will replace file `my-table.csv` with file `my-table.csv.gz`.
@@ -503,7 +488,7 @@ Notice that this is significantly shorter than specifying the full IRIs:
 
 ```ts
 app.use(
-  // “John knowns Mary.”
+  // “John knows Mary.”
   mw.addQuad(
     mw.toIri('https://example.com/john'),
     mw.toIri('https://example.com/knows'),
@@ -551,7 +536,7 @@ app.use(
 )
 ```
 
-Because the `foaf` and `ex` objects have been declared at the start of the pipeline, the rest of the pipeline can use autocompletion for IRIs terms.  This works by typing the namespace alias and a dot (for example: `foaf.`) and pressing `Ctrl + SPC` (control and space at the same time).  In [properly configured text editors](../generics/editor) this will bring up a list of autocomplete results.
+Because the `foaf` and `ex` objects have been declared at the start of the pipeline, the rest of the pipeline can use autocompletion for IRIs terms.  This works by typing the namespace alias and a dot (for example: `foaf.`) and pressing `Ctrl + SPC` (control and space at the same time).  In [properly configured text editors](editor) this will bring up a list of autocomplete results.
 
 Notice that the RATT notation for statements is purposefully close to the widely used Turtle/TriG syntax.
 
@@ -614,19 +599,11 @@ When we transform values in a RATT record, we must think about the following two
 
 When we plot these two factors onto a table, we get the following overview of the RATT transformation functions:
 
-<figure>
-  <table>
-    <thead>
-      <tr><th></th><th>Create a new entry</th><th>Change an existing entry</th></tr>
-    </thead>
-    <tbody>
-      <tr><th>From the same entry</th><td>impossible</td><td><a href="#change"><code>change</code></a></td></tr>
-      <tr><th>From another entry</th><td><a href="#copy"><code>copy</code></a></td><td><a href="#replace"><code>replace</code></a></td></tr>
-      <tr><th>From the context</th><td><a href="#add"><code>add</code></a></td><td>Write a custom Middleware</td></tr>
-    </tbody>
-  </table>
-  <figcaption>Table - Overview of the RATT Transformation Functions.</figcaption>
-</figure>
+|                     | Create a new entry | Change an existing entry  |
+| ------------------- | ------------------ | ------------------------- |
+| From the same entry | impossible         | [`change`](#change)       |
+| From another entry  | [`copy`](#copy)    | [`replace`](#replace)     |
+| From the context    | [`add`](#add)      | Write a custom Middleware |
 
 The following sections explain how these 4 transformation functions work.
 
@@ -667,7 +644,7 @@ This function emits an error if the specified key (`KEY_NAME`) does not exist in
 
 #### Use cases
 
-This section provides common use cases where the `change` function is applied.  These use cases also serve as example for how the `change` function can be used in general to fit your needs.
+This section provides common use cases where the `change` function is applied.  These use cases also serve as examples for how the `change` function can be used in general to fit your needs.
 
 ##### Add padding
 
@@ -737,7 +714,7 @@ After the `change` has been applied, the RATT record looks like this:
 
 Notice that strings that encode a number are correctly transformed, and non-empty strings that do not encode a number are transformed to `null`.  Most of the time, this is exactly the behavior that you want in a linked data pipeline.  When [creating statements](#create-statements) later, no statement will be created for entries that have value `null`.  See the [section on working with null values](#null-values) for more information.
 
-Also notice that the empty string is cast to the number zero.  Most of the time, this is *not* what you want.  If you want to prevent this transformation from happening, and you almost certainly do, you must [proces this data conditionally](#process-data-conditionally).
+Also notice that the empty string is cast to the number zero.  Most of the time, this is *not* what you want.  If you want to prevent this transformation from happening, and you almost certainly do, you must [process this data conditionally](#process-data-conditionally).
 
 
 <h5 id="translation-table">Change values using a known translation table</h5>
@@ -1056,7 +1033,7 @@ After this `add` transformation, the RATT Record looks as follows:
 
 ### Record-wide transformations
 
-So far this section has described value-level transformations.  This subsection decribes transformations that are applied to the RATT Record level.  These transformations can also be applied at the value level, but would be repetitive to apply multiple times.
+So far this section has described value-level transformations.  This subsection describes transformations that are applied to the RATT Record level.  These transformations can also be applied at the value level, but would be repetitive to apply multiple times.
 
 #### Remove trailing whitespace
 
@@ -1444,7 +1421,7 @@ yarn ratt ./lib/main.js --verbose
 <!-- <https://issues.triply.cc/issues/5603> -->
 Verbose mode may perform a reset of your current terminal session.  If this happens you lose visible access to the commands that were run prior to the last RATT invocation.
 
-This destructive behavior of verbose mode can be disabled by adding the following [environment variable](../generics/environment-variable):
+This destructive behavior of verbose mode can be disabled by adding the following [environment variable](environment-variable):
 
 ```sh
 export CI=true
@@ -1454,7 +1431,7 @@ This fixes the reset issue, but also makes the output less colorful.
 
 
 
-## Configuring the RATT Context
+<h2 id='context'>Configuring the RATT Context</h2>
 
 The RATT Context is specified when the `Ratt` object is instantiated.  This often appears towards the start of a pipeline script.  The RATT Context allows the following things to be specified:
 
@@ -1617,7 +1594,7 @@ app.use(
 )
 ```
 
-If you want to run the pipeline in production mode, add the following [environment variable](../generics/environment-variable):
+If you want to run the pipeline in production mode, add the following [environment variable](environment-variable):
 
 ```sh
 export TARGET=Production
@@ -1647,11 +1624,16 @@ RATT uses the [Semantic Versioning](https://semver.org) approach for structuring
 
   - If the `{minor}` number has increased, but the `{major}` number is the same, then an upgrade may require small changes to an existing pipeline.  A minor upgrade will never remove existing functionality, but it may change details of how existing functionality works (e.g. the settings for an existing function may have undergone minor changes).
 
-    Minor releases are likely to include significant *new* functionality that may benefit an existing pipeline.  Check the [release changelog](#todo) to see which new features are available.
+    Minor releases are likely to include significant *new* functionality that may benefit an existing pipeline.
+<!-- <https://issues.triply.cc/issues/5881>
+    Check the [release changelog](#todo) to see which new features are available.
+-->
 
   - If the `{major}` number has increased, an upgrade is likely to require changes to existing pipelines.  Major releases often remove outdated functionalities or bring significant changes to the behavior of existing functionalities.
 
+<!-- <https://issues.triply.cc/issues/5881>
     Make sure to always check the [release changelog](#todo) when upgrading to a new major version.  And make sure to test your pipeline after performing a major upgrade.
+-->
 
 ### Perform the upgrade
 
@@ -1673,7 +1655,11 @@ yarn build
 
 Make any fixes/changes to the pipeline that are necessary and make a commit that indicates that the RATT version was upgraded.
 
+
+
 ## Appendix 1: Commonly used prefix declarations
+
+The following code snippet can be copy/pasted to introduce prefix declarations for commonly used external vocabularies and datasets:
 
 ```ts
 const prefix = {
@@ -1695,6 +1681,8 @@ const prefix = {
 
 
 ## Appendix 2: Commonly used vocabularies
+
+The following code snippets can be copy/pasted to introduce terms for commonly used external vocabularies.
 
 ### GeoSPARQL
 
@@ -1731,8 +1719,11 @@ The core IRI terms that are part of the RDF 1.1 standard.
 
 ```ts
 const rdf = {
-  List: prefix.rdf('List'),
+  'List': prefix.rdf('List'),
+  first: prefix.rdf('first'),
+  langString: prefix.rdf('langString'),
   nil: prefix.rdf('nil'),
+  rest: prefix.rdf('rest'),
   type: prefix.rdf('type'),
 }
 ```
@@ -1786,6 +1777,30 @@ const sdo = {
 }
 ```
 
+### SHACL
+
+```ts
+const sh = {
+  'IRI': prefix.sh('IRI'),
+  'Literal': prefix.sh('Literal'),
+  'NodeShape': prefix.sh('NodeShape'),
+  'PropertyShape': prefix.sh('PropertyShape'),
+  class: prefix.sh('class'),
+  closed: prefix.sh('closed'),
+  datatype: prefix.sh('datatype'),
+  ignoredProperties: prefix.sh('ignoredProperties'),
+  languageIn: prefix.sh('languageIn'),
+  maxCount: prefix.sh('maxCount'),
+  minCount: prefix.sh('minCount'),
+  minLength: prefix.sh('minLength'),
+  name: prefix.sh('name'),
+  nodeKind: prefix.sh('nodeKind'),
+  path: prefix.sh('path'),
+  property: prefix.sh('property'),
+  targetClass: prefix.sh('targetClass'),
+}
+```
+
 ### XML Schema Datatypes (XSD)
 
 ```ts
@@ -1796,6 +1811,7 @@ const xsd = {
   dateTime: prefix.xsd('dateTime'),
   decimal: prefix.xsd('decimal'),
   duration: prefix.xsd('duration'),
+  integer: prefix.xsd('integer'),
   nonNegativeInteger: prefix.xsd('nonNegativeInteger'),
   string: prefix.xsd('string'),
 }

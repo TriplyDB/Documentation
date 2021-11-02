@@ -5,7 +5,7 @@ path: "/docs/environment-variable"
 
 This page explains how an environment variable can be specified on different operating systems.
 
-Environment variables are necessary for configuring private [API Tokens](#api-token) that ― for security reasons ― must not be included in source files.
+Environment variables are necessary for configuring private [API Tokens](api-token) that ― for security reasons ― must not be included in source files.
 
 ## Configuration in Windows
 
@@ -67,7 +67,7 @@ This is the preferred approach for setting environment variables.  It requires t
 
 ## Configuration without direnv
 
-The preferred approach for setting environment variables on macOS and Linux is documented in the [previous subsection](#configuration-using-direnv).  However, if you are using macOS or Linux and are unable to install the [direnv](https://direnv.net) extension, then you can still configure environment variables without using direnv.
+The preferred approach for setting environment variables on macOS and Linux is documented in the [previous subsection](#configuration-with-direnv).  However, if you are using macOS or Linux and are unable to install the [direnv](https://direnv.net) extension, then you can still configure environment variables without using direnv.
 
 This requirements the following steps:
 

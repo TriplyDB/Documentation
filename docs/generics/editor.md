@@ -3,7 +3,7 @@ title: "Editor support"
 path: "/docs/editor"
 ---
 
-When editing TypeScript files in [TriplyDB.js applications](../triplydb-js) or [RATT pipelines](../ratt), it is useful to receive good feedback from your text editor.  This page explains how to configure text editors that provide such assistance.
+When editing TypeScript files in [TriplyDB.js applications](triplydb-js) or [RATT pipelines](ratt), it is useful to receive good feedback from your text editor.  This page explains how to configure text editors that provide such assistance.
 
 1. Install a text editor like [Atom](https://atom.io) or [Visual Studio Code](https://code.visualstudio.com).
 

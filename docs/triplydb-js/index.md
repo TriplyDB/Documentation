@@ -107,7 +107,7 @@ In the [previous section](#setting-up-a-read-only-project) we set up a read-only
 
 In this section we extend the project to configure read/write permissions that are tied to your user account in a TriplyDB instance.  This allows you to read non-public data to which you have access, and it allows you to write data in datasets and organizations to which you have access.
 
-1. Following the steps on [this page](../generics/api-token) to create and configure a TriplyDB API Token with write permissions.
+1. Following the steps on [this page](api-token) to create and configure a TriplyDB API Token with write permissions.
 
    Write permissions are needed in order to publish data from a RATT pipeline.
 
@@ -153,7 +153,7 @@ You can extend this script with other functions that are supported by TriplyDB.j
 
 #### Editor support
 
-See [this page](../generics/editor) for information about how to configure a text editor that supports editing TriplyDB.js scripts.
+See [this page](editor) for information about how to configure a text editor that supports editing TriplyDB.js scripts.
 
 #### Improved error handling
 
@@ -223,7 +223,7 @@ The following sections document the various TriplyDB.js classes.  Each class com
 ```mermaid
 classDiagram
   class Account {
-    asOrg()
+    asOrganization()
     asUser()
   }
   Account --> Dataset: getDataset
