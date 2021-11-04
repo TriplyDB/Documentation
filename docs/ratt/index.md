@@ -1559,6 +1559,43 @@ const app = new Ratt({
 
 
 
+## Using TriplyDB.js in RATT
+
+All operations that can be performed in a TriplyDB instance can be automated with classes and methods in the [TriplyDB.js](triplydb-js) library.  This library is also used by RATT in the background to implement many of the RATT functionalities.
+
+Sometimes it is useful to use classes and methods in TriplyDB.js directly.  This is done in the following way:
+
+```ts
+// Create the RATT context.
+const app = new Ratt({
+  defaultGraph: ''
+})
+
+// Use the RATT context to access the TriplyDB.js connection.
+console.log((await app.triplyDb.getInfo()).name)
+```
+
+The above example prints the name of the TriplyDB instance.  But any other [TriplyDB.js](triplydb-js) operations can be performed.  For example, the user of the current API Token can change their avatar image in TriplyDB:
+
+
+```ts
+const user = await app.triplyDb.getUser()
+await user.setAvatar('my-avatar.png')
+```
+
+<!--
+app.before(async () => {
+  BODY
+}
+-->
+<!--
+app.after(async () => {
+  BODY
+}
+-->
+
+
+
 ## Setting up acceptance/production runs
 
 When working on a pipeline it is best to at least run it in the following two modes:
