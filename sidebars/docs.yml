@@ -23,8 +23,8 @@
      - title: Extract
        link: /docs/ratt-extract
      - title: Transform
-       link: /docs/ratt-transforms
+       link: /docs/ratt-transform
      - title: Load
-       link: /docs/ratt-Load
+       link: /docs/ratt-load
      - title: Working with RATT
        link: /docs/ratt-working-with-ratt
