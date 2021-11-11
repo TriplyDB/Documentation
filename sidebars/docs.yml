@@ -18,5 +18,13 @@
   - group: RATT
     tagline: Learn about RATT
     items:
-     - title: RATT
-       link: /docs/ratt
+     - title: Getting started
+       link: /docs/ratt-getting-started
+     - title: Extract
+       link: /docs/ratt-extract
+     - title: Transform
+       link: /docs/ratt-transforms
+     - title: Load
+       link: /docs/ratt-Load
+     - title: Working with RATT
+       link: /docs/ratt-working-with-ratt
