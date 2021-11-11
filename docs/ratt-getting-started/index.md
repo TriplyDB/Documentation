@@ -1,6 +1,6 @@
 ---
 title: "RATT"
-path: "/docs/ratt-getting-started"
+path: "/docs/ratt"
 ---
 
 **RATT is distributed under the TriplyDB license.  Contact [info@triply.cc](mailto:info@triply.cc) for more information.**

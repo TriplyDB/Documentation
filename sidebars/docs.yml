@@ -19,7 +19,7 @@
     tagline: Learn about RATT
     items:
      - title: Getting started
-       link: /docs/ratt-getting-started
+       link: /docs/ratt
      - title: Extract
        link: /docs/ratt-extract
      - title: Transform
