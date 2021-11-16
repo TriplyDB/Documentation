@@ -38,13 +38,6 @@ In this section we set up a RATT pipeline that creates one single triple.  This 
 
 1. Install [Node.js](https://nodejs.org) and [Yarn](https://yarnpkg.com).
 
-   On Linux, installation works as follows:
-
-   ```sh
-   sudo apt install nodejs yarn # Ubuntu, Debian
-   sudo dnf install nodejs yarn # Red Hat, Fedora
-   ```
-
 2. Create a directory for your pipeline:
 
    ```sh
