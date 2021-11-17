@@ -2159,10 +2159,10 @@ console.log(await service.isUpToDate())
 
 
 ### Story
+
 <!--
 TODO: Document what stories are and how to obtain them.
---->
-
+-->
 
 #### Story.delete()
 
