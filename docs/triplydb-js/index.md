@@ -1543,15 +1543,15 @@ If this argument is not specified, then graph names in the `from` dataset are id
 
 ##### Examples
 
-The following snippet creates a new dataset (`dataset2`) and imports one graph from an existing dataset (`dataset1`). Notice that the graph can be renamed as part of the import.
+The following snippet creates a new dataset (`newDataset`) and imports one graph from an existing dataset (`existingDataset`). Notice that the graph can be renamed as part of the import.
 
 ```ts
 const account = await client.getAccount()
-const dataset1 = await account.getDataset('my-dataset')
-const dataset2 = await account.addDataset('other-dataset')
-await dataset1.importFromDataset(
-  dataset2,
-  {'https://example.org/dataset2/graph': 'https://example.org/dataset1/graph'})
+const existingDataset = await account.getDataset('existingDataset')
+const newDataset = await account.addDataset('newDataset')
+await newDataset.importFromDataset(
+  existingDataset,
+  {'https://example.org/newDataset/graph': 'https://example.org/existingDataset/graph'})
 ```
 
 
