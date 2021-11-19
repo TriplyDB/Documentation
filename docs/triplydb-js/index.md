@@ -1266,7 +1266,7 @@ await dataset.delete()
 
 ##### See also
 
-Sometimes it is more useful to only delete the graphs that belong to a dataset, but leave the dataset metadata, services, and assets in places.  The following methods can be used for this purpose:
+Sometimes it is more useful to only delete the graphs that belong to a dataset, but leave the dataset metadata, services, and assets in place.  The following methods can be used for this purpose:
 
 - [Dataset.deleteGraph(graphName: string)](#datasetdeletegraphname-string)
 - [Dataset.removeAllGraphs()](#datasetremoveallgraphs)
