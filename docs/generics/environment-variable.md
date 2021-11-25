@@ -47,7 +47,7 @@ This is the preferred approach for setting environment variables.  It requires t
    echo export {name}={value} > .envrc
    ```
 
-   This creates a file called `.direnv`.
+   This creates a file called `.envrc`.
 
    Make sure that no whitespace appears around the `=` character.
 
