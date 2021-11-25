@@ -381,14 +381,6 @@ number like so
 https://triplydb.com/dbpedia/core/queries/Timelined-Cars-BETA
 ```
 
-### Using a saved query in Data Stories
-
-You can use a saved query in your datastory by defining a `<query>` element. within the
-query element you define the `data-config-ref="URI"` with the URI of a saved query in TriplyDB.
-
-For more in depth tutorial on how to create your own datastory you can read our
-documentation on [datastories](/docs/data-stories).
-
 # Data stories
 A TriplyDB data story is a way of communicating information about your linked data along with explanatory text while also being able to integrate query results.
 
