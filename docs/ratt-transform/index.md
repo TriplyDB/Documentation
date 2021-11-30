@@ -674,3 +674,34 @@ app.use(
 ```
 
 Notice that it is almost never useful to store the empty string in linked data.  So the treatment of the empty string as a NULL value is the correct default behavior.
+
+<h2 id='access-nested-data'> Access data</h2>
+
+### JSON
+It is often the case that we want to access data that are nested and use them to create linked data. For example, we want to access the types of the properties that a person named J.D. has.
+```json
+{
+  "name": "J.D.",
+  "properties": [
+    {
+      "type": "Apartment",
+      "country":"Netherlands"
+    },
+    {
+      "type": "Cottage",
+      "country":"Italy"
+    }
+  ]
+}
+```
+
+Thus, we would want to access each value of ```type``` key in the array of ```properties ``` . For this reason, we should use the below middleware:
+
+```sh
+mw.forEach(
+'properties',
+{more middlewares}
+)
+```
+
+Inside this middleware, each value of each type in the array can be accessed directly by using ```'type[0]'``` or ```'type[1]'```. In order to access a key through the parent node, ```'$parent.'``` has to be used in the beginning from of the path. Lastly, if you have to access a key through the start of the Json, ```'$root.'``` has to be used in the beginning of the path.
