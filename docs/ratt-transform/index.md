@@ -549,6 +549,16 @@ Notice the following details:
 - `mw.toLiteral` is used to create a dynamic literal term.
 - For literals a datatype IRI can be specified.  If no datatype IRI is specified then the default IRI is `xsd.string`.
 
+##### When should you use an IRI instead of an URI (which is a literal)?
+
+An IRI is used to identify something, for example the city of Amsterdam. It is expected that accessing it returns linked data. An IRI can be used to make assertions about a subject. On the other hand, a URI is expected to return a non-linked data content, for example an HTML website, and can be used as objects in linked data, for example for inserting further information about the subject resource.
+In the example below, the subject IRI is described further by the object's URL.
+
+```sh
+<https://dbpedia.org/resource/Amsterdam> rdfs:seeAlso "https://www.iamsterdam.com"^^xsd:anyURI.
+```
+
+An IRI can be created with ```mw.IRI```, while a URI is created by using ```mw.toLiteral()``` .
 
 
 ## Record IDs
