@@ -1178,11 +1178,11 @@ The service type is specified with the `type` parameter.  It supports the follow
 
 <dl>
   <dt><code>'sparql'</code></dt>
-  <dd>Starts a SPARQL service.</dd>
+  <dd>Starts a SPARQL service. A SPARQL 1.1 compliant service is very scalable and performance, but without advanced reasoning capabilities.</dd> 
   <dt><code>'sparql-jena'</code></dt>
-  <dd>Starts a SPARQL JENA service.</dd>
+  <dd>Starts a SPARQL JENA service. A SPARQL 1.1 compliant service that is less scalable and less performant, but allows reasoning (RDFS or OWL) to be enabled.</dd>
   <dt><code>'elasticsearch'</code></dt>
-  <dd>Starts an Elastic Search service.</dd>
+  <dd>Starts an Elastic Search service. A text search engine that can be used to power a search bar or similar textual search API.</dd>
 </dl>
 
 The `name` argument can be used to distinguish between different endpoints over the same dataset that are used for different tasks.
