@@ -120,3 +120,26 @@ You can upload the prefixes similarly under your account, using the relevant Tri
 import { mapValues } from 'lodash'
 ```
 
+## Uploading graphs
+
+In some cases, it is useful to upload graphs on TriplyDB that are already in a linked data format file. For this purpose, the file has to be read first (```mw.loadRdf```) and then be uploaded(```mw.toRdf```).
+
+```ts
+const app = new Ratt({
+  defaultGraph: graph.model,
+  cliContext,
+  prefixes: prefix,
+  sources: {
+    inputFile: Ratt.Source.file(`data/shapes.ttl`)
+  },
+
+  destinations: {
+   dataset: Ratt.Destination.TriplyDb.rdf(organization, dataset, remoteOptions)
+  },
+})
+
+app.use(
+mw.loadRdf(app.sources.inputFile),
+mw.toRdf(app.destinations.dataset)
+)
+```
