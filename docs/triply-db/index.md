@@ -480,6 +480,16 @@ The type of account can be observed based on the following icons:
 | ![](organization.png) | organization     |
 | ![](user.png)         | user             |
 
+## Metadata settings
+
+Under the "Settings" tab you can set the site logos and banner.
+
+Under the same tab you can also set the metadata of your instance.
+![Metadata settings](metadata-settings.png)
+
+The name of your website appears in your browser tab.
+The description appears on the home page of your website, same goes for the welcome text. 
+
 # Reference
 
 ## Access levels
