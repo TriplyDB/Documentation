@@ -100,6 +100,7 @@ version 2016-06-05.
 The Triple Pattern Fragments (TPF) API is available for all datasets
 in Triply and does not require running a dedicated service.
 
+
 #### URI path
 
 TPF requests are sent to the following URI path:
@@ -137,6 +138,31 @@ curl -G \
        'https://api.triplydb.com/datasets/academy/pokemon/fragments' \
        --data-urlencode 'predicate=http://www.w3.org/2000/01/rdf-schema#label' \
        -H 'Accept: application/trig'
+```
+
+### Exporting data
+
+
+To export the linked data of a dataset, use the following path:
+
+```none
+https://api.INSTANCE/datasets/ACCOUNT/DATATSET/download
+```
+
+
+#### Query parameters
+
+By default, an export includes all linked data graphs. Use a query argument to specify a particular graph.
+
+| _Key_       | _Value_                       | _Purpose_                                                                          |
+| ----------- | ----------------------------- | ---------------------------------------------------------------------------------- |
+| `graph`   | A URL-encoded IRI.            | Only download the export of the given graph IRI.           |
+
+#### Example request
+
+```bash
+curl 'https://api.triplydb.com/datasets/academy/pokemon/download' \
+       -H 'Accept: application/trig' > export.trig.gz
 ```
 
 ## Services
