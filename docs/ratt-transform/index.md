@@ -549,6 +549,16 @@ Notice the following details:
 - `mw.toLiteral` is used to create a dynamic literal term.
 - For literals a datatype IRI can be specified.  If no datatype IRI is specified then the default IRI is `xsd.string`.
 
+##### When should you use an IRI instead of an URI (which is a literal)?
+
+An IRI is used to identify something, for example the city of Amsterdam. It is expected that accessing it returns linked data. An IRI can be used to make assertions about a subject. On the other hand, a URI is expected to return a non-linked data content, for example an HTML website, and can be used as objects in linked data, for example for inserting further information about the subject resource.
+In the example below, the subject IRI is described further by the object's URL.
+
+```sh
+<https://dbpedia.org/resource/Amsterdam> rdfs:seeAlso "https://www.iamsterdam.com"^^xsd:anyURI.
+```
+
+An IRI can be created with ```mw.IRI```, while a URI is created by using ```mw.toLiteral()``` .
 
 
 ## Record IDs
@@ -664,3 +674,85 @@ app.use(
 ```
 
 Notice that it is almost never useful to store the empty string in linked data.  So the treatment of the empty string as a NULL value is the correct default behavior.
+
+<h2 id='access-nested-data'> Access data</h2>
+
+### JSON
+It is often the case that we want to access data that are nested and use them to create linked data. For example, we want to access the types of the properties that a person named J.D. has.
+```json
+{
+  "name": "J.D.",
+  "properties": [
+    {
+      "type": "Apartment",
+      "country":"Netherlands"
+    },
+    {
+      "type": "Cottage",
+      "country":"Italy"
+    }
+  ]
+}
+```
+
+Thus, we would want to access each value of ```type``` key in the array of ```properties ``` . For this reason, we should use the below middleware:
+
+```sh
+mw.forEach(
+'properties',
+{more middlewares}
+)
+```
+
+Inside this middleware, each value of each type in the array can be accessed directly by using ```'type[0]'``` or ```'type[1]'```. In order to access a key through the parent node, ```'$parent.'``` has to be used in the beginning from of the path. Lastly, if you have to access a key through the start of the Json, ```'$root.'``` has to be used in the beginning of the path.
+You can see the structure of the record inside  ```forEach()``` using ```logRecord()```:
+
+```sh
+mw.forEach(
+'properties',
+mw.logRecord()
+)
+```
+The printed result is:
+
+```
+{
+  "type": "Apartment",
+  "country": "Netherlands",
+  "$index": 0,
+  "$parent": {
+    "name": "J.D.",
+    "properties": [
+      {
+        "type": "Apartment",
+        "country": "Netherlands"
+      },
+      {
+        "type": "Cottage",
+        "country": "Italy"
+      }
+    ]
+  },
+  "$root": "__circular__"
+}
+{
+  "type": "Cottage",
+  "country": "Italy",
+  "$index": 1,
+  "$parent": {
+    "name": "J.D.",
+    "properties": [
+      {
+        "type": "Apartment",
+        "country": "Netherlands"
+      },
+      {
+        "type": "Cottage",
+        "country": "Italy"
+      }
+    ]
+  },
+  "$root": "__circular__"
+}
+```
+

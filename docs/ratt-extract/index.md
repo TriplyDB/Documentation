@@ -67,6 +67,7 @@ app.use(
 
 This connector also handles CSV variants that use a cell separator that is not comma (`,`).  This includes Tab Separated Values (TSV), where the separate is semi-colon (`;`).
 
+
 #### Standards-compliance
 
 RATT supports the official CSV standard: [RFC 4180](https://datatracker.ietf.org/doc/html/rfc4180).  Unfortunately, there are some ‘CSV’ files that do not follow the RFC 4180 standard.  Strictly speaking these files are not CSV files, although they may look similar to CSV files in some parts.
@@ -99,7 +100,33 @@ More advanced tabular formats like [Microsoft Excel](#excel) *are* able to store
 ### PostgreSQL
 -->
 
+<h3 id='excel'>Extensible Markup Language (XML) files</h3>
 
+Extensible Markup Language (file name extension `.xml`) is similar to HTML, but where you can define your own tags to use. This is why it is a very useful format  to store, search and share your data.
+
+RATT has a dedicated connector for XML files.  After such files [are uploaded as TriplyDB Assets](#assets), RATT can connect to them as follows:
+
+```ts
+const account = 'my-account'
+const dataset = 'my-dataset'
+app.use(
+ mw.fromXml(Ratt.Source.triplyDb.asset(account, dataset, {name: 'my-data.xml'}),{ selectors: ['first-element'] })
+)
+```
+
+selectors is an array of string-arrays indicating which XML paths should be stored as a record.
+ *  Example: if you have an XML of the format:
+ ```html
+<root>
+    <a>
+   ....
+    </a>
+</root>
+```
+ 
+ by using the array  [ 'root', 'a' ] as selectors, you would add as a record the elements which are nested inside <a> tag . **Note** that you must specify the full path in the selector from the root up to the node you want as a record.
+  
+This function transforms XML to JSON.
 ### Specify multiple source files
 
 The RATT connectors for source files allow an arbitrary number of files to be specified.

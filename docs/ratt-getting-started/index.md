@@ -35,6 +35,7 @@ This section gets you up and running with RATT by setting up increasingly more c
 ### Setting up a minimal pipeline
 
 In this section we set up a RATT pipeline that creates one single triple.  This pipeline is purposefully minimal, which allows us to focus on the installation and configuration steps.
+Note that the steps below are meant to be followed on Linux environment. If you use Windows, you have to install Nodejs and Yarn  by following the official documentation steps. After these steps, you shouldn't have any issues; RATT is running under every operation system.
 
 1. Install [Node.js](https://nodejs.org) and [Yarn](https://yarnpkg.com).
 
