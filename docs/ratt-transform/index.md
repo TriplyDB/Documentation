@@ -705,3 +705,54 @@ mw.forEach(
 ```
 
 Inside this middleware, each value of each type in the array can be accessed directly by using ```'type[0]'``` or ```'type[1]'```. In order to access a key through the parent node, ```'$parent.'``` has to be used in the beginning from of the path. Lastly, if you have to access a key through the start of the Json, ```'$root.'``` has to be used in the beginning of the path.
+You can see the structure of the record inside  ```forEach()``` using ```logRecord()```:
+
+```sh
+mw.forEach(
+'properties',
+mw.logRecord()
+)
+```
+The printed result is:
+
+```
+{
+  "type": "Apartment",
+  "country": "Netherlands",
+  "$index": 0,
+  "$parent": {
+    "name": "J.D.",
+    "properties": [
+      {
+        "type": "Apartment",
+        "country": "Netherlands"
+      },
+      {
+        "type": "Cottage",
+        "country": "Italy"
+      }
+    ]
+  },
+  "$root": "__circular__"
+}
+{
+  "type": "Cottage",
+  "country": "Italy",
+  "$index": 1,
+  "$parent": {
+    "name": "J.D.",
+    "properties": [
+      {
+        "type": "Apartment",
+        "country": "Netherlands"
+      },
+      {
+        "type": "Cottage",
+        "country": "Italy"
+      }
+    ]
+  },
+  "$root": "__circular__"
+}
+```
+
