@@ -341,6 +341,12 @@ export TARGET=Production
 
 New versions of RATT are released regularly.  Moving to a new version is generally a good idea, because it allows new features to be used and will include fixes for known/reported bugs.  At the same time, updating to a new version may require changes to your pipeline.  The following sections describe how an upgrade can be performed reliably.
 
+### Check the current version
+You can check the current version of RATT using the following command:
+```sh
+yarn list --pattern ratt
+```
+
 ### Check for a new version
 
 You can check for updated by running the following command in your project directory:
