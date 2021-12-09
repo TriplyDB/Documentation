@@ -123,9 +123,9 @@ selectors is an array of string-arrays indicating which XML paths should be stor
     </a>
 </root>
 ```
- 
+
  by using the array  [ 'root', 'a' ] as selectors, you would add as a record the elements which are nested inside <a> tag . **Note** that you must specify the full path in the selector from the root up to the node you want as a record.
-  
+
 This function transforms XML to JSON.
 ### Specify multiple source files
 
@@ -274,19 +274,6 @@ app.use(
   mw.addQuad(ex.john, ex.knows, ex.mary),
 )
 ```
-
-Notice that this is significantly shorter than specifying the full IRIs:
-
-```ts
-app.use(
-  // “John knows Mary.”
-  mw.addQuad(
-    mw.toIri('https://example.com/john'),
-    mw.toIri('https://example.com/knows'),
-    mw.toIri('https://example.com/mary')),
-)
-```
-
 
 ### External prefixes
 
