@@ -549,6 +549,30 @@ Notice the following details:
 - `mw.toLiteral` is used to create a dynamic literal term.
 - For literals a datatype IRI can be specified.  If no datatype IRI is specified then the default IRI is `xsd.string`.
 
+#### Static and dynamic triples
+
+Be aware that there are different approaches for *static* and *dynamic* IRIs:
+
+- Static IRIs are created with prefix declarations (example [1a]).
+- Dynamic IRIs are created with `mw.toIri` and prefix declarations (example [2a]).
+
+```ts
+[1a] prefix.id('person')
+[2a] mw.Iri('person', {prefix: prefix.id}),
+```
+
+Notation [1a] creates the *static* IRI [1b].  This IRI does not depend on the currently processed RATT record.
+
+Notation [2a] creates the *dynamic* IRI in [2b], assuming the `"person"` key contains the value `"John"`.  This IRI depends on the currently processed RATT record.
+
+For a different RATT record, IRI [2c] may be created instead (assuming the `"person"` key contains the value `"Jane"`).
+
+```turtle
+[1b] id:person
+[2b] id:John
+[2c] id:Jane
+```
+
 ##### When should you use an IRI instead of an URI (which is a literal)?
 
 An IRI is used to identify something, for example the city of Amsterdam. It is expected that accessing it returns linked data. An IRI can be used to make assertions about a subject. On the other hand, a URI is expected to return a non-linked data content, for example an HTML website, and can be used as objects in linked data, for example for inserting further information about the subject resource.
