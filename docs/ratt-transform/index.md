@@ -558,7 +558,7 @@ Be aware that there are different approaches for *static* and *dynamic* IRIs:
 
 ```ts
 [1a] prefix.id('person')
-[2a] mw.Iri('person', {prefix: prefix.id}),
+[2a] mw.toIri('person', {prefix: prefix.id}),
 ```
 
 Notation [1a] creates the *static* IRI [1b].  This IRI does not depend on the currently processed RATT record.
