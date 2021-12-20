@@ -29,7 +29,7 @@ link:
 
 ## Pagination with TriplyDB.js
 
-**TriplyDB.js** is the official programming library for interacting with [TriplyDB](https://triply.cc/docs/triply-db-getting-started).  TriplyDB.js allows the user to connect to a TriplyDB instance via the TypeScript language. TriplyDB.js has the advantage that it can handle pagination internally so it can reliably retrieve a large number of results.
+**TriplyDB.js** is the official programming library for interacting with [TriplyDB](https://triply.cc/docs/triply-db). TriplyDB.js allows the user to connect to a TriplyDB instance via the TypeScript language. TriplyDB.js has the advantage that it can handle pagination internally so it can reliably retrieve a large number of results.
 
 To get the output for a `construct` or `select` query, follow these steps:
 
@@ -46,21 +46,19 @@ To get the output for a `construct` or `select` query, follow these steps:
    run()
    ```
 
-2. Get the results of a query by setting a `results` variable.  More specifically, for construct queries:
+2. Get the results of a query by setting a `results` variable.  More specifically, for construct queries you use the `statments()` call:
 
    ```ts
    const query = await account.getQuery('name-of-some-query')
    const results = query.results().statements()
    ```
 
-   For select queries:
+   For select queries you use the `bindings()` call:
 
    ```ts
    const query = await account.getQuery('name-of-some-query')
    const results = query.results().bindings()
    ```
-
-   Note that for SPARQL `construct` queries, we use method `.statements()`, while for SPARQL `select` queries, we use method `.bindings()`.
 
    Additionally, saved queries can have 'API variables' that allow you to specify variables that are used in the query. Thus, if you have query parameters, pass their values as the first argument to `results` as follows:
 
@@ -77,27 +75,32 @@ To get the output for a `construct` or `select` query, follow these steps:
    }).bindings()
    ```
 
-3. To read the results you have three options:
+3. To iterate the results of your SPARQL query you have three options:
 
     a. Iterate through the results per row in a `for`-loop:
 
       ```ts
-      // Iterating over the results per row
+      // Iterating over the results.
       for await (const row of results) {
         // execute something
       }
       ```
+      Note: For select queries the `for`-loop iterates over the rows of the resultset. For construct queries the `for`-loop iterates over the statements in the resultset.
 
-    b. Save the results to a file.  This is only supported form SPARQL `construct` queries:
+    b. Save the results to a file. This is only supported for SPARQL `construct` queries:
 
       ```ts
       // Saving the results of a SPARQL construct query to a file.
       await results.toFile('my-file.nt')
       ```
 
-    c. Load all results into memory.  Note that this is almost never used.  If you want to process results, then option 5a is better; if you want to persist results, then option 5b is better.
+    c. Load all results into memory in the form of an Array. Note that this is almost never used. If you want to process results, then option 3a is better; if you want to persist results, then option 3b is better.
 
       ```ts
       // Loading results for a SPARQL construct or SPARQL select query into memory.
       const array = await results.toArray()
       ```
+
+## Pagination with RATT
+
+**RATT** is a [TypeScript package](https://www.npmjs.com/package/@triply/ratt) that is developed by [Triply](https://triply.cc/). You can read more in detail what RATT is in our [getting started](https://triply.cc/docs/ratt-getting-started) documentation.
