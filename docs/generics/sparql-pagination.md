@@ -100,7 +100,3 @@ To get the output for a `construct` or `select` query, follow these steps:
       // Loading results for a SPARQL construct or SPARQL select query into memory.
       const array = await results.toArray()
       ```
-
-## Pagination with RATT
-
-**RATT** is a [TypeScript package](https://www.npmjs.com/package/@triply/ratt) that is developed by [Triply](https://triply.cc/). You can read more in detail what RATT is in our [getting started](https://triply.cc/docs/ratt-getting-started) documentation.
