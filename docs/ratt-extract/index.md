@@ -124,7 +124,7 @@ selectors is an array of string-arrays indicating which XML paths should be stor
 </root>
 ```
 
- by using the array  [ 'root', 'a' ] as selectors, you would add as a record the elements which are nested inside <a> tag . **Note** that you must specify the full path in the selector from the root up to the node you want as a record.
+ by using the array  [ 'root', 'a' ] as selectors, you would add as a record the elements which are nested inside `<a>` tag . **Note** that you must specify the full path in the selector from the root up to the node you want as a record.
 
 This function transforms XML to JSON.
 ### Specify multiple source files
