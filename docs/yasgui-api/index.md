@@ -320,7 +320,7 @@ These options can be accessed through `Yasr.plugins`.
 This plugin shows SPARQL results as a table, using the [DataTables.net](https://datatables.net/) plugin. This plugin is defined in `Yasr.plugins.table` and can be configured using `Yasr.plugins.table.defaults`.
 
 ```ts
-// Open URIs in reults in a new window rather than the current.
+// Open URIs in results in a new window rather than the current.
 openIriInNewWindow = true;
 ```
 
