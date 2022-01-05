@@ -399,3 +399,7 @@ The following parameters can be used, Parameters in _Italic_ are experimental:
 | _`?eventMediaAlt`_       | The Alt text of the Media                                                                                                                   |
 | _`?eventMediaTitle`_     | The Title of the Media                                                                                                                      |
 | _`?eventMediaLink`_      | The URL the image should link to                                                                                                            |
+
+### Network ([TriplyDB Plugin](/docs/yasgui-api#triplyDbPlugins)) {#network}
+
+This view renders SPARQL Construct results in a graph representation. Works for `Turtle`, `Trig`, `N-Triples` or `N-Quads` responses.
