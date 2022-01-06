@@ -798,7 +798,7 @@ country:de rdfs:label 'Germany'@en.
 
 ### Iterating over lists
 
-In the previous section, we saw that we were able to make a first assertion for the first label of the country in the source data.  We were then also able to make a second asstion for the second label of the same country.
+In the previous section, we saw that we were able to make a first assertion for the first label of the country in the source data.  We were then also able to make a second assertion for the second label of the same country.
 
 But what do we do if there are 100 labels in 100 different languages?  And what do we do if some countries have a label in 2 locales, but other countries have a label in 1 or 3 languaes?  What we need is a simple way to express that we want RATT to make an assertion for each element in the list.
 
