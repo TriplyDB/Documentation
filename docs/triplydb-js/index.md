@@ -349,11 +349,20 @@ Returns an [async iterator](#async-iterator) over all accounts in the TriplyDB i
 
 ##### Example
 
-The following snippet returns all accounts:
+- The following snippet prints the display names for all accounts in the TriplyDB instance at <https://triplydb.com>:
 
-```ts
-console.log(await client.getAccounts().toArray())
-```
+  ```ts
+  const client = Client.get({url: 'https://api.triplydb.com'})
+  for await (const account of client.getAccounts()) {
+    console.log((await account.getInfo()).name)
+  }
+  ```
+
+- The following snippet returns an array that contains all account objects:
+
+  ```ts
+  console.log(await client.getAccounts().toArray())
+  ```
 
 See section [`Account`](#account) for an overview of the methods that
 can be used with account objects.
@@ -1178,7 +1187,7 @@ The service type is specified with the `type` parameter.  It supports the follow
 
 <dl>
   <dt><code>'sparql'</code></dt>
-  <dd>Starts a SPARQL service. A SPARQL 1.1 compliant service is very scalable and performance, but without advanced reasoning capabilities.</dd> 
+  <dd>Starts a SPARQL service. A SPARQL 1.1 compliant service is very scalable and performance, but without advanced reasoning capabilities.</dd>
   <dt><code>'sparql-jena'</code></dt>
   <dd>Starts a SPARQL JENA service. A SPARQL 1.1 compliant service that is less scalable and less performant, but allows reasoning (RDFS or OWL) to be enabled.</dd>
   <dt><code>'elasticsearch'</code></dt>
