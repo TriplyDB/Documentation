@@ -255,7 +255,17 @@ const app = new Ratt({
 })
 ```
 
+### Direct copying of source data to destination
 
+RATT supports copying sources directly to destination locations. This function is useful to when you already have linked data that is used as a source, but is also needed at the destination. An example would be the information model. This would be available as a source, and with the copy function it can be uploaded to TriplyDB with RATT.
+
+The following example shows the `copy` function:
+
+```ts
+  Ratt.Source.file(`${source_location}`).copy(app, Ratt.Destination.TriplyDb.rdf(`${destination_name}`))
+```
+
+The destination the function copies to will expect linked data. Copying a source that is not linked data can result in errors.
 
 ## Using TriplyDB.js in RATT
 
