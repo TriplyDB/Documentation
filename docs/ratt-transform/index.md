@@ -739,7 +739,7 @@ Paths are specified as dot-separated sequences of keys, starting at the top-leve
 [2] data.countries.name
 ```
 
-Path expressions can be used anywhere singular keys can be used.  For example, we can assert the title of a dataset in the following way:
+Path expressions can be used anywhere with singular keys.  For example, we can assert the title of a dataset in the following way:
 
 ```ts
 app.use(
