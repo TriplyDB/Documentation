@@ -732,7 +732,7 @@ See [the section on connecting XML sources](#xml) for more information.
 
 In tabular data, keys (or column names) are singular.  But in tree-shaped data a *path* of the tree can consist of one or more keys that must be traversed in sequence.
 
-Paths are specified as dot-separated sequences of keys, starting at the top-level and ending at the required value.  For the above example, RATT can access the `"name"` key inside the `"title"` key, which itself is nested inside the `"metadata"` key.  This path is expressed in [1].  Notice that the path expressed in [1] is different from the path expressed in [2], which also access the `"name"` key, but nested inside the `"labels"` and then `"data"` keys.
+Paths are specified as dot-separated sequences of keys, starting at the top-level and ending at the required value.  For the above example, RATT can access the `"name"` key inside the `"title"` key, which itself is nested inside the `"metadata"` key.  This path is expressed in [1].  Notice that the path expressed in [1] is different from the path expressed in [2], which also access the `"name"` key, but nested inside the `"countries"` and then `"data"` keys.
 
 ```
 [1] metadata.title.name
