@@ -114,9 +114,9 @@ app.use(
 ### PostgreSQL
 -->
 
-<h3 id='excel'>Extensible Markup Language (XML) files</h3>
+<h3 id='xml'>Extensible Markup Language (XML) sources</h3>
 
-Extensible Markup Language (file name extension `.xml`) is similar to HTML, but where you can define your own tags to use. This is why it is a very useful format  to store, search and share your data.
+Extensible Markup Language (file name extension `.xml`) is similar to HTML, but where you can define your own tags to use. This is why it is a very useful format to store, search and share your data.
 
 RATT has a dedicated connector for XML files.  After such files [are uploaded as TriplyDB Assets](#assets), RATT can connect to them as follows:
 
