@@ -726,7 +726,7 @@ Since the RATT record abstracts away the syntactic specifics of the source syste
 </root>
 ```
 
-See [the section on connecting XML sources](#xml) for more information.
+See [the section on connecting XML sources](/docs/ratt-extract#xml) for more information.
 
 ### Specifying paths (nested keys)
 
