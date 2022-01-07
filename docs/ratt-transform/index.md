@@ -703,7 +703,7 @@ We will use the following example in this section:
 }
 ```
 
-Since the RATT record abstracts away the syntactic specifics of the source system format, the above example may be read from a JSON source (see [connecting JSON sources](#json)), or from another kind of source.  For example, the RATT record may be read from the following XML source, assuming the contents of the `<root>` tag are selected:
+Since the RATT record abstracts away the syntactic specifics of the source system format, the above example may be read from a JSON source (see [connecting JSON sources](/docs/ratt-extract#json)), or from another kind of source.  For example, the RATT record may be read from the following XML source, assuming the contents of the `<root>` tag are selected:
 
 ```xml
 <?xml version="1.0"?>
