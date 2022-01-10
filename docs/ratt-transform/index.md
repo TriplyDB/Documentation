@@ -677,9 +677,7 @@ Notice that it is almost never useful to store the empty string in linked data. 
 
 ## Tree-shaped data
 
-Tree-shaped data is very common in different source systems.  For example, JSON- and XML-based formats are tree-shaped.  RATT has good support for working with such sources.
-
-We will use the following example in this section:
+Tree-shaped data is very common in different source systems.  We will use the following JSON source data as an example in this section:
 
 ```json
 {
@@ -703,14 +701,14 @@ We will use the following example in this section:
 }
 ```
 
-Since the RATT record abstracts away the syntactic specifics of the source system format, the above example may be read from a JSON source (see [connecting JSON sources](/docs/ratt-extract#json)), or from another kind of source.  For example, the RATT record may be read from the following XML source, assuming the contents of the `<root>` tag are selected:
+The principles that are documented in this section can be applied to any form of tree-shaped data.  For example, the following XML snippet is very similar to the JSON example:
 
 ```xml
 <?xml version="1.0"?>
 <root>
   <metadata>
     <title>
-      <value>Data about countries.</value>
+      <name>Data about countries.</name>
     </title>
   </metadata>
   <data>
@@ -726,27 +724,25 @@ Since the RATT record abstracts away the syntactic specifics of the source syste
 </root>
 ```
 
-See [the section on connecting XML sources](/docs/ratt-extract#xml) for more information.
-
 ### Specifying paths (nested keys)
 
 In tabular data, keys (or column names) are singular.  But in tree-shaped data a *path* of the tree can consist of one or more keys that must be traversed in sequence.
 
-Paths are specified as dot-separated sequences of keys, starting at the top-level and ending at the required value.  For the above example, RATT can access the `"name"` key inside the `"title"` key, which itself is nested inside the `"metadata"` key.  This path is expressed in [1].  Notice that the path expressed in [1] is different from the path expressed in [2], which also access the `"name"` key, but nested inside the `"countries"` and then `"data"` keys.
+Paths are specified as dot-separated sequences of keys, starting at the top-level and ending at the required value.  For the JSON example in the previous section, RATT can access the `"name"` key inside the `"title"` key, which itself is nested inside the `"metadata"` key.  This path is expressed in [1].  Notice that the path expressed in [1] is different from the path expressed in [2], which also access the `"name"` key, but nested inside the `"countries"` and then `"data"` keys.  (The use of the `[0]` index is explained in the next section.)
 
 ```
 [1] metadata.title.name
-[2] data.countries.name
+[2] data.countries[0].name
 ```
 
-Path expressions can be used anywhere with singular keys.  For example, we can assert the title of a dataset in the following way:
+Path expressions can be used as string keys in many places in RATT.  For example, we can assert the title of a dataset in the following way:
 
 ```ts
 app.use(
   mw.addQuad(
     prefix.dataset('my-dataset'),
     dct.title,
-    mw.toLiteral('metadata.title.value', {language: 'en'})),
+    mw.toLiteral('metadata.title.name', {language: 'en'})),
 )
 ```
 
@@ -758,11 +754,11 @@ dataset:my-dataset dct:title 'Data about countries.'@en.
 
 <h3 id='accessing-lists-by-index'>Accessing lists by index</h3>
 
-Tree-shaped data formats often allow multiple values to be specified in a sequence.  Examples of this are XML tags with the same key that are directly nested under the same parent, and lists in JSON.
+Tree-shaped data formats often allow multiple values to be specified in an ordered list.  Examples of this are arrays in JSON and XML elements with the same tag that are directly nested under the same parent element.
 
-RATT is able to access specific elements from such lists based on their *index* or position.  Following the standard practice in Computer Science, RATT refer to the first element in the list as having index 0.  The second element has index 1, etc.
+RATT is able to access specific elements from lists based on their *index* or position.  Following the standard practice in Computer Science, RATT refers to the first element in the list as having index 0.  The second element has index 1, etc.
 
-For the above example record, we can assert the first label of the country:
+For the above example record, we can assert the name of the *first* country as follows:
 
 ```ts
 app.use(
@@ -779,7 +775,7 @@ This results in the following assertion:
 country:nl rdfs:label 'The Netherlands'@en.
 ```
 
-We can also assert the second label of the same country.  Notice that only the index is different (‘1’ instead of ‘0’):
+We can also assert the name of the *second* country.  Notice that only the index is different (‘1’ instead of ‘0’):
 
 ```ts
 app.use(
@@ -796,13 +792,11 @@ This results in the following assertion:
 country:de rdfs:label 'Germany'@en.
 ```
 
-### Iterating over lists
+<h3 id='list-object'>Iterating over lists of objects</h3>
 
-In the previous section, we saw that we were able to make a first assertion for the first label of the country in the source data.  We were then also able to make a second assertion for the second label of the same country.
+In the previous section, we saw that we were able to assert the name of the first country and the name of the second country.  But what do we do if we want to assert the name for every country in the world?  And what do we do if some countries have a name in 2 languages, but other countries have a name in 1 or 3 languaes?  What we need is a simple way to express that we want RATT to make an assertion for every element in a list.
 
-But what do we do if there are 100 labels in 100 different languages?  And what do we do if some countries have a label in 2 locales, but other countries have a label in 1 or 3 languaes?  What we need is a simple way to express that we want RATT to make an assertion for each element in the list.
-
-RATT uses the `mw.forEach` function for this purpose.  The following code snippet asserts *each* label for the country in the example data:
+RATT uses the `mw.forEach` function for this purpose.  The following code snippet asserts the name for *each* country in the example data:
 
 ```ts
 app.use(
@@ -822,21 +816,20 @@ Notice the following details:
 The above code snippet makes one assertion for every element in the `"countries"` list:
 
 ```trig
-country:nl rdfs:label 'The Netherlands'@en-us,
-                      'Nederland'@nl-nl.
+country:nl rdfs:label 'The Netherlands'@en.
+country:de rdfs:label 'Germany'@en.
 ```
 
-The elements that `mw.forEach` iterates over are themselves RATT records.  This implies that all functions that work for full RATT records also work for the RATT records inside `mw.forEach`.
+Notice that `mw.forEach` only works for lists whose elements are *objects*.  See [Iterating over lists of primitives](#list-primitive) for dealing with lists that do not contain objects.
 
-### Special keys when iterating over lists
-
-In the previous section we saw that `mw.forEach` allows us to iterate over the elements in an list.  The elements are themselves made available as RATT records.  The RATT records inside an `mw.forEach `function are smaller.  This allow the regular keys of the iterated-over elements to be accessed directly.
+The elements that `mw.forEach` iterates over are themselves RATT records.  This implies that all functions that work for full RATT records also work for the RATT records inside `mw.forEach`.  The RATT records inside an `mw.forEach `function are smaller.  This allows the regular keys of the iterated-over elements to be accessed directly.
 
 In addition to these regular keys, RATT records inside `mw.forEach` also contain additional keys that simplify common operations.  The following subsections explain the following special keys:
 
 - [Index key (`$index`)](#index-key)
 - [Parent key (`$parent`)](#parent-key)
 - [Root key (`$root`)](#root-key)
+
 
 <h4 id='index-key'>Index key (`$index`)</h4>
 
@@ -883,11 +876,12 @@ country:1 rdfs:label 'Germany'@en.
 country:2 rdfs:label 'Italy'@en.
 ```
 
+
 <h4 id='parent-key'>Parent key (`$parent`)</h4>
 
 When `mw.forEach` iterates through a list of elements, it makes the enclosing *parent* record available under key `$parent`.
 
-The parent record is the record that directly contains the path that was specified in the first argument to the `mw.forEach` call.
+The parent record is the record that directly contains the first key that appears in the path that was specified in `mw.forEach`.
 
 For example, the parent record in the following call is the record that directly contains the `"data"` key:
 
@@ -959,11 +953,12 @@ and:
 
 The `$root` key is explained in [the next section](#root-key).
 
+
 <h4 id='root-key'>Root key (`$root`)</h4>
 
 Sometimes it may be necessary to access a part of the original RATT record that is outside of the scope of the `mw.forEach` call.
 
-Every RATT record inside an` mw.forEach` call contains the `"$root"` key.  The value of the root key provides a link to the full RATT record.  Because the `$root` key is part of the linked-to RATT record, it is not possible to print the value of the root key.  (This would result in infinite output.)  For this reason, the value of the `$root` key is printed as the special value `"__circular__"`.
+Every RATT record inside a ` mw.forEach` call contains the `"$root"` key.  The value of the root key provides a link to the full RATT record.  Because the `$root` key is part of the linked-to RATT record, it is not possible to print the value of the root key.  (This would result in infinite output.)  For this reason, the value of the `$root` key is printed as the special value `"__circular__"`.
 
 For the above examples, the parent record and root record are the same, but this is not always the case.  Specifically, the parent record and root record are different when `mw.forEach` calls are nested.
 
@@ -1000,7 +995,7 @@ The following data contains an inner list (key `"labels"`) inside an outer list 
 }
 ```
 
-The following nested `mw.forEach` call shows the difference between the `"$parent"` key and the `$root` key.  The `$parent` key allows then the individual country objects to be accessed, while the `"$root"` key allows the entire tree to be accessed:
+The following nested `mw.forEach` call shows the difference between the `"$parent"` key and the `$root` key.  The `$parent` key allows the individual country objects to be accessed, while the `"$root"` key allows the entire tree to be accessed:
 
 ```ts
 app.use(
@@ -1055,4 +1050,28 @@ The following RATT record is printed first (3 records are printed in total).  No
   },
   "$root": "__circular__"
 }
+```
+
+
+<h3 id='list-primitive'>Iterating over lists of primitives</h3>
+
+In [the previous section](#list-object) we showed how to iterate over lists of objects.  But what happens if a list does not contain objects but elements of primitive type?  Examples include lists of strings or lists of numbers.
+
+Function `mw.forEach` does not work with lists containing primitive types, because it assumes a RATT record structure which can only be provided by objects.  Lucklily, RATT includes the functions `mw.toIri.forEach` and `mw.toLiteral.forEach` that can be specifically used to iterate over lists of primitives.
+
+```ts
+  app.use(
+    mw.fromJson({"id": "nl", "names": ["The Netherlands", "Holland"]}),
+    mw.addQuad(
+      mw.toIri('id', {prefix: prefix.country}),
+      rdfs.label,
+      mw.toLiteral.forEach('names', {language: 'en'})),
+  )
+```
+
+This makes the following assertion:
+
+```trig
+country:nl rdfs:label 'The Netherlands'@en,
+                      'Holland'@en.
 ```
