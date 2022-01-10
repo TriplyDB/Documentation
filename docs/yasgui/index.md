@@ -402,4 +402,4 @@ The following parameters can be used, Parameters in _Italic_ are experimental:
 
 ### Network ([TriplyDB Plugin](/docs/yasgui-api#triplyDbPlugins)) {#network}
 
-This view renders SPARQL Construct results in a graph representation. Works for `Turtle`, `Trig`, `N-Triples` or `N-Quads` responses.
+This view renders SPARQL Construct results in a graph representation. Works for `Turtle`, `Trig`, `N-Triples` or `N-Quads` responses. The maximum amount of results that can be visualized is 1.000 due to performance.
