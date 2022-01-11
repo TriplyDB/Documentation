@@ -204,7 +204,7 @@ statement.graph = graph('enrichment')
 
 <h3 id='sparql-endpoint'>SPARQL endpoints</h3>
 
-The [previous section](#sparql-query) explained how RATT pipelines can be connected to TriplyDB Saved Queries.  It is also possible to connect RATT to raw SPARQL endpoints, including non-TriplyDB endpoints.  Unfortunately, SPARQL endpoints do not offer the same production-grade features as TriplyDB Saved Queries.  For example, there is no standardized way to retrieve larger result sets.
+The [previous section](#sparql-query) explained how RATT pipelines can be connected to TriplyDB Saved Queries. It is also possible to connect RATT to raw SPARQL endpoints, including non-TriplyDB endpoints. Unfortunately, raw SPARQL endpoints do not offer the same production-grade features as TriplyDB Saved Queries. For example, there is no standardized way to retrieve larger result sets.
 
 The following code snippet issues a raw SPARQL query against a public SPARQL endpoint:
 
