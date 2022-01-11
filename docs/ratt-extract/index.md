@@ -111,7 +111,7 @@ RATT is able to load RDF data from a SPARQL `construct` query.  Such queries can
 The following one-liner runs an existing saved `construct` query in TriplyDB:
 
 ```ts
-mw.sparqlConstruct(Ratt.Source.TriplyDb.query('my-account', 'my-query')),
+mw.loadRdf(Ratt.Source.TriplyDb.query('my-account', 'my-query')),
 ```
 
 Similar to the other RATT Connectors, the above snippet automatically performs multiple requests in the background, if needed, to retrieve the full result set.  This is not supported by bare SPARQL endpoints which lack a standardized form of pagination.  See the page on [SPARQL Pagination](pagination) for more information on how this works.
@@ -130,7 +130,7 @@ const graph = Ratt.prefixer('https://example.com/id/graph/')
 const myQuery = Ratt.Source.TriplyDb.query('my-account',
                                            'my-dataset',
                                            {toGraph: graph('enrichment')},
-mw.sparqlConstruct(myQuery)
+mw.loadRdf(myQuery)
 ```
 
 The value of the `toGraph` option can be any IRI that is specified inside RATT.  In the above example the `graph` prefix is used together with the `enrichment` local name to produce the absolute IRI `https://example.com/id/graph/enrichment`.
@@ -146,12 +146,11 @@ This is supported by TriplyDB Saved Queries.  A specific version can be used by 
 const myQuery = Ratt.Source.TriplyDb.query('my-account',
                                            'my-dataset',
                                            {toGraph: graph.results,
-                                            variables: {country: 'Holland'},
                                             version: 1})
-mw.sparqlConstruct(myQuery)
+mw.loadRdf(myQuery)
 ```
 
-Not specifying the `version` option automatically uses the latest version.
+Not specifying the `version` option automatically uses the <b>latest version</b>. There is no standardized support for query versioning with raw SPARQL endpoints.
 
 <h4 id='api-variable-static'>Specifying API variables</h4>
 
@@ -165,11 +164,10 @@ const myQuery = Ratt.Source.TriplyDb.query('my-account',
                                            {toGraph: graph.results,
                                             variables: {country: 'Holland'},
                                             version: 1})
-mw.sparqlConstruct(myQuery)
+mw.loadRdf(myQuery)
 ```
 
-There is no standardized support for query versioning with raw SPARQL endpoints.
-
+There is no standardized support for specifying API variables with raw SPARQL endpoints.
 
 <h4 id='api-variable-dynamic'>Specifying dynamic API variables</h4>
 
@@ -181,7 +179,7 @@ In such cases we can use the following custom middleware to run the SPARQL query
 app.use(
   async (context, next) => {
     const api_variables = {
-      country: context.asString('COUNTRY').value
+      country: context.getString('COUNTRY')
     }
     const myQuery = await account.getQuery('my-query')
     for await (const statement of myQuery.results(api_variables).statements()) {
