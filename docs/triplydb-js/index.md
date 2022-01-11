@@ -578,10 +578,28 @@ Adds a new SPARQL query.
 
 ##### Arguments
 
+<!-- ***`accessLevel: 'private'|'internal'|'public'` (optional)***
+The access level of the query. The following values are supported:
+
+- ***`'private'`*** The query can only be accessed by the <a href='#account'><code>Account</code></a> object for which it is created.
+- ***`'internal'`*** The query can only be accessed by people who are logged into the TriplyDB instance (denoted by the value of environment variable `TRIPLYDB_URL`).
+- ***`'private'`*** The query can be accessed by everybody. -->
+
+**Required:**
 <dl>
-  <dt><code>accessLevel: 'private'|'internal'|'public'</code> (optional)</dt>
-  <dd>
-    <p>The access level of the query. The following values are supported:</p>
+<dt><code>dataset</code> </dt>
+<dd>The ID of a dataset that the current API token gives access to.  This ID is obtained with the following code: <code>(await dataset.getInfo()).id</code></dd>
+<dt><code>name: string</code> </dt>
+<dd>The URL-friendly name of the new query.  The name must only contain alphanumeric characters and hyphens (`[A-Za-z0-9\-]`).</dd>
+</dl>
+
+**Optional:**
+
+
+<dl>
+
+  <dt><code>accessLevel</code> </dt>
+  <dd> The access level of the query. The following values are supported:
     <dl>
       <dt><code>'private'</code></dt>
       <dd>The query can only be accessed by the <a href='#account'><code>Account</code></a> object for which it is created.</dd>
@@ -595,23 +613,21 @@ Adds a new SPARQL query.
   <dt><code>autoselectService: boolean</code> (optional)</dt>
   <dd>TODO</dd>
   -->
-  <dt><code>dataset</code> (required)</dt>
-  <dd>The ID of a dataset that the current API token gives access to.  This ID is obtained with the following code: <code>(await dataset.getInfo()).id</code></dd>
-  <dt><code>description: string</code> (optional)</dt>
+
+  <dt><code>description: string</code> </dt>
   <dd>A human-readable description of the query.</dd>
-  <dt><code>displayName: string</code> (optional)</dt>
+  <dt><code>displayName: string</code></dt>
   <dd>The human-readable name of the query.  This name may include spaces and other characters that are not allowed in the URL-friendly <code>name</code>.</dd>
   <!--
-  <dt><code>generateNewName: boolean</code> (optional)</dt>
+  <dt><code>generateNewName: boolean</code> ()</dt>
   <dd>TODO</dd>
   -->
-  <dt><code>name: string</code> (required)</dt>
-  <dd>The URL-friendly name of the new query.  The name must only contain alphanumeric characters and hyphens (`[A-Za-z0-9\-]`).</dd>
+
   <!--
-  <dt><code>preferredService: string</code> (optional)</dt>
+  <dt><code>preferredService: string</code> </dt>
   <dd>TODO</dd>
   -->
-  <dt><code>renderConfig</code> (optional)</dt>
+  <dt><code>renderConfig</code> </dt>
   <dd>
     <dl>
       <dt><code>output: string</code> (optional)</dt>
@@ -620,13 +636,13 @@ Adds a new SPARQL query.
       <dd>Setting that are specific for the visualization approach specified in <code>output</code>.</dd>
     </dl>
   </dd>
-  <dt><code>requestConfig</code> (optional)</dt>
+  <dt><code>requestConfig</code> </dt>
   <dd>
     <dl>
       <dt><code>headers</code> (optional)</dt>
       <dd>An object whose keys are HTTP header names and whose values are HTTP header values.</dd>
       <dt><code>payload</code> (optional)</dt>
-      <dd>
+      <dd> has the following key:  
         <dl>
           <!--
           <dt><code>debug: string</code> (optional)</dt>
@@ -644,7 +660,7 @@ Adds a new SPARQL query.
           <dt><code>named-graph-uri: string|string[]</code> (optional)</dt>
           <dd>Either one named graph IRI or a list of zero or more named graph IRIs TODO.</dd>
           -->
-          <dt><code>query</code> (optional)</dt>
+          <dt><code>query</code> (required)</dt>
           <dd>The query string.</dd>
           <!--
           <dt><code>timeout: number</code> (optional)</dt>
@@ -656,30 +672,39 @@ Adds a new SPARQL query.
   </dd>
   <dt><code>variables: Variable[]</code></dt>
   <dd>
-    <p>A list of objects with the following keys:</p>
+    A list of objects with the following keys:
     <dl>
-      <dt>IRI variable<dt>
+      <dt>IRI variable</dt>
       <dd>An object of the form `Variable` (see below)</dd>
   </dd>
 </dl>
 
 Instances of `Variable` are objects that can have the following keys:
 
+**Required:**
+
 <dl>
-  <dt><code>allowedValues: string[]</code> (optional)</dt>
+<dt><code>name: string</code> </dt>
+<dd>A SPARQL variable name.  The variable name must appear in the query string.  The question mark (<code>?</code>) or dollar sign (<code>$</code>) is not included.</dd>
+<dt><code>termType: 'Literal'|'NamedNode'</code> </dt>
+<dd>The kind of variable.  This must be either `'Literal'` for literals or `'NamedNode'` for IRIs.</dd>
+</dl>
+
+**Optional:**
+
+<dl>
+  <dt><code>allowedValues: string[]</code></dt>
   <dd>The list of string values that is allowed for this variable.</dd>
-  <dt><code>datatype: string</code> (optional if <code>termType='Literal'</code></dt>
+  <dt><code>datatype: string</code> (if <code>termType='Literal'</code>)</dt>
   <dd>The datatype IRI for the literal variable.</dd>
-  <dt><code>language: string</code> (optional if <code>termType='Literal'</code></dt>
+  <dt><code>language: string</code> (if <code>termType='Literal'</code>)</dt>
   <dd>The language tag for the literal variable.  Setting this implies that the dataset IRI is <code>rdf:langString</code>.</dt>
-  <dt><code>defaultValue: string</code> (optional)</dt>
+  <dt><code>defaultValue: string</code></dt>
   <dd>The default string value for the </dd>
-  <dt><code>name: string</code> (required)</dt>
-  <dd>A SPARQL variable name.  The variable name must appear in the query string.  The question mark (<code>?</code>) or dollar sign (<code>$</code>) is not included.</dd>
-  <dt><code>required: boolean</code> (optional)</dt>
+
+  <dt><code>required: boolean</code></dt>
   <dd>Whether a query request must include an explicit value for this variable.  The default value is <code>false</code>.</dd>
-  <dt><code>termType: 'Literal'|'NamedNode'</code> (required)</dt>
-  <dd>The kind of variable.  This must be either `'Literal'` for literals or `'NamedNode'` for IRIs.</dd>
+
 </dl>
 
 ##### Example
@@ -713,15 +738,30 @@ Adds a new data story.
 
 ##### Arguments
 
+**Required:**
 <dl>
-  <dt><code>accessLevel: 'private'|'internal'|'public'</code> (optional)</dt>
-  <dd>The access level of the data story.  The default value is <code>'private'</code>.</dd>
-  <dt><code>content: StoryElementUpdate[]</code> (optional)</dt>
-  <dd>A list if story elements.</dd>
-  <dt><code>displayName: string</code> (optional)</dt>
-  <dd>The human-readable name of the data story.  This name may include spaces and other characters that are not allowed in the URL-friendly name.</dd>
+<dt><code>accessLevel</code> </dt>
+<dd>
+  The access level of the dataset. The following values are supported:
+  <dl>
+    <dt><code>'private'</code></dt>
+    <dd>The dataset can only be accessed by the <a href='#account'><code>Account</code></a> object for which it is created.</dd>
+    <dt><code>'internal'</code></dt>
+    <dd>The dataset can only be accessed by people who are logged into the TriplyDB instance (denoted by the value of environment variable <code>TRIPLYDB_URL</code>).
+    <dt><code>'public'</code></dt>
+    <dd>The dataset can be accessed by everybody.</dd>
+  </dl>
   <dt><code>name: string</code> (required)</dt>
   <dd>The URL-friendly name of the data story.  The name must only contain alphanumeric characters and hyphens (`[A-Za-z0-9\-]`).</dd>
+</dl>
+
+**Optional:**
+  <dl>
+  <dt><code>content: StoryElementUpdate[]</code> </dt>
+  <dd>A list if story elements.</dd>
+  <dt><code>displayName: string</code> </dt>
+  <dd>The human-readable name of the data story.  This name may include spaces and other characters that are not allowed in the URL-friendly name.</dd>
+
 </dl>
 
 A story element is an object with the following keys:
@@ -1682,8 +1722,9 @@ Updates the metadata for this dataset.
 
 The `metadata` argument takes a dictionary object with the following optional keys:
 
+**Required:**
 <dl>
-  <dt><code>accessLevel</code> (required)</dt>
+  <dt><code>accessLevel</code> </dt>
   <dd>
     The access level of the dataset. The following values are supported:
     <dl>
@@ -1695,12 +1736,16 @@ The `metadata` argument takes a dictionary object with the following optional ke
       <dd>The dataset can be accessed by everybody.</dd>
     </dl>
   </dd>
-  <dt><code>description</code> (optional)</dt>
+</dl>
+
+  **Optional:**
+<dl>
+  <dt><code>description</code> </dt>
   <dd>The description of the dataset.  This description can make use of Markdown layout (see the <a href='/docs/triply-db-getting-started/#markdown-support'>Markdown reference</a>) for details.</dd>
-  <dt><code>displayName</code> (optional)</dt>
+  <dt><code>displayName</code> </dt>
   <dd>The human-readable name of the dataset.  This name may contain spaces and other characters that are not allowed in the URL-friendly name.</dd>
   <dd></dd>
-  <dt><code>license</code> (optional)</dt>
+  <dt><code>license</code> </dt>
   <dd>
     The license of the dataset. The following license strings are currently supported:
     <ul>
