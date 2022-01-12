@@ -28,7 +28,7 @@ If your pipeline needs to connect to static data files, it is a best practice to
   <dt>Secure</dt>
   <dd>TriplyDB Assets are accessible under the same access levels as the TriplyDB Dataset to which they belong.  This means that you can share static data files in a secure way with your collaborators.</dd>
   <dt>Versioned</dt>
-  <dd>TriplyDB Assets are versioned.  If a new version of the same static file becomes available, this file can be uploaded to the same TriplyDB Asset.  If there are problems with the new data files them your collaborators can always roll back to an earlier version of the source data.</dd>
+  <dd>TriplyDB Assets are versioned.  If a new version of the same static file becomes available, this file can be uploaded to the same TriplyDB Asset.  If there are problems with the new data files then your collaborators can always roll back to an earlier version of the source data.</dd>
   <dt>Transparent</dt>
   <dd>All collaborators have access to the same TriplyDB Assets.  This makes it transparent which static data files are needed, and which versions are available.  This is much more transparent than having to share (versions of) files over email or by other indirect means.</dd>
   <dt>Backed-up</dt>
@@ -80,7 +80,7 @@ While CSV/TSV files are often used in practice, they come with significant limit
 
 Specifically, CSV/TSV does not allow the type of values to be specified.  All values have type `'string'`.
 
-This is specifically an issue when tabular data contains numeric information.  Such numeric information will only be available as strings.  These strings must be explicitly transformed to number in RATT (see the [`change` function](#change)).
+This is specifically an issue when tabular data contains numeric information.  Such numeric information will only be available as strings.  These strings must be explicitly transformed to numbers in RATT (see the [`change` function](#change)).
 
 More advanced tabular formats like [Microsoft Excel](#excel) *are* able to store the types of values.
 
@@ -99,6 +99,137 @@ More advanced tabular formats like [Microsoft Excel](#excel) *are* able to store
 <!-- TODO
 ### PostgreSQL
 -->
+
+<h3 id='sparql-query'>SPARQL queries</h3>
+
+RATT is able to use existing SPARQL queries as data sources.  This can be used to tap into existing RDF sources for transformation and/or enrichment.
+
+This section assumes a SPARQL query has been saved inside TriplyDB.  See the [SPARQL endpoints](#sparql-endpoint) section on how to use SPARQL endpoints without such saved queries.  Notice that using saved queries is significantly better than querying endpoints, especially in production systems.
+
+RATT is able to load RDF data from a SPARQL `construct` query.  Such queries can be used to transform data from one graph structure to another.  For example, this can be used to transform DCAT metadata records into Schema.org metadata records.
+
+The following one-liner runs an existing saved `construct` query in TriplyDB:
+
+```ts
+mw.loadRdf(Ratt.Source.TriplyDb.query('my-account', 'my-query')),
+```
+
+Similar to the other RATT Connectors, the above snippet automatically performs multiple requests in the background, if needed, to retrieve the full result set.  This is not supported by bare SPARQL endpoints which lack a standardized form of pagination.  See the page on [SPARQL Pagination](pagination) for more information on how this works.
+
+The above example is identical for public and non-public TriplyDB Saved Queries.  This makes it easy to start out with private or internal queries, and move them to public once the project matures.  This is not supported by raw SPARQL endpoints.
+
+
+<h5>Specifying a result graph</h5>
+
+It is often useful to store the results of `construct` queries in a specific graph.  For example, when internal data is enriched with external sources, it is often useful to store the external enrichments in a separate graph.  Another example is the use of a query that applies RDF(S) and/or OWL reasoning.  In such cases the results of the reasoner may be stored in a specific graph.
+
+The following example stores the results of the specified `construct` query in a special ‘enrichment’ graph:
+
+```typescript
+const graph = Ratt.prefixer('https://example.com/id/graph/')
+const myQuery = Ratt.Source.TriplyDb.query('my-account',
+                                           'my-dataset',
+                                           {toGraph: graph('enrichment')},
+mw.loadRdf(myQuery)
+```
+
+The value of the `toGraph` option can be any IRI that is specified inside RATT.  In the above example the `graph` prefix is used together with the `enrichment` local name to produce the absolute IRI `https://example.com/id/graph/enrichment`.
+
+
+<h4>Using a specific query version</h4>
+
+In production systems, applications must be able to choose whether they want to use the latest version of a query (acceptance mode), or whether they want to use a specific recent version (production mode), or whether they want to use a specific older version (legacy mode).
+
+This is supported by TriplyDB Saved Queries.  A specific version can be used by specifying the `version` option in RATT.  For example, the following snippet always uses the first version of the specified query:
+
+```typescript
+const myQuery = Ratt.Source.TriplyDb.query('my-account',
+                                           'my-dataset',
+                                           {toGraph: graph.results,
+                                            version: 1})
+mw.loadRdf(myQuery)
+```
+
+Not specifying the `version` option automatically uses the <b>latest version</b>. There is no standardized support for query versioning with raw SPARQL endpoints.
+
+<h4 id='api-variable-static'>Specifying API variables</h4>
+
+In production systems, applications often request different information based on a limited set of input variables.  This is supported by TriplyDB Saved Queries, for which API variables can be configured.  The API variables ensure that the query string is parameterized correctly, maintaining the RDF syntax and semantics.
+
+The following example binds the `?country` variable inside the query string to literal `'Holland'`.  This allows the results for Holland to be returned.
+
+```typescript
+const myQuery = Ratt.Source.TriplyDb.query('my-account',
+                                           'my-dataset',
+                                           {toGraph: graph.results,
+                                            variables: {country: 'Holland'},
+                                            version: 1})
+mw.loadRdf(myQuery)
+```
+
+There is no standardized support for specifying API variables with raw SPARQL endpoints.
+
+<h4 id='api-variable-dynamic'>Specifying dynamic API variables</h4>
+
+In [the previous section](#api-variable-static) the value `'Holland'` for the API variable `country` was known at the time of writing the RATT pipeline.  But what do we do if the requested country is not known at the time of writing the RATT pipeline, but depends on data that is read/transformed during the execution of the RATT pipeline?
+
+In such cases we can use the following custom middleware to run the SPARQL query:
+
+```ts
+app.use(
+  async (context, next) => {
+    const api_variables = {
+      country: context.getString('COUNTRY')
+    }
+    const myQuery = await account.getQuery('my-query')
+    for await (const statement of myQuery.results(api_variables).statements()) {
+      statement.graph = graph('enrichment')
+      context.store.addQuad(statement)
+    }
+    return next()
+  }),
+)
+```
+
+In the above example, different countries are specified by data values that are read dynamically from the `COUNTRY` key.  This key can be a column in a table, or an element in XML, or some other dynamic data location, depending on the RATT source that is used.
+
+The following line is used to configure the graph where the results from the queries are stored:
+
+```typescript
+statement.graph = graph('enrichment')
+```
+
+
+<h3 id='sparql-endpoint'>SPARQL endpoints</h3>
+
+The [previous section](#sparql-query) explained how RATT pipelines can be connected to TriplyDB Saved Queries. It is also possible to connect RATT to raw SPARQL endpoints, including non-TriplyDB endpoints. Unfortunately, raw SPARQL endpoints do not offer the same production-grade features as TriplyDB Saved Queries. For example, there is no standardized way to retrieve larger result sets.
+
+The following code snippet issues a raw SPARQL query against a public SPARQL endpoint:
+
+```typescript
+const myQuery = Ratt.Source.url(
+  'https://dbpedia.org/sparql',
+  {
+    request: {
+      headers: {
+        accept: 'text/csv',
+        'content-type': 'application/query-string',
+      },
+      body: 'select * { ?s ?p ?o. } limit 1',
+      method: post,
+    },
+  }
+),
+```
+
+Since we specified CSV as the result set format (Media Type `text/csv`), the above SPARQL query can be accessed as any other CSV source in RATT:
+
+```typescript
+app.use(
+  mw.fromCsv(myQuery),
+)
+```
+
 
 <h3 id='excel'>Extensible Markup Language (XML) files</h3>
 
@@ -131,7 +262,7 @@ This function transforms XML to JSON.
 
 The RATT connectors for source files allow an arbitrary number of files to be specified.
 
-The following example code connects two [CSV files](#csv)s to a RATT pipeline:
+The following example code connects two [CSV files](#csv) to a RATT pipeline:
 
 ```ts
 const account = 'my-account'
