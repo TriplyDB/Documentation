@@ -642,7 +642,7 @@ The access level of the query. The following values are supported:
       <dt><code>headers</code> (optional)</dt>
       <dd>An object whose keys are HTTP header names and whose values are HTTP header values.</dd>
       <dt><code>payload</code> (optional)</dt>
-      <dd> has the following key:  
+      <dd> Has the following key:  
         <dl>
           <!--
           <dt><code>debug: string</code> (optional)</dt>
