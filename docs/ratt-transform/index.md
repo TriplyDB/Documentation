@@ -728,7 +728,7 @@ The principles that are documented in this section can be applied to any form of
 
 In tabular data, keys (or column names) are singular.  But in tree-shaped data a *path* of the tree can consist of one or more keys that must be traversed in sequence.
 
-Paths are specified as dot-separated sequences of keys, starting at the top-level and ending at the required value.  For the JSON example in the previous section, RATT can access the `"name"` key inside the `"title"` key, which itself is nested inside the `"metadata"` key.  This path is expressed in [1].  Notice that the path expressed in [1] is different from the path expressed in [2], which also access the `"name"` key, but nested inside the `"countries"` and then `"data"` keys.  (The use of the `[0]` index is explained in the next section.)
+Paths are specified as dot-separated sequences of keys, starting at the top-level and ending at the required value.  For the JSON example in the previous section, RATT can access the `"name"` key inside the `"title"` key, which itself is nested inside the `"metadata"` key.  This path is expressed in [1].  Notice that the path expressed in [1] is different from the path expressed in [2], which also accesses the `"name"` key, but nested inside the `"countries"` and then `"data"` keys.  (The use of the `[0]` index is explained in the next section.)
 
 ```
 [1] metadata.title.name
@@ -794,7 +794,7 @@ country:de rdfs:label 'Germany'@en.
 
 <h3 id='list-object'>Iterating over lists of objects</h3>
 
-In the previous section, we saw that we were able to assert the name of the first country and the name of the second country.  But what do we do if we want to assert the name for every country in the world?  And what do we do if some countries have a name in 2 languages, but other countries have a name in 1 or 3 languaes?  What we need is a simple way to express that we want RATT to make an assertion for every element in a list.
+In the previous section, we saw that we were able to assert the name of the first country and the name of the second country.  But what do we do if we want to assert the name for every country in the world?  And what do we do if some countries have a name in 2 languages, but other countries have a name in 1 or 3 languages?  What we need is a simple way to express that we want RATT to make an assertion for every element in a list.
 
 RATT uses the `mw.forEach` function for this purpose.  The following code snippet asserts the name for *each* country in the example data:
 
@@ -1057,7 +1057,7 @@ The following RATT record is printed first (3 records are printed in total).  No
 
 In [the previous section](#list-object) we showed how to iterate over lists of objects.  But what happens if a list does not contain objects but elements of primitive type?  Examples include lists of strings or lists of numbers.
 
-Function `mw.forEach` does not work with lists containing primitive types, because it assumes a RATT record structure which can only be provided by objects.  Lucklily, RATT includes the functions `mw.toIri.forEach` and `mw.toLiteral.forEach` that can be specifically used to iterate over lists of primitives.
+Function `mw.forEach` does not work with lists containing primitive types, because it assumes a RATT record structure which can only be provided by objects.  Luckily, RATT includes the functions `mw.toIri.forEach` and `mw.toLiteral.forEach` that can be specifically used to iterate over lists of primitives.
 
 ```ts
   app.use(
