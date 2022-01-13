@@ -66,7 +66,7 @@ In this section we set up a read-only project.  This allows us to focus on setti
    import Client from '@triply/triplydb'
    const client = Client.get({url: 'https://api.triplydb.com'})
    async function run() {
-     console.log((await client.getApiInfo()).branding.name)
+     console.log((await client.getInfo()).branding.name)
    }
    run().catch(e => {
      console.error(e)
