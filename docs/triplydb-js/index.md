@@ -876,7 +876,7 @@ TODO
 
 ##### See also
 
-The meaning of the argument to this method are identifical to those of the [`Account.addDataset(name: string, metadata?: object)`](#accountadddatasetname-string-metadata-object) method.
+The meaning of the argument to this method are identical to those of the [`Account.addDataset(name: string, metadata?: object)`](#accountadddatasetname-string-metadata-object) method.
 
 #### Account.getDataset(name: string)
 

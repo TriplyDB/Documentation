@@ -88,13 +88,27 @@ More advanced tabular formats like [Microsoft Excel](#excel) *are* able to store
 <h3 id='shapefile'>ShapeFile (ESRI ArcGIS)</h3>
 -->
 
-<!-- TODO
-### JSON
--->
+<h3 id='json'>JSON sources</h3>
 
-<!-- TODO
-### XML
--->
+JSON (JavaScript Object Notation) is a popular open standard for interchanging tree-shaped data.
+
+The following example uses a JSON source that is stored as a [TriplyDB asset](#asset):
+
+```ts
+const account = 'my-account'
+const dataset = 'my-dataset'
+app.use(
+  mw.fromJson(Ratt.Source.triplyDb.asset(account, dataset, {name: 'my-data.json'})),
+)
+```
+
+The following example uses an in-line specified JSON source:
+
+```ts
+app.use(
+  mw.fromJson([{ a: "a", b: "b", c: "c" }]),
+)
+```
 
 <!-- TODO
 ### PostgreSQL
@@ -233,7 +247,7 @@ app.use(
 
 <h3 id='excel'>Extensible Markup Language (XML) files</h3>
 
-Extensible Markup Language (file name extension `.xml`) is similar to HTML, but where you can define your own tags to use. This is why it is a very useful format  to store, search and share your data.
+Extensible Markup Language (file name extension `.xml`) is similar to HTML, but where you can define your own tags to use. This is why it is a very useful format to store, search and share your data.
 
 RATT has a dedicated connector for XML files.  After such files [are uploaded as TriplyDB Assets](#assets), RATT can connect to them as follows:
 
