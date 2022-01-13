@@ -205,11 +205,11 @@ Everybody who has access to the dataset also has access to its services, includi
 - For *Internal* datasets, only users that are logged into the triple store can issue queries.
 - For *Private* datasets, only users that are logged into the triple store and are members of `ACCOUNT` can issue queries.
 
-Notice that for professional use it is easier and better to use [saved queries](#saved-queries).  Saved queries have peristent URIs, descriptive metadata, versioning, and support for reliable large-scale pagination.  Still, if you do not have a saved query at your disposal and want to perform a custom SPARQL request against an accessible endpoint, you can still do so.  TriplyDB implements the SPARQL 1.1 Query Protocol standard for this purpose.
+Notice that for professional use it is easier and better to use [saved queries](#saved-queries).  Saved queries have persistent URIs, descriptive metadata, versioning, and support for reliable large-scale pagination.  Still, if you do not have a saved query at your disposal and want to perform a custom SPARQL request against an accessible endpoint, you can do so.  TriplyDB implements the SPARQL 1.1 Query Protocol standard for this purpose.
 
 #### Sending a SPARQL Query request
 
-According to the SPARQL 1.1 Protocol, queries can be send in the 3 different ways that are displayed in <a href='#table-http-sparql-query'>Table 1</a>.  For small query strings it is possible to send an HTTP GET request (row 1 in <a href='#table-http-sparql-query'>Table 1</a>).  A benefit of this approach is that all information is stored in one URI.  For public data, copy/pasting this URI in a web browser runs the query.  For larger query strings it is required to send an HTTP POST request (rows 2 and 3 in <a href='#table-http-sparql-query'>Table 1</a>).  The reason for this is that longer query strings result in longer URIs when following the HTTP GET approach.  Some applications do not support longer URIs, or they even silently truncate them resulting in an error down the line.  The direct POST approach (row 3 in <a href='#table-http-sparql-query'>Table 1</a>) is the best of these 3 variants, since it most clearly communicates that it is senting a SPARQL query request (see the `Content-Type` column).
+According to the SPARQL 1.1 Protocol, queries can be send in the 3 different ways that are displayed in <a href='#table-http-sparql-query'>Table 1</a>.  For small query strings it is possible to send an HTTP GET request (row 1 in <a href='#table-http-sparql-query'>Table 1</a>).  A benefit of this approach is that all information is stored in one URI.  For public data, copy/pasting this URI in a web browser runs the query.  For larger query strings it is required to send an HTTP POST request (rows 2 and 3 in <a href='#table-http-sparql-query'>Table 1</a>).  The reason for this is that longer query strings result in longer URIs when following the HTTP GET approach.  Some applications do not support longer URIs, or they even silently truncate them resulting in an error down the line.  The direct POST approach (row 3 in <a href='#table-http-sparql-query'>Table 1</a>) is the best of these 3 variants, since it most clearly communicates that it is sending a SPARQL query request (see the `Content-Type` column).
 
 <figure id='table-http-sparql-query'>
   <table>
@@ -249,9 +249,9 @@ According to the SPARQL 1.1 Protocol, queries can be send in the 3 different way
   <figcaption>Table 1 - Overview of the three different ways in which SPARQL queries can be issues over HTTP.</figcaption>
 </figure>
 
-#### SPAQL Query result formats
+#### SPARQL Query result formats
 
-SPARQL services are able to return results in different formats.  The user can specify the preferred format by specifying the corresponding Media Type in the HTTP `Accept` header.  TriplyDB supported the following Media Types.  Notice that the chosen result format must be supported for your query form.
+SPARQL services are able to return results in different formats.  The user can specify the preferred format by specifying the corresponding Media Type in the HTTP `Accept` header.  TriplyDB supports the following Media Types.  Notice that the chosen result format must be supported for your query form.
 
 | Result format | Media Type                        | Query forms         |
 | ------------- | --------------------------------- | ------------------- |
@@ -262,7 +262,7 @@ SPARQL services are able to return results in different formats.  The user can s
 | N-Triples     | `application/n-triples`           | CONSTRUCT, DESCRIBE |
 | RDF/XML       | `application/rdf+xml`             | CONSTRUCT, DESCRIBE |
 | SPARQL JSON   | `application/sparql-results+json` | ASK, SELECT         |
-| SPARQL XML    | `application/saprql-results+xml`  | ASK, SELECT         |
+| SPARQL XML    | `application/sparql-results+xml`  | ASK, SELECT         |
 | TriG          | `application/trig`                | CONSTRUCT, DESCRIBE |
 | TSV           | `text/tab-separated-values`       | SELECT              |
 | Turtle        | `text/turtle`                     | CONSTRUCT, DESCRIBE |
