@@ -2578,7 +2578,7 @@ To reliably retrieve a large number of results as the output of a `construct` or
       const array = await results.toArray()
       ```
 
-<h3 id='async-iterator'>What is an async iterator?</h3>
+### What is an async iterator? {#async-iterator}
 
 TriplyDB.js makes use of async iterators for retrieving lists of objects.  Async iterators are a method of fetching and iterating through large lists, without having to first fetch the whole set.
 

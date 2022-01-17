@@ -14,7 +14,7 @@ RATT Connectors are modules that allow various backend systems to be connected t
 RATT Connectors generate RATT Records.  The RATT Records are used to configure the rest of the pipeline.  This decouples pipeline configuration from source system structure.  This is one of the essential features of RATT that set it apart from most other pipeline systems.
 
 
-<h3 id='assets'>Use Assets for static source data</h3>
+### Use Assets for static source data {#assets}
 
 *Assets* are a feature of TriplyDB that allows storage of arbitrary files, including source data files.
 
@@ -36,7 +36,7 @@ If your pipeline needs to connect to static data files, it is a best practice to
 </dl>
 
 
-<h3 id='excel'>Microsoft Excel (XLSX) files</h3>
+### Microsoft Excel (XLSX) files {#excel}
 
 Microsoft Excel (file name extension `.xlsx`) is a popular file format for storing tabular source data.
 
@@ -51,7 +51,7 @@ app.use(
 ```
 
 
-<h3 id='csv'>Comma Separated Values (CSV) files</h3>
+### Comma Separated Values (CSV) files {#csv}
 
 Comma Separated Values (file name extension `.csv`) is a popular file format for storing tabular source data.
 
@@ -85,10 +85,10 @@ This is specifically an issue when tabular data contains numeric information.  S
 More advanced tabular formats like [Microsoft Excel](#excel) *are* able to store the types of values.
 
 <!-- TODO
-<h3 id='shapefile'>ShapeFile (ESRI ArcGIS)</h3>
+### ShapeFile (ESRI ArcGIS) {#shapefile}
 -->
 
-<h3 id='json'>JSON sources</h3>
+### JSON sources {#json}
 
 JSON (JavaScript Object Notation) is a popular open standard for interchanging tree-shaped data.
 
@@ -114,7 +114,7 @@ app.use(
 ### PostgreSQL
 -->
 
-<h3 id='sparql-query'>SPARQL queries</h3>
+### SPARQL queries {#sparql-query}
 
 RATT is able to use existing SPARQL queries as data sources.  This can be used to tap into existing RDF sources for transformation and/or enrichment.
 
@@ -166,7 +166,7 @@ mw.loadRdf(myQuery)
 
 Not specifying the `version` option automatically uses the <b>latest version</b>. There is no standardized support for query versioning with raw SPARQL endpoints.
 
-<h4 id='api-variable-static'>Specifying API variables</h4>
+#### Specifying API variables {#api-variable-static}
 
 In production systems, applications often request different information based on a limited set of input variables.  This is supported by TriplyDB Saved Queries, for which API variables can be configured.  The API variables ensure that the query string is parameterized correctly, maintaining the RDF syntax and semantics.
 
@@ -183,7 +183,7 @@ mw.loadRdf(myQuery)
 
 There is no standardized support for specifying API variables with raw SPARQL endpoints.
 
-<h4 id='api-variable-dynamic'>Specifying dynamic API variables</h4>
+#### Specifying dynamic API variables {#api-variable-dynamic}
 
 In [the previous section](#api-variable-static) the value `'Holland'` for the API variable `country` was known at the time of writing the RATT pipeline.  But what do we do if the requested country is not known at the time of writing the RATT pipeline, but depends on data that is read/transformed during the execution of the RATT pipeline?
 
@@ -214,7 +214,7 @@ statement.graph = graph('enrichment')
 ```
 
 
-<h3 id='sparql-endpoint'>SPARQL endpoints</h3>
+### SPARQL endpoints {#sparql-endpoint}
 
 The [previous section](#sparql-query) explained how RATT pipelines can be connected to TriplyDB Saved Queries. It is also possible to connect RATT to raw SPARQL endpoints, including non-TriplyDB endpoints. Unfortunately, raw SPARQL endpoints do not offer the same production-grade features as TriplyDB Saved Queries. For example, there is no standardized way to retrieve larger result sets.
 
@@ -245,7 +245,7 @@ app.use(
 ```
 
 
-<h3 id='excel'>Extensible Markup Language (XML) files</h3>
+### Extensible Markup Language (XML) files {#excel}
 
 Extensible Markup Language (file name extension `.xml`) is similar to HTML, but where you can define your own tags to use. This is why it is a very useful format to store, search and share your data.
 
@@ -327,7 +327,7 @@ Source `one` provides an iterator over all Assets in the `dataset` that is publi
 
 Source `two` provides an iterator over all Assets in the `dataset` that is published under the specified `account`.
 
-<h4 id='compression'>File compression for plain text files</h4>
+#### File compression for plain text files {#compression}
 
 It is a best practice to compress static data files if they are plain text files.  Compression should be applied prior to uploading such files as [TriplyDB Assets](#assets).
 

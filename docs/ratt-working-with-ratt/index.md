@@ -129,7 +129,7 @@ This fixes the reset issue, but also makes the output less colorful.
 
 
 
-<h2 id='context'>Configuring the RATT Context</h2>
+## Configuring the RATT Context {#context}
 
 The RATT Context is specified when the `Ratt` object is instantiated.  This often appears towards the start of a pipeline script.  The RATT Context allows the following things to be specified:
 
