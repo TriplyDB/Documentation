@@ -35,7 +35,7 @@ The following sections explain how these 4 transformation functions work.
 
 
 
-<h3 id="change">Change an existing entry in-place (<code>change</code>)</h3>
+### Change an existing entry in-place (<code>change</code>) {#change}
 
 The `change` function allows the value of an existing entry to be modified in-place.  This is typically done to clean a value or to map string values into IRIs.
 
@@ -143,7 +143,7 @@ Notice that strings that encode a number are correctly transformed, and non-empt
 Also notice that the empty string is cast to the number zero.  Most of the time, this is *not* what you want.  If you want to prevent this transformation from happening, and you almost certainly do, you must [process this data conditionally](#process-data-conditionally).
 
 
-<h5 id="translation-table">Change values using a known translation table</h5>
+##### Change values using a known translation table {#translation-table}
 
 We sometimes want to translate a finite set of known values in the source data to corresponding linked data terms.
 
@@ -339,7 +339,7 @@ This results in a uniform (i.e., non-variant) RATT record:
 
 
 
-<h3 id='copy'>Copy an existing entry over to a new entry (<code>copy</code>)</h3>
+### Copy an existing entry over to a new entry (<code>copy</code>) {#copy}
 
 Copying is the act of creating a new thing that is based on a specific existing thing.
 
@@ -369,7 +369,7 @@ The `change` function only takes the `value` argument and does not take the `con
 
 
 
-<h3 id='replace'>Replace an existing entry based on one other entry (<code>replace</code>)</h3>
+### Replace an existing entry based on one other entry (<code>replace</code>) {#replace}
 
 #### Function signature
 
@@ -399,7 +399,7 @@ This function emits an error under the following conditions:
 
 
 
-<h3 id='add'>Add a new entry based one more than one other entries (<code>add</code>)</h3>
+### Add a new entry based one more than one other entries (<code>add</code>) {#add}
 
 Sometimes a new entry must be added to the RATT record.  If this entry is based on exactly one existing entry then function [`copy`](#copy) is used.  But if the newly added entry depends on more than one entry, then function `add` must be used.
 
@@ -475,14 +475,14 @@ app.use(
 
 
 
-<h2 id='create-statements'>Create statements</h2>
+## Create statements {#create-statements}
 
 After source data is connected and transformed, the RATT Record is ready to be transformed to linked data.  Linked data statements are assertions or factual statements that consist of 3 terms (triple) or 4 terms (quadruples).
 
 Statements are created with the `mw.addQuad` function.  Calls to this function are part of the pipeline, and must appear inside the scope of `app.use`.
 
 
-<h3 id="static-assertions">Create static statements</h2>
+### Create static statements {#static-assertions}
 
 Static linked data statements are statements that only make use of constant terms (see [working with IRIs](#working-with-iris)).  Constant terms are introduced at the beginning of a RATT pipeline, typically prior to the occurrence of the first `app.use` scope.
 
@@ -498,7 +498,7 @@ app.use(
 ```
 
 
-<h3 id="dynamic-assertions">Create dynamic statements</h3>
+### Create dynamic statements {#dynamic-assertions}
 
 Dynamic statements are statements that are based on some aspect of the source data.
 
@@ -604,7 +604,7 @@ app.use(
 
 
 
-<h2 id='process-data-conditionally'>Process data conditionally</h2>
+## Process data conditionally {#process-data-conditionally}
 
 Source data often contains optional values.  These are values that appear in some, but not all records.
 
@@ -630,7 +630,7 @@ Notice that it is often useful to specify multiple statements under the same con
 2. The first statement asserts one triple based on the optional value, and the second statement asserts a second triple based on the same optional value.
 
 
-<h3 id='null-values'>Null values</h3>
+### Null values {#null-values}
 
 If a key contains a null value in some records, then we need to specifically identify the criteria under which a triple must be added.
 
@@ -776,7 +776,7 @@ This results in the following assertion:
 dataset:my-dataset dct:title 'Data about countries.'@en.
 ```
 
-<h3 id='accessing-lists-by-index'>Accessing lists by index</h3>
+### Accessing lists by index {#accessing-lists-by-index}
 
 Tree-shaped data formats often allow multiple values to be specified in an ordered list.  Examples of this are arrays in JSON and XML elements with the same tag that are directly nested under the same parent element.
 
@@ -816,7 +816,7 @@ This results in the following assertion:
 country:de rdfs:label 'Germany'@en.
 ```
 
-<h3 id='list-object'>Iterating over lists of objects</h3>
+### Iterating over lists of objects {#list-object}
 
 In the previous section, we saw that we were able to assert the name of the first country and the name of the second country.  But what do we do if we want to assert the name for every country in the world?  And what do we do if some countries have a name in 2 languages, but other countries have a name in 1 or 3 languages?  What we need is a simple way to express that we want RATT to make an assertion for every element in a list.
 
@@ -855,7 +855,7 @@ In addition to these regular keys, RATT records inside `mw.forEach` also contain
 - [Root key (`$root`)](#root-key)
 
 
-<h4 id='index-key'>Index key (`$index`)</h4>
+#### Index key (`$index`) {#index-key}
 
 Each RATT record that is made available in `mw.forEach` contains the `$index` key.  The value of this key is the index of the element in the list.  This is the same index that is used to access specific elements in an list, as explained in [the section on accessing lists by index](#accessing-lists-by-index).
 
@@ -901,7 +901,7 @@ country:2 rdfs:label 'Italy'@en.
 ```
 
 
-<h4 id='parent-key'>Parent key (`$parent`)</h4>
+#### Parent key (`$parent`) {#parent-key}
 
 When `mw.forEach` iterates through a list of elements, it makes the enclosing *parent* record available under key `$parent`.
 
@@ -978,7 +978,7 @@ and:
 The `$root` key is explained in [the next section](#root-key).
 
 
-<h4 id='root-key'>Root key (`$root`)</h4>
+#### Root key (`$root`) {#root-key}
 
 Sometimes it may be necessary to access a part of the original RATT record that is outside of the scope of the `mw.forEach` call.
 
@@ -1077,7 +1077,7 @@ The following RATT record is printed first (3 records are printed in total).  No
 ```
 
 
-<h3 id='list-primitive'>Iterating over lists of primitives</h3>
+### Iterating over lists of primitives {#list-primitive}
 
 In [the previous section](#list-object) we showed how to iterate over lists of objects.  But what happens if a list does not contain objects but elements of primitive type?  Examples include lists of strings or lists of numbers.
 

@@ -19,3 +19,14 @@ This repository includes documentation for the following Triply products:
 
 - Feel free to open issues with questions about the documentation.
 - Feel free to create pull requests with adjustments or additions that you believe to be valuable.
+
+## Available markdown
+
+You are able to use [GitHub Flavored Markdown](https://github.github.com/gfm/). As well as the following extensions
+
+- **Custom Id headers**:
+Using the following syntax you are able to assign id's to headers (without having to resort to `html`)
+
+```md
+# Header {#id}
+```
