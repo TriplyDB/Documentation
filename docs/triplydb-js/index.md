@@ -1876,7 +1876,7 @@ Adds a member to the given `Organization`, with the given `role` of either membe
 
 - The `user` argument can be a user object, or the account name of the user which should be added to the organization.
 
--The `role` argument can be either `'member'` or `'owner'`.  If this argument is not specified, then `'member'` used as the default.
+- The `role` argument can be either `'member'` or `'owner'`.  If this argument is not specified, then `'member'` used as the default.
 
 <dl>
   <dt><code>'member'</code></dt>
