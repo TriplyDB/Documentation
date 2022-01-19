@@ -8,7 +8,7 @@ path: "/docs/triply-db-getting-started"
 TriplyDB allows you to store, publish, and use Linked Data Knowledge
 Graphs. TriplyDB makes it easy to upload Linked Data and expose it
 through various APIs (SPARQL, ElasticSeach, LDF, REST). [Read
-More](/products/triplydb)
+More](/triplydb)
 
 # Uploading Data
 
