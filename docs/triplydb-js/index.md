@@ -20,16 +20,8 @@ This section gets you up and running with TriplyDB.js by setting up increasingly
 
 In this section we set up a read-only project.  This allows us to focus on setting up the TypeScript/JavaScript aspects of the project correctly, while using public data from the TriplyDB instance located at <https://triplydb.com>.
 
-1. Install [Node.js](https://nodejs.org) and [Yarn](https://yarnpkg.com) on your system:
+1. Install [Node.js](https://nodejs.org) and [Yarn](https://yarnpkg.com) on your system.  See [common steps to install Node.js and Yarn](common-steps-to-install) for more information.
 
-   - Node.js is the runtime that allows you to run JavaScript (and thus TypeScript) code outside of a web browser.
-   - Yarn is a modern package manager for handling JavaScript/TypeScript dependencies.
-
-   The following command installs Node.js and Yarn on Ubuntu:
-
-   ```sh
-   sudo apt install nodejs yarn
-   ```
 
 2. Create a directory for your project:
 
@@ -642,7 +634,7 @@ The access level of the query. The following values are supported:
       <dt><code>headers</code> (optional)</dt>
       <dd>An object whose keys are HTTP header names and whose values are HTTP header values.</dd>
       <dt><code>payload</code> (optional)</dt>
-      <dd> Has the following key:  
+      <dd> Has the following key:
         <dl>
           <!--
           <dt><code>debug: string</code> (optional)</dt>
