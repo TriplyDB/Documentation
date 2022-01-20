@@ -32,11 +32,13 @@ Because there are many different programming environments, we are unable to desc
 
 ### macOS
 
-Run the following command in a terminal window:
+1. Install [Homebrew](https://brew.sh).
 
-```sh
-brew install node yarn
-```
+2. Run the following command in a terminal window:
+
+   ```sh
+   brew install node yarn
+   ```
 
 ### Linux
 
