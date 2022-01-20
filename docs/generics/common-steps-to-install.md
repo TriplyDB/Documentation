@@ -109,7 +109,7 @@ U:\visual_studio\repos\implementatie-team-main>yarn build
 operable program or batch file.
 ```
 
-**Answer**: One of the RATT dependencies requires that Node.js 14 is installated.  If you have installed Node.js 15, 16, or 17, you must add the flag `--ignored-engines` when running the Yarn command.
+**Answer**: One of the RATT dependencies requires that Node.js 14 is installated.  If you have installed Node.js 15, 16, or 17, you must add the flag `--ignore-engines` when running the Yarn command.
 
 For example, you must run the following command to install dependencies for the current repository:
 
