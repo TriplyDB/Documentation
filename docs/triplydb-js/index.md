@@ -1144,6 +1144,41 @@ await account.setAvatar('logo.svg')
 
 Updates the metadata for this account.
 
+To update the metadata profile with information within the metadata itself, we need the following steps:
+1) Obtain the relevant piece of information as a variable/const: `getObject()`
+2) Update the metadata profile with the obtained information stored in the variable/const: `update()`
+
+**getObject()**
+Define a constant (`const`) and assign it to `ctx.store.getObjects()`.
+The argumemts for the function will be the subject, predicate, and graph. The function retrieves the **object** so the other 3 parts of a quad need to be specified.
+
+**update()**
+Update the relevant part of the metadata profile with the corresponding piece of information. `.update({})`
+
+**Example**
+If one wants to update the *display name* of a metadata profile with the object of the following triple within the metadata:
+`<https://example.org/example> <https://schema.org/name> "Example Name"@en`
+
+```ts
+async (ctx) => {
+  // Fetch displayName
+  const displayName = ctx.store.getObjects(
+    'https://example.org/example',
+    'https://schema.org/name',
+    graph.metadata).find((node) =>
+    node.termType === 'Literal' && node.language === 'en')?.value;
+
+  // Specify the environment variable, if necessary
+  const _dataset =
+    process.env['MODE'] === 'Production'
+      ? (await app.triplyDb.getOrganization(organization)).getDataset(dataset)
+      : (await app.triplyDb.getUser()).getDataset(organization + '-' + dataset)
+
+  // Update the display name
+  if (displayName) await (await _dataset).update({ displayName })
+}
+```
+
 <!--
 TODO: Document the keys supported in `metadata`.
 -->
