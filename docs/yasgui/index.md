@@ -411,6 +411,7 @@ The markup view can be used to render a variety of markup languages. The require
 | **Markup language** | **Datatype** |
 | :------------------ | :----------- |
 | HTML                | `http://www.w3.org/1999/02/22-rdf-syntax-ns#HTML` |
-| [Mermaid](https://mermaid-js.github.io/mermaid/#/) | `https://triplydb.com/triply/datatypes/x-application-mermaid`* |
+| [Mermaid](https://mermaid-js.github.io/mermaid/#/) | `https://triplydb.com/Triply/vocab/def/mermaid`* |
+| Plain text | Other |
 
-\* This is currently a placeholder IRI, If you find a (dereferenceable) IRI for please [contact us](//triply.cc/contact).
+\* This is currently a placeholder IRI, If you find a (dereferenceable) IRI for one of these datatypes please [contact us](//triply.cc/contact).
