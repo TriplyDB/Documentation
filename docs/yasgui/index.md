@@ -403,3 +403,14 @@ The following parameters can be used, Parameters in _Italic_ are experimental:
 ### Network ([TriplyDB Plugin](/docs/yasgui-api#triplyDbPlugins)) {#network}
 
 This view renders SPARQL Construct results in a graph representation. Works for `Turtle`, `Trig`, `N-Triples` or `N-Quads` responses. The maximum amount of results that can be visualized is 1.000 due to performance.
+
+### Markup ([TriplyDB Plugin](/docs/yasgui-api#triplyDbPlugins)) {#markup}
+
+The markup view can be used to render a variety of markup languages. The requires the use of the `?markup` variable to identify which variable to render. Based on the datatype of the variable the plugin will identify which markup language to use:
+
+| **Markup language** | **Datatype** |
+| :------------------ | :----------- |
+| HTML                | `http://www.w3.org/1999/02/22-rdf-syntax-ns#HTML` |
+| [Mermaid](https://mermaid-js.github.io/mermaid/#/) | `https://triplydb.com/triply/datatypes/x-application-mermaid`* |
+
+\* This is currently a placeholder IRI, If you find a (dereferenceable) IRI for please [contact us](//triply.cc/contact).
