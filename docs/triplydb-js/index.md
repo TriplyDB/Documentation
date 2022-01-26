@@ -3,22 +3,19 @@ title: "TriplyDB.js"
 path: "/docs/triplydb-js"
 ---
 
-**TriplyDB.js** is the official programming library for interacting with [TriplyDB](https://triply.cc/docs/triply-db-getting-started).  TriplyDB.js allows you to automate operations that would otherwise be performed in the TriplyDB GUI.
+**TriplyDB.js** is the official programming library for interacting with [TriplyDB](https://triply.cc/docs/triply-db-getting-started). TriplyDB.js allows you to automate operations that would otherwise be performed in the TriplyDB GUI.
 
-TriplyDB.js is implemented in [TypeScript](https://www.typescriptlang.org).  TypeScript is a type-safe language that transpiles to [JavaScript](https://en.wikipedia.org/wiki/JavaScript).  This allows you to use TriplyDB.js in web browsers as well as on servers (using [Node.js](https://nodejs.org)).
+TriplyDB.js is implemented in [TypeScript](https://www.typescriptlang.org). TypeScript is a type-safe language that transpiles to [JavaScript](https://en.wikipedia.org/wiki/JavaScript). This allows you to use TriplyDB.js in web browsers as well as on servers (using [Node.js](https://nodejs.org)).
 
 Please contact [support@triply.cc](mailto:support@triply.cc) for questions and suggestions.
 
-
-
 ## Getting started
 
-This section gets you up and running with TriplyDB.js by setting up increasingly more complex scripts.  These scripts will use TriplyDB.js to interact with one or more TriplyDB instances.  Some of the documented steps are generic for setting up a modern TypeScript project, while others are specific for interacting with TriplyDB instances.
-
+This section gets you up and running with TriplyDB.js by setting up increasingly more complex scripts. These scripts will use TriplyDB.js to interact with one or more TriplyDB instances. Some of the documented steps are generic for setting up a modern TypeScript project, while others are specific for interacting with TriplyDB instances.
 
 ### Setting up a read-only project
 
-In this section we set up a read-only project.  This allows us to focus on setting up the TypeScript/JavaScript aspects of the project correctly, while using public data from the TriplyDB instance located at <https://triplydb.com>.
+In this section we set up a read-only project. This allows us to focus on setting up the TypeScript/JavaScript aspects of the project correctly, while using public data from the TriplyDB instance located at <https://triplydb.com>.
 
 1. Install [Node.js](https://nodejs.org) and [Yarn](https://yarnpkg.com) on your system:
 
@@ -44,7 +41,7 @@ In this section we set up a read-only project.  This allows us to focus on setti
    yarn init -y
    ```
 
-   This creates a `package.json` file.  You can optionally edit this file to enter metadata for your project.
+   This creates a `package.json` file. You can optionally edit this file to enter metadata for your project.
 
 4. Add TypeScript and TriplyDB.js as dependencies to your project:
 
@@ -58,29 +55,29 @@ In this section we set up a read-only project.  This allows us to focus on setti
    ./node_modules/.bin/tsc --init
    ```
 
-   This creates a [tsconfig.json](https://www.typescriptlang.org/docs/handbook/tsconfig-json.html) file.  You can optionally edit this file to tweak how TypeScript code is transpiled into JavaScript code.
+   This creates a [tsconfig.json](https://www.typescriptlang.org/docs/handbook/tsconfig-json.html) file. You can optionally edit this file to tweak how TypeScript code is transpiled into JavaScript code.
 
-6. Create a file called `main.ts` in a text editor.  Add the following content in this file:
+6. Create a file called `main.ts` in a text editor. Add the following content in this file:
 
    ```ts
-   import Client from '@triply/triplydb'
-   const client = Client.get({url: 'https://api.triplydb.com'})
+   import Client from "@triply/triplydb";
+   const client = Client.get({ url: "https://api.triplydb.com" });
    async function run() {
-     console.log((await client.getInfo()).branding.name)
+     console.log((await client.getInfo()).branding.name);
    }
-   run().catch(e => {
-     console.error(e)
-     process.exit(1)
-   })
+   run().catch((e) => {
+     console.error(e);
+     process.exit(1);
+   });
    ```
 
    Notice the following details:
 
-     - Line 1 (`import`) loads the TriplyDB.js library.
-     - Line 2 creates a handle (`client`) to the TriplyDB instance <https://triplydb.com>.  Every TriplyDB instance has a specific API URL.  In this case the API URL is <https://api.triplydb.com>.
-     - Line 3 defines the main function (`run()`).
-     - Line 4 writes the name of the TriplyDB instance that you connected to in line 2.
-     - Lines 6-9 runs the main function (`run()`) and performs basic error handling.
+   - Line 1 (`import`) loads the TriplyDB.js library.
+   - Line 2 creates a handle (`client`) to the TriplyDB instance <https://triplydb.com>. Every TriplyDB instance has a specific API URL. In this case the API URL is <https://api.triplydb.com>.
+   - Line 3 defines the main function (`run()`).
+   - Line 4 writes the name of the TriplyDB instance that you connected to in line 2.
+   - Lines 6-9 runs the main function (`run()`) and performs basic error handling.
 
 7. Transpile the TypeScript file (`main.ts`) into a JavaScript file (`main.js`):
 
@@ -96,16 +93,15 @@ In this section we set up a read-only project.  This allows us to focus on setti
 
    This should print the name of the TriplyDB instance at <https://triplydb.com>.
 
-You can extend this script with TriplyDB.js functions that read public (meta)data.  There is a lot of public (meta)data out there in TriplyDB instances on the Internet.  The TriplyDB instance at <https://triplydb.com> alone already contains hundreds of open datasets.
+You can extend this script with TriplyDB.js functions that read public (meta)data. There is a lot of public (meta)data out there in TriplyDB instances on the Internet. The TriplyDB instance at <https://triplydb.com> alone already contains hundreds of open datasets.
 
-It is also possible to read non-public data to which you have access.  This is done by using an API Token.  The next section explains how such tokens are created and configured.
-
+It is also possible to read non-public data to which you have access. This is done by using an API Token. The next section explains how such tokens are created and configured.
 
 ### Setting up a read/write project
 
 In the [previous section](#setting-up-a-read-only-project) we set up a read-only project that uses TriplyDB.js and accesses public data at <https://triplydb.com>.
 
-In this section we extend the project to configure read/write permissions that are tied to your user account in a TriplyDB instance.  This allows you to read non-public data to which you have access, and it allows you to write data in datasets and organizations to which you have access.
+In this section we extend the project to configure read/write permissions that are tied to your user account in a TriplyDB instance. This allows you to read non-public data to which you have access, and it allows you to write data in datasets and organizations to which you have access.
 
 1. Following the steps on [this page](api-token) to create and configure a TriplyDB API Token with write permissions.
 
@@ -116,15 +112,15 @@ In this section we extend the project to configure read/write permissions that a
 2. Change the contents of `main.ts` to the following:
 
    ```ts
-   import Client from '@triply/triplydb'
-   const client = Client.get({token: process.env.TRIPLYDB_TOKEN})
+   import Client from "@triply/triplydb";
+   const client = Client.get({ token: process.env.TRIPLYDB_TOKEN });
    async function run() {
-     console.log((await (await client.getUser()).getInfo()).name)
+     console.log((await (await client.getUser()).getInfo()).name);
    }
-   run().catch(e => {
-     console.error(e)
-     process.exit(1)
-   })
+   run().catch((e) => {
+     console.error(e);
+     process.exit(1);
+   });
    ```
 
    Notice the following changes:
@@ -135,21 +131,20 @@ In this section we extend the project to configure read/write permissions that a
 
 3. Transpile and run:
 
-    ```sh
-    ./node_modules/.bin/tsc
-    node main.js
-    ```
+   ```sh
+   ./node_modules/.bin/tsc
+   node main.js
+   ```
 
-    This should print the name of the user account for which the API token was created.
+   This should print the name of the user account for which the API token was created.
 
 You can extend this script with TriplyDB.js functions that read/write (meta)data accessible through the API token.
-
 
 ### Next steps for your project
 
 The previous two sections have resulted in a minimal TriplyDB.js script that is able to interact with a TriplyDB instance.
 
-You can extend this script with other functions that are supported by TriplyDB.js, and by TypeScript that you add for your custom application.  See [the next section](#reference) for the full reference of classes and methods supported by TriplyDB.js.
+You can extend this script with other functions that are supported by TriplyDB.js, and by TypeScript that you add for your custom application. See [the next section](#reference) for the full reference of classes and methods supported by TriplyDB.js.
 
 #### Editor support
 
@@ -157,21 +152,21 @@ See [this page](editor) for information about how to configure a text editor tha
 
 #### Improved error handling
 
-In the previous sections we made use of minimal error handling (see below).  This section explains how error handling can be extended and improved.
+In the previous sections we made use of minimal error handling (see below). This section explains how error handling can be extended and improved.
 
 ```ts
-run().catch(e => {
-  console.error(e)
-  process.exit(1)
-})
+run().catch((e) => {
+  console.error(e);
+  process.exit(1);
+});
 ```
 
 ##### Better error lines
 
-By default, error messages emitted by Node.js refer to code lines that appear in the transpiled JavaScript files.  Since we write our code in TypeScript, it is better to see the corresponding code lines for the TypeScript files.  This is achieved by adding the following line at the beginning of the main script (`main.ts` in the above example):
+By default, error messages emitted by Node.js refer to code lines that appear in the transpiled JavaScript files. Since we write our code in TypeScript, it is better to see the corresponding code lines for the TypeScript files. This is achieved by adding the following line at the beginning of the main script (`main.ts` in the above example):
 
 ```ts
-require('source-map-support/register')
+require("source-map-support/register");
 ```
 
 ##### Better error messages
@@ -179,46 +174,44 @@ require('source-map-support/register')
 The following code can be added to the end of your application file (`main.ts` in the above examples) to use more advanced error handling:
 
 ```ts
-process.on('uncaughtException', function (err) {
-  console.error('Uncaught exception', err)
-  process.exit(1)
-})
-process.on('unhandledRejection', (reason, p) => {
-  console.error('Unhandled Rejection at: Promise', p, 'reason:', reason)
-  process.exit(1)
-})
+process.on("uncaughtException", function (err) {
+  console.error("Uncaught exception", err);
+  process.exit(1);
+});
+process.on("unhandledRejection", (reason, p) => {
+  console.error("Unhandled Rejection at: Promise", p, "reason:", reason);
+  process.exit(1);
+});
 ```
-
-
 
 ## Reference
 
-This section documents all classes and methods that are available in TriplyDB.js.  Methods are grouped together for the class to which they apply.
+This section documents all classes and methods that are available in TriplyDB.js. Methods are grouped together for the class to which they apply.
 
-Every method in this reference section comes with at least one code example.  These code examples can be run by inserting them into the following snippet.  See the [Getting started](#getting-started) section on how to get this script up and running on your system.
+Every method in this reference section comes with at least one code example. These code examples can be run by inserting them into the following snippet. See the [Getting started](#getting-started) section on how to get this script up and running on your system.
 
 ```ts
-require('source-map-support/register')
-import Client from '@triply/triplydb';
-const client = Client.get({token: process.env.TRIPLYDB_TOKEN})
+require("source-map-support/register");
+import Client from "@triply/triplydb";
+const client = Client.get({ token: process.env.TRIPLYDB_TOKEN });
 async function run() {
   // This is where the code examples in this reference section should be placed.
 }
-run().catch(e => {
-  console.error(e)
-  process.exit(1)
-})
-process.on('uncaughtException', function (err) {
-  console.error('Uncaught exception', err)
-  process.exit(1)
-})
-process.on('unhandledRejection', (reason, p) => {
-  console.error('Unhandled Rejection at: Promise', p, 'reason:', reason)
-  process.exit(1)
-})
+run().catch((e) => {
+  console.error(e);
+  process.exit(1);
+});
+process.on("uncaughtException", function (err) {
+  console.error("Uncaught exception", err);
+  process.exit(1);
+});
+process.on("unhandledRejection", (reason, p) => {
+  console.error("Unhandled Rejection at: Promise", p, "reason:", reason);
+  process.exit(1);
+});
 ```
 
-The following sections document the various TriplyDB.js classes.  Each class comes with its own methods.  Classes are related through methods that connect them.  For example, calling the `getAccount` method on a `Client` object returns an `Account` object.
+The following sections document the various TriplyDB.js classes. Each class comes with its own methods. Classes are related through methods that connect them. For example, calling the `getAccount` method on a `Client` object returns an `Account` object.
 
 ```mermaid
 classDiagram
@@ -267,22 +260,20 @@ classDiagram
   Account <|-- User
 ```
 
-
-
 ### Client
 
 Instances of the `Client` class are specific client connections that are set-up with a TriplyDB instance.
 
-Client connections can be created with and without setting an API token.  When no API token is set, the `Client` object can be used to perform read-only operations over public data.  When an API token is set, the `Client` object can be used to perform read/write operations over public/private data the token grants access to.
+Client connections can be created with and without setting an API token. When no API token is set, the `Client` object can be used to perform read-only operations over public data. When an API token is set, the `Client` object can be used to perform read/write operations over public/private data the token grants access to.
 
 The following snippet creates a `Client` object with read-only access to the TriplyDB instance at <https://triplydb.com>:
 
 ```ts
-import Client from '@triply/triplydb'
-const client = Client.get({url: 'https://api.triplydb.com'})
+import Client from "@triply/triplydb";
+const client = Client.get({ url: "https://api.triplydb.com" });
 ```
 
-Notice that the URL must point to the API of the TriplyDB instance that the `Client` object connects to.  The API URL is typically created by adding the `api.` subdomain in front of the instance's host name.
+Notice that the URL must point to the API of the TriplyDB instance that the `Client` object connects to. The API URL is typically created by adding the `api.` subdomain in front of the instance's host name.
 
 For example, if [1] is the web-based GUI for the TriplyDB instance, then [2] is the corresponding API for that instance.
 
@@ -293,24 +284,23 @@ For example, if [1] is the web-based GUI for the TriplyDB instance, then [2] is 
 
 When an API token is specified, the operations that can be performed through the `Client` object are determined by:
 
-  1. the access level of the token, and
-  2. the credentials of the user account for which the API token is created.
+1. the access level of the token, and
+2. the credentials of the user account for which the API token is created.
 
 The allowed operations many include:
 
-  1. Read operations over internal or private data
-  2. Write operations over public, internal or private data
-  3. Management operations such as creating organizations, adding/removing members to/from organizations.
+1. Read operations over internal or private data
+2. Write operations over public, internal or private data
+3. Management operations such as creating organizations, adding/removing members to/from organizations.
 
 The following creates a `Client` object with an API token that is made available through an environment variable (see section [Setting up a secure read/write project](#setting-up-a-secure-read-write-project)):
 
 ```ts
-import Client from '@triply/triplydb'
-const client = Client.get({token: process.env.TRIPLYDB_TOKEN})
+import Client from "@triply/triplydb";
+const client = Client.get({ token: process.env.TRIPLYDB_TOKEN });
 ```
 
 It is typical for one TriplyDB.js script to have exactly one `Client` object.
-
 
 #### Client.getAccount(name?: string)
 
@@ -323,25 +313,24 @@ If `name` is omitted, the TriplyDB account that is associated with the current A
 - The following snippet returns the account called `'Triply'`.
 
   ```ts
-  const account = await client.getAccount('Triply')
+  const account = await client.getAccount("Triply");
   ```
 
-- The following snippet returns the current account.  This is the account for which the currently configured API token was created.
+- The following snippet returns the current account. This is the account for which the currently configured API token was created.
 
   ```ts
-  const account = await client.getAccount()
+  const account = await client.getAccount();
   ```
 
 ##### See also
 
-This method returns an account object.  See section [`Account`](#account) for an overview of the methods that can be called on such objects.
+This method returns an account object. See section [`Account`](#account) for an overview of the methods that can be called on such objects.
 
-Class [`Account`](#account) has two specializations: class [`Organization`](#organization) and class [`User`](#user).  In line with these class specializations, there are also two method specializations:
+Class [`Account`](#account) has two specializations: class [`Organization`](#organization) and class [`User`](#user). In line with these class specializations, there are also two method specializations:
 
 - Method [`Client.getOrganization(name: string)`](#clientgetorganizationname-string) returns an organization object.
 
 - Method [`Client.getUser(name?: string)`](#clientgetusername-string) returns a user object.
-
 
 #### Client.getAccounts()
 
@@ -352,16 +341,16 @@ Returns an [async iterator](#async-iterator) over all accounts in the TriplyDB i
 - The following snippet prints the display names for all accounts in the TriplyDB instance at <https://triplydb.com>:
 
   ```ts
-  const client = Client.get({url: 'https://api.triplydb.com'})
+  const client = Client.get({ url: "https://api.triplydb.com" });
   for await (const account of client.getAccounts()) {
-    console.log((await account.getInfo()).name)
+    console.log((await account.getInfo()).name);
   }
   ```
 
 - The following snippet returns an array that contains all account objects:
 
   ```ts
-  console.log(await client.getAccounts().toArray())
+  console.log(await client.getAccounts().toArray());
   ```
 
 See section [`Account`](#account) for an overview of the methods that
@@ -371,14 +360,14 @@ can be used with account objects.
 
 Returns information about the TriplyDB instance that the [`Client`](#client) is connected to.
 
-Information is returned in a dictionary object.  Individual keys can be accessed for specific information values.
+Information is returned in a dictionary object. Individual keys can be accessed for specific information values.
 
 ##### Examples
 
 - The following snippet prints the contact email for the TriplyDB instance to which `client` is currently connected.
 
 ```ts
-console.log((await client.getInfo()).contactEmail)
+console.log((await client.getInfo()).contactEmail);
 ```
 
 - The following snippet returns an object describing the used TriplyDB instance:
@@ -395,14 +384,14 @@ This method is similar to [`Client.getAccount(name?: string)`](#clientgetaccount
 
 - This method only works for accounts that represent TriplyDB organizations.
 
-- This method returns an organization object.  Class [`Organization`](#organization) is a specialization of class [`Account`](#account).
+- This method returns an organization object. Class [`Organization`](#organization) is a specialization of class [`Account`](#account).
 
 ##### Examples
 
 The following snippet returns the organization called `'Triply'`:
 
 ```ts
-const organization = await client.getOrganization('Triply')
+const organization = await client.getOrganization("Triply");
 ```
 
 See section [`Organization`](#organization) for an overview of the
@@ -419,32 +408,32 @@ This method is a shorthand for calling the following two methods:
 The following snippet returns the same result as the previous example, but uses two methods instead of one:
 
 ```ts
-const account = await client.getAccount('Triply')
-const organization = account.asOrganization()
+const account = await client.getAccount("Triply");
+const organization = account.asOrganization();
 ```
 
 ##### See also
 
-This method returns an organization object.  See section [`Organization`](#organization) for an overview of the methods that can be called on such objects.
+This method returns an organization object. See section [`Organization`](#organization) for an overview of the methods that can be called on such objects.
 
 #### Client.getUser(name?: string)
 
 Returns the TriplyDB user with the given `name`.
 
-If `name` is omitted, the TriplyDB user that is associated with the current API token is returned.  This only works if an API token is configured for the current [`Client`](#client) object.
+If `name` is omitted, the TriplyDB user that is associated with the current API token is returned. This only works if an API token is configured for the current [`Client`](#client) object.
 
 ##### Examples
 
 The following snippet returns the user with name `'somebody'`:
 
 ```ts
-const user = await client.getUser('somebody')
+const user = await client.getUser("somebody");
 ```
 
-The following snippet returns the user for which the API token was created.  This only works if an API token was configured when creating the [`Client`](#client) object `client`:
+The following snippet returns the user for which the API token was created. This only works if an API token was configured when creating the [`Client`](#client) object `client`:
 
 ```ts
-const me = await client.getUser()
+const me = await client.getUser();
 ```
 
 ##### Alternatives
@@ -458,13 +447,13 @@ This method is a shorthand for the following two methods:
 The following snippet returns the same result as the previous examples, but uses two methods instead of one:
 
 ```ts
-const account = await client.getAccount('somebody')
-const user = account.asUser()
+const account = await client.getAccount("somebody");
+const user = account.asUser();
 ```
 
 ##### See also
 
-This method returns a user object.  See section [`User`](#user) for an overview of the methods that can be called on such objects.
+This method returns a user object. See section [`User`](#user) for an overview of the methods that can be called on such objects.
 
 #### Client.isCompatibleWith(minimumVersion: string)
 
@@ -472,7 +461,7 @@ Succeeds iff the currently connected to TriplyDB instance has a version that is 
 
 ##### Arguments
 
-- Argument `minimumVersion` must be a string that uses Semantic Versioning.  For example `'1.2.3'`.
+- Argument `minimumVersion` must be a string that uses Semantic Versioning. For example `'1.2.3'`.
 
 ##### See also
 
@@ -480,11 +469,11 @@ To inspect the current version of the conntected-to TriplyDB instance, use [`Cli
 
 ### Account
 
-Instances of the `Account` class denote TriplyDB accounts.  Accounts can be either organizations ([`Organization`](#organization)) or users ([`User`](#user)).
+Instances of the `Account` class denote TriplyDB accounts. Accounts can be either organizations ([`Organization`](#organization)) or users ([`User`](#user)).
 
 Account objects are obtained by calling the following method:
 
-  - [`Client.getAccount(name?: string)`](#clientgetaccountname-string)
+- [`Client.getAccount(name?: string)`](#clientgetaccountname-string)
 
 #### Account.addDataset(name: string, metadata?: object)
 
@@ -496,11 +485,11 @@ The optional `metadata` argument is used to specify the metadata for the dataset
 
 Creating a new dataset only succeeds if an API token is configured that provides write access to the current account.
 
-The default access level for a newly created dataset is `private`.  If you want to publish a dataset with a different access level, you must specify the `accessLevel` key in the `metadata` argument.
+The default access level for a newly created dataset is `private`. If you want to publish a dataset with a different access level, you must specify the `accessLevel` key in the `metadata` argument.
 
 ##### Arguments
 
-- The `name` argument specifies the URL-friendly name of the new dataset.  The name must only contain alphanumeric characters and hyphens (`[A-Za-z0-9\-]`).
+- The `name` argument specifies the URL-friendly name of the new dataset. The name must only contain alphanumeric characters and hyphens (`[A-Za-z0-9\-]`).
 
   The full URL of the newly created dataset has the following structure:
 
@@ -549,34 +538,37 @@ The default access level for a newly created dataset is `private`.  If you want 
 
 The following snippet creates a new dataset called `'iris'` under the account called `'Triply'`:
 
-  - The dataset has private access, because the access level is not specified explicitly.
-  - The dataset has a description.
-  - The dataset has a display name.
-  - The dataset has the PDDL license.
+- The dataset has private access, because the access level is not specified explicitly.
+- The dataset has a description.
+- The dataset has a display name.
+- The dataset has the PDDL license.
 
 ```ts
-const account = await client.getAccount('Triply')
-const dataset = await account.addDataset({
-  description: 'A multivariate dataset that quantifies morphologic variation of Iris flowers.',
-  displayName: 'Iris',
-  license: 'PDDL',
-  name: 'iris',
+const account = await client.getAccount("Triply");
+const dataset = await account.addDataset("iris", {
+  description:
+    "A multivariate dataset that quantifies morphologic variation of Iris flowers.",
+  displayName: "Iris",
+  license: "PDDL",
+  name: "iris",
   prefixes: {
-    def: 'https://triplydb.com/Triply/iris/def/',
-    id: 'https://triplydb.com/Triply/iris/id/'
-  }
-})
+    def: "https://triplydb.com/Triply/iris/def/",
+    id: "https://triplydb.com/Triply/iris/id/",
+  },
+});
 ```
 
 ##### See also
 
-This method returns a dataset object.  See the [Dataset](#dataset) section for an overview of the methods that can be called on such objects.
+This method returns a dataset object. See the [Dataset](#dataset) section for an overview of the methods that can be called on such objects.
 
-#### Account.addQuery(metadata: object)
+#### Account.addQuery(name: string, metadata: object)
 
 Adds a new SPARQL query.
 
 ##### Arguments
+
+- The `metadata` argument specifies the required Dataset or Service and access level. Other important metadata can be set optionally:
 
 <!-- ***`accessLevel: 'private'|'internal'|'public'` (optional)***
 The access level of the query. The following values are supported:
@@ -586,15 +578,16 @@ The access level of the query. The following values are supported:
 - ***`'private'`*** The query can be accessed by everybody. -->
 
 **Required:**
+
 <dl>
-<dt><code>dataset</code> </dt>
-<dd>The ID of a dataset that the current API token gives access to.  This ID is obtained with the following code: <code>(await dataset.getInfo()).id</code></dd>
 <dt><code>name: string</code> </dt>
 <dd>The URL-friendly name of the new query.  The name must only contain alphanumeric characters and hyphens (`[A-Za-z0-9\-]`).</dd>
+<dt><code>dataset</code> </dt>
+<dd>An instance of class Dataset that the current API token gives access to.</dd>
+or
+<dt><code>service</code> </dt>
+<dd>An instance of class Service that the current API token gives access to and that you want to be associated with this query. The Service given will be used as a preferred service for this query.</code></dd>
 </dl>
-
-**Optional:**
-
 
 <dl>
 
@@ -613,6 +606,8 @@ The access level of the query. The following values are supported:
   <dt><code>autoselectService: boolean</code> (optional)</dt>
   <dd>TODO</dd>
   -->
+
+**Optional:**
 
   <dt><code>description: string</code> </dt>
   <dd>A human-readable description of the query.</dd>
@@ -712,37 +707,42 @@ Instances of `Variable` are objects that can have the following keys:
 The following snippet creates a query with the given query string:
 
 ```ts
-const client = Client.get({token: process.env.TRIPLYDB_TOKEN})
-const user = await client.getUser()
-const dataset = await user.getDataset('my-dataset')
-const datasetId = (await dataset.getInfo()).id
-const query = await user.addQuery({
+const client = Client.get({ token: process.env.TRIPLYDB_TOKEN });
+const user = await client.getUser();
+const dataset = await user.getDataset("my-dataset");
+const datasetId = (await dataset.getInfo()).id;
+const query = await user.addQuery("my-query", {
   dataset: datasetId,
-  name: 'my-query',
   requestConfig: {
     payload: {
       query: `select (count(*) as ?n) {
-  ?s ?p ?o.
-}`
-    }
+        ?s ?p ?o.
+      }`,
+    },
   },
   renderConfig: {
-    output: 'table'
-  }
-})
+    output: "table",
+  },
+});
 ```
 
-#### Account.addStory(metadata: object)
+#### Account.addStory(name: string, metadata?: object)
 
 Adds a new data story.
 
-##### Arguments
+##### Required
 
-**Required:**
+<dl>
+<dt><code>name: string</code></dt>
+<dd>The URL-friendly name of the data story.  The name must only contain alphanumeric characters and hyphens (`[A-Za-z0-9\-]`).</dd>
+</dl>
+
+##### Optional
+
 <dl>
 <dt><code>accessLevel</code> </dt>
 <dd>
-  The access level of the dataset. The following values are supported:
+  The access level of the dataset. If none is given the default of <code>'private'</code> is used. The following values are supported:
   <dl>
     <dt><code>'private'</code></dt>
     <dd>The dataset can only be accessed by the <a href='#account'><code>Account</code></a> object for which it is created.</dd>
@@ -751,11 +751,8 @@ Adds a new data story.
     <dt><code>'public'</code></dt>
     <dd>The dataset can be accessed by everybody.</dd>
   </dl>
-  <dt><code>name: string</code> (required)</dt>
-  <dd>The URL-friendly name of the data story.  The name must only contain alphanumeric characters and hyphens (`[A-Za-z0-9\-]`).</dd>
 </dl>
 
-**Optional:**
   <dl>
   <dt><code>content: StoryElementUpdate[]</code> </dt>
   <dd>A list if story elements.</dd>
@@ -785,11 +782,25 @@ A story element is an object with the following keys:
   <dd>Either <code>'paragraph'</code> or <code>'query'</code>.</dd>
 </dl>
 
-<!--
 ##### Examples
 
-TODO
--->
+Example 1 - creates a new story that is "private"
+
+```ts
+const client = Client.get({ token: process.env.TRIPLYDB_TOKEN });
+const user = await client.getUser();
+const newStory = await someUser.addStory("name-of-story");
+```
+
+Example 2 - creates a new story that is "public"
+
+```ts
+const client = Client.get({ token: process.env.TRIPLYDB_TOKEN });
+const user = await client.getUser();
+const newStory = await someUser.addStory("name-of-story", {
+  accessLevel: "public",
+});
+```
 
 #### Account.asOrganization()
 
@@ -804,8 +815,8 @@ Calling this method on an `Organization` object does nothing.
 The following snippet retrieves the account named `'Triply'` and casts it to an organization:
 
 ```ts
-const account = await client.getAccount('Triply')
-const organization = account.asOrganization()
+const account = await client.getAccount("Triply");
+const organization = account.asOrganization();
 ```
 
 ##### Alternatives
@@ -815,12 +826,12 @@ This method is not needed if the organization is directly retrieved with the spe
 The following snippet returns the same result as the above example, but in a more direct way:
 
 ```ts
-const organization = await client.getOrganization('Triply')
+const organization = await client.getOrganization("Triply");
 ```
 
 ##### See also
 
-This method returns an organization object.  See section [`Organization`](#organization) for an overview of the methods that can be called on such objects.
+This method returns an organization object. See section [`Organization`](#organization) for an overview of the methods that can be called on such objects.
 
 #### Account.asUser()
 
@@ -835,8 +846,8 @@ Calling this method on a [`User`](#user) object does nothing.
 The following snippet retrieves the account that represents the current user, and casts it to a user object:
 
 ```ts
-const account = await client.getAccount()
-const user = account.asUser()
+const account = await client.getAccount();
+const user = account.asUser();
 ```
 
 ##### Alternatives
@@ -846,33 +857,34 @@ This method is not needed if the user is directly retrieved with the specializat
 The following snippet returns the same result as the above example, but in a more direct way:
 
 ```ts
-const user = await client.getUser()
+const user = await client.getUser();
 ```
 
 ##### See also
 
-This method returns an organization object.  See section [`Organization`](#organization) for an overview of the methods that can be called on such objects.
-
+This method returns an organization object. See section [`Organization`](#organization) for an overview of the methods that can be called on such objects.
 
 #### Account.ensureDataset(name: string, metadata?: object)
 
-Ensures the existence of a dataset with the given `name` and with the specified `metadata`.
+Ensures the existence of a dataset with the given `name` and with the specified `metadata` if given.
 
 Calling this method ensures that the necessary changes (if any) are made in the connected-to TriplyDB instance that result in an end state in which a dataset with the given `name` and `metadata` exists.
 
-This method is useful in practice, because it removes the burned on the programmer to have to write custom code for checking for the existence of a dataset, and conditionally create a new dataset or make metadata changes to an existing dataset.
+This method is useful in practice, because it removes the burden on the programmer to have to write custom code for checking for the existence of a dataset, and conditionally create a new dataset or make metadata changes to an existing dataset.
 
 The changes made as a result of calling this method depend on the current state of the connected-to TriplyDB instance:
 
 - If this account does not yet have a dataset with the given `name`, then the behavior is identical to calling [`Account.addDataset(name: string, metadata?: object)`](#accountadddatasetname-string-metadata-object) with the same arguments.
-- If this account already has a dataset with the given `name`, but with different `metadata` specified for it, then the behavior is identical to calling [`Account.getDataset(name: string)`](#accountgetdatasetname-string) and [`Dataset.update(metadata: object)`](#datasetupdatemetadata-object).
 - If this account already has a dataset with the given `name` and with the same `metadata`, then this method makes no changes.
 
-<!--
-##### Examples
+##### Example
 
-TODO
--->
+```ts
+const account = await client.getAccount("Triply");
+const myDataset = await account.ensureDataset(`my-dataset`, {
+  license: "PDDL",
+});
+```
 
 ##### See also
 
@@ -887,14 +899,14 @@ Returns the dataset with the given `name` that is published by this account.
 The following snippet prints the name of the Iris dataset that is published by the Triply account:
 
 ```ts
-const account = await client.getAccount('Triply')
-const dataset = await triply.getDataset('iris')
-console.log((await dataset.getInfo()).name)
+const account = await client.getAccount("Triply");
+const dataset = await triply.getDataset("iris");
+console.log((await dataset.getInfo()).name);
 ```
 
 ##### See also
 
-This method returns a dataset object.  See section [`Dataset`](#dataset) for an overview of the methods that can be called on such objects.
+This method returns a dataset object. See section [`Dataset`](#dataset) for an overview of the methods that can be called on such objects.
 
 #### Account.getDatasets()
 
@@ -913,24 +925,24 @@ The iterator only includes datasets that are accessible for the current connecti
 - The following snippet prints the names of all accessible dataset under the Triply account:
 
   ```ts
-  const account = await client.getAccount('Triply')
+  const account = await client.getAccount("Triply");
   for await (const dataset of account.getDatasets()) {
-    console.log((await dataset.getInfo()).name)
+    console.log((await dataset.getInfo()).name);
   }
   ```
 
 - The following snippet prints the list of names of all accessible datasets under the Triply account:
 
   ```ts
-  const account = await client.getAccount('Triply')
-  console.log(await account.getDatasets().toArray())
+  const account = await client.getAccount("Triply");
+  console.log(await account.getDatasets().toArray());
   ```
 
 #### Account.getInfo()
 
 Returns information about this account.
 
-Information is returned in a dictionary object.  Individual keys can be accessed for specific information values.
+Information is returned in a dictionary object. Individual keys can be accessed for specific information values.
 
 <!--
 The information object for accounts includes the following keys:
@@ -968,8 +980,8 @@ The information object for accounts includes the following keys:
 - The following snippet prints the full information object for the account called ‘Triply’:
 
   ```ts
-  const account = await client.getAccount('Triply')
-  console.log(await account.getInfo())
+  const account = await client.getAccount("Triply");
+  console.log(await account.getInfo());
   ```
 
   The output for this snippet can look as follows:
@@ -991,10 +1003,9 @@ The information object for accounts includes the following keys:
 - The following snippet prints the name of the account called ‘Triply’:
 
   ```ts
-  const account = await client.getAccount('Triply')
-  console.log((await account.getInfo()).name)
+  const account = await client.getAccount("Triply");
+  console.log((await account.getInfo()).name);
   ```
-
 
 #### Account.getPinnedItems()
 
@@ -1011,20 +1022,59 @@ The order in which the pinned datasets are returned reflects the order in which 
 The following snippet prints the names of the items that are pinned on the Triply account page:
 
 ```ts
-const account = await client.getAccount('Triply')
+const account = await client.getAccount("Triply");
 for await (const item of account.getPinnedItems()) {
-  console.log((await item.getInfo()).name)
+  console.log((await item.getInfo()).name);
 }
 ```
 
 ##### See also
 
-This method returns various types of objects.  Each class has different functionalities:
+This method returns various types of objects. Each class has different functionalities:
 
 - See section [`Dataset`](#dataset) for an overview of the methods for dataset objects.
 - See section [`Query`](#query) for an overview of the methods for query objects.
 - See section [`Story`](#story) for an overview of the methods for story objects.
 
+#### Account.ensureQuery(name: string, metadata: object)
+
+Ensures the existence of a query with the given `name` and with the specified `metadata`.
+
+Calling this method ensures that the necessary changes (if any) are made in the connected-to TriplyDB instance that result in an end state in which a query with the given `name` and `metadata` exists.
+
+This method is useful in practice, because it removes the burden on the programmer to have to write custom code for checking for the existence of a query, and conditionally create a new query or make metadata changes to an existing query.
+
+The changes made as a result of calling this method depend on the current state of the connected-to TriplyDB instance:
+
+- If this account does not yet have a query with the given `name`, then the behavior is identical to calling [`Account.addQuery(name: string, metadata?: object)`](#datasetaddqueryname-string-metadata-object) with the same arguments.
+- If this account already has a query with the given `name` and with the same `metadata`, then this method returns that query.
+
+**Note:**
+
+- `name` and `accessLevel` are **requiered** fields.
+- `dataset` or `service` is a **requiered** field.
+- Both a `dataset` and `service` **cannot** be used at the same time. Only one must be specfied at a time.
+- If a `service` is specified, that service is used a **preferred service**.
+
+**Examples**
+
+Example 1 : Ensure a query using a `dataset`
+
+```ts
+await someUser.ensureQuery(`someQueryName`, {
+  accessLevel: "public",
+  dataset: testDs,
+});
+```
+
+Example 2 : Ensure a query using a `service`
+
+```ts
+await someUser.ensureQuery(`someQueryName`, {
+  accessLevel: "private",
+  service: someService,
+});
+```
 
 #### Account.getQuery(name: string)
 
@@ -1035,15 +1085,14 @@ Returns the TriplyDB query with the given `name`.
 The following snippet prints the query string for a query called `animal-gallery` that belongs to the account called `Triply`:
 
 ```ts
-const account = await client.getAccount('Triply')
-const query = await account.getQuery('animal-gallery')
-console.log((await query.getInfo()).requestConfig?.payload.query)
+const account = await client.getAccount("Triply");
+const query = await account.getQuery("animal-gallery");
+console.log((await query.getInfo()).requestConfig?.payload.query);
 ```
 
 ##### See also
 
 See section [`Query`](#query) for an overview of the methods for query objects.
-
 
 #### Account.getQueries()
 
@@ -1062,9 +1111,9 @@ The iterator only includes datasets that are accessible for the current connecti
 The following snippet prints the names of the queries that belong to the account called `Triply`:
 
 ```ts
-const account = await client.getAccount('Triply')
+const account = await client.getAccount("Triply");
 for await (const query of account.getQueries()) {
-  console.log((await query.getInfo()).name)
+  console.log((await query.getInfo()).name);
 }
 ```
 
@@ -1072,6 +1121,118 @@ for await (const query of account.getQueries()) {
 
 See section [`Query`](#query) for an overview of the methods for query objects.
 
+#### Account.ensureStory(name: string, metadata: object)
+
+Ensures the existence of a story with the given `name` and with the specified `metadata` if given.
+
+Calling this method ensures that the necessary changes (if any) are made in the connected-to TriplyDB instance that result in an end state in which a story with the given `name` and `metadata` exists.
+
+This method is useful in practice, because it removes the burden on the programmer to have to write custom code for checking for the existence of a story, and conditionally create a new story or make metadata changes to an existing story.
+
+The changes made as a result of calling this method depend on the current state of the connected-to TriplyDB instance:
+
+- If this account does not yet have a story with the given `name`, then the behavior is identical to calling [`Account.addStory(name: string, metadata?: object)`](#datasetaddstoryname-string-metadata-object) with the same arguments.
+- If this account already has a story with the given `name` and with the same `metadata`, then this method returns that story.
+
+##### Optional
+
+<dl>
+<dt><code>displayName</code></dt>
+<dd>Accepts a string value to be used as the display name for the story.</dd>
+<dt><code>accessLevel</code></dt>
+<dd>Accepts a string value of either "public" | "private" | "internal".</dd>
+<dt><code>content</code></dt>
+<dd>Accepts a list of StoryElementUpdate objects, defined below.</dd>
+</dl>
+
+**Note:**
+If no `accessLevel` is specified the default used is "private".
+
+<!-- TODO Should this be included? Its format seems inconsistent with the other documentation
+Other interface used:
+```
+interface StoryElementUpdate {
+    id?: string;
+    type: "paragraph" | "query;
+    query?: string;
+    queryVersion?: number;
+    paragraph?: string;
+    caption?: string;
+```
+} -->
+
+**Examples**
+
+Example 1: To ensure a `Story` only requires a `name` of type string. It's access level will default to private
+
+```ts
+await someUser.ensureStory(`someStoryName`);
+```
+
+Example 2: Ensure a `Story` setting it's `accessLevel` and `displayName`.
+
+```ts
+await someUser.ensureStory(`someStoryName`, {
+  accessLevel: "public",
+  displayName: `This is a Story`,
+});
+```
+
+#### Account.addStory(name: string, newStoryOptions?: object)
+
+##### Required
+
+Adds and returns the TriplyDB story with the given `name`.
+
+##### Optional
+
+The optional new story object that can be passed accepts the following properties:
+
+<dl>
+  <dt>
+    <code>displayName</code>
+  </dt>
+  <dd>Accepts a string value to be used as a display name for the story</dd>
+  <dt>
+    <code>accessLevel</code>
+  </dt>
+  <dd>Sets the access level for the story. Accepts a string value of either <code>"public"</code>, <code>"private"</code>, <code>"internal"</code> 
+  </dd>
+</dl>
+
+<!--
+TODO To be revised at a later date. Its implemntation is set to be changed soon. dev team see issue #6231, #6232
+<dt><code>content</code></dt>
+<dd>Accepts an array of objects that match that of a stoyElementUpdate (see below)</dd>
+
+<!-- ```ts
+interface StoryElementUpdate {
+    id?: string;
+    type: "paragraph" | "query;
+    query?: string;
+    queryVersion?: number;
+    paragraph?: string;
+    caption?: string;
+}
+```  -->
+
+If **no** `accesslevel` is specified the default value `private` is used.
+
+**Examples**:
+
+Example 1 - creates a newStory that is "private"
+
+```ts
+const newStory = await someUser.addStory("name-of-story");
+```
+
+Example 2 - creates a newStory that is "public"
+
+```ts
+const newStory = await someUser.addStory("name-of-story", {
+  accessLevel: "public",
+});
+```
 
 #### Account.getStory(name: string)
 
@@ -1079,17 +1240,16 @@ Returns the TriplyDB story with the given `name`.
 
 ##### Examples
 
-The following snippet prints the paragraphs in the story called `the-iris-dataset` that is published under the account called `Triply`.  Stories are sequences of paragraphs and queries.  This program prints the paragraphs in the sequence in which they appear in the story.
+The following snippet prints the paragraphs in the story called `the-iris-dataset` that is published under the account called `Triply`. Stories are sequences of paragraphs and queries. This program prints the paragraphs in the sequence in which they appear in the story.
 
 ```ts
-const account = await client.getAccount('Triply')
-const story = await account.getStory('the-iris-dataset')
+const account = await client.getAccount("Triply");
+const story = await account.getStory("the-iris-dataset");
 ```
 
 ##### See also
 
 See section [`Story`](#story) for an overview of the methods for story objects.
-
 
 #### Account.getStories()
 
@@ -1100,9 +1260,9 @@ Returns an iterator with the TriplyDB stories that belong to the account.
 The following snippet prints the names of the queries that belong to the Triply account:
 
 ```ts
-const account = await client.getAccount('Triply')
+const account = await client.getAccount("Triply");
 for await (const story of account.getStories()) {
-  console.log((await story.getInfo()).name)
+  console.log((await story.getInfo()).name);
 }
 ```
 
@@ -1110,12 +1270,11 @@ for await (const story of account.getStories()) {
 
 See section [`Story`](#story) for an overview of the methods for story objects.
 
-
 #### Account.pinItems(items: array[Dataset|Story|Query])
 
 Pins the given datasets, stores, and/or queries to the home page of this account.
 
-The pinned elements can be seen by people who visit the account online.  They are also included in the account metadata.
+The pinned elements can be seen by people who visit the account online. They are also included in the account metadata.
 
 <!--
 ##### Examples
@@ -1123,30 +1282,29 @@ The pinned elements can be seen by people who visit the account online.  They ar
 TODO
 -->
 
-
 #### Account.setAvatar(file: string)
 
 Sets a new image that characterizes this account.
 
-A circular version of this image is displayed inside the TriplyDB GUI.  This image is also published as part of account metadata.
+A circular version of this image is displayed inside the TriplyDB GUI. This image is also published as part of account metadata.
 
 ##### Examples
 
 The following snippet uploads the local image in file `logo.svg` and set it as the characterizing image for the Triply account:
 
 ```ts
-const account = await client.getAccount('Triply')
-await account.setAvatar('logo.svg')
+const account = await client.getAccount("Triply");
+await account.setAvatar("logo.svg");
 ```
-
 
 #### Account.update(metadata: object)
 
 Updates the metadata for this account.
 
 To update the metadata profile with information within the metadata itself, we need the following steps:
-1) Obtain the relevant piece of information as a variable/const: `getObject()`
-2) Update the metadata profile with the obtained information stored in the variable/const: `update()`
+
+1. Obtain the relevant piece of information as a variable/const: `getObject()`
+2. Update the metadata profile with the obtained information stored in the variable/const: `update()`
 
 **getObject()**
 Define a constant (`const`) and assign it to `ctx.store.getObjects()`.
@@ -1156,81 +1314,72 @@ The argumemts for the function will be the subject, predicate, and graph. The fu
 Update the relevant part of the metadata profile with the corresponding piece of information. `.update({})`
 
 **Example**
-If one wants to update the *display name* of a metadata profile with the object of the following triple within the metadata:
+If one wants to update the _display name_ of a metadata profile with the object of the following triple within the metadata:
 `<https://example.org/example> <https://schema.org/name> "Example Name"@en`
 
 ```ts
 async (ctx) => {
   // Fetch displayName
-  const displayName = ctx.store.getObjects(
-    'https://example.org/example',
-    'https://schema.org/name',
-    graph.metadata).find((node) =>
-    node.termType === 'Literal' && node.language === 'en')?.value;
+  const displayName = ctx.store
+    .getObjects(
+      "https://example.org/example",
+      "https://schema.org/name",
+      graph.metadata
+    )
+    .find(
+      (node) => node.termType === "Literal" && node.language === "en"
+    )?.value;
 
   // Specify the environment variable, if necessary
   const _dataset =
-    process.env['MODE'] === 'Production'
+    process.env["MODE"] === "Production"
       ? (await app.triplyDb.getOrganization(organization)).getDataset(dataset)
-      : (await app.triplyDb.getUser()).getDataset(organization + '-' + dataset)
+      : (await app.triplyDb.getUser()).getDataset(organization + "-" + dataset);
 
   // Update the display name
-  if (displayName) await (await _dataset).update({ displayName })
-}
+  if (displayName) await (await _dataset).update({ displayName });
+};
 ```
 
 <!--
 TODO: Document the keys supported in `metadata`.
 -->
 
-
-
 <!-- TODO: Document what an asset is and how it can be obtained.
 ### Asset
 -->
-
 
 <!-- TOOD: Document this method.
 #### Asset.addVersion(path: File|string)
 -->
 
-
 <!-- TOOD: Document this method.
 #### Asset.delete()
 -->
-
 
 <!-- TOOD: Document this method.
 #### Asset.getInfo(version?: number)
 -->
 
-
 <!-- TOOD: Document this method.
 #### Asset.getVersionInfo(version: number)
 -->
-
 
 <!-- TOOD: Document this method.
 #### Asset.selectVersion(version: number)
 -->
 
-
 <!-- TOOD: Document this method.
 #### Asset.toFile(path: string, version?: number)
 -->
-
 
 <!-- TOOD: Document this method.
 #### Asset.toStream(version?: number)
 -->
 
-
-
 ### Dataset
 
 The [`Dataset`](#dataset) class represents a TriplyDB dataset.
-
-
 
 #### Dataset.addPrefixes(prefixes: object)
 
@@ -1243,29 +1392,102 @@ The `prefixes` argument is a dictionary object whose keys are aliases and whose 
 The following snippet adds prefix declarations for aliases `id` and `def` to the Iris dataset:
 
 ```ts
-const organization = await client.getOrganization('Triply')
-const dataset = await organization.getDataset(iris)
+const organization = await client.getOrganization("Triply");
+const dataset = await organization.getDataset(iris);
 await dataset.addPrefixes({
-  def: 'https://triplydb.com/Triply/iris/def/',
-  id:  'https://triplydb.com/Triply/iris/id/'
-})
+  def: "https://triplydb.com/Triply/iris/def/",
+  id: "https://triplydb.com/Triply/iris/id/",
+});
 ```
 
+#### Dataset.ensureService(name: string, metadata?: object)
 
-#### Dataset.addService(type: string, name: string)
+Ensures the existence of a service with the given `name` and with the specified `metadata` if given.
+
+Calling this method ensures that the necessary changes (if any) are made in the connected-to TriplyDB instance that result in an end state in which a service with the given `name` and `metadata` exists.
+
+This method is useful in practice, because it removes the burden on the programmer to have to write custom code for checking for the existence of a service, and conditionally create a new service or make metadata changes to an existing service.
+
+The changes made as a result of calling this method depend on the current state of the connected-to TriplyDB instance:
+
+- If this dataset does not yet have a service with the given `name`, then the behavior is identical to calling [`Dataset.addService(name: string, metadata?: object)`](#datasetaddservicename-string-metadata-object) with the same arguments.
+<!--
+- If this account already has a service with the given `name`, but with different `metadata` specified for it, then the behavior is identical to calling [`Account.getDataset(name: string)`](#datasetgetservicename-string) and [`Dataset.update(metadata: object)`](#serviceupdatemetadata-object). -->
+- If this dataset already has a service with the given `name` and with the same `metadata`, then this method returns that service.
+
+##### Requiered
+
+<dl>
+  <dt>
+    <code>name</code>
+  </dt>
+  <dd>Accpets a string value which is the name of the service to ensure. </dd>
+</dl>
+
+##### Optional: metadata
+
+```ts
+serviceMetadata = {
+  type: "sparql" | "sparql-jena" | "elasticsearch | "virtuoso" | "jena" | "elasticSearch";
+  config?: {
+    reasoner?: "OWL" | "RDFS" | "None";
+    };
+};
+```
+
+<dl>
+  <dt><code>type</code></dt>
+  <dd>Accpets a string value of one of the following: "sparql", "sparql-jena", "elasticsearch, "virtuoso", "jena", "elasticSearch". </dd>
+<dt><code>config</code></dt>
+  <dd>Config is an optional property. It accepts a object with a <code>reasoner</code> property.
+    <dl>
+      <dt><code>reasoner</code></dt>
+      <dd>The reasoner property accepts a string value of either "OWL", "RDFS", "None".</dd>
+    </dl>
+  </dd>
+</dl>
+
+**Note:**
+
+- If no options are specified the default service is of type: `virtuoso`.
+- Note that the `config.reasoner` will only accept a value when `type` is: `"sparql-jena" | "jena"`
+
+**Examples**
+Example 1: Ensure a `service` with no arguments. If not found it's type defaults to `virtuoso`.
+
+```ts
+await someDataset.ensureService("someServiceName");
+```
+
+Example 2: Ensure a `service` of type `jena`.
+
+```ts
+await someDataset.ensureService("someServiceName", { type: "jena" });
+```
+
+#### Dataset.addService(name: string, metadata?: object)
 
 Creates a new service for this dataset.
 
 ##### Arguments
 
-The service type is specified with the `type` parameter.  It supports the following values:
+##### Required
 
 <dl>
-  <dt><code>'sparql'</code></dt>
+<dt><code>name</code></dt>
+<dd>The URL-friendly name of the service.  The name must only contain alphanumeric characters and hyphens (`[A-Za-z0-9\-]`).</dd>
+</dl>
+
+##### Optional
+
+The service type is specified with the `type` parameter. If no type is given, a default of <code>"virtuoso"</code> is used. It supports the following values:
+
+<dl>
+  <dt><code>'virtuoso'</code></dt>
   <dd>Starts a SPARQL service. A SPARQL 1.1 compliant service is very scalable and performance, but without advanced reasoning capabilities.</dd>
-  <dt><code>'sparql-jena'</code></dt>
+  <dt><code>'jena'</code></dt>
   <dd>Starts a SPARQL JENA service. A SPARQL 1.1 compliant service that is less scalable and less performant, but allows reasoning (RDFS or OWL) to be enabled.</dd>
-  <dt><code>'elasticsearch'</code></dt>
+  <dt><code>'elasticSearch'</code></dt>
   <dd>Starts an Elastic Search service. A text search engine that can be used to power a search bar or similar textual search API.</dd>
 </dl>
 
@@ -1276,16 +1498,21 @@ The `name` argument can be used to distinguish between different endpoints over 
 The following snippet starts two SPARQL endpoints over a specific dataset. One endpoint will be used in the acceptance environment while the other endpoint will be used in the production system.
 
 ```ts
-const account = await client.getAccount()
-const dataset = await account.getDataset('my-dataset')
-const acceptance = await dataset.addService('sparql', 'acceptance')
-const production = await dataset.addService('sparql', 'production')
+const account = await client.getAccount();
+const dataset = await account.getDataset("my-dataset");
+const acceptance = await dataset.addService("acceptance");
+const production = await dataset.addService("production", {
+  type: "elasticSearch",
+});
+const reasoning = await dataset.addService("reasoning", {
+  type: "jena",
+  config: { reasoner: "OWL" },
+});
 ```
 
 ##### See also
 
 See section [`Service`](#service) for an overview of the methods that can be used with service objects.
-
 
 #### Dataset.clear(...resourceType: string)
 
@@ -1309,28 +1536,26 @@ The resources are specified by the [rest parameter](https://developer.mozilla.or
 The following example code removes all graphs and services for a specific dataset:
 
 ```ts
-const account = await client.getAccount()
-const dataset = await account.getDataset('my-dataset')
-await dataset.clear('graphs', 'services')
+const account = await client.getAccount();
+const dataset = await account.getDataset("my-dataset");
+await dataset.clear("graphs", "services");
 ```
-
 
 #### Dataset.copy(account: string, dataset: string)
 
 Creates a copy of the current dataset.
 
-The owner (user or organization) of the copy is specified with parameter `account`.  The name of the copy is specified with parameter `dataset`.
+The owner (user or organization) of the copy is specified with parameter `account`. The name of the copy is specified with parameter `dataset`.
 
 This operation does not overwrite existing datasets: if the copied-to dataset already exists, a new dataset with suffix `-1` will be created.
 
 ##### Examples
 
 ```ts
-const account = await client.getAccount()
-const dataset = await account.getDataset('my-dataset')
-console.log(await dataset.copy('account name', 'copy dataset name'))
+const account = await client.getAccount();
+const dataset = await account.getDataset("my-dataset");
+console.log(await dataset.copy("account name", "copy dataset name"));
 ```
-
 
 #### Dataset.delete()
 
@@ -1343,18 +1568,17 @@ This includes deleting the dataset metadata, all of its graphs, all of its servi
 The following snippet deletes a specific dataset that is part of the account associated with the current API token:
 
 ```ts
-const account = await client.getAccount()
-const dataset = await account.getDataset('my-dataset')
-await dataset.delete()
+const account = await client.getAccount();
+const dataset = await account.getDataset("my-dataset");
+await dataset.delete();
 ```
 
 ##### See also
 
-Sometimes it is more useful to only delete the graphs that belong to a dataset, but leave the dataset metadata, services, and assets in place.  The following methods can be used for this purpose:
+Sometimes it is more useful to only delete the graphs that belong to a dataset, but leave the dataset metadata, services, and assets in place. The following methods can be used for this purpose:
 
 - [Dataset.deleteGraph(graphName: string)](#datasetdeletegraphname-string)
 - [Dataset.removeAllGraphs()](#datasetremoveallgraphs)
-
 
 #### Dataset.deleteGraph(name: string)
 
@@ -1367,31 +1591,29 @@ Graph names are IRIs.
 The following snippet deletes a specific graph from a specified dataset:
 
 ```ts
-const account = await client.getAccount()
-const dataset = await account.getDataset('my-dataset')
-await dataset.deleteGraph('https://example.org/some-graph')
+const account = await client.getAccount();
+const dataset = await account.getDataset("my-dataset");
+await dataset.deleteGraph("https://example.org/some-graph");
 ```
-
 
 <!-- TODO: Document this method.
 #### Dataset.describe(iri: string|NamedNode)
 -->
 
-
 #### Dataset.getAsset(name: string, version?: number)
 
 Returns the asset with the given `name` for this dataset.
 
-Optionally allows the version number (`version`) of the asset to be specified.  If the version number is absent, the latest version of the assert with the given `name` is returned.
+Optionally allows the version number (`version`) of the asset to be specified. If the version number is absent, the latest version of the assert with the given `name` is returned.
 
 ##### Examples
 
 The following snippet returns the original version of an image of a dog from the animals dataset:
 
 ```ts
-const user = await client.getUser()
-const dataset = user.getDataset('my-dataset')
-const asset = await dataset.getAsset('file.png', 1)
+const user = await client.getUser();
+const dataset = user.getDataset("my-dataset");
+const asset = await dataset.getAsset("file.png", 1);
 ```
 
 <!--
@@ -1400,31 +1622,30 @@ const asset = await dataset.getAsset('file.png', 1)
 TODO: Add this section
 -->
 
-
 #### Dataset.getAssets()
 
 Returns an [async iterator](#async-iterator) over the assets that belong to this dataset.
 
-Assets are binary files that are stored together with data graphs.  Common examples include documents, images and videos.
+Assets are binary files that are stored together with data graphs. Common examples include documents, images and videos.
 
 ##### Examples
 
 - The following snippet prints the assets for a specific dataset:
 
 ```ts
-const user = await client.getUser()
-const dataset = user.getDataset('my-dataset')
+const user = await client.getUser();
+const dataset = user.getDataset("my-dataset");
 for await (const asset of dataset.getAssets()) {
-  console.log(asset)
+  console.log(asset);
 }
 ```
 
 - The following snippet prints the list of assets for a specific dataset:
 
 ```ts
-const account = await client.getAccount()
-const dataset = await account.getDataset('my-dataset')
-console.log(await dataset.getAssets().toArray())
+const account = await client.getAccount();
+const dataset = await account.getDataset("my-dataset");
+console.log(await dataset.getAssets().toArray());
 ```
 
 <!--
@@ -1432,7 +1653,6 @@ console.log(await dataset.getAssets().toArray())
 
 TODO: Add this section
 -->
-
 
 #### Dataset.getGraph(name: string)
 
@@ -1450,11 +1670,10 @@ TODO: What is a graph?  Is it a string or an object?  What can one do with a gra
 The following snippet returns the graph about cats from the dataset about animals:
 
 ```ts
-const user = await client.getUser()
-const dataset = await user.getDataset('animals')
-const graph = dataset.getGraph('https://example.com/cats')
+const user = await client.getUser();
+const dataset = await user.getDataset("animals");
+const graph = dataset.getGraph("https://example.com/cats");
 ```
-
 
 #### Dataset.getGraphs()
 
@@ -1465,28 +1684,26 @@ Returns an [async iterator](#async-iterator) over graphs that belong to this dat
 The following snippet retrieves the graphs for a specific dataset:
 
 ```ts
-const account = await client.getAccount()
-const dataset = await account.getDataset('my-dataset')
-console.log(await dataset.getGraphs().toArray())
+const account = await client.getAccount();
+const dataset = await account.getDataset("my-dataset");
+console.log(await dataset.getGraphs().toArray());
 ```
-
 
 #### Dataset.getInfo()
 
 Returns information about this dataset.
 
-Information is returned in a dictionary object.  Individual keys can be accessed for specific information values.
+Information is returned in a dictionary object. Individual keys can be accessed for specific information values.
 
 ##### Examples
 
 The following snippet prints the information from the specified dataset of the current user:
 
 ```ts
-const user = await client.getUser()
-const dataset = await user.getDataset('my-dataset')
-console.log(await dataset.getInfo())
+const user = await client.getUser();
+const dataset = await user.getDataset("my-dataset");
+console.log(await dataset.getInfo());
 ```
-
 
 #### Dataset.getPrefixes()
 
@@ -1510,7 +1727,6 @@ for await (const prefix of dataset.getPrefixes()) {
 ```
 -->
 
-
 #### Dataset.getService(name: string)
 
 Returns the serivce with the given `name` for this dataset.
@@ -1520,11 +1736,10 @@ Returns the serivce with the given `name` for this dataset.
 The following snippet retrieves the acceptance service for the product catalog of an imaginary company:
 
 ```ts
-const organization = client.getOrganization('some-company')
-const dataset = organization.getDataset('product-catalog')
-const service = dataset.getService('acceptance')
+const organization = client.getOrganization("some-company");
+const dataset = organization.getDataset("product-catalog");
+const service = dataset.getService("acceptance");
 ```
-
 
 #### Dataset.getServices()
 
@@ -1537,10 +1752,10 @@ See section [`Service`](#service) for an overview of the methods for service obj
 - The following snippet emits the services that are enabled for a specific dataset:
 
 ```ts
-const account = await client.getAccount()
-const dataset = await account.getDataset('my-dataset')
+const account = await client.getAccount();
+const dataset = await account.getDataset("my-dataset");
 for await (const service of dataset.getServices()) {
-  console.log(service)
+  console.log(service);
 }
 ```
 
@@ -1553,7 +1768,6 @@ const dataset = await account.getDataset('my-dataset')
 console.log(await dataset.getServices().toArray())
 ```
 -->
-
 
 #### Dataset.getStatements({subject?: string, predicate?: string, object?: string, graph?: string})
 
@@ -1588,23 +1802,20 @@ for await (const statement: dbpedia.getStatements({subject: 'http://dbpedia.org/
 }
 ```
 
-
 <!-- TOOD: Document this method.
 #### Dataset.graphsToFile
 -->
-
 
 <!-- TOOD: Document this method.
 #### Dataset.graphsToStore
 -->
 
-
 <!-- TOOD: Document this method.
 #### Dataset.graphsToStream
 -->
 
+#### Dataset.importFromDataset(from: Dataset, arguments?: object)
 
-#### Dataset.importFromDataset(from: Dataset, graphs: object, overwrite?: boolean)
 <!--
 TODO: This may document the deprecated version of this method?
       Please check and update this.
@@ -1612,38 +1823,88 @@ TODO: This may document the deprecated version of this method?
 
 Imports one or more named graphs from a different dataset into this dataset.
 
-Data reuse is an important principle in linked data.  This functionality makes it very easy to pull in vocabularies and datasets from other places.
+Data reuse is an important principle in linked data. This functionality makes it very easy to pull in vocabularies and datasets from other places.
 
-Changes in the `from` dataset are not automatically reflected in this dataset.  If you want to synchronize with changes made in the imported-from dataset, the graphs must be explicitly imported.  This protects this dataset against unanticipated changes in the imported-from dataset, while still being able to stay in sync with the imported-from dataset if this is explicitly requested.
+Changes in the `from` dataset are not automatically reflected in this dataset. If you want to synchronize with changes made in the imported-from dataset, the graphs must be explicitly imported. This protects this dataset against unanticipated changes in the imported-from dataset, while still being able to stay in sync with the imported-from dataset if this is explicitly requested.
 
-##### Arguments
+##### Required
 
 - Argument `from` is the dataset object from which one or more graph are imported over to this dataset.
-- Argument `graphs` is an object with keys and values that implements a mapping from existing graph names (keys) to newly created graph names (values).  Each keys must be an existing graph name in the `from` dataset.  Each value must is the corresponding graph name in this dataset.
+
+##### Optional
+
+The optional properties accepted as arguments for <code>importFromDataset</code>
+
+<!-- TODO better decription from the customer team of graphMap & graphNames -->
+<dl>
+<dt>graphMap</dt>
+<dd>- Argument `<code>graphMap</code>` optionally is an object with keys and values that implements a mapping from existing graph names (keys) to newly created graph names (values). Each keys must be an existing graph name in the `from` dataset. Each value must is the corresponding graph name in this dataset.</dd>
 <!-- <https://issues.triply.cc/issues/5783>
 If this argument is not specified, then graph names in the `from` dataset are identical to graph names in this dataset.
 -->
-- Argument `overwrite` optionally determines whether existing graph names in this dataset are allowed to be silently overwritten.  If this argument is not specified, then `false` is used as the default value.
-
+<dt>graphNames</dt>
+<dd>- Argument `<code>graphNames</code>` optionally is an array of graph names. These names can be one of three types: 'string', instances of a 'Graph' class, or instances of 'NamedNodes'.</dd>
+<dt>overwrite</dt>
+<dd>- Accpets a boolean value. An optional property that determines whether existing graph names in this dataset are allowed to be silently overwritten. If this argument is not specified, then `false` is used as the default value.</dd>
+</dl>
 ##### Examples
 
 The following snippet creates a new dataset (`newDataset`) and imports one graph from an existing dataset (`existingDataset`). Notice that the graph can be renamed as part of the import.
 
+**Example 1**
+
 ```ts
-const account = await client.getAccount()
-const existingDataset = await account.getDataset('existingDataset')
-const newDataset = await account.addDataset('newDataset')
-await newDataset.importFromDataset(
-  existingDataset,
-  {'https://example.org/newDataset/graph': 'https://example.org/existingDataset/graph'})
+const account = await client.getAccount();
+const existingDataset = await account.getDataset("existingDataset");
+const newDataset = await account.addDataset("newDataset");
+await newDataset.importFromDataset(existingDataset);
 ```
 
+**Example 2**
 
-#### Dataset.importFromFiles(files: list(string))
+```ts
+const account = await client.getAccount();
+const anotherDataset = await account.getDataset("anotherDataset");
+const newDataset = await account.addDataset("newDataset");
+await newDataset.importFromDataset(existingDataset);
+await newDataset.importFromDataset(anotherDataset, { graphMap:
+  "https://example.org/newDataset/graph":
+    "https://example.org/existingDataset/graph",
+});
+```
+
+**Example 3**
+
+```ts
+const account = await client.getAccount();
+const oneMoreDataset = await account.getDataset("oneMoreDataset");
+const newDataset = await account.addDataset("newDataset");
+await newDataset.importFromDataset(oneMoreDataset, {
+  graphNames: ["https://example.org/existingDataset/graph"],
+  overwrite: true,
+});
+```
+
+#### Dataset.importFromFiles(files: list(string || File), defaultsConfig?: object)
+
+<!-- TODO define what a File object is -->
+
+##### Required
 
 Imports one or more files into this dataset.
 
 The files must contain RDF data.
+
+**Optional: defaultsConfig: object**
+
+<dl>
+<dt><code>defaultGraphName</code></dt>
+<dd>Accepts a <code>string</code> value that is set as the default graph name for each imported file</dd>
+<dt><code>baseIRI</code></dt>
+<dd>Accepts a <code>string</code> value that is set as the default baseIRI for each imported file</dd>
+<dt><code>overwriteAll</code></dt>
+<dd>Accepts a <code>boolean</code> value that overwrites previously added graph names or baseIRIs (regardless of whether they came from a URL or a file)</dd>
+</dl>
 
 ##### Supported files
 
@@ -1651,24 +1912,51 @@ The files must contain RDF data and must be encoded in one of the following stan
 
 ##### Examples
 
+Example 1
+
 ```ts
-const account = await client.getAccount('Triply')
-const dataset = await account.getDataset(iris)
-await dataset.importFromFiles('test.nt')
-await dataset.importFromFiles(['file.nq','file.tar.gz'])
+const account = await client.getAccount("Triply");
+const dataset = await account.getDataset(iris);
+await dataset.importFromFiles("test.nt");
+await dataset.importFromFiles(["file.nq", "file.tar.gz"]);
 ```
 
+Example 2
+
+<!-- TODO confirm that this graph name below is a correct example -->
+
+```ts
+const account = await client.getAccount("Triply");
+const dataset = await account.getDataset(iris);
+await dataset.importFromFiles("test.nt");
+await dataset.importFromFiles(["file.nq", "file.tar.gz"], {
+  defaultGraphName: "http//triply.cc/graphName/",
+  overwriteAll: true,
+});
+```
 
 <!-- TODO: Add documentation.
 #### Dataset.importFromStore(store: n3.Store)
 -->
 
+#### Dataset.importFromUrls(urls: list(string), defaultsConfig?: object)
 
-#### Dataset.importFromUrls(urls: list(string))
+##### Required
 
 Imports one or more URLs into this dataset.
 
 The URLs must provide access to RDF data.
+
+**Optional: defaultsConfig: object**
+
+<dl>
+<dt><code>defaultGraphName</code></dt>
+<dd>Accepts a <code>string</code> value that is set as the default graph name for each imported URL</dd>
+<dt><code>baseIRI</code></dt>
+<dd>Accepts a <code>string</code> value that is set as the default baseIRI for each imported URL</dd>
+<dt><code>overwriteAll</code></dt>
+<dd>Accepts a <code>boolean</code> value that overwrites previously added graph names or baseIRIs (regardless of whether they came from a URL or a file)</dd>
+</dl>
 
 <!--
 ##### Supported URLs
@@ -1677,9 +1965,8 @@ The URLs must provide access to RDF data.
 ##### Examples
 
 ```ts
-dataset1.importFromUrls(['url1','url2','url3'])
+dataset1.importFromUrls(["url1", "url2", "url3"]);
 ```
-
 
 <!--TODO: Is this method no longer supported?
 #### Dataset.query()
@@ -1698,7 +1985,6 @@ const query = account.query()
 ```
 -->
 
-
 #### Dataset.removeAllGraphs()
 
 Removes all graphs from this dataset.
@@ -1708,11 +1994,10 @@ Removes all graphs from this dataset.
 The following snippet removed all graphs from a specific dataset:
 
 ```ts
-const user = await client.getUser()
-const dataset = await user.getDataset('my-dataset')
-await dataset.removeAllGraphs()
+const user = await client.getUser();
+const dataset = await user.getDataset("my-dataset");
+await dataset.removeAllGraphs();
 ```
-
 
 #### Dataset.removePrefixes(prefixes: string[])
 
@@ -1725,29 +2010,27 @@ The `prefixes` argument is a string array, containing the prefix labels to be re
 The following snippet removes the `def` and `id` prefixes from the specified dataset.
 
 ```ts
-const account = await client.getAccount()
-const dataset = await account.getDataset('my-dataset')
-await dataset.removePrefixes(['def','id'])
+const account = await client.getAccount();
+const dataset = await account.getDataset("my-dataset");
+await dataset.removePrefixes(["def", "id"]);
 ```
-
 
 #### Dataset.renameGraph(from: string, to: string)
 
-Renames a graph of this dataset, where `from` is the current graph name and `to` is the new graph name.  The string arguments for `from` and `to` must be valid IRIs.
+Renames a graph of this dataset, where `from` is the current graph name and `to` is the new graph name. The string arguments for `from` and `to` must be valid IRIs.
 
 ##### Examples
 
 The following snippet renames a specific graph of a specific dataset:
 
 ```ts
-const account = await client.getAccount()
-const dataset = await account.getDataset('my-dataset')
+const account = await client.getAccount();
+const dataset = await account.getDataset("my-dataset");
 await dataset.renameGraph(
-  'https://example.org/old-graph',
-  'https://example.org/new-graph'
-)
+  "https://example.org/old-graph",
+  "https://example.org/new-graph"
+);
 ```
-
 
 #### Dataset.update(metadata: object)
 
@@ -1758,6 +2041,7 @@ Updates the metadata for this dataset.
 The `metadata` argument takes a dictionary object with the following optional keys:
 
 **Required:**
+
 <dl>
   <dt><code>accessLevel</code> </dt>
   <dd>
@@ -1773,7 +2057,8 @@ The `metadata` argument takes a dictionary object with the following optional ke
   </dd>
 </dl>
 
-  **Optional:**
+**Optional:**
+
 <dl>
   <dt><code>description</code> </dt>
   <dd>The description of the dataset.  This description can make use of Markdown layout (see the <a href='/docs/triply-db-getting-started/#markdown-support'>Markdown reference</a>) for details.</dd>
@@ -1799,16 +2084,15 @@ The `metadata` argument takes a dictionary object with the following optional ke
 The following snippet updates the dataset's access level, description, display name and license:
 
 ```ts
-const account = await client.getAccount()
-const dataset = await account.getDataset('my-dataset')
+const account = await client.getAccount();
+const dataset = await account.getDataset("my-dataset");
 dataset.update({
-  accessLevel: 'private',
-  description: 'desc',
-  displayName: 'disp',
-  license: 'PDDL'
-})
+  accessLevel: "private",
+  description: "desc",
+  displayName: "disp",
+  license: "PDDL",
+});
 ```
-
 
 #### Dataset.uploadAsset(assetName: string, filePath: string)
 
@@ -1829,48 +2113,39 @@ There are several use cases for assets:
 The following snippet uploads a source CSV data file and a PDF documentation file:
 
 ```ts
-const account = await client.getAccount()
-const dataset = await account.getDataset('my-dataset')
-await dataset.uploadAsset('my-source-data', 'source.csv.gz')
-await dataset.uploadAsset('my-documentation', 'documentation.pdf')
+const account = await client.getAccount();
+const dataset = await account.getDataset("my-dataset");
+await dataset.uploadAsset("my-source-data", "source.csv.gz");
+await dataset.uploadAsset("my-documentation", "documentation.pdf");
 ```
-
 
 <!-- TODO: Document what a graph is and how it is obtained.
 ### Graph
 -->
 
-
 <!-- TODO: Document this method.
 #### Graph.delete()
 -->
-
 
 <!-- TODO: Document this method.
 #### Graph.getInfo()
 -->
 
-
 <!-- TODO: Document this method.
 #### Graph.rename(name: string)
 -->
-
 
 <!-- TODO: Document this method.
 #### Graph.toFile(path: string, options?: object)
 -->
 
-
 <!-- TODO: Document this method.
 #### Graph.toStore()
 -->
 
-
 <!-- TODO: Document this method.
 #### Graph.toStream(type: 'compressed'|'rdf-js')
 -->
-
-
 
 ### Organization
 
@@ -1881,20 +2156,19 @@ Instances of the [`Organization`](#organization) class denote organizations in T
 Organizations are obtained with method [`Client.getOrganization(name: string)`](#clientgetorganizationname-string):
 
 ```ts
-const organization = await client.getOrganization('Triply')
+const organization = await client.getOrganization("Triply");
 ```
 
 Alternatively, organizations are obtained by first obtaining an account ([`Client.getAccount(name?: string)`](#clientgetaccountname-string)) and then casting it to an organization ([`Account.asOrganization()`](#accountasorganization)):
 
 ```ts
-const account = await client.getAccount('Triply')
-const organization = account.asOrganization()
+const account = await client.getAccount("Triply");
+const organization = account.asOrganization();
 ```
 
 ##### Inheritance
 
 `Organization` is a subclass of [`Account`](#account), from which it inherits most of its methods.
-
 
 #### Organization.addDataset(name: string, metadata?: object)
 
@@ -1902,16 +2176,15 @@ Adds a new TriplyDB dataset with the given `name` to the current organization.
 
 Inherited from [`Account.addDataset(name: string, metadata?: object)`](#accountadddatasetname-string-metadata-object).
 
-
-#### Organization.addMember(user: User|string, role?: Role)
+#### Organization.addMember(user: User, role?: Role)
 
 Adds a member to the given `Organization`, with the given `role` of either member or owner.
 
 ##### Arguments
 
-- The `user` argument can be a user object, or the account name of the user which should be added to the organization.
+- The `user` argument has to be a user object of the user which should be added to the organization.
 
-- The `role` argument can be either `'member'` or `'owner'`.  If this argument is not specified, then `'member'` used as the default.
+- The `role` argument can be either `'member'` or `'owner'`. If this argument is not specified, then `'member'` used as the default.
 
 <dl>
   <dt><code>'member'</code></dt>
@@ -1925,17 +2198,32 @@ Adds a member to the given `Organization`, with the given `role` of either membe
 The following snippet adds user John Doe to the Triply organization as a regular member.
 
 ```ts
-const organization = await client.getOrganization('Triply')
-console.log(await organization.addMember('john-doe'))
+const organization = await client.getOrganization("Triply");
+const johnDoe = await app.getUser("john-doe");
+await organization.addMember(johnDoe);
 ```
 
+#### Organization.removeMember(user: User)
 
-#### Organization.addQuery(metadata: object)
+Removes a member from the given `Organization`.
+
+#### Organization.ensureQuery(name: string, metadata: object)
+
+Ensures the existence of a query with the given `name` and with the specified `metadata`.
+
+Inherited from [`Account.ensureQuery(name: string, metadata: object)`](#accountensurequeryname-string-metadata-object).
+
+#### Organization.addQuery(name: string, metadata: object)
 
 Adds a new TriplyDB query to the current organization.
 
-Inherited from [`Account.addQuery(metadata: object)`](#accountaddquerymetadata-object).
+Inherited from [`Account.addQuery(name: string, metadata: object)`](#accountaddquerymetadata-object).
 
+#### Organization.ensureStory(name: string, metadata: object)
+
+Ensures the existence of a story with the given `name` and with the specified `metadata`.
+
+Inherited from [`Account.ensureStory(name: string, metadata: object)`](#accountensurestoryname-string-metadata-object).
 
 #### Organization.addStory(name: string, metadata?: object)
 
@@ -1943,20 +2231,18 @@ Adds a new TriplyDB story with the given `name` to the current organization.
 
 Inherited from [`Account.addStory(name: string, metadata?: object)`](#accountaddstoryname-string-metadata-object).
 
-
 #### Organization.delete()
 
-Deletes this account.  This also deletes all datasets, stories and queries that belong to this organization.
+Deletes this account. This also deletes all datasets, stories and queries that belong to this organization.
 
 ##### Examples
 
 The following code example deletes the specified organization:
 
 ```ts
-const organization = await client.getOrganization('Neo4j')
-await organization.delete()
+const organization = await client.getOrganization("Neo4j");
+await organization.delete();
 ```
-
 
 #### Organization.ensureDataset(name: string, metadata?: object)
 
@@ -1964,13 +2250,11 @@ Ensures the existence of a dataset with the given `name` and with the specified 
 
 Inherited from [`Account.ensureDataset(name: string, metadata?: object)`](#accountensuredatasetname-string-metadata-object).
 
-
 #### Organization.getDataset(name: string)
 
 Returns the dataset with the given `name` that is published by this organization.
 
 Inherited from [`Account.getDataset(name: string)`](#accountgetdatasetname-string).
-
 
 #### Organization.getDatasets()
 
@@ -2000,9 +2284,9 @@ A membership contains the following components:
 ##### Examples
 
 ```ts
-const org = await client.getOrganization('acme')
+const org = await client.getOrganization("acme");
 for (const membership of await org.getMembers()) {
-  console.log(user)
+  console.log(user);
 }
 ```
 
@@ -2010,43 +2294,41 @@ for (const membership of await org.getMembers()) {
 
 Memberships of organization are TriplyDB [users](#user).
 
-
 #### Organization.getPinnedItems()
 
 Returns the list of datasets, stories and queries that are pinned for the current organization.
 
 Inherited from [`Account.getPinnedItems()`](#accountgetpinneditems).
 
-
-#### Organization.removeMember(user: User|string)
+#### Organization.removeMember(user: User)
 
 Removes the specified `user` from this organization.
 
 ##### Arguments
 
-The `user` argument can be either a [`User`](#user) object or the name of a user.
+The `user` argument has to be a [`User`](#user) object of a user.
 
 ##### Existence considerations
 
-The user must be a current member of the organization for this method to succeed.  If the user is not a current member of the organization, an error is thrown.
+The user must be a current member of the organization for this method to succeed. If the user is not a current member of the organization, an error is thrown.
 
 ##### Examples
 
 - The following snippet removes John Doe from the Triply organization, using a string argument:
 
 ```ts
-const organization = await client.getOrganization('Triply')
-await organization.removeMember('john-doe')
+const organization = await client.getOrganization("Triply");
+const johnDoe = await app.getUser("john-doe");
+await organization.removeMember(johnDoe);
 ```
 
 - The following snippet removes John Doe from the Triply organization, using a [`User`](#user) object:
 
 ```ts
-const organization = await client.getOrganization('Triply')
-const user = await client.getUser('john-doe')
-await organization.removeMember(user)
+const organization = await client.getOrganization("Triply");
+const user = await client.getUser("john-doe");
+await organization.removeMember(user);
 ```
-
 
 #### Organization.setAvatar(file: string)
 
@@ -2054,25 +2336,21 @@ Sets a new image that characterized this organization.
 
 Inherited from [`Account.setAvatar(file: string)`](#accountsetavatarfile-string).
 
-
 #### Organization.update(metadata: object)
 
 Updates the metadata for this account.
 
 Inherited from [`Account.update(metadata: object)`](#accountupdatemetadata-object).
 
-
-
 ### Query
+
 <!--
 TODO: Document what a query is and how it can be obtained.
 -->
 
-
 #### Query.delete()
 
 Permanently deletes this query and all of its versions.
-
 
 #### Query.getInfo()
 
@@ -2115,38 +2393,33 @@ The returned dictionary object includes the following keys:
   <dd>The date/time at which the query was last modified.</dd>
 </dl>
 
-
 #### Query.getString(apiVariables?: object)
 
 Returns the query string of the current version of this query.
 
 Optionally, arguments can be spefified for the API variables to this query.
 
-
 <!--
 TODO: Document this method.
 #### Query.results(apiVariables?: object, options?: object)
 -->
-
 
 <!--
 TODO: Document this method.
 #### Query.update(metadata: object)
 -->
 
-
 <!--
 TODO: Document this method.
 #### Query.useVersion(version: number|'latest')
 -->
-
-
 
 ### Service
 
 Service objects describe specific functionalities that can be started, stopped, and restarted over datasets in TriplyDB.
 
 Service objects are obtained through the the following methods:
+
 - [`Dataset.addService`](#datasetaddserviceservicetype-string-name-string)
 - [`Dataset.getServices`](#datasetgetservices)
 
@@ -2165,6 +2438,27 @@ A service always has one of the following statuses:
   <dd>The service is currently being stopped.</dd>
 </dl>
 
+#### Service.stop()
+
+This will stop a service that is running.
+
+##### Example
+
+```ts
+const user = await client.getAccount("my-account");
+const dataset = await user.getDataset("my-dataset");
+const service = await dataset.addService("my-service");
+await service.stop();
+```
+
+#### Service.start()
+
+This will start a service that is stopped.
+
+```ts
+// from previously stopped service above
+await service.start();
+```
 
 #### Service.delete()
 
@@ -2173,10 +2467,10 @@ Permanently deletes this service.
 ##### Examples
 
 ```ts
-const user = await client.getAccount('my-account')
-const dataset = await user.getDataset('my-dataset')
-const service = await dataset.addService('sparql', 'my-service')
-await service.delete()
+const user = await client.getAccount("my-account");
+const dataset = await user.getDataset("my-dataset");
+const service = await dataset.addService("my-service");
+await service.delete();
 ```
 
 <!-- <https://issues.triply.cc/issues/5783>
@@ -2185,32 +2479,30 @@ await service.delete()
 If you only want to temporarily disable this service, use 'stop' instead.
 -->
 
-
 #### Service.getInfo()
 
 Returns information about this service.
 
-Information is returned in a dictionary object.  Individual keys can be accessed for specific information values.
+Information is returned in a dictionary object. Individual keys can be accessed for specific information values.
 
 ##### Examples
 
 - The following snippet prints information about the newly created service (named `my-service`):
 
 ```ts
-const account = await client.getAccount()
-const dataset = await account.getDataset('my-dataset')
-const service = await dataset.addService('sparql', 'my-service')
-console.log(await service.getInfo())
+const account = await client.getAccount();
+const dataset = await account.getDataset("my-dataset");
+const service = await dataset.addService("my-service");
+console.log(await service.getInfo());
 ```
 
 - Another way to get information about existing services:
 
 ```ts
-const account = await client.getAccount()
-const dataset = await account.getDataset('my-dataset')
-console.log(await dataset.getServices())
+const account = await client.getAccount();
+const dataset = await account.getDataset("my-dataset");
+console.log(await dataset.getServices());
 ```
-
 
 #### Service.isUpToDate()
 
@@ -2218,9 +2510,9 @@ Returns whether this service is synchronized with the dataset contents.
 
 ##### Synchronization
 
-Because services must be explicitly synchronized in TriplyDB, it is possible to have services that expose an older version of the dataset and services that expose a newer version of the dataset running next to one another.  There are two very common use cases for this:
+Because services must be explicitly synchronized in TriplyDB, it is possible to have services that expose an older version of the dataset and services that expose a newer version of the dataset running next to one another. There are two very common use cases for this:
 
-- The production version of an application or website runs on an older service. The data does not change, so the application keeps working.  The acceptance version of the same application or website runs on a newer service. Once the acceptance version is finished, it becomes the production version and a new service for the new acceptance version is created, etc.
+- The production version of an application or website runs on an older service. The data does not change, so the application keeps working. The acceptance version of the same application or website runs on a newer service. Once the acceptance version is finished, it becomes the production version and a new service for the new acceptance version is created, etc.
 
 - An old service is used by legacy software. New users are using the newer endpoint over the current version of the data, but a limited number of older users want to use the legacy version.
 
@@ -2229,23 +2521,19 @@ Because services must be explicitly synchronized in TriplyDB, it is possible to 
 The following snippet checks whether a specific service is synchronized:
 
 ```ts
-const account = await client.getAccount()
-const dataset = await account.getDataset('my-dataset')
-const service = await dataset.addService('sparql', 'my-service')
-console.log(await service.isUpToDate())
+const account = await client.getAccount();
+const dataset = await account.getDataset("my-dataset");
+const service = await dataset.addService("my-service");
+console.log(await service.isUpToDate());
 ```
-
 
 <!--TODO: Document this method.
 #### Service.update()
 -->
 
-
 <!--TODO: Document this method.
 #### Service.waitUntilRunning()
 -->
-
-
 
 ### Story
 
@@ -2255,26 +2543,25 @@ TODO: Document what stories are and how to obtain them.
 
 #### Story.delete()
 
-Deletes this story.  This deletes all paragraphs that belong to this story.
+Deletes this story. This deletes all paragraphs that belong to this story.
 
-This *does not* delete the queries that are linked into this story.  If you also want to delete the queries, then this must be done with distinct calls of [`Query.delete()`](#querydelete).
+This _does not_ delete the queries that are linked into this story. If you also want to delete the queries, then this must be done with distinct calls of [`Query.delete()`](#querydelete).
 
 ##### Examples
 
 The following code example deletes a story called 'example-story' under the current user's account:
 
 ```ts
-const user = await client.getUser()
-const story = await user.getStory('example-story')
-await story.delete()
+const user = await client.getUser();
+const story = await user.getStory("example-story");
+await story.delete();
 ```
-
 
 #### Story.getInfo()
 
 Returns information about this data story.
 
-Information is returned in a dictionary object.  Individual keys can be accessed for specific information values.
+Information is returned in a dictionary object. Individual keys can be accessed for specific information values.
 
 ##### Examples
 
@@ -2282,13 +2569,11 @@ The following snippet prints the paragraphs that appear in a data story:
 
 ```ts
 for (const element of (await story.getInfo()).content) {
-  if (element.type = 'paragraph') {
-    console.log(element.paragraph)
+  if ((element.type = "paragraph")) {
+    console.log(element.paragraph);
   }
 }
 ```
-
-
 
 ### User
 
@@ -2299,15 +2584,15 @@ Instances of the [`User`](#user) class denote users in TriplyDB.
 Users are obtained with method [`Client.getUser(name?: string)`](#clientgetusername-string):
 
 ```ts
-const user = client.getUser('john-doe')
-const user = client.getUser()
+const user = client.getUser("john-doe");
+const user = client.getUser();
 ```
 
 Alternatively, users are obtained by first obtaining an account ([`Client.getAccount(name?: string)`](#clientgetaccountname-string)) and then casting it to a use ([`Account.asUser()`](#accountasuser)):
 
 ```ts
-const account = await client.getAccount('john-doe')
-const user = account.asUser()
+const account = await client.getAccount("john-doe");
+const user = account.asUser();
 ```
 
 ##### Inheritance
@@ -2316,8 +2601,7 @@ const user = account.asUser()
 
 ##### Limitations
 
-Users cannot be created or deleted through the TriplyDB.js library.  See the [Triply Console documentation](/docs/triply-db-getting-started) for how to create and delete users through the web-based GUI.
-
+Users cannot be created or deleted through the TriplyDB.js library. See the [Triply Console documentation](/docs/triply-db-getting-started) for how to create and delete users through the web-based GUI.
 
 #### User.addDataset(name: string, metadata?: object)
 
@@ -2325,6 +2609,11 @@ Adds a new TriplyDB dataset with the given `name` to the current account.
 
 Inherited from [`Account.addDataset(name: string, metadata?: object)`](#accountadddatasetname-string-metadata-object).
 
+#### User.ensureQuery(name: string, metadata: object)
+
+Ensures the existence of a query with the given `name` and with the specified `metadata`.
+
+Inherited from [`Account.ensureQuery(name: string, metadata: object)`](#accountensurequeryname-string-metadata-object).
 
 #### User.addQuery(metadata: object)
 
@@ -2332,13 +2621,17 @@ Adds a new TriplyDB query to the current user.
 
 Inherited from [`Account.addQuery(metadata: object)`](#accountaddquerymetadata-object).
 
+#### User.ensureStory(name: string, metadata: object)
+
+Ensures the existence of a story with the given `name` and with the specified `metadata`.
+
+Inherited from [`Account.ensureStory(name: string, metadata: object)`](#accountensurestoryname-string-metadata-object).
 
 #### User.addStory(name: string, metadata?: object)
 
 Adds a new TriplyDB story with the given `name` to the current user.
 
 Inherited from [`Account.addStory(name: string, metadata?: object)`](#accountaddstoryname-string-metadata-object).
-
 
 #### User.createOrganization(name: string, metadata?: object)
 
@@ -2350,9 +2643,9 @@ This method requires an API token with write access for this user.
 
 ##### Arguments
 
-- Argument `name` is the URL-friendly name of the new organization.  This name can only contain alphanumeric characters and hyphens (`[A-Za-z0-9\-]`).
+- Argument `name` is the URL-friendly name of the new organization. This name can only contain alphanumeric characters and hyphens (`[A-Za-z0-9\-]`).
 
-- The optional `metadata` argument can be used to specify additional metadata.  This is a dictionary object with the following optional keys:
+- The optional `metadata` argument can be used to specify additional metadata. This is a dictionary object with the following optional keys:
 
 <dl>
   <dt><code>description</code></dt>
@@ -2365,13 +2658,12 @@ This method requires an API token with write access for this user.
 
 ##### Examples
 
-The following snippet creates a new organization for which John Doe will be the owner.  Notice that both a required URL-friendly name (`'my-organization'`) and an optional display name (`'My Organization'`) are specified.
+The following snippet creates a new organization for which John Doe will be the owner. Notice that both a required URL-friendly name (`'my-organization'`) and an optional display name (`'My Organization'`) are specified.
 
 ```ts
 const user = await client.getUser('john-doe')
 await user.createOrganization(my-organization, {name: 'My Organization'}))
 ```
-
 
 #### User.ensureDataset(name: string, metadata?: object)
 
@@ -2379,13 +2671,11 @@ Ensures the existence of a dataset with the given `name` and with the specified 
 
 Inherited from [`Account.ensureDataset(name: string, metadata?: object)`](#accountensuredatasetname-string-metadata-object).
 
-
 #### User.getDataset(name: string)
 
 Returns the TriplyDB dataset with the given `name` that is published by this user.
 
 Inherited from [`Account.getDataset(name: string)`](#accountgetdatasetname-string).
-
 
 #### User.getDatasets()
 
@@ -2393,12 +2683,11 @@ Returns an [async iterator](#async-iterator) over the accessible datasets for th
 
 Inherited from [`Account.getDatasets()`](#accountgetdatasets).
 
-
 #### User.getInfo()
 
 Returns information about this user.
 
-Information is returned in a dictionary object.  Individual keys can be accessed for specific information values.
+Information is returned in a dictionary object. Individual keys can be accessed for specific information values.
 
 <!--
 The information object for users includes the following keys:
@@ -2436,10 +2725,9 @@ The information object for users includes the following keys:
 The following snippet prints an overview of account that is associated with the used API token:
 
 ```ts
-const user = await client.getUser()
-console.log(await user.getInfo())
+const user = await client.getUser();
+console.log(await user.getInfo());
 ```
-
 
 #### User.getOrganizations()
 
@@ -2454,16 +2742,15 @@ The order in the list reflects the order in which the organizations appear on th
 The following snippet prints the list of organizations that John Doe is a member of:
 
 ```ts
-const user = await client.getUser('john-doe')
+const user = await client.getUser("john-doe");
 for await (const organization of await user.getOrganizations()) {
-  console.log((await organization.getInfo()).name)
+  console.log((await organization.getInfo()).name);
 }
 ```
 
 ##### See also
 
-The [async iterator](#async-iterator) contains organization objects.  See the section about the [`Organization`](#organization) class for methods that can be used on such objects.
-
+The [async iterator](#async-iterator) contains organization objects. See the section about the [`Organization`](#organization) class for methods that can be used on such objects.
 
 #### User.getPinnedItems()
 
@@ -2471,13 +2758,11 @@ Returns the list of datasets, stories and queries that are pinned for the curren
 
 Inherited from [`Account.getPinnedItems()`](#accountgetpinneditems).
 
-
 #### User.setAvatar(file: string)
 
 Sets a new image that characterized this user.
 
 Inherited from [`Account.setAvatar(file: string)`](#accountsetavatarfile-string).
-
 
 #### User.update(metadata: object)
 
@@ -2485,27 +2770,24 @@ Updates the metadata for this user.
 
 Inherited from [`Account.update(metadata: object)`](#accountupdatemetadata-object).
 
-
-
 ## FAQ
 
-This section includes answers to frequently asked questions.  Please contact [info@triply.cc](mailto:info@triply.cc) if you have a question that does not appear in this list.
+This section includes answers to frequently asked questions. Please contact [info@triply.cc](mailto:info@triply.cc) if you have a question that does not appear in this list.
 
 ### How to perform a SPARQL query?
 
-The SPARQL 1.1 Protocol standard specifies a native HTTP API for performing SPARQL requests.  Such requests can be performed with regular HTTP libraries.
+The SPARQL 1.1 Protocol standard specifies a native HTTP API for performing SPARQL requests. Such requests can be performed with regular HTTP libraries.
 
 Here we give an example indicating how such an HTTP library can be used:
 
 ```ts
-import * as SuperAgent from 'superagent'
-const reply =
-  await SuperAgent.post('SPARQL_ENDPOINT')
-    .set('Accept', 'application/sparql-results+json')
-    .set('Authorization', 'Bearer ' + process.env.TRIPLYDB_TOKEN)
-    .buffer(true)
-    .send({query: 'select * { WHERE_CLAUSE } offset 0 limit 10000'})
-  // break condition when the result set is empty.
+import * as SuperAgent from "superagent";
+const reply = await SuperAgent.post("SPARQL_ENDPOINT")
+  .set("Accept", "application/sparql-results+json")
+  .set("Authorization", "Bearer " + process.env.TRIPLYDB_TOKEN)
+  .buffer(true)
+  .send({ query: "select * { WHERE_CLAUSE } offset 0 limit 10000" });
+// break condition when the result set is empty.
 
 // downsides: caching, string manipulation
 ```
@@ -2533,21 +2815,21 @@ To reliably retrieve a large number of results as the output of a `construct` or
 1. Import the triplydb library.
 
    ```ts
-   import Client from '@triply/triplydb'
+   import Client from "@triply/triplydb";
    ```
 
 2. Set your parameters, regarding the TriplyDB instance and the account in which you have saved the query as well as the name of the query.
 
    ```ts
-   const client = Client.get({url: 'https://api.triplydb.com'})
-   const account = await client.getAccount('account-name')
-   const query = await account.getQuery('name-of-some-query')
+   const client = Client.get({ url: "https://api.triplydb.com" });
+   const account = await client.getAccount("account-name");
+   const query = await account.getQuery("name-of-some-query");
    ```
 
    If the query is not public, you should set your API token rather than the URL.
 
    ```ts
-   const client = Client.get({token: process.env.TRIPLYDB_TOKEN})
+   const client = Client.get({ token: process.env.TRIPLYDB_TOKEN });
    ```
 
 3. Do not forget that we perform TriplyDB.js requests within an [async context](#create-your-first-script). That is:
@@ -2556,19 +2838,19 @@ To reliably retrieve a large number of results as the output of a `construct` or
    async function run() {
      // Your code goes here.
    }
-   run()
+   run();
    ```
 
-4. Get the results of a query by setting a `results` variable.  More specifically, for construct queries:
+4. Get the results of a query by setting a `results` variable. More specifically, for construct queries:
 
    ```ts
-   const results = query.results().statements()
+   const results = query.results().statements();
    ```
 
    For select queries:
 
    ```ts
-   const results = query.results().bindings()
+   const results = query.results().bindings();
    ```
 
    Note that for SPARQL `construct` queries, we use method `.statements()`, while for SPARQL `select` queries, we use method `.bindings()`.
@@ -2577,69 +2859,73 @@ To reliably retrieve a large number of results as the output of a `construct` or
 
    ```ts
    // For SPARQL construct queries.
-   const results = query.results({
-     someVariable: 'value of someVariable',
-     anotherVariable: 'value of anotherVariable'
-   }).statements()
+   const results = query
+     .results({
+       someVariable: "value of someVariable",
+       anotherVariable: "value of anotherVariable",
+     })
+     .statements();
    // For SPARQL select queries.
-   const results = query.results({
-     someVariable: 'value of someVariable',
-     anotherVariable: 'value of anotherVariable'
-   }).bindings()
+   const results = query
+     .results({
+       someVariable: "value of someVariable",
+       anotherVariable: "value of anotherVariable",
+     })
+     .bindings();
    ```
 
 5. To read the results you have three options:
 
    5a. Iterate through the results per row in a `for`-loop:
 
-      ```ts
-      // Iterating over the results per row
-      for await (const row of results) {
-        // execute something
-      }
-      ```
+   ```ts
+   // Iterating over the results per row
+   for await (const row of results) {
+     // execute something
+   }
+   ```
 
-   5b. Save the results to a file.  This is only supported form SPARQL `construct` queries:
+   5b. Save the results to a file. This is only supported form SPARQL `construct` queries:
 
-      ```ts
-      // Saving the results of a SPARQL construct query to a file.
-      await results.toFile('my-file.nt')
-      ```
+   ```ts
+   // Saving the results of a SPARQL construct query to a file.
+   await results.toFile("my-file.nt");
+   ```
 
-   5c. Load all results into memory.  Note that this is almost never used.  If you want to process results, then option 5a is better; if you want to persist results, then option 5b is better.
+   5c. Load all results into memory. Note that this is almost never used. If you want to process results, then option 5a is better; if you want to persist results, then option 5b is better.
 
-      ```ts
-      // Loading results for a SPARQL construct or SPARQL select query into memory.
-      const array = await results.toArray()
-      ```
+   ```ts
+   // Loading results for a SPARQL construct or SPARQL select query into memory.
+   const array = await results.toArray();
+   ```
 
 ### What is an async iterator? {#async-iterator}
 
-TriplyDB.js makes use of async iterators for retrieving lists of objects.  Async iterators are a method of fetching and iterating through large lists, without having to first fetch the whole set.
+TriplyDB.js makes use of async iterators for retrieving lists of objects. Async iterators are a method of fetching and iterating through large lists, without having to first fetch the whole set.
 
-An example of an async iterator in TriplyDB.js is [`Client.getAccounts()`](#clientgetaccounts).  The following code illustrates how it can be used.
+An example of an async iterator in TriplyDB.js is [`Client.getAccounts()`](#clientgetaccounts). The following code illustrates how it can be used.
 
 ```ts
 for await (let account of client.getAccounts()) {
-  console.log(account)
+  console.log(account);
 }
 ```
 
 For cases where you want the complete list, you can use the `toArray` function of the iterator.
 
 ```ts
-const accounts = await client.getAccounts().toArray()
+const accounts = await client.getAccounts().toArray();
 ```
 
 TriplyDB.js returns async iterators from the following methods:
 
- - [`Client.getAccounts()`](#clientgetaccounts)
- - [`Account.getDatasets()`](#accountgetdatasets)
- - [`Account.getQueries()`](#accountgetqueries)
- - [`Account.getStories()`](#accountgetstories)
- - [`Dataset.getServices()`](#datasetgetservices)
- - [`Dataset.getAssets()`](#datasetgetassets)
- - [`Dataset.getGraphs()`](#datasetgetgraphs)
- - [`Dataset.getStatements()`](#datasetgetstatements)
- - [`Query.results().statements()`](#queryresultsstatements) for SPARQL `construct` and `describe` queries
- - [`Query.results().bindings()`](#queryresultsbindings) for SPARQL `select` queries
+- [`Client.getAccounts()`](#clientgetaccounts)
+- [`Account.getDatasets()`](#accountgetdatasets)
+- [`Account.getQueries()`](#accountgetqueries)
+- [`Account.getStories()`](#accountgetstories)
+- [`Dataset.getServices()`](#datasetgetservices)
+- [`Dataset.getAssets()`](#datasetgetassets)
+- [`Dataset.getGraphs()`](#datasetgetgraphs)
+- [`Dataset.getStatements()`](#datasetgetstatements)
+- [`Query.results().statements()`](#queryresultsstatements) for SPARQL `construct` and `describe` queries
+- [`Query.results().bindings()`](#queryresultsbindings) for SPARQL `select` queries
