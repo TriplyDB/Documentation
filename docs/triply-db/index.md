@@ -430,10 +430,6 @@ Admin tasks are performed within the admin settings page (accessed by
 clicking on the user menu in top-right corner and selecting the “Admin settings”
 menu item).
 
-This brings up the following admin settings page:
-
-![Screenshot of the admin settings page](admin-settings.png) Screenshot of the admin settings page.
-
 ## Create a new user
 
 New users can only be created by administrators by performing the
@@ -482,7 +478,7 @@ This brings up an overview of all the settings an admin can set for the TriplyDB
 
 ![Metadata settings](metadata-settings.png) Metadata settings
 
-3. Here you can set the name, tag line, description and welcome text. The name of your website appears in your browser tab. The welcome text appears on the home page of your TriplyDB instance. The tag line and description are for metadata purposes (e.g. findability and website previews). 
+3. Here you can set the name, tag line, description and welcome text. The name of your website appears in your browser tab. The welcome text appears on the home page of your TriplyDB instance. The tag line and description are for metadata purposes (e.g. findability and website previews).
 
 ## Account overview
 
