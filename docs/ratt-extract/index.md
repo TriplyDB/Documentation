@@ -245,7 +245,7 @@ app.use(
 ```
 
 
-### Extensible Markup Language (XML) files {#excel}
+### Extensible Markup Language (XML) files {#xml}
 
 Extensible Markup Language (file name extension `.xml`) is similar to HTML, but where you can define your own tags to use. This is why it is a very useful format to store, search and share your data.
 
