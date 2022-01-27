@@ -1897,7 +1897,7 @@ const account = await client.getAccount("Triply");
 const dataset = await account.getDataset(iris);
 await dataset.importFromFiles("test.nt");
 await dataset.importFromFiles(["file.nq", "file.tar.gz"], {
-  defaultGraphName: "http//triply.cc/graphName/",
+  defaultGraphName: "https://triplydb.com/Triply/example/graph/default",
   overwriteAll: true,
 });
 ```
