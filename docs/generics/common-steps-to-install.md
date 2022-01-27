@@ -42,11 +42,11 @@ Because there are many different programming environments, we are unable to desc
 
 ### Linux
 
-There are many different distributions of Linux.  We document installation steps for a limit number of them in this section.  Feel free to contact <mailto:support@triply.cc> in case your Linux distribution is not yet mentioned in this section.
+There are many different distributions of Linux.  We document installation steps for a limited number of them in this section.  Feel free to contact <mailto:support@triply.cc> in case your Linux distribution is not yet mentioned in this section.
 
 #### Ubuntu/Debian
 
-Run the following command to install the latest versions of Node.js en Yarn as provided by your distribution:
+Run the following command to install the latest versions of Node.js and Yarn as provided by your distribution:
 
 ```sh
 sudo apt install nodejs yarn
@@ -70,7 +70,7 @@ You can check whether installation succeeded by running the following commands. 
 
 ### Check the Node.js installation
 
-Run the following command to check whether Node.js was installated correctly.
+Run the following command to check whether Node.js was installed correctly.
 
 ```sh
 node --version
@@ -80,7 +80,7 @@ This should display a version number.
 
 ### Check the Yarn installation
 
-Run the following command to check whether Yarn was installated correctly.
+Run the following command to check whether Yarn was installed correctly.
 
 ```sh
 yarn --version
@@ -111,7 +111,7 @@ U:\visual_studio\repos\implementatie-team-main>yarn build
 operable program or batch file.
 ```
 
-**Answer**: One of the RATT dependencies requires that Node.js 14 is installated.  If you have installed Node.js 15, 16, or 17, you must add the flag `--ignore-engines` when running the Yarn command.
+**Answer**: One of the RATT dependencies requires that Node.js 14 is installed.  If you have installed Node.js 15, 16, or 17, you must add the flag `--ignore-engines` when running the Yarn command.
 
 For example, you must run the following command to install dependencies for the current repository:
 
