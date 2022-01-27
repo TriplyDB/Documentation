@@ -430,8 +430,7 @@ Admin tasks are performed within the admin settings page (accessed by
 clicking on the user menu in top-right corner and selecting the “Admin settings”
 menu item).
 
-This brings up the following admin settings page from which admin
-tasks can be performed:
+This brings up the following admin settings page:
 
 ![Screenshot of the admin settings page](admin-settings.png) Screenshot of the admin settings page.
 
@@ -468,6 +467,23 @@ are provided for user account creation:
   “Password” field, the user must enter this password in order to
   log in for the first time.
 
+## Set logos and banner
+
+For changing the logos and the banner follow the next steps:
+1. Click on the “Admin settings” link in the user menu (top-right corner) and click the "Settings" tab.
+This brings up an overview of all the settings an admin can set for the TriplyDB instance.
+2. Under "Site logos" and "Site banner" you can upload a site logo (square and landscape) or a banner. Make sure you use SVG files with a maximum size of 5 mb.
+
+## Setting metadata
+For changing the metadata follow the next steps:
+1. Click on the “Admin settings” link in the user menu (top-right corner) and click the "Settings" tab.
+This brings up an overview of all the settings an admin can set for the TriplyDB instance.
+2. On that page navigate to "Site metadata", it looks as follows:
+
+![Metadata settings](metadata-settings.png) Metadata settings
+
+3. Here you can set the name, tag line, description and welcome text. The name of your website appears in your browser tab. The welcome text appears on the home page of your TriplyDB instance. The tag line and description are for metadata purposes (e.g. findability and website previews). 
+
 ## Account overview
 
 Go to the “Accounts tab” to receive an overview of all accounts on the
@@ -479,16 +495,6 @@ The type of account can be observed based on the following icons:
 | --------------------- | ---------------- |
 | ![](organization.png) | organization     |
 | ![](user.png)         | user             |
-
-## Metadata settings
-
-Under the "Settings" tab you can set the site logos and banner.
-
-Under the same tab you can also set the metadata of your instance.
-![Metadata settings](metadata-settings.png)
-
-The name of your website appears in your browser tab.
-The description appears on the home page of your website, same goes for the welcome text. 
 
 # Reference
 
