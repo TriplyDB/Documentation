@@ -1148,19 +1148,6 @@ The changes made as a result of calling this method depend on the current state 
 **Note:**
 If no `accessLevel` is specified the default used is "private".
 
-<!-- TODO Should this be included? Its format seems inconsistent with the other documentation
-Other interface used:
-```
-interface StoryElementUpdate {
-    id?: string;
-    type: "paragraph" | "query;
-    query?: string;
-    queryVersion?: number;
-    paragraph?: string;
-    caption?: string;
-```
-} -->
-
 **Examples**
 
 Example 1: To ensure a `Story` only requires a `name` of type string. It's access level will default to private
@@ -1199,22 +1186,6 @@ The optional new story object that can be passed accepts the following propertie
   <dd>Sets the access level for the story. Accepts a string value of either <code>"public"</code>, <code>"private"</code>, <code>"internal"</code> 
   </dd>
 </dl>
-
-<!--
-TODO To be revised at a later date. Its implemntation is set to be changed soon. dev team see issue #6231, #6232
-<dt><code>content</code></dt>
-<dd>Accepts an array of objects that match that of a stoyElementUpdate (see below)</dd>
-
-<!-- ```ts
-interface StoryElementUpdate {
-    id?: string;
-    type: "paragraph" | "query;
-    query?: string;
-    queryVersion?: number;
-    paragraph?: string;
-    caption?: string;
-}
-```  -->
 
 If **no** `accesslevel` is specified the default value `private` is used.
 
@@ -1835,7 +1806,6 @@ Changes in the `from` dataset are not automatically reflected in this dataset. I
 
 The optional properties accepted as arguments for <code>importFromDataset</code>
 
-<!-- TODO better decription from the customer team of graphMap & graphNames -->
 <dl>
 <dt>graphMap</dt>
 <dd>- Argument `<code>graphMap</code>` optionally is an object with keys and values that implements a mapping from existing graph names (keys) to newly created graph names (values). Each keys must be an existing graph name in the `from` dataset. Each value must is the corresponding graph name in this dataset.</dd>
@@ -1847,6 +1817,7 @@ If this argument is not specified, then graph names in the `from` dataset are id
 <dt>overwrite</dt>
 <dd>- Accpets a boolean value. An optional property that determines whether existing graph names in this dataset are allowed to be silently overwritten. If this argument is not specified, then `false` is used as the default value.</dd>
 </dl>
+
 ##### Examples
 
 The following snippet creates a new dataset (`newDataset`) and imports one graph from an existing dataset (`existingDataset`). Notice that the graph can be renamed as part of the import.
@@ -1887,8 +1858,6 @@ await newDataset.importFromDataset(oneMoreDataset, {
 
 #### Dataset.importFromFiles(files: list(string || File), defaultsConfig?: object)
 
-<!-- TODO define what a File object is -->
-
 ##### Required
 
 Imports one or more files into this dataset.
@@ -1922,8 +1891,6 @@ await dataset.importFromFiles(["file.nq", "file.tar.gz"]);
 ```
 
 Example 2
-
-<!-- TODO confirm that this graph name below is a correct example -->
 
 ```ts
 const account = await client.getAccount("Triply");
