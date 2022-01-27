@@ -145,7 +145,7 @@ When we call `mw.addQuad` with 3 arguments, a triple is created and placed in a 
 
 ```ts
 const app = new Ratt({
-  defaultGraph: 'https://triplydb.com/Triply/example/graph/default,
+  defaultGraph: 'https://triplydb.com/Triply/example/graph/default',
 })
 ```
 
