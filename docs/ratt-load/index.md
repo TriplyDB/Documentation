@@ -54,7 +54,7 @@ app.use(
 The `validateShacl` function can optionally be given the `terminateOn` option.  This option determines when validation halts.  It can take the following values:
 
 <dl>
-  <dt><code>false</code></dt>
+  <dt><code>"Never"</code></dt>
   <dd>Do not halt; run the validation for the full dataset.</dd>
   <dt><code>'Violation'</code></dt>
   <dd>Halt validation when the first SHACL Violation is encountered.</dd>
@@ -71,12 +71,12 @@ app.use(
   // Create all linked data statements.
   …
   // Now that all the data is created, validate it using a model.
-  mw.validateShacl(app.sources.model, {terminateOn: false}
+  mw.validateShacl(app.sources.model, {terminateOn: "Never"}
 )
 ```
 ## Upload prefixes
 
-After loading the graphs, we can also upload other important elements in Linked data, such as the prefixes. This can be done by combining RATT functionality (```app.after```, ```app.prefix```) with TriplyDbjs functionality (```app.triplyDb.getOrganization```, ```app.triplyDb.getUser()``` etc.). 
+After loading the graphs, we can also upload other important elements in Linked data, such as the prefixes. This can be done by combining RATT functionality (```app.after```, ```app.prefix```) with TriplyDbjs functionality (```app.triplyDb.getOrganization```, ```app.triplyDb.getUser()``` etc.).
 1. You have to set the prefixes:
 ```ts
 const prefix_def = Ratt.prefixer('http://example.com/def/')
