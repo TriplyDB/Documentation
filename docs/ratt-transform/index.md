@@ -443,9 +443,9 @@ app.use(
   mw.add({
     key: 'Full name',
     value: context =>
-      context.asString('First name') +
+      context.getString('First name') +
       ' ' +
-      context.asString('Last name')}),
+      context.getString('Last name')}),
 )
 ```
 
