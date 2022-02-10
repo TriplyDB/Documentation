@@ -21,7 +21,7 @@ At any moment in the RATT pipeline, the current RATT record can be printed to th
 
 ```ts
 app.use(
-  mw.logRecord(),
+  mw.debug.logRecord(),
 )
 ```
 
@@ -51,7 +51,7 @@ Sometimes a RATT Record can be long and you may only be interested in a small nu
 
 ```ts
 app.use(
-  mw.logRecord({key: key.variety}),
+  mw.debug.logRecord({key: key.variety}),
 )
 ```
 
