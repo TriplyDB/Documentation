@@ -293,6 +293,22 @@ from which the SPARQL query can be copied in the following three forms:
 They do not have any of the technical limitations that occur with
 URL-encoded queries.
 
+### Transfer a SPARQL query
+
+The SPARQL queries could be transferred to another account or an organization. To do that, go to the setting field at the query page,
+
+![Transfer a SPARQL query](where-find-transfer.png)
+
+choose transfer
+
+![Transfer a SPARQL query](transfer-query.png)
+
+and then choose where the SPARQL query should be moved to.
+
+![Transfer a SPARQL query](transfer-to-organization.png)
+
+After the destination is set you would be redirected to the SPARQL query new page. The SPARQL query could be transferred from an account to an organization and vice versa.
+
 ## Text Search
 
 When a dataset has a running ElasticSearch service, textual searches
