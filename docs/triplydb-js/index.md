@@ -554,37 +554,37 @@ const dataset = await account.addDataset("iris", {
 
 This method returns a dataset object. See the [Dataset](#dataset) section for an overview of the methods that can be called on such objects.
 
-#### Account.addQuery(name: string, metadata: object)
+### Account.addQuery(name: string, metadata: object)
 
 Adds a new SPARQL query.
 
 ##### Arguments
 
-- The `metadata` argument specifies the required Dataset or Service and access level. Other important metadata can be set optionally:
-
-<!-- ***`accessLevel: 'private'|'internal'|'public'` (optional)***
-The access level of the query. The following values are supported:
-
-- ***`'private'`*** The query can only be accessed by the <a href='#account'><code>Account</code></a> object for which it is created.
-- ***`'internal'`*** The query can only be accessed by people who are logged into the TriplyDB instance (denoted by the value of environment variable `TRIPLYDB_URL`).
-- ***`'private'`*** The query can be accessed by everybody. -->
 
 **Required:**
 
 <dl>
 <dt><code>name: string</code> </dt>
 <dd>The URL-friendly name of the new query.  The name must only contain alphanumeric characters and hyphens (`[A-Za-z0-9\-]`).</dd>
-<dt><code>dataset</code> </dt>
+
+<dt><code>queryString: string</code> </dt>
+<dd>the SPARQL compliant query as a string value</dd>
+
+<dt><code>dataset: Dataset</code> </dt>
 <dd>An instance of class Dataset that the current API token gives access to.</dd>
 or
-<dt><code>service</code> </dt>
+<dt><code>service: Service</code> </dt>
 <dd>An instance of class Service that the current API token gives access to and that you want to be associated with this query. The Service given will be used as a preferred service for this query.</code></dd>
 </dl>
 
-<dl>
+**Optional:**
 
+- The `metadata` argument specifies the required Dataset or Service and access level. Other important metadata can be set optionally:
+
+
+<dl>
   <dt><code>accessLevel</code> </dt>
-  <dd> The access level of the query. The following values are supported:
+  <dd> The access level of the query. If none is set it defaults to "private". The following values are supported:
     <dl>
       <dt><code>'private'</code></dt>
       <dd>The query can only be accessed by the <a href='#account'><code>Account</code></a> object for which it is created.</dd>
@@ -598,8 +598,8 @@ or
   <dt><code>autoselectService: boolean</code> (optional)</dt>
   <dd>TODO</dd>
   -->
-
-**Optional:**
+  <dt><code>output: string</code></dt>
+  <dd>The visualization plugin that is used to display the result set. If none is set it defaults to "table". Other options may include: "response", "geo", "gallery", "markup", etc</dd>
 
   <dt><code>description: string</code> </dt>
   <dd>A human-readable description of the query.</dd>
@@ -614,48 +614,7 @@ or
   <dt><code>preferredService: string</code> </dt>
   <dd>TODO</dd>
   -->
-  <dt><code>renderConfig</code> </dt>
-  <dd>
-    <dl>
-      <dt><code>output: string</code> (optional)</dt>
-      <dd>The visualization approach that is used to display the result set.</dd>
-      <dt><code>settings: any</code> (optional)</dt>
-      <dd>Setting that are specific for the visualization approach specified in <code>output</code>.</dd>
-    </dl>
-  </dd>
-  <dt><code>requestConfig</code> </dt>
-  <dd>
-    <dl>
-      <dt><code>headers</code> (optional)</dt>
-      <dd>An object whose keys are HTTP header names and whose values are HTTP header values.</dd>
-      <dt><code>payload</code> (optional)</dt>
-      <dd> Has the following key:
-        <dl>
-          <!--
-          <dt><code>debug: string</code> (optional)</dt>
-          <dd>TODO</dd>
-          -->
-          <!--
-          <dt><code>default-graph-uri: string|string[]</code> (optional)</dt>
-          <dd>Either one default graph IRI or a list of zero or more default graph IRIs TODO.</dd>
-          -->
-          <!--
-          <dt><code>format: string</code> (optional)</dt>
-          <dd>TODO</dd>
-          -->
-          <!--
-          <dt><code>named-graph-uri: string|string[]</code> (optional)</dt>
-          <dd>Either one named graph IRI or a list of zero or more named graph IRIs TODO.</dd>
-          -->
-          <dt><code>query</code> (required)</dt>
-          <dd>The query string.</dd>
-          <!--
-          <dt><code>timeout: number</code> (optional)</dt>
-          <dd>TODO</dd>
-          -->
-        </dl>
-      </dd>
-    </dl>
+
   </dd>
   <dt><code>variables: Variable[]</code></dt>
   <dd>
@@ -701,20 +660,13 @@ The following snippet creates a query with the given query string:
 ```ts
 const client = Client.get({ token: process.env.TRIPLYDB_TOKEN });
 const user = await client.getUser();
-const dataset = await user.getDataset("my-dataset");
-const datasetId = (await dataset.getInfo()).id;
+const myDataset = await user.getDataset("my-dataset");
 const query = await user.addQuery("my-query", {
-  dataset: datasetId,
-  requestConfig: {
-    payload: {
-      query: `select (count(*) as ?n) {
-        ?s ?p ?o.
-      }`,
-    },
-  },
-  renderConfig: {
-    output: "table",
-  },
+  dataset: myDataset,
+  queryString: `select (count(*) as ?n) {
+                ?s ?p ?o.
+                }`,
+  output: "response",
 });
 ```
 
@@ -1027,46 +979,6 @@ This method returns various types of objects. Each class has different functiona
 - See section [`Dataset`](#dataset) for an overview of the methods for dataset objects.
 - See section [`Query`](#query) for an overview of the methods for query objects.
 - See section [`Story`](#story) for an overview of the methods for story objects.
-
-#### Account.ensureQuery(name: string, metadata: object)
-
-Ensures the existence of a query with the given `name` and with the specified `metadata`.
-
-Calling this method ensures that the necessary changes (if any) are made in the connected-to TriplyDB instance that result in an end state in which a query with the given `name` and `metadata` exists.
-
-This method is useful in practice, because it removes the burden on the programmer to have to write custom code for checking for the existence of a query, and conditionally create a new query or make metadata changes to an existing query.
-
-The changes made as a result of calling this method depend on the current state of the connected-to TriplyDB instance:
-
-- If this account does not yet have a query with the given `name`, then the behavior is identical to calling [`Account.addQuery(name: string, metadata?: object)`](#datasetaddqueryname-string-metadata-object) with the same arguments.
-- If this account already has a query with the given `name` and with the same `metadata`, then this method returns that query.
-
-**Note:**
-
-- `name` and `accessLevel` are **requiered** fields.
-- `dataset` or `service` is a **requiered** field.
-- Both a `dataset` and `service` **cannot** be used at the same time. Only one must be specfied at a time.
-- If a `service` is specified, that service is used a **preferred service**.
-
-**Examples**
-
-Example 1 : Ensure a query using a `dataset`
-
-```ts
-await someUser.ensureQuery(`someQueryName`, {
-  accessLevel: "public",
-  dataset: testDs,
-});
-```
-
-Example 2 : Ensure a query using a `service`
-
-```ts
-await someUser.ensureQuery(`someQueryName`, {
-  accessLevel: "private",
-  service: someService,
-});
-```
 
 #### Account.getQuery(name: string)
 
@@ -2166,12 +2078,6 @@ await organization.addMember(johnDoe);
 
 Removes a member from the given `Organization`.
 
-#### Organization.ensureQuery(name: string, metadata: object)
-
-Ensures the existence of a query with the given `name` and with the specified `metadata`.
-
-Inherited from [`Account.ensureQuery(name: string, metadata: object)`](#accountensurequeryname-string-metadata-object).
-
 #### Organization.addQuery(name: string, metadata: object)
 
 Adds a new TriplyDB query to the current organization.
@@ -2344,8 +2250,8 @@ The returned dictionary object includes the following keys:
   <dd>The number of currently stored versions of this query.</dd>
   <dt><code>owner</code><dt>
   <dd>A dictionary object representing the account (organization or user) to which the query belongs.</dd>
-  <dt>🚧 <code>runLink</code></dt>
-  <dd>The URL that can be used to run the query.</dd>
+  <dt>🚧<code>link</code></dt>
+  <dd>Stores part of the URL to run the query. Please use <code>Query.getRunLink()</code> to obtain the full URL to run the query.</dd>
   <dt><code>service</code></dt>
   <dd>The location of the SPARQL endpoint that is used to run the query.</dd>
   <dt><code>updatedAt</code></dt>
@@ -2358,6 +2264,39 @@ Returns the query string of the current version of this query.
 
 Optionally, arguments can be spefified for the API variables to this query.
 
+#### Query.addVersion(metadata: object)
+
+Adds a new version to the query used. It requires similar options to that of <code>`Query.addQuery`</code>.
+
+##### Arguements
+
+At least one of the following arguments is required to create a new version. Any argument not given will be copied from the previous version of that query.
+
+<dl>
+<dt><code>queryString: string</code> </dt>
+<dd>the SPARQL compliant query as a string value</dd>
+
+<dt><code>output: string</code></dt>
+<dd>The visualization plugin that is used to display the result set. If none is set it defaults to "table". Other options may include: "response", "geo", "gallery", "markup", etc</dd>
+
+
+<dt><code>variables: Variable[]</code></dt>
+  <dd>
+    A list of objects with the following keys:
+    <dl>
+      <dt>IRI variable</dt>
+      <dd>An object of the form `Variable` 
+      (see [`Account.addQuery()`](#accountaddqueryname-string-metadata-object)
+      </dd>
+  </dd>
+</dl>
+
+* You can see how many versions exist on a query accessing <code>`Query.getInfo().numOfVersions`</code>
+* You can use a specified version of a query accessing <code>`Query.useVersion(x: number)`</code>
+#### Query.getRunLink()
+
+Returns the URL link to run the query. 
+It currently does not support the use of variables.
 <!--
 TODO: Document this method.
 #### Query.results(apiVariables?: object, options?: object)
@@ -2568,11 +2507,6 @@ Adds a new TriplyDB dataset with the given `name` to the current account.
 
 Inherited from [`Account.addDataset(name: string, metadata?: object)`](#accountadddatasetname-string-metadata-object).
 
-#### User.ensureQuery(name: string, metadata: object)
-
-Ensures the existence of a query with the given `name` and with the specified `metadata`.
-
-Inherited from [`Account.ensureQuery(name: string, metadata: object)`](#accountensurequeryname-string-metadata-object).
 
 #### User.addQuery(metadata: object)
 
