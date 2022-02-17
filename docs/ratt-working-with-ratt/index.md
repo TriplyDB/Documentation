@@ -21,7 +21,7 @@ At any moment in the RATT pipeline, the current RATT record can be printed to th
 
 ```ts
 app.use(
-  mw.logRecord(),
+  mw.debug.logRecord(),
 )
 ```
 
@@ -44,6 +44,13 @@ Notice that the printed record includes both the keys and the values.
 
 In addition to inspecting the RATT Record once, it is common practice to place two or more `logRecord` statements at different positions in a RATT script.  This allows you to inspect how data changes throughout the pipeline process.
 
+```ts
+app.use(
+  mw.debug.logRecord(),
+  mw.change({ … }), # Some change to the RATT record.
+  mw.debug.logRecord(),
+)
+```
 
 #### Log specific keys
 
@@ -51,7 +58,7 @@ Sometimes a RATT Record can be long and you may only be interested in a small nu
 
 ```ts
 app.use(
-  mw.logRecord({key: key.variety}),
+  mw.debug.logRecord({key: key.variety}),
 )
 ```
 

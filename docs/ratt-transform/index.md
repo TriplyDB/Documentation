@@ -916,12 +916,12 @@ app.use(
 )
 ```
 
-The `$parent` key can be observed when `mw.logRecord` is used to print the iterated-over elements to the terminal:
+The `$parent` key can be observed when `logRecord` is used to print the iterated-over elements to the terminal:
 
 ```ts
 app.use(
   mw.forEach('data.countries',
-    mw.logRecord()),
+    mw.debug.logRecord()),
 )
 ```
 
@@ -1025,7 +1025,7 @@ The following nested `mw.forEach` call shows the difference between the `"$paren
 app.use(
   mw.forEach('data.countries',
     mw.forEach('labels',
-      mw.logRecord())),
+      mw.debug.logRecord())),
 )
 ```
 
