@@ -1087,7 +1087,7 @@ The optional new story object that can be passed accepts the following propertie
   <dt>
     <code>accessLevel</code>
   </dt>
-  <dd>Sets the access level for the story. Accepts a string value of either <code>"public"</code>, <code>"private"</code>, <code>"internal"</code> 
+  <dd>Sets the access level for the story. Accepts a string value of either <code>"public"</code>, <code>"private"</code>, <code>"internal"</code>
   </dd>
 </dl>
 
@@ -2234,26 +2234,37 @@ The returned dictionary object includes the following keys:
       <dd>The dataset can be accessed by everybody.</dd>
     </dl>
   </dd>
+
   <dt><code>autoselectService</code><dt>
   <dd>Whether the SPARQL service is automatically chosen (<code>true</code>), or whether a specific SPARQL service is configured (<code>false</code>).</dd>
+
   <dt><code>createdAt</code></dt>
   <dd>The date/time at which the query was created.</dd>
+
   <dt><code>dataset</code></dt>
   <dd>A dictionary object representing the dataset against which the query is evaluated.</dd>
+
   <dt><code>description</code></dt>
   <dd>The human-readable description of the query.  This typically explains what the query does in natural language.</dd>
+
   <dt><code>displayName</code></dt>
   <dd>The human-readable name of the query.  This name may include spaces and other characters that are not allowed in the URL-friendly name.</dd>
+
   <dt><code>name</code></dt>
   <dd>The URL-friendly name of the query that is used in URL paths.  This name can only include ASCII letters and hyphens.</dd>
+
   <dt><code>numberOfVersions</code></dt>
   <dd>The number of currently stored versions of this query.</dd>
+
   <dt><code>owner</code><dt>
   <dd>A dictionary object representing the account (organization or user) to which the query belongs.</dd>
+
   <dt>🚧<code>link</code></dt>
   <dd>Stores part of the URL to run the query. Please use <code>Query.getRunLink()</code> to obtain the full URL to run the query.</dd>
+
   <dt><code>service</code></dt>
   <dd>The location of the SPARQL endpoint that is used to run the query.</dd>
+
   <dt><code>updatedAt</code></dt>
   <dd>The date/time at which the query was last modified.</dd>
 </dl>
@@ -2263,6 +2274,14 @@ The returned dictionary object includes the following keys:
 Returns the query string of the current version of this query.
 
 Optionally, arguments can be spefified for the API variables to this query.
+
+##### Examples
+
+The following code stores the SPARQL query string for the `query` object:
+
+```
+const queryString = await query.getString()
+```
 
 #### Query.addVersion(metadata: object)
 
@@ -2285,7 +2304,7 @@ At least one of the following arguments is required to create a new version. Any
     A list of objects with the following keys:
     <dl>
       <dt>IRI variable</dt>
-      <dd>An object of the form `Variable` 
+      <dd>An object of the form `Variable`
       (see [`Account.addQuery()`](#accountaddqueryname-string-metadata-object)
       </dd>
   </dd>
@@ -2295,7 +2314,7 @@ At least one of the following arguments is required to create a new version. Any
 * You can use a specified version of a query accessing <code>`Query.useVersion(x: number)`</code>
 #### Query.getRunLink()
 
-Returns the URL link to run the query. 
+Returns the URL link to run the query.
 It currently does not support the use of variables.
 <!--
 TODO: Document this method.
