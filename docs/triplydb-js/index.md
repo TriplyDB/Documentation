@@ -554,33 +554,31 @@ const dataset = await account.addDataset("iris", {
 
 This method returns a dataset object. See the [Dataset](#dataset) section for an overview of the methods that can be called on such objects.
 
-### Account.addQuery(name: string, metadata: object)
+#### Account.addQuery(name: string, metadata: object)
 
-Adds a new SPARQL query.
+Adds a new SPARQL query to the account.
 
 ##### Arguments
-
 
 **Required:**
 
 <dl>
-<dt><code>name: string</code> </dt>
-<dd>The URL-friendly name of the new query.  The name must only contain alphanumeric characters and hyphens (`[A-Za-z0-9\-]`).</dd>
+  <dt><code>name: string</code> </dt>
+  <dd>The URL-friendly name of the new query.  The name must only contain alphanumeric characters and hyphens (`[A-Za-z0-9\-]`).</dd>
 
-<dt><code>queryString: string</code> </dt>
-<dd>the SPARQL compliant query as a string value</dd>
+  <dt><code>queryString: string</code> </dt>
+  <dd>The SPARQL query string (e.g., `'select * { ?s ?p ?o }'`).</dd>
 
-<dt><code>dataset: Dataset</code> </dt>
-<dd>An instance of class Dataset that the current API token gives access to.</dd>
+  <dt><code>dataset: Dataset</code> </dt>
+  <dd>An instance of class [Dataset](#dataset) that the current API token gives access to.</dd>
 or
-<dt><code>service: Service</code> </dt>
-<dd>An instance of class Service that the current API token gives access to and that you want to be associated with this query. The Service given will be used as a preferred service for this query.</code></dd>
+  <dt><code>service: Service</code> </dt>
+  <dd>An instance of class [Service](#service) that the current API token gives access to and that you want to be associated with this query. The Service given will be used as a preferred service for this query.</code></dd>
 </dl>
 
 **Optional:**
 
 - The `metadata` argument specifies the required Dataset or Service and access level. Other important metadata can be set optionally:
-
 
 <dl>
   <dt><code>accessLevel</code> </dt>
@@ -588,34 +586,24 @@ or
     <dl>
       <dt><code>'private'</code></dt>
       <dd>The query can only be accessed by the <a href='#account'><code>Account</code></a> object for which it is created.</dd>
+
       <dt><code>'internal'</code></dt>
       <dd>The query can only be accessed by people who are logged into the TriplyDB instance (denoted by the value of environment variable <code>TRIPLYDB_URL</code>).
+
       <dt><code>'public'</code></dt>
       <dd>The query can be accessed by everybody.</dd>
     </dl>
   </dd>
-  <!--
-  <dt><code>autoselectService: boolean</code> (optional)</dt>
-  <dd>TODO</dd>
-  -->
-  <dt><code>output: string</code></dt>
-  <dd>The visualization plugin that is used to display the result set. If none is set it defaults to "table". Other options may include: "response", "geo", "gallery", "markup", etc</dd>
 
   <dt><code>description: string</code> </dt>
   <dd>A human-readable description of the query.</dd>
+
   <dt><code>displayName: string</code></dt>
   <dd>The human-readable name of the query.  This name may include spaces and other characters that are not allowed in the URL-friendly <code>name</code>.</dd>
-  <!--
-  <dt><code>generateNewName: boolean</code> ()</dt>
-  <dd>TODO</dd>
-  -->
 
-  <!--
-  <dt><code>preferredService: string</code> </dt>
-  <dd>TODO</dd>
-  -->
+  <dt><code>output: string</code></dt>
+  <dd>The visualization plugin that is used to display the result set. If none is set it defaults to "table". Other options may include: "response", "geo", "gallery", "markup", etc</dd>
 
-  </dd>
   <dt><code>variables: Variable[]</code></dt>
   <dd>
     A list of objects with the following keys:
