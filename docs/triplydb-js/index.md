@@ -1100,8 +1100,9 @@ The optional new story object that can be passed accepts the following propertie
 <dl>
   <dt><code>displayName</code></dt>
   <dd>Accepts a string value to be used as a display name for the story</dd>
-
-  <dt><code>accessLevel</code></dt>
+  <dt>
+    <code>accessLevel</code>
+  </dt>
   <dd>Sets the access level for the story. Accepts a string value of either <code>"public"</code>, <code>"private"</code>, <code>"internal"</code>
   </dd>
 </dl>
@@ -2336,7 +2337,9 @@ At least one of the following arguments is required to create a new version. Any
     <p>A list of objects with the following keys:</p>
     <dl>
       <dt>IRI variable</dt>
-      <dd>An object of the form <code>Variable</code> (see <a href='#accountaddqueryname-string-metadata-object'><code>Account.addQuery()</code></a>).</dd>
+      <dd>An object of the form `Variable`
+      (see [`Account.addQuery()`](#accountaddqueryname-string-metadata-object)
+      </dd>
   </dd>
 </dl>
 
@@ -2480,15 +2483,31 @@ const service = await dataset.ensureService("my-service", {type: "sparql"});
 console.log(await service.isUpToDate());
 ```
 
-The following code synchronizes all and only services that are outdated.  Notice that this approach updates services *in parallel*:
+#### Service.update()
+
+Synchronizes the service.  Synchronization means that the data that is used in the service is made consistent with the data that is present in the graphs of the dataset.
+
+When one or more graphs are added or deleted, existing services keep exposing the old state of the data.  The changes in the data are only exposed in the services after synchronization is performed.
+
+##### Examples
+
+When there are multiple services, it is common to synchronize them all *in sequence*.  This ensures that there are always one or more services available.  This allows applications to use such services as their backend without any downtime during data changes.
+
+The following code synchronizes all services of a dataset in sequence:
 
 ```ts
-await Promise.all(dataset.getServices().map(service => !service.isUpToDate() ? service.update() : "do nothing"))
+for (const service of await dataset.getServices()) {
+  service.update()
+}
 ```
 
-<!--TODO: Document this method.
-#### Service.update()
--->
+Although less common, it is also possible to synchronize all services of a dataset *in parallel*.  This is typically not used in production systems, where data changes must not result in any downtime.  Still, parallel synchronization can be useful in development and/or acceptance environments.
+
+The following code synchronizes all services of a dataset in parallel:
+
+```ts
+await Promise.all(dataset.getServices().map(service => service.update()))
+```
 
 <!--TODO: Document this method.
 #### Service.waitUntilRunning()
