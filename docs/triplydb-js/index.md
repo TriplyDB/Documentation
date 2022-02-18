@@ -449,7 +449,7 @@ This method returns a user object. See section [`User`](#user) for an overview o
 
 #### Client.isCompatibleWith(minimumVersion: string)
 
-Succeeds iff the currently connected to TriplyDB instance has a version that is identical to or higher than the given minimum version.
+Succeeds if and only if the currently connected to TriplyDB instance has a version that is identical to or higher than the given minimum version.
 
 ##### Arguments
 
