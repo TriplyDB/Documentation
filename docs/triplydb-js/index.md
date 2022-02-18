@@ -1015,7 +1015,7 @@ See section [`Query`](#query) for an overview of the methods for query objects.
 
 #### Account.ensureStory(name: string, metadata: object)
 
-Ensures the existence of a story with the given `name` and with the specified `metadata` if given.
+Ensures the existence of a story with the given `name` and with the specified `metadata`, if given.
 
 Calling this method ensures that the necessary changes (if any) are made in the connected-to TriplyDB instance that result in an end state in which a story with the given `name` and `metadata` exists.
 
@@ -1038,7 +1038,7 @@ The changes made as a result of calling this method depend on the current state 
 </dl>
 
 **Note:**
-If no `accessLevel` is specified the default used is "private".
+If no `accessLevel` is specified, the default used is "private".
 
 **Examples**
 
@@ -1079,7 +1079,7 @@ The optional new story object that can be passed accepts the following propertie
   </dd>
 </dl>
 
-If **no** `accesslevel` is specified the default value `private` is used.
+If **no** `accesslevel` is specified, the default value `private` is used.
 
 **Examples**:
 
