@@ -457,7 +457,7 @@ Succeeds if and only if the currently connected to TriplyDB instance has a versi
 
 ##### See also
 
-To inspect the current version of the conntected-to TriplyDB instance, use [`Client.getInfo()`](#clientgetinfo).
+To inspect the current version of the connected-to TriplyDB instance, use [`Client.getInfo()`](#clientgetinfo).
 
 ### Account
 
@@ -1023,7 +1023,7 @@ This method is useful in practice, because it removes the burden on the programm
 
 The changes made as a result of calling this method depend on the current state of the connected-to TriplyDB instance:
 
-- If this account does not yet have a story with the given `name`, then the behavior is identical to calling [`Account.addStory(name: string, metadata?: object)`](#datasetaddstoryname-string-metadata-object) with the same arguments.
+- If this account does not yet have a story with the given `name`, then the behavior is identical to calling [`Account.addStory(name: string, metadata?: object)`](#accountaddstoryname-string-metadata-object) with the same arguments.
 - If this account already has a story with the given `name` and with the same `metadata`, then this method returns that story.
 
 ##### Optional
@@ -1171,7 +1171,7 @@ To update the metadata profile with information within the metadata itself, we n
 
 **getObject()**
 Define a constant (`const`) and assign it to `ctx.store.getObjects()`.
-The argumemts for the function will be the subject, predicate, and graph. The function retrieves the **object** so the other 3 parts of a quad need to be specified.
+The arguments for the function will be the subject, predicate, and graph. The function retrieves the **object** so the other 3 parts of a quad need to be specified.
 
 **update()**
 Update the relevant part of the metadata profile with the corresponding piece of information. `.update({})`
@@ -1275,16 +1275,14 @@ The changes made as a result of calling this method depend on the current state 
 
 - If this dataset does not yet have a service with the given `name`, then the behavior is identical to calling [`Dataset.addService(name: string, metadata?: object)`](#datasetaddservicename-string-metadata-object) with the same arguments.
 <!--
-- If this account already has a service with the given `name`, but with different `metadata` specified for it, then the behavior is identical to calling [`Account.getDataset(name: string)`](#datasetgetservicename-string) and [`Dataset.update(metadata: object)`](#serviceupdatemetadata-object). -->
+- If this dataset already has a service with the given `name`, but with different `metadata` specified for it, then the behavior is identical to calling [`Account.getDataset(name: string)`](#datasetgetservicename-string) and [`Dataset.update(metadata: object)`](#serviceupdatemetadata-object). -->
 - If this dataset already has a service with the given `name` and with the same `metadata`, then this method returns that service.
 
-##### Requiered
+##### Required
 
 <dl>
-  <dt>
-    <code>name</code>
-  </dt>
-  <dd>Accpets a string value which is the name of the service to ensure. </dd>
+  <dt><code>name</code></dt>
+  <dd>Accepts a string value which is the name of the service to ensure.</dd>
 </dl>
 
 ##### Optional: metadata
@@ -1525,7 +1523,7 @@ Graph names are IRIs.
 
 <!--
 TODO: What is a graph?  Is it a string or an object?  What can one do with a graph?
-      Why is the graph differen from the `name` argument?
+      Why is the graph different from the `name` argument?
 -->
 
 ##### Examples
@@ -1592,7 +1590,7 @@ for await (const prefix of dataset.getPrefixes()) {
 
 #### Dataset.getService(name: string)
 
-Returns the serivce with the given `name` for this dataset.
+Returns the service with the given `name` for this dataset.
 
 ##### Examples
 
@@ -1692,22 +1690,24 @@ Changes in the `from` dataset are not automatically reflected in this dataset. I
 
 ##### Required
 
-- Argument `from` is the dataset object from which one or more graph are imported over to this dataset.
+- Argument `from` is the dataset object from which one or more graphs are imported over to this dataset.
 
 ##### Optional
 
 The optional properties accepted as arguments for <code>importFromDataset</code>
 
 <dl>
-<dt>graphMap</dt>
-<dd>- Argument `<code>graphMap</code>` optionally is an object with keys and values that implements a mapping from existing graph names (keys) to newly created graph names (values). Each keys must be an existing graph name in the `from` dataset. Each value must is the corresponding graph name in this dataset.</dd>
+  <dt>graphMap</dt>
+  <dd>Argument `<code>graphMap</code>` optionally is an object with keys and values that implements a mapping from existing graph names (keys) to newly created graph names (values). Each key must be an existing graph name in the `from` dataset. Each value must is the corresponding graph name in this dataset.</dd>
 <!-- <https://issues.triply.cc/issues/5783>
 If this argument is not specified, then graph names in the `from` dataset are identical to graph names in this dataset.
 -->
-<dt>graphNames</dt>
-<dd>- Argument `<code>graphNames</code>` optionally is an array of graph names. These names can be one of three types: 'string', instances of a 'Graph' class, or instances of 'NamedNodes'.</dd>
-<dt>overwrite</dt>
-<dd>- Accpets a boolean value. An optional property that determines whether existing graph names in this dataset are allowed to be silently overwritten. If this argument is not specified, then `false` is used as the default value.</dd>
+
+  <dt>graphNames</dt>
+  <dd>Argument `<code>graphNames</code>` optionally is an array of graph names. These names can be one of three types: 'string', instances of a 'Graph' class, or instances of 'NamedNodes'.</dd>
+
+  <dt>overwrite</dt>
+  <dd>Accepts a Boolean value. An optional property that determines whether existing graph names in this dataset are allowed to be silently overwritten. If this argument is not specified, then `false` is used as the default value.</dd>
 </dl>
 
 ##### Examples
@@ -2043,11 +2043,12 @@ Adds a member to the given `Organization`, with the given `role` of either membe
 
 - The `user` argument has to be a user object of the user which should be added to the organization.
 
-- The `role` argument can be either `'member'` or `'owner'`.  If this argument is not specified, then `'member'` used as the default.
+- The `role` argument can be either `'member'` or `'owner'`.  If this argument is not specified, then `'member'` is used as the default.
 
 <dl>
   <dt><code>'member'</code></dt>
   <dd>A regular member that is allowed to read and write the datasets that are published under the organization.</dd>
+
   <dt><code>'owner'</code></dt>
   <dd>An owner of the organization.  Owners have all the rights of regular users, plus the ability to add/remove users to/from the organization, the ability to change the roles of existing users, and the ability to delete the organization.</dd>
 </dl>
@@ -2261,7 +2262,7 @@ The returned dictionary object includes the following keys:
 
 Returns the query string of the current version of this query.
 
-Optionally, arguments can be spefified for the API variables to this query.
+Optionally, arguments can be specified for the API variables to this query.
 
 ##### Examples
 
@@ -2275,7 +2276,7 @@ const queryString = await query.getString()
 
 Adds a new version to the query used. It requires similar options to that of <code>`Query.addQuery`</code>.
 
-##### Arguements
+##### Arguments
 
 At least one of the following arguments is required to create a new version. Any argument not given will be copied from the previous version of that query.
 
@@ -2333,12 +2334,16 @@ A service always has one of the following statuses:
 <dl>
   <dt>Removing</dt>
   <dd>The service is being removed.</dd>
+
   <dt>Running</dt>
   <dd>The service is running normally.</dd>
+
   <dt>Starting</dt>
   <dd>The service is starting up.</dd>
+
   <dt>Stopped</dt>
-  <dd>The services has been stopped in the past.  It cannot be used at the moment, but it can be enable again if needed.</dd>
+  <dd>The services was stopped in the past.  It cannot be used at the moment, but it can be enable again if needed.</dd>
+
   <dt>Stopping</dt>
   <dd>The service is currently being stopped.</dd>
 </dl>
