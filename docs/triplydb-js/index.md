@@ -498,17 +498,22 @@ The default access level for a newly created dataset is `private`. If you want t
       <dl>
         <dt><code>'private'</code> (default)</dt>
         <dd>The dataset can only be accessed by organization members.</dd>
+
         <dt><code>'internal'</code></dt>
-        <dd>The dataset can only be accessed by users that are logged into the TriplyDB instance.
+        <dd>The dataset can only be accessed by users that are logged into the TriplyDB instance.</dd>
+
         <dt><code>'public'</code></dt>
         <dd>The dataset can be accessed by everybody.</dd>
       </dl>
       <p>When no access level is specified, the most restrictive access level (<code>private</code>) is used.</p>
     </dd>
+
     <dt><code>description</code></dt>
     <dd>The human-readable description of the dataset.  This description can make use of Markdown (see the <a href='/docs/triply-db-getting-started/#markdown-support'>Markdown reference</a>) for details.</dd>
+
     <dt><code>displayName</code></dt>
     <dd>The human-readable name of the dataset.  This name may contain spaces and other characters that are not allowed in the URL-friendly name.</dd>
+
     <dt><code>license</code></dt>
     <dd>
       <p>The license of the dataset.  The following license strings are currently supported:</p>
@@ -522,6 +527,7 @@ The default access level for a newly created dataset is `private`. If you want t
         <li><code>'None'</code> (default)</li>
       </ul>
     </dd>
+
     <dt><code>prefixes</code></dt>
     <dd>The IRI prefix declarations that are configured for the dataset.  This is specified as a dictionary object whose keys are aliases and whose values are IRI prefixes.</dd>
   </dl>
@@ -618,10 +624,11 @@ Instances of `Variable` are objects that can have the following keys:
 **Required:**
 
 <dl>
-<dt><code>name: string</code> </dt>
-<dd>A SPARQL variable name.  The variable name must appear in the query string.  The question mark (<code>?</code>) or dollar sign (<code>$</code>) is not included.</dd>
-<dt><code>termType: 'Literal'|'NamedNode'</code> </dt>
-<dd>The kind of variable.  This must be either `'Literal'` for literals or `'NamedNode'` for IRIs.</dd>
+  <dt><code>name: string</code> </dt>
+  <dd>A SPARQL variable name.  The variable name must appear in the query string.  The question mark (<code>?</code>) or dollar sign (<code>$</code>) is not included.</dd>
+
+  <dt><code>termType: 'Literal'|'NamedNode'</code> </dt>
+  <dd>The kind of variable.  This must be either `'Literal'` for literals or `'NamedNode'` for IRIs.</dd>
 </dl>
 
 **Optional:**
@@ -629,10 +636,13 @@ Instances of `Variable` are objects that can have the following keys:
 <dl>
   <dt><code>allowedValues: string[]</code></dt>
   <dd>The list of string values that is allowed for this variable.</dd>
+
   <dt><code>datatype: string</code> (if <code>termType='Literal'</code>)</dt>
   <dd>The datatype IRI for the literal variable.</dd>
+
   <dt><code>language: string</code> (if <code>termType='Literal'</code>)</dt>
   <dd>The language tag for the literal variable.  Setting this implies that the dataset IRI is <code>rdf:langString</code>.</dt>
+
   <dt><code>defaultValue: string</code></dt>
   <dd>The default string value for the </dd>
 
@@ -665,29 +675,31 @@ Adds a new data story.
 ##### Required
 
 <dl>
-<dt><code>name: string</code></dt>
-<dd>The URL-friendly name of the data story.  The name must only contain alphanumeric characters and hyphens (`[A-Za-z0-9\-]`).</dd>
+  <dt><code>name: string</code></dt>
+  <dd>The URL-friendly name of the data story.  The name must only contain alphanumeric characters and hyphens (`[A-Za-z0-9\-]`).</dd>
 </dl>
 
 ##### Optional
 
 <dl>
-<dt><code>accessLevel</code> </dt>
-<dd>
-  The access level of the dataset. If none is given the default of <code>'private'</code> is used. The following values are supported:
-  <dl>
-    <dt><code>'private'</code></dt>
-    <dd>The dataset can only be accessed by the <a href='#account'><code>Account</code></a> object for which it is created.</dd>
-    <dt><code>'internal'</code></dt>
-    <dd>The dataset can only be accessed by people who are logged into the TriplyDB instance (denoted by the value of environment variable <code>TRIPLYDB_URL</code>).
-    <dt><code>'public'</code></dt>
-    <dd>The dataset can be accessed by everybody.</dd>
-  </dl>
-</dl>
+  <dt><code>accessLevel</code> </dt>
+  <dd>
+    <p>The access level of the dataset. If none is given the default of <code>'private'</code> is used. The following values are supported:</p>
+    <dl>
+      <dt><code>'private'</code></dt>
+      <dd>The dataset can only be accessed by the <a href='#account'><code>Account</code></a> object for which it is created.</dd>
 
-  <dl>
+      <dt><code>'internal'</code></dt>
+      <dd>The dataset can only be accessed by people who are logged into the TriplyDB instance (denoted by the value of environment variable <code>TRIPLYDB_URL</code>).
+
+      <dt><code>'public'</code></dt>
+      <dd>The dataset can be accessed by everybody.</dd>
+    </dl>
+  </dd>
+
   <dt><code>content: StoryElementUpdate[]</code> </dt>
   <dd>A list if story elements.</dd>
+
   <dt><code>displayName: string</code> </dt>
   <dd>The human-readable name of the data story.  This name may include spaces and other characters that are not allowed in the URL-friendly name.</dd>
 
@@ -700,16 +712,21 @@ A story element is an object with the following keys:
   <dt>caption: string</dt>
   <dd>TODO</dd>
   -->
+
   <!--
   <dt><code>id: string</code></dt>
   <dd></dd>
   -->
+
   <dt>paragraph: string</dt>
   <dd>The Markdown content of a story paragraph.</dd>
+
   <dt><code>query: Query</code></dt>
   <dd>An instance of class <a href="#query"><code>Query</code></a>.</dd>
+
   <dt>queryVersion: number</code>
   <dd>The version that is used of the specified query.</dd>
+
   <dt><code>type</code></dt>
   <dd>Either <code>'paragraph'</code> or <code>'query'</code>.</dd>
 </dl>
@@ -882,26 +899,37 @@ The information object for accounts includes the following keys:
 <dl>
   <dt><code>avatarUrl</code></dt>
   <dd>A URL to the account image.</dd>
+
   <dt><code>accountName</code></dt>
   <dd>The URL-friendly name of the account.</dd>
+
   <dt><code>name</code><dt>
   <dd>The human-readable display name of the account</dd>
+
   <dt><code>description</code></dt>
   <dd>The human-readable description of the account.</dd>
+
   <dt><code>createdAt</code></dt>
   <dd>The date and time on which the account was created.</dd>
+
   <dt><code>datasetCount</code></dt>
   <dd>The number of datasets for the account.</dd>
+
   <dt><code>queryCount</code></dt>
   <dd>The number of queries for the account.</dd>
+
   <dt><code>storyCount</code></dt>
   <dd>The number of stories for the account</dd>
+
   <dt><code>pinnedDatasets</code></dt>
   <dd>An array containing the pinned dataset for the account.</dd>
+
   <dt><code>pinnedItems</code></dt>
   <dd>An array containing the pinned items (datasets, stories and queries) for the account.</dd>
+
   <dt><code>type</code></dt>
   <dd>The account type: either <code>organization</code> or <code>user</code>.</dd>
+
   <dt><code>role</code></dt>
   <dd>The role of the account</dd>
 </dl>
@@ -1029,12 +1057,14 @@ The changes made as a result of calling this method depend on the current state 
 ##### Optional
 
 <dl>
-<dt><code>displayName</code></dt>
-<dd>Accepts a string value to be used as the display name for the story.</dd>
-<dt><code>accessLevel</code></dt>
-<dd>Accepts a string value of either "public" | "private" | "internal".</dd>
-<dt><code>content</code></dt>
-<dd>Accepts a list of StoryElementUpdate objects, defined below.</dd>
+  <dt><code>displayName</code></dt>
+  <dd>Accepts a string value to be used as the display name for the story.</dd>
+
+  <dt><code>accessLevel</code></dt>
+  <dd>Accepts a string value of either "public" | "private" | "internal".</dd>
+
+  <dt><code>content</code></dt>
+  <dd>Accepts a list of StoryElementUpdate objects, defined below.</dd>
 </dl>
 
 **Note:**
@@ -1068,13 +1098,10 @@ Adds and returns the TriplyDB story with the given `name`.
 The optional new story object that can be passed accepts the following properties:
 
 <dl>
-  <dt>
-    <code>displayName</code>
-  </dt>
+  <dt><code>displayName</code></dt>
   <dd>Accepts a string value to be used as a display name for the story</dd>
-  <dt>
-    <code>accessLevel</code>
-  </dt>
+
+  <dt><code>accessLevel</code></dt>
   <dd>Sets the access level for the story. Accepts a string value of either <code>"public"</code>, <code>"private"</code>, <code>"internal"</code>
   </dd>
 </dl>
@@ -1337,8 +1364,8 @@ Creates a new service for this dataset.
 ##### Required
 
 <dl>
-<dt><code>name</code></dt>
-<dd>The URL-friendly name of the service.  The name must only contain alphanumeric characters and hyphens (`[A-Za-z0-9\-]`).</dd>
+  <dt><code>name</code></dt>
+  <dd>The URL-friendly name of the service.  The name must only contain alphanumeric characters and hyphens (`[A-Za-z0-9\-]`).</dd>
 </dl>
 
 ##### Optional
@@ -1390,8 +1417,10 @@ The resources are specified by the [rest parameter](https://developer.mozilla.or
 <dl>
   <dt><code>'assets'</code></dt>
   <dd>Removes all assets in the dataset.</dd>
+
   <dt><code>'graphs'</code></dt>
   <dd>Removes all graphs in the dataset.</dd>
+
   <dt><code>'services'</code></dt>
   <dd>Removes all services in the dataset.</dd>
 </dl>
@@ -1763,12 +1792,14 @@ The files must contain RDF data.
 **Optional: defaultsConfig: object**
 
 <dl>
-<dt><code>defaultGraphName</code></dt>
-<dd>Accepts a <code>string</code> value that is set as the default graph name for each imported file</dd>
-<dt><code>baseIRI</code></dt>
-<dd>Accepts a <code>string</code> value that is set as the default baseIRI for each imported file</dd>
-<dt><code>overwriteAll</code></dt>
-<dd>Accepts a <code>boolean</code> value that overwrites previously added graph names or baseIRIs (regardless of whether they came from a URL or a file)</dd>
+  <dt><code>defaultGraphName</code></dt>
+  <dd>Accepts a <code>string</code> value that is set as the default graph name for each imported file</dd>
+
+  <dt><code>baseIRI</code></dt>
+  <dd>Accepts a <code>string</code> value that is set as the default baseIRI for each imported file</dd>
+
+  <dt><code>overwriteAll</code></dt>
+  <dd>Accepts a <code>boolean</code> value that overwrites previously added graph names or baseIRIs (regardless of whether they came from a URL or a file)</dd>
 </dl>
 
 ##### Supported files
@@ -1813,12 +1844,14 @@ The URLs must provide access to RDF data.
 **Optional: defaultsConfig: object**
 
 <dl>
-<dt><code>defaultGraphName</code></dt>
-<dd>Accepts a <code>string</code> value that is set as the default graph name for each imported URL</dd>
-<dt><code>baseIRI</code></dt>
-<dd>Accepts a <code>string</code> value that is set as the default baseIRI for each imported URL</dd>
-<dt><code>overwriteAll</code></dt>
-<dd>Accepts a <code>boolean</code> value that overwrites previously added graph names or baseIRIs (regardless of whether they came from a URL or a file)</dd>
+  <dt><code>defaultGraphName</code></dt>
+  <dd>Accepts a <code>string</code> value that is set as the default graph name for each imported URL</dd>
+
+  <dt><code>baseIRI</code></dt>
+  <dd>Accepts a <code>string</code> value that is set as the default baseIRI for each imported URL</dd>
+
+  <dt><code>overwriteAll</code></dt>
+  <dd>Accepts a <code>boolean</code> value that overwrites previously added graph names or baseIRIs (regardless of whether they came from a URL or a file)</dd>
 </dl>
 
 <!--
@@ -1908,12 +1941,14 @@ The `metadata` argument takes a dictionary object with the following optional ke
 <dl>
   <dt><code>accessLevel</code> </dt>
   <dd>
-    The access level of the dataset. The following values are supported:
+    <p>The access level of the dataset. The following values are supported:</p>
     <dl>
       <dt><code>'private'</code></dt>
       <dd>The dataset can only be accessed by the <a href='#account'><code>Account</code></a> object for which it is created.</dd>
+
       <dt><code>'internal'</code></dt>
       <dd>The dataset can only be accessed by people who are logged into the TriplyDB instance (denoted by the value of environment variable <code>TRIPLYDB_URL</code>).
+
       <dt><code>'public'</code></dt>
       <dd>The dataset can be accessed by everybody.</dd>
     </dl>
@@ -1925,9 +1960,10 @@ The `metadata` argument takes a dictionary object with the following optional ke
 <dl>
   <dt><code>description</code> </dt>
   <dd>The description of the dataset.  This description can make use of Markdown layout (see the <a href='/docs/triply-db-getting-started/#markdown-support'>Markdown reference</a>) for details.</dd>
+
   <dt><code>displayName</code> </dt>
   <dd>The human-readable name of the dataset.  This name may contain spaces and other characters that are not allowed in the URL-friendly name.</dd>
-  <dd></dd>
+
   <dt><code>license</code> </dt>
   <dd>
     The license of the dataset. The following license strings are currently supported:
@@ -2131,10 +2167,13 @@ A membership contains the following components:
 <dl>
   <dt><code>role</code><dt>
   <dd>The role of the membership (<code>OrgRole</code>): either <code>'owner'</code> for owners of the organization, or <code>'member'</code> for regular members.  The difference between owners and regular members is that owners can perform user management for the organization (add/remove/change memberships).</dd>
+
   <dt><code>user</code></dt>
   <dd>An instance of class <a href="#user"><code>User</code></a>.</dd>
+
   <dt><code>createdAt</code></dt>
   <dd>A date/time string.</dd>
+
   <dt>updatedAt</dt>
   <dd>A date/time string.</dd>
 </dl>
@@ -2221,6 +2260,7 @@ The returned dictionary object includes the following keys:
     <dl>
       <dt><code>'private'</code> (default)</dt>
       <dd>The dataset can only be accessed by organization members.</dd>
+
       <dt><code>'internal'</code></dt>
       <dd>The dataset can only be accessed by users that are logged into the TriplyDB instance.
       <dt><code>'public'</code></dt>
@@ -2559,8 +2599,10 @@ This method requires an API token with write access for this user.
 <dl>
   <dt><code>description</code></dt>
   <dd>The description of the organization.  This description can make use of Markdown layout (see the <a href="/docs/triply-db-getting-started/#markdown-support">Markdown reference</a>) for details.</dd>
+
   <dt><code>email</code></dt>
   <dd>The email address at which the organization can be reached.</dd>
+
   <dt><code>name</code></dt>
   <dd>The human-readable name of the organization.  This name may contain spaces and other non-alphanumeric characters.</dd>
 </dl>
@@ -2604,26 +2646,37 @@ The information object for users includes the following keys:
 <dl>
   <dt><code>avatarUrl</code></dt>
   <dd>A URL to the user image.</dd>
+
   <dt><code>accountName</code></dt>
   <dd>The URL-friendly name of the user.</dd>
+
   <dt><code>name</code><dt>
   <dd>The human-readable display name of the user</dd>
+
   <dt><code>description</code></dt>
   <dd>The human-readable description of the user.</dd>
+
   <dt><code>createdAt</code></dt>
   <dd>The date and time on which the user was created.</dd>
+
   <dt><code>datasetCount</code></dt>
   <dd>The number of datasets for the user.</dd>
+
   <dt><code>queryCount</code></dt>
   <dd>The number of queries for the user.</dd>
+
   <dt><code>storyCount</code></dt>
   <dd>The number of stories for the user</dd>
+
   <dt><code>pinnedDatasets</code></dt>
   <dd>An array containing the pinned dataset for the user.</dd>
+
   <dt><code>pinnedItems</code></dt>
   <dd>An array containing the pinned items (datasets, stories and queries) for the user.</dd>
+
   <dt><code>role</code></dt>
   <dd>The role of the user. 🚨 POSSIBLE VALUES</dd>
+
   <dt>🚧 <code>organizations</code></dt>
   <dd>An array of the first 🚨 organization of which the user is a member.</dd>
 </dl>
