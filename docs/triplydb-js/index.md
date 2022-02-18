@@ -481,56 +481,56 @@ The default access level for a newly created dataset is `private`. If you want t
 
 ##### Arguments
 
-- The `name` argument specifies the URL-friendly name of the new dataset. The name must only contain alphanumeric characters and hyphens (`[A-Za-z0-9\-]`).
+The `name` argument specifies the URL-friendly name of the new dataset. The name must only contain alphanumeric characters and hyphens (`[A-Za-z0-9\-]`).
 
-  The full URL of the newly created dataset has the following structure:
+The full URL of the newly created dataset has the following structure:
 
-  ```
-  https://{host}/{account}/{dataset}
-  ```
+```
+https://{host}/{account}/{dataset}
+```
 
-- The `metadata` argument optionally specifies the access level and other important metadata:
+The `metadata` argument optionally specifies the access level and other important metadata:
 
-  <dl>
-    <dt><code>accessLevel</code></dt>
-    <dd>
-      <p>The access level of the dataset. The following values are supported:</p>
-      <dl>
-        <dt><code>'private'</code> (default)</dt>
-        <dd>The dataset can only be accessed by organization members.</dd>
+<dl>
+  <dt><code>accessLevel</code></dt>
+  <dd>
+    <p>The access level of the dataset. The following values are supported:</p>
+    <dl>
+      <dt><code>'private'</code> (default)</dt>
+      <dd>The dataset can only be accessed by organization members.</dd>
+      <!-- -->
+      <dt><code>'internal'</code></dt>
+      <dd>The dataset can only be accessed by users that are logged into the TriplyDB instance.</dd>
+      <!-- -->
+      <dt><code>'public'</code></dt>
+      <dd>The dataset can be accessed by everybody.</dd>
+    </dl>
+    <p>When no access level is specified, the most restrictive access level (<code>private</code>) is used.</p>
+  </dd>
 
-        <dt><code>'internal'</code></dt>
-        <dd>The dataset can only be accessed by users that are logged into the TriplyDB instance.</dd>
+  <dt><code>description</code></dt>
+  <dd>The human-readable description of the dataset.  This description can make use of Markdown (see the <a href='/docs/triply-db-getting-started/#markdown-support'>Markdown reference</a>) for details.</dd>
 
-        <dt><code>'public'</code></dt>
-        <dd>The dataset can be accessed by everybody.</dd>
-      </dl>
-      <p>When no access level is specified, the most restrictive access level (<code>private</code>) is used.</p>
-    </dd>
+  <dt><code>displayName</code></dt>
+  <dd>The human-readable name of the dataset.  This name may contain spaces and other characters that are not allowed in the URL-friendly name.</dd>
 
-    <dt><code>description</code></dt>
-    <dd>The human-readable description of the dataset.  This description can make use of Markdown (see the <a href='/docs/triply-db-getting-started/#markdown-support'>Markdown reference</a>) for details.</dd>
+  <dt><code>license</code></dt>
+  <dd>
+    <p>The license of the dataset.  The following license strings are currently supported:</p>
+    <ul>
+      <li><code>'CC-BY-SA'</code></li>
+      <li><code>'CC0 1.0'</code></li>
+      <li><code>'GFDL'</code></li>
+      <li><code>'ODC-By'</code></li>
+      <li><code>'ODC-ODbL'</code></li>
+      <li><code>'PDDL'</code></li>
+      <li><code>'None'</code> (default)</li>
+    </ul>
+  </dd>
 
-    <dt><code>displayName</code></dt>
-    <dd>The human-readable name of the dataset.  This name may contain spaces and other characters that are not allowed in the URL-friendly name.</dd>
-
-    <dt><code>license</code></dt>
-    <dd>
-      <p>The license of the dataset.  The following license strings are currently supported:</p>
-      <ul>
-        <li><code>'CC-BY-SA'</code></li>
-        <li><code>'CC0 1.0'</code></li>
-        <li><code>'GFDL'</code></li>
-        <li><code>'ODC-By'</code></li>
-        <li><code>'ODC-ODbL'</code></li>
-        <li><code>'PDDL'</code></li>
-        <li><code>'None'</code> (default)</li>
-      </ul>
-    </dd>
-
-    <dt><code>prefixes</code></dt>
-    <dd>The IRI prefix declarations that are configured for the dataset.  This is specified as a dictionary object whose keys are aliases and whose values are IRI prefixes.</dd>
-  </dl>
+  <dt><code>prefixes</code></dt>
+  <dd>The IRI prefix declarations that are configured for the dataset.  This is specified as a dictionary object whose keys are aliases and whose values are IRI prefixes.</dd>
+</dl>
 
 ##### Examples
 
@@ -584,7 +584,7 @@ or
 
 **Optional:**
 
-- The `metadata` argument specifies the required Dataset or Service and access level. Other important metadata can be set optionally:
+The `metadata` argument specifies the required Dataset or Service and access level. Other important metadata can be set optionally:
 
 <dl>
   <dt><code>accessLevel</code> </dt>
@@ -592,10 +592,8 @@ or
     <dl>
       <dt><code>'private'</code></dt>
       <dd>The query can only be accessed by the <a href='#account'><code>Account</code></a> object for which it is created.</dd>
-
       <dt><code>'internal'</code></dt>
       <dd>The query can only be accessed by people who are logged into the TriplyDB instance (denoted by the value of environment variable <code>TRIPLYDB_URL</code>).
-
       <dt><code>'public'</code></dt>
       <dd>The query can be accessed by everybody.</dd>
     </dl>
@@ -688,10 +686,10 @@ Adds a new data story.
     <dl>
       <dt><code>'private'</code></dt>
       <dd>The dataset can only be accessed by the <a href='#account'><code>Account</code></a> object for which it is created.</dd>
-
+      <!-- -->
       <dt><code>'internal'</code></dt>
       <dd>The dataset can only be accessed by people who are logged into the TriplyDB instance (denoted by the value of environment variable <code>TRIPLYDB_URL</code>).
-
+      <!-- -->
       <dt><code>'public'</code></dt>
       <dd>The dataset can be accessed by everybody.</dd>
     </dl>
@@ -1326,7 +1324,7 @@ serviceMetadata = {
 
 <dl>
   <dt><code>type</code></dt>
-  <dd>Accepts a string value of one of the following: <code>"sparql"</code>, <code>"elasticsearch"</code>, <code>"virtuoso"<code>, <code>"jena"</code>.</dd>
+  <dd>Accepts a string value of one of the following: <code>"sparql"</code>, <code>"elasticsearch"</code>, <code>"virtuoso"</code>, <code>"jena"</code>.</dd>
 
   <dt><code>config</code></dt>
   <dd>
@@ -1946,10 +1944,10 @@ The `metadata` argument takes a dictionary object with the following optional ke
     <dl>
       <dt><code>'private'</code></dt>
       <dd>The dataset can only be accessed by the <a href='#account'><code>Account</code></a> object for which it is created.</dd>
-
+      <!-- -->
       <dt><code>'internal'</code></dt>
       <dd>The dataset can only be accessed by people who are logged into the TriplyDB instance (denoted by the value of environment variable <code>TRIPLYDB_URL</code>).
-
+      <!-- -->
       <dt><code>'public'</code></dt>
       <dd>The dataset can be accessed by everybody.</dd>
     </dl>
@@ -2261,9 +2259,10 @@ The returned dictionary object includes the following keys:
     <dl>
       <dt><code>'private'</code> (default)</dt>
       <dd>The dataset can only be accessed by organization members.</dd>
-
+      <!-- -->
       <dt><code>'internal'</code></dt>
       <dd>The dataset can only be accessed by users that are logged into the TriplyDB instance.
+      <!-- -->
       <dt><code>'public'</code></dt>
       <dd>The dataset can be accessed by everybody.</dd>
     </dl>
