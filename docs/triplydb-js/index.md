@@ -2325,30 +2325,29 @@ Adds a new version to the query used. It requires similar options to that of <co
 At least one of the following arguments is required to create a new version. Any argument not given will be copied from the previous version of that query.
 
 <dl>
-<dt><code>queryString: string</code> </dt>
-<dd>the SPARQL compliant query as a string value</dd>
+  <dt><code>queryString: string</code> </dt>
+  <dd>the SPARQL compliant query as a string value</dd>
 
-<dt><code>output: string</code></dt>
-<dd>The visualization plugin that is used to display the result set. If none is set it defaults to "table". Other options may include: "response", "geo", "gallery", "markup", etc</dd>
+  <dt><code>output: string</code></dt>
+  <dd>The visualization plugin that is used to display the result set. If none is set it defaults to <code>"table"</code>. Other options may include: <code>"response"</code>, <code>"geo"</code>, <code>"gallery"</code>, <code>"markup"</code>, etc</dd>
 
-
-<dt><code>variables: Variable[]</code></dt>
+  <dt><code>variables: Variable[]</code></dt>
   <dd>
-    A list of objects with the following keys:
+    <p>A list of objects with the following keys:</p>
     <dl>
       <dt>IRI variable</dt>
-      <dd>An object of the form `Variable`
-      (see [`Account.addQuery()`](#accountaddqueryname-string-metadata-object)
-      </dd>
+      <dd>An object of the form <code>Variable</code> (see <a href='#accountaddqueryname-string-metadata-object'><code>Account.addQuery()</code></a>).</dd>
   </dd>
 </dl>
 
-* You can see how many versions exist on a query accessing <code>`Query.getInfo().numOfVersions`</code>
-* You can use a specified version of a query accessing <code>`Query.useVersion(x: number)`</code>
+* You can see how many versions exist on a query accessing `Query.getInfo().numOfVersions`
+* You can use a specified version of a query accessing `Query.useVersion(x: number)`
+
 #### Query.getRunLink()
 
 Returns the URL link to run the query.
 It currently does not support the use of variables.
+
 <!--
 TODO: Document this method.
 #### Query.results(apiVariables?: object, options?: object)
