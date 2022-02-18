@@ -449,7 +449,7 @@ This method returns a user object. See section [`User`](#user) for an overview o
 
 #### Client.isCompatibleWith(minimumVersion: string)
 
-Succeeds iff the currently connected to TriplyDB instance has a version that is identical to or higher than the given minimum version.
+Succeeds if and only if the currently connected to TriplyDB instance has a version that is identical to or higher than the given minimum version.
 
 ##### Arguments
 
@@ -457,7 +457,7 @@ Succeeds iff the currently connected to TriplyDB instance has a version that is 
 
 ##### See also
 
-To inspect the current version of the conntected-to TriplyDB instance, use [`Client.getInfo()`](#clientgetinfo).
+To inspect the current version of the connected-to TriplyDB instance, use [`Client.getInfo()`](#clientgetinfo).
 
 ### Account
 
@@ -498,17 +498,22 @@ The default access level for a newly created dataset is `private`. If you want t
       <dl>
         <dt><code>'private'</code> (default)</dt>
         <dd>The dataset can only be accessed by organization members.</dd>
+
         <dt><code>'internal'</code></dt>
-        <dd>The dataset can only be accessed by users that are logged into the TriplyDB instance.
+        <dd>The dataset can only be accessed by users that are logged into the TriplyDB instance.</dd>
+
         <dt><code>'public'</code></dt>
         <dd>The dataset can be accessed by everybody.</dd>
       </dl>
       <p>When no access level is specified, the most restrictive access level (<code>private</code>) is used.</p>
     </dd>
+
     <dt><code>description</code></dt>
     <dd>The human-readable description of the dataset.  This description can make use of Markdown (see the <a href='/docs/triply-db-getting-started/#markdown-support'>Markdown reference</a>) for details.</dd>
+
     <dt><code>displayName</code></dt>
     <dd>The human-readable name of the dataset.  This name may contain spaces and other characters that are not allowed in the URL-friendly name.</dd>
+
     <dt><code>license</code></dt>
     <dd>
       <p>The license of the dataset.  The following license strings are currently supported:</p>
@@ -522,6 +527,7 @@ The default access level for a newly created dataset is `private`. If you want t
         <li><code>'None'</code> (default)</li>
       </ul>
     </dd>
+
     <dt><code>prefixes</code></dt>
     <dd>The IRI prefix declarations that are configured for the dataset.  This is specified as a dictionary object whose keys are aliases and whose values are IRI prefixes.</dd>
   </dl>
@@ -554,33 +560,31 @@ const dataset = await account.addDataset("iris", {
 
 This method returns a dataset object. See the [Dataset](#dataset) section for an overview of the methods that can be called on such objects.
 
-### Account.addQuery(name: string, metadata: object)
+#### Account.addQuery(name: string, metadata: object)
 
-Adds a new SPARQL query.
+Adds a new SPARQL query to the account.
 
 ##### Arguments
-
 
 **Required:**
 
 <dl>
-<dt><code>name: string</code> </dt>
-<dd>The URL-friendly name of the new query.  The name must only contain alphanumeric characters and hyphens (`[A-Za-z0-9\-]`).</dd>
+  <dt><code>name: string</code> </dt>
+  <dd>The URL-friendly name of the new query.  The name must only contain alphanumeric characters and hyphens (`[A-Za-z0-9\-]`).</dd>
 
-<dt><code>queryString: string</code> </dt>
-<dd>the SPARQL compliant query as a string value</dd>
+  <dt><code>queryString: string</code> </dt>
+  <dd>The SPARQL query string (e.g., `'select * { ?s ?p ?o }'`).</dd>
 
-<dt><code>dataset: Dataset</code> </dt>
-<dd>An instance of class Dataset that the current API token gives access to.</dd>
+  <dt><code>dataset: Dataset</code> </dt>
+  <dd>An instance of class [Dataset](#dataset) that the current API token gives access to.</dd>
 or
-<dt><code>service: Service</code> </dt>
-<dd>An instance of class Service that the current API token gives access to and that you want to be associated with this query. The Service given will be used as a preferred service for this query.</code></dd>
+  <dt><code>service: Service</code> </dt>
+  <dd>An instance of class [Service](#service) that the current API token gives access to and that you want to be associated with this query. The Service given will be used as a preferred service for this query.</code></dd>
 </dl>
 
 **Optional:**
 
 - The `metadata` argument specifies the required Dataset or Service and access level. Other important metadata can be set optionally:
-
 
 <dl>
   <dt><code>accessLevel</code> </dt>
@@ -588,34 +592,24 @@ or
     <dl>
       <dt><code>'private'</code></dt>
       <dd>The query can only be accessed by the <a href='#account'><code>Account</code></a> object for which it is created.</dd>
+
       <dt><code>'internal'</code></dt>
       <dd>The query can only be accessed by people who are logged into the TriplyDB instance (denoted by the value of environment variable <code>TRIPLYDB_URL</code>).
+
       <dt><code>'public'</code></dt>
       <dd>The query can be accessed by everybody.</dd>
     </dl>
   </dd>
-  <!--
-  <dt><code>autoselectService: boolean</code> (optional)</dt>
-  <dd>TODO</dd>
-  -->
-  <dt><code>output: string</code></dt>
-  <dd>The visualization plugin that is used to display the result set. If none is set it defaults to "table". Other options may include: "response", "geo", "gallery", "markup", etc</dd>
 
   <dt><code>description: string</code> </dt>
   <dd>A human-readable description of the query.</dd>
+
   <dt><code>displayName: string</code></dt>
   <dd>The human-readable name of the query.  This name may include spaces and other characters that are not allowed in the URL-friendly <code>name</code>.</dd>
-  <!--
-  <dt><code>generateNewName: boolean</code> ()</dt>
-  <dd>TODO</dd>
-  -->
 
-  <!--
-  <dt><code>preferredService: string</code> </dt>
-  <dd>TODO</dd>
-  -->
+  <dt><code>output: string</code></dt>
+  <dd>The visualization plugin that is used to display the result set. If none is set it defaults to "table". Other options may include: "response", "geo", "gallery", "markup", etc</dd>
 
-  </dd>
   <dt><code>variables: Variable[]</code></dt>
   <dd>
     A list of objects with the following keys:
@@ -630,10 +624,11 @@ Instances of `Variable` are objects that can have the following keys:
 **Required:**
 
 <dl>
-<dt><code>name: string</code> </dt>
-<dd>A SPARQL variable name.  The variable name must appear in the query string.  The question mark (<code>?</code>) or dollar sign (<code>$</code>) is not included.</dd>
-<dt><code>termType: 'Literal'|'NamedNode'</code> </dt>
-<dd>The kind of variable.  This must be either `'Literal'` for literals or `'NamedNode'` for IRIs.</dd>
+  <dt><code>name: string</code> </dt>
+  <dd>A SPARQL variable name.  The variable name must appear in the query string.  The question mark (<code>?</code>) or dollar sign (<code>$</code>) is not included.</dd>
+
+  <dt><code>termType: 'Literal'|'NamedNode'</code> </dt>
+  <dd>The kind of variable.  This must be either `'Literal'` for literals or `'NamedNode'` for IRIs.</dd>
 </dl>
 
 **Optional:**
@@ -641,10 +636,13 @@ Instances of `Variable` are objects that can have the following keys:
 <dl>
   <dt><code>allowedValues: string[]</code></dt>
   <dd>The list of string values that is allowed for this variable.</dd>
+
   <dt><code>datatype: string</code> (if <code>termType='Literal'</code>)</dt>
   <dd>The datatype IRI for the literal variable.</dd>
+
   <dt><code>language: string</code> (if <code>termType='Literal'</code>)</dt>
   <dd>The language tag for the literal variable.  Setting this implies that the dataset IRI is <code>rdf:langString</code>.</dt>
+
   <dt><code>defaultValue: string</code></dt>
   <dd>The default string value for the </dd>
 
@@ -677,29 +675,31 @@ Adds a new data story.
 ##### Required
 
 <dl>
-<dt><code>name: string</code></dt>
-<dd>The URL-friendly name of the data story.  The name must only contain alphanumeric characters and hyphens (`[A-Za-z0-9\-]`).</dd>
+  <dt><code>name: string</code></dt>
+  <dd>The URL-friendly name of the data story.  The name must only contain alphanumeric characters and hyphens (`[A-Za-z0-9\-]`).</dd>
 </dl>
 
 ##### Optional
 
 <dl>
-<dt><code>accessLevel</code> </dt>
-<dd>
-  The access level of the dataset. If none is given the default of <code>'private'</code> is used. The following values are supported:
-  <dl>
-    <dt><code>'private'</code></dt>
-    <dd>The dataset can only be accessed by the <a href='#account'><code>Account</code></a> object for which it is created.</dd>
-    <dt><code>'internal'</code></dt>
-    <dd>The dataset can only be accessed by people who are logged into the TriplyDB instance (denoted by the value of environment variable <code>TRIPLYDB_URL</code>).
-    <dt><code>'public'</code></dt>
-    <dd>The dataset can be accessed by everybody.</dd>
-  </dl>
-</dl>
+  <dt><code>accessLevel</code> </dt>
+  <dd>
+    <p>The access level of the dataset. If none is given the default of <code>'private'</code> is used. The following values are supported:</p>
+    <dl>
+      <dt><code>'private'</code></dt>
+      <dd>The dataset can only be accessed by the <a href='#account'><code>Account</code></a> object for which it is created.</dd>
 
-  <dl>
+      <dt><code>'internal'</code></dt>
+      <dd>The dataset can only be accessed by people who are logged into the TriplyDB instance (denoted by the value of environment variable <code>TRIPLYDB_URL</code>).
+
+      <dt><code>'public'</code></dt>
+      <dd>The dataset can be accessed by everybody.</dd>
+    </dl>
+  </dd>
+
   <dt><code>content: StoryElementUpdate[]</code> </dt>
   <dd>A list if story elements.</dd>
+
   <dt><code>displayName: string</code> </dt>
   <dd>The human-readable name of the data story.  This name may include spaces and other characters that are not allowed in the URL-friendly name.</dd>
 
@@ -712,16 +712,21 @@ A story element is an object with the following keys:
   <dt>caption: string</dt>
   <dd>TODO</dd>
   -->
+
   <!--
   <dt><code>id: string</code></dt>
   <dd></dd>
   -->
+
   <dt>paragraph: string</dt>
   <dd>The Markdown content of a story paragraph.</dd>
+
   <dt><code>query: Query</code></dt>
   <dd>An instance of class <a href="#query"><code>Query</code></a>.</dd>
+
   <dt>queryVersion: number</code>
   <dd>The version that is used of the specified query.</dd>
+
   <dt><code>type</code></dt>
   <dd>Either <code>'paragraph'</code> or <code>'query'</code>.</dd>
 </dl>
@@ -894,26 +899,37 @@ The information object for accounts includes the following keys:
 <dl>
   <dt><code>avatarUrl</code></dt>
   <dd>A URL to the account image.</dd>
+
   <dt><code>accountName</code></dt>
   <dd>The URL-friendly name of the account.</dd>
+
   <dt><code>name</code><dt>
   <dd>The human-readable display name of the account</dd>
+
   <dt><code>description</code></dt>
   <dd>The human-readable description of the account.</dd>
+
   <dt><code>createdAt</code></dt>
   <dd>The date and time on which the account was created.</dd>
+
   <dt><code>datasetCount</code></dt>
   <dd>The number of datasets for the account.</dd>
+
   <dt><code>queryCount</code></dt>
   <dd>The number of queries for the account.</dd>
+
   <dt><code>storyCount</code></dt>
   <dd>The number of stories for the account</dd>
+
   <dt><code>pinnedDatasets</code></dt>
   <dd>An array containing the pinned dataset for the account.</dd>
+
   <dt><code>pinnedItems</code></dt>
   <dd>An array containing the pinned items (datasets, stories and queries) for the account.</dd>
+
   <dt><code>type</code></dt>
   <dd>The account type: either <code>organization</code> or <code>user</code>.</dd>
+
   <dt><code>role</code></dt>
   <dd>The role of the account</dd>
 </dl>
@@ -1027,7 +1043,7 @@ See section [`Query`](#query) for an overview of the methods for query objects.
 
 #### Account.ensureStory(name: string, metadata: object)
 
-Ensures the existence of a story with the given `name` and with the specified `metadata` if given.
+Ensures the existence of a story with the given `name` and with the specified `metadata`, if given.
 
 Calling this method ensures that the necessary changes (if any) are made in the connected-to TriplyDB instance that result in an end state in which a story with the given `name` and `metadata` exists.
 
@@ -1035,22 +1051,24 @@ This method is useful in practice, because it removes the burden on the programm
 
 The changes made as a result of calling this method depend on the current state of the connected-to TriplyDB instance:
 
-- If this account does not yet have a story with the given `name`, then the behavior is identical to calling [`Account.addStory(name: string, metadata?: object)`](#datasetaddstoryname-string-metadata-object) with the same arguments.
+- If this account does not yet have a story with the given `name`, then the behavior is identical to calling [`Account.addStory(name: string, metadata?: object)`](#accountaddstoryname-string-metadata-object) with the same arguments.
 - If this account already has a story with the given `name` and with the same `metadata`, then this method returns that story.
 
 ##### Optional
 
 <dl>
-<dt><code>displayName</code></dt>
-<dd>Accepts a string value to be used as the display name for the story.</dd>
-<dt><code>accessLevel</code></dt>
-<dd>Accepts a string value of either "public" | "private" | "internal".</dd>
-<dt><code>content</code></dt>
-<dd>Accepts a list of StoryElementUpdate objects, defined below.</dd>
+  <dt><code>displayName</code></dt>
+  <dd>Accepts a string value to be used as the display name for the story.</dd>
+
+  <dt><code>accessLevel</code></dt>
+  <dd>Accepts a string value of either "public" | "private" | "internal".</dd>
+
+  <dt><code>content</code></dt>
+  <dd>Accepts a list of StoryElementUpdate objects, defined below.</dd>
 </dl>
 
 **Note:**
-If no `accessLevel` is specified the default used is "private".
+If no `accessLevel` is specified, the default used is "private".
 
 **Examples**
 
@@ -1080,9 +1098,7 @@ Adds and returns the TriplyDB story with the given `name`.
 The optional new story object that can be passed accepts the following properties:
 
 <dl>
-  <dt>
-    <code>displayName</code>
-  </dt>
+  <dt><code>displayName</code></dt>
   <dd>Accepts a string value to be used as a display name for the story</dd>
   <dt>
     <code>accessLevel</code>
@@ -1091,7 +1107,7 @@ The optional new story object that can be passed accepts the following propertie
   </dd>
 </dl>
 
-If **no** `accesslevel` is specified the default value `private` is used.
+If **no** `accesslevel` is specified, the default value `private` is used.
 
 **Examples**:
 
@@ -1183,7 +1199,7 @@ To update the metadata profile with information within the metadata itself, we n
 
 **getObject()**
 Define a constant (`const`) and assign it to `ctx.store.getObjects()`.
-The argumemts for the function will be the subject, predicate, and graph. The function retrieves the **object** so the other 3 parts of a quad need to be specified.
+The arguments for the function will be the subject, predicate, and graph. The function retrieves the **object** so the other 3 parts of a quad need to be specified.
 
 **update()**
 Update the relevant part of the metadata profile with the corresponding piece of information. `.update({})`
@@ -1287,37 +1303,37 @@ The changes made as a result of calling this method depend on the current state 
 
 - If this dataset does not yet have a service with the given `name`, then the behavior is identical to calling [`Dataset.addService(name: string, metadata?: object)`](#datasetaddservicename-string-metadata-object) with the same arguments.
 <!--
-- If this account already has a service with the given `name`, but with different `metadata` specified for it, then the behavior is identical to calling [`Account.getDataset(name: string)`](#datasetgetservicename-string) and [`Dataset.update(metadata: object)`](#serviceupdatemetadata-object). -->
+- If this dataset already has a service with the given `name`, but with different `metadata` specified for it, then the behavior is identical to calling [`Account.getDataset(name: string)`](#datasetgetservicename-string) and [`Dataset.update(metadata: object)`](#serviceupdatemetadata-object). -->
 - If this dataset already has a service with the given `name` and with the same `metadata`, then this method returns that service.
 
-##### Requiered
+##### Required
 
 <dl>
-  <dt>
-    <code>name</code>
-  </dt>
-  <dd>Accpets a string value which is the name of the service to ensure. </dd>
+  <dt><code>name</code></dt>
+  <dd>Accepts a string value which is the name of the service to ensure.</dd>
 </dl>
 
 ##### Optional: metadata
 
 ```ts
 serviceMetadata = {
-  type: "sparql" | "sparql-jena" | "elasticsearch | "virtuoso" | "jena" | "elasticSearch";
+  type: "sparql" | "elasticsearch | "virtuoso" | "jena" ;
   config?: {
     reasoner?: "OWL" | "RDFS" | "None";
-    };
+  };
 };
 ```
 
 <dl>
   <dt><code>type</code></dt>
-  <dd>Accpets a string value of one of the following: "sparql", "sparql-jena", "elasticsearch, "virtuoso", "jena", "elasticSearch". </dd>
-<dt><code>config</code></dt>
-  <dd>Config is an optional property. It accepts a object with a <code>reasoner</code> property.
+  <dd>Accepts a string value of one of the following: <code>"sparql"</code>, <code>"elasticsearch"</code>, <code>"virtuoso"<code>, <code>"jena"</code>.</dd>
+
+  <dt><code>config</code></dt>
+  <dd>
+    <p>Config is an optional property. It accepts an object with a <code>reasoner</code> property.</p>
     <dl>
       <dt><code>reasoner</code></dt>
-      <dd>The reasoner property accepts a string value of either "OWL", "RDFS", "None".</dd>
+      <dd>The reasoner property accepts a string value of either <code>"OWL"</code>, <code>"RDFS"</code>, or <code>"None"</code>.</dd>
     </dl>
   </dd>
 </dl>
@@ -1349,8 +1365,8 @@ Creates a new service for this dataset.
 ##### Required
 
 <dl>
-<dt><code>name</code></dt>
-<dd>The URL-friendly name of the service.  The name must only contain alphanumeric characters and hyphens (`[A-Za-z0-9\-]`).</dd>
+  <dt><code>name</code></dt>
+  <dd>The URL-friendly name of the service.  The name must only contain alphanumeric characters and hyphens (`[A-Za-z0-9\-]`).</dd>
 </dl>
 
 ##### Optional
@@ -1360,10 +1376,12 @@ The service type is specified with the `type` parameter. If no type is given, a 
 <dl>
   <dt><code>'virtuoso'</code></dt>
   <dd>Starts a SPARQL service. A SPARQL 1.1 compliant service is very scalable and performance, but without advanced reasoning capabilities.</dd>
+
   <dt><code>'jena'</code></dt>
   <dd>Starts a SPARQL JENA service. A SPARQL 1.1 compliant service that is less scalable and less performant, but allows reasoning (RDFS or OWL) to be enabled.</dd>
-  <dt><code>'elasticSearch'</code></dt>
-  <dd>Starts an Elastic Search service. A text search engine that can be used to power a search bar or similar textual search API.</dd>
+
+  <dt><code>'elasticsearch'</code></dt>
+  <dd>Starts an <a href='https://www.elastic.co/guide/en/elasticsearch/reference/current/index.html'>Elasticsearch</a> service. A text search engine that can be used to power a search bar or similar textual search API.</dd>
 </dl>
 
 The `name` argument can be used to distinguish between different endpoints over the same dataset that are used for different tasks.
@@ -1377,7 +1395,7 @@ const account = await client.getAccount();
 const dataset = await account.getDataset("my-dataset");
 const acceptance = await dataset.addService("acceptance");
 const production = await dataset.addService("production", {
-  type: "elasticSearch",
+  type: "elasticsearch",
 });
 const reasoning = await dataset.addService("reasoning", {
   type: "jena",
@@ -1400,8 +1418,10 @@ The resources are specified by the [rest parameter](https://developer.mozilla.or
 <dl>
   <dt><code>'assets'</code></dt>
   <dd>Removes all assets in the dataset.</dd>
+
   <dt><code>'graphs'</code></dt>
   <dd>Removes all graphs in the dataset.</dd>
+
   <dt><code>'services'</code></dt>
   <dd>Removes all services in the dataset.</dd>
 </dl>
@@ -1537,7 +1557,7 @@ Graph names are IRIs.
 
 <!--
 TODO: What is a graph?  Is it a string or an object?  What can one do with a graph?
-      Why is the graph differen from the `name` argument?
+      Why is the graph different from the `name` argument?
 -->
 
 ##### Examples
@@ -1604,7 +1624,7 @@ for await (const prefix of dataset.getPrefixes()) {
 
 #### Dataset.getService(name: string)
 
-Returns the serivce with the given `name` for this dataset.
+Returns the service with the given `name` for this dataset.
 
 ##### Examples
 
@@ -1704,22 +1724,24 @@ Changes in the `from` dataset are not automatically reflected in this dataset. I
 
 ##### Required
 
-- Argument `from` is the dataset object from which one or more graph are imported over to this dataset.
+- Argument `from` is the dataset object from which one or more graphs are imported over to this dataset.
 
 ##### Optional
 
 The optional properties accepted as arguments for <code>importFromDataset</code>
 
 <dl>
-<dt>graphMap</dt>
-<dd>- Argument `<code>graphMap</code>` optionally is an object with keys and values that implements a mapping from existing graph names (keys) to newly created graph names (values). Each keys must be an existing graph name in the `from` dataset. Each value must is the corresponding graph name in this dataset.</dd>
+  <dt>graphMap</dt>
+  <dd>Argument `<code>graphMap</code>` optionally is an object with keys and values that implements a mapping from existing graph names (keys) to newly created graph names (values). Each key must be an existing graph name in the `from` dataset. Each value must is the corresponding graph name in this dataset.</dd>
 <!-- <https://issues.triply.cc/issues/5783>
 If this argument is not specified, then graph names in the `from` dataset are identical to graph names in this dataset.
 -->
-<dt>graphNames</dt>
-<dd>- Argument `<code>graphNames</code>` optionally is an array of graph names. These names can be one of three types: 'string', instances of a 'Graph' class, or instances of 'NamedNodes'.</dd>
-<dt>overwrite</dt>
-<dd>- Accpets a boolean value. An optional property that determines whether existing graph names in this dataset are allowed to be silently overwritten. If this argument is not specified, then `false` is used as the default value.</dd>
+
+  <dt>graphNames</dt>
+  <dd>Argument `<code>graphNames</code>` optionally is an array of graph names. These names can be one of three types: 'string', instances of a 'Graph' class, or instances of 'NamedNodes'.</dd>
+
+  <dt>overwrite</dt>
+  <dd>Accepts a Boolean value. An optional property that determines whether existing graph names in this dataset are allowed to be silently overwritten. If this argument is not specified, then `false` is used as the default value.</dd>
 </dl>
 
 ##### Examples
@@ -1771,12 +1793,14 @@ The files must contain RDF data.
 **Optional: defaultsConfig: object**
 
 <dl>
-<dt><code>defaultGraphName</code></dt>
-<dd>Accepts a <code>string</code> value that is set as the default graph name for each imported file</dd>
-<dt><code>baseIRI</code></dt>
-<dd>Accepts a <code>string</code> value that is set as the default baseIRI for each imported file</dd>
-<dt><code>overwriteAll</code></dt>
-<dd>Accepts a <code>boolean</code> value that overwrites previously added graph names or baseIRIs (regardless of whether they came from a URL or a file)</dd>
+  <dt><code>defaultGraphName</code></dt>
+  <dd>Accepts a <code>string</code> value that is set as the default graph name for each imported file</dd>
+
+  <dt><code>baseIRI</code></dt>
+  <dd>Accepts a <code>string</code> value that is set as the default baseIRI for each imported file</dd>
+
+  <dt><code>overwriteAll</code></dt>
+  <dd>Accepts a <code>boolean</code> value that overwrites previously added graph names or baseIRIs (regardless of whether they came from a URL or a file)</dd>
 </dl>
 
 ##### Supported files
@@ -1821,12 +1845,14 @@ The URLs must provide access to RDF data.
 **Optional: defaultsConfig: object**
 
 <dl>
-<dt><code>defaultGraphName</code></dt>
-<dd>Accepts a <code>string</code> value that is set as the default graph name for each imported URL</dd>
-<dt><code>baseIRI</code></dt>
-<dd>Accepts a <code>string</code> value that is set as the default baseIRI for each imported URL</dd>
-<dt><code>overwriteAll</code></dt>
-<dd>Accepts a <code>boolean</code> value that overwrites previously added graph names or baseIRIs (regardless of whether they came from a URL or a file)</dd>
+  <dt><code>defaultGraphName</code></dt>
+  <dd>Accepts a <code>string</code> value that is set as the default graph name for each imported URL</dd>
+
+  <dt><code>baseIRI</code></dt>
+  <dd>Accepts a <code>string</code> value that is set as the default baseIRI for each imported URL</dd>
+
+  <dt><code>overwriteAll</code></dt>
+  <dd>Accepts a <code>boolean</code> value that overwrites previously added graph names or baseIRIs (regardless of whether they came from a URL or a file)</dd>
 </dl>
 
 <!--
@@ -1916,12 +1942,14 @@ The `metadata` argument takes a dictionary object with the following optional ke
 <dl>
   <dt><code>accessLevel</code> </dt>
   <dd>
-    The access level of the dataset. The following values are supported:
+    <p>The access level of the dataset. The following values are supported:</p>
     <dl>
       <dt><code>'private'</code></dt>
       <dd>The dataset can only be accessed by the <a href='#account'><code>Account</code></a> object for which it is created.</dd>
+
       <dt><code>'internal'</code></dt>
       <dd>The dataset can only be accessed by people who are logged into the TriplyDB instance (denoted by the value of environment variable <code>TRIPLYDB_URL</code>).
+
       <dt><code>'public'</code></dt>
       <dd>The dataset can be accessed by everybody.</dd>
     </dl>
@@ -1933,9 +1961,10 @@ The `metadata` argument takes a dictionary object with the following optional ke
 <dl>
   <dt><code>description</code> </dt>
   <dd>The description of the dataset.  This description can make use of Markdown layout (see the <a href='/docs/triply-db-getting-started/#markdown-support'>Markdown reference</a>) for details.</dd>
+
   <dt><code>displayName</code> </dt>
   <dd>The human-readable name of the dataset.  This name may contain spaces and other characters that are not allowed in the URL-friendly name.</dd>
-  <dd></dd>
+
   <dt><code>license</code> </dt>
   <dd>
     The license of the dataset. The following license strings are currently supported:
@@ -2055,11 +2084,12 @@ Adds a member to the given `Organization`, with the given `role` of either membe
 
 - The `user` argument has to be a user object of the user which should be added to the organization.
 
-- The `role` argument can be either `'member'` or `'owner'`.  If this argument is not specified, then `'member'` used as the default.
+- The `role` argument can be either `'member'` or `'owner'`.  If this argument is not specified, then `'member'` is used as the default.
 
 <dl>
   <dt><code>'member'</code></dt>
   <dd>A regular member that is allowed to read and write the datasets that are published under the organization.</dd>
+
   <dt><code>'owner'</code></dt>
   <dd>An owner of the organization.  Owners have all the rights of regular users, plus the ability to add/remove users to/from the organization, the ability to change the roles of existing users, and the ability to delete the organization.</dd>
 </dl>
@@ -2138,10 +2168,13 @@ A membership contains the following components:
 <dl>
   <dt><code>role</code><dt>
   <dd>The role of the membership (<code>OrgRole</code>): either <code>'owner'</code> for owners of the organization, or <code>'member'</code> for regular members.  The difference between owners and regular members is that owners can perform user management for the organization (add/remove/change memberships).</dd>
+
   <dt><code>user</code></dt>
   <dd>An instance of class <a href="#user"><code>User</code></a>.</dd>
+
   <dt><code>createdAt</code></dt>
   <dd>A date/time string.</dd>
+
   <dt>updatedAt</dt>
   <dd>A date/time string.</dd>
 </dl>
@@ -2228,32 +2261,44 @@ The returned dictionary object includes the following keys:
     <dl>
       <dt><code>'private'</code> (default)</dt>
       <dd>The dataset can only be accessed by organization members.</dd>
+
       <dt><code>'internal'</code></dt>
       <dd>The dataset can only be accessed by users that are logged into the TriplyDB instance.
       <dt><code>'public'</code></dt>
       <dd>The dataset can be accessed by everybody.</dd>
     </dl>
   </dd>
+
   <dt><code>autoselectService</code><dt>
   <dd>Whether the SPARQL service is automatically chosen (<code>true</code>), or whether a specific SPARQL service is configured (<code>false</code>).</dd>
+
   <dt><code>createdAt</code></dt>
   <dd>The date/time at which the query was created.</dd>
+
   <dt><code>dataset</code></dt>
   <dd>A dictionary object representing the dataset against which the query is evaluated.</dd>
+
   <dt><code>description</code></dt>
   <dd>The human-readable description of the query.  This typically explains what the query does in natural language.</dd>
+
   <dt><code>displayName</code></dt>
   <dd>The human-readable name of the query.  This name may include spaces and other characters that are not allowed in the URL-friendly name.</dd>
+
   <dt><code>name</code></dt>
   <dd>The URL-friendly name of the query that is used in URL paths.  This name can only include ASCII letters and hyphens.</dd>
+
   <dt><code>numberOfVersions</code></dt>
   <dd>The number of currently stored versions of this query.</dd>
+
   <dt><code>owner</code><dt>
   <dd>A dictionary object representing the account (organization or user) to which the query belongs.</dd>
+
   <dt>🚧<code>link</code></dt>
   <dd>Stores part of the URL to run the query. Please use <code>Query.getRunLink()</code> to obtain the full URL to run the query.</dd>
+
   <dt><code>service</code></dt>
   <dd>The location of the SPARQL endpoint that is used to run the query.</dd>
+
   <dt><code>updatedAt</code></dt>
   <dd>The date/time at which the query was last modified.</dd>
 </dl>
@@ -2262,27 +2307,34 @@ The returned dictionary object includes the following keys:
 
 Returns the query string of the current version of this query.
 
-Optionally, arguments can be spefified for the API variables to this query.
+Optionally, arguments can be specified for the API variables to this query.
+
+##### Examples
+
+The following code stores the SPARQL query string for the `query` object:
+
+```
+const queryString = await query.getString()
+```
 
 #### Query.addVersion(metadata: object)
 
 Adds a new version to the query used. It requires similar options to that of <code>`Query.addQuery`</code>.
 
-##### Arguements
+##### Arguments
 
 At least one of the following arguments is required to create a new version. Any argument not given will be copied from the previous version of that query.
 
 <dl>
-<dt><code>queryString: string</code> </dt>
-<dd>the SPARQL compliant query as a string value</dd>
+  <dt><code>queryString: string</code> </dt>
+  <dd>the SPARQL compliant query as a string value</dd>
 
-<dt><code>output: string</code></dt>
-<dd>The visualization plugin that is used to display the result set. If none is set it defaults to "table". Other options may include: "response", "geo", "gallery", "markup", etc</dd>
+  <dt><code>output: string</code></dt>
+  <dd>The visualization plugin that is used to display the result set. If none is set it defaults to <code>"table"</code>. Other options may include: <code>"response"</code>, <code>"geo"</code>, <code>"gallery"</code>, <code>"markup"</code>, etc</dd>
 
-
-<dt><code>variables: Variable[]</code></dt>
+  <dt><code>variables: Variable[]</code></dt>
   <dd>
-    A list of objects with the following keys:
+    <p>A list of objects with the following keys:</p>
     <dl>
       <dt>IRI variable</dt>
       <dd>An object of the form `Variable`
@@ -2291,12 +2343,14 @@ At least one of the following arguments is required to create a new version. Any
   </dd>
 </dl>
 
-* You can see how many versions exist on a query accessing <code>`Query.getInfo().numOfVersions`</code>
-* You can use a specified version of a query accessing <code>`Query.useVersion(x: number)`</code>
+* You can see how many versions exist on a query accessing `Query.getInfo().numOfVersions`
+* You can use a specified version of a query accessing `Query.useVersion(x: number)`
+
 #### Query.getRunLink()
 
 Returns the URL link to run the query.
 It currently does not support the use of variables.
+
 <!--
 TODO: Document this method.
 #### Query.results(apiVariables?: object, options?: object)
@@ -2326,12 +2380,16 @@ A service always has one of the following statuses:
 <dl>
   <dt>Removing</dt>
   <dd>The service is being removed.</dd>
+
   <dt>Running</dt>
   <dd>The service is running normally.</dd>
+
   <dt>Starting</dt>
   <dd>The service is starting up.</dd>
+
   <dt>Stopped</dt>
-  <dd>The services has been stopped in the past.  It cannot be used at the moment, but it can be enable again if needed.</dd>
+  <dd>The services was stopped in the past.  It cannot be used at the moment, but it can be enable again if needed.</dd>
+
   <dt>Stopping</dt>
   <dd>The service is currently being stopped.</dd>
 </dl>
@@ -2416,12 +2474,12 @@ Because services must be explicitly synchronized in TriplyDB, it is possible to 
 
 ##### Examples
 
-The following snippet checks whether a specific service is synchronized:
+The following code checks whether a specific service is synchronized:
 
 ```ts
 const account = await client.getAccount();
 const dataset = await account.getDataset("my-dataset");
-const service = await dataset.addService("my-service");
+const service = await dataset.ensureService("my-service", {type: "sparql"});
 console.log(await service.isUpToDate());
 ```
 
@@ -2565,8 +2623,10 @@ This method requires an API token with write access for this user.
 <dl>
   <dt><code>description</code></dt>
   <dd>The description of the organization.  This description can make use of Markdown layout (see the <a href="/docs/triply-db-getting-started/#markdown-support">Markdown reference</a>) for details.</dd>
+
   <dt><code>email</code></dt>
   <dd>The email address at which the organization can be reached.</dd>
+
   <dt><code>name</code></dt>
   <dd>The human-readable name of the organization.  This name may contain spaces and other non-alphanumeric characters.</dd>
 </dl>
@@ -2610,26 +2670,37 @@ The information object for users includes the following keys:
 <dl>
   <dt><code>avatarUrl</code></dt>
   <dd>A URL to the user image.</dd>
+
   <dt><code>accountName</code></dt>
   <dd>The URL-friendly name of the user.</dd>
+
   <dt><code>name</code><dt>
   <dd>The human-readable display name of the user</dd>
+
   <dt><code>description</code></dt>
   <dd>The human-readable description of the user.</dd>
+
   <dt><code>createdAt</code></dt>
   <dd>The date and time on which the user was created.</dd>
+
   <dt><code>datasetCount</code></dt>
   <dd>The number of datasets for the user.</dd>
+
   <dt><code>queryCount</code></dt>
   <dd>The number of queries for the user.</dd>
+
   <dt><code>storyCount</code></dt>
   <dd>The number of stories for the user</dd>
+
   <dt><code>pinnedDatasets</code></dt>
   <dd>An array containing the pinned dataset for the user.</dd>
+
   <dt><code>pinnedItems</code></dt>
   <dd>An array containing the pinned items (datasets, stories and queries) for the user.</dd>
+
   <dt><code>role</code></dt>
   <dd>The role of the user. 🚨 POSSIBLE VALUES</dd>
+
   <dt>🚧 <code>organizations</code></dt>
   <dd>An array of the first 🚨 organization of which the user is a member.</dd>
 </dl>
