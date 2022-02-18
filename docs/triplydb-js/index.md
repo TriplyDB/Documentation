@@ -1289,21 +1289,23 @@ The changes made as a result of calling this method depend on the current state 
 
 ```ts
 serviceMetadata = {
-  type: "sparql" | "sparql-jena" | "elasticsearch | "virtuoso" | "jena" | "elasticSearch";
+  type: "sparql" | "elasticsearch | "virtuoso" | "jena" ;
   config?: {
     reasoner?: "OWL" | "RDFS" | "None";
-    };
+  };
 };
 ```
 
 <dl>
   <dt><code>type</code></dt>
-  <dd>Accpets a string value of one of the following: "sparql", "sparql-jena", "elasticsearch, "virtuoso", "jena", "elasticSearch". </dd>
-<dt><code>config</code></dt>
-  <dd>Config is an optional property. It accepts a object with a <code>reasoner</code> property.
+  <dd>Accepts a string value of one of the following: <code>"sparql"</code>, <code>"elasticsearch"</code>, <code>"virtuoso"<code>, <code>"jena"</code>.</dd>
+
+  <dt><code>config</code></dt>
+  <dd>
+    <p>Config is an optional property. It accepts an object with a <code>reasoner</code> property.</p>
     <dl>
       <dt><code>reasoner</code></dt>
-      <dd>The reasoner property accepts a string value of either "OWL", "RDFS", "None".</dd>
+      <dd>The reasoner property accepts a string value of either <code>"OWL"</code>, <code>"RDFS"</code>, or <code>"None"</code>.</dd>
     </dl>
   </dd>
 </dl>
@@ -1346,10 +1348,12 @@ The service type is specified with the `type` parameter. If no type is given, a 
 <dl>
   <dt><code>'virtuoso'</code></dt>
   <dd>Starts a SPARQL service. A SPARQL 1.1 compliant service is very scalable and performance, but without advanced reasoning capabilities.</dd>
+
   <dt><code>'jena'</code></dt>
   <dd>Starts a SPARQL JENA service. A SPARQL 1.1 compliant service that is less scalable and less performant, but allows reasoning (RDFS or OWL) to be enabled.</dd>
-  <dt><code>'elasticSearch'</code></dt>
-  <dd>Starts an Elastic Search service. A text search engine that can be used to power a search bar or similar textual search API.</dd>
+
+  <dt><code>'elasticsearch'</code></dt>
+  <dd>Starts an <a href='https://www.elastic.co/guide/en/elasticsearch/reference/current/index.html'>Elasticsearch</a> service. A text search engine that can be used to power a search bar or similar textual search API.</dd>
 </dl>
 
 The `name` argument can be used to distinguish between different endpoints over the same dataset that are used for different tasks.
@@ -1363,7 +1367,7 @@ const account = await client.getAccount();
 const dataset = await account.getDataset("my-dataset");
 const acceptance = await dataset.addService("acceptance");
 const production = await dataset.addService("production", {
-  type: "elasticSearch",
+  type: "elasticsearch",
 });
 const reasoning = await dataset.addService("reasoning", {
   type: "jena",
