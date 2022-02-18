@@ -2471,13 +2471,19 @@ Because services must be explicitly synchronized in TriplyDB, it is possible to 
 
 ##### Examples
 
-The following snippet checks whether a specific service is synchronized:
+The following code checks whether a specific service is synchronized:
 
 ```ts
 const account = await client.getAccount();
 const dataset = await account.getDataset("my-dataset");
-const service = await dataset.addService("my-service");
+const service = await dataset.ensureService("my-service", {type: "sparql"});
 console.log(await service.isUpToDate());
+```
+
+The following code synchronizes all and only services that are outdated.  Notice that this approach updates services *in parallel*:
+
+```ts
+await Promise.all(dataset.getServices().map(service => !service.isUpToDate() ? service.update() : "do nothing"))
 ```
 
 <!--TODO: Document this method.
