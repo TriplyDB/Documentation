@@ -89,6 +89,7 @@ The following RDF serialization formats are currently supported:
 | RDF/XML                  | `.rdf`, `.owl`, `.owx` |
 | TriG                     | `.trig`                |
 | Turtle                   | `.ttl`, `.n3`          |
+| JSON-LD                  | `.jsonld`, `.json`     |
 
 Up to 1,000 separate files can be uploaded in one go. It is also
 possible to upload compressed files and archives. When the number of
