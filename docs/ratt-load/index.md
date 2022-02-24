@@ -74,6 +74,19 @@ app.use(
   mw.validateShacl(app.sources.model, {terminateOn: "Never"}
 )
 ```
+
+### Log conditions
+ The `validateShacl` function can optionally be given the `log` option.  This option determines when and which violations should be printed. The values are the same as in 'terminateOn' option. Note that `log` is about printing on your terminal and not about the violation report.
+
+ ```ts
+ app.use(
+   // Create all linked data statements.
+   …
+   // Now that all the data is created, validate it using a model.
+   mw.validateShacl(app.sources.model, {log: "Never"}
+ )
+ ```
+
 ## Upload prefixes
 
 After loading the graphs, we can also upload other important elements in Linked data, such as the prefixes. This can be done by combining RATT functionality (```app.after```, ```app.prefix```) with TriplyDbjs functionality (```app.triplyDb.getOrganization```, ```app.triplyDb.getUser()``` etc.).
@@ -106,7 +119,7 @@ const app = new Ratt({
 }
 ```
 
-3. After finishing with the main body of the ETL and closing ```app.use()```, you can use the below snippet to upload the prefixes under a specific organization, inside ```app.after```. 
+3. After finishing with the main body of the ETL and closing ```app.use()```, you can use the below snippet to upload the prefixes under a specific organization, inside ```app.after```.
 ```ts
 app.after(
       async () => {
