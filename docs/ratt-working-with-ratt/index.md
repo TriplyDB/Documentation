@@ -226,7 +226,7 @@ Still, there may be cases in which a local file destination is useful, for examp
 ```ts
 Ratt.Destination.file("my-file.trig"),
 ```
-##### Static and Dynamic destinations
+#### Static and Dynamic destinations
 Destinations can be defined as static objects meaning that you can define destination beforehand. But it might be the case that you want to have multiple destinations for different records. In this case, you would need a dynamic destination, which should change based on certain information inside your source data.
 
 You can set static and dynamic destinations, like below:
