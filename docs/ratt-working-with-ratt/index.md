@@ -261,8 +261,9 @@ RATT supports copying sources directly to destination locations. This function i
 
 The following example shows the `copy` function:
 
+
 ```ts
-  Ratt.Source.file(`${source_location}`).copy(app, Ratt.Destination.TriplyDb.rdf(`${destination_name}`))
+  app.copySource(Ratt.Source.file(`${source_location}`), Ratt.Destination.TriplyDb.rdf(`${destination_name}`))
 ```
 
 The function destination expects that source data is linked data. Copying a source that is not linked data can result in errors.
