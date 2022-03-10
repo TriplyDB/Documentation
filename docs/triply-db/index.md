@@ -366,21 +366,37 @@ Updating the saved query can be done by clicking a query in the Saved Queries ta
 
 ## Using a saved query
 
-To use a saved query, for example in Data Stories, you can copy the link that is
+### Sharing a saved query
+
+To share a saved query, for example in Data Stories, you can copy the link that is
 used when you open the query in TriplyDB. Let's say you have a query called
 `Timelined-Cars-BETA` in the dataset `core` under the account `dbpedia` and you
 want to use version 6. Than the following link would be used
 
 ```url
-https://triplydb.com/dbpedia/core/queries/Timelined-Cars-BETA/6
+https://triplydb.com/DBpedia-association/-/queries/timeline-cars/8
 ```
 
 If you want to always use the **latest** query, you can simply omit the version
 number like so
 
 ```url
-https://triplydb.com/dbpedia/core/queries/Timelined-Cars-BETA
+https://triplydb.com/DBpedia-association/-/queries/timeline-cars
 ```
+
+### Using a saved query as REST-API (Advanced)
+
+Each TriplyDB instance has a fully RESTful API. The TriplyDB RESTful API is extended for saved SPARQL queries. A saved query can be used as a RESTful API to retrieve data from your linked dataset. The URL next to the keywork `API` is the RESTful API URL and can be used with RESTful API libraries. You can copy the RESTful API by pressing the copy button just behind the URL. Pressing the copy button from the above query will result in the following run url:
+
+```url
+https://api.triplydb.com/queries/DBpedia-association/timeline-cars/run
+```
+When you copy this URL in your browser or fetch the URL with curl you will get an get request to a RESTful API and get a JSON representation of the data in your browser or command window. 
+
+### Metadata links
+
+In the metadata overview there are two links. The first links points to the dataset the query is executed over and when clicking brings you to the dataset homepage.
+The second link points to the service the saved query uses. The second link brings you to the services page of the dataset, and from there on you can go to the SPARQL service.
 
 # Data stories
 A TriplyDB data story is a way of communicating information about your linked data along with explanatory text while also being able to integrate query results.
