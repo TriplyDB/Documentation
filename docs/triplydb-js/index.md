@@ -570,16 +570,16 @@ Adds a new SPARQL query to the account.
 
 <dl>
   <dt><code>name: string</code> </dt>
-  <dd>The URL-friendly name of the new query.  The name must only contain alphanumeric characters and hyphens (`[A-Za-z0-9\-]`).</dd>
+  <dd>The URL-friendly name of the new query.  The name must only contain alphanumeric characters and hyphens (<code>[A-Za-z0-9\-]</code>).</dd>
 
   <dt><code>queryString: string</code> </dt>
-  <dd>The SPARQL query string (e.g., `'select * { ?s ?p ?o }'`).</dd>
+  <dd>The SPARQL query string (e.g., <code>"select * { ?s ?p ?o }"</code>).</dd>
 
   <dt><code>dataset: Dataset</code> </dt>
-  <dd>An instance of class [Dataset](#dataset) that the current API token gives access to.</dd>
+  <dd>An instance of class <a href='#dataset'><code>Dataset</code></a> that the current API token gives access to.</dd>
 or
   <dt><code>service: Service</code> </dt>
-  <dd>An instance of class [Service](#service) that the current API token gives access to and that you want to be associated with this query. The Service given will be used as a preferred service for this query.</code></dd>
+  <dd>An instance of class <a href='#service'><code>Service</code></a> that the current API token gives access to and that you want to be associated with this query. The Service given will be used as a preferred service for this query.</code></dd>
 </dl>
 
 **Optional:**
@@ -588,7 +588,7 @@ The `metadata` argument specifies the required Dataset or Service and access lev
 
 <dl>
   <dt><code>accessLevel</code> </dt>
-  <dd> The access level of the query. If none is set it defaults to "private". The following values are supported:
+  <dd> The access level of the query. If none is set it defaults to <code>"private"</code>. The following values are supported:
     <dl>
       <dt><code>'private'</code></dt>
       <dd>The query can only be accessed by the <a href='#account'><code>Account</code></a> object for which it is created.</dd>
@@ -606,14 +606,14 @@ The `metadata` argument specifies the required Dataset or Service and access lev
   <dd>The human-readable name of the query.  This name may include spaces and other characters that are not allowed in the URL-friendly <code>name</code>.</dd>
 
   <dt><code>output: string</code></dt>
-  <dd>The visualization plugin that is used to display the result set. If none is set it defaults to "table". Other options may include: "response", "geo", "gallery", "markup", etc</dd>
+  <dd>The visualization plugin that is used to display the result set.  If none is set it defaults to <code>"table"</code>.  Other options may include: <code>"response"</code>, <code>"geo"</code>, <code>"gallery"</code>, <code>"markup"</code>, etc</dd>
 
   <dt><code>variables: Variable[]</code></dt>
   <dd>
     A list of objects with the following keys:
     <dl>
       <dt>IRI variable</dt>
-      <dd>An object of the form `Variable` (see below)</dd>
+      <dd>An object of the form <code>Variable</code> (see below)</dd>
   </dd>
 </dl>
 
@@ -625,8 +625,8 @@ Instances of `Variable` are objects that can have the following keys:
   <dt><code>name: string</code> </dt>
   <dd>A SPARQL variable name.  The variable name must appear in the query string.  The question mark (<code>?</code>) or dollar sign (<code>$</code>) is not included.</dd>
 
-  <dt><code>termType: 'Literal'|'NamedNode'</code> </dt>
-  <dd>The kind of variable.  This must be either `'Literal'` for literals or `'NamedNode'` for IRIs.</dd>
+  <dt><code>termType: "Literal"|"NamedNode"</code> </dt>
+  <dd>The kind of variable.  This must be either <code>"Literal"</code> for literals or <code>"NamedNode"</code> for IRIs.</dd>
 </dl>
 
 **Optional:**
@@ -674,7 +674,7 @@ Adds a new data story.
 
 <dl>
   <dt><code>name: string</code></dt>
-  <dd>The URL-friendly name of the data story.  The name must only contain alphanumeric characters and hyphens (`[A-Za-z0-9\-]`).</dd>
+  <dd>The URL-friendly name of the data story.  The name must only contain alphanumeric characters and hyphens (<code>[A-Za-z0-9\-]</code>).</dd>
 </dl>
 
 ##### Optional
@@ -1059,7 +1059,7 @@ The changes made as a result of calling this method depend on the current state 
   <dd>Accepts a string value to be used as the display name for the story.</dd>
 
   <dt><code>accessLevel</code></dt>
-  <dd>Accepts a string value of either "public" | "private" | "internal".</dd>
+  <dd>Accepts either of the following values: <code>"private"</code> (default), <code>"internal"</code>, <code>"public"<code>.</dd>
 
   <dt><code>content</code></dt>
   <dd>Accepts a list of StoryElementUpdate objects, defined below.</dd>
@@ -1098,11 +1098,9 @@ The optional new story object that can be passed accepts the following propertie
 <dl>
   <dt><code>displayName</code></dt>
   <dd>Accepts a string value to be used as a display name for the story</dd>
-  <dt>
-    <code>accessLevel</code>
-  </dt>
-  <dd>Sets the access level for the story. Accepts a string value of either <code>"public"</code>, <code>"private"</code>, <code>"internal"</code>
-  </dd>
+
+  <dt><code>accessLevel</code></dt>
+  <dd>Sets the access level for the story.  Accepts either of the following: <code>"private"</code> (default), <code>"internal"</code>, <code>"public"</code>.</dd>
 </dl>
 
 If **no** `accesslevel` is specified, the default value `private` is used.
