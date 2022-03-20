@@ -217,18 +217,19 @@ classDiagram
   Account --> Query: getQueries
   Account --> Story: getStory
   Account --> Story: getStories
+
   class Asset {
     getInfo()
   }
+
   class Client {
     getInfo()
   }
   Client --> Account: getAccount
   Client --> Account: getAccounts
   Client --> Organization: getOrganization
-  Client --> Organization: getOrganizations
   Client --> User: getUser
-  Client --> User: getUsers
+
   class Dataset {
     getInfo()
   }
@@ -236,20 +237,25 @@ classDiagram
   Dataset --> Asset: getAssets
   Dataset --> Service: getService
   Dataset --> Service: getServices
+
   class Organization {
   }
   Account <|-- Organization
   Organization --> User: getMember
   Organization --> User: getMembers
+
   class Query {
     getInfo()
   }
+
   class Story {
     getInfo()
   }
+
   class User {
   }
   Account <|-- User
+  User --> Organization: getOrganizations
 ```
 
 ### Client
