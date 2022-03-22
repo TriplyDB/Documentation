@@ -7,7 +7,7 @@ path: "/docs/triply-db-getting-started"
 
 TriplyDB allows you to store, publish, and use Linked Data Knowledge
 Graphs. TriplyDB makes it easy to upload Linked Data and expose it
-through various APIs (SPARQL, ElasticSeach, LDF, REST). [Read
+through various APIs (SPARQL, Elasticsearch, LDF, REST). [Read
 More](/triplydb)
 
 # Uploading Data
@@ -204,7 +204,7 @@ clicking on the “Services” icon in the left-hand sidebar.
 
 TriplyDB instances can be configured with different types of services.
 The below screenshot shows the “Create service” page for a TriplyDB
-instance that allows SPARQL, Jena SPARQL, and ElasticSearch services
+instance that allows SPARQL, Jena SPARQL, and Elasticsearch services
 to be created.
 
 ![The “Create service” page](create-service.png) Notice that three different types of services can be created.
@@ -310,12 +310,12 @@ and then choose where the SPARQL query should be moved to.
 
 After the destination is set you would be redirected to the SPARQL query new page. The SPARQL query could be transferred from an account to an organization and vice versa.
 
-## Text Search
+## Elasticsearch
 
-When a dataset has a running ElasticSearch service, textual searches
-can be performed over the entire dataset. Text Search works like a
+When a dataset has a running Elasticsearch service, textual searches
+can be performed over the entire dataset. Text search with Elasticsearch works like a
 search engine and returns any node that contains your search term, or
-contains the search term in any of it's properties.
+contains the search term in any of its properties. It is also possible to write a custom query using the Elasticsearch [Query DSL (Domain Specific Language)](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl.html).
 
 ## Insights
 
