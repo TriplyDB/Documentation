@@ -51,11 +51,11 @@ app.use(
 ```
 
 
-### Comma Separated Values (CSV) files {#csv}
+### Comma Separated Values (CSV) files {#csv} and Tab Separated Values (TSV) {#tsv}
 
-Comma Separated Values (file name extension `.csv`) is a popular file format for storing tabular source data.
+Comma Separated Values (file name extension `.csv`) and Tab Separated Values (file name extension `.tsv`) are popular file formats for storing tabular source data.
 
-RATT has a dedicated connector for CSV files.  After your CSV files are [compressed](#compression) and [uploaded as TriplyDB Assets](#assets), RATT can connect to them as follows:
+RATT has dedicated connectors for CSV and TSV files. In the example below, after your CSV files are [compressed](#compression) and [uploaded as TriplyDB Assets](#assets), RATT can connect to them as follows:
 
 ```ts
 const account = 'my-account'
@@ -65,7 +65,8 @@ app.use(
 )
 ```
 
-This connector also handles CSV variants that use a cell separator that is not comma (`,`).  This includes Tab Separated Values (TSV), where the separate is semi-colon (`;`).
+This connector also handles CSV variants that use a cell separator that is not comma (`,`).
+For TSV files, you can use `mw.fromTSV()` accordingly.
 
 
 #### Standards-compliance
