@@ -54,7 +54,7 @@ app.use(
 The `validateShacl` function can optionally be given the `terminateOn` option.  This option determines when validation halts.  It can take the following values:
 
 <dl>
-  <dt><code>false</code></dt>
+  <dt><code>'Never'</code></dt>
   <dd>Do not halt; run the validation for the full dataset.</dd>
   <dt><code>'Violation'</code></dt>
   <dd>Halt validation when the first SHACL Violation is encountered.</dd>
@@ -62,6 +62,8 @@ The `validateShacl` function can optionally be given the `terminateOn` option.  
   <dd>Halt validation when the first SHACL Violation or SHACL Warning is encountered.</dd>
   <dt><code>'Info'</code></dt>
   <dd>Halt validation when the first SHACL Violation or SHACL Warning or SHACL Informational message is encountered.</dd>
+  <dt><code>undefined</code></dt>
+  <dd>Halt validation when the first SHACL message is encountered.</dd>
 </dl>
 
 The following example code lets validation run for the full dataset, regardless of how many violations, warnings, and/or information messages are encountered:
@@ -71,12 +73,12 @@ app.use(
   // Create all linked data statements.
   …
   // Now that all the data is created, validate it using a model.
-  mw.validateShacl(app.sources.model, {terminateOn: false}
+  mw.validateShacl(app.sources.model, {terminateOn: 'Never'}
 )
 ```
 ## Upload prefixes
 
-After loading the graphs, we can also upload other important elements in Linked data, such as the prefixes. This can be done by combining RATT functionality (```app.after```, ```app.prefix```) with TriplyDbjs functionality (```app.triplyDb.getOrganization```, ```app.triplyDb.getUser()``` etc.). 
+After loading the graphs, we can also upload other important elements in Linked data, such as the prefixes. This can be done by combining RATT functionality (```app.after```, ```app.prefix```) with TriplyDbjs functionality (```app.triplyDb.getOrganization```, ```app.triplyDb.getUser()``` etc.).
 1. You have to set the prefixes:
 ```ts
 const prefix_def = Ratt.prefixer('http://example.com/def/')
@@ -106,7 +108,7 @@ const app = new Ratt({
 }
 ```
 
-3. After finishing with the main body of the ETL and closing ```app.use()```, you can use the below snippet to upload the prefixes under a specific organization, inside ```app.after```. 
+3. After finishing with the main body of the ETL and closing ```app.use()```, you can use the below snippet to upload the prefixes under a specific organization, inside ```app.after```.
 ```ts
 app.after(
       async () => {
