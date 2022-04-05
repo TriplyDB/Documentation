@@ -213,6 +213,7 @@ The following implementation uses the `change` function to split values:
 app.use(
   mw.change({
     key: 'KEY_NAME',
+    type: 'string',
     change: values =>
       values.split('SEPARATOR')
         .map(value => value.trim())
@@ -245,6 +246,7 @@ We use the following RATT code:
 app.use(
   mw.change({
     key: 'Child',
+    type: 'string',
     change: values =>
       values.split(',')
         .map(value => value.trim())
@@ -351,8 +353,8 @@ The `copy` function has the following signature:
 app.use(
   mw.copy({
     fromKey: 'FROM_KEY',
-    type: 'FROM_TYPE',
     toKey: 'TO_KEY',
+    type: 'VALUE_TYPE',
     change: value => FUNCTION_BODY}),
 )
 ```
@@ -379,8 +381,8 @@ The `replace` function has the following signature:
 app.use(
   mw.replace({
     fromKey: 'FROM_KEY',
-    type: 'FROM_TYPE',
-    toKey: 'TO_KEY',
+    toKey: 'FROM_TYPE',
+    type: 'VALUE_TYPE',
     change?: value => FUNCTION_BODY}),
 )
 ```
@@ -538,7 +540,7 @@ app.use(
   mw.addQuad(
     mw.toIri('Country', {prefix: prefix.id}),
     def.inhabitants,
-    mw.toLiteral('Inhabitants', {datatype: xsd.decimal})),
+    mw.toLiteral('Inhabitants', {datatype: xsd.positiveInteger})),
 )
 ```
 
@@ -582,8 +584,28 @@ In the example below, the subject IRI is described further by the object's URL.
 <https://dbpedia.org/resource/Amsterdam> rdfs:seeAlso "https://www.iamsterdam.com"^^xsd:anyURI.
 ```
 
-An IRI can be created with ```mw.IRI```, while a URI is created by using ```mw.toLiteral()``` .
+An IRI can be created with `mw.toIri`, while a URI is created by using `mw.toLiteral` .
 
+##### Limitation of `mw.toLiteral` and `mw.toIri`
+
+There is a limitation for both `mw.toLiteral` and `mw.toIri`. It is not possible to change the value in the record in the `mw.toLiteral` and `mw.toIri` middlewares. The value that is at that moment stored in the record for that key, is then added as either an IRI when called with the `mw.toIri` function or as a literal when called with the function `mw.toLiteral`.
+
+The limitation is shown in the example below. In the example we want to round the inhabitants number to the nearest thousand. We can not transform this in the mw.toLiteral function. Instead we need to add a change middleware which will execute the transformation.
+
+```ts
+app.use(
+  mw.change({
+    key: 'Inhabitants',
+    type: 'number',
+    change: (value) => value/1000
+  ),
+  mw.addQuad(
+    mw.toIri('Country', {prefix: prefix.id}),
+    def.inhabitants,
+    mw.toLiteral('Inhabitants', {datatype: xsd.positiveInteger})
+  ),
+)
+```
 
 ## Record IDs
 
@@ -913,6 +935,7 @@ For example, the parent record in the following call is the record that directly
 app.use(
   mw.forEach('data.countries',
     …
+  )
 )
 ```
 
@@ -922,6 +945,7 @@ The `$parent` key can be observed when `logRecord` is used to print the iterated
 app.use(
   mw.forEach('data.countries',
     mw.debug.logRecord()),
+  )
 )
 ```
 
