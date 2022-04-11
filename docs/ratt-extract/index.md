@@ -369,7 +369,7 @@ app.use(
 
 ### Using a local string
 
-When you create a Extraction Transform Load pipeline, there are several usecases when you do not have a external resource that you want to transform, but instead you  have a string resource that contains the data. To support this usecase RATT supports the use of a local string as `Source`. This usecase is useful when you want to test certain parts of your ETL, or when you want to learn how RATT works.
+When you create an Extraction Transform Load pipeline, there are several usecases when you do not have an external resource that you want to transform, but instead you  have a string resource that contains the data. To support this usecase RATT allows the use of a local string as `Source`. This usecase is useful when you want to test certain parts of your ETL, or when you want to learn how RATT works.
 
 The `Ratt.Source.string()` can be used in combination with three middlewares: `mw.loadRdf`, `mw.validateShacl` and `mw.fromJson`. All three examples are shown below.  
 
