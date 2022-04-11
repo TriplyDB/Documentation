@@ -143,7 +143,7 @@ The following example stores the results of the specified `construct` query in a
 const graph = Ratt.prefixer('https://example.com/id/graph/')
 const myQuery = Ratt.Source.TriplyDb.query('my-account',
                                            'my-dataset',
-                                           {toGraph: graph('enrichment')},
+                                           {toGraph: graph('enrichment')})
 mw.loadRdf(myQuery)
 ```
 
@@ -233,7 +233,7 @@ const myQuery = Ratt.Source.url(
       method: post,
     },
   }
-),
+)
 ```
 
 Since we specified CSV as the result set format (Media Type `text/csv`), the above SPARQL query can be accessed as any other CSV source in RATT:
@@ -367,7 +367,50 @@ app.use(
 )
 ```
 
+### Using a local string
 
+When you create an Extraction Transform Load pipeline, there are several usecases when you do not have an external resource that you want to transform, but instead you  have a string resource that contains the data. To support this usecase RATT allows the use of a local string as `Source`. This usecase is useful when you want to test certain parts of your ETL, or when you want to learn how RATT works.
+
+The `Ratt.Source.string()` can be used in combination with three middlewares: `mw.loadRdf`, `mw.validateShacl` and `mw.fromJson`. All three examples are shown below.  
+
+The following example loads two in-line specified RDF triples that are now used as input source for `mw.loadRdf`.
+
+```ts
+app.use(
+  mw.loadRdf(Ratt.Source.string(`
+<https://triplydb.com/me> a <https://triplydb.com/Person> .
+<https://triplydb.com/me> <https://triplydb.com/name> "me".`)),
+)
+```
+
+The following example loads two in-line specified RDF triples that are now used as input source for `mw.loadvalidateShaclRdf`.
+
+```ts
+app.use(
+  mw.validateShacl(Ratt.Source.string(`
+prefix sh: <http://www.w3.org/ns/shacl#>
+<https://triplydb.com/PersonShape> a sh:NodeShape .
+<https://triplydb.com/PersonShape> sh:targetClass <https://triplydb.com/Person>.`)),
+)
+```
+
+The following example loads an array of two in-line JSON objects as the input source for `mw.fromJson`.
+
+```ts
+app.use(
+  mw.fromJson(Ratt.Source.string(`
+    [
+      {
+        name: 'Alice'
+        type: 'Person'
+      },
+      {
+        name: 'Bob'
+        type: 'Person'
+      },
+    ]`)),
+)
+```
 
 ## Working with IRIs
 
