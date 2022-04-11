@@ -584,13 +584,13 @@ In the example below, the subject IRI is described further by the object's URL.
 <https://dbpedia.org/resource/Amsterdam> rdfs:seeAlso "https://www.iamsterdam.com"^^xsd:anyURI.
 ```
 
-An IRI can be created with `mw.toIri`, while a URI is created by using `mw.toLiteral` .
+An IRI can be created with `mw.toIri`, while an URI is created by using `mw.toLiteral` .
 
 ##### Limitation of `mw.toLiteral` and `mw.toIri`
 
 There is a limitation for both `mw.toLiteral` and `mw.toIri`. It is not possible to change the value in the record in the `mw.toLiteral` and `mw.toIri` middlewares. The value that is at that moment stored in the record for that key, is then added as either an IRI when called with the `mw.toIri` function or as a literal when called with the function `mw.toLiteral`.
 
-The limitation is shown in the example below. In the example we want to round the inhabitants number to the nearest thousand. We can not transform this in the mw.toLiteral function. Instead we need to add a change middleware which will execute the transformation.
+The limitation is shown in the example below. In the example we want to round the inhabitants number to the nearest thousand. We can not transform this in the `mw.toLiteral` function. Instead we need to add a `mw.change` middleware which will execute the transformation.
 
 ```ts
 app.use(
