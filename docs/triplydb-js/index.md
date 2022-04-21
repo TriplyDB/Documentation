@@ -217,18 +217,19 @@ classDiagram
   Account --> Query: getQueries
   Account --> Story: getStory
   Account --> Story: getStories
+
   class Asset {
     getInfo()
   }
+
   class Client {
     getInfo()
   }
   Client --> Account: getAccount
   Client --> Account: getAccounts
   Client --> Organization: getOrganization
-  Client --> Organization: getOrganizations
   Client --> User: getUser
-  Client --> User: getUsers
+
   class Dataset {
     getInfo()
   }
@@ -236,20 +237,25 @@ classDiagram
   Dataset --> Asset: getAssets
   Dataset --> Service: getService
   Dataset --> Service: getServices
+
   class Organization {
   }
   Account <|-- Organization
   Organization --> User: getMember
   Organization --> User: getMembers
+
   class Query {
     getInfo()
   }
+
   class Story {
     getInfo()
   }
+
   class User {
   }
   Account <|-- User
+  User --> Organization: getOrganizations
 ```
 
 ### Client
@@ -302,7 +308,7 @@ If `name` is omitted, the TriplyDB account that is associated with the current A
 
 ##### Examples
 
-- The following snippet returns the account called `'Triply'`.
+- The following snippet returns the account called `"Triply"`.
 
   ```ts
   const account = await client.getAccount("Triply");
@@ -380,7 +386,7 @@ This method is similar to [`Client.getAccount(name?: string)`](#clientgetaccount
 
 ##### Examples
 
-The following snippet returns the organization called `'Triply'`:
+The following snippet returns the organization called `"Triply"`:
 
 ```ts
 const organization = await client.getOrganization("Triply");
@@ -416,7 +422,7 @@ If `name` is omitted, the TriplyDB user that is associated with the current API 
 
 ##### Examples
 
-The following snippet returns the user with name `'somebody'`:
+The following snippet returns the user with name `"somebody"`:
 
 ```ts
 const user = await client.getUser("somebody");
@@ -453,7 +459,7 @@ Succeeds if and only if the currently connected to TriplyDB instance has a versi
 
 ##### Arguments
 
-- Argument `minimumVersion` must be a string that uses Semantic Versioning. For example `'1.2.3'`.
+- Argument `minimumVersion` must be a string that uses Semantic Versioning. For example `"1.2.3"`.
 
 ##### See also
 
@@ -496,13 +502,13 @@ The `metadata` argument optionally specifies the access level and other importan
   <dd>
     <p>The access level of the dataset. The following values are supported:</p>
     <dl>
-      <dt><code>'private'</code> (default)</dt>
+      <dt><code>"private"</code> (default)</dt>
       <dd>The dataset can only be accessed by organization members.</dd>
       <!-- -->
-      <dt><code>'internal'</code></dt>
+      <dt><code>"internal"</code></dt>
       <dd>The dataset can only be accessed by users that are logged into the TriplyDB instance.</dd>
       <!-- -->
-      <dt><code>'public'</code></dt>
+      <dt><code>"public"</code></dt>
       <dd>The dataset can be accessed by everybody.</dd>
     </dl>
     <p>When no access level is specified, the most restrictive access level (<code>private</code>) is used.</p>
@@ -518,13 +524,13 @@ The `metadata` argument optionally specifies the access level and other importan
   <dd>
     <p>The license of the dataset.  The following license strings are currently supported:</p>
     <ul>
-      <li><code>'CC-BY-SA'</code></li>
-      <li><code>'CC0 1.0'</code></li>
-      <li><code>'GFDL'</code></li>
-      <li><code>'ODC-By'</code></li>
-      <li><code>'ODC-ODbL'</code></li>
-      <li><code>'PDDL'</code></li>
-      <li><code>'None'</code> (default)</li>
+      <li><code>"CC-BY-SA"</code></li>
+      <li><code>"CC0 1.0"</code></li>
+      <li><code>"GFDL"</code></li>
+      <li><code>"ODC-By"</code></li>
+      <li><code>"ODC-ODbL"</code></li>
+      <li><code>"PDDL"</code></li>
+      <li><code>"None"</code> (default)</li>
     </ul>
   </dd>
 
@@ -534,7 +540,7 @@ The `metadata` argument optionally specifies the access level and other importan
 
 ##### Examples
 
-The following snippet creates a new dataset called `'iris'` under the account called `'Triply'`:
+The following snippet creates a new dataset called `"iris"` under the account called `"Triply"`:
 
 - The dataset has private access, because the access level is not specified explicitly.
 - The dataset has a description.
@@ -570,16 +576,16 @@ Adds a new SPARQL query to the account.
 
 <dl>
   <dt><code>name: string</code> </dt>
-  <dd>The URL-friendly name of the new query.  The name must only contain alphanumeric characters and hyphens (`[A-Za-z0-9\-]`).</dd>
+  <dd>The URL-friendly name of the new query.  The name must only contain alphanumeric characters and hyphens (<code>[A-Za-z0-9\-]</code>).</dd>
 
   <dt><code>queryString: string</code> </dt>
-  <dd>The SPARQL query string (e.g., `'select * { ?s ?p ?o }'`).</dd>
+  <dd>The SPARQL query string (e.g., <code>"select * { ?s ?p ?o }"</code>).</dd>
 
   <dt><code>dataset: Dataset</code> </dt>
-  <dd>An instance of class [Dataset](#dataset) that the current API token gives access to.</dd>
+  <dd>An instance of class <a href='#dataset'><code>Dataset</code></a> that the current API token gives access to.</dd>
 or
   <dt><code>service: Service</code> </dt>
-  <dd>An instance of class [Service](#service) that the current API token gives access to and that you want to be associated with this query. The Service given will be used as a preferred service for this query.</code></dd>
+  <dd>An instance of class <a href='#service'><code>Service</code></a> that the current API token gives access to and that you want to be associated with this query. The Service given will be used as a preferred service for this query.</code></dd>
 </dl>
 
 **Optional:**
@@ -588,13 +594,13 @@ The `metadata` argument specifies the required Dataset or Service and access lev
 
 <dl>
   <dt><code>accessLevel</code> </dt>
-  <dd> The access level of the query. If none is set it defaults to "private". The following values are supported:
+  <dd> The access level of the query. If none is set it defaults to <code>"private"</code>. The following values are supported:
     <dl>
-      <dt><code>'private'</code></dt>
+      <dt><code>"private"</code></dt>
       <dd>The query can only be accessed by the <a href='#account'><code>Account</code></a> object for which it is created.</dd>
-      <dt><code>'internal'</code></dt>
+      <dt><code>"internal"</code></dt>
       <dd>The query can only be accessed by people who are logged into the TriplyDB instance (denoted by the value of environment variable <code>TRIPLYDB_URL</code>).
-      <dt><code>'public'</code></dt>
+      <dt><code>"public"</code></dt>
       <dd>The query can be accessed by everybody.</dd>
     </dl>
   </dd>
@@ -606,14 +612,14 @@ The `metadata` argument specifies the required Dataset or Service and access lev
   <dd>The human-readable name of the query.  This name may include spaces and other characters that are not allowed in the URL-friendly <code>name</code>.</dd>
 
   <dt><code>output: string</code></dt>
-  <dd>The visualization plugin that is used to display the result set. If none is set it defaults to "table". Other options may include: "response", "geo", "gallery", "markup", etc</dd>
+  <dd>The visualization plugin that is used to display the result set.  If none is set it defaults to <code>"table"</code>.  Other options may include: <code>"response"</code>, <code>"geo"</code>, <code>"gallery"</code>, <code>"markup"</code>, etc</dd>
 
   <dt><code>variables: Variable[]</code></dt>
   <dd>
     A list of objects with the following keys:
     <dl>
       <dt>IRI variable</dt>
-      <dd>An object of the form `Variable` (see below)</dd>
+      <dd>An object of the form <code>Variable</code> (see below)</dd>
   </dd>
 </dl>
 
@@ -625,8 +631,8 @@ Instances of `Variable` are objects that can have the following keys:
   <dt><code>name: string</code> </dt>
   <dd>A SPARQL variable name.  The variable name must appear in the query string.  The question mark (<code>?</code>) or dollar sign (<code>$</code>) is not included.</dd>
 
-  <dt><code>termType: 'Literal'|'NamedNode'</code> </dt>
-  <dd>The kind of variable.  This must be either `'Literal'` for literals or `'NamedNode'` for IRIs.</dd>
+  <dt><code>termType: "Literal"|"NamedNode"</code> </dt>
+  <dd>The kind of variable.  This must be either <code>"Literal"</code> for literals or <code>"NamedNode"</code> for IRIs.</dd>
 </dl>
 
 **Optional:**
@@ -635,10 +641,10 @@ Instances of `Variable` are objects that can have the following keys:
   <dt><code>allowedValues: string[]</code></dt>
   <dd>The list of string values that is allowed for this variable.</dd>
 
-  <dt><code>datatype: string</code> (if <code>termType='Literal'</code>)</dt>
+  <dt><code>datatype: string</code> (if <code>termType="Literal"</code>)</dt>
   <dd>The datatype IRI for the literal variable.</dd>
 
-  <dt><code>language: string</code> (if <code>termType='Literal'</code>)</dt>
+  <dt><code>language: string</code> (if <code>termType="Literal"</code>)</dt>
   <dd>The language tag for the literal variable.  Setting this implies that the dataset IRI is <code>rdf:langString</code>.</dt>
 
   <dt><code>defaultValue: string</code></dt>
@@ -646,7 +652,6 @@ Instances of `Variable` are objects that can have the following keys:
 
   <dt><code>required: boolean</code></dt>
   <dd>Whether a query request must include an explicit value for this variable.  The default value is <code>false</code>.</dd>
-
 </dl>
 
 ##### Example
@@ -674,7 +679,7 @@ Adds a new data story.
 
 <dl>
   <dt><code>name: string</code></dt>
-  <dd>The URL-friendly name of the data story.  The name must only contain alphanumeric characters and hyphens (`[A-Za-z0-9\-]`).</dd>
+  <dd>The URL-friendly name of the data story.  The name must only contain alphanumeric characters and hyphens (<code>[A-Za-z0-9\-]</code>).</dd>
 </dl>
 
 ##### Optional
@@ -682,15 +687,15 @@ Adds a new data story.
 <dl>
   <dt><code>accessLevel</code> </dt>
   <dd>
-    <p>The access level of the dataset. If none is given the default of <code>'private'</code> is used. The following values are supported:</p>
+    <p>The access level of the dataset. If none is given the default of <code>"private"</code> is used. The following values are supported:</p>
     <dl>
-      <dt><code>'private'</code></dt>
+      <dt><code>"private"</code></dt>
       <dd>The dataset can only be accessed by the <a href='#account'><code>Account</code></a> object for which it is created.</dd>
       <!-- -->
-      <dt><code>'internal'</code></dt>
+      <dt><code>"internal"</code></dt>
       <dd>The dataset can only be accessed by people who are logged into the TriplyDB instance (denoted by the value of environment variable <code>TRIPLYDB_URL</code>).
       <!-- -->
-      <dt><code>'public'</code></dt>
+      <dt><code>"public"</code></dt>
       <dd>The dataset can be accessed by everybody.</dd>
     </dl>
   </dd>
@@ -700,7 +705,6 @@ Adds a new data story.
 
   <dt><code>displayName: string</code> </dt>
   <dd>The human-readable name of the data story.  This name may include spaces and other characters that are not allowed in the URL-friendly name.</dd>
-
 </dl>
 
 A story element is an object with the following keys:
@@ -720,18 +724,18 @@ A story element is an object with the following keys:
   <dd>The Markdown content of a story paragraph.</dd>
 
   <dt><code>query: Query</code></dt>
-  <dd>An instance of class <a href="#query"><code>Query</code></a>.</dd>
+  <dd>An instance of class <a href='#query'><code>Query</code></a>.</dd>
 
   <dt>queryVersion: number</code>
   <dd>The version that is used of the specified query.</dd>
 
   <dt><code>type</code></dt>
-  <dd>Either <code>'paragraph'</code> or <code>'query'</code>.</dd>
+  <dd>Either <code>"paragraph"</code> or <code>"query"</code>.</dd>
 </dl>
 
 ##### Examples
 
-Example 1 - creates a new story that is "private"
+Example 1 - creates a new story that has access level `"private"`:
 
 ```ts
 const client = Client.get({ token: process.env.TRIPLYDB_TOKEN });
@@ -739,7 +743,7 @@ const user = await client.getUser();
 const newStory = await someUser.addStory("name-of-story");
 ```
 
-Example 2 - creates a new story that is "public"
+Example 2 - creates a new story that has access level `"public"`:
 
 ```ts
 const client = Client.get({ token: process.env.TRIPLYDB_TOKEN });
@@ -759,7 +763,7 @@ Calling this method on an `Organization` object does nothing.
 
 ##### Examples
 
-The following snippet retrieves the account named `'Triply'` and casts it to an organization:
+The following snippet retrieves the account named `"Triply"` and casts it to an organization:
 
 ```ts
 const account = await client.getAccount("Triply");
@@ -946,15 +950,15 @@ The information object for accounts includes the following keys:
 
   ```json
   {
-    'accountName': 'Triply',
-    'avatarUrl': 'https://www.gravatar.com/avatar/9bc28997dd1074e405e1c66196d5e117?d=mm',
-    'createdAt': 'Mon Mar 19 2018 14:39:18 GMT+0000 (Coordinated Universal Time)',
-    'datasetCount': 16,
-    'name': 'Triply',
-    'queryCount': 37,
-    'storyCount': 7
-    'type': 'org',
-    'updatedAt': 'Tue Nov 27 2018 09:29:38 GMT+0000 (Coordinated Universal Time)'
+    "accountName": "Triply",
+    "avatarUrl": "https://www.gravatar.com/avatar/9bc28997dd1074e405e1c66196d5e117?d=mm",
+    "createdAt": "Mon Mar 19 2018 14:39:18 GMT+0000 (Coordinated Universal Time)",
+    "datasetCount": 16,
+    "name": "Triply",
+    "queryCount": 37,
+    "storyCount": 7
+    "type": "org",
+    "updatedAt": "Tue Nov 27 2018 09:29:38 GMT+0000 (Coordinated Universal Time)"
   }
   ```
 
@@ -1059,7 +1063,7 @@ The changes made as a result of calling this method depend on the current state 
   <dd>Accepts a string value to be used as the display name for the story.</dd>
 
   <dt><code>accessLevel</code></dt>
-  <dd>Accepts a string value of either "public" | "private" | "internal".</dd>
+  <dd>Accepts either of the following values: <code>"private"</code> (default), <code>"internal"</code>, <code>"public"<code>.</dd>
 
   <dt><code>content</code></dt>
   <dd>Accepts a list of StoryElementUpdate objects, defined below.</dd>
@@ -1098,11 +1102,9 @@ The optional new story object that can be passed accepts the following propertie
 <dl>
   <dt><code>displayName</code></dt>
   <dd>Accepts a string value to be used as a display name for the story</dd>
-  <dt>
-    <code>accessLevel</code>
-  </dt>
-  <dd>Sets the access level for the story. Accepts a string value of either <code>"public"</code>, <code>"private"</code>, <code>"internal"</code>
-  </dd>
+
+  <dt><code>accessLevel</code></dt>
+  <dd>Sets the access level for the story.  Accepts either of the following: <code>"private"</code> (default), <code>"internal"</code>, <code>"public"</code>.</dd>
 </dl>
 
 If **no** `accesslevel` is specified, the default value `private` is used.
@@ -1372,13 +1374,13 @@ Creates a new service for this dataset.
 The service type is specified with the `type` parameter. If no type is given, a default of <code>"virtuoso"</code> is used. It supports the following values:
 
 <dl>
-  <dt><code>'virtuoso'</code></dt>
+  <dt><code>"virtuoso"</code></dt>
   <dd>Starts a SPARQL service. A SPARQL 1.1 compliant service is very scalable and performance, but without advanced reasoning capabilities.</dd>
 
-  <dt><code>'jena'</code></dt>
+  <dt><code>"jena"</code></dt>
   <dd>Starts a SPARQL JENA service. A SPARQL 1.1 compliant service that is less scalable and less performant, but allows reasoning (RDFS or OWL) to be enabled.</dd>
 
-  <dt><code>'elasticsearch'</code></dt>
+  <dt><code>"elasticsearch"</code></dt>
   <dd>Starts an <a href='https://www.elastic.co/guide/en/elasticsearch/reference/current/index.html'>Elasticsearch</a> service. A text search engine that can be used to power a search bar or similar textual search API.</dd>
 </dl>
 
@@ -1414,13 +1416,13 @@ Removes one or more resource types from the current dataset.
 The resources are specified by the [rest parameter](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/rest_parameters) `resourceType`, which supports the following values :
 
 <dl>
-  <dt><code>'assets'</code></dt>
+  <dt><code>"assets"</code></dt>
   <dd>Removes all assets in the dataset.</dd>
 
-  <dt><code>'graphs'</code></dt>
+  <dt><code>"graphs"</code></dt>
   <dd>Removes all graphs in the dataset.</dd>
 
-  <dt><code>'services'</code></dt>
+  <dt><code>"services"</code></dt>
   <dd>Removes all services in the dataset.</dd>
 </dl>
 
@@ -1613,7 +1615,7 @@ TODO: Finish this section.
 
 ```ts
 const user = await client.getUser()
-const dataset = user.getDataset('my-dataset')
+const dataset = user.getDataset("my-dataset")
 for await (const prefix of dataset.getPrefixes()) {
   console.log(prefix)
 }
@@ -1657,7 +1659,7 @@ for await (const service of dataset.getServices()) {
 
 ```ts
 const account = await client.getAccount()
-const dataset = await account.getDataset('my-dataset')
+const dataset = await account.getDataset("my-dataset")
 console.log(await dataset.getServices().toArray())
 ```
 -->
@@ -1679,18 +1681,18 @@ Returns an [async iterator](#async-iterator) with statements (quadruples) that f
 
 ```ts
 const user = client.getUser()
-const dataset = await user.getDataset('my-dataset')
+const dataset = await user.getDataset("my-dataset")
 for await (const statement: dataset.getStatements()) {
   console.log(statement)
 }
 ```
 
-- The following prints the description of the 'Amsterdam' resource in the DBpedia dataset:
+- The following prints the description of the Amsterdam resource in the DBpedia dataset:
 
 ```ts
-const association = client.getOrganization('DBpedia-association')
-const dbpedia = association.getDataset('dbpedia')
-for await (const statement: dbpedia.getStatements({subject: 'http://dbpedia.org/resource/Amsterdam'}) {
+const association = client.getOrganization("DBpedia-association")
+const dbpedia = association.getDataset("dbpedia")
+for await (const statement: dbpedia.getStatements({subject: "http://dbpedia.org/resource/Amsterdam"}) {
   console.log(statement)
 }
 ```
@@ -1736,7 +1738,7 @@ If this argument is not specified, then graph names in the `from` dataset are id
 -->
 
   <dt>graphNames</dt>
-  <dd>Argument `<code>graphNames</code>` optionally is an array of graph names. These names can be one of three types: 'string', instances of a 'Graph' class, or instances of 'NamedNodes'.</dd>
+  <dd>Argument `<code>graphNames</code>` optionally is an array of graph names. These names can be one of three types: "string", instances of a "Graph" class, or instances of "NamedNodes".</dd>
 
   <dt>overwrite</dt>
   <dd>Accepts a Boolean value. An optional property that determines whether existing graph names in this dataset are allowed to be silently overwritten. If this argument is not specified, then `false` is used as the default value.</dd>
@@ -1875,7 +1877,7 @@ See section [Query](#query) for an overview of the methods that can be used with
 The following snippet returns the query object of a specific dataset:
 
 ```ts
-const account = await client.getAccount('acme')
+const account = await client.getAccount("acme")
 const query = account.query()
 ```
 -->
@@ -1942,13 +1944,13 @@ The `metadata` argument takes a dictionary object with the following optional ke
   <dd>
     <p>The access level of the dataset. The following values are supported:</p>
     <dl>
-      <dt><code>'private'</code></dt>
+      <dt><code>"private"</code></dt>
       <dd>The dataset can only be accessed by the <a href='#account'><code>Account</code></a> object for which it is created.</dd>
       <!-- -->
-      <dt><code>'internal'</code></dt>
+      <dt><code>"internal"</code></dt>
       <dd>The dataset can only be accessed by people who are logged into the TriplyDB instance (denoted by the value of environment variable <code>TRIPLYDB_URL</code>).
       <!-- -->
-      <dt><code>'public'</code></dt>
+      <dt><code>"public"</code></dt>
       <dd>The dataset can be accessed by everybody.</dd>
     </dl>
   </dd>
@@ -1967,12 +1969,12 @@ The `metadata` argument takes a dictionary object with the following optional ke
   <dd>
     The license of the dataset. The following license strings are currently supported:
     <ul>
-      <li><code>'CC-BY-SA'</code></li>
-      <li><code>'CC0 1.0'</code></li>
-      <li><code>'GFDL'</code></li>
-      <li><code>'ODC-By'</code></li>
-      <li><code>'ODC-ODbL'</code></li>
-      <li><code>'PDDL'</code></li>
+      <li><code>"CC-BY-SA"</code></li>
+      <li><code>"CC0 1.0"</code></li>
+      <li><code>"GFDL"</code></li>
+      <li><code>"ODC-By"</code></li>
+      <li><code>"ODC-ODbL"</code></li>
+      <li><code>"PDDL"</code></li>
     </ul>
   </dd>
 </dl>
@@ -2042,7 +2044,7 @@ await dataset.uploadAsset("my-documentation", "documentation.pdf");
 -->
 
 <!-- TODO: Document this method.
-#### Graph.toStream(type: 'compressed'|'rdf-js')
+#### Graph.toStream(type: "compressed"|"rdf-js")
 -->
 
 ### Organization
@@ -2082,13 +2084,13 @@ Adds a member to the given `Organization`, with the given `role` of either membe
 
 - The `user` argument has to be a user object of the user which should be added to the organization.
 
-- The `role` argument can be either `'member'` or `'owner'`.  If this argument is not specified, then `'member'` is used as the default.
+- The `role` argument can be either `"member"` or `"owner"`.  If this argument is not specified, then `"member"` is used as the default.
 
 <dl>
-  <dt><code>'member'</code></dt>
+  <dt><code>"member"</code></dt>
   <dd>A regular member that is allowed to read and write the datasets that are published under the organization.</dd>
 
-  <dt><code>'owner'</code></dt>
+  <dt><code>"owner"</code></dt>
   <dd>An owner of the organization.  Owners have all the rights of regular users, plus the ability to add/remove users to/from the organization, the ability to change the roles of existing users, and the ability to delete the organization.</dd>
 </dl>
 
@@ -2165,10 +2167,10 @@ A membership contains the following components:
 
 <dl>
   <dt><code>role</code><dt>
-  <dd>The role of the membership (<code>OrgRole</code>): either <code>'owner'</code> for owners of the organization, or <code>'member'</code> for regular members.  The difference between owners and regular members is that owners can perform user management for the organization (add/remove/change memberships).</dd>
+  <dd>The role of the membership (<code>OrgRole</code>): either <code>"owner"</code> for owners of the organization, or <code>"member"</code> for regular members.  The difference between owners and regular members is that owners can perform user management for the organization (add/remove/change memberships).</dd>
 
   <dt><code>user</code></dt>
-  <dd>An instance of class <a href="#user"><code>User</code></a>.</dd>
+  <dd>An instance of class <a href='#user'><code>User</code></a>.</dd>
 
   <dt><code>createdAt</code></dt>
   <dd>A date/time string.</dd>
@@ -2257,13 +2259,13 @@ The returned dictionary object includes the following keys:
   <dd>
     <p>The access level of the query.  The following values are possible:</p>
     <dl>
-      <dt><code>'private'</code> (default)</dt>
+      <dt><code>"private"</code> (default)</dt>
       <dd>The dataset can only be accessed by organization members.</dd>
       <!-- -->
-      <dt><code>'internal'</code></dt>
+      <dt><code>"internal"</code></dt>
       <dd>The dataset can only be accessed by users that are logged into the TriplyDB instance.
       <!-- -->
-      <dt><code>'public'</code></dt>
+      <dt><code>"public"</code></dt>
       <dd>The dataset can be accessed by everybody.</dd>
     </dl>
   </dd>
@@ -2362,7 +2364,7 @@ TODO: Document this method.
 
 <!--
 TODO: Document this method.
-#### Query.useVersion(version: number|'latest')
+#### Query.useVersion(version: number|"latest")
 -->
 
 ### Service
@@ -2431,7 +2433,7 @@ await service.delete();
 <!-- <https://issues.triply.cc/issues/5783>
 #### See also
 
-If you only want to temporarily disable this service, use 'stop' instead.
+If you only want to temporarily disable this service, use "stop" instead.
 -->
 
 #### Service.getInfo()
@@ -2526,7 +2528,7 @@ This _does not_ delete the queries that are linked into this story. If you also 
 
 ##### Examples
 
-The following code example deletes a story called 'example-story' under the current user's account:
+The following code example deletes a story called `"example-story"` under the current user's account:
 
 ```ts
 const user = await client.getUser();
@@ -2621,7 +2623,7 @@ This method requires an API token with write access for this user.
 
 <dl>
   <dt><code>description</code></dt>
-  <dd>The description of the organization.  This description can make use of Markdown layout (see the <a href="/docs/triply-db-getting-started/#markdown-support">Markdown reference</a>) for details.</dd>
+  <dd>The description of the organization.  This description can make use of Markdown layout (see the <a href='/docs/triply-db-getting-started/#markdown-support'>Markdown reference</a>) for details.</dd>
 
   <dt><code>email</code></dt>
   <dd>The email address at which the organization can be reached.</dd>
@@ -2632,11 +2634,11 @@ This method requires an API token with write access for this user.
 
 ##### Examples
 
-The following snippet creates a new organization for which John Doe will be the owner. Notice that both a required URL-friendly name (`'my-organization'`) and an optional display name (`'My Organization'`) are specified.
+The following snippet creates a new organization for which John Doe will be the owner. Notice that both a required URL-friendly name (`"my-organization"`) and an optional display name (`"My Organization"`) are specified.
 
 ```ts
-const user = await client.getUser('john-doe')
-await user.createOrganization(my-organization, {name: 'My Organization'}))
+const user = await client.getUser("john-doe")
+await user.createOrganization(my-organization, {name: "My Organization"}))
 ```
 
 #### User.ensureDataset(name: string, metadata?: object)
@@ -2840,7 +2842,7 @@ To reliably retrieve a large number of results as the output of a `construct` or
 
    Note that for SPARQL `construct` queries, we use method `.statements()`, while for SPARQL `select` queries, we use method `.bindings()`.
 
-   Additionally, saved queries can have 'API variables' that allow you to specify variables that are used in the query. Thus, if you have query parameters, pass their values as the first argument to `results` as follows:
+   Additionally, saved queries can have API variables that allow you to specify variables that are used in the query. Thus, if you have query parameters, pass their values as the first argument to `results` as follows:
 
    ```ts
    // For SPARQL construct queries.
