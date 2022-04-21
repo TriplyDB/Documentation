@@ -213,7 +213,46 @@ const app = new Ratt({
 })
 ```
 
+##### An easier way to configure graph names and prefixes
 
+Instead of setting the graph name and the prefixes for every ETL, you can use functions for their generation:
+
+```sh
+export function create_prefixes(
+  organization: string = default_organization,
+  dataset: string,
+  host: string = default_host
+) {
+  let prefix_base = Ratt.prefixer(`https://${host}/${organization}/${dataset}/`)
+  let prefix_bnode = Ratt.prefixer(prefix_base(`.well-known/genid/`))
+  let prefix_graph = Ratt.prefixer(prefix_base(`graph/`))
+  )
+  return {
+    bnode: prefix_bnode,
+    graph: prefix_graph,
+  }
+}
+```
+For example, if `host==='triplydb.com'`, `organization==='exampleOrganization'` and `dataset='pokemon'`, then the prefix for the blank nodes will be `https://triplydb.com/exampleOrganization/pokemon/.well-known/genid/`.
+
+Then, similarly, you can use another function for the graph names:
+```sh
+export function create_graphs(
+  dataset: string,
+  organization: string = default_organization,
+  host: string = default_host
+) {
+  let prefix = create_prefixes(dataset, organization, host)
+  return {
+    default: prefix.graph('default'),
+    metadata: prefix.graph('metadata'),
+    instances: prefix.graph('instances'),
+    instances_report: prefix.graph('instances/report'),
+    shapes: prefix.graph('shapes'),
+  }
+}
+
+```
 ### Configuring data sources
 
 It is possible to specify the data source in the RATT context.  This is especially useful when you have many sources in one script.
