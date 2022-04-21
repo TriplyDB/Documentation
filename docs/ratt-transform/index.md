@@ -445,9 +445,9 @@ app.use(
   mw.add({
     key: 'Full name',
     value: context =>
-      context.asString('First name') +
+      context.getString('First name') +
       ' ' +
-      context.asString('Last name')}),
+      context.getString('Last name')}),
 )
 ```
 
@@ -939,13 +939,14 @@ app.use(
 )
 ```
 
-The `$parent` key can be observed when `logRecord` is used to print the iterated-over elements to the terminal:
+
+The `$parent` key can be observed when `mw.debug.logRecord` is used to print the iterated-over elements to the terminal:
+
 
 ```ts
 app.use(
   mw.forEach('data.countries',
-    mw.debug.logRecord()),
-  )
+    mw.debug.logRecord())
 )
 ```
 

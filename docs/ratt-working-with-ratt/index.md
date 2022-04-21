@@ -192,8 +192,8 @@ const app = new Ratt({
 
 
 ### Configuring data destinations
-
-Destinations are online locations in TriplyDB where the output of your pipeline will be published.
+#### Remote data destinations
+Destinations are usually online locations in TriplyDB where the output of your pipeline will be published.
 
 If no `accountName` is given, pipeline output is uploaded under the user account tied to the currently used API Token.
 
@@ -233,6 +233,20 @@ Still, there may be cases in which a local file destination is useful, for examp
 ```ts
 Ratt.Destination.file("my-file.trig"),
 ```
+#### Static and Dynamic destinations
+Destinations can be defined as static objects meaning that you can define destination beforehand. But it might be the case that you want to have multiple destinations for different records. In this case, you would need a dynamic destination, which should change based on certain information inside your source data.
+
+You can set static and dynamic destinations, like below:
+```ts
+const app = new Ratt({
+  defaultGraph: "https://triplydb.com/Triply/example/graph/default",
+  sources: { someSource: Ratt.Source.file("source.trig") },
+  destinations: {
+    someStaticDestination: Ratt.Destination.file("static.ttl"),
+    someDynamicDestination: (ctx) => Ratt.Destination.file(ctx.getString("destination"))
+  },
+})
+```
 
 
 ### Configuring multiple TriplyDB instances
@@ -268,8 +282,9 @@ RATT supports copying sources directly to destination locations. This function i
 
 The following example shows the `copy` function:
 
+
 ```ts
-  Ratt.Source.file(`${source_location}`).copy(app, Ratt.Destination.TriplyDb.rdf(`${destination_name}`))
+  app.copySource(Ratt.Source.file(`${source_location}`), Ratt.Destination.TriplyDb.rdf(`${destination_name}`))
 ```
 
 The function destination expects that source data is linked data. Copying a source that is not linked data can result in errors.
