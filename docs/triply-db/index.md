@@ -7,7 +7,7 @@ path: "/docs/triply-db-getting-started"
 
 TriplyDB allows you to store, publish, and use Linked Data Knowledge
 Graphs. TriplyDB makes it easy to upload Linked Data and expose it
-through various APIs (SPARQL, ElasticSeach, LDF, REST). [Read
+through various APIs (SPARQL, Elasticsearch, LDF, REST). [Read
 More](/triplydb)
 
 # Uploading Data
@@ -89,6 +89,7 @@ The following RDF serialization formats are currently supported:
 | RDF/XML                  | `.rdf`, `.owl`, `.owx` |
 | TriG                     | `.trig`                |
 | Turtle                   | `.ttl`, `.n3`          |
+| JSON-LD                  | `.jsonld`, `.json`     |
 
 Up to 1,000 separate files can be uploaded in one go. It is also
 possible to upload compressed files and archives. When the number of
@@ -203,7 +204,7 @@ clicking on the “Services” icon in the left-hand sidebar.
 
 TriplyDB instances can be configured with different types of services.
 The below screenshot shows the “Create service” page for a TriplyDB
-instance that allows SPARQL, Jena SPARQL, and ElasticSearch services
+instance that allows SPARQL, Jena SPARQL, and Elasticsearch services
 to be created.
 
 ![The “Create service” page](create-service.png) Notice that three different types of services can be created.
@@ -293,12 +294,28 @@ from which the SPARQL query can be copied in the following three forms:
 They do not have any of the technical limitations that occur with
 URL-encoded queries.
 
-## Text Search
+### Transfer a SPARQL query
 
-When a dataset has a running ElasticSearch service, textual searches
-can be performed over the entire dataset. Text Search works like a
+The SPARQL queries could be transferred to another account or an organization. To do that, go to the setting field at the query page,
+
+![Transfer a SPARQL query](where-find-transfer.png)
+
+choose transfer
+
+![Transfer a SPARQL query](transfer-query.png)
+
+and then choose where the SPARQL query should be moved to.
+
+![Transfer a SPARQL query](transfer-to-organization.png)
+
+After the destination is set you would be redirected to the SPARQL query new page. The SPARQL query could be transferred from an account to an organization and vice versa.
+
+## Elasticsearch
+
+When a dataset has a running Elasticsearch service, textual searches
+can be performed over the entire dataset. Text search with Elasticsearch works like a
 search engine and returns any node that contains your search term, or
-contains the search term in any of it's properties.
+contains the search term in any of its properties. It is also possible to write a custom query using the Elasticsearch [Query DSL (Domain Specific Language)](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl.html).
 
 ## Insights
 
@@ -365,21 +382,47 @@ Updating the saved query can be done by clicking a query in the Saved Queries ta
 
 ## Using a saved query
 
-To use a saved query, for example in Data Stories, you can copy the link that is
+### Sharing a saved query
+
+To share a saved query, for example in Data Stories, you can copy the link that is
 used when you open the query in TriplyDB. Let's say you have a query called
 `Timelined-Cars-BETA` in the dataset `core` under the account `dbpedia` and you
 want to use version 6. Than the following link would be used
 
 ```url
-https://triplydb.com/dbpedia/core/queries/Timelined-Cars-BETA/6
+https://triplydb.com/DBpedia-association/-/queries/timeline-cars/8
 ```
 
 If you want to always use the **latest** query, you can simply omit the version
 number like so
 
 ```url
-https://triplydb.com/dbpedia/core/queries/Timelined-Cars-BETA
+https://triplydb.com/DBpedia-association/-/queries/timeline-cars
 ```
+
+### Using a saved query as REST-API (Advanced)
+
+Each TriplyDB instance has a fully RESTful API. The TriplyDB RESTful API is extended for saved SPARQL queries. A saved query can be used as a RESTful API to retrieve data from your linked dataset. The URL next to the keywork `API` is the RESTful API URL and can be used with RESTful API libraries. You can copy the RESTful API by pressing the copy button just behind the URL. Pressing the copy button from the above query will result in the following run url:
+
+```url
+https://api.triplydb.com/queries/DBpedia-association/timeline-cars/run
+```
+When you copy this URL in your browser or fetch the URL with curl you will get an get request to a RESTful API and get a JSON representation of the data in your browser or command window.
+
+### Using a saved query in Python or R notebooks (Advanced)
+
+SPARQL queries as a RESTful API also means you can transport your data to your Python script, R script or Jupyter notebook. To use the resultset from your SPARQL query you need to connect your script to the saved SPARQL query. To do this you will need to write a small connector. To help you out we have added in a code snippet generator for Python and R. This snippet contains the code to retrieve the data from the SPARQL query into your script or notebook. You can open the code snippet generator by clicking on the '</>' button on the right side of the screen.
+
+Clicking the '</>' button opens the code snippet screen. Here you select the snippet in the language you want to have, either Python or R. You can then copy the snippet, by clicking the 'copy to clipboard' button or selecting the snippet and pressing `ctrl-c`. Now you can paste the code in the location you want to use the data. The data is stored in the `data` variable in `JSON` format.
+
+When the SPARQL query is not public, but instead either private or internal, you will need to add an authorization header to the get request. Without the authorization header the request will return an incorrect response. Checkout [Creating your API token](https://triply.cc/docs/api-token) about creating your API-token for the authorization header.
+
+Check out the [sparql pagination page](https://triply.cc/docs/pagination) when you want to query a SPARQL query that holds more than 10.000 results. The [sparql pagination page ](#sparql-ide) will explain how you can retrieve the complete set.   
+
+### Metadata links
+
+In the metadata overview there are two links. The first links points to the dataset the query is executed over and when clicking brings you to the dataset homepage.
+The second link points to the service the saved query uses. The second link brings you to the services page of the dataset, and from there on you can go to the SPARQL service.
 
 # Data stories
 A TriplyDB data story is a way of communicating information about your linked data along with explanatory text while also being able to integrate query results.

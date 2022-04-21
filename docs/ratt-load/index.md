@@ -54,7 +54,7 @@ app.use(
 The `validateShacl` function can optionally be given the `terminateOn` option.  This option determines when validation halts.  It can take the following values:
 
 <dl>
-  <dt><code>"Never"</code></dt>
+  <dt><code>'Never'</code></dt>
   <dd>Do not halt; run the validation for the full dataset.</dd>
   <dt><code>'Violation'</code></dt>
   <dd>Halt validation when the first SHACL Violation is encountered.</dd>
@@ -62,6 +62,8 @@ The `validateShacl` function can optionally be given the `terminateOn` option.  
   <dd>Halt validation when the first SHACL Violation or SHACL Warning is encountered.</dd>
   <dt><code>'Info'</code></dt>
   <dd>Halt validation when the first SHACL Violation or SHACL Warning or SHACL Informational message is encountered.</dd>
+  <dt><code>undefined</code></dt>
+  <dd>Halt validation when the first SHACL message is encountered.</dd>
 </dl>
 
 The following example code lets validation run for the full dataset, regardless of how many violations, warnings, and/or information messages are encountered:
@@ -71,7 +73,7 @@ app.use(
   // Create all linked data statements.
   …
   // Now that all the data is created, validate it using a model.
-  mw.validateShacl(app.sources.model, {terminateOn: "Never"}
+  mw.validateShacl(app.sources.model, {terminateOn: 'Never'}
 )
 ```
 
