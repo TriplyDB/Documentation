@@ -51,7 +51,7 @@ app.use(
 ```
 
 
-### Comma Separated Values (CSV) files {#csv} and Tab Separated Values (TSV) {#tsv}
+### Comma Separated Values (CSV) files and Tab Separated Values (TSV) {#csv-tsv}
 
 Comma Separated Values (file name extension `.csv`) and Tab Separated Values (file name extension `.tsv`) are popular file formats for storing tabular source data.
 
