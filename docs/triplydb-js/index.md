@@ -1063,7 +1063,7 @@ The changes made as a result of calling this method depend on the current state 
   <dd>Accepts a string value to be used as the display name for the story.</dd>
 
   <dt><code>accessLevel</code></dt>
-  <dd>Accepts either of the following values: <code>"private"</code> (default), <code>"internal"</code>, <code>"public"<code>.</dd>
+  <dd>Accepts either of the following values: <code>"private"</code> (default), <code>"internal"</code>, <code>"public"</code>.</dd>
 
   <dt><code>content</code></dt>
   <dd>Accepts a list of StoryElementUpdate objects, defined below.</dd>
