@@ -2893,7 +2893,7 @@ TriplyDB.js makes use of async iterators for retrieving lists of objects. Async 
 An example of an async iterator in TriplyDB.js is [`Client.getAccounts()`](#clientgetaccounts). The following code illustrates how it can be used.
 
 ```ts
-for await (let account of client.getAccounts()) {
+for await (const account of client.getAccounts()) {
   console.log(account);
 }
 ```
