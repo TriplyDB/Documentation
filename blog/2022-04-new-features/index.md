@@ -24,7 +24,7 @@ More information about the network view can be found in the Triply [documentatio
 
 ### NEW: SPARQL Markup View
 
-Markup view is an improvement of the gallery view. The gallery view allows the user to create HTML blocks with SPARQL, and even add populated HTML elements to the gallery view. Nevertheless, we noticed users going all out with the gallery view and (miss-)using the gallery view with a lot of HTML elements. To help them out we have added in the markup view as a new tool.
+Markup view is an improvement of the gallery view. The gallery view allows the user to create HTML blocks with SPARQL, and even add populated HTML elements. Nevertheless, we noticed users going all out with the gallery view and (miss-)using the gallery view with a lot of HTML elements. To help them out we have added in the markup view as a new tool.
 
 The markup view can visualize two different types of markup languages: mermaid and HTML. [Mermaid](https://mermaid-js.github.io/mermaid/#/) is a library with tools to visualize diagrams and charts. The second language is HTML. Now you can create HTML elements that are populated with information from a dataset and combined into HTML elements with SPARQL. In our [documentation](https://triply.cc/docs/yasgui#markup), you can read how you can go about implementing the markup view, and you can also play around with this through our [mermaid query](https://triplydb.com/JD/-/queries/markup-visualization) yourself.
 
@@ -33,10 +33,12 @@ The markup view can visualize two different types of markup languages: mermaid a
 ## The improved UI
 
 TriplyDB has undergone a lot of changes both internally and externally, but one of the most visible changes is the improved user interface:
- - We have worked on making TriplyDB more accessible for all users. This has led to e.g. a change in the color scheme of the buttons to make them more visible on the screen.
- - Saved queries have been redesigned, to reduce the amount of URLs visible for the user,  and to bring the RESTful API URL better in view, making it easier for you to copy this URL. You can learn more about how to use our RESTful API in our [documentation](https://triply.cc/docs/triply-db-getting-started#using-a-saved-query) pages.
+
+- We have worked on making TriplyDB more accessible for all users. This has led to e.g. a change in the color scheme of the buttons to make them more visible on the screen.
+- Saved queries have been redesigned, to reduce the amount of URLs visible for the user,  and to bring the RESTful API URL better in view, making it easier for you to copy this URL. You can learn more about how to use our RESTful API in our [documentation](https://triply.cc/docs/triply-db-getting-started#using-a-saved-query) pages.
 
 ![URL-form](URL-form.png)
 
 ## Closing Notes
+
 These features are just some of the changes we made during the last few months. There are many more, big and small, that have been added. Join us on our free-to-use Triple Store over at [TriplyDB](https://triplydb.com/) or contact us for any inquiries at [info@triply.cc](mailto:info@triply.cc).
