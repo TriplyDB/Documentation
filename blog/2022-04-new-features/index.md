@@ -10,7 +10,7 @@ We have been very busy developing new features for our users and,  in this blog,
 
 ## SPARQL IDE additions and improvements
 
-We constantly want to help people retrieve more and more knowledge out of their datasets. To this end we have the extensive [Yasgui editor](https://triply.cc/docs/yasgui). With this editor you can easily query and visualize your results in different ways: a map for geodata, a pivot table for statistical data, or a timeline for historic data. Recently, we added two new visualization formats: network view and markup view. We are also committed to improving the existing plugins. For example, IRI prefixes are now handled better in the charts and pivot tables and we have added a toggle for the table view, with which you can switch between technical view and simple view of the data.
+We constantly want to help people retrieve more and more knowledge out of their datasets. To this end we have the extensive [Yasgui editor](https://triply.cc/docs/yasgui). With this editor you can easily query and visualize your results in different ways: a map for geodata, a pivot table for statistical data, or a timeline for historic data. Recently, we added two new visualization formats: network view and markup view. We are also committed to improving the existing views. For example, IRI prefixes are now handled better in the charts and pivot tables and we have added a toggle for the table view, with which you can switch between a technical view and a simple view of the data.
 
 ### NEW: SPARQL Network View
 
@@ -20,11 +20,11 @@ You can now visualize your data as a network. This is part of the SPARQL IDE, so
 
 The network view can visualize up to 1,000 connections, which is ideal for visualizing data models or concept schemes. It is also possible to visualize instance data.
 
-More information about the network view can be found in the Triply [documentation](https://triply.cc/docs/yasgui#network), and you can also play around with this through our [Pokémon query](https://triplydb.com/JD/-/queries/pokemonNetwork/2) yourself.
+More information about the network view can be found in the Triply [documentation](https://triply.cc/docs/yasgui#network). You can also play around with this through our [Pokémon query](https://triplydb.com/JD/-/queries/pokemonNetwork) yourself.
 
 ### NEW: SPARQL Markup View
 
-Markup view is an improvement of the gallery view. The gallery view allows the user to create HTML blocks with SPARQL, and even add populated HTML elements. Nevertheless, we noticed users going all out with the gallery view and (miss-)using the gallery view with a lot of HTML elements. To help them out we have added in the markup view as a new tool.
+The Markup view is an improvement of the gallery view. The gallery view allows the user to customize gallery elements with HTML. We noticed users going all out with this feature and (mis)using the gallery view with a lot of HTML elements. To help them out we have added in the markup view as a new tool that is tailored to this use-case.
 
 The markup view can visualize two different types of markup languages: mermaid and HTML. [Mermaid](https://mermaid-js.github.io/mermaid/#/) is a library with tools to visualize diagrams and charts. The second language is HTML. Now you can create HTML elements that are populated with information from a dataset and combined into HTML elements with SPARQL. In our [documentation](https://triply.cc/docs/yasgui#markup), you can read how you can go about implementing the markup view, and you can also play around with this through our [mermaid query](https://triplydb.com/JD/-/queries/markup-visualization) yourself.
 
