@@ -402,11 +402,11 @@ The following parameters can be used, Parameters in _Italic_ are experimental:
 
 ### Network ([TriplyDB Plugin](/docs/yasgui-api#triplyDbPlugins)) {#network}
 
-This view renders SPARQL Construct results in a graph representation. Works for `Turtle`, `Trig`, `N-Triples` or `N-Quads` responses. The maximum amount of results that can be visualized is 1.000 due to performance.
+This view renders SPARQL Construct results in a graph representation. It works for `Turtle`, `Trig`, `N-Triples` and `N-Quads` responses. The maximum amount of results that can be visualized is 1.000 due to performance.
 
 ### Markup ([TriplyDB Plugin](/docs/yasgui-api#triplyDbPlugins)) {#markup}
 
-The markup view can be used to render a variety of markup languages. The requires the use of the `?markup` variable to identify which variable to render. Based on the datatype of the variable the plugin will identify which markup language to use:
+The markup view can be used to render a variety of markup languages. This requires the use of the `?markup` variable to identify which variable to render. Based on the datatype of the variable the plugin will identify which markup language to use:
 
 | **Markup language** | **Datatype** |
 | :------------------ | :----------- |
