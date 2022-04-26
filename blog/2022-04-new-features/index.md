@@ -26,7 +26,7 @@ More information about the network view can be found in the Triply [documentatio
 
 The Markup view is an improvement of the gallery view. The gallery view allows the user to customize gallery elements with HTML. We noticed users going all out with this feature and (mis)using the gallery view with a lot of HTML elements. To help them out we have added in the markup view as a new tool that is tailored to this use-case.
 
-The markup view can visualize two different types of markup languages: mermaid and HTML. [Mermaid](https://mermaid-js.github.io/mermaid/#/) is a library with tools to visualize diagrams and charts. The second language is HTML. Now you can create HTML elements that are populated with information from a dataset and combined into HTML elements with SPARQL. In our [documentation](https://triply.cc/docs/yasgui#markup), you can read how you can go about implementing the markup view, and you can also play around with this through our [mermaid query](https://triplydb.com/JD/-/queries/markup-visualization) yourself.
+The markup view can visualize two different types of markup languages: mermaid and HTML. [Mermaid](https://mermaid-js.github.io/mermaid/#/) is a library with tools to visualize diagrams and charts. The second language is HTML. Now you can create HTML elements that are populated with information from a dataset and combined into HTML elements with SPARQL. In our [documentation](https://triply.cc/docs/yasgui#markup), you can read how you can go about implementing he markup view. You can also play around with this through our [mermaid query](https://triplydb.com/JD/-/queries/markup-visualization) yourself.
 
 ![Form gif](markup-visualization.svg)
 
