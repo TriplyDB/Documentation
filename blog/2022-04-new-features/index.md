@@ -2,7 +2,7 @@
 title: "New TriplyDB Features (April 2022)"
 path: "/blog/2022-04-new-features"
 date: "2022-04-30T11:15:00"
-author: tdegroot
+author: tdegrootwbeek
 ---
 
 Hello everybody! It has been a long time since we have published a feature list.
