@@ -16,7 +16,7 @@ We constantly want to help people retrieve more and more knowledge out of their 
 
 You can now visualize your data as a network. This is part of the SPARQL IDE, so you have full control over which data you want to visualize in this view.
 
-![Form gif](pokemonNetwork.png)
+[![Showcase of the network view of Pokémon](pokemonNetwork.png)](https://triplydb.com/JD/-/queries/pokemonNetwork)
 
 The network view can visualize up to 1,000 connections, which is ideal for visualizing data models or concept schemes. It is also possible to visualize instance data.
 
@@ -28,7 +28,7 @@ The Markup view is an improvement of the gallery view. The gallery view allows t
 
 The markup view can visualize two different types of markup languages: mermaid and HTML. [Mermaid](https://mermaid-js.github.io/mermaid/#/) is a library with tools to visualize diagrams and charts. The second language is HTML. Now you can create HTML elements that are populated with information from a dataset and combined into HTML elements with SPARQL. In our [documentation](https://triply.cc/docs/yasgui#markup), you can read how you can go about implementing he markup view. You can also play around with this through our [mermaid query](https://triplydb.com/JD/-/queries/markup-visualization) yourself.
 
-![Form gif](markup-visualization.svg)
+[![Showcase of the markup view for the Iris dataset](markup-visualization.svg)](https://triplydb.com/JD/-/queries/markup-visualization)
 
 ## The improved UI
 
@@ -37,7 +37,7 @@ TriplyDB has undergone a lot of changes both internally and externally, but one 
 - We have worked on making TriplyDB more accessible for all users. This has led to e.g. a change in the color scheme of the buttons to make them more visible on the screen.
 - Saved queries have been redesigned, to reduce the amount of URLs visible for the user,  and to bring the RESTful API URL better in view, making it easier for you to copy this URL. You can learn more about how to use our RESTful API in our [documentation](https://triply.cc/docs/triply-db-getting-started#using-a-saved-query) pages.
 
-![URL-form](URL-form.png)
+[![Saved query with the new API URL](URL-form.png)](https://triplydb.com/JD/-/queries/markup-visualization)
 
 ## Closing Notes
 

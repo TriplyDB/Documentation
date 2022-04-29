@@ -1682,7 +1682,7 @@ Returns an [async iterator](#async-iterator) with statements (quadruples) that f
 ```ts
 const user = client.getUser()
 const dataset = await user.getDataset("my-dataset")
-for await (const statement: dataset.getStatements()) {
+for await (const statement of dataset.getStatements()) {
   console.log(statement)
 }
 ```
@@ -1692,7 +1692,7 @@ for await (const statement: dataset.getStatements()) {
 ```ts
 const association = client.getOrganization("DBpedia-association")
 const dbpedia = association.getDataset("dbpedia")
-for await (const statement: dbpedia.getStatements({subject: "http://dbpedia.org/resource/Amsterdam"}) {
+for await (const statement of dbpedia.getStatements({subject: "http://dbpedia.org/resource/Amsterdam"})) {
   console.log(statement)
 }
 ```
