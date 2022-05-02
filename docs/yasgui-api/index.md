@@ -11,7 +11,7 @@ Here you can find documentation on ways to include, configure and extend these c
 ## About additional plugins {#triplyDbPlugins}
 
 Yasgui, Yasqe and Yasr are all [open source](https://github.com/TriplyDB/Yasgui) and MIT licensed.
-Triply provides additional plugins that are free to use via [https://yasgui.triply.cc](https://yasgui.triply.cc) or via [TriplyDB](https://triplydb.com/).
+Triply provides additional plugins that are only free to use via [https://yasgui.triply.cc](https://yasgui.triply.cc) or [TriplyDB](https://triplydb.com/). These additional plugins are not MIT licensed and cannot be used or included programatically.
 
 ## Installation
 
