@@ -2872,11 +2872,20 @@ To reliably retrieve a large number of results as the output of a `construct` or
    }
    ```
 
-   5b. Save the results to a file. This is only supported form SPARQL `construct` queries:
+   5b. Save the results to a file. 
+   
+   For saving SPARQL `construct` queries:
 
    ```ts
    // Saving the results of a SPARQL construct query to a file.
    await results.toFile("my-file.nt");
+   ```
+   
+   For saving SPARQL `select` queries. Currently we only support saving the file to a .tsv format:
+
+   ```ts
+   // Saving the results of a SPARQL select query to a file.
+   await results.toFile("my-file.tsv");
    ```
 
    5c. Load all results into memory. Note that this is almost never used. If you want to process results, then option 5a is better; if you want to persist results, then option 5b is better.
