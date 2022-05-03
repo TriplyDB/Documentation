@@ -107,7 +107,7 @@ In this section we extend the project to configure read/write permissions that a
    import Client from "@triply/triplydb";
    const client = Client.get({ token: process.env.TRIPLYDB_TOKEN });
    async function run() {
-     console.log((await (await client.getUser()).getInfo()).name);
+     console.log((await (await client.getUser()).getInfo()).accountName);
    }
    run().catch((e) => {
      console.error(e);
