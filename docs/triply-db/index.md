@@ -30,7 +30,7 @@ The following steps allow a new Lined Dataset to be created:
 4. Optionally, enter a dataset display name. This name will be used
    in the GUI and will be exposed in dataset metadata.
 
-5. Optionally, enter a dataset description. You can use richt text
+5. Optionally, enter a dataset description. You can use rich text
    formatting by using Markdown. See [our section about
    Markdown](#markdown-support) for details.
 
@@ -52,7 +52,7 @@ screenshot). In this view data can be added in three ways:
 
 <dl>
   <dt>File upload</dt>
-  <dd>Select files from your local machine.  It is also possible to drag-and-drop local files on the cloud icon with the upward poinging arrow.</dd>
+  <dd>Select files from your local machine.  It is also possible to drag-and-drop local files on the cloud icon with the upward pointing arrow.</dd>
   <dt>URL upload</dt>
   <dd>Copy/paste a URL that points to an online RDF file.</dd>
   <dt>Import</dt>
@@ -134,7 +134,7 @@ standards-compliant tools start using the data.
 
 ## Assets: binary data
 
-Not all data can be stores as RDF data. For example images and video
+Not all data can be stored as RDF data. For example images and video
 files use a binary format. Such files can also be stored in TriplyDB
 and can be integrated into the Knowledge Graph.
 
@@ -148,7 +148,7 @@ You can publish your dataset by setting the visibility to “Public” in
 the dataset settings menu. Making a dataset public in TriplyDB has
 the following consequences:
 
-1. The dataset can be searched for an visited by anybody on the web.
+1. The dataset can be searched for and visited by anybody on the web.
 2. The dataset will be indexed by web search engines such as [Google
    Dataset Search]().
 3. Any services that are started for that dataset will be available
@@ -182,7 +182,7 @@ Within the TriplyDB instance your dataset is now more findable for users. Whenev
 a user searches on one of the topics of your dataset, or types in a word that is
 present in the description of your dataset, the dataset will be shown as a search
 result. The metadata will allow TriplyDB to give a better impression of your dataset
-when a user vitits:
+when a user visits:
 
 ![The dataset home page](dataset-homepage-with-metadata.png) The dataset home page after metadata has been entered.
 
@@ -343,19 +343,19 @@ We have three different visualization methods for the classHierarchy:
 - Treemap visualization
 - Sunburst visualization
 
-All three visualization are interactive in two ways. It is possible to hover over them, which will show information about the layer the mouse is on, or to click on them,
-so the visualization zooms in a one or more layers. For each visualization it
+All three visualizations are interactive in two ways. It is possible to hover over them, which will show information about the layer the mouse is on, or to click on them,
+so the visualization zooms in one or more layers. For each visualization it
 is also possible to zoom out:
 
 - Bubbles visualization: click the outside of the bubble
-- Treemap visualization: use the breadcrumbs trail shown above the visualisation
-- Sunburst visualization: click the innermost circle of the visualisation
+- Treemap visualization: use the breadcrumbs trail shown above the visualization
+- Sunburst visualization: click the innermost circle of the visualization
 
 #### When does the class hierarchy show?
 
 **Note that the class hierarchy does not automatically update to reflect changes in the data. When the data has changed, the page must be refreshed.**
 
-- A class only appears in the class hierarchy tab if it has instances (connected to the class via `rdf:type`), or if at least one of it's subclasses appear in the class hierarchy tab.
+- A class only appears in the class hierarchy tab if it has instances (connected to the class via `rdf:type`), or if at least one of it's subclasses appears in the class hierarchy tab.
 - The class hierarchy cannot be shown if it contains a cycle, meaning that some class is (indirectly) its own subclass.
 
 
@@ -371,7 +371,7 @@ removing the hassle of figuring out how to run a SPARQL query.
 There are two ways to create a saved query.
 _You need to be logged in and have authorization rights on the dataset to use this feature_
 
-1. When working from the [SPAQRL IDE](#sparql-ide)
+1. When working from the [SPARQL IDE](#sparql-ide)
 2. Using the Saved Queries tab in a dataset
 
 Creating a saved query with the SPARQL IDE is done by writing a query/visualization and hitting the save button ![The save query button highlighted](save-query-highlighted.png)
@@ -421,7 +421,7 @@ Check out the [sparql pagination page](https://triply.cc/docs/pagination) when y
 
 ### Metadata links
 
-In the metadata overview there are two links. The first links points to the dataset the query is executed over and when clicking brings you to the dataset homepage.
+In the metadata overview there are two links. The first link points to the dataset the query is executed over and when clicking brings you to the dataset homepage.
 The second link points to the service the saved query uses. The second link brings you to the services page of the dataset, and from there on you can go to the SPARQL service.
 
 # Data stories
@@ -521,7 +521,7 @@ For changing the metadata follow the next steps:
 
 ![Metadata settings](metadata-settings.png)
 
-3. Here you can set the name, tag line, description and welcome text. The name of your website appears in your browser tab. The welcome text appears on the home page of your TriplyDB instance. The tag line and description are for metadata purposes (e.g. findability and website previews).
+3. Here you can set the name, tag line, description and welcome text. The name of your website appears in your browser tab. The welcome text appears on the homepage of your TriplyDB instance. The tag line and description are for metadata purposes (e.g. findability and website previews).
 
 ## Account overview
 
@@ -546,7 +546,7 @@ stories.
 | ---------------- | ----------------------------------------------------------------------------------------- | ----------------- |
 | Private          | The dataset/query/story is only visible to you.                                           | ![](private.png)  |
 | Internal         | The dataset/query/story is only visible to people who are logged in to the same TriplyDB. | ![](internal.png) |
-| Public           | The dataset/query/story is vivible to everybody on the Internet.                          | ![](public.png)   |
+| Public           | The dataset/query/story is visible to everybody on the Internet.                          | ![](public.png)   |
 
 ### Access level dependencies
 
