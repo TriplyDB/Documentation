@@ -531,6 +531,9 @@ const xsd = {
   positiveInteger: prefix.xsd('positiveInteger'),
   string: prefix.xsd('string'),
 }
+
+
+const input_string  = ['Country', 'inhabitants']
 ```
 
 With these prefix and term constants in place, a dynamic statement is created as follows:
@@ -551,16 +554,32 @@ Notice the following details:
 - `mw.toLiteral` is used to create a dynamic literal term.
 - For literals a datatype IRI can be specified.  If no datatype IRI is specified then the default IRI is `xsd.string`.
 
+`mw.toIri.fromHashOf`can be used instead of `mw.toIri` when the ETL has a high number of blank nodes and they need more than one constant as input to hash a unique IRI.
+
+```ts
+app.use(
+  mw.addQuad(
+    mw.toIri.fromHashOf(input_string, {prefix: prefix.id}),
+    def.inhabitants,
+    mw.toLiteral('Inhabitants', {datatype: xsd.positiveInteger})),
+)
+```
+
+Notice the following details:
+- `input_string` can pass more than one constant to hash a unique IRI term.
+
+
 #### Static and dynamic triples
 
 Be aware that there are different approaches for *static* and *dynamic* IRIs:
 
 - Static IRIs are created with prefix declarations (example [1a]).
-- Dynamic IRIs are created with `mw.toIri` and prefix declarations (example [2a]).
+- Dynamic IRIs are created with `mw.toIri`,`mw.toIri.fromHashOf` and prefix declarations (example [2a]).
 
 ```ts
 [1a] prefix.id('person')
 [2a] mw.toIri('person', {prefix: prefix.id}),
+[3a] mw.toIri.fromHashOf(['person','age'], {prefix: prefix.id}),
 ```
 
 Notation [1a] creates the *static* IRI [1b].  This IRI does not depend on the currently processed RATT record.
@@ -569,11 +588,18 @@ Notation [2a] creates the *dynamic* IRI in [2b], assuming the `"person"` key con
 
 For a different RATT record, IRI [2c] may be created instead (assuming the `"person"` key contains the value `"Jane"`).
 
+Notation [3a] creates the *dynamic* IRI in [3b], assuming the `"person"` key contains the value `"Sam"` and the
+`"age"` key contains the value `"30"`. For a different RATT record, IRI [3c] may be created instead (assuming the `"person"` key contains the value `"Roland"` and `"age"` key contains the value `"20"`).
+
 ```turtle
 [1b] id:person
 [2b] id:John
 [2c] id:Jane
+[3b] id:Sam , age: 30
+[3c] id:Sam , age: 20
 ```
+
+
 
 ##### When should you use an IRI instead of an URI (which is a literal)?
 
@@ -586,9 +612,9 @@ In the example below, the subject IRI is described further by the object's URL.
 
 An IRI can be created with `mw.toIri`, while an URI is created by using `mw.toLiteral` .
 
-##### Limitation of `mw.toLiteral` and `mw.toIri`
+##### Limitation of `mw.toLiteral`, `mw.toIri` and `mw.toIri.fromHashOf`
 
-There is a limitation for both `mw.toLiteral` and `mw.toIri`. It is not possible to change the value in the record in the `mw.toLiteral` and `mw.toIri` middlewares. The value that is at that moment stored in the record for that key, is then added as either an IRI when called with the `mw.toIri` function or as a literal when called with the function `mw.toLiteral`.
+There is a limitation for both `mw.toLiteral`, `mw.toIri` and `mw.toIri.fromHashOf`. It is not possible to change the value in the record in the `mw.toLiteral`, `mw.toIri` and `mw.toIri.fromHashOf` middlewares. The value that is at that moment stored in the record for that key, is then added as either an IRI when called with the `mw.toIri`/`mw.toIri.fromHashOf` function or as a literal when called with the function `mw.toLiteral`.
 
 The limitation is shown in the example below. In the example we want to round the inhabitants number to the nearest thousand. We can not transform this in the `mw.toLiteral` function. Instead we need to add a `mw.change` middleware which will execute the transformation.
 
@@ -1124,3 +1150,29 @@ This makes the following assertion:
 country:nl rdfs:label 'The Netherlands'@en,
                       'Holland'@en.
 ```
+### Collect records from a specified OAI endpoint (<code>mw.fromOai</code>) {#mw.fromOai}
+
+`mw.fromOai` allows a RATT pipeline to be run over the self-contained RATT records that come from the specified OAI endpoint.The handling of resumption tokens and iteration over the array members per batch is abstracted away by this new middleware, simplifying the use of OAI endpoints for the RATT user. The middleware supports xml parsing and the content is automatically determined by the returned Content-Type, this is the default behaviour. The received content can be cached and if cached, each record contains metadata about whether it came from a cached result, or whether it's a 'new' record.
+
+#### Function signature
+
+This function has the following signature:
+
+```ts
+app.use(
+  mw.fromOai({
+    since: Time,
+    url: "https://somethingsomething.redacted/webapioai/oai.ashx",
+    set: "xyzname",
+    cacheOverride: "use cache",
+    maxCacheAgeDays: number
+  })
+)
+```
+
+The function can be configured in the following ways:
+- `Time` since when the caching started.
+- `https://somethingsomething.redacted/webapioai/oai.ashx` is the specified OAI endpoint.
+- `xyzname` is the name for the specific dataset.
+- `use cache` starts the caching process.
+- `number` is a natural number and it indicates the number of days after which the cache will be cleared.
