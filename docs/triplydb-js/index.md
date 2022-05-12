@@ -504,10 +504,8 @@ The `metadata` argument optionally specifies the access level and other importan
     <dl>
       <dt><code>"private"</code> (default)</dt>
       <dd>The dataset can only be accessed by organization members.</dd>
-      <!-- -->
-      <dt><code>"internal"</code></dt>
+      <dt><code>"internal"</code> </dt>
       <dd>The dataset can only be accessed by users that are logged into the TriplyDB instance.</dd>
-      <!-- -->
       <dt><code>"public"</code></dt>
       <dd>The dataset can be accessed by everybody.</dd>
     </dl>
@@ -691,18 +689,15 @@ Adds a new data story.
     <dl>
       <dt><code>"private"</code></dt>
       <dd>The dataset can only be accessed by the <a href='#account'><code>Account</code></a> object for which it is created.</dd>
-      <!-- -->
       <dt><code>"internal"</code></dt>
-      <dd>The dataset can only be accessed by people who are logged into the TriplyDB instance (denoted by the value of environment variable <code>TRIPLYDB_URL</code>).
-      <!-- -->
+      <dd>The dataset can only be accessed by people who are logged into the TriplyDB instance (denoted by the value of environment variable
+      <code>TRIPLYDB_URL</code>).
       <dt><code>"public"</code></dt>
       <dd>The dataset can be accessed by everybody.</dd>
     </dl>
   </dd>
-
   <dt><code>content: StoryElementUpdate[]</code> </dt>
-  <dd>A list if story elements.</dd>
-
+  <dd>A list if story elements. The building blocks of the Story.</dd>
   <dt><code>displayName: string</code> </dt>
   <dd>The human-readable name of the data story.  This name may include spaces and other characters that are not allowed in the URL-friendly name.</dd>
 </dl>
@@ -710,18 +705,14 @@ Adds a new data story.
 A story element is an object with the following keys:
 
 <dl>
-  <!--
   <dt>caption: string</dt>
-  <dd>TODO</dd>
-  -->
+  <dd>The caption is an explanatory text about a specific query.</dd>
 
-  <!--
   <dt><code>id: string</code></dt>
-  <dd></dd>
-  -->
+  <dd>Each Story elements gets an Id when it is created. When you want to update an Story element you will need this Id. The Id is only required when updating an element and not needed when adding an object.</dd>
 
   <dt>paragraph: string</dt>
-  <dd>The Markdown content of a story paragraph.</dd>
+  <dd>The Markdown content of a story paragraph. Only allowed when the type is set to <code>"paragraph"</code> </dd>
 
   <dt><code>query: Query</code></dt>
   <dd>An instance of class <a href='#query'><code>Query</code></a>.</dd>
@@ -740,7 +731,7 @@ Example 1 - creates a new story that has access level `"private"`:
 ```ts
 const client = Client.get({ token: process.env.TRIPLYDB_TOKEN });
 const user = await client.getUser();
-const newStory = await someUser.addStory("name-of-story");
+const newStory = await user.addStory("name-of-story");
 ```
 
 Example 2 - creates a new story that has access level `"public"`:
@@ -748,7 +739,7 @@ Example 2 - creates a new story that has access level `"public"`:
 ```ts
 const client = Client.get({ token: process.env.TRIPLYDB_TOKEN });
 const user = await client.getUser();
-const newStory = await someUser.addStory("name-of-story", {
+const newStory = await user.addStory("name-of-story", {
   accessLevel: "public",
 });
 ```
@@ -895,7 +886,7 @@ Returns information about this account.
 
 Information is returned in a dictionary object. Individual keys can be accessed for specific information values.
 
-<!--
+<!-- TODO
 The information object for accounts includes the following keys:
 
 <dl>
@@ -1167,11 +1158,13 @@ Pins the given datasets, stores, and/or queries to the home page of this account
 
 The pinned elements can be seen by people who visit the account online. They are also included in the account metadata.
 
-<!--
-##### Examples
-
-TODO
--->
+```ts
+const client = Client.get({ token: process.env.TRIPLYDB_TOKEN });
+const user = await client.getUser();
+const query = await user.getQuery("name-of-query")
+const newStory = await user.getStory("name-of-story");
+user.pinItems([query,newStory])
+```
 
 #### Account.setAvatar(file: string)
 
@@ -1240,31 +1233,31 @@ TODO: Document the keys supported in `metadata`.
 ### Asset
 -->
 
-<!-- TOOD: Document this method.
+<!-- TODO: Document this method.
 #### Asset.addVersion(path: File|string)
 -->
 
-<!-- TOOD: Document this method.
+<!-- TODO: Document this method.
 #### Asset.delete()
 -->
 
-<!-- TOOD: Document this method.
+<!-- TODO: Document this method.
 #### Asset.getInfo(version?: number)
 -->
 
-<!-- TOOD: Document this method.
+<!-- TODO: Document this method.
 #### Asset.getVersionInfo(version: number)
 -->
 
-<!-- TOOD: Document this method.
+<!-- TODO: Document this method.
 #### Asset.selectVersion(version: number)
 -->
 
-<!-- TOOD: Document this method.
+<!-- TODO: Document this method.
 #### Asset.toFile(path: string, version?: number)
 -->
 
-<!-- TOOD: Document this method.
+<!-- TODO: Document this method.
 #### Asset.toStream(version?: number)
 -->
 
@@ -1302,8 +1295,7 @@ This method is useful in practice, because it removes the burden on the programm
 The changes made as a result of calling this method depend on the current state of the connected-to TriplyDB instance:
 
 - If this dataset does not yet have a service with the given `name`, then the behavior is identical to calling [`Dataset.addService(name: string, metadata?: object)`](#datasetaddservicename-string-metadata-object) with the same arguments.
-<!--
-- If this dataset already has a service with the given `name`, but with different `metadata` specified for it, then the behavior is identical to calling [`Account.getDataset(name: string)`](#datasetgetservicename-string) and [`Dataset.update(metadata: object)`](#serviceupdatemetadata-object). -->
+- If this dataset already has a service with the given `name`, but with different `metadata` specified for it, then the behavior is identical to calling [`Account.getDataset(name: string)`](#datasetgetservicename-string) and [`Dataset.update(metadata: object)`](#serviceupdatemetadata-object).
 - If this dataset already has a service with the given `name` and with the same `metadata`, then this method returns that service.
 
 ##### Required
@@ -1317,7 +1309,7 @@ The changes made as a result of calling this method depend on the current state 
 
 ```ts
 serviceMetadata = {
-  type: "sparql" | "elasticsearch | "virtuoso" | "jena" ;
+  type: "sparql" | "elasticsearch" | "virtuoso" | "jena" ;
   config?: {
     reasoner?: "OWL" | "RDFS" | "None";
   };
@@ -1376,10 +1368,8 @@ The service type is specified with the `type` parameter. If no type is given, a 
 <dl>
   <dt><code>"virtuoso"</code></dt>
   <dd>Starts a SPARQL service. A SPARQL 1.1 compliant service is very scalable and performance, but without advanced reasoning capabilities.</dd>
-
   <dt><code>"jena"</code></dt>
   <dd>Starts a SPARQL JENA service. A SPARQL 1.1 compliant service that is less scalable and less performant, but allows reasoning (RDFS or OWL) to be enabled.</dd>
-
   <dt><code>"elasticsearch"</code></dt>
   <dd>Starts an <a href='https://www.elastic.co/guide/en/elasticsearch/reference/current/index.html'>Elasticsearch</a> service. A text search engine that can be used to power a search bar or similar textual search API.</dd>
 </dl>
@@ -1418,10 +1408,8 @@ The resources are specified by the [rest parameter](https://developer.mozilla.or
 <dl>
   <dt><code>"assets"</code></dt>
   <dd>Removes all assets in the dataset.</dd>
-
   <dt><code>"graphs"</code></dt>
   <dd>Removes all graphs in the dataset.</dd>
-
   <dt><code>"services"</code></dt>
   <dd>Removes all services in the dataset.</dd>
 </dl>
@@ -1491,9 +1479,20 @@ const dataset = await account.getDataset("my-dataset");
 await dataset.deleteGraph("https://example.org/some-graph");
 ```
 
-<!-- TODO: Document this method.
 #### Dataset.describe(iri: string|NamedNode)
--->
+
+Each dataset is a collection of triples that describe objects in linked data. Each object is defined with an IRI, an identifier for that object. An object often has incoming and outgoing connections.
+The `Dataset.describe()` call can retrieve the incoming and outgoing triples per object. The function returns for a given `iri` a list of quads where the `iri` is either in the subject or the object position.
+
+##### Examples
+
+The following snippet returns all triples that have `https://example.org/id/some-instance` in the subject or the object position:
+
+```ts
+const user = await client.getUser();
+const dataset = await account.getDataset("my-dataset");
+console.log(await dataset.describe('https://example.org/id/some-instance'))
+```
 
 #### Dataset.getAsset(name: string, version?: number)
 
@@ -1510,12 +1509,6 @@ const user = await client.getUser();
 const dataset = user.getDataset("my-dataset");
 const asset = await dataset.getAsset("file.png", 1);
 ```
-
-<!--
-##### See also
-
-TODO: Add this section
--->
 
 #### Dataset.getAssets()
 
@@ -1543,11 +1536,6 @@ const dataset = await account.getDataset("my-dataset");
 console.log(await dataset.getAssets().toArray());
 ```
 
-<!--
-##### See also
-
-TODO: Add this section
--->
 
 #### Dataset.getGraph(name: string)
 
@@ -1606,12 +1594,9 @@ Returns the prefixes that are defined for this dataset.
 
 This contains prefix declarations that are generic and configured for this TriplyDB instance, and prefix declarations that are defined for this specific dataset.
 
-The following snippet prints the prefix declarations that hold for the animals dataset:
-
-<!--
 ##### Examples
 
-TODO: Finish this section.
+The following snippet prints the prefix declarations that hold for `my-dataset`:
 
 ```ts
 const user = await client.getUser()
@@ -1620,7 +1605,7 @@ for await (const prefix of dataset.getPrefixes()) {
   console.log(prefix)
 }
 ```
--->
+
 
 #### Dataset.getService(name: string)
 
@@ -1654,15 +1639,13 @@ for await (const service of dataset.getServices()) {
 }
 ```
 
-<!--
-- TODO: Finish this example.
+If you do not want to iterate over the services with an async iterator, but instead want to get an array of services use the `.toArray()` call instead:
 
 ```ts
 const account = await client.getAccount()
 const dataset = await account.getDataset("my-dataset")
 console.log(await dataset.getServices().toArray())
 ```
--->
 
 #### Dataset.getStatements({subject?: string, predicate?: string, object?: string, graph?: string})
 
@@ -1697,34 +1680,29 @@ for await (const statement of dbpedia.getStatements({subject: "http://dbpedia.or
 }
 ```
 
-<!-- TOOD: Document this method.
+<!-- TODO: Document this method.
 #### Dataset.graphsToFile
 -->
 
-<!-- TOOD: Document this method.
+<!-- TODO: Document this method.
 #### Dataset.graphsToStore
 -->
 
-<!-- TOOD: Document this method.
+<!-- TODO: Document this method.
 #### Dataset.graphsToStream
 -->
 
-#### Dataset.importFromDataset(from: Dataset, arguments?: object)
-
-<!--
-TODO: This may document the deprecated version of this method?
-      Please check and update this.
--->
+#### Dataset.importFromDataset(fromDataset: Dataset, arguments?: object)
 
 Imports one or more named graphs from a different dataset into this dataset.
 
 Data reuse is an important principle in linked data. This functionality makes it very easy to pull in vocabularies and datasets from other places.
 
-Changes in the `from` dataset are not automatically reflected in this dataset. If you want to synchronize with changes made in the imported-from dataset, the graphs must be explicitly imported. This protects this dataset against unanticipated changes in the imported-from dataset, while still being able to stay in sync with the imported-from dataset if this is explicitly requested.
+Changes in the `fromDataset` dataset are not automatically reflected in this dataset. If you want to synchronize with changes made in the imported-from dataset, the graphs must be explicitly imported. This protects this dataset against unanticipated changes in the imported-from dataset, while still being able to stay in sync with the imported-from dataset if this is explicitly requested.
 
 ##### Required
 
-- Argument `from` is the dataset object from which one or more graphs are imported over to this dataset.
+- Argument `fromDataset` is the dataset object from which one or more graphs are imported over to this dataset.
 
 ##### Optional
 
@@ -1732,14 +1710,9 @@ The optional properties accepted as arguments for <code>importFromDataset</code>
 
 <dl>
   <dt>graphMap</dt>
-  <dd>Argument `<code>graphMap</code>` optionally is an object with keys and values that implements a mapping from existing graph names (keys) to newly created graph names (values). Each key must be an existing graph name in the `from` dataset. Each value must is the corresponding graph name in this dataset.</dd>
-<!-- <https://issues.triply.cc/issues/5783>
-If this argument is not specified, then graph names in the `from` dataset are identical to graph names in this dataset.
--->
-
+  <dd>Argument `<code>graphMap</code>` optionally is an object with keys and values that implements a mapping from existing graph names (keys) to newly created graph names (values). Each key must be an existing graph name in the `from` dataset. Each value must is the corresponding graph name in this dataset. If this argument is not specified, then graph names in the `from` dataset are identical to graph names in this dataset.</dd>
   <dt>graphNames</dt>
   <dd>Argument `<code>graphNames</code>` optionally is an array of graph names. These names can be one of three types: "string", instances of a "Graph" class, or instances of "NamedNodes".</dd>
-
   <dt>overwrite</dt>
   <dd>Accepts a Boolean value. An optional property that determines whether existing graph names in this dataset are allowed to be silently overwritten. If this argument is not specified, then `false` is used as the default value.</dd>
 </dl>
@@ -1795,10 +1768,8 @@ The files must contain RDF data.
 <dl>
   <dt><code>defaultGraphName</code></dt>
   <dd>Accepts a <code>string</code> value that is set as the default graph name for each imported file</dd>
-
   <dt><code>baseIRI</code></dt>
   <dd>Accepts a <code>string</code> value that is set as the default baseIRI for each imported file</dd>
-
   <dt><code>overwriteAll</code></dt>
   <dd>Accepts a <code>boolean</code> value that overwrites previously added graph names or baseIRIs (regardless of whether they came from a URL or a file)</dd>
 </dl>
@@ -1830,9 +1801,25 @@ await dataset.importFromFiles(["file.nq", "file.tar.gz"], {
 });
 ```
 
-<!-- TODO: Add documentation.
-#### Dataset.importFromStore(store: n3.Store)
--->
+#### Dataset.importFromStore(store: n3.Store, defaultsConfig?: object)
+
+One of the most complete libraries for handling linked data in memory is the [n3 library](https://rdf.js.org/N3.js/docs/N3Store.html). The N3.js library is an implementation of the RDF.js low-level specification that lets you handle RDF in JavaScript easily, with an asynchronous, streaming approach.
+
+To reduce the overhead of converting your data from the N3 Store to a file and uploading to TriplyDB. TriplyDB.js has a `importFromStore()` where a N3 store is given as first argument and upload direct to triplyDB.
+
+
+##### Examples
+
+```ts
+const store = new Store()
+store.addQuad(DataFactory.namedNode('https://triplydb.com/id/me'),DataFactory.namedNode('http://www.w3.org/2000/01/rdf-schema#label'),DataFactory.literal('me'),DataFactory.namedNode('https://triplydb.com/Triply/example/graph/default'))
+
+const client = Client.get({ token: process.env.TRIPLYDB_TOKEN });
+const user = await client.getUser();
+const dataset = (await user.getDatasets().toArray())[0]
+dataset.importFromStore(store)
+```
+
 
 #### Dataset.importFromUrls(urls: list(string), defaultsConfig?: object)
 
@@ -1847,40 +1834,17 @@ The URLs must provide access to RDF data.
 <dl>
   <dt><code>defaultGraphName</code></dt>
   <dd>Accepts a <code>string</code> value that is set as the default graph name for each imported URL</dd>
-
   <dt><code>baseIRI</code></dt>
   <dd>Accepts a <code>string</code> value that is set as the default baseIRI for each imported URL</dd>
-
   <dt><code>overwriteAll</code></dt>
   <dd>Accepts a <code>boolean</code> value that overwrites previously added graph names or baseIRIs (regardless of whether they came from a URL or a file)</dd>
 </dl>
-
-<!--
-##### Supported URLs
--->
 
 ##### Examples
 
 ```ts
 dataset1.importFromUrls(["url1", "url2", "url3"]);
 ```
-
-<!--TODO: Is this method no longer supported?
-#### Dataset.query()
-
-Returns the query object for this dataset.
-
-See section [Query](#query) for an overview of the methods that can be used with query objects.
-
-##### Examples
-
-The following snippet returns the query object of a specific dataset:
-
-```ts
-const account = await client.getAccount("acme")
-const query = account.query()
-```
--->
 
 #### Dataset.removeAllGraphs()
 
@@ -1946,10 +1910,8 @@ The `metadata` argument takes a dictionary object with the following optional ke
     <dl>
       <dt><code>"private"</code></dt>
       <dd>The dataset can only be accessed by the <a href='#account'><code>Account</code></a> object for which it is created.</dd>
-      <!-- -->
       <dt><code>"internal"</code></dt>
       <dd>The dataset can only be accessed by people who are logged into the TriplyDB instance (denoted by the value of environment variable <code>TRIPLYDB_URL</code>).
-      <!-- -->
       <dt><code>"public"</code></dt>
       <dd>The dataset can be accessed by everybody.</dd>
     </dl>
@@ -2242,9 +2204,12 @@ Inherited from [`Account.update(metadata: object)`](#accountupdatemetadata-objec
 
 ### Query
 
-<!--
-TODO: Document what a query is and how it can be obtained.
--->
+A Saved Query is a versioned SPARQL query with its own URL. Using this URL,
+users are able to view any version of the query and its results. It can also be
+used to run the query and retrieve the results from a browser or a program,
+removing the hassle of figuring out how to run a SPARQL query.
+
+Saved queries come with a REST API that can be configured with the use a SPARQL API variables. 
 
 #### Query.delete()
 
@@ -2261,10 +2226,8 @@ The returned dictionary object includes the following keys:
     <dl>
       <dt><code>"private"</code> (default)</dt>
       <dd>The dataset can only be accessed by organization members.</dd>
-      <!-- -->
       <dt><code>"internal"</code></dt>
       <dd>The dataset can only be accessed by users that are logged into the TriplyDB instance.
-      <!-- -->
       <dt><code>"public"</code></dt>
       <dd>The dataset can be accessed by everybody.</dd>
     </dl>
@@ -2314,7 +2277,7 @@ Optionally, arguments can be specified for the API variables to this query.
 
 The following code stores the SPARQL query string for the `query` object:
 
-```
+```ts
 const queryString = await query.getString()
 ```
 
@@ -2352,20 +2315,96 @@ At least one of the following arguments is required to create a new version. Any
 Returns the URL link to run the query.
 It currently does not support the use of variables.
 
-<!--
-TODO: Document this method.
 #### Query.results(apiVariables?: object, options?: object)
--->
 
-<!--
-TODO: Document this method.
+`Query.results()` function will automatically return all the results from a saved query. You can retrieve both results from a `select` or `ask` query and a `construct` or `describe` query. The results are returned as an `async iterator`.
+
+##### Examples
+
+Get the results of a query by setting a `results` variable.  More specifically, for construct queries you use the `statements()` call:
+
+```ts
+const client = Client.get({token: process.env.TRIPLYDB_TOKEN})
+const account = await client.getAccount('account-name')
+const query = await account.getQuery('name-of-some-query')
+
+// For select queries you use the `statements()` call:
+const results = query.results().statements()
+// For select queries you use the `bindings()` call:
+const results = query.results().bindings()
+```
+
+Additionally, saved queries can have 'API variables' that allow you to specify variables that are used in the query. Thus, if you have query parameters, pass their values as the first argument to `results` as follows:
+
+```ts
+const client = Client.get({token: process.env.TRIPLYDB_TOKEN})
+const account = await client.getAccount('account-name')
+const query = await account.getQuery('name-of-some-query')
+// For SPARQL construct queries.
+const results = query.results({
+ someVariable: 'value of someVariable',
+ anotherVariable: 'value of anotherVariable'
+}).statements()
+// For SPARQL select queries.
+const results = query.results({
+ someVariable: 'value of someVariable',
+ anotherVariable: 'value of anotherVariable'
+}).bindings()
+```
+
 #### Query.update(metadata: object)
--->
 
-<!--
-TODO: Document this method.
+Updates the metadata for the saved query. This does not result in a new query version. It requires similar options to that of <code>`Query.addQuery`</code>.
+
+##### Arguments
+
+At least one of the following arguments is required to update the metadata. Any argument given will be copied from the previous version of that query.
+
+<dl>
+  <dt><code>accessLevel</code></dt>
+  <dd>
+    <p>The access level of the query.  The following values are possible:</p>
+    <dl>
+      <dt><code>"private"</code> (default)</dt>
+      <dd>The dataset can only be accessed by organization members.</dd>
+      <dt><code>"internal"</code></dt>
+      <dd>The dataset can only be accessed by users that are logged into the TriplyDB instance.
+      <dt><code>"public"</code></dt>
+      <dd>The dataset can be accessed by everybody.</dd>
+    </dl>
+  </dd>
+
+  <dt><code>autoselectService</code><dt>
+  <dd>Whether the SPARQL service is automatically chosen (<code>true</code>), or whether a specific SPARQL service is configured (<code>false</code>).</dd>
+
+  <dt><code>dataset</code></dt>
+  <dd>A dictionary object representing the dataset against which the query is evaluated.</dd>
+
+  <dt><code>description</code></dt>
+  <dd>The human-readable description of the query.  This typically explains what the query does in natural language.</dd>
+
+  <dt><code>displayName</code></dt>
+  <dd>The human-readable name of the query.  This name may include spaces and other characters that are not allowed in the URL-friendly name.</dd>
+
+  <dt><code>name</code></dt>
+  <dd>The URL-friendly name of the query that is used in URL paths.  This name can only include ASCII letters and hyphens.</dd>
+
+  <dt><code>preferredService</code></dt>
+  <dd>If the <code>autoselectService</code> is not selected the user can set the preferred service.</dd>
+</dl>
+
 #### Query.useVersion(version: number|"latest")
--->
+
+A saved query is saved with a version number. Each time the query or the visualization changes the version number is incremented with one. When you want to retrieve a saved query with a particular version you need the `useVersion` function. The function returns the query object corresponding to that version of the query. If you want to use the latest version of the query you need to set the version argument to `"latest"`.
+
+##### Example
+
+```ts
+const user = await client.getAccount("my-account");
+const query = await user.getQuery('my-query')
+const query_1 = await query.useVersion(1)
+```
+
 
 ### Service
 
@@ -2430,11 +2469,8 @@ const service = await dataset.addService("my-service");
 await service.delete();
 ```
 
-<!-- <https://issues.triply.cc/issues/5783>
-#### See also
+If you only want to temporarily disable this service, use `service.stop()` instead.
 
-If you only want to temporarily disable this service, use "stop" instead.
--->
 
 #### Service.getInfo()
 
@@ -2665,7 +2701,7 @@ Returns information about this user.
 
 Information is returned in a dictionary object. Individual keys can be accessed for specific information values.
 
-<!--
+<!-- TODO
 The information object for users includes the following keys:
 
 <dl>
@@ -2872,15 +2908,15 @@ To reliably retrieve a large number of results as the output of a `construct` or
    }
    ```
 
-   5b. Save the results to a file. 
-   
+   5b. Save the results to a file.
+
    For saving SPARQL `construct` queries:
 
    ```ts
    // Saving the results of a SPARQL construct query to a file.
    await results.toFile("my-file.nt");
    ```
-   
+
    For saving SPARQL `select` queries. Currently we only support saving the file to a .tsv format:
 
    ```ts
