@@ -1176,3 +1176,23 @@ The function can be configured in the following ways:
 - `xyzname` is the name for the specific dataset.
 - `use cache` starts the caching process.
 - `number` is a natural number and it indicates the number of days after which the cache will be cleared.
+
+
+#### Keeping track of records in the cache
+
+To keep track of the new records or the modified records in the caching, we can use a custom middleware.
+
+An example to show the custom middleware:
+
+```ts
+(ctx, next) => next({ ...ctx.getAny('metadata.record'), fromCache: ctx.getBoolean('header.fromCache') }),
+```
+
+The code reads the context
+
+
+ - `header.fromCache` returns boolean true if the record exists in the cache
+ - `fromCache` property is added to the record with either a true/false
+ - `metadata.record` retrieve the record
+
+The modified record is then passed to the next middleware.
