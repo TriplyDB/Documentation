@@ -886,7 +886,6 @@ Returns information about this account.
 
 Information is returned in a dictionary object. Individual keys can be accessed for specific information values.
 
-<!-- TODO
 The information object for accounts includes the following keys:
 
 <dl>
@@ -925,8 +924,19 @@ The information object for accounts includes the following keys:
 
   <dt><code>role</code></dt>
   <dd>The role of the account</dd>
+
+  <dt><code>orgs</code></dt>
+  <dd>An array of organizations of which the account is a member.</dd>
+
+  <dt><code>Email address</code></dt>
+  <dd>The email address of the account.</dd>
+
+  <dt><code>updatedAt</code></dt>
+  <dd>The date and time on which the account was last updated.</dd>
+
+  <dt><code>lastActivity</code></dt>
+  <dd>The date and time on which the account was last online on TriplyDB.</dd>
 </dl>
--->
 
 ##### Examples
 
@@ -1539,14 +1549,11 @@ console.log(await dataset.getAssets().toArray());
 
 #### Dataset.getGraph(name: string)
 
-Returns the graph with the given `name` that belongs to this dataset.
+Each dataset with data consists out of one or more named graphs. All graphs together is thus the collection of triples of the dataset. Often the graph is used to denote a part of the dataset. For example the data model of the dataset or the metadata of the dataset. If instead of searching over the complete dataset where you want to scope it to a certain graph you can use the `getGraph()` function to specify the graph.
 
-Graph names are IRIs.
+`Dataset.getGraph(name: string)` returns the graph with the given `name` that belongs to this dataset. The `name` is the string representation of the graph IRI.
 
-<!--
-TODO: What is a graph?  Is it a string or an object?  What can one do with a graph?
-      Why is the graph different from the `name` argument?
--->
+The `Dataset.getGraph` returns a graph object.
 
 ##### Examples
 
@@ -2209,7 +2216,7 @@ users are able to view any version of the query and its results. It can also be
 used to run the query and retrieve the results from a browser or a program,
 removing the hassle of figuring out how to run a SPARQL query.
 
-Saved queries come with a REST API that can be configured with the use a SPARQL API variables. 
+Saved queries come with a REST API that can be configured with the use a SPARQL API variables.
 
 #### Query.delete()
 
@@ -2701,7 +2708,6 @@ Returns information about this user.
 
 Information is returned in a dictionary object. Individual keys can be accessed for specific information values.
 
-<!-- TODO
 The information object for users includes the following keys:
 
 <dl>
@@ -2729,19 +2735,24 @@ The information object for users includes the following keys:
   <dt><code>storyCount</code></dt>
   <dd>The number of stories for the user</dd>
 
-  <dt><code>pinnedDatasets</code></dt>
-  <dd>An array containing the pinned dataset for the user.</dd>
-
   <dt><code>pinnedItems</code></dt>
   <dd>An array containing the pinned items (datasets, stories and queries) for the user.</dd>
 
   <dt><code>role</code></dt>
-  <dd>The role of the user. 🚨 POSSIBLE VALUES</dd>
+  <dd>The role of the user. Either 'light', 'regular' or 'siteAdmin'.</dd>
 
-  <dt>🚧 <code>organizations</code></dt>
-  <dd>An array of the first 🚨 organization of which the user is a member.</dd>
+  <dt><code>orgs</code></dt>
+  <dd>An array of organizations of which the user is a member.</dd>
+
+  <dt><code>Email address</code></dt>
+  <dd>The email address of the user.</dd>
+
+  <dt><code>updatedAt</code></dt>
+  <dd>The date and time on which the user was last updated.</dd>
+
+  <dt><code>lastActivity</code></dt>
+  <dd>The date and time on which the user was last online on TriplyDB.</dd>
 </dl>
--->
 
 ##### Examples
 
