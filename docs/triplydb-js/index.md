@@ -1235,41 +1235,213 @@ async (ctx) => {
 };
 ```
 
-<!--
-TODO: Document the keys supported in `metadata`.
--->
+The metadata object for accounts can include the following keys:
 
-<!-- TODO: Document what an asset is and how it can be obtained.
+<dl>
+  <dt><code>accountName</code></dt>
+  <dd>The URL-friendly name of the account.</dd>
+
+  <dt><code>name</code><dt>
+  <dd>The human-readable display name of the account</dd>
+
+  <dt><code>description</code></dt>
+  <dd>The human-readable description of the account.</dd>
+
+  <dt><code>pinnedItems</code></dt>
+  <dd>An array containing the pinned items (datasets, stories and queries) for the account.</dd>
+
+  <dt><code>Email address</code></dt>
+  <dd>The email address of the account.</dd>
+</dl>
+
+
 ### Asset
--->
 
-<!-- TODO: Document this method.
-#### Asset.addVersion(path: File|string)
--->
+Not all data can be stored as RDF data. For example images and video
+files use a binary format. Such files can also be stored in TriplyDB
+as Assets and can be integrated into the Knowledge Graph. Each asset
+has a specific identifier that can be used in the Knowledge Graph.
 
-<!-- TODO: Document this method.
+An asset is always uploaded per dataset, for which the function `uploadAsset()`
+is used. see [Dataset.uploadAsset()](#DatasetuploadAssetassetName-string-filePath-string)
+for uploading an asset.
+
+If the asset already has been created following functions can retrieve it from the dataset.
+- [Dataset.getAsset(assetName: string, versionNumber?: number)](#DatasetgetAssetassetName-string-versionNumber-number)
+- [Dataset.getAssets()](#DatasetgetAssets)
+
+
+TriplyDB.js supports several functions to manipulate an asset on TriplyDB.
+
+#### Asset.addVersion(path: File | string)
+
+Update an asset with a new version of the document use the `addVersion` function. The input of this function is a path
+to the file location that you want to update the asset with. The file you want to add as new version does not in any
+way have to correspond to the asset.
+
+##### Example
+
+The following snippet uploads the an file `my-file.pdf` and upload it as the new version of the asset:
+
+```ts
+const client = Client.get({ token: process.env.TRIPLYDB_TOKEN });
+const user = await client.getAccount();
+const dataset = await user.getDataset('my-dataset')
+const asset = await dataset.getAsset('my-asset')
+await asset.addVersion('my-file.pdf')
+```
+
 #### Asset.delete()
--->
 
-<!-- TODO: Document this method.
+To delete an asset with all of its versions execute the `delete()` function.
+
+##### Example
+
+The following snippet uploads the an file `my-file.pdf` and upload it as the new version of the asset:
+
+```ts
+const client = Client.get({ token: process.env.TRIPLYDB_TOKEN });
+const user = await client.getAccount();
+const dataset = await user.getDataset('my-dataset')
+const asset = await dataset.getAsset('my-asset')
+await asset.delete()
+```
+
 #### Asset.getInfo(version?: number)
--->
 
-<!-- TODO: Document this method.
+Returns information about this asset.
+
+Information is returned in a dictionary object. Individual keys can be accessed for specific information values.
+
+Optionally you can give the version number to retrieve the assetInfo of a particular version.
+
+The information object for assets includes the following keys:
+
+<dl>
+  <dt><code>assetName</code></dt>
+  <dd>The URL-friendly name of the asset.</dd>
+
+  <dt><code>identifier</code><dt>
+  <dd>The hexadecimal identifier of the asset</dd>
+
+  <dt><code>createdAt</code></dt>
+  <dd>The date and time on which the asset was created.</dd>
+
+  <dt><code>url</code></dt>
+  <dd>The url of the asset.</dd>
+
+  <dt><code>versions</code></dt>
+  <dd>An array containing all versions of the asset.</dd>
+
+  <dt><code>uploadedAt</code></dt>
+  <dd>The date and time on which the asset was uploaded.</dd>
+
+  <dt><code>fileSize</code></dt>
+  <dd>Number with the bytesize of the asset</dd>
+</dl>
+
+##### Examples
+
+- The following snippet prints the full information object for the asset called ‘my-asset’:
+
+```ts
+const client = Client.get({ token: process.env.TRIPLYDB_TOKEN });
+const user = await client.getAccount();
+const dataset = await user.getDataset('my-dataset')
+const asset = await dataset.getAsset('my-asset')
+console.log(await asset.getInfo());
+```
+
+
 #### Asset.getVersionInfo(version: number)
--->
 
-<!-- TODO: Document this method.
+
+Returns version specific information about this asset.
+
+Information is returned in a dictionary object. Individual keys can be accessed for specific information values.
+
+The version specific information object for assets includes the following keys:
+
+<dl>
+  <dt><code>id</code><dt>
+  <dd>The hexadecimal identifier of the asset</dd>
+
+  <dt><code>fileSize</code></dt>
+  <dd>Number with the bytesize of the asset</dd>
+
+  <dt><code>url</code></dt>
+  <dd>The url of the asset.</dd>
+
+  <dt><code>uploadedAt</code></dt>
+  <dd>The date and time on which the asset was uploaded.</dd>
+</dl>
+
+##### Examples
+
+- The following snippet prints the version information object for the asset called ‘my-asset’ at version `1`:
+
+```ts
+const client = Client.get({ token: process.env.TRIPLYDB_TOKEN });
+const user = await client.getAccount();
+const dataset = await user.getDataset('my-dataset')
+const asset = await dataset.getAsset('my-asset')
+console.log(await asset.getVersionInfo(1));
+```
+
 #### Asset.selectVersion(version: number)
--->
 
-<!-- TODO: Document this method.
+With the `selectVersion()` function you can select a specific version of an Asset.
+Each version corresponds to a iteration of the file that is added as asset. The
+argument of the `selectVersion()` function is a number of the version you want to retrieve.
+
+##### Example
+
+To select the first asset from the list of assets use the selectVersion with the argument `1`.
+
+```ts
+const client = Client.get({ token: process.env.TRIPLYDB_TOKEN });
+const user = await client.getAccount();
+const dataset = await user.getDataset('my-dataset')
+const asset = await dataset.getAsset('my-asset')
+const versionedAsset = asset.selectVersion(1)
+```
+
 #### Asset.toFile(path: string, version?: number)
--->
 
-<!-- TODO: Document this method.
+The binary representation of an asset can be retrieved and written to file via the `asset.toFile()`
+function. This function takes as input a string path to the download location and optionally a
+version number. 
+
+##### Example
+
+To download the latest version of `my-asset` asset to the file `my-file-location.txt`.
+
+```ts
+const client = Client.get({ token: process.env.TRIPLYDB_TOKEN });
+const user = await client.getAccount();
+const dataset = await user.getDataset('my-dataset')
+const asset = await dataset.getAsset('my-asset')
+asset.toFile('my-file-location.txt')
+```
+
+
 #### Asset.toStream(version?: number)
--->
+
+If instead of downloading the the asset to a file for later usage you want to directly use the asset.
+The `toStream()` functionality is available. This downloads the asset as a stream for use in a script.
+The `toStream()` has as optional argument a version number.
+
+##### Example
+
+To get the latest version of `my-asset` asset as a stream available.
+
+```ts
+const client = Client.get({ token: process.env.TRIPLYDB_TOKEN });
+const user = await client.getAccount();
+const dataset = await user.getDataset('my-dataset')
+const asset = await dataset.getAsset('my-asset')
+asset.toStream()
+```
 
 ### Dataset
 
@@ -2637,15 +2809,37 @@ The following code synchronizes all services of a dataset in parallel:
 await Promise.all(dataset.getServices().map(service => service.update()))
 ```
 
-<!--TODO: Document this method.
 #### Service.waitUntilRunning()
--->
+
+A service can be stopped or updated. The use of asynchronous code means that when a start command is given it takes a while before the service is ready for use. To make sure a service is available for querying you can uesr the function `waitUntilRunning()` to make sure that the script will wait until the service is ready for use.
+
+##### Example
+
+An example of a service being updated and afterwards a query needs to be executed:
+
+```ts
+const client = Client.get({ token: process.env.TRIPLYDB_TOKEN });
+const user = await client.getAccount();
+const dataset = await user.getDataset("some-dataset");
+const service = await dataset.getService('some-service')
+// starting a service but does not wait until it is started
+await service.start()
+// Function that checks if a service is available
+await service.waitUntilRunning()
+```
 
 ### Story
 
-<!--
-TODO: Document what stories are and how to obtain them.
--->
+A TriplyDB data story is a way of communicating information about your linked data along with explanatory text while also being able to integrate query results. To create Data stories with `TriplyDB.js` You can use the
+`User.ensureStory` or `User.addStory` functions to create. If you want to retrieve an already created data story you can use the functions `User.getStories` to iterate over all stories, or retrieve a particular one with `User.getStory`.
+
+Story objects are obtained through the the following methods:
+
+- [`User.addStory`](#UseraddStoryname-string-metadata-object)
+- [`User.ensureStory`](#UserensureStoryname-string-metadata-object)
+- [`User.getStories`](#UsergetStories)
+- [`User.getStory`](#UsergetStoryname-string)
+
 
 #### Story.delete()
 
