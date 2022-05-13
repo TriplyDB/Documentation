@@ -1662,7 +1662,7 @@ Returns an [async iterator](#async-iterator) with statements (quadruples) that f
 
 - `subject`, if specified, is the subject term that should be matched.
 - `predicate`, if specified, is the predicate term that should be matched.
-- `objectr`, if specified, is the object term that should be matched.
+- `object`, if specified, is the object term that should be matched.
 - `graph`, if specified, is the graph name that should be matched.
 
 ##### Example
@@ -1687,17 +1687,101 @@ for await (const statement of dbpedia.getStatements({subject: "http://dbpedia.or
 }
 ```
 
-<!-- TODO: Document this method.
-#### Dataset.graphsToFile
--->
+#### Get the data locally
+Most of the time you do not need to download the entire dataset locally as TriplyDB supports a variety of methods to use linked data directly. But if you want to use the entire graph locally that is possible with `TriplyDB.js`. There are three methods to retrieve linked data from TriplyDB. `graphsToFile()`, `graphsToStore()` and `graphsToStream()`.
 
-<!-- TODO: Document this method.
-#### Dataset.graphsToStore
--->
+#### Dataset.graphsToFile(destinationPath: string, arguments?: object)
 
-<!-- TODO: Document this method.
-#### Dataset.graphsToStream
--->
+The first method downloads the linked data graphs directly and writes the data to the location of the `destinationPath`. The extension on the `destinationPath` defines the linked data type that is downloaded. The extensions that are supported are: `nt`, `nq`, `trig`, `ttl`, `jsonld`, `json`. If no extension is set or the extension is not recognized the function will throw an error.
+
+##### Optional
+
+The optional properties accepted as arguments for <code>graphsToFile</code>
+
+<dl>
+  <dt>Compressed</dt>
+  <dd>Argument <code>compressed</code> optionally is an boolean defining if a graph is compresssed with GNU zip (gzip) compression algorithm and will end with a `.gz` extension. </dd>
+  <dt>Graph</dt>
+  <dd>Argument <code>Graph</code> optionally is an specific graph that you want to write to file. These graph is an instance of a "Graph" class</dd>
+</dl>
+
+##### Examples
+
+The following example downloads the dataset to file:
+
+```ts
+const client = Client.get({ token: process.env.TRIPLYDB_TOKEN });
+const user = await client.getAccount();
+const dataset = await user.getDataset("pokemon");
+await dataset.graphsToFile('my-filename.ttl', {compressed: true})
+```
+
+
+#### Dataset.graphsToStore(graph?: Graph)
+
+The second method is to download the file into a `N3.store`. The [n3 library](https://rdf.js.org/N3.js/docs/N3Store.html) is one of the most complete libraries for handling linked data in memory. The N3.js library is an implementation of the RDF.js low-level specification that lets you handle RDF in JavaScript easily, with an asynchronous, streaming approach.
+
+To reduce the overhead of downloading your data to file and then insert it in the N3 Store. TriplyDB.js has a `graphsToStore()` where a N3 store is returned as a result of the the `graphsToStore()` function.
+
+##### Optional
+
+The optional argument for <code>graphsToStore</code> is <code>Graph</code>. With <code>Graph</code> you can optionally define a specific graph that you want to write to file. These graph is an instance of a "Graph" class.
+
+##### Examples
+
+The following example downloads the dataset as `N3.store`:
+
+```ts
+const client = Client.get({ token: process.env.TRIPLYDB_TOKEN });
+const user = await client.getAccount();
+const dataset = await user.getDataset("pokemon");
+const store = await dataset.graphsToStore()
+```
+
+#### Dataset.graphsToStream(type: 'compressed' | 'rdf-js', arguments?: object)
+
+The final method to download linked data to a local source is the `graphsToStream` this function returns a stream of quads that can directly be iterated over. The Stream is either of the type `compressed` which returns a gzipped stream of linked data, or type `rdf-js` which returns a stream of quads parsed according to the [`rdf-js` standard](https://rdf.js.org/stream-spec/#stream-interface).
+
+##### Optional
+
+The following arguments can be defined in the optional arguments object.
+
+<dl>
+  <dt>Extension</dt>
+  <dd>Argument <code>Extension</code> optionally defines the linked data type that is streamed. The extensions that are supported are: `nt`, `nq`, `trig`, `ttl`, `jsonld`, `json`.  </dd>
+  <dt>Graph</dt>
+  <dd>Argument <code>Graph</code> optionally is an specific graph that you want to write to file. These graph is an instance of a "Graph" class</dd>
+</dl>
+
+##### Examples
+
+The following example streams through the dataset as rdf-js quad objects. and prints the quad to the screen. notice that the `stream` is an async iterator.
+
+**Example 1**
+
+```ts
+const client = Client.get({ token: process.env.TRIPLYDB_TOKEN });
+const user = await client.getAccount();
+const dataset = await user.getDataset("pokemon");
+const stream = await dataset.graphsToStream('rdf-js', {extension: '.nq'})
+for await(const quad of stream){
+  console.log(quad)
+}
+```
+
+The following example streams through the dataset as chunks of ttl. and prints the buffer to the screen.
+
+**Example 2**
+
+```ts
+const client = Client.get({ token: process.env.TRIPLYDB_TOKEN });
+const user = await client.getAccount();
+const dataset = await user.getDataset("pokemon");
+const stream = await dataset.graphsToStream('compressed', {extension: '.ttl'})
+for await(const quad of stream.pipe(zlib.createGunzip())){
+  console.log((quad as Buffer).toString())
+}
+```
 
 #### Dataset.importFromDataset(fromDataset: Dataset, arguments?: object)
 
