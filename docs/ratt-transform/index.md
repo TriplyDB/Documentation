@@ -731,6 +731,11 @@ app.use(
 )
 ```
 
+It is also possible to check if a value is completely missing from the source data with `ctx.isEmpty()`
+
+A note for finding more methods RATT:
+
+One of the many advantages using Typescript is code completion. As such any methods available on a class in Ratt can be accessed using your IDE's intellisense (`ctrl + space` in VSCODE). In Ratt the `context` and `mw` are two such classes that can be accessed in this way.
 
 ### The empty string
 
@@ -759,7 +764,7 @@ If we want to extract a string value from the source data, we can write a custom
  Notice details:
 
  `ctx.isNotEmpty('foo')` checks whether the string is empty or not and only if it is not empty, the function moves to the next step
- `ctx.getString('bla') === 'something’`, which is the next step, extracts 'foo' when it fulfills the required criteria 
+ `ctx.getString('bla') === 'something’`, which is the next step, extracts 'foo' when it fulfills the required criteria
 
 
 ## Tree-shaped data
@@ -1165,48 +1170,3 @@ This makes the following assertion:
 country:nl rdfs:label 'The Netherlands'@en,
                       'Holland'@en.
 ```
-### Collect records from a specified OAI endpoint (<code>mw.fromOai</code>) {#mw.fromOai}
-
-`mw.fromOai` allows a RATT pipeline to be run over the self-contained RATT records that come from the specified OAI endpoint.The handling of resumption tokens and iteration over the array members per batch is abstracted away by this new middleware, simplifying the use of OAI endpoints for the RATT user. The middleware supports xml parsing and the content is automatically determined by the returned Content-Type, this is the default behaviour. The received content can be cached and if cached, each record contains metadata about whether it came from a cached result, or whether it's a 'new' record.
-
-#### Function signature
-
-This function has the following signature:
-
-```ts
-app.use(
-  mw.fromOai({
-    since: Time,
-    url: "https://somethingsomething.redacted/webapioai/oai.ashx",
-    set: "xyzname",
-    cacheOverride: "use cache",
-    maxCacheAgeDays: number
-  })
-)
-```
-
-The function can be configured in the following ways:
-- `Time` since when the caching started.
-- `https://somethingsomething.redacted/webapioai/oai.ashx` is the specified OAI endpoint.
-- `xyzname` is the name for the specific dataset.
-- `use cache` starts the caching process.
-- `number` is a natural number and it indicates the number of days after which the cache will be cleared.
-
-
-#### Keeping track of records in the cache
-
-To keep track of the new records or the modified records in the caching, we can use a custom middleware.
-
-An example to show the custom middleware:
-
-```ts
-(ctx, next) => next({ ...ctx.getAny('metadata.record'), fromCache: ctx.getBoolean('header.fromCache') }),
-```
-
-Notice the following details:
-
- - `header.fromCache` returns boolean true if the record exists in the cache
- - `fromCache` property is added to the record with either a true/false
- - `metadata.record` retrieve the record
-
-The modified record is then passed to the next middleware.
