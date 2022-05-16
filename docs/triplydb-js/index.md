@@ -11,11 +11,11 @@ Please contact [support@triply.cc](mailto:support@triply.cc) for questions and s
 
 ## Getting started
 
-This section gets you up and running with TriplyDB.js by setting up increasingly more complex scripts. These scripts will use TriplyDB.js to interact with one or more TriplyDB instances. Some of the documented steps are generic for setting up a modern TypeScript project, while others are specific for interacting with TriplyDB instances.
+This section gets you up and running with TriplyDB.js. These scripts will use TriplyDB.js to interact with one or more TriplyDB instances. Some of the documented steps are generic for setting up a modern TypeScript project, while others are specific for interacting with TriplyDB instances. The examples in the documentation expect that you've set up your project according to the guidelines specified below.
 
 ### Setting up a read-only project
 
-In this section we set up a read-only project. This allows us to focus on setting up the TypeScript/JavaScript aspects of the project correctly, while using public data from the TriplyDB instance located at <https://triplydb.com>.
+In this section we set up a read-only project. This allows us to focus on setting up the TypeScript/JavaScript aspects of the project correctly, while using public data from the TriplyDB instance located at <https://triplydb.com>. With a read-only project you can only retrieve information from TriplyDB and not modify any information on triplyDB. This is useful for projects where you do not want to modify any data and only retrieve information, for example use a saved query API.
 
 1. Install [Node.js](https://nodejs.org) and [Yarn](https://yarnpkg.com) on your system.  See [common steps to install Node.js and Yarn](common-steps-to-install) for more information.
 
@@ -895,7 +895,7 @@ The information object for accounts includes the following keys:
   <dt><code>accountName</code></dt>
   <dd>The URL-friendly name of the account.</dd>
 
-  <dt><code>name</code><dt>
+  <dt><code>name</code></dt>
   <dd>The human-readable display name of the account</dd>
 
   <dt><code>description</code></dt>
@@ -957,7 +957,7 @@ The information object for accounts includes the following keys:
     "datasetCount": 16,
     "name": "Triply",
     "queryCount": 37,
-    "storyCount": 7
+    "storyCount": 7,
     "type": "org",
     "updatedAt": "Tue Nov 27 2018 09:29:38 GMT+0000 (Coordinated Universal Time)"
   }
@@ -1241,7 +1241,7 @@ The metadata object for accounts can include the following keys:
   <dt><code>accountName</code></dt>
   <dd>The URL-friendly name of the account.</dd>
 
-  <dt><code>name</code><dt>
+  <dt><code>name</code></dt>
   <dd>The human-readable display name of the account</dd>
 
   <dt><code>description</code></dt>
@@ -1321,7 +1321,7 @@ The information object for assets includes the following keys:
   <dt><code>assetName</code></dt>
   <dd>The URL-friendly name of the asset.</dd>
 
-  <dt><code>identifier</code><dt>
+  <dt><code>identifier</code></dt>
   <dd>The hexadecimal identifier of the asset</dd>
 
   <dt><code>createdAt</code></dt>
@@ -1363,7 +1363,7 @@ Information is returned in a dictionary object. Individual keys can be accessed 
 The version specific information object for assets includes the following keys:
 
 <dl>
-  <dt><code>id</code><dt>
+  <dt><code>id</code></dt>
   <dd>The hexadecimal identifier of the asset</dd>
 
   <dt><code>fileSize</code></dt>
@@ -1973,9 +1973,9 @@ The optional properties accepted as arguments for <code>importFromDataset</code>
 
 <dl>
   <dt>graphMap</dt>
-  <dd>Argument `<code>graphMap</code>` optionally is an object with keys and values that implements a mapping from existing graph names (keys) to newly created graph names (values). Each key must be an existing graph name in the `from` dataset. Each value must is the corresponding graph name in this dataset. If this argument is not specified, then graph names in the `from` dataset are identical to graph names in this dataset.</dd>
+  <dd>Argument `<code>graphMap</code>` optionally is an object with keys and values that implements a mapping from existing graph names (keys) to newly created graph names (values). Each key must be an existing graph name in the `from` dataset. Each value must is the corresponding graph name in this dataset. If this argument is not specified, then graph names in the `from` dataset are identical to graph names in this dataset. Note that either graphNames or graphMap can be given as optional argument and not both.</dd>
   <dt>graphNames</dt>
-  <dd>Argument `<code>graphNames</code>` optionally is an array of graph names. These names can be one of three types: "string", instances of a "Graph" class, or instances of "NamedNodes".</dd>
+  <dd>Argument `<code>graphNames</code>` optionally is an array of graph names. These names can be one of three types: "string", instances of a "Graph" class, or instances of "NamedNodes". Note that either graphNames or graphMap can be given as optional argument and not both.</dd>
   <dt>overwrite</dt>
   <dd>Accepts a Boolean value. An optional property that determines whether existing graph names in this dataset are allowed to be silently overwritten. If this argument is not specified, then `false` is used as the default value.</dd>
 </dl>
@@ -1985,6 +1985,7 @@ The optional properties accepted as arguments for <code>importFromDataset</code>
 The following snippet creates a new dataset (`newDataset`) and imports one graph from an existing dataset (`existingDataset`). Notice that the graph can be renamed as part of the import.
 
 **Example 1**
+Imports the complete `"existingDataset"` dataset to the `"newDataset"`.
 
 ```ts
 const account = await client.getAccount();
@@ -1994,19 +1995,19 @@ await newDataset.importFromDataset(existingDataset);
 ```
 
 **Example 2**
+Imports `"anotherDataset"` dataset to the `"newDataset"` Where a graph from the existing dataset is renamed to the a graphname in the new dataset. Only the graphs from the graphMap are imported.
 
 ```ts
 const account = await client.getAccount();
 const anotherDataset = await account.getDataset("anotherDataset");
 const newDataset = await account.addDataset("newDataset");
-await newDataset.importFromDataset(existingDataset);
 await newDataset.importFromDataset(anotherDataset, { graphMap:
-  "https://example.org/newDataset/graph":
-    "https://example.org/existingDataset/graph",
+  { "https://example.org/existingDataset/graph":  "https://example.org/newDataset/graph"}
 });
 ```
 
 **Example 3**
+Imports `"oneMoreDataset"` dataset to the `"newDataset"` Where a graph specific graph from the existing dataset is added to the new dataset. If the graphname already occurs in the `"newDataset"` it will get overwritten.
 
 ```ts
 const account = await client.getAccount();
@@ -2287,16 +2288,6 @@ await graph.delete();
 
 #### Graph.getInfo()
 Returns information about this graph.
-{
-  graphName: 'https://triplydb.com/academy/pokemon/graphs/vocab',
-  id: '627d22037bb71a2083149ac8',
-  numberOfStatements: 185,
-  importedAt: '2022-05-12T15:04:35.770Z',
-  importedFrom: {
-    graphName: 'https://triplydb.com/academy/pokemon/graphs/vocab',
-    dataset: 'https://api.triplydb.com/datasets/academy/pokemon'
-  }
-}
 
 Information is returned in a dictionary object. Individual keys can be accessed for specific information values.
 
@@ -2564,7 +2555,7 @@ Returns the list of memberships for the given organization.
 A membership contains the following components:
 
 <dl>
-  <dt><code>role</code><dt>
+  <dt><code>role</code></dt>
   <dd>The role of the membership (<code>OrgRole</code>): either <code>"owner"</code> for owners of the organization, or <code>"member"</code> for regular members.  The difference between owners and regular members is that owners can perform user management for the organization (add/remove/change memberships).</dd>
 
   <dt><code>user</code></dt>
@@ -2669,7 +2660,7 @@ The returned dictionary object includes the following keys:
     </dl>
   </dd>
 
-  <dt><code>autoselectService</code><dt>
+  <dt><code>autoselectService</code></dt>
   <dd>Whether the SPARQL service is automatically chosen (<code>true</code>), or whether a specific SPARQL service is configured (<code>false</code>).</dd>
 
   <dt><code>createdAt</code></dt>
@@ -2690,7 +2681,7 @@ The returned dictionary object includes the following keys:
   <dt><code>numberOfVersions</code></dt>
   <dd>The number of currently stored versions of this query.</dd>
 
-  <dt><code>owner</code><dt>
+  <dt><code>owner</code></dt>
   <dd>A dictionary object representing the account (organization or user) to which the query belongs.</dd>
 
   <dt>🚧<code>link</code></dt>
@@ -2864,7 +2855,7 @@ A service always has one of the following statuses:
   <dd>The service is starting up.</dd>
 
   <dt>Stopped</dt>
-  <dd>The services was stopped in the past.  It cannot be used at the moment, but it can be enable again if needed.</dd>
+  <dd>The services was stopped in the past. It cannot be used at the moment, but it can be enable again if needed.</dd>
 
   <dt>Stopping</dt>
   <dd>The service is currently being stopped.</dd>
@@ -3168,7 +3159,7 @@ The information object for users includes the following keys:
   <dt><code>accountName</code></dt>
   <dd>The URL-friendly name of the user.</dd>
 
-  <dt><code>name</code><dt>
+  <dt><code>name</code></dt>
   <dd>The human-readable display name of the user</dd>
 
   <dt><code>description</code></dt>
