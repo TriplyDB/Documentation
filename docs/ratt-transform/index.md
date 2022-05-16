@@ -747,6 +747,21 @@ app.use(
 
 Notice that it is almost never useful to store the empty string in linked data.  So the treatment of the empty string as a NULL value is the correct default behavior.
 
+### Custom functions
+
+If we want to extract a string value from the source data, we can write a custom function which can be used with `mw.when` . `mw.when` can receive two parameters: string(a key value) or a function.
+ If `mw.when` receives a string, it checks whether it is empty or not. But in case of a custom method specific instructions are required. For example,
+
+ ```ts
+ (ctx) => ctx.isNotEmpty('foo') && ctx.getString('foo') === 'foo’
+```
+
+ Notice details:
+
+ `ctx.isNotEmpty('foo')` checks whether the string is empty or not and only if it is not empty, the function moves to the next step
+ `ctx.getString('bla') === 'something’`, which is the next step, extracts 'foo' when it fulfills the required criteria 
+
+
 ## Tree-shaped data
 
 Tree-shaped data is very common in different source systems.  We will use the following JSON source data as an example in this section:
@@ -1188,8 +1203,7 @@ An example to show the custom middleware:
 (ctx, next) => next({ ...ctx.getAny('metadata.record'), fromCache: ctx.getBoolean('header.fromCache') }),
 ```
 
-The code reads the context
-
+Notice the following details:
 
  - `header.fromCache` returns boolean true if the record exists in the cache
  - `fromCache` property is added to the record with either a true/false
