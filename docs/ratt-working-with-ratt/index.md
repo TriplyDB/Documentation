@@ -61,7 +61,54 @@ app.use(
   mw.debug.logRecord({key: key.variety}),
 )
 ```
+### Trace changes in a record
 
+Sometimes you are interested to find one specific record based on a certain value of a key and/or to see the changes in this record made by specific middlewares. For these purposes, `trace` middleware can be used.
+
+Below, there is an example of how this middleware can be used:
+```sh
+app.use(
+  mw.fromJson([
+    { a: 1, b: 1 }, // first dummy record
+    { a: 2, b: 2 }, // second dummy record
+  ]),
+    mw.change({key:'a', type:'number', change: (val) => val +100}), // change the 'a' key
+    mw.debug.traceStart(),
+    mw.change({key:'b', type:'number', change: (val) => val +100}), // change the 'b' key
+    mw.debug.traceEnd()
+)
+```
+
+The result would be:
+
+```sh
+┌─────────────────────────────────────┐
+│      Record trace information       │
+│ {                                   │
+│   "a": 101,                         │
+│   "b": 1                            │
+│   "b": 101                          │
+│ }                                   │
+│                                     │
+└─────────────────────────────────────┘
+
+┌─────────────────────────────────────┐
+│ Quads trace information (unchanged) │
+│ empty                               │
+│                                     │
+└─────────────────────────────────────┘
+
+
+ To rerun the traced middlewares for this record use the following command:
+ > yarn ratt ./lib/{script-name} --trace .trace-1650542307095
+
+
+```
+
+In your terminal the line with <span style="color:red">"b": 1</span> will be red colored, showing the previous state of this key-value and the line with <span style="color:green">"b": 101</span> will be green colored, showing the new state.
+
+Also you can rerun the  trace information for this specific record by running:
+```yarn ratt ./lib/{script-name} --trace .trace-1650542307095```
 
 ### Limit the number of records
 
@@ -166,7 +213,46 @@ const app = new Ratt({
 })
 ```
 
+##### An easier way to configure graph names and prefixes
 
+Instead of setting the graph name and the prefixes for every ETL, you can use functions for their generation:
+
+```sh
+export function create_prefixes(
+  organization: string = default_organization,
+  dataset: string,
+  host: string = default_host
+) {
+  let prefix_base = Ratt.prefixer(`https://${host}/${organization}/${dataset}/`)
+  let prefix_bnode = Ratt.prefixer(prefix_base(`.well-known/genid/`))
+  let prefix_graph = Ratt.prefixer(prefix_base(`graph/`))
+  )
+  return {
+    bnode: prefix_bnode,
+    graph: prefix_graph,
+  }
+}
+```
+For example, if `host==='triplydb.com'`, `organization==='exampleOrganization'` and `dataset='pokemon'`, then the prefix for the blank nodes will be `https://triplydb.com/exampleOrganization/pokemon/.well-known/genid/`.
+
+Then, similarly, you can use another function for the graph names:
+```sh
+export function create_graphs(
+  dataset: string,
+  organization: string = default_organization,
+  host: string = default_host
+) {
+  let prefix = create_prefixes(dataset, organization, host)
+  return {
+    default: prefix.graph('default'),
+    metadata: prefix.graph('metadata'),
+    instances: prefix.graph('instances'),
+    instances_report: prefix.graph('instances/report'),
+    shapes: prefix.graph('shapes'),
+  }
+}
+
+```
 ### Configuring data sources
 
 It is possible to specify the data source in the RATT context.  This is especially useful when you have many sources in one script.

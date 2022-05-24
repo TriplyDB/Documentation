@@ -531,6 +531,9 @@ const xsd = {
   positiveInteger: prefix.xsd('positiveInteger'),
   string: prefix.xsd('string'),
 }
+
+
+const input_string  = ['Country', 'inhabitants']
 ```
 
 With these prefix and term constants in place, a dynamic statement is created as follows:
@@ -551,16 +554,32 @@ Notice the following details:
 - `mw.toLiteral` is used to create a dynamic literal term.
 - For literals a datatype IRI can be specified.  If no datatype IRI is specified then the default IRI is `xsd.string`.
 
+`mw.toIri.fromHashOf`can be used instead of `mw.toIri` when the ETL has a high number of blank nodes and they need more than one constant as input to hash a unique IRI.
+
+```ts
+app.use(
+  mw.addQuad(
+    mw.toIri.fromHashOf(input_string, {prefix: prefix.id}),
+    def.inhabitants,
+    mw.toLiteral('Inhabitants', {datatype: xsd.positiveInteger})),
+)
+```
+
+Notice the following details:
+- `input_string` can pass more than one constant to hash a unique IRI term.
+
+
 #### Static and dynamic triples
 
 Be aware that there are different approaches for *static* and *dynamic* IRIs:
 
 - Static IRIs are created with prefix declarations (example [1a]).
-- Dynamic IRIs are created with `mw.toIri` and prefix declarations (example [2a]).
+- Dynamic IRIs are created with `mw.toIri`,`mw.toIri.fromHashOf` and prefix declarations (example [2a]).
 
 ```ts
 [1a] prefix.id('person')
 [2a] mw.toIri('person', {prefix: prefix.id}),
+[3a] mw.toIri.fromHashOf(['person','age'], {prefix: prefix.id}),
 ```
 
 Notation [1a] creates the *static* IRI [1b].  This IRI does not depend on the currently processed RATT record.
@@ -569,11 +588,18 @@ Notation [2a] creates the *dynamic* IRI in [2b], assuming the `"person"` key con
 
 For a different RATT record, IRI [2c] may be created instead (assuming the `"person"` key contains the value `"Jane"`).
 
+Notation [3a] creates the *dynamic* IRI in [3b], assuming the `"person"` key contains the value `"Sam"` and the
+`"age"` key contains the value `"30"`. For a different RATT record, IRI [3c] may be created instead (assuming the `"person"` key contains the value `"Roland"` and `"age"` key contains the value `"20"`).
+
 ```turtle
 [1b] id:person
 [2b] id:John
 [2c] id:Jane
+[3b] id:Sam , age: 30
+[3c] id:Sam , age: 20
 ```
+
+
 
 ##### When should you use an IRI instead of an URI (which is a literal)?
 
@@ -586,9 +612,9 @@ In the example below, the subject IRI is described further by the object's URL.
 
 An IRI can be created with `mw.toIri`, while an URI is created by using `mw.toLiteral` .
 
-##### Limitation of `mw.toLiteral` and `mw.toIri`
+##### Limitation of `mw.toLiteral`, `mw.toIri` and `mw.toIri.fromHashOf`
 
-There is a limitation for both `mw.toLiteral` and `mw.toIri`. It is not possible to change the value in the record in the `mw.toLiteral` and `mw.toIri` middlewares. The value that is at that moment stored in the record for that key, is then added as either an IRI when called with the `mw.toIri` function or as a literal when called with the function `mw.toLiteral`.
+There is a limitation for both `mw.toLiteral`, `mw.toIri` and `mw.toIri.fromHashOf`. It is not possible to change the value in the record in the `mw.toLiteral`, `mw.toIri` and `mw.toIri.fromHashOf` middlewares. The value that is at that moment stored in the record for that key, is then added as either an IRI when called with the `mw.toIri`/`mw.toIri.fromHashOf` function or as a literal when called with the function `mw.toLiteral`.
 
 The limitation is shown in the example below. In the example we want to round the inhabitants number to the nearest thousand. We can not transform this in the `mw.toLiteral` function. Instead we need to add a `mw.change` middleware which will execute the transformation.
 
@@ -705,6 +731,11 @@ app.use(
 )
 ```
 
+It is also possible to check if a value is completely missing from the source data with `ctx.isEmpty()`
+
+A note for finding more methods RATT:
+
+One of the many advantages using Typescript is code completion. As such any methods available on a class in Ratt can be accessed using your IDE's intellisense (`ctrl + space` in VSCODE). In Ratt the `context` and `mw` are two such classes that can be accessed in this way.
 
 ### The empty string
 
@@ -720,6 +751,21 @@ app.use(
 ```
 
 Notice that it is almost never useful to store the empty string in linked data.  So the treatment of the empty string as a NULL value is the correct default behavior.
+
+### Custom functions
+
+If we want to extract a string value from the source data, we can write a custom function which can be used with `mw.when` . `mw.when` can receive two parameters: string(a key value) or a function.
+ If `mw.when` receives a string, it checks whether it is empty or not. But in case of a custom method specific instructions are required. For example,
+
+ ```ts
+ (ctx) => ctx.isNotEmpty('foo') && ctx.getString('foo') === 'foo’
+```
+
+ Notice details:
+
+ `ctx.isNotEmpty('foo')` checks whether the string is empty or not and only if it is not empty, the function moves to the next step
+ `ctx.getString('bla') === 'something’`, which is the next step, extracts 'foo' when it fulfills the required criteria
+
 
 ## Tree-shaped data
 
