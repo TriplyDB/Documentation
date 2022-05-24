@@ -547,9 +547,68 @@ are provided for user account creation:
 
 TODO: describe overview page task #6246  -->
 
-<!-- ## Services page
+## Services page
 
- TODO: describe overview page task #6321  -->
+The services page governs all the services of an instance. The paginated table shows all the services of the instance. The table is equipped with filters and sorting mechanisms to quickly search for and locate specific services according to search and filter criteria. The table also has a search field at the right side to quickly do wildcard searching.
+The table sorts all services automatically if a service is in an error state or not. All services that are in error state will be shown at the top of the table. This way immediate action can be taken to check the service.
+
+The filters on top of the table can be used to filter the following columns:
+
+<dl>
+  <dt>Name</dt>
+  <dd>The name of the SPARQL service, you can order the table based on the alphanumeric ordering, and filter based on the sequence of characters appearing in the filter. The name is also a URL that brings you to the location of the service. </dd>
+
+  <dt>Type</dt>
+  <dd>Type of the service, this can either be 'Virtuoso', 'Jena', 'Blazegraph', 'Prolog' or 'Elasticsearch'. In the filter you can select a specific service type or 'All' service types.</dd>
+
+  <dt>Status</dt>
+  <dd>The status of the service, this can be 'Starting', 'Running', 'Stopped', 'Updating' or 'Error'. In the filter you can select a specific service status or 'All' services statuses</dd>
+
+  <dt>Statements</dt>
+  <dd>The amount of statements in a service. These are all the loaded statements in the service, and can be filter with the slider.</dd>
+
+  <dt>Loaded graphs</dt>
+  <dd>Amount of graphs loaded in the service</dd>
+
+  <dt>Dataset</dt>
+  <dd>The dataset the service belongs to. The dataset is clickable and brings you to the dataset page. The datasets can be filtered based on the sequence of characters appearing in the filter.</dd>
+
+  <dt>Owner</dt>
+  <dd>The owner of the dataset is also the owner of the service. The owner is a URL and brings you to the overview page of the owner. The owners can be filtered based on the sequence of characters appearing in the filter.</dd>
+
+  <dt>Created</dt>
+  <dd>How long ago a service has been created. When you hover over the text you can see the precise moment a service is created. You can order the services based on the moment of creation.</dd>
+
+  <dt>Last queried</dt>
+  <dd>How long ago the service has been last queried. When you hover over the text you can see the precise moment a service is last queried. You can order the services based on the moment of last time the service has been queried.</dd>
+
+  <dt>Auto stops</dt>
+  <dd>Some services are equipped with an auto stop feature. This feature reduces the memory resources when a service is not queried in a while. The column `Auto stops` shows how long it will take before a service is auto-stopped. You can order the services on when the auto-stop feature kicks in. Each time a service is used the timer is reset.</dd>
+
+  <dt>Version</dt>
+  <dd>A service always has a particular version. A service is not automatically updated as it could be that the service has possible down time. The owner of the service can update a service when they deem it necessary to update to the latest verion.</dd>
+</dl>
+
+For each service you can execute the following actions:
+
+<dl>
+  <dt>Update the service</dt>
+  <dd>When a service can be updated an orange arrow will appear just below the service. When you press the update service button the service is automatically updated to the latest service version.</dd>
+
+  <dt>Open additional information</dt>
+  <dd>For each service there is additional information available. The additional information is behind the `i` button. The additional information contains information about the graphs in the dataset and a raw information view of the service metadata.</dd>
+
+  <dt>Inspect the logs</dt>
+  <dd>For each service there is a log available. The logs are behind the `text` button. The logs contain information </dd>
+
+  <dt>Synchronize the service</dt>
+  <dd>A services can be outdated. This happens when the data in the dataset does not corresponds with the data in the service. When this happens the service can be synchronized from here to make it up to date with the latest version of the data.</dd>
+
+  <dt>Remove the service</dt>
+  <dd>When a service is no longer necessary or there needs to be made some space on the instance a service can be removed from here.</dd>
+</dl>
+
+Some of these actions can be cumbersome when you need to do them one at a time. To help with this, on the left side of the table you can click on the tickbox. This will select all the services that match search criteria if there search criteria and all tables when there are no search criteria. When pressed you can now remove all selected services or update all selected services to a new software version. 
 
 ## Redirects page
 
