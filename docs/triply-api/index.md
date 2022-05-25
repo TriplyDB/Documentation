@@ -47,7 +47,7 @@ information on how to create an API token.
 
 ## Exporting linked data
 
-Every TriplyDB API path that returns Linked Data provides a number of serializations to choose from. We support the following serializations:
+Every TriplyDB API path that returns linked data provides a number of serializations to choose from. We support the following serializations:
 
 | Serialization                                         | Media type              | File extension |
 | ----------------------------------------------------- | ----------------------- | -------------- |
@@ -91,7 +91,7 @@ https://api.triplydb.com/datasets/academy/pokemon/
 ### Triple Pattern Fragments (TPF)
 
 Triple Pattern Fragments (TPF) is a community standard that allows
-individual Linked Datasets to be queried for Triply Patterns (TP), a
+individual linked datasets to be queried for Triply Patterns (TP), a
 subset of the more complex SPARQL query language. The Triply API
 implements [Triple Pattern
 Fragments](http://www.hydra-cg.com/spec/latest/triple-pattern-fragments/)
@@ -547,9 +547,9 @@ Result:
 
 ### Elastic
 
-The text search API returns a list of Linked Data entities based on a
+The text search API returns a list of linked data entities based on a
 supplied text string. The text string is matched against the text in
-literals and IRIs that appear in the Linked Data description of the
+literals and IRIs that appear in the linked data description of the
 returned entities.
 
 The text search API is only available for a dataset after an
@@ -557,7 +557,7 @@ ElasticSearch service has been created for that dataset.
 
 Two types of searches can be performed: a simple search, and a custom
 search. Simple searches require one search term for a fuzzy match. Custom
-searches accept a JSON object conforming to [the elasticsearch query DSL](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl.html).
+searches accept a JSON object conforming to [the ElasticSearch query DSL](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl.html).
 
 #### URI path
 
@@ -575,11 +575,11 @@ order in which search results appear in the array is meaningful:
 better matches appear earlier.
 
 Every search result is represented by a JSON object. The name of the
-Linked Data entity is specified under key sequence `"_id"`.
-Properties of the Linked Data entity are stored as IRI keys. The
+linked data entity is specified under key sequence `"_id"`.
+Properties of the linked data entity are stored as IRI keys. The
 values of these properties appear in a JSON array in order to allow
 more than one object term per predicate term (as is often the case in
-Linked Data).
+linked data).
 
 The following code snippet shows part of the reply for the below
 example request. The reply includes two results for search string

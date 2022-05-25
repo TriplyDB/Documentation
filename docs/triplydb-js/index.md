@@ -1381,7 +1381,7 @@ The service type is specified with the `type` parameter. If no type is given, a 
   <dd>Starts a SPARQL JENA service. A SPARQL 1.1 compliant service that is less scalable and less performant, but allows reasoning (RDFS or OWL) to be enabled.</dd>
 
   <dt><code>"elasticsearch"</code></dt>
-  <dd>Starts an <a href='https://www.elastic.co/guide/en/elasticsearch/reference/current/index.html'>Elasticsearch</a> service. A text search engine that can be used to power a search bar or similar textual search API.</dd>
+  <dd>Starts an <a href='https://www.elastic.co/guide/en/elasticsearch/reference/current/index.html'>ElasticSearch</a> service. A text search engine that can be used to power a search bar or similar textual search API.</dd>
 </dl>
 
 The `name` argument can be used to distinguish between different endpoints over the same dataset that are used for different tasks.
@@ -2872,15 +2872,15 @@ To reliably retrieve a large number of results as the output of a `construct` or
    }
    ```
 
-   5b. Save the results to a file. 
-   
+   5b. Save the results to a file.
+
    For saving SPARQL `construct` queries:
 
    ```ts
    // Saving the results of a SPARQL construct query to a file.
    await results.toFile("my-file.nt");
    ```
-   
+
    For saving SPARQL `select` queries. Currently we only support saving the file to a .tsv format:
 
    ```ts
