@@ -569,7 +569,54 @@ For editing the side-wide prefixes follow the next steps:
 
 ## Account overview page
 
-<!-- TODO: describe overview page task #6246  -->
+The account page governs all the accounts of an instance. The paginated table shows all the accounts of the instance. The table is equipped with filters and sorting mechanisms to quickly search for and locate specific accounts according to search and filter criteria. The table also has a search field at the right side to quickly do wildcard searching.
+The table sorts all accounts automatically on the created at date with the latest created at date accounts first.
+
+The filters on top of the table can be used to filter the following columns:
+
+<dl>
+  <dt>Name</dt>
+  <dd>The name of the account, you can order the table based on the alphanumeric ordering, and filter based on the sequence of characters appearing in the filter. The name is also a URL that brings you to the location of the account. </dd>
+
+  <dt>Type</dt>
+  <dd>Type of the account, this can either be 'Organization' or 'User'. In the filter you can select a specific account type or 'All' account types.</dd>
+
+  <dt>Display name</dt>
+  <dd>The display name of the account, often an account has both a name and a display name. The display name is not limited to a specific set of characters, as it is not used an URL. You can order the table based on the alphanumeric ordering, and filter based on the sequence of characters appearing in the filter. </dd>
+
+  <dt>Email</dt>
+  <dd>The email address of the account. You can order the table based on the alphanumeric ordering, and filter based on the sequence of characters appearing in the filter. </dd>
+
+  <dt>Created at</dt>
+  <dd>How long ago an account has been created. When you hover over the text you can see the precise moment an account is created. You can order accounts based on the moment of creation.</dd>
+
+  <dt>Updated at</dt>
+  <dd>How long ago an account has been updated with new metadata such as display name or password. When you hover over the text you can see the precise moment an account is last updated. You can order accounts based on the moment of updated at time.</dd>
+
+  <dt>Last activity</dt>
+  <dd>How long ago the account has been last active. When you hover over the text you can see the precise moment an account was last active. You can order the accounts based on the moment of last time the account was active.</dd>
+
+  <dt>Role</dt>
+  <dd>Role of the account, this can either be 'light', 'regular' or 'administrator'. In the filter you can select a specific role or 'All' roles.</dd>
+
+  <dt>Verified</dt>
+  <dd>An account can be verified or not, to verify an account, the user needs to click on the verify button in the email. Or an administrator has verified the account in the account setttings of that account. Only 'users' need to be verified.</dd>
+
+  <dt>Disabled</dt>
+  <dd>An account can be disabled or not, to disabled an account, the user needs to click on the disabled button in their user settings. Or an administrator has disabled the account in the account setttings of that account.</dd>
+
+  <dt>legal consent</dt>
+  <dd>An account can have accepted the legal consent or not, to accept legal consent, the user needs to click on the accept legal consent either when creating an account or by checking it in the user settings. Only 'users' need to have accepted legal consent.</dd>
+</dl>
+
+For each account you can execute the following actions:
+
+<dl>
+  <dt>Open account settings</dt>
+  <dd>For each account there is button such that the administrator can directly go to the account settings of the user or organization. The account settings are behind the `cogwheel` button. </dd>
+</dl>
+
+### Add new user(s)
 
 Go to the “Accounts tab” to receive an overview of all accounts on the
 TriplyDB instance.
@@ -614,9 +661,54 @@ are provided for user account creation:
   “Password” field, the user must enter this password in order to
   log in for the first time.
 
-<!--  ## Datasets page
+## Datasets page
 
-TODO: describe overview page task #6246  -->
+The account page governs all the datasets of an instance. The paginated table shows all the datasets of the instance. The table is equipped with filters and sorting mechanisms to quickly search for and locate specific datasets according to search and filter criteria. The table also has a search field at the right side to quickly do wildcard searching.
+The table sorts all datasets automatically on the created at date with the latest created at date datasets first.
+
+The filters on top of the table can be used to filter the following columns:
+
+<dl>
+  <dt>Name</dt>
+  <dd>The name of the dataset, you can order the table based on the alphanumeric ordering, and filter based on the sequence of characters appearing in the filter. The name is also a URL that brings you to the location of the dataset. </dd>
+
+  <dt>Access level</dt>
+  <dd>Access level of the dataset, this can either be 'Public', 'Internal' or 'Private'. In the filter you can select a specific access level or 'All' access levels.</dd>
+
+  <dt>Display name</dt>
+  <dd>The display name of the dataset, often an dataset has both a name and a display name. The display name is not limited to a specific set of characters, as it is not used an URL. You can order the table based on the alphanumeric ordering, and filter based on the sequence of characters appearing in the filter. </dd>
+
+  <dt>Owner</dt>
+  <dd>The owner of the dataset. The owner is a URL and brings you to the overview page of the owner. The owners can be filtered based on the sequence of characters appearing in the filter.</dd>
+
+  <dt>Graph count</dt>
+  <dd>The amount of graphs in a dataset. These are all the total amount of graphs in a dataset, and can be filtered with the slider.</dd>
+
+  <dt>Statement count</dt>
+  <dd>The amount of statements in a dataset. These are all the statements of all the graphs, and can be filtered with the slider.</dd>
+
+  <dt>Service count</dt>
+  <dd>The amount of services in a dataset. These can be filtered with the slider.</dd>
+
+  <dt>Asset count</dt>
+  <dd>The amount of assets in a dataset. These can be filtered with the slider.</dd>
+
+  <dt>Created at</dt>
+  <dd>How long ago an dataset has been created. When you hover over the text you can see the precise moment an dataset is created. You can order datasets based on the moment of creation.</dd>
+
+  <dt>Updated at</dt>
+  <dd>How long ago an dataset has been updated with new metadata such as display name or new data. When you hover over the text you can see the precise moment an account is last updated. You can order dataset based on the moment of updated at time.</dd>
+
+  <dt>Last graph edit</dt>
+  <dd>How long ago the last graph has been edited, either new data is uploaded or removed, or the graph names changed. When you hover over the text you can see the precise moment an dataset was edited. You can order the accounts based on the moment of last time the dataset was last edited.</dd>
+</dl>
+
+For each dataset you can execute the following actions:
+
+<dl>
+  <dt>Open dataset settings</dt>
+  <dd>For each dataset there is button such that the administrator can directly go to the dataset settings of the dataset. The dataset settings are behind the `cogwheel` button. </dd>
+</dl>
 
 ## Services page
 
@@ -636,7 +728,7 @@ The filters on top of the table can be used to filter the following columns:
   <dd>The status of the service, this can be 'Starting', 'Running', 'Stopped', 'Updating' or 'Error'. In the filter you can select a specific service status or 'All' services statuses</dd>
 
   <dt>Statements</dt>
-  <dd>The amount of statements in a service. These are all the loaded statements in the service, and can be filter with the slider.</dd>
+  <dd>The amount of statements in a service. These are all the loaded statements in the service, and can be filtered with the slider.</dd>
 
   <dt>Loaded graphs</dt>
   <dd>Amount of graphs loaded in the service. All the statements of all the graphs together will count up to the total amount of statements.</dd>
