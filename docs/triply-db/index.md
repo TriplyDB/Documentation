@@ -568,7 +568,7 @@ The filters on top of the table can be used to filter the following columns:
   <dd>The amount of statements in a service. These are all the loaded statements in the service, and can be filter with the slider.</dd>
 
   <dt>Loaded graphs</dt>
-  <dd>Amount of graphs loaded in the service</dd>
+  <dd>Amount of graphs loaded in the service. All the statements of all the graphs together will count up to the total amount of statements.</dd>
 
   <dt>Dataset</dt>
   <dd>The dataset the service belongs to. The dataset is clickable and brings you to the dataset page. The datasets can be filtered based on the sequence of characters appearing in the filter.</dd>
@@ -608,7 +608,7 @@ For each service you can execute the following actions:
   <dd>When a service is no longer necessary or there needs to be made some space on the instance a service can be removed from here.</dd>
 </dl>
 
-Some of these actions can be cumbersome when you need to do them one at a time. To help with this, on the left side of the table you can click on the tickbox. This will select all the services that match search criteria if there search criteria and all tables when there are no search criteria. When pressed you can now remove all selected services or update all selected services to a new software version. 
+Some of these actions can be cumbersome when you need to do them one at a time. To help with this, on the left side of the table you can click on the tickbox. This will select all the services that match search criteria if there search criteria and all tables when there are no search criteria. When pressed you can now remove all selected services or update all selected services to a new software version.
 
 ## Redirects page
 
