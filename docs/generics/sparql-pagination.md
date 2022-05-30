@@ -14,7 +14,7 @@ Each TriplyDB instance has a fully RESTful API. The TriplyDB RESTful API is exte
 
 The example request argument ‘page’ corresponds to the requested page. In the example request this would correspond to the third page of paginated SPARQL query, according to the ‘pageSize’. There is no maximum ‘page’ limit, as a SPARQL query could return an arbitrary number of results. When no results can be retrieved for the requested page an empty page will be returned.
 
-The argument ‘pageSize’ corresponds to how many results each page would contain. The ‘pageSize’ has a default of 100 returned results and a maximum ‘pageSize’ limit of 10.000 returned results. The request will return an error when the ‘pageSize’ is set higher than 10.000. 
+The argument ‘pageSize’ corresponds to how many results each page would contain. The ‘pageSize’ has a default of 100 returned results and a maximum ‘pageSize’ limit of 10.000 returned results. The request will return an error when the ‘pageSize’ is set higher than 10.000.
 
 The RESTful API for the saved SPARQL queries follows the specification in full accordance with [the W3C](https://www.w3.org/TR/html401/types.html#type-links) and [WHATWG](https://html.spec.whatwg.org/multipage/links.html#sequential-link-types) standards.
 

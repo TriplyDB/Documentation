@@ -5,18 +5,18 @@ path: "/docs/triply-db-getting-started"
 
 # Introduction
 
-TriplyDB allows you to store, publish, and use Linked Data Knowledge
-Graphs. TriplyDB makes it easy to upload Linked Data and expose it
-through various APIs (SPARQL, Elasticsearch, LDF, REST). [Read
+TriplyDB allows you to store, publish, and use linked data Knowledge
+Graphs. TriplyDB makes it easy to upload linked data and expose it
+through various APIs (SPARQL, ElasticSearch, LDF, REST). [Read
 More](/triplydb)
 
 # Uploading Data
 
-This section explains how to create a Linked Dataset in TriplyDB.
+This section explains how to create a linked dataset in TriplyDB.
 
 ## Creating a new dataset
 
-The following steps allow a new Lined Dataset to be created:
+The following steps allow a new linked datasets to be created:
 
 1. Log into a TriplyDB instance.
 
@@ -127,7 +127,7 @@ encountered, the RDF file must first be corrected and uploaded again.
 
 ![Screenshot of an error message indicating syntactically malformed RDF data](upload-error.png)
 
-TriplyDB follows the Linked Data standards strictly. Many triple
+TriplyDB follows the linked data standards strictly. Many triple
 stores allow incorrect RDF data to be added. This may seem convenient
 during the loading phase, but often results in errors when
 standards-compliant tools start using the data.
@@ -153,7 +153,7 @@ the following consequences:
    Dataset Search]().
 3. Any services that are started for that dataset will be available
    to anybody on the web. This includes [SPARQL](), [text
-   search](), and [Linked Data Fragments]().
+   search](), and [linked data Fragments]().
 
 ## Entering metadata
 
@@ -204,7 +204,7 @@ clicking on the “Services” icon in the left-hand sidebar.
 
 TriplyDB instances can be configured with different types of services.
 The below screenshot shows the “Create service” page for a TriplyDB
-instance that allows SPARQL, Jena SPARQL, and Elasticsearch services
+instance that allows SPARQL, Jena SPARQL, and ElasticSearch services
 to be created.
 
 ![The “Create service” page](create-service.png) Notice that three different types of services can be created.
@@ -237,22 +237,22 @@ to other nodes in the graph.
 
 ## Linked Data Table
 
-The Linked Data Table shows a dataset at the triple level. The first
+The linked data Table shows a dataset at the triple level. The first
 three columns represent the subject, predicate, and object position of
 the triple. The fourth column represents the graph to which the
 triple belongs.
 
-![Image of the Linked Data Table](linked-data-table.png)
+![Image of the linked data Table](linked-data-table.png)
 
-The Linked Data Table can be used to perform simple queries by filling
+The linked data Table can be used to perform simple queries by filling
 in the subject, predicate, object, and/or graph using the text field.
 
-Terms in the Linked Data Table can be dragged and dropped between
+Terms in the linked data Table can be dragged and dropped between
 columns. This allows a simple form of graph navigation. For example,
 an object term can be dragged to the subject column in order to
 show the triples in which that term appears in the subject position.
 
-Queries in the Linked Data Table can also be performed automatically
+Queries in the linked data Table can also be performed automatically
 through the [Statements API]() and the [Triple Pattern Fragments
 API](/docs/triply-api#triple-pattern-fragments-tpf).
 
@@ -310,12 +310,12 @@ and then choose where the SPARQL query should be moved to.
 
 After the destination is set you would be redirected to the SPARQL query new page. The SPARQL query could be transferred from an account to an organization and vice versa.
 
-## Elasticsearch
+## ElasticSearch
 
-When a dataset has a running Elasticsearch service, textual searches
-can be performed over the entire dataset. Text search with Elasticsearch works like a
+When a dataset has a running ElasticSearch service, textual searches
+can be performed over the entire dataset. Text search with ElasticSearch works like a
 search engine and returns any node that contains your search term, or
-contains the search term in any of its properties. It is also possible to write a custom query using the Elasticsearch [Query DSL (Domain Specific Language)](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl.html).
+contains the search term in any of its properties. It is also possible to write a custom query using the ElasticSearch [Query DSL (Domain Specific Language)](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl.html).
 
 ## Insights
 
@@ -417,7 +417,7 @@ Clicking the '</>' button opens the code snippet screen. Here you select the sni
 
 When the SPARQL query is not public, but instead either private or internal, you will need to add an authorization header to the get request. Without the authorization header the request will return an incorrect response. Checkout [Creating your API token](https://triply.cc/docs/api-token) about creating your API-token for the authorization header.
 
-Check out the [sparql pagination page](https://triply.cc/docs/pagination) when you want to query a SPARQL query that holds more than 10.000 results. The [sparql pagination page ](#sparql-ide) will explain how you can retrieve the complete set.   
+Check out the [SPARQL pagination page](https://triply.cc/docs/pagination) when you want to query a SPARQL query that holds more than 10.000 results. The [SPARQL pagination page ](#sparql-ide) will explain how you can retrieve the complete set.   
 
 ### Metadata links
 
@@ -452,7 +452,7 @@ In the right lower corner you see a button with a notepad. With this button, you
 To create your first element press "+ Add new element". This will open a new form as shown in the images below. Here you can select what kind of  element you want to add to your data story; you’ll have the option to write text, to select an already existing SPARQL query, or even to create a new SPARQL query.
 
 ### Existing query
-Let’s start by selecting a query for our data story. Maybe you’ve already created one, but if you haven’t, you can select one of the queries available to you. You can search in the Query search bar and select the one you want, for example "our-first-select-query". Optionally you can select the version of the query and set the caption. When everything is set, press "Create story element". And look, we’ve added our first element to our story!
+Let’s start by selecting a query for our data story. Maybe you have already created one, but if you haven’t, you can select one of the queries available to you. You can search in the Query search bar and select the one you want, for example "our-first-select-query". Optionally you can select the version of the query and set the caption. When everything is set, press "Create story element". And look, we have added our first element to our story!
 
 ![Form for adding a new query](Add-new-story-element-query-UI.png)
 
@@ -469,24 +469,43 @@ Before you know it, you will have created your first data story. Congratulations
 
 # Admin settings Pages
 
-You can use the console to perform adminstrator tasks. The adminstrator tasks are performed within the admin settings page. The admin settings pages are accessible by clicking on the user menu in top-right corner and selecting the “Admin settings” menu item. You must have administrator privileges to access these pages and perform adminstrator tasks.
+You can use the console to perform administrator tasks. The administrator tasks are performed within the admin settings page. The admin settings pages are accessible by clicking on the user menu in top-right corner and selecting the “Admin settings” menu item. You must have administrator privileges to access these pages and perform administrator tasks.
 
-<!-- ## Overview page
+## Overview page
 
- TODO: describe overview page task #6246  -->
+The first page that comes into view when opening the admin settings pages is the overview page. This page contains an overview of all the important statistics of the instance. The page also shows how close the instance is to hitting one or more limits.
+
+If no limit is set, the statistics are shown as a counter. If a limit is set a gauge is shown with a green, orange or red bar. The colors denote how far that statistic of the instance is to the limit. Green means not close to the limit, Orange means close to the limit, Red means over the limit.    
+
+### General overview
+
+The general overview gives an insight in the software version of the instance. Each instance consists out of a console and an API. The console is the web interface of the instance and has a build date corresponding to the build date of the docker image of the console and a version number corresponding to the version of the docker image. The API is the layer between the console and the data. The API is separate from the console and is a different docker image. The API also has a version and build date of the docker image. But also contains a starting time, and a updated time, the moments when the docker image is started for this instance or when the docker image is updated for the instance.
+
+### Accounts overview
+
+The accounts overview shows how many organizations and users are on this instance. The organizations and users are shown in a counter if no limit is set. If a limit is set on the number of organizations and/or users of the instance a gauge is shown.
+
+### Data overview
+
+The data overview shows how multiple statistics about datasets. The first counter shows the amount of datasets on the instance. The second and third counters show the amount of graphs and statements in all graphs.  The fourth and fifth counters show the amount of unique graphs and statements. When a graph is copied from one dataset to another the data in that graph does not change. The amount of unique data does not change either. The amount of unique data is a more representative way of calculating the amount of data in the instance. All statistics are shown in a counter if no limit is set. If a limit is set on one of the statistics of the instance a gauge is shown.
+
+### Services overview
+
+The data overview shows how multiple statistics about services. The first counter shows the total amount of services on the instance, The second counter shows the total amount of statements in all the services. Then for each of our service types a specific counter is created. Each containing the amount of services and the amount of statements in that service. All statistics are shown in a counter if no limit is set. If a limit is set on one of the statistics of the instance a gauge is shown.
 
 ## Settings page
 
-<!-- TODO: describe overview page task #6246  -->
+The settings page is the main page for administrators to institute instance wide changes. An administrator can change the site logo's here, change the contact email or update site wide prefixes.
 
-## Set logos and banner
+### Set logos and banner
 
 For changing the logos and the banner follow the next steps:
 1. Click on the “Admin settings” link in the user menu (top-right corner) and click the "Settings" tab. This brings up an overview of all the settings an admin can set for the TriplyDB instance.
 
-2. Under "Site logos" and "Site banner" you can upload a site logo (square and landscape) or a banner. Make sure you use SVG files with a maximum size of 5 mb.
+2. Under "Site logos" and "Site banner" you can upload a site logo (square and landscape) or a banner. Make sure you use SVG files with a maximum size of 5 MB.
 
-## Setting metadata
+### Setting metadata
+
 For changing the metadata follow the next steps:
 1. Click on the “Admin settings” link in the user menu (top-right corner) and click the "Settings" tab. This brings up an overview of all the settings an admin can set for the TriplyDB instance.
 
@@ -496,9 +515,108 @@ For changing the metadata follow the next steps:
 
 3. Here you can set the name, tag line, description and welcome text. The name of your website appears in your browser tab. The welcome text appears on the homepage of your TriplyDB instance. The tag line and description are for metadata purposes (e.g. findability and website previews).
 
+### Setting contact email
+
+For changing the contact email follow the next steps:
+1. Click on the “Admin settings” link in the user menu (top-right corner) and click the "Settings" tab. This brings up an overview of all the settings an admin can set for the TriplyDB instance.
+
+2. On that page navigate to "Contact Email". Here you can change the contact email to a new contact email for the instance.
+
+### Setting example datasets
+
+Example datasets are introduction datasets on the frontpage of your instance. The Example datasets are datasets that are interesting for people that visit your page to see and interact with. Most often you'll use open datasets to show them off on the frontpage. You can also use internal or private datasets, but these will only be visible if the person seeing them has the right access rights.
+
+For editing the example datasets follow the next steps:
+1. Click on the “Admin settings” link in the user menu (top-right corner) and click the "Settings" tab. This brings up an overview of all the settings an admin can set for the TriplyDB instance.
+
+2. On that page navigate to "Example datasets". Here you can execute the following changes:
+
+ - You can move datasets up and down in the order by clicking and holding you left mouse button over the the three horizontal lines in front of the dataset name. You can then drag the selected dataset to their new spot.
+ - In the search field below the already added datasets you can add a new example dataset by typing in the search field and selecting the correct dataset.
+ - You can remove datasets by pressing the `x` on the right side of the dataset name to remove it from the example dataset list.
+
+### Setting Starter dataset
+
+The starter dataset is a beginner friendly linked dataset that can be an introduction into linked data when a user creates an account for the first time. The starter dataset is visible for a user when the user has not yet created an dataset on its own account.
+
+For editing the example datasets follow the next steps:
+1. Click on the “Admin settings” link in the user menu (top-right corner) and click the "Settings" tab. This brings up an overview of all the settings an admin can set for the TriplyDB instance.
+
+2. On that page navigate to "Starter dataset". Here you can change the starter dataset to a new starter dataset for the instance by typing in the search bar a name of an existing dataset to replace the started dataset. This dataset then will be presented to users on their account page, with an option to import(copy) them immediately. This needs to be a public dataset! If it's not public, new users will have to create a dataset. The starter dataset is only shown if the user currently has no datasets.
+
+### Setting Authentication
+
+One of the roles of an administrator is to make sure only the right people will sign up for the TriplyDB instance. To do this administrator can set up authentication protocols. The authentication protocols can block people from signing up to instances where they are not allowed to sign up to.
+
+For changing the authentication protocols follow the next steps:
+1. Click on the “Admin settings” link in the user menu (top-right corner) and click the "Settings" tab. This brings up an overview of all the settings an admin can set for the TriplyDB instance.
+
+2. On that page navigate to "Authentication". Now you can change the password sign up. Allowing people to only register with a password or they are only allowed to register with a google or Github account. When password signup is enabled, the administrator can also set the permitted signup domains.
+Only users with e-mail addresses that match these domains are allowed to sign-up. Wildcards are allowed and domains are comma separated, for example: mydomain.com,*.mydomain.com.
+
+### Setting Site-wide prefixes
+
+One of the advantages of using TriplyDB is that you can set site-wide prefixes once and use them everywhere on the instance. Site-wide prefixes are prefixes defined in the admin settings and can be used for all datasets that contain the IRIs matching the prefixes.
+
+For editing the side-wide prefixes follow the next steps:
+1. Click on the “Admin settings” link in the user menu (top-right corner) and click the "Settings" tab. This brings up an overview of all the settings an admin can set for the TriplyDB instance.
+
+2. On that page navigate to "Site-wide prefixes". Here you can execute the following changes:
+
+- Each field of the already added site-wide prefixes you can edited. You can edit the prefix label by typing in the first field. You can edit the prefix IRI and in the second field. Pressing `UPDATE PREFIXES` updates the list.
+- In last field below the already added site-wide prefixes you can add a new site-wide prefix by typing in the first field the prefix label, and in the second field the prefix IRI. Pressing `UPDATE PREFIXES` updates the list.
+- You can remove prefixes by pressing the `x` on the right side of the prefixes name to remove it from the site-wide prefixes list.
+
 ## Account overview page
 
-<!-- TODO: describe overview page task #6246  -->
+The account page governs all the accounts of an instance. The paginated table shows all the accounts of the instance. The table is equipped with filters and sorting mechanisms to quickly search for and locate specific accounts according to search and filter criteria. The table also has a search field at the right side to quickly do wildcard searching.
+The table sorts all accounts automatically on the created at date with the latest created at date accounts first.
+
+The filters on top of the table can be used to filter the following columns:
+
+<dl>
+  <dt>Name</dt>
+  <dd>The name of the account, you can order the table based on the alphanumeric ordering, and filter based on the sequence of characters appearing in the filter. The name is also a URL that brings you to the location of the account. </dd>
+
+  <dt>Type</dt>
+  <dd>Type of the account, this can either be 'Organization' or 'User'. In the filter you can select a specific account type or 'All' account types.</dd>
+
+  <dt>Display name</dt>
+  <dd>The display name of the account, often an account has both a name and a display name. The display name is not limited to a specific set of characters, as it is not used an URL. You can order the table based on the alphanumeric ordering, and filter based on the sequence of characters appearing in the filter. </dd>
+
+  <dt>Email</dt>
+  <dd>The email address of the account. You can order the table based on the alphanumeric ordering, and filter based on the sequence of characters appearing in the filter. </dd>
+
+  <dt>Created at</dt>
+  <dd>How long ago an account has been created. When you hover over the text you can see the precise moment an account is created. You can order accounts based on the moment of creation.</dd>
+
+  <dt>Updated at</dt>
+  <dd>How long ago an account has been updated with new metadata such as display name or password. When you hover over the text you can see the precise moment an account is last updated. You can order accounts based on the moment of updated at time.</dd>
+
+  <dt>Last activity</dt>
+  <dd>How long ago the account has been last active. When you hover over the text you can see the precise moment an account was last active. You can order the accounts based on the moment of last time the account was active.</dd>
+
+  <dt>Role</dt>
+  <dd>Role of the account, this can either be 'light', 'regular' or 'administrator'. In the filter you can select a specific role or 'All' roles.</dd>
+
+  <dt>Verified</dt>
+  <dd>An account can be verified or not, to verify an account, the user needs to click on the verify button in the email. Or an administrator has verified the account in the account setttings of that account. Only 'users' need to be verified.</dd>
+
+  <dt>Disabled</dt>
+  <dd>An account can be disabled or not, to disabled an account, the user needs to click on the disabled button in their user settings. Or an administrator has disabled the account in the account setttings of that account.</dd>
+
+  <dt>legal consent</dt>
+  <dd>An account can have accepted the legal consent or not, to accept legal consent, the user needs to click on the accept legal consent either when creating an account or by checking it in the user settings. Only 'users' need to have accepted legal consent.</dd>
+</dl>
+
+For each account you can execute the following actions:
+
+<dl>
+  <dt>Open account settings</dt>
+  <dd>For each account there is button such that the administrator can directly go to the account settings of the user or organization. The account settings are behind the `cogwheel` button. </dd>
+</dl>
+
+### Add new user(s)
 
 Go to the “Accounts tab” to receive an overview of all accounts on the
 TriplyDB instance.
@@ -543,9 +661,54 @@ are provided for user account creation:
   “Password” field, the user must enter this password in order to
   log in for the first time.
 
-<!--  ## Datsets page
+## Datasets page
 
-TODO: describe overview page task #6246  -->
+The account page governs all the datasets of an instance. The paginated table shows all the datasets of the instance. The table is equipped with filters and sorting mechanisms to quickly search for and locate specific datasets according to search and filter criteria. The table also has a search field at the right side to quickly do wildcard searching.
+The table sorts all datasets automatically on the created at date with the latest created at date datasets first.
+
+The filters on top of the table can be used to filter the following columns:
+
+<dl>
+  <dt>Name</dt>
+  <dd>The name of the dataset, you can order the table based on the alphanumeric ordering, and filter based on the sequence of characters appearing in the filter. The name is also a URL that brings you to the location of the dataset. </dd>
+
+  <dt>Access level</dt>
+  <dd>Access level of the dataset, this can either be 'Public', 'Internal' or 'Private'. In the filter you can select a specific access level or 'All' access levels.</dd>
+
+  <dt>Display name</dt>
+  <dd>The display name of the dataset, often an dataset has both a name and a display name. The display name is not limited to a specific set of characters, as it is not used an URL. You can order the table based on the alphanumeric ordering, and filter based on the sequence of characters appearing in the filter. </dd>
+
+  <dt>Owner</dt>
+  <dd>The owner of the dataset. The owner is a URL and brings you to the overview page of the owner. The owners can be filtered based on the sequence of characters appearing in the filter.</dd>
+
+  <dt>Graph count</dt>
+  <dd>The amount of graphs in a dataset. These are all the total amount of graphs in a dataset, and can be filtered with the slider.</dd>
+
+  <dt>Statement count</dt>
+  <dd>The amount of statements in a dataset. These are all the statements of all the graphs, and can be filtered with the slider.</dd>
+
+  <dt>Service count</dt>
+  <dd>The amount of services in a dataset. These can be filtered with the slider.</dd>
+
+  <dt>Asset count</dt>
+  <dd>The amount of assets in a dataset. These can be filtered with the slider.</dd>
+
+  <dt>Created at</dt>
+  <dd>How long ago an dataset has been created. When you hover over the text you can see the precise moment an dataset is created. You can order datasets based on the moment of creation.</dd>
+
+  <dt>Updated at</dt>
+  <dd>How long ago an dataset has been updated with new metadata such as display name or new data. When you hover over the text you can see the precise moment an account is last updated. You can order dataset based on the moment of updated at time.</dd>
+
+  <dt>Last graph edit</dt>
+  <dd>How long ago the last graph has been edited, either new data is uploaded or removed, or the graph names changed. When you hover over the text you can see the precise moment an dataset was edited. You can order the accounts based on the moment of last time the dataset was last edited.</dd>
+</dl>
+
+For each dataset you can execute the following actions:
+
+<dl>
+  <dt>Open dataset settings</dt>
+  <dd>For each dataset there is button such that the administrator can directly go to the dataset settings of the dataset. The dataset settings are behind the `cogwheel` button. </dd>
+</dl>
 
 ## Services page
 
@@ -559,13 +722,13 @@ The filters on top of the table can be used to filter the following columns:
   <dd>The name of the SPARQL service, you can order the table based on the alphanumeric ordering, and filter based on the sequence of characters appearing in the filter. The name is also a URL that brings you to the location of the service. </dd>
 
   <dt>Type</dt>
-  <dd>Type of the service, this can either be 'Virtuoso', 'Jena', 'Blazegraph', 'Prolog' or 'Elasticsearch'. In the filter you can select a specific service type or 'All' service types.</dd>
+  <dd>Type of the service, this can either be 'Virtuoso', 'Jena', 'Blazegraph', 'Prolog' or 'ElasticSearch'. In the filter you can select a specific service type or 'All' service types.</dd>
 
   <dt>Status</dt>
   <dd>The status of the service, this can be 'Starting', 'Running', 'Stopped', 'Updating' or 'Error'. In the filter you can select a specific service status or 'All' services statuses</dd>
 
   <dt>Statements</dt>
-  <dd>The amount of statements in a service. These are all the loaded statements in the service, and can be filter with the slider.</dd>
+  <dd>The amount of statements in a service. These are all the loaded statements in the service, and can be filtered with the slider.</dd>
 
   <dt>Loaded graphs</dt>
   <dd>Amount of graphs loaded in the service. All the statements of all the graphs together will count up to the total amount of statements.</dd>
@@ -586,7 +749,7 @@ The filters on top of the table can be used to filter the following columns:
   <dd>Some services are equipped with an auto stop feature. This feature reduces the memory resources when a service is not queried in a while. The column `Auto stops` shows how long it will take before a service is auto-stopped. You can order the services on when the auto-stop feature kicks in. Each time a service is used the timer is reset.</dd>
 
   <dt>Version</dt>
-  <dd>A service always has a particular version. A service is not automatically updated as it could be that the service has possible down time. The owner of the service can update a service when they deem it necessary to update to the latest verion.</dd>
+  <dd>A service always has a particular version. A service is not automatically updated as it could be that the service has possible down time. The owner of the service can update a service when they deem it necessary to update to the latest version.</dd>
 </dl>
 
 For each service you can execute the following actions:
