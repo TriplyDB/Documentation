@@ -337,7 +337,7 @@ will expand and show the 10 most frequent predicates of that class.
 The class hierarchy diagram shows the hierarchy of the dataset in three
 different visualizations. Each of the diagrams are created by the
 `rdfs:subClassOf` relations and the classes in the dataset.
-We have three different visualization methods for the classHierarchy:
+TriplyDB has three different visualization methods for the classHierarchy:
 
 - Bubbles visualization
 - Treemap visualization
@@ -411,7 +411,7 @@ When you copy this URL in your browser or fetch the URL with curl you will get a
 
 ### Using a saved query in Python or R notebooks (Advanced)
 
-SPARQL queries as a RESTful API also means you can transport your data to your Python script, R script or Jupyter notebook. To use the resultset from your SPARQL query you need to connect your script to the saved SPARQL query. To do this you will need to write a small connector. To help you out we have added in a code snippet generator for Python and R. This snippet contains the code to retrieve the data from the SPARQL query into your script or notebook. You can open the code snippet generator by clicking on the '</>' button on the right side of the screen.
+SPARQL queries as a RESTful API also means you can transport your data to your Python script, R script or Jupyter notebook. To use the resultset from your SPARQL query you need to connect your script to the saved SPARQL query. To do this you will need to write a small connector. To help you out TriplyDB has added in a code snippet generator for Python and R. This snippet contains the code to retrieve the data from the SPARQL query into your script or notebook. You can open the code snippet generator by clicking on the '</>' button on the right side of the screen.
 
 Clicking the '</>' button opens the code snippet screen. Here you select the snippet in the language you want to have, either Python or R. You can then copy the snippet, by clicking the 'copy to clipboard' button or selecting the snippet and pressing `ctrl-c`. Now you can paste the code in the location you want to use the data. The data is stored in the `data` variable in `JSON` format.
 
@@ -457,7 +457,7 @@ Let’s start by selecting a query for our data story. Maybe you’ve already cr
 ![Form for adding a new query](Add-new-story-element-query-UI.png)
 
 ### Paragraph
-Data sometimes needs accompanying text to be completely understandable. TriplyDB not only supports writing plain text, but TriplyDB paragraphs are also markdown compliant. The markdown that you’ll add in the paragraph text box will be rendered as HTML and can be previewed. We also support image, and even code blocks with highlighting for the most common linked data and programming languages.
+Data sometimes needs accompanying text to be completely understandable. TriplyDB not only supports writing plain text, but TriplyDB paragraphs are also markdown compliant. The markdown that you’ll add in the paragraph text box will be rendered as HTML and can be previewed. TriplyDB also supports images, and even code blocks with highlighting for the most common linked data and programming languages.
 
 ![Form for adding a new paragraph](Add-new-story-element-UI.png)
 
@@ -467,13 +467,50 @@ Before you know it, you will have created your first data story. Congratulations
 2. You can embed the data story on your own webpage. Scroll to the end of the story you want to embed and click the “</> Embed” button for a copy-pasteable code snippet.
 
 
-# Admin tasks
+# Admin settings Pages
 
-Admin tasks are performed within the admin settings page (accessed by
-clicking on the user menu in top-right corner and selecting the “Admin settings”
-menu item).
+You can use the console to perform adminstrator tasks. The adminstrator tasks are performed within the admin settings page. The admin settings pages are accessible by clicking on the user menu in top-right corner and selecting the “Admin settings” menu item. You must have administrator privileges to access these pages and perform adminstrator tasks.
 
-## Create a new user
+<!-- ## Overview page
+
+ TODO: describe overview page task #6246  -->
+
+## Settings page
+
+<!-- TODO: describe overview page task #6246  -->
+
+## Set logos and banner
+
+For changing the logos and the banner follow the next steps:
+1. Click on the “Admin settings” link in the user menu (top-right corner) and click the "Settings" tab. This brings up an overview of all the settings an admin can set for the TriplyDB instance.
+
+2. Under "Site logos" and "Site banner" you can upload a site logo (square and landscape) or a banner. Make sure you use SVG files with a maximum size of 5 mb.
+
+## Setting metadata
+For changing the metadata follow the next steps:
+1. Click on the “Admin settings” link in the user menu (top-right corner) and click the "Settings" tab. This brings up an overview of all the settings an admin can set for the TriplyDB instance.
+
+2. On that page navigate to "Site metadata", it looks as follows:
+
+![Metadata settings](metadata-settings.png)
+
+3. Here you can set the name, tag line, description and welcome text. The name of your website appears in your browser tab. The welcome text appears on the homepage of your TriplyDB instance. The tag line and description are for metadata purposes (e.g. findability and website previews).
+
+## Account overview page
+
+<!-- TODO: describe overview page task #6246  -->
+
+Go to the “Accounts tab” to receive an overview of all accounts on the
+TriplyDB instance.
+
+The type of account can be observed based on the following icons:
+
+| **Icon**              | **Account type** |
+| --------------------- | ---------------- |
+| ![](organization.png) | organization     |
+| ![](user.png)         | user             |
+
+### Create a new user
 
 New users can only be created by administrators by performing the
 following steps:
@@ -506,34 +543,94 @@ are provided for user account creation:
   “Password” field, the user must enter this password in order to
   log in for the first time.
 
-## Set logos and banner
+<!--  ## Datsets page
 
-For changing the logos and the banner follow the next steps:
-1. Click on the “Admin settings” link in the user menu (top-right corner) and click the "Settings" tab. This brings up an overview of all the settings an admin can set for the TriplyDB instance.
+TODO: describe overview page task #6246  -->
 
-2. Under "Site logos" and "Site banner" you can upload a site logo (square and landscape) or a banner. Make sure you use SVG files with a maximum size of 5 mb.
+## Services page
 
-## Setting metadata
-For changing the metadata follow the next steps:
-1. Click on the “Admin settings” link in the user menu (top-right corner) and click the "Settings" tab. This brings up an overview of all the settings an admin can set for the TriplyDB instance.
+The services page governs all the services of an instance. The paginated table shows all the services of the instance. The table is equipped with filters and sorting mechanisms to quickly search for and locate specific services according to search and filter criteria. The table also has a search field at the right side to quickly do wildcard searching.
+The table sorts all services automatically if a service is in an error state or not. All services that are in error state will be shown at the top of the table. This way immediate action can be taken to check the service.
 
-2. On that page navigate to "Site metadata", it looks as follows:
+The filters on top of the table can be used to filter the following columns:
 
-![Metadata settings](metadata-settings.png)
+<dl>
+  <dt>Name</dt>
+  <dd>The name of the SPARQL service, you can order the table based on the alphanumeric ordering, and filter based on the sequence of characters appearing in the filter. The name is also a URL that brings you to the location of the service. </dd>
 
-3. Here you can set the name, tag line, description and welcome text. The name of your website appears in your browser tab. The welcome text appears on the homepage of your TriplyDB instance. The tag line and description are for metadata purposes (e.g. findability and website previews).
+  <dt>Type</dt>
+  <dd>Type of the service, this can either be 'Virtuoso', 'Jena', 'Blazegraph', 'Prolog' or 'Elasticsearch'. In the filter you can select a specific service type or 'All' service types.</dd>
 
-## Account overview
+  <dt>Status</dt>
+  <dd>The status of the service, this can be 'Starting', 'Running', 'Stopped', 'Updating' or 'Error'. In the filter you can select a specific service status or 'All' services statuses</dd>
 
-Go to the “Accounts tab” to receive an overview of all accounts on the
-TriplyDB instance.
+  <dt>Statements</dt>
+  <dd>The amount of statements in a service. These are all the loaded statements in the service, and can be filter with the slider.</dd>
 
-The type of account can be observed based on the following icons:
+  <dt>Loaded graphs</dt>
+  <dd>Amount of graphs loaded in the service. All the statements of all the graphs together will count up to the total amount of statements.</dd>
 
-| **Icon**              | **Account type** |
-| --------------------- | ---------------- |
-| ![](organization.png) | organization     |
-| ![](user.png)         | user             |
+  <dt>Dataset</dt>
+  <dd>The dataset the service belongs to. The dataset is clickable and brings you to the dataset page. The datasets can be filtered based on the sequence of characters appearing in the filter.</dd>
+
+  <dt>Owner</dt>
+  <dd>The owner of the dataset is also the owner of the service. The owner is a URL and brings you to the overview page of the owner. The owners can be filtered based on the sequence of characters appearing in the filter.</dd>
+
+  <dt>Created</dt>
+  <dd>How long ago a service has been created. When you hover over the text you can see the precise moment a service is created. You can order the services based on the moment of creation.</dd>
+
+  <dt>Last queried</dt>
+  <dd>How long ago the service has been last queried. When you hover over the text you can see the precise moment a service is last queried. You can order the services based on the moment of last time the service has been queried.</dd>
+
+  <dt>Auto stops</dt>
+  <dd>Some services are equipped with an auto stop feature. This feature reduces the memory resources when a service is not queried in a while. The column `Auto stops` shows how long it will take before a service is auto-stopped. You can order the services on when the auto-stop feature kicks in. Each time a service is used the timer is reset.</dd>
+
+  <dt>Version</dt>
+  <dd>A service always has a particular version. A service is not automatically updated as it could be that the service has possible down time. The owner of the service can update a service when they deem it necessary to update to the latest verion.</dd>
+</dl>
+
+For each service you can execute the following actions:
+
+<dl>
+  <dt>Update the service</dt>
+  <dd>When a service can be updated an orange arrow will appear just below the service. When you press the update service button the service is automatically updated to the latest service version.</dd>
+
+  <dt>Open additional information</dt>
+  <dd>For each service there is additional information available. The additional information is behind the `i` button. The additional information contains information about the graphs in the dataset and a raw information view of the service metadata.</dd>
+
+  <dt>Inspect the logs</dt>
+  <dd>For each service there is a log available. The logs are behind the `text` button. The logs contain information </dd>
+
+  <dt>Synchronize the service</dt>
+  <dd>A services can be outdated. This happens when the data in the dataset does not corresponds with the data in the service. When this happens the service can be synchronized from here to make it up to date with the latest version of the data.</dd>
+
+  <dt>Remove the service</dt>
+  <dd>When a service is no longer necessary or there needs to be made some space on the instance a service can be removed from here.</dd>
+</dl>
+
+Some of these actions can be cumbersome when you need to do them one at a time. To help with this, on the left side of the table you can click on the tickbox. This will select all the services that match search criteria if there search criteria and all tables when there are no search criteria. When pressed you can now remove all selected services or update all selected services to a new software version.
+
+## Redirects page
+
+The great thing about linked data is that IRIs are used to define objects in linked data. Then when you visit the IRIs you find useful information about the object. But sometimes the data is not on the location where the IRI is pointing towards. You have the IRI: https://example.org/resource/Amsterdam but the information about the object is located in the dataset https://api.triplydb.com/MyAccount/myCities. This is a problem as the IRI is pointing to a location that does not contain the data, and the data is at a location that is not found without the correct IRI. This is where you can use redirects to redirect the user from the IRI to the location where the data is found.  
+
+### How to setup a redirects for dereferencing
+
+Redirects enable easy dereferencing of resources. For example, you can dereference a resource https://example.org/resource/Amsterdam into dataset https://api.triplydb.com/MyAccount/myCities by following these steps:
+
+1. First update the webserver of where the IRI is originally pointing towards the the redirect API. In this example all subpaths of `/resource` are to be redirected from https://example.org to https://api.triplydb.com/redirect/$requestUri. this means that when a request for https://example.org/resource/Amsterdam comes to the webserver of `https://example.org` it will be redirected to https://api.triplydb.com/redirect/https://example.org/resource/Amsterdam.
+
+2. Now that the external webserver is set up to redirect to TriplyDB, TriplyDB needs to be configured to accept the request and redirect it to the correct dataset. This is done by adding a rule on the administrator redirects page. To add a rule, press the `ADD RULE` button to begin with the creation of a new rule. For this example we want to add a prefix rule with the pattern to match https://example.org/resource/City/. The prefix rule needs a dataset to redirect to. This will be the dataset https://api.triplydb.com/myAccount/myCities. Press `CREATE RULE` to create the rule. Each rule is evaluated when a request comes in `https://api.triplydb.com/redirect/$requestUri` and mapping rules are evaluated from top (highest priority) to bottom (lowest priority). When a match is found the requestUri is then redirected to that location.
+
+TriplyDB supports two types of mapping rules:
+
+<dl>
+  <dt>Prefix</dt>
+  <dd>Prefix rules trigger when the start of a resource matches the specified string.</dd>
+
+  <dt>Regex</dt>
+  <dd>Regular Expression rules trigger when a resource matches a Regular Expression.</dd>
+</dl>
 
 # Reference
 
