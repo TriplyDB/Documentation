@@ -697,7 +697,7 @@ Adds a new data story.
     </dl>
   </dd>
   <dt><code>content: StoryElementUpdate[]</code> </dt>
-  <dd>A list if story elements. The building blocks of the Story.</dd>
+  <dd>A list of story elements. The building blocks of the Story.</dd>
   <dt><code>displayName: string</code> </dt>
   <dd>The human-readable name of the data story.  This name may include spaces and other characters that are not allowed in the URL-friendly name.</dd>
 </dl>
@@ -709,7 +709,7 @@ A story element is an object with the following keys:
   <dd>The caption is an explanatory text about a specific query.</dd>
 
   <dt><code>id: string</code></dt>
-  <dd>Each Story elements gets an Id when it is created. When you want to update an Story element you will need this Id. The Id is only required when updating an element and not needed when adding an object.</dd>
+  <dd>Each Story element gets an Id when it is created. When you want to update a Story element you will need this Id. The Id is only required when updating an element and not needed when adding an object.</dd>
 
   <dt>paragraph: string</dt>
   <dd>The Markdown content of a story paragraph. Only allowed when the type is set to <code>"paragraph"</code> </dd>
@@ -1275,9 +1275,9 @@ TriplyDB.js supports several functions to manipulate an asset on TriplyDB.
 
 #### Asset.addVersion(path: File | string)
 
-Update an asset with a new version of the document use the `addVersion` function. The input of this function is a path
-to the file location that you want to update the asset with. The file you want to add as new version does not in any
-way have to correspond to the asset.
+Update an asset with a new version of the document using the `addVersion` function. The input of this function is a path
+to the file location that you want to update the asset with. The file you want to add as a new version does not in any
+ways have to correspond to the asset.
 
 ##### Example
 
@@ -1391,7 +1391,7 @@ console.log(await asset.getVersionInfo(1));
 #### Asset.selectVersion(version: number)
 
 With the `selectVersion()` function you can select a specific version of an Asset.
-Each version corresponds to a iteration of the file that is added as asset. The
+Each version corresponds to a iteration of the file that is added as an asset. The
 argument of the `selectVersion()` function is a number of the version you want to retrieve.
 
 ##### Example
@@ -1427,7 +1427,7 @@ asset.toFile('my-file-location.txt')
 
 #### Asset.toStream(version?: number)
 
-If instead of downloading the the asset to a file for later usage you want to directly use the asset.
+If instead of downloading the asset to a file for later usage you want to directly use the asset.
 The `toStream()` functionality is available. This downloads the asset as a stream for use in a script.
 The `toStream()` has as optional argument a version number.
 
@@ -1721,7 +1721,7 @@ console.log(await dataset.getAssets().toArray());
 
 #### Dataset.getGraph(name: string)
 
-Each dataset with data consists out of one or more named graphs. All graphs together is thus the collection of triples of the dataset. Often the graph is used to denote a part of the dataset. For example the data model of the dataset or the metadata of the dataset. If instead of searching over the complete dataset where you want to scope it to a certain graph you can use the `getGraph()` function to specify the graph.
+Each dataset with data consists out of one or more named graphs. All graphs together are thus the collection of triples of the dataset. Often the graph is used to denote a part of the dataset. For example the data model of the dataset or the metadata of the dataset. Instead of searching over the complete dataset where you want to scope it to a certain graph you can use the `getGraph()` function to specify the graph.
 
 `Dataset.getGraph(name: string)` returns the graph with the given `name` that belongs to this dataset. The `name` is the string representation of the graph IRI.
 
@@ -1872,7 +1872,7 @@ The optional properties accepted as arguments for <code>graphsToFile</code>
 
 <dl>
   <dt>Compressed</dt>
-  <dd>Argument <code>compressed</code> optionally is an boolean defining if a graph is compresssed with GNU zip (gzip) compression algorithm and will end with a `.gz` extension. </dd>
+  <dd>Argument <code>compressed</code> optionally is a boolean defining if a graph is compressed with GNU zip (gzip) compression algorithm and will end with a `.gz` extension. </dd>
   <dt>Graph</dt>
   <dd>Argument <code>Graph</code> optionally is an specific graph that you want to write to file. These graph is an instance of a "Graph" class</dd>
 </dl>
@@ -1893,7 +1893,7 @@ await dataset.graphsToFile('my-filename.ttl', {compressed: true})
 
 The second method is to download the file into a `N3.store`. The [n3 library](https://rdf.js.org/N3.js/docs/N3Store.html) is one of the most complete libraries for handling linked data in memory. The N3.js library is an implementation of the RDF.js low-level specification that lets you handle RDF in JavaScript easily, with an asynchronous, streaming approach.
 
-To reduce the overhead of downloading your data to file and then insert it in the N3 Store. TriplyDB.js has a `graphsToStore()` where a N3 store is returned as a result of the the `graphsToStore()` function.
+To reduce the overhead of downloading your data to file and then insert it in the N3 Store. TriplyDB.js has a `graphsToStore()` where a N3 store is returned as a result of the `graphsToStore()` function.
 
 ##### Optional
 
@@ -1922,12 +1922,12 @@ The following arguments can be defined in the optional arguments object.
   <dt>Extension</dt>
   <dd>Argument <code>Extension</code> optionally defines the linked data type that is streamed. The extensions that are supported are: `nt`, `nq`, `trig`, `ttl`, `jsonld`, `json`.  </dd>
   <dt>Graph</dt>
-  <dd>Argument <code>Graph</code> optionally is an specific graph that you want to write to file. These graph is an instance of a "Graph" class</dd>
+  <dd>Argument <code>Graph</code> optionally is an specific graph that you want to write to file. This graph is an instance of a "Graph" class</dd>
 </dl>
 
 ##### Examples
 
-The following example streams through the dataset as rdf-js quad objects. and prints the quad to the screen. notice that the `stream` is an async iterator.
+The following example streams through the dataset as rdf-js quad objects and prints the quad to the screen. Notice that the `stream` is an async iterator.
 
 **Example 1**
 
@@ -1973,7 +1973,7 @@ The optional properties accepted as arguments for <code>importFromDataset</code>
 
 <dl>
   <dt>graphMap</dt>
-  <dd>Argument `<code>graphMap</code>` optionally is an object with keys and values that implements a mapping from existing graph names (keys) to newly created graph names (values). Each key must be an existing graph name in the `from` dataset. Each value must is the corresponding graph name in this dataset. If this argument is not specified, then graph names in the `from` dataset are identical to graph names in this dataset. Note that either graphNames or graphMap can be given as optional argument and not both.</dd>
+  <dd>Argument `<code>graphMap</code>` optionally is an object with keys and values that implements a mapping from existing graph names (keys) to newly created graph names (values). Each key must be an existing graph name in the `from` dataset. Each value must be the corresponding graph name in this dataset. If this argument is not specified, then graph names in the `from` dataset are identical to graph names in this dataset. Note that either graphNames or graphMap can be given as optional argument and not both.</dd>
   <dt>graphNames</dt>
   <dd>Argument `<code>graphNames</code>` optionally is an array of graph names. These names can be one of three types: "string", instances of a "Graph" class, or instances of "NamedNodes". Note that either graphNames or graphMap can be given as optional argument and not both.</dd>
   <dt>overwrite</dt>
@@ -1995,7 +1995,7 @@ await newDataset.importFromDataset(existingDataset);
 ```
 
 **Example 2**
-Imports `"anotherDataset"` dataset to the `"newDataset"` Where a graph from the existing dataset is renamed to the a graphname in the new dataset. Only the graphs from the graphMap are imported.
+Imports `"anotherDataset"` dataset to a `"newDataset"` Where a graph from the existing dataset is renamed to the a graphname in the new dataset. Only the graphs from the graphMap are imported.
 
 ```ts
 const account = await client.getAccount();
@@ -2007,7 +2007,7 @@ await newDataset.importFromDataset(anotherDataset, { graphMap:
 ```
 
 **Example 3**
-Imports `"oneMoreDataset"` dataset to the `"newDataset"` Where a graph specific graph from the existing dataset is added to the new dataset. If the graphname already occurs in the `"newDataset"` it will get overwritten.
+Import `"oneMoreDataset"` dataset to the `"newDataset"` Where a graph specific graph from the existing dataset is added to the new dataset. If the graph name already occurs in the `"newDataset"` it will get overwritten.
 
 ```ts
 const account = await client.getAccount();
@@ -2069,7 +2069,7 @@ await dataset.importFromFiles(["file.nq", "file.tar.gz"], {
 
 One of the most complete libraries for handling linked data in memory is the [n3 library](https://rdf.js.org/N3.js/docs/N3Store.html). The N3.js library is an implementation of the RDF.js low-level specification that lets you handle RDF in JavaScript easily, with an asynchronous, streaming approach.
 
-To reduce the overhead of converting your data from the N3 Store to a file and uploading to TriplyDB. TriplyDB.js has a `importFromStore()` where a N3 store is given as first argument and upload direct to triplyDB.
+To reduce the overhead of converting your data from the N3 Store to a file and uploading to TriplyDB. TriplyDB.js has a `importFromStore()` where a N3 store is given as first argument and uploaded directly to triplyDB.
 
 
 ##### Examples
