@@ -486,9 +486,9 @@ Statements are created with the `mw.addQuad` function.  Calls to this function a
 
 ### Create static statements {#static-assertions}
 
-Static linked data statements are statements that only make use of constant terms (see [working with IRIs](#working-with-iris)).  Constant terms are introduced at the beginning of a RATT pipeline, typically prior to the occurrence of the first `app.use` scope.
+Static linked data statements are statements that only make use of constant terms (see [working with IRIs](https://triply.cc/docs/ratt-extract#working-with-iris)).  Constant terms are introduced at the beginning of a RATT pipeline, typically prior to the occurrence of the first `app.use` scope.
 
-The following static statements make use of the constant terms introduced in the section on [working with IRIs](#working-with-iris).
+The following static statements make use of the constant terms introduced in the section on [working with IRIs](https://triply.cc/docs/ratt-extract#working-with-iris).
 
 ```ts
 app.use(
@@ -512,7 +512,7 @@ We use the following RATT Record as an example:
 | Germany     | 83190556    |
 | Netherlands | 17650200    |
 
-We start with creating the prefix and term declarations (see the section on [working with IRIs](#working-with-iris) for more information):
+We start with creating the prefix and term declarations (see the section on [working with IRIs](https://triply.cc/docs/ratt-extract#working-with-iris) for more information):
 
 ```ts
 const prefix_base = Ratt.prefixer('https://triplydb.com/Triply/example/')
