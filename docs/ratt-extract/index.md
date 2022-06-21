@@ -140,7 +140,7 @@ More advanced tabular formats like [Microsoft Excel](#excel) *are* able to store
 
 JSON (JavaScript Object Notation) is a popular open standard for interchanging tree-shaped data.
 
-The following example uses a JSON source that is stored as a [TriplyDB asset](#asset):
+The following example uses a JSON source that is stored as a [TriplyDB asset](https://triply.cc/docs/ratt-extract#assets):
 
 ```ts
 const account = 'my-account'
@@ -324,7 +324,7 @@ This function transforms XML to JSON.
 
 The RATT connectors for source files allow an arbitrary number of files to be specified.
 
-The following example code connects two [CSV files](#csv) to a RATT pipeline:
+The following example code connects two [CSV files](https://triply.cc/docs/ratt-extract#csv-tsv) to a RATT pipeline:
 
 ```ts
 const account = 'my-account'
@@ -337,7 +337,7 @@ app.use(
 )
 ```
 
-This also works with sources that are specified in the [RATT context](#context):
+This also works with sources that are specified in the RATT context:
 
 ```ts
 const account = 'my-account'

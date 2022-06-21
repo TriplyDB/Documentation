@@ -105,7 +105,7 @@ After applying the function, the RATT record looks as follows:
 
 ##### Cast numeric data
 
-Some source data formats are unable to represent numeric data.  A common example of this is [CSV/TSV](#csv), where every cell in a table is represented as a string.
+Some source data formats are unable to represent numeric data.  A common example of this is [CSV/TSV](https://triply.cc/docs/ratt-extract#csv-tsv), where every cell in a table is represented as a string.
 
 If a source data format that cannot represent numeric data is used, it is often useful to cast such strings to numbers in RATT using the `change` function.
 
