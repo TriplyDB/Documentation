@@ -128,7 +128,7 @@ While CSV/TSV files are often used in practice, they come with significant limit
 
 Specifically, CSV/TSV does not allow the type of values to be specified.  All values have type `'string'`.
 
-This is specifically an issue when tabular data contains numeric information.  Such numeric information will only be available as strings.  These strings must be explicitly transformed to numbers in RATT (see the [`change` function](#change)).
+This is specifically an issue when tabular data contains numeric information.  Such numeric information will only be available as strings.  These strings must be explicitly transformed to numbers in RATT (see the [`change` function](https://triply.cc/docs/ratt-transform#change)).
 
 More advanced tabular formats like [Microsoft Excel](#excel) *are* able to store the types of values.
 
