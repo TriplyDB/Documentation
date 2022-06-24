@@ -253,7 +253,7 @@ an object term can be dragged to the subject column in order to
 show the triples in which that term appears in the subject position.
 
 Queries in the linked data Table can also be performed automatically
-through the [Statements API]() and the [Triple Pattern Fragments
+through the Statements API and the [Triple Pattern Fragments
 API](/docs/triply-api#triple-pattern-fragments-tpf).
 
 ## SPARQL IDE
@@ -282,7 +282,7 @@ from which the SPARQL query can be copied in the following three forms:
    visualizations. Long URLs are not supported by some application
    that cut off a URL after a maximum length (often 1,024
    characters). Use one of the other two options or use [Saved
-   Queries]() to avoid such restrictions.
+   Queries](https://triply.cc/docs/triply-db-getting-started#saved-queries) to avoid such restrictions.
 
 2. A short URL that redirects to the full URL-encoded SPARQL query.
 
@@ -290,7 +290,7 @@ from which the SPARQL query can be copied in the following three forms:
    application that supports this command. cURL is often used by
    programmers to test HTTP(S) requests.
 
-[Saved Queries]() are a more modern way of sharing SPARQL queries.
+[Saved Queries](https://triply.cc/docs/triply-db-getting-started#saved-queries) are a more modern way of sharing SPARQL queries.
 They do not have any of the technical limitations that occur with
 URL-encoded queries.
 
@@ -417,7 +417,7 @@ Clicking the '</>' button opens the code snippet screen. Here you select the sni
 
 When the SPARQL query is not public, but instead either private or internal, you will need to add an authorization header to the get request. Without the authorization header the request will return an incorrect response. Checkout [Creating your API token](https://triply.cc/docs/api-token) about creating your API-token for the authorization header.
 
-Check out the [SPARQL pagination page](https://triply.cc/docs/pagination) when you want to query a SPARQL query that holds more than 10.000 results. The [SPARQL pagination page ](#sparql-ide) will explain how you can retrieve the complete set.   
+Check out the [SPARQL pagination page](https://triply.cc/docs/pagination) when you want to query a SPARQL query that holds more than 10.000 results. The [SPARQL pagination page ](https://triply.cc/docs/pagination) will explain how you can retrieve the complete set.   
 
 ### Metadata links
 

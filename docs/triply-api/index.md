@@ -207,7 +207,7 @@ Everybody who has access to the dataset also has access to its services, includi
 - For *Internal* datasets, only users that are logged into the triple store can issue queries.
 - For *Private* datasets, only users that are logged into the triple store and are members of `ACCOUNT` can issue queries.
 
-Notice that for professional use it is easier and better to use [saved queries](#saved-queries).  Saved queries have persistent URIs, descriptive metadata, versioning, and support for reliable large-scale pagination.  Still, if you do not have a saved query at your disposal and want to perform a custom SPARQL request against an accessible endpoint, you can do so.  TriplyDB implements the SPARQL 1.1 Query Protocol standard for this purpose.
+Notice that for professional use it is easier and better to use [saved queries](https://triply.cc/docs/triply-db-getting-started#saved-queries).  Saved queries have persistent URIs, descriptive metadata, versioning, and support for reliable large-scale pagination.  Still, if you do not have a saved query at your disposal and want to perform a custom SPARQL request against an accessible endpoint, you can do so.  TriplyDB implements the SPARQL 1.1 Query Protocol standard for this purpose.
 
 #### Sending a SPARQL Query request
 

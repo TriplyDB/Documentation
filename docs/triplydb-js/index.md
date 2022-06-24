@@ -291,7 +291,7 @@ The allowed operations many include:
 2. Write operations over public, internal or private data
 3. Management operations such as creating organizations, adding/removing members to/from organizations.
 
-The following creates a `Client` object with an API token that is made available through an environment variable (see section [Setting up a secure read/write project](#setting-up-a-secure-read-write-project)):
+The following creates a `Client` object with an API token that is made available through an environment variable (see section [Setting up a secure read/write project](https://triply.cc/docs/triplydb-js#setting-up-a-readwrite-project)):
 
 ```ts
 import Client from "@triply/triplydb";
@@ -1292,12 +1292,12 @@ as Assets and can be integrated into the Knowledge Graph. Each asset
 has a specific identifier that can be used in the Knowledge Graph.
 
 An asset is always uploaded per dataset, for which the function `uploadAsset()`
-is used. see [Dataset.uploadAsset()](#DatasetuploadAssetassetName-string-filePath-string)
+is used. see [Dataset.uploadAsset()](https://triply.cc/docs/triplydb-js#datasetuploadassetassetname-string-filepath-string)
 for uploading an asset.
 
 If the asset already has been created following functions can retrieve it from the dataset.
-- [Dataset.getAsset(assetName: string, versionNumber?: number)](#DatasetgetAssetassetName-string-versionNumber-number)
-- [Dataset.getAssets()](#DatasetgetAssets)
+- [Dataset.getAsset(assetName: string, versionNumber?: number)](https://triply.cc/docs/triplydb-js#datasetgetassetname-string-version-number)
+- [Dataset.getAssets()](https://triply.cc/docs/triplydb-js#datasetgetassets)
 
 
 TriplyDB.js supports several functions to manipulate an asset on TriplyDB.
