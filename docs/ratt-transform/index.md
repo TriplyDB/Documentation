@@ -392,7 +392,7 @@ app.use(
 - `TO_KEY` is the name of the entry whose value is going to be replaced.
 - The `change` key optionally specifies a function that takes the cast `value` of `FROM_KEY` and that returns the value that will be stored in `TO_KEY`.  If the `change` function is not specified, it is identical to `value => value`.
 
-##### Error conditions
+#### Error conditions
 
 This function emits an error under the following conditions:
 - If `FROM_KEY` does not exist in the current RATT record.
