@@ -755,16 +755,16 @@ Notice that it is almost never useful to store the empty string in linked data. 
 ### Custom functions
 
 If we want to extract a string value from the source data, we can write a custom function which can be used with `mw.when` . `mw.when` can receive two parameters: string(a key value) or a function.
- If `mw.when` receives a string, it checks whether it is empty or not. But in case of a custom method specific instructions are required. For example,
+If `mw.when` receives a string, it checks whether it is empty or not. But in case of a custom method specific instructions are required. For example,
 
- ```ts
- (ctx) => ctx.isNotEmpty('foo') && ctx.getString('foo') === 'foo’
+```ts
+(ctx) => ctx.isNotEmpty('foo') && ctx.getString('foo') === 'foo’
 ```
 
- Notice details:
+Notice details:
 
- `ctx.isNotEmpty('foo')` checks whether the string is empty or not and only if it is not empty, the function moves to the next step
- `ctx.getString('bla') === 'something’`, which is the next step, extracts 'foo' when it fulfills the required criteria
+`ctx.isNotEmpty('foo')` checks whether the string is empty or not and only if it is not empty, the function moves to the next step
+`ctx.getString('bla') === 'something’`, which is the next step, extracts 'foo' when it fulfills the required criteria
 
 
 ## Tree-shaped data
@@ -1169,4 +1169,37 @@ This makes the following assertion:
 ```trig
 country:nl rdfs:label 'The Netherlands'@en,
                       'Holland'@en.
+```
+
+
+## Transforming RDF data
+If you have RDF data that does not need to be transformed, see [copying source data](/ratt-working-with-ratt#direct-copying-of-source-data-to-destination).
+If you have RDF data that _does_ need to be transformed, you can use the following pattern. This example renames the graph.
+
+```ts
+const app = new Ratt({
+  defaultGraph: graph.model,
+  cliContext,
+  prefixes: prefix,
+  sources: {
+    inputFile: Ratt.Source.file(`data/shapes.trig`)
+  },
+
+  destinations: {
+   dataset: Ratt.Destination.TriplyDb.rdf(organization, dataset, remoteOptions)
+  },
+})
+
+app.use(
+  mw.loadRdf(app.sources.inputFile),
+  mw.mapQuads(
+    (quad, ctx) => ctx.store.quad(
+      quad.subject,
+      quad.predicate,
+      quad.object,
+      app.prefixes.somePrefix("graph")
+    )
+  ),
+  mw.toRdf(app.destinations.dataset)
+)
 ```
