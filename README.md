@@ -7,7 +7,7 @@ This repository contains the TriplyDB documentation files.  These file are used 
 This repository includes documentation for the following Triply products:
 
 <dl>
-  <dt><a href='docs/triplydb'>TriplyDB</a></dt>
+  <dt>TriplyDB</dt>
   <dd>An integrated linked data environment for publishing and using linked data knowledge graphs.</dd>
   <dt>RATT</dt>
   <dd>A library that is optimized for building production-grade linked data pipelines.</dd>
