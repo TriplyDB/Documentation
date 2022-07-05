@@ -1197,9 +1197,26 @@ app.use(
       quad.subject,
       quad.predicate,
       quad.object,
-      app.prefixes.somePrefix("graph")
+      app.prefix.somePrefix("graph")
     )
   ),
   mw.toRdf(app.destinations.dataset)
 )
 ```
+
+Similarly, you can change all the subject, predicates or objects in your data.
+
+Also, you can choose to transform triples of a specific subject, predicate, object or graph name. in this case, you should use:
+
+```ts
+mw.mapQuads(
+  (quad, ctx) => ctx.store.quad(
+    quad.subject,
+    app.prefix.example('new-predicate'),
+    quad.object,
+    quad.graph
+  ),
+  {predicate: app.prefix.example("old-predicate")}
+)
+```
+
