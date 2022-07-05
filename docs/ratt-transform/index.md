@@ -1172,8 +1172,8 @@ country:nl rdfs:label 'The Netherlands'@en,
 ```
 
 
-## Transforming RDF data
-If you have RDF data that does not need to be transformed, see [copying source data](/ratt-working-with-ratt#direct-copying-of-source-data-to-destination).
+## Transforming RDF data 
+If you have RDF data that does not need to be transformed, see [copying source data](/docs/ratt-working-with-ratt/index.md#direct-copying-of-source-data-to-destination).
 If you have RDF data that _does_ need to be transformed, you can use the following pattern. This example renames the graph.
 
 ```ts
