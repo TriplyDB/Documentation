@@ -137,4 +137,4 @@ import { mapValues } from 'lodash'
 
 ## Uploading graphs
 
-In some cases, it is useful to upload graphs on TriplyDB that are already in a linked data format file. See [copying source data](/docs/ratt-working-with-ratt/index.md#direct-copying-of-source-data-to-destination).
+In some cases, it is useful to upload graphs on TriplyDB that are already in a linked data format file. See [copying source data](/docs/ratt-working-with-ratt#direct-copying-of-source-data-to-destination).
