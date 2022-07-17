@@ -129,20 +129,20 @@ When developing a pipeline over a large source data collection, it is often stan
 
 The benefit of this approach is that the feedback loop between making changes and receiving feedback is short.  A downside of this approach is that the ETL may be overly optimized towards these first few records.  For example, if a value is missing in the first 1.000 records, then transformations that are necessary for when the value is present will not be developed initially.  An alternative is to run the entire ETL, but that takes a long time.
 
-To avoid the downsides of using `--head`, RATT also supports the `--fromRecordId` flag.  This flag specifies the number of records that are skipped.  This allows us to specify an arbitrary consecutive range of records.  For example, the following processes the 1.001-st until and including the 1.010-th record:
+To avoid the downsides of using `--head`, RATT also supports the `--from-record-id` flag.  This flag specifies the number of records that are skipped.  This allows us to specify an arbitrary consecutive range of records.  For example, the following processes the 1.001-st until and including the 1.010-th record:
 
 ```sh
-yarn ratt ./lib/main.js --fromRecordId 1000 --head 10
+yarn ratt ./lib/main.js --from-record-id 1000 --head 10
 ```
 
 #### Process a specific record
 
-When the `--head` flag is set to 1, the `--fromRecordId` flag specifies the index of a single specific record that is processed.  This is useful when a record is known to be problematic, for instance during debugging.
+When the `--head` flag is set to 1, the `--from-record-id` flag specifies the index of a single specific record that is processed.  This is useful when a record is known to be problematic, for instance during debugging.
 
 The following command runs RATT for the 27th record:
 
 ```sh
-yarn ratt ./lib/main.js --fromRecordId 26 --head 1
+yarn ratt ./lib/main.js --from-record-id 26 --head 1
 ```
 
 
