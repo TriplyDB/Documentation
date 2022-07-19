@@ -25,11 +25,11 @@ The following steps must be performed in order to configure an API Token:
 
 6. Choose the permission level that is sufficient for what you want to do with the token:
 
-   - Specify “Read permission” if your application must access non-public data in the TriplyDB instance.  (For access to public data you do not need an API token.)
+   - Management access: if your application must be able to create one or more organizations within the TriplyDB instance.
 
-   - Specify “Write permission” if your application must change (meta)data in the TriplyDB instance.
+   - Write access: if your application must change (meta)data in the TriplyDB instance.
 
-   - Specify “Management permission” if your application must be able to create one or more organizations within the TriplyDB instance.
+   - Read access: if your application must access private data in the TriplyDB instance.  (For access to public data you do not need an API token.)
 
 7. Click the “Create” button to create your token.  The token (a long sequence of characters) will now appear in a dialog.
 
@@ -37,8 +37,12 @@ The following steps must be performed in order to configure an API Token:
 
 9. [Create an environment variable](environment-variable) whose name is `TRIPLYDB_TOKEN` and whose value is the token copied in step 8.
 
-You can test whether the environment variable has been configured correctly by running the following command in a terminal:
-
+You can test whether the environment variable has been configured correctly by running the following command in a terminal on Linux:
 ```sh
 echo $TRIPLYDB_TOKEN
+```
+
+or on Windows with PowerShell:
+```powershell
+$env:TRIPLYDB_TOKEN
 ```
