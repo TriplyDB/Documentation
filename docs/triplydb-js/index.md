@@ -1520,7 +1520,7 @@ The changes made as a result of calling this method depend on the current state 
 
 ```ts
 serviceMetadata = {
-  type: "sparql" | "elasticsearch" | "virtuoso" | "jena" ;
+  type:  "elasticSearch" | "virtuoso" | "jena" ;
   config?: {
     reasoner?: "OWL" | "RDFS" | "None";
   };
@@ -1529,7 +1529,7 @@ serviceMetadata = {
 
 <dl>
   <dt><code>type</code></dt>
-  <dd>Accepts a string value of one of the following: <code>"sparql"</code>, <code>"elasticsearch"</code>, <code>"virtuoso"</code>, <code>"jena"</code>.</dd>
+  <dd>Accepts a string value of one of the following: <code>"virtuoso"</code>, <code>"elasticSearch"</code>, <code>"jena"</code>.</dd>
 
   <dt><code>config</code></dt>
   <dd>
@@ -1544,7 +1544,7 @@ serviceMetadata = {
 **Note:**
 
 - If no options are specified the default service is of type: `virtuoso`.
-- Note that the `config.reasoner` will only accept a value when `type` is: `"sparql-jena" | "jena"`
+- Note that the `config.reasoner` will only accept a value when `type` is: `"jena"`
 
 **Examples**
 Example 1: Ensure a `service` with no arguments. If not found it's type defaults to `virtuoso`.
@@ -1581,7 +1581,7 @@ The service type is specified with the `type` parameter. If no type is given, a 
   <dd>Starts a SPARQL service. A SPARQL 1.1 compliant service is very scalable and performance, but without advanced reasoning capabilities.</dd>
   <dt><code>"jena"</code></dt>
   <dd>Starts a SPARQL JENA service. A SPARQL 1.1 compliant service that is less scalable and less performant, but allows reasoning (RDFS or OWL) to be enabled.</dd>
-  <dt><code>"elasticsearch"</code></dt>
+  <dt><code>"elasticSearch"</code></dt>
   <dd>Starts an <a href='https://www.elastic.co/guide/en/elasticsearch/reference/current/index.html'>ElasticSearch</a> service. A text search engine that can be used to power a search bar or similar textual search API.</dd>
 </dl>
 
@@ -1596,7 +1596,7 @@ const account = await client.getAccount();
 const dataset = await account.getDataset("my-dataset");
 const acceptance = await dataset.addService("acceptance");
 const production = await dataset.addService("production", {
-  type: "elasticsearch",
+  type: "elasticSearch",
 });
 const reasoning = await dataset.addService("reasoning", {
   type: "jena",
