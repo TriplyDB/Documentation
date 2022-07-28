@@ -355,7 +355,7 @@ is also possible to zoom out:
 
 **Note that the class hierarchy does not automatically update to reflect changes in the data. When the data has changed, the page must be refreshed.**
 
-- A class only appears in the class hierarchy tab if it has instances (connected to the class via `rdf:type`), or if at least one of it's subclasses appears in the class hierarchy tab.
+- A class only appears in the class hierarchy tab if it has instances (connected to the class via `rdf:type`), or if at least one of its subclasses appears in the class hierarchy tab.
 - The class hierarchy cannot be shown if it contains a cycle, meaning that some class is (indirectly) its own subclass.
 
 
@@ -387,7 +387,7 @@ Updating the saved query can be done by clicking a query in the Saved Queries ta
 To share a saved query, for example in Data Stories, you can copy the link that is
 used when you open the query in TriplyDB. Let's say you have a query called
 `Timelined-Cars-BETA` in the dataset `core` under the account `dbpedia` and you
-want to use version 6. Than the following link would be used
+want to use version 6. Then the following link would be used
 
 ```url
 https://triplydb.com/DBpedia-association/-/queries/timeline-cars/8
@@ -407,11 +407,11 @@ Each TriplyDB instance has a fully RESTful API. The TriplyDB RESTful API is exte
 ```url
 https://api.triplydb.com/queries/DBpedia-association/timeline-cars/run
 ```
-When you copy this URL in your browser or fetch the URL with curl you will get an get request to a RESTful API and get a JSON representation of the data in your browser or command window.
+When you copy this URL in your browser or fetch the URL with curl, you will get a get request to a RESTful API and get a JSON representation of the data in your browser or command window.
 
 ### Using a saved query in Python or R notebooks (Advanced)
 
-SPARQL queries as a RESTful API also means you can transport your data to your Python script, R script or Jupyter notebook. To use the resultset from your SPARQL query you need to connect your script to the saved SPARQL query. To do this you will need to write a small connector. To help you out TriplyDB has added in a code snippet generator for Python and R. This snippet contains the code to retrieve the data from the SPARQL query into your script or notebook. You can open the code snippet generator by clicking on the '</>' button on the right side of the screen.
+SPARQL queries as a RESTful API, also means you can transport your data to your Python script, R script or Jupyter notebook. To use the resultset from your SPARQL query you need to connect your script to the saved SPARQL query. To do this you will need to write a small connector. To help you out TriplyDB has added into a code snippet generator for Python and R. This snippet contains the code to retrieve the data from the SPARQL query into your script or notebook. You can open the code snippet generator by clicking on the '</>' button on the right side of the screen.
 
 Clicking the '</>' button opens the code snippet screen. Here you select the snippet in the language you want to have, either Python or R. You can then copy the snippet, by clicking the 'copy to clipboard' button or selecting the snippet and pressing `ctrl-c`. Now you can paste the code in the location you want to use the data. The data is stored in the `data` variable in `JSON` format.
 
@@ -469,7 +469,7 @@ Before you know it, you will have created your first data story. Congratulations
 
 # Admin settings Pages
 
-You can use the console to perform administrator tasks. The administrator tasks are performed within the admin settings page. The admin settings pages are accessible by clicking on the user menu in top-right corner and selecting the “Admin settings” menu item. You must have administrator privileges to access these pages and perform administrator tasks.
+You can use the console to perform administrator tasks. The administrator tasks are performed within the admin settings page. The admin settings pages are accessible by clicking on the user menu in the top-right corner and selecting the “Admin settings” menu item. You must have administrator privileges to access these pages and perform administrator tasks.
 
 ## Overview page
 
@@ -479,15 +479,15 @@ If no limit is set, the statistics are shown as a counter. If a limit is set a g
 
 ### General overview
 
-The general overview gives an insight in the software version of the instance. Each instance consists out of a console and an API. The console is the web interface of the instance and has a build date corresponding to the build date of the docker image of the console and a version number corresponding to the version of the docker image. The API is the layer between the console and the data. The API is separate from the console and is a different docker image. The API also has a version and build date of the docker image. But also contains a starting time, and a updated time, the moments when the docker image is started for this instance or when the docker image is updated for the instance.
+The general overview gives an insight into the software version of the instance. Each instance consists of a console and an API. The console is the web interface of the instance and has a build date corresponding to the build date of the docker image of the console and a version number corresponding to the version of the docker image. The API is the layer between the console and the data. The API is separate from the console and is a different docker image. The API also has a version and build date of the docker image. Also contains a starting time, and an updated time, the moments when the docker image is started for this instance or when the docker image is updated for the instance.
 
 ### Accounts overview
 
-The accounts overview shows how many organizations and users are on this instance. The organizations and users are shown in a counter if no limit is set. If a limit is set on the number of organizations and/or users of the instance a gauge is shown.
+The accounts overview shows how many organizations and users are in this instance. The organizations and users are shown in a counter if no limit is set. If a limit is set on the number of organizations and/or users of the instance a gauge is shown.
 
 ### Data overview
 
-The data overview shows how multiple statistics about datasets. The first counter shows the amount of datasets on the instance. The second and third counters show the amount of graphs and statements in all graphs.  The fourth and fifth counters show the amount of unique graphs and statements. When a graph is copied from one dataset to another the data in that graph does not change. The amount of unique data does not change either. The amount of unique data is a more representative way of calculating the amount of data in the instance. All statistics are shown in a counter if no limit is set. If a limit is set on one of the statistics of the instance a gauge is shown.
+The data overview shows multiple statistics about datasets. The first counter shows the amount of datasets on the instance. The second and third counters show the amount of graphs and statements in all graphs.  The fourth and fifth counters show the amount of unique graphs and statements. When a graph is copied from one dataset to another, the data in that graph does not change. The amount of unique data does not change either. The amount of unique data is a more representative way of calculating the amount of data in the instance. All statistics are shown in a counter, if no limit is set. If a limit is set on one of the statistics of the instance a gauge is shown.
 
 ### Services overview
 
@@ -513,14 +513,14 @@ For changing the metadata follow the next steps:
 
 ![Metadata settings](metadata-settings.png)
 
-3. Here you can set the name, tag line, description and welcome text. The name of your website appears in your browser tab. The welcome text appears on the homepage of your TriplyDB instance. The tag line and description are for metadata purposes (e.g. findability and website previews).
+3. Here you can set the name, tag line, description and welcome text. The name of your website appears in your browser tab. The welcome text appears on the homepage of your TriplyDB instance. The tagline and description are for metadata purposes (e.g. findability and website previews).
 
 ### Setting contact email
 
 For changing the contact email follow the next steps:
 1. Click on the “Admin settings” link in the user menu (top-right corner) and click the "Settings" tab. This brings up an overview of all the settings an admin can set for the TriplyDB instance.
 
-2. On that page navigate to "Contact Email". Here you can change the contact email to a new contact email for the instance.
+2. On that page navigate to "Contact Email". Here, you can change the contact email to a new contact email for the instance.
 
 ### Setting example datasets
 
@@ -529,15 +529,15 @@ Example datasets are introduction datasets on the frontpage of your instance. Th
 For editing the example datasets follow the next steps:
 1. Click on the “Admin settings” link in the user menu (top-right corner) and click the "Settings" tab. This brings up an overview of all the settings an admin can set for the TriplyDB instance.
 
-2. On that page navigate to "Example datasets". Here you can execute the following changes:
+2. On that page, navigate to "Example datasets". Here, you can execute the following changes:
 
- - You can move datasets up and down in the order by clicking and holding you left mouse button over the the three horizontal lines in front of the dataset name. You can then drag the selected dataset to their new spot.
+ - You can move datasets up and down in the order by clicking and holding your left mouse button over the three horizontal lines in front of the dataset name. You can then drag the selected dataset to their new spot.
  - In the search field below the already added datasets you can add a new example dataset by typing in the search field and selecting the correct dataset.
  - You can remove datasets by pressing the `x` on the right side of the dataset name to remove it from the example dataset list.
 
 ### Setting Starter dataset
 
-The starter dataset is a beginner friendly linked dataset that can be an introduction into linked data when a user creates an account for the first time. The starter dataset is visible for a user when the user has not yet created an dataset on its own account.
+The starter dataset is a beginner-friendly linked dataset that can be an introduction into linked data when a user creates an account for the first time. The starter dataset is visible for a user when the user has not yet created a dataset on its own account.
 
 For editing the example datasets follow the next steps:
 1. Click on the “Admin settings” link in the user menu (top-right corner) and click the "Settings" tab. This brings up an overview of all the settings an admin can set for the TriplyDB instance.
@@ -546,7 +546,7 @@ For editing the example datasets follow the next steps:
 
 ### Setting Authentication
 
-One of the roles of an administrator is to make sure only the right people will sign up for the TriplyDB instance. To do this administrator can set up authentication protocols. The authentication protocols can block people from signing up to instances where they are not allowed to sign up to.
+One of the roles of an administrator is to make sure only the right people will sign up for the TriplyDB instance. To do this, administrator can set up authentication protocols. The authentication protocols can block people from signing up to instances where they are not allowed to sign up to.
 
 For changing the authentication protocols follow the next steps:
 1. Click on the “Admin settings” link in the user menu (top-right corner) and click the "Settings" tab. This brings up an overview of all the settings an admin can set for the TriplyDB instance.
@@ -561,10 +561,10 @@ One of the advantages of using TriplyDB is that you can set site-wide prefixes o
 For editing the side-wide prefixes follow the next steps:
 1. Click on the “Admin settings” link in the user menu (top-right corner) and click the "Settings" tab. This brings up an overview of all the settings an admin can set for the TriplyDB instance.
 
-2. On that page navigate to "Site-wide prefixes". Here you can execute the following changes:
+2. On that page navigate to "Site-wide prefixes". Here, you can execute the following changes:
 
-- Each field of the already added site-wide prefixes you can edited. You can edit the prefix label by typing in the first field. You can edit the prefix IRI and in the second field. Pressing `UPDATE PREFIXES` updates the list.
-- In last field below the already added site-wide prefixes you can add a new site-wide prefix by typing in the first field the prefix label, and in the second field the prefix IRI. Pressing `UPDATE PREFIXES` updates the list.
+- Each field of the already added site-wide prefixes you can edit. You can edit the prefix label by typing in the first field. You can edit the prefix IRI and in the second field. Pressing `UPDATE PREFIXES` updates the list.
+- In the last field below the already added site-wide prefixes you can add a new site-wide prefix by typing in the first field the prefix label, and in the second field the prefix IRI. Pressing `UPDATE PREFIXES` updates the list.
 - You can remove prefixes by pressing the `x` on the right side of the prefixes name to remove it from the site-wide prefixes list.
 
 ## Account overview page
@@ -582,13 +582,13 @@ The filters on top of the table can be used to filter the following columns:
   <dd>Type of the account, this can either be 'Organization' or 'User'. In the filter you can select a specific account type or 'All' account types.</dd>
 
   <dt>Display name</dt>
-  <dd>The display name of the account, often an account has both a name and a display name. The display name is not limited to a specific set of characters, as it is not used an URL. You can order the table based on the alphanumeric ordering, and filter based on the sequence of characters appearing in the filter. </dd>
+  <dd>The display name of the account, often an account has both a name and a display name. The display name is not limited to a specific set of characters, as it is not used as an URL. You can order the table based on the alphanumeric ordering, and filter based on the sequence of characters appearing in the filter. </dd>
 
   <dt>Email</dt>
   <dd>The email address of the account. You can order the table based on the alphanumeric ordering, and filter based on the sequence of characters appearing in the filter. </dd>
 
   <dt>Created at</dt>
-  <dd>How long ago an account has been created. When you hover over the text you can see the precise moment an account is created. You can order accounts based on the moment of creation.</dd>
+  <dd>How long ago an account was created. When you hover over the text you can see the precise moment an account is created. You can order accounts based on the moment of creation.</dd>
 
   <dt>Updated at</dt>
   <dd>How long ago an account has been updated with new metadata such as display name or password. When you hover over the text you can see the precise moment an account is last updated. You can order accounts based on the moment of updated at time.</dd>
@@ -600,10 +600,10 @@ The filters on top of the table can be used to filter the following columns:
   <dd>Role of the account, this can either be 'light', 'regular' or 'administrator'. In the filter you can select a specific role or 'All' roles.</dd>
 
   <dt>Verified</dt>
-  <dd>An account can be verified or not, to verify an account, the user needs to click on the verify button in the email. Or an administrator has verified the account in the account setttings of that account. Only 'users' need to be verified.</dd>
+  <dd>An account can be verified or not, to verify an account, the user needs to click on the verify button in the email. Or an administrator has verified the account in the account settings of that account. Only 'users' need to be verified.</dd>
 
   <dt>Disabled</dt>
-  <dd>An account can be disabled or not, to disabled an account, the user needs to click on the disabled button in their user settings. Or an administrator has disabled the account in the account setttings of that account.</dd>
+  <dd>An account can be disabled or not, to disabled an account, the user needs to click on the disabled button in their user settings. Or an administrator has disabled the account in the account settings of that account.</dd>
 
   <dt>legal consent</dt>
   <dd>An account can have accepted the legal consent or not, to accept legal consent, the user needs to click on the accept legal consent either when creating an account or by checking it in the user settings. Only 'users' need to have accepted legal consent.</dd>
@@ -613,7 +613,7 @@ For each account you can execute the following actions:
 
 <dl>
   <dt>Open account settings</dt>
-  <dd>For each account there is button such that the administrator can directly go to the account settings of the user or organization. The account settings are behind the `cogwheel` button. </dd>
+  <dd>For each account, there is a button such that the administrator can directly go to the account settings of the user or organization. The account settings are behind the `cogwheel` button. </dd>
 </dl>
 
 ### Add new user(s)
@@ -676,7 +676,7 @@ The filters on top of the table can be used to filter the following columns:
   <dd>Access level of the dataset, this can either be 'Public', 'Internal' or 'Private'. In the filter you can select a specific access level or 'All' access levels.</dd>
 
   <dt>Display name</dt>
-  <dd>The display name of the dataset, often an dataset has both a name and a display name. The display name is not limited to a specific set of characters, as it is not used an URL. You can order the table based on the alphanumeric ordering, and filter based on the sequence of characters appearing in the filter. </dd>
+  <dd>The display name of the dataset, often a dataset has both a name and a display name. The display name is not limited to a specific set of characters, as it is not used as an URL. You can order the table based on the alphanumeric ordering, and filter based on the sequence of characters appearing in the filter. </dd>
 
   <dt>Owner</dt>
   <dd>The owner of the dataset. The owner is a URL and brings you to the overview page of the owner. The owners can be filtered based on the sequence of characters appearing in the filter.</dd>
@@ -694,13 +694,13 @@ The filters on top of the table can be used to filter the following columns:
   <dd>The amount of assets in a dataset. These can be filtered with the slider.</dd>
 
   <dt>Created at</dt>
-  <dd>How long ago an dataset has been created. When you hover over the text you can see the precise moment an dataset is created. You can order datasets based on the moment of creation.</dd>
+  <dd>How long ago a dataset has been created. When you hover over the text you can see the precise moment a dataset is created. You can order datasets based on the moment of creation.</dd>
 
   <dt>Updated at</dt>
-  <dd>How long ago an dataset has been updated with new metadata such as display name or new data. When you hover over the text you can see the precise moment an account is last updated. You can order dataset based on the moment of updated at time.</dd>
+  <dd>How long ago a dataset has been updated with new metadata such as display name or new data. When you hover over the text you can see the precise moment an account is last updated. You can order dataset based on the moment of updated at time.</dd>
 
   <dt>Last graph edit</dt>
-  <dd>How long ago the last graph has been edited, either new data is uploaded or removed, or the graph names changed. When you hover over the text you can see the precise moment an dataset was edited. You can order the accounts based on the moment of last time the dataset was last edited.</dd>
+  <dd>How long ago the last graph has been edited, either new data is uploaded or removed, or the graph names changed. When you hover over the text you can see the precise moment a dataset was edited. You can order the accounts based on the moment of last time the dataset was last edited.</dd>
 </dl>
 
 For each dataset you can execute the following actions:
@@ -725,7 +725,7 @@ The filters on top of the table can be used to filter the following columns:
   <dd>Type of the service, this can either be 'Virtuoso', 'Jena', 'Blazegraph', 'Prolog' or 'ElasticSearch'. In the filter you can select a specific service type or 'All' service types.</dd>
 
   <dt>Status</dt>
-  <dd>The status of the service, this can be 'Starting', 'Running', 'Stopped', 'Updating' or 'Error'. In the filter you can select a specific service status or 'All' services statuses</dd>
+  <dd>The status of the service, can be 'Starting', 'Running', 'Stopped', 'Updating' or 'Error'. In the filter you can select a specific service status or 'All' services statuses</dd>
 
   <dt>Statements</dt>
   <dd>The amount of statements in a service. These are all the loaded statements in the service, and can be filtered with the slider.</dd>
@@ -765,7 +765,7 @@ For each service you can execute the following actions:
   <dd>For each service there is a log available. The logs are behind the `text` button. The logs contain information </dd>
 
   <dt>Synchronize the service</dt>
-  <dd>A services can be outdated. This happens when the data in the dataset does not corresponds with the data in the service. When this happens the service can be synchronized from here to make it up to date with the latest version of the data.</dd>
+  <dd>The services can be outdated. This happens when the data in the dataset does not corresponds with the data in the service. When this happens the service can be synchronized from here to make it up to date with the latest version of the data.</dd>
 
   <dt>Remove the service</dt>
   <dd>When a service is no longer necessary or there needs to be made some space on the instance a service can be removed from here.</dd>
@@ -781,9 +781,9 @@ The great thing about linked data is that IRIs are used to define objects in lin
 
 Redirects enable easy dereferencing of resources. For example, you can dereference a resource https://example.org/resource/Amsterdam into dataset https://api.triplydb.com/MyAccount/myCities by following these steps:
 
-1. First update the webserver of where the IRI is originally pointing towards the the redirect API. In this example all subpaths of `/resource` are to be redirected from https://example.org to https://api.triplydb.com/redirect/$requestUri. this means that when a request for https://example.org/resource/Amsterdam comes to the webserver of `https://example.org` it will be redirected to https://api.triplydb.com/redirect/https://example.org/resource/Amsterdam.
+1. First update the web server of where the IRI is originally pointing towards the redirect API. In this example all subpaths of `/resource` are to be redirected from https://example.org to https://api.triplydb.com/redirect/$requestUri. this means that when a request for https://example.org/resource/Amsterdam comes to the web server of `https://example.org` it will be redirected to https://api.triplydb.com/redirect/https://example.org/resource/Amsterdam.
 
-2. Now that the external webserver is set up to redirect to TriplyDB, TriplyDB needs to be configured to accept the request and redirect it to the correct dataset. This is done by adding a rule on the administrator redirects page. To add a rule, press the `ADD RULE` button to begin with the creation of a new rule. For this example we want to add a prefix rule with the pattern to match https://example.org/resource/City/. The prefix rule needs a dataset to redirect to. This will be the dataset https://api.triplydb.com/myAccount/myCities. Press `CREATE RULE` to create the rule. Each rule is evaluated when a request comes in `https://api.triplydb.com/redirect/$requestUri` and mapping rules are evaluated from top (highest priority) to bottom (lowest priority). When a match is found the requestUri is then redirected to that location.
+2. Now that the external web server is set up to redirect to TriplyDB, TriplyDB needs to be configured to accept the request and redirect it to the correct dataset. This is done by adding a rule on the administrator redirects page. To add a rule, press the `ADD RULE` button to begin with the creation of a new rule. For this example we want to add a prefix rule with the pattern to match https://example.org/resource/City/. The prefix rule needs a dataset to redirect to. This will be the dataset https://api.triplydb.com/myAccount/myCities. Press `CREATE RULE` to create the rule. Each rule is evaluated when a request comes in `https://api.triplydb.com/redirect/$requestUri` and mapping rules are evaluated from top (highest priority) to bottom (lowest priority). When a match is found the requestUri is then redirected to that location.
 
 TriplyDB supports two types of mapping rules:
 
