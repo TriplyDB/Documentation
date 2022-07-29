@@ -411,7 +411,7 @@ When you copy this URL in your browser or fetch the URL with curl, you will get 
 
 ### Using a saved query in Python or R notebooks (Advanced)
 
-SPARQL queries as a RESTful API, also means you can transport your data to your Python script, R script or Jupyter notebook. To use the resultset from your SPARQL query you need to connect your script to the saved SPARQL query. To do this you will need to write a small connector. To help you out TriplyDB has added into a code snippet generator for Python and R. This snippet contains the code to retrieve the data from the SPARQL query into your script or notebook. You can open the code snippet generator by clicking on the '</>' button on the right side of the screen.
+SPARQL queries as a RESTful API, also means you can transport your data to your Python script, R script or Jupyter notebook. To use the resultset from your SPARQL query you need to connect your script to the saved SPARQL query. To do this you will need to write a small connector. To help you out TriplyDB has added a code snippet generator for Python and R. This snippet contains the code to retrieve the data from the SPARQL query into your script or notebook. You can open the code snippet generator by clicking on the '</>' button on the right side of the screen.
 
 Clicking the '</>' button opens the code snippet screen. Here you select the snippet in the language you want to have, either Python or R. You can then copy the snippet, by clicking the 'copy to clipboard' button or selecting the snippet and pressing `ctrl-c`. Now you can paste the code in the location you want to use the data. The data is stored in the `data` variable in `JSON` format.
 
