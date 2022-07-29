@@ -546,7 +546,7 @@ For editing the example datasets follow the next steps:
 
 ### Setting Authentication
 
-One of the roles of an administrator is to make sure only the right people will sign up for the TriplyDB instance. To do this, administrator can set up authentication protocols. The authentication protocols can block people from signing up to instances where they are not allowed to sign up to.
+One of the roles of an administrator is to make sure only the right people will sign up for the TriplyDB instance. To do this, an administrator can set up authentication protocols. The authentication protocols can block people from signing up to instances where they are not allowed to sign up to.
 
 For changing the authentication protocols follow the next steps:
 1. Click on the “Admin settings” link in the user menu (top-right corner) and click the "Settings" tab. This brings up an overview of all the settings an admin can set for the TriplyDB instance.
@@ -765,7 +765,7 @@ For each service you can execute the following actions:
   <dd>For each service there is a log available. The logs are behind the `text` button. The logs contain information </dd>
 
   <dt>Synchronize the service</dt>
-  <dd>The services can be outdated. This happens when the data in the dataset does not corresponds with the data in the service. When this happens the service can be synchronized from here to make it up to date with the latest version of the data.</dd>
+  <dd>The service can be outdated. This happens when the data in the dataset does not corresponds with the data in the service. When this happens the service can be synchronized from here to make it up to date with the latest version of the data.</dd>
 
   <dt>Remove the service</dt>
   <dd>When a service is no longer necessary or there needs to be made some space on the instance a service can be removed from here.</dd>
