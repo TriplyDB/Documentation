@@ -844,6 +844,111 @@ This results in the following assertion:
 dataset:my-dataset dct:title 'Data about countries.'@en.
 ```
 
+
+### Dealing with dots in RATT keys
+
+Mishandling dots in RATT keys can be quite troubling and difficult to detect since RATT would not always show an error in the code. In order to prevent that, there is a syntax that allow us to give the code the functionality that is needed. RATT uses the lodash library to implement dot-based path notation. 
+
+Example: 
+
+```  when('narrower_term_lref', [
+      triple(iri('_entity'), la.has_member, iri(prefix.collectors, 'narrower_term_lref[0].$text')),
+    ]),
+
+    when('["soort_collectie.lref"]', [
+      triple(iri('_entity'), crm.P2_has_type, iri(prefix.thesaurus, '["soort_collectie.lref"][0].$text')),
+    ]),
+```
+
+Here we can notice that in the first code snippet the notation does not seem to have extra requirements since it is referring to a key that does not use a special character such as dot. The second one, however, has a condition name that contains a dot. Therefore, when conditioning the statement we use the ‘[“a.b”]’ syntax. In this case we can observe using a RATT key as an array key. If we need an element from this array, the key should be addressed with the name notation – ‘[“a.b”].$text’. 
+
+Overall, ‘a.b’ notation allow going into nested object and accessing values within the nest while ‘[“a.b”]’ takes value a.b key as a name, therefore does not go into the nest.
+ In the following example the differences can be seen with the corresponding result:
+
+```
+{
+  "a": {
+    "$text": "1"
+  },
+  "b": {
+    "c": {
+      "$text": "2"
+    }
+  },
+  "b.c": {
+    "$text": "3"
+  },
+  "d.d": {
+    "e": {
+      "$text": "4"
+    },
+    "f": {
+      "$text": "5"
+    }
+  },
+  "g.g": [
+    {
+      "h.h": {
+        "$text": "6"
+      }
+    },
+    {
+      "h.h": {
+        "$text": "7"
+      }
+    }
+  ]
+}
+```
+| Key                       | Value       |
+| ------------------------  | ----------- |
+| 'a.$text'                 | 1           | 
+| 'b.c.$text'               | 2           |
+| '["b.c"].$text'           | 3           |    
+| '["d.d"].e.$text'         | 4           |
+| '["d.d"].f'.$text'        | 5           |
+| '["g.g"][0]["h.h"].$text' | 6           | 
+| '["g.g"][1]["h.h"].$text' | 7           |
+
+Using the example at the top: 
+
+
+```when('["soort_collectie.lref"]', [
+  triple(iri('_entity'), crm.P2_has_type, iri(prefix.thesaurus, '["soort_collectie.lref"][0].$text')),
+]),
+```
+```
+│   "soort_collectie": [                                               │
+│     {                                                                │
+│       "value": [                                                     │
+│         {                                                            │
+│           "$text": "museum",                                         │
+│           "@invariant": "false",                                     │
+│           "@lang": "en-US"                                           │
+│         },                                                           │
+│         {                                                            │
+│           "$text": "museum",                                         │
+│           "@invariant": "false",                                     │
+│           "@lang": "nl-NL"                                           │
+│         }                                                            │
+│       ]                                                              │
+│     }                                                                │
+│   ],                                                                 │
+│   "soort_collectie.lref": [                                          │
+│     {                                                                │
+│       "$text": "63335"                                               │
+│     }                                                                │
+│   ], 
+```
+
+```
+| Key                                | Value       |
+| ------------------------           | ----------- |
+| ‘[“soort_collectie.lref”][0].$text | 63335       | 
+| ‘soort_collectie.lref[0].$text’    | empty       |
+| ‘soort_collectie.value[0]$text’    | museum      |    
+```
+
 ### Accessing lists by index {#accessing-lists-by-index}
 
 Tree-shaped data formats often allow multiple values to be specified in an ordered list.  Examples of this are arrays in JSON and XML elements with the same tag that are directly nested under the same parent element.
