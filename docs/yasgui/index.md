@@ -16,7 +16,7 @@ SPARQL queries and their results.
 
 The Yasgui SPARQL editor is a query editor that offers syntax highlighting, syntax validation, autocompletion, a variety of different SPARQL result visualizations, with a plugin architecture that [enables customization](/docs/yasgui-api).
 
-By default, the query editor provides autcomplete suggestions via the [LOV](https://lov.linkeddata.es/dataset/lov/) API.
+By default, the query editor provides autocomplete suggestions via the [LOV](https://lov.linkeddata.es/dataset/lov/) API.
 Website maintainers can add their own autocompletion logic as well. For example, the Yasgui integration in [TriplyDB](https://triplydb.com) uses the TriplyDB API to more accurately provide suggestions based on the underlying data.
 
 Sharing queries now involves less than having to copy/past complete SPARQL queries. Instead, you can share your query (and the corresponding visualization settings) using a simple URL.
@@ -172,7 +172,7 @@ the following features:
 | **Filter**        | By entering a search string into the “Filter query results” field, the table will only display result rows in which the entered search string appears.                                                                                                                                                                                                        |
 | **Indices**       | The first column in the table indicates the index of each row in the SPARQL result set.                                                                                                                                                                                                                                                                       |
 | **Pagination**    | By default the Table displays at most 50 rows. This maximum value can be changed to 10, 100, 1.000, or “All”.                                                                                                                                                                                                                                                 |
-| **Sorting**       | A sort widget appears to the right of each header label. By pressing on the upward pointing arrow of he sort widget, rows will be sorted based on the lexicographic order of the values within the corresponding column. By pressing the downward pointing arrow of the sort widget, rows will be inversely sorted according to the same lexicographic order. |
+| **Sorting**       | A sort widget appears to the right of each header label. By pressing on the upward pointing arrow of the sort widget, rows will be sorted based on the lexicographic order of the values within the corresponding column. By pressing the downward pointing arrow of the sort widget, rows will be inversely sorted according to the same lexicographic order. |
 
 #### Table Example
 
@@ -198,7 +198,7 @@ select ?pokemon ?happiness {
 
 ### Response {#response}
 
-This view shows the body of the response and offers a easy way to download the result as a file.
+This view shows the body of the response and offers an easy way to download the result as a file.
 
 ### Gallery ([TriplyDB Plugin](/docs/yasgui-api#triplyDbPlugins)) {#gallery}
 
@@ -297,7 +297,7 @@ limit 20
 
 The chart plugin renders geographical, temporal and numerical data in interactive charts such as bar-, line- and pie charts.
 
-The chart also plugin includes a treemap representation, that is suitable for displaying hierarchies. To use the treemap plugin, you must use the following projection variables in your SPARQL query (in this order):
+The chart plugin also includes a treemap representation, that is suitable for displaying hierarchies. To use the treemap plugin, you must use the following projection variables in your SPARQL query (in this order):
 
 | `?node`                   | `?parent`                                                                                                          | `?size`                                                                                   | `?color`                                                                         |
 | ------------------------- | ------------------------------------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |

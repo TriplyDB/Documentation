@@ -11,7 +11,7 @@ Here you can find documentation on ways to include, configure and extend these c
 ## About additional plugins {#triplyDbPlugins}
 
 Yasgui, Yasqe and Yasr are all [open source](https://github.com/TriplyDB/Yasgui) and MIT licensed.
-Triply provides additional plugins that are only free to use via [https://yasgui.triply.cc](https://yasgui.triply.cc) or [TriplyDB](https://triplydb.com/). These additional plugins are not MIT licensed and cannot be used or included programatically.
+Triply provides additional plugins that are only free to use via [https://yasgui.triply.cc](https://yasgui.triply.cc) or [TriplyDB](https://triplydb.com/). These additional plugins are not MIT licensed and cannot be used or included programmatically.
 
 ## Installation
 
@@ -73,7 +73,7 @@ Note: If you've already opened the Yasgui page before, you must first clear your
 
 ### Yasgui API
 
-Yasgui features tabs. Each tabs has its' own isolated query and results.
+Yasgui features tabs. Each tab has its own isolated query and results.
 These are persistent as the user switches between tabs.
 
 ```js
@@ -232,9 +232,9 @@ yasqe.on("queryResponse", (instance: Yasqe, req: superagent.SuperAgentRequest, d
 
 ### Configuration {#yasqe-config}
 
-The configurations options for Yasqe can be accessed through `Yasgui.Yasqe` or `yasqe.options`.
+The configuration options, for Yasqe can be accessed through `Yasgui.Yasqe` or `yasqe.options`.
 
-Here are some configurable fields for Yasqe. They can accessed and set through `Yasqe.defaults` and `yasqe.options`. The configuration object extends the [CodeMirror config](https://codemirror.net/doc/manual.html#config), meaning fields like for example `tabSize` may also be set.
+Here are some configurable fields for Yasqe. They can be accessed and set through `Yasqe.defaults` and `yasqe.options`. The configuration object extends the [CodeMirror config](https://codemirror.net/doc/manual.html#config), meaning fields like for example `tabSize` may also be set.
 
 ```ts
 // number of seconds to persist query input, stored in the browser
