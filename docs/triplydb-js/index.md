@@ -2864,7 +2864,7 @@ const query_1 = await query.useVersion(1)
 
 ### Service
 
-Service objects describe specific functionalities that can be started, stopped, and restarted over datasets in TriplyDB.
+Service objects describe specific functionalities that can be created over datasets in TriplyDB.
 
 Service objects are obtained through the the following methods:
 
@@ -2890,28 +2890,6 @@ A service always has one of the following statuses:
   <dd>The service is currently being stopped.</dd>
 </dl>
 
-#### Service.stop()
-
-This will stop a service that is running.
-
-##### Example
-
-```ts
-const user = await client.getAccount("my-account");
-const dataset = await user.getDataset("my-dataset");
-const service = await dataset.addService("my-service");
-await service.stop();
-```
-
-#### Service.start()
-
-This will start a service that is stopped.
-
-```ts
-// from previously stopped service above
-await service.start();
-```
-
 #### Service.delete()
 
 Permanently deletes this service.
@@ -2924,8 +2902,6 @@ const dataset = await user.getDataset("my-dataset");
 const service = await dataset.addService("my-service");
 await service.delete();
 ```
-
-If you only want to temporarily disable this service, use `service.stop()` instead.
 
 
 #### Service.getInfo()
