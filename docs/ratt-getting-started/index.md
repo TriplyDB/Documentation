@@ -234,3 +234,33 @@ person:00002 rdfs:label 'Bob'.
 person:00003 rdfs:label 'Carol'.
 ```
 -->
+
+
+### Important terms before starting to work with RATT
+
+#### Middlewares
+
+The most common occurrence in your ETL are the middlewares. Middlewares are essentially reusable pieces of code that execute a certain long and/or complex piece of functionality. An middleware is a piece of code that transforms a record and can be invoked with app.use().
+
+You can recognize all the middleware in this document by the prefix `mw.` that is before each middleware function.
+
+#### What is a record?
+
+RATT doesn't have infinite memory and we can't load data all at once. So instead of loading all data at once, we first take one part, process it and write it to file, and then the same for the second one, third one, and so on. These parts are called records. Each record goes through all middlewares before a new record is started.
+
+#### What is the store?
+
+As mentioned above, when ETL is running we go through data record by record. Together with the input data we also have output data. Before being written to the final destination (triplyDB or file), output data has to be kept somewhere and that's what store  is for. The store is for temporarily storing linked data. Every record has its own store. 
+toRdf reads from the store. 
+
+```ts
+app.use(mw.toRdf(app.destionations.out));
+```
+
+#### What is the context(ctx)?
+
+Context is a "wrapper" around the record and store. It can help with determining which kind of information is wanted.
+
+```ts
+ctx.getString('address') 
+```
