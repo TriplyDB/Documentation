@@ -240,13 +240,17 @@ person:00003 rdfs:label 'Carol'.
 
 #### Middlewares
 
-The most common occurrence in your ETL are the middlewares. Middlewares are essentially reusable pieces of code that execute a certain long and/or complex piece of functionality. An middleware is a piece of code that transforms a record and can be invoked with app.use().
+The most common occurrence in ETL are the middlewares. Middlewares are essentially reusable pieces of code that execute a certain long and/or complex piece of functionality. An middleware is a piece of code that transforms a record and can be invoked with app.use().
 
-You can recognize all the middleware in this document by the prefix `mw.` that is before each middleware function.
+The middlewares can be recognized in this document by the prefix `mw.` that is before each middleware function. For example:
+
+```ts
+mw.loadRdf(Ratt.Source.TriplyDb.query('my-account', 'my-query')),
+```
 
 #### What is a record?
 
-RATT doesn't have infinite memory and we can't load data all at once. So instead of loading all data at once, we first take one part, process it and write it to file, and then the same for the second one, third one, and so on. These parts are called records. Each record goes through all middlewares before a new record is started.
+RATT doesn't have infinite memory and not all data can be loaded at once. So instead of loading data all at once, first one part of data is processed and written to the file, and then the second one, third one, and so on. These parts are called records. Each record goes through all middlewares before a new record is started.
 
 #### What is the store?
 
