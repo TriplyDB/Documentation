@@ -260,7 +260,3 @@ app.use(mw.toRdf(app.destionations.out));
 #### What is the context(ctx)?
 
 Context is a "wrapper" around the record and store. It can help with determining which kind of information is wanted.
-
-```ts
-ctx.getString('address') 
-```
