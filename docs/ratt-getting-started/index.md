@@ -263,4 +263,4 @@ app.use(mw.toRdf(app.destionations.out));
 
 #### What is the context(ctx)?
 
-Context is a "wrapper" around the record and store. It can help with determining which kind of information is wanted.
+In RATT, the context is an object that represents the current record. The context gives us access to the triple store, the in memory storage of our triples. It also contains utility functions that will be used to modify and transform our source data into linked data. 
