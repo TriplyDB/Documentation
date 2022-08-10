@@ -214,8 +214,7 @@ It is possible to create multiple services for one dataset.
 ### Existing services
 
 Existing services are displayed on service widgets (see screenshot).
-From these widgets, services can be created, deleted, stopped, and
-restarted.
+From these widgets, services can be created or deleted.
 
 ![An example of a service widget](service-widget.png)
 
