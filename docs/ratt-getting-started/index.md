@@ -234,3 +234,42 @@ person:00002 rdfs:label 'Bob'.
 person:00003 rdfs:label 'Carol'.
 ```
 -->
+
+
+### Important terms before starting to work with RATT
+
+#### Middlewares
+
+The most common occurrence in ETL are the middlewares. Middlewares are essentially reusable pieces of code that execute a certain long and/or complex piece of functionality. An middleware is a piece of code that transforms a record and can be invoked with app.use().
+
+The middlewares can be recognized in this document by the prefix `mw.` that is before each middleware function. For example:
+
+```ts
+mw.loadRdf(Ratt.Source.TriplyDb.query('my-account', 'my-query')),
+```
+
+#### What is a record?
+
+RATT doesn't have infinite memory and not all data can be loaded at once. So instead of loading data all at once, first one part of data is processed and written to the file, and then the second one, third one, and so on. These parts are called records. Each record goes through all middlewares before a new record is started.
+
+#### What is the store?
+
+As mentioned above, when ETL is running we go through data record by record. Together with the input data we also have output data. Before being written to the final destination (triplyDB or file), output data has to be kept somewhere and that's what store  is for. The store is for temporarily storing linked data. Every record has its own store. 
+toRdf reads from the store. 
+
+```ts
+app.use(mw.toRdf(app.destionations.out));
+```
+
+#### What is the context(ctx)?
+
+In RATT, the context is an object that represents the current record. The context gives us access to the triple store, the in memory storage of our triples. It also contains utility functions that will be used to modify and transform our source data into linked data. Some examples of ctx:
+
+```ts
+ctx.getString("address")
+ctx.getIri(...)
+ctx.getArray(...)
+ctx.store.addQuad(...)
+ctx.store.getQuad(...)
+//etc.
+```
