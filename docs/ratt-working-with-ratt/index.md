@@ -226,7 +226,7 @@ export function create_prefixes(
   let prefix_base = Ratt.prefixer(`https://${host}/${organization}/${dataset}/`)
   let prefix_bnode = Ratt.prefixer(prefix_base(`.well-known/genid/`))
   let prefix_graph = Ratt.prefixer(prefix_base(`graph/`))
-  )
+
   return {
     bnode: prefix_bnode,
     graph: prefix_graph,

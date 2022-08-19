@@ -493,9 +493,9 @@ The following static statements make use of the constant terms introduced in the
 ```ts
 app.use(
   // “John is a person.”
-  mw.addQuad(ex.john, a, foaf.Person),
+  quad(ex.john, a, foaf.Person),
   // “Mary is a person.”
-  mw.addQuad(ex.mary, a, foaf.Person),
+  quad(ex.mary, a, foaf.Person),
 )
 ```
 
@@ -540,10 +540,10 @@ With these prefix and term constants in place, a dynamic statement is created as
 
 ```ts
 app.use(
-  mw.addQuad(
-    mw.toIri('Country', {prefix: prefix.id}),
+  quad(
+    iri(prefix: prefix.id, 'Country'),
     def.inhabitants,
-    mw.toLiteral('Inhabitants', {datatype: xsd.positiveInteger})),
+    literal('Inhabitants', xsd.positiveInteger)),
 )
 ```
 
@@ -558,10 +558,10 @@ Notice the following details:
 
 ```ts
 app.use(
-  mw.addQuad(
-    mw.toIri.fromHashOf(input_string, {prefix: prefix.id}),
+  quad(
+    iri.fromHashOf(prefix.id, input_string),
     def.inhabitants,
-    mw.toLiteral('Inhabitants', {datatype: xsd.positiveInteger})),
+    literal('Inhabitants', xsd.positiveInteger)),
 )
 ```
 
@@ -578,8 +578,8 @@ Be aware that there are different approaches for *static* and *dynamic* IRIs:
 
 ```ts
 [1a] prefix.id('person')
-[2a] mw.toIri('person', {prefix: prefix.id}),
-[3a] mw.toIri.fromHashOf(['person','age'], {prefix: prefix.id}),
+[2a] iri(prefix.id, 'person'),
+[3a] iri.fromHashOf(prefix.id, ['person','age']),
 ```
 
 Notation [1a] creates the *static* IRI [1b].  This IRI does not depend on the currently processed RATT record.
@@ -620,15 +620,15 @@ The limitation is shown in the example below. In the example we want to round th
 
 ```ts
 app.use(
-  mw.change({
+  mw.change(
     key: 'Inhabitants',
     type: 'number',
     change: (value) => value/1000
   ),
-  mw.addQuad(
-    mw.toIri('Country', {prefix: prefix.id}),
+  quad(
+    iri(prefix.id, 'Country'),
     def.inhabitants,
-    mw.toLiteral('Inhabitants', {datatype: xsd.positiveInteger})
+    literal('Inhabitants', xsd.positiveInteger)
   ),
 )
 ```
@@ -646,7 +646,7 @@ app.use(
   mw.add({
     key: 'ID',
     value: context => app.prefix.observation(context.recordId.toString()) }),
-  mw.addQuad(mw.toIri(key_id, {prefix: prefix.id}), a, def.Country),
+  quad(iri(prefix.id, key_id), a, def.Country),
 )
 ```
 
@@ -687,11 +687,11 @@ app.use(
   // The source data uses '9999' to denote an unknown creation year.
   mw.when(
     context => context.getNumber('CREATED') != 9999),
-    mw.addQuad(
-      mw.toIri('ID', {prefix: prefix.id}),
+    quad(
+      iri(prefix.id, 'ID'),
       dct.created,
-      mw.toLiteral('CREATED', {datatype: xsd.gYear}))),
-)
+      literal('CREATED', xsd.gYear))),
+
 ```
 
 Notice that the conditional function inside the `mw.when` function takes the current RATT context as its single argument and returns a Boolean.
@@ -706,10 +706,10 @@ app.use(
   // The source data does not always include a value for 'zipcode'.
   mw.when(
     context => context.isNotEmpty('ZIPCODE'),
-    mw.addQuad(
-      mw.toIri('ID', {prefix: prefix.id}),
+    quad(
+      iri(prefix.id, 'ID'),
       def.zipcode,
-      mw.toLiteral('ZIPCODE')),
+      literal('ZIPCODE')),
     ...,
   ),
 )
@@ -722,10 +722,10 @@ app.use(
   // The source data does not always include a value for 'zipcode'.
   mw.when(
     'ZIPCODE',
-    mw.addQuad(
-      mw.toIri('ID', {prefix: prefix.id}),
+    quad(
+      iri(prefix.id, 'ID'),
       def.zipcode,
-      mw.toLiteral('ZIPCODE')),
+      literal('ZIPCODE')),
     ...,
   ),
 )
@@ -831,10 +831,10 @@ Path expressions can be used as string keys in many places in RATT.  For example
 
 ```ts
 app.use(
-  mw.addQuad(
+  quad(
     prefix.dataset('my-dataset'),
     dct.title,
-    mw.toLiteral('metadata.title.name', {language: 'en'})),
+    literal('metadata.title.name', 'en')),
 )
 ```
 
@@ -959,10 +959,10 @@ For the above example record, we can assert the name of the *first* country as f
 
 ```ts
 app.use(
-  mw.addQuad(
-    mw.toIri('data.countries[0].id', {prefix: prefix.country}),
+  quad(
+    iri(prefix.country, 'data.countries[0].id'),
     rdfs.label,
-    mw.toLiteral('data.countries[0].name', {language: 'en'})),
+    literal('data.countries[0].name', 'en')),
 )
 ```
 
@@ -976,10 +976,10 @@ We can also assert the name of the *second* country.  Notice that only the index
 
 ```ts
 app.use(
-  mw.addQuad(
-    mw.toIri('data.countries[1].id', {prefix: prefix.country}),
+  quad(
+    iri(prefix.country, 'data.countries[1].id'),
     rdfs.label,
-    mw.toLiteral('data.countries[1].name', {language: 'en'})),
+    literal('data.countries[1].name', 'en')),
 )
 ```
 
@@ -998,10 +998,10 @@ RATT uses the `mw.forEach` function for this purpose.  The following code snippe
 ```ts
 app.use(
   mw.forEach('data.countries',
-    mw.addQuad(
-      mw.toIri('id', {prefix: prefix.country}),
+    quad(
+      iri(prefix.country, 'id'),
       rdfs.label,
-      mw.toLiteral('name', {language: 'en'}))),
+      literal('name', 'en'))),
 )
 ```
 
@@ -1058,10 +1058,10 @@ The following code snippet uses the `$index` key that is made available inside `
 ```ts
 app.use(
   mw.forEach('countries',
-    mw.addQuad(
-      mw.toIri('$index', {prefix: prefix.country}),
+    quad(
+      iri(prefix.country, '$index'),
       rdfs.label,
-      mw.toLiteral('name', {language: 'en'}))),
+      literal('name', 'en'))),
 )
 ```
 
@@ -1262,10 +1262,10 @@ Function `mw.forEach` does not work with lists containing primitive types, becau
 ```ts
   app.use(
     mw.fromJson({"id": "nl", "names": ["The Netherlands", "Holland"]}),
-    mw.addQuad(
-      mw.toIri('id', {prefix: prefix.country}),
+    quad(
+      iri(prefix.country, 'id'),
       rdfs.label,
-      mw.toLiteral.forEach('names', {language: 'en'})),
+      literal.forEach('names', 'en')),
   )
 ```
 

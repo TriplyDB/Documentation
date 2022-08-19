@@ -250,7 +250,6 @@ app.use(
     }
     return next()
   }),
-)
 ```
 
 In the above example, different countries are specified by data values that are read dynamically from the `COUNTRY` key.  This key can be a column in a table, or an element in XML, or some other dynamic data location, depending on the RATT source that is used.
@@ -507,7 +506,7 @@ Later in the RATT pipeline, these terms can be used to create statements:
 ```ts
 app.use(
   // “John knows Mary.”
-  mw.addQuad(ex.john, ex.knows, ex.mary),
+  quad(ex.john, ex.knows, ex.mary),
 )
 ```
 
@@ -544,9 +543,9 @@ These declared terms can be used later in the RATT pipeline to create statements
 ```ts
 app.use(
   // “John is a person.”
-  mw.addQuad(ex.john, a, foaf.Person),
+  quad(ex.john, a, foaf.Person),
   // “Mary is a person.”
-  mw.addQuad(ex.mary, a, foaf.Person),
+  quad(ex.mary, a, foaf.Person),
 )
 ```
 
@@ -590,6 +589,6 @@ The following example uses the introduced custom abbreviation for subsumption:
 ```ts
 app.use(
   // "A person is an agent."
-  mw.addQuad(foaf.Person, is_a, foaf.Agent)
+  quad(foaf.Person, is_a, foaf.Agent)
 )
 ```
