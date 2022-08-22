@@ -506,7 +506,7 @@ Later in the RATT pipeline, these terms can be used to create statements:
 ```ts
 app.use(
   // “John knows Mary.”
-  quad(ex.john, ex.knows, ex.mary),
+  triple(ex.john, ex.knows, ex.mary),
 )
 ```
 
@@ -543,9 +543,9 @@ These declared terms can be used later in the RATT pipeline to create statements
 ```ts
 app.use(
   // “John is a person.”
-  quad(ex.john, a, foaf.Person),
+  triple(ex.john, a, foaf.Person),
   // “Mary is a person.”
-  quad(ex.mary, a, foaf.Person),
+  triple(ex.mary, a, foaf.Person),
 )
 ```
 
@@ -589,6 +589,6 @@ The following example uses the introduced custom abbreviation for subsumption:
 ```ts
 app.use(
   // "A person is an agent."
-  quad(foaf.Person, is_a, foaf.Agent)
+  triple(foaf.Person, is_a, foaf.Agent)
 )
 ```

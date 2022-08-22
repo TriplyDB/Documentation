@@ -493,9 +493,9 @@ The following static statements make use of the constant terms introduced in the
 ```ts
 app.use(
   // “John is a person.”
-  quad(ex.john, a, foaf.Person),
+  triple(ex.john, a, foaf.Person),
   // “Mary is a person.”
-  quad(ex.mary, a, foaf.Person),
+  triple(ex.mary, a, foaf.Person),
 )
 ```
 
@@ -540,7 +540,7 @@ With these prefix and term constants in place, a dynamic statement is created as
 
 ```ts
 app.use(
-  quad(
+  triple(
     iri(prefix: prefix.id, 'Country'),
     def.inhabitants,
     literal('Inhabitants', xsd.positiveInteger)),
@@ -558,7 +558,7 @@ Notice the following details:
 
 ```ts
 app.use(
-  quad(
+  triple(
     iri.fromHashOf(prefix.id, input_string),
     def.inhabitants,
     literal('Inhabitants', xsd.positiveInteger)),
@@ -625,7 +625,7 @@ app.use(
     type: 'number',
     change: (value) => value/1000
   ),
-  quad(
+  triple(
     iri(prefix.id, 'Country'),
     def.inhabitants,
     literal('Inhabitants', xsd.positiveInteger)
@@ -646,7 +646,7 @@ app.use(
   mw.add({
     key: 'ID',
     value: context => app.prefix.observation(context.recordId.toString()) }),
-  quad(iri(prefix.id, key_id), a, def.Country),
+  triple(iri(prefix.id, key_id), a, def.Country),
 )
 ```
 
@@ -687,7 +687,7 @@ app.use(
   // The source data uses '9999' to denote an unknown creation year.
   mw.when(
     context => context.getNumber('CREATED') != 9999),
-    quad(
+    triple(
       iri(prefix.id, 'ID'),
       dct.created,
       literal('CREATED', xsd.gYear))),
@@ -706,7 +706,7 @@ app.use(
   // The source data does not always include a value for 'zipcode'.
   mw.when(
     context => context.isNotEmpty('ZIPCODE'),
-    quad(
+    triple(
       iri(prefix.id, 'ID'),
       def.zipcode,
       literal('ZIPCODE')),
@@ -722,7 +722,7 @@ app.use(
   // The source data does not always include a value for 'zipcode'.
   mw.when(
     'ZIPCODE',
-    quad(
+    triple(
       iri(prefix.id, 'ID'),
       def.zipcode,
       literal('ZIPCODE')),
@@ -831,7 +831,7 @@ Path expressions can be used as string keys in many places in RATT.  For example
 
 ```ts
 app.use(
-  quad(
+  triple(
     prefix.dataset('my-dataset'),
     dct.title,
     literal('metadata.title.name', 'en')),
@@ -959,7 +959,7 @@ For the above example record, we can assert the name of the *first* country as f
 
 ```ts
 app.use(
-  quad(
+  triple(
     iri(prefix.country, 'data.countries[0].id'),
     rdfs.label,
     literal('data.countries[0].name', 'en')),
@@ -976,7 +976,7 @@ We can also assert the name of the *second* country.  Notice that only the index
 
 ```ts
 app.use(
-  quad(
+  triple(
     iri(prefix.country, 'data.countries[1].id'),
     rdfs.label,
     literal('data.countries[1].name', 'en')),
@@ -998,7 +998,7 @@ RATT uses the `mw.forEach` function for this purpose.  The following code snippe
 ```ts
 app.use(
   mw.forEach('data.countries',
-    quad(
+    triple(
       iri(prefix.country, 'id'),
       rdfs.label,
       literal('name', 'en'))),
@@ -1058,7 +1058,7 @@ The following code snippet uses the `$index` key that is made available inside `
 ```ts
 app.use(
   mw.forEach('countries',
-    quad(
+    triple(
       iri(prefix.country, '$index'),
       rdfs.label,
       literal('name', 'en'))),
@@ -1262,7 +1262,7 @@ Function `mw.forEach` does not work with lists containing primitive types, becau
 ```ts
   app.use(
     mw.fromJson({"id": "nl", "names": ["The Netherlands", "Holland"]}),
-    quad(
+    triple(
       iri(prefix.country, 'id'),
       rdfs.label,
       literal.forEach('names', 'en')),

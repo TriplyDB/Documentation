@@ -90,7 +90,7 @@ Note that the steps below are meant to be followed on Linux environment. If you 
      app.use(
        // Create one linked data statement:
        // “The class of all classes is itself a class.”
-       quad(
+       triple(
          app.prefix.rdfs('Class'),
          app.prefix.rdf('type'),
          app.prefix.rdfs('Class')),
@@ -143,7 +143,7 @@ In the [previous section](#setting-up-a-minimal-pipeline) we set up a minimal pi
        defaultGraph: '',
      })
      app.use(
-       quad(
+       triple(
          app.prefix.rdfs('Class'),
          app.prefix.rdf('type'),
          app.prefix.rdfs('Class')),
@@ -202,7 +202,7 @@ We then perform the following steps to build a pipelines that processes this dat
        mw.fromCsv(Ratt.Source.file('example.csv')),
        // Create a linked data statement that is based on the
 			 // source data.
-       quad(
+       triple(
          // Create a universally unique identifier (IRI) based
          // on the value in the 'ID' column and the declared
 				 // 'person' prefix.
