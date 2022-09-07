@@ -295,7 +295,7 @@ The following options can be specified to configure the destination behavior:
   <dt><code>overwrite</code></dt>
   <dd>Whether the graphs that are being uploaded by RATT should replace any existing graphs with the same name in the dataset. Graphs appearing in the dataset with a different name than those uploaded by RATT are kept. The default value is <code>false</code>.</dd>
   <dt><code>defaultGraph</code></dt>
-  <dd>The standard graph name that will be used for storing the triples that originate from the RATT pipeline.  This overrides the required <code>defaultGraph</code> configuration in the RATT context.  (See the section on <a href='#configuring-the-standard-graph'>configuring the standard graph</a> for more information.)</dd>
+  <dd>The standard graph name that will be used for storing the triples that originate from the RATT pipeline.</dd>
   <dt><code>synchronizeServices</code></dt>
   <dd>Whether active services should be automatically synchronized once new data is uploaded.  The default value is <code>false</code>.</dd>
   <dt><code>triplyDb</code></dt>
@@ -325,7 +325,6 @@ Destinations can be defined as static objects meaning that you can define destin
 You can set static and dynamic destinations, like below:
 ```ts
 const app = new Ratt({
-  defaultGraph: "https://triplydb.com/Triply/example/graph/default",
   sources: { someSource: Ratt.Source.file("source.trig") },
   destinations: {
     someStaticDestination: Ratt.Destination.file("static.ttl"),

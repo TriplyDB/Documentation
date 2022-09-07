@@ -104,10 +104,8 @@ const prefix = {
 
 2. Then you have to include the prefixes in the RATT app:
 ```ts
-export default async function(cliContext: CliContext): Promise<Ratt> {
+export default async function(): Promise<Ratt> {
 const app = new Ratt({
-  defaultGraph: ..,
-  cliContext,
   prefixes: prefix,
   sources: {
   ..

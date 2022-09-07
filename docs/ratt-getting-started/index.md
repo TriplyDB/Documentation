@@ -77,14 +77,7 @@ Note that the steps below are meant to be followed on Linux environment. If you 
 
    // The main function that will run the pipeline.
    export default async function (): Promise<Ratt> {
-     // The RATT configuration for this pipeline.
-     // Because this is a simple pipeline we only need to specify a
-     // standard graph name.  Because we will not store the graph
-     // name in this pipeline, we can specify an empty standard
-     // graph name.
-     const app = new Ratt({
-       defaultGraph: ''
-     })
+     const app = new Ratt()
      // The steps that are performed in the pipeline are specified
      // in 'app.use'.  These steps are performed in sequence.
      app.use(
@@ -128,20 +121,11 @@ In the [previous section](#setting-up-a-minimal-pipeline) we set up a minimal pi
 2. Once the API Token is configured, open file `main.ts` in a text editor and add the following content:
 
    ```ts
-   // Also import `CliContext` from the RATT library.
-   import {CliContext, Ratt} from '@triply/ratt'
+   import {Ratt} from '@triply/ratt'
    import mw from '@triply/ratt/lib/middlewares'
 
-   // Includes argument `cliContext: CliContext` for reading the
-   // API Token environment variable as well as Command-Line
-   // Interface (CLI) options.
-   export default async function (cliContext: CliContext): Promise<Ratt> {
-     const app = new Ratt({
-       // Includes `cliContext` in the RATT content to process CLI
-       // options.
-       cliContext,
-       defaultGraph: '',
-     })
+   export default async function (): Promise<Ratt> {
+     const app = new Ratt()
      app.use(
        mw.addQuad(
          app.prefix.rdfs('Class'),
@@ -184,13 +168,11 @@ We then perform the following steps to build a pipelines that processes this dat
 2. Open text file `main.ts` and add the following content:
 
    ```ts
-   import {CliContext, Ratt} from '@triply/ratt'
+   import {Ratt} from '@triply/ratt'
    import mw from '@triply/ratt/lib/middlewares'
 
-   export default async function (cliContext: CliContext): Promise<Ratt> {
+   export default async function (): Promise<Ratt> {
      const app = new Ratt({
-       cliContext,
-       defaultGraph: '',
        // Declare an IRI prefix.
        prefixes: {
          person: Ratt.prefixer('https://example.com/id/person/'),

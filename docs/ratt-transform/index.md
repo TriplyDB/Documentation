@@ -1284,7 +1284,6 @@ If you have RDF data that _does_ need to be transformed, you can use the followi
 ```ts
 const app = new Ratt({
   defaultGraph: graph.model,
-  cliContext,
   prefixes: prefix,
   sources: {
     inputFile: Ratt.Source.file(`data/shapes.trig`)
