@@ -195,7 +195,7 @@ The RATT Context is specified when the `Ratt` object is instantiated.  This ofte
 
 ### Configuring the standard graph
 
-When we call `mw.addQuad` with 3 arguments, a triple is created and placed in a named graph that is chosen by RATT.  You can change the name of this default graph by specifying it in the RATT context.  Notice that graph names must be IRIs:
+When we call `triple` with 3 arguments, a triple is created and placed in a named graph that is chosen by RATT.  You can change the name of this default graph by specifying it in the RATT context.  Notice that graph names must be IRIs:
 
 ```ts
 const app = new Ratt({

@@ -481,7 +481,7 @@ app.use(
 
 After source data is connected and transformed, the RATT Record is ready to be transformed to linked data.  Linked data statements are assertions or factual statements that consist of 3 terms (triple) or 4 terms (quadruples).
 
-Statements are created with the `mw.addQuad` function.  Calls to this function are part of the pipeline, and must appear inside the scope of `app.use`.
+Statements are created with the `triple` function.  Calls to this function are part of the pipeline, and must appear inside the scope of `app.use`.
 
 
 ### Create static statements {#static-assertions}
@@ -548,22 +548,12 @@ app.use(
 ```
 
 Notice the following details:
-- `mw.toIri` is used to create a dynamic IRI term.
+- `iri` is used to create a dynamic IRI term.
 - Arguments `Country` and `Inhabitants` allow values for these keys to be used from processed RATT Records.
 - The IRI prefix for the subject term is specified with constant `prefix.id`.
-- `mw.toLiteral` is used to create a dynamic literal term.
+- `literal` is used to create a dynamic literal term.
 - For literals a datatype IRI can be specified.  If no datatype IRI is specified then the default IRI is `xsd.string`.
 
-`mw.toIri.fromHashOf`can be used instead of `mw.toIri` when the ETL has a high number of blank nodes and they need more than one constant as input to hash a unique IRI.
-
-```ts
-app.use(
-  triple(
-    iri.fromHashOf(prefix.id, input_string),
-    def.inhabitants,
-    literal('Inhabitants', xsd.positiveInteger)),
-)
-```
 
 Notice the following details:
 - `input_string` can pass more than one constant to hash a unique IRI term.
@@ -574,12 +564,12 @@ Notice the following details:
 Be aware that there are different approaches for *static* and *dynamic* IRIs:
 
 - Static IRIs are created with prefix declarations (example [1a]).
-- Dynamic IRIs are created with `mw.toIri`,`mw.toIri.fromHashOf` and prefix declarations (example [2a]).
+- Dynamic IRIs are created with `iri`,`iri.hashed` and prefix declarations (example [2a]).
 
 ```ts
 [1a] prefix.id('person')
 [2a] iri(prefix.id, 'person'),
-[3a] iri.fromHashOf(prefix.id, ['person','age']),
+[3a] iri.hashed(['person','age'], prefix.id),
 ```
 
 Notation [1a] creates the *static* IRI [1b].  This IRI does not depend on the currently processed RATT record.
@@ -610,13 +600,13 @@ In the example below, the subject IRI is described further by the object's URL.
 <https://dbpedia.org/resource/Amsterdam> rdfs:seeAlso "https://www.iamsterdam.com"^^xsd:anyURI.
 ```
 
-An IRI can be created with `mw.toIri`, while an URI is created by using `mw.toLiteral` .
+An IRI can be created with `iri`, while an URI is created by using `literal` .
 
-##### Limitation of `mw.toLiteral`, `mw.toIri` and `mw.toIri.fromHashOf`
+##### Limitation of `literal`, `iri` and `iri.hashed`
 
-There is a limitation for both `mw.toLiteral`, `mw.toIri` and `mw.toIri.fromHashOf`. It is not possible to change the value in the record in the `mw.toLiteral`, `mw.toIri` and `mw.toIri.fromHashOf` middlewares. The value that is at that moment stored in the record for that key, is then added as either an IRI when called with the `mw.toIri`/`mw.toIri.fromHashOf` function or as a literal when called with the function `mw.toLiteral`.
+There is a limitation for both `literal`, `iri` and `iri.hashed`. It is not possible to change the value in the record in the `literal`, `iri` and `iri.hashed` middlewares. The value that is at that moment stored in the record for that key, is then added as either an IRI when called with the `iri`/`iri.hashed` function or as a literal when called with the function `literal`.
 
-The limitation is shown in the example below. In the example we want to round the inhabitants number to the nearest thousand. We can not transform this in the `mw.toLiteral` function. Instead we need to add a `mw.change` middleware which will execute the transformation.
+The limitation is shown in the example below. In the example we want to round the inhabitants number to the nearest thousand. We can not transform this in the `literal` function. Instead we need to add a `mw.change` middleware which will execute the transformation.
 
 ```ts
 app.use(
@@ -1257,7 +1247,7 @@ The following RATT record is printed first (3 records are printed in total).  No
 
 In [the previous section](#list-object) we showed how to iterate over lists of objects.  But what happens if a list does not contain objects but elements of primitive type?  Examples include lists of strings or lists of numbers.
 
-Function `mw.forEach` does not work with lists containing primitive types, because it assumes a RATT record structure which can only be provided by objects.  Luckily, RATT includes the functions `mw.toIri.forEach` and `mw.toLiteral.forEach` that can be specifically used to iterate over lists of primitives.
+Function `mw.forEach` does not work with lists containing primitive types, because it assumes a RATT record structure which can only be provided by objects.  Luckily, RATT includes the functions `iri.forEach` and `literal.forEach` that can be specifically used to iterate over lists of primitives.
 
 ```ts
   app.use(
