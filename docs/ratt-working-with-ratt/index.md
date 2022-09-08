@@ -189,7 +189,7 @@ The RATT Context is specified when the `Ratt` object is instantiated.  This ofte
 
 - The data sources that can be used in the ETL.
 - The data destinations where linked data is published to.
-- The named graph in which `addQuad` calls with no graph argument add their data.
+- The named graph in which `triple` calls with no graph argument add their data.
 - The prefix IRI for blank node-replacing well-known IRIs.
 
 
