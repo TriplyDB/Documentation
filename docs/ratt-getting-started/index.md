@@ -82,9 +82,7 @@ Note that the steps below are meant to be followed on Linux environment. If you 
      // standard graph name.  Because we will not store the graph
      // name in this pipeline, we can specify an empty standard
      // graph name.
-     const app = new Ratt({
-       defaultGraph: ''
-     })
+     const app = new Ratt()
      // The steps that are performed in the pipeline are specified
      // in 'app.use'.  These steps are performed in sequence.
      app.use(
@@ -136,10 +134,7 @@ In the [previous section](#setting-up-a-minimal-pipeline) we set up a minimal pi
    // API Token environment variable as well as Command-Line
    // Interface (CLI) options.
    export default async function (): Promise<Ratt> {
-     const app = new Ratt({
-       
-       defaultGraph: '',
-     })
+     const app = new Ratt()
      app.use(
        triple(
          app.prefix.rdfs('Class'),
@@ -187,7 +182,6 @@ We then perform the following steps to build a pipelines that processes this dat
 
    export default async function (): Promise<Ratt> {
      const app = new Ratt({
-       defaultGraph: '',
        // Declare an IRI prefix.
        prefixes: {
          person: Ratt.prefixer('https://example.com/id/person/'),

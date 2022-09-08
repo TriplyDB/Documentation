@@ -108,7 +108,6 @@ const prefix = {
 ```ts
 export default async function(): Promise<Ratt> {
 const app = new Ratt({
-  defaultGraph: ..,
   prefixes: prefix,
   sources: {
   ..

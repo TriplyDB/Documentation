@@ -342,7 +342,6 @@ This also works with sources that are specified in the RATT context:
 const account = 'my-account'
 const dataset = 'my-dataset'
 const app = new Ratt({
-  defaultGraph: '',
   sources: {
     table1: Ratt.Source.TriplyDb.asset(account, dataset, {name: 'my-table-1.csv.gz'}),
     table2: Ratt.Source.TriplyDb.asset(account, dataset, {name: 'my-table-2.csv.gz'}),
