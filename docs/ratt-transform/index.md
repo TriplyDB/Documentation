@@ -45,7 +45,7 @@ This function has the following signature:
 
 ```ts
 app.use(
-  mw.change({
+  change({
     key: 'KEY_NAME',
     type: 'VALUE_TYPE',
     change: value => FUNCTION_BODY}),
@@ -88,7 +88,7 @@ Suppose we have the following table of input data:
 We can ensure that all years will have at least 4 digits by calling the following function:
 
 ```ts
-mw.change({
+change({
   key: 'Year',
   type: 'string',
   change: value => value.padStart(4, '0'),
@@ -121,7 +121,7 @@ For example, assume the following input table using strings to encode the number
 We can cast values with the `'Inhabitants'` key to a number in the following way:
 
 ```ts
-mw.change({
+change({
   key: 'Inhabitants',
   type: 'unknown',
   change: value => +(value as number)}),
@@ -175,7 +175,7 @@ We use the following example, where English names of countries are translated to
 The translation table can be implemented with a `switch`-statement.  Every `case`-statement corresponds with one translation.  The `default`-statement ensures that (future) unanticipated source values will be noticed.
 
 ```ts
-mw.change({
+change({
   key: 'Source value',
   type: 'string',
   change: value => {
@@ -211,7 +211,7 @@ The following implementation uses the `change` function to split values:
 
 ```ts
 app.use(
-  mw.change({
+  change({
     key: 'KEY_NAME',
     type: 'string',
     change: values =>
@@ -244,7 +244,7 @@ We use the following RATT code:
 
 ```ts
 app.use(
-  mw.change({
+  change({
     key: 'Child',
     type: 'string',
     change: values =>
@@ -285,7 +285,7 @@ In such cases we must set the `type` to `'unknown'`.  This allows us to cast the
 
 ```ts
 app.use(
-  mw.change({
+  change({
     key: 'KEY',
     type: 'unknown',
     change: value => {
@@ -319,7 +319,7 @@ The following function transforms this variant to a uniform string type:
 
 ```ts
 app.use(
-  mw.change({
+  change({
     key: 'name',
     type: 'unknown',
     change: value => {
@@ -351,7 +351,7 @@ The `copy` function has the following signature:
 
 ```ts
 app.use(
-  mw.copy({
+  copy({
     fromKey: 'FROM_KEY',
     toKey: 'TO_KEY',
     type: 'VALUE_TYPE',
@@ -379,7 +379,7 @@ The `replace` function has the following signature:
 
 ```ts
 app.use(
-  mw.replace({
+  replace({
     fromKey: 'FROM_KEY',
     toKey: 'FROM_TYPE',
     type: 'VALUE_TYPE',
@@ -413,7 +413,7 @@ The `add` function has the following signature:
 
 ```ts
 app.use(
-  mw.add({
+  add({
     key: 'NEW_KEY',
     value: context => FUNCTION_BODY}),
 )
@@ -442,7 +442,7 @@ The following example code uses `add` to concatenate these two value into a new 
 
 ```ts
 app.use(
-  mw.add({
+  add({
     key: 'Full name',
     value: context =>
       context.getString('First name') +
@@ -471,7 +471,7 @@ The following example code removes training whitespace from all values in the cu
 
 ```ts
 app.use(
-  mw.trimStrings(),
+  trimStrings(),
 )
 ```
 
@@ -606,11 +606,11 @@ An IRI can be created with `iri`, while an URI is created by using `literal` .
 
 There is a limitation for both `literal`, `iri` and `iri.hashed`. It is not possible to change the value in the record in the `literal`, `iri` and `iri.hashed` middlewares. The value that is at that moment stored in the record for that key, is then added as either an IRI when called with the `iri`/`iri.hashed` function or as a literal when called with the function `literal`.
 
-The limitation is shown in the example below. In the example we want to round the inhabitants number to the nearest thousand. We can not transform this in the `literal` function. Instead we need to add a `mw.change` middleware which will execute the transformation.
+The limitation is shown in the example below. In the example we want to round the inhabitants number to the nearest thousand. We can not transform this in the `literal` function. Instead we need to add a `change` middleware which will execute the transformation.
 
 ```ts
 app.use(
-  mw.change(
+  change(
     key: 'Inhabitants',
     type: 'number',
     change: (value) => value/1000
@@ -633,7 +633,7 @@ The following example code shows how the record ID can be added to each RATT Rec
 
 ```ts
 app.use(
-  mw.add({
+  add({
     key: 'ID',
     value: context => app.prefix.observation(context.recordId.toString()) }),
   triple(iri(prefix.id, key_id), a, def.Country),
@@ -648,11 +648,11 @@ Source data often contains optional values.  These are values that appear in som
 
 Source data often contains 'special' values to denote the absence of a value.  Common examples are values such as `'NULL'` or the empty string (`''`) or 'clear' outliers such as `9999` for a missing year.  We call such values ‘null values’.
 
-The `mw.when` function supports the creation of triples under certain conditions.  The first argument that this function takes establishes whether or not a certain condition is met.  After that, one or more additional statement arguments appear that will only be called if the condition is satisfied.  The generic structure of `mw.when` is as follows:
+The `when` function supports the creation of triples under certain conditions.  The first argument that this function takes establishes whether or not a certain condition is met.  After that, one or more additional statement arguments appear that will only be called if the condition is satisfied.  The generic structure of `when` is as follows:
 
 ```ts
 app.use(
-  mw.when(
+  when(
     '{condition}',
     '{statement-1}',
     '{statement-2}',
@@ -675,7 +675,7 @@ If a key contains a null value in some records, then we need to specifically ide
 ```ts
 app.use(
   // The source data uses '9999' to denote an unknown creation year.
-  mw.when(
+  when(
     context => context.getNumber('CREATED') != 9999),
     triple(
       iri(prefix.id, 'ID'),
@@ -684,7 +684,7 @@ app.use(
 
 ```
 
-Notice that the conditional function inside the `mw.when` function takes the current RATT context as its single argument and returns a Boolean.
+Notice that the conditional function inside the `when` function takes the current RATT context as its single argument and returns a Boolean.
 
 
 ### Missing values
@@ -694,7 +694,7 @@ If a value is sometimes completely missing from a source data record, then the f
 ```ts
 app.use(
   // The source data does not always include a value for 'zipcode'.
-  mw.when(
+  when(
     context => context.isNotEmpty('ZIPCODE'),
     triple(
       iri(prefix.id, 'ID'),
@@ -710,7 +710,7 @@ Because missing values are very common in source data, RATT introduces special s
 ```ts
 app.use(
   // The source data does not always include a value for 'zipcode'.
-  mw.when(
+  when(
     'ZIPCODE',
     triple(
       iri(prefix.id, 'ID'),
@@ -733,7 +733,7 @@ Because source data often uses the empty string to signify NULL values, this par
 
 ```ts
 app.use(
-  mw.when(
+  when(
     key.zipcode,
     // Skipped for the empty string.
     ...),
@@ -744,8 +744,8 @@ Notice that it is almost never useful to store the empty string in linked data. 
 
 ### Custom functions
 
-If we want to extract a string value from the source data, we can write a custom function which can be used with `mw.when` . `mw.when` can receive two parameters: string(a key value) or a function.
-If `mw.when` receives a string, it checks whether it is empty or not. But in case of a custom method specific instructions are required. For example,
+If we want to extract a string value from the source data, we can write a custom function which can be used with `when` . `when` can receive two parameters: string(a key value) or a function.
+If `when` receives a string, it checks whether it is empty or not. But in case of a custom method specific instructions are required. For example,
 
 ```ts
 (ctx) => ctx.isNotEmpty('foo') && ctx.getString('foo') === 'foo’
@@ -983,11 +983,11 @@ country:de rdfs:label 'Germany'@en.
 
 In the previous section, we saw that we were able to assert the name of the first country and the name of the second country.  But what do we do if we want to assert the name for every country in the world?  And what do we do if some countries have a name in 2 languages, but other countries have a name in 1 or 3 languages?  What we need is a simple way to express that we want RATT to make an assertion for every element in a list.
 
-RATT uses the `mw.forEach` function for this purpose.  The following code snippet asserts the name for *each* country in the example data:
+RATT uses the `forEach` function for this purpose.  The following code snippet asserts the name for *each* country in the example data:
 
 ```ts
 app.use(
-  mw.forEach('data.countries',
+  forEach('data.countries',
     triple(
       iri(prefix.country, 'id'),
       rdfs.label,
@@ -996,8 +996,8 @@ app.use(
 ```
 
 Notice the following details:
-- `mw.forEach` uses the path expression `'data.countries'` to identify the list.
-- Inside the `mw.forEach` function, each element in the list is made available separately.
+- `forEach` uses the path expression `'data.countries'` to identify the list.
+- Inside the `forEach` function, each element in the list is made available separately.
 - This allows the `'id'` and `'name'` keys to be identified directly.
 
 The above code snippet makes one assertion for every element in the `"countries"` list:
@@ -1007,11 +1007,11 @@ country:nl rdfs:label 'The Netherlands'@en.
 country:de rdfs:label 'Germany'@en.
 ```
 
-Notice that `mw.forEach` only works for lists whose elements are *objects*.  See [Iterating over lists of primitives](#list-primitive) for dealing with lists that do not contain objects.
+Notice that `forEach` only works for lists whose elements are *objects*.  See [Iterating over lists of primitives](#list-primitive) for dealing with lists that do not contain objects.
 
-The elements that `mw.forEach` iterates over are themselves RATT records.  This implies that all functions that work for full RATT records also work for the RATT records inside `mw.forEach`.  The RATT records inside an `mw.forEach `function are smaller.  This allows the regular keys of the iterated-over elements to be accessed directly.
+The elements that `forEach` iterates over are themselves RATT records.  This implies that all functions that work for full RATT records also work for the RATT records inside `forEach`.  The RATT records inside an `forEach `function are smaller.  This allows the regular keys of the iterated-over elements to be accessed directly.
 
-In addition to these regular keys, RATT records inside `mw.forEach` also contain additional keys that simplify common operations.  The following subsections explain the following special keys:
+In addition to these regular keys, RATT records inside `forEach` also contain additional keys that simplify common operations.  The following subsections explain the following special keys:
 
 - [Index key (`$index`)](#index-key)
 - [Parent key (`$parent`)](#parent-key)
@@ -1020,7 +1020,7 @@ In addition to these regular keys, RATT records inside `mw.forEach` also contain
 
 #### Index key (`$index`) {#index-key}
 
-Each RATT record that is made available in `mw.forEach` contains the `$index` key.  The value of this key is the index of the element in the list.  This is the same index that is used to access specific elements in an list, as explained in [the section on accessing lists by index](#accessing-lists-by-index).
+Each RATT record that is made available in `forEach` contains the `$index` key.  The value of this key is the index of the element in the list.  This is the same index that is used to access specific elements in an list, as explained in [the section on accessing lists by index](#accessing-lists-by-index).
 
 The index key is often useful for assigning a unique subject IRI to every element.
 
@@ -1043,11 +1043,11 @@ Suppose we have the following source data.  We do not want to use the values of 
 }
 ```
 
-The following code snippet uses the `$index` key that is made available inside `mw.forEach` in order to create a unique subject IRI for each country:
+The following code snippet uses the `$index` key that is made available inside `forEach` in order to create a unique subject IRI for each country:
 
 ```ts
 app.use(
-  mw.forEach('countries',
+  forEach('countries',
     triple(
       iri(prefix.country, '$index'),
       rdfs.label,
@@ -1066,28 +1066,28 @@ country:2 rdfs:label 'Italy'@en.
 
 #### Parent key (`$parent`) {#parent-key}
 
-When `mw.forEach` iterates through a list of elements, it makes the enclosing *parent* record available under key `$parent`.
+When `forEach` iterates through a list of elements, it makes the enclosing *parent* record available under key `$parent`.
 
-The parent record is the record that directly contains the first key that appears in the path that was specified in `mw.forEach`.
+The parent record is the record that directly contains the first key that appears in the path that was specified in `forEach`.
 
 For example, the parent record in the following call is the record that directly contains the `"data"` key:
 
 ```ts
 app.use(
-  mw.forEach('data.countries',
+  forEach('data.countries',
     …
   )
 )
 ```
 
 
-The `$parent` key can be observed when `mw.debug.logRecord` is used to print the iterated-over elements to the terminal:
+The `$parent` key can be observed when `debug.logRecord` is used to print the iterated-over elements to the terminal:
 
 
 ```ts
 app.use(
-  mw.forEach('data.countries',
-    mw.debug.logRecord())
+  forEach('data.countries',
+    debug.logRecord())
 )
 ```
 
@@ -1146,11 +1146,11 @@ The `$root` key is explained in [the next section](#root-key).
 
 #### Root key (`$root`) {#root-key}
 
-Sometimes it may be necessary to access a part of the original RATT record that is outside of the scope of the `mw.forEach` call.
+Sometimes it may be necessary to access a part of the original RATT record that is outside of the scope of the `forEach` call.
 
-Every RATT record inside a ` mw.forEach` call contains the `"$root"` key.  The value of the root key provides a link to the full RATT record.  Because the `$root` key is part of the linked-to RATT record, it is not possible to print the value of the root key.  (This would result in infinite output.)  For this reason, the value of the `$root` key is printed as the special value `"__circular__"`.
+Every RATT record inside a `forEach` call contains the `"$root"` key.  The value of the root key provides a link to the full RATT record.  Because the `$root` key is part of the linked-to RATT record, it is not possible to print the value of the root key.  (This would result in infinite output.)  For this reason, the value of the `$root` key is printed as the special value `"__circular__"`.
 
-For the above examples, the parent record and root record are the same, but this is not always the case.  Specifically, the parent record and root record are different when `mw.forEach` calls are nested.
+For the above examples, the parent record and root record are the same, but this is not always the case.  Specifically, the parent record and root record are different when `forEach` calls are nested.
 
 The following data contains an inner list (key `"labels"`) inside an outer list (`"countries"`):
 
@@ -1185,13 +1185,13 @@ The following data contains an inner list (key `"labels"`) inside an outer list 
 }
 ```
 
-The following nested `mw.forEach` call shows the difference between the `"$parent"` key and the `$root` key.  The `$parent` key allows the individual country objects to be accessed, while the `"$root"` key allows the entire tree to be accessed:
+The following nested `forEach` call shows the difference between the `"$parent"` key and the `$root` key.  The `$parent` key allows the individual country objects to be accessed, while the `"$root"` key allows the entire tree to be accessed:
 
 ```ts
 app.use(
-  mw.forEach('data.countries',
-    mw.forEach('labels',
-      mw.debug.logRecord())),
+  forEach('data.countries',
+    forEach('labels',
+      debug.logRecord())),
 )
 ```
 
@@ -1247,11 +1247,11 @@ The following RATT record is printed first (3 records are printed in total).  No
 
 In [the previous section](#list-object) we showed how to iterate over lists of objects.  But what happens if a list does not contain objects but elements of primitive type?  Examples include lists of strings or lists of numbers.
 
-Function `mw.forEach` does not work with lists containing primitive types, because it assumes a RATT record structure which can only be provided by objects.  Luckily, RATT includes the functions `iri.forEach` and `literal.forEach` that can be specifically used to iterate over lists of primitives.
+Function `forEach` does not work with lists containing primitive types, because it assumes a RATT record structure which can only be provided by objects.  Luckily, RATT includes the functions `iri.forEach` and `literal.forEach` that can be specifically used to iterate over lists of primitives.
 
 ```ts
   app.use(
-    mw.fromJson({"id": "nl", "names": ["The Netherlands", "Holland"]}),
+    fromJson({"id": "nl", "names": ["The Netherlands", "Holland"]}),
     triple(
       iri(prefix.country, 'id'),
       rdfs.label,
@@ -1274,7 +1274,6 @@ If you have RDF data that _does_ need to be transformed, you can use the followi
 ```ts
 const app = new Ratt({
   defaultGraph: graph.model,
-  cliContext,
   prefixes: prefix,
   sources: {
     inputFile: Ratt.Source.file(`data/shapes.trig`)
@@ -1286,8 +1285,8 @@ const app = new Ratt({
 })
 
 app.use(
-  mw.loadRdf(app.sources.inputFile),
-  mw.mapQuads(
+  loadRdf(app.sources.inputFile),
+  mapQuads(
     (quad, ctx) => ctx.store.quad(
       quad.subject,
       quad.predicate,
@@ -1295,7 +1294,7 @@ app.use(
       app.prefix.somePrefix("graph")
     )
   ),
-  mw.toRdf(app.destinations.dataset)
+  toRdf(app.destinations.dataset)
 )
 ```
 
@@ -1304,7 +1303,7 @@ Similarly, you can change all the subject, predicates or objects in your data.
 Also, you can choose to transform triples of a specific subject, predicate, object or graph name. in this case, you should use:
 
 ```ts
-mw.mapQuads(
+mapQuads(
   (quad, ctx) => ctx.store.quad(
     quad.subject,
     app.prefix.example('new-predicate'),

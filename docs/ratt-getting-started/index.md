@@ -71,9 +71,9 @@ Note that the steps below are meant to be followed on Linux environment. If you 
 6. Create a file called `main.ts` in a text editor, and copy/paste the following code into that file:
 
    ```ts
-   // Load the RATT library and the RATT Middlewared (mw).
+   // Load the RATT library and toRdf.
    import {Ratt} from '@triply/ratt'
-   import mw from '@triply/ratt/lib/middlewares'
+   import {toRdf} from '@triply/ratt/lib/middlewares'
 
    // The main function that will run the pipeline.
    export default async function (): Promise<Ratt> {
@@ -95,7 +95,7 @@ Note that the steps below are meant to be followed on Linux environment. If you 
          app.prefix.rdf('type'),
          app.prefix.rdfs('Class')),
        // Writes the linked data statements to a local file.
-       mw.toRdf(Ratt.Destination.file('example.ttl')))
+       toRdf(Ratt.Destination.file('example.ttl')))
      return app
    }
    ```
@@ -128,18 +128,16 @@ In the [previous section](#setting-up-a-minimal-pipeline) we set up a minimal pi
 2. Once the API Token is configured, open file `main.ts` in a text editor and add the following content:
 
    ```ts
-   // Also import `CliContext` from the RATT library.
-   import {CliContext, Ratt} from '@triply/ratt'
-   import mw from '@triply/ratt/lib/middlewares'
+   
+   import { Ratt} from '@triply/ratt'
+   import { toRdf } from '@triply/ratt/lib/middlewares'
 
-   // Includes argument `cliContext: CliContext` for reading the
+
    // API Token environment variable as well as Command-Line
    // Interface (CLI) options.
-   export default async function (cliContext: CliContext): Promise<Ratt> {
+   export default async function (): Promise<Ratt> {
      const app = new Ratt({
-       // Includes `cliContext` in the RATT content to process CLI
-       // options.
-       cliContext,
+       
        defaultGraph: '',
      })
      app.use(
@@ -150,7 +148,7 @@ In the [previous section](#setting-up-a-minimal-pipeline) we set up a minimal pi
        // Publishes the linked data data statements to a TriplyDB
        // dataset called 'example'.  This dataset is added to the
        // account that is associated with the configured API Token.
-       mw.toRdf(Ratt.Destination.TriplyDb.rdf('example')))
+       toRdf(Ratt.Destination.TriplyDb.rdf('example')))
      return app
    }
    ```
@@ -184,12 +182,11 @@ We then perform the following steps to build a pipelines that processes this dat
 2. Open text file `main.ts` and add the following content:
 
    ```ts
-   import {CliContext, Ratt} from '@triply/ratt'
-   import mw from '@triply/ratt/lib/middlewares'
+   import {Ratt} from '@triply/ratt'
+   import {toRdf, fromCsv} from '@triply/ratt/lib/middlewares'
 
-   export default async function (cliContext: CliContext): Promise<Ratt> {
+   export default async function (): Promise<Ratt> {
      const app = new Ratt({
-       cliContext,
        defaultGraph: '',
        // Declare an IRI prefix.
        prefixes: {
@@ -199,7 +196,7 @@ We then perform the following steps to build a pipelines that processes this dat
      app.use(
        // Connects the tabular source data to the pipeline.
        // Every row in the table is processed as a RATT record.
-       mw.fromCsv(Ratt.Source.file('example.csv')),
+       fromCsv(Ratt.Source.file('example.csv')),
        // Create a linked data statement that is based on the
 			 // source data.
        triple(
@@ -211,7 +208,7 @@ We then perform the following steps to build a pipelines that processes this dat
          // Create a string literal based on the value in the
 				 // 'NAME' column.
          literal('NAME')),
-       mw.toRdf(Ratt.Destination.file('example.ttl')))
+       toRdf(Ratt.Destination.file('example.ttl')))
      return app
    }
    ```
@@ -242,10 +239,10 @@ person:00003 rdfs:label 'Carol'.
 
 The most common occurrence in ETL are the middlewares. Middlewares are essentially reusable pieces of code that execute a certain long and/or complex piece of functionality. An middleware is a piece of code that transforms a record and can be invoked with app.use().
 
-The middlewares can be recognized in this document by the prefix `mw.` that is before each middleware function. For example:
+Example of middleware function:
 
 ```ts
-mw.loadRdf(Ratt.Source.TriplyDb.query('my-account', 'my-query')),
+loadRdf(Ratt.Source.TriplyDb.query('my-account', 'my-query')),
 ```
 
 #### What is a record?
@@ -258,7 +255,7 @@ As mentioned above, when ETL is running we go through data record by record. Tog
 toRdf reads from the store. 
 
 ```ts
-app.use(mw.toRdf(app.destionations.out));
+app.use(toRdf(app.destionations.out));
 ```
 
 #### What is the context(ctx)?

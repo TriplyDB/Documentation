@@ -17,7 +17,7 @@ app.use(
   // Create all linked data statements.
   …
   // Now that all the data is created, validate it using a model.
-  mw.validateShacl(app.sources.model)
+  validateShacl(app.sources.model)
 )
 ```
 
@@ -41,7 +41,7 @@ app.use(
   // Create all linked data statements.
   …
   // Now that all the data is created, validate it using a model.
-  mw.validateShacl(
+  validateShacl(
     app.sources.model,
     {report: {destination: app.sources.dataset,
               graph: graph.report}}),
@@ -73,7 +73,7 @@ app.use(
   // Create all linked data statements.
   …
   // Now that all the data is created, validate it using a model.
-  mw.validateShacl(app.sources.model, {terminateOn: 'Never'}
+  validateShacl(app.sources.model, {terminateOn: 'Never'}
 )
 )
 ```
@@ -86,7 +86,7 @@ app.use(
    // Create all linked data statements.
    …
    // Now that all the data is created, validate it using a model.
-   mw.validateShacl(app.sources.model, {log: "Never"}
+   validateShacl(app.sources.model, {log: "Never"}
  )
  )
  ```
@@ -106,10 +106,9 @@ const prefix = {
 
 2. Then you have to include the prefixes in the RATT app:
 ```ts
-export default async function(cliContext: CliContext): Promise<Ratt> {
+export default async function(): Promise<Ratt> {
 const app = new Ratt({
   defaultGraph: ..,
-  cliContext,
   prefixes: prefix,
   sources: {
   ..
