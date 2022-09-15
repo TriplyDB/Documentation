@@ -3,9 +3,9 @@ title: "RATT"
 path: "/docs/ratt"
 ---
 
-**RATT can only be used in combination with [TriplyDB](https://triply.cc/triplydb). Contact [info@triply.cc](mailto:info@triply.cc) for more information, or to check if you are allowed to use it.**
+**RATT can only be used in combination with [TriplyDB](https://triply.cc/triplydb). Contact [info@triply.cc](mailto:info@triply.cc) to receive your token to access the RATT package.**
 
-RATT is a [TypeScript package](https://www.npmjs.com/package/@triply/ratt) that is developed by [Triply](https://triply.cc/).  RATT makes it possible to develop and maintain production-grade linked data pipelines. It is used in combination with one of the [TriplyDB subscriptions](https://triply.cc/subscriptions) to create large-scale knowledge graphs.
+RATT is a TypeScript package that is developed by [Triply](https://triply.cc/).  RATT makes it possible to develop and maintain production-grade linked data pipelines. It is used in combination with one of the [TriplyDB subscriptions](https://triply.cc/subscriptions) to create large-scale knowledge graphs.
 
 RATT is written and used in TypeScript, a type-safe language that transpiles to JavaScript.  It has the following properties that set it apart from other linked data pipeline approaches:
 
@@ -54,13 +54,20 @@ Note that the steps below are meant to be followed on Linux environment. If you 
 
    This creates a `package.json` file.  You can optionally edit this file to enter metadata for your project.
 
-4. Add TypeScript and RATT as dependencies to your pipeline:
+4. Create a `.npmrc` file in the newly created directory, that contains the following lines. Make sure to replace `<token>` with the token you received from Triply.
+    ```sh
+    @triplydb:registry=https://git.triply.cc/api/v4/packages/npm/
+    //git.triply.cc/api/v4/packages/npm/:_authToken=glpat-S_WoMjTXHiqLPxiwCits
+    //git.triply.cc/api/v4/projects/:_authToken=glpat-S_WoMjTXHiqLPxiwCits
+    ```
+
+5. Add TypeScript and RATT as dependencies to your pipeline:
 
    ```sh
-   yarn add typescript @triply/ratt
+   yarn add typescript @triplydb/ratt
    ```
 
-5. Initialize a default TypeScript project:
+6. Initialize a default TypeScript project:
 
    ```sh
    ./node_modules/.bin/tsc --init
@@ -68,12 +75,12 @@ Note that the steps below are meant to be followed on Linux environment. If you 
 
    This creates a [tsconfig.json](https://www.typescriptlang.org/docs/handbook/tsconfig-json.html) file.  You can optionally edit this file to tweak how TypeScript code is transpiled into JavaScript code.
 
-6. Create a file called `main.ts` in a text editor, and copy/paste the following code into that file:
+7. Create a file called `main.ts` in a text editor, and copy/paste the following code into that file:
 
    ```ts
    // Load the RATT library and the RATT Middlewared (mw).
-   import {Ratt} from '@triply/ratt'
-   import mw from '@triply/ratt/lib/middlewares'
+   import {Ratt} from '@triplydb/ratt'
+   import mw from '@triplydb/ratt/lib/middlewares'
 
    // The main function that will run the pipeline.
    export default async function (): Promise<Ratt> {
@@ -93,13 +100,13 @@ Note that the steps below are meant to be followed on Linux environment. If you 
    }
    ```
 
-7. Transpile the TypeScript file (`main.ts`) into a JavaScript file (`main.js`):
+8. Transpile the TypeScript file (`main.ts`) into a JavaScript file (`main.js`):
 
    ```sh
    ./node_modules/.bin/tsc
    ```
 
-8. Run the JavaScript file (`main.js`) as a RATT pipeline:
+9. Run the JavaScript file (`main.js`) as a RATT pipeline:
 
    ```sh
    yarn ratt main.js
@@ -121,8 +128,8 @@ In the [previous section](#setting-up-a-minimal-pipeline) we set up a minimal pi
 2. Once the API Token is configured, open file `main.ts` in a text editor and add the following content:
 
    ```ts
-   import {Ratt} from '@triply/ratt'
-   import mw from '@triply/ratt/lib/middlewares'
+   import {Ratt} from '@triplydb/ratt'
+   import mw from '@triplydb/ratt/lib/middlewares'
 
    export default async function (): Promise<Ratt> {
      const app = new Ratt()
@@ -168,8 +175,8 @@ We then perform the following steps to build a pipelines that processes this dat
 2. Open text file `main.ts` and add the following content:
 
    ```ts
-   import {Ratt} from '@triply/ratt'
-   import mw from '@triply/ratt/lib/middlewares'
+   import {Ratt} from '@triplydb/ratt'
+   import mw from '@triplydb/ratt/lib/middlewares'
 
    export default async function (): Promise<Ratt> {
      const app = new Ratt({
