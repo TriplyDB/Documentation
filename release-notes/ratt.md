@@ -14,11 +14,14 @@ Ratt is now published on the private gitlab NPM registry under `@triplydb/ratt`.
 To run RATT via the `@triplydb` organization you should:
 - Receive a token from Triply
 - Set a token in your repository.
-  - When using yarn-modern (ie if you have a `.yarnrc.yml` file in your repo), then add the following snippet to the `.yarnrc.yml` file:
+  - When using yarn-modern (ie if you have a `.yarnrc.yml` file in your repo), then add the following snippet to the `.yarnrc.yml` file (replace `<token>` with the token you received):
   ```yml
-    
+    npmScopes:
+      fortawesome:
+        npmAuthToken: <token>
+        npmRegistryServer: "https://npm.fontawesome.com/"
   ```
-  - In all other cases, create or update the `.npmrc` file in your repo. You should add the following lines:
+  - In all other cases, create or update the `.npmrc` file in your repo. You should add the following lines (replace `<token>` with the token you received):
   ```sh
     @triplydb:registry=https://git.triply.cc/api/v4/packages/npm/
     //git.triply.cc/api/v4/packages/npm/:_authToken=<token>
