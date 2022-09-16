@@ -189,18 +189,16 @@ The RATT Context is specified when the `Ratt` object is instantiated.  This ofte
 
 - The data sources that can be used in the ETL.
 - The data destinations where linked data is published to.
-- The named graph in which `addQuad` calls with no graph argument add their data.
+- The named graph in which `triple` calls with no graph argument add their data.
 - The prefix IRI for blank node-replacing well-known IRIs.
 
 
 ### Configuring the standard graph
 
-When we call `mw.addQuad` with 3 arguments, a triple is created and placed in a named graph that is chosen by RATT.  You can change the name of this default graph by specifying it in the RATT context.  Notice that graph names must be IRIs:
+When we call `triple` with 3 arguments, a triple is created and placed in a named graph that is chosen by RATT.  You can change the name of this default graph by specifying it in the RATT context.  Notice that graph names must be IRIs:
 
 ```ts
-const app = new Ratt({
-  defaultGraph: 'https://triplydb.com/Triply/example/graph/default',
-})
+const app = new Ratt()
 ```
 
 ### Configuring the well-known IRI prefix
@@ -226,7 +224,7 @@ export function create_prefixes(
   let prefix_base = Ratt.prefixer(`https://${host}/${organization}/${dataset}/`)
   let prefix_bnode = Ratt.prefixer(prefix_base(`.well-known/genid/`))
   let prefix_graph = Ratt.prefixer(prefix_base(`graph/`))
-  )
+
   return {
     bnode: prefix_bnode,
     graph: prefix_graph,
@@ -294,8 +292,6 @@ The following options can be specified to configure the destination behavior:
 <dl>
   <dt><code>overwrite</code></dt>
   <dd>Whether the graphs that are being uploaded by RATT should replace any existing graphs with the same name in the dataset. Graphs appearing in the dataset with a different name than those uploaded by RATT are kept. The default value is <code>false</code>.</dd>
-  <dt><code>defaultGraph</code></dt>
-  <dd>The standard graph name that will be used for storing the triples that originate from the RATT pipeline.</dd>
   <dt><code>synchronizeServices</code></dt>
   <dd>Whether active services should be automatically synchronized once new data is uploaded.  The default value is <code>false</code>.</dd>
   <dt><code>triplyDb</code></dt>
@@ -382,9 +378,7 @@ Sometimes it is useful to use classes and methods in TriplyDB.js directly.  This
 
 ```ts
 // Create the RATT context.
-const app = new Ratt({
-  defaultGraph: ''
-})
+const app = new Ratt()
 
 // Use the RATT context to access the TriplyDB.js connection.
 console.log((await app.triplyDb.getInfo()).name)
