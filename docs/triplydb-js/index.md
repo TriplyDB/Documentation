@@ -1520,7 +1520,7 @@ The changes made as a result of calling this method depend on the current state 
 
 ```ts
 serviceMetadata = {
-  type:  "elasticSearch" | "virtuoso" | "jena" ;
+  type:  "elasticsearch" | "virtuoso" | "jena" ;
   config?: {
     reasoner?: "OWL" | "RDFS" | "None";
   };
@@ -1529,7 +1529,7 @@ serviceMetadata = {
 
 <dl>
   <dt><code>type</code></dt>
-  <dd>Accepts a string value of one of the following: <code>"virtuoso"</code>, <code>"elasticSearch"</code>, <code>"jena"</code>.</dd>
+  <dd>Accepts a string value of one of the following: <code>"virtuoso"</code>, <code>"elasticsearch"</code>, <code>"jena"</code>.</dd>
 
   <dt><code>config</code></dt>
   <dd>
@@ -1582,7 +1582,7 @@ The service type is specified with the `type` parameter. If no type is given, a 
   <dt><code>"jena"</code></dt>
   <dd>Starts a SPARQL JENA service. A SPARQL 1.1 compliant service that is less scalable and less performant, but allows reasoning (RDFS or OWL) to be enabled.</dd>
   <dt><code>"elasticSearch"</code></dt>
-  <dd>Starts an <a href='https://www.elastic.co/guide/en/elasticsearch/reference/current/index.html'>ElasticSearch</a> service. A text search engine that can be used to power a search bar or similar textual search API.</dd>
+  <dd>Starts an <a href='https://www.elastic.co/guide/en/elasticsearch/reference/current/index.html'>Elasticsearch</a> service. A text search engine that can be used to power a search bar or similar textual search API.</dd>
 </dl>
 
 The `name` argument can be used to distinguish between different endpoints over the same dataset that are used for different tasks.
@@ -1596,7 +1596,7 @@ const account = await client.getAccount();
 const dataset = await account.getDataset("my-dataset");
 const acceptance = await dataset.addService("acceptance");
 const production = await dataset.addService("production", {
-  type: "elasticSearch",
+  type: "elasticsearch",
 });
 const reasoning = await dataset.addService("reasoning", {
   type: "jena",
