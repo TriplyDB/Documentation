@@ -57,8 +57,8 @@ Note that the steps below are meant to be followed on Linux environment. If you 
 4. Create a `.npmrc` file in the newly created directory, that contains the following lines. Make sure to replace `<token>` with the token you received from Triply.
     ```sh
     @triplydb:registry=https://git.triply.cc/api/v4/packages/npm/
-    //git.triply.cc/api/v4/packages/npm/:_authToken=glpat-S_WoMjTXHiqLPxiwCits
-    //git.triply.cc/api/v4/projects/:_authToken=glpat-S_WoMjTXHiqLPxiwCits
+    //git.triply.cc/api/v4/packages/npm/:_authToken=<token>
+    //git.triply.cc/api/v4/projects/:_authToken=<token>
     ```
 
 5. Add TypeScript and RATT as dependencies to your pipeline:
