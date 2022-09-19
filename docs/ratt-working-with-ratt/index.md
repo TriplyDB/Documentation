@@ -173,7 +173,7 @@ yarn ratt ./lib/main.js --verbose
 <!-- <https://issues.triply.cc/issues/5603> -->
 Verbose mode may perform a reset of your current terminal session.  If this happens you lose visible access to the commands that were run prior to the last RATT invocation.
 
-This destructive behavior of verbose mode can be disabled by adding the following [environment variable](environment-variable):
+This destructive behavior of verbose mode can be disabled by setting the following environment variable:
 
 ```sh
 export CI=true
@@ -440,7 +440,7 @@ app.use(
 )
 ```
 
-If you want to run the pipeline in production mode, add the following [environment variable](environment-variable):
+If you want to run the pipeline in production mode, set the following environment variable:
 
 ```sh
 export TARGET=Production

@@ -34,11 +34,3 @@ The following steps must be performed in order to create an API token:
 7. Click the “Create” button to create your token.  The token (a long sequence of characters) will now appear in a dialog.
 
    For security reasons, the token will only be shown once.
-
-8. Create a file called `.env` inside your application or pipeline folder.  Add the following content in that file:
-
-   ```
-   TOKEN={token}
-   ```
-
-   where `{token}` is replaced with the specific sequence of characters obtained in step 7.
