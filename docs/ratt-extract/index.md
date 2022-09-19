@@ -548,7 +548,7 @@ app.use(
 )
 ```
 
-Because the `foaf` and `ex` objects have been declared at the start of the pipeline, the rest of the pipeline can use autocompletion for IRIs terms.  This works by typing the namespace alias and a dot (for example: `foaf.`) and pressing `Ctrl + SPC` (control and space at the same time).  In [properly configured text editors](editor) this will bring up a list of autocomplete results.
+Because the `foaf` and `ex` objects have been declared at the start of the pipeline, the rest of the pipeline can use autocompletion for IRIs terms.  This works by typing the namespace alias and a dot (for example: `foaf.`) and pressing `Ctrl + SPC` (control and space at the same time).  In modern code editors this will bring up a list of autocomplete results.
 
 Notice that the RATT notation for statements is purposefully close to the widely used Turtle/TriG syntax.
 

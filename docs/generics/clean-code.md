@@ -8,13 +8,13 @@ This section describes best practices for keeping [TriplyDB.js](../triplydb-js) 
 
 ## Thousand separator
 
-Human being are not good at reliably reading large numbers.  For example, it takes some time to figure out where the following line contains the number one million (six zeros) or ten million (seven zeros).
+Human being are not good at reliably reading large numbers. For example, it takes some time to figure out where the following line contains the number one million (six zeros) or ten million (seven zeros).
 
 ```ts
 1000000
 ```
 
-It is best practice to use the underscore character (`_`) as a thousand separator in TypeScript code.  This results in the following formatting of the above number:
+It is best practice to use the underscore character (`_`) as a thousand separator in TypeScript code. This results in the following formatting of the above number:
 
 ```ts
 1_000_000
@@ -26,16 +26,12 @@ Notice that it is now easy to see that this number is one million (six zeros) an
 
 ## Trailing semi-colons
 
-The TypeScript language has a feature called [Automatic Semicolon Insertion]() (ASI).  This feature allows TypeScript to almost always insert trailing semicolons automatically.  This means that it is almost always safe to not type the trailing semi-colon for a TrypeScript operator.
-
-In the very few cases where ASI leads to incorrect code, TypeScript tooling will almost certainly warn you.  See the [documentation about setting up a TypeScript editor](editor) for more information.
-
-The code examples in these documentation pages use ASI.  This makes TypeScript code a little bit shorter and a little bit easier to read.
+The TypeScript language has a feature called [Automatic Semicolon Insertion]() (ASI). This feature allows TypeScript to almost always insert trailing semicolons automatically. This means that it is almost always safe to not type the trailing semi-colon for a TrypeScript operator. In the very few cases where ASI leads to incorrect code, modern TypeScript tooling/editors will emit a warning. The code examples in these documentation pages use ASI. This makes TypeScript code a little bit shorter and a little bit easier to read.
 
 
 ## Simple lambda functions
 
-It is common practice to use unnamed/lambda functions in TypeScript.  For example, the [transformation functions in RATT](../ratt#transforming-values) take a lambda function for one of their arguments.
+It is common practice to use unnamed/lambda functions in TypeScript. For example, the [transformation functions in RATT](../ratt#transforming-values) take a lambda function for one of their arguments.
 
 TypeScript allows the following cleanups to be applied when writing simple lambda functions:
 - Lambda functions with exactly one parameter can be written without round brackets.
@@ -65,7 +61,7 @@ app.use(
 )
 ```
 
-Notice that we also apply the [thousand separator cleanup](#thousand-separator) and the [trailing semi-colons](#trailing-semi-colons) cleanups here.  It is often the combination of several small cleanups that results in code that is significantly easier to read.
+Notice that we also apply the [thousand separator cleanup](#thousand-separator) and the [trailing semi-colons](#trailing-semi-colons) cleanups here. It is often the combination of several small cleanups that results in code that is significantly easier to read.
 
 
 ## Use `if-then-else` or `switch`?
