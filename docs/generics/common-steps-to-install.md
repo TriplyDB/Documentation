@@ -36,16 +36,4 @@ This means that the policy on your systems is too strict and does not allow Yarn
 Set-ExecutionPolicy RemoteSigned
 ```
 
-### Node.js 14 compatibility issue
 
-**Question**: When I run `yarn` to install dependencies, I get the following error message about Node.js version compatibility:
-
-```
-error async-saxophone@1.0.1: The engine "node" is incompatible with this module. Expected version "10 || 12 || 13 || 14". Got "16.13.0"
-```
-
-**Answer**: One of the external RATT dependencies incorrectly assumes that Node.js 14 is used. If you use a higher Node.js version, then add the flag `--ignore-engines` when running the Yarn command. For example:
-
-```
-yarn --ignore-engines
-```
