@@ -3,6 +3,14 @@ title: "RATT"
 path: "/release-notes/ratt"
 ---
 
+## 4.2.2 (2022-09-29)
+
+Improved performance of `fromOai` middleware.
+
+## 4.2.1 (2022-09-27)
+
+Improved accuracy of performance statistics written to the log file. 
+
 ## 4.1.2 (2022-09-14)
 
 Improved the performance of the `toRdf` middleware.
