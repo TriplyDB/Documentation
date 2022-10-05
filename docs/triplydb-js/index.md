@@ -1283,7 +1283,6 @@ The metadata object for accounts can include the following keys:
   <dd>The email address of the account.</dd>
 </dl>
 
-
 ### Asset
 
 Not all data can be stored as RDF data. For example images and video
@@ -2230,7 +2229,7 @@ The `metadata` argument takes a dictionary object with the following optional ke
       <li><code>"ODC-By"</code></li>
       <li><code>"ODC-ODbL"</code></li>
       <li><code>"PDDL"</code></li>
-    </ul>
+    </ul>bv   
   </dd>
 </dl>
 
@@ -2273,6 +2272,18 @@ const dataset = await account.getDataset("my-dataset");
 await dataset.uploadAsset("my-source-data", "source.csv.gz");
 await dataset.uploadAsset("my-documentation", "documentation.pdf");
 ```
+
+#### Dataset.waitForJobToFinish(app: App, jobUrl: string, dsId: string) //TODO
+
+#### Dataset.getJobUrl() // TODO
+
+#### Dataset.create() // TODO
+
+
+
+#### Dataset.uploadFiles(files: string[] | File[])
+
+#### Dataset.exec() // TODO
 
 ### Graph
 
@@ -2465,7 +2476,7 @@ for await(const quad of stream.pipe(zlib.createGunzip())){
 }
 ```
 
-### Organization
+### Org
 
 Instances of the [`Organization`](#organization) class denote organizations in TriplyDB.
 
@@ -2488,13 +2499,13 @@ const organization = account.asOrganization();
 
 `Organization` is a subclass of [`Account`](#account), from which it inherits most of its methods.
 
-#### Organization.addDataset(name: string, metadata?: object)
+#### Org.addDataset(name: string, metadata?: object)
 
 Adds a new TriplyDB dataset with the given `name` to the current organization.
 
 Inherited from [`Account.addDataset(name: string, metadata?: object)`](#accountadddatasetname-string-metadata-object).
 
-#### Organization.addMember(user: User, role?: Role)
+#### Org.addMember(user: User, role: Models.OrgRole = "member")
 
 Adds a member to the given `Organization`, with the given `role` of either member or owner.
 
@@ -2522,29 +2533,47 @@ const johnDoe = await app.getUser("john-doe");
 await organization.addMember(johnDoe);
 ```
 
-#### Organization.removeMember(user: User)
+#### Org.asOrganization()
+
+Casts the TriplyDB account object to its corresponding organization object.
+
+Class [`Organization`](#organization) is a specialization of class [`Org`](#organization).
+
+Calling this method on an `Organization` object does nothing.
+
+#### Org.asUser()
+
+
+Casts the TriplyDB organization object to its corresponding user object.
+
+Class [`User`](#user) is a specialization of class [`Org`](#org).
+
+Calling this method on a [`User`](#user) object does nothing.
+
+
+#### Org.removeMember(user: User)
 
 Removes a member from the given `Organization`.
 
-#### Organization.addQuery(name: string, metadata: object)
+#### Org.addQuery(name: string, metadata: object)
 
 Adds a new TriplyDB query to the current organization.
 
 Inherited from [`Account.addQuery(name: string, metadata: object)`](#accountaddquerymetadata-object).
 
-#### Organization.ensureStory(name: string, metadata: object)
+#### Org.ensureStory(name: string, metadata: object)
 
 Ensures the existence of a story with the given `name` and with the specified `metadata`.
 
 Inherited from [`Account.ensureStory(name: string, metadata: object)`](#accountensurestoryname-string-metadata-object).
 
-#### Organization.addStory(name: string, metadata?: object)
+#### Org.addStory(name: string, metadata?: object)
 
 Adds a new TriplyDB story with the given `name` to the current organization.
 
 Inherited from [`Account.addStory(name: string, metadata?: object)`](#accountaddstoryname-string-metadata-object).
 
-#### Organization.delete()
+#### Org.delete()
 
 Deletes this account. This also deletes all datasets, stories and queries that belong to this organization.
 
@@ -2557,25 +2586,25 @@ const organization = await client.getOrganization("Neo4j");
 await organization.delete();
 ```
 
-#### Organization.ensureDataset(name: string, metadata?: object)
+#### Org.ensureDataset(name: string, metadata?: object)
 
 Ensures the existence of a dataset with the given `name` and with the specified `metadata`.
 
 Inherited from [`Account.ensureDataset(name: string, metadata?: object)`](#accountensuredatasetname-string-metadata-object).
 
-#### Organization.getDataset(name: string)
+#### Org.getDataset(name: string)
 
 Returns the dataset with the given `name` that is published by this organization.
 
 Inherited from [`Account.getDataset(name: string)`](#accountgetdatasetname-string).
 
-#### Organization.getDatasets()
+#### Org.getDatasets()
 
 Returns an [async iterator](#async-iterator) over the accessible datasets that belong to this organization.
 
 Inherited from [`Account.getDatasets()`](#accountgetdatasets).
 
-#### Organization.getMembers()
+#### Org.getMembers()
 
 Returns the list of memberships for the given organization.
 
@@ -2610,13 +2639,13 @@ for (const membership of await org.getMembers()) {
 
 Memberships of organization are TriplyDB [users](#user).
 
-#### Organization.getPinnedItems()
+#### Org.getPinnedItems()
 
 Returns the list of datasets, stories and queries that are pinned for the current organization.
 
 Inherited from [`Account.getPinnedItems()`](#accountgetpinneditems).
 
-#### Organization.removeMember(user: User)
+#### Org.removeMember(user: User)
 
 Removes the specified `user` from this organization.
 
@@ -2646,13 +2675,13 @@ const user = await client.getUser("john-doe");
 await organization.removeMember(user);
 ```
 
-#### Organization.setAvatar(file: string)
+#### Org.setAvatar(file: string)
 
 Sets a new image that characterized this organization.
 
 Inherited from [`Account.setAvatar(file: string)`](#accountsetavatarfile-string).
 
-#### Organization.update(metadata: object)
+#### Org.update(metadata: object)
 
 Updates the metadata for this account.
 
@@ -2861,7 +2890,6 @@ const query = await user.getQuery('my-query')
 const query_1 = await query.useVersion(1)
 ```
 
-
 ### Service
 
 Service objects describe specific functionalities that can be started, stopped, and restarted over datasets in TriplyDB.
@@ -2903,6 +2931,10 @@ const service = await dataset.addService("my-service");
 await service.stop();
 ```
 
+
+#### Service.rename(newName: string): Promise<Service> // TODO
+
+
 #### Service.start()
 
 This will start a service that is stopped.
@@ -2911,6 +2943,10 @@ This will start a service that is stopped.
 // from previously stopped service above
 await service.start();
 ```
+
+#### Service.create() // TODO
+
+
 
 #### Service.delete()
 
@@ -2952,6 +2988,12 @@ const account = await client.getAccount();
 const dataset = await account.getDataset("my-dataset");
 console.log(await dataset.getServices());
 ```
+
+#### Service.getGraphs(refresh = false) // TODO
+
+
+#### Service.getDataset() // TODO
+
 
 #### Service.isUpToDate()
 
@@ -3108,6 +3150,15 @@ Inherited from [`Account.addDataset(name: string, metadata?: object)`](#accounta
 Adds a new TriplyDB query to the current user.
 
 Inherited from [`Account.addQuery(metadata: object)`](#accountaddquerymetadata-object).
+
+#### User.asOrganization() 
+
+Casts the TriplyDB account object to its corresponding organization object.
+
+Class [`User`](#user) is a specialization of class [`Org`](#organization).
+
+Calling this method on an `Organization` object does nothing.
+
 
 #### User.ensureStory(name: string, metadata: object)
 
