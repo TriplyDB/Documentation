@@ -80,7 +80,7 @@ Note that the steps below are meant to be followed on Linux environment. If you 
    ```ts
    // Load the RATT library and the RATT Middlewared (mw).
    import {Ratt} from '@triplydb/ratt'
-   import mw from '@triplydb/ratt/lib/middlewares'
+   import {toRdf, triple} from '@triplydb/ratt/lib/middlewares'
 
    // The main function that will run the pipeline.
    export default async function (): Promise<Ratt> {
@@ -90,7 +90,7 @@ Note that the steps below are meant to be followed on Linux environment. If you 
      app.use(
        // Create one linked data statement:
        // “The class of all classes is itself a class.”
-       mw.addQuad(
+       triple(
          app.prefix.rdfs('Class'),
          app.prefix.rdf('type'),
          app.prefix.rdfs('Class')),
@@ -129,19 +129,19 @@ In the [previous section](#setting-up-a-minimal-pipeline) we set up a minimal pi
 
    ```ts
    import {Ratt} from '@triplydb/ratt'
-   import mw from '@triplydb/ratt/lib/middlewares'
+   import {toRdf, triple} from '@triplydb/ratt/lib/middlewares'
 
    export default async function (): Promise<Ratt> {
      const app = new Ratt()
      app.use(
-       mw.addQuad(
+       triple(
          app.prefix.rdfs('Class'),
          app.prefix.rdf('type'),
          app.prefix.rdfs('Class')),
        // Publishes the linked data data statements to a TriplyDB
        // dataset called 'example'.  This dataset is added to the
        // account that is associated with the configured API Token.
-       mw.toRdf(Ratt.Destination.TriplyDb.rdf('example')))
+       toRdf(Ratt.Destination.TriplyDb.rdf('example')))
      return app
    }
    ```
@@ -176,7 +176,7 @@ We then perform the following steps to build a pipelines that processes this dat
 
    ```ts
    import {Ratt} from '@triplydb/ratt'
-   import mw from '@triplydb/ratt/lib/middlewares'
+   import {fromCsv, triple, iri, rdfs, literal, toRdf} from '@triplydb/ratt/lib/middlewares'
 
    export default async function (): Promise<Ratt> {
      const app = new Ratt({
@@ -188,19 +188,19 @@ We then perform the following steps to build a pipelines that processes this dat
      app.use(
        // Connects the tabular source data to the pipeline.
        // Every row in the table is processed as a RATT record.
-       mw.fromCsv(Ratt.Source.file('example.csv')),
+       fromCsv(Ratt.Source.file('example.csv')),
        // Create a linked data statement that is based on the
 			 // source data.
-       mw.addQuad(
+       triple(
          // Create a universally unique identifier (IRI) based
          // on the value in the 'ID' column and the declared
 				 // 'person' prefix.
-         mw.toIri('ID', {prefix: app.prefix.person}),
+         iri(app.prefix.person, 'ID'),
          app.prefix.rdfs('label'),
          // Create a string literal based on the value in the
 				 // 'NAME' column.
-         mw.toLiteral('NAME')),
-       mw.toRdf(Ratt.Destination.file('example.ttl')))
+         literal('NAME')),
+       toRdf(Ratt.Destination.file('example.ttl')))
      return app
    }
    ```
@@ -234,7 +234,7 @@ The most common occurrence in ETL are the middlewares. Middlewares are essential
 The middlewares can be recognized in this document by the prefix `mw.` that is before each middleware function. For example:
 
 ```ts
-mw.loadRdf(Ratt.Source.TriplyDb.query('my-account', 'my-query')),
+loadRdf(Ratt.Source.TriplyDb.query('my-account', 'my-query')),
 ```
 
 #### What is a record?
@@ -247,7 +247,7 @@ As mentioned above, when ETL is running we go through data record by record. Tog
 toRdf reads from the store. 
 
 ```ts
-app.use(mw.toRdf(app.destionations.out));
+app.use(toRdf(Ratt.Destination.file('example.ttl')));
 ```
 
 #### What is the context(ctx)?

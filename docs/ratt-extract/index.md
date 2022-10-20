@@ -46,7 +46,7 @@ RATT has a dedicated connector for Excel files.  After such files [are uploaded 
 const account = 'my-account'
 const dataset = 'my-dataset'
 app.use(
-  mw.fromXlsx(Ratt.Source.triplyDb.asset(account, dataset, {name: 'my-table.xlsx'}))
+  fromXlsx(Ratt.Source.TriplyDb.asset(account, dataset, {name: 'my-table.xlsx'}))
 )
 ```
 
@@ -61,17 +61,17 @@ RATT has dedicated connectors for CSV and TSV files. In the example below, after
 const account = 'my-account'
 const dataset = 'my-dataset'
 app.use(
-  mw.fromCsv(Ratt.Source.triplyDb.asset(account, dataset, {name: 'my-table.csv.gz'}))
+  fromCsv(Ratt.Source.TriplyDb.asset(account, dataset, {name: 'my-table.csv.gz'}))
 )
 ```
 
 This connector also handles CSV variants that use a cell separator that is not comma (`,`).
-For TSV files, you can use `mw.fromTSV()` accordingly.
+For TSV files, you can use `fromTSV()` accordingly.
 
 
 ### Collect records from a specified OAI endpoint (<code>mw.fromOai</code>) {#mw.fromOai}
 
-`mw.fromOai` allows a RATT pipeline to be run over the self-contained RATT records that come from the specified OAI endpoint.The handling of resumption tokens and iteration over the array members per batch is abstracted away by this new middleware, simplifying the use of OAI endpoints for the RATT user. The middleware supports xml parsing and the content is automatically determined by the returned Content-Type, this is the default behaviour. The received content can be cached and if cached, each record contains metadata about whether it came from a cached result, or whether it's a 'new' record.
+`fromOai` allows a RATT pipeline to be run over the self-contained RATT records that come from the specified OAI endpoint.The handling of resumption tokens and iteration over the array members per batch is abstracted away by this new middleware, simplifying the use of OAI endpoints for the RATT user. The middleware supports xml parsing and the content is automatically determined by the returned Content-Type, this is the default behaviour. The received content can be cached and if cached, each record contains metadata about whether it came from a cached result, or whether it's a 'new' record.
 
 #### Function signature
 
@@ -79,7 +79,7 @@ This function has the following signature:
 
 ```ts
 app.use(
-  mw.fromOai({
+  fromOai({
     since: Time,
     url: "https://somethingsomething.redacted/webapioai/oai.ashx",
     set: "xyzname",
@@ -146,7 +146,7 @@ The following example uses a JSON source that is stored as a [TriplyDB asset](ht
 const account = 'my-account'
 const dataset = 'my-dataset'
 app.use(
-  mw.fromJson(Ratt.Source.triplyDb.asset(account, dataset, {name: 'my-data.json'})),
+  fromJson(Ratt.Source.TriplyDb.asset(account, dataset, {name: 'my-data.json'}),),
 )
 ```
 
@@ -154,7 +154,7 @@ The following example uses an in-line specified JSON source:
 
 ```ts
 app.use(
-  mw.fromJson([{ a: "a", b: "b", c: "c" }]),
+  fromJson([{ a: "a", b: "b", c: "c" }]),
 )
 ```
 
@@ -173,7 +173,7 @@ RATT is able to load RDF data from a SPARQL `construct` query.  Such queries can
 The following one-liner runs an existing saved `construct` query in TriplyDB:
 
 ```ts
-mw.loadRdf(Ratt.Source.TriplyDb.query('my-account', 'my-query')),
+loadRdf(Ratt.Source.TriplyDb.query('my-account', 'my-query')),
 ```
 
 Similar to the other RATT Connectors, the above snippet automatically performs multiple requests in the background, if needed, to retrieve the full result set.  This is not supported by bare SPARQL endpoints which lack a standardized form of pagination.  See the page on [SPARQL Pagination](pagination) for more information on how this works.
@@ -192,7 +192,7 @@ const graph = Ratt.prefixer('https://example.com/id/graph/')
 const myQuery = Ratt.Source.TriplyDb.query('my-account',
                                            'my-dataset',
                                            {toGraph: graph('enrichment')})
-mw.loadRdf(myQuery)
+loadRdf(myQuery)
 ```
 
 The value of the `toGraph` option can be any IRI that is specified inside RATT.  In the above example the `graph` prefix is used together with the `enrichment` local name to produce the absolute IRI `https://example.com/id/graph/enrichment`.
@@ -209,7 +209,7 @@ const myQuery = Ratt.Source.TriplyDb.query('my-account',
                                            'my-dataset',
                                            {toGraph: graph.results,
                                             version: 1})
-mw.loadRdf(myQuery)
+loadRdf(myQuery)
 ```
 
 Not specifying the `version` option automatically uses the <b>latest version</b>. There is no standardized support for query versioning with raw SPARQL endpoints.
@@ -226,7 +226,7 @@ const myQuery = Ratt.Source.TriplyDb.query('my-account',
                                            {toGraph: graph.results,
                                             variables: {country: 'Holland'},
                                             version: 1})
-mw.loadRdf(myQuery)
+loadRdf(myQuery)
 ```
 
 There is no standardized support for specifying API variables with raw SPARQL endpoints.
@@ -238,6 +238,7 @@ In [the previous section](#api-variable-static) the value `'Holland'` for the AP
 In such cases we can use the following custom middleware to run the SPARQL query:
 
 ```ts
+const account = 'my-account'
 app.use(
   async (context, next) => {
     const api_variables = {
@@ -249,8 +250,7 @@ app.use(
       context.store.addQuad(statement)
     }
     return next()
-  }),
-)
+  });
 ```
 
 In the above example, different countries are specified by data values that are read dynamically from the `COUNTRY` key.  This key can be a column in a table, or an element in XML, or some other dynamic data location, depending on the RATT source that is used.
@@ -278,7 +278,7 @@ const myQuery = Ratt.Source.url(
         'content-type': 'application/query-string',
       },
       body: 'select * { ?s ?p ?o. } limit 1',
-      method: post,
+      method: 'POST',
     },
   }
 )
@@ -288,7 +288,7 @@ Since we specified CSV as the result set format (Media Type `text/csv`), the abo
 
 ```typescript
 app.use(
-  mw.fromCsv(myQuery),
+  fromCsv(myQuery),
 )
 ```
 
@@ -303,7 +303,7 @@ RATT has a dedicated connector for XML files.  After such files [are uploaded as
 const account = 'my-account'
 const dataset = 'my-dataset'
 app.use(
- mw.fromXml(Ratt.Source.triplyDb.asset(account, dataset, {name: 'my-data.xml'}),{ selectors: ['first-element'] })
+ fromXml(Ratt.Source.TriplyDb.asset(account, dataset, {name: 'my-data.xml'}),{ selectors: ['first-element'] })
 )
 ```
 
@@ -330,7 +330,7 @@ The following example code connects two [CSV files](https://triply.cc/docs/ratt-
 const account = 'my-account'
 const dataset = 'my-dataset'
 app.use(
-  mw.fromCsv([
+  fromCsv([
     Ratt.Source.TriplyDb.asset(account, dataset, {name: 'my-table-1.csv.gz'}),
     Ratt.Source.TriplyDb.asset(account, dataset, {name: 'my-table-2.csv.gz'}),
   ]),
@@ -349,7 +349,7 @@ const app = new Ratt({
   }
 })
 app.use(
-  mw.fromCsv([
+  fromCsv([
     app.sources.table1,
     app.sources.table2,
   ]),
@@ -395,7 +395,7 @@ The following example connects a local CSV file:
 
 ```ts
 app.use(
-  mw.fromCsv(Ratt.Source.file('my-table.csv.gz')),
+  fromCsv(Ratt.Source.file('my-table.csv.gz')),
 )
 ```
 
@@ -410,7 +410,7 @@ The following example connects an imaginary remote CSV file that is published at
 
 ```ts
 app.use(
-  mw.fromCsv(Ratt.Source.url('https://example.com/my-table.csv.gz')),
+  fromCsv(Ratt.Source.url('https://example.com/my-table.csv.gz')),
 )
 ```
 
@@ -418,34 +418,34 @@ app.use(
 
 When you create an Extraction Transform Load pipeline, there are several usecases when you do not have an external resource that you want to transform, but instead you  have a string resource that contains the data. To support this usecase RATT allows the use of a local string as `Source`. This usecase is useful when you want to test certain parts of your ETL, or when you want to learn how RATT works.
 
-The `Ratt.Source.string()` can be used in combination with three middlewares: `mw.loadRdf`, `mw.validateShacl` and `mw.fromJson`. All three examples are shown below.  
+The `Ratt.Source.string()` can be used in combination with three middlewares: `loadRdf`, `validateShacl` and `fromJson`. All three examples are shown below.  
 
-The following example loads two in-line specified RDF triples that are now used as input source for `mw.loadRdf`.
+The following example loads two in-line specified RDF triples that are now used as input source for `loadRdf`.
 
 ```ts
 app.use(
-  mw.loadRdf(Ratt.Source.string(`
+  loadRdf(Ratt.Source.string(`
 <https://triplydb.com/me> a <https://triplydb.com/Person> .
 <https://triplydb.com/me> <https://triplydb.com/name> "me".`)),
 )
 ```
 
-The following example loads two in-line specified RDF triples that are now used as input source for `mw.loadvalidateShaclRdf`.
+The following example loads two in-line specified RDF triples that are now used as input source for `loadvalidateShaclRdf`.
 
 ```ts
 app.use(
-  mw.validateShacl(Ratt.Source.string(`
+  validateShacl(Ratt.Source.string(`
 prefix sh: <http://www.w3.org/ns/shacl#>
 <https://triplydb.com/PersonShape> a sh:NodeShape .
 <https://triplydb.com/PersonShape> sh:targetClass <https://triplydb.com/Person>.`)),
 )
 ```
 
-The following example loads an array of two in-line JSON objects as the input source for `mw.fromJson`.
+The following example loads an array of two in-line JSON objects as the input source for `fromJson`.
 
 ```ts
 app.use(
-  mw.fromJson(Ratt.Source.string(`
+  fromJson(Ratt.Source.string(`
     [
       {
         name: 'Alice'
@@ -506,7 +506,7 @@ Later in the RATT pipeline, these terms can be used to create statements:
 ```ts
 app.use(
   // “John knows Mary.”
-  mw.addQuad(ex.john, ex.knows, ex.mary),
+  triple(ex.john, ex.knows, ex.mary),
 )
 ```
 
@@ -543,9 +543,9 @@ These declared terms can be used later in the RATT pipeline to create statements
 ```ts
 app.use(
   // “John is a person.”
-  mw.addQuad(ex.john, a, foaf.Person),
+  triple(ex.john, a, foaf.Person),
   // “Mary is a person.”
-  mw.addQuad(ex.mary, a, foaf.Person),
+  triple(ex.mary, a, foaf.Person),
 )
 ```
 
@@ -589,6 +589,6 @@ The following example uses the introduced custom abbreviation for subsumption:
 ```ts
 app.use(
   // "A person is an agent."
-  mw.addQuad(foaf.Person, is_a, foaf.Agent)
+  triple(foaf.Person, is_a, foaf.Agent)
 )
 ```
