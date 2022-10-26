@@ -223,9 +223,9 @@ export function create_prefixes(
   dataset: string,
   host: string = default_host
 ) {
-  let prefix_base = Ratt.prefixer(`https://${host}/${organization}/${dataset}/`)
-  let prefix_bnode = Ratt.prefixer(prefix_base(`.well-known/genid/`))
-  let prefix_graph = Ratt.prefixer(prefix_base(`graph/`))
+  const prefix_base = Ratt.prefixer(`https://${host}/${organization}/${dataset}/`)
+  const prefix_bnode = Ratt.prefixer(prefix_base(`.well-known/genid/`))
+  const prefix_graph = Ratt.prefixer(prefix_base(`graph/`))
   return {
     bnode: prefix_bnode,
     graph: prefix_graph,
@@ -241,7 +241,7 @@ export function create_graphs(
   organization: string = default_organization,
   host: string = default_host
 ) {
-  let prefix = create_prefixes(dataset, organization, host)
+  const prefix = create_prefixes(dataset, organization, host)
   return {
     default: prefix.graph('default'),
     metadata: prefix.graph('metadata'),
