@@ -21,13 +21,13 @@ At any moment in the RATT pipeline, the current RATT record can be printed to th
 
 ```ts
 app.use(
-  mw.debug.logRecord(),
+  logRecord(),
 )
 ```
 
 For [the Iris dataset](https://triplydb.com/Triply/iris) this emits the following output:
 
-```json
+```js
 {
   'sepal.length': '5.9',
   'sepal.width': '3',
@@ -46,9 +46,9 @@ In addition to inspecting the RATT Record once, it is common practice to place t
 
 ```ts
 app.use(
-  mw.debug.logRecord(),
-  mw.change({ … }), # Some change to the RATT record.
-  mw.debug.logRecord(),
+  logRecord(),
+  change({ … }), # Some change to the RATT record.
+  logRecord(),
 )
 ```
 
@@ -58,7 +58,7 @@ Sometimes a RATT Record can be long and you may only be interested in a small nu
 
 ```ts
 app.use(
-  mw.debug.logRecord({key: key.variety}),
+  logRecord({key: key.variety}),
 )
 ```
 ### Trace changes in a record
@@ -68,14 +68,14 @@ Sometimes you are interested to find one specific record based on a certain valu
 Below, there is an example of how this middleware can be used:
 ```sh
 app.use(
-  mw.fromJson([
+  fromJson([
     { a: 1, b: 1 }, // first dummy record
     { a: 2, b: 2 }, // second dummy record
   ]),
-    mw.change({key:'a', type:'number', change: (val) => val +100}), // change the 'a' key
-    mw.debug.traceStart(),
-    mw.change({key:'b', type:'number', change: (val) => val +100}), // change the 'b' key
-    mw.debug.traceEnd()
+    change({key:'a', type:'number', change: (val) => val +100}), // change the 'a' key
+    traceStart(),
+    change({key:'b', type:'number', change: (val) => val +100}), // change the 'b' key
+    traceEnd()
 )
 ```
 
@@ -189,13 +189,13 @@ The RATT Context is specified when the `Ratt` object is instantiated.  This ofte
 
 - The data sources that can be used in the ETL.
 - The data destinations where linked data is published to.
-- The named graph in which `addQuad` calls with no graph argument add their data.
+- The named graph in which `triple` calls with no graph argument add their data.
 - The prefix IRI for blank node-replacing well-known IRIs.
 
 
 ### Configuring the standard graph
 
-When we call `mw.addQuad` with 3 arguments, a triple is created and placed in a named graph that is chosen by RATT.  You can change the name of this default graph by specifying it in the RATT context.  Notice that graph names must be IRIs:
+When we call `triple` with 3 arguments, a triple is created and placed in a named graph that is chosen by RATT.  You can change the name of this default graph by specifying it in the RATT context.  Notice that graph names must be IRIs:
 
 ```ts
 const app = new Ratt({
@@ -217,7 +217,7 @@ const app = new Ratt({
 
 Instead of setting the graph name and the prefixes for every ETL, you can use functions for their generation:
 
-```sh
+```typescript
 export function create_prefixes(
   organization: string = default_organization,
   dataset: string,
@@ -226,7 +226,6 @@ export function create_prefixes(
   let prefix_base = Ratt.prefixer(`https://${host}/${organization}/${dataset}/`)
   let prefix_bnode = Ratt.prefixer(prefix_base(`.well-known/genid/`))
   let prefix_graph = Ratt.prefixer(prefix_base(`graph/`))
-  )
   return {
     bnode: prefix_bnode,
     graph: prefix_graph,
@@ -236,7 +235,7 @@ export function create_prefixes(
 For example, if `host==='triplydb.com'`, `organization==='exampleOrganization'` and `dataset='pokemon'`, then the prefix for the blank nodes will be `https://triplydb.com/exampleOrganization/pokemon/.well-known/genid/`.
 
 Then, similarly, you can use another function for the graph names:
-```sh
+```ts
 export function create_graphs(
   dataset: string,
   organization: string = default_organization,
@@ -263,7 +262,7 @@ const dataset = 'example'
 
 const prefix = {
   graph: Ratt.prefixer('https://triplydb.com/'+account+'/'+dataset+'/graph'),
-}https://issues.triply.cc/issues/5603
+}
 const graph = {
   model: prefix.graph('model'),
 }
@@ -438,17 +437,17 @@ const app = new Ratt({
   },
 })
 app.use(
-  mw.fromCsv([
+  fromCsv([
     app.sources.instances,
     app.sources.model
   ]),
-  mw.toRdf(app.destinations.remote),
+  toRdf(app.destinations.remote),
 )
 ```
 
 If you want to run the pipeline in production mode, add the following [environment variable](environment-variable):
 
-```sh
+```ts
 export TARGET=Production
 ```
 
@@ -577,7 +576,7 @@ The core IRI terms that are part of the RDF 1.1 standard.
 
 ```ts
 const rdf = {
-  'List': prefix.rdf('List'),
+  list: prefix.rdf('List'),
   first: prefix.rdf('first'),
   langString: prefix.rdf('langString'),
   nil: prefix.rdf('nil'),
