@@ -75,7 +75,6 @@ app.use(
   // Now that all the data is created, validate it using a model.
   validateShacl(app.sources.model, {terminateOn: 'Never'}
 )
-)
 ```
 
 ### Log conditions
@@ -87,7 +86,6 @@ app.use(
    …
    // Now that all the data is created, validate it using a model.
    validateShacl(app.sources.model, {log: "Never"}
- )
  )
  ```
 

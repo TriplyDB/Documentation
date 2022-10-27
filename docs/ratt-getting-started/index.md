@@ -79,7 +79,8 @@ In this section we set up a RATT pipeline that creates one single triple.  This 
    ```ts
    // Load the RATT library and the RATT Middlewared (mw).
    import {Ratt} from '@triplydb/ratt'
-   import {toRdf} from '@triplydb/ratt/lib/middlewares'
+   import {toRdf, triple} from '@triplydb/ratt/lib/middlewares'
+
 
    // The main function that will run the pipeline.
    export default async function (): Promise<Ratt> {
@@ -128,6 +129,8 @@ In the [previous section](#setting-up-a-minimal-pipeline) we set up a minimal pi
 2. Once the API Token is configured, open file `main.ts` in a text editor and add the following content:
 
    ```ts
+   import {Ratt} from '@triplydb/ratt'
+   import {toRdf, triple} from '@triplydb/ratt/lib/middlewares'
 
    import {Ratt} from '@triplydb/ratt'
    import {toRdf} from '@triplydb/ratt/lib/middlewares'
@@ -176,7 +179,8 @@ We then perform the following steps to build a pipelines that processes this dat
 
    ```ts
    import {Ratt} from '@triplydb/ratt'
-   import {toRdf, fromCsv} from '@triplydb/ratt/lib/middlewares'
+   import {fromCsv, triple, iri, rdfs, literal, toRdf} from '@triplydb/ratt/lib/middlewares'
+
    export default async function (): Promise<Ratt> {
      const app = new Ratt({
        // Declare an IRI prefix.
@@ -246,7 +250,8 @@ As mentioned above, when ETL is running we go through data record by record. Tog
 toRdf reads from the store. 
 
 ```ts
-app.use(toRdf(app.destionations.out));
+app.use(toRdf(Ratt.Destination.file('example.ttl')));
+
 ```
 
 #### What is the context(ctx)?

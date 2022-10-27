@@ -481,7 +481,9 @@ app.use(
 
 After source data is connected and transformed, the RATT Record is ready to be transformed to linked data.  Linked data statements are assertions or factual statements that consist of 3 terms (triple) or 4 terms (quadruples).
 
+
 Statements are created with the `triple` function.  Calls to this function are part of the pipeline, and must appear inside the scope of `app.use`.
+
 
 
 ### Create static statements {#static-assertions}
@@ -541,9 +543,9 @@ With these prefix and term constants in place, a dynamic statement is created as
 ```ts
 app.use(
   triple(
-    iri(prefix: prefix.id, 'Country'),
+    iri('Country', {prefix: prefix.id}),
     def.inhabitants,
-    literal('Inhabitants', xsd.positiveInteger)),
+    literal('Inhabitants', {datatype: xsd.positiveInteger})),
 )
 ```
 
@@ -553,6 +555,17 @@ Notice the following details:
 - The IRI prefix for the subject term is specified with constant `prefix.id`.
 - `literal` is used to create a dynamic literal term.
 - For literals a datatype IRI can be specified.  If no datatype IRI is specified then the default IRI is `xsd.string`.
+
+`iri.hashed`can be used instead of `iri` when the ETL has a high number of blank nodes and they need more than one constant as input to hash a unique IRI.
+
+```ts
+app.use(
+  triple(
+    iri.hashed(prefix.id, input_string),
+    def.inhabitants,
+    mw.toLiteral('Inhabitants', {datatype: xsd.positiveInteger})),
+)
+```
 
 
 Notice the following details:
@@ -569,7 +582,8 @@ Be aware that there are different approaches for *static* and *dynamic* IRIs:
 ```ts
 [1a] prefix.id('person')
 [2a] iri(prefix.id, 'person'),
-[3a] iri.hashed(['person','age'], prefix.id),
+[3a] iri.hashed(prefix.id, ['person','age']),
+
 ```
 
 Notation [1a] creates the *static* IRI [1b].  This IRI does not depend on the currently processed RATT record.
@@ -610,14 +624,15 @@ The limitation is shown in the example below. In the example we want to round th
 
 ```ts
 app.use(
-  change(
+  change({
     key: 'Inhabitants',
     type: 'number',
     change: (value) => value/1000
-  ),
+  }),
   triple(
     iri(prefix.id, 'Country'),
-    def.inhabitants,
+    def.name,
+
     literal('Inhabitants', xsd.positiveInteger)
   ),
 )
@@ -681,7 +696,6 @@ app.use(
       iri(prefix.id, 'ID'),
       dct.created,
       literal('CREATED', xsd.gYear))),
-
 ```
 
 Notice that the conditional function inside the `when` function takes the current RATT context as its single argument and returns a Boolean.
@@ -748,7 +762,7 @@ If we want to extract a string value from the source data, we can write a custom
 If `when` receives a string, it checks whether it is empty or not. But in case of a custom method specific instructions are required. For example,
 
 ```ts
-(ctx) => ctx.isNotEmpty('foo') && ctx.getString('foo') === 'foo’
+(ctx) => ctx.isNotEmpty('foo') && ctx.getString('foo') === 'foo'
 ```
 
 Notice details:
@@ -841,13 +855,14 @@ Mishandling dots in RATT keys can be quite troubling and difficult to detect sin
 
 Example: 
 
-```  when('narrower_term_lref', [
-      triple(iri('_entity'), la.has_member, iri(prefix.collectors, 'narrower_term_lref[0].$text')),
-    ]),
+```ts
+  when('narrower_term_lref', [
+    triple(iri('_entity'), la.has_member, iri(prefix.collectors, 'narrower_term_lref[0].$text')),
+  ]),
 
-    when('["soort_collectie.lref"]', [
-      triple(iri('_entity'), crm.P2_has_type, iri(prefix.thesaurus, '["soort_collectie.lref"][0].$text')),
-    ]),
+  when('["soort_collectie.lref"]', [
+    triple(iri('_entity'), crm.P2_has_type, iri(prefix.thesaurus, '["soort_collectie.lref"][0].$text')),
+  ]), 
 ```
 
 Here we can notice that in the first code snippet the notation does not seem to have extra requirements since it is referring to a key that does not use a special character such as dot. The second one, however, has a condition name that contains a dot. Therefore, when conditioning the statement we use the ‘[“a.b”]’ syntax. In this case we can observe using a RATT key as an array key. If we need an element from this array, the key should be addressed with the name notation – ‘[“a.b”].$text’. 
@@ -855,7 +870,7 @@ Here we can notice that in the first code snippet the notation does not seem to 
 Overall, ‘a.b’ notation allow going into nested object and accessing values within the nest while ‘[“a.b”]’ takes value a.b key as a name, therefore does not go into the nest.
  In the following example the differences can be seen with the corresponding result:
 
-```
+```json
 {
   "a": {
     "$text": "1"
@@ -903,7 +918,8 @@ Overall, ‘a.b’ notation allow going into nested object and accessing values 
 Using the example at the top: 
 
 
-```when('["soort_collectie.lref"]', [
+```ts
+when('["soort_collectie.lref"]', [
   triple(iri('_entity'), crm.P2_has_type, iri(prefix.thesaurus, '["soort_collectie.lref"][0].$text')),
 ]),
 ```
@@ -958,7 +974,7 @@ app.use(
 
 This results in the following assertion:
 
-```trig
+```r
 country:nl rdfs:label 'The Netherlands'@en.
 ```
 
@@ -967,15 +983,12 @@ We can also assert the name of the *second* country.  Notice that only the index
 ```ts
 app.use(
   triple(
-    iri(prefix.country, 'data.countries[1].id'),
-    rdfs.label,
-    literal('data.countries[1].name', 'en')),
-)
+   iri(prefix.country, 'data.countries[1].id'),
 ```
 
 This results in the following assertion:
 
-```trig
+```r
 country:de rdfs:label 'Germany'@en.
 ```
 
@@ -1002,7 +1015,7 @@ Notice the following details:
 
 The above code snippet makes one assertion for every element in the `"countries"` list:
 
-```trig
+```r
 country:nl rdfs:label 'The Netherlands'@en.
 country:de rdfs:label 'Germany'@en.
 ```
@@ -1057,7 +1070,7 @@ app.use(
 
 This results in the following assertions:
 
-```trig
+```r
 country:0 rdfs:label 'The Netherlands'@en.
 country:1 rdfs:label 'Germany'@en.
 country:2 rdfs:label 'Italy'@en.
@@ -1080,14 +1093,13 @@ app.use(
 )
 ```
 
-
-The `$parent` key can be observed when `debug.logRecord` is used to print the iterated-over elements to the terminal:
+The `$parent` key can be observed when logRecord` is used to print the iterated-over elements to the terminal:
 
 
 ```ts
 app.use(
   forEach('data.countries',
-    debug.logRecord())
+    logRecord())
 )
 ```
 
@@ -1148,7 +1160,7 @@ The `$root` key is explained in [the next section](#root-key).
 
 Sometimes it may be necessary to access a part of the original RATT record that is outside of the scope of the `forEach` call.
 
-Every RATT record inside a `forEach` call contains the `"$root"` key.  The value of the root key provides a link to the full RATT record.  Because the `$root` key is part of the linked-to RATT record, it is not possible to print the value of the root key.  (This would result in infinite output.)  For this reason, the value of the `$root` key is printed as the special value `"__circular__"`.
+Every RATT record inside a ` forEach` call contains the `"$root"` key.  The value of the root key provides a link to the full RATT record.  Because the `$root` key is part of the linked-to RATT record, it is not possible to print the value of the root key.  (This would result in infinite output.)  For this reason, the value of the `$root` key is printed as the special value `"__circular__"`.
 
 For the above examples, the parent record and root record are the same, but this is not always the case.  Specifically, the parent record and root record are different when `forEach` calls are nested.
 
@@ -1191,7 +1203,7 @@ The following nested `forEach` call shows the difference between the `"$parent"`
 app.use(
   forEach('data.countries',
     forEach('labels',
-      debug.logRecord())),
+      logRecord())),
 )
 ```
 
@@ -1261,7 +1273,7 @@ Function `forEach` does not work with lists containing primitive types, because 
 
 This makes the following assertion:
 
-```trig
+```r
 country:nl rdfs:label 'The Netherlands'@en,
                       'Holland'@en.
 ```

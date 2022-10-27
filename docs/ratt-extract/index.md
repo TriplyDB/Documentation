@@ -46,7 +46,7 @@ RATT has a dedicated connector for Excel files.  After such files [are uploaded 
 const account = 'my-account'
 const dataset = 'my-dataset'
 app.use(
-  fromXlsx(Ratt.Source.triplyDb.asset(account, dataset, {name: 'my-table.xlsx'}))
+  fromXlsx(Ratt.Source.TriplyDb.asset(account, dataset, {name: 'my-table.xlsx'}))
 )
 ```
 
@@ -61,7 +61,8 @@ RATT has dedicated connectors for CSV and TSV files. In the example below, after
 const account = 'my-account'
 const dataset = 'my-dataset'
 app.use(
-  fromCsv(Ratt.Source.triplyDb.asset(account, dataset, {name: 'my-table.csv.gz'}))
+  fromCsv(Ratt.Source.TriplyDb.asset(account, dataset, {name: 'my-table.csv.gz'}))
+
 )
 ```
 
@@ -146,7 +147,7 @@ The following example uses a JSON source that is stored as a [TriplyDB asset](ht
 const account = 'my-account'
 const dataset = 'my-dataset'
 app.use(
-  fromJson(Ratt.Source.triplyDb.asset(account, dataset, {name: 'my-data.json'})),
+  fromJson(Ratt.Source.TriplyDb.asset(account, dataset, {name: 'my-data.json'}),),
 )
 ```
 
@@ -238,6 +239,7 @@ In [the previous section](#api-variable-static) the value `'Holland'` for the AP
 In such cases we can use the following custom middleware to run the SPARQL query:
 
 ```ts
+const account = 'my-account'
 app.use(
   async (context, next) => {
     const api_variables = {
@@ -277,7 +279,7 @@ const myQuery = Ratt.Source.url(
         'content-type': 'application/query-string',
       },
       body: 'select * { ?s ?p ?o. } limit 1',
-      method: post,
+      method: 'POST',
     },
   }
 )
@@ -302,7 +304,7 @@ RATT has a dedicated connector for XML files.  After such files [are uploaded as
 const account = 'my-account'
 const dataset = 'my-dataset'
 app.use(
- fromXml(Ratt.Source.triplyDb.asset(account, dataset, {name: 'my-data.xml'}),{ selectors: ['first-element'] })
+ fromXml(Ratt.Source.TriplyDb.asset(account, dataset, {name: 'my-data.xml'}),{ selectors: ['first-element'] })
 )
 ```
 
