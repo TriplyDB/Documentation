@@ -3,15 +3,13 @@ title: "API Token"
 path: "/docs/api-token"
 ---
 
-Applications (see [TriplyDB.js](triplydb-js)) and pipelines (see [RATT](ratt)) must often have special access rights to interact with TriplyDB instances.  For example, some datasets may not be public and are only accessible through an API Token.  Pipelines must often add new data to an existing dataset in TriplyDB, which requires write access.
+Applications (see [TriplyDB.js](triplydb-js)) and pipelines (see [RATT](ratt)) often require access rights to interact with TriplyDB instances.  Specifically, reading non-public data and writing any (public or non-public) data requires setting an API token.  The token ensures that only users that are specifically authorized for certain datasets are able to access and/or modify those datasets.
 
-Reading non-public data and writing any kind of data requires a TriplyDB API Token.  The token ensures that only accounts that are specifically authorized to access certains datasets are able to access and/or modify those datasets.
+The following steps must be performed in order to create an API token:
 
-The following steps must be performed in order to configure an API Token:
+1. Log into the web GUI of the TriplyDB server where you have an account and for which you want to obtain special access rights in your application or pipeline.
 
-1. Log into the TriplyDB instance where you want to publish the results of your pipeline to.
-
-   You may either have an account at a dedicated TriplyDB instance within your organization, or you may create a free account at [TriplyDB.com](https://triplydb.com).
+   Many organizations use their own TriplyDB server. If your organization does not yet have a TriplyDB server, you can also create a free account over at [TriplyDB.com](https://triplydb.com).
 
 2. Go to your user settings page.  This page is reached by clicking on the user menu in the top-right corner and choosing “User settings”.
 
@@ -21,28 +19,18 @@ The following steps must be performed in order to configure an API Token:
 
 5. Enter a name that describes the purpose of the token.
 
-   The name of the application or pipeline that uses the API Token is often a good name for the token.
+   This can be the name of the application or pipeline for which the API token will be used.
 
-6. Choose the permission level that is sufficient for what you want to do with the token:
+   It is good practice to create different API tokens for different applications.
 
-   - Management access: if your application must be able to create one or more organizations within the TriplyDB instance.
+6. Choose the permission level that is sufficient for what you want to do with the API token. Notice that “Management access” is often not needed, and “Write access” suffices for most applications and pipelines.
 
-   - Write access: if your application must change (meta)data in the TriplyDB instance.
+   - Management access: if your application must create or change organization accounts in the TriplyDB server.
 
-   - Read access: if your application must access private data in the TriplyDB instance.  (For access to public data you do not need an API token.)
+   - Write access: if your application must write (meta)data in the TriplyDB server.
+
+   - Read access: if your application must read public and/or private data from the TriplyDB server.
 
 7. Click the “Create” button to create your token.  The token (a long sequence of characters) will now appear in a dialog.
 
-8. Copy the token.  For security reasons, the token will only be shown to you this one time.
-
-9. [Create an environment variable](environment-variable) whose name is `TRIPLYDB_TOKEN` and whose value is the token copied in step 8.
-
-You can test whether the environment variable has been configured correctly by running the following command in a terminal on Linux:
-```sh
-echo $TRIPLYDB_TOKEN
-```
-
-or on Windows with PowerShell:
-```powershell
-$env:TRIPLYDB_TOKEN
-```
+   For security reasons, the token will only be shown once.

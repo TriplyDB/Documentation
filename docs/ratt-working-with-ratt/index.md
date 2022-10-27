@@ -173,7 +173,7 @@ yarn ratt ./lib/main.js --verbose
 <!-- <https://issues.triply.cc/issues/5603> -->
 Verbose mode may perform a reset of your current terminal session.  If this happens you lose visible access to the commands that were run prior to the last RATT invocation.
 
-This destructive behavior of verbose mode can be disabled by adding the following [environment variable](environment-variable):
+This destructive behavior of verbose mode can be disabled by setting the following environment variable:
 
 ```sh
 export CI=true
@@ -198,9 +198,7 @@ The RATT Context is specified when the `Ratt` object is instantiated.  This ofte
 When we call `triple` with 3 arguments, a triple is created and placed in a named graph that is chosen by RATT.  You can change the name of this default graph by specifying it in the RATT context.  Notice that graph names must be IRIs:
 
 ```ts
-const app = new Ratt({
-  defaultGraph: 'https://triplydb.com/Triply/example/graph/default',
-})
+const app = new Ratt()
 ```
 
 ### Configuring the well-known IRI prefix
@@ -293,8 +291,6 @@ The following options can be specified to configure the destination behavior:
 <dl>
   <dt><code>overwrite</code></dt>
   <dd>Whether the graphs that are being uploaded by RATT should replace any existing graphs with the same name in the dataset. Graphs appearing in the dataset with a different name than those uploaded by RATT are kept. The default value is <code>false</code>.</dd>
-  <dt><code>defaultGraph</code></dt>
-  <dd>The standard graph name that will be used for storing the triples that originate from the RATT pipeline.</dd>
   <dt><code>synchronizeServices</code></dt>
   <dd>Whether active services should be automatically synchronized once new data is uploaded.  The default value is <code>false</code>.</dd>
   <dt><code>triplyDb</code></dt>
@@ -381,9 +377,7 @@ Sometimes it is useful to use classes and methods in TriplyDB.js directly.  This
 
 ```ts
 // Create the RATT context.
-const app = new Ratt({
-  defaultGraph: ''
-})
+const app = new Ratt()
 
 // Use the RATT context to access the TriplyDB.js connection.
 console.log((await app.triplyDb.getInfo()).name)
@@ -445,7 +439,7 @@ app.use(
 )
 ```
 
-If you want to run the pipeline in production mode, add the following [environment variable](environment-variable):
+If you want to run the pipeline in production mode, set the following environment variable:
 
 ```ts
 export TARGET=Production

@@ -62,6 +62,7 @@ const account = 'my-account'
 const dataset = 'my-dataset'
 app.use(
   fromCsv(Ratt.Source.TriplyDb.asset(account, dataset, {name: 'my-table.csv.gz'}))
+
 )
 ```
 
@@ -69,7 +70,7 @@ This connector also handles CSV variants that use a cell separator that is not c
 For TSV files, you can use `fromTSV()` accordingly.
 
 
-### Collect records from a specified OAI endpoint (<code>mw.fromOai</code>) {#mw.fromOai}
+### Collect records from a specified OAI endpoint (<code>fromOai</code>) {#fromOai}
 
 `fromOai` allows a RATT pipeline to be run over the self-contained RATT records that come from the specified OAI endpoint.The handling of resumption tokens and iteration over the array members per batch is abstracted away by this new middleware, simplifying the use of OAI endpoints for the RATT user. The middleware supports xml parsing and the content is automatically determined by the returned Content-Type, this is the default behaviour. The received content can be cached and if cached, each record contains metadata about whether it came from a cached result, or whether it's a 'new' record.
 
@@ -250,7 +251,7 @@ app.use(
       context.store.addQuad(statement)
     }
     return next()
-  });
+  }),
 ```
 
 In the above example, different countries are specified by data values that are read dynamically from the `COUNTRY` key.  This key can be a column in a table, or an element in XML, or some other dynamic data location, depending on the RATT source that is used.
@@ -549,7 +550,7 @@ app.use(
 )
 ```
 
-Because the `foaf` and `ex` objects have been declared at the start of the pipeline, the rest of the pipeline can use autocompletion for IRIs terms.  This works by typing the namespace alias and a dot (for example: `foaf.`) and pressing `Ctrl + SPC` (control and space at the same time).  In [properly configured text editors](editor) this will bring up a list of autocomplete results.
+Because the `foaf` and `ex` objects have been declared at the start of the pipeline, the rest of the pipeline can use autocompletion for IRIs terms.  This works by typing the namespace alias and a dot (for example: `foaf.`) and pressing `Ctrl + SPC` (control and space at the same time).  In modern code editors this will bring up a list of autocomplete results.
 
 Notice that the RATT notation for statements is purposefully close to the widely used Turtle/TriG syntax.
 

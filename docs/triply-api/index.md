@@ -545,7 +545,7 @@ Result:
 <https://triplydb.com/academy/pokemon/vocab/>	rdf:type	owl:Ontology .
 ```
 
-### Elastic
+### Elasticsearch
 
 The text search API returns a list of linked data entities based on a
 supplied text string. The text string is matched against the text in
@@ -553,11 +553,11 @@ literals and IRIs that appear in the linked data description of the
 returned entities.
 
 The text search API is only available for a dataset after an
-ElasticSearch service has been created for that dataset.
+Elasticsearch service has been created for that dataset.
 
 Two types of searches can be performed: a simple search, and a custom
 search. Simple searches require one search term for a fuzzy match. Custom
-searches accept a JSON object conforming to [the ElasticSearch query DSL](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl.html).
+searches accept a JSON object conforming to [the Elasticsearch query DSL](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl.html).
 
 #### URI path
 

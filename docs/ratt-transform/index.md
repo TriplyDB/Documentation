@@ -121,7 +121,7 @@ For example, assume the following input table using strings to encode the number
 We can cast values with the `'Inhabitants'` key to a number in the following way:
 
 ```ts
-mw.change({
+change({
   key: 'Inhabitants',
   type: 'unknown',
   change: value => +(value as number)}),
@@ -481,7 +481,9 @@ app.use(
 
 After source data is connected and transformed, the RATT Record is ready to be transformed to linked data.  Linked data statements are assertions or factual statements that consist of 3 terms (triple) or 4 terms (quadruples).
 
-Statements are created with the `addQuad` function.  Calls to this function are part of the pipeline, and must appear inside the scope of `app.use`.
+
+Statements are created with the `triple` function.  Calls to this function are part of the pipeline, and must appear inside the scope of `app.use`.
+
 
 
 ### Create static statements {#static-assertions}
@@ -565,6 +567,7 @@ app.use(
 )
 ```
 
+
 Notice the following details:
 - `input_string` can pass more than one constant to hash a unique IRI term.
 
@@ -580,6 +583,7 @@ Be aware that there are different approaches for *static* and *dynamic* IRIs:
 [1a] prefix.id('person')
 [2a] iri(prefix.id, 'person'),
 [3a] iri.hashed(prefix.id, ['person','age']),
+
 ```
 
 Notation [1a] creates the *static* IRI [1b].  This IRI does not depend on the currently processed RATT record.
@@ -628,6 +632,7 @@ app.use(
   triple(
     iri(prefix.id, 'Country'),
     def.name,
+
     literal('Inhabitants', xsd.positiveInteger)
   ),
 )
@@ -979,9 +984,6 @@ We can also assert the name of the *second* country.  Notice that only the index
 app.use(
   triple(
    iri(prefix.country, 'data.countries[1].id'),
-    rdfs.label,
-    literal('data.countries[1].name', 'en')),
-)
 ```
 
 This results in the following assertion:
@@ -994,7 +996,7 @@ country:de rdfs:label 'Germany'@en.
 
 In the previous section, we saw that we were able to assert the name of the first country and the name of the second country.  But what do we do if we want to assert the name for every country in the world?  And what do we do if some countries have a name in 2 languages, but other countries have a name in 1 or 3 languages?  What we need is a simple way to express that we want RATT to make an assertion for every element in a list.
 
-RATT uses the `mw.forEach` function for this purpose.  The following code snippet asserts the name for *each* country in the example data:
+RATT uses the `forEach` function for this purpose.  The following code snippet asserts the name for *each* country in the example data:
 
 ```ts
 app.use(
@@ -1090,7 +1092,6 @@ app.use(
   )
 )
 ```
-
 
 The `$parent` key can be observed when logRecord` is used to print the iterated-over elements to the terminal:
 

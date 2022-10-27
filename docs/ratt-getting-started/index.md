@@ -35,9 +35,8 @@ This section gets you up and running with RATT by setting up increasingly more c
 ### Setting up a minimal pipeline
 
 In this section we set up a RATT pipeline that creates one single triple.  This pipeline is purposefully minimal, which allows us to focus on the installation and configuration steps.
-Note that the steps below are meant to be followed on Linux environment. If you use Windows, you have to install Nodejs and Yarn  by following the official documentation steps. After these steps, you shouldn't have any issues; RATT is running under every operating system.
 
-1. Install [Node.js](https://nodejs.org) and [Yarn](https://yarnpkg.com) on your system.  See [common steps to install Node.js and Yarn](common-steps-to-install) for more information.
+1. Install [Node.js](https://nodejs.org) on your system.  See [common steps to install Node.js](common-steps-to-install) for more information.
 
 2. Create a directory for your pipeline:
 
@@ -57,8 +56,8 @@ Note that the steps below are meant to be followed on Linux environment. If you 
 4. Create a `.npmrc` file in the newly created directory, that contains the following lines. Make sure to replace `<token>` with the token you received from Triply.
     ```sh
     @triplydb:registry=https://git.triply.cc/api/v4/packages/npm/
-    //git.triply.cc/api/v4/packages/npm/:_authToken=glpat-S_WoMjTXHiqLPxiwCits
-    //git.triply.cc/api/v4/projects/:_authToken=glpat-S_WoMjTXHiqLPxiwCits
+    //git.triply.cc/api/v4/packages/npm/:_authToken=<token>
+    //git.triply.cc/api/v4/projects/:_authToken=<token>
     ```
 
 5. Add TypeScript and RATT as dependencies to your pipeline:
@@ -82,8 +81,10 @@ Note that the steps below are meant to be followed on Linux environment. If you 
    import {Ratt} from '@triplydb/ratt'
    import {toRdf, triple} from '@triplydb/ratt/lib/middlewares'
 
+
    // The main function that will run the pipeline.
    export default async function (): Promise<Ratt> {
+
      const app = new Ratt()
      // The steps that are performed in the pipeline are specified
      // in 'app.use'.  These steps are performed in sequence.
@@ -95,7 +96,7 @@ Note that the steps below are meant to be followed on Linux environment. If you 
          app.prefix.rdf('type'),
          app.prefix.rdfs('Class')),
        // Writes the linked data statements to a local file.
-       mw.toRdf(Ratt.Destination.file('example.ttl')))
+       toRdf(Ratt.Destination.file('example.ttl')))
      return app
    }
    ```
@@ -131,6 +132,8 @@ In the [previous section](#setting-up-a-minimal-pipeline) we set up a minimal pi
    import {Ratt} from '@triplydb/ratt'
    import {toRdf, triple} from '@triplydb/ratt/lib/middlewares'
 
+   import {Ratt} from '@triplydb/ratt'
+   import {toRdf} from '@triplydb/ratt/lib/middlewares'
    export default async function (): Promise<Ratt> {
      const app = new Ratt()
      app.use(
@@ -231,7 +234,7 @@ person:00003 rdfs:label 'Carol'.
 
 The most common occurrence in ETL are the middlewares. Middlewares are essentially reusable pieces of code that execute a certain long and/or complex piece of functionality. An middleware is a piece of code that transforms a record and can be invoked with app.use().
 
-The middlewares can be recognized in this document by the prefix `mw.` that is before each middleware function. For example:
+Example of middleware function:
 
 ```ts
 loadRdf(Ratt.Source.TriplyDb.query('my-account', 'my-query')),
@@ -248,6 +251,7 @@ toRdf reads from the store.
 
 ```ts
 app.use(toRdf(Ratt.Destination.file('example.ttl')));
+
 ```
 
 #### What is the context(ctx)?
