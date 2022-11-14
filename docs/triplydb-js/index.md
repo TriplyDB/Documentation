@@ -2849,15 +2849,6 @@ const service = await dataset.addService('my-service')
 console.log(await service.getInfo())
 ```
 
-- Another way to get information about existing services:
-
-```ts
-const account = await triply.getAccount()
-const dataset = await account.getDataset('my-dataset')
-console.log(await dataset.getServices())
-```
-
-
 ## Service.isUpToDate()
 
 Returns whether this service is synchronized with the dataset contents.
