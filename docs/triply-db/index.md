@@ -357,6 +357,17 @@ is also possible to zoom out:
 - A class only appears in the class hierarchy tab if it has instances (connected to the class via `rdf:type`), or if at least one of its subclasses appears in the class hierarchy tab.
 - The class hierarchy cannot be shown if it contains a cycle, meaning that some class is (indirectly) its own subclass.
 
+# Exporting Data
+
+This section explains how a user of TriplyDB can export linked data stored in the triple store.
+
+## Export Datasets
+
+The data stored on TriplyDB is stored in two different containers: datasets and graphs. Each triple contained in a dataset is part of exactly one graph. A graph is always a part of a dataset and a dataset can have multiple graphs. The following screenshot shows the dataset "Translations" that contains three graphs: "objects", "pkl01" and "indo_translation". The graph "objects" contains 1.164 triples, the graph "pkl01" 1.016 triples and the graph "indo_translation" 966 triples. By summing up the amount of triples contained in the three graphs the dataset "Translations" contains 3.146 triples in total.
+
+![Export a dataset](export-graphs.png)
+
+To export the dataset users can click on the downwards facing arrow. In our example the dataset is automatically downloaded as the file translations.trig and compressed with .gz. The name of the file is the name of the dataset. The used serialization format is ".trig" because that is the standard format to store triples that are appended to graphs.
 
 # Saved Queries
 
