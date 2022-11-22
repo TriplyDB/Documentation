@@ -144,13 +144,16 @@ curl -G \
 
 ### Exporting data
 
-
-To export the linked data of a dataset, use the following path:
+To export the linked data of a **dataset**, use the following path:
 
 ```none
 https://api.INSTANCE/datasets/ACCOUNT/DATATSET/download
 ```
 
+To export the linked data of a **graph**, use the following path:
+```none
+https://api.INSTANCE/datasets/ACCOUNT/DATATSET/download.trig.gz/?graph=GRAPH
+```
 
 #### Query parameters
 
@@ -160,13 +163,19 @@ By default, an export includes all linked data graphs. Use a query argument to s
 | ----------- | ----------------------------- | ---------------------------------------------------------------------------------- |
 | `graph`   | A URL-encoded IRI.            | Only download the export of the given graph IRI.           |
 
-#### Example request
+#### Example requests
 
+To export a dataset:
 ```bash
 curl 'https://api.triplydb.com/datasets/academy/pokemon/download' \
-       -H 'Accept: application/trig' > export.trig.gz
+       -H 'Accept: application/trig' > exportDataset.trig.gz
 ```
 
+To export a graph:
+```bash
+curl 'https://triplydb.com/academy/pokemon/download.trig.gz?graph=https://triplydb.com/academy/pokemon/graphs/data' \
+       -H 'Accept: application/trig' > exportGraph.trig.gz
+```
 ## Services
 
 Some API requests require the availability of a specific service over
