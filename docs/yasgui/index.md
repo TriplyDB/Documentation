@@ -152,6 +152,11 @@ select * {
 
 ![The result is interpreted as HTML](./html-rendered.png)
 
+In order to guarantee safety, TriplyDB sanitizes HTML literals before
+rendering them.  This means that tags like `<embed>`, `<iframe>` and
+`<script>` are sanitized away, as are attributes such as `onerror` and
+`onload`.
+
 ## Visualizations {#visualizations}
 
 ### Table {#table}
