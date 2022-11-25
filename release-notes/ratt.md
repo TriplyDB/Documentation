@@ -2,6 +2,10 @@
 title: "RATT"
 path: "/release-notes/ratt"
 ---
+## 4.2.6 (2022-11-25)
+
+The `fromOai` middleware does not postprocess tags anymore, trying to interpret strings as numbers.
+Note: this change will invalidate your `fromOai`
 
 ## 4.2.2 (2022-09-29)
 
