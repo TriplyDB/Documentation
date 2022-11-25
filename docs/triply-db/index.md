@@ -310,6 +310,17 @@ and then choose where the SPARQL query should be moved to.
 
 After the destination is set you would be redirected to the SPARQL query new page. The SPARQL query could be transferred from an account to an organization and vice versa.
 
+### Copy a SPARQL query
+
+The SPARQL queries could be copied to another account or an organization. To do that, go to three dots in the upper right corner of the query and choose copy option.
+
+![Copy query](copyQuery.png)
+
+Then, choose where the SPARQL query should be moved to.
+
+![Select organization](selectOrganization.png)
+
+After the destination is set you would be redirected to the SPARQL query new page. The SPARQL query could be copied from an account to an organization and vice versa.
 ## ElasticSearch
 
 When a dataset has a running ElasticSearch service, textual searches
