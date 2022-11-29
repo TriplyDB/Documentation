@@ -429,6 +429,16 @@ number like so
 ```url
 https://triplydb.com/DBpedia-association/-/queries/timeline-cars
 ```
+### Downloading a query result
+
+The result of a query can be downloaded via the TriplyDB interface. Open the query, that should be downloaded, in TriplyDB, e.g. https://triplydb.com/DBpedia-association/-/queries/timeline-cars/8. Choose the option `Response` and click on the download icon or scroll down and click on `Download result`. 
+
+![Download the query result via the download icon.](queryResult.png)
+![Download the query result via the button `Download result`.](queryResult2.png)
+
+The downloaded file is automatically stored in the `Downloads`-folder and has the name of the query. In our example, the file is called `timeline-cars.json`. The downloaded file contains the query result as a json-object. TriplyDB also displays the json-object when selecting the option `Response`.
+
+To downloaded the query result in CSV-format, select the option `Table` and click on the download icon. The downloaded file is named after the query with the suffix `.csv`.
 
 ### Using a saved query as REST-API (Advanced)
 
