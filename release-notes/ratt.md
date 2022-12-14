@@ -2,6 +2,11 @@
 title: "RATT"
 path: "/release-notes/ratt"
 ---
+
+## 4.3.0 (2022-12-14)
+
+The `sparqlConstruct` and `validateShacl` middlewares can optionally choose between two different sparql engines. Both middleware's options object now accept a `sparqlEngine` property. If no option is given the previous default engine is used.
+
 ## 4.2.6 (2022-11-25)
 
 The `fromOai` middleware does not postprocess tags anymore, trying to interpret strings as numbers.
