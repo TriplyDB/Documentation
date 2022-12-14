@@ -7,7 +7,7 @@ path: "/docs/triply-db-getting-started"
 
 TriplyDB allows you to store, publish, and use linked data Knowledge
 Graphs. TriplyDB makes it easy to upload linked data and expose it
-through various APIs (SPARQL, ElasticSearch, LDF, REST). [Read
+through various APIs (SPARQL, Elasticsearch, LDF, REST). [Read
 More](/triplydb)
 
 # Uploading Data
@@ -204,7 +204,7 @@ clicking on the “Services” icon in the left-hand sidebar.
 
 TriplyDB instances can be configured with different types of services.
 The below screenshot shows the “Create service” page for a TriplyDB
-instance that allows SPARQL, Jena SPARQL, and ElasticSearch services
+instance that allows SPARQL, Jena SPARQL, and Elasticsearch services
 to be created.
 
 ![The “Create service” page](create-service.png) Notice that three different types of services can be created.
@@ -214,8 +214,7 @@ It is possible to create multiple services for one dataset.
 ### Existing services
 
 Existing services are displayed on service widgets (see screenshot).
-From these widgets, services can be created, deleted, stopped, and
-restarted.
+From these widgets, services can be created or deleted.
 
 ![An example of a service widget](service-widget.png)
 
@@ -323,10 +322,10 @@ Then, choose where the SPARQL query should be moved to.
 After setting the destination, you will be redirected to the SPARQL query new page. The SPARQL query can be copied from an account to an organization and vice versa.
 ## ElasticSearch
 
-When a dataset has a running ElasticSearch service, textual searches
-can be performed over the entire dataset. Text search with ElasticSearch works like a
+When a dataset has a running Elasticsearch service, textual searches
+can be performed over the entire dataset. Text search with Elasticsearch works like a
 search engine and returns any node that contains your search term, or
-contains the search term in any of its properties. It is also possible to write a custom query using the ElasticSearch [Query DSL (Domain Specific Language)](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl.html).
+contains the search term in any of its properties. It is also possible to write a custom query using the Elasticsearch [Query DSL (Domain Specific Language)](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl.html).
 
 ## Insights
 
@@ -733,7 +732,7 @@ The filters on top of the table can be used to filter the following columns:
   <dd>The name of the SPARQL service, you can order the table based on the alphanumeric ordering, and filter based on the sequence of characters appearing in the filter. The name is also a URL that brings you to the location of the service. </dd>
 
   <dt>Type</dt>
-  <dd>Type of the service, this can either be 'Virtuoso', 'Jena', 'Blazegraph', 'Prolog' or 'ElasticSearch'. In the filter you can select a specific service type or 'All' service types.</dd>
+  <dd>Type of the service, this can either be 'Virtuoso', 'Jena', 'Blazegraph', 'Prolog' or 'Elasticsearch'. In the filter you can select a specific service type or 'All' service types.</dd>
 
   <dt>Status</dt>
   <dd>The status of the service, can be 'Starting', 'Running', 'Stopped', 'Updating' or 'Error'. In the filter you can select a specific service status or 'All' services statuses</dd>

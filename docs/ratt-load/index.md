@@ -3,9 +3,9 @@ title: "RATT"
 path: "/docs/ratt-load"
 ---
 
-**RATT can only be used in combination with [TriplyDB](https://triply.cc/triplydb). Contact [info@triply.cc](mailto:info@triply.cc) for more information, or to check if you are allowed to use it.**
+**RATT can only be used in combination with [TriplyDB](https://triply.cc/triplydb). Contact [info@triply.cc](mailto:info@triply.cc) to receive your token to access the RATT package.**
 
-RATT is a [TypeScript package](https://www.npmjs.com/package/@triply/ratt) that is developed by [Triply](https://triply.cc/).  RATT makes it possible to develop and maintain production-grade linked data pipelines. It is used in combination with one of the [TriplyDB subscriptions](https://triply.cc/subscriptions) to create large-scale knowledge graphs.
+RATT is a TypeScript package that is developed by [Triply](https://triply.cc/).  RATT makes it possible to develop and maintain production-grade linked data pipelines. It is used in combination with one of the [TriplyDB subscriptions](https://triply.cc/subscriptions) to create large-scale knowledge graphs.
 
 
 ## Validating RDF output
@@ -17,7 +17,7 @@ app.use(
   // Create all linked data statements.
   …
   // Now that all the data is created, validate it using a model.
-  mw.validateShacl(app.sources.model)
+  validateShacl(app.sources.model)
 )
 ```
 
@@ -41,7 +41,7 @@ app.use(
   // Create all linked data statements.
   …
   // Now that all the data is created, validate it using a model.
-  mw.validateShacl(
+  validateShacl(
     app.sources.model,
     {report: {destination: app.sources.dataset,
               graph: graph.report}}),
@@ -73,7 +73,7 @@ app.use(
   // Create all linked data statements.
   …
   // Now that all the data is created, validate it using a model.
-  mw.validateShacl(app.sources.model, {terminateOn: 'Never'}
+  validateShacl(app.sources.model, {terminateOn: 'Never'}
 )
 ```
 
@@ -85,7 +85,7 @@ app.use(
    // Create all linked data statements.
    …
    // Now that all the data is created, validate it using a model.
-   mw.validateShacl(app.sources.model, {log: "Never"}
+   validateShacl(app.sources.model, {log: "Never"}
  )
  ```
 
@@ -104,10 +104,8 @@ const prefix = {
 
 2. Then you have to include the prefixes in the RATT app:
 ```ts
-export default async function(cliContext: CliContext): Promise<Ratt> {
+export default async function(): Promise<Ratt> {
 const app = new Ratt({
-  defaultGraph: ..,
-  cliContext,
   prefixes: prefix,
   sources: {
   ..

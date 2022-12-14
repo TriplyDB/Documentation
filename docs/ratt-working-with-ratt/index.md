@@ -3,9 +3,9 @@ title: "RATT"
 path: "/docs/ratt-working-with-ratt"
 ---
 
-**RATT can only be used in combination with [TriplyDB](https://triply.cc/triplydb). Contact [info@triply.cc](mailto:info@triply.cc) for more information, or to check if you are allowed to use it.**
+**RATT can only be used in combination with [TriplyDB](https://triply.cc/triplydb). Contact [info@triply.cc](mailto:info@triply.cc) to receive your token to access the RATT package.**
 
-RATT is a [TypeScript package](https://www.npmjs.com/package/@triply/ratt) that is developed by [Triply](https://triply.cc/).  RATT makes it possible to develop and maintain production-grade linked data pipelines. It is used in combination with one of the [TriplyDB subscriptions](https://triply.cc/subscriptions) to create large-scale knowledge graphs.
+RATT is a TypeScript package that is developed by [Triply](https://triply.cc/).  RATT makes it possible to develop and maintain production-grade linked data pipelines. It is used in combination with one of the [TriplyDB subscriptions](https://triply.cc/subscriptions) to create large-scale knowledge graphs.
 
 
 ## Debugging RATT pipelines
@@ -21,13 +21,13 @@ At any moment in the RATT pipeline, the current RATT record can be printed to th
 
 ```ts
 app.use(
-  mw.debug.logRecord(),
+  logRecord(),
 )
 ```
 
 For [the Iris dataset](https://triplydb.com/Triply/iris) this emits the following output:
 
-```json
+```js
 {
   'sepal.length': '5.9',
   'sepal.width': '3',
@@ -46,9 +46,9 @@ In addition to inspecting the RATT Record once, it is common practice to place t
 
 ```ts
 app.use(
-  mw.debug.logRecord(),
-  mw.change({ … }), # Some change to the RATT record.
-  mw.debug.logRecord(),
+  logRecord(),
+  change({ … }), # Some change to the RATT record.
+  logRecord(),
 )
 ```
 
@@ -58,7 +58,7 @@ Sometimes a RATT Record can be long and you may only be interested in a small nu
 
 ```ts
 app.use(
-  mw.debug.logRecord({key: key.variety}),
+  logRecord({key: key.variety}),
 )
 ```
 ### Trace changes in a record
@@ -68,14 +68,14 @@ Sometimes you are interested to find one specific record based on a certain valu
 Below, there is an example of how this middleware can be used:
 ```sh
 app.use(
-  mw.fromJson([
+  fromJson([
     { a: 1, b: 1 }, // first dummy record
     { a: 2, b: 2 }, // second dummy record
   ]),
-    mw.change({key:'a', type:'number', change: (val) => val +100}), // change the 'a' key
-    mw.debug.traceStart(),
-    mw.change({key:'b', type:'number', change: (val) => val +100}), // change the 'b' key
-    mw.debug.traceEnd()
+    change({key:'a', type:'number', change: (val) => val +100}), // change the 'a' key
+    traceStart(),
+    change({key:'b', type:'number', change: (val) => val +100}), // change the 'b' key
+    traceEnd()
 )
 ```
 
@@ -173,7 +173,7 @@ yarn ratt ./lib/main.js --verbose
 <!-- <https://issues.triply.cc/issues/5603> -->
 Verbose mode may perform a reset of your current terminal session.  If this happens you lose visible access to the commands that were run prior to the last RATT invocation.
 
-This destructive behavior of verbose mode can be disabled by adding the following [environment variable](environment-variable):
+This destructive behavior of verbose mode can be disabled by setting the following environment variable:
 
 ```sh
 export CI=true
@@ -189,18 +189,16 @@ The RATT Context is specified when the `Ratt` object is instantiated.  This ofte
 
 - The data sources that can be used in the ETL.
 - The data destinations where linked data is published to.
-- The named graph in which `addQuad` calls with no graph argument add their data.
+- The named graph in which `triple` calls with no graph argument add their data.
 - The prefix IRI for blank node-replacing well-known IRIs.
 
 
 ### Configuring the standard graph
 
-When we call `mw.addQuad` with 3 arguments, a triple is created and placed in a named graph that is chosen by RATT.  You can change the name of this default graph by specifying it in the RATT context.  Notice that graph names must be IRIs:
+When we call `triple` with 3 arguments, a triple is created and placed in a named graph that is chosen by RATT.  You can change the name of this default graph by specifying it in the RATT context.  Notice that graph names must be IRIs:
 
 ```ts
-const app = new Ratt({
-  defaultGraph: 'https://triplydb.com/Triply/example/graph/default',
-})
+const app = new Ratt()
 ```
 
 ### Configuring the well-known IRI prefix
@@ -217,16 +215,15 @@ const app = new Ratt({
 
 Instead of setting the graph name and the prefixes for every ETL, you can use functions for their generation:
 
-```sh
+```typescript
 export function create_prefixes(
   organization: string = default_organization,
   dataset: string,
   host: string = default_host
 ) {
-  let prefix_base = Ratt.prefixer(`https://${host}/${organization}/${dataset}/`)
-  let prefix_bnode = Ratt.prefixer(prefix_base(`.well-known/genid/`))
-  let prefix_graph = Ratt.prefixer(prefix_base(`graph/`))
-  )
+  const prefix_base = Ratt.prefixer(`https://${host}/${organization}/${dataset}/`)
+  const prefix_bnode = Ratt.prefixer(prefix_base(`.well-known/genid/`))
+  const prefix_graph = Ratt.prefixer(prefix_base(`graph/`))
   return {
     bnode: prefix_bnode,
     graph: prefix_graph,
@@ -236,13 +233,13 @@ export function create_prefixes(
 For example, if `host==='triplydb.com'`, `organization==='exampleOrganization'` and `dataset='pokemon'`, then the prefix for the blank nodes will be `https://triplydb.com/exampleOrganization/pokemon/.well-known/genid/`.
 
 Then, similarly, you can use another function for the graph names:
-```sh
+```ts
 export function create_graphs(
   dataset: string,
   organization: string = default_organization,
   host: string = default_host
 ) {
-  let prefix = create_prefixes(dataset, organization, host)
+  const prefix = create_prefixes(dataset, organization, host)
   return {
     default: prefix.graph('default'),
     metadata: prefix.graph('metadata'),
@@ -263,7 +260,7 @@ const dataset = 'example'
 
 const prefix = {
   graph: Ratt.prefixer('https://triplydb.com/'+account+'/'+dataset+'/graph'),
-}https://issues.triply.cc/issues/5603
+}
 const graph = {
   model: prefix.graph('model'),
 }
@@ -294,8 +291,6 @@ The following options can be specified to configure the destination behavior:
 <dl>
   <dt><code>overwrite</code></dt>
   <dd>Whether the graphs that are being uploaded by RATT should replace any existing graphs with the same name in the dataset. Graphs appearing in the dataset with a different name than those uploaded by RATT are kept. The default value is <code>false</code>.</dd>
-  <dt><code>defaultGraph</code></dt>
-  <dd>The standard graph name that will be used for storing the triples that originate from the RATT pipeline.  This overrides the required <code>defaultGraph</code> configuration in the RATT context.  (See the section on <a href='#configuring-the-standard-graph'>configuring the standard graph</a> for more information.)</dd>
   <dt><code>synchronizeServices</code></dt>
   <dd>Whether active services should be automatically synchronized once new data is uploaded.  The default value is <code>false</code>.</dd>
   <dt><code>triplyDb</code></dt>
@@ -325,7 +320,6 @@ Destinations can be defined as static objects meaning that you can define destin
 You can set static and dynamic destinations, like below:
 ```ts
 const app = new Ratt({
-  defaultGraph: "https://triplydb.com/Triply/example/graph/default",
   sources: { someSource: Ratt.Source.file("source.trig") },
   destinations: {
     someStaticDestination: Ratt.Destination.file("static.ttl"),
@@ -383,9 +377,7 @@ Sometimes it is useful to use classes and methods in TriplyDB.js directly.  This
 
 ```ts
 // Create the RATT context.
-const app = new Ratt({
-  defaultGraph: ''
-})
+const app = new Ratt()
 
 // Use the RATT context to access the TriplyDB.js connection.
 console.log((await app.triplyDb.getInfo()).name)
@@ -439,17 +431,17 @@ const app = new Ratt({
   },
 })
 app.use(
-  mw.fromCsv([
+  fromCsv([
     app.sources.instances,
     app.sources.model
   ]),
-  mw.toRdf(app.destinations.remote),
+  toRdf(app.destinations.remote),
 )
 ```
 
-If you want to run the pipeline in production mode, add the following [environment variable](environment-variable):
+If you want to run the pipeline in production mode, set the following environment variable:
 
-```sh
+```ts
 export TARGET=Production
 ```
 
@@ -578,7 +570,7 @@ The core IRI terms that are part of the RDF 1.1 standard.
 
 ```ts
 const rdf = {
-  'List': prefix.rdf('List'),
+  list: prefix.rdf('List'),
   first: prefix.rdf('first'),
   langString: prefix.rdf('langString'),
   nil: prefix.rdf('nil'),
