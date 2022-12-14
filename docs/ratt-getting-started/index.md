@@ -36,7 +36,7 @@ This section gets you up and running with RATT by setting up increasingly more c
 
 In this section we set up a RATT pipeline that creates one single triple.  This pipeline is purposefully minimal, which allows us to focus on the installation and configuration steps.
 
-1. Install [Node.js](https://nodejs.org) on your system.  See [common steps to install Node.js](common-steps-to-install) for more information.
+1. Install [Node.js](https://nodejs.org) on your system.
 
 2. Create a directory for your pipeline:
 
