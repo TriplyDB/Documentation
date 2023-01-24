@@ -367,7 +367,7 @@ The data stored on TriplyDB is stored in two different containers: datasets and 
 
 ![Export a dataset](export-dataset.png)
 
-To export the dataset users can click on the downwards facing arrow. In our example the dataset is automatically downloaded as the file "pokemon.trig" and compressed with .gz. The name of the file is the name of the dataset. The used serialization format is ".trig" because that is the standard format to store triples that are appended to graphs.
+To export the dataset users can click on the downwards facing arrow. In our example, the dataset is automatically downloaded as the file "pokemon.trig" and compressed with .gz. The name of the file is the name of the dataset. The used serialization format is ".trig" because that is the standard format to store triples that are appended to graphs.
 
 It is also possible to export the whole dataset on the graphs interface. Select "Graphs" and "EXPORT ALL GRAPHS".
 
@@ -431,14 +431,14 @@ https://triplydb.com/DBpedia-association/-/queries/timeline-cars
 ```
 ### Downloading a query result
 
-The result of a query can be downloaded via the TriplyDB interface. Open the query, that should be downloaded, in TriplyDB, e.g. https://triplydb.com/DBpedia-association/-/queries/timeline-cars/8. Choose the option `Response` and click on the download icon or scroll down and click on `Download result`. 
+The result of a query can be downloaded via the TriplyDB interface. After downloading the query, open it in TriplyDB. e.g. https://triplydb.com/DBpedia-association/-/queries/timeline-cars/8. Choose the option `Response` and click on the download icon or scroll down and click on `Download result`. 
 
 ![Download the query result via the download icon.](queryResult.png)
 ![Download the query result via the button `Download result`.](queryResult2.png)
 
 The downloaded file is automatically stored in the `Downloads`-folder and has the name of the query. In our example, the file is called `timeline-cars.json`. The downloaded file contains the query result as a json-object. TriplyDB also displays the json-object when selecting the option `Response`.
 
-To downloaded the query result in CSV-format, select the option `Table` and click on the download icon. The downloaded file is named after the query with the suffix `.csv`.
+To download the query result in CSV-format, select the option `Table` and click on the download icon. The downloaded file is named after the query with the suffix `.csv`.
 
 ### Using a saved query as REST-API (Advanced)
 
