@@ -1,30 +1,30 @@
 - groups:
-  - group: TriplyDB
-    tagline: Learn how to integrate TriplyDB in your workflow
-    items:
-      - title: Getting started
-        link: /docs/triply-db-getting-started
-      - title: API
-        link: /docs/triply-api
-      - title: TriplyDB-JS
-        link: /docs/triplydb-js
-  - group: Yasgui
-    tagline: Learn about the SPARQL editor
-    items:
-      - title: Introduction
-        link: /docs/yasgui
-      - title: For developers
-        link: /docs/yasgui-api
-  - group: RATT
-    tagline: Learn about RATT
-    items:
-     - title: Getting started
-       link: /docs/ratt
-     - title: Extract
-       link: /docs/ratt-extract
-     - title: Transform
-       link: /docs/ratt-transform
-     - title: Load
-       link: /docs/ratt-load
-     - title: Working with RATT
-       link: /docs/ratt-working-with-ratt
+    - group: TriplyDB
+      tagline: Learn how to integrate TriplyDB in your workflow
+      items:
+        - title: Getting started
+          link: /docs/triply-db-getting-started
+        - title: API
+          link: /docs/triply-api
+        - title: TriplyDB-JS
+          link: /docs/triplydb-js
+    - group: Yasgui
+      tagline: Learn about the SPARQL editor
+      items:
+        - title: Introduction
+          link: /docs/yasgui
+        - title: For developers
+          link: /docs/yasgui-api
+    - group: RATT
+      tagline: Learn about RATT
+      items:
+        - title: Getting started
+          link: /docs/ratt
+        - title: Extract
+          link: /docs/ratt-extract
+        - title: Transform
+          link: /docs/ratt-transform
+        - title: Load
+          link: /docs/ratt-load
+        - title: Working with RATT
+          link: /docs/ratt-working-with-ratt
