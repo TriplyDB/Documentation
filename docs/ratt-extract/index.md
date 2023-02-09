@@ -85,7 +85,7 @@ app.use(
     url: "https://somethingsomething.redacted/webapioai/oai.ashx",
     set: "xyzname",
     cacheOverride: "use cache",
-    maxCacheAgeDays: number 
+    maxCacheAgeDays: number
   })
 )
 ```
@@ -96,7 +96,6 @@ The function can be configured in the following ways:
 - `xyzname` is the name for the specific dataset.
 - `use cache` starts the caching process.
 - `number` is a natural number and it indicates the number of days after which the cache will be cleared.
-- `selectors` is an optional argument that allows to create records from one or more paths using a `string` or `array of strings`. This property cannot be used in conjunction with the `set` property above. It behaves just as the selectors property in the `fromXml` middleware. please refer to its documentation for use.
 
 
 #### Keeping track of records in the cache
@@ -159,8 +158,6 @@ app.use(
   fromJson([{ a: "a", b: "b", c: "c" }]),
 )
 ```
-
-- `selectors` is an optional argument that allows to create records from one or more paths using a `string` or `array of strings`. It behaves just as the selectors property in the `fromXml` middleware. please refer to its documentation for use.
 
 <!-- TODO
 ### PostgreSQL
@@ -311,21 +308,17 @@ app.use(
 )
 ```
 
-selectors is a string or an array of strings indicating which XML paths should be stored as a record.
+selectors is an array of string-arrays indicating which XML paths should be stored as a record.
  *  Example: if you have an XML of the format:
  ```html
 <root>
     <a>
    ....
     </a>
-    <b>
-   ....
-    </b>
 </root>
 ```
 
- by using the string `'root.a'` as a selector, you would add as a record the elements which are nested inside `<a>` tag . **Note** that you must specify the full path in the selector from the root up to the node you want as a record.
- If you wanted the elements nested in the `<a>` tag and `<b>` tag you would use and array of string selectors: `['root.a', 'root.b']`.
+ by using the array  [ 'root', 'a' ] as selectors, you would add as a record the elements which are nested inside `<a>` tag . **Note** that you must specify the full path in the selector from the root up to the node you want as a record.
 
 This function transforms XML to JSON.
 ### Specify multiple source files
