@@ -113,25 +113,25 @@ curl -X POST https://api.triplydb.com/queries/JD/JSON-LD-frame/run \
 The JSON-LD frame turns SPARQL results for the query in step 1 into a format that is accepted as plain REST API request.
 
 
-# Using SPARQL to create frame
+# Using SPARQL to create a frame
 
-Another way to create frame is through using the SPARQL editor in TriplyDB. 
+Another way to create a frame is by using the SPARQL editor in TriplyDB. 
 
-In order to do that first the JSON-LD editor has to be accessed. This can be done by clicking the three dots next to the editor's space and then selecting "To JSON-LD frame editor".
+You can access the JSON-LD editor by clicking the three dots next to the SPARQL editor, and then selecting "To JSON-LD frame editor".
 
 ![SPARQL editor](json-ld-navigator.png)
 
-Afterwards, the json script from above should be added to the Ld-Frame box.
+Afterwards, the JSON script from above should be added to the JSON-LD Frame editor.
 
 ![Ld-Frame box](json-ld-script.png)
 
 
-Running the script would result in a REST-API result: 
+Running the script results in the following REST-API result: 
 
 ![REST-API result](json-ld-result.png)
 
 This can also be accessed by the generated API Link above the SPARQL editor. 
-By copying at pasting the generated link, a page is being opened where the script can be viewed:
+Copying and pasting the generated link will direct you to a page where you can view the script:
 
 ![](json-ld-in-api.png)
 
