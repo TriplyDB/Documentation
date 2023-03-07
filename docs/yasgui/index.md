@@ -373,7 +373,7 @@ The SPARQL Geo Events plugin renders geographical events as a story map ([exampl
 | `?eventLocation` (required) | A `geo:wktLiteral`.                                                                                                                                                   |
 | `?eventLabel`               | Text or [HTML](#htmlRender) event label.                                                                                                                              |
 | `?eventDescription`         | Text or [HTML](#htmlRender) event description.                                                                                                                        |
-| `?eventMedia`               | A URL pointing to a media source. Supported media types are described [here](https://github.com/NUKnightLab/StoryMapJS/blob/master/source/js/media/VCO.MediaType.js). |
+| `?eventMedia`               | A URL pointing to a media source. Supported media types are described [here](https://github.com/NUKnightLab/StoryMapJS/tree/master/src/js/media). |
 | `?eventMediaCaption`        | Text or [HTML](#htmlRender) media caption.                                                                                                                            |
 | `?eventMediaCredit`         | Text or [HTML](#htmlRender) media credit.                                                                                                                             |
 
