@@ -13,6 +13,8 @@
       items:
         - title: Overview
           link: /docs/triply-etl/overview
+        - title: Getting Started
+          link: /docs/triply-etl/getting-started
         - title: Source Connectors
           link: /docs/triply-etl/source-connectors
         - title: Control Structures
