@@ -342,10 +342,9 @@ Variable `?xColor` must include a value of the following types:
 
 ##### WMS tile-servers
 
-To include layers from a WMS tile-server, use the `mapEndpoint` variable to refer to a server. The plugin will then retrieve the layer information from the server. Usage of the layers can be toggled using the layer selector. Try these:
+To include layers from a WMS tile-server, use the `mapEndpoint` variable to refer to a server. The plugin will then retrieve the layer information from the server. Usage of the layers can be toggled using the layer selector. Try this one:
 
 - https://maps.heigit.org/histosm/wms
-- https://geodata.nationaalgeoregister.nl/luchtfoto/rgb/wms
 
 ### Geo-3D (TriplyDB-only) {#geo-3d}
 
