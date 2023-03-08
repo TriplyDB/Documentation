@@ -144,13 +144,11 @@ curl -G \
 
 ### Exporting data
 
-
-To export the linked data of a dataset, use the following path:
+To export the linked data, use the following path:
 
 ```none
 https://api.INSTANCE/datasets/ACCOUNT/DATATSET/download
 ```
-
 
 #### Query parameters
 
@@ -160,13 +158,34 @@ By default, an export includes all linked data graphs. Use a query argument to s
 | ----------- | ----------------------------- | ---------------------------------------------------------------------------------- |
 | `graph`   | A URL-encoded IRI.            | Only download the export of the given graph IRI.           |
 
-#### Example request
-
-```bash
-curl 'https://api.triplydb.com/datasets/academy/pokemon/download' \
-       -H 'Accept: application/trig' > export.trig.gz
+Therefore, to export the linked data of a **graph**, use the following path:
+```none
+https://api.INSTANCE/datasets/ACCOUNT/DATATSET/download/?graph=GRAPH
 ```
 
+To find out which graphs are available, use the following path:
+```none
+https://api.INSTANCE/datasets/ACCOUNT/DATATSET/graphs
+```
+#### Example requests
+
+Export a dataset:
+```bash
+curl 'https://api.triplydb.com/datasets/academy/pokemon/download' \
+       -H 'Accept: application/trig' > exportDataset.trig.gz
+```
+
+Export a graph:
+
+First, find out which graphs are available:
+```bash
+curl 'https://api.triplydb.com/datasets/academy/pokemon/graphs'
+```
+
+Then, download one of the graph:
+```bash
+curl 'curl 'https://api.triplydb.com/datasets/academy/pokemon/download?graph=https://triplydb.com/academy/pokemon/graphs/data' -H 'Accept: application/trig' > exportGraph.trig.gz
+```
 ## Services
 
 Some API requests require the availability of a specific service over
@@ -207,7 +226,7 @@ Everybody who has access to the dataset also has access to its services, includi
 - For *Internal* datasets, only users that are logged into the triple store can issue queries.
 - For *Private* datasets, only users that are logged into the triple store and are members of `ACCOUNT` can issue queries.
 
-Notice that for professional use it is easier and better to use [saved queries](https://triply.cc/docs/triply-db-getting-started#saved-queries).  Saved queries have persistent URIs, descriptive metadata, versioning, and support for reliable large-scale pagination.  Still, if you do not have a saved query at your disposal and want to perform a custom SPARQL request against an accessible endpoint, you can do so.  TriplyDB implements the SPARQL 1.1 Query Protocol standard for this purpose.
+Notice that for professional use it is easier and better to use [saved queries](https://triply.cc/docs/triply-db-getting-started#saved-queries).  Saved queries have persistent URIs, descriptive metadata, versioning, and support for reliable large-scale pagination ([see how to use pagination with saved query API](https://triply.cc/docs/triply-db-getting-started/#pagination-with-the-saved-query-api)).  Still, if you do not have a saved query at your disposal and want to perform a custom SPARQL request against an accessible endpoint, you can do so.  TriplyDB implements the SPARQL 1.1 Query Protocol standard for this purpose.
 
 #### Sending a SPARQL Query request
 
