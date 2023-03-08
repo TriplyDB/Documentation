@@ -327,6 +327,12 @@ Notice that the TriplyDB Assets uses GNU zip (file extension `*.gz`) compression
 
 The source connectors in TriplyETL add several special keys to your records.  These special keys start with a dollar sign character (`$`) and can be used in your pipeline configuration.  We now discuss these special keys in details.
 
+### `$environment`
+
+The special key `$environment` denotes the DTAP environment in which the TriplyETL pipeline is running.  This allows special actions to be performed based on whether the pipeline runs in `"Debug"`, `"Test"`, `"Acceptance"`, or `"Production"` mode.
+
+See the [DTAP documentation](/docs/triply-etl/dtap) for more information.
+
 ### `$recordId`
 
 The special key `$recordId` assigns a unique number to every record that is processed in one single run of a TriplyETL pipeline.  This number is not unique across different runs of a TriplyETL pipeline.  After all, the records emitted by a database or REST API may change over time, and a spreadsheet may be updated to include new sheets and rows.
@@ -394,7 +400,7 @@ id:3
 
 Notice that the use of the `$recordId` results in a correct single run of the TriplyETL pipeline.  But if the source data changes, the IRIs may change as well.  For example, if the first and second row in the source table are swapped, the IRI that denotes "Jane Doe" will change from `id:2` to `id:1`.
 
-### Use case: Debugging
+#### Use case: Debugging
 
 When you are debugging the configuration of a TriplyETL pipeline, it is sometimes useful to perform a specific actions for a specific record.  Assuming the stream of records is stable during the debugging effort, the `$recordId` key can be used to perform such a debugging action; for example:
 
