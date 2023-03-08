@@ -9,18 +9,6 @@
         - title: TriplyDB-JS
           link: /docs/triplydb-js
     - group: TriplyETL
-      tagline: Learn how to Extract, Transform, and Load linked data.
-      items:
-        - title: Validation
-          link: /docs/triply-etl/validation
-    - group: Yasgui
-      tagline: Learn about the SPARQL editor
-      items:
-        - title: Introduction
-          link: /docs/yasgui
-        - title: For developers
-          link: /docs/yasgui-api
-    - group: TriplyETL
       tagline: Extract-Transform-Load Linked Data
       items:
         - title: Overview
@@ -37,6 +25,13 @@
           link: /docs/triply-etl/validation
         - title: Publication
           link: /docs/triply-etl/publication
+    - group: Yasgui
+      tagline: Learn about the SPARQL editor
+      items:
+        - title: Introduction
+          link: /docs/yasgui
+        - title: For developers
+          link: /docs/yasgui-api
     - group: RATT
       tagline: Learn about RATT
       items:
