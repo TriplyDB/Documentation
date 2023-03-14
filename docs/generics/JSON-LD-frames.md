@@ -47,7 +47,7 @@ The SPARQL query is not enough to provide the RDF data in a JSON serialization f
 
 A JSON-LD frame consists out of 2 parts. The `@context` of the response, and the structure of the response. The complete specification on JSON-LD frames can be found [online](https://w3c.github.io/json-ld-framing/)
 
-The `@context` is the translation of the linked data to the JSON naming. In the `@context` all the IRIs that occur in the JSON-LD response are documented, with key-value pairs, where the key corresponds to a name the IRI will take in the REST-API response and the value corresponds to the IRI in the JSON-LD response. Most of the time the key-value pairs are one-to-one relations, where one key is mapped to a single string. Sometimes the value is an object. The object contains at least the `@id`, which is the IRI in the JSON-LD response. The object can also contain other modifiers, that change the REST-API response. Examples are, `@type` to define the datatype of the object value, or "@container" to define the container where the value in the REST-API response is stored in. The context can also hold references to vocabularies or prefixes.
+The `@context` is the translation of the linked data to the JSON naming. In the `@context` all the IRIs that occur in the JSON-LD response are documented, with key-value pairs, where the key corresponds to a name the IRI will take in the REST-API response and the value corresponds to the IRI in the JSON-LD response. Most of the time the key-value pairs are one-to-one relations, where one key is mapped to a single string. Sometimes the value is an object. The object contains at least the `@id`, which is the IRI in the JSON-LD response. The object can also contain other modifiers, that change the REST-API response. Examples are, `@type` to define the datatype of the object value, or `@container` to define the container where the value in the REST-API response is stored in. The context can also hold references to vocabularies or prefixes.
 
 The second part of the JSON-LD frame is the structure of the data. The structure defines how the REST-API response will look like. Most of the time the structure starts with `@type` to denote the type that the rootnode should have. Setting the `@type` is the most straightforward way of selecting your rootnode. The structure is built outward from the rootnode. You can define a leafnode in the structure by adding an opening and closing bracket, as shown in the example. To define a nested node you first need to define the key that is a object property in the JSON-LD response that points to another IRI. Then from that IRI the node is created filling in the properties of that node.
 
@@ -111,3 +111,28 @@ curl -X POST https://api.triplydb.com/queries/JD/JSON-LD-frame/run \
 ```
 
 The JSON-LD frame turns SPARQL results for the query in step 1 into a format that is accepted as plain REST API request.
+
+
+# Using SPARQL to create a frame
+
+Another way to create a frame is by using the SPARQL editor in TriplyDB. 
+
+You can access the JSON-LD editor by clicking the three dots next to the SPARQL editor, and then selecting "To JSON-LD frame editor".
+
+![SPARQL editor](json-ld-navigator.png)
+
+Afterwards, the JSON script from above should be added to the JSON-LD Frame editor.
+
+![Ld-Frame box](json-ld-script.png)
+
+
+Running the script results in the following REST-API result: 
+
+![REST-API result](json-ld-result.png)
+
+This can also be accessed by the generated API Link above the SPARQL editor. 
+Copying and pasting the generated link will direct you to a page where you can view the script:
+
+![](json-ld-in-api.png)
+
+
