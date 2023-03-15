@@ -276,3 +276,82 @@ Alternatively, we can remove the `sh:datatype` requirement from our Information 
 ## End notes
 
 Notice that TriplyETL does not tell you which of the 3 options you should follow in order to fix issues in your ETL.  After all, creating an ETL requires domain knowledge based on which you weight the pros and const of different options.  However, TriplyETL does give you the tools to discover issues that prompt you to come up with such solutions.  And once you have decided on a specific solution, TriplyETL provides you with the tools to implement it.
+
+
+
+
+## Validating RDF output
+
+RATT is able to automatically validate the RDF that is generated in the pipeline against a SHACL information model.
+
+```ts
+app.use(
+  // Create all linked data statements.
+  …
+  // Now that all the data is created, validate it using a model.
+  validateShacl(app.sources.model)
+)
+```
+
+
+### Validation report
+
+Validation creates a report that is asserted in linked data.  This report can be stored as a named graph in the created linked dataset.
+
+The following example code stores the validation report in a dedicated named graph:
+
+```ts
+const prefix = {
+  graph: 'https://triplydb.com/Triply/example/graph/',
+}
+
+const graph = {
+  report: prefix.graph('report'),
+}
+
+app.use(
+  // Create all linked data statements.
+  …
+  // Now that all the data is created, validate it using a model.
+  validateShacl(
+    app.sources.model,
+    {report: {destination: app.sources.dataset,
+              graph: graph.report}}),
+)
+```
+
+
+
+### Termination conditions
+
+The `validateShacl` function can optionally be given the `terminateOn` option.  This option determines when validation halts.  It can take the following values:
+
+- `'Never'` Do not halt; run the validation for the full dataset.
+- `'Violation'` Halt validation when the first SHACL Violation is encountered.
+- `'Warning'` Halt validation when the first SHACL Violation or SHACL Warning is encountered.
+- `'Info'` Halt validation when the first SHACL Violation or SHACL Warning or SHACL Informational message is encountered.
+- `undefined` Halt validation when the first SHACL message is encountered.
+
+The following example code lets validation run for the full dataset, regardless of how many violations, warnings, and/or information messages are encountered:
+
+```ts
+app.use(
+  // Create all linked data statements.
+  …
+  // Now that all the data is created, validate it using a model.
+  validateShacl(app.sources.model, {terminateOn: 'Never'}
+)
+```
+
+### Log conditions
+
+ The `validateShacl` function can optionally be given the `log` option.  This option determines when and which violations should be printed. The values are the same as in 'terminateOn' option. Note that `log` is about printing on your terminal and not about the violation report.
+
+ ```ts
+ app.use(
+   // Create all linked data statements.
+   …
+   // Now that all the data is created, validate it using a model.
+   validateShacl(app.sources.model, {log: "Never"}
+ )
+ ```
