@@ -342,10 +342,9 @@ Variable `?xColor` must include a value of the following types:
 
 ##### WMS tile-servers
 
-To include layers from a WMS tile-server, use the `mapEndpoint` variable to refer to a server. The plugin will then retrieve the layer information from the server. Usage of the layers can be toggled using the layer selector. Try these:
+To include layers from a WMS tile-server, use the `mapEndpoint` variable to refer to a server. The plugin will then retrieve the layer information from the server. Usage of the layers can be toggled using the layer selector. Try this one:
 
 - https://maps.heigit.org/histosm/wms
-- https://geodata.nationaalgeoregister.nl/luchtfoto/rgb/wms
 
 ### Geo-3D (TriplyDB-only) {#geo-3d}
 
@@ -373,7 +372,7 @@ The SPARQL Geo Events plugin renders geographical events as a story map ([exampl
 | `?eventLocation` (required) | A `geo:wktLiteral`.                                                                                                                                                   |
 | `?eventLabel`               | Text or [HTML](#htmlRender) event label.                                                                                                                              |
 | `?eventDescription`         | Text or [HTML](#htmlRender) event description.                                                                                                                        |
-| `?eventMedia`               | A URL pointing to a media source. Supported media types are described [here](https://github.com/NUKnightLab/StoryMapJS/blob/master/source/js/media/VCO.MediaType.js). |
+| `?eventMedia`               | A URL pointing to a media source. Supported media types are described [here](https://github.com/NUKnightLab/StoryMapJS/tree/master/src/js/media). |
 | `?eventMediaCaption`        | Text or [HTML](#htmlRender) media caption.                                                                                                                            |
 | `?eventMediaCredit`         | Text or [HTML](#htmlRender) media credit.                                                                                                                             |
 
