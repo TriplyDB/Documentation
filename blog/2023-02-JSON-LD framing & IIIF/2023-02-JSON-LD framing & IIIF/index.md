@@ -1,6 +1,13 @@
+---
+title: "JSON-LD Framing and IIIF"
+path: "/blog/2022-04-new-features"
+date: ""
+author: akonrad
+---
+
 In this blog, we would like to talk about how we made it possible to get a working IIIF Presentation API through TriplyDB, using SPARQL service in combination with JSON-LD Frames.
 
-Triply recently introduced JSON-LD framing that can be used on a saved SPARQL query. With this it is now possible to create a working IIIF Presentation API that can be used in any IIIF Viewer.
+Triply recently introduced JSON-LD framing that can be used on a saved SPARQL query. With this, it is now possible to create a working IIIF Presentation API that can be used in any IIIF Viewer.
 
 ## What is IIIF?
 The International Image Interoperability Framework (IIIF) represents universal standards for describing and transmitting images over the internet. Two APIs, one for image retrieval and the other for image display, are specified by the framework. Institutions that offer IIIF endpoints for their content can make it available to anybody with a IIIF-compatible viewer.
@@ -18,22 +25,43 @@ The IIIF presentation API's function is to describe a digital object, which may 
 JSON-LD frames are a deterministic translation from a graph, which has an unordered set of triples where no node is "first" or "special", into a tree, which has ordered branches and exactly one "root" node. In other words, JSON-LD framing allows one to force a specific tree layout to a JSON-LD document. This makes it possible to translate SPARQL queries to REST-APIs.
 More about what JSON-LD Frames are and how to use it can be found in our [documentation](https://triply.cc/docs/jsonld-frames).
 
-## How we got a working Presentation API using TriplyDB?
+## How we created a working Presentation API using TriplyDB
 
 The Presentation API defines how digital objects appear in viewers by connecting basic metadata and structure to them. It does this via the Manifest - a JSON file containing all the elements of a IIIF object with basic metadata and structural information.
 
-In order to be able to display the image in a IIIF user, we had to use an open dataset. For this example we used a well known [Iris dataset](https://triplydb.com/Triply/iris/), which is also available through TriplyDB.
+In order to be able to display the image in a IIIF viewer, we had to use an open dataset. In this example we used a well known [Iris dataset](https://triplydb.com/Triply/iris/), which is also available on TriplyDB.
 
-We managed to create a valid Manifest file by writing a construct query in which we added all the required IIIF [resource types](https://iiif.io/api/presentation/3.0/#2-resource-type-overview), according to the data model, which is displayed in the image below.
+We managed to create a valid Manifest file by writing a construct query, where we added all the required IIIF [resource types](https://iiif.io/api/presentation/3.0/#2-resource-type-overview), according to the data model, which is displayed in the image below. Note that not all of the resource types displayed in the model are required to create a working minimal example for IIIF Presentation API. What is and isn't required can be seen on the official IIIF page [here](https://triplydb.com/imgs/avatars/d/6006f097506cf2034cfe4c46.png?v=25).
 
 <figure><img src="presentation-api-data-model.png" height=400><figcaption>Data model for a IIIF Presentation API</figcaption></figure>
 
-With JSON-LD Frame editor, we added a Frame for the manifest. In this example, it was a very simple one, with elements for *@context* and *@type*.
+### The SPARQL query in more detail
 
-For the IIIF objects, we used images added as [assets](https://triplydb.com/Triply/iris/assets) to the Iris dateset in TriplyDB.
+To make it easier to understand, here is a more detailed description of our query. [Here](https://triplydb.com/Triply/-/queries/iris-iiif-manifest/56) you can see it in full and try it for yourself.
 
-With a saved query with the right frame, we got a working API through Triply SPARQL API, which we used in a IIIF Viewer [Mirador](https://mirador-dev.netlify.app/__tests__/integration/mirador/) and got a working image ready to be observed!
+#### First part of the query - prefixes
+At the top of the query, as usual in all SPARQL queries, we defined the prefixes used throughout the query. Some of them are connected to the used vocabularies and others are IIIF specific. The prefix **mf** represents the resulting API. The prefixes are used so the query itself is more readable as we don't have to use the long IRIs.
+
+<figure><img src="prefixes.png" height=350, width=700><figcaption>Defined prefixes</figcaption></figure>
+
+#### Second part of the query - construct
+This is the part where all the required IIIF resource types have their types assigned and are attached to our API.
+
+It's where we can link external resources, such as a homepage and provider, and add a description. We can add a copyright statement with "requiredStatement". You can see some of the resources, such as Canvas, Collection and Annotation from the model added in the query.
+
+<figure><img src="construct1.png" height=500, width=700><figcaption>The 'construct' part of the query</figcaption></figure>
+
+In this part we can also add our own information, like a more detailed description or links.
+
+<figure><img src="construct2.png" height=300, width=700><figcaption>Constinuation of the 'construct' part of the query</figcaption></figure>
+
+#### Third part - where
+Here is where we connect our resources to our main subject (?iris). We can connect them as a triple, with a suitable predicate or bind it with a required string to a resource part.
+<figure><img src="where.png" height=200, width=700><figcaption>The 'where' part of the query</figcaption></figure>
+Below the query, in the JSON-LD Frame editor, we added a Frame for the manifest. In this example, it was a very simple one, with elements for "@context" and "@type".
+
+<figure><img src="ld-frame.png" height=100, width=700><figcaption>The 'where' part of the query</figcaption></figure>
+
+With a saved query using the right frame, we got a working API through Triply SPARQL API, which we used in a IIIF Viewer [Mirador](https://mirador-dev.netlify.app/__tests__/integration/mirador/) and got a working image ready to be observed!
 
 <figure><img src="mirador-iris.png" height=300, width=600><figcaption>IIIF Viewer with an image displayed through Triply API</figcaption></figure>
-
-You can find the described SPARQL query with JSON-LD Frame [here](https://triplydb.com/Triply/-/queries/iris-iiif-manifest/56).
