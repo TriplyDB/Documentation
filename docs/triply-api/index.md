@@ -21,16 +21,18 @@ internally or privately require authentication.
 Authentication is implemented through API tokens. An API token can be
 created within the TriplyDB UI in the following way:
 
-1. Log into your TriplyDB instance.
+1. Log into your TriplyDB instance. If your organization does not yet have a TriplyDB server, you can also create a free account at TriplyDB.com.
 2. Click on the user menu in the top-right corner and click on “User settings”.
 3. Go to the “API tokens” tab.
 4. Click the “Create token” button, enter a description for the
    token (e.g., “test-token”) and select the appropriate access
-   rights.
+   rights. Notice that "Management access" is often not needed, and "Write access" suffices for most applications and pipelines.
 5. Click on “Create” and copy the created API token (a lengthy
-   string of characters). This string is only shown once, upon
+   string of characters). For security reasons, this string is only shown once, upon
    creation, and must not be shared with others. (Other users
-   can create their own token in the here described way.)
+   can create their own token using the same process.)
+
+Applications (see [TriplyDB.js](https://triply.cc/docs/triplydb-js/)) and pipelines (see [RATT](https://triply.cc/docs/ratt/)) often require access rights to interact with TriplyDB instances. Specifically, reading non-public data and writing any (public or non-public) data requires setting an API token. The token ensures that only users who are specifically authorized for certain datasets can access and/or modify those datasets. It is good practice to create different API tokens for different applications.
 
 ### Using the API token
 
