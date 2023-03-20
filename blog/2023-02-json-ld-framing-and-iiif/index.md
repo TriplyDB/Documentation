@@ -4,14 +4,11 @@ path: "/blog/2023-02-json-ld-framing-and-iiif"
 date: "2023-03-20T11:15:00"
 author: akonrad
 ---
-We are excited to announce that it is now possible to create a working IIIF Presentation API that works in any IIIF Viewer, using TriplyDB. That is possible with the recently introduced JSON-LD frames, which can be used on a saved SPARQL query.
+We are excited to announce that it is now possible to create a working IIIF Presentation Manifest with TriplyDB that works in any IIIF Viewer. This is possible with the recently introduced JSON-LD frames, which can be used on a saved SPARQL query.
 
 ## What is IIIF?
-The International Image Interoperability Framework (IIIF) represents universal standards for describing and transmitting images over the internet. Two APIs, one for image retrieval and the other for image display, are specified by the framework. Institutions that offer IIIF endpoints for their content can make it available to anybody with a IIIF-compatible viewer.
+The International Image Interoperability Framework (IIIF) represents universal standards for describing and transmitting images over the internet. Multiple APIs, including one for image retrieval and one for image display, are specified by the framework. Institutions that offer IIIF endpoints for their content can make it available to anybody with a IIIF-compatible viewer.
 If you wish to learn more about IIIF and how it works, you can check out [the official IIIF website](https://iiif.io/).
-
-### IIIF Image API
-The IIIF Image API describes a web service that returns an image in response to a regular HTTP or HTTPS request. The region, size, rotation, quality, and format of the requested image can all be specified by the URI. It can also request basic technical information of the image. This API was designed to make it easier for cultural heritage organizations to establish digital image repositories where image resources can be reused consistently. It can be used to obtain static images in response to a correctly built URI and might be adopted by any image repository or service.
 
 ### IIIF Presentation API
 
@@ -26,7 +23,7 @@ More about what JSON-LD Frames are and how to use it can be found in our [docume
 
 The Presentation API defines how digital objects appear in viewers by connecting basic metadata and structure to them. It does this via the Manifest - a JSON file containing all the elements of a IIIF object with basic metadata and structural information.
 
-In order to be able to display the image in a IIIF viewer, we had to use an open dataset. In this example we used a well known [Iris dataset](https://triplydb.com/Triply/iris/), which is also available on TriplyDB.
+In order to be able to display the image in a IIIF viewer, we had to use an open dataset. In this example we used the well known [Iris dataset](https://triplydb.com/Triply/iris/), which is also available on TriplyDB.
 
 We managed to create a valid Manifest file by writing a construct query, where we added all the required IIIF [resource types](https://iiif.io/api/presentation/3.0/#2-resource-type-overview), according to the data model, which is displayed in the image below. Note that not all of the resource types displayed in the model are required to create a working minimal example for IIIF Presentation API. What is and isn't required can be seen on the official IIIF page [here](https://triplydb.com/imgs/avatars/d/6006f097506cf2034cfe4c46.png?v=25).
 
@@ -60,7 +57,8 @@ Below the query, in the JSON-LD Frame editor, we added a Frame for the manifest.
 
 <figure><img src="ld-frame.png" height=100, width=700><figcaption>JSON-LD Frame</figcaption></figure>
 
-
 With a saved query using the right frame, we got a working API through Triply SPARQL API, which we used in a IIIF Viewer [Mirador](https://mirador-dev.netlify.app/__tests__/integration/mirador/) and got a working image ready to be observed!
 
 <figure><img src="mirador-iris.png" height=300, width=600><figcaption>IIIF Viewer with an image displayed through Triply API</figcaption></figure>
+
+You can see the final result at [this link](https://projectmirador.org/embed/?iiif-content=https://api.triplydb.com/queries/Triply/iris-iiif-manifest/run).
