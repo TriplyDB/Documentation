@@ -1,6 +1,6 @@
 ---
-title: "Triply ETL: Validation"
-path: "/docs/triply-etl/validation"
+title: "Validation: SHACL"
+path: "/docs/triply-etl/validation/shacl"
 ---
 
 TriplyETL is able to automatically validate the linked data that is created in your pipeline against a specified SHACL information model.  In fact, Triply believes that *every* ETL should include such a validation step to ensure that only valid data is published in knowlede graphs.

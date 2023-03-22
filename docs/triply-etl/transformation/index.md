@@ -43,7 +43,8 @@ This page documents the following transformation functions:
 - [`translateSome`](#translatesome)
 - [`tryLiteral`](#tryliteral)
 - [`uppercase`](#uppercase)
-
+- [`wkt.addPoint`](#wktaddpoint)
+- [`wkt.project`](#wktproject)
 
 
 

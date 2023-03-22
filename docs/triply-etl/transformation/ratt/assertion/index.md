@@ -1,6 +1,6 @@
 ---
-title: "Triply ETL: Assertions"
-path: "/docs/triply-etl/assertions"
+title: "RATT: Assertions"
+path: "/docs/triply-etl/transformation/ratt/assertions"
 ---
 
 ## Create statements {#create-statements}
