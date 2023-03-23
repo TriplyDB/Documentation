@@ -8,36 +8,75 @@
           link: /docs/triply-api
         - title: TriplyDB-JS
           link: /docs/triplydb-js
-    - group: TriplyETL
-      tagline: Extract-Transform-Load Linked Data
+
+    - group: TriplyETL tutorials
       items:
         - title: Overview
-          link: /docs/triply-etl/overview
-        - title: Getting Started
-          link: /docs/triply-etl/getting-started
-        - title: Source Connectors
-          link: /docs/triply-etl/source-connectors
-        - title: Declarations
-          link: /docs/triply-etl/declarations
-        - title: Transformations
-          link: /docs/triply-etl/transformations
-        - title: Assertions
-          link: /docs/triply-etl/assertions
-        - title: Control Structures
-          link: /docs/triply-etl/control-structures
-        - title: Validation
-          link: /docs/triply-etl/validation
-        - title: Publication
-          link: /docs/triply-etl/publication
-        - title: Debugging
-          link: /docs/triply-etl/debugging
-        - title: Production Systems
-          link: /docs/triply-etl/production-systems
-        #- title: RATT - Getting Started
+          link: /docs/triply-etl/tutorials/overview
+        - title: Install
+          link: /docs/triply-etl/tutorials/install
+        - title: Record
+          link: /docs/triply-etl/tutorials/record
+        - title: Automation
+          link: /docs/triply-etl/tutorials/automation
+
+    - group: TriplyETL reference
+      items:
+        - title: Extract
+          link: /docs/triply-etl/extract/overview
+        - title: ⤷ Data formats
+          link: /docs/triply-etl/extract/formats
+        - title: ⤷ Source types
+          link: /docs/triply-etl/extract/types
+        - title: ⤷ Record
+          link: /docs/triply-etl/extract/record
+
+        - title: Transform
+          link: /docs/triply-etl/transform/overview
+        - title: ⤷ JSON-LD Frames
+          link: /docs/triply-etl/transform/json-ld
+        - title: ⤷ RATT
+          link: /docs/triply-etl/transform/ratt
+        - title: ⤷ TypeScript
+          link: /docs/triply-etl/transform/typescript
+
+        - title: Assert
+          link: /docs/triply-etl/assert/overview
+        - title: ⤷ JSON-LD
+          link: /docs/triply-etl/assert/json-ld
+        - title: ⤷ RATT
+          link: /docs/triply-etl/assert/ratt
+
+        - title: Enrich
+          link: /docs/triply-etl/enrich/overview
+        - title: ⤷ SHACL Rules
+          link: /docs/triply-etl/enrich/shacl
+        - title: ⤷ SPARQL Update
+          link: /docs/triply-etl/enrich/sparql
+
+        - title: Validate
+          link: /docs/triply-etl/validate/overview
+        - title: ⤷ Graph comparison
+          link: /docs/triply-etl/validate/graph-comparison
+        - title: ⤷ SHACL
+          link: /docs/triply-etl/validate/shacl
+
+        - title: Publish
+          link: /docs/triply-etl/publish
+
+        - title: Declare
+          link: /docs/triply-etl/declare
+        - title: Control
+          link: /docs/triply-etl/control
+        - title: Debug
+          link: /docs/triply-etl/debug
+        #- title: Production systems
+        #  link: /docs/triply-etl/production-systems
+        #- title: RATT - Getting started
         #  link: /docs/triply-etl/ratt-getting-started
-        #- title: RATT - Tree-Shaped Data
+        #- title: RATT - Tree-shaped data
         #  link: /docs/triply-etl/ratt-tree-shaped-data
-        #- title: RATT - Numeric Data
+        #- title: RATT - Numeric data
         #  link: /docs/triply-etl/ratt-numeric-data
     - group: Yasgui
       tagline: Learn about the SPARQL editor
