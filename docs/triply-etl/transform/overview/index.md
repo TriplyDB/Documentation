@@ -5,6 +5,22 @@ path: "/docs/triply-etl/transform/overview"
 
 Transform is the step that makes changes to the record.
 
+```mermaid
+graph LR
+  source -- 1. Extract --> record
+  record -- 2. Transform --> record
+  record -- 3. Assert --> ld
+  ld -- 4. Enrich --> ld
+  ld -- 5. Validate --> ld
+  ld -- 6. Publish --> tdb
+
+  linkStyle 1 stroke:red,stroke-width:3px;
+  ld[Internal Store]
+  record[Record]
+  source[Data Sources]
+  tdb[(Triple Store)]
+```
+
 Changes typically include:
 - cleanups of the source data
 - combining multiple values into one new value
@@ -23,3 +39,9 @@ Here are some examples of typical transformations:
 - Multiple values may need to be combined into one value (e.g., street name and house number may be concatenated into an address).
 - A simple value with a separator may need to be split into multiple values (e.g., from `'apple, orange'` to `'apple'` and `'orange'`).
 - Values may need to be cleaned because they are dirty in the source (e.g., from `'001 '` to `1`).
+
+## Next steps
+
+The Transform step results in a cleaned and enriched record.  The following link documents how you can use the record to make linked data assertions:
+
+- [3. Assert](/docs/triply-etl/assert/overview) use data from the Record to generate linked data in the Internal Store.

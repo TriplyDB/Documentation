@@ -19,20 +19,21 @@ graph LR
   ld -- 5. Validate --> ld
   ld -- 6. Publish --> tdb
 
+  linkStyle 0 stroke:red,stroke-width:3px;
   ld[Internal Store]
   record[Record]
   source[Data Sources]
-  tdb[Triple Store]
+  tdb[(Triple Store)]
 ```
 
-- Step 1 is [**Extract**](/docs/triply-etl/extract/overview).  It extracts data records from one or more data sources.
+- Step 1 [**Extract**](/docs/triply-etl/extract/overview) extracts data records from one or more data sources.
 - A generic **Record** is loaded from the Source Systems.  The representation of the Record is independent of the source system that is used.
-- Step 2 is [**Transform**](/docs/triply-etl/transform/overview).  It cleans, combines, or extends data in the Record representation.
-- Step 3 is [**Assert**](/docs/triply-etl/assert/overview).  Data from the Record is used to generate linked data assertions (= factual statements).
-- The **Internal Store** is used to hold the linked data that is generated for each Record.
-- Step 4 is [**Enrich**](/docs/triply-etl/enrich/overview).  It is used to improve or extend the linked data in the Internal Store.
-- Step 5 is [**Validate**](/docs/triply-etl/validate/overview).  It ensures that linked data in the Internal Store is correct.
-- Step 6 is [**Publish**](/docs/triply-etl/publish) is used to make linked data available in a Triple Store for others to use.
+- Step 2 [**Transform**](/docs/triply-etl/transform/overview) cleans, combines, and extends data in the Record representation.
+- Step 3 [**Assert**](/docs/triply-etl/assert/overview) uses data from the Record to generate linked data assertions.
+- The **Internal Store** holds linked data that is generated for each Record.
+- Step 4 [**Enrich**](/docs/triply-etl/enrich/overview) improves or extends linked data in the Internal Store.
+- Step 5 [**Validate**](/docs/triply-etl/validate/overview) ensures that linked data in the Internal Store is correct.
+- Step 6 [**Publish**](/docs/triply-etl/publish) makes linked data available in a Triple Store for others to use.
 
 <!--
 ## Reference

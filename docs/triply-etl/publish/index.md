@@ -5,6 +5,22 @@ path: "/docs/triply-etl/publish"
 
 This page documents how you can publish linked data from an ETL pipeline.
 
+```mermaid
+graph LR
+  source -- 1. Extract --> record
+  record -- 2. Transform --> record
+  record -- 3. Assert --> ld
+  ld -- 4. Enrich --> ld
+  ld -- 5. Validate --> ld
+  ld -- 6. Publish --> tdb
+
+  linkStyle 5 stroke:red,stroke-width:3px;
+  ld[Internal Store]
+  record[Record]
+  source[Data Sources]
+  tdb[(Triple Store)]
+```
+
 ## Destinations
 
 TODO

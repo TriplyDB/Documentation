@@ -5,21 +5,26 @@ path: "/docs/triply-etl/assert/ratt"
 
 RATT assertions are a set of commonly used assertion functions.
 
+After source data is connected and transformed, the RATT Record is ready to be transformed to linked data.  Linked data statements are assertions or factual statements that consist of 3 terms (triple) or 4 terms (quadruples).
+
+Statements are created with the `triple` function.  Calls to this function are part of the pipeline, and must appear inside the scope of `app.use`.
+
+
 The following assertion functions are available:
 
 | Assertion | Description |
 | --------- | ----------- |
-| [`iri()`](#iri) | |
-| [`iris()`](#iris) | |
-| [`literal()`](#literal) | |
-| [`literals()`](#literals) | |
+| [`iri()`](#iri) | Asserts an IRI term. |
+| [`iris()`](#iris) | Asserts zero or more IRI terms. |
+| [`literal()`](#literal) | Asserts a literal term. |
+| [`literals()`](#literals) | Asserts zero or more literal terms. |
 | [`nestedPairs()`](#nestedpairs) | makes one or more assertions about a nested node. |
-| [`objects()`](#objects) | |
-| [`pairs()`](#pairs) | |
-| [`quad()`](#quad) | |
-| [`quads()`](#quads) | |
-| [`triple()`](#triple) | |
-| [`tripless()`](#triples) | |
+| [`objects()`](#objects) | Adds multple assertions with the same subject and predicate terms. |
+| [`pairs()`](#pairs) | Adds multiple assertions with the same subject term. |
+| [`quad()`](#quad) | Adds one quad to the internal store. |
+| [`quads()`](#quads) | Adds zero or more quads to the internal store. |
+| [`triple()`](#triple) | Adds one triple to the internal store. |
+| [`triples()`](#triples) | Adds zero or more triples to the internal store. |
 
 
 
@@ -444,15 +449,6 @@ triples(graph.data, [
   ...
 ]),
 ```
-
-
-
-## Create statements {#create-statements}
-
-After source data is connected and transformed, the RATT Record is ready to be transformed to linked data.  Linked data statements are assertions or factual statements that consist of 3 terms (triple) or 4 terms (quadruples).
-
-
-Statements are created with the `triple` function.  Calls to this function are part of the pipeline, and must appear inside the scope of `app.use`.
 
 
 

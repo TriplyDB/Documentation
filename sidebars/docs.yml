@@ -22,46 +22,49 @@
 
     - group: TriplyETL reference
       items:
-        - title: Extract
+        - title: Overview
+          link: /docs/triply-etl/overview
+
+        - title: 1. Extract
           link: /docs/triply-etl/extract/overview
-        - title: ⤷ Data formats
+        - title: ⤷ 1A. Data formats
           link: /docs/triply-etl/extract/formats
-        - title: ⤷ Source types
+        - title: ⤷ 1B. Source types
           link: /docs/triply-etl/extract/types
-        - title: ⤷ Record
+        - title: ⤷ 1C. Record
           link: /docs/triply-etl/extract/record
 
-        - title: Transform
+        - title: 2. Transform
           link: /docs/triply-etl/transform/overview
-        - title: ⤷ JSON-LD Frames
+        - title: ⤷ 2A. JSON-LD Frames
           link: /docs/triply-etl/transform/json-ld
-        - title: ⤷ RATT
+        - title: ⤷ 2B. RATT
           link: /docs/triply-etl/transform/ratt
-        - title: ⤷ TypeScript
+        - title: ⤷ 2C. TypeScript
           link: /docs/triply-etl/transform/typescript
 
-        - title: Assert
+        - title: 3. Assert
           link: /docs/triply-etl/assert/overview
-        - title: ⤷ JSON-LD
+        - title: ⤷ 3A. JSON-LD
           link: /docs/triply-etl/assert/json-ld
-        - title: ⤷ RATT
+        - title: ⤷ 3B. RATT
           link: /docs/triply-etl/assert/ratt
 
-        - title: Enrich
+        - title: 4. Enrich
           link: /docs/triply-etl/enrich/overview
-        - title: ⤷ SHACL Rules
+        - title: ⤷ 4A. SHACL Rules
           link: /docs/triply-etl/enrich/shacl
-        - title: ⤷ SPARQL Update
+        - title: ⤷ 4B. SPARQL Update
           link: /docs/triply-etl/enrich/sparql
 
-        - title: Validate
+        - title: 5. Validate
           link: /docs/triply-etl/validate/overview
-        - title: ⤷ Graph comparison
+        - title: ⤷ 5A. Graph comparison
           link: /docs/triply-etl/validate/graph-comparison
-        - title: ⤷ SHACL
+        - title: ⤷ 5B. SHACL
           link: /docs/triply-etl/validate/shacl
 
-        - title: Publish
+        - title: 6. Publish
           link: /docs/triply-etl/publish
 
         - title: Declare

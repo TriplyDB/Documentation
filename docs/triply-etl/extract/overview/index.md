@@ -1,29 +1,35 @@
 ---
-title: "TriplyETL: Extract: Overview"
+title: "1. Extract"
 path: "/docs/triply-etl/extract/overview"
 ---
 
-The Extract step is the first step in any TriplyETL pipeline.  It extracts data records from one or more data sources.
+The **Extract** step is the first step in any TriplyETL pipeline.  It extracts data in different formats and from different source types.  Examples of data formats are 'Microsoft Excel' and 'JSON'.  Examples of source types are 'file' or 'URL'.  Source data are represented in a uniform Record.
 
-## Data sources
+```mermaid
+graph LR
+  source -- 1. Extract --> record
+  record -- 2. Transform --> record
+  record -- 3. Assert --> ld
+  ld -- 4. Enrich --> ld
+  ld -- 5. Validate --> ld
+  ld -- 6. Publish --> tdb
 
-Data sources are a combination of a data format and a source type.  Examples of data formats are 'Microsoft Excel' or 'JSON'.  Examples of source types are 'file' or 'URL'.  Notice that you can make many combinations by combining format and type.  For example, you can use a local JSON file or you download JSON from a URL.
+  linkStyle 0 stroke:red,stroke-width:3px;
+  ld[Internal Store]
+  record[Record]
+  source[Data Sources]
+  tdb[(Triple Store)]
+```
 
-- [Data Formats](/docs/triply-etl/extract/formats) gives an overview of the data formats that are supported by TriplyETL.
-- [Source Types](/docs/triply-etl/extract/types) given an overview of the source types that are supported by TriplyETL
+The following pages cover the Extract step in detail:
 
-## Record
-
-The Extract step results in a stream of records.  The basic structure of every record in TriplyETL is the same.  It does not matter which data format or which source type is used.
-
-- [Record](/docs/triply-etl/extract/record) documents the basic structure of every record in TriplyETL.
-<!--
-- [Special Keys](/docs/triply-etl/extract/special-keys) documents the special keys that are added to the records to make data processing more convenient.
--->
+- [1A. Data Formats](/docs/triply-etl/extract/formats) gives an overview of the data formats that are supported by TriplyETL.
+- [1B. Source Types](/docs/triply-etl/extract/types) given an overview of the source types that are supported by TriplyETL
+- [1C. Record](/docs/triply-etl/extract/record) documents the basic structure of every record in TriplyETL.
 
 ## Next steps
 
-Once a stream of records is generated, the following documentation explains how the data in these records can be used:
+The Extract step results in a stream of records.  The basic structure of every Record in TriplyETL is the same.  It does not matter which data format or which source type is used.  Once a stream of Records is generated, the following steps document how data from those records can be used:
 
-- [Transformations](transformations) are applied to the record to change its contents.
-- [Assertions](assertions) use data from the record to generate linked data in the Internal Store.
+- [2. Transform](/docs/triply-etl/transform/overview) are applied to the Record to change its contents.
+- [3. Assert](/docs/triply-etl/assert/overview) use data from the Record to generate linked data in the Internal Store.

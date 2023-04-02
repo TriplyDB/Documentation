@@ -1,124 +1,35 @@
 ---
-title: "Triply ETL: Extract: Source types"
+title: "1B. Source types"
 path: "/docs/triply-etl/extract/types"
 ---
 
-This page documents the different source types that you can use in TriplyETL:
+This page documents the different data source types that can be used in TriplyETL:
 
-| Source type                             | Description                                |
-| --------------------------------------- | ------------------------------------------ |
-| [Inline JSON](#inline-json)             | A JSON object or an array of JSON objects. |
-| [Strings](#strings)                     | A string serialization of data.            |
-| [Local files](#local-files)             | One or more local files that contain data. |
-| [Online files or APIs](#online)         | One or more online files that contain data. This includes data from API requests. |
-| [TriplyDB assets](#triplydb-assets)     | One or more files stored in TriplyDB ('Assets'). |
-| [TriplyDB datasets](#triplydb-datasets) | One or more linked datasets stored in TriplyDB. |
-| [TriplyDB queries](#triplydb-queries)   | One or more saved queries in TriplyDB that return data. |
-
-
-
-## Inline JSON
-
-In the "Getting Started" section we saw that JSON source data was specified in-line:
-
-```ts
-fromJson([
-  { id: '123', name: 'John' },
-  { id: '456', name: 'Jane' },
-]),
-```
-
-This works because TriplyETL configurations are implemented in TypeScript, and JSON object can be specified inside TypeScript.  This makes JSON the only source format that can be specified in such a native way inside TriplyETL.
-
-In documentation, we often use in-line JSON sources since it makes code snippets self-contained without having to rely on external data sources such as files.  In production systems such in-line JSON sources are almost never used.
-
-
-
-## Strings
-
-String sources are similar to inline JSON, since they can be specified as part of the TriplyETL configuration.  String sources are currently supported by the `fromJson()` source connector, the `loadRdf()` function, and the `validateShacl()` function (see [Validation](/docs/triply-etl/validation)).
-
-The following snippet loads triples into the internal RDF store of TriplyETL:
-
-```ts
-loadRdf(Etl.Source.string(`
-prefix person: <https://example.com/id/person/>
-prefix sdo:    <https://schema.org/>
-
-person:1
-  a sdo:Person;
-  sdo:name 'J. Doe'.`)),
-```
-
-This loads the following triples:
-
-```mermaid
-graph LR
-  person:1 -- a --> sdo:Person
-  person:1 -- sdo:name --> J.Doe
-```
-
-The following example makes RDF source data available to the `validateShacl()` function:
-
-```ts
-validateShacl(Etl.Source.string(`
-prefix sh:  <http://www.w3.org/ns/shacl#>
-prefix shp: <https://example.com/model/shp/>
-prefix sdo: <https://schema.org/>
-
-shp:Person
-  a sh:NodeShape;
-  sh:property shp:Person_name;
-  sh:targetClass sdo:Person.
-
-shp:Person_name
-  a sh:PropertyShape;
-  sh:datatype xsd:string;
-  sh:minLength 1;
-  sh:path sdo:name.`))
-```
-
-This makes the following linked data SHACL specification available:
-
-```mermaid
-graph LR
-  shp:Person -- a --> sh:NodeShape
-  shp:Person -- sh:property --> shp:Person_name
-  shp:Person -- sh:targetClass --> sdo:Person
-  shp:Person_name -- a --> sh:PropertyShape
-  shp:Person_name -- sh:datatype --> xsd:string
-  shp:Person_name -- sh:minLength --> 1
-  shp:Person_name -- sh:path --> sdo:name
-```
-
-The following example makes a string source available to the `fromJson()` source connector:
-
-```ts
-fromJson(Ratt.Source.string(`
-[
-  { id: '123', name: 'John' },
-  { id: '456', name: 'Jane' }
-]`)),
-```
-
-Notice that the [inline JSON](#inline-json) source is often a more intuitive specification format for the `fromJson()` source connector than its corresponding string source.
+| Source type                             | Description                                 |
+| --------------------------------------- | ------------------------------------------- |
+| [Local files](#local-files)             | Local files that contain data.              |
+| [Online files](#online-files)           | Online files that contain data.             |
+| [APIs](#apis)                           | APIs that return data.                      |
+| [TriplyDB assets](#triplydb-assets)     | Files stored in TriplyDB ('Assets').        |
+| [TriplyDB datasets](#triplydb-datasets) | Linked datasets stored in TriplyDB graphs.  |
+| [TriplyDB queries](#triplydb-queries)   | Saved queries in TriplyDB that return data. |
+| [Inline JSON](#inline-json)             | A JSON object or an array of JSON objects.  |
+| [Strings](#strings)                     | A string serialization of data.             |
 
 
 
 ## Local files
 
-While [inline JSON](#inline-json) and [string sources](#strings) are mostly used for small examples, local files are somewhat more widely used.
-
-The following snippet uses a JSON source that is stored in a local file:
+The following code snippet extracts records from a local file that uses the [JSON format](/docs/triply-etl/extract/formats#json):
 
 ```ts
-fromJson(Etl.Source.file('./static/example.json')),
+fromJson(Source.file('./static/example.json')),
 ```
 
 It is possible to specify an arbitrary number of local files by using array notation:
 
 ```ts
-fromJson(Etl.Source.file([
+fromJson(Source.file([
   './static/data-001.json',
   './static/data-002.json',
   ...,
@@ -126,21 +37,23 @@ fromJson(Etl.Source.file([
 ])),
 ```
 
-Notice that local files typically not used in production systems, since it is difficult to guarantee that all project partners have exactly the same local files on their computer.  The use of local files that are outdated or only present on the laptop of a colleague that is on holiday are often a good reason to use other source kinds instead.
+Notice that local files are not typically used in production systems, since it is difficult to guarantee that all project partners have exactly the same local files on their computer.
+
+The risk of using outdated files and the overhead of securely sharing local files with multiple team members are often sufficient reasons to use other source types instead.
 
 
 
-## Online files or APIs {#online}
+## Online files {#online-files}
 
-The following snippet connects to a JSON source that is stored in a publicly accessible location (URL) on the Internet:
+The following code snippet connects to a JSON source that is stored in a publicly accessible location on the Internet:
 
 ```ts
-fromJson(Etl.Source.url('https://somewhere.com/example.json')),
+fromJson(Source.url('https://somewhere.com/example.json')),
 ```
 
-If needed, you can configure details about how the HTTP request should be made made.  You can the options that are supported by the [node-fetch library](https://github.com/node-fetch/node-fetch#options) for this.
+If needed, you can configure details about how the HTTP request should be made made.  This can be done with the optional options parameter.  All options provided by the [node-fetch library](https://github.com/node-fetch/node-fetch#options) can be used.
 
-For example, the following requests private data that uses basic authentication with username/password access:
+For example, the following requests private data that is accessed using basic authentication with username and password:
 
 ```ts
 fromJson(Etl.Source.url(
@@ -155,29 +68,32 @@ fromJson(Etl.Source.url(
 )),
 ```
 
-Notice that these HTTP configuring details make it possible to use online APIs as well.  For example, an online API may require specifying a token or other input values in the request body or in specific headers.  Also things like a page number and/or page size may be specified in this way.  However, if you connect to a popular online API, it is often better to use a dedicated connector (e.g. [OAI-PMH](#oai-pmh)).
+### Use in production systems
 
-Online files are typically not used in production pipelines, because the availability of such Internet resources is often outside of the control of the project partners.  Internet resources that are not maintained by the project partners may also be subject to content-wise changes over time, which may affect the production pipeline.
+Online files are typically not used in production pipelines, because the availability of many Internet resources is outside of the control of the project team.  Internet resources that are not maintained by team members may be subject to content-wise changes, which may affect the production pipeline.
 
-If the project controls the Internet resource, then these risks are smaller.  But at that point it is even better to upload the online files as [TriplyDB asset](#triplydb-assets) for additional benefits such as access controls.
+If the project team controls the Internet resources, then risks are smaller.  But at that point it is even better to upload the online files as [TriplyDB asset](#triplydb-assets) for additional benefits such as access controls.
+
+
+
+## APIs
+
+The URL source type can also be used to extract records from online endpoints and APIs.
+
+The following code snippet extracts records from a TriplyDB REST API:
+
+```ts
+fromJson(Source.url('https://api.triplydb.com/datasets')),
+```
+
 
 ### Raw SPARQL endpoints
 
-A specific kind of online API is a raw SPARQL endpoint.  Unfortunately, raw SPARQL endpoints lack several features that are essential for use in production systems:
-- secure access control
-- pagination
-- reliable retrieval of large resultsets
-- API variables
-- versioning
-
-These features are all supported by [TriplyDB queries](#triplydb-queries).  It is therefore simpler and safer to use TriplyDB queries.  Still, when used outside of production systems, raw SPARQL endpoints can still be used as regular web APIs.
-
-The following code snippet issues a raw SPARQL query against a public SPARQL endpoint.
-Since we specified CSV as the result set format (Media Type `text/csv`), the resultset can be accessed as any other CSV source:
+SPARQL endpoints are online APIs.  The following code snippet issues a raw SPARQL query against a public SPARQL endpoint.  Since we specified CSV as the result set format (Media Type `text/csv`), the resultset can be accessed as any other CSV source:
 
 ```typescript
 fromCsv(
-  Etl.Source.url(
+  Source.url(
     'https://dbpedia.org/sparql',
     {
       request: {
@@ -193,17 +109,28 @@ fromCsv(
 )
 ```
 
+#### Use in production systems
+
+Raw SPARQL endpoints lack several features that are essential for use in production systems:
+- secure access control
+- pagination
+- reliable retrieval of large resultsets
+- API variables
+- versioning
+
+These features are all supported by [TriplyDB queries](#triplydb-queries).  It is therefore simpler and safer to use TriplyDB queries.  Still, when used outside of production systems, raw SPARQL endpoints can still be used as regular web APIs.
+
 
 
 ## TriplyDB assets {#triplydb-assets}
 
 Assets are a core feature of TriplyDB.  Assets allow arbitrary files to be stored in the context of a linked dataset.  A typical use case for assets is to upload (new versions of) source files.  The TriplyETL pipeline can pick the latest versions of these source files and publish the resulting linked data in the the same dataset.
 
-The following snippet uses a JSON source that is stored in a TriplyDB asset:
+The following code snippet uses a JSON source that is stored in a TriplyDB asset:
 
 ```ts
 fromJson(
-  Etl.Source.TriplyDb.asset(
+  Source.TriplyDb.asset(
     'some-account',
     'some-dataset',
     { name: 'example.json' }
@@ -214,21 +141,23 @@ fromJson(
 As with other TriplyDB sources, the account name is optional.  When omitted, the user account that is associated with the current API Token is used:
 
 ```ts
-loadRdf(Etl.Source.TriplyDb.rdf('my-dataset', { name: 'example.json' })),
+loadRdf(
+  Source.TriplyDb.rdf('my-dataset', { name: 'example.json' })
+),
 ```
 
-As with other TriplyDB sources, multiple assets can be specified:
+As with other source type, multiple assets can be specified:
 
 ```ts
 fromCsv([
-  Etl.Source.TriplyDb.asset('my-dataset', { name: 'table1.csv' }),
-  Etl.Source.TriplyDb.asset('my-dataset', { name: 'table2.csv' }),
+  Source.TriplyDb.asset('my-dataset', { name: 'table1.csv' }),
+  Source.TriplyDb.asset('my-dataset', { name: 'table2.csv' }),
 ]),
 ```
 
 ### Filtering
 
-If the asset name is omitted, *all* assets are returned.  This is often unpractical, since only some assets must be processed.  For example, if a dataset has PDF and JSON assets, only the latter should be processed by the `fromJson()` source connector.
+If the asset name is omitted, *all* assets are returned.  This is often unpractical, since only some assets must be processed.  For example, if a dataset has PDF and JSON assets, only the latter should be processed by the `fromJson()` source extractor.
 
 For such use cases the `filter` option can be used instead of the `name` option.  The `filter` option takes a TypeScript function that maps assets names onto Boolean values (true or false).  Only the assets for which the function returns truth are included.
 
@@ -236,7 +165,7 @@ The following snippet processes all and only assets whose name ends in `.json`:
 
 ```ts
 fromJson(
-  Etl.Source.TriplyDb.asset(
+  Source.TriplyDb.asset(
     'my-dataset',
     { filter: name => name.endsWith('json') }
   )
@@ -251,7 +180,7 @@ The following snippet uses a specific version of an asset:
 
 ```ts
 fromJson(
-  Etl.Source.TriplyDb.asset(
+  Source.TriplyDb.asset(
     'some-account',
     'some-dataset',
     { name: 'example.json', assetVersion: 2 }
@@ -265,11 +194,11 @@ Since TriplyDB assets are part of a TriplyDB dataset:
 - they are accessible under the same access level as the rest of the dataset, and
 - they are accessible with the same API Token that allows linked data to be published in that dataset.
 
-Notice that this makes it *easier* and *safer* to deal with source data that is not public.  When private data is retrieved from [online files or APIs](#online), authorization information must be configured at the HTTP level.  This is possible but cumbersome.  And, depending on the authentication approach, it is required to create a new API Token and securely configure that in addition to the TriplyDB API Token.
+Notice that this makes it *easier* and *safer* to deal with source data that is not public.  When private data is retrieved from [online files](#online-files) or [APIs](#apis), authorization information must be configured at the HTTP level.  This is possible but cumbersome.  And, depending on the authentication approach, it is required to create a new API Token and securely configure that in addition to the TriplyDB API Token.
 
 Notice that access also is more *transparent* when TriplyDB assets are used.  All and only collaborators that have access to the TriplyDB dataset also have access to the source data.  It is clear for all collaborators which source files should be used, and which versions are available.  This is more transparent than having to share (multiple versions of) source files over email or by other indirect means.
 
-### TriplyDB instance {#triplyDb-option}
+### TriplyDB instance {#triplydb-option}
 
 By default, assets are loaded from the TriplyDB instance that is associated with the currently used API Token.  In some situations it is useful to connect to a linked dataset from a different TriplyDB instance.  This can be configured with the `triplyDb` option.
 
@@ -277,7 +206,7 @@ The following snippet loads the OWL vocabulary from TriplyDB.com.  Notice that t
 
 ```ts
 loadRdf(
-  Etl.Source.TriplyDb.rdf(
+  Source.TriplyDb.rdf(
     'w3c',
     'owl',
     { triplyDb: { url: 'https://triplydb.com' } }
@@ -297,10 +226,7 @@ The following snippet uses a TriplyDB assets that was compressed with GNU zip (f
 
 ```ts
 fromCsv(
-  Etl.Source.TriplyDb.asset(
-    'my-dataset',
-    { name: 'example.csv.gz' }
-  )
+  Source.TriplyDb.asset('my-dataset', { name: 'example.csv.gz' })
 ),
 ```
 
@@ -311,13 +237,13 @@ fromCsv(
 Datasets in TriplyDB store linked data in one or more graphs.  Such datasets can be loaded as a TriplyETL source.  The following snippet loads a dataset from TriplyDB into the internal RDF store of TriplyETL:
 
 ```ts
-loadRdf(Etl.Source.TriplyDb.rdf('my-account', 'my-dataset')),
+loadRdf(Source.TriplyDb.rdf('my-account', 'my-dataset')),
 ```
 
 As with other TriplyDB sources, the account name is optional.  When omitted, a dataset from the user account that is associated with the current API Token is used:
 
 ```ts
-loadRdf(Etl.Source.TriplyDb.rdf('my-dataset')),
+loadRdf(Source.TriplyDb.rdf('my-dataset')),
 ```
 
 ### Graphs option
@@ -326,7 +252,7 @@ By default, all graphs from a linked dataset are loaded.  It is possible to spec
 
 ```ts
 loadRdf(
-  Etl.Source.TriplyDb.rdf(
+  Source.TriplyDb.rdf(
     'my-account',
     'my-dataset',
     { graphs: ['https://example.com/id/graph/model'] }
@@ -342,37 +268,47 @@ The `triplyDb` option can be used to specify that a linked dataset from a differ
 
 ## TriplyDB queries
 
-Saved SPARQL queries in TriplyDB can be used as data sources.  SPARQL queries are very powerful data sources, since they allow complex filters to be expressed.  There are 4 SPARQL query forms, with different source connectors that can process their results:
+Saved SPARQL queries in TriplyDB can be used as data sources.  SPARQL queries are very powerful data sources, since they allow complex filters to be expressed.  There are 4 SPARQL query forms, with different source extractors that can process their results:
 
-| Query form         | Source connector          |
-| ------------------ | ------------------------- |
-| SPARQL `ask`       | [`fromJson()`](#fromJson), [`fromXml()`](#fromXml) |
-| SPARQL `construct` | [`loadRdf()`](#loadRdf) |
-| SPARQL `describe`  | [`loadRdf()`](#loadRdf) |
-| SPARQL `select`    | [`fromCsv()`](#fromCsv), [`fromJson()`](#fromJson), [`fromTsv()`](@fromTsv), [`fromXml()`](#fromXml) |
+| Query form                       | Source extractor          |
+| -------------------------------- | ------------------------- |
+| [SPARQL `ask`](#ask)             | [`fromJson()`](/docs/triply-etl/extract/formats#json), [`fromXml()`](/docs/triply-etl/extract/formats#xml) |
+| [SPARQL `construct`](#construct-describe) | [`loadRdf()`](/docs/triply-etl/extract/formats#rdf) |
+| [SPARQL `describe`](#construct-describe)   | [`loadRdf()`](/docs/triply-etl/extract/formats#rdf) |
+| [SPARQL `select`](#select)       | [`fromCsv()`](/docs/triply-etl/extract/formats#csv), [`fromJson()`](/docs/triply-etl/extract/formats#json), [`fromTsv()`](/docs/triply-etl/extract/formats#tsv), [`fromXml()`](/docs/triply-etl/extract/formats#xml) |
 
-SPARQL `ask` queries expose JSON or XML.  The following snippet connects to the XML results of an `ask` query in TriplyDB:
+### SPARQL `ask` queries {#ask}
+
+SPARQL `ask` queries return data in either the JSON or the XML format.  This allows them to be processed with the [`fromCsv()`](/docs/triply-etl/extract/formats#csv) and [`fromXml()`](/docs/triply-etl/extract/formats#xml) extractors.
+
+The following code snippet connects to the XML results of a SPARQL `ask` query in TriplyDB:
 
 ```ts
 fromXml(Source.TriplyDb.query('my-account', 'my-ask-query')),
 ```
 
-SPARQL `construct` and `describe` queries both emit linked data (RDF).  This allows them to be used with the `loadRdf()` function.  The following snippet loads the results of a SPARQL query into the internal RDF store of TriplyETL:
+### SPARQL `construct` and `describe` queries {#construct-describe}
+
+SPARQL `construct` and `describe` queries return data in the RDF format.  This allows them to be used with the [`loadRdf()`](/docs/triply-etl/extract/formats#rdf) function.  The following snippet loads the results of a SPARQL query into the internal RDF store of TriplyETL:
 
 ```ts
-loadRdf(Etl.Source.TriplyDb.query('my-account', 'my-construct-query')),
+loadRdf(Source.TriplyDb.query('my-account', 'my-construct-query')),
 ```
 
-SPARQL `select` queries expose CSV, JSON, TSV, and XML.  This allows them to be used with these four corresponding source connectors.  For example, the following snippet connects to the table returned by a TriplyDB `select` query:
+### SPARQL `select` queries {#select}
+
+SPARQL `select` queries return data in either the CSV, JSON, TSV, or XML format.  This allows them to be used with the four corresponding source extractors: [`fromCsv()`](/docs/triply-etl/extract/formats#csv), [`fromJson()`](/docs/triply-etl/extract/formats#json), [`fromTsv()`](/docs/triply-etl/extract/formats#tsv), and [`fromXml()`](/docs/triply-etl/extract/formats#xml).
+
+The following code snippet connects to the table returned by a TriplyDB `select` query:
 
 ```ts
-fromCsv(Etl.Source.TriplyDb.query('my-account', 'my-select-query')),
+fromCsv(Source.TriplyDb.query('my-account', 'my-select-query')),
 ```
 
 As with other TriplyDB sources, the account name is optional.  When omitted, the user account that is associated with the current API Token is used:
 
 ```ts
-loadRdf(Etl.Source.TriplyDb.query('my-construct-query')),
+loadRdf(Source.TriplyDb.query('my-construct-query')),
 ```
 
 ### Versioning
@@ -384,7 +320,7 @@ Versioning is supported by TriplyDB saved queries.  When no specific version is 
 The following snippet uses a specific version of a query:
 
 ```ts
-fromJson(Etl.Source.TriplyDb.query('my-query', { version: 2 })),
+fromJson(Source.TriplyDb.query('my-query', { version: 2 })),
 ```
 
 Not specifying the `version` option automatically uses the latest version.
@@ -397,7 +333,7 @@ The following example binds the `?country` variable inside the query string to l
 
 ```ts
 fromCsv(
-  Etl.Source.TriplyDb.query(
+  Source.TriplyDb.query(
     'information-about-countries',
     {
       variables: {
@@ -441,7 +377,7 @@ statement.graph = graph('enrichment')
 
 ### Pagination
 
-When a bare SPARQL endpoint is queried as an [online API](#online), there are sometimes issues with retrieving the full resultset for larger queries.  With TriplyDB saved queries, the process of obtaining all results is abstracted away from the user, with the TriplyETL source performing multiple requests in the background as needed.
+When a bare SPARQL endpoint is queried as an [online API](#apis), there are sometimes issues with retrieving the full resultset for larger queries.  With TriplyDB saved queries, the process of obtaining all results is abstracted away from the user, with the TriplyETL source performing multiple requests in the background as needed.
 
 ### Result graph
 
@@ -451,7 +387,7 @@ The following snippet stores the results of the specified `construct` query in a
 
 ```typescript
 loadRdf(
-  Etl.Source.TriplyDb.query('my-query', { toGraph: graph.enrichment })
+  Source.TriplyDb.query('my-query', { toGraph: graph.enrichment })
 )
 ```
 
@@ -460,3 +396,107 @@ This snippet assumes that the graph names have been declared (see [Delcarations]
 #### TriplyDB instance
 
 The `triplyDb` option can be used to specify that a query from a different TriplyDB instance should be used.  This option works in the same way as for TriplyDB assets: [link](#triplydb-option)
+
+
+
+
+## Strings
+
+Data in the JSON or RDF formats can be specified with inline strings.
+
+The following code snippet loads triples into the Internal Store:
+
+```ts
+loadRdf(Etl.Source.string(`
+prefix person: <https://example.com/id/person/>
+prefix sdo:    <https://schema.org/>
+
+person:1
+  a sdo:Person;
+  sdo:name 'J. Doe'.`)),
+```
+
+This loads the following triples:
+
+```mermaid
+graph LR
+  person:1 -- a --> sdo:Person
+  person:1 -- sdo:name --> J.Doe
+```
+
+The following example makes RDF source data available to the [`validateShacl()`](/docs/triply-etl/validation) function:
+
+```ts
+validateShacl(Etl.Source.string(`
+prefix sh:  <http://www.w3.org/ns/shacl#>
+prefix shp: <https://example.com/model/shp/>
+prefix sdo: <https://schema.org/>
+
+shp:Person
+  a sh:NodeShape;
+  sh:property shp:Person_name;
+  sh:targetClass sdo:Person.
+
+shp:Person_name
+  a sh:PropertyShape;
+  sh:datatype xsd:string;
+  sh:minLength 1;
+  sh:path sdo:name.`))
+```
+
+This makes the following linked data SHACL specification available:
+
+```mermaid
+graph LR
+  shp:Person -- a --> sh:NodeShape
+  shp:Person -- sh:property --> shp:Person_name
+  shp:Person -- sh:targetClass --> sdo:Person
+  shp:Person_name -- a --> sh:PropertyShape
+  shp:Person_name -- sh:datatype --> xsd:string
+  shp:Person_name -- sh:minLength --> 1
+  shp:Person_name -- sh:path --> sdo:name
+```
+
+The following example makes a string source available to the `fromJson()` source extractor:
+
+```ts
+fromJson(Ratt.Source.string(`
+[
+  { id: '123', name: 'John' },
+  { id: '456', name: 'Jane' }
+]`)),
+```
+
+Notice that the [inline JSON](#inline-json) source is often a more intuitive specification format for the `fromJson()` source extractor than its corresponding string source.
+
+While [inline JSON](#inline-json) and [string sources](#strings) are mostly used for small examples, local files are somewhat more widely used.
+
+
+
+## Inline JSON
+
+Because TriplyETL configurations are implemented in TypeScript, it is possible to specify JSON data inline with TypeScript Objects.  JSON is the only data format that be specified in such a native inline way in TriplyETL.
+
+The following code snippet specifies two records using inline TypeScript objects:
+
+```ts
+fromJson([
+  { id: '123', name: 'John' },
+  { id: '456', name: 'Jane' },
+]),
+```
+
+This results in the following two records:
+
+```json
+{
+  "id": "123",
+  "name": "John"
+}
+{
+  "id": "456",
+  "name": "Jane"
+}
+```
+
+In documentation, we often use such inline JSON sources since that makes code snippets self-contained, without having to rely on external sources such as files.  In production systems this native inline source type is almost never used.
