@@ -363,9 +363,7 @@ is also possible to zoom out:
 
 #### When does the class hierarchy show?
 
-**Note that the class hierarchy does not automatically update to reflect changes in the data. When the data has changed, the page must be refreshed.**
-
-- A class only appears in the class hierarchy tab if it has instances (connected to the class via `rdf:type`), or if at least one of its subclasses appears in the class hierarchy tab.
+- A class only appears in the class hierarchy tab if it has instances (connected to the class via `rdf:type`).
 - The class hierarchy cannot be shown if it contains a cycle, meaning that some class is (indirectly) its own subclass.
 
 # Exporting Data
@@ -481,7 +479,7 @@ link:
 
 #### Pagination with TriplyDB.js
 
-**TriplyDB.js** is the official programming library for interacting with [TriplyDB](https://triply.cc/docs/triply-db). TriplyDB.js allows the user to connect to a TriplyDB instance via the TypeScript language. TriplyDB.js has the advantage that it can handle pagination internally so it can reliably retrieve a large number of results.
+**TriplyDB.js** is the official programming library for interacting with [TriplyDB](https://triply.cc/docs/triply-db-getting-started/). TriplyDB.js allows the user to connect to a TriplyDB instance via the TypeScript language. TriplyDB.js has the advantage that it can handle pagination internally so it can reliably retrieve a large number of results.
 
 To get the output for a `construct` or `select` query, follow these steps:
 

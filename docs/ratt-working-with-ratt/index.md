@@ -367,7 +367,7 @@ The function destination expects that source data is linked data. Copying a sour
 
 ## Using TriplyDB.js in RATT
 
-All operations that can be performed in a TriplyDB instance can be automated with classes and methods in the [TriplyDB.js](triplydb-js) library.  This library is also used by RATT in the background to implement many of the RATT functionalities.
+All operations that can be performed in a TriplyDB instance can be automated with classes and methods in the [TriplyDB.js](https://triply.cc/docs/triplydb-js/) library.  This library is also used by RATT in the background to implement many of the RATT functionalities.
 
 Sometimes it is useful to use classes and methods in TriplyDB.js directly.  This is done in the following way:
 
@@ -379,7 +379,7 @@ const app = new Ratt()
 console.log((await app.triplyDb.getInfo()).name)
 ```
 
-The above example prints the name of the TriplyDB instance.  But any other [TriplyDB.js](triplydb-js) operations can be performed.  For example, the user of the current API Token can change their avatar image in TriplyDB:
+The above example prints the name of the TriplyDB instance.  But any other [TriplyDB.js](https://triply.cc/docs/triplydb-js/) operations can be performed.  For example, the user of the current API Token can change their avatar image in TriplyDB:
 
 
 ```ts

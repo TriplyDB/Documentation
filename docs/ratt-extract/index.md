@@ -177,7 +177,7 @@ The following one-liner runs an existing saved `construct` query in TriplyDB:
 loadRdf(Ratt.Source.TriplyDb.query('my-account', 'my-query')),
 ```
 
-Similar to the other RATT Connectors, the above snippet automatically performs multiple requests in the background, if needed, to retrieve the full result set.  This is not supported by bare SPARQL endpoints which lack a standardized form of pagination.  See the page on [SPARQL Pagination](pagination) for more information on how this works.
+Similar to the other RATT Connectors, the above snippet automatically performs multiple requests in the background, if needed, to retrieve the full result set.  This is not supported by bare SPARQL endpoints which lack a standardized form of pagination.  See the page on [SPARQL Pagination](https://triply.cc/docs/triply-db-getting-started/#download-more-than-10-000-query-results---sparql-pagination) for more information on how this works.
 
 The above example is identical for public and non-public TriplyDB Saved Queries.  This makes it easy to start out with private or internal queries, and move them to public once the project matures.  This is not supported by raw SPARQL endpoints.
 
