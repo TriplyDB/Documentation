@@ -1,13 +1,13 @@
 ---
-title: "Transform: RATT"
+title: "2B. Transform: RATT"
 path: "/docs/triply-etl/transform/ratt"
 ---
 
-RATT transformations are a core set of functions that are commonly used to change the content of the TriplyETL record.
+RATT transformations are a core set of functions that are commonly used to change the content of TriplyETL Records.
 
-RATT transformations started out as TypeScript transformations that turned out to be useful in a wide variety of TriplyETL pipelines.  Triply maintains this core set of transformation functions to allow new ETLs to make use of off-the-shelf functionality that have proven useful in the past.
+RATT transformations started out as [TypeScript transformations](/docs/triply-etl/transform/typescript) that turned out to be useful in a wide variety of TriplyETL pipelines.  Triply maintains this core set of transformation functions to allow new ETLs to make use of off-the-shelf functionality that has proven useful in the past.
 
-The following transformation functions are available:
+The following transformation functions are currently available:
 
 | Function | Description |
 | --- | --- |
@@ -19,23 +19,22 @@ The following transformation functions are available:
 | [`addTag`](#addtag) | Create a language tag. |
 | [`addValue`](#addvalue) | Create a TypeScript value. |
 | [`capitalize`](#capitalize) | Transforms a string value to its capitalized variant. |
-| [`concat`](#concat) | |
-| [`copy`](#copy) | |
-| [`decodeHtml`](#decodehtml) | |
-| [`geojsonToWkt`](#geojsontowkt) | |
-| [`lowercase`](#lowercase) | |
-| [`padEnd`](#padend) | |
-| [`padStart`](#padstart) | |
-| [`replace`](#replace) | |
-| [`split`](#split) | |
-| [`substring`](#substring) | |
-| [`translateAll`](#translateall) | |
-| [`translateSome`](#translatesome) | |
-| [`tryLiteral`](#tryliteral) | |
-| [`uppercase`](#uppercase) | |
-| [`wkt.addPoint`](#wktaddpoint) | |
-| [`wkt.project`](#wktproject) | |
-
+| [`concat`](#concat) | Combine multiple strings into a new string. |
+| [`copy`](#copy) | Copy a value from an old into a new key. |
+| [`decodeHtml`](#decodehtml) | Decode HTML entities that occur in strings. |
+| [`geojsonToWkt`](#geojsontowkt) | Change GeoJSON strings to WKT strings. |
+| [`lowercase`](#lowercase) | Change strings to their lowercase variants. |
+| [`padEnd`](#padend) | Pad the end of strings. |
+| [`padStart`](#padstart) | Pad the start of strings. |
+| [`replace`](#replace) | Replace part of a string. |
+| [`split`](#split) | Split a string into multiple substrings. |
+| [`substring`](#substring) | Extract a substring from a string. |
+| [`translateAll`](#translateall) | Translate *all* string values to other values. |
+| [`translateSome`](#translatesome) | Translate *some* string values to other strings. |
+| [`tryLiteral`](#tryliteral) | Create literals for which the datatype is not know beforehand. |
+| [`uppercase`](#uppercase) | Change a string to its uppercase variant. |
+| [`wkt.addPoint`](#wktaddpoint) | Add a geospatial point using the Well-Known Text (WKT) format. |
+| [`wkt.project`](#wktproject) | Change the projection of a Well-Known Text (WKT) literal from from Coordinate Reference System into another. |
 
 
 
@@ -48,7 +47,7 @@ Creates an IRI based on the specified IRI prefix and the hash calculated over th
 #### Keys
 
 - `prefix` An IRI, or a key that contains an IRI value.
-- `content` A key that contains a string value, or a string value specified with [`str()`](#str).
+- `content` A key that contains a string value, or a string value specified with [`str()`](/docs/triply-etl/assert/ratt#str).
 - `key` A new key where the created hashed IRI is stored.
 
 #### Use cases
@@ -194,8 +193,6 @@ graph TB
 
 
 
-
-
 ## `addIri()`
 
 #### Description
@@ -281,11 +278,9 @@ triple(iri('https://example.com/id/person/johndoe'), a, sdo.Person),
 
 
 
-
-
 ## `addLiteral()`
 
-Creates an new literal and adds it to the RATT Record under the specified key.
+Creates an new literal and adds it to the Record under the specified key.
 
 This transformation can be used in the following 3 ways:
 
@@ -302,7 +297,7 @@ This transformation is typically used when:
 
 #### Parameters
 
-- `content` A key that contains a string value, or a string specified with [`str()`]().
+- `content` A key that contains a string value, or a string specified with [`str()`](/docs/triply-etl/assert/ratt#str).
 - `datatype` Optionally, an IRI or a key that stores an IRI.
 - `languageTag` Optionally, a language tag from the [`lang`]() object, or a key that stores such a language tag.
 - `key` A new key where the created literal is stored.
@@ -357,7 +352,7 @@ This makes the following assertion:
 city:London sdo:name 'London'.
 ```
 
-The literal 'London' has type `xsd:string`.  This is the standard datatype IRI for typed literals in RATT, and in many other linked data languages such as Turtle, TriG, and SPARQL.
+The literal 'London' has type `xsd:string`.  This is the standard datatype IRI for typed literals in the linked data languages (i.e. Turtle, TriG, and SPARQL).
 
 Notice that the same linked data could have been asserted with the following snippet, where the string value `'London'` is automatically cast into a string literal:
 
@@ -400,8 +395,6 @@ fromJson([
   { label: }
 ]),
 ```
-
-
 
 
 
@@ -454,13 +447,11 @@ together uniquely identify a thing can be specified.
 
 
 
-
-
 ## `addSkolemIri()`
 
 Creates a globally unique IRI that is intended to be used as a blank node identifier.
 
-Blank nodes are nodes without identification.  It relatively difficult to work which such nodes in graph data, since they cannot be identified or dereferenced online.  For this reason RATT uses Skolem IRIs to denote blank nodes.  This allows blank nodes to be identified and dereferenced.  This Skolemization approach is part of the RDF standard.
+Blank nodes are nodes without identification.  It relatively difficult to work which such nodes in graph data, since they cannot be identified or dereferenced online.  For this reason TriplyETL uses Skolem IRIs to denote blank nodes.  This allows blank nodes to be identified and dereferenced.  This Skolemization approach is part of the RDF standard.
 
 Skolem IRIs are [addRandomIri | random IRIs} whose root path starts with `.well-known/genid/`.  This makes it easy to distinguish them from other random IRIs that are not used to denote blank nodes.
 
@@ -478,13 +469,13 @@ The following snippet uses a [addHashedIri | hashed IRI} to create a predictable
 The snippet includes the prefix declarations to illustrate that the path of the Skolem IRI must start with `.well-known/genid.`.
 
 ```ts
-const prefix_base = 'https://example.com/'
+const base = 'https://example.com/'
 const prefix = {
-  feature: Ratt.prefixer(prefix_base('id/feature/')),
-  skolem: Ratt.prefixer(prefix_base('.well-known/genid/'),
+  feature: declarePrefix(base('id/feature/')),
+  skolem: declarePrefix(base('.well-known/genid/'),
 }
 
-...
+// Etc
 
 fromJson([{ point: 'Point(1.1 2.2)' }]),
 addHashedIri({
@@ -518,8 +509,6 @@ follows:
 feature:22238008e490f725979118f8f2dd9b5a geo:hasGeometry
   [ geo:asWKT 'Point(1.1 2.2)'^^geo:wktLiteral ].
 ```
-
-
 
 
 
@@ -557,11 +546,9 @@ triple(iri(prefix.city, 'label'), rdfs.label, literal('label', 'lang')),
 
 
 
-
-
 ## `addValue()`
 
-This middleware allows any value to be added to the RATT Record.
+This middleware allows any value to be added to the Record.
 
 #### Description
 
@@ -627,8 +614,6 @@ event:456 sdo:startDate 'unknown'.
 
 
 
-
-
 ## `capitalize()`
 
 Transforms a string value to its capitalized variant.
@@ -670,8 +655,6 @@ id:2 a def:Person.
 ```
 
 
-
-
 ## `concat()`
 
 #### Description
@@ -682,7 +665,7 @@ An optionally specified separator is placed in between every two consecutive str
 
 #### Parameters
 
-- `content` An array of key that contain a string and/or strings specified with [`str()`]().
+- `content` An array of key that contain a string and/or strings specified with [`str()`](/docs/triply-etl/assert/ratt#str).
 - `separator` Optionally, the string that is places between every two consecutive string values.
 - `key` A new key where the concatenated string is stored.
 
@@ -705,8 +688,6 @@ This results in the following linked data assertion:
 ```turtle
 person:1 foaf:name 'John Doe'.
 ```
-
-
 
 
 
@@ -785,8 +766,6 @@ city:2 rdfs:label 'Parijs'.
 
 
 
-
-
 ## `encodeHtml()`
 
 #### Description
@@ -805,8 +784,7 @@ You do *not* need to use this transformation if you want to assert literals with
 
 #### Parameters
 
-- `content` A key in the RATT Record that contains string values
-with HTML entities.
+- `content` A key in the Record that contains string values with HTML entities.
 - `key` A new key where the decoded content is stored.
 
 #### Example
@@ -831,8 +809,6 @@ This results in the following linked data assertions:
 id:1 rdfs:label 'A&B'.
 id:2 rdfs:label '1 < 2'.
 ```
-
-
 
 
 
@@ -924,8 +900,6 @@ graph LR
 
 
 
-
-
 ## `lowercase()`
 
 #### Description
@@ -1007,7 +981,7 @@ padEnd({
 }),
 ```
 
-This results in the following two RATT Records:
+This results in the following two Records:
 
 ```json
 [
@@ -1021,8 +995,6 @@ This results in the following two RATT Records:
   }
 ]
 ```
-
-
 
 
 
@@ -1112,8 +1084,6 @@ id:0002 dct:created '1702'^^xsd:gYear.
 
 
 
-
-
 ## `replace()`
 
 #### Description
@@ -1122,7 +1092,7 @@ Performs a regular expression replacement to the given input string, and stores 
 
 #### Parameters
 
-- `content` A key that contains a string value, or a static string specified with notation `str('...')`.
+- `content` A key that contains a string value, or a static string specified with [`str()`](/docs/triply-etl/assert/ratt#str).
 - `from` A [JavaScript Regular Expression](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions).
 - `to` Optionally, a string that replaces potential matches of
 the Regular Expression (`from`).  Use `$1`, `$2`, etc. to insert matches.  If absent, the empty string is used.
@@ -1150,7 +1120,7 @@ replace({
 triple('_creativeWork', dct.created, literal('_created', xsd.date)),
 ```
 
-This results in the following RATT Record:
+This results in the following Record:
 
 ```json
 {
@@ -1158,8 +1128,6 @@ This results in the following RATT Record:
   "_created": "2020-01-02"
 }
 ```
-
-
 
 
 ## `split()`
@@ -1180,7 +1148,7 @@ The transformation is used when:
 
 #### Parameters
 
-- `content` A key that stores a string, or a string specified with [`str()`]().
+- `content` A key that stores a string, or a string specified with [`str()`](/docs/triply-etl/assert/ratt#str).
 - `separator` A string or a regular expression that is used to separate the content.
 - `key` A new key where the array of splitted strings is stored.
 
@@ -1278,8 +1246,6 @@ id:1 sdo:postalCode '1231FZ'.
 
 
 
-
-
 ## `substring()`
 
 #### Description
@@ -1289,7 +1255,7 @@ result in a new key.
 
 #### Parameters
 
-- `content` A key that stores a string value, or a string specified with [`str()`]().
+- `content` A key that stores a string value, or a string specified with [`str()`](/docs/triply-etl/assert/ratt#str).
 - `start` The index of the first character that is included in the substring.  The first character has index 0.
 - `end` Optionally, the index of the first character that is excluded from the substring.  If absent, the substring ends at the end of the source string.
 - `key` The new key in which the substring is stored.
@@ -1315,8 +1281,6 @@ translateAll({
 }),
 triple('_iri', a, '_class'),
 ```
-
-
 
 
 
@@ -1386,8 +1350,6 @@ triple('_creativeWork', '_relator', '_creator'),
 
 
 
-
-
 ## `translateSome()`
 
 #### Description
@@ -1424,8 +1386,6 @@ transform.translateSome({
 
 
 
-
-
 ## `tryLiteral()`
 
 #### Description
@@ -1434,7 +1394,7 @@ This transformation is used when string values must be mapped onto literals with
 
 The datatype IRIs that could apply are specified in a list.  The specified datatype IRIs are tried out from left to right.  The first datatype IRI that results in a valid literal is chosen.
 
-- `content` A key that contains a string value, or a string value specified with [`str()`]().
+- `content` A key that contains a string value, or a string value specified with [`str()`](/docs/triply-etl/assert/ratt#str).
 - `datatypes` An array of two or more datatype IRIs.
 - `key` A new key where the created literal is stored.
 
@@ -1469,8 +1429,6 @@ If we do not want to emit errors for string values that cannot be satisfy any of
 
 
 
-
-
 ## `uppercase()`
 
 #### Description
@@ -1487,253 +1445,3 @@ This middleware can uppercase strings in any language; the Unicode Default Case 
 #### Example
 
 We do not have a good example for this transformation middleware yet.  Let us know in case you have a good example!
-
-
-
-
-
-## Custom transformations
-
-### `add()`
-
-Adds a new entry based one more than one other entries.
-
-#### Description
-
-Sometimes a new entry must be added to the record.  If this entry is based on exactly one existing entry then function [`copy`](#copy) is used.  But if the newly added entry depends on more than one entry, then function `add` must be used.
-
-Notice that it is bad practice to use `add` to add a new entry that is based on exactly one existing entry.  In such cases, the use of `copy` is better because it does not require access to the full RATT context.
-
-#### Function signature
-
-The `add` function has the following signature:
-
-```ts
-app.use(
-  add({
-    key: 'NEW_KEY',
-    value: context => FUNCTION_BODY}),
-)
-```
-
-The function can be configured in the following ways:
-- `NEW_KEY` must be the name of a new entry in the RATT record.
-- `FUNCTION_BODY` the body of a function, taking the RATT context as its input parameter (`context)` and ending with a `return` statement returning the newly added value.
-
-#### Error conditions
-
-This function emits an error if `NEW_KEY` already exists in the current RATT record.
-
-#### Use cases
-
-A common use case for `add` is to create a new column that combines values from two or more entries.
-
-For example, a RATT Record may contain a column for the first name and a column for the last name of persons:
-
-| First name | Last name |
-| ---------- | --------- |
-| John       | Doe       |
-| Jane       | Doe       |
-
-The following example code uses `add` to concatenate these two value into a new value called `Full name`:
-
-```ts
-app.use(
-  add({
-    key: 'Full name',
-    value: context =>
-      context.getString('First name') +
-      ' ' +
-      context.getString('Last name')}),
-)
-```
-
-After this `add` transformation, the RATT Record looks as follows:
-
-| First name | Last name | Full name |
-| ---------- | --------- | --------- |
-| John       | Doe       | John Doe  |
-| Jane       | Doe       | Jane Doe  |
-
-
-
-
-
-### `change()`
-
-Changes an existing entry in-place.
-
-#### Description
-
-The `change` function allows the value of an existing entry to be modified in-place.  This is typically done to clean a value or to map string values into IRIs.
-
-#### Function signature
-
-This function has the following signature:
-
-```ts
-app.use(
-  change({
-    key: 'KEY_NAME',
-    type: 'VALUE_TYPE',
-    change: value => FUNCTION_BODY}),
-)
-```
-
-The function can be configured in the following ways:
-- `ENTRY_NAME` must be the name of an entry in the RATT record.
-- `VALUE_TYPE` must be one of the following type-denoting strings:
-  - `'array'` an array whose elements have type `any`.
-  - `'boolean'` a Boolean value (`true` or `false`).
-  - `'iri'` a universal identifier / IRI term.
-  - `'literal'` an RDF literal term.
-  - `'number'` a natural number or floating-point number.
-  - `'string'` a sequence of characters.
-  - `'unknown'` an unknown type.
-- `FUNCTION_BODY` a function body that returns the new value.
-
-#### Use case: Changing variants
-
-A *variant* is a value that does not always have the same type.  Variants appear in dirty source data, where a value is sometimes given in one way and sometimes in another way.
-
-If variants are very common then it may be a good idea to look for better source data.  But if that is not feasible, the `change` value can be used to change such variants into uniform values.
-
-Notice that this use case only works for values that have a known set of potential types.  If the source data contains values whose types can vary arbitrarily, then there is no point in using the data.  This means that the source data inherently has no structure, and that traditional transformations cannot be applied.
-
-##### When to use?
-
-This use case can be applied if the following conditions are met:
-
-- The type of a value differs between records.
-- The different types that the value can have are known ahead of time.
-- The different types that the value can have can be determined unambiguously.
-
-##### Implementation
-
-In such cases we must set the `type` to `'unknown'`.  This allows us to cast the value to a variant.  A variant is represented with the pipe character `|` in TypeScript:
-
-```ts
-app.use(
-  change({
-    key: 'KEY',
-    type: 'unknown',
-    change: value => {
-      const tmp = value as TYPE_1 | ... | TYPE_N
-      if (typeof tmp === TYPE_1) {
-        FUNCTION_BODY_1
-      ...
-      } else if (typeof tmp === TYPE_N) {
-        FUNCTION_BODY_N
-      }}}),
-)
-```
-
-Notice that a temporary object (`tmp`) is used to store the variant that is the result of casting the current `value`.
-
-For each of the types (`TYPE_1` through `TYPE_N`) in the variant there is a dedicated function body (`FUNCTION_BODY_1` through `FUNCTION_BODY_N`).  There areN* `if`-clauses that check for the type of the current `value`.
-
-##### Example: String or object
-
-In the following example the `name` of a person is sometimes given as a plain string and sometimes as an object with a `fistName` and a `lastName` key:
-
-Record 1:
-- name: 'John Doe'
-
-Record 2:
-- name:
-  - firstName: 'Jane'
-  - lastName: 'Doe'
-
-The following function transforms this variant to a uniform string type:
-
-```ts
-app.use(
-  change({
-    key: 'name',
-    type: 'unknown',
-    change: value => {
-      const tmp = value as {firstName: string, lastName: string} | string
-      if (typeof tmp === 'string') {
-        return tmp
-      } else {
-        return tmp.firstName+' '+tmp.lastName
-      }}}),
-)
-```
-
-This results in a uniform (i.e., non-variant) RATT record:
-
-| name       |
-| ---------- |
-| 'John Doe' |
-| 'Jane Doe' |
-
-
-
-
-
-### `copy()`
-
-Copies an existing entry over to a new entry.
-
-#### Description
-
-Copying is the act of creating a new thing that is based on a specific existing thing.
-
-#### Function signature
-
-The `copy` function has the following signature:
-
-```ts
-app.use(
-  copy({
-    fromKey: 'FROM_KEY',
-    toKey: 'TO_KEY',
-    type: 'VALUE_TYPE',
-    change: value => FUNCTION_BODY}),
-)
-```
-
-This function copies the value from ‘foo’ to ‘bar’.  The `type` key ensures that the value in ‘foo’ is cast to the specified type prior to being copied.
-
-The optional `change` key allows the cast value to be transformed prior to storing it in ‘bar’.  Leaving the `change` key out results in a direct copy in which the value is not modified.
-
-This function emits an error if `fromKey` and `toKey` are the same.  If you want to change a value in-place you should use [`change`](#change) instead.
-
-This function emits an error if `toKey` already exists.  If you want to replace the value in an existing entry then you should use [`replace`](#replace) instead.
-
-The `change` function only takes the `value` argument and does not take the `context` argument.  If you need the `context` argument then they must use [`add`](#add) instead.
-
-
-
-
-
-### `replace()`
-
-Replaces an existing entry based on one other entry.
-
-#### Function signature
-
-The `replace` function has the following signature:
-
-```ts
-app.use(
-  replace({
-    fromKey: 'FROM_KEY',
-    toKey: 'FROM_TYPE',
-    type: 'VALUE_TYPE',
-    change?: value => FUNCTION_BODY}),
-)
-```
-
-- `FROM_KEY` is the name of the entry whose value is going to be used to replace the old value with.
-- `FROM_TYPE` is the name of the type that the value in `FROM_KEY` is cast to prior to calling the `change` function on it.
-- `TO_KEY` is the name of the entry whose value is going to be replaced.
-- The `change` key optionally specifies a function that takes the cast `value` of `FROM_KEY` and that returns the value that will be stored in `TO_KEY`.  If the `change` function is not specified, it is identical to `value => value`.
-
-#### Error conditions
-
-This function emits an error under the following conditions:
-- If `FROM_KEY` does not exist in the current RATT record.
-- If `TO_KEY` does not exist in the current RATT record.
-- If `FROM_KEY` and `TO_KEY` are the same.  Use [`change`](#chage) if you want to change a value in-place.

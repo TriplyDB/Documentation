@@ -216,16 +216,6 @@ The RATT script will give you a link to the uploaded dataset.  This dataset cont
 
 ![](connect-a-data-source.png)
 
-<!--
-```turtle
-prefix person: <https://example.com/id/person/>
-prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-
-person:00001 rdfs:label 'Anna'.
-person:00002 rdfs:label 'Bob'.
-person:00003 rdfs:label 'Carol'.
-```
--->
 
 
 ### Important terms before starting to work with RATT

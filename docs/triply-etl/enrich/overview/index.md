@@ -1,9 +1,9 @@
 ---
-title: "Enrich: Overview"
+title: "4. TriplyETL: Enrich"
 path: "/docs/triply-etl/enrich/overview"
 ---
 
-The Enrich step uses linked data that is asserted in the internal store (see [Assert](/docs/triply-etl/assert/overview)) to derive new linked data.
+The **Enrich** step uses linked data that is asserted in the Internal Store to derive new linked data.
 
 ```mermaid
 graph LR
@@ -21,7 +21,11 @@ graph LR
   tdb[(Triple Store)]
 ```
 
+If you do not have linked data in the Internal Store yet, then first go to one of the following steps:
+- 1. **Extract** allows you to load linked data into the Internal Store directly, with the [`loadRdf()`](/docs/triply-etl/extract/formats#loadRdf) function.
+- [3. **Assert**](/docs/triply-etl/assert/overview) uses data in the Record in order to make linked data assertions that are added to the Internal Store.
+
 TriplyETL supports the following enrichment approaches:
 
-- [SHACL Rules](/docs/triply-etl/enrich/shacl) are able to apply SPARQL Ask and Construct queries to the internal store.
-- [SPARQL Update](/docs/triply-etl/enrich/sparql) allows linked data to be added to and deleted from the internal store.
+- [4A. **SHACL Rules**](/docs/triply-etl/enrich/shacl) are able to apply SPARQL Ask and Construct queries to the internal store.
+- [4B. **SPARQL Update**](/docs/triply-etl/enrich/sparql) allows linked data to be added to and deleted from the internal store.

@@ -1,5 +1,5 @@
 ---
-title: "1B. Source types"
+title: "1B. Extract: Source types"
 path: "/docs/triply-etl/extract/types"
 ---
 
@@ -67,6 +67,7 @@ fromJson(Etl.Source.url(
   }
 )),
 ```
+
 
 ### Use in production systems
 
@@ -155,6 +156,7 @@ fromCsv([
 ]),
 ```
 
+
 ### Filtering
 
 If the asset name is omitted, *all* assets are returned.  This is often unpractical, since only some assets must be processed.  For example, if a dataset has PDF and JSON assets, only the latter should be processed by the `fromJson()` source extractor.
@@ -172,6 +174,7 @@ fromJson(
 ),
 ```
 
+
 ### Versioning
 
 It is possible to upload new versions of an existing TriplyDB asset.  When no specific version is specified, a TriplyETL pipeline will use the latest version automatically.  In order to use a specific version, the `version` option can be set to a version number.
@@ -188,6 +191,7 @@ fromJson(
 ),
 ```
 
+
 ### Access
 
 Since TriplyDB assets are part of a TriplyDB dataset:
@@ -197,6 +201,7 @@ Since TriplyDB assets are part of a TriplyDB dataset:
 Notice that this makes it *easier* and *safer* to deal with source data that is not public.  When private data is retrieved from [online files](#online-files) or [APIs](#apis), authorization information must be configured at the HTTP level.  This is possible but cumbersome.  And, depending on the authentication approach, it is required to create a new API Token and securely configure that in addition to the TriplyDB API Token.
 
 Notice that access also is more *transparent* when TriplyDB assets are used.  All and only collaborators that have access to the TriplyDB dataset also have access to the source data.  It is clear for all collaborators which source files should be used, and which versions are available.  This is more transparent than having to share (multiple versions of) source files over email or by other indirect means.
+
 
 ### TriplyDB instance {#triplydb-option}
 
@@ -215,6 +220,7 @@ loadRdf(
 ```
 
 If an asset is part of a non-public dataset, specifying the URL is insufficient.  In such cases an API Token from this other TriplyDB instance must be created and configured using the `token` option in combination with the `url` option.
+
 
 ### Compression
 
@@ -246,6 +252,7 @@ As with other TriplyDB sources, the account name is optional.  When omitted, a d
 loadRdf(Source.TriplyDb.rdf('my-dataset')),
 ```
 
+
 ### Graphs option
 
 By default, all graphs from a linked dataset are loaded.  It is possible to specify a only those graphs that should be loaded.  The following snippet only loads the data model, but not the instance data:
@@ -259,6 +266,7 @@ loadRdf(
   )
 ),
 ```
+
 
 ### TriplyDB instance
 
@@ -277,6 +285,7 @@ Saved SPARQL queries in TriplyDB can be used as data sources.  SPARQL queries ar
 | [SPARQL `describe`](#construct-describe)   | [`loadRdf()`](/docs/triply-etl/extract/formats#rdf) |
 | [SPARQL `select`](#select)       | [`fromCsv()`](/docs/triply-etl/extract/formats#csv), [`fromJson()`](/docs/triply-etl/extract/formats#json), [`fromTsv()`](/docs/triply-etl/extract/formats#tsv), [`fromXml()`](/docs/triply-etl/extract/formats#xml) |
 
+
 ### SPARQL `ask` queries {#ask}
 
 SPARQL `ask` queries return data in either the JSON or the XML format.  This allows them to be processed with the [`fromCsv()`](/docs/triply-etl/extract/formats#csv) and [`fromXml()`](/docs/triply-etl/extract/formats#xml) extractors.
@@ -287,6 +296,7 @@ The following code snippet connects to the XML results of a SPARQL `ask` query i
 fromXml(Source.TriplyDb.query('my-account', 'my-ask-query')),
 ```
 
+
 ### SPARQL `construct` and `describe` queries {#construct-describe}
 
 SPARQL `construct` and `describe` queries return data in the RDF format.  This allows them to be used with the [`loadRdf()`](/docs/triply-etl/extract/formats#rdf) function.  The following snippet loads the results of a SPARQL query into the internal RDF store of TriplyETL:
@@ -294,6 +304,7 @@ SPARQL `construct` and `describe` queries return data in the RDF format.  This a
 ```ts
 loadRdf(Source.TriplyDb.query('my-account', 'my-construct-query')),
 ```
+
 
 ### SPARQL `select` queries {#select}
 
@@ -311,6 +322,7 @@ As with other TriplyDB sources, the account name is optional.  When omitted, the
 loadRdf(Source.TriplyDb.query('my-construct-query')),
 ```
 
+
 ### Versioning
 
 In production systems, applications must be able to choose whether they want to use the latest version of a query (acceptance mode), or whether they want to use a specific recent version (production mode), or whether they want to use a specific older version (legacy mode).
@@ -324,6 +336,7 @@ fromJson(Source.TriplyDb.query('my-query', { version: 2 })),
 ```
 
 Not specifying the `version` option automatically uses the latest version.
+
 
 ### API variables
 
@@ -344,7 +357,7 @@ fromCsv(
 ),
 ```
 
-<!--
+<!-- TODO
 #### Dynamic API variables
 
 In [the previous section](#api-variables) the value `'Holland'` for the API variable `country` was known at the time of writing the TriplyETL configuration.  But what do we do if the requested country is not known at the time of writing, but depends on data that is read/transformed during the execution of the TriplyETL pipeline?
@@ -366,7 +379,7 @@ etl.use(
   }),
 ```
 
-In the above example, different countries are specified by data values that are read dynamically from the `COUNTRY` key.  This key can be a column in a table, or an element in XML, or some other dynamic data location, depending on the RATT source that is used.
+In the above example, different countries are specified by data values that are read dynamically from the `COUNTRY` key.  This key can be a column in a table, or an element in XML, or some other dynamic data location, depending on the data source that is used.
 
 The following line is used to configure the graph where the results from the queries are stored:
 
@@ -375,9 +388,11 @@ statement.graph = graph('enrichment')
 ```
 -->
 
+
 ### Pagination
 
 When a bare SPARQL endpoint is queried as an [online API](#apis), there are sometimes issues with retrieving the full resultset for larger queries.  With TriplyDB saved queries, the process of obtaining all results is abstracted away from the user, with the TriplyETL source performing multiple requests in the background as needed.
+
 
 ### Result graph
 
@@ -393,10 +408,10 @@ loadRdf(
 
 This snippet assumes that the graph names have been declared (see [Delcarations](/docs/triply-etl/declarations#graphs)).
 
-#### TriplyDB instance
+
+### TriplyDB instance
 
 The `triplyDb` option can be used to specify that a query from a different TriplyDB instance should be used.  This option works in the same way as for TriplyDB assets: [link](#triplydb-option)
-
 
 
 
@@ -460,7 +475,7 @@ graph LR
 The following example makes a string source available to the `fromJson()` source extractor:
 
 ```ts
-fromJson(Ratt.Source.string(`
+fromJson(Source.string(`
 [
   { id: '123', name: 'John' },
   { id: '456', name: 'Jane' }

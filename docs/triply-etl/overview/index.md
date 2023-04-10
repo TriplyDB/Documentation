@@ -1,5 +1,5 @@
 ---
-title: "Triply ETL: Overview"
+title: "TriplyETL: Overview"
 path: "/docs/triply-etl/overview"
 ---
 
@@ -19,7 +19,6 @@ graph LR
   ld -- 5. Validate --> ld
   ld -- 6. Publish --> tdb
 
-  linkStyle 0 stroke:red,stroke-width:3px;
   ld[Internal Store]
   record[Record]
   source[Data Sources]
@@ -35,7 +34,14 @@ graph LR
 - Step 5 [**Validate**](/docs/triply-etl/validate/overview) ensures that linked data in the Internal Store is correct.
 - Step 6 [**Publish**](/docs/triply-etl/publish) makes linked data available in a Triple Store for others to use.
 
-<!--
+In addition, the following components can be used throughout these steps:
+
+- [**Declarations**](/docs/triply-etl/declare) allow you to declare constants in one place for reuse throughout the rest of your TriplyETL configuration.
+- [**Debug tools**](/docs/triply-etl/debug) allow you to gain insight in a TriplyETL for the purpose of maintenance.
+- [**Control structures**](/docs/triply-etl/control) can be used to make parts of the TriplyETL configuration optional or repeating (loops).
+
+
+<!-- TODO
 ## Reference
 
 The following pages document all TriplyETL features and configuration options:
@@ -70,7 +76,7 @@ The following pages document all TriplyETL features and configuration options:
 TriplyETL has the following core features, that set it apart from other data pipeline products:
 
 - **Backend-agnostic**: TriplyETL supports any data source through it large and growing set of source connectors.
-- **Multi-paradigm**: TriplyETL supports all major paradigms for transforming and asserting linked data: SPARQL Update, JSON-LD Algorithms (TBA), SHACL Rules, RML (TBA), and RATT.  You can also write your own transformations in TypeScript.
+- **Multi-paradigm**: TriplyETL supports all major paradigms for transforming and asserting linked data: SPARQL Update, JSON-LD Algorithms (TBA), SHACL Rules, RML (TBA), and RDF All The Things (RATT).  You can also write your own transformations in TypeScript.
 - **Scalable**: TriplyETL processes data in a stream of self-contained records.  This allows TriplyETL pipelines to run in parallel, ensuring a high pipeline throughput.
 - **Standards-compliant**: TriplyETL implements the latest versions of the linked data standards and best practices: RDF 1.1, SHACL, XML Schema Datatypes 1.1, IETF RFC3987 (IRIs), IETF RFC5646 (Language Tags).
 - **High Quality**: The output of TriplyETL pipelines is automatically validated against the specified data model.

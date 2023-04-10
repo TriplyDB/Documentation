@@ -9,18 +9,19 @@
         - title: TriplyDB-JS
           link: /docs/triplydb-js
 
-    - group: TriplyETL tutorials
-      items:
-        - title: Overview
-          link: /docs/triply-etl/tutorials/overview
-        - title: Install
-          link: /docs/triply-etl/tutorials/install
-        - title: Record
-          link: /docs/triply-etl/tutorials/record
-        - title: Automation
-          link: /docs/triply-etl/tutorials/automation
+    #- group: TriplyETL tutorials
+    #  items:
+    #    - title: Overview
+    #      link: /docs/triply-etl/tutorials/overview
+    #    - title: Install
+    #      link: /docs/triply-etl/tutorials/install
+    #    - title: Record
+    #      link: /docs/triply-etl/tutorials/record
+    #    - title: Automation
+    #      link: /docs/triply-etl/tutorials/automation
 
-    - group: TriplyETL reference
+    - group: TriplyETL
+      tagline: Create production-grade Extract-Transform-Load pipelines
       items:
         - title: Overview
           link: /docs/triply-etl/overview
@@ -36,7 +37,7 @@
 
         - title: 2. Transform
           link: /docs/triply-etl/transform/overview
-        - title: ⤷ 2A. JSON-LD Frames
+        - title: ⤷ 2A. JSON-LD
           link: /docs/triply-etl/transform/json-ld
         - title: ⤷ 2B. RATT
           link: /docs/triply-etl/transform/ratt
@@ -52,9 +53,9 @@
 
         - title: 4. Enrich
           link: /docs/triply-etl/enrich/overview
-        - title: ⤷ 4A. SHACL Rules
+        - title: ⤷ 4A. SHACL
           link: /docs/triply-etl/enrich/shacl
-        - title: ⤷ 4B. SPARQL Update
+        - title: ⤷ 4B. SPARQL
           link: /docs/triply-etl/enrich/sparql
 
         - title: 5. Validate
@@ -73,6 +74,7 @@
           link: /docs/triply-etl/control
         - title: Debug
           link: /docs/triply-etl/debug
+
         #- title: Production systems
         #  link: /docs/triply-etl/production-systems
         #- title: RATT - Getting started
@@ -81,6 +83,7 @@
         #  link: /docs/triply-etl/ratt-tree-shaped-data
         #- title: RATT - Numeric data
         #  link: /docs/triply-etl/ratt-numeric-data
+
     - group: Yasgui
       tagline: Learn about the SPARQL editor
       items:

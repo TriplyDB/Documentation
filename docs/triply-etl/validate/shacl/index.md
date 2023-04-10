@@ -1,5 +1,5 @@
 ---
-title: "Validate: SHACL"
+title: "5B. SHACL Validation"
 path: "/docs/triply-etl/validate/shacl"
 ---
 
@@ -12,16 +12,24 @@ SHACL Validation can be used when the following preconditions are met:
 1. A data model must be available from a data source.  The data model must use the SHACL standard.
 2. Some data must be asserted in the internal store.  If your internal store is still empty, you can read [the Assert documentation](/docs/triply-etl/assert/overview) on how to add assertions to that store.
 
+The function for performing SHACL validation can be imported from the generic TriplyETL library:
+
+```ts
+import { validate } from '@triplyetl/etl/shacl'
+```
+
 ## A complete example
 
 We use the following full TriplyETL script to explain the validation feature.  Do not be afraid by the length of the script; we will go through each part step-by-step.
 
 ```ts
-import { a, fromJson, iri, pairs, Ratt as Etl, toRdf, toTriplyDb, validateShacl } from '@triplydb/ratt'
-import { a, foaf } from '@triplydb/ratt/lib/vocab'
+import { Etl, Source, declarePrefix, fromJson, toTriplyDb } from "@triplyetl/etl/generic"
+import { iri, pairs } from "@triplyetl/etl/ratt"
+import { validate } from '@triplyetl/etl/shacl'
+import { a, foaf } from "@triplyetl/etl/vocab"
 
 const prefix = {
-  id: Etl.prefixer('https://triplydb.com/Triply/example/id/'),
+  id: declarePrefix('https://triplydb.com/Triply/example/id/'),
 }
 
 export default async function (): Promise<Etl> {
@@ -32,7 +40,7 @@ export default async function (): Promise<Etl> {
       [a, foaf.Person],
       [foaf.age, 'age'],
     ),
-    validateShacl(Etl.Source.string(`
+    validate(Source.string(`
       prefix foaf: <http://xmlns.com/foaf/0.1/>
       prefix rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
       prefix sh:   <http://www.w3.org/ns/shacl#>
@@ -64,16 +72,13 @@ export default async function (): Promise<Etl> {
 In our example we are using the following source data that records the age of a person:
 
 ```json
-[
-  {
-    "age": "twelve",
-    "id":  "id"
-  },
-  ...
-]
+{
+  "age": "twelve",
+  "id":  "id"
+}
 ```
 
-In our example the data source is in-line JSON, but notice that any source format could have been used here (see [TriplyETL: Source Connectors](/docs/triply-etl/source-connectors/)):
+In our example the data source is [inline JSON](/docs/triply-etl/extract/types#inline-json), but notice that any source format could have been used:
 
 ```ts
 fromJson([{ age: 'twelve', id: '1' }]),
@@ -161,14 +166,14 @@ Notice the following details:
   - Node shapes such as `shp:Person` relate to a specific class such as `foaf:Person`.
   - Property shapes such as `shp:Person_age` relate to a specific property such as `foaf:age`.
 
-## Step 6: Use the `validateShacl()` function
+## Step 6: Use the `validate()` function
 
 TriplyETL has a dedicated function that can be used to automatically enforce Information Models such as the one expressed in Step 5.
 
 Since the Information Model is relatively small, it can be specified in-line using a [String Source](/docs/triply-etl/source-connectors#string-source).  Longer models will probably be stored in a separate file or TriplyDB graph or asset.
 
 ```ts
-validateShacl(Etl.Source.string(`
+validate(Source.string(`
   prefix foaf: <http://xmlns.com/foaf/0.1/>
   prefix rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
   prefix sh:   <http://www.w3.org/ns/shacl#>
@@ -191,7 +196,7 @@ validateShacl(Etl.Source.string(`
 )),
 ```
 
-When we run the `validateShacl()` function at the end of our ETL script, we will receive the following error:
+When we run the `validate()` function at the end of our ETL script, we will receive the following error:
 
 ```
 ERROR (Record #1) SHACL Violation on node id:1 for path
@@ -280,23 +285,25 @@ But that would invalidate ETLs that generate numeric ages for persons, even thou
 
 Alternatively, we can remove the `sh:datatype` requirement from our Information Model entirely.  That would allow either string-based ages or numeric ages to be specified.  But now even weirder values for age, e.g. `'2023-01-01'^^xsd:date`, would be considered valid values for age.
 
+
+
 ## End notes
 
 Notice that TriplyETL does not tell you which of the 3 options you should follow in order to fix issues in your ETL.  After all, creating an ETL requires domain knowledge based on which you weight the pros and const of different options.  However, TriplyETL does give you the tools to discover issues that prompt you to come up with such solutions.  And once you have decided on a specific solution, TriplyETL provides you with the tools to implement it.
 
 
 
-
+<!-- TODO
 ## Validating RDF output
 
-RATT is able to automatically validate the RDF that is generated in the pipeline against a SHACL information model.
+TriplyETL is able to automatically validate the RDF that is generated in the pipeline against a SHACL information model.
 
 ```ts
-app.use(
+etl.use(
   // Create all linked data statements.
-  …
+  // …
   // Now that all the data is created, validate it using a model.
-  validateShacl(app.sources.model)
+  validate(etl.sources.model),
 )
 ```
 
@@ -316,14 +323,14 @@ const graph = {
   report: prefix.graph('report'),
 }
 
-app.use(
+etl.use(
   // Create all linked data statements.
-  …
+  // …
   // Now that all the data is created, validate it using a model.
-  validateShacl(
-    app.sources.model,
-    {report: {destination: app.sources.dataset,
-              graph: graph.report}}),
+  validate(
+    etl.sources.model,
+    { report: { destination: app.sources.dataset, graph: graph.report } }
+  ),
 )
 ```
 
@@ -331,7 +338,7 @@ app.use(
 
 ### Termination conditions
 
-The `validateShacl` function can optionally be given the `terminateOn` option.  This option determines when validation halts.  It can take the following values:
+The `validate()` function can optionally be given the `terminateOn` option.  This option determines when validation halts.  It can take the following values:
 
 - `'Never'` Do not halt; run the validation for the full dataset.
 - `'Violation'` Halt validation when the first SHACL Violation is encountered.
@@ -342,23 +349,24 @@ The `validateShacl` function can optionally be given the `terminateOn` option.  
 The following example code lets validation run for the full dataset, regardless of how many violations, warnings, and/or information messages are encountered:
 
 ```ts
-app.use(
+etl.use(
   // Create all linked data statements.
-  …
+  // …
   // Now that all the data is created, validate it using a model.
-  validateShacl(app.sources.model, {terminateOn: 'Never'}
+  validateShacl(etl.sources.model, { terminateOn: 'Never' }),
 )
 ```
 
 ### Log conditions
 
- The `validateShacl` function can optionally be given the `log` option.  This option determines when and which violations should be printed. The values are the same as in 'terminateOn' option. Note that `log` is about printing on your terminal and not about the violation report.
+The `validateShacl` function can optionally be given the `log` option.  This option determines when and which violations should be printed. The values are the same as in 'terminateOn' option. Note that `log` is about printing on your terminal and not about the violation report.
 
  ```ts
- app.use(
-   // Create all linked data statements.
-   …
-   // Now that all the data is created, validate it using a model.
-   validateShacl(app.sources.model, {log: "Never"}
- )
- ```
+etl.use(
+  // Create all linked data statements.
+  // …
+  // Now that all the data is created, validate it using a model.
+  validate(app.sources.model, { log: "Never" }),
+)
+```
+-->

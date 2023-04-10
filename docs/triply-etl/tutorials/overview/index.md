@@ -21,10 +21,12 @@ If you develop and run a TriplyETL locally, you need to install Node.js 16 or la
 The following code snippet shows the main TriplyETL loop.  Every TriplyETL pipeline consists of such a loop.
 
 ```ts
-import { Ratt as Etl } from '@triplydb/ratt'
+import { Etl } from '@triplyetl/etl/generic'
+
 export default async function (): Promise<Etl> {
   const etl = new Etl()
   etl.use(
+    // Etc
   )
   return etl
 }
@@ -42,7 +44,8 @@ By adding the following five components, you configure the pipeline to create a 
 These six components occur in specific places inside the TripleETL main loop, as indicated by the comments in the following code snippet:
 
 ```ts
-import { Ratt as Etl } from '@triplydb/ratt'
+import { Etl } from '@triplyetl/etl/generic'
+
 // 1. Declarations are made before the main loop.
 export default async function (): Promise<Etl> {
   const etl = new Etl()

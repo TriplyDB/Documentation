@@ -1,9 +1,9 @@
 ---
-title: "Triply ETL: RATT - Getting Started"
-path: "/docs/triply-etl/ratt-getting-started"
+title: "TriplyETL: Getting Started"
+path: "/docs/triply-etl/getting-started"
 ---
 
-This section gets you up and running with RATT by setting up increasingly more complex pipelines.  These pipelines will use RATT to connect data sources to an integrated linked data knowledge that is published in a TriplyDB instance.  Some of the documented steps are generic for setting up a modern TypeScript project, while others are specific for using RATT.
+This section gets you up and running with TriplyETL by setting up increasingly more complex pipelines.  These pipelines will use RATT to connect data sources to an integrated linked data knowledge that is published in a TriplyDB instance.  Some of the documented steps are generic for setting up a modern TypeScript project, while others are specific for using RATT.
 
 
 ### Setting up a minimal pipeline
@@ -190,16 +190,6 @@ The RATT script will give you a link to the uploaded dataset.  This dataset cont
 
 ![](connect-a-data-source.png)
 
-<!--
-```turtle
-prefix person: <https://example.com/id/person/>
-prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-
-person:00001 rdfs:label 'Anna'.
-person:00002 rdfs:label 'Bob'.
-person:00003 rdfs:label 'Carol'.
-```
--->
 
 
 ### Important terms before starting to work with RATT

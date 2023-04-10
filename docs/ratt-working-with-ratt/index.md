@@ -150,9 +150,6 @@ yarn ratt ./lib/main.js --from-record-id 26 --head 1
 
 When RATT is run normally, the following information is displayed:
 
-<!-- <https://issues.triply.cc/issues/5600>
-- The number of SHACL Violations, Warnings and Informational messages encountered.
--->
 - The number of added triples.
 - The runtime of the script.
 - An error message, if any occurred.
@@ -170,7 +167,6 @@ yarn ratt ./lib/main.js --verbose
 
 #### Secure verbose mode
 
-<!-- <https://issues.triply.cc/issues/5603> -->
 Verbose mode may perform a reset of your current terminal session.  If this happens you lose visible access to the commands that were run prior to the last RATT invocation.
 
 This destructive behavior of verbose mode can be disabled by setting the following environment variable:
@@ -391,17 +387,6 @@ const user = await app.triplyDb.getUser()
 await user.setAvatar('my-avatar.png')
 ```
 
-<!--
-app.before(async () => {
-  BODY
-}
--->
-<!--
-app.after(async () => {
-  BODY
-}
--->
-
 
 
 ## Setting up acceptance/production runs
@@ -476,15 +461,9 @@ RATT uses the [Semantic Versioning](https://semver.org) approach for structuring
   - If the `{minor}` number has increased, but the `{major}` number is the same, then an upgrade may require small changes to an existing pipeline.  A minor upgrade will never remove existing functionality, but it may change details of how existing functionality works (e.g. the settings for an existing function may have undergone minor changes).
 
     Minor releases are likely to include significant *new* functionality that may benefit an existing pipeline.
-<!-- <https://issues.triply.cc/issues/5881>
-    Check the [release changelog](#todo) to see which new features are available.
--->
 
   - If the `{major}` number has increased, an upgrade is likely to require changes to existing pipelines.  Major releases often remove outdated functionalities or bring significant changes to the behavior of existing functionalities.
 
-<!-- <https://issues.triply.cc/issues/5881>
-    Make sure to always check the [release changelog](#todo) when upgrading to a new major version.  And make sure to test your pipeline after performing a major upgrade.
--->
 
 ### Perform the upgrade
 
