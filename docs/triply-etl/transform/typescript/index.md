@@ -15,10 +15,16 @@ Custom TypeScript functions have access to various resources inside the TriplyET
 
 TriplyETL refers to these resources as the **Context**.
 
-- `context.app` the TriplyETL pipeline object.
-- `context.getX` retrieves the value of a specific key in the Record and assumes it has type `X` (e.g. `getAny()`, `getNumber()`, `getString()`).
-- `context.record` the current Record.
-- `context.store` the Internal Store.
+<dl>
+<dt><code>context.app</code><dt>
+<dd>The TriplyETL pipeline object.</dd>
+<dt><code>context.getX</code></dt>
+<dd>Tetrieves the value of a specific key in the Record and assumes it has type <code>X</code>, e.g. <code>getAny()</code>, <code>getNumber()</code>, <code>getString()</code>.</dd>
+<dt><code>context.record</code></dt>
+<dd>The current Record.</dd>
+<dt><code>context.store</code></dt>
+<dd>The Internal Store.</dd>
+</dl>
 
 
 
