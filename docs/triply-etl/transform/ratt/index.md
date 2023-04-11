@@ -388,12 +388,6 @@ fromJson([{ name: 'London' }]),
 triple(iri(prefix.city, 'name'), skos.prefLabel, literal('name', lang['en-gb'])),
 ```
 
-#### Example: Language tag from source data (TODO)
-
-```ts
-fromJson(),
-```
-
 
 
 ## `addRandomIri()`
