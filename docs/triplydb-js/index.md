@@ -15,7 +15,7 @@ Please contact [support@triply.cc](mailto:support@triply.cc) for questions and s
 
 TriplyDB.js contains several classes, each with their own methods. The documentation for every method includes at least one code example. These code examples can be run by inserting them into the following overall script.
 
-Notice that `process.env.TOKEN` picks up an API token that is stored in the environment variable called `TOKEN`. Follow the steps on [this page](api-token) to create a new API token in the TriplyDB GUI.
+Notice that `process.env.TOKEN` picks up an API token that is stored in the environment variable called `TOKEN`. Follow the steps on [this page](https://triply.cc/docs/triply-api/#creating-an-api-token) to create a new API token in the TriplyDB GUI.
 
 ```ts
 require('source-map-support/register')

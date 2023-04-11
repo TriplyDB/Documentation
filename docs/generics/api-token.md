@@ -3,7 +3,7 @@ title: "API Token"
 path: "/docs/api-token"
 ---
 
-Applications (see [TriplyDB.js](triplydb-js)) and pipelines (see [RATT](ratt)) often require access rights to interact with TriplyDB instances.  Specifically, reading non-public data and writing any (public or non-public) data requires setting an API token.  The token ensures that only users that are specifically authorized for certain datasets are able to access and/or modify those datasets.
+Applications (see [TriplyDB.js](/docs/triplydb-js)) and pipelines (see [TriplyETL](/docs/triply-etl)) often require access rights to interact with TriplyDB instances.  Specifically, reading non-public data and writing any (public or non-public) data requires setting an API token.  The token ensures that only users that are specifically authorized for certain datasets are able to access and/or modify those datasets.
 
 The following steps must be performed in order to create an API token:
 

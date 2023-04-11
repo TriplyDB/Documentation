@@ -28,7 +28,7 @@ When searching through a dataset with an ElasticSearch service, the results look
 
 
 
-Below, there is an [example](https://triplydb.com/Triply/iris/search/iris-1?q=iris) of our [Iris](https://triplydb.com/Triply/iris/) dataset, using “iris” as the search term. Easy searching and beautiful results, no? 
+Below, there is an [example](https://triplydb.com/Triply/iris/elasticsearch/iris-es/text?q=iris) of our [Iris](https://triplydb.com/Triply/iris/) dataset, using “iris” as the search term. Easy searching and beautiful results, no? 
 
 
 
