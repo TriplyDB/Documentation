@@ -363,9 +363,7 @@ is also possible to zoom out:
 
 #### When does the class hierarchy show?
 
-**Note that the class hierarchy does not automatically update to reflect changes in the data. When the data has changed, the page must be refreshed.**
-
-- A class only appears in the class hierarchy tab if it has instances (connected to the class via `rdf:type`), or if at least one of its subclasses appears in the class hierarchy tab.
+- A class only appears in the class hierarchy tab if it has instances (connected to the class via `rdf:type`).
 - The class hierarchy cannot be shown if it contains a cycle, meaning that some class is (indirectly) its own subclass.
 
 # Exporting Data
