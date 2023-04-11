@@ -113,7 +113,7 @@ This Information Model specifies that instances of class `foaf:Person` must have
 
 ## Step 4: Transformation
 
-We now have source data (Step 1), and a fair intuition about our target data (Step 2), and an Information Model (Step 3).  We can automate the mapping from source to target data with an [Assertion](/docs/triply-etl/assertions):
+We now have source data (Step 1), and a fair intuition about our target data (Step 2), and an Information Model (Step 3).  We can automate the mapping from source to target data with an [Assertion](/docs/triply-etl/assert/overview):
 
 ```ts
 etl.use(
@@ -170,7 +170,7 @@ Notice the following details:
 
 TriplyETL has a dedicated function that can be used to automatically enforce Information Models such as the one expressed in Step 5.
 
-Since the Information Model is relatively small, it can be specified in-line using a [String Source](/docs/triply-etl/source-connectors#string-source).  Longer models will probably be stored in a separate file or TriplyDB graph or asset.
+Since the Information Model is relatively small, it can be specified in-line using the [string source type](/docs/triply-etl/extract/types/#strings).  Larger models will probably be stored in a separate file or in a TriplyDB graph or asset.
 
 ```ts
 validate(Source.string(`
@@ -250,7 +250,7 @@ In this case, changing the data in the source system seem the most logical.  Aft
 
 ### Option 2: Change the transformation and/or assertions
 
-Alternatively, it is possible to transform English words that denote numbers to their corresponding numeric values.  Since people can get up to one hundred years old, or even older, there are many words that we must consider and transform.  This can be done with the [`translateAll()` transformation](/docs/triply-etl/transformations#translateAll):
+Alternatively, it is possible to transform English words that denote numbers to their corresponding numeric values.  Since people can get up to one hundred years old, or even older, there are many words that we must consider and transform.  This can be done with the [`translateAll()` transformation](/docs/triply-etl/transform/ratt#translateall):
 
 ```ts
 translateAll({

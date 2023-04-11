@@ -44,7 +44,7 @@ To create an IRI from a key that contains a absolute IRI:
 
 1. Make the following call: `iri(KEY)`
 
-### Examples
+#### Examples
 
 The following creates an IRI from `prefix.a` and `someKey`:
 
@@ -109,14 +109,14 @@ Since linked data is composed of triples, more complex n-ary information must of
 
 In some cases, it is inconvenient to come up with a naming scheme for intermediate nodes.  In such cases a content-based IRI can be generated with transformation function [`addHashedIri()`](/docs/triply-etl/transform/ratt#addhashediri), or a random IRI can be generated with transformation function [`addRandomIri()`](/docs/triply-etl/transform/ratt#addrandomiri).  Finally, a random Skolem IRI can be generated with transformation function [`addSkolemIri()`](/docs/triply-etl/transform/ratt#addskolemiri) to represent a nested node that can be treated as a 'blank node' in linked data.
 
-### Parameters
+#### Parameters
 
 - `subject` A subject term.  This must be either an [`iri`](#).
 - `predicate` A predicate term.  This must be an [`iri`](#).
 - `nestedNode` The nested node.  This must be an [`iri`](#).
 - `pairs` One or more pairs that make assertions about the nested node.  Every pair consists of a predicate term and an object term (in that order).
 
-### Example: Unit of measure
+#### Example: Unit of measure
 
 The following example asserts a value together with a unit of measure.  A well-known Skolem IRI or 'blank node' is used to attach the value and unit to:
 
@@ -159,7 +159,7 @@ graph LR
   classDef meta fill:sandybrown
 ```
 
-### Example: Geometry
+#### Example: Geometry
 
 The following example asserts a GeoSPARQL geometry.  The geometry is created
 as a separate node.
@@ -219,14 +219,14 @@ Asserts multiple triples that share the same subject term and predicate term.
 
 This function provides a shorthand notation for assertions that can also be made with multiple uses of [`triple()`](#triple).  The notational convenience of this middleware is similar to predicate-object lists in TriG, Turtle, and SPARQL.
 
-### Parameters
+#### Parameters
 
 - `subject` A subject term.  This must be either an [`iri()`](#iri) or a
 [`literal`](#literal).
 - `predicate` A predicate term.  This must be an [`iri`](#iri).
 - `objects` An array of object terms.  This must be either an [`iri()`](#iri) or a [`literal`](#literal).  Every distinct object term in the array results in a distinct triple assertion.
 
-### Example: Alternative labels
+#### Example: Alternative labels
 
 The following snippet asserts multiple alternative labels for a city:
 
@@ -277,14 +277,14 @@ Asserts multiple triples that share the same subject term.
 
 This function provides a shorthand notation for assertions that can also be made with multiple uses of [`triple()`](#triple).  The notational convenience of this middleware is similar to predicate lists in TriG, Turtle, and SPARQL.
 
-### Parameters
+#### Parameters
 
 - `subject` The subject term of the asserted triples.
 - `pairs` Zero or more pairs.  Each pair is an array with a predicate
 term and an object term (in that order).  Every distinct element in the
 `pairs` array results in a distinct triple assertion.
 
-### Example: Alternative and preferred label
+#### Example: Alternative and preferred label
 
 The following snippet asserts a preferred label and an alternative label for cities:
 
@@ -338,15 +338,14 @@ term, a predicate term, an object term, and a graph name.
 
 A quad is a [`triple()`](#triple) with a graph name as its fourth parameter.
 
-### Parameters
+#### Parameters
 
 - `subject` A subject term.  This must be either an [`iri`](#iri).
 - `predicate` A predicate term.  This must be an [`iri`](#iri).
-- `object` An object term.  This must be either an [`iri()`](#iri) or a
-[`literal`](#literal).
+- `object` An object term.  This must be either an [`iri()`](#iri) or a [`literal`](#literal).
 - `graph` A graph name.  This must be an [`iri`](#iri).
 
-### Example: Data and metadata
+#### Example: Data and metadata
 
 An ETL may distinguish between data and metadata assertions.  Both may be
 placed into distinct graphs.  The following snippet makes one assertion in
@@ -357,7 +356,7 @@ quad(iri(prefix.dataset, 'flowers'), a, dcat.Dataset, graph.metadata),
 quad(iri(prefix.flower, '_id'), a, def.Flower, graph.data),
 ```
 
-### See also
+#### See also
 
 Use [`quads()`](#quads) to make multiple quad assertions.
 
@@ -370,14 +369,14 @@ Asserts multiple quadruples or 'quads', i.e. statements that consists of a subje
 
 A quad is a [`triple()`](#triple) with a graph name as its fourth parameter.
 
-### Parameters
+#### Parameters
 
 - `subject` A subject term.  This must be either an [`iri()`](#iri) or a [`literal`](#literal).
 - `predicate` A predicate term.  This must be an [`iri()`](#iri).
 - `object` An object term.  This must be either an [`iri()`](#iri) or a [`literal`](#literal).
 - `graph` A graph name.  This must be an [`iri()`](#iri).
 
-### Example: Data and metadata
+#### Example: Data and metadata
 
 An ETL can distinguish between data and metadata assertions.  Both may be
 placed into distinct graphs.  The following snippet makes assertions in a
@@ -394,14 +393,14 @@ quads(
 ),
 ```
 
-### See also
+#### See also
 
 Use [`quad()`](#quad) for asserting a single quadruple.
 
 
 
 
-### `str()`
+## `str()`
 
 Strings in assertions are typically used to denote keys in the Record.
 
@@ -427,13 +426,13 @@ Asserts a triple, i.e. a statement that consists of a subject term, a predicate 
 
 A triple is a sequence of three terms: subject, predicate, and object.  A triple asserts a factual statement, claiming that the thing denoted by the subject term and the thing denotes by the object term are related to one another according to the relationship denoted by the predicate term.  A triple is the smallest unit of meaning in linked data.
 
-### Paramters
+#### Paramters
 
 - `subject` A subject term.  This must be either an [`iri()`](#iri) or a [`literal()`](#literal).
 - `predicate` A predicate term.  This must be an [`iri()`](#iri).
 - `object` An object term.  This must be either an [`iri()`](#iri) or a [`literal()`](#literal).
 
-### Example 1
+#### Example 1
 
 The following triple asserts that something is a person.  Notice that:
 - the subject term is an IRI that is constructed out of an IRI prefix (`prefix.person`) and a key that contains the IRI local name (`'id'`),
@@ -443,7 +442,7 @@ The following triple asserts that something is a person.  Notice that:
 triple(iri(prefix.person, 'id'), a, foaf.Person),
 ```
 
-### Example 2
+#### Example 2
 
 The following triple asserts that something has an age that is derived from the `'age'` key in the Record.  Notice that:
 
@@ -459,7 +458,7 @@ triple('_person', foaf.age, literal('age', xsd.nonNegativeInteger)),
 
 ## `triples()`
 
-### Description
+#### Description
 
 Asserts multiple triples that belong to the same graph.
 
@@ -473,12 +472,12 @@ graph:flowers {
 }
 ```
 
-### Parameters
+#### Parameters
 
 - `graph` A graph name.  This must be an IRI.
 - `triples` An array with zero or more triples.  Each triple is represented by an array of 3 terms: a subject term, a predicate term, and an object term (in that order).
 
-### Example
+#### Example
 
 Suppose that we want to distinguish between data and metadata assertions.  We can do so by asserting them in distinct graphs.  The following makes multiple metadata assertions in the metadata graph, followed by multiple data assertions in the data graph.
 

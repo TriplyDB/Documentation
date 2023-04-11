@@ -261,3 +261,52 @@ triples(graph.metadata,
 ```
 
 See [`triples()`](/docs/triply-etl/assert/ratt#triples) for more information about this particular assertion function.
+
+
+
+# Language declarations
+
+Commonly used language tags can be imported in the following way:
+
+```ts
+import { lang } from '@triplyetl/etl/vocab'
+```
+
+These language declarations can be used to add language-tagged strings to the Record:
+
+```ts
+addLiteral({
+  content: 'label',
+  languageTag: lang.fr,
+  key: '_languageTaggedString',
+}),
+```
+
+Or they can be used to directly assert language-tagged strings in the Internal Store:
+
+```ts
+triple('_city', rdfs.label, literal('label', lang.fr)),
+```
+
+See [`addLiteral()`](/docs/triply-etl/transform#addliteral) and [`literal()`](/docs/triply-etl/assert#literal) for more information.
+
+
+
+# Geospatial declarations
+
+IRIs that denote commonly used coordinate reference systems can be imported from the `epsg` object:
+
+```ts
+import { geojsonToWkt } from '@triplyetl/etl/ratt'
+import { epsg } from '@triplyetl/etl/vocab'
+```
+
+Such IRIs that denote coordinate reference systems can be used in several geospatial functions, for example in the [`geojsonToWkt()`](/docs/triply-etl/transform/ratt#geojsontowkt) function:
+
+```ts
+geojsonToWkt({
+  content: 'geojson',
+  crs: epsg[28992],
+  key: '_wkt',
+}),
+```

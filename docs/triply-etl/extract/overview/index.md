@@ -23,9 +23,9 @@ graph LR
 
 The following pages cover the Extract step in detail:
 
-- [1A. **Data Formats**](/docs/triply-etl/extract/formats) gives an overview of the data formats that are supported by TriplyETL.
-- [1B. **Source Types**](/docs/triply-etl/extract/types) given an overview of the source types that are supported by TriplyETL
-- [1C. **Record**](/docs/triply-etl/extract/record) documents the basic structure of every record in TriplyETL.
+- 1A. [**Data Formats**](/docs/triply-etl/extract/formats) gives an overview of the data formats that are supported by TriplyETL.
+- 1B. [**Source Types**](/docs/triply-etl/extract/types) given an overview of the source types that are supported by TriplyETL
+- 1C. [**Record**](/docs/triply-etl/extract/record) documents the basic structure of every record in TriplyETL.
 
 ## Next steps
 

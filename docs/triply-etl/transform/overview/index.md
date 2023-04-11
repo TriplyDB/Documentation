@@ -30,12 +30,12 @@ Once you have a stream of records, the following transformations are typically m
 
 TriplyETL supports the following transformation approaches:
 
-- [2A. **JSON-LD**](/docs/triply-etl/transform/json-ld) can be used to make changes to the Record by using a Frame specification.
-- [2B. **RATT**](/docs/triply-etl/transform/ratt) transformations are a set of commonly used transformation functions that are developed and maintained by Triply.
-- [2C. **TypeScript**](/docs/triply-etl/transform/typescript) can be used to write new customer transformations.
+- 2A. [**JSON-LD**](/docs/triply-etl/transform/json-ld) can be used to make changes to the Record by using a Frame specification.
+- 2B. [**RATT**](/docs/triply-etl/transform/ratt) transformations are a set of commonly used transformation functions that are developed and maintained by Triply.
+- 2C. [**TypeScript**](/docs/triply-etl/transform/typescript) can be used to write new customer transformations.
 
 ## Next steps
 
 The Transform step results in a cleaned and enriched record.  The following link documents how you can use the record to make linked data assertions:
 
-- [3. **Assert**](/docs/triply-etl/assert/overview) uses data from the Record to generate linked data in the Internal Store.
+-  [3. **Assert**](/docs/triply-etl/assert/overview) uses data from the Record to generate linked data in the Internal Store.

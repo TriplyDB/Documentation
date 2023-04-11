@@ -25,8 +25,8 @@ Assertion are statements of fact.  In linked data, assertions are commonly calle
 
 TriplyETL supports the following assertion approaches:
 
-- [3A. **JSON-LD**](/docs/triply-etl/assert/json-ld) can be used to assert data according to a JSON-LD Context.
-- [3B. **RATT**](/docs/triply-etl/assert/ratt) assertions are a core set of TypeScript functions that assert linked data.
+- 3A. [**JSON-LD**](/docs/triply-etl/assert/json-ld) can be used to assert data according to a JSON-LD Context.
+- 3B. [**RATT**](/docs/triply-etl/assert/ratt) assertions are a core set of TypeScript functions that assert linked data.
 
 ### Next steps
 

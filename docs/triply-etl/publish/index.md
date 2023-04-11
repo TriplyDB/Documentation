@@ -21,10 +21,8 @@ graph LR
   tdb[(Triple Store)]
 ```
 
-## Destinations
+## Remote data destinations
 
-### Configuring data destinations
-#### Remote data destinations
 Destinations are usually online locations in TriplyDB where the output of your pipeline will be published.
 
 If no account name is given, pipeline output is uploaded under the user account tied to the currently used API Token.
@@ -32,7 +30,7 @@ If no account name is given, pipeline output is uploaded under the user account 
 ```ts
 Destination.TriplyDb.rdf('my-dataset')
 Destination.TriplyDb.rdf('my-account', 'my-dataset')
-Destination.TriplyDb.rdf('my-account', 'my-dataset', {overwrite: true})
+Destination.TriplyDb.rdf('my-account', 'my-dataset', { overwrite: true })
 ```
 
 The following options can be specified to configure the destination behavior:
@@ -49,7 +47,7 @@ The following options can be specified to configure the destination behavior:
 </dl>
 
 
-#### Local data destinations
+## Local data destinations
 
 TriplyETL supports publishing RDF output into a local file.  This is not often used, because files lack many of the features that TriplyDB destinations support, such as:
 
@@ -64,10 +62,13 @@ Still, there may be cases in which a local file destination is useful, for examp
 Destination.file('my-file.trig'),
 ```
 
-#### Static and Dynamic destinations
+
+
+## Static and Dynamic destinations
+
 Destinations can be defined as static objects meaning that you can define destination beforehand. But it might be the case that you want to have multiple destinations for different records. In this case, you would need a dynamic destination, which should change based on certain information inside your source data.
 
-You can set static and dynamic destinations, like below:
+You can set static and dynamic destinations:
 
 ```ts
 const etl = new Etl({
@@ -82,7 +83,8 @@ const etl = new Etl({
 ```
 
 
-### Configuring multiple TriplyDB instances
+
+## Configuring multiple TriplyDB instances
 
 It is possible to use multiple TriplyDB instances in one TriplyETL pipeline.
 
@@ -117,7 +119,9 @@ const etl = new Etl({
 })
 ```
 
-### Direct copying of source data to destination
+
+
+## Direct copying of source data to destination
 
 TriplyETL supports copying sources directly to destination locations. This function is useful when you already have linked data that is used as a source, but is also needed at the destination. An example would be the information model. This would be available as a source, and with the copy function it can be uploaded to TriplyDB via TriplyETL.
 
@@ -132,6 +136,8 @@ etl.copySource(
 ```
 
 The function destination expects that source data is linked data. Copying a source that is not linked data can result in errors.
+
+
 
 ## Using TriplyDB.js in TriplyETL
 
@@ -198,9 +204,7 @@ If you want to run the pipeline in production mode, set the following environmen
 export TARGET=Production
 ```
 
-## Upload data
 
-TODO
 
 ## Upload prefixes
 
@@ -250,7 +254,3 @@ You can upload the prefixes similarly under your account, using the relevant Tri
 ```ts
 import { mapValues } from 'lodash'
 ```
-
-## Upload graphs
-
-In some cases, it is useful to upload graphs on TriplyDB that are already in a linked data format file. See [copying source data](/docs/ratt-working-with-ratt#direct-copying-of-source-data-to-destination).

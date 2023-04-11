@@ -242,13 +242,13 @@ graph LR
   johndoe(person:johndoe):::data
 ```
 
-The following snippet makes the same assertion, but uses term assertion [`iri()`]() instead of transformation `addIri()`:
+The following snippet makes the same assertion, but uses term assertion [`iri()`](/docs/triply-etl/assert/ratt#iri) instead of transformation `addIri()`:
 
 ```ts
 triple(iri(prefix.person, 'username'), a, sdo.Person),
 ```
 
-### Example: Absolute IRI
+#### Example: Absolute IRI
 
 The following snippet creates the same IRI, but does not use a predefined prefix IRI:
 
@@ -270,7 +270,7 @@ graph LR
   johndoe(https://example.com/id/person/johndoe):::data
 ```
 
-The following snippet uses term assertion [`iri()`]() instead of transformation `addIri()`:
+The following snippet uses term assertion [`iri()`](/docs/triply-etl/assert/ratt#iri) instead of transformation `addIri()`:
 
 ```ts
 triple(iri('https://example.com/id/person/johndoe'), a, sdo.Person),
@@ -299,14 +299,14 @@ This transformation is typically used when:
 
 - `content` A key that contains a string value, or a string specified with [`str()`](/docs/triply-etl/assert/ratt#str).
 - `datatype` Optionally, an IRI or a key that stores an IRI.
-- `languageTag` Optionally, a language tag from the [`lang`]() object, or a key that stores such a language tag.
+- `languageTag` Optionally, a language tag from the [`lang`](/docs/triply-etl/declare#language-declarations) object, or a key that stores such a language tag.
 - `key` A new key where the created literal is stored.
 
 #### See also
 
 If the created literal is used exactly once, it is often better to use the inline term assertion [`literal()`](/docs/triply-etl/assertions#literal) instead.
 
-### Example: Typed literal
+#### Example: Typed literal
 
 The following snippet asserts a triple with a typed literal with datatype IRI `xsd:date`:
 
@@ -333,7 +333,7 @@ fromJson([{ id: '123', date: '2022-01-30' }]),
 triple(iri(prefix.book, 'id'), sdo.dateCreated, literal('date', xsd.date)),
 ```
 
-### Example: String literal
+#### Example: String literal
 
 The following snippet asserts a triple with a string literal in the object position:
 
@@ -361,7 +361,7 @@ fromJson([{ name: 'London' }]),
 triple(iri(prefix.city, 'name'), skos.prefLabel, 'name'),
 ```
 
-### Example: Language-tagged string
+#### Example: Language-tagged string
 
 The following snippet asserts a triple with a language-tagged string in the object position:
 
@@ -391,9 +391,7 @@ triple(iri(prefix.city, 'name'), skos.prefLabel, literal('name', lang['en-gb']))
 #### Example: Language tag from source data (TODO)
 
 ```ts
-fromJson([
-  { label: }
-]),
+fromJson(),
 ```
 
 
@@ -439,11 +437,9 @@ id:acb3ea010fe748bfa73a2ee2b65bef65 sdo:dateCreated '2000-12-30'^^xsd:date.
 
 #### See also
 
-- Use [`addIri()`]() instead, if a unique identifier can be readily
-specified.
-- Use [`addHashedIri`]() instead, if one or more properties that
-together uniquely identify a thing can be specified.
-- Use [addSkolemIri} instead, if you want to communicate that the IRI can be replaced with a blank node.
+- Use [`addIri()`](#addiri) instead, if a unique identifier can be readily specified.
+- Use [`addHashedIri`](#addhashediri) instead, if one or more properties that together uniquely identify a thing can be specified.
+- Use [`addSkolemIri()`](#addskolemiri) instead, if you want to communicate that the IRI can be replaced with a blank node.
 
 
 
@@ -453,18 +449,18 @@ Creates a globally unique IRI that is intended to be used as a blank node identi
 
 Blank nodes are nodes without identification.  It relatively difficult to work which such nodes in graph data, since they cannot be identified or dereferenced online.  For this reason TriplyETL uses Skolem IRIs to denote blank nodes.  This allows blank nodes to be identified and dereferenced.  This Skolemization approach is part of the RDF standard.
 
-Skolem IRIs are [addRandomIri | random IRIs} whose root path starts with `.well-known/genid/`.  This makes it easy to distinguish them from other random IRIs that are not used to denote blank nodes.
+Skolem IRIs are random IRIs whose root path starts with `.well-known/genid/`.  This makes it easy to distinguish them from other random IRIs that are not used to denote blank nodes.
 
 - `prefix` A IRI or a key that contains an IRI whose path starts with `.well-known/genid/`.
 - `key` A new key where the created IRI is stored.
 
 #### See also
 
-| [Skolemization section](https://www.w3.org/TR/rdf11-concepts/#section-skolemization) in the RDF standard.
+Tne [Skolemization section](https://www.w3.org/TR/rdf11-concepts/#section-skolemization) in the RDF standard explains what Skolem IRIs are and how they should be used.
 
 #### Example
 
-The following snippet uses a [addHashedIri | hashed IRI} to create a predictable identifier for a geospatial feature, and a Skolem IRI to create an unpredictable identifier for the geometry.
+The following snippet uses a hashed IRI to create a predictable identifier for a geospatial feature, and a Skolem IRI to create an unpredictable identifier for the geometry.
 
 The snippet includes the prefix declarations to illustrate that the path of the Skolem IRI must start with `.well-known/genid.`.
 
@@ -819,12 +815,12 @@ Transforms GeoJSON objects to their corresponding Well-Known Text (WKT) serializ
 #### Parameters
 
 - `content` A key that stores a GeoJSON object.
-- `crs` Optionally, an IRI that denotes a Coordinate Reference System (CRS).  You can use IRIs from the [`epsg`]() object.  If absent, uses [https://epsg.io/4326](EPSG:4326/WGS84} as the CRS.
+- `crs` Optionally, an IRI that denotes a Coordinate Reference System (CRS).  You can use IRIs from the [`epsg`](/docs/triply-etl/declare#geospatial-declarations) object.  If absent, uses [https://epsg.io/4326](EPSG:4326/WGS84) as the CRS.
 - `key` A new key where the WKT serialization string is stored
 
 #### GeoJSON and Well-Known Text (WKT)
 
-According to the [https://www.rfc-editor.org/rfc/rfc7946](GeoJSON standard), the only Coordinate Reference System (CRS) that is allowed to be used is EPSG:4326/WGS84.  In practice, source data sometimes (incorrectly) stores GeoJSON formatted data in other CRSes.  An example of this is the [https://ec.europa.eu/eurostat/web/gisco/geodata](GISCO) dataset of the European Union, which uses the [https://epsg.io/3857](EPSG:3857) CRS.  For cases like these, the optional `crs` parameter comes in handy.
+According to the [GeoJSON standard](https://www.rfc-editor.org/rfc/rfc7946), the only Coordinate Reference System (CRS) that is allowed to be used is EPSG:4326/WGS84.  In practice, source data sometimes (incorrectly) stores GeoJSON formatted data in other CRSes.  An example of this is the [GISCO](https://ec.europa.eu/eurostat/web/gisco/geodata) dataset of the European Union, which uses the [EPSG:3857](https://epsg.io/3857) CRS.  For cases like these, the optional `crs` parameter comes in handy.
 
 #### See also
 
@@ -1094,8 +1090,7 @@ Performs a regular expression replacement to the given input string, and stores 
 
 - `content` A key that contains a string value, or a static string specified with [`str()`](/docs/triply-etl/assert/ratt#str).
 - `from` A [JavaScript Regular Expression](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions).
-- `to` Optionally, a string that replaces potential matches of
-the Regular Expression (`from`).  Use `$1`, `$2`, etc. to insert matches.  If absent, the empty string is used.
+- `to` Optionally, a string that replaces potential matches of the Regular Expression (`from`).  Use `$1`, `$2`, etc. to insert matches.  If absent, the empty string is used.
 - `key` A new key where the result of the replacement is stored.
 
 #### Example
@@ -1405,7 +1400,7 @@ An exception is emitted if a string value does not belong to the lexical space o
 #### See also
 
 You do *not* need to use this transformation if the datatype IRI of the
-literal is stable.  Use the [`literal()`]() assertion instead.
+literal is stable.  Use the [`literal()`](/docs/triply-etl/assert/ratt#literal) assertion instead.
 
 #### Example
 
@@ -1419,11 +1414,11 @@ tryLiteral({
 }),
 ```
 
-| Source data in key `'date'` | Result in key `'_date'` |
-| --------------------------- | ----------------------- |
-| '1900-01-02'                | '1900-01-02'^^xsd:date  |
-| '1900'                      | '1900'^^xsd:gYear       |
-| '02-01-1900'                | ERROR                   |
+| Source data in key `'date'`   | Result in key `'_date'`   |
+| ----------------------------- | ------------------------- |
+| `'1900-01-02'`                | `'1900-01-02'^^xsd:date`  |
+| `'1900'`                      | `'1900'^^xsd:gYear`       |
+| `'02-01-1900'`                | An error is emitted.      |
 
 If we do not want to emit errors for string values that cannot be satisfy any of the specified datatype IRIs, we may choose to include `xsd.string` as the last datatype IRI in the list.  Do notice however that this will result in dates that cannot be compared on a timeline, since they were not transformed to an XSD date/time datatype.
 

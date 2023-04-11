@@ -207,7 +207,7 @@ This prints the following two records, where the balance is now always a number 
 }
 ```
 
-##### Example: String or object
+#### Example: String or object
 
 In the following example the `name` of a person is sometimes given as a plain string and sometimes as an object with a `fistName` and a `lastName` key:
 

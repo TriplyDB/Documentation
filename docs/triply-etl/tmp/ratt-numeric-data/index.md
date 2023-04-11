@@ -145,7 +145,7 @@ Notation [3a] creates thedynamic* IRI in [3b], assuming the `"person"` key conta
 ```
 -->
 
-##### When should you use an IRI instead of an URI (which is a literal)?
+#### When should you use an IRI instead of an URI literal?
 
 An IRI is used to identify something, for example the city of Amsterdam. It is expected that accessing it returns linked data. An IRI can be used to make assertions about a subject. On the other hand, a URI is expected to return a non-linked data content, for example an HTML website, and can be used as objects in linked data, for example for inserting further information about the subject resource.
 In the example below, the subject IRI is described further by the object's URL.
@@ -156,7 +156,7 @@ In the example below, the subject IRI is described further by the object's URL.
 
 An IRI can be created with `iri()`, while an URI is created by using `literal()`.
 
-##### Limitation of `literal()` and `iri()`
+#### Limitation of `literal()` and `iri()`
 
 There is a limitation for both `literal()` and `iri()`.  It is not possible to change the value in the record in the `literal()` and `iri()` assertions.  The value that is at that moment stored in the record for that key, is then added as either an IRI when called with the `iri()` function or as a literal when called with the function `literal()`.
 
