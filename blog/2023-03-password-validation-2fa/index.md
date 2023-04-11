@@ -12,7 +12,7 @@ In the latest TriplyDB release, we encourage people to write good passwords. But
 The [National Institute of Standards and Technology (NIST)](https://www.nist.gov) is a U.S. government science laboratory, and considered an authority in the area of Information Security. ISO standards such as ISO 27001 often take inspiration from NIST guidelines.
 NIST published a guideline for digital identity management[^1] that covers the topic of password composition and validation.  
 
-In this blog we'll discuss what this guideline means in practice, and how this is implemented in TriplyDB
+In this blog we'll discuss what this guideline means in practice, and how this is implemented in TriplyDB.
 
 ## What does a good password look like?{#best}
 
@@ -24,7 +24,7 @@ The NIST guideline and corresponding literature[^2][^3] provide several suggesti
 2. The more diverse characters used, the [better](https://pages.nist.gov/800-63-3/sp800-63b.html#a3-complexity). That means we don't have to stick to letters, numbers and punctuation marks, but we can even include smileys (😀) or other unicode characters (❤⛔👀).
 3. A good password should not be leaked: There are corpuses available (such as [have i been pwned?](https://haveibeenpwned.com)) that includes leaked passwords gathered from data breaches of popular websites. As some people tend to re-use passwords between websites, such corpuses may leave them vulnerable to attack. If john@doe.com reuses the same password for many websites, and one of this website has been breached, then all others accounts of John Doe will be vulnerable.
 4. Avoid using dictionary words, particularly for shorter passwords. Having dictionary words only would leave you vulnerable to a brute-force attach where an automated script repeatedly tries to enter a password using commonly-used words.
-5. The password should not include repetitive or sequential characters. Examples are `aaaaaa`, `12345`, or even `asdfg` (letters close to each other on your keyboard). Such passwords are too easy to guess
+5. The password should not include repetitive or sequential characters. Examples are `aaaaaa`, `12345`, or even `asdfg` (letters close to each other on your keyboard). Such passwords are too easy to guess.
 6. Context-specific words should not be allowed as they are too easy to guess. Examples are using the word `TriplyDB` or your username in the password.
 
 ## Examples of bad password policies.
@@ -40,7 +40,7 @@ A typical measure for encouraging stronger passwords is requiring a particular s
 Some organization force users to rotate their password every several months. The intent of such password rotation mechanism is to avoid the threat that a password is compromised by a leak on other websites (given that some passwords may be re-used across websites).
 That means that the longer a password is in use and not renewed, the larger the chance of the password being exposed. 
 
-The problem with such password rotation policies is that users tend to choose a weaker password when they know they'll have to change it in the near future. For instance, users with the password `Password1!` may simply append the date they created the password and end up with `Password1~June22`
+The problem with such password rotation policies is that users tend to choose a weaker password when they know they'll have to change it in the near future. For instance, users with the password `Password1!` may simply append the date they created the password and end up with `Password1~June22`.
 
 In addition to that, such password rotation policies have a great impact on usability. As a result users may get frustrated with such policies only to invent insecure workaround to cater to such policies.
 
@@ -56,7 +56,7 @@ The TriplyDB password validator satisfies all of the NIST guidelines for passwor
 1. Large passwords are encouraged. 
 2. Any character is valid, not just numbers, letters and symbols.
 3. The validator takes words from the dictionary into account. Using dictionary words will negatively impact the password score. Variants of dictionary words are also included, i.e. `P@ssword` will be recognized as the word `Password`.
-4. Repetition of characters negatively influence the password score. This includes `aaaa`, `12345` and repetition using your keyboard layout such as `asdfg`
+4. Repetition of characters negatively influence the password score. This includes `aaaa`, `12345` and repetition using your keyboard layout such as `asdfg`.
 5. Context specific words will also negatively influence the password score.
 
 ## Additional TriplyDB security features
@@ -75,7 +75,7 @@ Two-factor authentication (2FA) is a security process in which a user provides t
 Here's how 2FA works with TriplyDB:
 
 - When a user enables 2FA, they will be taken through the 2FA setup process.
-- The user will be shown a QR code that can be scanned using an Authenticator App (eg. google, microsoft, others)
+- The user will be shown a QR code that can be scanned using an Authenticator App (eg. google, microsoft, others).
 - The Authenticator App provides the user with a TOTP as their 2nd factor for authentication.
 - The user will also be given a set of security codes for safe storage.
 
@@ -88,7 +88,7 @@ When logging in using 2FA:
 If a user is locked out of their account:
 
 - During the login process they can use their password and one of their security codes to recover their account.
-- If none of these steps work, they can contact Triply support. wanted access to their account.
+- If none of these steps work, they can contact [Triply support](info@triply.cc) to get access to their account.
 
 The idea behind 2FA is that even if a hacker manages to obtain a user's password, they still cannot access the account without the second factor. This provides an additional layer of security and helps to prevent unauthorized access to sensitive information.
 
