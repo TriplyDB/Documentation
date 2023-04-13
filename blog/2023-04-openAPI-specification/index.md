@@ -21,7 +21,7 @@ Let's consider “Triply” organization in TriplyDB that contains several datas
 
 ![Figure 1](TriplyDB.png)
 
-The queries from this organization can be exposed using the OpenAPI specification. To retrieve the specification, you would need to make an HTTP request for that specific organization (For “Triply” organization, request would be: https://api.triplydb.com/queries/{name of organization}), specifying the accept header to indicate that you want the YAML format that encodes the OpenAPI specification (See figure 2 on how to do this). Once you have the specification, you can store it into a file for further use.
+The queries from this organization can be exposed using the OpenAPI specification. To retrieve the specification, you would need to make an HTTP request for that specific organization (`https://api.triplydb.com/queries/{name of organization}`), specifying the accept header to indicate that you want the YAML format that encodes the OpenAPI specification (See figure 2 on how to do this). Once you have the specification, you can store it into a file for further use.
 
 ![Figure 2](terminal.png)
 
