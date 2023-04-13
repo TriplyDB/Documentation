@@ -19,12 +19,20 @@ Now let's look at the example of how OpenAPI specifications can be used in Tripl
 
 Let's consider “Triply” organization in TriplyDB that contains several datasets, stories, and queries (See figure 1). 
 
-The queries from this organization can be exposed using the OpenAPI specification. To retrieve the specification, you would need to make an HTTP request for that specific organization (For “Triply” organization request would be: https://api.triplydb.com/queries/[name of organization]), specifying the accept header to indicate that you want the YAML format that encodes the OpenAPI specification (See figure 2 on how to do this). Once you have the specification, you can store it into a file for further use.
+![Figure 1](TriplyDB.png)
 
-To interact with the OpenAPI specification, you can use tools like [Postman](https://www.postman.com/), which can interpret REST API specifications. You can import the YAML file using Postman's import feature, and then select “OpenAPI 3.0 with a Postman collection”, which is the latest version of the standard (see figure 3). This will provide you with an overview of all the SPARQL queries in TriplyDB in Postman, and you can run them as REST API endpoints. You can send HTTP requests using Postman by clicking "send," and you will receive back the results of the SPARQL query. Additionally, you can modify the request using Postman or other similar tools. For example, you can change the pages, the size, add headers, or add authentication (if it's not public data). This allows you to easily interact with the REST API using the OpenAPI specification and make changes to the requests as needed.
+The queries from this organization can be exposed using the OpenAPI specification. To retrieve the specification, you would need to make an HTTP request for that specific organization (For “Triply” organization, request would be: https://api.triplydb.com/queries/{name of organization}), specifying the accept header to indicate that you want the YAML format that encodes the OpenAPI specification (See figure 2 on how to do this). Once you have the specification, you can store it into a file for further use.
 
-//TODO add figures
+![Figure 2](terminal.png)
 
+
+To interact with the OpenAPI specification, tools such as [Postman](https://www.postman.com/) can be used. The YAML file can be imported using Postman's import feature, and then "OpenAPI 3.0 with a Postman collection" (as shown in figure 3), which is the latest version of the standard, can be selected before clicking on "Import".
+
+![Figure 3](howToIMportAPI.png)
+
+ This will provide you with an overview of all the SPARQL queries in TriplyDB in Postman, and you can run them as REST API endpoints. You can send HTTP requests using Postman by clicking "Send," and you will receive back the results of the SPARQL query. Additionally, you can modify the request using Postman or other similar tools. For example, you can change the pages, the size, add headers, or add authentication (if it's not public data). This allows you to easily interact with the REST API using the OpenAPI specification and make changes to the requests as needed (see Figure 4).
+
+![Figure 4](Postman.png)
 
 The incorporation of OpenAPI specifications into TriplyDB is a big step towards making TriplyDB a more powerful and user-friendly platform for building RESTful APIs. We are excited about the possibilities that this enhancement brings and look forward to seeing how our users leverage the power of OpenAPI specifications in TriplyDB!
 
