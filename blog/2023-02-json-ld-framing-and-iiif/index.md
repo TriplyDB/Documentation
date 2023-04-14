@@ -27,7 +27,7 @@ In order to be able to display the image in a IIIF viewer, we had to use an open
 
 We managed to create a valid Manifest file by writing a construct query, where we added all the required IIIF [resource types](https://iiif.io/api/presentation/3.0/#2-resource-type-overview), according to the data model, which is displayed in the image below. Note that not all of the resource types displayed in the model are required to create a working minimal example for IIIF Presentation API. What is and isn't required can be seen on the official IIIF page [here](https://triplydb.com/imgs/avatars/d/6006f097506cf2034cfe4c46.png?v=25).
 
-<figure><img src="presentation-api-data-model.png" height="400"><figcaption>Data model for a IIIF Presentation API</figcaption></figure>
+<figure><img src="presentation-api-data-model.png" height="400px"><figcaption>Data model for a IIIF Presentation API</figcaption></figure>
 
 ### The SPARQL query explained
 
