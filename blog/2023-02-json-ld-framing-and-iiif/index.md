@@ -36,29 +36,29 @@ To make it easier to understand, here is a more detailed description of our quer
 #### First part of the query - prefixes
 At the top of the query, as usual in all SPARQL queries, we defined the prefixes used throughout the query. Some of them are connected to the used vocabularies and others are IIIF specific. The prefix **mf** represents the resulting API. The prefixes are used so the query itself is more readable as we don't have to use the long IRIs.
 
-<figure><img src="prefixes.png" height=350, width=700><figcaption>Defined prefixes</figcaption></figure>
+<figure><img src="prefixes.png" height="350" width="700"><figcaption>Defined prefixes</figcaption></figure>
 
 #### Second part of the query - construct
 This is the part where all the required IIIF resource types have their types assigned and are attached to our API.
 
 It's where we can link external resources, such as a homepage and provider, and add a description. We can add a copyright statement with "requiredStatement". You can see that some of the resources, such as Canvas, Collection and Annotation from the model appear in the query.
 
-<figure><img src="construct1.png" height=500, width=700><figcaption>The 'construct' part of the query</figcaption></figure>
+<figure><img src="construct1.png" height="500" width="700"><figcaption>The 'construct' part of the query</figcaption></figure>
 
 In this part we can also add our own information, like a more detailed description or links.
 
-<figure><img src="construct2.png" height=300, width=700><figcaption>Continuation of the 'construct' part of the query</figcaption></figure>
+<figure><img src="construct2.png" height="300" width="700"><figcaption>Continuation of the 'construct' part of the query</figcaption></figure>
 
 #### Third part - where
 Here is where we connect our resources to our main subject (?iris). We can connect them as a triple, with a suitable predicate or bind it with a required string to a resource part.
-<figure><img src="where.png" height=200, width=700><figcaption>The 'where' part of the query</figcaption></figure>
+<figure><img src="where.png" height="200" width="700"><figcaption>The 'where' part of the query</figcaption></figure>
 
 Below the query, in the JSON-LD Frame editor, we added a Frame for the manifest. In this example, it was a very simple one, with elements for "@context" and "@type".
 
-<figure><img src="ld-frame.png" height=100, width=700><figcaption>JSON-LD Frame</figcaption></figure>
+<figure><img src="ld-frame.png" height="100" width="700"><figcaption>JSON-LD Frame</figcaption></figure>
 
 With a saved query using the right frame, we got a working API through Triply SPARQL API, which we used in a IIIF Viewer [Mirador](https://mirador-dev.netlify.app/__tests__/integration/mirador/) and got a working image ready to be observed!
 
-<figure><img src="mirador-iris.png" height=300, width=600><figcaption>IIIF Viewer with an image displayed through Triply API</figcaption></figure>
+<figure><img src="mirador-iris.png" height="300" width="600"><figcaption>IIIF Viewer with an image displayed through Triply API</figcaption></figure>
 
 You can see the final result at [this link](https://projectmirador.org/embed/?iiif-content=https://api.triplydb.com/queries/Triply/iris-iiif-manifest/run).
