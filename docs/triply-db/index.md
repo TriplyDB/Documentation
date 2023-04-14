@@ -234,6 +234,73 @@ at the time. The node is describe using it's properties, which can be followed
 to other nodes in the graph.
 ![Image of the linked Data Browser](ld-browser.png)
 
+These properties provide additional information about your linked data, enabling the LD-browser to display visualizations and provide a better user experience.
+
+#### Types
+
+ This predicate allows you to specify the type or class of a resource in your linked data. By using rdf:type, you can indicate the category or classification of the resource, which can help the LD-browser understand the nature of the data and display it appropriately.
+
+- The property `rdf:type`
+
+//TODO: add example
+
+#### Labels
+
+These predicates allow you to provide human-readable labels or names for your resources. Labels are typically used to provide a concise and meaningful title or display name for a resource, making it easier for users to understand the content of your linked data.
+
+- The property `rdfs:label`
+- The property `skos:prefLabel`
+
+//TO DO: add example
+#### Descriptions
+ These predicates allow you to provide textual descriptions or comments about your resources. Descriptions can provide additional context or information about a resource, helping users understand its purpose, content, or significance.
+
+- The property `sdo:description`
+- The property `rdfs:comment`
+
+//TODO: add example
+#### Geo 
+
+These predicates are used for representing geographic information in your linked data. For example, you can use geo:asWKT to specify the geometries of geographic features using the Well-Known Text (WKT) format, which can be visualized on a map in the LD-browser.
+
+- The property `geo:asWKT`
+  
+//TODO: add example 
+
+#### Images
+
+These predicates allow you to associate images or visual representations with your resources. By using foaf:depiction or similar predicates, you can provide URLs or references to images that can be displayed alongside your linked data in the LD-browser.
+
+Predicates used to display images in LD Browser: 
+- Class `sdo:ImageObject`
+- The property `foaf:depiction`
+- The property `foaf:thumbnail`
+- The property `foaf:img`
+- The property `sdo:image`
+- The property `sdo:contentUrl`
+
+#### Audio
+
+This predicate allows you to associate audio content with your resources. You can use sdo:audio to provide URLs or references to audio files that can be played or streamed within the LD-browser.
+
+- The class `sdo:AudioObject`
+- The property `sdo:audio`
+- The property `sdo:contentUrl` (for displaying audio)
+
+//TODO: add example
+
+#### Video
+
+This predicate allows you to associate video content with your resources. You can use sdo:video to provide URLs or references to video files that can be played or streamed within the LD-browser.
+
+- Class `sdo:VideoObject`
+- Property `sdo:video`
+- Property `sdo:contentUrl` - for displaying videos(only in the browser, not in the table)
+  
+The video formats that are included in this dataset are ".mp4", ".webm", ".ogg".
+
+//TODO: add example
+
 ## Linked Data Table
 
 The linked data Table shows a dataset at the triple level. The first
