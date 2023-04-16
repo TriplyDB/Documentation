@@ -37,11 +37,9 @@
 
         - title: 2. Transform
           link: /docs/triply-etl/transform/overview
-        - title: ⤷ 2A. JSON-LD
-          link: /docs/triply-etl/transform/json-ld
-        - title: ⤷ 2B. RATT
+        - title: ⤷ 2A. RATT
           link: /docs/triply-etl/transform/ratt
-        - title: ⤷ 2C. TypeScript
+        - title: ⤷ 2B. TypeScript
           link: /docs/triply-etl/transform/typescript
 
         - title: 3. Assert

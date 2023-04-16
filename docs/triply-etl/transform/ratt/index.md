@@ -1,5 +1,5 @@
 ---
-title: "2B. Transform: RATT"
+title: "2A. Transform: RATT"
 path: "/docs/triply-etl/transform/ratt"
 ---
 

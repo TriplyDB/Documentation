@@ -1,5 +1,5 @@
 ---
-title: "2C. Transform: TypeScript"
+title: "2B. Transform: TypeScript"
 path: "/docs/triply-etl/transform/typescript"
 ---
 
