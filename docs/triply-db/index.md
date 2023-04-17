@@ -234,44 +234,57 @@ at the time. The node is describe using it's properties, which can be followed
 to other nodes in the graph.
 ![Image of the linked Data Browser](ld-browser.png)
 
-These properties provide additional information about your linked data, enabling the LD-browser to display visualizations and provide a better user experience.
+The following properties provide additional information about your linked data, enabling the LD-browser to display visualizations and provide a better user experience.
 
 #### Types
 
- This predicate allows you to specify the type or class of a resource in your linked data. By using rdf:type, you can indicate the category or classification of the resource, which can help the LD-browser understand the nature of the data and display it appropriately.
+The predicate `rdf:type` allows you to specify the type or class of a resource in your linked data:
 
-- The property `rdf:type`
+By using `rdf:type`, you can indicate the category or classification of the resource, which can help the LD-browser understand the nature of the data and display it appropriately.
 
-//TODO: add example
+In the [example below](https://triplydb.com/Triply/iris/browser?resource=http%3A%2F%2Fdbpedia.org%2Fresource%2FIris_setosa), you can see that "Iris setosa" is the type of flowering plant due to the usage of the `rdf:type` property.
+
+![rdf:type in the LD-browser](type.png)
 
 #### Labels
 
-These predicates allow you to provide human-readable labels or names for your resources. Labels are typically used to provide a concise and meaningful title or display name for a resource, making it easier for users to understand the content of your linked data.
+Labels are typically used to provide a concise and meaningful title or display name for a resource, making it easier for users to understand the content of your linked data.
+These predicates allow you to provide human-readable labels or names for your resources:
 
 - The property `rdfs:label`
 - The property `skos:prefLabel`
 
-//TO DO: add example
+In the [example below](https://triplydb.com/academy/pokemon/browser?resource=https%3A%2F%2Ftriplydb.com%2Facademy%2Fpokemon%2Fid%2Fpokemon%2Fpikachu), the `rdfs:label` property was used to denote the label(name) of the Pokemon, resulting in the display of "Pikachu" above its corresponding image.
+
+![rdfs:label in the LD-browser](label.png)
 #### Descriptions
- These predicates allow you to provide textual descriptions or comments about your resources. Descriptions can provide additional context or information about a resource, helping users understand its purpose, content, or significance.
+
+Descriptions can provide additional context or information about a resource, helping users understand its purpose, content, or significance.
+These predicates allow you to provide textual descriptions or comments about your resources:
 
 - The property `sdo:description`
 - The property `rdfs:comment`
 
-//TODO: add example
+In the [following example](https://triplydb.com/Triply/iris/browser?resource=http%3A%2F%2Fdbpedia.org%2Fresource%2FIris_setosa) `rdfs:comment` was used to provide additional information on Iris Setosa.
+
+![rdfs:comment in the LD-browser](description.png)
+
+
 #### Geo 
 
-These predicates are used for representing geographic information in your linked data. For example, you can use geo:asWKT to specify the geometries of geographic features using the Well-Known Text (WKT) format, which can be visualized on a map in the LD-browser.
+These are some of the predicates used for representing geographic information in your LD-browser:
 
-- The property `geo:asWKT`
-  
-//TODO: add example 
+- The property `geo:asWKT`: This property allows you to specify the geometries of geographic features using the Well-Known Text (WKT) format, which can be visualized on a map in the LD-browser.
+- The property `geo:hasGeometry`: This property is used to link a geographic feature with its corresponding geometry.
+- The property `geo:location`: This property is used to indicate the location of a resource using geographic coordinates, such as latitude and longitude, in your linked data.
 
+In the [following example](https://triplydb.com/osm/osm/browser?resource=https%3A%2F%2Fdata.osm.pldn.nl%2Fway%2F34997507) `geo:hasGeometry` property was used to showcase a map depicting the location of Instituut voor Beeld en Geluid.
+
+![geo:hasGeometry in the LD-browser](geo.png)
 #### Images
 
-These predicates allow you to associate images or visual representations with your resources. By using foaf:depiction or similar predicates, you can provide URLs or references to images that can be displayed alongside your linked data in the LD-browser.
+These predicates allow you to associate images or visual representations with your resources:
 
-Predicates used to display images in LD Browser: 
 - Class `sdo:ImageObject`
 - The property `foaf:depiction`
 - The property `foaf:thumbnail`
@@ -279,27 +292,37 @@ Predicates used to display images in LD Browser:
 - The property `sdo:image`
 - The property `sdo:contentUrl`
 
+By using these predicates, you can provide URLs or references to images that can be displayed alongside your linked data in the LD-browser.
+
+In the [example below](https://triplydb.com/academy/pokemon/browser?resource=https%3A%2F%2Ftriplydb.com%2Facademy%2Fpokemon%2Fid%2Fpokemon%2Fpikachu), `foaf:depiction` was used to display picture of Pikachu in the LD-browser:
+
+![foaf:depiction in the LD-browser](image.png)
 #### Audio
 
-This predicate allows you to associate audio content with your resources. You can use sdo:audio to provide URLs or references to audio files that can be played or streamed within the LD-browser.
+These predicates allow you to associate audio content with your resources:
 
 - The class `sdo:AudioObject`
 - The property `sdo:audio`
-- The property `sdo:contentUrl` (for displaying audio)
+- The property `sdo:contentUrl`
 
-//TODO: add example
+You can use these predicates to provide URLs or references to audio files that can be played or streamed within the LD-browser.
 
+In the [following example](https://nightly.triplydb.com/Triply/efteling/browser?resource=https%3A%2F%2Fnightly.triplydb.com%2Fefteling%2FCarnavalFestival), `sdo:audio` was used to showcase audio content of the Carnival Festival within the LD-browser.
+
+![sdo:audio in the LD-browser](audio.png)
 #### Video
 
-This predicate allows you to associate video content with your resources. You can use sdo:video to provide URLs or references to video files that can be played or streamed within the LD-browser.
+These predicates allow you to associate video content with your resources:
 
 - Class `sdo:VideoObject`
 - Property `sdo:video`
-- Property `sdo:contentUrl` - for displaying videos(only in the browser, not in the table)
+- Property `sdo:contentUrl`
   
-The video formats that are included in this dataset are ".mp4", ".webm", ".ogg".
+You can use these predicates to provide URLs or references to video files that can be played or streamed within the LD-browser.The video formats that are included in this dataset are ".mp4", ".webm", ".ogg".
 
-//TODO: add example
+In the [following example](https://test.triply.cc/Philippe/ld-patterns/browser?resource=https%3A%2F%2Ftest.triply.cc%2FPhilippe%2Fld-patterns%2Fid%2Fvideo%2Fkleine-piep_0.0), `sdo:contentUrl` was used to showcase video content of the Kleine Piep within the LD-browser.
+
+![sdo:contentUrl in the LD-browser](video.png)
 
 ## Linked Data Table
 
