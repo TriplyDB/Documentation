@@ -1,35 +1,9 @@
 ---
-title: "RATT"
-path: "/docs/ratt"
+title: "TriplyETL: Getting Started"
+path: "/docs/triply-etl/getting-started"
 ---
 
-**RATT can only be used in combination with [TriplyDB](https://triply.cc/triplydb). Contact [info@triply.cc](mailto:info@triply.cc) to receive your token to access the RATT package.**
-
-RATT is a TypeScript package that is developed by [Triply](https://triply.cc/).  RATT makes it possible to develop and maintain production-grade linked data pipelines. It is used in combination with one of the [TriplyDB subscriptions](https://triply.cc/subscriptions) to create large-scale knowledge graphs.
-
-RATT is written and used in TypeScript, a type-safe language that transpiles to JavaScript.  It has the following properties that set it apart from other linked data pipeline approaches:
-
-<dl>
-  <dt>Backend-agnostic</dt>
-  <dd>RATT has connectors for a large number of source systems.  The pipeline code makes use of a unified RATT record.  This ensures that configuration is independent of the source system structure.  Changing the source system often only requires the use of a new RATT connector that generates identical RATT records.</dd>
-  <dt>Extensible</dt>
-  <dd>Since RATT is implemented in TypeScript, it has access to all TypeScript and JavaScript libraries.</dd>
-  <dt>Scalable</dt>
-  <dd>Transformations and operations in RATT are purposefully designed to be easy to distribute over an arbitrary number of parallel processes.  This means that RATT pipelines can be scaled up to an arbitrary number of processing nodes to achieve a pipeline with high throughput.</dd>
-  <dt>Standards-compliant</dt>
-  <dd>RATT implements a large set of linked data standards that allow its configuration to be largely based on standardized formats and languages.  Examples of supported standards are SPARQL Query (construct and select), SPARQL Update, JSON-LD, SHACL Core, SHACL Advanced.</dd>
-</dl>
-
-This documentation assumes that the reader has the following prior knowledge:
-
-- A basic understanding of TypeScript/JavaScript.
-- A basic familiarity with linked data and the [TriplyDB product](https://triply.cc/triplydb).
-
-
-
-## Getting started
-
-This section gets you up and running with RATT by setting up increasingly more complex pipelines.  These pipelines will use RATT to connect data sources to an integrated linked data knowledge that is published in a TriplyDB instance.  Some of the documented steps are generic for setting up a modern TypeScript project, while others are specific for using RATT.
+This section gets you up and running with TriplyETL by setting up increasingly more complex pipelines.  These pipelines will use RATT to connect data sources to an integrated linked data knowledge that is published in a TriplyDB instance.  Some of the documented steps are generic for setting up a modern TypeScript project, while others are specific for using RATT.
 
 
 ### Setting up a minimal pipeline
@@ -122,7 +96,7 @@ In the next section we extend this minimal pipeline by uploading the results to 
 
 In the [previous section](#setting-up-a-minimal-pipeline) we set up a minimal pipeline in RATT.  In this section we extend the pipeline to publish the results in a TriplyDB instance.
 
-1. [Configure a TriplyDB API Token](https://triply.cc/docs/triply-api/#creating-an-api-token) with write permissions.
+1. [Configure a TriplyDB API Token](api-token) with write permissions.
 
    Write permissions are needed in order to publish data from a RATT pipeline.
 
