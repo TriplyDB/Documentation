@@ -33,7 +33,7 @@ THIS IS A DEV TEST !!!!!!!!
   <figcaption>Data model for a IIIF Presentation API</figcaption>
 </figure>
 
-![test](presentation-api-data-model.png '#height=300px;')
+![test](presentation-api-data-model.png '#height=400px;')
 
 ### The SPARQL query explained
 
