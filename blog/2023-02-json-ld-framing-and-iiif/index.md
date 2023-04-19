@@ -40,8 +40,8 @@ To make it easier to understand, here is a more detailed description of our quer
 #### First part of the query - prefixes
 At the top of the query, as usual in all SPARQL queries, we defined the prefixes used throughout the query. Some of them are connected to the used vocabularies and others are IIIF specific. The prefix **mf** represents the resulting API. The prefixes are used so the query itself is more readable as we don't have to use the long IRIs.
 
-<figure>
-    <div><img src="prefixes.png" height="350" width="700"/></div>
+<figure style="width: 700px;">
+    <img src="prefixes.png" height="350" width="700"/>
     <figcaption>Defined prefixes</figcaption>
 </figure>
 
