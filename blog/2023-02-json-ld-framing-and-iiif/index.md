@@ -27,7 +27,7 @@ In order to be able to display the image in a IIIF viewer, we had to use an open
 
 We managed to create a valid Manifest file by writing a construct query, where we added all the required IIIF [resource types](https://iiif.io/api/presentation/3.0/#2-resource-type-overview), according to the data model, which is displayed in the image below. Note that not all of the resource types displayed in the model are required to create a working minimal example for IIIF Presentation API. What is and isn't required can be seen on the official IIIF page [here](https://triplydb.com/imgs/avatars/d/6006f097506cf2034cfe4c46.png?v=25).
 THIS IS A DEV TEST !!!!!!!!
-<figure><img src="presentation-api-data-model.png" style="height: 400px !important;"><figcaption>Data model for a IIIF Presentation API</figcaption></figure>
+<figure><img src="presentation-api-data-model.png" style="height: 400px;"><figcaption>Data model for a IIIF Presentation API</figcaption></figure>
 
 ### The SPARQL query explained
 
@@ -55,7 +55,7 @@ Here is where we connect our resources to our main subject (?iris). We can conne
 
 Below the query, in the JSON-LD Frame editor, we added a Frame for the manifest. In this example, it was a very simple one, with elements for "@context" and "@type".
 
-<figure><img src="ld-frame.png" height="100" width="700"><figcaption>JSON-LD Frame</figcaption></figure>
+<figure><img src="ld-frame.png" height="50%" width="50%"><figcaption>JSON-LD Frame</figcaption></figure>
 
 With a saved query using the right frame, we got a working API through Triply SPARQL API, which we used in a IIIF Viewer [Mirador](https://mirador-dev.netlify.app/__tests__/integration/mirador/) and got a working image ready to be observed!
 
