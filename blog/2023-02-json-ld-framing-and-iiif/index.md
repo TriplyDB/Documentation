@@ -28,10 +28,11 @@ In order to be able to display the image in a IIIF viewer, we had to use an open
 We managed to create a valid Manifest file by writing a construct query, where we added all the required IIIF [resource types](https://iiif.io/api/presentation/3.0/#2-resource-type-overview), according to the data model, which is displayed in the image below. Note that not all of the resource types displayed in the model are required to create a working minimal example for IIIF Presentation API. What is and isn't required can be seen on the official IIIF page [here](https://triplydb.com/imgs/avatars/d/6006f097506cf2034cfe4c46.png?v=25).
 THIS IS A DEV TEST !!!!!!!!
 <figure>
-  <div style="width: 400px;">
+  <div>
     <img src="presentation-api-data-model.png" style="height: 400px;">
   </div>
-    <figcaption>Data model for a IIIF Presentation API</figcaption></figure>
+  <figcaption>Data model for a IIIF Presentation API</figcaption>
+</figure>
 TEST!!!!
 <figure>
   <div style="height: 400px; width: 100px; margin-left: auto; margin-right: auto">
