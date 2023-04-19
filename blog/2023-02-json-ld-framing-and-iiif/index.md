@@ -29,7 +29,7 @@ We managed to create a valid Manifest file by writing a construct query, where w
 THIS IS A DEV TEST !!!!!!!!
 
 <figure>
-    <div style="height:400px;"><img src="presentation-api-data-model.png" style="height:400px;"/></div>
+    <div style="width:400px;"><img src="presentation-api-data-model.png" style="width:400px;"/></div>
     <figcaption>Data model for a IIIF Presentation API</figcaption>
 </figure>
 
