@@ -33,6 +33,12 @@ THIS IS A DEV TEST !!!!!!!!
   <figcaption>Data model for a IIIF Presentation API</figcaption>
 </figure>
 
+<div style="height: 400px;">
+
+![test](presentation-api-data-model.png)
+
+</div>
+
 ### The SPARQL query explained
 
 To make it easier to understand, here is a more detailed description of our query. [Here](https://triplydb.com/Triply/-/queries/iris-iiif-manifest/56) you can see it in full and try it for yourself.
