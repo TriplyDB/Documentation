@@ -29,6 +29,8 @@ We managed to create a valid Manifest file by writing a construct query, where w
 THIS IS A DEV TEST !!!!!!!!
 <figure><div style="height: 400px;"><img src="presentation-api-data-model.png" style="height: 400px;"></div><figcaption>Data model for a IIIF Presentation API</figcaption></figure>
 
+![Sample Image](presentation-api-data-model.png?resize=600,400)
+
 ### The SPARQL query explained
 
 To make it easier to understand, here is a more detailed description of our query. [Here](https://triplydb.com/Triply/-/queries/iris-iiif-manifest/56) you can see it in full and try it for yourself.
