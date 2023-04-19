@@ -95,7 +95,7 @@ Triply APIs provide a convenient way to access data used by [LD Browser](https:/
 To make an API request for a specific instance, you can use the following URI path:
 
 ```none
-https://api.triplydb.com/datasets/ACCOUNT/DATASET/browser?-resource=RESOURCE
+https://api.triplydb.com/datasets/ACCOUNT/DATASET/describe.nt?resource=RESOURCE
 ```
 
 To illustrate this, let's take the example of the DBpedia dataset and the [specific instance of 'Mona Lisa'](https://triplydb.com/DBpedia-association/dbpedia/browser?resource=http%3A%2F%2Fdbpedia.org%2Fresource%2FMona_Lisa). If you use this URI path: 
