@@ -30,7 +30,7 @@ THIS IS A DEV TEST !!!!!!!!
 
 <figure>
   <div style="width: 400px;">
-  <img src="presentation-api-data-model.png" style="width: 400px;"/>
+  <img src="presentation-api-data-model.png" style="height: 400px;"/>
     <figcaption>Data model for a IIIF Presentation API</figcaption>
   </div>
 </figure>
