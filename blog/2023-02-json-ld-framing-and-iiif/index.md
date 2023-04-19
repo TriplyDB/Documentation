@@ -29,7 +29,7 @@ We managed to create a valid Manifest file by writing a construct query, where w
 THIS IS A DEV TEST !!!!!!!!
 
 <figure>
-    <img src="presentation-api-data-model.png" style="height: 400px;">
+    <img src="presentation-api-data-model.png" style="height: 400px;" class="gatsby-img-attributes">
   <figcaption>Data model for a IIIF Presentation API</figcaption>
 </figure>
 
@@ -40,7 +40,7 @@ To make it easier to understand, here is a more detailed description of our quer
 #### First part of the query - prefixes
 At the top of the query, as usual in all SPARQL queries, we defined the prefixes used throughout the query. Some of them are connected to the used vocabularies and others are IIIF specific. The prefix **mf** represents the resulting API. The prefixes are used so the query itself is more readable as we don't have to use the long IRIs.
 
-<figure><div height="350" width="700"><img src="prefixes.png" height="350" width="700"></div><figcaption>Defined prefixes</figcaption></figure>
+<figure><div height="350" width="700"><img src="prefixes.png" height="350" width="700" class="gatsby-img-attributes"></div><figcaption>Defined prefixes</figcaption></figure>
 
 #### Second part of the query - construct
 This is the part where all the required IIIF resource types have their types assigned and are attached to our API.
@@ -63,6 +63,6 @@ Below the query, in the JSON-LD Frame editor, we added a Frame for the manifest.
 
 With a saved query using the right frame, we got a working API through Triply SPARQL API, which we used in a IIIF Viewer [Mirador](https://mirador-dev.netlify.app/__tests__/integration/mirador/) and got a working image ready to be observed!
 
-<figure><img src="mirador-iris.png" height="300px" width="600px"><figcaption>IIIF Viewer with an image displayed through Triply API</figcaption></figure>
+<figure><img src="mirador-iris.png" height="300px" width="600px" class="gatsby-img-attributes"><figcaption>IIIF Viewer with an image displayed through Triply API</figcaption></figure>
 
 You can see the final result at [this link](https://projectmirador.org/embed/?iiif-content=https://api.triplydb.com/queries/Triply/iris-iiif-manifest/run).
