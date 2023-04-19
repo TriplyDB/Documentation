@@ -88,6 +88,29 @@ the Pokémon dataset:
 https://api.triplydb.com/datasets/academy/pokemon/
 ```
 
+### LD Browser API
+
+Triply APIs provide a convenient way to access data used by [LD Browser](https://triply.cc/docs/triply-db-getting-started/#linked-data-browser), which offers a comprehensive overview of a specific IRI. By using Triply API for a specific IRI, you can retrieve the associated 'document' in the `.nt` format that describes the IRI.
+
+To make an API request for a specific instance, you can use the following URI path:
+
+```none
+https://api.triplydb.com/datasets/ACCOUNT/DATASET/describe.nt?resource=RESOURCE
+```
+
+To illustrate this, let's take the example of the DBpedia dataset and the [specific instance of 'Mona Lisa'](https://triplydb.com/DBpedia-association/dbpedia/browser?resource=http%3A%2F%2Fdbpedia.org%2Fresource%2FMona_Lisa). If you use this URI path: 
+
+```none
+https://api.triplydb.com/datasets/DBpedia-association/dbpedia/describe.nt?resource=http%3A%2F%2Fdbpedia.org%2Fresource%2FMona_Lisa
+```
+in your browser, the `.nt` document describing the 'Mona Lisa' instance will be automatically downloaded. You can then upload this file to a dataset and [visualize it in a graph](https://triply.cc/docs/yasgui/#network). Figure 1 illustrates the retrieved graph for the ‘Mona Lisa’ instance.
+
+![Figure 1](MonaLisaGraph.png)
+
+The requested resource will be displayed in the center of the graph, forming an 'ego graph'. It will include all direct properties, as well as some indirect properties that are also pulled in by LD Browser. The labels for all classes and properties will be included for easy human-readable display.
+
+In addition, this API also supports traversing blank node-replacing well-known IRIs (CBD style), and limits the number of objects per subject/property to manage the description size. This corresponds to the "Show more" button in the LD Browser GUI, ensuring a manageable and user-friendly experience.
+
 ### Triple Pattern Fragments (TPF)
 
 Triple Pattern Fragments (TPF) is a community standard that allows
