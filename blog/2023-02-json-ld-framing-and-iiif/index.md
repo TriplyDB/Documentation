@@ -29,17 +29,10 @@ We managed to create a valid Manifest file by writing a construct query, where w
 THIS IS A DEV TEST !!!!!!!!
 
 <figure>
-  <div style="height: 400px;">
+  <div width=400>
     <img src="presentation-api-data-model.png" style="height: 400px;">
    </div>
   <figcaption>Data model for a IIIF Presentation API</figcaption>
-</figure>
- 
-TEST!!!!
-<figure>
-  <div style=" width: 100px; margin-left: auto; margin-right: auto">
-    ![test](presentation-api-data-model.png)
-  </div>
 </figure>
 
 ### The SPARQL query explained
@@ -49,7 +42,7 @@ To make it easier to understand, here is a more detailed description of our quer
 #### First part of the query - prefixes
 At the top of the query, as usual in all SPARQL queries, we defined the prefixes used throughout the query. Some of them are connected to the used vocabularies and others are IIIF specific. The prefix **mf** represents the resulting API. The prefixes are used so the query itself is more readable as we don't have to use the long IRIs.
 
-<figure><img src="prefixes.png" height="350" width="700"><figcaption>Defined prefixes</figcaption></figure>
+<figure><div height="350" width="700"><img src="prefixes.png" height="350" width="700"></div><figcaption>Defined prefixes</figcaption></figure>
 
 #### Second part of the query - construct
 This is the part where all the required IIIF resource types have their types assigned and are attached to our API.
