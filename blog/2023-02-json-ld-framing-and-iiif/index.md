@@ -29,11 +29,15 @@ We managed to create a valid Manifest file by writing a construct query, where w
 THIS IS A DEV TEST !!!!!!!!
 
 <figure>
-    <img src="presentation-api-data-model.png" width="500px" class="gatsby-img-attributes">
-  <figcaption>Data model for a IIIF Presentation API</figcaption>
+  <div style="height: 400px;">
+  <img src="presentation-api-data-model.png"/>
+    <figcaption>Data model for a IIIF Presentation API</figcaption>
+  </div>
 </figure>
 
-![test](presentation-api-data-model.png '#height=400px;')
+<div style="height: 400px;">
+    <img src="presentation-api-data-model.png"/>
+</div>
 
 ### The SPARQL query explained
 
