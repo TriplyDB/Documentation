@@ -29,9 +29,7 @@ We managed to create a valid Manifest file by writing a construct query, where w
 THIS IS A DEV TEST !!!!!!!!
 
 <figure>
-  <div width=400>
     <img src="presentation-api-data-model.png" style="height: 400px;">
-   </div>
   <figcaption>Data model for a IIIF Presentation API</figcaption>
 </figure>
 
@@ -65,6 +63,6 @@ Below the query, in the JSON-LD Frame editor, we added a Frame for the manifest.
 
 With a saved query using the right frame, we got a working API through Triply SPARQL API, which we used in a IIIF Viewer [Mirador](https://mirador-dev.netlify.app/__tests__/integration/mirador/) and got a working image ready to be observed!
 
-<figure><img src="mirador-iris.png" height="300" width="600"><figcaption>IIIF Viewer with an image displayed through Triply API</figcaption></figure>
+<figure><img src="mirador-iris.png" height="300px" width="600px"><figcaption>IIIF Viewer with an image displayed through Triply API</figcaption></figure>
 
 You can see the final result at [this link](https://projectmirador.org/embed/?iiif-content=https://api.triplydb.com/queries/Triply/iris-iiif-manifest/run).
