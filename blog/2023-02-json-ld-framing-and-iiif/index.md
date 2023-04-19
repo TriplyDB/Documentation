@@ -33,7 +33,7 @@ THIS IS A DEV TEST !!!!!!!!
   <figcaption>Data model for a IIIF Presentation API</figcaption>
 </figure>
 
-<div style="height: 400px;">
+<div style="height: 400px; width: 200px;">
 
 ![test](presentation-api-data-model.png)
 
