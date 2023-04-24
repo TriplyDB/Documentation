@@ -5,22 +5,23 @@ path: "/docs/triply-etl/extract/formats"
 
 TriplyETL supports the following data formats:
 
-| Extractor                  | Format              | Full name                           |
-| -------------------------- | ------------------- | ----------------------------------- |
-| [`fromCsv()`](#csv)        | [CSV](#csv)         | [Comma-Separated Values](#csv)      |
-| [`fromJson()`](#json)      | [JSON](#json)       | [JavaScript Object Notation](#json) |
-| [`fromOai()`](#oai-pmh)    | [OAI-PMH](#oai-pmh) | [Open Archives Initiative Protocol for Metadata Harvesting](#oai-pmh) |
-| [`fromShapefile()`](#esri) | [ESRI](#esri)       | [ESRI Shapefiles](#esri)            |
-| [`fromTsv()`](#tsv)        | [TSV](#tsv)         | [Tab-Separated Values](#tsv)        |
-| [`fromXlsx()`](#xlsx)      | [XLSX](#xlsx)       | [Microsoft Excel](#xlsx)            |
-| [`fromXml()`](#xml)        | [XML](#xml)         | [XML Markup Language](#xml)         |
-| [`loadRdf()`](#rdf)        | [RDF](#rdf)         | [Resource Description Format](#rdf) |
+| Extractor                    | Format               | Full name                           |
+| ---------------------------- | -------------------- | ----------------------------------- |
+| [`fromCsv()`](#csv)          | [CSV](#csv)          | [Comma-Separated Values](#csv)      |
+| [`fromJson()`](#json)        | [JSON](#json)        | [JavaScript Object Notation](#json) |
+| [`fromOai()`](#oai-pmh)      | [OAI-PMH](#oai-pmh)  | [Open Archives Initiative Protocol for Metadata Harvesting](#oai-pmh) |
+| [`fromPostgres()`](#postgres)| [POSTGRES](#postgres)| [Postgres](#postgres)               |
+| [`fromShapefile()`](#esri)   | [ESRI](#esri)        | [ESRI Shapefiles](#esri)            |
+| [`fromTsv()`](#tsv)          | [TSV](#tsv)          | [Tab-Separated Values](#tsv)        |
+| [`fromXlsx()`](#xlsx)        | [XLSX](#xlsx)        | [Microsoft Excel](#xlsx)            |
+| [`fromXml()`](#xml)          | [XML](#xml)          | [XML Markup Language](#xml)         |
+| [`loadRdf()`](#rdf)          | [RDF](#rdf)          | [Resource Description Format](#rdf) |
 
 All extractors can be imported from the generic library in TriplyETL:
 
 ```ts
 import { fromCsv, fromJson, fromOai,
-         fromShapefile, fromTsv, fromXlsx,
+         fromPostgres, fromShapefile, fromTsv, fromXlsx,
          fromXml, loadRdf, Source } from '@triplyetl/etl/generic'
 ```
 
@@ -498,4 +499,29 @@ The following code snippet loads the RDF from the specied TriplyDB dataset into 
 
 ```sh
 loadRdf(Source.TriplyDb.rdf('my-account', 'my-dataset')),
+```
+
+## Postgres {#postgres}
+
+PostgreSQL or Postgres is an open-source relational database system. Postgres supports both SQL (relational) and JSON (non-relational) querying.
+TriplyETL has a `fromPostgres()` extractor to retrieve data from a Postgres database. This can be done via Postgres connectors or via URL.
+A record is retrieved for every row returned by a postgres query.
+### Retrieving data via Postgres connectors
+The first option for retrieving Postgres data is by using Postgres connectors. Below is an example using a publicly available database from [RNA central](https://rnacentral.org/help/public-database).
+
+```
+    fromPostgres(`SELECT * FROM rnc_database`, {
+      host: "hh-pgsql-public.ebi.ac.uk",
+      port: 5432,
+      database: "pfmegrnargs",
+      user: "reader",
+      password: "NWDMCE5xdipIjRrp",
+    }),
+```
+
+
+### Retrieving data via URL
+The second option is by simply using a database URL. Below we are using the same example database as above, but this time accessed via URL.
+```
+    fromPostgres(`SELECT * FROM rnc_database`, { url:"postgres://reader:NWDMCE5xdipIjRrp@hh-pgsql-public.ebi.ac.uk:5432/pfmegrnargs"}),
 ```
