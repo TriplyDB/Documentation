@@ -3192,6 +3192,60 @@ Updates the metadata for this user.
 
 Inherited from [`Account.update(metadata: object)`](#accountupdatemetadata-object).
 
+# TriplyDB.js CLI tool
+
+The following section explains in steps how to use TriplyDB.js CLI tool.
+
+1. Open the link to download the triplydb-linux file and save it into your Node.js project.
+
+2. Open your terminal and navigate to your project directory. You can do this by using the cd command followed by the path to your project directory.
+
+3. To upload a graph, type the following command in your terminal:
+
+```none
+./triplydb-linux import-from-file --help
+```
+This will display the options available for uploading graphs using the CLI tool (see Figure 1).
+
+![Figure 1](import-from-file.png)
+
+1. To upload a graph, add the file containing the graph to your Node.js project. Supported file types can be found [here](https://triply.cc/docs/triply-db-getting-started/#adding-data-file-upload).
+
+2. To upload the graph using the CLI tool, use the following command:
+
+```none
+./triplydb-linux import-from-file [file name] -d [dataset name]
+```
+Replace [file name] with the name of the file containing the graph and [dataset name] with the name of the dataset you want to upload the graph to.
+
+For example, if you want to upload a graph contained in a file named example.nq to a dataset named my-dataset, you would use the following command:
+
+```none
+./triplydb-linux import-from-file example.nq -d my-dataset
+```
+6. To upload an asset, use the following command:
+
+```none
+./triplydb-linux upload-asset --help
+```
+This will display the options available for uploading assets using the CLI tool (see Figure 2).
+
+![Figure 2](upload-asset.png)
+
+7. To upload an asset, add the file containing the asset to your Node.js project.
+
+8. To upload the asset using the CLI tool, use the following command:
+
+```none
+./triplydb-linux upload-asset [file name] -d [dataset name]
+```
+Replace [file name] with the name of the file containing the asset and [dataset name] with the name of the dataset you want to upload the asset to.
+
+For example, if you want to upload an asset contained in a file named example.png to a dataset named my-dataset, you would use the following command:
+
+```none
+./triplydb-linux upload-asset example.png -d my-dataset
+```
 
 
 # FAQ
