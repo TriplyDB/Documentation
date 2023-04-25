@@ -1,12 +1,12 @@
 ---
 title: "OpenAPI Specifications"
-path: "/blog/2023-04-openAPI-specifications"
-date: "2023-04-07T11:15:00"
+path: "/blog/2023-05-openAPI-specifications"
+date: "2023-05-31T11:15:00"
 author: minajanicijevic
 ---
 
 
-# Unleashing the Power of OpenAPI Specifications: TriplyDB's Step Forward in RESTful API Development
+## Unleashing the Power of OpenAPI Specifications: TriplyDB's Step Forward in RESTful API Development
 
 
 We are excited to announce that TriplyDB has taken a major leap forward by incorporating OpenAPI specifications into its arsenal of features! With this latest enhancement, TriplyDB now allows users to expose their saved queries using the OpenAPI specification, effectively transforming TriplyDB into a self-documenting REST API.
@@ -17,16 +17,16 @@ So, what exactly are OpenAPI specifications? In simple terms, they are a standar
 
 Now let's look at the example of how OpenAPI specifications can be used in TriplyDB:
 
-Let's consider “Triply” organization in TriplyDB that contains several datasets, stories, and queries (See figure 1). 
+Let's consider [“Triply” organization](https://triplydb.com/Triply/-/overview) in TriplyDB that contains several datasets, stories, and queries (see Figure 1). 
 
 ![Figure 1](TriplyDB.png)
 
-The queries from this organization can be exposed using the OpenAPI specification. To retrieve the specification, you would need to make an HTTP request for that specific organization (`https://api.triplydb.com/queries/{name of organization}`), specifying the accept header to indicate that you want the YAML format that encodes the OpenAPI specification (See figure 2 on how to do this). Once you have the specification, you can store it into a file for further use.
+The queries from this organization can be exposed using the OpenAPI specification. To retrieve the specification, you would need to make an HTTP request for that specific organization (`https://api.triplydb.com/queries/{name of organization}`), specifying the accept header to indicate that you want the YAML format that encodes the OpenAPI specification (see Figure 2 on how to do this for "Triply" organization). Once you have the specification, you can store it into a file for further use.
 
 ![Figure 2](terminal.png)
 
 
-To interact with the OpenAPI specification, tools such as [Postman](https://www.postman.com/) can be used. The YAML file can be imported using Postman's import feature, and then "OpenAPI 3.0 with a Postman collection" (as shown in figure 3), which is the latest version of the standard, can be selected before clicking on "Import".
+To interact with the OpenAPI specification, tools such as [Postman](https://www.postman.com/) can be used. The YAML file can be imported using Postman's import feature, and then "OpenAPI 3.0 with a Postman collection" (as shown in Figure 3), which is the latest version of the standard, can be selected before clicking on "Import".
 
 ![Figure 3](howToIMportAPI.png)
 
