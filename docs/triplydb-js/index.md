@@ -3205,7 +3205,7 @@ The SPARQL 1.1 Protocol standard specifies a native HTTP API for performing SPAR
 Here we give an example indicating how such an HTTP library can be used:
 
 ```ts
-import * as SuperAgent from 'superagent';
+import SuperAgent from 'superagent';
 const reply = await SuperAgent.post('SPARQL_ENDPOINT')
   .set('Accept', 'application/sparql-results+json')
   .set('Authorization', 'Bearer ' + process.env.TOKEN)
