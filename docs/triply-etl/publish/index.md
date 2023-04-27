@@ -252,5 +252,5 @@ etl.after(
 You can upload the prefixes similarly under your account, using the relevant TriplyDbjs function. Also, note that ```mapValues``` is a function of *lodash*. For this reason, you will need to import it in the beginning of your script.
 
 ```ts
-import { mapValues } from 'lodash'
+import { mapValues } from 'lodash-es'
 ```
