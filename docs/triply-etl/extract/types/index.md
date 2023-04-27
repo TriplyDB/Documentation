@@ -1,5 +1,5 @@
 ---
-title: "1B. Extract: Source types"
+title: "1. Extract: Source types"
 path: "/docs/triply-etl/extract/types"
 ---
 

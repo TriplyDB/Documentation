@@ -1,5 +1,5 @@
 ---
-title: "4B. Enrich: SPARQL Update"
+title: "4. Enrich: SPARQL Update"
 path: "/docs/triply-etl/enrich/sparql"
 ---
 

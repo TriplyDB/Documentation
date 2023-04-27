@@ -1,5 +1,5 @@
 ---
-title: "4A. Enrich: SHACL Rules"
+title: "4. Enrich: SHACL Rules"
 path: "/docs/triply-etl/enrich/shacl"
 ---
 

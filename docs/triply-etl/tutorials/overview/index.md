@@ -1,6 +1,6 @@
 ---
 title: "Triply ETL Tutorials: Overview"
-path: "/docs/triply-etl/tutorials/overview"
+path: "/docs/triply-etl/tutorials"
 ---
 
 The following tutorials will get you up-to-speed with the core TriplyETL features:

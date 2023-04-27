@@ -1,6 +1,6 @@
 ---
 title: "4. TriplyETL: Enrich"
-path: "/docs/triply-etl/enrich/overview"
+path: "/docs/triply-etl/enrich"
 ---
 
 The **Enrich** step uses linked data that is asserted in the Internal Store to derive new linked data.
@@ -23,7 +23,7 @@ graph LR
 
 If you do not have linked data in the Internal Store yet, then first go to one of the following steps:
 - **1. Extract** allows you to load linked data into the Internal Store directly, with the [`loadRdf()`](/docs/triply-etl/extract/formats#loadRdf) function.
-- [3. **Assert**](/docs/triply-etl/assert/overview) uses data in the Record in order to make linked data assertions that are added to the Internal Store.
+- [3. **Assert**](/docs/triply-etl/assert) uses data in the Record in order to make linked data assertions that are added to the Internal Store.
 
 TriplyETL supports the following enrichment approaches:
 

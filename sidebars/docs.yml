@@ -12,7 +12,7 @@
     #- group: TriplyETL tutorials
     #  items:
     #    - title: Overview
-    #      link: /docs/triply-etl/tutorials/overview
+    #      link: /docs/triply-etl/tutorials
     #    - title: Install
     #      link: /docs/triply-etl/tutorials/install
     #    - title: Record
@@ -24,43 +24,43 @@
       tagline: Create production-grade Extract-Transform-Load pipelines
       items:
         - title: Overview
-          link: /docs/triply-etl/overview
+          link: /docs/triply-etl
 
         - title: 1. Extract
-          link: /docs/triply-etl/extract/overview
-        - title: ⤷ 1A. Data formats
+          link: /docs/triply-etl/extract
+        - title: "- Data formats"
           link: /docs/triply-etl/extract/formats
-        - title: ⤷ 1B. Source types
+        - title: "- Source types"
           link: /docs/triply-etl/extract/types
-        - title: ⤷ 1C. Record
+        - title: "- Record"
           link: /docs/triply-etl/extract/record
 
         - title: 2. Transform
-          link: /docs/triply-etl/transform/overview
-        - title: ⤷ 2A. RATT
+          link: /docs/triply-etl/transform
+        - title: "- RATT"
           link: /docs/triply-etl/transform/ratt
-        - title: ⤷ 2B. TypeScript
+        - title: "- TypeScript"
           link: /docs/triply-etl/transform/typescript
 
         - title: 3. Assert
-          link: /docs/triply-etl/assert/overview
-        - title: ⤷ 3A. JSON-LD
+          link: /docs/triply-etl/assert
+        - title: "- JSON-LD"
           link: /docs/triply-etl/assert/json-ld
-        - title: ⤷ 3B. RATT
+        - title: "- RATT"
           link: /docs/triply-etl/assert/ratt
 
         - title: 4. Enrich
-          link: /docs/triply-etl/enrich/overview
-        - title: ⤷ 4A. SHACL
+          link: /docs/triply-etl/enrich
+        - title: "- SHACL"
           link: /docs/triply-etl/enrich/shacl
-        - title: ⤷ 4B. SPARQL
+        - title: "- SPARQL"
           link: /docs/triply-etl/enrich/sparql
 
         - title: 5. Validate
-          link: /docs/triply-etl/validate/overview
-        - title: ⤷ 5A. Graph comparison
+          link: /docs/triply-etl/validate
+        - title: "- Graph comparison"
           link: /docs/triply-etl/validate/graph-comparison
-        - title: ⤷ 5B. SHACL
+        - title: "- SHACL"
           link: /docs/triply-etl/validate/shacl
 
         - title: 6. Publish

@@ -1,5 +1,5 @@
 ---
-title: "1C. Extract: Record"
+title: "1. Extract: Record"
 path: "/docs/triply-etl/extract/record"
 ---
 

@@ -1,5 +1,5 @@
 ---
-title: "5B. SHACL Validation"
+title: "5. SHACL Validation"
 path: "/docs/triply-etl/validate/shacl"
 ---
 
@@ -10,7 +10,7 @@ This page documents how SHACL is used to validate linked data in the internal st
 SHACL Validation can be used when the following preconditions are met:
 
 1. A data model must be available from a data source.  The data model must use the SHACL standard.
-2. Some data must be asserted in the internal store.  If your internal store is still empty, you can read [the Assert documentation](/docs/triply-etl/assert/overview) on how to add assertions to that store.
+2. Some data must be asserted in the internal store.  If your internal store is still empty, you can read [the Assert documentation](/docs/triply-etl/assert) on how to add assertions to that store.
 
 The function for performing SHACL validation can be imported from the generic TriplyETL library:
 
@@ -113,7 +113,7 @@ This Information Model specifies that instances of class `foaf:Person` must have
 
 ## Step 4: Transformation
 
-We now have source data (Step 1), and a fair intuition about our target data (Step 2), and an Information Model (Step 3).  We can automate the mapping from source to target data with an [Assertion](/docs/triply-etl/assert/overview):
+We now have source data (Step 1), and a fair intuition about our target data (Step 2), and an Information Model (Step 3).  We can automate the mapping from source to target data with an [Assertion](/docs/triply-etl/assert):
 
 ```ts
 etl.use(

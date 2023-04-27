@@ -1,6 +1,6 @@
 ---
 title: "3. TriplyETL: Assert"
-path: "/docs/triply-etl/assert/overview"
+path: "/docs/triply-etl/assert"
 ---
 
 The **Assert** step uses data from the Record to add linked data to the Internal Store.
@@ -32,6 +32,6 @@ TriplyETL supports the following assertion approaches:
 
 After linked data has been asserted into the Internal Store, the following steps can be performend:
 
-- [4. **Enrich**](/docs/triply-etl/enrich/overview/) improves or extends linked data in the Internal Store.
-- [5. **Validate**](/docs/triply-etl/validate/overview) ensures that linked data in the Internal Store is correct.
+- [4. **Enrich**](/docs/triply-etl/enrich/) improves or extends linked data in the Internal Store.
+- [5. **Validate**](/docs/triply-etl/validate) ensures that linked data in the Internal Store is correct.
 - [6. **Publish**](/docs/triply-etl/publish) makes linked data available in a Triple Store for others to use.

@@ -1,6 +1,6 @@
 ---
 title: "1. TriplyETL: Extract"
-path: "/docs/triply-etl/extract/overview"
+path: "/docs/triply-etl/extract"
 ---
 
 The **Extract** step is the first step in any TriplyETL pipeline.  It extracts data in different formats and from different source types.  Examples of data formats are 'Microsoft Excel' and 'JSON'.  Examples of source types are 'file' or 'URL'.  Source data are represented in a uniform Record.
@@ -31,5 +31,5 @@ The following pages cover the Extract step in detail:
 
 The Extract step results in a stream of records.  The basic structure of every Record in TriplyETL is the same.  It does not matter which data format or which source type is used.  Once a stream of Records is generated, the following steps document how data from those records can be used:
 
-- [2. **Transform**](/docs/triply-etl/transform/overview) are applied to the Record to change its contents.
-- [3. **Assert**](/docs/triply-etl/assert/overview) use data from the Record to generate linked data in the Internal Store.
+- [2. **Transform**](/docs/triply-etl/transform) are applied to the Record to change its contents.
+- [3. **Assert**](/docs/triply-etl/assert) use data from the Record to generate linked data in the Internal Store.

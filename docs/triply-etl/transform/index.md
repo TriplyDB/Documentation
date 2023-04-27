@@ -1,6 +1,6 @@
 ---
 title: "2. TriplyETL: Transform"
-path: "/docs/triply-etl/transform/overview"
+path: "/docs/triply-etl/transform"
 ---
 
 The **Transform** step makes changes to the Record:
@@ -21,7 +21,7 @@ graph LR
   tdb[(Triple Store)]
 ```
 
-If you do not have a stream of records yet, read the documentation for the [**Extract** step](/docs/triply-etl/extract/overview) first.
+If you do not have a stream of records yet, read the documentation for the [**Extract** step](/docs/triply-etl/extract) first.
 
 Once you have a stream of records, the following transformations are typically made:
 - Clean up the source data.
@@ -37,4 +37,4 @@ TriplyETL supports the following transformation approaches:
 
 The Transform step results in a cleaned and enriched record.  The following link documents how you can use the record to make linked data assertions:
 
--  [3. **Assert**](/docs/triply-etl/assert/overview) uses data from the Record to generate linked data in the Internal Store.
+-  [3. **Assert**](/docs/triply-etl/assert) uses data from the Record to generate linked data in the Internal Store.

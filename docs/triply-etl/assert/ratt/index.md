@@ -1,5 +1,5 @@
 ---
-title: "3B. Assert: RATT"
+title: "3. Assert: RATT"
 path: "/docs/triply-etl/assert/ratt"
 ---
 

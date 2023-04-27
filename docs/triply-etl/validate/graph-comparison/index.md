@@ -1,5 +1,5 @@
 ---
-title: "5A. Graph Comparison"
+title: "5. Graph Comparison"
 path: "/docs/triply-etl/validate/graph-comparison"
 ---
 

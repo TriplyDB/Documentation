@@ -1,5 +1,5 @@
 ---
-title: "1A. Extract: Data Formats"
+title: "1. Extract: Data Formats"
 path: "/docs/triply-etl/extract/formats"
 ---
 
@@ -132,7 +132,7 @@ which is emitted as the following two TriplyETL records:
 ```
 
 Notice that:
-- All values have type `string`, including `"ID"` and `"Age"`.  The value for field `"Age"` should probably be considered numeric, but the CSV format cannot express this.  A TriplyETL [transformation](/docs/triply-etl/transform/overview) can be used to cast string values to numeric values.
+- All values have type `string`, including `"ID"` and `"Age"`.  The value for field `"Age"` should probably be considered numeric, but the CSV format cannot express this.  A TriplyETL [transformation](/docs/triply-etl/transform) can be used to cast string values to numeric values.
 - The trailing space in `"D., Jane "` is omitted from the second record, since training whitespace is removed from all keys and values.
 - The `"Age"` key is missing from the second record, since the corresponding CSV cell contains the empty string, which is considered to denote an empty value.
 
@@ -342,7 +342,7 @@ which is emitted as the following two TriplyETL records:
 ```
 
 Notice that:
-- All values have type `string`, including `"ID"` and `"Age"`.  The value for field `"Age"` should probably be considered numeric, but the TSV format cannot express this.  A TriplyETL [transformation](/docs/triply-etl/transform/overview) can be used to cast string values to numeric values.
+- All values have type `string`, including `"ID"` and `"Age"`.  The value for field `"Age"` should probably be considered numeric, but the TSV format cannot express this.  A TriplyETL [transformation](/docs/triply-etl/transform) can be used to cast string values to numeric values.
 - The trailing space in `"D., Jane "` is omitted from the second record, since training whitespace is removed from all keys and values.
 - The `"Age"` key is missing from the second record, since the corresponding TSV cell contains the empty string, which is considered to denote an empty value.
 
