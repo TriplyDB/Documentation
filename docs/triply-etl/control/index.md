@@ -356,8 +356,135 @@ The following record is printed first (3 records are printed in total).  Notice 
 
 ## `ifElse()`
 
-TODO
+The `ifElse()` function in TriplyETL allows us to specify multiple conditions based on which other functions are run.
+Every condition is specified with an `if` key. In case the condition is true, the functions specified in the `then` key are run.
+If none of the `if` conditions are true, the functions specified in an `else` key, if present, are run.
+ 
+### Parameters
+The first parameter must be an `{ if: ..., then: ... }` object. 
+The non-first parameters are either additional `{ if: ..., then: ... }` objects or a final `{ else: ... }` object.
+ 
+Each `if` key specifies a condition that is either true or false.
+Conditions are either a key name or a function that takes the Etl Context and returns a Boolean value.
+Specifying a key name is identical to specifying the following function:
+
+`ctx => ctx.getString('KEY')`
+ 
+The `then` and `else` keys take either one function, or an array of zero or more functions.
+
+### Examples
+
+  **Example 1**: The following code snippet uses different conditions to determine the age category that a person belongs to:
+ 
+  ```ts
+  fromJson([
+    { id: 'johndoe', age: 12 },
+    { id: 'janedoe', age: 32 },
+    ...
+  ]),
+  addIri({
+    prefix: prefix.person,
+    content: 'id',
+    key: '_person',
+  }),
+  ifElse({
+    if: ctx => ctx.getNumber('age') < 12,
+    then: triple('_person', a, def.Child),
+  }, {
+    if: ctx => {
+      const age = ctx.getNumber('age')
+      return age >= 12 && age < 20
+    },
+    then: triple('_person', a, def.Teenager),
+  }, {
+    if: ctx => {
+      const age = ctx.getNumber('age')
+      return age >= 20 && age < 65
+    },
+    then: triple('_person', a, def.Adult),
+  }, {
+    else: triple('_person', a, def.Senior),
+  }),
+  ```
+ 
+**Example 2**: The following snippet either asserts data about persons or data about organizations, and uses an `ifElse` to make the conditional determination on which assertion to make:
+ 
+  ```ts
+  fromJson([
+    { first: 'John', last: 'Doe' },
+    { name: 'Triply' },
+  ]),
+  ifElse({
+    if: 'name',
+   then:
+      couples(iri(prefix.id, 'name'), [
+        [a, sdo.Organization],
+        [sdo.name, 'name'],
+      ]),
+  }, {
+    else: [
+      concat({
+        content: ['first', 'last'],
+        separator: '-',
+        key: 'name',
+      }),
+      couples(iri(prefix.id, 'name'), [
+        [a, sdo.Person],
+        [sdo.givenName, 'first'],
+        [sdo.familyName, 'last'],
+      ]),
+    ],
+  }),
+  ```
+
 
 ## `_switch()`
 
-TODO
+The function `_switch()` allows us to switch between different cases, based on the value of a specified key.
+
+### Parameters
+- `key` The key parameter whose value is compared against the specified values.
+- `cases` One or more cases. Each case is represented by a pair. 
+  
+The first element of the pair is the value that is checked for equivalence with the value in `key`.  The second element is either one function or a list of functions.
+Whenever the value in `key` is equal to the value in one of the cases, the corresponding function(s) are run.
+
+Notice that we must write `_switch()` because `switch` is a reserved keyword.
+ 
+An error is emitted if the value for `key` does not match any of the cases.
+ 
+### Examples
+
+**Example 1**: When an ETL uses multiple data sources, we can use a `_switch()` to run a dedicated sub-ETL for each data source.
+ 
+Suppose we have two tabular data sources: `file.episodes` and `file.people`.
+We can use the following `_switch()` statement to run different sub-ETLs:
+ 
+```ts
+_switch(key.fileName,
+  [file.episodes, etl_episodes],
+  [file.people, etl_people],
+),
+```
+ 
+**Example 2**: When ETLs transform different kinds of entities, it can be useful to run a sub-ETL based on the type of entity.
+ 
+For example, if the current Etl Record represents a person, we want to assert their age. But if the current Etl Record represents a location, we want to assert its latitude and longitude:
+ 
+  ```ts
+  const etl_location = [
+    triple('iri', sdo.latitude, literal('lat', xsd.double)),
+    triple('iri', sdo.longitude, literal('long', xsd.double)),
+  ]
+ 
+  const etl_person = [
+    triple('iri', sdo.age, literal('age', xsd.nonNegativeInteger)),
+  ]
+ 
+  etl.run(
+    _switch('type',
+      ['location', etl_location],
+      ['person', etl_person],
+    ),
+  )
+ ```
