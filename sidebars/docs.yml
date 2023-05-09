@@ -26,6 +26,9 @@
         - title: Overview
           link: /docs/triply-etl
 
+        #- title: Getting started
+        #  link: /docs/triply-etl/getting-started
+
         - title: 1. Extract
           link: /docs/triply-etl/extract
         - title: "- Data formats"

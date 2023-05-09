@@ -6,6 +6,8 @@ path: "/docs/triply-etl"
 TriplyETL allows you to create linked data knowledge graphs.
 It does this by Extracting data connect data sources to a pipelines that 
 
+If you are using TriplyETL for the first time, go to the [**Getting started**](/docs/triply-etl/getting-started) page.
+
 ## Approach
 
 TriplyETL uses the following unique approach to Extract, Transform, and Load (ETL) data:
