@@ -354,7 +354,7 @@ The following record is printed first (3 records are printed in total).  Notice 
 
 
 
-## `ifElse()`
+## Specify multiple conditions (`ifElse()`)
 
 The `ifElse()` function in TriplyETL allows us to specify multiple conditions based on which other functions are run.
 Every condition is specified with an `if` key. In case the condition is true, the functions specified in the `then` key are run.
@@ -438,7 +438,7 @@ The `then` and `else` keys take either one function, or an array of zero or more
   ```
 
 
-## `_switch()`
+## Switch between different cases (`_switch()`)
 
 The function `_switch()` allows us to switch between different cases, based on the value of a specified key.
 
