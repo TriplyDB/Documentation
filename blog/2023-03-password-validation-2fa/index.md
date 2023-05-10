@@ -1,8 +1,8 @@
 ---
-title: "Password validation and 2FA"
-path: "/blog/2023-03-password-validation-2fa"
-date: "2023-03-03T17:03:00"
-author: lrietveldminajanicijevic
+#title: "Password validation and 2FA"
+#path: "/blog/2023-03-password-validation-2fa"
+#date: "2023-03-03T17:03:00"
+#author: lrietveldminajanicijevic
 ---
 
 # How TriplyDB is Leading the Way in Password Security?

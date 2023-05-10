@@ -1,8 +1,8 @@
 ---
-title: "Elasticsearch"
-path: "/blog/2023-02-elasticSearch"
-date: "2023-02-28T23:25:00"
-author: minajanicijevic
+#title: "Elasticsearch"
+#path: "/blog/2023-02-elasticSearch"
+#date: "2023-02-28T23:25:00"
+#author: minajanicijevic
 ---
 
 ## Find Linked Data Entities Fast with TriplyDB's Elasticsearch
