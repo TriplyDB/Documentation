@@ -12,7 +12,7 @@ For Faceted Search, you simply have to click on either the Datasets, Stories, or
 
 <figure>
   <a href="https://triplydb.com">
-    <img src="goToFacetedSearch.png">
+    <img src="goToFacetedSearch.png" target="_blank">
   </a>
   <figcaption>
     Click on the "Datasets", "Stories", or "Queries" buttons to open the  Faceted Search feature.  Try it out on <a href="https://triplydb.com" target="_blank">triplydb.com</a>.
@@ -28,7 +28,7 @@ And finally, *stories* also have the Faceted Search option available.  You can f
 Here is an example of using Faceted Search to look for all datasets that contain the keyword "library":
 
 <figure>
-  <a href="https://triplydb.com/browse/datasets?q=library">
+  <a href="https://triplydb.com/browse/datasets?q=library" target="_blank">
     <img src="facetedsearchDatasets.png">
   </a>
   <figcaption>
