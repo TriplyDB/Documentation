@@ -11,8 +11,8 @@ Are you tired of scrolling through hundreds of search results just to find the i
 For Faceted Search, you simply have to click on either the Datasets, Stories, or Queries tab. You can also type any keyword you are searching for in the search bar. From there, you'll be able to select among the different options available and filter your search results based on specific criteria.
 
 <figure>
-  <a href="https://triplydb.com">
-    <img src="goToFacetedSearch.png" target="_blank">
+  <a href="https://triplydb.com" target="_blank">
+    <img src="goToFacetedSearch.png">
   </a>
   <figcaption>
     Click on the "Datasets", "Stories", or "Queries" buttons to open the  Faceted Search feature.  Try it out on <a href="https://triplydb.com" target="_blank">triplydb.com</a>.
