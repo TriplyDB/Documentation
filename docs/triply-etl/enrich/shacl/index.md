@@ -88,7 +88,7 @@ To understand what's happening, let's break down each property within the rule:
 - `sh:message`: This provides a descriptive message or explanation associated with the rule. In this case, it states that vehicles will be marked as "fast" if their top speed exceeds 100.
 - `sh:prefixes`: This allows you to define prefixes and namespaces used in the SPARQL query for convenience and readability. In this example, we define a prefix "ex" associated with the namespace "http://example.com/vehicles#" to simplify referencing resources within the query.
 - `sh:select`: This contains the actual SPARQL query used for evaluating the rule. It uses the `CONSTRUCT` keyword to specify the desired triples to be constructed. The query pattern checks for vehicles (`?vehicle`) that are instances of the `ex:Vehicle` class and have a `ex:topSpeed` property. The `FILTER` condition ensures that only vehicles with a top speed greater than 100 are considered. The resulting triples will mark these vehicles with the additional property `ex:isFast` having the value of true.
-## How to call and use SHACL Rules in you ETL?
+## How to call and use SHACL Rules in your ETL?
 
 To incorporate and use SHACL Rules in your ETL process, follow these steps:
 
