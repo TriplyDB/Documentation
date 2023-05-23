@@ -108,12 +108,12 @@ In this example, the `CLEAR` operation is used to remove all the triples contain
 
 To incorporate and use SPARQL Update in your ETL process, you need to follow these prerequisites:
 
-1. Include the library @triplyetl/etl/sparql in your ETL project:
+1. Include the library `@triplyetl/etl/sparql` in your ETL project:
    
 ```code
 import { update } from "@triplyetl/etl/sparql"
 ```
-2. Call the update() function to execute SPARQL Update queries.
+2. Call the `update()` function to execute SPARQL Update queries.
    
 By including the mentioned library and invoking the `update()` function, you can effectively use SPARQL Update within your TriplyETL workflow.
 
