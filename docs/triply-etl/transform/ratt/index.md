@@ -44,7 +44,7 @@ The following transformation functions are currently available:
 
 Creates an IRI based on the specified IRI prefix and the hash calculated over the input content string(s).
 
-#### Keys
+#### Parameters
 
 - `prefix` An IRI, or a key that contains an IRI value.
 - `content` A key that contains a string value, or a string value specified with [`str()`](/docs/triply-etl/assert/ratt#str).
@@ -612,7 +612,7 @@ If the first character of a string has an uppercase variant, then that variant i
 
 This transformation can uppercase the first character in any language; the Unicode Default Case Conversion algorithm is used.
 
-#### Keys
+#### Parameters
 
 - `content` A key that contains a string value.
 - `key` A new key where the capitalized result is stored.

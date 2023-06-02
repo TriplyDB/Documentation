@@ -34,45 +34,54 @@ import { iri, iris, literal, literals, nestedPairs, objects,
 
 ## `iri()`
 
-To create an IRI from a prefix and a key that has a string:
+Asserts an IRI term based on a key and an optional IRI prefix:
 
-1. Use a prefix that was declared with [`declarePrefix()`](/docs/triply-etl/declare#declarePrefix).
-2. Use a key that contains a local name, i.e., the part of an IRI that occurs after the last forward slash.
-3. Make the following call: `iri(PREFIX, KEY)`
+- `iri(prefix, key)`
+- `iri(key)`
 
-To create an IRI from a key that contains a absolute IRI:
+#### Parameters
 
-1. Make the following call: `iri(KEY)`
+- `prefix` A prefix that was declared with [`declarePrefix()`](/docs/triply-etl/declare#declarePrefix).
+- `key` A key that contains a string value. If a prefix is used, this string is used after the prefix. If no prefix is used, this string must encode a full absolute IRI.
 
 #### Examples
 
-The following creates an IRI from `prefix.a` and `someKey`:
+The following asserts an IRI based on a declared prefix (`prefix.ex`) and a key (`name`):
 
 ```ts
-triple(iri(prefix.a, 'someKey'), a, owl.NamedIndividual),
+triple(iri(prefix.ex, 'name'), a, owl.NamedIndividual),
 ```
 
-The following creates an IRI stored in `someKey`:
+The following asserts an IRI based on a declared prefix (`prefix.ex`) and a static string ([`str()`](#str)):
 
 ```ts
-triple(iri('someKey'), a, owl.NamedIndividual),
+triple(iri(prefix.ex, str('bob')), a, owl.NamedIndividual),
 ```
 
-The following creates an IRI from `prefix.a` and a static string ([`str()`](#str)):
+The following asserts an IRI based on the value stored in key `'url'`. Notice that this value must encode a full absolute IRI.
 
 ```ts
-triple(iri(prefix.a, str('b')), a, owl.NamedIndividual),
+fromJson([{ 'url': 'https://example.com/bob' }]),
+triple(iri('url'), a, owl.NamedIndividual),
 ```
+
+#### See also
+
+If the same IRI is used in multiple statements, repeating the same assertion multiple times can impose a maintenance burden. In such cases, it is possible to first add the IRI to the record with transformation function [`addIri()`](/docs/triply-etl/transform/ratt#addIri), and refer to that one IRI in multiple statements.
+
+Use [`iris()`](#iris) to create multiple IRIs in one step.
 
 
 
 ## `iris()`
 
-Created multiple IRI terms.
+Asserts multiple IRI terms.
 
-When the Record contains a key that stores an array of strings, it is possible to create one IRI for every string in that array.  
+When the record contains a key that stores an array of strings, it is possible to create one IRI for every string in that array.
 
-The following code snippet
+#### Example
+
+The following code snippet asserts one IRI for each entry in record key `'children'`:
 
 ```ts
 fromJson([{ parent: 'John', children: ['Joe', 'Jane'] }]),
@@ -97,6 +106,134 @@ graph LR
   jane[id:Jane]:::data
 
   classDef data fill:yellow
+```
+
+
+
+## `literal()`
+
+Asserts a literal.
+
+#### Parameters
+
+- `lexicalForm` A static string ([`str()`](#str)), or a key that contains a string value.
+- `languageTagOrDatatype` A static language tag, or a static datatype IRI, or a key that contains either a language tag or a datatype IRI.
+
+#### Examples
+
+The following snippet asserts a language-tagged string:
+
+```ts
+triple('city', sdo.name, literal('name', lang.nl)),
+```
+
+The following snippet asserts a typed literal:
+
+```ts
+triple('city', vocab.population, literal('population', xsd.nonNegativeInteger)),
+```
+
+Notice that string literals can be asserted directly; the following two statements make the same assertion:
+
+```ts
+triple('city', dct.identifier, literal('id', xsd.string)),
+triple('city', dct.identifier, 'id'),
+```
+
+These assertions combined can result in the following linked data:
+
+```ttl
+id:amsterdam
+  sdo:name 'Amsterdam'@nl
+  vocab:population '800000'^^xsd:nonNegativeInteger
+  dct:identifier '0200'.
+```
+
+#### See also
+
+If the same literal is used in multiple statements, repeating the same assertion multiple times can impose a maintenance burden. In such cases, it is possible to first add the literal to the record with transformation function [`addLiteral()`](/docs/triply-etl/transform/ratt#addLiteral), and refer to that one literal in multiple statements.
+
+Use [`literals()`](#literals) to create multiple literals in one step.
+
+
+
+## `literals()`
+
+Asserts multiple literals, one for each given lexical form.
+
+When the record contains a key that stores an array, it is possible to create one literal for each value in the array.
+
+#### Parameters
+
+- `lexicalForms` A key that stores an array.
+- `languageTagOrDatatype` A static language tag, or a static datatype IRI, or a key that stores a language tag or datatype IRI.
+
+#### Example: Fruit basket
+
+The following code snippet creates one literal for each value in the array that is stored in the `'contents'` key:
+
+```ts
+fromJson([{ id: 123, contents: ['apple', 'pear', 'banana'] }]),
+triple(iri(prefix.basket, 'id'), rdfs.member, literals('contents', lang.en)),
+```
+
+This makes the following linked data assertions:
+
+```ttl
+basket:123 rdfs:member 'apple'@en, 'banana'@en, 'pear'@en.
+```
+
+Or diagrammatically:
+
+```mermaid
+graph LR
+  basket -- rdfs:member --> apple
+  basket -- rdfs:member --> banana
+  basket -- rdfs:member --> pear
+
+  apple["'apple'@en"]:::data
+  banana["'banana'@en"]:::data
+  basket[basket:123]:::data
+  pear["'pear'@en"]:::data
+
+  classDef data fill:yellow
+```
+
+#### Example: names
+
+String literals can be asserted directly from a key that stores an array of strings.
+
+The following code snippet asserts one string literal for each child:
+
+```ts
+fromJson([{ parent: 'John', children: ['Joe', 'Jane'] }]),
+triple(iri(prefix.id, 'parent'), sdo.children, 'children'),
+```
+
+This makes the following linked data assertions:
+
+```ttl
+id:John sdo:children 'Jane', 'Joe'.
+```
+
+Or diagrammatically:
+
+```mermaid
+graph LR
+  john -- sdo:children --> jane
+  john -- sdo:children --> joe
+
+  jane['Jane']:::data
+  joe['Joe']:::data
+  john['John']:::data
+
+  classDef data fill:yellow
+```
+
+Notice that the same could have been achieved with an explicit datatype IRI:
+
+```ts
+triple(iri(prefix.id, 'parent'), sdo.children, literals('children', xsd.string)),
 ```
 
 
@@ -221,8 +358,7 @@ This function provides a shorthand notation for assertions that can also be made
 
 #### Parameters
 
-- `subject` A subject term.  This must be either an [`iri()`](#iri) or a
-[`literal`](#literal).
+- `subject` A subject term.  This must be either an [`iri()`](#iri) or a [`literal`](#literal).
 - `predicate` A predicate term.  This must be an [`iri`](#iri).
 - `objects` An array of object terms.  This must be either an [`iri()`](#iri) or a [`literal`](#literal).  Every distinct object term in the array results in a distinct triple assertion.
 
