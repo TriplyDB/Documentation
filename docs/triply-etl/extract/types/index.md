@@ -37,13 +37,11 @@ fromJson(Source.file([
 ])),
 ```
 
-Notice that local files are not typically used in production systems, since it is difficult to guarantee that all project partners have exactly the same local files on their computer.
-
-The risk of using outdated files and the overhead of securely sharing local files with multiple team members are often sufficient reasons to use other source types instead.
+Notice that local files are not typically used in production systems, since it is difficult to guarantee that all project partners have exactly the same local files on their computer. The risk of using outdated files, and the overhead of securely sharing them with multiple team members, are often sufficient reason to use [TriplyDB assets](#triplydb-assets) instead.
 
 
 
-## Online files {#online-files}
+## Online files
 
 The following code snippet connects to a JSON source that is stored in a publicly accessible location on the Internet:
 
@@ -56,7 +54,7 @@ If needed, you can configure details about how the HTTP request should be made m
 For example, the following requests private data that is accessed using basic authentication with username and password:
 
 ```ts
-fromJson(Etl.Source.url(
+fromJson(Source.url(
   'https://somewhere.com/example.json',
   {
     request: {
@@ -422,13 +420,15 @@ Data in the JSON or RDF formats can be specified with inline strings.
 The following code snippet loads triples into the Internal Store:
 
 ```ts
-loadRdf(Etl.Source.string(`
+loadRdf(
+  Source.string(`
 prefix person: <https://example.com/id/person/>
-prefix sdo:    <https://schema.org/>
+prefix sdo: <https://schema.org/>
 
-person:1
-  a sdo:Person;
-  sdo:name 'J. Doe'.`)),
+person:1 a sdo:Person;
+         sdo:name 'J. Doe'.`),
+  { contentType: 'text/turtle' }
+),
 ```
 
 This loads the following triples:
@@ -439,11 +439,28 @@ graph LR
   person:1 -- sdo:name --> J.Doe
 ```
 
+Notice that we must specify the RDF serialization format that we use. This is necessary because `loadRdf()` supports a large number of formats, some of which are difficult to autodetect.  The following formats are supported:
+
+| Format    | `contentType` value       |
+| --------- | ------------------------- |
+| HTML      | `'text/html'`             |
+| JSON-LD   | `'application/ld+json'`   |
+| JSON      | `'application/json'`      |
+| N-Quads   | `'application/n-quads'`   |
+| N-Triples | `'application/n-triples'` |
+| N3        | `'text/n3'`               |
+| RDF/XML   | `'application/rdf+xml'`   |
+| SVG       | `'image/svg+xml'`         |
+| TriG      | `'application/trig'`      |
+| Turtle    | `'text/turtle'`           |
+| XHTML     | `'application/xhtml+xml'` |
+| XML       | `'application/xml'`       |
+
 The following example makes RDF source data available to the [`validateShacl()`](/docs/triply-etl/validation) function:
 
 ```ts
-validateShacl(Etl.Source.string(`
-prefix sh:  <http://www.w3.org/ns/shacl#>
+validateShacl(Source.string(`
+prefix sh: <http://www.w3.org/ns/shacl#>
 prefix shp: <https://example.com/model/shp/>
 prefix sdo: <https://schema.org/>
 
@@ -471,6 +488,8 @@ graph LR
   shp:Person_name -- sh:minLength --> 1
   shp:Person_name -- sh:path --> sdo:name
 ```
+
+Notice that `validateShacl()` does not require us to set the content-type, since it only supports N-Quads, N-Triples, TriG and Turtle (and these formats can be detected automatically).
 
 The following example makes a string source available to the `fromJson()` source extractor:
 

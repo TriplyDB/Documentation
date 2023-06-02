@@ -357,7 +357,7 @@ The following code snippet shows how a [TriplyDB assets](/docs/triply-etl/extrac
 
 ```ts
 fromXlsx(
-  Etl.Source.TriplyDb.asset(
+  Source.TriplyDb.asset(
     'some-account',
     'some-dataset',
     { name: 'example.xlsx' }

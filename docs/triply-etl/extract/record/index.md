@@ -68,7 +68,7 @@ import { Etl, fromXml, logRecord } from '@triplyetl/etl/generic'
 export default async function (): Promise<Etl> {
   const etl = new Etl()
   etl.use(
-    fromXml(Etl.Source.file('example.xml')),
+    fromXml(Source.file('example.xml')),
     logRecord(),
   )
   return etl

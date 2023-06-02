@@ -152,7 +152,7 @@ We then perform the following steps to build a pipelines that processes this dat
 
 3. Transpile the code with `./node_modules/.bin/tsc`
 
-4. Run the pipeline with `yarn ratt main.js`
+4. Run the pipeline with `yarn etl main.js`
 
 The TriplyETL script will give you a link to the uploaded dataset.  This dataset contains the following graph content:
 
@@ -169,7 +169,7 @@ The most common occurrence in ETL are the middlewares. Middlewares are essential
 Example of middleware function:
 
 ```ts
-loadRdf(Ratt.Source.TriplyDb.query('my-account', 'my-query')),
+loadRdf(Source.TriplyDb.query('my-account', 'my-query')),
 ```
 
 ### What is a record?
@@ -182,8 +182,9 @@ As mentioned above, when ETL is running we go through data record by record. Tog
 toRdf reads from the store.
 
 ```ts
-app.use(toRdf(Ratt.Destination.file('example.ttl')));
-
+etl.use(
+  toRdf(Ratt.Destination.file('example.ttl'))
+)
 ```
 
 ### What is the context(ctx)?
@@ -206,7 +207,7 @@ ctx.store.getQuad(...)
 The following code snippet uses the [`fromJson`](#fromJson) connector with two inline example records:
 
 ```ts
-import { fromJson, logRecord, Ratt as Etl } from '@triplydb/ratt'
+import { fromJson, logRecord, Etl } from '@triplydb/etl/generic'
 export default async function (): Promise<Etl> {
   const etl = new Etl()
   etl.use(
@@ -262,11 +263,11 @@ Now suppose that we change the source system.  We no longer use in-line JSON, bu
 Let us change the TriplyETL script to use the XML source connector:
 
 ```ts
-import { fromXml, logRecord, Ratt as Etl } from '@triplydb/ratt'
+import { Etl, fromXml, logRecord, Source } from '@triplyetl/etl/generic'
 export default async function (): Promise<Etl> {
   const etl = new Etl()
   etl.use(
-    fromXml(Etl.Source.file('example.xml')),
+    fromXml(Source.file('example.xml')),
     logRecord(),
   )
   return etl

@@ -78,7 +78,7 @@ In such cases it may be an option to take a combination of columns, and use that
 The following snippet uses the combination of the first name and last name fields (in that order) to create a locally unique hash, that can be used to create a globally IRI.  (This does assume that every person in the dataset has a unique first/last name combination!)
 
 ```ts
-fromXlsx(Etl.Source.file('data.xlsx')),
+fromXlsx(Source.file('data.xlsx')),
 addHashedIri({
   prefix: prefix.person,
   content: ['First name', 'Last name'],

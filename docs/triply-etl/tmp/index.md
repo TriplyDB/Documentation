@@ -6,7 +6,7 @@ If you have RDF data that _does_ need to be transformed, you can use the followi
 ```ts
 const etl = new Etl({ defaultGraph: graph.model })
 etl.use(
-  loadRdf(Etl.Source.file(`data/shapes.trig`)),
+  loadRdf(Source.file(`data/shapes.trig`)),
   mapQuads(
     (quad, ctx) => ctx.store.quad(
       quad.subject,
@@ -15,7 +15,7 @@ etl.use(
       iri(prefix.graph, 'new-graph')
     )
   ),
-  toRdf(Etl.Destination.TriplyDb.rdf('my-dataset', remoteOptions))
+  toRdf(Destination.TriplyDb.rdf('my-dataset', remoteOptions))
 )
 ```
 
