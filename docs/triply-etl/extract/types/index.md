@@ -456,10 +456,13 @@ Notice that we must specify the RDF serialization format that we use. This is ne
 | XHTML     | `'application/xhtml+xml'` |
 | XML       | `'application/xml'`       |
 
-The following example makes RDF source data available to the [`validateShacl()`](/docs/triply-etl/validation) function:
+The following example makes RDF source data available to the [`validate()`](/docs/triply-etl/validation) function:
 
 ```ts
-validateShacl(Source.string(`
+import { Source } from '@triplyetl/etl/generic'
+import { validate } from '@triplyetl/etl/shacl'
+
+validate(Source.string(`
 prefix sh: <http://www.w3.org/ns/shacl#>
 prefix shp: <https://example.com/model/shp/>
 prefix sdo: <https://schema.org/>
@@ -489,7 +492,7 @@ graph LR
   shp:Person_name -- sh:path --> sdo:name
 ```
 
-Notice that `validateShacl()` does not require us to set the content-type, since it only supports N-Quads, N-Triples, TriG and Turtle (and these formats can be detected automatically).
+Notice that `validate()` does not require us to set the content-type, since it only supports N-Quads, N-Triples, TriG and Turtle (and these formats can be detected automatically).
 
 The following example makes a string source available to the `fromJson()` source extractor:
 

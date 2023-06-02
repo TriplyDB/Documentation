@@ -353,20 +353,20 @@ etl.use(
   // Create all linked data statements.
   // …
   // Now that all the data is created, validate it using a model.
-  validateShacl(etl.sources.model, { terminateOn: 'Never' }),
+  validate(etl.sources.model, { terminateOn: 'Never' }),
 )
 ```
 
 ### Log conditions
 
-The `validateShacl` function can optionally be given the `log` option.  This option determines when and which violations should be printed. The values are the same as in 'terminateOn' option. Note that `log` is about printing on your terminal and not about the violation report.
+The `validate()` function can optionally be given the `log` option.  This option determines when and which violations should be printed. The values are the same as in 'terminateOn' option. Note that `log` is about printing on your terminal and not about the violation report.
 
  ```ts
 etl.use(
   // Create all linked data statements.
   // …
   // Now that all the data is created, validate it using a model.
-  validate(app.sources.model, { log: "Never" }),
+  validate(etl.sources.model, { log: 'Never' }),
 )
 ```
 -->
