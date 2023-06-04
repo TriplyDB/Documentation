@@ -21,9 +21,9 @@ graph LR
   tdb[(Triple Store)]
 ```
 
-If you do not have linked data in the Internal Store yet, then first go to one of the following steps:
-- **1. Extract** allows you to load linked data into the Internal Store directly, with the [`loadRdf()`](/docs/triply-etl/extract/formats#loadRdf) function.
-- [3. **Assert**](/docs/triply-etl/assert) uses data in the Record in order to make linked data assertions that are added to the Internal Store.
+If you do not have linked data in your internal store yet, then first perform one of the following steps:
+- **1. Extract** allows you to load linked data into your internal store directly, using the [loadRdf()](/docs/triply-etl/extract/formats#loadRdf) function.
+- [3. **Assert**](/docs/triply-etl/assert) uses entries from your record to make linked data assertions into your internal store.
 
 TriplyETL supports the following enrichment approaches:
 

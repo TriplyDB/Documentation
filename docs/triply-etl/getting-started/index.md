@@ -204,7 +204,7 @@ ctx.store.getQuad(...)
 
 ## A JSON data source
 
-The following code snippet uses the [`fromJson`](#fromJson) connector with two inline example records:
+The following code snippet uses extractor [fromJson()](#fromJson) with two inline example records:
 
 ```ts
 import { fromJson, logRecord, Etl } from '@triplydb/etl/generic'
@@ -221,7 +221,7 @@ export default async function (): Promise<Etl> {
 }
 ```
 
-Function `logRecord()` prints the current record to standard output.  When this pipeline is run, the two records are printed as follows:
+Debug function `logRecord()` prints the current record to standard output.  When this pipeline is run, the two records are printed as follows:
 
 ```json
 {

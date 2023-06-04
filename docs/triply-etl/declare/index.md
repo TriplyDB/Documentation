@@ -9,7 +9,7 @@ This page documents how you can declare prefixes, graph names, vocabulary terms,
 
 ## Prefix declarations
 
-Linked data uses IRIs for uniquely identifying most data items.  Since IRIs can be long and complex, it is a best practice to declare short aliases that can be used to abbreviate them.  Such aliases are introduced in prefix declarations.
+Linked data uses IRIs for uniquely identifying most data items. Since IRIs can be long and complex, it is a best practice to declare short aliases that can be used to abbreviate them. Such aliases are introduced in prefix declarations.
 
 The function for declaring prefixes can be imported from the generic TriplyETL library:
 
@@ -31,7 +31,7 @@ const id = declarePrefix(base('id/'))
 
 Notice that it is common practice to end every IRI prefix in a forward slash.
 
-It is common to make declarations for the full IRI strategy in one place, with an intent to reuse them through the ETL configuration.  To distinguish prefix declarations from other declarations, it is best practice to put all prefix declaration that will be used in transformations and assertions into an single object called `prefix`:
+It is common to make declarations for the full IRI strategy in one place, with an intent to reuse them through the ETL configuration. To distinguish prefix declarations from other declarations, it is best practice to put all prefix declaration that will be used in transformations and assertions into an single object called `prefix`:
 
 ```ts
 const base = declarePrefix('https://example.com/')
@@ -54,13 +54,13 @@ iri(prefix.vehicle, 'id')
 iri(prefix.vehicle, str('123')),
 ```
 
-See [`iri()`](/docs/triply-etl/assert/ratt#iri) and [`str()`](/docs/triply-etl/assert/ratt#str) for more information about these assertions.
+See assertion functions [iri()](/docs/triply-etl/assert/ratt#iri) and [str()](/docs/triply-etl/assert/ratt#str) for more information.
 
 
 
 ### External prefix declarations
 
-In linked data it is common to reuse existing vocabularies and datasets.  TriplyETL allows you to use popular namespaces from predefined prefix declarations.
+In linked data it is common to reuse existing vocabularies and datasets. TriplyETL allows you to use popular namespaces from predefined prefix declarations.
 
 Popular namespaces are imported from the vocabulary library:
 
@@ -85,7 +85,7 @@ http://dbpedia.org/resource/Berlin
 
 ### Vocabulary declarations
 
-Vocabularies are collections of IRIs that have the same namespace.  The namespace can be declared with a prefix (see [Prefix declarations](#prefix-declarations)).  We use the following prefix declaration as the namespace for our vocabulary:
+Vocabularies are collections of IRIs that have the same namespace. The namespace can be declared with a prefix (see [Prefix declarations](#prefix-declarations)). We use the following prefix declaration as the namespace for our vocabulary:
 
 ```ts
 const base = declarePrefix('https://example.com/')
@@ -159,7 +159,7 @@ graph LR
 
 ### External vocabulary declarations
 
-In linked data it is common to reuse existing vocabularies.  Popular vocabularies can be imported from the TriplyETL vocabulary library:
+In linked data it is common to reuse existing vocabularies. Popular vocabularies can be imported from the TriplyETL vocabulary library:
 
 ```ts
 import { a, foaf, owl } from '@triplyetl/etl/vocab'
@@ -183,15 +183,15 @@ Notice that the notation in TriplyETL comes very close to the notation in Turtle
 
 ### Custom abbreviations
 
-The custom abbreviation `a` is available in the popular Turtle/TriG/SPARQL languages.  TriplyETL allows you to introduce this custom abbreviation from the vocabulary library:
+The custom abbreviation `a` is available in the popular Turtle/TriG/SPARQL languages. TriplyETL allows you to introduce this custom abbreviation from the vocabulary library:
 
 ```ts
 import { a } from '@triplyetl/etl/vocab'
 ```
 
-In Turtle/TriG syntax this abbreviation is only allowed to be used in the predicate position.  This restriction is not enforced in TriplyETL, where you can use the `a` abbreviation in the subject, predicate, object, and even graph position.
+In Turtle/TriG syntax this abbreviation is only allowed to be used in the predicate position. This restriction is not enforced in TriplyETL, where you can use the `a` abbreviation in the subject, predicate, object, and even graph position.
 
-You can introduce your own custom abbreviations as needed.  For example, the following code snippet introduces `is_a` as a custom abbreviation for the IRI `rdfs:subClassOf`:
+You can introduce your own custom abbreviations as needed. For example, the following code snippet introduces `is_a` as a custom abbreviation for the IRI `rdfs:subClassOf`:
 
 ```ts
 import { foaf, rdfs } from '@triplyetl/etl/vocab'
@@ -204,7 +204,7 @@ This allows you to write the following assertion:
 triple(foaf.Person, is_a, foaf.Agent),
 ```
 
-This may make assertions more readable for users from certain domains.  For example, "is a" is a commonly use phrase [in many other modeling languages](https://en.wikipedia.org/wiki/Is-a) to denote the subsumption relation.
+This may make assertions more readable for users from certain domains. For example, "is a" is a commonly use phrase [in many other modeling languages](https://en.wikipedia.org/wiki/Is-a) to denote the subsumption relation.
 
 
 
@@ -232,7 +232,7 @@ triple(person.john, def.knows, person.mary),
 
 ### Graph name declarations
 
-A linked dataset contains one or more graphs.  Each graph can be given a name.  It is common practice to declare a fixed set of graph names that will be used throughout the TriplyETL configuration.
+A linked dataset contains one or more graphs. Each graph can be given a name. It is common practice to declare a fixed set of graph names that will be used throughout the TriplyETL configuration.
 
 The following code snippet declares graph names for graphs that store metadata, model, and instances:
 
@@ -260,7 +260,7 @@ triples(graph.metadata,
 ),
 ```
 
-See [`triples()`](/docs/triply-etl/assert/ratt#triples) for more information about this particular assertion function.
+See assertion function [triples()](/docs/triply-etl/assert/ratt#triples) for more information.
 
 
 
@@ -288,7 +288,7 @@ Or they can be used to directly assert language-tagged strings in the Internal S
 triple('_city', rdfs.label, literal('label', lang.fr)),
 ```
 
-See [`addLiteral()`](/docs/triply-etl/transform#addliteral) and [`literal()`](/docs/triply-etl/assert#literal) for more information.
+See transformation function [addLiteral()](/docs/triply-etl/transform#addliteral) and assertion function [literal()](/docs/triply-etl/assert#literal) for more information.
 
 
 
@@ -301,7 +301,7 @@ import { geojsonToWkt } from '@triplyetl/etl/ratt'
 import { epsg } from '@triplyetl/etl/vocab'
 ```
 
-Such IRIs that denote coordinate reference systems can be used in several geospatial functions, for example in the [`geojsonToWkt()`](/docs/triply-etl/transform/ratt#geojsontowkt) function:
+Such IRIs that denote coordinate reference systems can be used in several geospatial functions, for example in transformation function [geojsonToWkt()](/docs/triply-etl/transform/ratt#geojsontowkt):
 
 ```ts
 geojsonToWkt({
