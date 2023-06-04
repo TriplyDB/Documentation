@@ -23,7 +23,7 @@ One of the issues that we noticed is that, with large SPARQL queries, it was rea
 
 The second improvement to the YASGUI editor is about prefixes. Prefixes are a really good way to shorten your queries for better readability. For this reason, we implemented two additions into YASGUI that make use of prefixes.
 - When you start to type a new SPARQL query and you want to add a prefix that you’ve already added to the list of known prefixes, you can just type the prefix and your prefix is automatically added to your query. For more details on prefix declaration in our SPARQL editor, you can see our [documentation](https://triply.cc/docs/yasgui#features).
-- Support that automatically prefixes your resultset was added in the editor, making use of the set of prefixes. That way you do not even have to add the prefixes to your SPARQL query yourself.
+- Support that automatically prefixes your result set was added in the editor, making use of the set of prefixes. That way you do not even have to add the prefixes to your SPARQL query yourself.
 
 ![SPARQL IDE additions](SPARQL_IDE_additions.gif)
 

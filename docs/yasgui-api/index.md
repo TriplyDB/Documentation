@@ -351,7 +351,7 @@ class Boolean {
     this.yasr = yasr;
   }
 
-  // Draw the resultset. This plugin simply draws the string 'True' or 'False'
+  // Draw the result set. This plugin simply draws the string 'True' or 'False'
   draw() {
     const el = document.createElement("div");
     el.textContent = this.yasr.results.getBoolean() ? "True" : "False";
