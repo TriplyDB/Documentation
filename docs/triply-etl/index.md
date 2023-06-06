@@ -4,44 +4,47 @@ path: "/docs/triply-etl"
 ---
 
 TriplyETL allows you to create linked data knowledge graphs.
-It does this by Extracting data connect data sources to a pipelines that 
 
-If you are using TriplyETL for the first time, go to the [**Getting started**](/docs/triply-etl/getting-started) page.
-
-## Approach
+If you are using TriplyETL for the first time, use the [**Generator**](/docs/triply-etl/generator) to create a new ETL.
 
 TriplyETL uses the following unique approach to Extract, Transform, and Load (ETL) data:
 
 ```mermaid
-graph LR
-  source -- 1. Extract --> record
-  record -- 2. Transform --> record
-  record -- 3. Assert --> ld
-  ld -- 4. Enrich --> ld
-  ld -- 5. Validate --> ld
-  ld -- 6. Publish --> tdb
+flowchart LR
+  source -- "1. Extract" --> record
+  record -- "2. Transform" --> record
+  record -- "3. Assert" --> ld
+  ld -- "4. Enrich" --> ld
+  ld -- "5. Validate" --> ld
+  ld -- "6. Publish" --> tdb
 
-  ld[Internal Store]
-  record[Record]
   source[Data Sources]
+  record[Record]
+  ld[Internal Store]
   tdb[(Triple Store)]
 ```
 
+This approach consists of the following steps:
+
 - Step 1 [**Extract**](/docs/triply-etl/extract) extracts data records from one or more data sources.
-- A generic **Record** is loaded from the Source Systems.  The representation of the Record is independent of the source system that is used.
 - Step 2 [**Transform**](/docs/triply-etl/transform) cleans, combines, and extends data in the Record representation.
 - Step 3 [**Assert**](/docs/triply-etl/assert) uses data from the Record to generate linked data assertions.
-- The **Internal Store** holds linked data that is generated for each Record.
 - Step 4 [**Enrich**](/docs/triply-etl/enrich) improves or extends linked data in the Internal Store.
 - Step 5 [**Validate**](/docs/triply-etl/validate) ensures that linked data in the Internal Store is correct.
 - Step 6 [**Publish**](/docs/triply-etl/publish) makes linked data available in a Triple Store for others to use.
 
-In addition, the following components can be used throughout these steps:
+This approach uses the following data environments:
+
+- The **Data Sources** are used as the input to the pipeline.
+- The **Record** provides a uniform format for data from any source system.
+- The **Internal Store** holds linked data that is generated inside the pipeline.
+- The **Triple Store** is where the results of the pipeline are stored.
+
+This approach includes the following sets of components, that can be used throughout the 6 steps:
 
 - [**Declarations**](/docs/triply-etl/declare) allow you to declare constants in one place for reuse throughout the rest of your TriplyETL configuration.
 - [**Debug tools**](/docs/triply-etl/debug) allow you to gain insight in a TriplyETL for the purpose of maintenance.
 - [**Control structures**](/docs/triply-etl/control) can be used to make parts of the TriplyETL configuration optional or repeating (loops).
-
 
 <!-- TODO
 ## Reference
