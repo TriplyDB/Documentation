@@ -26,8 +26,10 @@
         - title: Overview
           link: /docs/triply-etl
 
-        - title: Generator
-          link: /docs/triply-etl/generator
+        - title: Command-Line Interface (CLI)
+          link: /docs/triply-etl/cli
+        #- title: Changelog
+        #  link: /docs/triply-etl/changelog
 
         - title: 1. Extract
           link: /docs/triply-etl/extract

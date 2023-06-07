@@ -5,7 +5,10 @@ path: "/docs/triply-etl"
 
 TriplyETL allows you to create linked data knowledge graphs.
 
-If you are using TriplyETL for the first time, use the [**Generator**](/docs/triply-etl/generator) to create a new ETL.
+If you are using TriplyETL for the first time, use the [**Generator**](/docs/triply-etl/cli#generator) to create a new ETL and use the [**Runner**](/docs/triply-etl/cli#runner) to run an ETL locally.
+<!--
+If you are using an older version of TriplyETL and want to upgrade, take a look at the [**Changelog**](/docs/triply-etl/changelog).
+-->
 
 TriplyETL uses the following unique approach to Extract, Transform, and Load (ETL) data:
 
@@ -43,7 +46,7 @@ This approach uses the following data environments:
 This approach includes the following sets of components, that can be used throughout the 6 steps:
 
 - [**Declarations**](/docs/triply-etl/declare) allow you to declare constants in one place for reuse throughout the rest of your TriplyETL configuration.
-- [**Debug tools**](/docs/triply-etl/debug) allow you to gain insight in a TriplyETL for the purpose of maintenance.
+- [**Debug functions**](/docs/triply-etl/debug) allow you to gain insight in a TriplyETL for the purpose of maintenance.
 - [**Control structures**](/docs/triply-etl/control) can be used to make parts of the TriplyETL configuration optional or repeating (loops).
 
 <!-- TODO

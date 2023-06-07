@@ -3,58 +3,150 @@ title: "TriplyETL: Debug"
 path: "/docs/triply-etl/debug"
 ---
 
-This page documents how you can debug your ETL pipeline.
+TriplyETL includes functions that can be used during debugging. These debug function allow you to inspect in a detailed way how data flows through your pipeline. This allows you to find problems more quickly, and allows you to determine whether data is handled correctly by your TriplyETL configuration.
 
-## Debugging pipelines
+## Overview
 
-When developing a TriplyETL pipeline, you must often inspect the data that flows through the pipeline.  Inspecting the data flow allows you to find problems quickly and ensures that data is handled correctly by your TriplyETL configuration.
+The following debug function are available:
 
+| Function | Description |
+| --- | --- |
+| [logQuads()](#logQuads) | Prints the contents of the internal store to standard output. |
+| [logQuery()](#logQuery) | Prints a query string to standard output. |
+| [logRecord()](#logRecord) | Prints the record in its current state to standard output. |
+| [traceEnd()](#traceEnd) | Ends a trace of the record and internal store. |
+| [traceStart()](#traceStart) | Starts a trace of the record and internal store. |
 
-### Printing the current Record
+## Function `logQuads()` {#logQuads}
 
-One of the most useful tools for inspecting your pipeline is the `logRecord` function.  It prints the current Record to standard output (e.g. your terminal).
+This function prints the current contents of the internal store to standard output.
 
-At any moment in a TriplyETL pipeline, the current Record can be printed to the terminal with the following command:
+The following snippet asserts one triple into the default graph of the internal store, and then prints the contents of the internal store:
 
 ```ts
-app.use(
-  logRecord(),
-)
+fromJson([{}]),
+triple(rdfs.Class, a, rdfs.Class),
+logQuads(),
 ```
 
-For [the Iris dataset](https://triplydb.com/Triply/iris) this emits the following output:
+This results in the following output:
 
-```js
-{
-  'sepal.length': '5.9',
-  'sepal.width': '3',
-  'petal.length': '5.1',
-  'petal.width': '1.8',
-  'variety': 'Virginica'
+```turtle
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix sdo: <https://schema.org/>.
+
+<https://triplydb.com/graph/default> {
+rdfs:Class a rdfs:Class
 }
 ```
 
-Notice that the printed record includes both the keys and the values.
+## Function `logQuery()` {#logQuery}
 
-
-#### Use multiple `logRecord` statements
-
-In addition to inspecting the Record once, it is common practice to place two or more `logRecord` statements at different positions in a TriplyETL configuration.  This allows you to inspect how data changes throughout the pipeline process.
+This function prints a query string to standard output. This is specifically useful when the query string is stored in an external system, e.g. a SPARQL query string that is stored on a TriplyDB server:
 
 ```ts
-logRecord(),
-// One or more transformations that change the record.
+logQuery(Source.TriplyDb.query('my-account', 'my-query')),
+```
+
+Depending on the query string that is stored in `'my-query'`, this could result in the following output:
+
+```sparql
+select * {
+  ?s ?p ?o.
+}
+limit 10
+```
+
+## Function `logRecord()` {#logRecord}
+
+This function prints the current state of the record to standard output. The record is a generic representation of the data that is extracted from one of the data sources (see the [Record documentation page](/docs/triply-etl/extract/record) for more information).
+
+The following snippet prints the inline JSON record to standard output:
+
+```ts
+fromJson([{ a: 1 }]),
 logRecord(),
 ```
 
-#### Log specific keys
+This emits the following:
 
-Sometimes a Record can be long and you may only be interested in a small number of keys.  In such cases the interesting keys can be specified in the call to `logRecord()`:
+```json
+{
+  "a": 1,
+  "$recordId": 1,
+  "$environment": "Development"
+}
+```
+
+### Use when writing a new ETL
+
+When writing a new ETL, `logRecord()` is often used as the first function to invoke immediately after extracting the record. For example:
 
 ```ts
-logRecord({ key: 'variety' }),
+fromJson(Source.url('https://example.com/some/api/call')),
+logRecord(),
 ```
-### Trace changes in a record
+
+Since this prints a full overview of what is available in the data source, this forms a good starting point for writing the rest of the ETL configurations.
+
+### Observe the effects of transformations
+
+Another common use case for `logRecord()` is to observe the record at different moments in time. This is specifically useful to observe the effects of [transformation functions](/docs/triply-etl/transform), since these are the functions that modify the record.
+
+The following snippet logs the record directly before and directly after the transformation function `split()` is called.
+
+```ts
+fromJson([{ a: '1, 2, 3' }]),
+logRecord(),
+split({ content: 'a', separator: ',', key: 'b' }),
+logRecord(),
+```
+
+This makes it easy to observe the result of applying the transformation function:
+
+```json
+Running lib/main.js
+{
+  "a": "1, 2, 3",
+  "$recordId": 1,
+  "$environment": "Development"
+}
+{
+  "a": "1, 2, 3",
+  "$recordId": 1,
+  "$environment": "Development",
+  "b": [
+    "1",
+    "2",
+    "3"
+  ]
+}
+```
+
+### Log a specific key
+
+Since records can be quite long, in some cases it may be easier to print only a specific key.
+
+The following code snippet only prints the key that was added by the transformation function:
+
+```ts
+fromJson([{ a: '1, 2, 3' }]),
+split({ content: 'a', separator: ',', key: 'b' }),
+logRecord({ key: 'b' }),
+```
+
+This results in the following output:
+
+```json
+[
+  "1",
+  "2",
+  "3"
+]
+```
+
+## Functions `traceStart()` and `traceEnd()` {#traceStart} {#traceEnd}
 
 Sometimes you are interested to find one specific record based on a certain value of a key and/or to see the changes in this record made by specific middlewares. For these purposes, `trace` middleware can be used.
 
@@ -92,7 +184,7 @@ The result would be:
 
 
  To rerun the traced middlewares for this record use the following command:
- > yarn etl lib/{script-name} --trace .trace-1650542307095
+ > npx etl lib/{script-name} --trace .trace-1650542307095
 ```
 
 In your terminal the line with <span style="color:red">"b": 1</span> will be red colored, showing the previous state of this key-value and the line with <span style="color:green">"b": 101</span> will be green colored, showing the new state.
@@ -100,72 +192,5 @@ In your terminal the line with <span style="color:red">"b": 1</span> will be red
 Also you can rerun the  trace information for this specific record by running:
 
 ```sh
-yarn etl lib/{script-name} --trace .trace-1650542307095
+npx etl lib/{script-name} --trace .trace-1650542307095
 ```
-
-### Limit the number of records
-
-When developing a pipeline, it is often not needed to process all records from the input data source all the time.
-
-In order to keep the feedback loop small, one can make use of the `--head` flag when running TriplyETL:
-
-```sh
-yarn etl lib/main.js --head 1
-yarn etl lib/main.js --head 10
-```
-
-The above commands process only the first record and the first 10 records, respectively.
-
-#### Specify a range of records
-
-When developing a pipeline over a large source data collection, it is often standard practice to use the first 10 or 100 records most of the time.
-
-The benefit of this approach is that the feedback loop between making changes and receiving feedback is short.  A downside of this approach is that the ETL may be overly optimized towards these first few records.  For example, if a value is missing in the first 1.000 records, then transformations that are necessary for when the value is present will not be developed initially.  An alternative is to run the entire ETL, but that takes a long time.
-
-To avoid the downsides of using `--head`, TriplyETL also supports the `--from-record-id` flag.  This flag specifies the number of records that are skipped.  This allows us to specify an arbitrary consecutive range of records.  For example, the following processes the 1.001-st until and including the 1.010-th record:
-
-```sh
-yarn etl lib/main.js --from-record-id 1000 --head 10
-```
-
-#### Process a specific record
-
-When the `--head` flag is set to 1, the `--from-record-id` flag specifies the index of a single specific record that is processed.  This is useful when a record is known to be problematic, for instance during debugging.
-
-The following command runs TriplyETL for the 27th record:
-
-```sh
-yarn etl lib/main.js --from-record-id 26 --head 1
-```
-
-
-### Verbose mode
-
-When TriplyETL is run normally, the following information is displayed:
-
-- The number of added triples.
-- The runtime of the script.
-- An error message, if any occurred.
-
-It is possible to also show the following additional information by specifying the `--verbose` flag:
-
-- In case of an error, the first 20 values from the last processed record.
-- In case of an error, the full stack trace.
-
-The following example shows how the `--verbose` flag can be used:
-
-```sh
-yarn etl lib/main.js --verbose
-```
-
-#### Secure verbose mode
-
-Verbose mode may perform a reset of your current terminal session.  If this happens you lose visible access to the commands that were run prior to the last TriplyETL invocation.
-
-This destructive behavior of verbose mode can be disabled by setting the following environment variable:
-
-```sh
-export CI=true
-```
-
-This fixes the reset issue, but also makes the output less colorful.
