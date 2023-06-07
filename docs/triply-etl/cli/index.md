@@ -8,6 +8,7 @@ TriplyETL includes the following tools that can be used from a command-line:
 - [**TriplyETL Generator**](#generator) is used to create a new ETL pipeline.
 - [**TriplyETL Runner**](#runner) is used to run an existing ETL pipeline.
 - [**TriplyETL Tools**](#tools) is used to perform common, isolated tasks.
+- [Upgrading TriplyETL repositories](#upgrade) explains how you can keep your ETL repository up-to-date.
 
 ## TriplyETL Generator {#generator}
 
@@ -86,7 +87,7 @@ npx triply-etl-generator
    See the documentation for the [TriplyETL Runner](#runner) for more information.
 
 <!--
-### Other options
+### Advanced options
 
 The TriplyETL Generator has the following options:
 
@@ -106,6 +107,14 @@ In this tutorial you learn how to use the generic record representation that is 
 
 This section gets you up and running with TriplyETL by setting up increasingly more complex pipelines.  These pipelines will use TriplyETL to connect data sources to an integrated linked data knowledge that is published in a TriplyDB instance.  Some of the documented steps are generic for setting up a modern TypeScript project, while others are specific for using TriplyETL.
 -->
+
+### Upgrading TriplyETL Generator
+
+Before creating a new TriplyETL repository, ensure that you are using the latest version of the TriplyETL Generator:
+
+```
+npm update -g triply-etl-generator
+```
 
 ## TriplyETL Runner {#runner}
 
@@ -206,3 +215,35 @@ The following tools are supported:
 | [print-token](#tool-print-token) | Prints your current TriplyDb token |
 | [report](#tool-report) | Generate a MarkDown report from the TriplyDB instance from your token |
 | [validate](#tool-validate) | Validate instance data against a SHACL shape |
+
+## Upgrading TriplyETL repositories {#upgrade}
+
+Triply regularly releases new versions of TriplyETL. You can look up the TriplyETL version that you are currently using, by running the following command:
+
+```
+npm list @triplyetl/etl
+```
+
+You can look at the [TriplyETL Changelog](/docs/triply-etl/changelog) to observe the latest available TriplyETL version, and the differences between the latest version and your current version.
+
+You can update to the latest version of TriplyETL by running the following command in your TriplyETL repository:
+
+```
+npm upgrade triplyetl
+```
+
+### Developer dependencies
+
+TriplyETL repositories include a couple of developer dependencies that make it easier to write and maintain ETLs. These dependencies are not part of the TriplyETL dependency, and must be updated independently.
+
+The following command gives an overview of all the possible updates to the developer dependencies:
+
+```
+npm outdated
+```
+
+Based on the output of the previous command, a maintainer of the repository can choose to upgrade one or more developer dependencies by running the following command:
+
+```
+npm upgrade {package-name}
+```

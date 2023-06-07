@@ -1,5 +1,5 @@
 ---
-title: "5. SHACL Validation"
+title: "5. Validate: SHACL"
 path: "/docs/triply-etl/validate/shacl"
 ---
 

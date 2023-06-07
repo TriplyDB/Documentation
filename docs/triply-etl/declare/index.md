@@ -83,7 +83,7 @@ http://dbpedia.org/resource/Berlin
 
 
 
-### Vocabulary declarations
+## Vocabulary declarations {#vocabulary}
 
 Vocabularies are collections of IRIs that have the same namespace. The namespace can be declared with a prefix (see [Prefix declarations](#prefix-declarations)). We use the following prefix declaration as the namespace for our vocabulary:
 
@@ -157,12 +157,12 @@ graph LR
 
 
 
-### External vocabulary declarations
+### External vocabulary declarations {#external-vocabularies}
 
 In linked data it is common to reuse existing vocabularies. Popular vocabularies can be imported from the TriplyETL vocabulary library:
 
 ```ts
-import { a, foaf, owl } from '@triplyetl/etl/vocab'
+import { a, foaf, owl, premis } from '@triplyetl/etl/vocab'
 ```
 
 This allows you to make the following assertions:
@@ -178,6 +178,16 @@ foaf:Person a owl:Class.
 ```
 
 Notice that the notation in TriplyETL comes very close to the notation in Turtle/TriG/SPARQL that is familiar to linked data users.
+
+The following code snippet uses the specialized PREMIS 3.0.0 vocabulary. This vocabulary is published by the Library of Congress and is used to publish metadata about the preservation of digital objects. The following code snippet asserts that a PREMIS file is stored in a PREMIS storage location:
+
+```ts
+pairs(iri(id, 'some-file'),
+  [a, premis.File],
+  [premis.storedAt, iri(id, 'some-location')],
+),
+triple(iri(id, 'some-location'), a, premis.StorageLocation),
+```
 
 
 

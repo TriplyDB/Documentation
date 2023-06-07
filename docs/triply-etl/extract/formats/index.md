@@ -287,12 +287,48 @@ The following code snippet connects to an example dataset that is published in a
 
 ```ts
 fromOai({
-  url: 'https://somewhere.com/webapioai/oai.ashx',
   set: 'some-dataset',
+  url: 'https://somewhere.com/webapioai/oai.ashx'
 }),
 ```
 
-TriplyETL supports the [OAI-PMH](https://www.openarchives.org/pmh/) standard.
+TriplyETL supports the official OAI-PMH standard.
+
+The OAI-PMH standard defines 6 'verbs'. These different sub-APIs that together component the OAI-PMH API.
+
+Extractor `fromOai()` currently supports the following two verbs: [ListIdentifiers](#ListIdentifiers) and [ListRecords](#ListRecords).
+
+#### Verb `ListIdentifiers`
+
+This 'verb' or sub-API streams through the headers of all records. It does not returns the actual (body) content of each record (see [ListRecords](#ListRecords)). This verb can be used to look for header properties like set membership, datestamp, and deletion status.
+
+The following code snippet streams through the headers of a public OAI-PMH endpoint:
+
+```ts
+fromOai({
+  metadataPrefix: 'marcxml',
+  set: 'iish.evergreen.biblio',
+  url: 'https://api.socialhistoryservices.org/solr/all/oai',
+  verb: 'ListIdentifiers'
+}),
+logRecord(),
+```
+
+#### Verb `ListReocrds`
+
+This 'verb' or sub-API streams through all records and retrieves them in full. This API is used to harvest records.
+
+The following code snippet streams through the records of a public OAI-PMH endpoint:
+
+```ts
+fromOai({
+  metadataPrefix: 'marcxml',
+  set: 'iish.evergreen.biblio',
+  url: 'https://api.socialhistoryservices.org/solr/all/oai',
+  verb: 'ListRecords'
+}),
+logRecord(),
+```
 
 
 
@@ -542,14 +578,20 @@ Since XML can store tree-shaped data, it can have nested keys and indexed array.
 
 ## Function `loadRdf()` {#loadRdf} {#rdf}
 
-RDF or Resource Description Framework is the standardized and open format for linked data.
+Resource Description Framework (RDF) is the standardized and open format for linked data.
 
 Data in the RDF format is treated in a different way than other formats. RDF data does not appear in clearly structured records, it no longer needs to be asserted (since it already is linked data), and transformations can be performed with linked data standards such as SHACL Rules.
 
 For this reason, RDF sources are directly loaded into the Internal Store, and the Record step is completely skipped.
 
-The following code snippet loads the RDF from the specified TriplyDB dataset into the Internal Store:
+The following code snippet loads RDF from the specified TriplyDB dataset into the Internal Store:
 
-```sh
+```ts
 loadRdf(Source.TriplyDb.rdf('my-account', 'my-dataset')),
+```
+
+The following code snippet loads RDF from a SPARQL Construct that is stored in TriplyDB:
+
+```ts
+loadRdf(Source.TriplyDb.query('Triply', 'network-query')),
 ```

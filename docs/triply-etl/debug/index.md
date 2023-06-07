@@ -11,11 +11,48 @@ The following debug function are available:
 
 | Function | Description |
 | --- | --- |
+| [logMemory()](#logMemory) | Prints the current memory consumption. |
 | [logQuads()](#logQuads) | Prints the contents of the internal store to standard output. |
 | [logQuery()](#logQuery) | Prints a query string to standard output. |
 | [logRecord()](#logRecord) | Prints the record in its current state to standard output. |
 | [traceEnd()](#traceEnd) | Ends a trace of the record and internal store. |
 | [traceStart()](#traceStart) | Starts a trace of the record and internal store. |
+
+These functions can be imported from the debug module:
+
+```ts
+import { logMemory, logQuads, logQuery, logRecord, traceEnd,
+         traceStart } from '@triplyetl/etl/debug'
+```
+
+## Function `logMemory()` {#logMemory}
+
+This function prints information about the current memory consumption. It includes the following fields:
+
+| Field name | Meaning | Use case |
+| --- | --- |
+| CallCount | The number of times that a specific use of `logMemory()` can been invoked. | Find a location in your ETL script that is visited many times, e.g. because it occurs inside a (nested) loop. |
+| RecordId | The numeric identifier of the record that is currently processed. | Find a specific record that causes memory consumption to increase. |
+| Heap used | The number of megabytes that are currently used on the heap. | Find places in your ETL where an unexpected amount of memory is used. |
+| Heap total | The number of megabytes that are currently allocated on the heap. | Find places in your ETL where memory reallocation occurs. |
+
+The following code snippet prints the memory consumption of TriplyETL for each record (first call), and for each member of key `'a'` (second call):
+
+```ts
+fromJson([{ a: [{ b: 1 }, { b: 2 }] }, { a: [] }, { a: [] }]),
+logMemory(),
+forEach('a', logMemory()),
+```
+
+This prints the following messages to standard output:
+
+```
+Info CallCount: 1 | RecordId: 1 | Heap (MB) used: 92 / total: 122
+Info CallCount: 1 | RecordId: 1 | Heap (MB) used: 92 / total: 122
+Info CallCount: 2 | RecordId: 1 | Heap (MB) used: 92 / total: 122
+Info CallCount: 2 | RecordId: 2 | Heap (MB) used: 92 / total: 122
+Info CallCount: 3 | RecordId: 2 | Heap (MB) used: 92 / total: 122
+```
 
 ## Function `logQuads()` {#logQuads}
 

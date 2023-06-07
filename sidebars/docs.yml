@@ -28,8 +28,8 @@
 
         - title: Command-Line Interface (CLI)
           link: /docs/triply-etl/cli
-        #- title: Changelog
-        #  link: /docs/triply-etl/changelog
+        - title: Changelog
+          link: /docs/triply-etl/changelog
 
         - title: 1. Extract
           link: /docs/triply-etl/extract
