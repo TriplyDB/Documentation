@@ -1,11 +1,11 @@
 ---
 title: "IIIF support in TriplyDB"
-path: "/blog/2023-05-json-ld-framing-and-iiif"
-date: "2023-05-10T12:00:00"
+path: "/blog/2023-06-iiif"
+date: "2023-06-07T12:00:00"
 author: akonrad
 ---
 
-This blog post explains how you can set up the International Image Interoperability Framework API using TriplyDB. A growing number of TriplyDB customers is using this approach to publish their production-grade IIIF API. This blog post explains in-depth what IIIF is, why your organization may wants to use it, and how you can configure it in TriplyDB.
+International Image Interoperability Framework (IIIF) is a universal standard for publishing images and their metadata in an open and standardized way. A growing number of organizations is using TriplyDB to implement their production-grade IIIF API. This blog post explains in-depth what IIIF is, why your organization may wants to support it, and how you can configure it using TriplyDB.
 
 The end result looks [as follows](https://projectmirador.org/embed/?iiif-content=https://api.triplydb.com/queries/Triply/iris-iiif-manifest/run):
 - Your images can be viewed in any standards-conforming IIIF viewer.
@@ -20,9 +20,9 @@ The end result looks [as follows](https://projectmirador.org/embed/?iiif-content
 
 ## What is IIIF?
 
-The International Image Interoperability Framework (IIIF) is a universal standard for publishing images and their metadata in an open and standardized way. A big benefit of adopting the IIIF standard is that your images and their metadata can now be viewed in a wide number of image viewers. This less costly and more sustainable than developing your own solution, or relying on a closed commercial format. Because of this, IIIF is widely used in the cultural heritage and academic research domains.
+The International Image Interoperability Framework (IIIF) is a universal standard for publishing images and their metadata in an open and standardized way. A big benefit of adopting the IIIF standard is that your images and their metadata can now be viewed in a wide number of image viewers. This is less costly and more sustainable than developing your own solution, or relying on a closed commercial format. Because of this, IIIF is widely used in the cultural heritage and academic research domains.
 
-The two main components of a IIIF deployment are the Image API for serving the images, and the Presentation API for serving the metadata. This blog post specifically addresses the Presentation API, and does not cover the Image API. Take a look at [the official IIIF website](https://iiif.io/) for more information.
+The two main components of a IIIF deployment are the Image API, for serving the images, and the Presentation API for serving the metadata. This blog post uses TriplyDB Assets for storing the images, and details how the Presentation API can be configured. Take a look at [the official IIIF website](https://iiif.io/) for more information about the IIIF standards.
 
 ## How can I implement the IIIF Presentation API?
 
@@ -42,17 +42,13 @@ The IIIF Presentation API exposes metadata about a collection of objects (the "C
   <figcaption>Figure 2 - Data model of the IIIF Presentation API.</figcaption>
 </figure>
 
-Notice that the data model of the IIIF Presentation API is somewhat complex (Figure 2). However, many parts of the standard are optional, and are specifically there to support inherently complex situations that do not always arise. For example, an object can be divided into multiple part, each with its own views ("Range" in Figure 2). In this blog post we only cover the required parts.
+Notice that the data model of the IIIF Presentation API is somewhat complex (Figure 2). However, many parts of the standard are optional, and are specifically there to support inherently complex situations that do not always arise. For example, an object can be divided into multiple parts, each with its own views ("Range" in Figure 2). In this blog post we only cover the required parts.
 
-## What is a IIIF manifest?
+## Configuring a IIIF Manifest
 
-The core description of an object is the Manifest. This is exposes as a JSON structure that containing the elements of a IIIF object with basic metadata and structural information.
+The core description of a IIIF object is the Manifest. We construct the Manifest with SPARQL, and structure is with JSON-LD Frames. For demonstration purposes, we use the open [Iris dataset](https://triplydb.com/Triply/iris/). Notice that the same approach applies to any linked dataset, including non-open ones.
 
-For demonstration purposes, we use the open [Iris dataset](https://triplydb.com/Triply/iris/). Notice that the same approach also works for private datasets.
-
-We managed to create a valid Manifest file by writing a construct query, where we added all the required IIIF [resource types](https://iiif.io/api/presentation/3.0/#2-resource-type-overview), according to the data model in Figure 2. Notice that we skip some of the optional resource types in Figure 2, to create a minimal working example.
-
-## Configuration 1/2: SPARQL Construct
+### Configuration Step 1 out of 2: SPARQL Construct
 
 The SPARQL Construct query is the largest configuration component. You can see the full query [over here](https://triplydb.com/Triply/-/queries/iris-iiif-manifest/61). We will go through this query piece-by-piece, and explain how it works.
 
@@ -135,9 +131,9 @@ where {
 }
 ```
 
-### Configuration 2/2: JSON-LD Frame configuration
+### Configuration Step 2 out of 2: JSON-LD Frame configuration
 
-When you visit the SPARQL Construct query [online](https://triplydb.com/Triply/-/queries/iris-iiif-manifest/61), you see the SPARQL Query Editor, the JSON-LD Frame Editor, and the REST API result all on one page (Figure 3). These tools make it easy to configure REST APIs, including the IIIF Presentation API.
+When you visit the SPARQL Construct query [online](https://triplydb.com/Triply/-/queries/iris-iiif-manifest/61), you see the SPARQL Query Editor, the JSON-LD Frame Editor, and the REST API result all on one page (Figure 3). These tools allow us to configure REST APIs, including the IIIF Presentation API.
 
 <figure>
   <a href="https://triplydb.com/Triply/-/queries/iris-iiif-manifest/61" target="_blank">
@@ -155,17 +151,17 @@ JSON-LD Frames is an international standard that allows us to create JSON struct
 }
 ```
 
-The value for `@context` refers to a small JSON-LD file that Triply created for version 3 of the IIIF Presentation API. The official IIIF website publishes a similar file for version 2, but not (yet) for the latests version.
+The value for `@context` refers to a small JSON-LD file that Triply created for version 3 of the IIIF Presentation API. The official IIIF website publishes a similar file for version 2, but not (yet) for the latest version.
 
-The value for `@type` indicates which item should be at the root of the JSON object that is exposed through our API. In linked data, information is not stored in specific order. There is no 'first' or 'root' item. But the IIIF standards mandate that we return the manifest in a JSON format; and there the order of the items is crucial. Luckily, JSON-LD Frames allows us to force a specific order, thereby translating the outcomes of SPARQL Construct queries to REST API responses.
+The value for `@type` indicates which item should be at the root of the JSON object that is exposed through our API. In linked data, information is not stored in a specific order. There is no 'first' or 'root' item. But the IIIF standards mandate that we return the manifest in a JSON format; and there the order of the items is crucial. Luckily, JSON-LD Frames allows us to force a specific order, thereby translating the outcomes of SPARQL Construct queries into REST API responses.
 
 For more information, see the TriplyDB documentation about JSON-LD Frames support: [link](https://triply.cc/docs/jsonld-frames).
 
 ## Conclusion
 
-We were able to configure a IIIF Presentation API. We did not use custom/external software, but exclusively relied on standard features of TriplyDB. Our configuration was entirely done in two open standards: SPARQL Construct and JSON-LD Frames.
+Users of TriplyDB are able to configure their own IIIF Presentation API. They do so without using custom/external software, but instead fully reply on the standardized features of TriplyDB. The configuration is entirely performed in two open standards: SPARQL Construct and JSON-LD Frames.
 
-Every standards-compliant IIIF viewer can now access our endpoint and display our images and metadata. You can try this out by going to [Mirador](https://projectmirador.org/embed/?iiif-content=https://api.triplydb.com/queries/Triply/iris-iiif-manifest/run).
+Every standards-compliant IIIF viewer can now access our endpoint and display our images and metadata. You can try this out by going to [Mirador](https://projectmirador.org/embed/?iiif-content=https://api.triplydb.com/queries/Triply/iris-iiif-manifest/run) to see the result.
 
 <figure>
   <a href="https://projectmirador.org/embed/?iiif-content=https://api.triplydb.com/queries/Triply/iris-iiif-manifest/run" target="_blank">
