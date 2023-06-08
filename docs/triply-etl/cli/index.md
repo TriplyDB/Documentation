@@ -26,7 +26,7 @@ Contact <mailto:info@triply.cc> for more information.
 
 Perform the following steps to install the TriplyETL Generator on your computer:
 
-1. Go to <https://nodejs.org> and install Node.js version 18.
+1. Go to <https://nodejs.org> and install Node.js version 18. (Or use a [Node Version Manager](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm).)
 
 ### Using the Generator
 
