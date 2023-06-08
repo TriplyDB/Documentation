@@ -15,8 +15,8 @@ The following debug function are available:
 | [logQuads()](#logQuads) | Prints the contents of the internal store to standard output. |
 | [logQuery()](#logQuery) | Prints a query string to standard output. |
 | [logRecord()](#logRecord) | Prints the record in its current state to standard output. |
-| [traceEnd()](#traceEnd) | Ends a trace of the record and internal store. |
-| [traceStart()](#traceStart) | Starts a trace of the record and internal store. |
+| [traceEnd()](#trace) | Ends a trace of the record and internal store. |
+| [traceStart()](#trace) | Starts a trace of the record and internal store. |
 
 These functions can be imported from the debug module:
 
@@ -183,7 +183,7 @@ This results in the following output:
 ]
 ```
 
-## Functions `traceStart()` and `traceEnd()` {#traceStart} {#traceEnd}
+## Functions `traceStart()` and `traceEnd()` {#trace}
 
 Sometimes you are interested to find one specific record based on a certain value of a key and/or to see the changes in this record made by specific middlewares. For these purposes, `trace` middleware can be used.
 
