@@ -20,7 +20,7 @@ This page documents the different data source types that can be used in TriplyET
 
 ## Local files
 
-The following code snippet extracts records from a local file that uses the [JSON format](/docs/triply-etl/extract/formats#json):
+The following code snippet extracts records from a local file that uses the [JSON format](/docs/triply-etl/extract/formats#fromJson):
 
 ```ts
 fromJson(Source.file('./static/example.json')),
@@ -278,15 +278,15 @@ Saved SPARQL queries in TriplyDB can be used as data sources. SPARQL queries are
 
 | Query form | Source extractor |
 | --- | --- |
-| [SPARQL `ask`](#ask) | [fromJson()](/docs/triply-etl/extract/formats#json), [fromXml()](/docs/triply-etl/extract/formats#xml) |
-| [SPARQL `construct`](#construct-describe) | [loadRdf()](/docs/triply-etl/extract/formats#rdf) |
-| [SPARQL `describe`](#construct-describe) | [loadRdf()](/docs/triply-etl/extract/formats#rdf) |
-| [SPARQL `select`](#select) | [fromCsv()](/docs/triply-etl/extract/formats#csv), [fromJson()](/docs/triply-etl/extract/formats#json), [fromTsv()](/docs/triply-etl/extract/formats#tsv), [fromXml()](/docs/triply-etl/extract/formats#xml) |
+| [SPARQL `ask`](#ask) | [fromJson()](/docs/triply-etl/extract/formats#fromJson), [fromXml()](/docs/triply-etl/extract/formats#fromXml) |
+| [SPARQL `construct`](#construct-describe) | [loadRdf()](/docs/triply-etl/extract/formats#loadRdf) |
+| [SPARQL `describe`](#construct-describe) | [loadRdf()](/docs/triply-etl/extract/formats#loadRdf) |
+| [SPARQL `select`](#select) | [fromCsv()](/docs/triply-etl/extract/formats#fromCsv), [fromJson()](/docs/triply-etl/extract/formats#fromJson), [fromTsv()](/docs/triply-etl/extract/formats#fromTsv), [fromXml()](/docs/triply-etl/extract/formats#fromXml) |
 
 
 ### SPARQL `ask` queries {#ask}
 
-SPARQL `ask` queries can return data in either the JSON or the XML format. This allows them to be processed with the extractors [fromCsv()](/docs/triply-etl/extract/formats#csv) and [fromXml()](/docs/triply-etl/extract/formats#xml).
+SPARQL `ask` queries can return data in either the JSON or the XML format. This allows them to be processed with the extractors [fromCsv()](/docs/triply-etl/extract/formats#fromCsv) and [fromXml()](/docs/triply-etl/extract/formats#fromXml).
 
 The following code snippet connects to the XML results of a SPARQL `ask` query in TriplyDB:
 
@@ -297,7 +297,7 @@ fromXml(Source.TriplyDb.query('my-account', 'my-ask-query')),
 
 ### SPARQL `construct` and `describe` queries {#construct-describe}
 
-SPARQL `construct` and `describe` queries return data in the RDF format. This allows them to be used with function [loadRdf()](/docs/triply-etl/extract/formats#rdf). The following snippet loads the results of a SPARQL query into the internal RDF store of TriplyETL:
+SPARQL `construct` and `describe` queries return data in the RDF format. This allows them to be used with function [loadRdf()](/docs/triply-etl/extract/formats#loadRdf). The following snippet loads the results of a SPARQL query into the internal RDF store of TriplyETL:
 
 ```ts
 loadRdf(Source.TriplyDb.query('my-account', 'my-construct-query')),
@@ -306,7 +306,7 @@ loadRdf(Source.TriplyDb.query('my-account', 'my-construct-query')),
 
 ### SPARQL `select` queries {#select}
 
-SPARQL `select` queries return data in either the CSV, JSON, TSV, or XML format. This allows them to be used with the following four extractors: [fromCsv()](/docs/triply-etl/extract/formats#csv), [fromJson()](/docs/triply-etl/extract/formats#json), [fromTsv()](/docs/triply-etl/extract/formats#tsv), and [fromXml()](/docs/triply-etl/extract/formats#xml).
+SPARQL `select` queries return data in either the CSV, JSON, TSV, or XML format. This allows them to be used with the following four extractors: [fromCsv()](/docs/triply-etl/extract/formats#fromCsv), [fromJson()](/docs/triply-etl/extract/formats#fromJson), [fromTsv()](/docs/triply-etl/extract/formats#fromTsv), and [fromXml()](/docs/triply-etl/extract/formats#fromXml).
 
 The following code snippet connects to the table returned by a TriplyDB `select` query:
 

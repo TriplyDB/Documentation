@@ -88,7 +88,25 @@ the Pokémon dataset:
 https://api.triplydb.com/datasets/academy/pokemon/
 ```
 
-### LD Browser API
+## Accounts
+
+Information about TriplyDB accounts (organizations and users) can be retrieved from the following API path:
+
+```none
+https://api.INSTANCE/accounts
+```
+
+Upper-case letter words must be replaced by the following values:
+
+- `INSTANCE` :: The host name of the TriplyDB instance that you want to use.
+
+Here is an example of a URI path that points to the Triply API for the Triply organization account:
+
+```none
+https://api.triplydb.com/accounts/Triply
+```
+
+## LD Browser API
 
 Triply APIs provide a convenient way to access data used by [LD Browser](https://triply.cc/docs/triply-db-getting-started/#linked-data-browser), which offers a comprehensive overview of a specific IRI. By using Triply API for a specific IRI, you can retrieve the associated 'document' in the `.nt` format that describes the IRI.
 
@@ -111,7 +129,7 @@ The requested resource will be displayed in the center of the graph, forming an 
 
 In addition, this API also supports traversing blank node-replacing well-known IRIs (CBD style), and limits the number of objects per subject/property to manage the description size. This corresponds to the "Show more" button in the LD Browser GUI, ensuring a manageable and user-friendly experience.
 
-### Triple Pattern Fragments (TPF)
+## Triple Pattern Fragments (TPF)
 
 Triple Pattern Fragments (TPF) is a community standard that allows
 individual linked datasets to be queried for Triply Patterns (TP), a

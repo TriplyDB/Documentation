@@ -15,7 +15,7 @@ Release date: 2023-06-07
 
 ### [Added] Support for the PREMIS vocabulary
 
-Support was added for the PREMIS 3.0.0 vocabulary. This vocabulary is published by the Library of Congress and can be used to publish metadata about the preservation of digital objects. See the [PREMISE documentation](https://id.loc.gov/ontologies/premis-3-0-0.html) for more information.
+Support was added for the PREMIS 3.0.0 vocabulary. This vocabulary is published by the Library of Congress and can be used to publish metadata about the preservation of digital objects. See the [PREMIS documentation](https://id.loc.gov/ontologies/premis-3-0-0.html) for more information.
 
 The vocabulary can be imported from the 'vocab' module:
 

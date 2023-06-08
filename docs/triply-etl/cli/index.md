@@ -28,12 +28,6 @@ Perform the following steps to install the TriplyETL Generator on your computer:
 
 1. Go to <https://nodejs.org> and install Node.js version 18.
 
-2. Open a command line and install NPX:
-
-```
-npm install -g npx
-```
-
 ### Using the Generator
 
 Perform the following steps for setting up a new TriplyETL project:

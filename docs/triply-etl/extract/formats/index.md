@@ -7,15 +7,15 @@ TriplyETL supports the following data formats:
 
 | Extractor | Format | Full name |
 | --- | --- | --- |
-| [fromCsv()](#fromCsv) | [CSV](#csv) | [Comma-Separated Values](#csv) |
-| [fromJson()](#fromJson) | [JSON](#json) | [JavaScript Object Notation](#json) |
-| [fromOai()](#fromOai) | [OAI-PMH](#oai-pmh) | [Open Archives Initiative Protocol for Metadata Harvesting](#oai-pmh) |
-| [fromPostgres()](#fromPostgres) | [PostgreSQL Query & Postgres API Options](#postgres)| [PostgreSQL Query & Postgres API Options](#postgres)               |
-| [fromShapefile()](#fromShapefile) | [ESRI](#esri) | [ESRI Shapefiles](#esri) |
-| [fromTsv()](#fromTsv) | [TSV](#tsv) | [Tab-Separated Values](#tsv) |
-| [fromXlsx()](#fromXlsx) | [XLSX](#xlsx) | [Microsoft Excel](#xlsx) |
-| [fromXml()](#fromXml) | [XML](#xml) | [XML Markup Language](#xml) |
-| [loadRdf()](#loadRdf) | [RDF](#rdf) | [Resource Description Format](#rdf) |
+| [fromCsv()](#fromCsv) | [CSV](#fromCsv) | [Comma-Separated Values](#fromCsv) |
+| [fromJson()](#fromJson) | [JSON](#fromJson) | [JavaScript Object Notation](#fromJson) |
+| [fromOai()](#fromOai) | [OAI-PMH](#fromOai) | [Open Archives Initiative Protocol for Metadata Harvesting](#fromOai) |
+| [fromPostgres()](#fromPostgres) | [PostgreSQL Query & Postgres API Options](#fromPostgres)| [PostgreSQL Query & Postgres API Options](#fromPostgres) |
+| [fromShapefile()](#fromShapefile) | [ESRI](#fromShapefile) | [ESRI Shapefiles](#fromShapefile) |
+| [fromTsv()](#fromTsv) | [TSV](#fromTsv) | [Tab-Separated Values](#fromTsv) |
+| [fromXlsx()](#fromXlsx) | [XLSX](#fromXlsx) | [Microsoft Excel](#fromXlsx) |
+| [fromXml()](#fromXml) | [XML](#fromXml) | [XML Markup Language](#fromXml) |
+| [loadRdf()](#loadRdf) | [RDF](#loadRdf) | [Resource Description Format](#loadRdf) |
 
 All extractors can be imported from the generic library in TriplyETL:
 
@@ -29,7 +29,7 @@ Notice that you also need to import `Source`, since every extractor requires a s
 
 
 
-## Extractor `fromCsv()` {#csv} {#fromCsv}
+## Extractor `fromCsv()` {#fromCsv}
 
 CSV or Comma Separated Values (file name extension `.csv`) is a popular format for storing tabular source data. TriplyETL has a dedicated `fromCsv()` extractor for this data format.
 
@@ -100,7 +100,7 @@ fromCsv(Source.file('example.csv'), { separator: ';' }),
 
 ### CSV with tab separators is not TSV
 
-Notice that the popular Tab-Separate Values (TSV) format is not the same as the standardized CSV format with a tab separator character. If you want to process standards-conforming TSV source data, use the [`fromTsv()` extractor](#tsv) instead.
+Notice that the popular Tab-Separate Values (TSV) format is not the same as the standardized CSV format with a tab separator character. If you want to process standards-conforming TSV source data, use the [`fromTsv()` extractor](#fromTsv) instead.
 
 
 ### Record representation
@@ -143,7 +143,7 @@ Notice that:
 
 
 
-## Extractor `fromJson()` {#fromJson} {#json}
+## Extractor `fromJson()` {#fromJson}
 
 JSON (JavaScript Object Notation) is a popular open standard for interchanging tree-shaped data. TriplyETL has a dedicated `fromJson()` extractor for this format.
 
@@ -275,7 +275,7 @@ id:de rdfs:label 'Germany'.
 
 
 
-## Extractor `fromOai()` {#fromOai} {#oai-pmh}
+## Extractor `fromOai()` {#fromOai}
 
 In GLAM domains (Galleries, Libraries, Archives, Museums), the Open Archives Initiative (OAI), Protocol for Metadata Harvesting (PMH) is a popular protocol and format for publishing data collections. TriplyETL includes the `fromOai()` extractor to tap into these data collections.
 
@@ -298,7 +298,7 @@ The OAI-PMH standard defines 6 'verbs'. These different sub-APIs that together c
 
 Extractor `fromOai()` currently supports the following two verbs: [ListIdentifiers](#ListIdentifiers) and [ListRecords](#ListRecords).
 
-#### Verb `ListIdentifiers`
+#### Verb `ListIdentifiers` {#ListIdentifiers}
 
 This 'verb' or sub-API streams through the headers of all records. It does not returns the actual (body) content of each record (see [ListRecords](#ListRecords)). This verb can be used to look for header properties like set membership, datestamp, and deletion status.
 
@@ -314,7 +314,7 @@ fromOai({
 logRecord(),
 ```
 
-#### Verb `ListReocrds`
+#### Verb `ListRecords` {#ListRecords}
 
 This 'verb' or sub-API streams through all records and retrieves them in full. This API is used to harvest records.
 
@@ -332,7 +332,7 @@ logRecord(),
 
 
 
-## Extractor `fromTsv()` {#fromTsv} {#tsv}
+## Extractor `fromTsv()` {#fromTsv}
 
 TSV or Tab-Separated Values (file name extension `.tsv`) is a popular format for tabular source data. TriplyETL has a `fromTsv()` extractor to support this format.
 
@@ -391,7 +391,7 @@ Notice that:
 
 
 
-## Extractor `fromXlsx()` {#fromXlsx} {#xlsx}
+## Extractor `fromXlsx()` {#fromXlsx}
 
 XLSX or Office Open XML Workbook (file name extension `.xlsx`) is a popular format for storing tabular source data. This is the standard file format for Microsoft Excel. TriplyETL has a dedicated `fromXlsx()` extractor for such sources.
 
@@ -423,7 +423,7 @@ fromXlsx(Source.file('example.xlsx'), { sheetNames: ['people', 'projects'] }),
 
 ### Record representation
 
-TriplyETL treats every row in XLSX sheet as one record. The columns are emitted as keys and the cells are emitted as values. Unlike other tabular formats like [CSV](#csv) and [TSV](#tsv), values in XLSX can have different types.
+TriplyETL treats every row in XLSX sheet as one record. The columns are emitted as keys and the cells are emitted as values. Unlike other tabular formats like [CSV](#fromCsv) and [TSV](#fromTsv), values in XLSX can have different types.
 
 For example, the following table:
 
@@ -481,7 +481,7 @@ triple(iri(prefix.id, '$recordId'), a, '_class'),
 
 
 
-## Extractor `fromPostgres() {#fromPostgres} {#postgres} {#postgresql}
+## Extractor `fromPostgres()` {#fromPostgres}
 
 PostgreSQL or Postgres is an open-source relational database system. Postgres supports both SQL (relational) and JSON (non-relational) querying.
 
@@ -522,7 +522,7 @@ fromPostgres(
 
 
 
-## Extractor `fromXml()` {#fromXml} {#xml}
+## Extractor `fromXml()` {#fromXml}
 
 XML or Extensible Markup Language is a popular open format for tree-shaped source data.
 
@@ -576,7 +576,7 @@ Since XML can store tree-shaped data, it can have nested keys and indexed array.
 
 
 
-## Function `loadRdf()` {#loadRdf} {#rdf}
+## Function `loadRdf()` {#loadRdf}
 
 Resource Description Framework (RDF) is the standardized and open format for linked data.
 
