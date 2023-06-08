@@ -73,7 +73,7 @@ The new CLI tool [compare](/docs/triply-etl/cli#tools-compare) allows graph comp
 
 This release includes the following bug fixes:
 
-- `fromXlsx()` did not perform trailing whitespace trimming for cell value.
+- `fromXlsx()` did not remove trailing whitespace in cell values.
 - When a SHACL result was printed, an incorrect message about a faulty SHACL model would be shown.
 - Some RDF processors did not handle empty RDF inputs correctly.
 

@@ -234,7 +234,7 @@ Triply regularly releases new versions of TriplyETL. You can look up the TriplyE
 npm list @triplyetl/etl
 ```
 
-You can look at the [TriplyETL Changelog](/docs/triply-etl/changelog) to observe the latest available TriplyETL version, and the differences between the latest version and your current version.
+You can look at the [TriplyETL Changelog](/docs/triply-etl/changelog) to observe the latest available TriplyETL version, and the differences between the latest version and your current version. Specifically observe items that are marked "[Changed]" since these may require a rewrite of your configuration.
 
 You can update to the latest version of TriplyETL by running the following command in your TriplyETL repository:
 
