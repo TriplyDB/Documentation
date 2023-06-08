@@ -206,3 +206,8 @@ The following bug fixes are included in this release:
 - Incorrect behavior of the [_switch() control function](/docs/triply-etl/control#switch).
 - The [fromOai() extractor](/docs/triply-etl/extract#fromOai) now communicates clearer when the accessed OAI-PMH endpoint encounters any issues.
 - When a key with a NULL value was accessed, the name of the key is now included in the error message.
+
+
+## Start of the changelog
+
+TriplyETL 1.0.0 was released on 2023-03-20.
