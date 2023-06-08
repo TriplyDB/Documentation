@@ -7,7 +7,7 @@ The current version of TriplyETL is **2.0.6**
 
 
 
-## Changes in TriplyETL 2.0.6
+## Changelog for TriplyETL 2.0.6
 
 Release date: 2023-06-07
 
@@ -47,7 +47,7 @@ See the [fromOai()](/docs/triply-etl/extract/formats#fromOai) documentation for 
 
 
 
-## Changes in TriplyETL 2.0.5
+## Changelog for TriplyETL 2.0.5
 
 Release date: 2023-05-25
 
@@ -79,11 +79,11 @@ This release includes the following bug fixes:
 
 
 
-# Changes in TriplyETL 2.0.4
+## Changelog for TriplyETL 2.0.4
 
 Release date: 2023-05-11
 
-## [Enhanced] Better output for checking graph isomorphism
+### [Enhanced] Better output for checking graph isomorphism
 
 Before this release, when two graphs were not isomorph and their difference consisted of a mapping from blank nodes onto blank nodes exclusively, an empty difference message was communicated.
 
@@ -129,7 +129,7 @@ It is possible to map `_:2a` and `_:2b` onto `_:1`, but there is no mapping that
 
 
 
-## Changes in TriplyETL 2.0.3
+## Changelog for TriplyETL 2.0.3
 
 Release date: 2023-05-10
 
@@ -142,7 +142,7 @@ This release includes the following bug fixes:
 
 
 
-## Changes in TriplyETL 2.0.2
+## Changelog for TriplyETL 2.0.2
 
 Release date: 2023-05-09
 
@@ -155,7 +155,7 @@ This release fixes bugs related to the recent switch from CommonJS to ESM:
 
 
 
-## Changes in TriplyETL 2.0.1
+## Changelog for TriplyETL 2.0.1
 
 Release date: 2023-05-03
 
@@ -169,7 +169,7 @@ See the [TriplyETL Runner documentation page](/docs/triply-etl/cli#timeout) for 
 
 
 
-## Changes in TriplyETL 2.0.0
+## Changelog for TriplyETL 2.0.0
 
 Release date: 2023-05-01
 
