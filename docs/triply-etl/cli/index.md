@@ -220,6 +220,12 @@ The following tools are supported:
 | [report](#tool-report) | Generate a MarkDown report from the TriplyDB instance from your token |
 | [validate](#tool-validate) | Validate instance data against a SHACL shape |
 
+For each tool from the above table, the following command prints more information on how to use it:
+
+```sh
+npx tools {command} --help
+```
+
 ## Upgrading TriplyETL repositories {#upgrade}
 
 Triply regularly releases new versions of TriplyETL. You can look up the TriplyETL version that you are currently using, by running the following command:
