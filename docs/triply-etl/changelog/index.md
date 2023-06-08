@@ -69,7 +69,7 @@ The benefit of switching to the Speedy engine is that this engine is expected to
 
 The new CLI tool [compare](/docs/triply-etl/cli#tools-compare) allows graph comparison to be performed from the command-line. This uses the same algorithm that is used by the [compareGraphs()](/docs/triply-etl/validate/graph-comparison) validator function.
 
-## Bug fixes
+### Bug fixes
 
 This release includes the following bug fixes:
 
