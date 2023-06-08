@@ -116,7 +116,7 @@ TriplyETL Runner allows you to run an existing ETL.
 
 If you do not have an ETL yet, use the [TriplyETL Generator](#generator) first to create one.
 
-The TriplyETL Runner is invoked with the following command:
+You invoke the TriplyETL Runner by going to the ETL repository directory in a terminal and executing the following command:
 
 ```
 npx etl
