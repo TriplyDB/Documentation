@@ -161,6 +161,16 @@ The following command runs TriplyETL for the 27th record:
 npx etl lib/main.js --from-record-id 26 --head 1
 ```
 
+### Set a timeout {#timeout}
+
+For large ETL pipelines, it is sometimes useful to specify a maximum duration for which the TriplyETL Runner is allowed to run. In such cases, the `--timeout` flag can be used.
+
+The `--timeout` option accepts human-readable duration strings, such as '1h 30m 5s', '1hr', '1 hour', or '3hrs'.
+
+When the indicated timeout is reached before the pipeline finishes, the TriplyETL Runner will gracefully terminate the ETL by acting as if there are no more incoming records. As a result, the Runner will upload all linked data (graphs) that was produced up to that point, and it will write a performance log.
+
+For TriplyETLs that run in a CI/CD environment, the timeout must be set lower than the CI/CD timeout, in order for the Runner to be able to perform the termination step.
+
 ### Verbose mode
 
 When TriplyETL is run normally, the following information is displayed:

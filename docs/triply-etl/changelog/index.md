@@ -161,4 +161,12 @@ This release includes the following bug fixes:
 - Error reporting issues due to ESM imports.
 
 
-# Changes in TriplyETL 2.0.1
+## Changes in TriplyETL 2.0.1
+
+### [Added] Timeout flag for TriplyETL Runner
+
+The TriplyETL Runner is the CLI tool that is used to run ETL pipelines. Starting with this version, you can specify a `--timeout` flag when using the TriplyETL Runner.
+
+When the indicated timeout is reached before the pipeline finishes, the TriplyETL Runner will gracefully terminate the ETL by acting as if there are no more incoming records.
+
+See the [TriplyETL Runner documentation page](/docs/triply-etl/cli#timeout) for more information.
