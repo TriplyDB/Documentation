@@ -76,12 +76,12 @@ npm upgrade-interactive
 
 Select the TriplyETL option, if it appears in the list of available updates, by using the up and down arrows.  Select the TriplyETL update by pressing `SPC` (spacebar) and press `RET` (return/enter) to perform the upgrade.
 
-After the upgrade is applied, the `yarn.lock` file is automatically changed.  These automatic changes must be part of the next Git commit that is made.
+After the upgrade is applied, the `package-lock.json` file is automatically changed.  These automatic changes must be part of the next Git commit that is made.
 
 Run the following command to build your pipeline with the new TriplyETL version:
 
 ```sh
-yarn build
+npm run build
 ```
 
 Make any fixes/changes to the pipeline that are necessary and make a commit that indicates that the TriplyETL version was upgraded.

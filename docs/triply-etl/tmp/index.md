@@ -91,7 +91,7 @@ We then perform the following steps to build a pipelines that processes this dat
 
 3. Transpile the code with `./node_modules/.bin/tsc`
 
-4. Run the pipeline with `yarn etl main.js`
+4. Run the pipeline with `npx etl`
 
 The TriplyETL script will give you a link to the uploaded dataset.  This dataset contains the following graph content:
 

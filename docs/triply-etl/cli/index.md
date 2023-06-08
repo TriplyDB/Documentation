@@ -127,8 +127,8 @@ npx etl
 When developing a pipeline, it is almost never necessary to process all records from the source data. Instead, it is common to run the ETL for a small number of example record, which results in quick feedback.  The `--head` flag indicates the maximum number of records that is processed by the runner:
 
 ```sh
-npx etl lib/main.js --head 1
-npx etl lib/main.js --head 10
+npx etl --head 1
+npx etl --head 10
 ```
 
 The above commands run the ETL for the first record (if one is available) and for the first 10 records (if these are available).
@@ -142,7 +142,7 @@ The benefit of this approach is that the feedback loop between making changes an
 To avoid the downsides of using `--head`, TriplyETL also supports the `--from-record-id` flag.  This flag specifies the number of records that are skipped.  This allows us to specify an arbitrary consecutive range of records.  For example, the following processes the 1.001-st until and including the 1.010-th record:
 
 ```sh
-npx etl lib/main.js --from-record-id 1000 --head 10
+npx etl --from-record-id 1000 --head 10
 ```
 
 ### Process a specific record
@@ -152,7 +152,7 @@ When the `--head` flag is set to 1, the `--from-record-id` flag specifies the in
 The following command runs TriplyETL for the 27th record:
 
 ```sh
-npx etl lib/main.js --from-record-id 26 --head 1
+npx etl --from-record-id 26 --head 1
 ```
 
 ### Set a timeout {#timeout}
@@ -181,7 +181,7 @@ It is possible to also show the following additional information by specifying t
 The following example shows how the `--verbose` flag can be used:
 
 ```sh
-npx etl lib/main.js --verbose
+npx etl --verbose
 ```
 
 #### Secure verbose mode
