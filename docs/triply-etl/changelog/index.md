@@ -78,6 +78,7 @@ This release includes the following bug fixes:
 - Some RDF processors did not handle empty RDF inputs correctly.
 
 
+
 # Changes in TriplyETL 2.0.4
 
 Release date: 2023-05-11
@@ -127,6 +128,7 @@ graph LR
 It is possible to map `_:2a` and `_:2b` onto `_:1`, but there is no mapping that works the other way round.
 
 
+
 ## Changes in TriplyETL 2.0.3
 
 Release date: 2023-05-10
@@ -139,9 +141,49 @@ This release includes the following bug fixes:
 - Issue when a URL data source (`Source.url()`) includes an HTTP body.
 
 
+
 ## Changes in TriplyETL 2.0.2
 
 Release date: 2023-05-09
+
+### Bug fixes
+
+This release fixes bugs related to the recent switch from CommonJS to ESM:
+
+- Dynamic import bug on Windows.
+- Error reporting issues due to ESM imports.
+
+
+
+## Changes in TriplyETL 2.0.1
+
+Release date: 2023-05-03
+
+### [Added] Timeout flag for TriplyETL Runner
+
+The TriplyETL Runner is the CLI tool that is used to run ETL pipelines. Starting with this version, you can specify a `--timeout` flag when using the TriplyETL Runner.
+
+When the indicated timeout is reached before the pipeline finishes, the TriplyETL Runner will gracefully terminate the ETL by acting as if there are no more incoming records.
+
+See the [TriplyETL Runner documentation page](/docs/triply-etl/cli#timeout) for more information.
+
+
+
+## Changes in TriplyETL 2.0.0
+
+Release date: 2023-05-01
+
+### [Changed] Modules infrastructure moves from CommonJS to ESM
+
+Before this release, TriplyETL used CommonJS modules to modularize its functionality into different components. Starting in this release, ECMAScript Modules (ESM) are used to modularize TriplyETL functionality into different modules.
+
+ESM is a more modern approach for modularizing ECMAScript (JavaScript, TypeScript, and Node.js) code. While CommonJS imports are evaluated at runtime, ESM imports are evaluated at compile time. TriplyETL users benefit from this change, since error messages related to module imports will be detected much earlier in the development process.
+
+All documentation examples were update to use ESM syntax for module imports, for example:
+
+```ts
+import { logRecord } from '@triplyetl/etl/debug'
+```
 
 ### [Changed] Debug functions move to a new module
 
@@ -153,20 +195,14 @@ Function are imported from this new module in the following way:
 import { logRecord, traceEnd, traceStart } from '@triplyetl/etl/debug'
 ```
 
+### [Enhanced] Better error messages when things go wrong
+
+This release introduces a new approach for communicating errors back to the user. When TriplyETL functionality detects an error condition, a unified 'trace middleware' is now used to retrieve information from the environment in which the error occurred. This information is then printed to the error output stream for communication with the user.
+
 ### Bug fixes
 
-This release includes the following bug fixes:
+The following bug fixes are included in this release:
 
-- Dynamic import bug on windows.
-- Error reporting issues due to ESM imports.
-
-
-## Changes in TriplyETL 2.0.1
-
-### [Added] Timeout flag for TriplyETL Runner
-
-The TriplyETL Runner is the CLI tool that is used to run ETL pipelines. Starting with this version, you can specify a `--timeout` flag when using the TriplyETL Runner.
-
-When the indicated timeout is reached before the pipeline finishes, the TriplyETL Runner will gracefully terminate the ETL by acting as if there are no more incoming records.
-
-See the [TriplyETL Runner documentation page](/docs/triply-etl/cli#timeout) for more information.
+- Incorrect behavior of the [_switch() control function](/docs/triply-etl/control#switch).
+- The [fromOai() extractor](/docs/triply-etl/extract#fromOai) now communicates clearer when the accessed OAI-PMH endpoint encounters any issues.
+- When a key with a NULL value was accessed, the name of the key is now included in the error message.
