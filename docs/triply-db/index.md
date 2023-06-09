@@ -549,7 +549,7 @@ Often SPARQL queries can return more than 10.000 results, but due to limitations
 
 #### Pagination with the saved query API
 
-Each TriplyDB instance has a fully RESTful API. The TriplyDB RESTful API is extended for saved SPARQL queries. The API for saved queries is extended with two arguments that the query is able to process paginated resultSets. The arguments are ‘page’ and ‘pageSize’. An example of a paginated saved SPARQL query request would look like:
+Each TriplyDB instance has a fully RESTful API. The TriplyDB RESTful API is extended for saved SPARQL queries. The API for saved queries is extended with two arguments that the query is able to process paginated result sets. The arguments are ‘page’ and ‘pageSize’. An example of a paginated saved SPARQL query request would look like:
 `https://api.triplydb.com/queries/academy/pokemon-color/run?page=3&pageSize=100`
 
 The example request argument ‘page’ corresponds to the requested page. In the example request this would correspond to the third page of paginated SPARQL query, according to the ‘pageSize’. There is no maximum ‘page’ limit, as a SPARQL query could return an arbitrary number of results. When no results can be retrieved for the requested page an empty page will be returned.
@@ -625,7 +625,7 @@ To get the output for a `construct` or `select` query, follow these steps:
         // execute something
       }
       ```
-      Note: For select queries the `for`-loop iterates over the rows of the resultset. For construct queries the `for`-loop iterates over the statements in the resultset.
+      Note: For select queries the `for`-loop iterates over the rows of the result set. For construct queries the `for`-loop iterates over the statements in the result set.
 
     b. Save the results to a file. This is only supported for SPARQL `construct` queries:
 
@@ -652,7 +652,7 @@ When you copy this URL in your browser or fetch the URL with curl, you will get 
 
 ### Using a saved query in Python or R notebooks (Advanced)
 
-SPARQL queries as a RESTful API, also means you can transport your data to your Python script, R script or Jupyter notebook. To use the resultset from your SPARQL query you need to connect your script to the saved SPARQL query. To do this you will need to write a small connector. To help you out TriplyDB has added a code snippet generator for Python and R. This snippet contains the code to retrieve the data from the SPARQL query into your script or notebook. You can open the code snippet generator by clicking on the '</>' button on the right side of the screen.
+SPARQL queries as a RESTful API, also means you can transport your data to your Python script, R script or Jupyter notebook. To use the result set from your SPARQL query you need to connect your script to the saved SPARQL query. To do this you will need to write a small connector. To help you out TriplyDB has added a code snippet generator for Python and R. This snippet contains the code to retrieve the data from the SPARQL query into your script or notebook. You can open the code snippet generator by clicking on the '</>' button on the right side of the screen.
 
 Clicking the '</>' button opens the code snippet screen. Here you select the snippet in the language you want to have, either Python or R. You can then copy the snippet, by clicking the 'copy to clipboard' button or selecting the snippet and pressing `ctrl-c`. Now you can paste the code in the location you want to use the data. The data is stored in the `data` variable in `JSON` format.
 

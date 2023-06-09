@@ -177,24 +177,13 @@ When working on a pipeline it is best to at least run it in the following two mo
 Having multiple modes ensures that the production version of a dataset is not accidentally overwritten during development.
 
 ```ts
-const etl = new Etl({
-  sources: {
-    instances: Source.TriplyDb.assets(account, dataset, {name: 'data.csv.gz'}),
-    model: Source.TriplyDb.rdf(account, dataset, {graph: graph.model}),
-  },
-  destinations: {
-    remote:
-      process.env['TARGET']=='Production'
-      ? Destination.TriplyDb.rdf(account, dataset, {overwrite: true}),
-      : Destination.TriplyDb.rdf(account+'-'+dataset, {overwrite: true}),
-  },
-})
+destination remote = process.env['TARGET']=='Production'
+  ? Destination.TriplyDb.rdf(account, dataset, {overwrite: true}),
+  : Destination.TriplyDb.rdf(account+'-'+dataset, {overwrite: true})
+const etl = new Etl()
 etl.use(
-  fromCsv([
-    etl.sources.instances,
-    etl.sources.model
-  ]),
-  toRdf(etl.destinations.remote),
+  ...
+  toRdf(destination),
 )
 ```
 

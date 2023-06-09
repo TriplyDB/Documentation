@@ -5,11 +5,11 @@ path: "/docs/pagination"
 
 This page explains how to retrieve all results from a SPARQL query using pagination.
 
-Often SPARQL queries can return more than 10.000 results, but due to limitations the resultset will only consist out of the first 10.000 results. To retrieve more than 10.000 results you can use pagination. TriplyDB supports two methods to retrieve all results from a SPARQL query. Pagination with the saved query API or Pagination with TriplyDB.js.
+Often SPARQL queries can return more than 10.000 results, but due to limitations the result set will only consist out of the first 10.000 results. To retrieve more than 10.000 results you can use pagination. TriplyDB supports two methods to retrieve all results from a SPARQL query. Pagination with the saved query API or Pagination with TriplyDB.js.
 
 ## Pagination with the saved query API
 
-Each TriplyDB instance has a fully RESTful API. The TriplyDB RESTful API is extended for saved SPARQL queries. The API for saved queries is extended with two arguments that the query is able to process paginated resultSets. The arguments are ‘page’ and ‘pageSize’. An example of a paginated saved SPARQL query request would look like:
+Each TriplyDB instance has a fully RESTful API. The TriplyDB RESTful API is extended for saved SPARQL queries. The API for saved queries is extended with two arguments that the query is able to process paginated result sets. The arguments are ‘page’ and ‘pageSize’. An example of a paginated saved SPARQL query request would look like:
 `https://api.triplydb.com/queries/academy/pokemon-color/run?page=3&pageSize=100`
 
 The example request argument ‘page’ corresponds to the requested page. In the example request this would correspond to the third page of paginated SPARQL query, according to the ‘pageSize’. There is no maximum ‘page’ limit, as a SPARQL query could return an arbitrary number of results. When no results can be retrieved for the requested page an empty page will be returned.
@@ -18,7 +18,7 @@ The argument ‘pageSize’ corresponds to how many results each page would cont
 
 The RESTful API for the saved SPARQL queries follows the [RFC 8288](https://www.rfc-editor.org/rfc/rfc8288.html) standard.
 
-The request will return an response body containing the resultset and a response header. The response header contains a link header with the relative "next" request, the relative "prev" request, and the relative "first" request. By following the "next" link header request you can chain the pagination and retrieve all results.
+The request will return an response body containing the result set and a response header. The response header contains a link header with the relative "next" request, the relative "prev" request, and the relative "first" request. By following the "next" link header request you can chain the pagination and retrieve all results.
 
 ```json
 link:
@@ -85,7 +85,7 @@ To get the output for a `construct` or `select` query, follow these steps:
         // execute something
       }
       ```
-      Note: For select queries the `for`-loop iterates over the rows of the resultset. For construct queries the `for`-loop iterates over the statements in the resultset.
+      Note: For select queries the `for`-loop iterates over the rows of the result set. For construct queries the `for`-loop iterates over the statements in the result set.
 
     b. Save the results to a file. This is only supported for SPARQL `construct` queries:
 

@@ -26,8 +26,10 @@
         - title: Overview
           link: /docs/triply-etl
 
-        #- title: Getting started
-        #  link: /docs/triply-etl/getting-started
+        - title: Command-Line Interface (CLI)
+          link: /docs/triply-etl/cli
+        - title: Changelog
+          link: /docs/triply-etl/changelog
 
         - title: 1. Extract
           link: /docs/triply-etl/extract
@@ -47,10 +49,10 @@
 
         - title: 3. Assert
           link: /docs/triply-etl/assert
-        - title: "- JSON-LD"
-          link: /docs/triply-etl/assert/json-ld
         - title: "- RATT"
           link: /docs/triply-etl/assert/ratt
+        #- title: "- JSON-LD"
+        #  link: /docs/triply-etl/assert/json-ld
 
         - title: 4. Enrich
           link: /docs/triply-etl/enrich
