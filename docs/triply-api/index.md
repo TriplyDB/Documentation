@@ -64,10 +64,11 @@ To request a serialization, use one of the following mechanisms:
 
 \* Downloading datasets in JSON-LD format is not supported.
 
+
+
 ## Datasets
 
-Triply API requests are always directed towards a specific URI path.
-URI paths will often have the following form:
+Triply API requests are always directed towards a specific URI path. URI paths will often have the following form:
 
 ```none
 https://api.INSTANCE/datasets/ACCOUNT/DATASET/
@@ -75,18 +76,17 @@ https://api.INSTANCE/datasets/ACCOUNT/DATASET/
 
 Upper-case letter words must be replaced by the following values:
 
-- `INSTANCE` :: The host name of the TriplyDB instance that you want
-  to use.
-- `ACCOUNT` :: The name of a specific user or a specific
-  organization.
+- `INSTANCE` :: The host name of the TriplyDB instance that you want to use.
+- `ACCOUNT` :: The name of a specific user or a specific organization.
 - `DATASET` :: The name of a specific dataset.
 
-Here is an example of a URI path that points to the Triply API for
-the Pokémon dataset:
+Here is an example of a URI path that points to the Triply API for the Pokémon dataset:
 
 ```none
 https://api.triplydb.com/datasets/academy/pokemon/
 ```
+
+
 
 ## Accounts
 
@@ -105,6 +105,57 @@ Here is an example of a URI path that points to the Triply API for the Triply or
 ```none
 https://api.triplydb.com/accounts/Triply
 ```
+
+
+
+## Queries {#queries}
+
+TriplyDB allows users to save SPARQL queries. The metadata for all saved query can be accessed as follows:
+
+```none
+https://api.triplydb.com/queries
+```
+
+By adding an account name (for example: 'Triply'), metadata for all saved queries for that account can be accessed as follows:
+
+```none
+https://api.triplydb.com/queries/Triply
+```
+
+By adding an account name and a query name (for example: 'Triply/flower-length'), metadata for one specific saved query can be accessed as follows:
+
+```none
+https://api.triplydb.com/queries/Triply/flower-length
+```
+
+### Query metadata (GRLC) {#grlc}
+
+You can retrieve a text-based version of each query, by requesting the `text/plain` content type:
+
+```sh
+curl -vL -H 'Accept: text/plain' 'https://api.triplydb.com/queries/JD/pokemonNetwork'
+```
+
+This returns the query string, together with metadata annotations. These metadata annotations use the [GRLC format](https://github.com/CLARIAH/grlc). For example:
+
+
+```sparql
+#+ description: This query shows a small subgraph from the Pokemon dataset.
+#+ endpoint: https://api.triplydb.com/datasets/academy/pokemon/services/pokemon/sparql
+#+ endpoint_in_url: false
+construct where { ?s ?p ?o. }
+limit 100
+```
+
+Notice that the GRLC annotations are encoded in SPARQL comments, i.e. lines that start with the hash character (`#`). This makes the result immediately usable as a SPARQL query.
+
+The above example includes the following GRLC annotations:
+
+- `description` gives a human-readable description of the meaning of the query. This typically includes an explanation of the purpose or goal for which this query is used, the content returned, or the process or task in which this query is used.
+- `endpoint` The URL of the SPARQL endpoint where queries are sent to.
+- `endpoint_in_url` configures whether the URL of the SPARQL endpoint should be specified through the API. In TriplyDB, this configuration is by default set to `false`. (Users of the REST API typically expect domain parameters such as `countryName` or `maximumAge`, but they do not necessarily expect technical parameters like an endpoint URL.)
+
+
 
 ## LD Browser API
 
@@ -154,9 +205,7 @@ https://api.INSTANCE/datasets/ACCOUNT/DATATSET/fragments
 
 #### Reply format
 
-Since TPF replies distinguish between data and metadata that are
-stored in different graphs, it is recommended to request the TriG
-content type with the following HTTP request header:
+Since TPF replies distinguish between data and metadata that are stored in different graphs, it is recommended to request the TriG content type with the following HTTP request header:
 
 ```none
 Accept: application/trig
@@ -164,9 +213,7 @@ Accept: application/trig
 
 #### Query parameters
 
-Triple Pattern Fragments (TPF) uses the following query parameters in
-order to retrieve only those triples that adhere to a specified Triple
-Pattern:
+Triple Pattern Fragments (TPF) uses the following query parameters in order to retrieve only those triples that adhere to a specified Triple Pattern:
 
 | _Key_       | _Value_                       | _Purpose_                                                                          |
 | ----------- | ----------------------------- | ---------------------------------------------------------------------------------- |
@@ -176,7 +223,7 @@ Pattern:
 
 #### Example request
 
-```bash
+```sh
 curl -G \
        'https://api.triplydb.com/datasets/academy/pokemon/fragments' \
        --data-urlencode 'predicate=http://www.w3.org/2000/01/rdf-schema#label' \
@@ -200,18 +247,22 @@ By default, an export includes all linked data graphs. Use a query argument to s
 | `graph`   | A URL-encoded IRI.            | Only download the export of the given graph IRI.           |
 
 Therefore, to export the linked data of a **graph**, use the following path:
+
 ```none
 https://api.INSTANCE/datasets/ACCOUNT/DATATSET/download/?graph=GRAPH
 ```
 
 To find out which graphs are available, use the following path:
+
 ```none
 https://api.INSTANCE/datasets/ACCOUNT/DATATSET/graphs
 ```
+
 #### Example requests
 
 Export a dataset:
-```bash
+
+```sh
 curl 'https://api.triplydb.com/datasets/academy/pokemon/download' \
        -H 'Accept: application/trig' > exportDataset.trig.gz
 ```
@@ -219,19 +270,22 @@ curl 'https://api.triplydb.com/datasets/academy/pokemon/download' \
 Export a graph:
 
 First, find out which graphs are available:
-```bash
+
+```sh
 curl 'https://api.triplydb.com/datasets/academy/pokemon/graphs'
 ```
 
 Then, download one of the graph:
-```bash
+
+```sh
 curl 'curl 'https://api.triplydb.com/datasets/academy/pokemon/download?graph=https://triplydb.com/academy/pokemon/graphs/data' -H 'Accept: application/trig' > exportGraph.trig.gz
 ```
+
+
+
 ## Services
 
-Some API requests require the availability of a specific service over
-the dataset. These requests are directed towards a URI path of the
-following form:
+Some API requests require the availability of a specific service over the dataset. These requests are directed towards a URI path of the following form:
 
 ```none
 https://api.INSTANCE/datasets/ACCOUNT/DATASET/services/SERVICE/
@@ -239,20 +293,23 @@ https://api.INSTANCE/datasets/ACCOUNT/DATASET/services/SERVICE/
 
 Upper-case letter words must be replaced by the following values:
 
-- `SERVICE` :: The name of a specific service that has been started
-  for the corresponding dataset.
+- `SERVICE` :: The name of a specific service that has been started for the corresponding dataset.
 
-- See the previous section for [Datasets](#Datasets) to learn the meaning of
-  `INSTANCE`, `ACCOUNT`, and `DATASET`.
+- See the previous section for [Datasets](#Datasets) to learn the meaning of `INSTANCE`, `ACCOUNT`, and `DATASET`.
 
-Here is an example of a URI path that points to a SPARQL endpoint
-over the Pokémon dataset:
+Here is an example of a URI path that points to a SPARQL endpoint over the Pokémon dataset:
 
 ```none
 https://api.triplydb.com/datasets/academy/pokemon/services/pokemon/sparql
 ```
 
-### SPARQL
+See the following sections for more information on how to query the endpoints provided by services:
+- [SPARQL](#sparql)
+- [Elasticsearch](#elasticsearch)
+
+
+
+## SPARQL
 
 There are two service types in TriplyDB that expose the SPARQL 1.1 Query Language: "Sparql" and "Jena".  The former works well for large quantities of instance data with a relatively small data model; the latter works well for smaller quantities of data with a richer data model.
 
@@ -269,7 +326,7 @@ Everybody who has access to the dataset also has access to its services, includi
 
 Notice that for professional use it is easier and better to use [saved queries](https://triply.cc/docs/triply-db-getting-started#saved-queries).  Saved queries have persistent URIs, descriptive metadata, versioning, and support for reliable large-scale pagination ([see how to use pagination with saved query API](https://triply.cc/docs/triply-db-getting-started/#pagination-with-the-saved-query-api)).  Still, if you do not have a saved query at your disposal and want to perform a custom SPARQL request against an accessible endpoint, you can do so.  TriplyDB implements the SPARQL 1.1 Query Protocol standard for this purpose.
 
-#### Sending a SPARQL Query request
+### Sending a SPARQL Query request
 
 According to the SPARQL 1.1 Protocol, queries can be send in the 3 different ways that are displayed in <a href='#table-http-sparql-query'>Table 1</a>.  For small query strings it is possible to send an HTTP GET request (row 1 in <a href='#table-http-sparql-query'>Table 1</a>).  A benefit of this approach is that all information is stored in one URI.  For public data, copy/pasting this URI in a web browser runs the query.  For larger query strings it is required to send an HTTP POST request (rows 2 and 3 in <a href='#table-http-sparql-query'>Table 1</a>).  The reason for this is that longer query strings result in longer URIs when following the HTTP GET approach.  Some applications do not support longer URIs, or they even silently truncate them resulting in an error down the line.  The direct POST approach (row 3 in <a href='#table-http-sparql-query'>Table 1</a>) is the best of these 3 variants, since it most clearly communicates that it is sending a SPARQL query request (see the `Content-Type` column).
 
@@ -311,7 +368,7 @@ According to the SPARQL 1.1 Protocol, queries can be send in the 3 different way
   <figcaption>Table 1 - Overview of the three different ways in which SPARQL queries can be issues over HTTP.</figcaption>
 </figure>
 
-#### SPARQL Query result formats
+### SPARQL Query result formats
 
 SPARQL services are able to return results in different formats.  The user can specify the preferred format by specifying the corresponding Media Type in the HTTP `Accept` header.  TriplyDB supports the following Media Types.  Notice that the chosen result format must be supported for your query form.
 
@@ -329,7 +386,7 @@ SPARQL services are able to return results in different formats.  The user can s
 | TSV           | `text/tab-separated-values`       | SELECT              |
 | Turtle        | `text/turtle`                     | CONSTRUCT, DESCRIBE |
 
-#### Examples of SPARQL Query requests
+### Examples of SPARQL Query requests
 
 This section contains examples of SPARQL HTTP requests.  The requests run either of the following two SPARQL queries against a public SPARQL endpoint that contains data about Pokemon:
 
@@ -343,7 +400,7 @@ construct where { ?s ?p ?o. } limit 1
 
 The examples made use of the popular command-line tool [cURL](https://curl.se).  These examples should also work in any other HTTP client tool or library.
 
-#### GET request
+### GET request
 
 ```sh
 curl https://api.triplydb.com/datasets/academy/pokemon/services/pokemon/sparql?query=select%20%2A%20%7B%20%3Fs%20%3Fp%20%3Fo.%20%7D%20limit%201
@@ -361,7 +418,7 @@ Result:
 ]
 ```
 
-#### URL-encoded POST request
+### URL-encoded POST request
 
 ```sh
 curl -X POST https://api.triplydb.com/datasets/academy/pokemon/services/pokemon/sparql \
@@ -381,7 +438,7 @@ Result:
 ]
 ```
 
-#### Direct POST request
+### Direct POST request
 
 ```sh
 curl -X POST https://api.triplydb.com/datasets/academy/pokemon/services/pokemon/sparql \
@@ -605,7 +662,9 @@ Result:
 <https://triplydb.com/academy/pokemon/vocab/>	rdf:type	owl:Ontology .
 ```
 
-### Elasticsearch
+
+
+## Elasticsearch
 
 The text search API returns a list of linked data entities based on a
 supplied text string. The text string is matched against the text in
@@ -619,7 +678,7 @@ Two types of searches can be performed: a simple search, and a custom
 search. Simple searches require one search term for a fuzzy match. Custom
 searches accept a JSON object conforming to [the Elasticsearch query DSL](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl.html).
 
-#### URI path
+### URI path
 
 Text search requests are sent to the following URI path:
 
@@ -627,7 +686,7 @@ Text search requests are sent to the following URI path:
 https://api.INSTANCE/datasets/ACCOUNT/DATASET/services/SERVICE/search
 ```
 
-#### Reply format
+### Reply format
 
 The reply format is a JSON object. Search results are returned in the
 JSON array that is stored under key sequence `"hits"/"hits"`. The
@@ -670,16 +729,20 @@ example request. The reply includes two results for search string
 }
 ```
 
-#### Examples
+### Examples
 
-##### Simple search
+#### Simple search
+
 Perform a search for the string *mew*:
-```bash
+
+```sh
 curl 'https://api.triplydb.com/datasets/academy/pokemon/services/search/search?query=mew'
 ```
 
-##### Custom search
+#### Custom search
+
 Perform a search using the custom query:
+
 ```json
 {
   "query": {
@@ -689,7 +752,8 @@ Perform a search using the custom query:
   }
 }
 ```
-```bash
+
+```sh
 curl -X POST 'https://api.triplydb.com/datasets/academy/pokemon/services/search/search' \
      -d '{"query":{"simple_query_string":{"query":"pikachu"}}}' \
      -H 'content-type: application/json'
