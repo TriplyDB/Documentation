@@ -21,7 +21,7 @@ Artifacts are files or directories that gitlab will save for you. These files ar
 You can define environment variables in several places. In the `.gitlab.yml` file, you can configure them at a job level or for all jobs. You can also configure them in the gitlab UI in the pipeline schedule form. Variables defined in a pipeline schedule will overwrite variables defined in the `.gitlab-ci.yml` file (see [here](https://docs.gitlab.com/ee/ci/variables/index.html#cicd-variable-precedence) for the gitlab documentation on variable precedence).
 
 ### `script:`
-This is the code that will run in the job. If you need a job to run two TriplyETL commands after each other, you can easily add another `yarn etl ....` line here.
+This is the code that will run in the job. If you need a job to run two TriplyETL commands after each other, you can easily add another `npx etl ....` line here.
 
 ### `only:`
 This defines *when* a job should run. If a job does not have an `only:` configure, it will always run. See [here](https://docs.gitlab.com/ee/ci/yaml/#only--except) for documentation about the syntax of `only`). The boilerplate comes with some example `only:` rules that look like this:
