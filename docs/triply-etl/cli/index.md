@@ -46,11 +46,13 @@ npx triply-etl-generator
 
       c. Dataset name
 
-      d. TriplyDB URL
+      d. TriplyETL Licence Key
 
-      e. TriplyDB email
+      e. TriplyDB URL
 
-      f. TriplyDB password
+      f. TriplyDB email
+
+      g. TriplyDB password
 
     Here is an example of a possible run:
 
@@ -63,13 +65,13 @@ npx triply-etl-generator
     ? Your TriplyDB URL: triplydb.com
     ? Your TriplyDB email: my-account@my-organisation.com
     ? Your TriplyDB password: [hidden]
-    🏁 Your project my-etl is ready for use in /path/to/my-etl.
+    🏁 Your project my-etl is ready for use in my-etl.
     ```
 
 3. Go to the target folder:
 
    ```
-   cd /path/to/my-etl
+   cd my-etl
    ```
 
 4. Run the ETL:
