@@ -28,7 +28,14 @@ This is a syntactically valid query, but we do not know anything about how it sh
 
 In TriplyDB, the author of a query can specify the specific dataset and SPARQL endpoint against which the query should be run. In addition, the author of the query can add a human-readable description that explains the intention behind the query. The following screenshot shows how metadata is edited and stored in TriplyDB. See the [TriplyDB  documentation](/docs/triply-db-getting-started#query-metadata) for more information.
 
-![Metadata fields for a Saved Query in TriplyDB](saved-query-metadata.png)
+<figure>
+  <a href="https://triplydb.com/JD/-/queries/pokemonNetwork" target="_blank">
+    <img src="saved-query-metadata.png">
+  </a>
+  <figcaption>
+    Metadata fields for a Saved Query in TriplyDB (<a href="https://triplydb.com/JD/-/queries/pokemonNetwork" target="_blank">link</a>).
+  </figcaption>
+</figure>
 
 When the query from this screenshot is accessed through the TriplyDB API, the following query string is obtained:
 
