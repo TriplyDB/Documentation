@@ -1,14 +1,14 @@
 ---
 title: "GRLC query metadata support in TriplyDB"
-#path: "/blog/2023-06-grlc"
-date: "2023-06-14T12:00:00"
+path: "/blog/2023-06-grlc"
+date: "2023-06-15T13:20:00"
 ---
 
 Linked data is a great paradigm for storing metadata. But SPARQL, the primary linked data query language, has always lacked a standardized way to store query metadata. To fill this missing feature, the GRLC metadata format was developed in the CLARIAH project. As a commercial partner of CLARIAH, Triply has added support for the GRLC format to its TriplyDB product. In this blog post you learn what the GRLC format is, what you can do with it, and how it is supported by TriplyDB.
 
 ## What is GRLC?
 
-GRLC is a format that allows you to store metadata inside SPARQL queries.
+GRLC is a format that allows you to store query metadata inside SPARQL queries.
 
 By storing metadata in a predictable way, GRLC annotations can be interpreted by applications.
 
@@ -48,7 +48,7 @@ By adding more GRLC annotations, query metadata can be provided to aid other app
 
 ## How was GRLC created?
 
-GRLC was developed in the [CLARIAH project](https://www.clariah.nl). The CLARIAH project builds a national infrastructure for the Digital Humanities in The Netherlands. It makes extensive use of linked data, and GRLC is an example of one of the many linked data innovation that were established in CLARIAH. GRLC was developed by researcher Albert Meroño-Peñuela (now at King's College London).
+GRLC was developed in the [CLARIAH project](https://www.clariah.nl). The CLARIAH project builds a national infrastructure for the Digital Humanities in The Netherlands. It makes extensive use of linked data, and GRLC is an example of one of the many linked data innovations that were established in CLARIAH. GRLC was originally developed by researcher Albert Meroño-Peñuela (now at King's College London).
 
 As a commercial partner of the CLARIAH project, Triply supports the GRLC format in its TriplyDB product. A growing number of other linked data products and projects are supporting GRLC as well. Because GRLC annotations are represented in a format that is compatible with the open SPARQL standard, GRLC solutions are vendor-independent and can be used across a growing number of products and components.
 
