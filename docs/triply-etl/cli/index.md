@@ -8,7 +8,7 @@ TriplyETL includes the following tools that can be used from a command-line:
 - [**TriplyETL Generator**](#generator) is used to create a new ETL pipeline.
 - [**TriplyETL Runner**](#runner) is used to run an existing ETL pipeline.
 - [**TriplyETL Tools**](#tools) is used to perform common, isolated tasks.
-- [Upgrading TriplyETL repositories](#upgrade) explains how you can keep your ETL repository up-to-date.
+- [Update TriplyETL repositories](#update) explains how you can keep your ETL repository up-to-date.
 
 ## TriplyETL Generator {#generator}
 
@@ -228,7 +228,7 @@ For each tool from the above table, the following command prints more informatio
 npx tools {command} --help
 ```
 
-## Upgrading TriplyETL repositories {#upgrade}
+## Update TriplyETL repositories {#update}
 
 Triply regularly releases new versions of TriplyETL. You can look up the TriplyETL version that you are currently using, by running the following command:
 
@@ -238,24 +238,17 @@ npm list @triplyetl/etl
 
 You can look at the [TriplyETL Changelog](/docs/triply-etl/changelog) to observe the latest available TriplyETL version, and the differences between the latest version and your current version. Specifically observe items that are marked "[Changed]" since these may require a rewrite of your configuration.
 
-You can update to the latest version of TriplyETL by running the following command in your TriplyETL repository:
+TriplyETL repositories also include several developer dependencies, that make it easier to write and maintain ETLs. These developer dependencies are not part of the TriplyETL software, and must therefore be updated independently.
 
-```
-npm upgrade triplyetl
-```
-
-### Developer dependencies
-
-TriplyETL repositories include a couple of developer dependencies that make it easier to write and maintain ETLs. These dependencies are not part of the TriplyETL dependency, and must be updated independently.
-
-The following command gives an overview of all the possible updates to the developer dependencies:
+You can run the following command to see whether TriplyETL and/or the developer dependencies can be updated:
 
 ```
 npm outdated
 ```
 
-Based on the output of the previous command, a maintainer of the repository can choose to upgrade one or more developer dependencies by running the following command:
+Based on the output of the previous command, a maintainer of the repository can choose to update either a specific dependency, or all dependencies:
 
 ```
-npm upgrade {package-name}
+npm update {package-name}
+npm update
 ```
