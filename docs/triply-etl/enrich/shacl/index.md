@@ -3,61 +3,137 @@ title: "4. Enrich: SHACL Rules"
 path: "/docs/triply-etl/enrich/shacl"
 ---
 
-SHACL Rules are part of the SHACL Advanced standard.  They can be applied to linked data in the internal store.  SHACL Rules can add new linked data based on linked data that is already present in the store, thereby enriching its contents.
+SHACL Rules allow new data to be asserted based on existing data patterns. This makes them a great approach for data enrichment. Since SHACL Rules can be defined as part of the data model, it is one of the best approaches for creating and maintaining business rules in complex domains.
+
+SHACL Rules are applied to the linked data that is currently present in the internal store. The order in which rules are evaluated can be specified in terms of preconditions and/or in terms of a predefined order.
+
+The SHACL Rules engine in TriplyETL processed rules iteratively. This allows the specification of rules that depend on the outcome of other rules. Triply observes that this iterative functionality is necessary in many domains where SHACL Rules are applied.
 
 ## How to write SHACL Rules?
 
-SHACL Rules offer two types of rules: `Triple rules` and `SPARQL rules`.
+TriplyETL supports two kinds of SHACL Rules: Triple Rules and SPARQL Rules.
 
 To better illustrate the concept, let's consider a scenario where we have data on vehicles, including the triple that specifies their top speed. Now, imagine we want to add additional information to our dataset, specifically identifying cars with a top speed greater than 100 as "fast cars." The most straightforward approach to accomplish this is by utilizing triple rules.
 
 In the following examples, in the SHACL file we define a class and node shape named `ex:Vehicle`, representing vehicles within our dataset. The node shape already includes the property `ex:topSpeed` in the internal store. However, if a vehicle's top speed exceeds 100 (as indicated by `sh:minExclusive 100`), we aim to enhance it by adding an extra property, `ex:isFast`, with the value of "true" represented as a boolean. As mentioned above, we can do this by either using `Triple rules` or `SPARQL rules`
 
-### Using `Triple rules`:
+## A simple use case
 
-```code 
-prefix foaf: <http://xmlns.com/foaf/0.1/>
-prefix rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-prefix sh:   <http://www.w3.org/ns/shacl#>
-prefix shp:  <https://triplydb.com/Triply/example/model/shp/>
-prefix xsd:  <http://www.w3.org/2001/XMLSchema#>
+The follow linked data snippet states that John is a male who has a child:
 
-shp:Person
-    a sh:NodeShape;
-    sh:closed true;
-    sh:ignoredProperties ( rdf:type );
-    sh:property shp:Person_age;
-    sh:targetClass foaf:Person.
+```turtle
+prefix def: <https://triplydb.com/Triply/example/model/def/>
+prefix id: <https://triplydb.com/Triply/example/id/>
+prefix sdo: <https://schema.org/>
 
-shp:Person_age
-    a sh:PropertyShape;
-    sh:datatype xsd:nonNegativeInteger;
-    sh:maxCount 1;
-    sh:minCount 1;
-    sh:path foaf:age.
-
-sh:rule [
-    a sh:TripleRule ;
-    sh:subject sh:this ;
-    sh:predicate ex:isAdult ;
-    sh:object "true"^^xsd:boolean ;
-    sh:condition foaf:Person ;
-    sh:condition [
-        sh:property [
-            sh:path foaf:age ;
-            sh:minExclusive 18 ;
-        ] ;
-    ] ;
-] .
+id:john
+  a sdo:Person;
+  sdo:children id:mary;
+  sdo:gender sdo:Male.
 ```
-To understand what's happening, let's break down each property within the rule:
 
-- `a sh:TripleRule`: Here we specify the type of our rule, either `TripleRule` or `SPARQLRule`. In this case, the type is `TripleRule`, since we are using Triple pattern.
-- `sh:subject sh:this` specifies that the subject of the generated triple is the current node being validated(`foaf:Person`).
-- `sh:predicate ex:isAdult` specifies that the predicate of the generated triple is `ex:isAdult`.
-- `sh:object "true"^^xsd:boolean` specifies that the object of the generated triple is the boolean value true.
-- `sh:condition foaf:Person` specifies that the rule only applies to nodes that are instances of the `foaf:Person` class.
-- `sh:condition [...]` specifies an additional condition that must be met in order for the rule to apply. In this case, the condition is that the `foaf:age` property must have a value that is greater than 18 (`sh:minExclusive 18`).
+From this we can deduce that John is a father:
+
+```turtle
+prefix def: <https://triplydb.com/Triply/example/model/def/>
+prefix id: <https://triplydb.com/Triply/example/id/>
+
+id:john a def:Father.
+```
+
+We can show this in a diagram, where the *condition* is the the graph pattern that must be present, in order for the *assertion* to be added:
+
+```mermaid
+graph
+  subgraph Condition
+  id:john -- a --> sdo:Person
+  id:john -- sdo:children --> id:mary
+  id:john -- sdo:gender --> sdo:Male
+  end
+  subgraph Assertion
+  id:john -- a --> def:Father
+  end
+```
+
+## Formulating a Triple Rule
+
+We can encode the deduction illustrated in the previous section in a SHACL Triple Rule.
+
+We start with some prefix declarations:
+
+```turtle 
+prefix def: <https://triplydb.com/Triply/example/model/def/>
+prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+prefix rule: <https://triplydb.com/Triply/example/model/rule/>
+prefix sdo: <https://schema.org/>
+prefix sh: <http://www.w3.org/ns/shacl#>
+prefix shp: <https://triplydb.com/Triply/example/model/shp/>
+```
+
+We then need to create a SHACL node shape that targets all instances of `sdo:Person`, including John:
+
+```turtle 
+shp:Person
+  a sh:NodeShape;
+  sh:rule rule:Person_father;
+  sh:targetClass sdo:Person.
+```
+
+Lastly, we encode the rule that deduces fatherhood:
+
+```turtle
+rule:Person_father
+  a sh:TripleRule;
+  # Condition
+  sh:condition
+    [ sh:property
+        [ sh:path sdo:children;
+          sh:minCount 1 ] ];
+  sh:condition
+    [ sh:property
+        [ sh:path sdo:gender;
+          sh:hasValue sdo:Male ] ];
+  # Assertion
+  sh:subject sh:this;
+  sh:predicate rdf:type;
+  sh:object def:Father.
+```
+
+Notice the following details:
+- `a sh:TripleRule` indicates that this is a Triple Rule (and not a SPARQL Rule).
+- `sh:condition` is used to specify the conditions that must be met in order for the rule to be executed. In the case of multiple conditions, *all* conditions must be satisfied in order to execute the rule.
+- `sh:subject`, `sh:predicate`, and `sh:object` are used to specify one single triple that is asserted when the rule executes. This is an inherent limitation of Triple Rules. If you need to assert more than one triple in one rule, you must use a SPARQL Rule instead.
+- `sh:this` is a  special value that denotes the targeted term. In our example, the targeted term is `id:john`.
+
+We store the instance data snippet in a file called `instances.trig` and the SHACL snippet in a file called `rules.trig`. We then write the following TriplyETL script in a file called `main.ts`:
+
+```ts
+import { logQuads } from "@triplyetl/etl/debug"
+import { Etl, Source, loadRdf } from "@triplyetl/etl/generic"
+import { executeRules } from "@triplyetl/etl/shacl"
+
+export default async function (): Promise<Etl> {
+  const etl = new Etl()
+  etl.use(
+    loadRdf(Source.file('instances.trig')),
+    executeRules(Source.file('rules.trig')),
+    logQuads(),
+  )
+  return etl
+}
+```
+
+When this script is run with the `npx etl` command, the following linked data is logged to standard output:
+
+```
+graph:default {
+  id:john a sdo:Person, def:Father;
+    sdo:children id:mary;
+    sdo:gender sdo:Male.
+}
+```
+
+Notice that the fatherhood was correctly deduced and asserted by TriplyETL.
 
 ### Using `SPARQL Rules`:
 
