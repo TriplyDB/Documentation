@@ -120,9 +120,32 @@ You invoke the TriplyETL Runner by going to the ETL repository directory in a te
 npx etl
 ```
 
+### Output summary
+
+TriplyETL Runner aways prints a summary at the end of a succesful run:
+
+```
+ ┌──────────────────────────────────────────────────────────────┐
+ │ Etl:                #Error    0 | #Warning    0 | #Info    0 │
+ │ #Statements         2                                        │
+ │ #Records            2                                        │
+ │ Started at          2023-06-18 10:05:20                      │
+ │ Runtime             0 sec                                    │
+ └──────────────────────────────────────────────────────────────┘
+```
+
+This summary includes the following statistics:
+- **"#Error"** shows the number of errors encountered. With default settings, this number is at most 1, since the Runner will immediately stop after an error occurs.
+- **"#Warning"** shows the number of warnings encountered. With default settings, this includes warnings emitted by the [SHACL Validator](/docs/triply-etl/validate/shacl).
+- **"#Info"** shows the number of informational messages. With default settings, this includes informational messages emitted by the [SHACL Validator](/docs/triply-etl/validate/shacl).
+- **"#Statements"** shows the number of triples or quads that was generated. This number is equal to or higher than the number of statements that is uploaded to the triple store. The reason for this is that TriplyETL processes records in parallel. If the same statement is generated for two records, the number of statements with be incremented by 2, but only 1 unique statement will be uploaded to the triple store.
+- **"#Records"** shows the number of records that was processed.
+- **"Started at"** shows the date and time at which the Runner started.
+- **"Runtime"** shows the wall time duration of the run.
+
 ### Limit the number of records
 
-When developing a pipeline, it is almost never necessary to process all records from the source data. Instead, it is common to run the ETL for a small number of example record, which results in quick feedback.  The `--head` flag indicates the maximum number of records that is processed by the runner:
+When developing a pipeline, it is almost never necessary to process all records from the source data. Instead, it is common to run the ETL for a small number of example record, which results in quick feedback.  The `--head` flag indicates the maximum number of records that is processed by the Runner:
 
 ```sh
 npx etl --head 1
