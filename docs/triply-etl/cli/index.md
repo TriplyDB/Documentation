@@ -104,13 +104,9 @@ In this tutorial you learn how to use the generic record representation that is 
 This section gets you up and running with TriplyETL by setting up increasingly more complex pipelines.  These pipelines will use TriplyETL to connect data sources to an integrated linked data knowledge that is published in a TriplyDB instance.  Some of the documented steps are generic for setting up a modern TypeScript project, while others are specific for using TriplyETL.
 -->
 
-### Upgrading TriplyETL Generator
+### Updating TriplyETL Generator
 
-Before creating a new TriplyETL repository, ensure that you are using the latest version of the TriplyETL Generator:
-
-```
-npm update -g triply-etl-generator
-```
+When you run the TriplyETL Generator, it always checks to see whether a newer version is available. If this is the case, it shows you the command you need to run in order to update it.
 
 ## TriplyETL Runner {#runner}
 
