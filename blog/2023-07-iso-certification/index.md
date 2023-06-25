@@ -1,8 +1,8 @@
 ---
 title: "ISO certification"
-path: "/blog/2023-03-iso-certification"
+path: "/blog/2023-07-iso-certification"
 #date: "2023-07-03T17:46:00"
-author: minajanicijevic
+author: triply
 ---
 
 ## Triply Takes Security to the Next Level with ISO Certification

@@ -2,8 +2,9 @@
 title: "New TriplyDB Features (Sept 2021)"
 path: "/blog/2021-10-new-features"
 date: "2021-10-01T11:15:00"
-author: tdegrootmpvharmelenrdehaan
+author: triply
 ---
+
 Hi all! The summer was a busy time for us, working on refining existing features and developing new elevated ones for better and better user experience. So, let’s dive into it!
 
 ## Form makeover time

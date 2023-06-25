@@ -2,7 +2,7 @@
 title: "Why We Use OWL Every Day At Triply"
 path: "/blog/2021-08-why-we-use-owl"
 date: "2021-08-30T16:00:00"
-author: triply # see `author` section below
+author: triply
 banner: flying-owl.jpg
 ---
 

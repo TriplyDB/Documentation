@@ -2,7 +2,7 @@
 title: "Recent TriplyDB Features in March 2021"
 path: "/blog/2021-03-new-features"
 date: "2021-03-18T14:05:00"
-author: rdehaanmpvharmelendnakou
+author: triply
 ---
 
 Hello everybody! It’s been quite a while since we described new TriplyDB features, and you may wonder what we have been up to in the meantime. TriplyDB is a groundbreaking and fast-moving linked data product and we are continuously improving user experience by developing new features in close collaboration with our customers. Let us introduce some of our coolest new features that we recently released: 

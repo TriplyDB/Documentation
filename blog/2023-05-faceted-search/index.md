@@ -2,6 +2,7 @@
 title: "Find Data Faster with Faceted Search in TriplyDB"
 path: "/blog/2023-05-faceted-search"
 date: "2023-05-10T12:00:00"
+author: triply
 ---
 
 ## Find Data Faster with Faceted Search on TriplyDB

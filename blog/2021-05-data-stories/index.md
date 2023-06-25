@@ -2,7 +2,7 @@
 title: "Data Stories"
 path: "/blog/2021-05-data-stories"
 date: "2021-05-26T21:30:00"
-author: tdegrootmpvharmelen
+author: triply
 ---
 
 Stories have been with us longer than history. Where they were first part of oral tradition, stories evolved over time from the spoken word to writing: on walls, on paper and now on electronic screens. The transition to newer forms of communication means that the requirements of stories have changed as well. 

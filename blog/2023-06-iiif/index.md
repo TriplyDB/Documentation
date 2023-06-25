@@ -2,7 +2,7 @@
 title: "IIIF support in TriplyDB"
 path: "/blog/2023-06-iiif"
 date: "2023-06-07T12:00:00"
-author: akonrad
+author: triply
 ---
 
 International Image Interoperability Framework (IIIF) is a universal standard for publishing images and their metadata in an open and standardized way. A growing number of organizations are using TriplyDB to implement their production-grade IIIF API. This blog post explains in-depth what IIIF is, why your organization should support it, and how you can configure it using TriplyDB.

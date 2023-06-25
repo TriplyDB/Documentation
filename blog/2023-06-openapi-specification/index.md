@@ -1,8 +1,8 @@
 ---
 title: "OpenAPI Specifications"
-path: "/blog/2023-05-openAPI-specifications"
+path: "/blog/2023-06-openapi-specifications"
 #date: "2023-06-28T11:15:00"
-author: minajanicijevic
+author: triply
 ---
 
 ## Unleashing the Power of OpenAPI Specifications: TriplyDB's Step Forward in RESTful API Development
