@@ -1,5 +1,5 @@
 - id: triply
-  name: "Triply"
+  name: Triply
   url: https://triply.cc
   icon: https://triplydb.com/imgs/logos/logo.svg
   twitter: triplydb
@@ -8,7 +8,7 @@
 - id: ekultrop
   name: Eirik Kultrop
 - id: gbosch
-  name: "Gerwin Bosch"
+  name: Gerwin Bosch
   url: //gerwinbosch.nl
   twitter: BoschGerwin
 - id: jduyne
@@ -20,7 +20,7 @@
 - id: tbohlken
   name: Thomas Bohlken
 - id: wbeek
-  name: "Wouter Beek"
+  name: Wouter Beek
 - id: rweber
   name: Ruben Weber
 - id: mpvharmelen
@@ -47,6 +47,8 @@
   name: Thomas de Groot and Rosaline de Haan
 - id: tdegrootmpvharmelenrdehaan
   name: Thomas de Groot, Martin van Harmelen and Rosaline de Haan
+- id: minajanicijevic
+  name: Mina Janicijevic
 - id: lrietveldminajanicijevic
   name: Laurens Rietveld and Mina Janicijevic
 - id: akonrad

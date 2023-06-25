@@ -508,8 +508,6 @@ Notice that the [inline JSON](#inline-json) source is often a more intuitive spe
 
 While [inline JSON](#inline-json) and [string sources](#strings) are mostly used for small examples, local files are somewhat more widely used.
 
-
-
 ## Inline JSON
 
 Because TriplyETL configurations are implemented in TypeScript, it is possible to specify JSON data inline with TypeScript Objects. JSON is the only data format that be specified in such a native inline way in TriplyETL.
