@@ -3,6 +3,7 @@ title: "Password validation and 2FA"
 path: "/blog/2023-07-password-validation-2fa"
 #date: "2023-07-03T17:03:00"
 author: triply
+banner: banner.jpg
 ---
 
 # How TriplyDB is Leading the Way in Password Security?
