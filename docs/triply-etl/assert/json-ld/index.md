@@ -1,5 +1,5 @@
 ---
-title: "3A. Assert: JSON-LD"
+title: "3. Assert: JSON-LD"
 path: "/docs/triply-etl/assert/json-ld"
 ---
 

@@ -40,7 +40,7 @@ New versions of TriplyETL are released regularly.  Moving to a new version is ge
 You can check the current version of TriplyETL using the following command:
 
 ```sh
-yarn list --pattern etl
+npx etl --version
 ```
 
 ### Check for a new version
@@ -48,7 +48,7 @@ yarn list --pattern etl
 You can check for updated by running the following command in your project directory:
 
 ```sh
-yarn upgrade-interactive
+npm outdated
 ```
 
 This will display the list of packages for which updates are available.  If TriplyETL appears in this list, notice the old and new version numbers.  These numbers are used in the next section to assess the impact of upgrading.
@@ -71,17 +71,17 @@ TriplyETL uses the [Semantic Versioning](https://semver.org) approach for struct
 After having assessed the impact of upgrading, an upgrade can be effectuated by running the following command again:
 
 ```sh
-yarn upgrade-interactive
+npm upgrade-interactive
 ```
 
 Select the TriplyETL option, if it appears in the list of available updates, by using the up and down arrows.  Select the TriplyETL update by pressing `SPC` (spacebar) and press `RET` (return/enter) to perform the upgrade.
 
-After the upgrade is applied, the `yarn.lock` file is automatically changed.  These automatic changes must be part of the next Git commit that is made.
+After the upgrade is applied, the `package-lock.json` file is automatically changed.  These automatic changes must be part of the next Git commit that is made.
 
 Run the following command to build your pipeline with the new TriplyETL version:
 
 ```sh
-yarn build
+npm run build
 ```
 
 Make any fixes/changes to the pipeline that are necessary and make a commit that indicates that the TriplyETL version was upgraded.

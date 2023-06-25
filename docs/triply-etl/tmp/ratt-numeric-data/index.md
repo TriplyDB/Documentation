@@ -5,7 +5,7 @@ path: "/docs/triply-etl/numeric-data"
 
 ## Cast numeric data
 
-Some source data formats are unable to represent numeric data.  A common example of this is CSV/TSV, where every cell in a table is represented as a string.
+Some source data formats are unable to represent numeric data. A common example of this is CSV/TSV, where every cell in a table is represented as a string.
 
 If a source data format that cannot represent numeric data is used, it is often useful to cast such strings to numbers in TriplyETL using the `custom.change()` function.
 

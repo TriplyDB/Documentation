@@ -1,5 +1,5 @@
 ---
-title: "2B. Transform: TypeScript"
+title: "2. Transform: TypeScript"
 path: "/docs/triply-etl/transform/typescript"
 ---
 
@@ -97,7 +97,7 @@ This function emits an error if `NEW_KEY` already exists in the current Record.
 
 #### See also
 
-Notice that it is bad practice to use `custom.add()` for adding a new entry that is based on exactly one existing entry.  In such cases, the use of [`custom.copy()`](#copy) is better, since it does not require access to the full Context.
+Notice that it is bad practice to use `custom.add()` for adding a new entry that is based on exactly one existing entry.  In such cases, the use of function [custom.copy()](#copy) is better, since it does not require access to the full Context.
 
 
 
@@ -302,7 +302,7 @@ This function emits an error under the following conditions:
 
 #### See also
 
-If `fromKey` and `toKey` are the same, then function [`custom.change()`](#customchange) must be used instead.
+If `fromKey` and `toKey` are the same, then function [custom.change()](#change) must be used instead.
 
 
 
