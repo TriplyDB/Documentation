@@ -165,9 +165,9 @@ If `name` is omitted, the TriplyDB account that is associated with the current A
 
 ### See also
 
-This method returns an account object. See section [`Account`](#account) for an overview of the methods that can be called on such objects.
+This method returns an account object. See class [Account](#account) for an overview of the methods that can be called on such objects.
 
-Class [`Account`](#account) has two specializations: class [`Organization`](#organization) and class [`User`](#user). In line with these class specializations, there are also two method specializations:
+Class [Account](#account) has two specializations: class [Organization](#organization) and class [User](#user). In line with these class specializations, there are also two method specializations:
 
 - Method [`App.getOrganization(name: string)`](#appgetorganizationname-string) returns an organization object.
 
@@ -195,8 +195,7 @@ Returns an [async iterator](#async-iterator) over all accounts in the TriplyDB s
   console.log(await triply.getAccounts().toArray())
   ```
 
-See section [`Account`](#account) for an overview of the methods that
-can be used with account objects.
+See class [Account](#account) for an overview of the methods that can be used with account objects.
 
 
 ## App.getInfo()
@@ -228,7 +227,7 @@ This method is similar to [`App.getAccount(name?: string)`](#appgetaccountname-s
 
 - This method only works for accounts that represent TriplyDB organizations.
 
-- This method returns an organization object. Class [`Organization`](#organization) is a specialization of class [`Account`](#account).
+- This method returns an organization object. Class [Organization](#organization) is a specialization of class [Account](#account).
 
 ### Examples
 
@@ -238,8 +237,7 @@ The following snippet returns the organization called `'Triply'`:
 const organization = await triply.getOrganization('Triply')
 ```
 
-See section [`Organization`](#organization) for an overview of the
-methods that can be used with organization objects.
+See class [Organization](#organization) for an overview of the methods that can be used with organization objects.
 
 ### Alternatives
 
@@ -258,7 +256,7 @@ const organization = account.asOrganization()
 
 ### See also
 
-This method returns an organization object. See section [`Organization`](#organization) for an overview of the methods that can be called on such objects.
+This method returns an organization object. See class [Organization](#organization) for an overview of the methods that can be called on such objects.
 
 
 ## App.getUser(name?: string)
@@ -298,7 +296,7 @@ const user = account.asUser()
 
 ### See also
 
-This method returns a user object. See section [`User`](#user) for an overview of the methods that can be called on such objects.
+This method returns a user object. See class [User](#user) for an overview of the methods that can be called on such objects.
 
 
 ## App.isCompatibleWith(minimumVersion: string)
@@ -627,7 +625,7 @@ const newStory = await user.addStory('name-of-story', {
 
 Casts the TriplyDB account object to its corresponding organization object.
 
-Class [`Organization`](#organization) is a specialization of class [`Account`](#account).
+Class [Organization](#organization) is a specialization of class [Account](#account).
 
 Calling this method on an `Organization` object does nothing.
 
@@ -652,16 +650,16 @@ const organization = await triply.getOrganization('Triply')
 
 ### See also
 
-This method returns an organization object. See section [`Organization`](#organization) for an overview of the methods that can be called on such objects.
+This method returns an organization object. See class [Organization](#organization) for an overview of the methods that can be called on such objects.
 
 
 ## Account.asUser()
 
 Casts the TriplyDB account object to its corresponding user object.
 
-Class [`User`](#user) is a specialization of class [`Account`](#account).
+Class [User](#user) is a specialization of class [Account](#account).
 
-Calling this method on a [`User`](#user) object does nothing.
+Calling this method on a [User](#user) object does nothing.
 
 ### Examples
 
@@ -684,7 +682,7 @@ const user = await triply.getUser()
 
 ### See also
 
-This method returns an organization object. See section [`Organization`](#organization) for an overview of the methods that can be called on such objects.
+This method returns an organization object. See class [Organization](#organization) for an overview of the methods that can be called on such objects.
 
 
 ## Account.ensureDataset(name: string, metadata?: object)
@@ -730,7 +728,7 @@ console.log((await dataset.getInfo()).name)
 
 ### See also
 
-This method returns a dataset object. See section [`Dataset`](#dataset) for an overview of the methods that can be called on such objects.
+This method returns a dataset object. See class [Dataset](#dataset) for an overview of the methods that can be called on such objects.
 
 
 ## Account.getDatasets()
@@ -880,9 +878,9 @@ for await (const item of account.getPinnedItems()) {
 
 This method returns various types of objects. Each class has different functionalities:
 
-- See section [`Dataset`](#dataset) for an overview of the methods for dataset objects.
-- See section [`Query`](#query) for an overview of the methods for query objects.
-- See section [`Story`](#story) for an overview of the methods for story objects.
+- See class [Dataset](#dataset) for an overview of the methods for dataset objects.
+- See class [Query](#query) for an overview of the methods for query objects.
+- See class [Story](#story) for an overview of the methods for story objects.
 
 
 ## Account.getQuery(name: string)
@@ -901,7 +899,7 @@ console.log((await query.getInfo()).requestConfig?.payload.query)
 
 ### See also
 
-See section [`Query`](#query) for an overview of the methods for query objects.
+See class [Query](#query) for an overview of the methods for query objects.
 
 
 ## Account.getQueries()
@@ -929,7 +927,7 @@ for await (const query of account.getQueries()) {
 
 ### See also
 
-See section [`Query`](#query) for an overview of the methods for query objects.
+See class [Query](#query) for an overview of the methods for query objects.
 
 
 ## Account.ensureStory(name: string, metadata: object)
@@ -1031,7 +1029,7 @@ const story = await account.getStory('the-iris-dataset')
 
 ### See also
 
-See section [`Story`](#story) for an overview of the methods for story objects.
+See class [Story](#story) for an overview of the methods for story objects.
 
 
 ## Account.getStories()
@@ -1051,7 +1049,7 @@ for await (const story of account.getStories()) {
 
 ### See also
 
-See section [`Story`](#story) for an overview of the methods for story objects.
+See class [Story](#story) for an overview of the methods for story objects.
 
 
 ## Account.pinItems(items: array[Dataset|Story|Query])
@@ -1339,7 +1337,7 @@ asset.toStream()
 
 # Dataset
 
-The [`Dataset`](#dataset) class represents a TriplyDB dataset.
+The `Dataset` class represents a TriplyDB dataset.
 
 
 ## Dataset.addPrefixes(prefixes: object)
@@ -1474,7 +1472,7 @@ const reasoning = await dataset.addService('reasoning', {
 
 ### See also
 
-See section [`Service`](#service) for an overview of the methods that can be used with service objects.
+See class [Service](#service) for an overview of the methods that can be used with service objects.
 
 
 ## Dataset.clear(...resourceType: string)
@@ -1712,7 +1710,7 @@ const service = dataset.getService('acceptance')
 
 Returns an [async iterator](#async-iterator) over TriplyDB services under a dataset.
 
-See section [`Service`](#service) for an overview of the methods for service objects.
+See class [Service](#service) for an overview of the methods for service objects.
 
 ### Examples
 
@@ -2368,7 +2366,7 @@ for await(const quad of stream.pipe(zlib.createGunzip())){
 
 # Organization
 
-Instances of the [`Organization`](#organization) class denote organizations in TriplyDB.
+Instances of class `Organization` denote organizations in TriplyDB.
 
 ### Obtaining instances
 
@@ -2975,7 +2973,7 @@ for (const element of (await story.getInfo()).content) {
 
 # User
 
-Instances of the [`User`](#user) class denote users in TriplyDB.
+Instances of class `User` denote users in TriplyDB.
 
 ### Obtaining instances
 
@@ -2995,7 +2993,7 @@ const user = account.asUser()
 
 ### Inheritance
 
-`User` is a subclass of [`Account`](#account), from which it inherits most of its methods.
+`User` is a subclass of [Account](#account), from which it inherits most of its methods.
 
 ### Limitations
 

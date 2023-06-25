@@ -1,5 +1,5 @@
 ---
-title: "5. SHACL Validation"
+title: "5. Validate: SHACL"
 path: "/docs/triply-etl/validate/shacl"
 ---
 
@@ -9,10 +9,10 @@ This page documents how SHACL is used to validate linked data in the internal st
 
 SHACL Validation can be used when the following preconditions are met:
 
-1. A data model must be available from a data source.  The data model must use the SHACL standard.
-2. Some data must be asserted in the internal store.  If your internal store is still empty, you can read [the Assert documentation](/docs/triply-etl/assert) on how to add assertions to that store.
+1. A data model that uses SHACL constraints.
+2. Some data must be asserted in the internal store. If your internal store is still empty, you can read [the Assert documentation](/docs/triply-etl/assert) on how to add assertions to that store.
 
-The function for performing SHACL validation can be imported from the generic TriplyETL library:
+The function for running SHACL Validation is imported as follows:
 
 ```ts
 import { validate } from '@triplyetl/etl/shacl'
@@ -20,13 +20,13 @@ import { validate } from '@triplyetl/etl/shacl'
 
 ## A complete example
 
-We use the following full TriplyETL script to explain the validation feature.  Do not be afraid by the length of the script; we will go through each part step-by-step.
+We use the following full TriplyETL script to explain the validation feature. Do not worry about the length of the script; we will go through each part step-by-step.
 
 ```ts
-import { Etl, Source, declarePrefix, fromJson, toTriplyDb } from "@triplyetl/etl/generic"
-import { iri, pairs } from "@triplyetl/etl/ratt"
+import { Etl, Source, declarePrefix, fromJson, toTriplyDb } from '@triplyetl/etl/generic'
+import { iri, pairs } from '@triplyetl/etl/ratt'
 import { validate } from '@triplyetl/etl/shacl'
-import { a, foaf } from "@triplyetl/etl/vocab"
+import { a, foaf } from '@triplyetl/etl/vocab'
 
 const prefix = {
   id: declarePrefix('https://triplydb.com/Triply/example/id/'),
@@ -353,20 +353,20 @@ etl.use(
   // Create all linked data statements.
   // …
   // Now that all the data is created, validate it using a model.
-  validateShacl(etl.sources.model, { terminateOn: 'Never' }),
+  validate(etl.sources.model, { terminateOn: 'Never' }),
 )
 ```
 
 ### Log conditions
 
-The `validateShacl` function can optionally be given the `log` option.  This option determines when and which violations should be printed. The values are the same as in 'terminateOn' option. Note that `log` is about printing on your terminal and not about the violation report.
+The `validate()` function can optionally be given the `log` option.  This option determines when and which violations should be printed. The values are the same as in 'terminateOn' option. Note that `log` is about printing on your terminal and not about the violation report.
 
  ```ts
 etl.use(
   // Create all linked data statements.
   // …
   // Now that all the data is created, validate it using a model.
-  validate(app.sources.model, { log: "Never" }),
+  validate(etl.sources.model, { log: 'Never' }),
 )
 ```
 -->
