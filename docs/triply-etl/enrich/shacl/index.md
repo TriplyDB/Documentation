@@ -15,8 +15,8 @@ See the [enrichment step overview page](/docs/triply-etl/enrich) for other enric
 
 SHACL Rules can be used when the following preconditions are met:
 
-1. A data model that uses SHACL Rules.
-2. Some data must be asserted in the internal store. If your internal store is still empty, you can read [the Assert documentation](/docs/triply-etl/assert) on how to add assertions to that store.
+1. You have a data model that has one or more SHACL Rules.
+2. You have some linked data in the internal store. If your internal store is still empty, you can read [the Assert documentation](/docs/triply-etl/assert) on how to add linked data to the internal store.
 
 The function for executing SHACL Rules is imported as follows:
 
