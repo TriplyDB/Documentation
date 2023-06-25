@@ -5,7 +5,7 @@ path: "/docs/triply-etl/assert/ratt"
 
 RATT assertions are a core set of TypeScript functions that assert linked data.
 
-## Overview
+# Overview
 
 The following assertion functions are available:
 
@@ -34,19 +34,19 @@ import { iri, iris, literal, literals, nestedPairs, objects,
 
 
 
-## Function `iri()` {#iri}
+# Function `iri()` {#iri}
 
 Asserts an IRI term based on a key and an optional IRI prefix:
 
 - `iri(prefix:PrefixedToIri, content:Key|StaticString)`
 - `iri(content:Key|StaticString)`
 
-#### Parameters
+## Parameters
 
 - `prefix` A prefix that is declared with [declarePrefix()](/docs/triply-etl/declare#declarePrefix).
 - `content` Either a key that contains a string value, or a static string. If the `prefix` is used, this content is placed after the prefix (sometimes referred to a the 'local name'). If the `prefix` parameter is not used, the content must specify the full IRI.
 
-#### Examples
+## Examples
 
 The following asserts an IRI based on a declared prefix (`prefix.ex`) and a key (`name`):
 
@@ -67,7 +67,7 @@ fromJson([{ 'url': 'https://example.com/bob' }]),
 triple(iri('url'), a, owl.NamedIndividual),
 ```
 
-#### See also
+## See also
 
 If the same IRI is used in multiple statements, repeating the same assertion multiple times may impose a maintenance burden. In such cases, it is possible to first add the IRI to the record using transformation function [addIri()](/docs/triply-etl/transform/ratt#addIri), and refer to that one IRI in multiple statements.
 
@@ -75,19 +75,19 @@ Use function [iris()](#iris) to create multiple IRIs in one step.
 
 
 
-## Function `iris()` {#iris}
+# Function `iris()` {#iris}
 
 Asserts multiple IRIs, one for each entry in an array of strings:
 
 - `iris(prefix:PrefixedToIri, content:Key|Array<StaticString>)`
 - `iris(content:Key|Array<StaticString>)`
 
-#### Parameters
+## Parameters
 
 - `prefix` A prefix that is declared with [declarePrefix()](/docs/triply-etl/declare#declarePrefix).
 - `content` Either a key that contains a array of string values, or an array of static strings. If the `prefix` is used, this content is placed after the prefix (sometimes referred to a the 'local name'). If the `prefix` parameter is not used, the content must specify the full IRI.
 
-#### Example
+## Example
 
 The following code snippet asserts one IRI for each entry in record key `'children'`:
 
@@ -118,18 +118,18 @@ graph LR
 
 
 
-## Function `literal()` {#literal}
+# Function `literal()` {#literal}
 
 Asserts a literal term:
 
 - `literal(lexicalForm, languageTagOrDatatype)`
 
-#### Parameters
+## Parameters
 
 - `lexicalForm` A static string (see function [str()](#str)), or a key that contains a string value.
 - `languageTagOrDatatype` A static language tag, or a static datatype IRI, or a key that contains either a language tag or a datatype IRI.
 
-#### Examples
+## Examples
 
 The following snippet asserts a language-tagged string:
 
@@ -159,7 +159,7 @@ id:amsterdam
   dct:identifier '0200'.
 ```
 
-#### See also
+## See also
 
 If the same literal is used in multiple statements, repeating the same assertion multiple times can impose a maintenance burden. In such cases, it is possible to first add the literal to the record with transformation [addLiteral()](/docs/triply-etl/transform/ratt#addLiteral), and refer to that one literal in multiple statements.
 
@@ -167,7 +167,7 @@ Use assertion [literals()](#literals) to create multiple literals in one step.
 
 
 
-## Function `literals()` {#literals}
+# Function `literals()` {#literals}
 
 Asserts multiple literals, one for each given lexical form:
 
@@ -177,12 +177,12 @@ literals(lexicalForms, languageTagOrDatatype)
 
 When the record contains a key that stores an array, it is possible to create one literal for each value in the array.
 
-#### Parameters
+## Parameters
 
 - `lexicalForms` A key that stores an array.
 - `languageTagOrDatatype` A static language tag, or a static datatype IRI, or a key that stores a language tag or datatype IRI.
 
-#### Example: Fruit basket
+## Example: Fruit basket
 
 The following code snippet creates one literal for each value in the array that is stored in the `'contents'` key:
 
@@ -213,7 +213,7 @@ graph LR
   classDef data fill:yellow
 ```
 
-#### Example: names
+## Example: Names
 
 String literals can be asserted directly from a key that stores an array of strings.
 
@@ -252,20 +252,20 @@ triple(iri(prefix.id, 'parent'), sdo.children, literals('children', xsd.string))
 
 
 
-## Function `nestedPairs()` {#nestedPairs}
+# Function `nestedPairs()` {#nestedPairs}
 
 This function creates a nested node and makes multiple assertions about that node.
 
 Since linked data is composed of triples, more complex n-ary information must often be asserted with one or more nested nodes. Such nested nodes can be given a name with assertion [iri()](#iri) or transformation [addIri()](/docs/triply-etl/transform/ratt#addiri).
 
-#### Parameters
+## Parameters
 
 - `subject` A subject term. This must be an IRI (see function [iri()](#iri)).
 - `predicate` A predicate term. This must be an IRI (see function [iri()](#iri)).
 - `nestedNode` The nested node. This must be an IRI (see function [iri()](#iri)).
 - `pairs` One or more pairs that make assertions about the nested node. Every pair consists of a predicate term and an object term (in that order).
 
-#### Example: Unit of measure
+## Example: Unit of measure
 
 The following example asserts a value together with a unit of measure. A well-known Skolem IRI or 'blank node' is used to attach the value and unit to:
 
@@ -308,7 +308,7 @@ graph LR
   classDef meta fill:sandybrown
 ```
 
-#### Example: Geometry
+## Example: Geometry
 
 The following example asserts a GeoSPARQL geometry. The geometry is created
 as a separate node.
@@ -359,7 +359,7 @@ pairs(iri(prefix.geometry, 'id'),
 ),
 ```
 
-### See also
+## See also
 
 In some cases, it is inconvenient to come up with a naming scheme for intermediate nodes. In such cases, the following options are available:
 - Use transformation [addHashedIri()](/docs/triply-etl/transform/ratt#addhashediri) to create a content-based IRI.
@@ -368,19 +368,19 @@ In some cases, it is inconvenient to come up with a naming scheme for intermedia
 
 
 
-## Function `objects()` {#objects}
+# Function `objects()` {#objects}
 
 Asserts multiple triples that share the same subject term and predicate term.
 
 This function provides a shorthand notation for assertions that can also be made with multiple uses of the [triple()](#triple) assertion function. The notational convenience of this middleware is similar to predicate-object lists in TriG, Turtle, and SPARQL.
 
-#### Parameters
+## Parameters
 
 - `subject` A subject term. This must be either an IRI (see function [iri()](#iri)) or a literal (see function [literal()](#literal)).
 - `predicate` A predicate term. This must be an IRI (see function [iri()](#iri)).
 - `objects` An array of object terms. This must be either an IRI (see function [iri()](#iri)) or a literal (see function [literal](#literal)). Every distinct object term in the array results in a distinct triple assertion.
 
-#### Example: Alternative labels
+## Example: Alternative labels
 
 The following snippet asserts multiple alternative labels for a city:
 
@@ -425,18 +425,18 @@ graph LR
 
 
 
-## Function `pairs()` {#pairs}
+# Function `pairs()` {#pairs}
 
 Asserts multiple triples that share the same subject term.
 
 This function provides a shorthand notation for assertions that can also be made with multiple uses of assertion [triple()](#triple). The notational convenience of this middleware is similar to predicate lists in TriG, Turtle, and SPARQL.
 
-#### Parameters
+## Parameters
 
 - `subject` The subject term of the asserted triples.
 - `pairs` Zero or more pairs. Each pair is an array with a predicate term and an object term (in that order). Every distinct element in the `pairs` array results in a distinct triple assertion.
 
-#### Example: Alternative and preferred label
+## Example: Alternative and preferred label
 
 The following snippet asserts a preferred label and an alternative label for cities:
 
@@ -483,20 +483,20 @@ graph LR
 
 
 
-## Function `quad()` {#quad}
+# Function `quad()` {#quad}
 
 Asserts a quadruple or 'quad', i.e. a statement that consists of a subject term, a predicate term, an object term, and a graph name.
 
 A quadruple is a triple with a graph name as its fourth parameter.
 
-#### Parameters
+## Parameters
 
 - `subject` A subject term. This must be an IRI (see function [iri()](#iri)).
 - `predicate` A predicate term. This must be an IRI (see function [iri()](#iri)).
 - `object` An object term. This must be either an IRI (see function [iri()](#iri)) or a literal (see function [literal()](#literal)).
 - `graph` A graph name. This must be an IRI (see function [iri()](#iri)).
 
-#### Example: Data and metadata
+## Example: Data and metadata
 
 An ETL may distinguish between data and metadata assertions. Both may be
 placed into distinct graphs. The following snippet makes one assertion in
@@ -507,26 +507,26 @@ quad(iri(prefix.dataset, 'flowers'), a, dcat.Dataset, graph.metadata),
 quad(iri(prefix.flower, '_id'), a, def.Flower, graph.data),
 ```
 
-#### See also
+## See also
 
 Use function [quads()](#quads) to make multiple quadruple assertions.
 
 
 
-## Function `quads()` {#quads}
+# Function `quads()` {#quads}
 
 Asserts multiple quadruples or 'quads', i.e. statements that consists of a subject term, a predicate term, an object term, and a graph name.
 
 A quadruple is a triple with a graph name as its fourth parameter.
 
-#### Parameters
+## Parameters
 
 - `subject` A subject term. This must be an IRI (see function [iri()](#iri)).
 - `predicate` A predicate term. This must be an IRI (see function [iri()](#iri)).
 - `object` An object term. This must be either an IRI (see function [iri()](#iri)) or a literal (see function [literal()](#literal)).
 - `graph` A graph name. This must be an IRI (see function [iri()](#iri)).
 
-#### Example: Data and metadata
+## Example: Data and metadata
 
 An ETL can distinguish between data and metadata assertions. Both may be
 placed into distinct graphs. The following snippet makes assertions in a
@@ -543,17 +543,17 @@ quads(
 ),
 ```
 
-#### See also
+## See also
 
 Use function [quad()](#quad) for asserting a single quadruple.
 
 
 
-## Function `str()` {#str}
+# Function `str()` {#str}
 
 Asserts a static string value.
 
-#### When to use
+## When to use
 
 Strings in assertions are typically used to denote keys in the Record. For example, the string `'abc'` in the following code snippet indicates that the value of key `'abc'` should be used as the local name of the IRI in the subject position. The value of key `'abc'` should also be used as the lexical form of the literal in the object position:
 
@@ -571,19 +571,19 @@ triple(iri(prefix.id, str('abc')), rdfs.label, str('abc')),
 
 
 
-## Function `triple()` {#triple}
+# Function `triple()` {#triple}
 
 Asserts a triple, i.e. a statement that consists of a subject term, a predicate term, and an object term.
 
 A triple is a sequence of three terms: subject, predicate, and object. A triple asserts a factual statement, claiming that the thing denoted by the subject term and the thing denotes by the object term are related to one another according to the relationship denoted by the predicate term. A triple is the smallest unit of meaning in linked data.
 
-#### Parameters
+## Parameters
 
 - `subject` A subject term. This must be an IRI (see function [iri()](#iri)).
 - `predicate` A predicate term. This must be an IRI (see function [iri()](#iri)).
 - `object` An object term. This must be either an IRI (see function [iri()](#iri)) or a literal (see function [literal()](#literal)).
 
-#### Example 1
+## Example 1
 
 The following triple asserts that something is a person. Notice that:
 - the subject term is an IRI that is constructed out of an IRI prefix (`prefix.person`) and a key that contains the IRI local name (`'id'`),
@@ -593,7 +593,7 @@ The following triple asserts that something is a person. Notice that:
 triple(iri(prefix.person, 'id'), a, foaf.Person),
 ```
 
-#### Example 2
+## Example 2
 
 The following triple asserts that something has an age that is derived from the `'age'` key in the record. Notice that:
 
@@ -607,22 +607,22 @@ triple('_person', foaf.age, literal('age', xsd.nonNegativeInteger)),
 
 
 
-## Function `triples()` {#triples}
+# Function `triples()` {#triples}
 
 Asserts multiple triples in the same named graph:
 
 - `triples(graph, triples)`
 
-#### Parameters
+## Parameters
 
 - `graph` A graph name. This must be an IRI (see function [iri()](#iri)).
 - `triples` An array of triples. Every triple is represented by an array of 3 terms: subject, predicate, and object.
 
-#### When to use
+## When to use
 
 It is common for multiple statements to occur in the same graph. In such cases, it is suboptimal to repeat the graph name for multiple uses of the [quad()](#quad) function. In such cases, it is shorter to use the `triples()` function, where the graph name only needs to be specified once.
 
-#### Example
+## Example
 
 Suppose that we want to distinguish between data and metadata assertions. We can do so by asserting them in distinct graphs. The following makes multiple metadata assertions in the metadata graph, followed by multiple data assertions in the data graph.
 
@@ -637,7 +637,7 @@ triples(graph.data,
 ),
 ```
 
-#### See also
+## See also
 
 The `triples()` function is conceptually similar to graph notation in the TriG standard. In TriG, the graph name is specified up front, and the triples within that graph are specified immediately afterwards:
 

@@ -5,38 +5,36 @@ path: "/docs/triply-etl/cli"
 
 TriplyETL includes the following tools that can be used from a command-line:
 
-- [**TriplyETL Generator**](#generator) is used to create a new ETL pipeline.
+- [**TriplyETL Generator**](#generator) is used to create new ETL pipelines.
 - [**TriplyETL Runner**](#runner) is used to run an existing ETL pipeline.
 - [**TriplyETL Tools**](#tools) is used to perform common, isolated tasks.
 - [Update TriplyETL repositories](#update) explains how you can keep your ETL repository up-to-date.
 
-## TriplyETL Generator {#generator}
+# TriplyETL Generator {#generator}
 
-The TriplyETL Generator allows you to create a new ETL.
+The TriplyETL Generator allows you to create new ETL pipelines.
 
-### Prerequisites
+## Prerequisites
 
-In order to use the TriplyETL Generator, you must have the following things:
-- A TriplyETL License Key.
-- A user account on a TriplyDB server.
+In order to use the TriplyETL Generator, you must have:
+- A TriplyETL License Key. Contact <mailto:info@triply.cc> to obtain a License Key for your organisation.
+- A user account on a TriplyDB server. Contact <mailto:info@triply.cc> to set up a TriplyDB server for your organisation, or create a free account over at <https://triplydb.com>.
 
-Contact <mailto:info@triply.cc> for more information.
-
-### Installation
+## Install TriplyETL Generator
 
 Perform the following steps to install the TriplyETL Generator on your computer:
 
-1. Go to <https://nodejs.org> and install Node.js version 18. (Or use a [Node Version Manager](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm).)
+1. Go to <https://nodejs.org> and install Node.js version 18. (Or use a [Node Version Manager](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm) to install multiple versions in an isolated way.)
 
-### Using the Generator
+## Use TriplyETL Generator
 
 Perform the following steps for setting up a new TriplyETL project:
 
 1. Run the TriplyETL Generator:
 
-```
-npx triply-etl-generator
-```
+   ```sh
+   npx triply-etl-generator
+   ```
 
 2. Answer the following questions:
 
@@ -56,7 +54,7 @@ npx triply-etl-generator
 
     Here is an example of a possible run:
 
-    ```
+    ```sh
     npx triply-etl-generator
     ? Project name: my-etl
     ? Target folder: my-etl
@@ -70,17 +68,17 @@ npx triply-etl-generator
 
 3. Go to the target folder:
 
-   ```
+   ```sh
    cd my-etl
    ```
 
 4. Run the ETL:
 
-   ```
+   ```sh
    npx etl
    ```
 
-   See the documentation for the [TriplyETL Runner](#runner) for more information.
+   See the documentation for the [TriplyETL Runner](#runner) for more information on how to run an existing TriplyETL pipeline.
 
 <!--
 ### Advanced options
@@ -104,25 +102,27 @@ In this tutorial you learn how to use the generic record representation that is 
 This section gets you up and running with TriplyETL by setting up increasingly more complex pipelines.  These pipelines will use TriplyETL to connect data sources to an integrated linked data knowledge that is published in a TriplyDB instance.  Some of the documented steps are generic for setting up a modern TypeScript project, while others are specific for using TriplyETL.
 -->
 
-### Updating TriplyETL Generator
+## Update TriplyETL Generator
 
-When you run the TriplyETL Generator, it always checks to see whether a newer version is available. If this is the case, it shows you the command you need to run in order to update it.
+When you run the TriplyETL Generator, it always checks to see whether a newer version is available. If this is the case, it shows you the NPM command that you can run to update.
 
-## TriplyETL Runner {#runner}
 
-TriplyETL Runner allows you to run an existing ETL.
+
+# TriplyETL Runner {#runner}
+
+The TriplyETL Runner is a CLI application that allows you to run an existing ETL pipeline.
 
 If you do not have an ETL yet, use the [TriplyETL Generator](#generator) first to create one.
 
-You invoke the TriplyETL Runner by going to the ETL repository directory in a terminal and executing the following command:
+Go to the directory where the ETL repository was created or cloned. Run the following command to run the ETL pipeline:
 
 ```
 npx etl
 ```
 
-### Output summary
+## Output summary
 
-TriplyETL Runner aways prints a summary at the end of a succesful run:
+TriplyETL Runner always prints a summary at the end of a succesful run:
 
 ```
  ┌──────────────────────────────────────────────────────────────┐
@@ -143,7 +143,7 @@ This summary includes the following statistics:
 - **"Started at"** shows the date and time at which the Runner started.
 - **"Runtime"** shows the wall time duration of the run.
 
-### Limit the number of records
+## Limit the number of records
 
 When developing a pipeline, it is almost never necessary to process all records from the source data. Instead, it is common to run the ETL for a small number of example record, which results in quick feedback.  The `--head` flag indicates the maximum number of records that is processed by the Runner:
 
@@ -152,9 +152,9 @@ npx etl --head 1
 npx etl --head 10
 ```
 
-The above commands run the ETL for the first record (if one is available) and for the first 10 records (if these are available).
+These commands run the ETL for the first record (if one is available) and for the first 10 records (if these are available).
 
-### Specify a range of records
+## Specify a range of records
 
 When developing a pipeline over a large source data collection, it is often standard practice to use the first 10 or 100 records most of the time.
 
@@ -166,7 +166,7 @@ To avoid the downsides of using `--head`, TriplyETL also supports the `--from-re
 npx etl --from-record-id 1000 --head 10
 ```
 
-### Process a specific record
+## Process a specific record
 
 When the `--head` flag is set to 1, the `--from-record-id` flag specifies the index of a single specific record that is processed.  This is useful when a record is known to be problematic, for instance during debugging.
 
@@ -176,7 +176,7 @@ The following command runs TriplyETL for the 27th record:
 npx etl --from-record-id 26 --head 1
 ```
 
-### Set a timeout {#timeout}
+## Set a timeout {#timeout}
 
 For large ETL pipelines, it is sometimes useful to specify a maximum duration for which the TriplyETL Runner is allowed to run. In such cases, the `--timeout` flag can be used.
 
@@ -186,7 +186,7 @@ When the indicated timeout is reached before the pipeline finishes, the TriplyET
 
 For TriplyETLs that run in a CI/CD environment, the timeout must be set lower than the CI/CD timeout, in order for the Runner to be able to perform the termination step.
 
-### Verbose mode
+## Verbose mode
 
 When TriplyETL is run normally, the following information is displayed:
 
@@ -205,7 +205,7 @@ The following example shows how the `--verbose` flag can be used:
 npx etl --verbose
 ```
 
-#### Secure verbose mode
+### Secure verbose mode
 
 Verbose mode may perform a reset of your current terminal session.  If this happens you lose visible access to the commands that were run prior to the last TriplyETL invocation.
 
@@ -217,7 +217,9 @@ export CI=true
 
 This fixes the reset issue, but also makes the output less colorful.
 
-## TriplyETL Tools {#tools}
+
+
+# TriplyETL Tools {#tools}
 
 TriplyETL Tools is a collection of small tools that can be used to run isolated tasks from the command-line.
 
@@ -247,27 +249,51 @@ For each tool from the above table, the following command prints more informatio
 npx tools {command} --help
 ```
 
-## Update TriplyETL repositories {#update}
 
-Triply regularly releases new versions of TriplyETL. You can look up the TriplyETL version that you are currently using, by running the following command:
 
-```
+# Update TriplyETL repositories {#update}
+
+New versions of TriplyETL are released regularly. Moving to a new version is generally a good idea, because it allows new features to be used and will include fixes for known/reported bugs. At the same time, updating to a new version may require changes to your pipeline.
+
+It is important to determine an approach for updating your TriplyETL repositories that fits your project and organisation. The following sections describe how you can make such a determination.
+
+## Check the current version
+
+You can look up which version of TriplyETL you are currently using, by running the following command:
+
+```sh
 npm list @triplyetl/etl
 ```
 
-You can look at the [TriplyETL Changelog](/docs/triply-etl/changelog) to observe the latest available TriplyETL version, and the differences between the latest version and your current version. Specifically observe items that are marked "[Changed]" since these may require a rewrite of your configuration.
-
-TriplyETL repositories also include several developer dependencies, that make it easier to write and maintain ETLs. These developer dependencies are not part of the TriplyETL software, and must therefore be updated independently.
+## Check for new versions
 
 You can run the following command to see whether TriplyETL and/or the developer dependencies can be updated:
 
-```
+```sh
 npm outdated
 ```
 
-Based on the output of the previous command, a maintainer of the repository can choose to update either a specific dependency, or all dependencies:
+TriplyETL repositories also include several developer dependencies, that make it easier to write and maintain ETLs. These developer dependencies must be updated independently, and may show up in the output of the `npm outdated` command.
 
-```
+## Assess the impact of updating
+
+TriplyETL uses the Semantic Versioning approach: `{major}.{minor}.{patch}`  The impact of updating to a new TriplyETL version can therefore be assessed as follows:
+
+  - If only the `{patch}` number has increased, then an upgrade is not expected to affect existing functionality.  The new release only contains bug fixes and/or small changes to functionality that does not break existing pipelines.
+
+  - If the `{minor}` number has increased, but the `{major}` number is the same, then an upgrade may require small changes to an existing pipeline.  A minor upgrade will never remove existing functionality, but it may change details of how existing functionality works (e.g. the settings for an existing function may have undergone minor changes).
+
+    Minor releases are likely to include significant *new* functionality that may benefit an existing pipeline.
+
+  - If the `{major}` number has increased, an upgrade is likely to require changes to existing pipelines.  Major releases often remove outdated functionalities or bring significant changes to the behavior of existing functionalities.
+
+Look at the [TriplyETL Changelog](/docs/triply-etl/changelog) to see what changes you will need to make in order to perform the update in your project and organisation. Specifically observe items that are marked "[Changed]" since these may require adjustments to your configuration.
+
+## Perform the update
+
+Based on the outcome of the previous step, a maintainer of the repository can choose to update a specific dependency, or all dependencies at once:
+
+```sh
 npm update {package-name}
 npm update
 ```

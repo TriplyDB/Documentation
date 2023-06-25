@@ -5,7 +5,9 @@ path: "/docs/triply-etl/validate/shacl"
 
 This page documents how SHACL is used to validate linked data in the internal store of your ETL pipeline.
 
-## Prerequisites
+
+
+# Prerequisites
 
 SHACL Validation can be used when the following preconditions are met:
 
@@ -18,7 +20,9 @@ The function for running SHACL Validation is imported as follows:
 import { validate } from '@triplyetl/etl/shacl'
 ```
 
-## A complete example
+
+
+# A complete example
 
 We use the following full TriplyETL script to explain the validation feature. Do not worry about the length of the script; we will go through each part step-by-step.
 
@@ -67,6 +71,7 @@ export default async function (): Promise<Etl> {
 }
 ```
 
+
 ## Step 1: Source data
 
 In our example we are using the following source data that records the age of a person:
@@ -84,6 +89,7 @@ In our example the data source is [inline JSON](/docs/triply-etl/extract/types#i
 fromJson([{ age: 'twelve', id: '1' }]),
 ```
 
+
 ## Step 2: Target data (informal)
 
 Based on the source data in Step 1, we want to publish the following linked data in TriplyDB:
@@ -93,6 +99,7 @@ id:123
   a foaf:Person;
   foaf:age 'twelve'.
 ```
+
 
 ## Step 3: Information Model (informal)
 
@@ -110,6 +117,7 @@ classDiagram
 ```
 
 This Information Model specifies that instances of class `foaf:Person` must have exactly one value for the `foaf:age` property.  Values for this property must have datatype `xsd:nonNegativeInteger`.
+
 
 ## Step 4: Transformation
 
@@ -132,6 +140,7 @@ However, a linked data expert may notice that the value `'twelve'` from the sour
 How can we automate such checks?  The above example is relatively simple, so a linked data expert may notice the error and fix it.  But what happens when the ETL configuration is hundreds of lines long and is spread across multiple files?  What happens when there is a large number of classes, and each class has a large number of properties?  What if some of the properties are required, while others are optional?  Etc.  Obviously, any real-world ETL will quickly become too complex to validate by hand.  For this reason, TriplyETL provides automated validation.
 
 Triply considers having an automated validation step best practice for *any* ETL.  This is the case even for small and simple ETLs, since they tend to grow into complex ones some day.
+
 
 ## Step 5: Information Model (formal)
 
@@ -165,6 +174,7 @@ Notice the following details:
 - Elements in our Information Model are always in a one-to-one correspondence with elements in our Knowledge Model:
   - Node shapes such as `shp:Person` relate to a specific class such as `foaf:Person`.
   - Property shapes such as `shp:Person_age` relate to a specific property such as `foaf:age`.
+
 
 ## Step 6: Use the `validate()` function
 
@@ -210,6 +220,7 @@ Notice that the requirement that was violated (`shp:Person_age`) is mentioned in
 
 If we want to take a look at a concrete example in our instance data, we can also take look at node `id:1` which is also mentioned in the notfication.
 
+
 ## Step 7: Fix the validation error
 
 Now that we receive the automated validation error in Step 6, we can look for ways to fix our ETL.  Let us take one more look at our current assertions:
@@ -244,11 +255,11 @@ As in any ETL error, there are 3 possible solutions:
 2. Change the ETL transformations and/or assertions.
 3. Change the Information Model.
 
-### Option 1: Change the source data
+## Option 1: Change the source data
 
 In this case, changing the data in the source system seem the most logical.  After all, there may be multiple ways in which the age of a person can be described using one or more English words.  Expressing ages numerically is a good idea in general, since it will make the source data easier to interpret.
 
-### Option 2: Change the transformation and/or assertions
+## Option 2: Change the transformation and/or assertions
 
 Alternatively, it is possible to transform English words that denote numbers to their corresponding numeric values.  Since people can get up to one hundred years old, or even older, there are many words that we must consider and transform.  This can be done with the [`translateAll()` transformation](/docs/triply-etl/transform/ratt#translateall):
 
@@ -273,7 +284,7 @@ pairs(iri(prefix.id, 'id'),
 
 But even the above transformation may not suffice.  The same number can be expressed in multiple ways in natural language, so the mapping will never be truly complete and reliable.  This seems to be the worst of the three options in this case.
 
-### Option 3: Change the Information Model
+## Option 3: Change the Information Model
 
 Finally, we could loosen the Information Model.  For example, we could change the datatype to check for strings:
 
@@ -285,9 +296,7 @@ But that would invalidate ETLs that generate numeric ages for persons, even thou
 
 Alternatively, we can remove the `sh:datatype` requirement from our Information Model entirely.  That would allow either string-based ages or numeric ages to be specified.  But now even weirder values for age, e.g. `'2023-01-01'^^xsd:date`, would be considered valid values for age.
 
-
-
-## End notes
+## Reflections on which option to choose
 
 Notice that TriplyETL does not tell you which of the 3 options you should follow in order to fix issues in your ETL.  After all, creating an ETL requires domain knowledge based on which you weight the pros and const of different options.  However, TriplyETL does give you the tools to discover issues that prompt you to come up with such solutions.  And once you have decided on a specific solution, TriplyETL provides you with the tools to implement it.
 
@@ -308,7 +317,7 @@ etl.use(
 ```
 
 
-### Validation report
+# Validation report
 
 Validation creates a report that is asserted in linked data.  This report can be stored as a named graph in the created linked dataset.
 
@@ -336,7 +345,7 @@ etl.use(
 
 
 
-### Termination conditions
+# Termination conditions
 
 The `validate()` function can optionally be given the `terminateOn` option.  This option determines when validation halts.  It can take the following values:
 

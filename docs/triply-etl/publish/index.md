@@ -21,7 +21,9 @@ graph LR
   tdb[(Triple Store)]
 ```
 
-## Remote data destinations
+
+
+# Remote data destinations
 
 Destinations are usually online locations in TriplyDB where the output of your pipeline will be published.
 
@@ -47,7 +49,8 @@ The following options can be specified to configure the destination behavior:
 </dl>
 
 
-## Local data destinations
+
+# Local data destinations
 
 TriplyETL supports publishing RDF output into a local file.  This is not often used, because files lack many of the features that TriplyDB destinations support, such as:
 
@@ -64,7 +67,7 @@ Destination.file('my-file.trig'),
 
 
 
-## Static and Dynamic destinations
+# Static and Dynamic destinations
 
 Destinations can be defined as static objects meaning that you can define destination beforehand. But it might be the case that you want to have multiple destinations for different records. In this case, you would need a dynamic destination, which should change based on certain information inside your source data.
 
@@ -84,7 +87,7 @@ const etl = new Etl({
 
 
 
-## Configuring multiple TriplyDB instances
+# Configuring multiple TriplyDB instances
 
 It is possible to use multiple TriplyDB instances in one TriplyETL pipeline.
 
@@ -121,7 +124,7 @@ const etl = new Etl({
 
 
 
-## Direct copying of source data to destination
+# Direct copying of source data to destination
 
 TriplyETL supports copying sources directly to destination locations. This function is useful when you already have linked data that is used as a source, but is also needed at the destination. An example would be the information model. This would be available as a source, and with the copy function it can be uploaded to TriplyDB via TriplyETL.
 
@@ -139,7 +142,7 @@ The function destination expects that source data is linked data. Copying a sour
 
 
 
-## Using TriplyDB.js in TriplyETL
+# Using TriplyDB.js in TriplyETL
 
 All operations that can be performed in a TriplyDB instance can be automated with classes and methods in the [TriplyDB.js](triplydb-js) library.  This library is also used by TriplyETL in the background to implement many of the TriplyETL functionalities.
 
@@ -163,7 +166,7 @@ await user.setAvatar('my-avatar.png')
 
 
 
-## Setting up acceptance/production runs
+# Setting up Acceptance/Production runs (DTAP)
 
 When working on a pipeline it is best to at least run it in the following two modes:
 
@@ -177,69 +180,58 @@ When working on a pipeline it is best to at least run it in the following two mo
 Having multiple modes ensures that the production version of a dataset is not accidentally overwritten during development.
 
 ```ts
-destination remote = process.env['TARGET']=='Production'
-  ? Destination.TriplyDb.rdf(account, dataset, {overwrite: true}),
-  : Destination.TriplyDb.rdf(account+'-'+dataset, {overwrite: true})
+export function account(): any {
+  switch (Etl.environment) {
+    case 'Development':
+      return undefined
+    case 'Testing':
+      return 'my-org-testing'
+    case 'Acceptance':
+      return 'my-org-acceptance'
+    case 'Production':
+      return 'my-org'
+  }
+}
+
 const etl = new Etl()
 etl.use(
-  ...
-  toRdf(destination),
+  // Your ETL pipeline is configured here.
+  toRdf(Destination.triplyDb.rdf(account(), 'my-dataset')),
 )
 ```
 
-If you want to run the pipeline in production mode, set the following environment variable:
+By default, you run the pipeline in Development mode. If you want to run in another mode, you must set the `ENV` environment variable. You can do this in the `.env` file of your TriplyETL repository.
 
-```ts
-export TARGET=Production
+For example, the following runs the pipeline in Testing mode:
+
+```
+ENV=Testing
 ```
 
+You can also set the `ENV` variable in the GitLab CI/CD environment. This allows you to automatically run different pipelines, according to the DTAP approach for production systems.
 
 
-## Upload prefixes
 
-After loading the graphs, we can also upload other important elements in Linked data, such as the prefixes. This can be done by combining TriplyETL functionality (```app.after```, ```app.prefix```) with TriplyDbjs functionality (```app.triplyDb.getOrganization```, ```app.triplyDb.getUser()``` etc.).
+# Upload prefix declarations
 
-1. You have to set the prefixes:
+At the end of a TriplyETL script, it is common to upload the [prefix declarations](/docs/triply-etl/declare#declarePrefix) that are configured for that pipeline. 
+
+This is often done directly before or after graphs are uploaded (function [toRdf()](#toRdf)):
 
 ```ts
-const prefix_def = declarePrefix('http://example.com/def/')
-const prefix_id = declarePrefix('http://example.com/id/')
+import { declarePrefix, toRdf, uploadPrefixes } from '@triplyetl/etl/generic'
+
 const prefix = {
-  def: prefix_def,
-  graph: prefix_id,
+  // Your prefix declarations.
 }
-```
 
-2. Then you have to include the prefixes in the ETL:
-
-```ts
 export default async function(): Promise<Etl> {
-  const etl = new Etl({
-    prefixes: prefix,
-    sources: {
-      // Etc
-    },
-    destinations: {
-      // Etc
-    },
-  })
-  // Etc
+  const etl = new Etl({ prefixes: prefix })
+  etl.run(
+    // You ETL pipeline
+    toRdf({ account: 'my-account', dataset: 'my-dataset' }),
+    uploadPrefixes({ account: 'my-account', dataset: 'my-dataset' }),
+  )
+  return etl
 }
-```
-
-3. After finishing with the main body of the ETL and closing `etl.use()`, you can use the below snippet to upload the prefixes under a specific organization, inside `etl.after`.
-
-```ts
-etl.after(
-  async () => {
-    const dataset0 =await (await app.triplyDb.getOrganization(organization)).getDataset(dataset)
-    await dataset0.addPrefixes(mapValues(app.prefix, prefix => prefix('').value))
-  }
-)
-```
-
-You can upload the prefixes similarly under your account, using the relevant TriplyDbjs function. Also, note that ```mapValues``` is a function of *lodash*. For this reason, you will need to import it in the beginning of your script.
-
-```ts
-import { mapValues } from 'lodash-es'
 ```

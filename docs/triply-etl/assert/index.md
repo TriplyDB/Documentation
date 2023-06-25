@@ -30,7 +30,7 @@ TriplyETL supports the following assertion approaches:
 - 3B. [**JSON-LD**](/docs/triply-etl/assert/json-ld) can be used to assert data according to a JSON-LD Context.
 -->
 
-### Next steps
+## Next steps
 
 After linked data has been asserted into the Internal Store, the following steps can be performend:
 

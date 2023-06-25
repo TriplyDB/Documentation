@@ -7,7 +7,7 @@ This page documents how you can declare prefixes, graph names, vocabulary terms,
 
 
 
-## Prefix declarations
+# Prefix declarations {#declarePrefix}
 
 Linked data uses IRIs for uniquely identifying most data items. Since IRIs can be long and complex, it is a best practice to declare short aliases that can be used to abbreviate them. Such aliases are introduced in prefix declarations.
 
@@ -58,9 +58,9 @@ See assertion functions [iri()](/docs/triply-etl/assert/ratt#iri) and [str()](/d
 
 
 
-### External prefix declarations
+# External prefix declarations
 
-In linked data it is common to reuse existing vocabularies and datasets. TriplyETL allows you to use popular namespaces from predefined prefix declarations.
+In linked data, it is common to reuse existing vocabularies and datasets. TriplyETL allows you to use popular namespaces from predefined prefix declarations.
 
 Popular namespaces are imported from the vocabulary library:
 
@@ -71,19 +71,32 @@ import { prefix } from '@triplyetl/etl/vocab'
 For example, you can use the prefix declaration for DBpedia resources as follows:
 
 ```ts
-iri(prefix.dbr, 'cityName'),
+iri(prefix.dbr, 'cityName')
 ```
 
 This may create IRIs like the following:
 
-```iri
+```turtle
 http://dbpedia.org/resource/Amsterdam
 http://dbpedia.org/resource/Berlin
 ```
 
+You can use the prefix declaration for XML Schema Datatypes as follows:
+
+```ts
+literal('cityName', xsd.string)
+```
+
+This may create literals like the following:
+
+```turtle
+'Amsterdam'^^xsd:string
+'Berlin'^^xsd:string
+```
 
 
-## Vocabulary declarations {#vocabulary}
+
+# Vocabulary declarations {#vocabulary}
 
 Vocabularies are collections of IRIs that have the same namespace. The namespace can be declared with a prefix (see [Prefix declarations](#prefix-declarations)). We use the following prefix declaration as the namespace for our vocabulary:
 
@@ -157,9 +170,9 @@ graph LR
 
 
 
-### External vocabulary declarations {#external-vocabularies}
+# External vocabularies {#external-vocabularies}
 
-In linked data it is common to reuse existing vocabularies. Popular vocabularies can be imported from the TriplyETL vocabulary library:
+In linked data, it is common to reuse existing vocabularies. Popular vocabularies can be imported from the TriplyETL vocabulary library:
 
 ```ts
 import { a, foaf, owl, premis } from '@triplyetl/etl/vocab'
@@ -191,7 +204,7 @@ triple(iri(id, 'some-location'), a, premis.StorageLocation),
 
 
 
-### Custom abbreviations
+# Custom abbreviations
 
 The custom abbreviation `a` is available in the popular Turtle/TriG/SPARQL languages. TriplyETL allows you to introduce this custom abbreviation from the vocabulary library:
 
@@ -218,7 +231,7 @@ This may make assertions more readable for users from certain domains. For examp
 
 
 
-### Instance declarations
+# Instance declarations
 
 The same approach that is used for [vocabulary declarations](#vocabulary-declarations) can also be used for instance declarations.
 
@@ -240,7 +253,7 @@ triple(person.john, def.knows, person.mary),
 
 
 
-### Graph name declarations
+# Graph name declarations
 
 A linked dataset contains one or more graphs. Each graph can be given a name. It is common practice to declare a fixed set of graph names that will be used throughout the TriplyETL configuration.
 

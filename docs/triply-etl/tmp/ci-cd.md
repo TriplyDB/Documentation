@@ -1,6 +1,5 @@
 This document explains how to maintain an ETL that runs in the gitlab CI.
 
-
 # How to create a TriplyETL CI pipeline?
 
 - Use the TriplyETL boilerplate from [this repository](https://git.triply.cc/triply/boilerplates), specifically the etl folder.
@@ -31,28 +30,3 @@ This defines *when* a job should run. If a job does not have an `only:` configur
       - $JOB == "$CI_JOB_NAME"
 ```
 This means that we only run this job if there a `JOB` environment variable that is the same as `CI_JOB_NAME`. Notice that the `CI_JOB_NAME` is a default environment variable that gitlab gives us and that equals the name of the job, e.g. `production` (see other predefined variables [here](https://docs.gitlab.com/ee/ci/variables/predefined_variables.html)).  If you want to run this specific job, `JOB` is the environment variable that you should set in the pipeline schedule page. In other words, if you set `JOB=production` in the pipeline schedule page, then using the above `only:` rule, only the intended job will run.
-
-
-
-
-# FAQ
-
-### Why does my pipeline schedule only run an `install` job?
-
-This probably means that none of the `only:` rules in your `.gitlab-ci.yml` file match. You should check whether the variables you've set in the pipelines schedules page match with the `only:` rules in your .gitlab-ci.yml file.
-
-### I made a change to the `.gitlab-ci.yml` file and after I push I see a pipeline failed with status `yaml invalid`. How can I fix this?
-
-Copy-past your `.gitlab-ci.yml` file [here](https://git.triply.cc/triply/ratt/-/ci/lint) and press `validate`. This should show in more details what is wrong with the yml file.
-
-### Why is my pipeline not running and marked as 'pending'?
-
-This probably means that you have not configured an ETL runner for this customer organisation yet. See the section about getting started [here](#how-to-create-a-ratt-ci-pipeline)
-
-### What do all these `$CI_...` environment variables mean?
-
-These are environment variables added by gitlab. To see what they mean, go to [this](https://docs.gitlab.com/ee/ci/variables/predefined_variables.html) gitlab documentation page, also mentioned above.
-
-### What should I do when the pipeline fail when I commit in a personal project?
-
-In a personal repository, you have available runners, but shared ones. Thus, your pipelines will fail. This is expected and it is not an issue. You can either ignore the failed pipeline or remove `gitlab-ci.yml` from the repository.

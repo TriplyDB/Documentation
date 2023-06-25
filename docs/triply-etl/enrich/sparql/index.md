@@ -5,9 +5,11 @@ path: "/docs/triply-etl/enrich/sparql"
 
 SPARQL Update is a powerful feature that allows you to modify and enrich linked data in the internal store. With SPARQL Update, you can generate new linked data based on existing linked data, thereby enhancing the content of the store.
 
-*Support for SPARQL Update is current experimental. In the meantime, you can use [SHACL Rules](/docs/triply-etl/enrich/shacl) to implement the Enrich Step of your pipeline.*
+*Support for SPARQL Update is currently experimental. In the meantime, you can use [SHACL Rules](/docs/triply-etl/enrich/shacl) to implement the Enrich Step of your pipeline.*
 
-## Prerequisites
+
+
+# Prerequisites
 
 The function for executing SPARQL Update requests is imported as follows:
 
@@ -15,7 +17,9 @@ The function for executing SPARQL Update requests is imported as follows:
 import { update } from '@triplyetl/etl/sparql'
 ```
 
-## Add data to the internal store
+
+
+# Add data to the internal store
 
 SPARQL Update can be used to add linked data to the internal store. The following example adds one triple:
 
@@ -43,7 +47,7 @@ base <https://triplydb.com/>
 <john> <knows> <mary>.
 ```
 
-### Using prefix declarations
+## Using prefix declarations
 
 Notice that the SPARQL Update function takes a plain string. Any typos you make in this string will only result in errors at runtime, when the query string is interpreted and executed.
 
@@ -87,7 +91,9 @@ prefix sdo: <https://schema.org/>
   sdo:gender sdo:Male.
 ```
 
-## Remove data from the internal store
+
+
+# Remove data from the internal store
 
 While there are not many uses cases for removing data from the internal store, this is an operation that is supported by the SPARQL Update standard.
 
@@ -101,7 +107,9 @@ delete data { <john> sdo:children <mary>. }`),
 
 You can use the debug function [logQuads()](/docs/triply-etl/debug#logQuads) before and after this function call, to see the effects on the internal store.
 
-## Conditionally adding/removing data
+
+
+# Conditionally adding/removing data
 
 SPARQL Update can be used to conditionally add and/or remove linked data to/from the internal store. It uses the following keywords for this:
 
@@ -155,7 +163,7 @@ where {
 }
 ```
 
-<!--
+<!-- TODO
 ## Moving data between graphs
 
 This operation reads the contents of a document representing a graph and loads it into a graph in the Graph Store.

@@ -11,7 +11,9 @@ The SHACL Rules engine in TriplyETL processes rules iteratively. This supports r
 
 See the [enrichment step overview page](/docs/triply-etl/enrich) for other enrichment approaches.
 
-## Prerequisites
+
+
+# Prerequisites
 
 SHACL Rules can be used when the following preconditions are met:
 
@@ -26,11 +28,13 @@ import { executeRules } from '@triplyetl/etl/shacl'
 
 TriplyETL supports two kinds of SHACL Rules: Triple Rules and SPARQL Rules. The rest of this page describes two complete examples of the use of SHACL Rules: the first one uses Triple Rules, and the second uses SPARQL Rules.
 
-## A complete example with Triple Rules
+
+
+# A complete example with Triple Rules
 
 This section describes a complete example that makes use of Triple Rules. These are SHACL Rules that assert exactly one triple. Every rule that can be implemented with Triple Rules can also be implemented with SPARQL Rules, but Triple Rules sometimes simpler to use, since they do not require knowledge of the SPARQL language.
 
-### Step 1: Load instance data {#stepA1}
+## Step 1: Load instance data {#stepA1}
 
 We first need to load some instance data, so that we can apply a rule and enrich the loaded data with some new data. We use linked data assertions that state that John is a person, who has a child (Mary), and whose gender is male:
 
@@ -69,7 +73,7 @@ graph
   end
 ```
 
-### Step 2. Formulate the SHACL rule {#stepA2}
+## Step 2. Formulate the SHACL rule {#stepA2}
 
 In Step 1 we applied a rule to the instance John. But our dataset may contain information about many other people too: people with or without children, people with different genders, etc.
 
@@ -112,7 +116,7 @@ Notice the following details:
 - The assertion is that the person is a father. Since we use a Triple Rule, this is expressed by the properties `sh:subject`, `sh:predicate`, and `sh:object`.
 - Notice that the term `sh:this` is used to refer to individuals for whom all conditions are met (in our example: John).
 
-### Step 3: Write and run the script
+## Step 3: Write and run the script
 
 We can store the instance data (i.e., the first linked data snippet in [Step 1](#stepA1)) in a file called `instances.trig`, and we can store the model (i.e., the linked data snippet in [Step 2](#stepA2)) in a file called `model.trig`.
 
@@ -145,7 +149,9 @@ When we run this script (command `npx etl`), the following linked data is logged
 
 Notice that the fatherhood assertion was correctly added to the internal store, based on the SHACL rule in the data model.
 
-## A complete example with SPARQL Rules
+
+
+# A complete example with SPARQL Rules
 
 This section describes a complete example that makes use of SPARQL Rules. These are SHACL Rules that assert an arbitrary number of triples. Every rule that can be implemented with Triple Rules, can also be implemented with SPARQL Rules.
 
@@ -208,7 +214,9 @@ When we run this script (command `npx etl`), the linked data results are also th
 
 Notice that the fatherhood assertion was correctly added to the internal store, based on the SHACL rule in the data model.
 
-## Another example using SPARQL Rules
+
+
+# Another example with SPARQL Rules
 
 In this example, we start out with a data source that is not linked data:
 

@@ -1,49 +1,4 @@
----
-title: "TriplyETL: Numeric data"
-path: "/docs/triply-etl/numeric-data"
----
-
-## Cast numeric data
-
-Some source data formats are unable to represent numeric data. A common example of this is CSV/TSV, where every cell in a table is represented as a string.
-
-If a source data format that cannot represent numeric data is used, it is often useful to cast such strings to numbers in TriplyETL using the `custom.change()` function.
-
-For example, assume the following input table using strings to encode the number of inhabitants for each country:
-
-| Country     | Inhabitants   |
-| ----------- | ------------- |
-| France      | ''            |
-| Germany     | '83190556'    |
-| Italy       | 'empty'       |
-| Netherlands | '17650200'    |
-
-We can cast values with the `'Inhabitants'` key to a number in the following way:
-
-```ts
-custom.change({
-  key: 'Inhabitants',
-  type: 'unknown',
-  change: value => +(value as number),
-}),
-```
-
-Notice that the type must be set to `'unknown'` because a string is not allowed to be cast to a number in TypeScript (because not every stringcan* be cast to a number).
-
-After the `custom.change()` has been applied, the TriplyETL record looks like this:
-
-| Country     | Inhabitants |
-| ----------- | ----------- |
-| France      | 0           |
-| Germany     | 83190556    |
-| Italy       | null        |
-| Netherlands | 17650200    |
-
-Notice that strings that encode a number are correctly transformed, and non-empty strings that do not encode a number are transformed to `null`.  Most of the time, this is exactly the behavior that you want in a linked data pipeline.  When [creating statements](#create-statements) later, no statement will be created for entries that have value `null`.  See the [section on working with null values](#null-values) for more information.
-
-Also notice that the empty string is cast to the number zero.  Most of the time, this isnot* what you want.  If you want to prevent this transformation from happening, and you almost certainly do, you must [process this data conditionally](#process-data-conditionally).
-
-### Create dynamic statements
+# Create dynamic statements
 
 Dynamic statements are statements that are based on some aspect of the source data.
 
@@ -96,7 +51,6 @@ Notice the following details:
 - `literal` is used to create a dynamic literal term.
 - For literals a datatype IRI can be specified.  If no datatype IRI is specified then the default IRI is `xsd.string`.
 
-<!-- TODO
 `iri.hashed`can be used instead of `iri` when the ETL has a high number of blank nodes and they need more than one constant as input to hash a unique IRI.
 
 ```ts
@@ -110,10 +64,8 @@ app.use(
 
 Notice the following details:
 - `input_string` can pass more than one constant to hash a unique IRI term.
--->
 
-<!-- TODO
-#### Static and dynamic triples
+# Static and dynamic triples
 
 Be aware that there are different approaches forstatic* anddynamic* IRIs:
 
@@ -145,7 +97,7 @@ Notation [3a] creates thedynamic* IRI in [3b], assuming the `"person"` key conta
 ```
 -->
 
-#### When should you use an IRI instead of an URI literal?
+# When should you use an IRI instead of an URI literal?
 
 An IRI is used to identify something, for example the city of Amsterdam. It is expected that accessing it returns linked data. An IRI can be used to make assertions about a subject. On the other hand, a URI is expected to return a non-linked data content, for example an HTML website, and can be used as objects in linked data, for example for inserting further information about the subject resource.
 In the example below, the subject IRI is described further by the object's URL.
@@ -156,7 +108,7 @@ In the example below, the subject IRI is described further by the object's URL.
 
 An IRI can be created with `iri()`, while an URI is created by using `literal()`.
 
-#### Limitation of `literal()` and `iri()`
+# Limitation of `literal()` and `iri()`
 
 There is a limitation for both `literal()` and `iri()`.  It is not possible to change the value in the record in the `literal()` and `iri()` assertions.  The value that is at that moment stored in the record for that key, is then added as either an IRI when called with the `iri()` function or as a literal when called with the function `literal()`.
 

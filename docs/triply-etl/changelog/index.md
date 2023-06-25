@@ -9,11 +9,11 @@ You can use this changelog to perform a safe upgrade from an older version of Tr
 
 
 
-## Changelog for TriplyETL 2.0.6
+# Changelog for TriplyETL 2.0.6
 
 Release date: 2023-06-07
 
-### [Added] Support for the PREMIS vocabulary
+## [Added] Support for the PREMIS vocabulary
 
 Support was added for the PREMIS 3.0.0 vocabulary. This vocabulary is published by the Library of Congress and can be used to publish metadata about the preservation of digital objects. See the [PREMIS documentation](https://id.loc.gov/ontologies/premis-3-0-0.html) for more information.
 
@@ -35,13 +35,13 @@ triple(iri(id, 'some-location'), a, premis.StorageLocation),
 
 See the documentation about [external vocabulary declarations](/docs/triply-etl/declare#external-vocabularies) for more information.
 
-### [Added] New debug function logMemory()
+## [Added] New debug function logMemory()
 
 A new debug function [logMemory()](/docs/triply-etl/debug#logMemory) is added. This function prints an overview of the current memory usage of TriplyETL. This allows users to detect fluctuations in memory consumption inside their pipelines.
 
 See the [debug functions documentation page](/docs/triply-etl/debug#logMemory) for more information.
 
-### [Added] Support for the `ListIdentifiers` verb in the OAI-PMH extractor
+## [Added] Support for the `ListIdentifiers` verb in the OAI-PMH extractor
 
 The `fromOai()` extractor already supported the `ListRecords` verb. This release adds support for the `ListIdentifiers` verb. The latter allows used to stream through the headers of all records in an OAI-PMG collection, without requiring the full record (i.e. body) to be retrieved as well.
 
@@ -49,11 +49,11 @@ See the [fromOai()](/docs/triply-etl/extract/formats#fromOai) documentation for 
 
 
 
-## Changelog for TriplyETL 2.0.5
+# Changelog for TriplyETL 2.0.5
 
 Release date: 2023-05-25
 
-### [Changed] New default engine for SPARQL Construct
+## [Changed] New default engine for SPARQL Construct
 
 The default engine for evaluating SPARQL Construct queries (function [construct()](/docs/triply-etl/enrich/sparql)) has changed from Comunica to Speedy. Speedy is a new SPARQL implementation that is developed by Triply; Comunica is an open source engine that is developed by the open source community. Since SPARQL is a standardized query language, this change should not cause a difference in behavior for your ETL pipelines.
 
@@ -67,11 +67,11 @@ construct(Source.TriplyDb.query('my-query'), { sparqlEngine: 'comunica' }),
 
 The benefit of switching to the Speedy engine is that this engine is expected to be faster for most queries. Overall, this change will therefore result in speed improvements for your TriplyETL pipelines.
 
-### [Added] New CLI tool for comparing graphs
+## [Added] New CLI tool for comparing graphs
 
 The new CLI tool [compare](/docs/triply-etl/cli#tools-compare) allows graph comparison to be performed from the command-line. This uses the same algorithm that is used by the [compareGraphs()](/docs/triply-etl/validate/graph-comparison) validator function.
 
-### Bug fixes
+## Bug fixes
 
 This release includes the following bug fixes:
 
@@ -81,11 +81,11 @@ This release includes the following bug fixes:
 
 
 
-## Changelog for TriplyETL 2.0.4
+# Changelog for TriplyETL 2.0.4
 
 Release date: 2023-05-11
 
-### [Enhanced] Better output for checking graph isomorphism
+## [Enhanced] Better output for checking graph isomorphism
 
 Before this release, when two graphs were not isomorph and their difference consisted of a mapping from blank nodes onto blank nodes exclusively, an empty difference message was communicated.
 
@@ -131,11 +131,11 @@ It is possible to map `_:2a` and `_:2b` onto `_:1`, but there is no mapping that
 
 
 
-## Changelog for TriplyETL 2.0.3
+# Changelog for TriplyETL 2.0.3
 
 Release date: 2023-05-10
 
-### Bug fixes
+## Bug fixes
 
 This release includes the following bug fixes:
 
@@ -144,11 +144,11 @@ This release includes the following bug fixes:
 
 
 
-## Changelog for TriplyETL 2.0.2
+# Changelog for TriplyETL 2.0.2
 
 Release date: 2023-05-09
 
-### Bug fixes
+## Bug fixes
 
 This release fixes bugs related to the recent switch from CommonJS to ESM:
 
@@ -157,11 +157,11 @@ This release fixes bugs related to the recent switch from CommonJS to ESM:
 
 
 
-## Changelog for TriplyETL 2.0.1
+# Changelog for TriplyETL 2.0.1
 
 Release date: 2023-05-03
 
-### [Added] Timeout flag for TriplyETL Runner
+## [Added] Timeout flag for TriplyETL Runner
 
 The TriplyETL Runner is the CLI tool that is used to run ETL pipelines. Starting with this version, you can specify a `--timeout` flag when using the TriplyETL Runner.
 
@@ -171,11 +171,11 @@ See the [TriplyETL Runner documentation page](/docs/triply-etl/cli#timeout) for 
 
 
 
-## Changelog for TriplyETL 2.0.0
+# Changelog for TriplyETL 2.0.0
 
 Release date: 2023-05-01
 
-### [Changed] Modules infrastructure moves from CommonJS to ESM
+## [Changed] Modules infrastructure moves from CommonJS to ESM
 
 Before this release, TriplyETL used CommonJS modules to modularize its functionality into different components. Starting in this release, ECMAScript Modules (ESM) are used to modularize TriplyETL functionality into different modules.
 
@@ -187,7 +187,7 @@ All documentation examples were update to use ESM syntax for module imports, for
 import { logRecord } from '@triplyetl/etl/debug'
 ```
 
-### [Changed] Debug functions move to a new module
+## [Changed] Debug functions move to a new module
 
 Before this release, debug functions like `logRecord()` and `startTrace()` were part of the RATT module. Since debug functions are generic / not RATT-specific, they were moved into a new module.
 
@@ -197,11 +197,11 @@ Function are imported from this new module in the following way:
 import { logRecord, traceEnd, traceStart } from '@triplyetl/etl/debug'
 ```
 
-### [Enhanced] Better error messages when things go wrong
+## [Enhanced] Better error messages when things go wrong
 
 This release introduces a new approach for communicating errors back to the user. When TriplyETL functionality detects an error condition, a unified 'trace middleware' is now used to retrieve information from the environment in which the error occurred. This information is then printed to the error output stream for communication with the user.
 
-### Bug fixes
+## Bug fixes
 
 The following bug fixes are included in this release:
 
@@ -210,6 +210,6 @@ The following bug fixes are included in this release:
 - When a key with a NULL value was accessed, the name of the key is now included in the error message.
 
 
-## Start of the changelog
+# Start of the changelog
 
 TriplyETL 1.0.0 was released on 2023-03-20.

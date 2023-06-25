@@ -7,7 +7,7 @@ RATT transformations are a core set of functions that are commonly used to chang
 
 RATT transformations started out as [TypeScript transformations](/docs/triply-etl/transform/typescript) that turned out to be useful in a wide variety of TriplyETL pipelines. Triply maintains this core set of transformation functions to allow new ETLs to make use of off-the-shelf functionality that has proven useful in the past.
 
-## Overview
+# Overview
 
 The following transformation functions are currently available:
 
@@ -40,19 +40,17 @@ The following transformation functions are currently available:
 
 
 
-## Function `addHashedIri()` {#addHashedIri}
-
-#### Description
+# Function `addHashedIri()` {#addHashedIri}
 
 Creates an IRI based on the specified IRI prefix and the hash calculated over the input content string(s).
 
-#### Parameters
+## Parameters
 
 - `prefix` An IRI, or a key that contains an IRI value.
 - `content` A key that contains a string value, or a string value specified with function [str()](/docs/triply-etl/assert/ratt#str).
 - `key` A new key where the created hashed IRI is stored.
 
-#### Use cases
+## Use cases
 
 This function is used under the following circumstances:
 1. You want to identify something with an IRI.
@@ -63,7 +61,7 @@ A benefit of `addHashedIri()` is that the created IRIs are the same across diffe
 
 A downside of `addHashedIri()` is that it can take a lot of time to figure out which set of properties make every IRI unique. (In database theory this process is known as 'composite key detection'.)  Furthermore, having to adjust the hashed content later may pose a maintenance burden.
 
-#### Example: Lazy identifiers
+## Example: Lazy identifiers
 
 Some source data does not include good identifiers for all data items.
 
@@ -119,7 +117,7 @@ graph LR
   classDef meta fill:sandybrown
 ```
 
-#### Example: Statement Reification
+## Example: Statement Reification
 
 The RDF standard allows individual statements to be identified. This approach is called 'Statement Reification' and is often used for asserting metadata about statements or to represent modalities such as probability or belief.
 
@@ -195,9 +193,9 @@ graph TB
 
 
 
-## Function `addIri()` {#addIri}
+# Function `addIri()` {#addIri}
 
-#### Description
+## Description
 
 Creates an IRI based on the specified parameters.
 
@@ -205,17 +203,17 @@ This transformation can be used in the following two ways:
 1. By using an IRI prefix and a local name.
 2. By using a full absolute IRI.
 
-#### Parameters
+## Parameters
 
 - `prefix` Optionally, an IRI or a key that contains an IRI. If specified, this is the IRI prefix that will appear before the local name that is specified by the `content` argument. If this parameter is absent, `content` is assumed to contain a full absolute IRI.
 - `content` A string, or a key that contains a string. If the `prefix` parameter is specified, `content` specifies the IRI local name that appears after the IRI prefix. If the `prefix` argument is not specified, `content` is assumed to encode a full absolute IRI.
 - `key` A new key where the created IRI is stored.
 
-#### See also
+## See also
 
 If the created IRI is used exactly once, it is often better to use inline function [iri()](/docs/triply-etl/assertions#iri) instead.
 
-#### Example: Prefix declaration and local name
+## Example: Prefix declaration and local name
 
 The following snippet creates an IRI based on the specified IRI prefix and local name:
 
@@ -250,7 +248,7 @@ The following snippet makes the same assertion, but uses assertion [iri()](/docs
 triple(iri(prefix.person, 'username'), a, sdo.Person),
 ```
 
-#### Example: Absolute IRI
+## Example: Absolute IRI
 
 The following snippet creates the same IRI, but does not use a predefined prefix IRI:
 
@@ -280,7 +278,7 @@ triple(iri('https://example.com/id/person/johndoe'), a, sdo.Person),
 
 
 
-## Function `addLiteral()` {#addLiteral}
+# Function `addLiteral()` {#addLiteral}
 
 Creates an new literal and adds it to the Record under the specified key.
 
@@ -290,25 +288,25 @@ This transformation can be used in the following 3 ways:
 2. If a language tag (key: `languageTag`) is given, a language-tagged string (datatype `rdf:langString`) is created.
 3. If neither a datatype not a language tag is given, a literal with datatype `xsd:string` is created.
 
-#### When to use
+## When to use
 
 This transformation is typically used when:
 
 - The same literal occurs in two or more statement assertions (function [triple()](/docs/triply-etl/assertions#triple) or [quad()](/docs/triply-etl/assertions#quad)). This avoids having to specify the same literal multiple times using function [literal()](/docs/triply-etl/assertions#literal).
 - The datatype or language tag is derived from the source data record.
 
-#### Parameters
+## Parameters
 
 - `content` A key that contains a string value, or a string specified with function [str()](/docs/triply-etl/assert/ratt#str).
 - `datatype` Optionally, a key that stores an IRI or a static IRI.
 - `languageTag` Optionally, a language tag from the [`lang`](/docs/triply-etl/declare#language-declarations) object, or a key that stores such a language tag.
 - `key` A new key where the created literal is stored.
 
-#### See also
+## See also
 
 If the created literal is used exactly once, it is often better to use the inline function [literal()](/docs/triply-etl/assertions#literal) instead.
 
-#### Example: Typed literal
+## Example: Typed literal
 
 The following snippet asserts a triple with a typed literal with datatype IRI `xsd:date`:
 
@@ -335,7 +333,7 @@ fromJson([{ id: '123', date: '2022-01-30' }]),
 triple(iri(prefix.book, 'id'), sdo.dateCreated, literal('date', xsd.date)),
 ```
 
-#### Example: String literal
+## Example: String literal
 
 The following snippet asserts a triple with a string literal in the object position:
 
@@ -363,7 +361,7 @@ fromJson([{ name: 'London' }]),
 triple(iri(prefix.city, 'name'), skos.prefLabel, 'name'),
 ```
 
-#### Example: Language-tagged string
+## Example: Language-tagged string
 
 The following snippet asserts a triple with a language-tagged string in the object position:
 
@@ -392,11 +390,11 @@ triple(iri(prefix.city, 'name'), skos.prefLabel, literal('name', lang['en-gb']))
 
 
 
-## Function `addRandomIri()` {#addRandomIri}
+# Function `addRandomIri()` {#addRandomIri}
 
 Creates an IRI based on the specified IRI prefix and a universally unique random identifier.
 
-#### When to use?
+## When to use?
 
 This function is used under the following circumstances:
 
@@ -408,12 +406,12 @@ This function has the advantage that, unlike transformation [addHashedIri()](#ad
 
 This function has the disadvantage that, unlike transformation [addHashedIri()](#addhashediri), running the same ETL twice over the same source data results in different IRIs.
 
-#### Parameters
+## Parameters
 
 - `prefix` An IRI or a key that contains an IRI.
 - `key` A new key where the created IRI is stored.
 
-#### Example
+## Example
 
 The following snippet creates a triple with a subject that that is a random IRI:
 
@@ -431,7 +429,7 @@ This makes the following assertion in linked data:
 id:acb3ea010fe748bfa73a2ee2b65bef65 sdo:dateCreated '2000-12-30'^^xsd:date.
 ```
 
-#### See also
+## See also
 
 - Use transformation [addIri()](#addiri) instead, if a unique identifier can be readily specified.
 - Use transformation [addHashedIri](#addhashediri) instead, if one or more properties that together uniquely identify a thing can be specified.
@@ -439,7 +437,7 @@ id:acb3ea010fe748bfa73a2ee2b65bef65 sdo:dateCreated '2000-12-30'^^xsd:date.
 
 
 
-## Function `addSkolemIri()` {#addSkolemIri}
+# Function `addSkolemIri()` {#addSkolemIri}
 
 Creates a globally unique IRI that is intended to be used as a blank node identifier.
 
@@ -450,11 +448,11 @@ Skolem IRIs are random IRIs whose root path starts with `.well-known/genid/`. Th
 - `prefix` A IRI or a key that contains an IRI whose path starts with `.well-known/genid/`.
 - `key` A new key where the created IRI is stored.
 
-#### See also
+## See also
 
 Tne [Skolemization section](https://www.w3.org/TR/rdf11-concepts/#section-skolemization) in the RDF standard explains what Skolem IRIs are and how they should be used.
 
-#### Example
+## Example
 
 The following snippet uses a hashed IRI to create a predictable identifier for a geospatial feature, and a Skolem IRI to create an unpredictable identifier for the geometry.
 
@@ -504,26 +502,26 @@ feature:22238008e490f725979118f8f2dd9b5a geo:hasGeometry
 
 
 
-## Function `addTag()` {#addTag}
+# Function `addTag()` {#addTag}
 
 This middleware creates a language tag based on a given string value.
 
-#### Parameters
+## Parameters
 
 - `content` A string value that encodes a language tag according to the IANA language subtag registry.
 - `key` A new key where the language tag will be stored.
 
-#### Throws
+## Throws
 
 An error is emitted if the given string value does not follow the language tag
 format, or denotes a language tag that is not currently registered.
 
-#### See also
+## See also
 
 - The language tag format is defined in the [IETF BCP 47 standard (RFC 5646)](https://www.rfc-editor.org/rfc/rfc5646.html).
 - Language tags are registered in the [IANA language subtag registry](https://www.iana.org/assignments/language-subtag-registry/language-subtag-registry).
 
-#### Example
+## Example
 
 The following snippet created a language tag for the Dutch language as spoken in The Netherlands, and uses it to assert a language-tagged string:
 
@@ -538,20 +536,20 @@ triple(iri(prefix.city, 'label'), rdfs.label, literal('label', 'lang')),
 
 
 
-## Function `addValue()` {#addValue}
+# Function `addValue()` {#addValue}
 
 This middleware allows any value to be added to the Record.
 
-#### Description
+## Description
 
 This middleware is useful for data that is not present in the source data record, but must be used in one or more assertions.
 
-#### Parameters
+## Parameters
 
 - `content` Any value that can be represented in TypeScript.
 - `key` A new key where the value is stored.
 
-#### Example
+## Example
 
 The following snippet starts out with an empty source record (`{}`), and adds a new `data` key to it. The added value is an array that contains a string and a number (in that order).
 
@@ -572,7 +570,7 @@ This results in the following linked data assertion:
 person:johndoe foaf:age 22.
 ```
 
-#### Example
+## Example
 
 The following snippet adds a key called `_startDate` that either contains the start date as specified in the data source record, or the value `'unknown'`:
 
@@ -606,7 +604,7 @@ event:456 sdo:startDate 'unknown'.
 
 
 
-## Function `capitalize()` {#capitalize}
+# Function `capitalize()` {#capitalize}
 
 Transforms a string value to its capitalized variant.
 
@@ -614,12 +612,12 @@ If the first character of a string has an uppercase variant, then that variant i
 
 This transformation can uppercase the first character in any language; the Unicode Default Case Conversion algorithm is used.
 
-#### Parameters
+## Parameters
 
 - `content` A key that contains a string value.
 - `key` A new key where the capitalized result is stored.
 
-#### Example: Class IRIs
+## Example: Class IRIs
 
 According to convention, classes in linked data are denoted by IRIs whose local name starts with a capital letter.
 
@@ -647,21 +645,21 @@ id:2 a def:Person.
 ```
 
 
-## Function `concat()` {#concat}
+# Function `concat()` {#concat}
 
-#### Description
+## Description
 
 Concatenates an array of strings into one new string.
 
 An optionally specified separator is placed in between every two consecutive string values.
 
-#### Parameters
+## Parameters
 
 - `content` An array of key that contain a string and/or strings specified with assertion [str()](/docs/triply-etl/assert/ratt#str).
 - `separator` Optionally, the string that is places between every two consecutive string values.
 - `key` A new key where the concatenated string is stored.
 
-#### Example
+## Example
 
 The following snippet concatenates the first and last name of a person (in that order), using a space separator.
 
@@ -683,17 +681,17 @@ person:1 foaf:name 'John Doe'.
 
 
 
-## Function `copy()` {#copy}
+# Function `copy()` {#copy}
 
 Makes a plain copy from the value stored in the given key to a new key.
 
-#### Parameters
+## Parameters
 
 - `content` A value of any type, or a key that contains a value of any type.
 - `type` Optionally, the name of the TypeScript type of the value. The default value is `'string'`.
 - `key` A new key where the plain copy is stored.
 
-#### Example
+## Example
 
 Plain copies can be used to abbreviate long keys, especially in tree-shaped data like JSON or XML. In the following example, values stored in a long nested key are copies into a short and descriptive key. This is even more useful if the key is used many times in the script.
 
@@ -704,7 +702,7 @@ copy({
 }),
 ```
 
-#### Example
+## Example
 
 Since plain copies introduce a new name for an existing value, the new name can be used to store extra information about the value. The following example stores an English name, if available; or a Dutch name, if available; or no name at all. This is a relatively complex example that can only be accomplished by copying the names for the encountered languages under descriptive key names.
 
@@ -758,9 +756,9 @@ city:2 rdfs:label 'Parijs'.
 
 
 
-## Function `encodeHtml()` {#encodeHtml}
+# Function `encodeHtml()` {#encodeHtml}
 
-#### Description
+## Description
 
 This transformation decodes any HTML entities that appear in a given key.
 
@@ -774,12 +772,12 @@ The following HTML entities are common in source data:
 
 You do *not* need to use this transformation if you want to assert literals with datatype IRI `rdf:HTML`. HTML entities are meaningful in HTML, so there they should be preserved.
 
-#### Parameters
+## Parameters
 
 - `content` A key in the Record that contains string values with HTML entities.
 - `key` A new key where the decoded content is stored.
 
-#### Example
+## Example
 
 The following snippet takes HTML texts from the source data and asserts them as regular text literals. Since HTML entities are meaningless in regular text, `decodeHtml` is used to denote these entities.
 
@@ -804,26 +802,26 @@ id:2 rdfs:label '1 < 2'.
 
 
 
-## Function `geojsonToWkt()` {#geojsonToWkt}
+# Function `geojsonToWkt()` {#geojsonToWkt}
 
 Transforms GeoJSON objects to their corresponding Well-Known Text (WKT) serialization strings.
 
-#### Parameters
+## Parameters
 
 - `content` A key that stores a GeoJSON object.
 - `crs` Optionally, an IRI that denotes a Coordinate Reference System (CRS). You can use IRIs from the [`epsg`](/docs/triply-etl/declare#geospatial-declarations) object. If absent, uses [https://epsg.io/4326](EPSG:4326/WGS84) as the CRS.
 - `key` A new key where the WKT serialization string is stored
 
-#### GeoJSON and Well-Known Text (WKT)
+## GeoJSON and Well-Known Text (WKT)
 
 According to the [GeoJSON standard](https://www.rfc-editor.org/rfc/rfc7946), the only Coordinate Reference System (CRS) that is allowed to be used is EPSG:4326/WGS84. In practice, source data sometimes (incorrectly) stores GeoJSON formatted data in other CRSes. An example of this is the [GISCO](https://ec.europa.eu/eurostat/web/gisco/geodata) dataset of the European Union, which uses the [EPSG:3857](https://epsg.io/3857) CRS. For cases like these, the optional `crs` parameter comes in handy.
 
-#### See also
+## See also
 
 - The GeoJSON format is standardized in [RFC 7946](https://www.rfc-editor.org/rfc/rfc7946).
 - The [Well-Known Text (WKT)](https://en.wikipedia.org/wiki/Well-known_text_representation_of_geometry) serialization format is standardized as part of [ISO/IEC 13249-3:2016 standard](https://www.iso.org/standard/60343.html).
 
-#### Example
+## Example
 
 The following snippet converts GeoJSON objects that denote traffic light
 locations to their GeoSPARQL representation.
@@ -892,24 +890,24 @@ graph LR
 
 
 
-## Function `lowercase()` {#lowercase}
+# Function `lowercase()` {#lowercase}
 
-#### Description
+## Description
 
 Translates a string value to its lowercase variant.
 
 This middleware can lowercase strings in any language; the Unicode Default Case Conversion algorithm is used.
 
-#### Use cases
+## Use cases
 
 Older data formats sometimes use uppercase letters for header names or codes. The `lowercase` transformation middleware may be used to change such string values to lowercase.
 
-#### Parameters
+## Parameters
 
 - `content` A key that contains a string value.
 - `key` A new key where the lowercase variant is stored.
 
-#### Example
+## Example
 
 The following snppet starts out with header values that use uppercase characters exclusively. The `lowerCase` transformation is used to create lowercase names that can be used to create property IRIs.
 
@@ -938,25 +936,25 @@ id:2 def:child id:1.
 
 
 
-## Function `padEnd()` {#padEnd}
+# Function `padEnd()` {#padEnd}
 
-#### Description
+## Description
 
 Adds a given padding string zero or more times to the end of a string value, until the resulting string value is exactly a given number of characters long.
 
-#### Use cases
+## Use cases
 
 This transformation is useful for identifiers that must have fixed length
 and that may be suffixed by zero's.
 
-#### Parameters
+## Parameters
 
 - `content` A key that contains a string value. If the key contains a numeric value, that value is first cast to string.
 - `padString` The string that is added to the end of the string value in key `content`, until the result string has exactly `targetLength` characters. Can be a static string or a key.
 - `targetLength` The exact number of characters that the resulting string should have. The string value is copied over as-is when `targetLength` is smaller than or equal to the length of the string value in key `content`. This includes cases where `targetLength` is negative or zero.
 - `key` A new key where the padded string is stored.
 
-#### Example
+## Example
 
 The following snippet processes identifiers of varying length, and ensures that they have the same length after suffixing `'0'` characters.
 
@@ -990,13 +988,13 @@ This results in the following two Records:
 
 
 
-## Function `padStart()` {#padStart}
+# Function `padStart()` {#padStart}
 
-#### Description
+## Description
 
 Adds a given padding string zero or more times in front of a string value, until the resulting string value is exactly a given number of characters long.
 
-#### Use cases
+## Use cases
 
 This transformation is useful for identifiers that must have fixed length and that may be prepended by zero's.
 
@@ -1008,7 +1006,7 @@ string.
 - `targetLength` The exact number of characters that the resulting string should have. The string value is copied over as-is when `targetLength` is smaller than or equal to the length of the string value in key `content`. This includes cases where `targetLength` is negative or zero.
 - `key` A new key where the lowercased string is stored.
 
-#### Example: Fixed-length identifiers
+## Example: Fixed-length identifiers
 
 The following snippet processes identifiers of varying length, and ensures that they have the same length after prefixing `'0'` characters.
 
@@ -1040,7 +1038,7 @@ This results in the following two records:
 ]
 ```
 
-#### Example: Create year literals
+## Example: Create year literals
 
 In order to create standards-conforming temporal literal, we need to pad the year component to be at least 4 decimal digits long. (This requirement is defined in the [XML Schema Datatypes 1.1: Part 2 Datatypes](https://www.w3.org/TR/xmlschema11-2/#rf-lexicalMappings-datetime) standard.)
 
@@ -1076,20 +1074,20 @@ id:0002 dct:created '1702'^^xsd:gYear.
 
 
 
-## Function `replace()` {#replace}
+# Function `replace()` {#replace}
 
-#### Description
+## Description
 
 Performs a regular expression replacement to the given input string, and stores the result in a new key.
 
-#### Parameters
+## Parameters
 
 - `content` A key that contains a string value, or a static string specified with assertion [str()](/docs/triply-etl/assert/ratt#str).
 - `from` A [JavaScript Regular Expression](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions).
 - `to` Optionally, a string that replaces potential matches of the Regular Expression (`from`). Use `$1`, `$2`, etc. to insert matches. If absent, the empty string is used.
 - `key` A new key where the result of the replacement is stored.
 
-#### Example
+## Example
 
 Suppose the source data contains date/time strings, but only the date component is needed:
 
@@ -1121,29 +1119,29 @@ This results in the following Record:
 ```
 
 
-## Function `split()` {#split}
+# Function `split()` {#split}
 
-#### Description
+## Description
 
 Splits a string into an array of strings, and stores that array in a new key.
 
-#### Whitespace handling
+## Whitespace handling
 
 This transformation removes any trailing whitespace that remains after the strings are split. This ensures that irregular use of whitespace in the source data is taken care of automatically.
 
-#### Use cases
+## Use cases
 
 The transformation is used when:
 - Tablular source data encodes multiple values inside singular cells. (Such concatenated storage inside cells is a data quality issue, because the table format cannot guarantee that the separator character does not (accidentally) occur inside individual values inside a cell. Tree-shaped source formats are able to store multiple values for the same key reliably, e.g. JSON and XML.)
 - Source data contains complex string values that can be decomposed into stand-alone components with distinct meaning.
 
-#### Parameters
+## Parameters
 
 - `content` A key that stores a string, or a string specified with assertion [str()](/docs/triply-etl/assert/ratt#str).
 - `separator` A string or a regular expression that is used to separate the content.
 - `key` A new key where the array of splitted strings is stored.
 
-#### Example: Multiple values in singular table cells
+## Example: Multiple values in singular table cells
 
 Tabular formats are unable to store more than one value in a cell. Because of this limitation, tabular data sources sometimes encode multiple values in cells by encoding them into one string. A separator character is typically used to distinguish between these multiple values.
 
@@ -1205,7 +1203,7 @@ person:johndoe
     person:jakedoe.
 ```
 
-#### Example: Split a complex string into components
+## Example: Split a complex string into components
 
 The following snippet uses a regular expression to split a KIX code. (A [KIX code](https://en.wikipedia.org/wiki/RM4SCC) is a standardized format for representing postal addresses in The Netherlands.)
 
@@ -1237,21 +1235,21 @@ id:1 sdo:postalCode '1231FZ'.
 
 
 
-## Function `substring()` {#substring}
+# Function `substring()` {#substring}
 
-#### Description
+## Description
 
 This middleware takes a substring from the input string and stores the
 result in a new key.
 
-#### Parameters
+## Parameters
 
 - `content` A key that stores a string value, or a string specified with assertion [str()](/docs/triply-etl/assert/ratt#str).
 - `start` The index of the first character that is included in the substring. The first character has index 0.
 - `end` Optionally, the index of the first character that is excluded from the substring. If absent, the substring ends at the end of the source string.
 - `key` The new key in which the substring is stored.
 
-#### Example
+## Example
 
 The Library of Congress MARC format stores the type of record in the sixth character that appears in the leader key. We use `substring()` to extract this character, and then use transformation [translateAll()](#translateall) to map them to a corresponding class IRI:
 
@@ -1275,15 +1273,15 @@ triple('_iri', a, '_class'),
 
 
 
-## Function `translateAll()` {#translateAll}
+# Function `translateAll()` {#translateAll}
 
-#### Description
+## Description
 
 Translates all dynamic strings from a specific key to new values of an arbitrary type `To`, according to a specified translation table.
 
 Since this function translates *all* values, the mapped values can have any type `T`; they do not need to be strings. For example, this allows strings to be translated to IRIs or to literals.
 
-#### When to use?
+## When to use?
 
 This approach is used when:
 
@@ -1292,7 +1290,7 @@ This approach is used when:
 - The corresponding linked data terms are known ahead of time.
 - The appearance of a new value is considered to be an error in the source data.
 
-#### Parameters
+## Parameters
 
 - `content` A key that contains a string value.
 - `table` A translation table from strings to values of some arbitrary type `T`.
@@ -1300,7 +1298,7 @@ This approach is used when:
 - `default` Optionally, a default value or a default value-determining function that is used for string values that are neither in the translation table (`table`) nor in the NULL values list (`nulls`). The function must return a value of type `T`. Use of a default value `value` is equivalent to using the following value-determining function: `_ => value`.
 - `key` A new key where the results of the translation are stored.
 
-#### Example: Map source data to IRI values
+## Example: Map source data to IRI values
 
 Suppose that source data contains country names. In linked data we want to use IRIs to denote countries, so that we can link additional information. Since the list of countries that appears in the source data is not that long, we can specify a translation table from names to IRIs by hand:
 
@@ -1321,7 +1319,7 @@ when('country', [
 ]),
 ```
 
-#### Example: Map source data to IRI properties
+## Example: Map source data to IRI properties
 
 When we relate a creative work to its creator, we sometimes know whether the creator was the actor, architect, author, etc. of the creative work. But in other cases we only know that there is a generic creator relationship. The [Library of Congress Relators vocabulary](https://triplydb.com/loc/relators) allows us to express specific and generic predicates of this kind.
 
@@ -1341,25 +1339,25 @@ triple('_creativeWork', '_relator', '_creator'),
 
 
 
-## Function `translateSome()` {#translateSome}
+# Function `translateSome()` {#translateSome}
 
-#### Description
+## Description
 
 Translates some strings, according to the specified translation table, to other strings. Strings that are not translated according to the translation table are copied over as-is.
 
-#### Parameters
+## Parameters
 
 - `content` A key that contains a string value.
 - `table` A translation table that specifies translations from strings to strings.
 - `key` A new key where the translated strings are stored.
 
-#### Use cases
+## Use cases
 
 Source data often contains some strings that are correct and some that are incorrect. For example, if source data contains a key with city names, some of the names may be misspelled. In such cases, `translateSome()` can be used to translate the incorrect strings into correct ones.
 
 A `translateSome()` transformation is often performed directly before a `translateAll()` transformation. The former ensures that all string values are correct (e.g. fixing typo's in city names); the latter ensures that all strings are mapped onto IRIs (e.g. city names mapped onto city-denoting IRIs).
 
-#### Example
+## Example
 
 The following example fixes an encoding issue that occurs in the source data:
 
@@ -1377,9 +1375,9 @@ transform.translateSome({
 
 
 
-## Function `tryLiteral()` {#tryLiteral}
+# Function `tryLiteral()` {#tryLiteral}
 
-#### Description
+## Description
 
 This transformation is used when string values must be mapped onto literals with varying datatype IRIs.
 
@@ -1389,11 +1387,11 @@ The datatype IRIs that could apply are specified in a list. The specified dataty
 - `datatypes` An array of two or more datatype IRIs.
 - `key` A new key where the created literal is stored.
 
-#### Throws
+## Throws
 
 An exception is emitted if a string value does not belong to the lexical space of any of the specified datatype IRIs.
 
-#### Example
+## Example
 
 A literal is valid if the given string value appears in the lexical space of a specific datatype IRI. This is best explained with an example:
 
@@ -1413,25 +1411,25 @@ tryLiteral({
 
 If we do not want to emit errors for string values that cannot be satisfy any of the specified datatype IRIs, we may choose to include `xsd.string` as the last datatype IRI in the list. Do notice however that this will result in dates that cannot be compared on a timeline, since they were not transformed to an XSD date/time datatype.
 
-#### See also
+## See also
 
 You only need to use `tryLiteral()` if the datatype IRI varies from record to record. If the datatype IRI is the same for every record, then the regular assertion function [literal()](/docs/triply-etl/assert/ratt#literal) should be used instead.
 
 
 
-## Function `uppercase()` {#uppercase}
+# Function `uppercase()` {#uppercase}
 
-#### Description
+## Description
 
 Translates a string value to its uppercase variant.
 
 This middleware can uppercase strings in any language; the Unicode Default Case Conversion algorithm is used for this.
 
-#### Parameters
+## Parameters
 
 - `content` A key that contains a string value.
 - `key` A new key where the uppercase variant is stored.
 
-#### Example
+## Example
 
 We do not have a good example for this transformation middleware yet. Let us know in case you have a good example!

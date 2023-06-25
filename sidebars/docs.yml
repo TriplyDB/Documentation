@@ -26,7 +26,7 @@
         - title: Overview
           link: /docs/triply-etl
 
-        - title: Command-Line Interface (CLI)
+        - title: CLI
           link: /docs/triply-etl/cli
         - title: Changelog
           link: /docs/triply-etl/changelog
@@ -94,16 +94,3 @@
           link: /docs/yasgui
         - title: For developers
           link: /docs/yasgui-api
-    - group: RATT
-      tagline: Learn about RATT
-      items:
-        - title: Getting started
-          link: /docs/ratt
-        - title: Extract
-          link: /docs/ratt-extract
-        - title: Transform
-          link: /docs/ratt-transform
-        - title: Load
-          link: /docs/ratt-load
-        - title: Working with RATT
-          link: /docs/ratt-working-with-ratt

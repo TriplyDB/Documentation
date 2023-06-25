@@ -3,6 +3,8 @@ title: "1. Extract: Data Formats"
 path: "/docs/triply-etl/extract/formats"
 ---
 
+# Overview
+
 TriplyETL supports the following data formats:
 
 | Extractor | Format | Full name |
@@ -29,7 +31,7 @@ Notice that you also need to import `Source`, since every extractor requires a s
 
 
 
-## Extractor `fromCsv()` {#fromCsv}
+# Extractor `fromCsv()` {#fromCsv}
 
 CSV or Comma Separated Values (file name extension `.csv`) is a popular format for storing tabular source data. TriplyETL has a dedicated `fromCsv()` extractor for this data format.
 
@@ -56,14 +58,14 @@ fromCsv(
 ```
 
 
-### Standards-compliance
+## Standards-compliance
 
 The `fromCsv()` extractor implements the official CSV standard: [IETF RFC 4180](https://www.ietf.org/rfc/rfc4180.html).
 
 Some CSV files do not follow the standard precisely. In order to process such CSV files, the default behavior of the extractor can be changed through an optional options parameter. See the [CSV Parse for Node.js](https://csv.js.org/parse/options/) documentation for all the available options.
 
 
-### Configure the encoding
+## Configure the encoding
 
 According to the official CSV standard, CSV sources are allowed to use any encoding. Since the CSV format does not allow the used encoding to be specified in the format itself, a non-standard encoding must always be configured manually. By default, TriplyETL assumes that CSV sources use the UTF-8 encoding. If another encoding is used, this must be explicitly specified by using the optional options parameter.
 
@@ -88,7 +90,7 @@ The following encodings are currently supported:
 Read the [CSV Parse for Node.js](https://csv.js.org/parse/options/encoding/) documentation for more information.
 
 
-### Use a different separator
+## Use a different separator
 
 Some CSV files only deviate in their use of a different separator character. For example, some CSV files use the semi-colon (`;`) or the at-sign (`@`) for this.
 
@@ -98,12 +100,12 @@ The following snippet extracts records for a CSV file that uses the semi-colon (
 fromCsv(Source.file('example.csv'), { separator: ';' }),
 ```
 
-### CSV with tab separators is not TSV
+## CSV with tab separators is not TSV
 
 Notice that the popular Tab-Separate Values (TSV) format is not the same as the standardized CSV format with a tab separator character. If you want to process standards-conforming TSV source data, use the [`fromTsv()` extractor](#fromTsv) instead.
 
 
-### Record representation
+## Record representation
 
 TriplyETL treats every row in a CSV source as one record. The columns are emitted as keys and the cells are emitted as values. All values are of type `string`. Empty cells (i.e. those containing the empty string) are treated as denoting a null value and are therefore excluded from the record. Any trailing whitespace that appears in headers or cells is removed from the keys and values in the record.
 
@@ -143,7 +145,7 @@ Notice that:
 
 
 
-## Extractor `fromJson()` {#fromJson}
+# Extractor `fromJson()` {#fromJson}
 
 JSON (JavaScript Object Notation) is a popular open standard for interchanging tree-shaped data. TriplyETL has a dedicated `fromJson()` extractor for this format.
 
@@ -162,13 +164,13 @@ fromJson(
 The following example uses an in-line specified JSON source:
 
 ```ts
-fromJson([{ a: "a", b: "b", c: "c" }]),
+fromJson([{ a: 'a', b: 'b', c: 'c' }]),
 ```
 
 TriplyETL supports the [IETF RFC 8259](https://www.rfc-editor.org/rfc/rfc8259) standard for JSON.
 
 
-### Nested keys
+## Nested keys
 
 Since JSON is a tree-shaped format, it is able to store values in a nested structure. This requires a sequence or 'path' of keys to be specified.
 
@@ -216,7 +218,7 @@ dataset:my-dataset dct:title 'Data about countries.'.
 ```
 
 
-### Dealing with dots in keys
+## Dealing with dots in keys
 
 In the previous section we saw that dots are used to separate keys in paths. However, sometimes a dot can occur as a regular character inside a key. In such cases, we need to apply additional escaping of the key name to avoid naming conflicts.
 
@@ -235,7 +237,7 @@ triple('_country', dct.id, 'data.countries[0].["country.id"]'),
 Notice the use of additional escaping: `["..."]`
 
 
-### Accessing lists by index
+## Accessing lists by index
 
 Tree-shaped data formats often allow multiple values to be specified in an ordered list. Examples of this are arrays in JSON and XML elements with the same tag that are directly nested under the same parent element.
 
@@ -275,7 +277,7 @@ id:de rdfs:label 'Germany'.
 
 
 
-## Extractor `fromOai()` {#fromOai}
+# Extractor `fromOai()` {#fromOai}
 
 In GLAM domains (Galleries, Libraries, Archives, Museums), the Open Archives Initiative (OAI), Protocol for Metadata Harvesting (PMH) is a popular protocol and format for publishing data collections. TriplyETL includes the `fromOai()` extractor to tap into these data collections.
 
@@ -298,7 +300,8 @@ The OAI-PMH standard defines 6 'verbs'. These different sub-APIs that together c
 
 Extractor `fromOai()` currently supports the following two verbs: [ListIdentifiers](#ListIdentifiers) and [ListRecords](#ListRecords).
 
-#### Verb `ListIdentifiers` {#ListIdentifiers}
+
+## Verb `ListIdentifiers` {#ListIdentifiers}
 
 This 'verb' or sub-API streams through the headers of all records. It does not returns the actual (body) content of each record (see [ListRecords](#ListRecords)). This verb can be used to look for header properties like set membership, datestamp, and deletion status.
 
@@ -314,7 +317,8 @@ fromOai({
 logRecord(),
 ```
 
-#### Verb `ListRecords` {#ListRecords}
+
+## Verb `ListRecords` {#ListRecords}
 
 This 'verb' or sub-API streams through all records and retrieves them in full. This API is used to harvest records.
 
@@ -332,7 +336,7 @@ logRecord(),
 
 
 
-## Extractor `fromTsv()` {#fromTsv}
+# Extractor `fromTsv()` {#fromTsv}
 
 TSV or Tab-Separated Values (file name extension `.tsv`) is a popular format for tabular source data. TriplyETL has a `fromTsv()` extractor to support this format.
 
@@ -351,7 +355,7 @@ fromTsv(
 TriplyETL supports the [IANA](https://www.iana.org/assignments/media-types/text/tab-separated-values) standard definition of the TSV format.
 
 
-### Record representation
+## Record representation
 
 TriplyETL treats every row in a TSV source as one record. The columns are emitted as keys and the cells are emitted as values. All values are of type `string`. Cells that contain the empty string are treated as denoting an empty value and are excluded from the record. Any trailing whitespace that appears in headers or cells is removed from the keys or values in the record.
 
@@ -391,7 +395,7 @@ Notice that:
 
 
 
-## Extractor `fromXlsx()` {#fromXlsx}
+# Extractor `fromXlsx()` {#fromXlsx}
 
 XLSX or Office Open XML Workbook (file name extension `.xlsx`) is a popular format for storing tabular source data. This is the standard file format for Microsoft Excel. TriplyETL has a dedicated `fromXlsx()` extractor for such sources.
 
@@ -410,7 +414,7 @@ fromXlsx(
 The `fromXlsx()` extractor emits one record per row in the source file.
 
 
-### Sheets
+## Sheets
 
 It is common for XLSX files to have multiple sheets. By default the `fromXlsx()` extractor enumerates all rows from all sheets as records. If only some sheets should be used, this can be specified as a configuration option.
 
@@ -421,7 +425,7 @@ fromXlsx(Source.file('example.xlsx'), { sheetNames: ['people', 'projects'] }),
 ```
 
 
-### Record representation
+## Record representation
 
 TriplyETL treats every row in XLSX sheet as one record. The columns are emitted as keys and the cells are emitted as values. Unlike other tabular formats like [CSV](#fromCsv) and [TSV](#fromTsv), values in XLSX can have different types.
 
@@ -460,11 +464,11 @@ Notice the following:
 - The special key `$sheetName` is unique to the `fromXslx()` extractor and is documented in the next subsection.
 
 
-### Special key `$sheetName` {#sheetName}
+## Special key `$sheetName` {#sheetName}
 
 For every record emitted by the `fromXlsx()` extractor. the `$sheetName` special key contains the name of the Excel sheet from which that record originates. The presence of the sheet name allows the TriplyETL configuration to be adjusted for different sheet.
 
-For example, an Excel spreadsheet may contain a `"companies"` sheet and a `"persons"` sheet. The name of the sheet may be used to determine which class should be asserted. The following snippet uses transformation [translateAll()](#translateAll) to map sheet names to class IRIs:
+For example, an Excel spreadsheet may contain a 'companies' sheet and a 'persons' sheet. The name of the sheet may be used to determine which class should be asserted. The following snippet uses transformation [translateAll()](#translateAll) to map sheet names to class IRIs:
 
 ```ts
 fromXlsx(Source.file('example.xlsx')),
@@ -481,35 +485,38 @@ triple(iri(prefix.id, '$recordId'), a, '_class'),
 
 
 
-## Extractor `fromPostgres()` {#fromPostgres}
+# Extractor `fromPostgres()` {#fromPostgres}
 
 PostgreSQL or Postgres is an open-source relational database system. Postgres supports both SQL (relational) and JSON (non-relational) querying.
 
 TriplyETL has a `fromPostgres()` extractor to retrieve data from a Postgres database. This can be done via Postgres connectors or via URL using the following code snippet:
 
-```sh
-fromPostgres([<PostgreSQL query/queries>],{<Postgres Options>})
+```ts
+fromPostgres(Query, Options),
 ```
 
 
-### Retrieving data via Postgres connectors
+## Retrieving data via Postgres connectors
 
 The first option for retrieving Postgres data is by using Postgres connectors.
 
 Below is an example using a publicly available database from [RNA central](https://rnacentral.org/help/public-database).
 
-```sh
-fromPostgres(`SELECT * FROM rnc_database`, {
-  host: "hh-pgsql-public.ebi.ac.uk",
-  port: 5432,
-  database: "pfmegrnargs",
-  user: "reader",
-  password: "NWDMCE5xdipIjRrp",
-}),
+```ts
+fromPostgres(
+  'SELECT * FROM rnc_database',
+  {
+    host: 'hh-pgsql-public.ebi.ac.uk',
+    port: 5432,
+    database: 'pfmegrnargs',
+    user: 'reader',
+    password: 'NWDMCE5xdipIjRrp',
+  }
+),
 ```
 
 
-### Retrieving data via URL
+## Retrieving data via URL
 
 The second option is by simply using a database URL. Below we are using the same example database as above, but this time instead of adding Postgres connectors, we are accessing it via URL.
 
@@ -522,7 +529,7 @@ fromPostgres(
 
 
 
-## Extractor `fromXml()` {#fromXml}
+# Extractor `fromXml()` {#fromXml}
 
 XML or Extensible Markup Language is a popular open format for tree-shaped source data.
 
@@ -566,7 +573,7 @@ fromXml(
 TriplyETL supports the W3C XML standard.
 
 
-### Nested keys
+## Nested keys
 
 Since XML can store tree-shaped data, it can have nested keys and indexed array. See the following subsections of the JSON documentation for how to extract data from such tree structures:
 
@@ -576,7 +583,7 @@ Since XML can store tree-shaped data, it can have nested keys and indexed array.
 
 
 
-## Function `loadRdf()` {#loadRdf}
+# Function `loadRdf()` {#loadRdf}
 
 Resource Description Framework (RDF) is the standardized and open format for linked data.
 
@@ -602,12 +609,13 @@ The following code snippet loads RDF from a SPARQL Construct query that is store
 loadRdf(Source.TriplyDb.query('Triply', 'network-query')),
 ```
 
-### Loading RDF from an HTML page
+
+## Loading RDF from an HTML page
 
 With `loadRdf()` extractor, it is also possible to extract data from web pages / HTML, which contain Schema in JSON-LD. 
 This is possible because most websites contain linked data annotations that use Schema.org.
 
-Such LD is enclosed in tag <script type="application/ld+json">...</script>
+Such LD is enclosed in tag <script type='application/ld+json'>...</script>
 It is possible to load such linked data with TriplyETL.
 
 Schema markup is how Google can serve up rich results (also called rich snippets and rich cards).
@@ -626,7 +634,7 @@ Example taken from Wikipedia:
 
 The Wikipedia page of the first programmer in history (https://en.wikipedia.org/wiki/Ada_Lovelace) contains the following linked data:
 
-```sh
+```json
 {
   "@context": "https://schema.org",
   "@type": "Article",
@@ -655,7 +663,7 @@ The Wikipedia page of the first programmer in history (https://en.wikipedia.org/
 
 This data can be loaded with TriplyETL in the following way:
 
-```sh
+```ts
 import { Etl, loadRdf, Source } from '@triplyetl/etl/generic'
 
 export default () => {
