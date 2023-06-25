@@ -30,22 +30,3 @@ Using the following syntax you are able to assign id's to headers (without havin
 ```md
 # Header {#id}
 ```
-
-## Adding a blog post
-
-1. Create a new directory under the `/blog` directory, for example `/blog/2023-04-my-blog-post`.
-2. Create a new file `index.md` in that new directory.  Optionally add images that are included in the blog post.
-3. Add the following metadata at the top of that file:
-
-```
----
-title: "My Blog Post"
-path: "/blog/2023-04-my-blog-post"
-date: "2023-04-07T11:15:00"
-author: firstnameLastname
----
-```
-
-4. Make sure that the author name entered under 'author' also appears in file `/authors.yml`.
-5. Test your changes locally, using the langdingSite repo.
-6. If all looks good commit your changes and create a Merge Request.

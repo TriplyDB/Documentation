@@ -1,13 +1,11 @@
 ---
 title: "OpenAPI Specifications"
 path: "/blog/2023-05-openAPI-specifications"
-date: "2023-05-31T11:15:00"
+#date: "2023-06-28T11:15:00"
 author: minajanicijevic
 ---
 
-
 ## Unleashing the Power of OpenAPI Specifications: TriplyDB's Step Forward in RESTful API Development
-
 
 We are excited to announce that TriplyDB has taken a major leap forward by incorporating OpenAPI specifications into its arsenal of features! With this latest enhancement, TriplyDB now allows users to expose their saved queries using the OpenAPI specification, effectively transforming TriplyDB into a self-documenting REST API.
 
@@ -35,4 +33,3 @@ To interact with the OpenAPI specification, tools such as [Postman](https://www.
 ![Figure 4](Postman.png)
 
 The incorporation of OpenAPI specifications into TriplyDB is a big step towards making TriplyDB a more powerful and user-friendly platform for building RESTful APIs. We are excited about the possibilities that this enhancement brings and look forward to seeing how our users leverage the power of OpenAPI specifications in TriplyDB!
-
