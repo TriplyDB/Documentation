@@ -7,17 +7,13 @@ The current version of TriplyETL is **2.0.10**
 
 You can use this changelog to perform a safe upgrade from an older version of TriplyETL to a newer one. See the documentation for [Upgrading TriplyETL repositories](/docs/triply-etl/cli#upgrade) for the advised approach, and how the changelog factors into that.
 
-# Changelog for TriplyETL 2.0.9 and 2.0.10
+# Changelog for TriplyETL 2.0.7 through 2.0.10
 
-Release date: 2023-06-28
+Release dates: 2023-06-17 through 2023-06-28
 
-Bugfixes for running on Windows.
-
-# Changelog for TriplyETL 2.0.7 and 2.0.8
-
-Release date: 2023-06-17
-
-Fixed warnings for a dependency (async-saxophone for XML processing), which did not yet officially support Node.js 18.
+Bugfixes:
+- Installation on Windows.
+- Fixed warnings for a dependency (async-saxophone for XML processing), which did not yet officially support Node.js 18.
 
 # Changelog for TriplyETL 2.0.6
 
