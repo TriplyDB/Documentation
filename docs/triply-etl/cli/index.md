@@ -3,103 +3,98 @@ title: "TriplyETL: Command-Line Interface (CLI)"
 path: "/docs/triply-etl/cli"
 ---
 
-TriplyETL includes the following tools that can be used from a command-line:
+The TriplyETL Command-Line Interface (CLI) allows you to generate, run, and update your ETL pipelines. The TriplyETL CLI works the same on all major platforms: Windows, macOS, and Linux.
 
-- [**TriplyETL Generator**](#generator) is used to create new ETL pipelines.
-- [**TriplyETL Runner**](#runner) is used to run an existing ETL pipeline.
-- [**TriplyETL Tools**](#tools) is used to perform common, isolated tasks.
+This page has the following sections:
+
+- [TriplyETL Generator](#generator) explains how you can generate new ETL pipelines.
+- [TriplyETL Runner](#runner) explains how you can run existing ETL pipelines.
+- [TriplyETL Tools](#tools) explains how you can perform common ETL tasks.
 - [Update TriplyETL repositories](#update) explains how you can keep your ETL repository up-to-date.
+
+
 
 # TriplyETL Generator {#generator}
 
-The TriplyETL Generator allows you to create new ETL pipelines.
+The TriplyETL Generator allows you to generate new ETL pipelines.
 
 ## Prerequisites
 
 In order to use the TriplyETL Generator, you must have:
-- A TriplyETL License Key. Contact <mailto:info@triply.cc> to obtain a License Key for your organisation.
-- A user account on a TriplyDB server. Contact <mailto:info@triply.cc> to set up a TriplyDB server for your organisation, or create a free account over at <https://triplydb.com>.
+- A TriplyETL License Key. Contact [info@triply.cc](mailto:info@triply.cc) to obtain a License Key for your organization.
+- A user account on a TriplyDB server. Contact [info@triply.cc](mailto:info@triply.cc) to set up a TriplyDB server for your organization, or create a free account on <https://triplydb.com>.
 
 ## Install TriplyETL Generator
 
 Perform the following steps to install the TriplyETL Generator on your computer:
 
-1. Go to <https://nodejs.org> and install Node.js version 18. (Or use a [Node Version Manager](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm) to install multiple versions in an isolated way.)
+1. Go to <https://nodejs.org> and install Node.js version 18. (Or use a [Node Version Manager](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm) to install multiple versions of Node.js in an isolated way.)
 
 ## Use TriplyETL Generator
 
-Perform the following steps for setting up a new TriplyETL project:
+Perform the following steps to use the TriplyETL Generator:
 
-1. Run the TriplyETL Generator:
+1. Run the following command:
 
    ```sh
    npx triply-etl-generator
    ```
 
-2. Answer the following questions:
+   This command automatically ensures that you are using the latest version.
 
-      a. Project name
+2. When asked, enter the following information:
 
-      b. Target folder
+      a. TriplyETL License Key
 
-      c. Dataset name
+      b. Project name
 
-      d. TriplyETL Licence Key
+      c. Target folder
 
-      e. TriplyDB URL
+      d. Dataset name
 
-      f. TriplyDB email
+      e. TriplyDB API Token
 
-      g. TriplyDB password
+      f. TriplyDB URL
+
+      g. TriplyDB email
+
+      h. TriplyDB password
 
     Here is an example of a possible run:
 
     ```sh
-    npx triply-etl-generator
+    ? TriplyETL License Key: [hidden]
     ? Project name: my-etl
     ? Target folder: my-etl
     ? Dataset name: my-etl
     ? Create a new TriplyDB API Token? Yes
     ? Your TriplyDB URL: triplydb.com
-    ? Your TriplyDB email: my-account@my-organisation.com
+    ? Your TriplyDB email: my-account@my-organization.com
     ? Your TriplyDB password: [hidden]
     🏁 Your project my-etl is ready for use in my-etl.
     ```
 
-3. Go to the target folder:
+3. Go to the target folder that you have specified:
 
    ```sh
    cd my-etl
    ```
 
-4. Run the ETL:
+4. You can now use the [TriplyETL Runner](#runner) to run the ETL:
 
    ```sh
    npx etl
    ```
 
-   See the documentation for the [TriplyETL Runner](#runner) for more information on how to run an existing TriplyETL pipeline.
-
 <!--
 ### Advanced options
 
-The TriplyETL Generator has the following options:
+The TriplyETL Generator has the following advanced options:
 
 - `--dtap` Use a DTAP (Development, Test, Acceptance, Production) configuration for your TriplyETL project.
 - `--help` Displays a help message.
 - `--skip-git` Do not create a Git repository as part of creating the TriplyETL project.
 - `--version` Displays the version number of the TriplyETL Generator.
-
-By default, TriplyETL Generator asks you a couple of questions.  You can also specify the same information to the Generator up front, with the following flags:
-
-- `--dataset` The name of the dataset that is created by the TriplyETL project.
-- `--name` The name of the TriplyETL project.
-- `--target` The folder on your computer where the TriplyETL project will be created.
-- `--triplydb-token` An existing TriplyDB API Token.
-
-In this tutorial you learn how to use the generic record representation that is used by TriplyETL.
-
-This section gets you up and running with TriplyETL by setting up increasingly more complex pipelines.  These pipelines will use TriplyETL to connect data sources to an integrated linked data knowledge that is published in a TriplyDB instance.  Some of the documented steps are generic for setting up a modern TypeScript project, while others are specific for using TriplyETL.
 -->
 
 ## Update TriplyETL Generator
@@ -112,9 +107,9 @@ When you run the TriplyETL Generator, it always checks to see whether a newer ve
 
 The TriplyETL Runner is a CLI application that allows you to run an existing ETL pipeline.
 
-If you do not have an ETL yet, use the [TriplyETL Generator](#generator) first to create one.
+If you do not have an ETL repository yet, use the [TriplyETL Generator](#generator) first to generate one.
 
-Go to the directory where the ETL repository was created or cloned. Run the following command to run the ETL pipeline:
+Go to the directory where an existing ETL repository was generated or cloned. Run the following command to run the ETL pipeline:
 
 ```
 npx etl
@@ -122,7 +117,7 @@ npx etl
 
 ## Output summary
 
-TriplyETL Runner always prints a summary at the end of a succesful run:
+TriplyETL Runner will start processing data. When the ETL pipeline ends successfully, a summary will be printed:
 
 ```
  ┌──────────────────────────────────────────────────────────────┐
@@ -134,7 +129,7 @@ TriplyETL Runner always prints a summary at the end of a succesful run:
  └──────────────────────────────────────────────────────────────┘
 ```
 
-This summary includes the following statistics:
+This summary includes the following information:
 - **"#Error"** shows the number of errors encountered. With default settings, this number is at most 1, since the Runner will immediately stop after an error occurs.
 - **"#Warning"** shows the number of warnings encountered. With default settings, this includes warnings emitted by the [SHACL Validator](/docs/triply-etl/validate/shacl).
 - **"#Info"** shows the number of informational messages. With default settings, this includes informational messages emitted by the [SHACL Validator](/docs/triply-etl/validate/shacl).
@@ -221,11 +216,13 @@ This fixes the reset issue, but also makes the output less colorful.
 
 # TriplyETL Tools {#tools}
 
-TriplyETL Tools is a collection of small tools that can be used to run isolated tasks from the command-line.
+TriplyETL Tools is a collection of small tools that can be used to run isolated tasks from the command-line. TriplyETL Tools can be used when you are in a TriplyETL repository. If you 
+
+If you do not have an ETL repository yet, use the [TriplyETL Generator](#generator) first to generate one.
 
 The following command prints an overview of the supported tools:
 
-```
+```sh
 npx tools
 ```
 
@@ -233,21 +230,105 @@ The following tools are supported:
 
 | Tool | Description |
 | --- | --- |
-| [compare](#tool-compare) | Checks if 2 graphs are isomorphic |
-| [create-token](#tool-create-token) | Create a new Token |
-| [delete-datasets](#tool-delete-datasets) | Bulk deleting of Datasets |
-| [delete-graphs](#tool-delete-graphs) | Bulk deleting of Graphs |
-| [delete-queries](#tool-delete-queries) | Bulk deleting of Queries |
-| [download](#tool-download) | Downloads information from the TriplyDB instance from your token |
-| [print-token](#tool-print-token) | Prints your current TriplyDb token |
-| [report](#tool-report) | Generate a MarkDown report from the TriplyDB instance from your token |
-| [validate](#tool-validate) | Validate instance data against a SHACL shape |
+| [`compare`](#tool-compare) | Compare the contents of two RDF files |
+| [`create-token`](#tool-create-token) | Create a new TriplyDB API Token |
+<!--
+| [`delete-datasets`](#tool-delete-datasets) | Bulk deleting of Datasets |
+| [`delete-graphs`](#tool-delete-graphs) | Bulk deleting of Graphs |
+| [`delete-queries`](#tool-delete-queries) | Bulk deleting of Queries |
+| [`download`](#tool-download) | Downloads information from the TriplyDB instance from your token |
+-->
+| [`print-token`](#tool-print-token) | Print the currently set TriplyDB API Token, if any |
+| [`report`](#tool-report) | Generate a report file that describes the content of the currently configured TriplyDB instance, if any |
+| [`validate`](#tool-validate) | Validate a data file against a SHACL shapes file |
 
-For each tool from the above table, the following command prints more information on how to use it:
+For each tool, the following command prints more information on how to use it:
 
 ```sh
-npx tools {command} --help
+npx tools {name} --help
 ```
+
+## Compare {#tool-compare}
+
+The compare tool checks whether two RDF files encode the same linked data:
+- If the two files contain the same data, the command succeeds and does not print any output.
+- If the two files do not contain the same data, the command exits with an error code, and the difference between the two files is printed.
+
+The compare tools is invoked over the two RDF files `one.ttl` and `two.ttl` as follows:
+
+```sh
+npx tools compare one.ttl two.ttl
+```
+
+This tool can be used to compare two RDF files that contain multiple graphs, for example:
+
+```sh
+npx tools compare one.trig two.trig
+```
+
+This tool uses the graph isomorphism property as defined in the RDF 1.1 standard: [link](https://www.w3.org/TR/2014/REC-rdf11-concepts-20140225/#graph-isomorphism)
+
+## Create TriplyDB API Token {#tool-create-token}
+
+This tool creates a new TriplyDB API Token from the command-line. This command can be used as follows:
+
+```sh
+npx tools create-token
+```
+
+The command will ask a couple of questions in order to create the TriplyDB API Token:
+- The hostname of the TriplyDB instance
+- The name of the token
+- Your TriplyDB account e-mail
+- Your TriplyDB account password
+
+The command exists in case a TriplyDB API Token is already configured.
+
+<!--
+## Delete dataset {#tool-delete-datasets}
+
+TODO
+
+## Delete graphs {#tool-delete-graphs}
+
+TODO
+
+## Delete queries {#tool-delete-queries}
+
+TODO
+
+## Download {#tool-download}
+
+TODO
+-->
+
+## Print TriplyDB API Token {#tool-print-token}
+
+This tool prints the currently configured TriplyDB API Token, if any. This command can be used as follows:
+
+```sh
+npx tools print-token
+```
+
+This command is useful when there are issues with configuring a TriplyDB API Token.
+
+<!--
+## Report {#tool-report}
+
+TODO
+-->
+
+## Validate {#tool-validate}
+
+This tool validates the content of one data file against the SHACL shapes in another file. The resulting SHACL validation report is printed to standard output.
+
+The command can be used as follows:
+
+```sh
+$ npx tools validate -d data.trig -s model.trig 
+```
+
+See [this section](/docs/triply-etl/validate/shacl#report) to learn more about the SHACL validation report.
 
 
 
@@ -255,7 +336,7 @@ npx tools {command} --help
 
 New versions of TriplyETL are released regularly. Moving to a new version is generally a good idea, because it allows new features to be used and will include fixes for known/reported bugs. At the same time, updating to a new version may require changes to your pipeline.
 
-It is important to determine an approach for updating your TriplyETL repositories that fits your project and organisation. The following sections describe how you can make such a determination.
+It is important to determine an approach for updating your TriplyETL repositories that fits your project and organization. The following sections describe how you can make such a determination.
 
 ## Check the current version
 
@@ -287,7 +368,7 @@ TriplyETL uses the Semantic Versioning approach: `{major}.{minor}.{patch}`  The 
 
   - If the `{major}` number has increased, an upgrade is likely to require changes to existing pipelines.  Major releases often remove outdated functionalities or bring significant changes to the behavior of existing functionalities.
 
-Look at the [TriplyETL Changelog](/docs/triply-etl/changelog) to see what changes you will need to make in order to perform the update in your project and organisation. Specifically observe items that are marked "[Changed]" since these may require adjustments to your configuration.
+Look at the [TriplyETL Changelog](/docs/triply-etl/changelog) to see what changes you will need to make in order to perform the update in your project and organization. Specifically observe items that are marked "[Changed]" since these may require adjustments to your configuration.
 
 ## Perform the update
 
