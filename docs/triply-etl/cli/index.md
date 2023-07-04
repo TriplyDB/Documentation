@@ -239,7 +239,9 @@ The following tools are supported:
 | [`download`](#tool-download) | Downloads information from the TriplyDB instance from your token |
 -->
 | [`print-token`](#tool-print-token) | Print the currently set TriplyDB API Token, if any |
+<!--
 | [`report`](#tool-report) | Generate a report file that describes the content of the currently configured TriplyDB instance, if any |
+-->
 | [`validate`](#tool-validate) | Validate a data file against a SHACL shapes file |
 
 For each tool, the following command prints more information on how to use it:
