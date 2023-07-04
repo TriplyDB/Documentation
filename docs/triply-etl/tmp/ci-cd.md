@@ -3,9 +3,9 @@ This document explains how to maintain an ETL that runs in the gitlab CI.
 # How to create a TriplyETL CI pipeline?
 
 - Use the TriplyETL boilerplate from [this repository](https://git.triply.cc/triply/boilerplates), specifically the etl folder.
-- Each customer organization in gitlab needs their own 'CI runner'. If you're adding a TriplyETL repo to an existing customer, then you're probably fine. But if this is a newly created organisation, you will need to register a runner for this organisation.
-  - To check whether the customer organisation has a runner configured, go to the customer organisation `Settings` in gitlab, then go to `CI/CD`. The URL should look something like this: `https://git.triply.cc/groups/customers/<customer-name>/-/settings/ci_cd`. Click `Runners` and verify that `Available runners:` is not zero.
-  - If you need to register a runner, contact a sysadmin (see [here](https://git.triply.cc/triply/documentation/-/wikis/pages/server-calamities/index#for-triply-members) for the list of sysadmins) and ask them to create a runner for your organisation.
+- Each customer organization in gitlab needs their own 'CI runner'. If you're adding a TriplyETL repo to an existing customer, then you're probably fine. But if this is a newly created organization, you will need to register a runner for this organization.
+  - To check whether the customer organization has a runner configured, go to the customer organization `Settings` in gitlab, then go to `CI/CD`. The URL should look something like this: `https://git.triply.cc/groups/customers/<customer-name>/-/settings/ci_cd`. Click `Runners` and verify that `Available runners:` is not zero.
+  - If you need to register a runner, contact a sysadmin (see [here](https://git.triply.cc/triply/documentation/-/wikis/pages/server-calamities/index#for-triply-members) for the list of sysadmins) and ask them to create a runner for your organization.
 
 # Modifying a pipeline
 

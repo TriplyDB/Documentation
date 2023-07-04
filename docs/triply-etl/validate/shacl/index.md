@@ -317,7 +317,7 @@ etl.use(
 ```
 
 
-# Validation report
+# Validation report {#report}
 
 Validation creates a report that is asserted in linked data.  This report can be stored as a named graph in the created linked dataset.
 

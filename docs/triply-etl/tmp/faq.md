@@ -10,7 +10,7 @@ Copy-past your `.gitlab-ci.yml` file [here](https://git.triply.cc/triply/ratt/-/
 
 ### Why is my pipeline not running and marked as 'pending'?
 
-This probably means that you have not configured an ETL runner for this customer organisation yet. See the section about getting started [here](#how-to-create-a-ratt-ci-pipeline)
+This probably means that you have not configured an ETL runner for this customer organization yet. See the section about getting started [here](#how-to-create-a-ratt-ci-pipeline)
 
 ### What do all these `$CI_...` environment variables mean?
 
