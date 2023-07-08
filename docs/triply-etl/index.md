@@ -3,11 +3,14 @@ title: "TriplyETL: Overview"
 path: "/docs/triply-etl"
 ---
 
-TriplyETL allows you to create linked data knowledge graphs.
+TriplyETL allows you to create and maintain production-grade linked data pipelines.
 
-If you are using TriplyETL for the first time, use the [**Generator**](/docs/triply-etl/cli#generator) to create a new ETL and use the [**Runner**](/docs/triply-etl/cli#runner) to run an ETL locally. If you are using an older version of TriplyETL and want to upgrade, take a look at the [**Changelog**](/docs/triply-etl/changelog).
+- [Getting Started](/docs/triply-etl/getting-started) explains how you can use TriplyETL for the first time.
+- [CLI](/docs/triply-etl/cli) explains the commands that you can use to manually create, run, and maintain ETL pipelines.
+- [Changelog](/docs/triply-etl/changelog) documents the changes introduced by each TriplyETL version.
+- [Maintenance](/docs/triply-etl/maintenance) explains how you can perform updates and configure pipeline automation.
 
-TriplyETL uses the following unique approach to Extract, Transform, and Load (ETL) data:
+TriplyETL uses the following unique approach:
 
 ```mermaid
 flowchart LR
@@ -24,7 +27,7 @@ flowchart LR
   tdb[(Triple Store)]
 ```
 
-This approach consists of the following steps:
+This approach consists of the following steps (see diagram):
 
 - Step 1 [**Extract**](/docs/triply-etl/extract) extracts data records from one or more data sources.
 - Step 2 [**Transform**](/docs/triply-etl/transform) cleans, combines, and extends data in the Record representation.
@@ -33,18 +36,18 @@ This approach consists of the following steps:
 - Step 5 [**Validate**](/docs/triply-etl/validate) ensures that linked data in the Internal Store is correct.
 - Step 6 [**Publish**](/docs/triply-etl/publish) makes linked data available in a Triple Store for others to use.
 
-This approach uses the following data environments:
+In addition, the following things are used throughout the 6 TriplyETL steps:
+
+- [**Declarations**](/docs/triply-etl/declare) introduce constants that you can reuse throughout your TriplyETL configuration.
+- [**Control structures**](/docs/triply-etl/control) make parts of the TriplyETL configuration optional or repeating (loops).
+- [**Debug functions**](/docs/triply-etl/debug) allow you to gain insight in TriplyETL internals for the purpose of finding issues and performing maintenance.
+
+TriplyETL uses the following data environments (see diagram):
 
 - The **Data Sources** are used as the input to the pipeline.
 - The **Record** provides a uniform format for data from any source system.
 - The **Internal Store** holds linked data that is generated inside the pipeline.
 - The **Triple Store** is where the results of the pipeline are stored.
-
-This approach includes the following sets of components, that can be used throughout the 6 steps:
-
-- [**Declarations**](/docs/triply-etl/declare) allow you to declare constants in one place for reuse throughout the rest of your TriplyETL configuration.
-- [**Debug functions**](/docs/triply-etl/debug) allow you to gain insight in a TriplyETL for the purpose of maintenance.
-- [**Control structures**](/docs/triply-etl/control) can be used to make parts of the TriplyETL configuration optional or repeating (loops).
 
 <!-- TODO
 ## Reference

@@ -69,4 +69,4 @@ Those were the big ones!  There are also 100+ smaller features that have been ad
 
 ## Closing remarks
 
-That was a long list for a first blog post!  Have you grown tired of your current triple store, or are you just getting started in the world of Linked Data?  Take a look at TriplyDB over at <https://triplydb.com> or contact us at <mailto:info@triply.cc>.
+That was a long list for a first blog post!  Have you grown tired of your current triple store, or are you just getting started in the world of Linked Data?  Take a look at TriplyDB over at <https://triplydb.com> or contact us at [info@triply.cc](mailto:info@triply.cc).

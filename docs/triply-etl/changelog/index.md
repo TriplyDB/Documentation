@@ -5,7 +5,7 @@ path: "/docs/triply-etl/changelog"
 
 The current version of TriplyETL is **2.0.10**
 
-You can use this changelog to perform a safe upgrade from an older version of TriplyETL to a newer one. See the documentation for [Upgrading TriplyETL repositories](/docs/triply-etl/cli#upgrade) for the advised approach, and how the changelog factors into that.
+You can use this changelog to perform a safe update from an older version of TriplyETL to a newer one. See the documentation for [Upgrading TriplyETL repositories](/docs/triply-etl/cli#update) for the advised approach, and how the changelog factors into that.
 
 # Changelog for TriplyETL 2.0.7 through 2.0.10
 

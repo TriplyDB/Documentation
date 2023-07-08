@@ -3,121 +3,78 @@ title: "TriplyETL: Command-Line Interface (CLI)"
 path: "/docs/triply-etl/cli"
 ---
 
-The TriplyETL Command-Line Interface (CLI) allows you to generate, run, and update your ETL pipelines. The TriplyETL CLI works the same on all major platforms: Windows, macOS, and Linux.
+TriplyETL allows you to manually perform various tasks in a terminal application (a Command-Line Interface or CLI).
 
-This page has the following sections:
-
-- [TriplyETL Generator](#generator) explains how you can generate new ETL pipelines.
-- [TriplyETL Runner](#runner) explains how you can run existing ETL pipelines.
+- [Installing dependencies](#dependencies) must be repeated when dependencies were changed.
+- [Transpiling to JavaScript](#transpile) must be repeated when one or more TypeScript files are changed.
+- [TriplyETL Runner](#runner) allows you to manually run local TriplyETL projects in your terminal.
 - [TriplyETL Tools](#tools) explains how you can perform common ETL tasks.
-- [Update TriplyETL repositories](#update) explains how you can keep your ETL repository up-to-date.
 
 
 
-# TriplyETL Generator {#generator}
+### Installing dependencies {#dependencies}
 
-The TriplyETL Generator allows you to generate new ETL pipelines.
+When you work on an existing TriplyETL project, you sometimes pull in changes made by your team members. Such changes are typically obtained by running the following Git command:
 
-## Prerequisites
+```sh
+git pull
+```
 
-In order to use the TriplyETL Generator, you must have:
-- A TriplyETL License Key. Contact [info@triply.cc](mailto:info@triply.cc) to obtain a License Key for your organization.
-- A user account on a TriplyDB server. Contact [info@triply.cc](mailto:info@triply.cc) to set up a TriplyDB server for your organization, or create a free account on <https://triplydb.com>.
+This command prints a list of files that were changed by your team members. If this list includes changes to the file `package-lock.json`, that means that one or more dependencies were changed. In order to effectuate these changes in your local copy of the TriplyETL project, you must run the following command:
 
-## Install TriplyETL Generator
+```sh
+npm i
+```
 
-Perform the following steps to install the TriplyETL Generator on your computer:
 
-1. Go to <https://nodejs.org> and install Node.js version 18. (Or use a [Node Version Manager](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm) to install multiple versions of Node.js in an isolated way.)
 
-## Use TriplyETL Generator
+### Transpiling to JavaScript {#transpile}
 
-Perform the following steps to use the TriplyETL Generator:
+When you make changes to one or more TypeScript files, the corresponding JavaScript files will have become outdated. If you now use the [TriplyETL Runner](#runner), it will use one or more outdated JavaScript files, and will not take into account your most recent changes to the TypeScript files.
 
-1. Run the following command:
+In order to keep your JavaScript files up-to-date relative to your TypeScript files, you must run the following command after making changes to TypeScript files:
 
-   ```sh
-   npx triply-etl-generator
-   ```
+```sh
+npm run build
+```
 
-   This command automatically ensures that you are using the latest version.
+If you edit your TypeScript files repeatedly, having to run this extra command may get tedious. In such cases, you can run the following command to automatically perform the transpile step in the background:
 
-2. When asked, enter the following information:
+```sh
+npm run dev
+```
 
-      a. TriplyETL License Key
-
-      b. Project name
-
-      c. Target folder
-
-      d. Dataset name
-
-      e. TriplyDB API Token
-
-      f. TriplyDB URL
-
-      g. TriplyDB email
-
-      h. TriplyDB password
-
-    Here is an example of a possible run:
-
-    ```sh
-    ? TriplyETL License Key: [hidden]
-    ? Project name: my-etl
-    ? Target folder: my-etl
-    ? Dataset name: my-etl
-    ? Create a new TriplyDB API Token? Yes
-    ? Your TriplyDB URL: triplydb.com
-    ? Your TriplyDB email: my-account@my-organization.com
-    ? Your TriplyDB password: [hidden]
-    🏁 Your project my-etl is ready for use in my-etl.
-    ```
-
-3. Go to the target folder that you have specified:
-
-   ```sh
-   cd my-etl
-   ```
-
-4. You can now use the [TriplyETL Runner](#runner) to run the ETL:
-
-   ```sh
-   npx etl
-   ```
-
-<!--
-### Advanced options
-
-The TriplyETL Generator has the following advanced options:
-
-- `--dtap` Use a DTAP (Development, Test, Acceptance, Production) configuration for your TriplyETL project.
-- `--help` Displays a help message.
-- `--skip-git` Do not create a Git repository as part of creating the TriplyETL project.
-- `--version` Displays the version number of the TriplyETL Generator.
--->
-
-## Update TriplyETL Generator
-
-When you run the TriplyETL Generator, it always checks to see whether a newer version is available. If this is the case, it shows you the NPM command that you can run to update.
+Notice that this prevents you from using the terminal application for new commands. It is typical to open a new terminal application window, and run the `npx etl` command from there.
 
 
 
 # TriplyETL Runner {#runner}
 
-The TriplyETL Runner is a CLI application that allows you to run an existing ETL pipeline.
+The TriplyETL Runner allows you to run a local TriplyETL project in your terminal application.
 
-If you do not have an ETL repository yet, use the [TriplyETL Generator](#generator) first to generate one.
+We assume that you have a local TriplyETL project in which you can successfully run the `npx etl` command. Follow the [Getting Started instructions for TriplyETL Runner](/docs/triply-etl/getting-started#runner) if this is not yet the case.
 
-Go to the directory where an existing ETL repository was generated or cloned. Run the following command to run the ETL pipeline:
+Run the following command to run the ETL pipeline:
 
-```
+```sh
 npx etl
+```
+
+This command implicitly uses the file `lib/main.js`, which is the transpiled JavaScript file that corresponds to the TypeScript file `src/main.ts`. The following command has the same behavior, but makes explicit which file is used:
+
+```sh
+npx etl lib/main.js
+```
+
+Some TriplyETL projects have multiple top-level scripts. In such cases, it is possible to run each of these scripts individually as follows:
+
+```sh
+npx etl lib/some-script.js
 ```
 
 ## Output summary
 
-TriplyETL Runner will start processing data. When the ETL pipeline ends successfully, a summary will be printed:
+TriplyETL Runner will start processing data. Depending on the size of the data source, the Runner may take more or less time to finish. When the Runner finishes successfully, it will print the following summary:
 
 ```
  ┌──────────────────────────────────────────────────────────────┐
@@ -216,9 +173,9 @@ This fixes the reset issue, but also makes the output less colorful.
 
 # TriplyETL Tools {#tools}
 
-TriplyETL Tools is a collection of small tools that can be used to run isolated tasks from the command-line. TriplyETL Tools can be used when you are in a TriplyETL repository. If you 
+TriplyETL Tools is a collection of small tools that can be used to run isolated tasks from your terminal application. TriplyETL Tools can be used when you are inside a TriplyETL project.
 
-If you do not have an ETL repository yet, use the [TriplyETL Generator](#generator) first to generate one.
+If you do not have an ETL project yet, use the [TriplyETL Generator](/docs/triply-etl/getting-started#generator) first to create one.
 
 The following command prints an overview of the supported tools:
 
@@ -331,52 +288,3 @@ $ npx tools validate -d data.trig -s model.trig
 ```
 
 See [this section](/docs/triply-etl/validate/shacl#report) to learn more about the SHACL validation report.
-
-
-
-# Update TriplyETL repositories {#update}
-
-New versions of TriplyETL are released regularly. Moving to a new version is generally a good idea, because it allows new features to be used and will include fixes for known/reported bugs. At the same time, updating to a new version may require changes to your pipeline.
-
-It is important to determine an approach for updating your TriplyETL repositories that fits your project and organization. The following sections describe how you can make such a determination.
-
-## Check the current version
-
-You can look up which version of TriplyETL you are currently using, by running the following command:
-
-```sh
-npm list @triplyetl/etl
-```
-
-## Check for new versions
-
-You can run the following command to see whether TriplyETL and/or the developer dependencies can be updated:
-
-```sh
-npm outdated
-```
-
-TriplyETL repositories also include several developer dependencies, that make it easier to write and maintain ETLs. These developer dependencies must be updated independently, and may show up in the output of the `npm outdated` command.
-
-## Assess the impact of updating
-
-TriplyETL uses the Semantic Versioning approach: `{major}.{minor}.{patch}`  The impact of updating to a new TriplyETL version can therefore be assessed as follows:
-
-  - If only the `{patch}` number has increased, then an upgrade is not expected to affect existing functionality.  The new release only contains bug fixes and/or small changes to functionality that does not break existing pipelines.
-
-  - If the `{minor}` number has increased, but the `{major}` number is the same, then an upgrade may require small changes to an existing pipeline.  A minor upgrade will never remove existing functionality, but it may change details of how existing functionality works (e.g. the settings for an existing function may have undergone minor changes).
-
-    Minor releases are likely to include significant *new* functionality that may benefit an existing pipeline.
-
-  - If the `{major}` number has increased, an upgrade is likely to require changes to existing pipelines.  Major releases often remove outdated functionalities or bring significant changes to the behavior of existing functionalities.
-
-Look at the [TriplyETL Changelog](/docs/triply-etl/changelog) to see what changes you will need to make in order to perform the update in your project and organization. Specifically observe items that are marked "[Changed]" since these may require adjustments to your configuration.
-
-## Perform the update
-
-Based on the outcome of the previous step, a maintainer of the repository can choose to update a specific dependency, or all dependencies at once:
-
-```sh
-npm update {package-name}
-npm update
-```

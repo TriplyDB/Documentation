@@ -26,6 +26,8 @@
         - title: Overview
           link: /docs/triply-etl
 
+        - title: Getting Started
+          link: /docs/triply-etl/getting-started
         - title: CLI
           link: /docs/triply-etl/cli
         - title: Changelog
@@ -78,14 +80,8 @@
         - title: Debug
           link: /docs/triply-etl/debug
 
-        #- title: Production systems
-        #  link: /docs/triply-etl/production-systems
-        #- title: RATT - Getting started
-        #  link: /docs/triply-etl/ratt-getting-started
-        #- title: RATT - Tree-shaped data
-        #  link: /docs/triply-etl/ratt-tree-shaped-data
-        #- title: RATT - Numeric data
-        #  link: /docs/triply-etl/ratt-numeric-data
+        - title: Maintenance
+          link: /docs/triply-etl/maintenance
 
     - group: Yasgui
       tagline: Learn about the SPARQL editor
