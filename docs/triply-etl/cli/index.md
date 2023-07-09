@@ -20,7 +20,7 @@ When you work on an existing TriplyETL project, you sometimes pull in changes ma
 git pull
 ```
 
-This command prints a list of files that were changed by your team members. If this list includes changes to the file `package-lock.json`, that means that one or more dependencies were changed. In order to effectuate these changes in your local copy of the TriplyETL project, you must run the following command:
+This command prints a list of files that were changed by your team members. If this list includes changes to the file `package.json`, this means that one or more dependencies were changed. In order to effectuate these changes in your local copy of the TriplyETL project, you must run the following command:
 
 ```sh
 npm i

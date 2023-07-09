@@ -20,7 +20,7 @@ In order to use TriplyETL, you must first install the following programs on your
   <dd>
     <ol>
       <li>
-        <p>Go to <a href="https://github.com/git-guides/install-git" target="_blank">this link</a> and follow the instructions for your operating system (Windows, macOs, or Linux).</p>
+        <p>Go to <a href="https://github.com/git-guides/install-git" target="_blank">this link</a> and follow the instructions for your operating system (Windows, macOS, or Linux).</p>
       </li>
       <li>
         <p>Run the following commands to set your user name and email in Git:</p>
@@ -33,19 +33,13 @@ git config --global user.name "Ada Lovelace"</pre>
   <dt>Install Node.js</dt>
   <dd>
     <p>Go to <href="https://nodejs.org" target="_blank">nodejs.org</a> and click on “18.x.y LTS (Recommended For Most Users)”. This will download the installer for your operating system. Run the installer on your computer.</p>
-    <ol>
-      <li>
-        <p>Alternatively, you can install the Node Version Manager (<code>nvm</code>). This allows you to install multiple versions of Node.js on the same computer. See the following links for more information:</p>
-        <ol>
-          <li>
-            <p><a href="https://learn.microsoft.com/en-us/windows/dev-environment/javascript/nodejs-on-windows#install-nvm-windows-nodejs-and-npm" target="_blank">Here</a> you can find the official instructions from Microsoft for installing NVM on Windows.</p>
-          </li>
-          <li>
-            <p><a href="https://docs.npmjs.com/downloading-and-installing-node-js-and-npm#using-a-node-version-manager-to-install-nodejs-and-npm" target="_blank">Here</a> you can find instructions for installing NVM on any operating system (including macOs and Linux).</p>
-          </li>
-        </ol>
-      </li>
-    </ol>
+    <p>Alternatively, you can install the Node Version Manager (<code>nvm</code>). This allows you to install multiple versions of Node.js on the same computer. See the following links for more information:</p>
+    <dl>
+      <dt>On Windows</dt>
+      <dd>You can following <a href="https://learn.microsoft.com/en-us/windows/dev-environment/javascript/nodejs-on-windows#install-nvm-windows-nodejs-and-npm" target="_blank">the official instructions from Microsoft</a> for installing NVM on Windows.</dd>
+      <dt>On macOS or Linux</dt>
+      <dd>You can follow the instructions for <a href="https://docs.npmjs.com/downloading-and-installing-node-js-and-npm#using-a-node-version-manager-to-install-nodejs-and-npm" target="_blank">installing NVM on any operating system</a> (including macOS and Linux).</dd>
+    </dl>
   </dd>
   <dt>Find a terminal application</dt>
   <dd>
@@ -54,7 +48,7 @@ git config --global user.name "Ada Lovelace"</pre>
       <dt>On Windows</dt>
       <dd>Most Windows versions come with some version of PowerShell preinstalled. You can also follow <a href="https://learn.microsoft.com/en-us/powershell/scripting/install/installing-powershell-on-windows?view=powershell-7.3#install-powershell-using-winget-recommended" target="_blank">these instructions by Microsoft</a> to update to the latest version of PowerShell.</dd>
       <dt>On macOS</dt>
-      <dd>Most macOs version come with a <a href="https://support.apple.com/guide/terminal/open-or-quit-terminal-apd5265185d-f365-44cb-8b09-71a064a42125/mac" target="_blank">Terminal application</a> preinstalled.</dd>
+      <dd>Most macOS version come with a <a href="https://support.apple.com/guide/terminal/open-or-quit-terminal-apd5265185d-f365-44cb-8b09-71a064a42125/mac" target="_blank">Terminal application</a> preinstalled.</dd>
       <dt>On Linux</dt>
       <dd>Most Linux versions come with a preinstalled terminal application. For example, on Ubuntu the <a href="https://help.gnome.org/users/gnome-terminal/stable/" target="_blank">GNOME Terminal application</a> is preinstalled.</dd>
     </dl>

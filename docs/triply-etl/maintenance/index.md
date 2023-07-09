@@ -53,11 +53,11 @@ TriplyETL uses the Semantic Versioning approach: `{major}.{minor}.{patch}` The i
 Based on the outcome of the previous step, a maintainer of the repository can choose to update a specific dependency. The following command updates the TriplyETL dependency:
 
 ```sh
-npm update {package-name}
+npm up {package-name}
 ```
 
 The following command updates all dependencies:
 
 ```sh
-npm update
+npm up
 ```
