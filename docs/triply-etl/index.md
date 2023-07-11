@@ -1,8 +1,4 @@
----
-title: "TriplyETL: Overview"
-path: "/docs/triply-etl"
----
-
+# TriplyETL Overview
 TriplyETL allows you to create and maintain production-grade linked data pipelines.
 
 - [Getting Started](/docs/triply-etl/getting-started) explains how you can use TriplyETL for the first time.
@@ -79,7 +75,7 @@ The following pages document all TriplyETL features and configuration options:
   - [**RML**](/docs/triply-etl/transformations/rml) Perform transformations and assertions with RML.
 -->
 
-# Why TriplyETL?
+## Why TriplyETL?
 
 TriplyETL has the following core features, that set it apart from other data pipeline products:
 

@@ -3,6 +3,7 @@ title: "TriplyETL: Command-Line Interface (CLI)"
 path: "/docs/triply-etl/cli"
 ---
 
+# Command Line Interface (CLI)
 TriplyETL allows you to manually perform various tasks in a terminal application (a Command-Line Interface or CLI).
 
 - [Installing dependencies](#dependencies) must be repeated when dependencies were changed.
@@ -12,7 +13,7 @@ TriplyETL allows you to manually perform various tasks in a terminal application
 
 
 
-### Installing dependencies {#dependencies}
+## Installing dependencies
 
 When you work on an existing TriplyETL project, you sometimes pull in changes made by your team members. Such changes are typically obtained by running the following Git command:
 
@@ -28,7 +29,7 @@ npm i
 
 
 
-### Transpiling to JavaScript {#transpile}
+## Transpiling to JavaScript
 
 When you make changes to one or more TypeScript files, the corresponding JavaScript files will have become outdated. If you now use the [TriplyETL Runner](#runner), it will use one or more outdated JavaScript files, and will not take into account your most recent changes to the TypeScript files.
 
@@ -48,7 +49,7 @@ Notice that this prevents you from using the terminal application for new comman
 
 
 
-# TriplyETL Runner {#runner}
+## TriplyETL Runner
 
 The TriplyETL Runner allows you to run a local TriplyETL project in your terminal application.
 
@@ -72,7 +73,7 @@ Some TriplyETL projects have multiple top-level scripts. In such cases, it is po
 npx etl lib/some-script.js
 ```
 
-## Output summary
+### Output summary
 
 TriplyETL Runner will start processing data. Depending on the size of the data source, the Runner may take more or less time to finish. When the Runner finishes successfully, it will print the following summary:
 
@@ -95,7 +96,7 @@ This summary includes the following information:
 - **"Started at"** shows the date and time at which the Runner started.
 - **"Runtime"** shows the wall time duration of the run.
 
-## Limit the number of records
+### Limit the number of records
 
 When developing a pipeline, it is almost never necessary to process all records from the source data. Instead, it is common to run the ETL for a small number of example record, which results in quick feedback.  The `--head` flag indicates the maximum number of records that is processed by the Runner:
 
@@ -106,7 +107,7 @@ npx etl --head 10
 
 These commands run the ETL for the first record (if one is available) and for the first 10 records (if these are available).
 
-## Specify a range of records
+### Specify a range of records
 
 When developing a pipeline over a large source data collection, it is often standard practice to use the first 10 or 100 records most of the time.
 
@@ -118,7 +119,7 @@ To avoid the downsides of using `--head`, TriplyETL also supports the `--from-re
 npx etl --from-record-id 1000 --head 10
 ```
 
-## Process a specific record
+### Process a specific record
 
 When the `--head` flag is set to 1, the `--from-record-id` flag specifies the index of a single specific record that is processed.  This is useful when a record is known to be problematic, for instance during debugging.
 
@@ -128,7 +129,7 @@ The following command runs TriplyETL for the 27th record:
 npx etl --from-record-id 26 --head 1
 ```
 
-## Set a timeout {#timeout}
+### Set a timeout
 
 For large ETL pipelines, it is sometimes useful to specify a maximum duration for which the TriplyETL Runner is allowed to run. In such cases, the `--timeout` flag can be used.
 
@@ -138,7 +139,7 @@ When the indicated timeout is reached before the pipeline finishes, the TriplyET
 
 For TriplyETLs that run in a CI/CD environment, the timeout must be set lower than the CI/CD timeout, in order for the Runner to be able to perform the termination step.
 
-## Verbose mode
+### Verbose mode
 
 When TriplyETL is run normally, the following information is displayed:
 
@@ -171,7 +172,7 @@ This fixes the reset issue, but also makes the output less colorful.
 
 
 
-# TriplyETL Tools {#tools}
+## TriplyETL Tools
 
 TriplyETL Tools is a collection of small tools that can be used to run isolated tasks from your terminal application. TriplyETL Tools can be used when you are inside a TriplyETL project.
 
@@ -207,7 +208,7 @@ For each tool, the following command prints more information on how to use it:
 npx tools {name} --help
 ```
 
-## Compare {#tool-compare}
+### Compare
 
 The compare tool checks whether two RDF files encode the same linked data:
 - If the two files contain the same data, the command succeeds and does not print any output.
@@ -227,7 +228,7 @@ npx tools compare one.trig two.trig
 
 This tool uses the graph isomorphism property as defined in the RDF 1.1 standard: [link](https://www.w3.org/TR/2014/REC-rdf11-concepts-20140225/#graph-isomorphism)
 
-## Create TriplyDB API Token {#tool-create-token}
+### Create TriplyDB API Token
 
 This tool creates a new TriplyDB API Token from the command-line. This command can be used as follows:
 
@@ -261,7 +262,7 @@ TODO
 TODO
 -->
 
-## Print TriplyDB API Token {#tool-print-token}
+### Print TriplyDB API Token
 
 This tool prints the currently configured TriplyDB API Token, if any. This command can be used as follows:
 
@@ -277,7 +278,7 @@ This command is useful when there are issues with configuring a TriplyDB API Tok
 TODO
 -->
 
-## Validate {#tool-validate}
+### Validate
 
 This tool validates the content of one data file against the SHACL shapes in another file. The resulting SHACL validation report is printed to standard output.
 

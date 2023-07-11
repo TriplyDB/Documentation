@@ -1,0 +1,18 @@
+site_name: Triply Documentation
+plugins: 
+  - search
+  - mermaid2
+nav:
+    - Home: index.md
+    - TriplyDB: 
+      - 'Getting started': triply-db-getting-started/index.md
+    - TriplyETL: 
+      - Overview: triply-etl/index.md
+      - 'Getting started': triply-etl/getting-started/index.md
+      - Command Line Interface (CLI): triply-etl/cli/index.md
+      - Changelog: triply-etl/changelog/index.md
+      - Maintenance: triply-etl/maintenance/index.md
+    - Yasgui: 
+      - Introduction: yasgui/index.md
+theme: readthedocs
+

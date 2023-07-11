@@ -30,3 +30,17 @@ Using the following syntax you are able to assign id's to headers (without havin
 ```md
 # Header {#id}
 ```
+
+## Building and running the Documentation website
+This website uses [MkDocs](https://www.mkdocs.org/) to convert Markdown to HTML so the documentation can be veiwed in a webbrowser. Follow the instructions on their website to isnatll MkDocs. After you've sucessfully installed MkDocs, you can run a local webserver with the following command (run from the toot of this repository):
+```bash
+mkdocs serve
+```
+
+To build a static HTML website for deployment, run this command:
+```bash
+mkdocs build
+```
+This will generate the required HTML and CSS in a folder `./site`.
+
+To render `mermaid` you will need to install [this plugin](https://github.com/fralau/mkdocs-mermaid2-plugin).
