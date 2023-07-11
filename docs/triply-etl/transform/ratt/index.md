@@ -1,7 +1,4 @@
----
-title: "2. Transform: RATT"
-path: "/docs/triply-etl/transform/ratt"
----
+# Transform: RATT
 
 RATT transformations are a core set of functions that are commonly used to change the content of TriplyETL Records.
 

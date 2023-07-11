@@ -1,9 +1,6 @@
----
-title: "2. TriplyETL: Transform"
-path: "/docs/triply-etl/transform"
----
+# Transform
 
-The **Transform** step makes changes to the Record:
+The transform step makes changes to the Record:
 
 ```mermaid
 graph LR

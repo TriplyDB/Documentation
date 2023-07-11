@@ -1,32 +1,37 @@
 site_name: Triply Documentation
-plugins: 
+plugins:
   - search
   - mermaid2
 
 nav:
-    - Home: index.md
-    - TriplyDB: 
-      - 'Getting started': triply-db-getting-started
-    - TriplyETL: 
-      - General: 
-        - Overview: triply-etl
-        - 'Getting started': triply-etl/getting-started
-
-        - Command Line Interface (CLI): triply-etl/cli
-        - Changelog: triply-etl/changelog
-        - Maintenance: triply-etl/maintenance
-      - TriplyETL Approach:
-        - Extract: triply-etl/extract
-        # - Transform
-        # - Assert
-        # - Enrich
-        # - Validate
-        # - Publish
-    - Yasgui: 
+  - Home: index.md
+  - TriplyDB:
+      - "Getting started": triply-db-getting-started
+  - TriplyETL:
+      - Overview: triply-etl
+      - Generics:
+          - "Getting started": triply-etl/getting-started
+          - Command Line Interface (CLI): triply-etl/cli
+          - Changelog: triply-etl/changelog
+          - Maintenance: triply-etl/maintenance
+          - Declare: triply-etl/declare
+          - Control: triply-etl/control
+          - Debug: triply-etl/debug
+          - Maintenance: triply-etl/maintenance
+      - Approach:
+          - Extract: triply-etl/extract
+          - Transform:
+              - Overview: triply-etl/transform
+              - RATT: triply-etl/transform/ratt
+          - Assert: triply-etl/assert
+          - Enrich: triply-etl/enrich
+          - Validate: triply-etl/validate
+          - Publish: triply-etl/publish
+  - Yasgui:
       - Introduction: yasgui
 theme:
-    name: gitbook
-    locale: en
+  name: gitbook
+  locale: en
 
 markdown_extensions:
   - pymdownx.highlight:
