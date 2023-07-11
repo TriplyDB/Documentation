@@ -2,17 +2,41 @@ site_name: Triply Documentation
 plugins: 
   - search
   - mermaid2
+
 nav:
     - Home: index.md
     - TriplyDB: 
-      - 'Getting started': triply-db-getting-started/index.md
+      - 'Getting started': triply-db-getting-started
     - TriplyETL: 
-      - Overview: triply-etl/index.md
-      - 'Getting started': triply-etl/getting-started/index.md
-      - Command Line Interface (CLI): triply-etl/cli/index.md
-      - Changelog: triply-etl/changelog/index.md
-      - Maintenance: triply-etl/maintenance/index.md
-    - Yasgui: 
-      - Introduction: yasgui/index.md
-theme: readthedocs
+      - General: 
+        - Overview: triply-etl
+        - 'Getting started': triply-etl/getting-started
 
+        - Command Line Interface (CLI): triply-etl/cli
+        - Changelog: triply-etl/changelog
+        - Maintenance: triply-etl/maintenance
+      - TriplyETL Approach:
+        - Extract: triply-etl/extract
+        # - Transform
+        # - Assert
+        # - Enrich
+        # - Validate
+        # - Publish
+    - Yasgui: 
+      - Introduction: yasgui
+theme:
+    name: gitbook
+    locale: en
+
+markdown_extensions:
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  # - pymdownx.superfences:
+  #       custom_fences:
+  #         - name: mermaid
+  #           class: mermaid
+  #           format: !!python/name:pymdownx.superfences.fence_code_format

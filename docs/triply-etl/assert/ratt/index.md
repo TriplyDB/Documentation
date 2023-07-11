@@ -98,7 +98,7 @@ triple(iri(prefix.id, 'parent'), sdo.children, iris(prefix.id, 'children')),
 
 This makes the following linked data assertions:
 
-```ttl
+```turtle
 id:John sdo:children id:Joe, id:Jane.
 ```
 
@@ -152,7 +152,7 @@ triple('city', dct.identifier, 'id'),
 
 These assertions combined can result in the following linked data:
 
-```ttl
+```turtle
 id:amsterdam
   sdo:name 'Amsterdam'@nl
   vocab:population '800000'^^xsd:nonNegativeInteger
@@ -193,7 +193,7 @@ triple(iri(prefix.basket, 'id'), rdfs.member, literals('contents', lang.en)),
 
 This makes the following linked data assertions:
 
-```ttl
+```turtle
 basket:123 rdfs:member 'apple'@en, 'banana'@en, 'pear'@en.
 ```
 
@@ -226,7 +226,7 @@ triple(iri(prefix.id, 'parent'), sdo.children, 'children'),
 
 This makes the following linked data assertions:
 
-```ttl
+```turtle
 id:John sdo:children 'Jane', 'Joe'.
 ```
 
@@ -283,7 +283,7 @@ nestedPairs(iri(prefix.product, 'id'), sdo.height, '_height',
 
 This makes the following linked data assertions:
 
-```ttl
+```turtle
 product:1
   sdo:height
     [ qudt:unit unit:CentiM;
@@ -323,7 +323,7 @@ nestedpairs(iri(prefix.feature, 'id'), geo.hasGeometry, iri(prefix.geometry, 'id
 
 This generates the following linked data, where a well-known Skolem IRI is used for the geometry 'blank node':
 
-```ttl
+```turtle
 feature:1 geo:hasGeometry geometry:1.
 geometry:1
   a geo:Geometry;
@@ -399,7 +399,7 @@ objects(iri(prefix.city, 'name'), skos.altLabel,
 
 This results in the following 4 linked data assertions:
 
-```ttl
+```turtle
 city:New%20York
   skos:altLabel
     'The Big Apple'@en.
@@ -453,7 +453,7 @@ pairs(iri(prefix.city, 'name'),
 
 This results in the following 4 linked data assertions:
 
-```ttl
+```turtle
 city:London
   skos:prefLabel 'London'@en;
   skos:altLabel 'Home of the Big Ben'@en.

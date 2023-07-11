@@ -57,7 +57,7 @@ This function is used under the following circumstances:
 2. The thing that you want to identify does not have a readily available identifier.
 3. The thing that you want to identify has one or more properties that together allow the thing to be uniquely identified.
 
-A benefit of `addHashedIri()` is that the created IRIs are the same across different ETL runs over the same source data.
+A benefit of `#!ts addHashedIri()` is that the created IRIs are the same across different ETL runs over the same source data.
 
 A downside of `addHashedIri()` is that it can take a lot of time to figure out which set of properties make every IRI unique. (In database theory this process is known as 'composite key detection'.)  Furthermore, having to adjust the hashed content later may pose a maintenance burden.
 
@@ -77,7 +77,7 @@ In such cases it may be an option to take a combination of columns, and use that
 
 The following snippet uses the combination of the first name and last name fields (in that order) to create a locally unique hash, that can be used to create a globally IRI. (This does assume that every person in the dataset has a unique first/last name combination!)
 
-```ts
+``` typescript
 fromXlsx(Source.file('data.xlsx')),
 addHashedIri({
   prefix: prefix.person,
@@ -322,7 +322,7 @@ triple(iri(prefix.book, 'id'), sdo.dateCreated, '_dateCreated'),
 
 This makes the following linked data assertion:
 
-```ttl
+```turtle
 book:123 sdo:dateCreated '2022-30-01'^^xsd:date.
 ```
 
@@ -566,7 +566,7 @@ triple(iri(prefix.person, 'data[0]'), foaf.age, 'data[1]'),
 
 This results in the following linked data assertion:
 
-```ttl
+```turtle
 person:johndoe foaf:age 22.
 ```
 
@@ -597,7 +597,7 @@ triple(iri(prefix.event, 'id'), sdo.startDate, '_start'),
 
 This results in the following linked data assertions:
 
-```ttl
+```turtle
 event:123 sdo:startDate '2022-02-12'^^xsd:date.
 event:456 sdo:startDate 'unknown'.
 ```

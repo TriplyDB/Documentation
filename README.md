@@ -43,4 +43,15 @@ mkdocs build
 ```
 This will generate the required HTML and CSS in a folder `./site`.
 
-To render `mermaid` you will need to install [this plugin](https://github.com/fralau/mkdocs-mermaid2-plugin).
+To publish this website to [Github Pages](https://triplydb.github.io/Documentation/) run this command:
+```bash
+mkdocs gh-deploy
+```
+
+Required plugins:
+- To render `mermaid` you will need to install [this plugin](https://github.com/fralau/mkdocs-mermaid2-plugin).
+- Theme [Mkdocs - GitBook Theme](https://gitlab.com/lramage/mkdocs-gitbook-theme)
+- Theme [Material for MkDocs](https://squidfunk.github.io/mkdocs-material/)
+
+Other dependencies:
+- [Pygments](https://pygments.org) for syntax highlighting

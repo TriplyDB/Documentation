@@ -147,7 +147,7 @@ pairs(iri(prefix.person, 'name'),
 
 This results in the following linked data:
 
-```ttl
+```turtle
 person:John
   a def:Person;
   def:owns vehicle:123.
