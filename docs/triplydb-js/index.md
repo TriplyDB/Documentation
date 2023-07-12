@@ -1889,6 +1889,8 @@ The optional properties accepted as arguments for <code>importFromDataset</code>
   <dd>Argument `<code>graphNames</code>` optionally is an array of graph names. These names can be one of three types: 'string', instances of a 'Graph' class, or instances of 'NamedNodes'. Note that either graphNames or graphMap can be given as optional argument and not both.</dd>
   <dt>overwrite</dt>
   <dd>Accepts a Boolean value. An optional property that determines whether existing graph names in this dataset are allowed to be silently overwritten. If this argument is not specified, then `false` is used as the default value.</dd>
+  <dt>mergeGraphs</dt>
+  <dd>Accepts a Boolean value. An optional property that determines whether existing graph in this dataset are merged with the uploaded graphs. If this argument is not specified, then `false` is used as the default value.</dd>
 </dl>
 
 ### Examples
