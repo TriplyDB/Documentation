@@ -30,10 +30,14 @@ git config --global user.name "Ada Lovelace"</pre>
       </li>
     </ol>
   </dd>
-  <dt>Install Node.js</dt>
+  <dt>Install Node.js (simple approach)</dt>
   <dd>
-    <p>Go to <href="https://nodejs.org" target="_blank">nodejs.org</a> and click on “18.x.y LTS (Recommended For Most Users)”. This will download the installer for your operating system. Run the installer on your computer.</p>
-    <p>Alternatively, you can install the Node Version Manager (<code>nvm</code>). This allows you to install multiple versions of Node.js on the same computer. See the following links for more information:</p>
+    <p>Go to <href="https://nodejs.org" target="_blank">nodejs.org</a> and click on option “18.x.y LTS (Recommended For Most Users)”. This will download the installer for your operating system. Run the installer on your computer.</p>
+    <p>On Windows, you must also select the number of bits on your computer: 32 or 64. The correct number of bits is 64 for almost all Windows computers.</p>
+  </dd>
+  <dt>Install Node.js (advanced approach)</dt>
+  <dd>
+    <p>For more advanced us, you can install the Node Version Manager (<code>nvm</code>). This allows you to install multiple versions of Node.js on the same computer. See the following links for more information:</p>
     <dl>
       <dt>On Windows</dt>
       <dd>You can following <a href="https://learn.microsoft.com/en-us/windows/dev-environment/javascript/nodejs-on-windows#install-nvm-windows-nodejs-and-npm" target="_blank">the official instructions from Microsoft</a> for installing NVM on Windows.</dd>
