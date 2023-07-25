@@ -6,10 +6,10 @@ path: "/docs/triply-etl/cli"
 # Command Line Interface (CLI)
 TriplyETL allows you to manually perform various tasks in a terminal application (a Command-Line Interface or CLI).
 
-- [Installing dependencies](#dependencies) must be repeated when dependencies were changed.
-- [Transpiling to JavaScript](#transpile) must be repeated when one or more TypeScript files are changed.
-- [TriplyETL Runner](#runner) allows you to manually run local TriplyETL projects in your terminal.
-- [TriplyETL Tools](#tools) explains how you can perform common ETL tasks.
+- [Installing dependencies](#installing-dependencies) must be repeated when dependencies were changed.
+- [Transpiling to JavaScript](#transpiling-to-javascript) must be repeated when one or more TypeScript files are changed.
+- [TriplyETL Runner](#triplyetl-runner) allows you to manually run local TriplyETL projects in your terminal.
+- [TriplyETL Tools](#triplyetl-tools) explains how you can perform common ETL tasks.
 
 
 
@@ -190,17 +190,15 @@ The following tools are supported:
 | --- | --- |
 | [`compare`](#tool-compare) | Compare the contents of two RDF files |
 | [`create-token`](#tool-create-token) | Create a new TriplyDB API Token |
+| [`print-token`](#tool-print-token) | Print the currently set TriplyDB API Token, if any |
+| [`validate`](#tool-validate) | Validate a data file against a SHACL shapes file |
 <!--
 | [`delete-datasets`](#tool-delete-datasets) | Bulk deleting of Datasets |
 | [`delete-graphs`](#tool-delete-graphs) | Bulk deleting of Graphs |
 | [`delete-queries`](#tool-delete-queries) | Bulk deleting of Queries |
 | [`download`](#tool-download) | Downloads information from the TriplyDB instance from your token |
--->
-| [`print-token`](#tool-print-token) | Print the currently set TriplyDB API Token, if any |
-<!--
 | [`report`](#tool-report) | Generate a report file that describes the content of the currently configured TriplyDB instance, if any |
 -->
-| [`validate`](#tool-validate) | Validate a data file against a SHACL shapes file |
 
 For each tool, the following command prints more information on how to use it:
 

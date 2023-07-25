@@ -6,11 +6,11 @@ plugins:
 nav:
   - Home: index.md
   - TriplyDB:
-      - "Getting started": triply-db-getting-started
+      - Getting started: triply-db-getting-started
   - TriplyETL:
-      - Overview: triply-etl
       - Generics:
-          - "Getting started": triply-etl/getting-started
+          - Overview: triply-etl
+          - Getting started: triply-etl/getting-started
           - Command Line Interface (CLI): triply-etl/cli
           - Changelog: triply-etl/changelog
           - Maintenance: triply-etl/maintenance
@@ -30,7 +30,7 @@ nav:
   - Yasgui:
       - Introduction: yasgui
 theme:
-  name: gitbook
+  name: readthedocs
   locale: en
 
 markdown_extensions:
