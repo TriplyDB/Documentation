@@ -25,6 +25,7 @@ The following transformation functions are currently available:
 | [copy()](#copy) | Copy a value from an old into a new key. |
 | [decodeHtml()](#decodeHtml) | Decode HTML entities that occur in strings. |
 | [geojsonToWkt()](#geojsontowkt) | Change GeoJSON strings to WKT strings. |
+| [jpath()](#jpath) | Filter a value on the simple key specification |
 | [lowercase()](#lowercase) | Change strings to their lowercase variants. |
 | [padEnd()](#padEnd) | Pad the end of strings. |
 | [padStart()](#padStart) | Pad the start of strings. |
@@ -886,6 +887,78 @@ graph LR
   feature(feature:123):::data
   geometry(geometry:197e6376c2bd8192c24911f88c330606):::data
   wkt("'Point(6.256 48.480)'^^geo:wktLiteral"):::data
+```
+
+# Function `jpath()` {#jpath}
+
+## Description
+
+Filters a value based on a key specification using [JsonPath](https://github.com/dchester/jsonpath) expression. JsonPath is a query language for JSON. 
+For syntax of JsonPath expression please visit [JsonPath library page](https://github.com/dchester/jsonpath#jsonpath-syntax). 
+ 
+
+## Use cases
+
+This function simplifies the complex key specification to filter specific values. It can only be used for an object of a triple to create a literal.
+The result of a function should be one value and not an array. 
+
+## Parameters
+
+- `value`  A [JSONPath](https://github.com/dchester/jsonpath#jsonpath-syntax) expression
+
+## Example
+
+The following examples will create a literal based on key `value`:
+
+
+- if key `'ISO_639-2'` exists
+
+```ts
+fromJson({
+  language: [{ "ISO_639-1": 'en', lcid: 2057, value: "Paris" },
+  { "ISO_639-1": 'nl', "ISO_639-2": 'nld', lcid: 1043, value: "Parijs" }]
+}),
+triple(
+  iri(prefix, '$recordId'),
+  rdfs.label,
+  literal(jpath("$.language[?(@['ISO_639-2'])].value"), lang.nl)
+),
+
+```
+- if key `'ISO_639-1'` is equal `nl`
+
+```ts
+fromJson({
+  language: [{ "ISO_639-1": 'en', lcid: 2057, value: "Paris" },
+  { "ISO_639-1": 'nl', "ISO_639-2": 'nld', lcid: 1043, value: "Parijs" }]
+}),
+triple(
+  iri(prefix, '$recordId'),
+  rdfs.label,
+  literal(jpath("$.language[?(@['ISO_639-1'] =='nl')].value"), lang.nl)
+)
+
+```
+
+- if key `lcid` is lower than `1100`
+
+```ts
+fromJson({
+  language: [{ "ISO_639-1": 'en', lcid: 2057, value: "Paris" },
+  { "ISO_639-1": 'nl', "ISO_639-2": 'nld', lcid: 1043, value: "Parijs" }]
+}),
+triple(
+      iri(prefix, '$recordId'),
+      rdfs.label,
+      literal(jpath("$.language[?(@.lcid < 1100)].value"), lang.nl)
+    ),
+
+```
+
+All three examples will generate the following linked data assertion: 
+
+```turtle
+record:1 rdfs:label "Parijs"@nl.
 ```
 
 
