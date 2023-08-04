@@ -509,6 +509,12 @@ Creating a saved query with the SPARQL IDE is done by writing a query/visualizat
 
 Updating the saved query can be done by clicking a query in the Saved Queries tab and editing the query or the visualization. Hit the save button to save it as a new version.
 
+## Deleting a saved query
+
+If you want to delete a saved query, you can do so by clicking the three dots on the top right corner of the query, as shown in the image below, and then clicking `Delete`.
+
+![Deleting a saved query](delete-query.png)
+
 ## Using a saved query
 
 ### Sharing a saved query
