@@ -44,7 +44,7 @@ Creates an IRI based on the specified IRI prefix and the hash calculated over th
 ## Parameters
 
 - `prefix` An IRI, or a key that contains an IRI value.
-- `content` A key that contains a string value, or a string value specified with function [str()](/docs/triply-etl/assert/ratt#str).
+- `content` A key that contains a string value, or a string value specified with function [str()](/docs/triply-etl/assert/ratt#function-str).
 - `key` A new key where the created hashed IRI is stored.
 
 ## Use cases
@@ -239,7 +239,7 @@ graph LR
   johndoe(person:johndoe):::data
 ```
 
-The following snippet makes the same assertion, but uses assertion [iri()](/docs/triply-etl/assert/ratt#iri) instead of transformation `addIri()`:
+The following snippet makes the same assertion, but uses assertion [iri()](/docs/triply-etl/assert/ratt#function-iri) instead of transformation `addIri()`:
 
 ```ts
 triple(iri(prefix.person, 'username'), a, sdo.Person),
@@ -267,7 +267,7 @@ graph LR
   johndoe(https://example.com/id/person/johndoe):::data
 ```
 
-The following snippet uses assertion [iri()](/docs/triply-etl/assert/ratt#iri) instead of transformation `addIri()`:
+The following snippet uses assertion [iri()](/docs/triply-etl/assert/ratt#function-iri) instead of transformation `addIri()`:
 
 ```ts
 triple(iri('https://example.com/id/person/johndoe'), a, sdo.Person),
@@ -294,7 +294,7 @@ This transformation is typically used when:
 
 ## Parameters
 
-- `content` A key that contains a string value, or a string specified with function [str()](/docs/triply-etl/assert/ratt#str).
+- `content` A key that contains a string value, or a string specified with function [str()](/docs/triply-etl/assert/ratt#function-str).
 - `datatype` Optionally, a key that stores an IRI or a static IRI.
 - `languageTag` Optionally, a language tag from the [`lang`](/docs/triply-etl/declare#language-declarations) object, or a key that stores such a language tag.
 - `key` A new key where the created literal is stored.
@@ -652,7 +652,7 @@ An optionally specified separator is placed in between every two consecutive str
 
 ## Parameters
 
-- `content` An array of key that contain a string and/or strings specified with assertion [str()](/docs/triply-etl/assert/ratt#str).
+- `content` An array of key that contain a string and/or strings specified with assertion [str()](/docs/triply-etl/assert/ratt#function-str).
 - `separator` Optionally, the string that is places between every two consecutive string values.
 - `key` A new key where the concatenated string is stored.
 
@@ -1079,7 +1079,7 @@ Performs a regular expression replacement to the given input string, and stores 
 
 ## Parameters
 
-- `content` A key that contains a string value, or a static string specified with assertion [str()](/docs/triply-etl/assert/ratt#str).
+- `content` A key that contains a string value, or a static string specified with assertion [str()](/docs/triply-etl/assert/ratt#function-str).
 - `from` A [JavaScript Regular Expression](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions).
 - `to` Optionally, a string that replaces potential matches of the Regular Expression (`from`). Use `$1`, `$2`, etc. to insert matches. If absent, the empty string is used.
 - `key` A new key where the result of the replacement is stored.
@@ -1134,7 +1134,7 @@ The transformation is used when:
 
 ## Parameters
 
-- `content` A key that stores a string, or a string specified with assertion [str()](/docs/triply-etl/assert/ratt#str).
+- `content` A key that stores a string, or a string specified with assertion [str()](/docs/triply-etl/assert/ratt#function-str).
 - `separator` A string or a regular expression that is used to separate the content.
 - `key` A new key where the array of splitted strings is stored.
 
@@ -1241,7 +1241,7 @@ result in a new key.
 
 ## Parameters
 
-- `content` A key that stores a string value, or a string specified with assertion [str()](/docs/triply-etl/assert/ratt#str).
+- `content` A key that stores a string value, or a string specified with assertion [str()](/docs/triply-etl/assert/ratt#function-str).
 - `start` The index of the first character that is included in the substring. The first character has index 0.
 - `end` Optionally, the index of the first character that is excluded from the substring. If absent, the substring ends at the end of the source string.
 - `key` The new key in which the substring is stored.
@@ -1380,7 +1380,7 @@ This transformation is used when string values must be mapped onto literals with
 
 The datatype IRIs that could apply are specified in a list. The specified datatype IRIs are tried out from left to right. The first datatype IRI that results in a valid literal is chosen.
 
-- `content` A key that contains a string value, or a string value specified with assertion [str()](/docs/triply-etl/assert/ratt#str).
+- `content` A key that contains a string value, or a string value specified with assertion [str()](/docs/triply-etl/assert/ratt#function-str).
 - `datatypes` An array of two or more datatype IRIs.
 - `key` A new key where the created literal is stored.
 
@@ -1410,7 +1410,7 @@ If we do not want to emit errors for string values that cannot be satisfy any of
 
 ## See also
 
-You only need to use `tryLiteral()` if the datatype IRI varies from record to record. If the datatype IRI is the same for every record, then the regular assertion function [literal()](/docs/triply-etl/assert/ratt#literal) should be used instead.
+You only need to use `tryLiteral()` if the datatype IRI varies from record to record. If the datatype IRI is the same for every record, then the regular assertion function [literal()](/docs/triply-etl/assert/ratt#function-literal) should be used instead.
 
 
 

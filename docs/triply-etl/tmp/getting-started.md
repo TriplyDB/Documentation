@@ -1,6 +1,6 @@
 ## Transforming RDF data
 
-If you have RDF data that does not need to be transformed, see [copying source data](https://triply.cc/docs/ratt-working-with-ratt#direct-copying-of-source-data-to-destination).
+If you have RDF data that does not need to be transformed, see [copying source data](https://triply.cc/docs/ratt-working-with-ratt#function-direct-copying-of-source-data-to-destination).
 If you have RDF data that _does_ need to be transformed, you can use the following pattern. This example renames the graph.
 
 ```ts

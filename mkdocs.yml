@@ -23,7 +23,12 @@ nav:
           - Transform:
               - Overview: triply-etl/transform
               - RATT: triply-etl/transform/ratt
-          - Assert: triply-etl/assert
+          - Assert:
+              - Overview: triply-etl/assert
+              - RATT:
+                  - Overview: triply-etl/assert/ratt
+                  - Terms: triply-etl/assert/ratt/term
+                  - Statements: triply-etl/assert/ratt/statement
           - Enrich: triply-etl/enrich
           - Validate: triply-etl/validate
           - Publish: triply-etl/publish
