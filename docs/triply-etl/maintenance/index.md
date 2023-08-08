@@ -50,14 +50,44 @@ TriplyETL uses the Semantic Versioning approach: `{major}.{minor}.{patch}` The i
 
 ## Perform the update
 
-Based on the outcome of the previous step, a maintainer of the repository can choose to update a specific dependency. The following command updates the TriplyETL dependency:
+Based on the outcome of the previous step, a maintainer of the repository decides which dependencies should be updated to which versions. Updates are effectuated with the following command:
+
+### Minor or patch version update
+
+You can update to the latest minor or patch version with the following command:
 
 ```sh
-npm up {package-name}
+npm up <package-name>
 ```
 
-The following command updates all dependencies:
+For example, the following command updates to the latest TriplyETL minor or patch version:
+
+```sh
+npm up @triplyetyl/etl
+```
+
+The following command updates all dependencies to the latest minor or patch version:
 
 ```sh
 npm up
 ```
+
+Notice that the latest minor or patch version is determined relative to the major version that is specified in the `package.json` file.
+
+This command may change the contents of the `package-lock.json` file. These changes must be committed and pushed as part of performing the update.
+
+### Major version update
+
+You can update to the latest major version with the following command:
+
+```sh
+npm i <package-name>@latest
+```
+
+For example, the following command updates to a specific TriplyETL version:
+
+```sh
+npm i @triplyetyl/etl@2.0.11
+```
+
+This command will change the contents of the `package.json` file. These changes must be committed and pushed as part of performing the update.
