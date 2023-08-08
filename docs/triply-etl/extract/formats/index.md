@@ -615,11 +615,10 @@ loadRdf(Source.TriplyDb.query('Triply', 'network-query')),
 With `loadRdf()` extractor, it is also possible to extract data from web pages / HTML, which contain Schema in JSON-LD. 
 This is possible because most websites contain linked data annotations that use [Schema.org](https://schema.org/).
 
-Such LD is enclosed in a tag:
+Such linked data is enclosed in a tag:
 ``````html
 <script type='application/ld+json'>...</script>
 ``````
-It is possible to load such linked data with TriplyETL.
 
 Schema markup is how Google can serve up rich results (also called rich snippets and rich cards).
 
@@ -627,11 +626,11 @@ The schema is included in HTML in the following way:
 
 ![basic JSON-LD markup ](html-schema.png)
 
-1. The Script Type: What format your structured data will take (JSON-LD)
-2. The Context: Where the language you’re using comes from (schema.org)
-3. The Type: What kind of thing is the search engine looking at (Article)
-4. The Property: What kind of quality will you be describing when it comes to this type (url)
-5. The Value: What you’re actually telling the search engines about this property (the URL of the article)
+1. `The Script Type`: What format your structured data will take (JSON-LD)
+2. `The Context`: Where the language you’re using comes from (schema.org)
+3. `The Type`: What kind of thing is the search engine looking at (Article)
+4. `The Property`: What kind of quality will you be describing when it comes to this type (url)
+5. `The Value`: What you’re actually telling the search engines about this property (the URL of the article)
 
 Example taken from Wikipedia:
 
@@ -672,8 +671,10 @@ import { Etl, loadRdf, Source } from '@triplyetl/etl/generic'
 export default () => {
   const etl = new Etl()
   etl.use(
-    loadRdf(Source.url('https://en.wikipedia.org/wiki/Ada_Lovelace', { contentType: 'text/html' })),
+    loadRdf(Source.url('https://en.wikipedia.org/wiki/Ada_Lovelace'), { contentType: 'text/html', defaultGraph: etl.standardGraphs.default }),
   )
   return etl
 }
 ```
+
+Running the script above prints the triples that describe Ada Lovelace according to linked data in the Wikipedia page.
