@@ -84,7 +84,18 @@ Here is an example of a URI path that points to the Triply API for the Pokémon 
 https://api.triplydb.com/datasets/academy/pokemon/
 ```
 
+### Create a dataset
 
+You can create a new dataset via the Triply API. You need to [use the API Token](#Using-the-API-token) and send an HTTP POST request with data specifying: 
+
+- `name` :: The name of the dataset in the url.
+- `accessLevel` ::  *Public*, *Private* or *Internal*. For more information visit [Access levels in TriplyDB](https://triply.cc/docs/triply-db-getting-started/#access-levels).
+- `displayName` :: The display name of the dataset. 
+
+The  example of the URI:
+```sh
+curl -H 'Authorization: Bearer {TOKEN}' -H 'Content-Type: application/json' -X POST https://api.INSTANCE/datasets/ACCOUNT/DATASET/ -d '{name: NAME, accessLevel: ACCESS_LEVEL, displayName: DISPLAY_NAME}' 
+```
 
 ## Accounts
 
@@ -298,13 +309,38 @@ Upper-case letter words must be replaced by the following values:
 Here is an example of a URI path that points to a SPARQL endpoint over the Pokémon dataset:
 
 ```none
-https://api.triplydb.com/datasets/academy/pokemon/services/pokemon/sparql
+https://api.triplydb.com/datasets/academy/pokemon/services/pokemon/ 
 ```
 
 See the following sections for more information on how to query the endpoints provided by services:
 - [SPARQL](#sparql)
 - [Elasticsearch](#elasticsearch)
 
+### Create a service 
+
+You can create a service for a dataset via TriplyDB API. You need to [use the API Token](#Using-the-API-token) and send an HTTP POST request with data specifying:
+
+- `type` :: [SPARQL](#sparql) (`virtuoso` or `jena`) or [Elasticsearch](#elasticsearch)
+- `name` :: The name of the service
+
+
+The  example of the URI:
+```sh
+curl -H 'Authorization: Bearer {TOKEN}' -H 'Content-Type: application/json' -X POST https://api.INSTANCE/datasets/ACCOUNT/services/ -d '{type: TYPE, name: NAME}'
+```
+
+### Synchronize a service 
+
+You can synchronize existing service for a dataset via TriplyDB API. You need to [use the API Token](#Using-the-API-token) and send an HTTP POST request with data:
+
+```
+{sync: true}
+```
+
+The  example of the URI:
+```sh
+curl -H 'Authorization: Bearer {TOKEN}' -H 'Content-Type: application/json' -X POST https://api.INSTANCE/datasets/ACCOUNT/DATASET/services/SERVICE -d '{sync: true}'
+```
 
 
 ## SPARQL
