@@ -333,3 +333,29 @@ geojsonToWkt({
   key: '_wkt',
 }),
 ```
+
+# Supported vocabularies
+Below is a list of vocabularies, currently supported in TriplyETL/vocabularies
+
+| Name | Version | Use cases | Description |
+| --- | --- | --- | --- |
+| Argument Model Ontology (AMO) | 1.0 | Fake news detection, argumentation structure | An ontology for describing argumentation according to Toulmin's argumentation model. |
+| Bibliographic Ontology Specification (BIBO) | no version | Libraries, citation graphs, bibliography | The Bibliographic Ontology Specification provides main concepts and properties for describing citations and bibliographic references (i.e. quotes, books, articles, etc) on the Semantic Web. |
+| Building Topology Ontology (BOT) | 0.3.2 | Buildings | The Building Topology Ontology (BOT) is a minimal ontology for describing the core topological concepts of a building.|
+| Brick: A uniform metadata schema for buildings | no version | Buildings | Brick is an open-source effort to standardize semantic descriptions of the physical, logical and virtual assets in buildings and the relationships between them. |
+| Cultural Heritage Ontology (CEO) | 1.41 | Cultural heritage | The CEO is the complete semantic representation of the logical data models CHO and KENNIS from the data layer of the RCE. |
+| Conceptual Reference Model (CRM) | 7.1.2 | Cultural heritage | The CIDOC Conceptual Reference Model (CRM) provides definitions and a formal structure for describing the implicit and explicit concepts and relationships used in cultural heritage documentation. |
+| CRM Digital | no version | digitization products | An ontology and RDF Schema to encode metadata about the steps and methods of production (“provenance”) of digitization products and synthetic digital representations such as 2D, 3D or even animated Models created by various technologies.  Its distinct features compared to competitive models is the complete inclusion of the initial physical measurement processes and their parameters. |
+| DBpedia Ontology | 1.0.0 | DBpedia | Ontology for DBpedia |
+| Data Catalog Vocabulary (DCAT) | 2.0.0 | data catalogs, datasets | DCAT is an RDF vocabulary designed to facilitate interoperability between data catalogs published on the Web. | 
+| Dublin Core Type Vocabulary | 2012-06-14 | classes | The DCMI Type Vocabulary was created in 2001.  It defines classes for basic types of thing that can be described using DCMI metadata terms. |
+| Dublin Core Terms | 1.1.0 | metadata terms | This document is an up-to-date specification of all metadata terms maintained by the Dublin Core Metadata Initiative, including properties, vocabulary encoding schemes, syntax encoding schemes, and classes. |
+| Document Components Ontology (DoCo) | 1.3.0 | document components | The Document Components Ontology (DoCO) in an ontology that provides a structured vocabulary written of document components, both structural (e.g., block, inline, paragraph, section, chapter) and rhetorical (e.g., introduction, discussion, acknowledgements, reference list, figure, appendix). |
+| ERA Vocabulary | 2022-02-02 | railway infrastructure | Vocabulary defined by the European Union Agency for Railways to describe the concepts and relationships related to the European railway infrastructure and the vehicles authorized to operate over it. |
+| FRBR-aligned Bibliographic Ontology (FaBiO) | no version | publishing, bibliography, textual publications| An ontology for recording and publishing on the Semantic Web descriptions of entities that are published or potentially publishable, and that contain or are referred to by bibliographic references, or entities used to define such bibliographic references. |
+| Friend of a Friend (FOAF) | 0.1.0 | people, information | FOAF is a project devoted to linking people and information using the Web.  Regardless of whether information is in people's heads, in physical or digital documents, or in the form of factual data, it can be linked.  FOAF integrates three kinds of network: social networks of human collaboration, friendship and association; representational networks that describe a simplified view of a cartoon universe in factual terms, and information networks that use Web-based linking to share independently published descriptions of this inter-connected world.  FOAF does not compete with socially-oriented Web sites; rather it provides an approach in which different sites can tell different parts of the larger story, and by which users can retain some control over their information in a non-proprietary format. |
+| Functional Requirements for Bibliographic Records (FRBR) | 2005-08-10 | bibliography | This vocabulary is an expression in RDF of the concepts and relations described in the IFLA report on the Functional Requirements for Bibliographic Records (FRBR). |
+| GeoSPARQL | no version | geospatial data | The OGC GeoSPARQL standard supports representing and querying geospatial data on the Semantic Web.  GeoSPARQL defines a vocabulary for representing geospatial data in RDF, and it defines an extension to the SPARQL query language for processing geospatial data.  In addition, GeoSPARQL is designed to accommodate systems based on qualitative spatial reasoning and systems based on quantitative spatial computations. |
+| Geography Markup Language (GML) Encoding Standard | 3.2.1 | geography | XML grammar for expressing geographical features.  GML serves as a modeling language for geographic systems as well as an open interchange format for geographic transactions on the Internet. |
+| Getty Vocabulary Program (GVP) | 3.3.0 | 
+
