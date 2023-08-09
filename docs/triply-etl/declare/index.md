@@ -346,6 +346,7 @@ Below is a list of vocabularies, currently supported in TriplyETL/vocabularies
 | Cultural Heritage Ontology (CEO) | 1.41 | Cultural heritage | The CEO is the complete semantic representation of the logical data models CHO and KENNIS from the data layer of the RCE. |
 | Conceptual Reference Model (CRM) | 7.1.2 | Cultural heritage | The CIDOC Conceptual Reference Model (CRM) provides definitions and a formal structure for describing the implicit and explicit concepts and relationships used in cultural heritage documentation. |
 | CRM Digital | no version | Digitization products | An ontology and RDF Schema to encode metadata about the steps and methods of production (“provenance”) of digitization products and synthetic digital representations such as 2D, 3D or even animated Models created by various technologies.  Its distinct features compared to competitive models is the complete inclusion of the initial physical measurement processes and their parameters. |
+| Conceptual Reference Model (CRM) - PC | no version | Cultural heritage | CIDOC CRM v7.1.2 module for the implementation of properties of properties in RDFs. |
 | DBpedia Ontology | 1.0.0 | DBpedia | Ontology for DBpedia |
 | Data Catalog Vocabulary (DCAT) | 2.0.0 | Data catalogs, datasets | DCAT is an RDF vocabulary designed to facilitate interoperability between data catalogs published on the Web. | 
 | Dublin Core Type Vocabulary | 2012-06-14 | Classes | The DCMI Type Vocabulary was created in 2001.  It defines classes for basic types of thing that can be described using DCMI metadata terms. |
