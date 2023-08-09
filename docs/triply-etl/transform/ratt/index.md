@@ -25,7 +25,7 @@ The following transformation functions are currently available:
 | [copy()](#copy) | Copy a value from an old into a new key. |
 | [decodeHtml()](#decodeHtml) | Decode HTML entities that occur in strings. |
 | [geojsonToWkt()](#geojsontowkt) | Change GeoJSON strings to WKT strings. |
-| [jpath()](#jpath) | Filter a value on the simple key specification |
+| [jpath()](#jpath) | Filter a value on the simple key specification. |
 | [lowercase()](#lowercase) | Change strings to their lowercase variants. |
 | [padEnd()](#padEnd) | Pad the end of strings. |
 | [padStart()](#padStart) | Pad the start of strings. |
@@ -919,7 +919,7 @@ fromJson({
   { "ISO_639-1": 'nl', "ISO_639-2": 'nld', lcid: 1043, value: "Parijs" }]
 }),
 triple(
-  iri(prefix, '$recordId'),
+  iri(prefix.city, '$recordId'),
   rdfs.label,
   literal(jpath("$.language[?(@['ISO_639-2'])].value"), lang.nl)
 ),
@@ -933,7 +933,7 @@ fromJson({
   { "ISO_639-1": 'nl', "ISO_639-2": 'nld', lcid: 1043, value: "Parijs" }]
 }),
 triple(
-  iri(prefix, '$recordId'),
+  iri(prefix.city, '$recordId'),
   rdfs.label,
   literal(jpath("$.language[?(@['ISO_639-1'] =='nl')].value"), lang.nl)
 )
@@ -948,7 +948,7 @@ fromJson({
   { "ISO_639-1": 'nl', "ISO_639-2": 'nld', lcid: 1043, value: "Parijs" }]
 }),
 triple(
-      iri(prefix, '$recordId'),
+      iri(prefix.city, '$recordId'),
       rdfs.label,
       literal(jpath("$.language[?(@.lcid < 1100)].value"), lang.nl)
     ),
