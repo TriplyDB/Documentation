@@ -86,16 +86,19 @@ https://api.triplydb.com/datasets/academy/pokemon/
 
 ### Create a dataset
 
-You can create a new dataset via the Triply API. You need to [use the API Token](#Using-the-API-token) and send an HTTP POST request with data specifying: 
+You can create a new dataset via the Triply API. You need to [use the API Token](#Using-the-API-token) and send an HTTP POST request with data specifying: `name`, `accessLevel` and `displayName`.
 
-- `name` :: The name of the dataset in the url.
-- `accessLevel` ::  *Public*, *Private* or *Internal*. For more information visit [Access levels in TriplyDB](https://triply.cc/docs/triply-db-getting-started/#access-levels).
-- `displayName` :: The display name of the dataset. 
 
 The  example of the URI:
 ```sh
 curl -H 'Authorization: Bearer {TOKEN}' -H 'Content-Type: application/json' -X POST https://api.INSTANCE/datasets/ACCOUNT/DATASET/ -d '{name: NAME, accessLevel: ACCESS_LEVEL, displayName: DISPLAY_NAME}' 
+
 ```
+Upper-case letter words in json after `-d` must be replaced by the following values:
+
+- `NAME` :: The name of the dataset in the url.
+- `ACCESS_LEVEL` ::  *Public*, *Private* or *Internal*. For more information visit [Access levels in TriplyDB](https://triply.cc/docs/triply-db-getting-started/#access-levels).
+- `DISPLAY_NAME` :: The display name of the dataset. 
 
 ## Accounts
 
@@ -318,16 +321,18 @@ See the following sections for more information on how to query the endpoints pr
 
 ### Create a service 
 
-You can create a service for a dataset via TriplyDB API. You need to [use the API Token](#Using-the-API-token) and send an HTTP POST request with data specifying:
-
-- `type` :: [SPARQL](#sparql) (`virtuoso` or `jena`) or [Elasticsearch](#elasticsearch)
-- `name` :: The name of the service
+You can create a service for a dataset via TriplyDB API. You need to [use the API Token](#Using-the-API-token) and send an HTTP POST request with data specifying: `type` and `name`.
 
 
 The  example of the URI:
 ```sh
 curl -H 'Authorization: Bearer {TOKEN}' -H 'Content-Type: application/json' -X POST https://api.INSTANCE/datasets/ACCOUNT/services/ -d '{type: TYPE, name: NAME}'
 ```
+
+Upper-case letter words in json after `-d` must be replaced by the following values:
+
+- `TYPE` :: [SPARQL](#sparql) (`virtuoso` or `jena`) or [Elasticsearch](#elasticsearch)
+- `NAME` :: The name of the service
 
 ### Synchronize a service 
 
