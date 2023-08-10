@@ -541,7 +541,6 @@ The result of a query can be downloaded via the TriplyDB interface. After saving
 You can download results in different data format, depending on which [visualization option](https://triply.cc/docs/yasgui/#visualizations) you use.
 For example, if you want to download the results in a `.json` format, you can choose the option `Response` and click on the download icon or scroll down and click on `Download result`.
 
-
 ![Download the query result via the download icon.](queryResult.png)
 ![Download the query result via the button `Download result`.](queryResult2.png)
 
