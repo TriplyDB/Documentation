@@ -525,7 +525,7 @@ used when you open the query in TriplyDB. Let's say you have a query called
 want to use version 6. Then the following link would be used
 
 ```url
-https://triplydb.com/DBpedia-association/-/queries/timeline-cars/8
+https://triplydb.com/DBpedia-association/-/queries/timeline-cars
 ```
 
 If you want to always use the **latest** query, you can simply omit the version
@@ -536,7 +536,7 @@ https://triplydb.com/DBpedia-association/-/queries/timeline-cars
 ```
 ### Downloading a query result
 
-The result of a query can be downloaded via the TriplyDB interface. After saving the query, open it in TriplyDB. e.g. https://triplydb.com/DBpedia-association/-/queries/timeline-cars/8. 
+The result of a query can be downloaded via the TriplyDB interface. After saving the query, open it in TriplyDB. e.g. https://triplydb.com/DBpedia-association/-/queries/timeline-cars/. 
 
 You can download results in different data format, depending on which [visualization option](https://triply.cc/docs/yasgui/#visualizations) you use.
 For example, if you want to download the results in a `.json` format, you can choose the option `Response` and click on the download icon or scroll down and click on `Download result`.

@@ -39,7 +39,7 @@ SPARQL is the standardized query language for Linked Data Knowledge Graphs.  Wit
 
   - Triply introduces Saved Queries, a feature that allows users to store graph queries together with their visualization and metadata.
   - It is now possible to store different versions of the same query.  Like code, queries can now be improved over time.
-  - Queries with temporal results can now be visualized on an interactive timeline (see Figure 4; [run query](https://triplydb.com/DBpedia-association/-/queries/timeline-cars/8)).
+  - Queries with temporal results can now be visualized on an interactive timeline (see Figure 4; [run query](https://triplydb.com/DBpedia-association/-/queries/timeline-cars/)).
   - Queries with statistical results can now be visualized in an interactive Pivot Table.
   - The ability to add metadata to a query.
   - The SPARQL IDE now allows developers to inspected and downloaded raw result sets in JSON.
