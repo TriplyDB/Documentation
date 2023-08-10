@@ -603,12 +603,6 @@ The following code snippet loads RDF from a SPARQL Construct that is stored in T
 loadRdf(Source.TriplyDb.query('Triply', 'network-query')),
 ```
 
-The following code snippet loads RDF from a SPARQL Construct query that is stored in TriplyDB:
-
-```ts
-loadRdf(Source.TriplyDb.query('Triply', 'network-query')),
-```
-
 
 ## Loading RDF from an HTML page
 
@@ -666,15 +660,7 @@ The Wikipedia page of the first programmer in history (https://en.wikipedia.org/
 This data can be loaded with TriplyETL in the following way:
 
 ```ts
-import { Etl, loadRdf, Source } from '@triplyetl/etl/generic'
-
-export default () => {
-  const etl = new Etl()
-  etl.use(
-    loadRdf(Source.url('https://en.wikipedia.org/wiki/Ada_Lovelace'), { contentType: 'text/html', defaultGraph: etl.standardGraphs.default }),
-  )
-  return etl
-}
+loadRdf(Source.url('https://en.wikipedia.org/wiki/Ada_Lovelace'), { contentType: 'text/html' }),
 ```
 
-Running the script above prints the triples that describe Ada Lovelace according to linked data in the Wikipedia page.
+The above snippet prints the triples that describe Ada Lovelace according to linked data in the Wikipedia page.
