@@ -6,7 +6,7 @@ path: "/docs/triply-etl/maintenance"
 Once a TriplyETL repository is configured, it goes into maintenance mode. Maintenance includes the following tasks:
 
 - [Update the TriplyETL dependency](#update)
-- Configure the TriplyETL CI/CD
+- [Configure the TriplyETL CI/CD](#cicd)
 - Monitor the TriplyETL CI/CD
 
 
@@ -83,3 +83,111 @@ npm i @triplyetyl/etl@3.0.0
 ```
 
 This command will change the contents of the `package.json` file. These changes must be committed and pushed as part of performing the update.
+
+
+
+# Configure the TriplyETL CI/CD {#cicd}
+
+TriplyETL pipelines can be configured to run automatically in any CI/CD environment. This section explains how you can configure an automated TriplyETL pipeline in GitLab. Notice that the configuration in any other CI/CD environment will be more or less similar to what is explained in this section.
+
+## CI/CD configuration file
+
+The [TriplyETL Generator](/docs/triply-etl/getting-started#generator) creates a basic configuration file for running TriplyETL in GitLab CI/CD. The configuration file is called `.gitlab-ci.yml`.
+
+The configuration contains a list of stages:
+
+```yml
+stages:
+ - first_stage
+ - second_stage
+ - third_stage
+```
+
+These stages will run sequentially. For the above example: the pipeline starts by running the first stage, then runs the second stage, and finally runs the third stage.
+
+Within each stage, you can configure one or more TriplyETL scripts. When more then one script is specified for the same stage, these scripts will run in parallel. This allows you to specify any combination of sequential and parallel processes.
+
+The following example assumes that the following scripts are present in the TriplyETL repository:
+
+```
+- src/
+    - create_vocabulary.ts
+    - create_dataset_a.ts
+    - create_dataset_b.ts
+    - create_knowledge_graph.ts
+- .gitlab-ci.yml
+```
+
+We want to configure our CI/CD in the following way:
+
+1. Start by creating the vocabulary (script `create_vocabulary.ts`). This vocabulary will be used in the validation step of the two scripts that create the two datasets.
+2. Once the vocabulary is created, create the two datasets (scripts `create_dataset_a.ts` and `create_dataset_b.ts`). The datasets can be created in parallel, but they both require that vocabulary creation is finalized.
+3. Once the two datasets are created, create the knowledge graph (script `create_knowledge_graph.ts`), which combines the two datasets and the vocabulary in one dataset.
+
+This specific configuration looks as follows:
+
+```yml
+create_vocabulary:
+  stage: first_stage
+  interruptible: true
+  allow_failure: false
+  artifacts: !reference [.etl-template, artifacts]
+  script:
+    - !reference [.etl-template, install]
+    - !reference [.etl-template, run-etl]
+  rules:
+    - !reference [.etl-template, rules]
+
+create_dataset_a:
+  stage: second_stage
+  interruptible: true
+  allow_failure: false
+  artifacts: !reference [.etl-template, artifacts]
+  script:
+    - !reference [.etl-template, install]
+    - !reference [.etl-template, run-etl]
+  rules:
+    - !reference [.etl-template, rules]
+
+create_dataset_b:
+  stage: second_stage
+  interruptible: true
+  allow_failure: false
+  artifacts: !reference [.etl-template, artifacts]
+  script:
+    - !reference [.etl-template, install]
+    - !reference [.etl-template, run-etl]
+  rules:
+    - !reference [.etl-template, rules]
+
+create_knowledge_graph:
+  stage: third_stage
+  interruptible: true
+  allow_failure: false
+  artifacts: !reference [.etl-template, artifacts]
+  script:
+    - !reference [.etl-template, install]
+    - !reference [.etl-template, run-etl]
+  rules:
+    - !reference [.etl-template, rules]
+```
+
+## CI/CD environment variables
+
+In a normal ETL the only variables that should be present AFAIK are: **ENV** (value: acceptance or production), **TRIPLYDB_TOKEN** (value: customer's TriplyDB token), **PIPELINE_NAME** (value: explained below), and optionally **TIMEOUT** (value: time description e.g. "1H")
+
+
+TriplyETL pipelines interpret the following environment variables, that may be specified in the CI/CD environment:
+
+<dl>
+  <dt><code>ENV</code></dt>
+  <dd>When DTAP is used, this environment variable specifies whether the pipeline runs in "Development", "Test", "Acceptance", or in "Production".</dd>
+  <dt><code>TRIPLYDB_TOKEN</code></dt>
+  <dd>The TriplyDB API Token that is used by the automated pipeline, and that allows the pipeline to read from and write to a TriplyDB server.</dd>
+  <dt><code>PIPELINE_NAME</code></dt>
+  <dd>A descriptive name that is used by GitLab in pipeline overviews. This is specifically useful if you are running multiple pipelines, in which case this descriptive name helps you to distinguish runs. One example of running multiple pipelines is running in DTAP; in which case the descriptive names for the pipelines may be "Schedule: Acceptance" and "Schedule: Production".</dd>
+  <dt><code>TIMEOUT</code></dt>
+  <dd>This environment variable can be set to a duration that is shorted than the duration of the pipeline. If a timeout is set and reached, TriplyETL will finish the ETL in an orderly fashion: saving the processed data, saving the performance log files, and saving the generated validation report (if any). This is useful for pipelines that would otherwise be terminated by the CI/CD environment, in which case TriplyETL is terminated immediately, without having the ability to nicely save before exiting.
+  <dt><code>HEAD</code></dt>
+  <dd>The maximum number of records that is being processed by the TriplyETL pipeline. This environment variable can be set in test runs that only want to test whether the ETL works for some records, without requiring it to run for all records. For example, in a DTAP Test run this number may be set to 10 to test whether the source can be accessed and the generated data can be uploaded to a TriplyDB server.</dd>
+</dl>

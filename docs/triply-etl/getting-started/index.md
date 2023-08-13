@@ -179,7 +179,7 @@ Perform the following steps to use the TriplyETL Runner:
 
 At this point, you should see a first TriplyETL process in your terminal application. If this is not the case, please contact [support@triply.cc](mailto:support@triply.cc) to help you out.
 
-Visit the [TriplyETL CLI documentation](/docs/triply-etl/cli#runner) to learn more about how you can use the TriplyETL Runner.
+Visit the [TriplyETL CLI documentation](/docs/triply-etl/cli#runner) to learn more about how you can use the TriplyETL Runner. Visit the [TriplyETL CI/CD documentation](/docs/triply-etl/maintenance#cicd) to learn more about how you can automate TriplyETL runs.
 
 
 
@@ -210,7 +210,7 @@ Perform the following steps to use the TriplyETL Library:
   2. Run the following command to add the TriplyETL dependency to your `package.json` file:
 
      ```sh
-     npm install @triplyetl/etl
+     npm i @triplyetl/etl
      ```
 
   3. Open one of the TypeScript files in your software project. When you add the following line to the top of your file, it should be recognized by your TypeScript editor:
