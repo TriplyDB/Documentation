@@ -509,6 +509,12 @@ Creating a saved query with the SPARQL IDE is done by writing a query/visualizat
 
 Updating the saved query can be done by clicking a query in the Saved Queries tab and editing the query or the visualization. Hit the save button to save it as a new version.
 
+## Deleting a saved query
+
+If you want to delete a saved query, you can do so by clicking the three dots on the top right corner of the query, as shown in the image below, and then clicking `Delete`.
+
+![Deleting a saved query](delete-query.png)
+
 ## Using a saved query
 
 ### Sharing a saved query
@@ -519,7 +525,7 @@ used when you open the query in TriplyDB. Let's say you have a query called
 want to use version 6. Then the following link would be used
 
 ```url
-https://triplydb.com/DBpedia-association/-/queries/timeline-cars/8
+https://triplydb.com/DBpedia-association/-/queries/timeline-cars
 ```
 
 If you want to always use the **latest** query, you can simply omit the version
@@ -530,14 +536,34 @@ https://triplydb.com/DBpedia-association/-/queries/timeline-cars
 ```
 ### Downloading a query result
 
-The result of a query can be downloaded via the TriplyDB interface. After downloading the query, open it in TriplyDB. e.g. https://triplydb.com/DBpedia-association/-/queries/timeline-cars/8. Choose the option `Response` and click on the download icon or scroll down and click on `Download result`. 
+The result of a query can be downloaded via the TriplyDB interface. After saving the query, open it in TriplyDB. e.g. https://triplydb.com/DBpedia-association/-/queries/timeline-cars/. 
+
+You can download results in different data format, depending on which [visualization option](https://triply.cc/docs/yasgui/#visualizations) you use.
+For example, if you want to download the results in a `.json` format, you can choose the option `Response` and click on the download icon or scroll down and click on `Download result`.
 
 ![Download the query result via the download icon.](queryResult.png)
 ![Download the query result via the button `Download result`.](queryResult2.png)
 
 The downloaded file is automatically stored in the `Downloads`-folder and has the name of the query. In our example, the file is called `timeline-cars.json`. The downloaded file contains the query result as a json-object. TriplyDB also displays the json-object when selecting the option `Response`.
 
-To download the query result in CSV-format, select the option `Table` and click on the download icon. The downloaded file is named after the query with the suffix `.csv`.
+Below is a table of all supported visualizations and what format of results they produce.
+
+|                     **Visualization option**                 | **Result data format** |
+| ------------------------------------------------------------ | ---------------------- |
+|       [Table](https://triply.cc/docs/yasgui/#table)          | `.csv`                 |
+|       [Response](https://triply.cc/docs/yasgui/#response)    | `.json`                |
+|       [Gallery](https://triply.cc/docs/yasgui/#gallery)      | Download not supported |
+|       [Chart](https://triply.cc/docs/yasgui/#charts)         | `.svg`                 |
+|       [Geo](https://triply.cc/docs/yasgui/#geo)              | Download not supported |
+|       [Geo-3D](https://triply.cc/docs/yasgui/#geo-3d)        | Download not supported |
+|       [Geo events](https://triply.cc/docs/yasgui/#geo-events)| Download not supported |
+|       [Markup](https://triply.cc/docs/yasgui/#markup)        | `.svg`, `.html`        |
+|       [Network](https://triply.cc/docs/yasgui/#network)      | `.png`                 |
+|       [Timeline](https://triply.cc/docs/yasgui/#timeline)    | Download not supported |
+
+
+
+As another example, to download the query result in CSV-format, select the option `Table` and click on the download icon. The downloaded file is named after the query with the suffix `.csv`.
 
 ### Download more than 10 000 query results - SPARQL pagination
 
