@@ -527,7 +527,69 @@ fromPostgres(
 ),
 ```
 
+# Exctractor `fromShapeFile()`{#fromShapeFile}
 
+The ESRI [Shapefile format](https://doc.arcgis.com/en/arcgis-online/reference/shapefiles.htm) was developed by Esri(Environmental Systems Research Institute) for interoperability among geographic information system (GIS) applications. The Shapefile format stores nontopological geometry and attribute information for spatial features in a data set.  A Shapefile consists minimally of a main file, an index file, and a dBASE  table. In the TriplyETL we can load data from shapefile with `.shp` extension (main file). 
+
+The following snippet shows how to load a local shapefile:
+
+```ts
+fromShapeFile(Source.file("example.shp"))
+```
+If the shapefile is stored as the asset for the dataaset in the TriplyDB instance, you can load it from there:
+```ts
+fromShapeFile(
+  Source.TriplyDb.asset(
+    'some-account', 'some-dataset', { name: 'example.shp' }
+  )
+),
+```
+
+The shapesfile is transformed in json format and is now easy to work with. 
+For example, the first record in file `nl_1km.shp` (downloaded from [European Environment Agency](https://www.eea.europa.eu/data-and-maps/data/eea-reference-grids-2/gis-files/netherlands-shapefile)) is shown as:
+
+```json
+{
+  "$recordId": 1,
+  "$environment": "Development",
+  "$fileName": "nl_1km.shp",    
+  "type": "Feature",
+  "properties": {
+    "CELLCODE": "1kmE3793N3217",
+    "EOFORIGIN": 3793000,       
+    "NOFORIGIN": 3217000        
+  },
+  "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+      [
+        [
+          3793000,
+          3217000
+        ],
+        [
+          3793000,
+          3218000
+        ],
+        [
+          3794000,
+          3218000
+        ],
+        [
+          3794000,
+          3217000
+        ],
+        [
+          3793000,
+          3217000
+        ]
+      ]
+    ]
+  }
+}
+```
+
+You can now work with shapefiles and use [geojsonToWkt()](https://triply.cc/docs/triply-etl/transform/ratt/#geojsonToWkt) transfrom function to create geomerty. 
 
 # Extractor `fromXml()` {#fromXml}
 
