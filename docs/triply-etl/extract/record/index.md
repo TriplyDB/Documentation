@@ -97,6 +97,51 @@ Notice that the two records that are logged from an XML source are completely id
 This makes it easy to write pipelines that process data from a large number of different data sources. This also makes replacing a data source in one format with a data source in another format a relatively cheap operation. More often than not, only the source extractor needs to be changed, and all transformations and assertions remain as they were.
 
 
+## Extractor `loadRecords()` {#loadRecords}
+
+The `loadRecords()` function allows us to run a sub ETL and store its records to the main ETL. It is used when we would like to add additional data from different source to the main ETL. 
+
+ The function expects two arguments and can be run with the following snippet:
+
+ - `fromSrc` - The Source to load the data from. The list of available extractors can be seen in [Data Formats' overview page](https://triply.cc/docs/triply-etl/extract/formats/#overview). 
+ - `key` - A new key where the records are stored.
+
+```ts
+loadRecords(fromSrc, 'key'),
+```
+
+It is important to call the `loadRecords()` function **after** the loading record data in the main ETL.
+
+The following code snippet extracts recods from json object (main ETL), then extracts records from a json file (`'tableMap.json'`) stored as an asset and stores them in the key `'_table'` in the record of the main ETL:
+
+```ts
+ fromJson({ country: 'be' }),
+
+ loadRecords(fromJson(Source.TriplyDb.asset('test', { name: 'tableMap.json' })), '_table'),
+```
+The combined record looks as following: 
+
+```json
+{
+  "country": "be",
+  "$recordId": 1,
+  "$environment": "Development",        
+  "_table": [
+    {
+      "be": "http://ex.com/Belgium",    
+      "nl": "http://ex.com/Netherlands",
+      "de": "http://ex.com/Germany",    
+      "en": "http://ex.com/England",
+      "$recordId": 1,
+      "$environment": "Development",
+      "$fileName": "tableMap.json"
+    }
+  ]
+}
+
+```
+
+
 
 # Special keys
 
