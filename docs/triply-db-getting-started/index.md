@@ -522,10 +522,10 @@ If you want to delete a saved query, you can do so by clicking the three dots on
 To share a saved query, for example in [Data Stories](#data-stories), you can copy the link that is
 used when you open the query in TriplyDB. Let's say you have a query called
 `Timelined-Cars-BETA` in the dataset `core` under the account `dbpedia` and you
-want to use version 6. Then the following link would be used
+want to use version 9. Then the following link would be used
 
 ```url
-https://triplydb.com/DBpedia-association/-/queries/timeline-cars
+https://triplydb.com/DBpedia-association/-/queries/timeline-cars/9
 ```
 
 If you want to always use the **latest** query, you can simply omit the version
