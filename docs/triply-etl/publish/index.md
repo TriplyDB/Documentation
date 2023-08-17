@@ -28,22 +28,21 @@ graph LR
 Destinations are usually online locations in TriplyDB where the output of your pipeline will be published.
 
 If no account name is given, pipeline output is uploaded under the user account tied to the currently used API Token.
-To upload the output to TriplyDB you can use the `toTriplyDb()` function, as the snippets below show.
+To upload the output to TriplyDB you can use the `toTriplyDb()` function, as the snippet below shows.
 
 ```ts
 toTriplyDb('my-dataset')
 toTriplyDb('my-account', 'my-dataset')
 toTriplyDb('my-account', 'my-dataset', { overwrite: true })
 ```
-In older versions of TriplyETL this was done with the `toRdf()` functions as shown below
+In the previous versions of TriplyETL, this was done with the `toRdf()` function as shown below:
 
 ```ts
-toRdf(Destination.TriplyDb.rdf(conf.dataset, conf.organization, {triplyDb: etl.triplyDb}))
+toRdf(Destination.TriplyDb.rdf('my-account', 'my-dataset', {triplyDb: etl.triplyDb}))
 ```
 
-It is still possible to upload to TriplyDB using `toRdf()`, but toTriplyDb represents a simplified version of this.
+It is still possible to upload to TriplyDB using `toRdf()`, but the new `toTriplyDb()` function represents a simplified version of this.
 
-There is also an option to use the function `toRdf()` to upload data to 
 The following options can be specified to configure the destination behavior:
 
 <dl>
@@ -71,9 +70,8 @@ TriplyETL supports publishing RDF output into a local file.  This is not often u
 Still, there may be cases in which a local file destination is useful, for example when you do not have an active Internet connection:
 
 ```ts
-Destination.file('my-file.trig'),
+toRdf(Destination.file('my-file.trig')),
 ```
-
 
 
 # Static and Dynamic destinations
