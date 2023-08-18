@@ -15,6 +15,7 @@ The following assertion functions are available:
 | [iris()](#iris) | Creates multiple IRI terms. |
 | [literal()](#literal) | Creates a literal term. |
 | [literals()](#literals) | Creates multiple literal terms. |
+| [list()](#list) | Creates a list of terms. |
 | [nestedPairs()](#nestedpairs) | Creates a nested node with multiple triples that use that node as their subject term. |
 | [objects()](#objects) | Asserts multiple triples that share the same subject and predicate terms. |
 | [pairs()](#pairs) | Asserts multiple triples that share the same subject term. |
@@ -250,7 +251,105 @@ Notice that the same could have been achieved with an explicit datatype IRI:
 triple(iri(prefix.id, 'parent'), sdo.children, literals('children', xsd.string)),
 ```
 
+# Function `list()` {#list}
 
+This function allows us to create ordered closed collections [rdf:List](https://triplydb.com/how-to-model/-/stories/collections) in TriplyETL.
+
+## Parameters
+
+- `prefix` A prefix for linked lists that is declared with [declarePrefix()](/docs/triply-etl/declare#declarePrefix). 
+- `listOrReference`  term, literal, key or string or an array of terms/literals/keys/strings
+
+## Example: Fruit basket
+
+The following code snippet creates linked lists (linked by `rdf:rest`), where each value stored in the `'contents'` key is `rdf:first` object:
+
+```ts
+fromJson([{ id: 123, contents: ['apple', 'pear', 'banana'] }]),
+triple(iri(prefix.basket, 'id'), prefix.contains, list(prefix.basket, literals('contents', lang.en)))
+```
+
+This makes the following linked data assertions:
+
+```ttl
+basket:123 prefix:contains _:list1.
+
+_:list1 rdf:first "apple"@en;
+        rdf:rest _:list2.
+
+_:list2 rdf:first "pear"@en;
+        rdf:rest _:list3.
+
+_:list3 rdf:first "banana"@en;
+        rdf:rest rdf:nil.
+```
+
+Or diagrammatically:
+
+```mermaid
+graph LR
+basket -- prefix:contains -->  _:list1
+
+_:list1 -- rdf:first --> apple
+_:list1 -- rdf:rest -->  _:list2
+
+_:list2 -- rdf:first --> pear
+_:list2 --  rdf:rest --> _:list3
+
+_:list3 -- rdf:first --> banana
+_:list3 --  rdf:rest --> rdf:nil
+
+  apple["'apple'@en"]:::data
+  banana["'banana'@en"]:::data
+  basket[basket:123]:::data
+  pear["'pear'@en"]:::data
+  classDef data fill:yellow
+```
+Note that the predicate differs from the above example of the [literals()](#function-literals-literals) function. In order to use `list()` middleware we need to be sure that the `rdfs:domain` property of the predicates allows to be of `rdf:List`. 
+
+
+
+## Example: Children
+
+The following code snippet creates linked lists (linked by `rdf:rest`), where each value stored in the `'children'` key is `rdf:first` object:
+
+```ts
+fromJson([{ parent: 'John', children: ['Joe', 'Jane'] }]),
+triple(iri(prefix.id, 'parent'), sdo.children, list(prefix.skolem, iris(prefix.id, 'children'))),
+```
+
+This makes the following linked data assertions:
+
+```ttl
+id:John sdo:children _:list1.
+
+_:list1 rdf:first id:Joe;
+        rdf:rest _:list2.
+
+_:list2 rdf:first id.Jane;
+        rdf:rest rdf:nil.
+```
+
+Or diagrammatically:
+
+```mermaid
+graph LR
+john -- sdo:children --> _:list1
+
+_:list1 -- rdf:first --> joe
+_:list1 --  rdf:rest -->  _:list2
+
+_:list2 -- rdf:first -->  jane
+_:list2 -- rdf:rest --> rdf:nil.
+
+  john[id:John]:::data
+  joe[id:Joe]:::data
+  jane[id:Jane]:::data
+
+  classDef data fill:yellow
+```
+
+The above diagram can translate to the statement: "John has two children, where Joe is his first child and Jane is his second child". 
 
 # Function `nestedPairs()` {#nestedPairs}
 
