@@ -46,6 +46,8 @@ The following options can be specified to configure the destination behavior:
   <dd>A configuration object describing a TriplyDB instance that is different from the one associated with the current API Token.  (See the section on <a href="#configuring-multiple-triplydb-instances">configuring multiple TriplyDB instance</a> for more information.)</dd>
   <dt><code>truncateGraphs</code></dt>
   <dd>Whether to delete all graphs in the dataset before uploading any graphs from TriplyETL.  Notice that this will also remove graphs that will not be re-uploaded by TriplyETL.  The default value is <code>false</code>.</dd>
+  <dt><code>mergeGraphs</code></dt>
+  <dd>Whether the results of the new graph should be added to the old graph without overwriting it.  The default value is <code>false</code>.</dd>
 </dl>
 
 
