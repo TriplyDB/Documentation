@@ -13,7 +13,7 @@ TriplyETL supports the following data formats:
 | [fromJson()](#fromJson) | [JSON](#fromJson) | [JavaScript Object Notation](#fromJson) |
 | [fromOai()](#fromOai) | [OAI-PMH](#fromOai) | [Open Archives Initiative Protocol for Metadata Harvesting](#fromOai) |
 | [fromPostgres()](#fromPostgres) | [PostgreSQL Query & Postgres API Options](#fromPostgres)| [PostgreSQL Query & Postgres API Options](#fromPostgres) |
-| [fromShapefile()](#fromShapefile) | [ESRI](#fromShapefile) | [ESRI Shapefiles](#fromShapefile) |
+| [fromShapefile()](#fromShapeFile) | [ESRI](#fromShapeFile) | [ESRI Shapefiles](#fromShapeFile) |
 | [fromTsv()](#fromTsv) | [TSV](#fromTsv) | [Tab-Separated Values](#fromTsv) |
 | [fromXlsx()](#fromXlsx) | [XLSX](#fromXlsx) | [Microsoft Excel](#fromXlsx) |
 | [fromXml()](#fromXml) | [XML](#fromXml) | [XML Markup Language](#fromXml) |
@@ -529,7 +529,7 @@ fromPostgres(
 
 # Exctractor `fromShapeFile()`{#fromShapeFile}
 
-The ESRI [Shapefile format](https://doc.arcgis.com/en/arcgis-online/reference/shapefiles.htm) was developed by Esri(Environmental Systems Research Institute) for interoperability among geographic information system (GIS) applications. The Shapefile format stores nontopological geometry and attribute information for spatial features in a data set.  A Shapefile consists minimally of a main file, an index file, and a dBASE  table. In the TriplyETL we can load data from shapefile with `.shp` extension (main file). 
+The ESRI [Shapefile format](https://doc.arcgis.com/en/arcgis-online/reference/shapefiles.htm) was developed by Esri (Environmental Systems Research Institute) for interoperability among geographic information system (GIS) applications. The Shapefile format stores nontopological geometry and attribute information for spatial features in a data set.  A Shapefile consists minimally of a main file, an index file, and a dBASE  table. In the TriplyETL we can load data from shapefile with `.shp` extension (main file). 
 
 The following snippet shows how to load a local shapefile:
 

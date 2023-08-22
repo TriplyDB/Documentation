@@ -103,16 +103,16 @@ The `loadRecords()` function allows us to run a sub ETL and store its records to
 
  The function expects two arguments and can be run with the following snippet:
 
- - `fromSrc` - The Source to load the data from. The list of available extractors can be seen in [Data Formats' overview page](https://triply.cc/docs/triply-etl/extract/formats/#overview). 
+ - `fromSrc` - The Source to load the data from. The list of available extractors can be seen in [Data Formats overview page](https://triply.cc/docs/triply-etl/extract/formats/#overview). 
  - `key` - A new key where the records are stored.
 
 ```ts
 loadRecords(fromSrc, 'key'),
 ```
 
-It is important to call the `loadRecords()` function **after** the loading record data in the main ETL.
+It is important to call the `loadRecords()` function **after** loading record data in the main ETL.
 
-The following code snippet extracts recods from json object (main ETL), then extracts records from a json file (`'tableMap.json'`) stored as an asset and stores them in the key `'_table'` in the record of the main ETL:
+The following code snippet extracts records from a json object (main ETL), then extracts records from a json file (`tableMap.json`) stored as an asset and stores them in the key `_table` in the record of the main ETL:
 
 ```ts
  fromJson({ country: 'be' }),
