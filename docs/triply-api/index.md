@@ -91,13 +91,13 @@ You can create a new dataset via the Triply API. You need to [use the API Token]
 
 The  example of the URI:
 ```sh
-curl -H 'Authorization: Bearer {TOKEN}' -H 'Content-Type: application/json' -X POST https://api.INSTANCE/datasets/ACCOUNT/DATASET/ -d '{"name": "NAME", "accessLevel": "ACCESS_LEVEL", "displayName": "DISPLAY_NAME"}' 
+curl -H 'Authorization: Bearer {TOKEN}' -H 'Content-Type: application/json' -X POST https://api.INSTANCE/datasets/ACCOUNT/ -d '{"name": "NAME", "accessLevel": "ACCESS_LEVEL", "displayName": "DISPLAY_NAME"}' 
 
 ```
 Upper-case letter words in json after `-d` must be replaced by the following values:
 
 - `NAME` :: The name of the dataset in the url.
-- `ACCESS_LEVEL` ::  *Public*, *Private* or *Internal*. For more information visit [Access levels in TriplyDB](https://triply.cc/docs/triply-db-getting-started/#access-levels).
+- `ACCESS_LEVEL` ::  *public*, *private* or *internal*. For more information visit [Access levels in TriplyDB](https://triply.cc/docs/triply-db-getting-started/#access-levels).
 - `DISPLAY_NAME` :: The display name of the dataset. 
 
 
@@ -105,7 +105,6 @@ Upper-case letter words in json after `-d` must be replaced by the following val
 
 You can upload a data file via the Triply API. You need to [use the API Token](#Using-the-API-token) and send an HTTP POST request with data specifying the local file path. 
 The list of supported file extentions can be checked in [Adding data: File upload](https://triply.cc/docs/triply-db-getting-started/#adding-data-file-upload) documentation. 
-
 
 The  example of the URI:
 ```sh
