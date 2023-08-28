@@ -23,7 +23,7 @@ graph LR
 
 
 
-# Remote data destinations
+# Remote data destinations {#toTriplyDb}
 
 Destinations are usually online locations in TriplyDB where the output of your pipeline will be published.
 
@@ -31,9 +31,9 @@ If no account name is given, pipeline output is uploaded under the user account 
 To upload the output to TriplyDB you can use the `toTriplyDb()` function, as the snippet below shows.
 
 ```ts
-toTriplyDb('my-dataset')
-toTriplyDb('my-account', 'my-dataset')
-toTriplyDb('my-account', 'my-dataset', { overwrite: true })
+toTriplyDb({dataset: 'my-dataset'})
+toTriplyDb({account: 'my-account', dataset: 'my-dataset'})
+toTriplyDb({account: 'my-account', dataset: 'my-dataset', opts:{ overwrite: true }})
 ```
 In the previous versions of TriplyETL, this was done with the `toRdf()` function as shown below:
 
@@ -223,10 +223,10 @@ You can also set the `ENV` variable in the GitLab CI/CD environment. This allows
 
 At the end of a TriplyETL script, it is common to upload the [prefix declarations](/docs/triply-etl/declare#declarePrefix) that are configured for that pipeline. 
 
-This is often done directly before or after graphs are uploaded (function [toRdf()](#toRdf)):
+This is often done directly before or after graphs are uploaded (function [toTriplyDb()](#toTriplyDb)):
 
 ```ts
-import { declarePrefix, toRdf, uploadPrefixes } from '@triplyetl/etl/generic'
+import { declarePrefix, toTriplyDb, uploadPrefixes } from '@triplyetl/etl/generic'
 
 const prefix = {
   // Your prefix declarations.
@@ -236,7 +236,7 @@ export default async function(): Promise<Etl> {
   const etl = new Etl({ prefixes: prefix })
   etl.run(
     // You ETL pipeline
-    toRdf({ account: 'my-account', dataset: 'my-dataset' }),
+    toTriplyDb({ account: 'my-account', dataset: 'my-dataset' }),
     uploadPrefixes({ account: 'my-account', dataset: 'my-dataset' }),
   )
   return etl
