@@ -79,6 +79,8 @@
           link: /docs/triply-etl/control
         - title: Debug
           link: /docs/triply-etl/debug
+        - title: Genric
+          link: /docs/triply-etl/generic
 
         - title: Maintenance
           link: /docs/triply-etl/maintenance
