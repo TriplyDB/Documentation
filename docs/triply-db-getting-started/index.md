@@ -223,6 +223,26 @@ happens, the data in a service is out of sync with the data in the dataset and
 a synchronization button will appear in the service widget. By clicking the
 button, the service will be synchronized with the current state of the dataset.
 
+### Webhooks
+
+If you want to be notified about any changes to your dataset, you can set up a webhook.
+
+The webhook page can be found under dataset's settings on the right, as shown in the image below.
+
+![Webhooks settings page](webhooks.png)
+
+To create a webhook you will need to provide the following information:
+- `Payload target`: The URL to which the webhook message should be sent.
+- `Payload format`: The format in which the message will be.
+- `Trigger events`: Select for which event you wish to receive the message. The options are:
+  - Graph import 
+  - Linked data upload
+  - Asset upload
+
+You can activate or deactivate the webhook with the slider after the `Webhook is active` message.
+
+After filling in everything you can click on the `SUBMIT` button and the new webhook will be active.
+
 # Viewing Data
 
 TriplyDB offers several ways to explore your datasets.
