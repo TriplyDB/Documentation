@@ -1433,3 +1433,109 @@ This middleware can uppercase strings in any language; the Unicode Default Case 
 ## Example
 
 We do not have a good example for this transformation middleware yet. Let us know in case you have a good example!
+
+
+# Function `wkt.addPoint()` {#wkt.addPoint()}
+
+## Description
+
+Creates from the geospatial point the corresponding Well-Known Text (WKT) serialization strings. 
+
+## Parameters
+
+- `latitude` A key or a string assertion ([str()](/docs/triply-etl/assert/ratt#str)) with latitude.
+- `longitude` A key or a string assertion ([str()](/docs/triply-etl/assert/ratt#str)) with longitude.
+- `crs` Optionally, an IRI that denotes a Coordinate Reference System (CRS). You can use IRIs from the [`epsg`](/docs/triply-etl/declare#geospatial-declarations) object. If absent, uses [EPSG:4326/WGS84](https://epsg.io/4326) as the CRS.
+- `key` A new key where the WKT string is stored.
+
+## Example
+The following example creates a WKT literal from geo coordinates of Amsterdam:
+```ts
+fromJson({ place: 'Amsterdam', lat: 52.37308, long: 4.89245 }),
+
+wkt.addPoint({
+  latitude: 'lat',
+  longitude: 'long',
+  key: '_point'
+}),
+
+triple(iri(prefix.city, 'place'), geo.asWKT, '_point'),
+```
+This results in the following record of the key `'_point'`:
+
+```json
+{
+  "_point": {
+    "termType": "Literal",
+    "value": "Point (52.37308 4.89245)",
+    "language": "",
+    "datatype": {
+      "termType": "NamedNode",
+      "value": "http://www.opengis.net/ont/geosparql#wktLiteral",
+      "validationStatus": "canonical"
+    },
+    "validationStatus": "canonical"
+  }
+}
+
+```
+
+And in the following linked data assertion:
+```
+city:Amstedam geo:asWKT "Point (52.37308 4.89245)"^^geo:wktLiteral
+```
+
+
+# Function `wkt.project()` {#wkt.project()}
+
+## Description
+
+Converts the projection of a Well-Known Text (WKT) literal from one Coordinate Reference System to another one. 
+
+## Parameters
+
+- `content` An array of keys or numbers.
+- `key` A new key where the new projection is stored.
+- `fromCrs`: an IRI that denotes a Coordinate Reference System (CRS) of the `content`. 
+- `toCrs`: Optionally, an IRI that denotes a Coordinate Reference System (CRS) we want to convert to. If absent, uses [EPSG:4326/WGS84](https://epsg.io/4326) as the CRS.
+
+## Example
+The following example converts an array with latitude and longitude in `content` key from Dutch grid coordinates (Rijksdriehoeks-coordinates) to WGS84 coordinates. 
+
+```ts
+fromJson({ place: 'Amsterdam', lat: 121307, long: 487360 }),
+ wkt.project({
+      content: ['lat', 'long'],
+      key: '_coordinates',
+      fromCrs: epsg[666],
+      toCrs: epsg[4326]
+    }),
+
+```
+
+This results in the following record of the key `'_coordinates'`:
+
+```json
+{
+  "_coordinates": [
+    4.892803721020475,
+    52.374671935135474
+  ]
+}
+```
+We now can use the converted result to create a WKT `Point()` using [addPoint()](#function-wktaddpoint-wktaddpoint):
+
+```ts
+wkt.addPoint({
+  latitude: '_coordinates[0]',
+  longitude: '_coordinates[1]',
+  key: '_point'
+}),
+
+triple(iri(prefix.id, 'place'), geo.asWKT, '_point')
+```
+This code snippet creates the following linked data assertion:
+
+```turtle
+city:Amstedam geo:asWKT "Point (4.892803721020475 52.374671935135474)"^^geo:asWKT
+```
