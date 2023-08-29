@@ -266,7 +266,7 @@ The following code snippet creates linked lists (linked by `rdf:rest`), where ea
 
 ```ts
 fromJson([{ id: 123, contents: ['apple', 'pear', 'banana'] }]),
-triple(iri(prefix.basket, 'id'), prefix.contains, list(prefix.basket, literals('contents', lang.en)))
+triple(iri(prefix.basket, 'id'), ex.contains, list(prefix.basket, literals('contents', lang.en)))
 ```
 
 This makes the following linked data assertions:
@@ -340,7 +340,7 @@ _:list1 -- rdf:first --> joe
 _:list1 --  rdf:rest -->  _:list2
 
 _:list2 -- rdf:first -->  jane
-_:list2 -- rdf:rest --> rdf:nil.
+_:list2 -- rdf:rest --> rdf:nil
 
   john[id:John]:::data
   joe[id:Joe]:::data
