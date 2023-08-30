@@ -288,7 +288,7 @@ Or diagrammatically:
 
 ```mermaid
 graph LR
-basket -- prefix:contains -->  list1
+basket -- ex:contains -->  list1
 
 list1 -- rdf:first --> apple
 list1 -- rdf:rest -->  list2
