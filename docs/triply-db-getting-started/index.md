@@ -241,7 +241,7 @@ To create a webhook you will need to provide the following information:
 
 You can activate or deactivate the webhook with the slider after the `Webhook is active` message.
 
-After filling in everything you can click on the `SUBMIT` button and the new webhook will be active.
+After filling in everything, you can click on the `SUBMIT` button and the new webhook will be active.
 
 # Viewing Data
 
