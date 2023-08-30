@@ -288,22 +288,25 @@ Or diagrammatically:
 
 ```mermaid
 graph LR
-basket -- prefix:contains -->  _:list1
+basket -- prefix:contains -->  list1
 
-_:list1 -- rdf:first --> apple
-_:list1 -- rdf:rest -->  _:list2
+list1 -- rdf:first --> apple
+list1 -- rdf:rest -->  list2
 
-_:list2 -- rdf:first --> pear
-_:list2 --  rdf:rest --> _:list3
+list2 -- rdf:first --> pear
+list2 --  rdf:rest --> list3
 
-_:list3 -- rdf:first --> banana
-_:list3 --  rdf:rest --> rdf:nil
+list3 -- rdf:first --> banana
+list3 --  rdf:rest --> rdf:nil
 
-  apple["'apple'@en"]:::data
-  banana["'banana'@en"]:::data
-  basket[basket:123]:::data
-  pear["'pear'@en"]:::data
-  classDef data fill:yellow
+apple["'apple'@en"]:::data
+list1[_:list1]:::data
+list2[_:list2]:::data
+list3[_:list3]:::data
+banana["'banana'@en"]:::data
+basket[basket:123]:::data
+pear["'pear'@en"]:::data
+classDef data fill:yellow
 ```
 Note that the predicate differs from the above example of the [literals()](#function-literals-literals) function. In order to use `list()` middleware we need to be sure that the `rdfs:domain` property of the predicates allows to be of `rdf:List`. 
 
@@ -334,22 +337,24 @@ Or diagrammatically:
 
 ```mermaid
 graph LR
-john -- sdo:children --> _:list1
+john -- sdo:children --> list1
 
-_:list1 -- rdf:first --> joe
-_:list1 --  rdf:rest -->  _:list2
+list1 -- rdf:first --> joe
+list1 --  rdf:rest -->  list2
 
-_:list2 -- rdf:first -->  jane
-_:list2 -- rdf:rest --> rdf:nil
+list2 -- rdf:first -->  jane
+list2 -- rdf:rest --> rdf:nil
 
-  john[id:John]:::data
-  joe[id:Joe]:::data
-  jane[id:Jane]:::data
+list1[_:list1]:::data
+list2[_:list2]:::data
+john[id:John]:::data
+joe[id:Joe]:::data
+jane[id:Jane]:::data
 
-  classDef data fill:yellow
+classDef data fill:yellow
 ```
 
-The above diagram can translate to the statement: "John has two children, where Joe is his first child and Jane is his second child". 
+The above diagram can be translated to the statement: "John has two children, where Joe is his first child and Jane is his second child". 
 
 # Function `nestedPairs()` {#nestedPairs}
 
