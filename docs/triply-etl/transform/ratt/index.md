@@ -1439,7 +1439,7 @@ We do not have a good example for this transformation middleware yet. Let us kno
 
 ## Description
 
-Creates from the geospatial point the corresponding Well-Known Text (WKT) serialization strings. 
+Creates from the geospatial point the corresponding Well-Known Text (WKT) serialization string. 
 
 ## Parameters
 
@@ -1449,10 +1449,9 @@ Creates from the geospatial point the corresponding Well-Known Text (WKT) serial
 - `key` A new key where the WKT string is stored.
 
 ## Example
-The following example creates a WKT literal from geo coordinates of Amsterdam:
+The following example creates a WKT literal from the geo coordinates of Amsterdam:
 ```ts
 fromJson({ place: 'Amsterdam', lat: 52.37308, long: 4.89245 }),
-
 wkt.addPoint({
   latitude: 'lat',
   longitude: 'long',
@@ -1504,12 +1503,12 @@ The following example converts an array with latitude and longitude in `content`
 
 ```ts
 fromJson({ place: 'Amsterdam', lat: 121307, long: 487360 }),
- wkt.project({
-      content: ['lat', 'long'],
-      key: '_coordinates',
-      fromCrs: epsg[666],
-      toCrs: epsg[4326]
-    }),
+wkt.project({
+    content: ['lat', 'long'],
+    key: '_coordinates',
+    fromCrs: epsg[666],
+    toCrs: epsg[4326]
+  }),
 
 ```
 
