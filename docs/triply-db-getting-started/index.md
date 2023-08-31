@@ -229,11 +229,11 @@ If you want to be notified or trigger an event when anything changes in your dat
 
 The webhook page can be found under dataset's settings on the right, as shown in the image below.
 
-![Webhooks settings page](webhooks.png)
+![Webhooks settings page](webhook.png)
 
 To create a webhook, you will need to provide the following information:
 - `Payload target`: The URL to which the webhook message should be sent.
-- `Payload format`: The format in which the message will be.
+- `Payload format`: The format of the message.
 - `Trigger events`: Select for which event you wish to trigger the webhook. The options are:
   - **Graph import**: Happens when data is imported from a different dataset and where the data is already stored on the instance. 
   - **Linked data upload**: Happens when a person uploads data to the instance. The data did not exist on the instance before.
