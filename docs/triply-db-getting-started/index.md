@@ -223,6 +223,36 @@ happens, the data in a service is out of sync with the data in the dataset and
 a synchronization button will appear in the service widget. By clicking the
 button, the service will be synchronized with the current state of the dataset.
 
+### Webhooks
+
+If you want to be notified or trigger an event when anything changes in your dataset, you can set up a webhook.
+
+The webhook page can be found under dataset's settings on the right, as shown in the image below.
+
+![Webhooks settings page](webhook.png)
+
+To create a webhook, you will need to provide the following information:
+- `Payload target`: The URL to which the webhook message should be sent.
+- `Payload format`: The format of the message.
+- `Trigger events`: Select for which event you wish to trigger the webhook. The options are:
+  - **Graph import**: Happens when data is imported from a different dataset and where the data is already stored on the instance. 
+  - **Linked data upload**: Happens when a person uploads data to the instance. The data did not exist on the instance before.
+  - **Asset upload**: Happens when an asset is uploaded.
+
+
+You can activate or deactivate the webhook with the slider after the `Webhook is active` message.
+
+After filling in everything, you can click on the `SUBMIT` button and the new webhook will be activated.
+
+For example, if you wish to trigger a pipeline on gitlab every time you upload an asset to your dataset, you can use the below snippet as a payload target, as described on the [official gitlab documentation](https://docs.gitlab.com/ee/ci/triggers/) and select `Asset upload` as a trigger event.
+
+```
+https://gitlab.example.com/api/v4/projects/<project_id>/trigger/pipeline?token=<token>&ref=<ref_name>
+```
+When your webhook is created and active, you can see every occasion the webhook was called in the webhook trigger history.
+
+![Active webhook trigger history](webhook_trigger_history.png)
+
 # Viewing Data
 
 TriplyDB offers several ways to explore your datasets.
