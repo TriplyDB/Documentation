@@ -1435,11 +1435,11 @@ This middleware can uppercase strings in any language; the Unicode Default Case 
 We do not have a good example for this transformation middleware yet. Let us know in case you have a good example!
 
 
-# Function `wkt.addPoint()` {#wkt.addPoint()}
+# Function `wkt.addPoint()` {#wktAddPoint()}
 
 ## Description
 
-Creates from the geospatial point the corresponding Well-Known Text (WKT) serialization string. 
+Creates a Well-Known Text (WKT) serialization string from the corresponding geospatial point.
 
 ## Parameters
 
@@ -1485,7 +1485,7 @@ city:Amstedam geo:asWKT "Point (52.37308 4.89245)"^^geo:wktLiteral
 ```
 
 
-# Function `wkt.project()` {#wkt.project()}
+# Function `wkt.project()` {#wktProject()}
 
 ## Description
 
@@ -1522,7 +1522,7 @@ This results in the following record of the key `'_coordinates'`:
   ]
 }
 ```
-We now can use the converted result to create a WKT `Point()` using [addPoint()](#function-wktaddpoint-wktaddpoint):
+We can now use the converted result to create a WKT `Point()` using [addPoint()](#function-wktaddpoint-wktaddpoint):
 
 ```ts
 wkt.addPoint({
