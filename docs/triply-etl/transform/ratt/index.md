@@ -1432,7 +1432,7 @@ This middleware can uppercase strings in any language; the Unicode Default Case 
 
 ## Example
 
-The following example the string in the key `'content'` becomes the uppercase string:
+In the following example, the string in the key `'countryCode'` becomes the uppercase string:
 
 ```ts
 fromJson({ place: 'Amsterdam', countryCode: 'nl' }),
