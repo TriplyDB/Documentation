@@ -220,13 +220,11 @@ Notice that the requirement that was violated (`shp:Person_age`) is mentioned in
 
 If we want to take a look at a concrete example in our instance data, we can also take look at node `id:1` which is also mentioned in the notification.
 
-To set a destination of the validation SHACL model, we can specify this in the validate() function, as is shown in the following snippet, in the `Source`:
-```
-validate(Source.file('static/model.trig'), {report: { destination: Destination.file("report.ttl")}})
-```
-We can save the validation report either in a local file or upload it to TriplyDB. We indicate the destination of the output file under `Destination`.
-To save it locally, we can use the following snippet:
-```
+If we want to save our validation report to a a local file or upload it to TriplyDB, we can do that by specifying the Destination inside the `validate()` function.
+
+For example, the snippet below uses a file called `model.trig` as the Information Model and stores the report to another file, called `report.ttl`.
+
+```ts
 validate(Source.file('static/model.trig'), {report: { destination: Destination.file("report.ttl")}})
 ```
 
