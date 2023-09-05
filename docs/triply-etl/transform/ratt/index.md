@@ -1432,4 +1432,21 @@ This middleware can uppercase strings in any language; the Unicode Default Case 
 
 ## Example
 
-We do not have a good example for this transformation middleware yet. Let us know in case you have a good example!
+In the following example, the string in the key `'countryCode'` becomes the uppercase string:
+
+```ts
+fromJson({ place: 'Amsterdam', countryCode: 'nl' }),
+uppercase({
+  content: 'countryCode',
+  key: '_coountryCode'
+}),
+triple(iri(prefix.id, 'place'), iri(prefix.geonames, str('countryCode')), '_coountryCode')
+```
+This results in the following linked data assertion: 
+
+```ttl
+city:Amsterdam geonames:countryCode "NL"
+```
+
+
+
