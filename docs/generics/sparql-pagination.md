@@ -18,7 +18,7 @@ The argument ‘pageSize’ corresponds to how many results each page would cont
 
 The RESTful API for the saved SPARQL queries follows the [RFC 8288](https://www.rfc-editor.org/rfc/rfc8288.html) standard.
 
-The request will return an response body containing the result set and a response header. The response header contains a link header with the relative "next" request, the relative "prev" request, and the relative "first" request. By following the "next" link header request you can chain the pagination and retrieve all results.
+The request will return a response body containing the result set and a response header. The response header contains a link header with the relative "next" request, the relative "prev" request, and the relative "first" request. By following the "next" link header request you can chain the pagination and retrieve all results.
 
 ```json
 link:
