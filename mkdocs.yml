@@ -13,19 +13,31 @@ nav:
           - Getting started: triply-etl/getting-started
           - Command Line Interface (CLI): triply-etl/cli
           - Changelog: triply-etl/changelog
-          - Maintenance: triply-etl/maintenance
           - Declare: triply-etl/declare
           - Control: triply-etl/control
           - Debug: triply-etl/debug
           - Maintenance: triply-etl/maintenance
       - Approach:
-          - Extract: triply-etl/extract
+          - Extract: 
+              - Overview: triply-etl/extract
+              - Formats: triply-etl/extract/formats
+              - Record: triply-etl/extract/record
+              - Types: triply-etl/extract/types
           - Transform:
               - Overview: triply-etl/transform
               - RATT: triply-etl/transform/ratt
-          - Assert: triply-etl/assert
-          - Enrich: triply-etl/enrich
-          - Validate: triply-etl/validate
+          - Assert: 
+              - Overview: triply-etl/assert
+              - JSON-LD: triply-etl/assert/json-ld
+              - Ratt: triply-etl/assert/ratt
+          - Enrich: 
+              - Overview: triply-etl/enrich
+              - SHACL: triply-etl/enrich/shacl
+              - SPARQL: triply-etl/enrich/sparql
+          - Validate: 
+              - Overview: triply-etl/validate
+              - Graph comparison: triply-etl/validate/graph-comparison
+              - SHACL: triply-etl/validate/shacl
           - Publish: triply-etl/publish
   - Yasgui:
       - Introduction: yasgui
