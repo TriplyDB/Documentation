@@ -53,7 +53,7 @@ git config --global user.name "Ada Lovelace"</pre>
       <dd>Most Linux versions come with a preinstalled terminal application. For example, on Ubuntu the <a href="https://help.gnome.org/users/gnome-terminal/stable/" target="_blank">GNOME Terminal application</a> is preinstalled.</dd>
     </dl>
   </dd>
-</dd>
+</dl>
 
 
 
