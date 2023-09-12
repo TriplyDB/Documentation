@@ -254,6 +254,7 @@ triple(iri(prefix.id, 'parent'), sdo.children, literals('children', xsd.string))
 # Function `list()` {#list}
 
 This function allows us to create ordered closed collections [rdf:List](https://triplydb.com/how-to-model/-/stories/collections) in TriplyETL.
+The elements of such collections must be represented using a single-linked list (`rdf:first` and `rdf:rest`). Such collections are closed by the empty list (`rdf:nil`).
 
 ## Parameters
 
