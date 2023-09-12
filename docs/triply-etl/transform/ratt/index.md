@@ -921,7 +921,7 @@ fromJson({
 triple(
   iri(prefix.city, '$recordId'),
   rdfs.label,
-  literal(jpath("$.language[?(@['ISO_639-2'])].value"), lang.nl)
+  literal(jpath("$.language[?(@['ISO_639-2'])].value"), language.nl)
 ),
 
 ```
