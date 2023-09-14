@@ -757,7 +757,7 @@ city:2 rdfs:label 'Parijs'.
 
 
 
-# Function `encodeHtml()` {#encodeHtml}
+# Function `decodeHtml()` {#decodeHtml}
 
 ## Description
 
