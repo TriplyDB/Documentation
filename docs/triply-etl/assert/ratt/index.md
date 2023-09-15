@@ -34,7 +34,7 @@ import { iri, iris, literal, literals, nestedPairs, objects,
 
 
 
-# Function `iri()` {#iri}
+# Function `iri()` <!-- {#iri} -->
 
 Asserts an IRI term based on a key and an optional IRI prefix:
 
@@ -75,7 +75,7 @@ Use function [iris()](#iris) to create multiple IRIs in one step.
 
 
 
-# Function `iris()` {#iris}
+# Function `iris()` <!-- {#iris} -->
 
 Asserts multiple IRIs, one for each entry in an array of strings:
 
@@ -118,7 +118,7 @@ graph LR
 
 
 
-# Function `literal()` {#literal}
+# Function `literal()` <!-- {#literal} -->
 
 Asserts a literal term:
 
@@ -167,7 +167,7 @@ Use assertion [literals()](#literals) to create multiple literals in one step.
 
 
 
-# Function `literals()` {#literals}
+# Function `literals()` <!-- {#literals} -->
 
 Asserts multiple literals, one for each given lexical form:
 
@@ -252,7 +252,7 @@ triple(iri(prefix.id, 'parent'), sdo.children, literals('children', xsd.string))
 
 
 
-# Function `nestedPairs()` {#nestedPairs}
+# Function `nestedPairs()` <!-- {#nestedPairs} -->
 
 This function creates a nested node and makes multiple assertions about that node.
 
@@ -368,7 +368,7 @@ In some cases, it is inconvenient to come up with a naming scheme for intermedia
 
 
 
-# Function `objects()` {#objects}
+# Function `objects()` <!-- {#objects} -->
 
 Asserts multiple triples that share the same subject term and predicate term.
 
@@ -425,7 +425,7 @@ graph LR
 
 
 
-# Function `pairs()` {#pairs}
+# Function `pairs()` <!-- {#pairs} -->
 
 Asserts multiple triples that share the same subject term.
 
@@ -483,7 +483,7 @@ graph LR
 
 
 
-# Function `quad()` {#quad}
+# Function `quad()` <!-- {#quad} -->
 
 Asserts a quadruple or 'quad', i.e. a statement that consists of a subject term, a predicate term, an object term, and a graph name.
 
@@ -513,7 +513,7 @@ Use function [quads()](#quads) to make multiple quadruple assertions.
 
 
 
-# Function `quads()` {#quads}
+# Function `quads()` <!-- {#quads} -->
 
 Asserts multiple quadruples or 'quads', i.e. statements that consists of a subject term, a predicate term, an object term, and a graph name.
 
@@ -549,7 +549,7 @@ Use function [quad()](#quad) for asserting a single quadruple.
 
 
 
-# Function `str()` {#str}
+# Function `str()` <!-- {#str} -->
 
 Asserts a static string value.
 
@@ -571,7 +571,7 @@ triple(iri(prefix.id, str('abc')), rdfs.label, str('abc')),
 
 
 
-# Function `triple()` {#triple}
+# Function `triple()` <!-- {#triple} -->
 
 Asserts a triple, i.e. a statement that consists of a subject term, a predicate term, and an object term.
 
@@ -607,7 +607,7 @@ triple('_person', foaf.age, literal('age', xsd.nonNegativeInteger)),
 
 
 
-# Function `triples()` {#triples}
+# Function `triples()` <!-- {#triples} -->
 
 Asserts multiple triples in the same named graph:
 

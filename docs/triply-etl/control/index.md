@@ -137,7 +137,7 @@ In addition to these regular keys, (sub)records inside `forEach()` also contain 
 - [Root key (`$root`)](#root-key)
 
 
-## Index key (`$index`) {#index-key}
+## Index key (`$index`) <!-- {#index-key} -->
 
 Each (sub)record that is made available in `forEach()` contains the `$index` key.  The value of this key is the index of the element in the list.  This is the same index that is used to access specific elements in an list, as explained in [the section on accessing lists by index](#accessing-lists-by-index).
 
@@ -178,7 +178,7 @@ country:2 rdfs:label 'Italy'.
 ```
 
 
-## Parent key (`$parent`) {#parent-key}
+## Parent key (`$parent`) <!-- {#parent-key} -->
 
 When `forEach()` iterates through a list of elements, it makes the enclosingparent* record available under key `$parent`.
 
@@ -254,7 +254,7 @@ and:
 The `$root` key is explained in [the next section](#root-key).
 
 
-## Root key (`$root`) {#root-key}
+## Root key (`$root`) <!-- {#root-key} -->
 
 Sometimes it may be necessary to access a part of the original record that is outside of the scope of the `forEach()` call.
 

@@ -123,7 +123,7 @@ These features are all supported by [TriplyDB queries](#triplydb-queries). It is
 
 
 
-# TriplyDB assets {#triplydb-assets}
+# TriplyDB assets <!-- {#triplydb-assets} -->
 
 Assets are a core feature of TriplyDB. Assets allow arbitrary files to be stored in the context of a linked dataset. A typical use case for assets is to upload (new versions of) source files. The TriplyETL pipeline can pick the latest versions of these source files and publish the resulting linked data in the the same dataset.
 
@@ -203,7 +203,7 @@ Notice that this makes it *easier* and *safer* to deal with source data that is 
 Notice that access also is more *transparent* when TriplyDB assets are used. All and only collaborators that have access to the TriplyDB dataset also have access to the source data. It is clear for all collaborators which source files should be used, and which versions are available. This is more transparent than having to share (multiple versions of) source files over email or by other indirect means.
 
 
-## TriplyDB instance {#triplydb-option}
+## TriplyDB instance <!-- {#triplydb-option} -->
 
 By default, assets are loaded from the TriplyDB instance that is associated with the currently used API Token. In some situations it is useful to connect to a linked dataset from a different TriplyDB instance. This can be configured with the `triplyDb` option.
 
@@ -286,7 +286,7 @@ Saved SPARQL queries in TriplyDB can be used as data sources. SPARQL queries are
 | [SPARQL Select](#select) | [fromCsv()](/docs/triply-etl/extract/formats#fromCsv), [fromJson()](/docs/triply-etl/extract/formats#fromJson), [fromTsv()](/docs/triply-etl/extract/formats#fromTsv), [fromXml()](/docs/triply-etl/extract/formats#fromXml) |
 
 
-## SPARQL Ask queries {#ask}
+## SPARQL Ask queries <!-- {#ask} -->
 
 SPARQL Ask queries can return data in either the JSON or the XML format. This allows them to be processed with the extractors [fromCsv()](/docs/triply-etl/extract/formats#fromCsv) and [fromXml()](/docs/triply-etl/extract/formats#fromXml).
 
@@ -297,7 +297,7 @@ fromXml(Source.TriplyDb.query('my-account', 'my-ask-query')),
 ```
 
 
-## SPARQL Construct and Describe queries {#construct-describe}
+## SPARQL Construct and Describe queries <!-- {#construct-describe} -->
 
 SPARQL Construct and Describe queries return data in the RDF format. This allows them to be used with function [loadRdf()](/docs/triply-etl/extract/formats#loadRdf). The following snippet loads the results of a SPARQL query into the internal RDF store of TriplyETL:
 
@@ -306,7 +306,7 @@ loadRdf(Source.TriplyDb.query('my-account', 'my-construct-query')),
 ```
 
 
-## SPARQL Select queries {#select}
+## SPARQL Select queries <!-- {#select} -->
 
 SPARQL Select queries return data in either the CSV, JSON, TSV, or XML format. This allows them to be used with the following four extractors: [fromCsv()](/docs/triply-etl/extract/formats#fromCsv), [fromJson()](/docs/triply-etl/extract/formats#fromJson), [fromTsv()](/docs/triply-etl/extract/formats#fromTsv), and [fromXml()](/docs/triply-etl/extract/formats#fromXml).
 

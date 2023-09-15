@@ -37,7 +37,7 @@ The following transformation functions are currently available:
 
 
 
-# Function `addHashedIri()` {#addHashedIri}
+# Function `addHashedIri()` <!-- {#addHashedIri} -->
 
 Creates an IRI based on the specified IRI prefix and the hash calculated over the input content string(s).
 
@@ -190,7 +190,7 @@ graph TB
 
 
 
-# Function `addIri()` {#addIri}
+# Function `addIri()` <!-- {#addIri} -->
 
 ## Description
 
@@ -275,7 +275,7 @@ triple(iri('https://example.com/id/person/johndoe'), a, sdo.Person),
 
 
 
-# Function `addLiteral()` {#addLiteral}
+# Function `addLiteral()` <!-- {#addLiteral} -->
 
 Creates an new literal and adds it to the Record under the specified key.
 
@@ -387,7 +387,7 @@ triple(iri(prefix.city, 'name'), skos.prefLabel, literal('name', lang['en-gb']))
 
 
 
-# Function `addRandomIri()` {#addRandomIri}
+# Function `addRandomIri()` <!-- {#addRandomIri} -->
 
 Creates an IRI based on the specified IRI prefix and a universally unique random identifier.
 
@@ -434,7 +434,7 @@ id:acb3ea010fe748bfa73a2ee2b65bef65 sdo:dateCreated '2000-12-30'^^xsd:date.
 
 
 
-# Function `addSkolemIri()` {#addSkolemIri}
+# Function `addSkolemIri()` <!-- {#addSkolemIri} -->
 
 Creates a globally unique IRI that is intended to be used as a blank node identifier.
 
@@ -499,7 +499,7 @@ feature:22238008e490f725979118f8f2dd9b5a geo:hasGeometry
 
 
 
-# Function `addTag()` {#addTag}
+# Function `addTag()` <!-- {#addTag} -->
 
 This middleware creates a language tag based on a given string value.
 
@@ -533,7 +533,7 @@ triple(iri(prefix.city, 'label'), rdfs.label, literal('label', 'lang')),
 
 
 
-# Function `addValue()` {#addValue}
+# Function `addValue()` <!-- {#addValue} -->
 
 This middleware allows any value to be added to the Record.
 
@@ -601,7 +601,7 @@ event:456 sdo:startDate 'unknown'.
 
 
 
-# Function `capitalize()` {#capitalize}
+# Function `capitalize()` <!-- {#capitalize} -->
 
 Transforms a string value to its capitalized variant.
 
@@ -642,7 +642,7 @@ id:2 a def:Person.
 ```
 
 
-# Function `concat()` {#concat}
+# Function `concat()` <!-- {#concat} -->
 
 ## Description
 
@@ -678,7 +678,7 @@ person:1 foaf:name 'John Doe'.
 
 
 
-# Function `copy()` {#copy}
+# Function `copy()` <!-- {#copy} -->
 
 Makes a plain copy from the value stored in the given key to a new key.
 
@@ -753,7 +753,7 @@ city:2 rdfs:label 'Parijs'.
 
 
 
-# Function `encodeHtml()` {#encodeHtml}
+# Function `encodeHtml()` <!-- {#encodeHtml} -->
 
 ## Description
 
@@ -799,7 +799,7 @@ id:2 rdfs:label '1 < 2'.
 
 
 
-# Function `geojsonToWkt()` {#geojsonToWkt}
+# Function `geojsonToWkt()` <!-- {#geojsonToWkt} -->
 
 Transforms GeoJSON objects to their corresponding Well-Known Text (WKT) serialization strings.
 
@@ -887,7 +887,7 @@ graph LR
 
 
 
-# Function `lowercase()` {#lowercase}
+# Function `lowercase()` <!-- {#lowercase} -->
 
 ## Description
 
@@ -933,7 +933,7 @@ id:2 def:child id:1.
 
 
 
-# Function `padEnd()` {#padEnd}
+# Function `padEnd()` <!-- {#padEnd} -->
 
 ## Description
 
@@ -985,7 +985,7 @@ This results in the following two Records:
 
 
 
-# Function `padStart()` {#padStart}
+# Function `padStart()` <!-- {#padStart} -->
 
 ## Description
 
@@ -1116,7 +1116,7 @@ This results in the following Record:
 ```
 
 
-# Function `split()` {#split}
+# Function `split()` <!-- {#split} -->
 
 ## Description
 
@@ -1232,7 +1232,7 @@ id:1 sdo:postalCode '1231FZ'.
 
 
 
-# Function `substring()` {#substring}
+# Function `substring()` <!-- {#substring} -->
 
 ## Description
 
@@ -1270,7 +1270,7 @@ triple('_iri', a, '_class'),
 
 
 
-# Function `translateAll()` {#translateAll}
+# Function `translateAll()` <!-- {#translateAll} -->
 
 ## Description
 
@@ -1336,7 +1336,7 @@ triple('_creativeWork', '_relator', '_creator'),
 
 
 
-# Function `translateSome()` {#translateSome}
+# Function `translateSome()` <!-- {#translateSome} -->
 
 ## Description
 
@@ -1372,7 +1372,7 @@ transform.translateSome({
 
 
 
-# Function `tryLiteral()` {#tryLiteral}
+# Function `tryLiteral()` <!-- {#tryLiteral} -->
 
 ## Description
 
@@ -1414,7 +1414,7 @@ You only need to use `tryLiteral()` if the datatype IRI varies from record to re
 
 
 
-# Function `uppercase()` {#uppercase}
+# Function `uppercase()` <!-- {#uppercase} -->
 
 ## Description
 

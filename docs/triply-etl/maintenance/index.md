@@ -5,13 +5,15 @@ path: "/docs/triply-etl/maintenance"
 
 Once a TriplyETL repository is configured, it goes into maintenance mode. Maintenance includes the following tasks:
 
-- [Update the TriplyETL dependency](#update)
-- Configure the TriplyETL CI/CD
-- Monitor the TriplyETL CI/CD
+- [Update the TriplyETL dependency ](#update-the-triplyetl-dependency-)
+  - [Check the current version](#check-the-current-version)
+  - [Check for new versions](#check-for-new-versions)
+  - [Assess the impact of updating](#assess-the-impact-of-updating)
+  - [Perform the update](#perform-the-update)
 
 
 
-# Update the TriplyETL dependency {#update}
+# Update the TriplyETL dependency <!-- {#update} -->
 
 New versions of TriplyETL are released regularly. Moving to a new version is generally a good idea, because it allows new features to be used and will include fixes for known/reported bugs. At the same time, updating to a new version may require you to make some changes to your pipeline.
 

@@ -28,7 +28,7 @@ TriplyETL refers to these resources as the **Context**.
 
 
 
-# Function `custom.add()` {#add}
+# Function `custom.add()` <!-- {#add} -->
 
 Adds a new entry to the Record, based on more than one existing entry.
 
@@ -101,7 +101,7 @@ This prints the following two records:
 
 
 
-# Function `custom.change()` {#change}
+# Function `custom.change()` <!-- {#change} -->
 
 Changes an existing entry in the Record.  The `change` function takes the old value and returns the new value.
 
@@ -316,7 +316,7 @@ This print the following two records that can now be uniformly processed:
 
 
 
-# `custom.replace()` {#replace}
+# `custom.replace()` <!-- {#replace} -->
 
 Replaces the value of an existing key based on the value from another key.
 

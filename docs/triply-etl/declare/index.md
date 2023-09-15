@@ -7,7 +7,7 @@ This page documents how you can declare prefixes, graph names, vocabulary terms,
 
 
 
-# Prefix declarations {#declarePrefix}
+# Prefix declarations <!-- {#declarePrefix} -->
 
 Linked data uses IRIs for uniquely identifying most data items. Since IRIs can be long and complex, it is a best practice to declare short aliases that can be used to abbreviate them. Such aliases are introduced in prefix declarations.
 
@@ -96,7 +96,7 @@ This may create literals like the following:
 
 
 
-# Vocabulary declarations {#vocabulary}
+# Vocabulary declarations <!-- {#vocabulary} -->
 
 Vocabularies are collections of IRIs that have the same namespace. The namespace can be declared with a prefix (see [Prefix declarations](#prefix-declarations)). We use the following prefix declaration as the namespace for our vocabulary:
 
@@ -170,7 +170,7 @@ graph LR
 
 
 
-# External vocabularies {#external-vocabularies}
+# External vocabularies <!-- {#external-vocabularies} -->
 
 In linked data, it is common to reuse existing vocabularies. Popular vocabularies can be imported from the TriplyETL vocabulary library:
 

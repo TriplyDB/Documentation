@@ -34,7 +34,7 @@ TriplyETL supports two kinds of SHACL Rules: Triple Rules and SPARQL Rules. The 
 
 This section describes a complete example that makes use of Triple Rules. These are SHACL Rules that assert exactly one triple. Every rule that can be implemented with Triple Rules can also be implemented with SPARQL Rules, but Triple Rules sometimes simpler to use, since they do not require knowledge of the SPARQL language.
 
-## Step 1: Load instance data {#stepA1}
+## Step 1: Load instance data <!-- {#stepA1} -->
 
 We first need to load some instance data, so that we can apply a rule and enrich the loaded data with some new data. We use linked data assertions that state that John is a person, who has a child (Mary), and whose gender is male:
 
@@ -73,7 +73,7 @@ graph
   end
 ```
 
-## Step 2. Formulate the SHACL rule {#stepA2}
+## Step 2. Formulate the SHACL rule <!-- {#stepA2} -->
 
 In Step 1 we applied a rule to the instance John. But our dataset may contain information about many other people too: people with or without children, people with different genders, etc.
 

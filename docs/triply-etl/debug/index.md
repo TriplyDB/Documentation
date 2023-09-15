@@ -27,7 +27,7 @@ import { logMemory, logQuads, logQuery, logRecord, traceEnd,
 
 
 
-# Function `logMemory()` {#logMemory}
+# Function `logMemory()` <!-- {#logMemory} -->
 
 This function prints information about the current memory consumption. It includes the following fields:
 
@@ -58,7 +58,7 @@ Info CallCount: 3 | RecordId: 2 | Heap (MB) used: 92 / total: 122
 
 
 
-# Function `logQuads()` {#logQuads}
+# Function `logQuads()` <!-- {#logQuads} -->
 
 This function prints the current contents of the internal store to standard output.
 
@@ -84,7 +84,7 @@ rdfs:Class a rdfs:Class
 
 
 
-# Function `logQuery()` {#logQuery}
+# Function `logQuery()` <!-- {#logQuery} -->
 
 This function prints a query string to standard output. This is specifically useful when the query string is stored in an external system, e.g. a SPARQL query string that is stored on a TriplyDB server:
 
@@ -103,7 +103,7 @@ limit 10
 
 
 
-# Function `logRecord()` {#logRecord}
+# Function `logRecord()` <!-- {#logRecord} -->
 
 This function prints the current state of the record to standard output. The record is a generic representation of the data that is extracted from one of the data sources (see the [Record documentation page](/docs/triply-etl/extract/record) for more information).
 
@@ -193,7 +193,7 @@ This results in the following output:
 
 
 
-# Functions `traceStart()` and `traceEnd()` {#trace}
+# Functions `traceStart()` and `traceEnd()` <!-- {#trace} -->
 
 Sometimes you are interested to find one specific record based on a certain value of a key and/or to see the changes in this record made by specific middlewares. For these purposes, `trace` middleware can be used.
 

@@ -108,7 +108,7 @@ https://api.triplydb.com/accounts/Triply
 
 
 
-## Queries {#queries}
+## Queries <!-- {#queries} -->
 
 TriplyDB allows users to save SPARQL queries. The metadata for all saved query can be accessed as follows:
 
@@ -128,7 +128,7 @@ By adding an account name and a query name (for example: 'Triply/flower-length')
 https://api.triplydb.com/queries/Triply/flower-length
 ```
 
-### Query metadata (GRLC) {#grlc}
+### Query metadata (GRLC) <!-- {#grlc} -->
 
 You can retrieve a text-based version of each query, by requesting the `text/plain` content type:
 

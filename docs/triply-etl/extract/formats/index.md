@@ -31,7 +31,7 @@ Notice that you also need to import `Source`, since every extractor requires a s
 
 
 
-# Extractor `fromCsv()` {#fromCsv}
+# Extractor `fromCsv()` <!-- {#fromCsv} -->
 
 CSV or Comma Separated Values (file name extension `.csv`) is a popular format for storing tabular source data. TriplyETL has a dedicated `fromCsv()` extractor for this data format.
 
@@ -145,7 +145,7 @@ Notice that:
 
 
 
-# Extractor `fromJson()` {#fromJson}
+# Extractor `fromJson()` <!-- {#fromJson} -->
 
 JSON (JavaScript Object Notation) is a popular open standard for interchanging tree-shaped data. TriplyETL has a dedicated `fromJson()` extractor for this format.
 
@@ -277,7 +277,7 @@ id:de rdfs:label 'Germany'.
 
 
 
-# Extractor `fromOai()` {#fromOai}
+# Extractor `fromOai()` <!-- {#fromOai} -->
 
 In GLAM domains (Galleries, Libraries, Archives, Museums), the Open Archives Initiative (OAI), Protocol for Metadata Harvesting (PMH) is a popular protocol and format for publishing data collections. TriplyETL includes the `fromOai()` extractor to tap into these data collections.
 
@@ -301,7 +301,7 @@ The OAI-PMH standard defines 6 'verbs'. These different sub-APIs that together c
 Extractor `fromOai()` currently supports the following two verbs: [ListIdentifiers](#ListIdentifiers) and [ListRecords](#ListRecords).
 
 
-## Verb `ListIdentifiers` {#ListIdentifiers}
+## Verb `ListIdentifiers` <!-- {#ListIdentifiers} -->
 
 This 'verb' or sub-API streams through the headers of all records. It does not returns the actual (body) content of each record (see [ListRecords](#ListRecords)). This verb can be used to look for header properties like set membership, datestamp, and deletion status.
 
@@ -318,7 +318,7 @@ logRecord(),
 ```
 
 
-## Verb `ListRecords` {#ListRecords}
+## Verb `ListRecords` <!-- {#ListRecords} -->
 
 This 'verb' or sub-API streams through all records and retrieves them in full. This API is used to harvest records.
 
@@ -336,7 +336,7 @@ logRecord(),
 
 
 
-# Extractor `fromTsv()` {#fromTsv}
+# Extractor `fromTsv()` <!-- {#fromTsv} -->
 
 TSV or Tab-Separated Values (file name extension `.tsv`) is a popular format for tabular source data. TriplyETL has a `fromTsv()` extractor to support this format.
 
@@ -395,7 +395,7 @@ Notice that:
 
 
 
-# Extractor `fromXlsx()` {#fromXlsx}
+# Extractor `fromXlsx()` <!-- {#fromXlsx} -->
 
 XLSX or Office Open XML Workbook (file name extension `.xlsx`) is a popular format for storing tabular source data. This is the standard file format for Microsoft Excel. TriplyETL has a dedicated `fromXlsx()` extractor for such sources.
 
@@ -464,7 +464,7 @@ Notice the following:
 - The special key `$sheetName` is unique to the `fromXslx()` extractor and is documented in the next subsection.
 
 
-## Special key `$sheetName` {#sheetName}
+## Special key `$sheetName` <!-- {#sheetName} -->
 
 For every record emitted by the `fromXlsx()` extractor. the `$sheetName` special key contains the name of the Excel sheet from which that record originates. The presence of the sheet name allows the TriplyETL configuration to be adjusted for different sheet.
 
@@ -485,7 +485,7 @@ triple(iri(prefix.id, '$recordId'), a, '_class'),
 
 
 
-# Extractor `fromPostgres()` {#fromPostgres}
+# Extractor `fromPostgres()` <!-- {#fromPostgres} -->
 
 PostgreSQL or Postgres is an open-source relational database system. Postgres supports both SQL (relational) and JSON (non-relational) querying.
 
@@ -529,7 +529,7 @@ fromPostgres(
 
 
 
-# Extractor `fromXml()` {#fromXml}
+# Extractor `fromXml()` <!-- {#fromXml} -->
 
 XML or Extensible Markup Language is a popular open format for tree-shaped source data.
 
@@ -583,7 +583,7 @@ Since XML can store tree-shaped data, it can have nested keys and indexed array.
 
 
 
-# Function `loadRdf()` {#loadRdf}
+# Function `loadRdf()` <!-- {#loadRdf} -->
 
 Resource Description Framework (RDF) is the standardized and open format for linked data.
 

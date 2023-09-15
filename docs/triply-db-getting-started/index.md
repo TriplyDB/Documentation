@@ -658,7 +658,7 @@ When the SPARQL query is not public, but instead either private or internal, you
 
 Check out the [SPARQL pagination page](https://triply.cc/docs/pagination) when you want to query a SPARQL query that holds more than 10.000 results. The [SPARQL pagination page ](https://triply.cc/docs/pagination) will explain how you can retrieve the complete set.   
 
-## Query metadata {#query-metadata}
+## Query metadata <!-- {#query-metadata} -->
 
 Every Saved Query has a metadata section. This metadata section includes the following two links:
 - A link to the dataset over which the query is executed. Clicking this links navigates to the dataset homepage.
@@ -676,7 +676,7 @@ Users can specify additional metadata inside the query string, by using the GRLC
 
 See the [Triply API documentation](/docs/triply-api#queries) for how to retrieve query metadata, including how to retrieve GRLC annotations.
 
-# Data stories {#data-stories}
+# Data stories <!-- {#data-stories} -->
 
 A TriplyDB data story is a way of communicating information about your linked data along with explanatory text while also being able to integrate query results.
 
