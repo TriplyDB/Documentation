@@ -91,7 +91,7 @@ You can create a new dataset via the Triply API. You need to [use the API Token]
 
 The  example of the URI:
 ```sh
-curl -H 'Authorization: Bearer {TOKEN}' -H 'Content-Type: application/json' -X POST https://api.INSTANCE/datasets/ACCOUNT/ -d '{"name": "NAME", "accessLevel": "ACCESS_LEVEL", "displayName": "DISPLAY_NAME"}' 
+curl -H 'Authorization: Bearer TOKEN' -H 'Content-Type: application/json' -X POST https://api.INSTANCE/datasets/ACCOUNT/ -d '{"name": "NAME", "accessLevel": "ACCESS_LEVEL", "displayName": "DISPLAY_NAME"}' 
 
 ```
 Upper-case letter words in json after `-d` must be replaced by the following values:
@@ -108,7 +108,7 @@ The list of supported file extentions can be checked in [Adding data: File uploa
 
 The  example of the URI:
 ```sh
-curl -H 'Authorization: Bearer {TOKEN}' -X POST https://api.INSTANCE/datasets/ACCOUNT/DATASET/jobs  -F file=@FILENAME 
+curl -H 'Authorization: Bearer TOKEN' -X POST https://api.INSTANCE/datasets/ACCOUNT/DATASET/jobs  -F file=@FILENAME 
 
 ```
 Upper-case letter word after `-F` must be replaced by the following value:
@@ -340,7 +340,7 @@ You can create a service for a dataset via TriplyDB API. You need to [use the AP
 
 The  example of the URI:
 ```sh
-curl -H 'Authorization: Bearer {TOKEN}' -H 'Content-Type: application/json' -X POST https://api.INSTANCE/datasets/ACCOUNT/DATASET/services/ -d '{"type": "TYPE", "name": "NAME"}'
+curl -H 'Authorization: Bearer TOKEN' -H 'Content-Type: application/json' -X POST https://api.INSTANCE/datasets/ACCOUNT/DATASET/services/ -d '{"type": "TYPE", "name": "NAME"}'
 ```
 
 Upper-case letter words in json after `-d` must be replaced by the following values:
@@ -358,7 +358,7 @@ You can synchronize existing service for a dataset via TriplyDB API. You need to
 
 The  example of the URI:
 ```sh
-curl -H 'Authorization: Bearer {TOKEN}' -H 'Content-Type: application/json' -X POST https://api.INSTANCE/datasets/ACCOUNT/DATASET/services/SERVICE -d '{"sync": "true"}'
+curl -H 'Authorization: Bearer TOKEN' -H 'Content-Type: application/json' -X POST https://api.INSTANCE/datasets/ACCOUNT/DATASET/services/SERVICE -d '{"sync": "true"}'
 ```
 
 
