@@ -7,6 +7,8 @@ nav:
   - Home: index.md
   - TriplyDB:
       - Getting started: triply-db-getting-started
+      - API: triply-api
+      - TriplyDB-JS: triplydb-js
   - TriplyETL:
       - Generics:
           - Overview: triply-etl

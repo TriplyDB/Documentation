@@ -5,13 +5,13 @@ path: "/docs/triply-etl/getting-started"
 
 This page helps you to get started with TriplyETL. You can get started with TriplyETL in any of the following ways:
 
-1. [TriplyETL Generator](#generator) creates a new ETL project based on your answers to a set of question.
-2. [TriplyETL Runner](#runner) runs an existing ETL project.
-3. [TriplyETL Library](#library) can be included as a dependency in your TypeScript project.
+1. [TriplyETL Generator](#triplyetl-generator) creates a new ETL project based on your answers to a set of question.
+2. [TriplyETL Runner](#triplyetl-runner) runs an existing ETL project.
+3. [TriplyETL Library](#triplyetl-library) can be included as a dependency in your TypeScript project.
 
 
 
-# Prerequisites <!-- {#prerequisites} -->
+# Prerequisites 
 
 In order to use TriplyETL, you must first install the following programs on your computer:
 
@@ -61,7 +61,7 @@ git config --global user.name "Ada Lovelace"</pre>
 
 The TriplyETL Generator allows you to create new ETL projects in your terminal application.
 
-If a TriplyETL project already exists, use the [TriplyETL Runner](#runner) instead.
+If a TriplyETL project already exists, use the [TriplyETL Runner](/triply-etl/cli/#triplyetl-runner) instead.
 
 In order to use TriplyETL Generator, you must have:
 
@@ -119,7 +119,7 @@ Perform the following steps to use the TriplyETL Generator:
    cd my-etl
    ```
 
-4. You can now use the [TriplyETL Runner](/docs/triply-etl/cli#runner) to run the ETL:
+4. You can now use the [TriplyETL Runner](/triply-etl/cli#triplyetl-runner) to run the ETL:
 
    ```sh
    npx etl
@@ -141,7 +141,7 @@ Perform the following steps to use the TriplyETL Runner:
 
 1. Create a local copy of an existing ETL project.
 
-   If you do not have access to an existing TriplyETL project yet, use the [TriplyETL Generator](/docs/triply-etl/getting-started#generator) to create a new one.
+   If you do not have access to an existing TriplyETL project yet, use the [TriplyETL Generator](#triplyetl-generator) to create a new one.
 
    If you have access to an existing TriplyETL project, use the following command to make a local copy with Git:
 
@@ -175,7 +175,7 @@ Perform the following steps to use the TriplyETL Runner:
 
 At this point, you should see a first TriplyETL process in your terminal application. If this is not the case, please contact [support@triply.cc](mailto:support@triply.cc) to help you out.
 
-Visit the [TriplyETL CLI documentation](/docs/triply-etl/cli#runner) to learn more about how you can use the TriplyETL Runner.
+Visit the [TriplyETL CLI documentation](/triply-etl/cli#triplyetl-runner) to learn more about how you can use the TriplyETL Runner.
 
 
 

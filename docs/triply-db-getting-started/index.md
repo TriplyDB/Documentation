@@ -371,7 +371,7 @@ from which the SPARQL query can be copied in the following three forms:
    visualizations. Long URLs are not supported by some application
    that cut off a URL after a maximum length (often 1,024
    characters). Use one of the other two options or use [Saved
-   Queries](https://triply.cc/docs/triply-db-getting-started#saved-queries) to avoid such restrictions.
+   Queries](#saved-queries) to avoid such restrictions.
 
 2. A short URL that redirects to the full URL-encoded SPARQL query.
 
@@ -379,7 +379,7 @@ from which the SPARQL query can be copied in the following three forms:
    application that supports this command. cURL is often used by
    programmers to test HTTP(S) requests.
 
-[Saved Queries](https://triply.cc/docs/triply-db-getting-started#saved-queries) are a more modern way of sharing SPARQL queries.
+[Saved Queries](#saved-queries) are a more modern way of sharing SPARQL queries.
 They do not have any of the technical limitations that occur with
 URL-encoded queries.
 

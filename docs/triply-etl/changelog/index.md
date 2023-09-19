@@ -2,7 +2,7 @@
 
 The current version of TriplyETL is **2.0.10**
 
-You can use this changelog to perform a safe update from an older version of TriplyETL to a newer one. See the documentation for [Upgrading TriplyETL repositories](/docs/triply-etl/cli#update) for the advised approach, and how the changelog factors into that.
+You can use this changelog to perform a safe update from an older version of TriplyETL to a newer one. See the documentation for [Upgrading TriplyETL repositories](/triply-etl/cli) for the advised approach, and how the changelog factors into that.
 
 # Changelog for TriplyETL 2.0.7 through 2.0.10
 
@@ -37,19 +37,19 @@ pairs(iri(id, 'some-file'),
 triple(iri(id, 'some-location'), a, premis.StorageLocation),
 ```
 
-See the documentation about [external vocabulary declarations](/docs/triply-etl/declare#external-vocabularies) for more information.
+See the documentation about [external vocabulary declarations](/triply-etl/declare#external-vocabularies) for more information.
 
 ### [Added] New debug function logMemory()
 
-A new debug function [logMemory()](/docs/triply-etl/debug#logMemory) is added. This function prints an overview of the current memory usage of TriplyETL. This allows users to detect fluctuations in memory consumption inside their pipelines.
+A new debug function [logMemory()](/triply-etl/debug#logMemory) is added. This function prints an overview of the current memory usage of TriplyETL. This allows users to detect fluctuations in memory consumption inside their pipelines.
 
-See the [debug functions documentation page](/docs/triply-etl/debug#logMemory) for more information.
+See the [debug functions documentation page](/triply-etl/debug#logMemory) for more information.
 
 ### [Added] Support for the `ListIdentifiers` verb in the OAI-PMH extractor
 
 The `fromOai()` extractor already supported the `ListRecords` verb. This release adds support for the `ListIdentifiers` verb. The latter allows used to stream through the headers of all records in an OAI-PMG collection, without requiring the full record (i.e. body) to be retrieved as well.
 
-See the [fromOai()](/docs/triply-etl/extract/formats#fromOai) documentation for more information.
+See the [fromOai()](/triply-etl/extract/formats#fromOai) documentation for more information.
 
 
 
@@ -59,7 +59,7 @@ Release date: 2023-05-25
 
 ### [Changed] New default engine for SPARQL Construct
 
-The default engine for evaluating SPARQL Construct queries (function [construct()](/docs/triply-etl/enrich/sparql)) has changed from Comunica to Speedy. Speedy is a new SPARQL implementation that is developed by Triply; Comunica is an open source engine that is developed by the open source community. Since SPARQL is a standardized query language, this change should not cause a difference in behavior for your ETL pipelines.
+The default engine for evaluating SPARQL Construct queries (function [construct()](/triply-etl/enrich/sparql)) has changed from Comunica to Speedy. Speedy is a new SPARQL implementation that is developed by Triply; Comunica is an open source engine that is developed by the open source community. Since SPARQL is a standardized query language, this change should not cause a difference in behavior for your ETL pipelines.
 
 In the unexpected case where an ETL pipeline *is* negatively affected by this change, the old situation can be restored by explicitly configuring the Comunica engine:
 
