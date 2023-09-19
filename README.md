@@ -1,6 +1,6 @@
 # Documentation for TriplyDB
 
-This repository contains the TriplyDB documentation files.  These file are used by the Triply documentation website over at <https://triply.cc/docs>.
+This repository contains the TriplyDB documentation files.  These files are used by the Triply documentation website over at <https://triply.cc/docs>.
 
 ## Covered products
 
@@ -24,7 +24,7 @@ This repository includes documentation for the following Triply products:
 
 You are able to use [GitHub Flavored Markdown](https://github.github.com/gfm/). As well as the following extensions
 
-- **Custom Id headers**:
+- **Custom ID headers**:
 Using the following syntax you are able to assign id's to headers (without having to resort to `html`)
 
 ```md
