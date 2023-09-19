@@ -73,7 +73,7 @@ The benefit of switching to the Speedy engine is that this engine is expected to
 
 ### [Added] New CLI tool for comparing graphs
 
-The new CLI tool [compare](/docs/triply-etl/cli#tools-compare) allows graph comparison to be performed from the command-line. This uses the same algorithm that is used by the [compareGraphs()](/docs/triply-etl/validate/graph-comparison) validator function.
+The new CLI tool [compare](/triply-etl/cli#tools-compare) allows graph comparison to be performed from the command-line. This uses the same algorithm that is used by the [compareGraphs()](/triply-etl/validate/graph-comparison) validator function.
 
 ### Bug fixes
 
@@ -171,7 +171,7 @@ The TriplyETL Runner is the CLI tool that is used to run ETL pipelines. Starting
 
 When the indicated timeout is reached before the pipeline finishes, the TriplyETL Runner will gracefully terminate the ETL by acting as if there are no more incoming records.
 
-See the [TriplyETL Runner documentation page](/docs/triply-etl/cli#timeout) for more information.
+See the [TriplyETL Runner documentation page](/triply-etl/cli#set-a-timeout) for more information.
 
 
 
@@ -209,8 +209,8 @@ This release introduces a new approach for communicating errors back to the user
 
 The following bug fixes are included in this release:
 
-- Incorrect behavior of the [_switch() control function](/docs/triply-etl/control#switch).
-- The [fromOai() extractor](/docs/triply-etl/extract#fromOai) now communicates clearer when the accessed OAI-PMH endpoint encounters any issues.
+- Incorrect behavior of the [_switch() control function](/triply-etl/control#switch-between-different-cases-_switch).
+- The [fromOai() extractor](/triply-etl/extract/formats#fromOai) now communicates clearer when the accessed OAI-PMH endpoint encounters any issues.
 - When a key with a NULL value was accessed, the name of the key is now included in the error message.
 
 
