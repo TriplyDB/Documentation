@@ -227,6 +227,19 @@ For example, the snippet below uses a file called `model.trig` as the Informatio
 ```ts
 validate(Source.file('static/model.trig'), {report: { destination: Destination.file("report.ttl")}})
 ```
+If we want to upload the report to TriplyDB, we can do this by using the below snippet.
+
+```ts
+        validate(Source.file('static/model.trig'), {
+            report: {
+                destination: Destination.triplyDb({
+                    account: 'my-account',
+                    dataset: 'my-dataset',
+                }),
+            }
+        })
+```
+
 
 ## Step 7: Fix the validation error
 
