@@ -227,17 +227,20 @@ For example, the snippet below uses a file called `model.trig` as the Informatio
 ```ts
 validate(Source.file('static/model.trig'), {report: { destination: Destination.file("report.ttl")}})
 ```
-If we want to upload the report to TriplyDB, we can do this by using the below snippet.
+If we want to upload the report to TriplyDB, we can do this like in the example below.
+
+Note that adding the IRI of the validation graph under `graph` is optional, but it's useful to add it to avoid accidentally overwriting your current dataset.
 
 ```ts
-        validate(Source.file('static/model.trig'), {
-            report: {
-                destination: Destination.triplyDb({
-                    account: 'my-account',
-                    dataset: 'my-dataset',
-                }),
-            }
-        })
+validate(Source.file('static/model.trig'), {
+    report: {
+        destination: Destination.triplyDb({
+            account: 'my-account',
+            dataset: 'my-dataset',
+        }),
+        graph: 'https://example.org'
+    }
+})
 ```
 
 
