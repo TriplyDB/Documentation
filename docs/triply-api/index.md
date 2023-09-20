@@ -124,7 +124,6 @@ curl -H 'Authorization: Bearer TOKEN' -X POST https://api.INSTANCE/datasets/ACCO
 
 ```
 
-
 ## Accounts
 
 Information about TriplyDB accounts (organizations and users) can be retrieved from the following API path:
