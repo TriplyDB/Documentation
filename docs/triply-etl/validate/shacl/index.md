@@ -218,7 +218,30 @@ Oops!  The value for the `foaf:age` property has an incorrect datatype.  This is
 
 Notice that the requirement that was violated (`shp:Person_age`) is mentioned in the notification.  If we want to learn more, we can look up this node in our Information Model.
 
-If we want to take a look at a concrete example in our instance data, we can also take look at node `id:1` which is also mentioned in the notfication.
+If we want to take a look at a concrete example in our instance data, we can also take look at node `id:1` which is also mentioned in the notification.
+
+If we want to save our validation report to a a local file or upload it to TriplyDB, we can do that by specifying the Destination inside the `validate()` function.
+
+For example, the snippet below uses a file called `model.trig` as the Information Model and stores the report to another file, called `report.ttl`.
+
+```ts
+validate(Source.file('static/model.trig'), {report: { destination: Destination.file("report.ttl")}})
+```
+If we want to upload the report to TriplyDB, we can do this like in the example below.
+
+Note that adding the IRI of the validation graph under `graph` is optional, but it's useful to add it to avoid accidentally overwriting your current dataset.
+
+```ts
+validate(Source.file('static/model.trig'), {
+    report: {
+        destination: Destination.triplyDb({
+            account: 'my-account',
+            dataset: 'my-dataset',
+        }),
+        graph: 'https://example.org'
+    }
+})
+```
 
 
 ## Step 7: Fix the validation error
