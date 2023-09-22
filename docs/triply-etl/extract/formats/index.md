@@ -9,15 +9,15 @@ TriplyETL supports the following data formats:
 
 | Extractor | Format | Full name |
 | --- | --- | --- |
-| [fromCsv()](#fromCsv) | [CSV](#fromCsv) | [Comma-Separated Values](#fromCsv) |
-| [fromJson()](#fromJson) | [JSON](#fromJson) | [JavaScript Object Notation](#fromJson) |
-| [fromOai()](#fromOai) | [OAI-PMH](#fromOai) | [Open Archives Initiative Protocol for Metadata Harvesting](#fromOai) |
-| [fromPostgres()](#fromPostgres) | [PostgreSQL Query & Postgres API Options](#fromPostgres)| [PostgreSQL Query & Postgres API Options](#fromPostgres) |
-| [fromShapefile()](#fromShapefile) | [ESRI](#fromShapefile) | [ESRI Shapefiles](#fromShapefile) |
-| [fromTsv()](#fromTsv) | [TSV](#fromTsv) | [Tab-Separated Values](#fromTsv) |
-| [fromXlsx()](#fromXlsx) | [XLSX](#fromXlsx) | [Microsoft Excel](#fromXlsx) |
-| [fromXml()](#fromXml) | [XML](#fromXml) | [XML Markup Language](#fromXml) |
-| [loadRdf()](#loadRdf) | [RDF](#loadRdf) | [Resource Description Format](#loadRdf) |
+| [fromCsv()](#extractor-fromcsv) | [CSV](#extractor-fromcsv) | [Comma-Separated Values](#extractor-fromcsv) |
+| [fromJson()](#extractor-fromjson) | [JSON](#extractor-fromjson) | [JavaScript Object Notation](#extractor-fromjson) |
+| [fromOai()](#extractor-fromoai) | [OAI-PMH](#extractor-fromoai) | [Open Archives Initiative Protocol for Metadata Harvesting](#extractor-fromoai) |
+| [fromPostgres()](#extractor-frompostgres) | [PostgreSQL Query & Postgres API Options](#extractor-frompostgres)| [PostgreSQL Query & Postgres API Options](#extractor-frompostgres) |
+| [fromShapefile()](#extractor-fromshapefile) | [ESRI](#extractor-fromshapefile) | [ESRI Shapefiles](#extractor-fromshapefile) |
+| [fromTsv()](#extractor-fromtsv) | [TSV](#extractor-fromtsv) | [Tab-Separated Values](#extractor-fromtsv) |
+| [fromXlsx()](#extractor-fromxlsx) | [XLSX](#extractor-fromxlsx) | [Microsoft Excel](#extractor-fromxlsx) |
+| [fromXml()](#extractor-fromxml) | [XML](#extractor-fromxml) | [XML Markup Language](#extractor-fromxml) |
+| [loadRdf()](#function-loadrdf) | [RDF](#function-loadrdf) | [Resource Description Format](#function-loadrdf) |
 
 All extractors can be imported from the generic library in TriplyETL:
 
@@ -31,7 +31,7 @@ Notice that you also need to import `Source`, since every extractor requires a s
 
 
 
-# Extractor `fromCsv()` <!-- {#fromCsv} -->
+# Extractor `fromCsv()`
 
 CSV or Comma Separated Values (file name extension `.csv`) is a popular format for storing tabular source data. TriplyETL has a dedicated `fromCsv()` extractor for this data format.
 
@@ -47,7 +47,7 @@ The following code snippet extracts records from an online CSV file, that is hos
 fromCsv(Source.url('https://somewhere.com/data.csv')),
 ```
 
-The following code snippet extracts records from a [TriplyDB Asset](#triplydb-asset). The asset is store in the data with name `'some-data'`, under an account with name `'some-account'`. The name of the asset is `'example.csv'`:
+The following code snippet extracts records from a [TriplyDB Asset](/triply-etl/extract/types#triplydb-assets). The asset is store in the data with name `'some-data'`, under an account with name `'some-account'`. The name of the asset is `'example.csv'`:
 
 ```ts
 fromCsv(
@@ -102,7 +102,7 @@ fromCsv(Source.file('example.csv'), { separator: ';' }),
 
 ## CSV with tab separators is not TSV
 
-Notice that the popular Tab-Separate Values (TSV) format is not the same as the standardized CSV format with a tab separator character. If you want to process standards-conforming TSV source data, use the [`fromTsv()` extractor](#fromTsv) instead.
+Notice that the popular Tab-Separate Values (TSV) format is not the same as the standardized CSV format with a tab separator character. If you want to process standards-conforming TSV source data, use the [`fromTsv()` extractor](#extractor-fromtsv) instead.
 
 
 ## Record representation
@@ -139,7 +139,7 @@ which is emitted as the following two TriplyETL records:
 ```
 
 Notice that:
-- All values have type `string`, including `"ID"` and `"Age"`. The value for field `"Age"` should probably be considered numeric, but the CSV format cannot express this. A TriplyETL [transformation](/docs/triply-etl/transform) can be used to cast string values to numeric values.
+- All values have type `string`, including `"ID"` and `"Age"`. The value for field `"Age"` should probably be considered numeric, but the CSV format cannot express this. A TriplyETL [transformation](/triply-etl/transform) can be used to cast string values to numeric values.
 - The trailing space in `"D., Jane "` is omitted from the second record, since training whitespace is removed from all keys and values.
 - The `"Age"` key is missing from the second record, since the corresponding CSV cell contains the empty string, which is considered to denote an empty value.
 
@@ -149,7 +149,7 @@ Notice that:
 
 JSON (JavaScript Object Notation) is a popular open standard for interchanging tree-shaped data. TriplyETL has a dedicated `fromJson()` extractor for this format.
 
-The following code snippet connects to a JSON source that is stored as a [TriplyDB asset](/docs/triply-etl/extract/types#triplydb-assets):
+The following code snippet connects to a JSON source that is stored as a [TriplyDB asset](/triply-etl/extract/types#triplydb-assets):
 
 ```ts
 fromJson(
@@ -277,7 +277,7 @@ id:de rdfs:label 'Germany'.
 
 
 
-# Extractor `fromOai()` <!-- {#fromOai} -->
+# Extractor `fromOai()`
 
 In GLAM domains (Galleries, Libraries, Archives, Museums), the Open Archives Initiative (OAI), Protocol for Metadata Harvesting (PMH) is a popular protocol and format for publishing data collections. TriplyETL includes the `fromOai()` extractor to tap into these data collections.
 
@@ -298,12 +298,12 @@ TriplyETL supports the official OAI-PMH standard.
 
 The OAI-PMH standard defines 6 'verbs'. These different sub-APIs that together component the OAI-PMH API.
 
-Extractor `fromOai()` currently supports the following two verbs: [ListIdentifiers](#ListIdentifiers) and [ListRecords](#ListRecords).
+Extractor `fromOai()` currently supports the following two verbs: [ListIdentifiers](#verb-listidentifiers) and [ListRecords](#verb-listrecords).
 
 
-## Verb `ListIdentifiers` <!-- {#ListIdentifiers} -->
+## Verb `ListIdentifiers`
 
-This 'verb' or sub-API streams through the headers of all records. It does not returns the actual (body) content of each record (see [ListRecords](#ListRecords)). This verb can be used to look for header properties like set membership, datestamp, and deletion status.
+This 'verb' or sub-API streams through the headers of all records. It does not returns the actual (body) content of each record (see [ListRecords](#verb-listrecords)). This verb can be used to look for header properties like set membership, datestamp, and deletion status.
 
 The following code snippet streams through the headers of a public OAI-PMH endpoint:
 
@@ -340,7 +340,7 @@ logRecord(),
 
 TSV or Tab-Separated Values (file name extension `.tsv`) is a popular format for tabular source data. TriplyETL has a `fromTsv()` extractor to support this format.
 
-The following code snippet extracts records for TSV file that is stored as a [TriplyDB Asset](/docs/triply-etl/extract/types#triplydb-assets):
+The following code snippet extracts records for TSV file that is stored as a [TriplyDB Asset](/triply-etl/extract/types#triplydb-assets):
 
 ```ts
 fromTsv(
@@ -389,7 +389,7 @@ which is emitted as the following two TriplyETL records:
 ```
 
 Notice that:
-- All values have type `string`, including `"ID"` and `"Age"`. The value for field `"Age"` should probably be considered numeric, but the TSV format cannot express this. A TriplyETL [transformation](/docs/triply-etl/transform) can be used to cast string values to numeric values.
+- All values have type `string`, including `"ID"` and `"Age"`. The value for field `"Age"` should probably be considered numeric, but the TSV format cannot express this. A TriplyETL [transformation](/triply-etl/transform) can be used to cast string values to numeric values.
 - The trailing space in `"D., Jane "` is omitted from the second record, since training whitespace is removed from all keys and values.
 - The `"Age"` key is missing from the second record, since the corresponding TSV cell contains the empty string, which is considered to denote an empty value.
 
@@ -399,7 +399,7 @@ Notice that:
 
 XLSX or Office Open XML Workbook (file name extension `.xlsx`) is a popular format for storing tabular source data. This is the standard file format for Microsoft Excel. TriplyETL has a dedicated `fromXlsx()` extractor for such sources.
 
-The following code snippet shows how a [TriplyDB assets](/docs/triply-etl/extract/types#triplydb-assets) is used to process records from an XLSX source:
+The following code snippet shows how a [TriplyDB assets](/triply-etl/extract/types#triplydb-assets) is used to process records from an XLSX source:
 
 ```ts
 fromXlsx(
@@ -427,7 +427,7 @@ fromXlsx(Source.file('example.xlsx'), { sheetNames: ['people', 'projects'] }),
 
 ## Record representation
 
-TriplyETL treats every row in XLSX sheet as one record. The columns are emitted as keys and the cells are emitted as values. Unlike other tabular formats like [CSV](#fromCsv) and [TSV](#fromTsv), values in XLSX can have different types.
+TriplyETL treats every row in XLSX sheet as one record. The columns are emitted as keys and the cells are emitted as values. Unlike other tabular formats like [CSV](#extractor-fromcsv) and [TSV](#extractor-fromtsv), values in XLSX can have different types.
 
 For example, the following table:
 
@@ -460,15 +460,15 @@ can be emitted as the following two TriplyETL records:
 
 Notice the following:
 - The value for the `"Age"` key is a number.
-- The special keys `$recordId`, `$environment`, and `$fileName` are documented in the section on [Special Keys](#special key).
+- The special keys `$recordId`, `$environment`, and `$fileName` are documented in the section on [Special Keys](#special-key-sheetname).
 - The special key `$sheetName` is unique to the `fromXslx()` extractor and is documented in the next subsection.
 
 
-## Special key `$sheetName` <!-- {#sheetName} -->
+## Special key `$sheetName`
 
 For every record emitted by the `fromXlsx()` extractor. the `$sheetName` special key contains the name of the Excel sheet from which that record originates. The presence of the sheet name allows the TriplyETL configuration to be adjusted for different sheet.
 
-For example, an Excel spreadsheet may contain a 'companies' sheet and a 'persons' sheet. The name of the sheet may be used to determine which class should be asserted. The following snippet uses transformation [translateAll()](#translateAll) to map sheet names to class IRIs:
+For example, an Excel spreadsheet may contain a 'companies' sheet and a 'persons' sheet. The name of the sheet may be used to determine which class should be asserted. The following snippet uses transformation [translateAll()](/triply-etl/transform/ratt#function-translateall) to map sheet names to class IRIs:
 
 ```ts
 fromXlsx(Source.file('example.xlsx')),
@@ -533,7 +533,7 @@ fromPostgres(
 
 XML or Extensible Markup Language is a popular open format for tree-shaped source data.
 
-The following snippets connects to an XML file that is made available as a [TriplyDB asset](/docs/triply-etl/extract/types#triplydb-assets):
+The following snippets connects to an XML file that is made available as a [TriplyDB asset](/triply-etl/extract/types#triplydb-assets):
 
 ```ts
 fromXml(

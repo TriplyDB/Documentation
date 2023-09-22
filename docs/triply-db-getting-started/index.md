@@ -8,7 +8,7 @@ path: "/docs/triply-db-getting-started"
 TriplyDB allows you to store, publish, and use linked data Knowledge
 Graphs. TriplyDB makes it easy to upload linked data and expose it
 through various APIs (SPARQL, Elasticsearch, LDF, REST). [Read
-More](/triplydb)
+More](/triply-api)
 
 # Uploading Data
 
@@ -149,11 +149,11 @@ the dataset settings menu. Making a dataset public in TriplyDB has
 the following consequences:
 
 1. The dataset can be searched for and visited by anybody on the web.
-2. The dataset will be indexed by web search engines such as [Google
-   Dataset Search]().
+2. The dataset will be indexed by web search engines such as Google
+   Dataset Search.
 3. Any services that are started for that dataset will be available
-   to anybody on the web. This includes [SPARQL](), [text
-   search](), and [linked data Fragments]().
+   to anybody on the web. This includes SPARQL, Text
+   Search, and Linked Data Fragments.
 
 ## Entering metadata
 
@@ -196,7 +196,7 @@ understands metadata properties like title, description, and image.
 
 ## Starting services
 
-By default, datasets in TriplyDB can be queried through [TriplyDB-js](/docs/triplydb-js) as well as through the Linked Data Fragments API.
+By default, datasets in TriplyDB can be queried through [TriplyDB-js](/triplydb-js) as well as through the Linked Data Fragments API.
 
 In order to allow additional query paradigms, specific services can be
 started from the “Create service” page. This page is accessed by
@@ -349,7 +349,7 @@ API](/docs/triply-api#triple-pattern-fragments-tpf).
 
 When a dataset has a running SPARQL service, the data can be queried
 from the SPARQL IDE. The SPARQL IDE is an extended version of the
-Open Source [Yasgui](/docs/yasgui) query editor.
+Open Source [Yasgui](/yasgui) query editor.
 
 ### Saving a SPARQL query
 
@@ -654,9 +654,9 @@ SPARQL queries as a RESTful API, also means you can transport your data to your 
 
 Clicking the '</>' button opens the code snippet screen. Here you select the snippet in the language you want to have, either Python or R. You can then copy the snippet, by clicking the 'copy to clipboard' button or selecting the snippet and pressing `ctrl-c`. Now you can paste the code in the location you want to use the data. The data is stored in the `data` variable in `JSON` format.
 
-When the SPARQL query is not public, but instead either private or internal, you will need to add an authorization header to the get request. Without the authorization header the request will return an incorrect response. Checkout [Creating your API token](https://triply.cc/docs/api-token) about creating your API-token for the authorization header.
+When the SPARQL query is not public, but instead either private or internal, you will need to add an authorization header to the get request. Without the authorization header the request will return an incorrect response. Checkout [Creating your API token](generics/api-token) about creating your API-token for the authorization header.
 
-Check out the [SPARQL pagination page](https://triply.cc/docs/pagination) when you want to query a SPARQL query that holds more than 10.000 results. The [SPARQL pagination page ](https://triply.cc/docs/pagination) will explain how you can retrieve the complete set.   
+Check out the [SPARQL pagination page](#download-more-than-10-000-query-results-sparql-pagination) when you want to query a SPARQL query that holds more than 10.000 results. The [SPARQL pagination page ](#download-more-than-10-000-query-results-sparql-pagination) will explain how you can retrieve the complete set.   
 
 ## Query metadata <!-- {#query-metadata} -->
 

@@ -11,12 +11,12 @@ The following debug function are available:
 
 | Function | Description |
 | --- | --- |
-| [logMemory()](#logMemory) | Prints the current memory consumption. |
-| [logQuads()](#logQuads) | Prints the contents of the internal store to standard output. |
-| [logQuery()](#logQuery) | Prints a query string to standard output. |
-| [logRecord()](#logRecord) | Prints the record in its current state to standard output. |
-| [traceEnd()](#trace) | Ends a trace of the record and internal store. |
-| [traceStart()](#trace) | Starts a trace of the record and internal store. |
+| [logMemory()](#function-logmemory) | Prints the current memory consumption. |
+| [logQuads()](#function-logquads) | Prints the contents of the internal store to standard output. |
+| [logQuery()](#function-logquery) | Prints a query string to standard output. |
+| [logRecord()](#function-logrecord) | Prints the record in its current state to standard output. |
+| [traceEnd()](#functions-tracestart-and-traceend) | Ends a trace of the record and internal store. |
+| [traceStart()](#functions-tracestart-and-traceend) | Starts a trace of the record and internal store. |
 
 These functions can be imported from the debug module:
 
@@ -105,7 +105,7 @@ limit 10
 
 # Function `logRecord()` <!-- {#logRecord} -->
 
-This function prints the current state of the record to standard output. The record is a generic representation of the data that is extracted from one of the data sources (see the [Record documentation page](/docs/triply-etl/extract/record) for more information).
+This function prints the current state of the record to standard output. The record is a generic representation of the data that is extracted from one of the data sources (see the [Record documentation page](/triply-etl/extract/record) for more information).
 
 The following snippet prints the inline JSON record to standard output:
 
@@ -137,7 +137,7 @@ Since this prints a full overview of what is available in the data source, this 
 
 ## Observe the effects of transformations
 
-Another common use case for `logRecord()` is to observe the record at different moments in time. This is specifically useful to observe the effects of [transformation functions](/docs/triply-etl/transform), since these are the functions that modify the record.
+Another common use case for `logRecord()` is to observe the record at different moments in time. This is specifically useful to observe the effects of [transformation functions](/triply-etl/transform), since these are the functions that modify the record.
 
 The following snippet logs the record directly before and directly after the transformation function `split()` is called.
 

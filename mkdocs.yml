@@ -24,10 +24,11 @@ nav:
               - Overview: triply-etl/extract
               - Formats: triply-etl/extract/formats
               - Record: triply-etl/extract/record
-              - Types: triply-etl/extract/types
+              - Source types: triply-etl/extract/types
           - Transform:
               - Overview: triply-etl/transform
               - RATT: triply-etl/transform/ratt
+              - TypeScript: triply-etl/transform/typescript
           - Assert: 
               - Overview: triply-etl/assert
               - JSON-LD: triply-etl/assert/json-ld

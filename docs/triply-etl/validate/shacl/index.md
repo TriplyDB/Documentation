@@ -12,7 +12,7 @@ This page documents how SHACL is used to validate linked data in the internal st
 SHACL Validation can be used when the following preconditions are met:
 
 1. A data model that uses SHACL constraints.
-2. Some data must be asserted in the internal store. If your internal store is still empty, you can read [the Assert documentation](/docs/triply-etl/assert) on how to add assertions to that store.
+2. Some data must be asserted in the internal store. If your internal store is still empty, you can read [the Assert documentation](/triply-etl/assert) on how to add assertions to that store.
 
 The function for running SHACL Validation is imported as follows:
 
@@ -83,7 +83,7 @@ In our example we are using the following source data that records the age of a 
 }
 ```
 
-In our example the data source is [inline JSON](/docs/triply-etl/extract/types#inline-json), but notice that any source format could have been used:
+In our example the data source is [inline JSON](/triply-etl/extract/types#inline-json), but notice that any source format could have been used:
 
 ```ts
 fromJson([{ age: 'twelve', id: '1' }]),
@@ -121,7 +121,7 @@ This Information Model specifies that instances of class `foaf:Person` must have
 
 ## Step 4: Transformation
 
-We now have source data (Step 1), and a fair intuition about our target data (Step 2), and an Information Model (Step 3).  We can automate the mapping from source to target data with an [Assertion](/docs/triply-etl/assert):
+We now have source data (Step 1), and a fair intuition about our target data (Step 2), and an Information Model (Step 3).  We can automate the mapping from source to target data with an [Assertion](/triply-etl/assert):
 
 ```ts
 etl.use(
@@ -180,7 +180,7 @@ Notice the following details:
 
 TriplyETL has a dedicated function that can be used to automatically enforce Information Models such as the one expressed in Step 5.
 
-Since the Information Model is relatively small, it can be specified in-line using the [string source type](/docs/triply-etl/extract/types/#strings).  Larger models will probably be stored in a separate file or in a TriplyDB graph or asset.
+Since the Information Model is relatively small, it can be specified in-line using the [string source type](/triply-etl/extract/types/#strings).  Larger models will probably be stored in a separate file or in a TriplyDB graph or asset.
 
 ```ts
 validate(Source.string(`
@@ -261,7 +261,7 @@ In this case, changing the data in the source system seem the most logical.  Aft
 
 ## Option 2: Change the transformation and/or assertions
 
-Alternatively, it is possible to transform English words that denote numbers to their corresponding numeric values.  Since people can get up to one hundred years old, or even older, there are many words that we must consider and transform.  This can be done with the [`translateAll()` transformation](/docs/triply-etl/transform/ratt#translateall):
+Alternatively, it is possible to transform English words that denote numbers to their corresponding numeric values.  Since people can get up to one hundred years old, or even older, there are many words that we must consider and transform.  This can be done with the [`translateAll()` transformation](/triply-etl/transform/ratt#function-translateall):
 
 ```ts
 translateAll({
