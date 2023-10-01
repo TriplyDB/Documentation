@@ -192,7 +192,9 @@ The following tools are supported:
 | [`create-token`](#tool-create-token) | Create a new TriplyDB API Token |
 | [`print-token`](#tool-print-token) | Print the currently set TriplyDB API Token, if any |
 | [`validate`](#tool-validate) | Validate a data file against a SHACL shapes file |
+
 <!--
+| [`report`](#tool-report) | Generate a report file that describes the content of the currently configured TriplyDB instance, if any |
 | [`delete-datasets`](#tool-delete-datasets) | Bulk deleting of Datasets |
 | [`delete-graphs`](#tool-delete-graphs) | Bulk deleting of Graphs |
 | [`delete-queries`](#tool-delete-queries) | Bulk deleting of Queries |

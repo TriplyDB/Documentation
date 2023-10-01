@@ -1,23 +1,41 @@
 # Changelog
 
-The current version of TriplyETL is **2.0.10**
+The current version of TriplyETL is **2.0.15**
 
 You can use this changelog to perform a safe update from an older version of TriplyETL to a newer one. See the documentation for [Upgrading TriplyETL repositories](/triply-etl/cli) for the advised approach, and how the changelog factors into that.
 
-# Changelog for TriplyETL 2.0.7 through 2.0.10
+
+
+# Changelogs for TriplyETL 2.0.x
+
+## TriplyETL 2.0.12 through 2.0.15
+
+Release dates: between 2023-07-11 and 2034-09-13
+
+No known changes
+
+## TriplyETL 2.0.11
+
+Release date: 2023-07-11
+
+The following bug has been fixed:
+- Processing an Excel sheet with [fromXml()](/docs/triply-etl/extract/formats#fromXml) would sometimes consume too much memory.
+
+
+## TriplyETL 2.0.7 through 2.0.10
 
 Release dates: 2023-06-17 through 2023-06-28
 
-Bugfixes:
+The following bugs have been fixed:
+- Several installation issues on Windows have been resolved.
+- The `async-saxophone` library for XML processing was adjusted to support the current LTS version of Node.js (v18).
 
-- Installation on Windows.
-- Fixed warnings for a dependency (async-saxophone for XML processing), which did not yet officially support Node.js 18.
 
-# Changelog for TriplyETL 2.0.6
+## TriplyETL 2.0.6
 
 Release date: 2023-06-07
 
-## [Added] Support for the PREMIS vocabulary
+### [Added] Support for the PREMIS vocabulary
 
 Support was added for the PREMIS 3.0.0 vocabulary. This vocabulary is published by the Library of Congress and can be used to publish metadata about the preservation of digital objects. See the [PREMIS documentation](https://id.loc.gov/ontologies/premis-3-0-0.html) for more information.
 
@@ -214,6 +232,6 @@ The following bug fixes are included in this release:
 - When a key with a NULL value was accessed, the name of the key is now included in the error message.
 
 
-## Start of the changelog
+# Start of the changelog
 
 TriplyETL 1.0.0 was released on 2023-03-20.

@@ -30,10 +30,14 @@ git config --global user.name "Ada Lovelace"</pre>
       </li>
     </ol>
   </dd>
-  <dt>Install Node.js</dt>
+  <dt>Install Node.js (simple approach)</dt>
   <dd>
-    <p>Go to <href="https://nodejs.org" target="_blank">nodejs.org</a> and click on “18.x.y LTS (Recommended For Most Users)”. This will download the installer for your operating system. Run the installer on your computer.</p>
-    <p>Alternatively, you can install the Node Version Manager (<code>nvm</code>). This allows you to install multiple versions of Node.js on the same computer. See the following links for more information:</p>
+    <p>Go to <href="https://nodejs.org" target="_blank">nodejs.org</a> and click on option “18.x.y LTS (Recommended For Most Users)”. This will download the installer for your operating system. Run the installer on your computer.</p>
+    <p>On Windows, you must also select the number of bits on your computer: 32 or 64. The correct number of bits is 64 for almost all Windows computers.</p>
+  </dd>
+  <dt>Install Node.js (advanced approach)</dt>
+  <dd>
+    <p>For more advanced us, you can install the Node Version Manager (<code>nvm</code>). This allows you to install multiple versions of Node.js on the same computer. See the following links for more information:</p>
     <dl>
       <dt>On Windows</dt>
       <dd>You can following <a href="https://learn.microsoft.com/en-us/windows/dev-environment/javascript/nodejs-on-windows#install-nvm-windows-nodejs-and-npm" target="_blank">the official instructions from Microsoft</a> for installing NVM on Windows.</dd>
@@ -43,7 +47,7 @@ git config --global user.name "Ada Lovelace"</pre>
   </dd>
   <dt>Find a terminal application</dt>
   <dd>
-    <p>You must use a terminal application in order to run commands from the [TriplyETL CLI](/triply-etl/cli). Here are some examples of terminal applications on different operating systems:</p>
+    <p>You must use a terminal application in order to run commands from the <a href="https://triply.cc/docs/triply-etl/cli/">TriplyETL CLI</a>. Here are some examples of terminal applications on different operating systems:</p>
     <dl>
       <dt>On Windows</dt>
       <dd>Most Windows versions come with some version of PowerShell preinstalled. You can also follow <a href="https://learn.microsoft.com/en-us/powershell/scripting/install/installing-powershell-on-windows?view=powershell-7.3#install-powershell-using-winget-recommended" target="_blank">these instructions by Microsoft</a> to update to the latest version of PowerShell.</dd>
@@ -175,7 +179,7 @@ Perform the following steps to use the TriplyETL Runner:
 
 At this point, you should see a first TriplyETL process in your terminal application. If this is not the case, please contact [support@triply.cc](mailto:support@triply.cc) to help you out.
 
-Visit the [TriplyETL CLI documentation](/triply-etl/cli#triplyetl-runner) to learn more about how you can use the TriplyETL Runner.
+Visit the [TriplyETL CLI documentation](/triply-etl/cli#triplyetl-runner) to learn more about how you can use the TriplyETL Runner. Visit the [TriplyETL CI/CD documentation](/docs/triply-etl/maintenance#cicd) to learn more about how you can automate TriplyETL runs.
 
 
 
@@ -206,7 +210,7 @@ Perform the following steps to use the TriplyETL Library:
   2. Run the following command to add the TriplyETL dependency to your `package.json` file:
 
      ```sh
-     npm install @triplyetl/etl
+     npm i @triplyetl/etl
      ```
 
   3. Open one of the TypeScript files in your software project. When you add the following line to the top of your file, it should be recognized by your TypeScript editor:

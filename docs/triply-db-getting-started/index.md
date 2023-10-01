@@ -223,6 +223,36 @@ happens, the data in a service is out of sync with the data in the dataset and
 a synchronization button will appear in the service widget. By clicking the
 button, the service will be synchronized with the current state of the dataset.
 
+### Webhooks
+
+If you want to be notified or trigger an event when anything changes in your dataset, you can set up a webhook.
+
+The webhook page can be found under dataset's settings on the right, as shown in the image below.
+
+![Webhooks settings page](webhook.png)
+
+To create a webhook, you will need to provide the following information:
+- `Payload target`: The URL to which the webhook message should be sent.
+- `Payload format`: The format of the message.
+- `Trigger events`: Select for which event you wish to trigger the webhook. The options are:
+  - **Graph import**: Happens when data is imported from a different dataset and where the data is already stored on the instance. 
+  - **Linked data upload**: Happens when a person uploads data to the instance. The data did not exist on the instance before.
+  - **Asset upload**: Happens when an asset is uploaded.
+
+
+You can activate or deactivate the webhook with the slider after the `Webhook is active` message.
+
+After filling in everything, you can click on the `SUBMIT` button and the new webhook will be activated.
+
+For example, if you wish to trigger a pipeline on gitlab every time you upload an asset to your dataset, you can use the below snippet as a payload target, as described on the [official gitlab documentation](https://docs.gitlab.com/ee/ci/triggers/) and select `Asset upload` as a trigger event.
+
+```
+https://gitlab.example.com/api/v4/projects/<project_id>/trigger/pipeline?token=<token>&ref=<ref_name>
+```
+When your webhook is created and active, you can see every occasion the webhook was called in the webhook trigger history.
+
+![Active webhook trigger history](webhook_trigger_history.png)
+
 # Viewing Data
 
 TriplyDB offers several ways to explore your datasets.
@@ -509,6 +539,12 @@ Creating a saved query with the SPARQL IDE is done by writing a query/visualizat
 
 Updating the saved query can be done by clicking a query in the Saved Queries tab and editing the query or the visualization. Hit the save button to save it as a new version.
 
+## Deleting a saved query
+
+If you want to delete a saved query, you can do so by clicking the three dots on the top right corner of the query, as shown in the image below, and then clicking `Delete`.
+
+![Deleting a saved query](delete-query.png)
+
 ## Using a saved query
 
 ### Sharing a saved query
@@ -516,10 +552,10 @@ Updating the saved query can be done by clicking a query in the Saved Queries ta
 To share a saved query, for example in [Data Stories](#data-stories), you can copy the link that is
 used when you open the query in TriplyDB. Let's say you have a query called
 `Timelined-Cars-BETA` in the dataset `core` under the account `dbpedia` and you
-want to use version 6. Then the following link would be used
+want to use version 9. Then the following link would be used
 
 ```url
-https://triplydb.com/DBpedia-association/-/queries/timeline-cars/8
+https://triplydb.com/DBpedia-association/-/queries/timeline-cars/9
 ```
 
 If you want to always use the **latest** query, you can simply omit the version
@@ -530,14 +566,34 @@ https://triplydb.com/DBpedia-association/-/queries/timeline-cars
 ```
 ### Downloading a query result
 
-The result of a query can be downloaded via the TriplyDB interface. After downloading the query, open it in TriplyDB. e.g. https://triplydb.com/DBpedia-association/-/queries/timeline-cars/8. Choose the option `Response` and click on the download icon or scroll down and click on `Download result`. 
+The result of a query can be downloaded via the TriplyDB interface. After saving the query, open it in TriplyDB. e.g. https://triplydb.com/DBpedia-association/-/queries/timeline-cars/. 
+
+You can download results in different data format, depending on which [visualization option](https://triply.cc/docs/yasgui/#visualizations) you use.
+For example, if you want to download the results in a `.json` format, you can choose the option `Response` and click on the download icon or scroll down and click on `Download result`.
 
 ![Download the query result via the download icon.](queryResult.png)
 ![Download the query result via the button `Download result`.](queryResult2.png)
 
 The downloaded file is automatically stored in the `Downloads`-folder and has the name of the query. In our example, the file is called `timeline-cars.json`. The downloaded file contains the query result as a json-object. TriplyDB also displays the json-object when selecting the option `Response`.
 
-To download the query result in CSV-format, select the option `Table` and click on the download icon. The downloaded file is named after the query with the suffix `.csv`.
+Below is a table of all supported visualizations and what format of results they produce.
+
+|                     **Visualization option**                 | **Result data format** |
+| ------------------------------------------------------------ | ---------------------- |
+|       [Table](https://triply.cc/docs/yasgui/#table)          | `.csv`                 |
+|       [Response](https://triply.cc/docs/yasgui/#response)    | `.json`                |
+|       [Gallery](https://triply.cc/docs/yasgui/#gallery)      | Download not supported |
+|       [Chart](https://triply.cc/docs/yasgui/#charts)         | `.svg`                 |
+|       [Geo](https://triply.cc/docs/yasgui/#geo)              | Download not supported |
+|       [Geo-3D](https://triply.cc/docs/yasgui/#geo-3d)        | Download not supported |
+|       [Geo events](https://triply.cc/docs/yasgui/#geo-events)| Download not supported |
+|       [Markup](https://triply.cc/docs/yasgui/#markup)        | `.svg`, `.html`        |
+|       [Network](https://triply.cc/docs/yasgui/#network)      | `.png`                 |
+|       [Timeline](https://triply.cc/docs/yasgui/#timeline)    | Download not supported |
+
+
+
+As another example, to download the query result in CSV-format, select the option `Table` and click on the download icon. The downloaded file is named after the query with the suffix `.csv`.
 
 ### Download more than 10 000 query results - SPARQL pagination
 

@@ -1948,6 +1948,8 @@ The files must contain RDF data.
   <dd>Accepts a <code>string</code> value that is set as the default baseIRI for each imported file</dd>
   <dt><code>overwriteAll</code></dt>
   <dd>Accepts a <code>boolean</code> value that overwrites previously added graph names or baseIRIs (regardless of whether they came from a URL or a file)</dd>
+  <dt>mergeGraphs</dt>
+  <dd>Accepts a Boolean value. An optional property that determines whether existing graph in this dataset are merged with the imported graphs. If this argument is not specified, then `false` is used as the default value.</dd>
 </dl>
 
 ### Supported files

@@ -22,6 +22,7 @@ The following transformation functions are currently available:
 | [copy()](#function-copy) | Copy a value from an old into a new key. |
 | [decodeHtml()](#function-decodehtml) | Decode HTML entities that occur in strings. |
 | [geojsonToWkt()](#function-geojsontowkt) | Change GeoJSON strings to WKT strings. |
+| [jpath()](#function-jpath) | Uses the JSONPath query language to select a value from the record. |
 | [lowercase()](#function-lowercase) | Change strings to their lowercase variants. |
 | [padEnd()](#function-padend) | Pad the end of strings. |
 | [padStart()](#function-padstart) | Pad the start of strings. |
@@ -275,7 +276,7 @@ triple(iri('https://example.com/id/person/johndoe'), a, sdo.Person),
 
 
 
-# Function `addLiteral()` <!-- {#addLiteral} -->
+# Function `addLiteral()`
 
 Creates an new literal and adds it to the Record under the specified key.
 
@@ -387,7 +388,7 @@ triple(iri(prefix.city, 'name'), skos.prefLabel, literal('name', lang['en-gb']))
 
 
 
-# Function `addRandomIri()` <!-- {#addRandomIri} -->
+# Function `addRandomIri()`
 
 Creates an IRI based on the specified IRI prefix and a universally unique random identifier.
 
@@ -499,7 +500,7 @@ feature:22238008e490f725979118f8f2dd9b5a geo:hasGeometry
 
 
 
-# Function `addTag()` <!-- {#addTag} -->
+# Function `addTag()`
 
 This middleware creates a language tag based on a given string value.
 
@@ -642,7 +643,7 @@ id:2 a def:Person.
 ```
 
 
-# Function `concat()` <!-- {#concat} -->
+# Function `concat()`
 
 ## Description
 
@@ -753,7 +754,7 @@ city:2 rdfs:label 'Parijs'.
 
 
 
-# Function `encodeHtml()` <!-- {#encodeHtml} -->
+# Function `encodeHtml()`
 
 ## Description
 
@@ -799,7 +800,7 @@ id:2 rdfs:label '1 < 2'.
 
 
 
-# Function `geojsonToWkt()` <!-- {#geojsonToWkt} -->
+# Function `geojsonToWkt()`
 
 Transforms GeoJSON objects to their corresponding Well-Known Text (WKT) serialization strings.
 
@@ -887,7 +888,80 @@ graph LR
 
 
 
-# Function `lowercase()` <!-- {#lowercase} -->
+# Function `jpath()`
+
+## Description
+
+Filters a value based on a key specification using [JSONPath](https://github.com/dchester/jsonpath) expression. JSONPath is a query language for JSON. 
+For the syntax of JSONPath expressions, please visit the [JSONPath documentation page](https://github.com/dchester/jsonpath#jsonpath-syntax).
+
+## Use cases
+
+This function simplifies the complex key specification to filter specific values. It can only be used for an object of a triple to create a literal.
+The result of a function should be one value and not an array. 
+
+## Parameters
+
+- `value`  A [JSONPath](https://github.com/dchester/jsonpath#jsonpath-syntax) expression.
+
+## Example
+
+The following examples will create a literal based on key `value`:
+
+
+- if key `'ISO_639-2'` exists
+
+```ts
+fromJson({
+  language: [{ "ISO_639-1": 'en', lcid: 2057, value: "Paris" },
+  { "ISO_639-1": 'nl', "ISO_639-2": 'nld', lcid: 1043, value: "Parijs" }]
+}),
+triple(
+  iri(prefix.city, '$recordId'),
+  rdfs.label,
+  literal(jpath("$.language[?(@['ISO_639-2'])].value"), language.nl)
+),
+
+```
+- if key `'ISO_639-1'` is equal to `nl`
+
+```ts
+fromJson({
+  language: [{ "ISO_639-1": 'en', lcid: 2057, value: "Paris" },
+  { "ISO_639-1": 'nl', "ISO_639-2": 'nld', lcid: 1043, value: "Parijs" }]
+}),
+triple(
+  iri(prefix.city, '$recordId'),
+  rdfs.label,
+  literal(jpath("$.language[?(@['ISO_639-1'] =='nl')].value"), language.nl)
+)
+
+```
+
+- if key `lcid` is lower than `1100`
+
+```ts
+fromJson({
+  language: [{ "ISO_639-1": 'en', lcid: 2057, value: "Paris" },
+  { "ISO_639-1": 'nl', "ISO_639-2": 'nld', lcid: 1043, value: "Parijs" }]
+}),
+triple(
+      iri(prefix.city, '$recordId'),
+      rdfs.label,
+      literal(jpath("$.language[?(@.lcid < 1100)].value"), language.nl)
+    ),
+
+```
+
+All three examples will generate the following linked data assertion: 
+
+```turtle
+record:1 rdfs:label "Parijs"@nl.
+```
+
+
+
+# Function `lowercase()`
 
 ## Description
 
@@ -933,7 +1007,7 @@ id:2 def:child id:1.
 
 
 
-# Function `padEnd()` <!-- {#padEnd} -->
+# Function `padEnd()`
 
 ## Description
 
@@ -985,7 +1059,7 @@ This results in the following two Records:
 
 
 
-# Function `padStart()` <!-- {#padStart} -->
+# Function `padStart()`
 
 ## Description
 
@@ -1429,4 +1503,21 @@ This middleware can uppercase strings in any language; the Unicode Default Case 
 
 ## Example
 
-We do not have a good example for this transformation middleware yet. Let us know in case you have a good example!
+In the following example, the string in the key `'countryCode'` becomes the uppercase string:
+
+```ts
+fromJson({ place: 'Amsterdam', countryCode: 'nl' }),
+uppercase({
+  content: 'countryCode',
+  key: '_coountryCode'
+}),
+triple(iri(prefix.id, 'place'), iri(prefix.geonames, str('countryCode')), '_coountryCode')
+```
+This results in the following linked data assertion: 
+
+```ttl
+city:Amsterdam geonames:countryCode "NL"
+```
+
+
+

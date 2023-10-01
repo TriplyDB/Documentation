@@ -446,17 +446,28 @@ ifElse({
 
 The function `_switch()` allows us to switch between different cases, based on the value of a specified key.
 
+The signature is as follows;
+
+```ts
+_switch(key,
+  [value_1, functions_1],
+  ...,
+  [value_n, functions_n],
+  default_functions,
+)
+```
+
 ## Parameters
 
 - `key` The key parameter whose value is compared against the specified values.
-- `cases` One or more cases. Each case is represented by a pair. 
-  
-The first element of the pair is the value that is checked for equivalence with the value in `key`.  The second element is either one function or a list of functions.
-Whenever the value in `key` is equal to the value in one of the cases, the corresponding function(s) are run.
+- Each case consists of a list of two elements:
+  - `value_i` is the value that is checked for equivalence with the value stored in `key`.
+  - `functions_i` is the function or list of functions that is executed when the value in `key` is equivalent to `value_i`.
+- `default_functions` is the function or list of functions that is executed when `key` matches neither of the cases.
 
-Notice that we must write `_switch()` because `switch` is a reserved keyword.
- 
-An error is emitted if the value for `key` does not match any of the cases.
+Notice that we must write `_switch()` because `switch` is a reserved keyword in ECMAScript.
+
+An error is emitted if the value for `key` does not match any of the cases and no default case is specified.
  
 ## Example 1
 

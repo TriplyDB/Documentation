@@ -13,7 +13,7 @@ TriplyETL supports the following data formats:
 | [fromJson()](#extractor-fromjson) | [JSON](#extractor-fromjson) | [JavaScript Object Notation](#extractor-fromjson) |
 | [fromOai()](#extractor-fromoai) | [OAI-PMH](#extractor-fromoai) | [Open Archives Initiative Protocol for Metadata Harvesting](#extractor-fromoai) |
 | [fromPostgres()](#extractor-frompostgres) | [PostgreSQL Query & Postgres API Options](#extractor-frompostgres)| [PostgreSQL Query & Postgres API Options](#extractor-frompostgres) |
-| [fromShapefile()](#extractor-fromshapefile) | [ESRI](#extractor-fromshapefile) | [ESRI Shapefiles](#extractor-fromshapefile) |
+| [fromShapeFile()](#extractor-fromshapefile) | [ESRI](#extractor-fromshapefile) | [ESRI Shapefiles](#extractor-fromshapefile) |
 | [fromTsv()](#extractor-fromtsv) | [TSV](#extractor-fromtsv) | [Tab-Separated Values](#extractor-fromtsv) |
 | [fromXlsx()](#extractor-fromxlsx) | [XLSX](#extractor-fromxlsx) | [Microsoft Excel](#extractor-fromxlsx) |
 | [fromXml()](#extractor-fromxml) | [XML](#extractor-fromxml) | [XML Markup Language](#extractor-fromxml) |
@@ -485,7 +485,7 @@ triple(iri(prefix.id, '$recordId'), a, '_class'),
 
 
 
-# Extractor `fromPostgres()` <!-- {#fromPostgres} -->
+# Extractor `fromPostgres()`
 
 PostgreSQL or Postgres is an open-source relational database system. Postgres supports both SQL (relational) and JSON (non-relational) querying.
 
@@ -526,6 +526,72 @@ fromPostgres(
   { url: 'postgres://reader:NWDMCE5xdipIjRrp@hh-pgsql-public.ebi.ac.uk:5432/pfmegrnargs' }
 ),
 ```
+
+
+
+# Exctractor `fromShapeFile()`
+
+The ESRI [Shapefile format](https://doc.arcgis.com/en/arcgis-online/reference/shapefiles.htm) was developed by Esri (Environmental Systems Research Institute) for interoperability among geographic information system (GIS) applications. The Shapefile format stores nontopological geometry and attribute information for spatial features in a data set.  A Shapefile consists minimally of a main file, an index file, and a dBASE  table. In the TriplyETL we can load data from shapefile with `.shp` extension (main file). 
+
+The following snippet shows how to load a local shapefile:
+
+```ts
+fromShapeFile(Source.file("example.shp"))
+```
+If the shapefile is stored as the asset for the dataaset in the TriplyDB instance, you can load it from there:
+```ts
+fromShapeFile(
+  Source.TriplyDb.asset(
+    'some-account', 'some-dataset', { name: 'example.shp' }
+  )
+),
+```
+
+The shapesfile is transformed in json format and is now easy to work with. 
+For example, the first record in file `nl_1km.shp` (downloaded from [European Environment Agency](https://www.eea.europa.eu/data-and-maps/data/eea-reference-grids-2/gis-files/netherlands-shapefile)) is shown as:
+
+```json
+{
+  "$recordId": 1,
+  "$environment": "Development",
+  "$fileName": "nl_1km.shp",    
+  "type": "Feature",
+  "properties": {
+    "CELLCODE": "1kmE3793N3217",
+    "EOFORIGIN": 3793000,       
+    "NOFORIGIN": 3217000        
+  },
+  "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+      [
+        [
+          3793000,
+          3217000
+        ],
+        [
+          3793000,
+          3218000
+        ],
+        [
+          3794000,
+          3218000
+        ],
+        [
+          3794000,
+          3217000
+        ],
+        [
+          3793000,
+          3217000
+        ]
+      ]
+    ]
+  }
+}
+```
+
+You can now work with shapefiles and use [geojsonToWkt()](/triply-etl/transform/ratt/#geojsonToWkt) transfrom function to create geomerty. 
 
 
 
@@ -603,32 +669,28 @@ The following code snippet loads RDF from a SPARQL Construct that is stored in T
 loadRdf(Source.TriplyDb.query('Triply', 'network-query')),
 ```
 
-The following code snippet loads RDF from a SPARQL Construct query that is stored in TriplyDB:
-
-```ts
-loadRdf(Source.TriplyDb.query('Triply', 'network-query')),
-```
-
 
 ## Loading RDF from an HTML page
 
 With `loadRdf()` extractor, it is also possible to extract data from web pages / HTML, which contain Schema in JSON-LD. 
-This is possible because most websites contain linked data annotations that use Schema.org.
+This is possible because most websites contain linked data annotations that use [Schema.org](https://schema.org/).
 
-Such LD is enclosed in tag <script type='application/ld+json'>...</script>
-It is possible to load such linked data with TriplyETL.
+Such linked data is enclosed in a tag:
+``````html
+<script type='application/ld+json'>...</script>
+``````
 
 Schema markup is how Google can serve up rich results (also called rich snippets and rich cards).
 
 The schema is included in HTML in the following way:
 
-![basic JSON-LD markup ](JSON-LD-Google-example-1.png)
+![basic JSON-LD markup ](html-schema.png)
 
-1. The Script Type: What format your structured data will take (JSON-LD)
-2. The Context: Where the language you’re using comes from (schema.org)
-3. The Type: What kind of thing is the search engine looking at (an image)
-4. The Property: What kind of quality will you be describing when it comes to this type (the license document)
-5. The Value: What you’re actually telling the search engines about this property (the URL where the license can be found)
+1. `The Script Type`: What format your structured data will take (JSON-LD)
+2. `The Context`: Where the language you’re using comes from (schema.org)
+3. `The Type`: What kind of thing is the search engine looking at (Article)
+4. `The Property`: What kind of quality will you be describing when it comes to this type (url)
+5. `The Value`: What you’re actually telling the search engines about this property (the URL of the article)
 
 Example taken from Wikipedia:
 
@@ -664,13 +726,7 @@ The Wikipedia page of the first programmer in history (https://en.wikipedia.org/
 This data can be loaded with TriplyETL in the following way:
 
 ```ts
-import { Etl, loadRdf, Source } from '@triplyetl/etl/generic'
-
-export default () => {
-  const etl = new Etl()
-  etl.use(
-    loadRdf(Source.url('https://en.wikipedia.org/wiki/Ada_Lovelace', { contentType: 'text/html' })),
-  )
-  return etl
-}
+loadRdf(Source.url('https://en.wikipedia.org/wiki/Ada_Lovelace'), { contentType: 'text/html' }),
 ```
+
+The above snippet prints the triples that describe Ada Lovelace according to linked data in the Wikipedia page.
