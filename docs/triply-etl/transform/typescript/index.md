@@ -3,7 +3,7 @@ title: "2. Transform: TypeScript"
 path: "/docs/triply-etl/transform/typescript"
 ---
 
-The vast majority of ETLs can be written with the core set of [RATT Transformations](/docs/triply-etl/transform/ratt).  But sometimes a custom transformation is necessary that cannot be handled by this core set.  For such circumstances, TriplyETL allows a custom TypeScript function to be written.
+The vast majority of ETLs can be written with the core set of [RATT Transformations](/triply-etl/transform/ratt).  But sometimes a custom transformation is necessary that cannot be handled by this core set.  For such circumstances, TriplyETL allows a custom TypeScript function to be written.
 
 Notice that the use of a custom TypeScript function should be somewhat uncommon.  The vast majority of real-world transformations should be supported by the core set of RATT Transformations.
 
@@ -28,7 +28,7 @@ TriplyETL refers to these resources as the **Context**.
 
 
 
-# Function `custom.add()` {#add}
+# Function `custom.add()`
 
 Adds a new entry to the Record, based on more than one existing entry.
 
@@ -57,7 +57,7 @@ This function emits an error if `NEW_KEY` already exists in the current Record.
 
 ## See also
 
-Notice that it is bad practice to use `custom.add()` for adding a new entry that is based on exactly one existing entry.  In such cases, the use of function [custom.copy()](#copy) is better, since it does not require access to the full Context.
+Notice that it is bad practice to use `custom.add()` for adding a new entry that is based on exactly one existing entry.  In such cases, the use of function [custom.copy()](#function-customcopy) is better, since it does not require access to the full Context.
 
 ## Example: Numeric calculations
 
@@ -101,7 +101,7 @@ This prints the following two records:
 
 
 
-# Function `custom.change()` {#change}
+# Function `custom.change()` <!-- {#change} -->
 
 Changes an existing entry in the Record.  The `change` function takes the old value and returns the new value.
 
@@ -133,7 +133,7 @@ The function can be configured in the following way:
 
 ## Error conditions
 
-This function emits an error if the specified key (`KEY_NAME`) does not exist in the RATT record.  Use [custom.copy()](#copy) if you want to create a new entry based on an existing one.
+This function emits an error if the specified key (`KEY_NAME`) does not exist in the RATT record.  Use [custom.copy()](#function-customcopy) if you want to create a new entry based on an existing one.
 
 ## Example: Numeric calculation
 
@@ -173,7 +173,7 @@ Notice that the values for the `balance` keys were changed.
 
 ## Example: Cast numeric data
 
-Some source data formats are unable to represent numeric data. A good example are the [CSV](/docs/triply-etl/extract/formats#fromCsv) and [TSV](/docs/triply-etl/extract/formats#fromTsv) formats, where every cell value is represented as a string.
+Some source data formats are unable to represent numeric data. A good example are the [CSV](/triply-etl/extract/formats#extractor-fromcsv) and [TSV](/triply-etl/extract/formats#extractor-fromtsv) formats, where every cell value is represented as a string.
 
 If such a source data format that cannot represent numeric data is used, it is often useful to explicitly cast string values to numbers.
 
@@ -212,7 +212,7 @@ Notice that strings that encode a number are correctly transformed, and non-empt
 When [creating statements](#create-statements) later, no statement will be created for entries that have value `null`.  See the [section on working with null values](#null-values) for more information.
 -->
 
-Also notice that the empty string is cast to the number zero. Most of the time, this is *not* what you want. If you want to prevent this transformation from happening, and you almost certainly do, you must process the source data conditionally, using [control structures](/docs/triply-etl/control).
+Also notice that the empty string is cast to the number zero. Most of the time, this is *not* what you want. If you want to prevent this transformation from happening, and you almost certainly do, you must process the source data conditionally, using [control structures](/triply-etl/control).
 
 ## Example: Variant type
 
@@ -316,7 +316,7 @@ This print the following two records that can now be uniformly processed:
 
 
 
-# `custom.replace()` {#replace}
+# `custom.replace()` 
 
 Replaces the value of an existing key based on the value from another key.
 
@@ -349,7 +349,7 @@ This function emits an error under the following conditions:
 
 ## See also
 
-If `fromKey` and `toKey` are the same, then function [custom.change()](#change) must be used instead.
+If `fromKey` and `toKey` are the same, then function [custom.change()](#function-customchange) must be used instead.
 
 
 

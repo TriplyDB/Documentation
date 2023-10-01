@@ -29,7 +29,7 @@ iri(content: Key|StaticString)
 
 ### Parameters
 
-- `prefix` A prefix that is declared with [declarePrefix()](/docs/triply-etl/declare#declarePrefix).
+- `prefix` A prefix that is declared with [declarePrefix()](/triply-etl/declare#declarePrefix).
 - `content` Either a key that contains a string value, or a static string. If the `prefix` is used, this content is placed after the prefix (sometimes referred to as the 'local name'). If the `prefix` parameter is not used, the content must specify a full IRI.
 
 ### Examples
@@ -55,7 +55,7 @@ triple(iri('url'), a, owl.NamedIndividual),
 
 ### See also
 
-If the same IRI is used in multiple statements, repeating the same assertion multiple times may impose a maintenance burden. In such cases, it is possible to first add the IRI to the record using transformation function [addIri()](/docs/triply-etl/transform/ratt#function-addIri), and refer to that one IRI in multiple statements.
+If the same IRI is used in multiple statements, repeating the same assertion multiple times may impose a maintenance burden. In such cases, it is possible to first add the IRI to the record using transformation function [addIri()](/triply-etl/transform/ratt#function-addIri), and refer to that one IRI in multiple statements.
 
 Use function [iris()](#function-iris) to create multiple IRIs in one step.
 
@@ -72,7 +72,7 @@ iris(content: Key|Array<StaticString>)
 
 ### Parameters
 
-- `prefix` A prefix that is declared with [declarePrefix()](/docs/triply-etl/declare#declarePrefix).
+- `prefix` A prefix that is declared with [declarePrefix()](/triply-etl/declare#declarePrefix).
 - `content` Either a key that contains a array of string values, or an array of static strings. If the `prefix` is used, this content is placed after the prefix (sometimes referred to a the 'local name'). If the `prefix` parameter is not used, the content must specify the full IRI.
 
 ### Example
@@ -151,7 +151,7 @@ id:amsterdam
 
 ### See also
 
-If the same literal is used in multiple statements, repeating the same assertion multiple times can impose a maintenance burden. In such cases, it is possible to first add the literal to the record with transformation [addLiteral()](/docs/triply-etl/transform/ratt#function-addLiteral), and refer to that one literal in multiple statements.
+If the same literal is used in multiple statements, repeating the same assertion multiple times can impose a maintenance burden. In such cases, it is possible to first add the literal to the record with transformation [addLiteral()](/triply-etl/transform/ratt#function-addLiteral), and refer to that one literal in multiple statements.
 
 Use assertion [literals()](#function-literals) to create multiple literals in one step.
 

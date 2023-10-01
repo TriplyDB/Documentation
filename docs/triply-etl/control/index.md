@@ -126,20 +126,20 @@ country:nl rdfs:label 'The Netherlands'.
 country:de rdfs:label 'Germany'.
 ```
 
-Notice that `forEach()` only works for lists whose elements areobjects*.  See [Iterating over lists of primitives](#list-primitive) for dealing with lists that do not contain objects.
+Notice that `forEach()` only works for lists whose elements are objects*.  See [Iterating over lists of primitives](/triply-etl/tmp/tmp.md#list-primitive) for dealing with lists that do not contain objects.
 
 The elements that `forEach()` iterates over are themselves (sub)records.  This implies that all functions that work for full records also work for the (sub)records inside `forEach()`.  The (sub)records inside an `forEach()` function are smaller.  This allows the regular keys of the iterated-over elements to be accessed directly.
 
 In addition to these regular keys, (sub)records inside `forEach()` also contain additional keys that simplify common operations.  The following subsections explain the following special keys:
 
-- [Index key (`$index`)](#index-key)
-- [Parent key (`$parent`)](#parent-key)
-- [Root key (`$root`)](#root-key)
+- [Index key (`$index`)](#index-key-index)
+- [Parent key (`$parent`)](#parent-key-parent)
+- [Root key (`$root`)](#root-key-root)
 
 
-## Index key (`$index`) {#index-key}
+## Index key (`$index`) <!-- {#index-key} -->
 
-Each (sub)record that is made available in `forEach()` contains the `$index` key.  The value of this key is the index of the element in the list.  This is the same index that is used to access specific elements in an list, as explained in [the section on accessing lists by index](#accessing-lists-by-index).
+Each (sub)record that is made available in `forEach()` contains the `$index` key.  The value of this key is the index of the element in the list.  This is the same index that is used to access specific elements in an list, as explained in [the section on accessing lists by index](/triply-etl/extract/formats#accessing-lists-by-index).
 
 The index key is often useful for assigning a unique subject IRI to every element.
 
@@ -178,7 +178,7 @@ country:2 rdfs:label 'Italy'.
 ```
 
 
-## Parent key (`$parent`) {#parent-key}
+## Parent key (`$parent`) <!-- {#parent-key} -->
 
 When `forEach()` iterates through a list of elements, it makes the enclosingparent* record available under key `$parent`.
 
@@ -251,10 +251,10 @@ and:
 }
 ```
 
-The `$root` key is explained in [the next section](#root-key).
+The `$root` key is explained in [the next section](#root-key-root).
 
 
-## Root key (`$root`) {#root-key}
+## Root key (`$root`) <!-- {#root-key} -->
 
 Sometimes it may be necessary to access a part of the original record that is outside of the scope of the `forEach()` call.
 

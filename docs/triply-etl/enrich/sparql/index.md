@@ -5,7 +5,7 @@ path: "/docs/triply-etl/enrich/sparql"
 
 SPARQL Update is a powerful feature that allows you to modify and enrich linked data in the internal store. With SPARQL Update, you can generate new linked data based on existing linked data, thereby enhancing the content of the store.
 
-*Support for SPARQL Update is currently experimental. In the meantime, you can use [SHACL Rules](/docs/triply-etl/enrich/shacl) to implement the Enrich Step of your pipeline.*
+*Support for SPARQL Update is currently experimental. In the meantime, you can use [SHACL Rules](/triply-etl/enrich/shacl) to implement the Enrich Step of your pipeline.*
 
 
 
@@ -40,7 +40,7 @@ insert data { <john> <knows> <mary>. }`),
 }
 ```
 
-Debug function [logQuads()](/docs/triply-etl/debug#logQuads) prints the content of the internal store to standard output:
+Debug function [logQuads()](/triply-etl/debug#function-logquads) prints the content of the internal store to standard output:
 
 ```turtle
 base <https://triplydb.com/>
@@ -105,7 +105,7 @@ prefix sdo: <${prefix.sdo('').value}>
 delete data { <john> sdo:children <mary>. }`),
 ```
 
-You can use the debug function [logQuads()](/docs/triply-etl/debug#logQuads) before and after this function call, to see the effects on the internal store.
+You can use the debug function [logQuads()](/triply-etl/debug#function-logquads) before and after this function call, to see the effects on the internal store.
 
 
 
@@ -255,7 +255,7 @@ In our example, we are using the following source data that records the age of a
   "id":  "id"
 }
 ```
-In this example, the data source is in the form of [inline JSON](/docs/triply-etl/extract/types#inline-json), but please note that any valid source format can be used:
+In this example, the data source is in the form of [inline JSON](/triply-etl/extract/types#inline-json), but please note that any valid source format can be used:
 
 ```code
 fromJson([{ age: 'twenty', id: '1' }]),

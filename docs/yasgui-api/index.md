@@ -8,7 +8,7 @@ Here you can find documentation on ways to include, configure and extend these c
 
 ![Overview of Yasgui Components](yasgui.png).
 
-## About additional plugins {#triplyDbPlugins}
+## About additional plugins <!-- {#triplyDbPlugins} -->
 
 Yasgui, Yasqe and Yasr are all [open source](https://github.com/TriplyDB/Yasgui) and MIT licensed.
 Triply provides additional plugins that are only free to use via [https://yasgui.triply.cc](https://yasgui.triply.cc) or [TriplyDB](https://triplydb.com/). These additional plugins are not MIT licensed and cannot be used or included programmatically.
@@ -31,7 +31,7 @@ npm i @triply/yasgui
 yarn add @triply/yasgui
 ```
 
-### Via cdn {#web}
+### Via cdn <!-- {#web} -->
 
 To include Yasgui in your webpage, all that's needed is importing the Yasgui JavaScript and CSS files, and initializing a Yasgui object:
 
@@ -103,7 +103,7 @@ tab.yasqe;
 tab.yasr;
 ```
 
-### Events {#yasgui-events}
+### Events <!-- {#yasgui-events} -->
 
 Yasgui emits several Events. For information on how to use Events, see [NodeJS's Event documentation](https://nodejs.org/api/events.html).
 
@@ -114,7 +114,7 @@ yasgui.on("query", (instance: Yasgui, tab: Tab) => {});
 yasgui.on("queryResponse", (instance: Yasgui, tab: tab) => {});
 ```
 
-### Configuration {#yasgui-config}
+### Configuration <!-- {#yasgui-config} -->
 
 This configuration object is accessible/changeable via `Yasgui.defaults` or `yasgui.config`. You can pass these along when initializing Yasgui as well. To change settings to the Yasqe and Yasr components used by Yasgui, you are best off changing the `Yasgui.Yasqe.defaults` and `Yasgui.Yasr.defaults` objects before initializing Yasgui.
 
@@ -219,7 +219,7 @@ yasqe.setSize(500, 300);
 yasqe.collapsePrefixes(true);
 ```
 
-### Events {#yasqe-events}
+### Events <!-- {#yasqe-events} -->
 
 Yasqe emits several Events. For information on how to use Events, see [NodeJS's Event documentation](https://nodejs.org/api/events.html).
 
@@ -230,7 +230,7 @@ yasqe.on("query", (instance: Yasqe, req: superagent.SuperAgentRequest) => {});
 yasqe.on("queryResponse", (instance: Yasqe, req: superagent.SuperAgentRequest, duration: number) => {});
 ```
 
-### Configuration {#yasqe-config}
+### Configuration <!-- {#yasqe-config} -->
 
 The configuration options, for Yasqe can be accessed through `Yasgui.Yasqe` or `yasqe.options`.
 
@@ -291,7 +291,7 @@ yasr.on("draw",(instance: Yasr, plugin: Plugin) => void);
 yasr.on("drawn",(instance: Yasr, plugin: Plugin) => void);
 ```
 
-### Configuration {#yasr-configuration}
+### Configuration <!-- {#yasr-configuration} -->
 
 This configuration object is accessible/changeable via `Yasr.defaults` and `yasr.options`, and you can pass these along when initializing Yasr as well. Output visualizations are defined separately.
 

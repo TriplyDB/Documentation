@@ -108,7 +108,7 @@ https://api.triplydb.com/accounts/Triply
 
 
 
-## Queries {#queries}
+## Queries <!-- {#queries} -->
 
 TriplyDB allows users to save SPARQL queries. The metadata for all saved query can be accessed as follows:
 
@@ -128,7 +128,7 @@ By adding an account name and a query name (for example: 'Triply/flower-length')
 https://api.triplydb.com/queries/Triply/flower-length
 ```
 
-### Query metadata (GRLC) {#grlc}
+### Query metadata (GRLC) <!-- {#grlc} -->
 
 You can retrieve a text-based version of each query, by requesting the `text/plain` content type:
 
@@ -159,7 +159,7 @@ The above example includes the following GRLC annotations:
 
 ## LD Browser API
 
-Triply APIs provide a convenient way to access data used by [LD Browser](https://triply.cc/docs/triply-db-getting-started/#linked-data-browser), which offers a comprehensive overview of a specific IRI. By using Triply API for a specific IRI, you can retrieve the associated 'document' in the `.nt` format that describes the IRI.
+Triply APIs provide a convenient way to access data used by [LD Browser](/triply-db-getting-started/#linked-data-browser), which offers a comprehensive overview of a specific IRI. By using Triply API for a specific IRI, you can retrieve the associated 'document' in the `.nt` format that describes the IRI.
 
 To make an API request for a specific instance, you can use the following URI path:
 
@@ -172,7 +172,7 @@ To illustrate this, let's take the example of the DBpedia dataset and the [speci
 ```none
 https://api.triplydb.com/datasets/DBpedia-association/dbpedia/describe.nt?resource=http%3A%2F%2Fdbpedia.org%2Fresource%2FMona_Lisa
 ```
-in your browser, the `.nt` document describing the 'Mona Lisa' instance will be automatically downloaded. You can then upload this file to a dataset and [visualize it in a graph](https://triply.cc/docs/yasgui/#network). Figure 1 illustrates the retrieved graph for the ‘Mona Lisa’ instance.
+in your browser, the `.nt` document describing the 'Mona Lisa' instance will be automatically downloaded. You can then upload this file to a dataset and [visualize it in a graph](/yasgui/#network-triplydb-plugin). Figure 1 illustrates the retrieved graph for the ‘Mona Lisa’ instance.
 
 ![Figure 1](MonaLisaGraph.png)
 
@@ -295,7 +295,7 @@ Upper-case letter words must be replaced by the following values:
 
 - `SERVICE` :: The name of a specific service that has been started for the corresponding dataset.
 
-- See the previous section for [Datasets](#Datasets) to learn the meaning of `INSTANCE`, `ACCOUNT`, and `DATASET`.
+- See the previous section for [Datasets](#datasets) to learn the meaning of `INSTANCE`, `ACCOUNT`, and `DATASET`.
 
 Here is an example of a URI path that points to a SPARQL endpoint over the Pokémon dataset:
 
@@ -324,7 +324,7 @@ Everybody who has access to the dataset also has access to its services, includi
 - For *Internal* datasets, only users that are logged into the triple store can issue queries.
 - For *Private* datasets, only users that are logged into the triple store and are members of `ACCOUNT` can issue queries.
 
-Notice that for professional use it is easier and better to use [saved queries](https://triply.cc/docs/triply-db-getting-started#saved-queries).  Saved queries have persistent URIs, descriptive metadata, versioning, and support for reliable large-scale pagination ([see how to use pagination with saved query API](https://triply.cc/docs/triply-db-getting-started/#pagination-with-the-saved-query-api)).  Still, if you do not have a saved query at your disposal and want to perform a custom SPARQL request against an accessible endpoint, you can do so.  TriplyDB implements the SPARQL 1.1 Query Protocol standard for this purpose.
+Notice that for professional use it is easier and better to use [saved queries](/triply-db-getting-started#saved-queries).  Saved queries have persistent URIs, descriptive metadata, versioning, and support for reliable large-scale pagination ([see how to use pagination with saved query API](/triply-db-getting-started/#pagination-with-the-saved-query-api)).  Still, if you do not have a saved query at your disposal and want to perform a custom SPARQL request against an accessible endpoint, you can do so.  TriplyDB implements the SPARQL 1.1 Query Protocol standard for this purpose.
 
 ### Sending a SPARQL Query request
 

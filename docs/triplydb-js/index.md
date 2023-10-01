@@ -3,7 +3,7 @@ title: 'TriplyDB.js'
 path: '/docs/triplydb-js'
 ---
 
-**TriplyDB.js** is the official programming library for interacting with [TriplyDB](https://triply.cc/docs/triply-db-getting-started). TriplyDB.js allows you to automate operations that would otherwise be performed in the TriplyDB GUI.
+**TriplyDB.js** is the official programming library for interacting with [TriplyDB](/triply-db-getting-started). TriplyDB.js allows you to automate operations that would otherwise be performed in the TriplyDB GUI.
 
 TriplyDB.js is implemented in [TypeScript](https://www.typescriptlang.org). TypeScript is a type-safe language that transpiles to [JavaScript](https://en.wikipedia.org/wiki/JavaScript). This allows you to use TriplyDB.js in web browsers as well as on servers (using [Node.js](https://nodejs.org)). TriplyDB.js is open source and its source code is published on [GitHub](https://github.com/TriplyDB/TriplyDB-JS).
 
@@ -15,7 +15,7 @@ Please contact [support@triply.cc](mailto:support@triply.cc) for questions and s
 
 TriplyDB.js contains several classes, each with their own methods. The documentation for every method includes at least one code example. These code examples can be run by inserting them into the following overall script.
 
-Notice that `process.env.TOKEN` picks up an API token that is stored in the environment variable called `TOKEN`. Follow the steps on [this page](https://triply.cc/docs/triply-api/#creating-an-api-token) to create a new API token in the TriplyDB GUI.
+Notice that `process.env.TOKEN` picks up an API token that is stored in the environment variable called `TOKEN`. Follow the steps on [this page](/triply-api/#creating-an-api-token) to create a new API token in the TriplyDB GUI.
 
 ```ts
 require('source-map-support/register')
@@ -133,7 +133,7 @@ The following token access levels are available:
    - Write operations over data 
 3. “Management access” allows the following operations to be performed: creating organizations, adding/removing members to/from organizations.
 
-The following creates a `App` object with an API token that is made available through an environment variable (see section [Setting up a secure read/write project](https://triply.cc/docs/triplydb-js#setting-up-a-readwrite-project)):
+The following creates a `App` object with an API token that is made available through an environment variable (see section [Setting up a secure read/write project](/triplydb-js#setting-up-a-readwrite-project)):
 
 ```ts
 import App from '@triply/triplydb'
@@ -176,7 +176,7 @@ Class [Account](#account) has two specializations: class [Organization](#organiz
 
 ## App.getAccounts()
 
-Returns an [async iterator](#async-iterator) over all accounts in the TriplyDB server.
+Returns an [async iterator](#what-is-an-async-iterator) over all accounts in the TriplyDB server.
 
 ### Example
 
@@ -733,7 +733,7 @@ This method returns a dataset object. See class [Dataset](#dataset) for an overv
 
 ## Account.getDatasets()
 
-Returns an [async iterator](#async-iterator) over the accessible datasets for the current account.
+Returns an [async iterator](#what-is-an-async-iterator) over the accessible datasets for the current account.
 
 ### Access restrictions
 
@@ -904,7 +904,7 @@ See class [Query](#query) for an overview of the methods for query objects.
 
 ## Account.getQueries()
 
-Returns an [async iterator](#async-iterator) over the accessible queries that belong to the account.
+Returns an [async iterator](#what-is-an-async-iterator) over the accessible queries that belong to the account.
 
 ### Access restrictions
 
@@ -1152,11 +1152,11 @@ The metadata object for accounts can include the following keys:
 
 Not all data can be stored as RDF data. For example images and video files use a binary format. Such files can also be stored in TriplyDB as Assets and can be integrated into the Knowledge Graph. Each asset has a specific identifier that can be used in the Knowledge Graph.
 
-An asset is always uploaded per dataset, for which the function `uploadAsset()` is used. see [Dataset.uploadAsset()](https://triply.cc/docs/triplydb-js#datasetuploadassetassetname-string-filepath-string) for uploading an asset.
+An asset is always uploaded per dataset, for which the function `uploadAsset()` is used. see [Dataset.uploadAsset()](/triplydb-js#datasetuploadassetassetname-string-filepath-string) for uploading an asset.
 
 If the asset already has been created following functions can retrieve it from the dataset.
-- [Dataset.getAsset(assetName: string, versionNumber?: number)](https://triply.cc/docs/triplydb-js#datasetgetassetname-string-version-number)
-- [Dataset.getAssets()](https://triply.cc/docs/triplydb-js#datasetgetassets)
+- [Dataset.getAsset(assetName: string, versionNumber?: number)](/triplydb-js#datasetgetassetname-string-version-number)
+- [Dataset.getAssets()](/triplydb-js#datasetgetassets)
 
 
 TriplyDB.js supports several functions to manipulate an asset on TriplyDB.
@@ -1596,7 +1596,7 @@ const asset = await dataset.getAsset('file.png', 1)
 
 ## Dataset.getAssets()
 
-Returns an [async iterator](#async-iterator) over the assets that belong to this dataset.
+Returns an [async iterator](#what-is-an-async-iterator) over the assets that belong to this dataset.
 
 Assets are binary files that are stored together with data graphs. Common examples include documents, images and videos.
 
@@ -1642,7 +1642,7 @@ const graph = dataset.getGraph('https://example.com/cats')
 
 ## Dataset.getGraphs()
 
-Returns an [async iterator](#async-iterator) over graphs that belong to this dataset.
+Returns an [async iterator](#what-is-an-async-iterator) over graphs that belong to this dataset.
 
 ### Examples
 
@@ -1708,7 +1708,7 @@ const service = dataset.getService('acceptance')
 
 ## Dataset.getServices()
 
-Returns an [async iterator](#async-iterator) over TriplyDB services under a dataset.
+Returns an [async iterator](#what-is-an-async-iterator) over TriplyDB services under a dataset.
 
 See class [Service](#service) for an overview of the methods for service objects.
 
@@ -1735,7 +1735,7 @@ console.log(await dataset.getServices().toArray())
 
 ## Dataset.getStatements({subject?: string, predicate?: string, object?: string, graph?: string})
 
-Returns an [async iterator](#async-iterator) with statements (quadruples) that fit the specified pattern.
+Returns an [async iterator](#what-is-an-async-iterator) with statements (quadruples) that fit the specified pattern.
 
 ### Arguments
 
@@ -2433,7 +2433,7 @@ Removes a member from the given `Organization`.
 
 Adds a new TriplyDB query to the current organization.
 
-Inherited from [`Account.addQuery(name: string, metadata: object)`](#accountaddquerymetadata-object).
+Inherited from [`Account.addQuery(name: string, metadata: object)`](#accountaddqueryname-string-metadata-object).
 
 
 ## Organization.ensureStory(name: string, metadata: object)
@@ -2480,7 +2480,7 @@ Inherited from [`Account.getDataset(name: string)`](#accountgetdatasetname-strin
 
 ## Organization.getDatasets()
 
-Returns an [async iterator](#async-iterator) over the accessible datasets that belong to this organization.
+Returns an [async iterator](#what-is-an-async-iterator) over the accessible datasets that belong to this organization.
 
 Inherited from [`Account.getDatasets()`](#accountgetdatasets).
 
@@ -2697,7 +2697,7 @@ It currently does not support the use of variables.
 
 `Query.results()` function will automatically return all the results from a saved query. You can retrieve both results from a `select` or `ask` query and a `construct` or `describe` query. The results are returned as an `async iterator`.
 
-If there are more than 10 000 query results, they could be retrieved using [pagination with TriplyDB.js](https://triply.cc/docs/triply-db-getting-started/#pagination-with-triplydbjs).
+If there are more than 10 000 query results, they could be retrieved using [pagination with TriplyDB.js](/triply-db-getting-started/#pagination-with-triplydbjs).
 
 ### Examples
 
@@ -2795,7 +2795,7 @@ Service objects describe specific functionalities that can be created over datas
 
 Service objects are obtained through the the following methods:
 
-- [`Dataset.addService`](#datasetaddserviceservicetype-string-name-string)
+- [`Dataset.addService`](#datasetaddservicename-string-metadata-object)
 - [`Dataset.getServices`](#datasetgetservices)
 
 A service always has one of the following statuses:
@@ -2928,10 +2928,10 @@ A TriplyDB data story is a way of communicating information about your linked da
 
 Story objects are obtained through the the following methods:
 
-- [`User.addStory`](#UseraddStoryname-string-metadata-object)
-- [`User.ensureStory`](#UserensureStoryname-string-metadata-object)
-- [`User.getStories`](#UsergetStories)
-- [`User.getStory`](#UsergetStoryname-string)
+- [`User.addStory`](#useraddstoryname-string-metadata-object)
+- [`User.ensureStory`](#userensurestoryname-string-metadata-object)
+- [`User.getStories`](#usergetstories)
+- [`User.getStory`](#usergetstoryname-string)
 
 
 ## Story.delete()
@@ -2997,7 +2997,7 @@ const user = account.asUser()
 
 ### Limitations
 
-Users cannot be created or deleted through the TriplyDB.js library. See the [Triply Console documentation](/docs/triply-db-getting-started) for how to create and delete users through the web-based GUI.
+Users cannot be created or deleted through the TriplyDB.js library. See the [Triply Console documentation](/triply-db-getting-started) for how to create and delete users through the web-based GUI.
 
 
 ## User.addDataset(name: string, metadata?: object)
@@ -3011,7 +3011,7 @@ Inherited from [`Account.addDataset(name: string, metadata?: object)`](#accounta
 
 Adds a new TriplyDB query to the current user.
 
-Inherited from [`Account.addQuery(metadata: object)`](#accountaddquerymetadata-object).
+Inherited from [`Account.addQuery(name:string, metadata: object)`](#accountaddqueryname-string-metadata-object).
 
 
 ## User.ensureStory(name: string, metadata: object)
@@ -3079,7 +3079,7 @@ Inherited from [`Account.getDataset(name: string)`](#accountgetdatasetname-strin
 
 ## User.getDatasets()
 
-Returns an [async iterator](#async-iterator) over the accessible datasets for the current user.
+Returns an [async iterator](#what-is-an-async-iterator) over the accessible datasets for the current user.
 
 Inherited from [`Account.getDatasets()`](#accountgetdatasets).
 
@@ -3148,7 +3148,7 @@ console.log(await user.getInfo())
 
 ## User.getOrganizations()
 
-Returns an [async iterator](#async-iterator) over the organizations that this user is a member of.
+Returns an [async iterator](#what-is-an-async-iterator) over the organizations that this user is a member of.
 
 ### Order considerations
 
@@ -3167,7 +3167,7 @@ for await (const organization of await user.getOrganizations()) {
 
 ### See also
 
-The [async iterator](#async-iterator) contains organization objects. See the section about the [`Organization`](#organization) class for methods that can be used on such objects.
+The [async iterator](#what-is-an-async-iterator) contains organization objects. See the section about the [`Organization`](#organization) class for methods that can be used on such objects.
 
 
 ## User.getPinnedItems()
@@ -3330,7 +3330,7 @@ To reliably retrieve a large number of results as the output of a `construct` or
    const array = await results.toArray()
    ```
 
-## What is an async iterator? {#async-iterator}
+## What is an async iterator?
 
 TriplyDB.js makes use of async iterators for retrieving lists of objects. Async iterators are a method of fetching and iterating through large lists, without having to first fetch the whole set.
 

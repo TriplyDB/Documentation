@@ -16,4 +16,4 @@ TriplyETL runs within a Gitlab CI environment ([Figure 1](#figure-1)).
 
 The special key `$environment` denotes the DTAP environment in which the TriplyETL pipeline is running.  This allows special actions to be performed based on whether the pipeline runs in `"Debug"`, `"Test"`, `"Acceptance"`, or `"Production"` mode.
 
-See the [DTAP documentation](/docs/triply-etl/dtap) for more information.
+See the [DTAP documentation](/triply-etl/dtap) for more information.

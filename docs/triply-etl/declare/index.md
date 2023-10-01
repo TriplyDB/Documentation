@@ -7,7 +7,7 @@ This page documents how you can declare prefixes, graph names, vocabulary terms,
 
 
 
-# Prefix declarations {#declarePrefix}
+# Prefix declarations
 
 Linked data uses IRIs for uniquely identifying most data items. Since IRIs can be long and complex, it is a best practice to declare short aliases that can be used to abbreviate them. Such aliases are introduced in prefix declarations.
 
@@ -54,7 +54,7 @@ iri(prefix.vehicle, 'id')
 iri(prefix.vehicle, str('123')),
 ```
 
-See assertion functions [iri()](/docs/triply-etl/assert/ratt#function-iri) and [str()](/docs/triply-etl/assert/ratt#function-str) for more information.
+See assertion functions [iri()](/triply-etl/assert/ratt#function-iri) and [str()](/triply-etl/assert/ratt#function-str) for more information.
 
 
 
@@ -96,7 +96,7 @@ This may create literals like the following:
 
 
 
-# Vocabulary declarations {#vocabulary}
+# Vocabulary declarations
 
 Vocabularies are collections of IRIs that have the same namespace. The namespace can be declared with a prefix (see [Prefix declarations](#prefix-declarations)). We use the following prefix declaration as the namespace for our vocabulary:
 
@@ -170,7 +170,7 @@ graph LR
 
 
 
-# External vocabularies {#external-vocabularies}
+# External vocabularies
 
 In linked data, it is common to reuse existing vocabularies. Popular vocabularies can be imported from the TriplyETL vocabulary library:
 
@@ -283,7 +283,7 @@ triples(graph.metadata,
 ),
 ```
 
-See assertion function [triples()](/docs/triply-etl/assert/ratt#function-triples) for more information.
+See assertion function [triples()](/triply-etl/assert/ratt#function-triples) for more information.
 
 
 
@@ -311,7 +311,7 @@ Or they can be used to directly assert language-tagged strings in the Internal S
 triple('_city', rdfs.label, literal('label', lang.fr)),
 ```
 
-See transformation function [addLiteral()](/docs/triply-etl/transform#addliteral) and assertion function [literal()](/docs/triply-etl/assert#literal) for more information.
+See transformation function [addLiteral()](/triply-etl/transform/ratt#function-addliteral) and assertion function [literal()](/triply-etl/assert/ratt#function-literal) for more information.
 
 
 
@@ -324,7 +324,7 @@ import { geojsonToWkt } from '@triplyetl/etl/ratt'
 import { epsg } from '@triplyetl/etl/vocab'
 ```
 
-Such IRIs that denote coordinate reference systems can be used in several geospatial functions, for example in transformation function [geojsonToWkt()](/docs/triply-etl/transform/ratt#function-geojsontowkt):
+Such IRIs that denote coordinate reference systems can be used in several geospatial functions, for example in transformation function [geojsonToWkt()](/triply-etl/transform/ratt#function-geojsontowkt):
 
 ```ts
 geojsonToWkt({

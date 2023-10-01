@@ -11,12 +11,12 @@ The following debug function are available:
 
 | Function | Description |
 | --- | --- |
-| [logMemory()](#logMemory) | Prints the current memory consumption. |
-| [logQuads()](#logQuads) | Prints the contents of the internal store to standard output. |
-| [logQuery()](#logQuery) | Prints a query string to standard output. |
-| [logRecord()](#logRecord) | Prints the record in its current state to standard output. |
-| [traceEnd()](#trace) | Ends a trace of the record and internal store. |
-| [traceStart()](#trace) | Starts a trace of the record and internal store. |
+| [logMemory()](#function-logmemory) | Prints the current memory consumption. |
+| [logQuads()](#function-logquads) | Prints the contents of the internal store to standard output. |
+| [logQuery()](#function-logquery) | Prints a query string to standard output. |
+| [logRecord()](#function-logrecord) | Prints the record in its current state to standard output. |
+| [traceEnd()](#functions-tracestart-and-traceend) | Ends a trace of the record and internal store. |
+| [traceStart()](#functions-tracestart-and-traceend) | Starts a trace of the record and internal store. |
 
 These functions can be imported from the debug module:
 
@@ -27,7 +27,7 @@ import { logMemory, logQuads, logQuery, logRecord, traceEnd,
 
 
 
-# Function `logMemory()` {#logMemory}
+# Function `logMemory()` <!-- {#logMemory} -->
 
 This function prints information about the current memory consumption. It includes the following fields:
 
@@ -58,7 +58,7 @@ Info CallCount: 3 | RecordId: 2 | Heap (MB) used: 92 / total: 122
 
 
 
-# Function `logQuads()` {#logQuads}
+# Function `logQuads()` <!-- {#logQuads} -->
 
 This function prints the current contents of the internal store to standard output.
 
@@ -84,7 +84,7 @@ rdfs:Class a rdfs:Class
 
 
 
-# Function `logQuery()` {#logQuery}
+# Function `logQuery()` <!-- {#logQuery} -->
 
 This function prints a query string to standard output. This is specifically useful when the query string is stored in an external system, e.g. a SPARQL query string that is stored on a TriplyDB server:
 
@@ -103,9 +103,9 @@ limit 10
 
 
 
-# Function `logRecord()` {#logRecord}
+# Function `logRecord()` <!-- {#logRecord} -->
 
-This function prints the current state of the record to standard output. The record is a generic representation of the data that is extracted from one of the data sources (see the [Record documentation page](/docs/triply-etl/extract/record) for more information).
+This function prints the current state of the record to standard output. The record is a generic representation of the data that is extracted from one of the data sources (see the [Record documentation page](/triply-etl/extract/record) for more information).
 
 The following snippet prints the inline JSON record to standard output:
 
@@ -137,7 +137,7 @@ Since this prints a full overview of what is available in the data source, this 
 
 ## Observe the effects of transformations
 
-Another common use case for `logRecord()` is to observe the record at different moments in time. This is specifically useful to observe the effects of [transformation functions](/docs/triply-etl/transform), since these are the functions that modify the record.
+Another common use case for `logRecord()` is to observe the record at different moments in time. This is specifically useful to observe the effects of [transformation functions](/triply-etl/transform), since these are the functions that modify the record.
 
 The following snippet logs the record directly before and directly after the transformation function `split()` is called.
 
@@ -193,7 +193,7 @@ This results in the following output:
 
 
 
-# Functions `traceStart()` and `traceEnd()` {#trace}
+# Functions `traceStart()` and `traceEnd()` <!-- {#trace} -->
 
 Sometimes you are interested to find one specific record based on a certain value of a key and/or to see the changes in this record made by specific middlewares. For these purposes, `trace` middleware can be used.
 

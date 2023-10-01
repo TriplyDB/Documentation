@@ -204,7 +204,7 @@ Notice that it is often useful to specify multiple statements under the same con
 2. The first statement asserts one triple based on the optional value, and the second statement asserts a second triple based on the same optional value.
 
 
-### Null values {#null-values}
+### Null values <!-- {#null-values} -->
 
 If a key contains a null value in some records, then we need to specifically identify the criteria under which a triple must be added.
 
@@ -476,7 +476,7 @@ when('["soort_collectie.lref"]', [
 | ‘soort_collectie.value[0]$text’    | museum      |    
 ```
 
-### Accessing lists by index {#accessing-lists-by-index}
+### Accessing lists by index <!-- {#accessing-lists-by-index} -->
 
 Tree-shaped data formats often allow multiple values to be specified in an ordered list.  Examples of this are arrays in JSON and XML elements with the same tag that are directly nested under the same parent element.
 
@@ -513,7 +513,7 @@ This results in the following assertion:
 country:de rdfs:label 'Germany'@en.
 ```
 
-### Iterating over lists of objects {#list-object}
+### Iterating over lists of objects <!-- {#list-object} -->
 
 In the previous section, we saw that we were able to assert the name of the first country and the name of the second country.  But what do we do if we want to assert the name for every country in the world?  And what do we do if some countries have a name in 2 languages, but other countries have a name in 1 or 3 languages?  What we need is a simple way to express that we want RATT to make an assertion for every element in a list.
 
@@ -552,7 +552,7 @@ In addition to these regular keys, RATT records inside `forEach` also contain ad
 - [Root key (`$root`)](#root-key)
 
 
-#### Index key (`$index`) {#index-key}
+#### Index key (`$index`) <!-- {#index-key} -->
 
 Each RATT record that is made available in `forEach` contains the `$index` key.  The value of this key is the index of the element in the list.  This is the same index that is used to access specific elements in an list, as explained in [the section on accessing lists by index](#accessing-lists-by-index).
 
@@ -598,7 +598,7 @@ country:2 rdfs:label 'Italy'@en.
 ```
 
 
-#### Parent key (`$parent`) {#parent-key}
+#### Parent key (`$parent`) <!-- {#parent-key} -->
 
 When `forEach` iterates through a list of elements, it makes the enclosing *parent* record available under key `$parent`.
 
@@ -677,7 +677,7 @@ and:
 The `$root` key is explained in [the next section](#root-key).
 
 
-#### Root key (`$root`) {#root-key}
+#### Root key (`$root`) <!-- {#root-key} -->
 
 Sometimes it may be necessary to access a part of the original RATT record that is outside of the scope of the `forEach` call.
 
@@ -776,7 +776,7 @@ The following RATT record is printed first (3 records are printed in total).  No
 ```
 
 
-### Iterating over lists of primitives {#list-primitive}
+### Iterating over lists of primitives <!-- {#list-primitive} -->
 
 In [the previous section](#list-object) we showed how to iterate over lists of objects.  But what happens if a list does not contain objects but elements of primitive type?  Examples include lists of strings or lists of numbers.
 
