@@ -4,3 +4,7 @@ code {
   padding: .3em .4em !important;
   border-radius: .3em !important;
 }
+
+ p ~ ul {
+  margin-top: -20px;
+}
