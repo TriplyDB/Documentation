@@ -5,6 +5,6 @@ code {
   border-radius: .3em !important;
 }
 
- p ~ ul {
+ div.document p ~ ul {
   margin-top: -20px;
 }
