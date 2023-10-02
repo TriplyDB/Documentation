@@ -6,45 +6,45 @@ plugins:
 nav:
   - Home: index.md
   - TriplyDB:
-      - Getting started: triply-db-getting-started
-      - API: triply-api
-      - TriplyDB-JS: triplydb-js
+      - Getting started: triply-db-getting-started/index.md
+      - API: triply-api/index.md
+      - TriplyDB-JS: triplydb-js/index.md
   - TriplyETL:
       - Generics:
-          - Overview: triply-etl
-          - Getting started: triply-etl/getting-started
-          - Command Line Interface: triply-etl/cli
-          - Changelog: triply-etl/changelog
-          - Declare: triply-etl/declare
-          - Control Structures: triply-etl/control
-          - Debug: triply-etl/debug
-          - Maintenance: triply-etl/maintenance
+          - Overview: triply-etl/index.md
+          - Getting started: triply-etl/getting-started/index.md
+          - Command Line Interface: triply-etl/cli/index.md
+          - Changelog: triply-etl/changelog/index.md
+          - Declare: triply-etl/declare/index.md
+          - Control Structures: triply-etl/control/index.md
+          - Debug: triply-etl/debug/index.md
+          - Maintenance: triply-etl/maintenance/index.md
       - Extract: 
-          - Overview: triply-etl/extract
-          - Formats: triply-etl/extract/formats
-          - Record: triply-etl/extract/record
-          - Source types: triply-etl/extract/types
+          - Overview: triply-etl/extract/index.md
+          - Formats: triply-etl/extract/formats/index.md
+          - Record: triply-etl/extract/record/index.md
+          - Source types: triply-etl/extract/types/index.md
       - Transform:
-          - Overview: triply-etl/transform
-          - RATT: triply-etl/transform/ratt
-          - TypeScript: triply-etl/transform/typescript
+          - Overview: triply-etl/transform/index.md
+          - RATT: triply-etl/transform/ratt/index.md
+          - TypeScript: triply-etl/transform/typescript/index.md
       - Assert: 
-          - Overview: triply-etl/assert
-          - JSON-LD: triply-etl/assert/json-ld
+          - Overview: triply-etl/assert/index.md
+          - JSON-LD: triply-etl/assert/json-ld/index.md
           - RATT:
-              - Terms: triply-etl/assert/ratt/term
-              - Statements: triply-etl/assert/ratt/statement
+              - Terms: triply-etl/assert/ratt/term.md
+              - Statements: triply-etl/assert/ratt/statement.md
       - Enrich: 
-          - Overview: triply-etl/enrich
-          - SHACL: triply-etl/enrich/shacl
-          - SPARQL: triply-etl/enrich/sparql
+          - Overview: triply-etl/enrich/index.md
+          - SHACL: triply-etl/enrich/shacl/index.md
+          - SPARQL: triply-etl/enrich/sparql/index.md
       - Validate: 
-          - Overview: triply-etl/validate
-          - Graph comparison: triply-etl/validate/graph-comparison
-          - SHACL: triply-etl/validate/shacl
-      - Publish: triply-etl/publish
+          - Overview: triply-etl/validate/index.md
+          - Graph comparison: triply-etl/validate/graph-comparison/index.md
+          - SHACL: triply-etl/validate/shacl/index.md
+      - Publish: triply-etl/publish/index.md
   - Yasgui:
-      - Introduction: yasgui
+      - Introduction: yasgui/index.md
 theme:
   name: readthedocs
   locale: en
