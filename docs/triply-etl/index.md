@@ -80,7 +80,7 @@ The following pages document all TriplyETL features and configuration options:
 TriplyETL has the following core features, that set it apart from other data pipeline products:
 
 - **Backend-agnostic**: TriplyETL supports a large number of data source formats and types. Source data is processed in a unified record. This decouples configuration from source format specific. In TriplyETL, changing the source system often only requires changing the extractor.
-- **Multi-paradigm**: TriplyETL supports all major paradigms for transforming and asserting linked data: SPARQL, SHACL, RML (TBA), JSON-LD (TBA), and RDF All The Things (RATT).  You can also write your own transformations in TypeScript for optimal extensibility.
+- **Multi-paradigm**: TriplyETL supports all major paradigms for transforming and asserting linked data: SPARQL, SHACL, RML JSON-LD, and RATT (RDF All The Things).  You can also write your own transformations in TypeScript for optimal extensibility.
 - **Scalable**: TriplyETL processes data in a stream of self-contained records.  This allows TriplyETL pipelines to run in parallel, ensuring a high pipeline throughput.
 - **Standards-compliant**: TriplyETL implements the latest versions of the linked data standards and best practices: RDF 1.1, SHACL Core, SHACL Advanced, XML Schema Datatypes 1.1, IETF RFC3987 (IRIs), IETF RFC5646 (Language Tags), SPARQL 1.1 Query Languahge, SPARQL 1.1 Update, SPARQL 1.1 Federation, N-Triples 1.1, N-Quads 1.1, Turtle 1.1, TriG 1.1, RDF/XML 1.1, JSON-LD 1.1 (TBA), JSON-LD Framing (TBA), and JSON-LD Algorithms (TBA).
 - **High Quality**: The output of TriplyETL pipelines is automatically validated against the specified data model, and/or against a set of preconfigured 'gold records'.

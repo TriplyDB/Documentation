@@ -1,13 +1,35 @@
----
-title: "TriplyETL: Declare"
-path: "/docs/triply-etl/declare"
----
+# Declare
 
-This page documents how you can declare prefixes, graph names, vocabulary terms, and constants that you can use in the rest of your ETL configuration.
+Declarations introduce constants that you can use in the rest of your ETL configuration.
 
 
 
-# Prefix declarations
+## Overview
+
+TriplyETL supports the following kinds of declarations:
+
+- [Prefix declarations](#prefix-declarations)
+- [External prefix declarations](#external-prefix-declarations)
+- [Vocabulary declarations](#vocabulary-declarations)
+- [External vocabularies](#external-vocabularies)
+- [Custom abbreviations](#custom-abbreviations)
+- [Instance declarations](#instance-declarations)
+- [Graph name declarations](#graph-name-declarations)
+- [Language declarations](#language-declarations)
+- [Geospatial declarations](#geospatial-declarations)
+- [Supported vocabularies](#supported-vocabularies)
+
+Declaration functions and objects are found in the following two modules:
+
+
+```ts
+import { declarePrefix } from '@triplyetl/etl/generic'
+import { prefix } from '@triplyetl/etl/vocab'
+```
+
+
+
+## Prefix declarations
 
 Linked data uses IRIs for uniquely identifying most data items. Since IRIs can be long and complex, it is a best practice to declare short aliases that can be used to abbreviate them. Such aliases are introduced in prefix declarations.
 
@@ -58,7 +80,7 @@ See assertion functions [iri()](/triply-etl/assert/ratt#function-iri) and [str()
 
 
 
-# External prefix declarations
+## External prefix declarations
 
 In linked data, it is common to reuse existing vocabularies and datasets. TriplyETL allows you to use popular namespaces from predefined prefix declarations.
 
@@ -96,7 +118,7 @@ This may create literals like the following:
 
 
 
-# Vocabulary declarations
+## Vocabulary declarations
 
 Vocabularies are collections of IRIs that have the same namespace. The namespace can be declared with a prefix (see [Prefix declarations](#prefix-declarations)). We use the following prefix declaration as the namespace for our vocabulary:
 
@@ -170,7 +192,7 @@ graph LR
 
 
 
-# External vocabularies
+## External vocabularies
 
 In linked data, it is common to reuse existing vocabularies. Popular vocabularies can be imported from the TriplyETL vocabulary library:
 
@@ -204,7 +226,7 @@ triple(iri(id, 'some-location'), a, premis.StorageLocation),
 
 
 
-# Custom abbreviations
+## Custom abbreviations
 
 The custom abbreviation `a` is available in the popular Turtle/TriG/SPARQL languages. TriplyETL allows you to introduce this custom abbreviation from the vocabulary library:
 
@@ -231,7 +253,7 @@ This may make assertions more readable for users from certain domains. For examp
 
 
 
-# Instance declarations
+## Instance declarations
 
 The same approach that is used for [vocabulary declarations](#vocabulary-declarations) can also be used for instance declarations.
 
@@ -253,7 +275,7 @@ triple(person.john, def.knows, person.mary),
 
 
 
-# Graph name declarations
+## Graph name declarations
 
 A linked dataset contains one or more graphs. Each graph can be given a name. It is common practice to declare a fixed set of graph names that will be used throughout the TriplyETL configuration.
 
@@ -287,7 +309,7 @@ See assertion function [triples()](/triply-etl/assert/ratt#function-triples) for
 
 
 
-# Language declarations
+## Language declarations
 
 Commonly used language tags can be imported in the following way:
 
@@ -315,7 +337,7 @@ See transformation function [addLiteral()](/triply-etl/transform/ratt#function-a
 
 
 
-# Geospatial declarations
+## Geospatial declarations
 
 IRIs that denote commonly used coordinate reference systems can be imported from the `epsg` object:
 
@@ -334,8 +356,9 @@ geojsonToWkt({
 }),
 ```
 
-# Supported vocabularies
-Below is a list of vocabularies, currently supported in TriplyETL/vocabularies
+## Supported vocabularies
+
+While any vocabulary can be used in TriplyETL, the following list of commonly used vocabularies have out-of-the-box support.
 
 | Name | Version | Use cases | Description |
 | --- | --- | --- | --- |

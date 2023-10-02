@@ -1,11 +1,8 @@
----
-title: "TriplyETL: Debug"
-path: "/docs/triply-etl/debug"
----
+# Debug
 
 TriplyETL includes functions that can be used during debugging. These debug function allow you to inspect in a detailed way how data flows through your pipeline. This allows you to find problems more quickly, and allows you to determine whether data is handled correctly by your TriplyETL configuration.
 
-# Overview
+## Overview
 
 The following debug function are available:
 
@@ -27,7 +24,7 @@ import { logMemory, logQuads, logQuery, logRecord, traceEnd,
 
 
 
-# Function `logMemory()` <!-- {#logMemory} -->
+## Function `logMemory()`
 
 This function prints information about the current memory consumption. It includes the following fields:
 
@@ -58,7 +55,7 @@ Info CallCount: 3 | RecordId: 2 | Heap (MB) used: 92 / total: 122
 
 
 
-# Function `logQuads()` <!-- {#logQuads} -->
+## Function `logQuads()`
 
 This function prints the current contents of the internal store to standard output.
 
@@ -84,7 +81,7 @@ rdfs:Class a rdfs:Class
 
 
 
-# Function `logQuery()` <!-- {#logQuery} -->
+## Function `logQuery()`
 
 This function prints a query string to standard output. This is specifically useful when the query string is stored in an external system, e.g. a SPARQL query string that is stored on a TriplyDB server:
 
@@ -103,7 +100,7 @@ limit 10
 
 
 
-# Function `logRecord()` <!-- {#logRecord} -->
+## Function `logRecord()`
 
 This function prints the current state of the record to standard output. The record is a generic representation of the data that is extracted from one of the data sources (see the [Record documentation page](/triply-etl/extract/record) for more information).
 
@@ -124,7 +121,7 @@ This emits the following:
 }
 ```
 
-## Use when writing a new ETL
+### Use when writing a new ETL
 
 When writing a new ETL, `logRecord()` is often used as the first function to invoke immediately after extracting the record. For example:
 
@@ -135,7 +132,7 @@ logRecord(),
 
 Since this prints a full overview of what is available in the data source, this forms a good starting point for writing the rest of the ETL configurations.
 
-## Observe the effects of transformations
+### Observe the effects of transformations
 
 Another common use case for `logRecord()` is to observe the record at different moments in time. This is specifically useful to observe the effects of [transformation functions](/triply-etl/transform), since these are the functions that modify the record.
 
@@ -169,7 +166,7 @@ Running lib/main.js
 }
 ```
 
-## Log a specific key
+### Log a specific key
 
 Since records can be quite long, in some cases it may be easier to print only a specific key.
 
@@ -193,7 +190,7 @@ This results in the following output:
 
 
 
-# Functions `traceStart()` and `traceEnd()` <!-- {#trace} -->
+## Functions `traceStart()` and `traceEnd()`
 
 Sometimes you are interested to find one specific record based on a certain value of a key and/or to see the changes in this record made by specific middlewares. For these purposes, `trace` middleware can be used.
 

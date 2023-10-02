@@ -1,9 +1,5 @@
----
-title: "TriplyETL: Command-Line Interface (CLI)"
-path: "/docs/triply-etl/cli"
----
-
 # Command Line Interface (CLI)
+
 TriplyETL allows you to manually perform various tasks in a terminal application (a Command-Line Interface or CLI).
 
 - [Installing dependencies](#installing-dependencies) must be repeated when dependencies were changed.
@@ -188,10 +184,10 @@ The following tools are supported:
 
 | Tool | Description |
 | --- | --- |
-| [`compare`](#tool-compare) | Compare the contents of two RDF files |
-| [`create-token`](#tool-create-token) | Create a new TriplyDB API Token |
-| [`print-token`](#tool-print-token) | Print the currently set TriplyDB API Token, if any |
-| [`validate`](#tool-validate) | Validate a data file against a SHACL shapes file |
+| [`compare`](#compare) | Compare the contents of two RDF files |
+| [`create-token`](#create-triplydb-api-token) | Create a new TriplyDB API Token |
+| [`print-token`](#print-triplydb-api-token) | Print the currently set TriplyDB API Token, if any |
+| [`validate`](#validate) | Validate a data file against a SHACL shapes file |
 
 <!--
 | [`report`](#tool-report) | Generate a report file that describes the content of the currently configured TriplyDB instance, if any |

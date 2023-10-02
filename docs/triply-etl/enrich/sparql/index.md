@@ -1,7 +1,4 @@
----
-title: "4. Enrich: SPARQL Update"
-path: "/docs/triply-etl/enrich/sparql"
----
+# SPARQL Update
 
 SPARQL Update is a powerful feature that allows you to modify and enrich linked data in the internal store. With SPARQL Update, you can generate new linked data based on existing linked data, thereby enhancing the content of the store.
 
@@ -9,7 +6,7 @@ SPARQL Update is a powerful feature that allows you to modify and enrich linked 
 
 
 
-# Prerequisites
+## Prerequisites
 
 The function for executing SPARQL Update requests is imported as follows:
 
@@ -19,7 +16,7 @@ import { update } from '@triplyetl/etl/sparql'
 
 
 
-# Add data to the internal store
+## Add data to the internal store
 
 SPARQL Update can be used to add linked data to the internal store. The following example adds one triple:
 
@@ -47,7 +44,7 @@ base <https://triplydb.com/>
 <john> <knows> <mary>.
 ```
 
-## Using prefix declarations
+### Using prefix declarations
 
 Notice that the SPARQL Update function takes a plain string. Any typos you make in this string will only result in errors at runtime, when the query string is interpreted and executed.
 
@@ -93,14 +90,14 @@ prefix sdo: <https://schema.org/>
 
 
 
-# Remove data from the internal store
+## Remove data from the internal store
 
 While there are not many uses cases for removing data from the internal store, this is an operation that is supported by the SPARQL Update standard.
 
 The following function call removes the parent/child relationship assertion that was added to the internal store earlier:
 
 ```ts
-    update(`
+update(`
 prefix sdo: <${prefix.sdo('').value}>
 delete data { <john> sdo:children <mary>. }`),
 ```
@@ -109,7 +106,7 @@ You can use the debug function [logQuads()](/triply-etl/debug#function-logquads)
 
 
 
-# Conditionally adding/removing data
+## Conditionally adding/removing data
 
 SPARQL Update can be used to conditionally add and/or remove linked data to/from the internal store. It uses the following keywords for this:
 
@@ -164,7 +161,7 @@ where {
 ```
 
 <!-- TODO
-## Moving data between graphs
+### Moving data between graphs
 
 This operation reads the contents of a document representing a graph and loads it into a graph in the Graph Store.
    
@@ -192,7 +189,7 @@ load <g> into graph <h>`),
 
 In this example, the `LOAD` operation is used to load the contents of a document specified by `<IRIref_from>` into the graph specified by `<IRIref_to>`. The document referred to by `<IRIref_from>` represents a graph, and its contents will be added to the graph identified by `<IRIref_to>`. This allows you to incorporate data from an external source or document into a specific graph within the Graph Store.
 
-### 5. `CLEAR`
+#### 5. `CLEAR`
 
 This operation removes all triples in one or more graphs.
 
@@ -206,7 +203,7 @@ In this example, the `CLEAR` operation is used to remove all the triples contain
 
 * Please note that you need to replace `<IRIref_from>` and `<IRIref_to>` with appropriate IRIs or URLs for the actual data sources or destinations.
 
-### A complete example
+#### A complete example
 
 To demonstrate the usage of the `update()` function with SPARQL Update queries, we provide a complete TriplyETL script example. In this example, we will show how to generate new linked data based on existing linked data using SPARQL Update.
 
@@ -245,7 +242,7 @@ export default async function (): Promise<Etl> {
 }
 ```
 
-### Source data
+#### Source data
 
 In our example, we are using the following source data that records the age of a person:
 
@@ -261,7 +258,7 @@ In this example, the data source is in the form of [inline JSON](/triply-etl/ext
 fromJson([{ age: 'twenty', id: '1' }]),
 ```
 
-### Target data without SPARQL Update
+#### Target data without SPARQL Update
 
 Based on the source data in Step 1, without applying SPARQL Update, the resulting linked data in TriplyDB would be:
 
@@ -271,7 +268,7 @@ id:1
   foaf:age 'twenty'.
 ```
 
-### Target data with SPARQL Update
+#### Target data with SPARQL Update
 
 By applying the SPARQL Update query using the `update()` function, an additional triple will be added to the data. In this case, the new triple indicates that the person in the source data is an adult based on the age condition. Consequently, the updated data in TriplyDB would appear as:
 

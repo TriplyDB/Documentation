@@ -1,3 +1,5 @@
+# Assert
+
 The **Assert** step uses data from the Record to add linked data to the Internal Store.
 
 ```mermaid
@@ -17,6 +19,8 @@ graph LR
 ```
 
 Assertion are statements of fact.  In linked data, assertions are commonly called 'triples' or 'quads'.  A triple is composed of three parts: a subject term, a predicate term, and an object term.  A quad or quadruple also has a fourth graph term.
+
+## Overview
 
 TriplyETL supports the following assertion approaches:
 

@@ -1,7 +1,4 @@
----
-title: "4. TriplyETL: Enrich"
-path: "/docs/triply-etl/enrich"
----
+# Enrich
 
 The **Enrich** step uses linked data that is asserted in the Internal Store to derive new linked data.
 
@@ -20,6 +17,8 @@ graph LR
   source[Data Sources]
   tdb[(Triple Store)]
 ```
+
+## Overview
 
 TriplyETL supports the following enrichment approaches:
 

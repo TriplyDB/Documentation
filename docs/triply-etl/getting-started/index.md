@@ -1,7 +1,4 @@
----
-title: "TriplyETL: Getting Started"
-path: "/docs/triply-etl/getting-started"
----
+# Getting Started
 
 This page helps you to get started with TriplyETL. You can get started with TriplyETL in any of the following ways:
 

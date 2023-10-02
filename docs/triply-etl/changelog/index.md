@@ -1,32 +1,18 @@
 # Changelog
 
-The current version of TriplyETL is **2.0.15**
+The current version of TriplyETL is **2.0.19**
 
 You can use this changelog to perform a safe update from an older version of TriplyETL to a newer one. See the documentation for [Upgrading TriplyETL repositories](/triply-etl/cli) for the advised approach, and how the changelog factors into that.
 
 
 
-# Changelogs for TriplyETL 2.0.x
+## TriplyETL 2.0.7 through 2.0.19
 
-## TriplyETL 2.0.12 through 2.0.15
-
-Release dates: between 2023-07-11 and 2034-09-13
-
-No known changes
-
-## TriplyETL 2.0.11
-
-Release date: 2023-07-11
-
-The following bug has been fixed:
-- Processing an Excel sheet with [fromXml()](/docs/triply-etl/extract/formats#fromXml) would sometimes consume too much memory.
-
-
-## TriplyETL 2.0.7 through 2.0.10
-
-Release dates: 2023-06-17 through 2023-06-28
+Release dates: 2023-06-17 through 2023-09-29
 
 The following bugs have been fixed:
+
+- Processing an Excel sheet with [fromXml()](/docs/triply-etl/extract/formats#fromXml) would sometimes consume too much memory.
 - Several installation issues on Windows have been resolved.
 - The `async-saxophone` library for XML processing was adjusted to support the current LTS version of Node.js (v18).
 
@@ -232,6 +218,7 @@ The following bug fixes are included in this release:
 - When a key with a NULL value was accessed, the name of the key is now included in the error message.
 
 
-# Start of the changelog
+
+## TriplyETL 1.0.x
 
 TriplyETL 1.0.0 was released on 2023-03-20.
