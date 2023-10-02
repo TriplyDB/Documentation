@@ -49,6 +49,10 @@ theme:
   name: readthedocs
   locale: en
 
+extra_css:
+  - css/triply.css
+
+
 markdown_extensions:
   - pymdownx.highlight:
       anchor_linenums: true
