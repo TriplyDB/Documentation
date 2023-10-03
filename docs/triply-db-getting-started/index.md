@@ -568,7 +568,7 @@ https://triplydb.com/DBpedia-association/-/queries/timeline-cars
 
 The result of a query can be downloaded via the TriplyDB interface. After saving the query, open it in TriplyDB. e.g. https://triplydb.com/DBpedia-association/-/queries/timeline-cars/. 
 
-You can download results in different data format, depending on which [visualization option](https://triply.cc/docs/yasgui/#visualizations) you use.
+You can download results in different data format, depending on which [visualization option](/yasgui/#visualizations) you use.
 For example, if you want to download the results in a `.json` format, you can choose the option `Response` and click on the download icon or scroll down and click on `Download result`.
 
 ![Download the query result via the download icon.](queryResult.png)
@@ -580,16 +580,16 @@ Below is a table of all supported visualizations and what format of results they
 
 |                     **Visualization option**                 | **Result data format** |
 | ------------------------------------------------------------ | ---------------------- |
-|       [Table](https://triply.cc/docs/yasgui/#table)          | `.csv`                 |
-|       [Response](https://triply.cc/docs/yasgui/#response)    | `.json`                |
-|       [Gallery](https://triply.cc/docs/yasgui/#gallery)      | Download not supported |
-|       [Chart](https://triply.cc/docs/yasgui/#charts)         | `.svg`                 |
-|       [Geo](https://triply.cc/docs/yasgui/#geo)              | Download not supported |
-|       [Geo-3D](https://triply.cc/docs/yasgui/#geo-3d)        | Download not supported |
-|       [Geo events](https://triply.cc/docs/yasgui/#geo-events)| Download not supported |
-|       [Markup](https://triply.cc/docs/yasgui/#markup)        | `.svg`, `.html`        |
-|       [Network](https://triply.cc/docs/yasgui/#network)      | `.png`                 |
-|       [Timeline](https://triply.cc/docs/yasgui/#timeline)    | Download not supported |
+|       [Table](/yasgui/#table)          | `.csv`                 |
+|       [Response](/yasgui/#response)    | `.json`                |
+|       [Gallery](/yasgui/#gallery-triplydb-plugin)      | Download not supported |
+|       [Chart](/yasgui/#chart-triplydb-plugin)         | `.svg`                 |
+|       [Geo](/yasgui/#geo-triplydb-plugin)              | Download not supported |
+|       [Geo-3D](/yasgui/#geo-3d-triplydb-only)        | Download not supported |
+|       [Geo events](/yasgui/#geo-events-triplydb-plugin)| Download not supported |
+|       [Markup](/yasgui/#markup-triplydb-plugin)        | `.svg`, `.html`        |
+|       [Network](/yasgui/#network-triplydb-plugin)      | `.png`                 |
+|       [Timeline](/yasgui/#timeline-triplydb-plugin)    | Download not supported |
 
 
 
@@ -623,11 +623,11 @@ link:
 
 #### Pagination with TriplyDB.js
 
-**TriplyDB.js** is the official programming library for interacting with [TriplyDB](https://triply.cc/docs/triply-db-getting-started/). TriplyDB.js allows the user to connect to a TriplyDB instance via the TypeScript language. TriplyDB.js has the advantage that it can handle pagination internally so it can reliably retrieve a large number of results.
+**TriplyDB.js** is the official programming library for interacting with [TriplyDB](/triply-db-getting-started/). TriplyDB.js allows the user to connect to a TriplyDB instance via the TypeScript language. TriplyDB.js has the advantage that it can handle pagination internally so it can reliably retrieve a large number of results.
 
 To get the output for a `construct` or `select` query, follow these steps:
 
-1. Import the TriplyDB library and set your parameters, regarding the TriplyDB instance and the account in which you have saved the query as well as the name of the query. Do not forget that we perform TriplyDB.js requests within an [async context](#create-your-first-script).
+1. Import the TriplyDB library and set your parameters, regarding the TriplyDB instance and the account in which you have saved the query as well as the name of the query. Do not forget that we perform TriplyDB.js requests within an async context.
 
    ```ts
    import Client from '@triply/triplydb'
@@ -710,11 +710,11 @@ SPARQL queries as a RESTful API, also means you can transport your data to your 
 
 Clicking the '</>' button opens the code snippet screen. Here you select the snippet in the language you want to have, either Python or R. You can then copy the snippet, by clicking the 'copy to clipboard' button or selecting the snippet and pressing `ctrl-c`. Now you can paste the code in the location you want to use the data. The data is stored in the `data` variable in `JSON` format.
 
-When the SPARQL query is not public, but instead either private or internal, you will need to add an authorization header to the get request. Without the authorization header the request will return an incorrect response. Checkout [Creating your API token](generics/api-token) about creating your API-token for the authorization header.
+When the SPARQL query is not public, but instead either private or internal, you will need to add an authorization header to the get request. Without the authorization header the request will return an incorrect response. Checkout [Creating your API token](/triply-api/#creating-an-api-token) about creating your API-token for the authorization header.
 
 Check out the [SPARQL pagination page](#download-more-than-10-000-query-results-sparql-pagination) when you want to query a SPARQL query that holds more than 10.000 results. The [SPARQL pagination page ](#download-more-than-10-000-query-results-sparql-pagination) will explain how you can retrieve the complete set.   
 
-## Query metadata <!-- {#query-metadata} -->
+## Query metadata
 
 Every Saved Query has a metadata section. This metadata section includes the following two links:
 - A link to the dataset over which the query is executed. Clicking this links navigates to the dataset homepage.
@@ -732,7 +732,7 @@ Users can specify additional metadata inside the query string, by using the GRLC
 
 See the [Triply API documentation](/triply-api#queries) for how to retrieve query metadata, including how to retrieve GRLC annotations.
 
-# Data stories <!-- {#data-stories} -->
+# Data stories 
 
 A TriplyDB data story is a way of communicating information about your linked data along with explanatory text while also being able to integrate query results.
 

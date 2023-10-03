@@ -40,60 +40,7 @@ process.on('unhandledRejection', (reason, p) => {
 
 The following sections document the various TriplyDB.js classes. Each class comes with its own methods. Classes are related through methods that connect them. For example, calling the `getAccount` method on a `App` object returns an `Account` object.
 
-```mermaid
-classDiagram
-  class Account {
-    asOrganization()
-    asUser()
-  }
-  Account --> Dataset: getDataset
-  Account --> Dataset: getDatasets
-  Account --> Query: getQuery
-  Account --> Query: getQueries
-  Account --> Story: getStory
-  Account --> Story: getStories
-
-  class App {
-    getInfo()
-  }
-  App --> Account: getAccount
-  App --> Account: getAccounts
-  App --> Organization: getOrganization
-  App --> User: getUser
-
-  class Asset {
-    getInfo()
-  }
-
-  class Dataset {
-    getInfo()
-  }
-  Dataset --> Asset: getAsset
-  Dataset --> Asset: getAssets
-  Dataset --> Service: getService
-  Dataset --> Service: getServices
-
-  class Organization {
-  }
-  Account <|-- Organization
-  Organization --> User: getMember
-  Organization --> User: getMembers
-
-  class Query {
-    getInfo()
-  }
-
-  class Story {
-    getInfo()
-  }
-
-  class User {
-  }
-  Account <|-- User
-  User --> Organization: getOrganizations
-```
-
-
+![](ClassDiagram.png)
 
 # App
 

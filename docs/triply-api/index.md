@@ -42,7 +42,7 @@ Authorization: Bearer TOKEN
 ```
 
 In the above, `TOKEN` should be replaced by your personal API token (a
-lengthy sequence of characters). See [Creating an API token](#Creating-an-API-token) for
+lengthy sequence of characters). See [Creating an API token](#creating-an-api-token) for
 information on how to create an API token.
 
 ## Exporting linked data
@@ -86,7 +86,7 @@ https://api.triplydb.com/datasets/academy/pokemon/
 
 ### Create a dataset
 
-You can create a new dataset via the Triply API. You need to [use the API Token](#Using-the-API-token) and send an HTTP POST request with data specifying: `name`, `accessLevel` and `displayName`.
+You can create a new dataset via the Triply API. You need to [use the API Token](#using-the-api-token) and send an HTTP POST request with data specifying: `name`, `accessLevel` and `displayName`.
 
 
 The  example of the URI:
@@ -97,14 +97,14 @@ curl -H 'Authorization: Bearer TOKEN' -H 'Content-Type: application/json' -X POS
 Upper-case letter words in json after `-d` must be replaced by the following values:
 
 - `NAME` :: The name of the dataset in the url.
-- `ACCESS_LEVEL` ::  *public*, *private* or *internal*. For more information visit [Access levels in TriplyDB](https://triply.cc/docs/triply-db-getting-started/#access-levels).
+- `ACCESS_LEVEL` ::  *public*, *private* or *internal*. For more information visit [Access levels in TriplyDB](/triply-db-getting-started/#access-levels).
 - `DISPLAY_NAME` :: The display name of the dataset. 
 
 
 ### Upload data to a dataset
 
-You can upload a data file via the Triply API. You need to [use the API Token](#Using-the-API-token) and send an HTTP POST request with data specifying the local file path. 
-The list of supported file extentions can be checked in [Adding data: File upload](https://triply.cc/docs/triply-db-getting-started/#adding-data-file-upload) documentation. 
+You can upload a data file via the Triply API. You need to [use the API Token](#using-the-api-token) and send an HTTP POST request with data specifying the local file path. 
+The list of supported file extentions can be checked in [Adding data: File upload](/triply-db-getting-started/#adding-data-file-upload) documentation. 
 
 The  example of the URI:
 ```sh
@@ -336,7 +336,7 @@ See the following sections for more information on how to query the endpoints pr
 
 ### Create a service 
 
-You can create a service for a dataset via TriplyDB API. You need to [use the API Token](#Using-the-API-token) and send an HTTP POST request with data specifying: `"type"` and `"name"`.
+You can create a service for a dataset via TriplyDB API. You need to [use the API Token](#using-the-api-token) and send an HTTP POST request with data specifying: `"type"` and `"name"`.
 
 The  example of the URI:
 ```sh
@@ -350,7 +350,7 @@ Upper-case letter words in json after `-d` must be replaced by the following val
 
 ### Synchronize a service 
 
-You can synchronize existing service for a dataset via TriplyDB API. You need to [use the API Token](#Using-the-API-token) and send an HTTP POST request with data:
+You can synchronize existing service for a dataset via TriplyDB API. You need to [use the API Token](#using-the-api-token) and send an HTTP POST request with data:
 
 ```
 {"sync": "true"}
