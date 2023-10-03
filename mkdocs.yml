@@ -45,6 +45,7 @@ nav:
       - Publish: triply-etl/publish/index.md
   - Yasgui:
       - Introduction: yasgui/index.md
+      - For developers:  yasgui-api/index.md
 theme:
   name: readthedocs
   locale: en

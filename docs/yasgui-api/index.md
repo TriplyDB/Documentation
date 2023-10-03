@@ -31,7 +31,7 @@ npm i @triply/yasgui
 yarn add @triply/yasgui
 ```
 
-### Via cdn <!-- {#web} -->
+### Via cdn
 
 To include Yasgui in your webpage, all that's needed is importing the Yasgui JavaScript and CSS files, and initializing a Yasgui object:
 
@@ -103,7 +103,7 @@ tab.yasqe;
 tab.yasr;
 ```
 
-### Events <!-- {#yasgui-events} -->
+### Events
 
 Yasgui emits several Events. For information on how to use Events, see [NodeJS's Event documentation](https://nodejs.org/api/events.html).
 
@@ -219,7 +219,7 @@ yasqe.setSize(500, 300);
 yasqe.collapsePrefixes(true);
 ```
 
-### Events <!-- {#yasqe-events} -->
+### Events
 
 Yasqe emits several Events. For information on how to use Events, see [NodeJS's Event documentation](https://nodejs.org/api/events.html).
 
@@ -281,7 +281,7 @@ yasr.selectPlugin("table")
 yasr.download()
 ```
 
-### Events {#yasr-events}
+### Events
 
 ```ts
 // Fires just before a plugins draws the results

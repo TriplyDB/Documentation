@@ -135,7 +135,7 @@ https://api.triplydb.com/accounts/Triply
 
 
 
-## Queries <!-- {#queries} -->
+## Queries
 
 TriplyDB allows users to save SPARQL queries. The metadata for all saved query can be accessed as follows:
 
