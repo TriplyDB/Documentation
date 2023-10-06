@@ -6,9 +6,30 @@ plugins:
 nav:
   - Home: index.md
   - TriplyDB:
-      - Getting started: triply-db-getting-started/index.md
+      - Getting started:
+            - Overview: triply-db-getting-started/index.md
+            - Uploading data: triply-db-getting-started/uploading-data/index.md
+            - Publishing data: triply-db-getting-started/publishing-data/index.md
+            - Viewing data: triply-db-getting-started/viewing-data/index.md
+            - Exporting data: triply-db-getting-started/exporting-data/index.md
+            - Saved queries: triply-db-getting-started/saved-queries/index.md
+            - Data stories: triply-db-getting-started/data-stories/index.md
+            - Admin settings pages: triply-db-getting-started/admin-settings-pages/index.md
+            - Reference: triply-db-getting-started/reference/index.md
       - API: triply-api/index.md
-      - TriplyDB-JS: triplydb-js/index.md
+      - TriplyDB-JS: 
+            - Overview: triplydb-js/index.md
+            - App: triplydb-js/app/index.md
+            - Account: triplydb-js/account/index.md
+            - Asset: triplydb-js/asset/index.md
+            - Dataset: triplydb-js/dataset/index.md
+            - Graph: triplydb-js/graph/index.md
+            - Organization: triplydb-js/organization/index.md
+            - Query: triplydb-js/query/index.md
+            - Service: triplydb-js/service/index.md
+            - Story: triplydb-js/story/index.md
+            - User: triplydb-js/user/index.md
+            - FAQ: triplydb-js/faq/index.md
   - TriplyETL:
       - Generics:
           - Overview: triply-etl/index.md
