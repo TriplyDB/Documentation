@@ -10,7 +10,7 @@ removing the hassle of figuring out how to run a SPARQL query.
 There are two ways to create a saved query.
 _You need to be logged in and have authorization rights on the dataset to use this feature_
 
-1. When working from the [SPARQL IDE](#sparql-ide)
+1. When working from the [SPARQL IDE](/triply-db-getting-started/viewing-data#sparql-ide)
 2. Using the Saved Queries tab in a dataset
 
 Creating a saved query with the SPARQL IDE is done by writing a query/visualization and hitting the save button ![The save query button highlighted](save-query-highlighted.png)
@@ -29,7 +29,7 @@ If you want to delete a saved query, you can do so by clicking the three dots on
 
 ### Sharing a saved query
 
-To share a saved query, for example in [Data Stories](#data-stories), you can copy the link that is
+To share a saved query, for example in [Data Stories](/triply-db-getting-started/data-stories#data-stories), you can copy the link that is
 used when you open the query in TriplyDB. Let's say you have a query called
 `Timelined-Cars-BETA` in the dataset `core` under the account `dbpedia` and you
 want to use version 9. Then the following link would be used
@@ -46,7 +46,7 @@ https://triplydb.com/DBpedia-association/-/queries/timeline-cars
 ```
 ### Downloading a query result
 
-The result of a query can be downloaded via the TriplyDB interface. After saving the query, open it in TriplyDB. e.g. https://triplydb.com/DBpedia-association/-/queries/timeline-cars/. 
+The result of a query can be downloaded via the TriplyDB interface. After saving the query, open it in TriplyDB. e.g. <https://triplydb.com/DBpedia-association/-/queries/timeline-cars/>. 
 
 You can download results in different data format, depending on which [visualization option](/yasgui/#visualizations) you use.
 For example, if you want to download the results in a `.json` format, you can choose the option `Response` and click on the download icon or scroll down and click on `Download result`.

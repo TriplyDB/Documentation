@@ -20,18 +20,18 @@ The following steps allow a new linked datasets to be created:
 
 5. Optionally, enter a dataset description. You can use rich text
    formatting by using Markdown. See [our section about
-   Markdown](#markdown-support) for details.
+   Markdown](/triply-db-getting-started/reference#markdown-support) for details.
 
 6. Optionally, change the access level for the dataset. By default
    this is set to “Private”. See [dataset access
-   levels](#access-levels) for more information.
+   levels](/triply-db-getting-started/reference#access-levels) for more information.
 
 
 ![The “Add dataset” dialog](createdataset.png)
 
-When datasets are Public (see [Access Levels](#access-levels)), they
+When datasets are Public (see [Access Levels](/triply-db-getting-started/reference#access-levels)), they
 automatically expose metadata and are automatically crawled and
-indexed by popular search engines (see [Metadata](#metadata)).
+indexed by popular search engines (see [Metadata](/triply-db-getting-started/publishing-data#entering-metadata)).
 
 ## Adding data
 

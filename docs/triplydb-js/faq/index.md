@@ -40,13 +40,13 @@ echo $TOKEN
 
 To reliably retrieve a large number of results as the output of a `construct` or `select` query, follow these steps:
 
-1. Import the triplydb library.
+1\. Import the triplydb library.
 
    ```ts
    import App from '@triply/triplydb';
    ```
 
-2. Set your parameters, regarding the TriplyDB server and the account in which you have saved the query as well as the name of the query.
+2\. Set your parameters, regarding the TriplyDB server and the account in which you have saved the query as well as the name of the query.
 
    ```ts
    const triply = App.get({ url: 'https://api.triplydb.com' })
@@ -60,7 +60,7 @@ To reliably retrieve a large number of results as the output of a `construct` or
    const triply = App.get({ token: process.env.TOKEN })
    ```
 
-3. Do not forget that we perform TriplyDB.js requests within an [async context](#create-your-first-script). That is:
+3\. Do not forget that we perform TriplyDB.js requests within an [async context](#create-your-first-script). That is:
 
    ```ts
    async function run() {
@@ -69,7 +69,7 @@ To reliably retrieve a large number of results as the output of a `construct` or
    run()
    ```
 
-4. Get the results of a query by setting a `results` variable. More specifically, for construct queries:
+4\. Get the results of a query by setting a `results` variable. More specifically, for construct queries:
 
    ```ts
    const results = query.results().statements()
@@ -102,7 +102,7 @@ To reliably retrieve a large number of results as the output of a `construct` or
      .bindings()
    ```
 
-5. To read the results you have three options:
+5\. To read the results you have three options:
 
    5a. Iterate through the results per row in a `for`-loop:
 
@@ -140,7 +140,7 @@ To reliably retrieve a large number of results as the output of a `construct` or
 
 TriplyDB.js makes use of async iterators for retrieving lists of objects. Async iterators are a method of fetching and iterating through large lists, without having to first fetch the whole set.
 
-An example of an async iterator in TriplyDB.js is [`App.getAccounts()`](#appgetaccounts). The following code illustrates how it can be used.
+An example of an async iterator in TriplyDB.js is [`App.getAccounts()`](/triplydb-js/app#appgetaccounts). The following code illustrates how it can be used.
 
 ```ts
 for await (const account of triply.getAccounts()) {
@@ -156,13 +156,13 @@ const accounts = await triply.getAccounts().toArray()
 
 TriplyDB.js returns async iterators from the following methods:
 
-- [`App.getAccounts()`](#appgetaccounts)
-- [`Account.getDatasets()`](#accountgetdatasets)
-- [`Account.getQueries()`](#accountgetqueries)
-- [`Account.getStories()`](#accountgetstories)
-- [`Dataset.getServices()`](#datasetgetservices)
-- [`Dataset.getAssets()`](#datasetgetassets)
-- [`Dataset.getGraphs()`](#datasetgetgraphs)
-- [`Dataset.getStatements()`](#datasetgetstatements)
-- [`Query.results().statements()`](#queryresultsstatements) for SPARQL `construct` and `describe` queries
-- [`Query.results().bindings()`](#queryresultsbindings) for SPARQL `select` queries
+- [`App.getAccounts()`](/triplydb-js/app#appgetaccounts)
+- [`Account.getDatasets()`](/triplydb-js/account#accountgetdatasets)
+- [`Account.getQueries()`](/triplydb-js/account#accountgetqueries)
+- [`Account.getStories()`](/triplydb-js/account#accountgetstories)
+- [`Dataset.getServices()`](/triplydb-js/dataset#datasetgetservices)
+- [`Dataset.getAssets()`](/triplydb-js/dataset#datasetgetassets)
+- [`Dataset.getGraphs()`](/triplydb-js/dataset#datasetgetgraphs)
+- [`Dataset.getStatements()`](/triplydb-js/dataset#datasetgetstatementssubject-string-predicate-string-object-string-graph-string)
+- [`Query.results().statements()`](/triplydb-js/query#queryresultsapivariables-object-options-object) for SPARQL `construct` and `describe` queries
+- [`Query.results().bindings()`](/triplydb-js/query/#queryresultsapivariables-object-options-object) for SPARQL `select` queries

@@ -5,17 +5,17 @@ A TriplyDB data story is a way of communicating information about your linked da
 
 Story objects are obtained through the the following methods:
 
-- [`User.addStory`](#useraddstoryname-string-metadata-object)
-- [`User.ensureStory`](#userensurestoryname-string-metadata-object)
-- [`User.getStories`](#usergetstories)
-- [`User.getStory`](#usergetstoryname-string)
+- [`User.addStory`](/triplydb-js/user#useraddstoryname-string-metadata-object)
+- [`User.ensureStory`](/triplydb-js/user#userensurestoryname-string-metadata-object)
+- [`User.getStories`](/triplydb-js/user#usergetstories)
+- [`User.getStory`](/triplydb-js/user#usergetstoryname-string)
 
 
 ## Story.delete()
 
 Deletes this story. This deletes all paragraphs that belong to this story.
 
-This _does not_ delete the queries that are linked into this story. If you also want to delete the queries, then this must be done with distinct calls of [`Query.delete()`](#querydelete).
+This _does not_ delete the queries that are linked into this story. If you also want to delete the queries, then this must be done with distinct calls of [`Query.delete()`](/triplydb-js/query#querydelete).
 
 ### Examples
 

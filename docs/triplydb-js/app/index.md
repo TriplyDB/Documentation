@@ -68,9 +68,9 @@ If `name` is omitted, the TriplyDB account that is associated with the current A
 
 ### See also
 
-This method returns an account object. See class [Account](#account) for an overview of the methods that can be called on such objects.
+This method returns an account object. See class [Account](/triplydb-js/account#account) for an overview of the methods that can be called on such objects.
 
-Class [Account](#account) has two specializations: class [Organization](#organization) and class [User](#user). In line with these class specializations, there are also two method specializations:
+Class [Account](/triplydb-js/account#account) has two specializations: class [Organization](/triplydb-js/organization#organization) and class [User](/triplydb-js/user/#user). In line with these class specializations, there are also two method specializations:
 
 - Method [`App.getOrganization(name: string)`](#appgetorganizationname-string) returns an organization object.
 
@@ -79,7 +79,7 @@ Class [Account](#account) has two specializations: class [Organization](#organiz
 
 ## App.getAccounts()
 
-Returns an [async iterator](#what-is-an-async-iterator) over all accounts in the TriplyDB server.
+Returns an [async iterator](/triplydb-js/faq#what-is-an-async-iterator) over all accounts in the TriplyDB server.
 
 ### Example
 
@@ -98,7 +98,7 @@ Returns an [async iterator](#what-is-an-async-iterator) over all accounts in the
   console.log(await triply.getAccounts().toArray())
   ```
 
-See class [Account](#account) for an overview of the methods that can be used with account objects.
+See class [Account](/triplydb-js/account#account) for an overview of the methods that can be used with account objects.
 
 
 ## App.getInfo()
@@ -130,7 +130,7 @@ This method is similar to [`App.getAccount(name?: string)`](#appgetaccountname-s
 
 - This method only works for accounts that represent TriplyDB organizations.
 
-- This method returns an organization object. Class [Organization](#organization) is a specialization of class [Account](#account).
+- This method returns an organization object. Class [Organization](/triplydb-js/organization#organization) is a specialization of class [Account](/triplydb-js/account#account).
 
 ### Examples
 
@@ -140,7 +140,7 @@ The following snippet returns the organization called `'Triply'`:
 const organization = await triply.getOrganization('Triply')
 ```
 
-See class [Organization](#organization) for an overview of the methods that can be used with organization objects.
+See class [Organization](/triplydb-js/organization#organization) for an overview of the methods that can be used with organization objects.
 
 ### Alternatives
 
@@ -148,7 +148,7 @@ This method is a shorthand for calling the following two methods:
 
 - Call method [`App.getAccount(name?: string)`](#appgetaccountname-string) to retrieve an account object.
 
-- Then call method [`Account.asOrganization()`](#accountasorganization) to cast the account object into an organization object.
+- Then call method [`Account.asOrganization()`](/triplydb-js/account#accountasorganization) to cast the account object into an organization object.
 
 The following snippet returns the same result as the previous example, but uses two methods instead of one:
 
@@ -159,7 +159,7 @@ const organization = account.asOrganization()
 
 ### See also
 
-This method returns an organization object. See class [Organization](#organization) for an overview of the methods that can be called on such objects.
+This method returns an organization object. See class [Organization](/triplydb-js/organization#organization) for an overview of the methods that can be called on such objects.
 
 
 ## App.getUser(name?: string)
@@ -188,7 +188,7 @@ This method is a shorthand for the following two methods:
 
 1. Call method [`App.getAccount()`](#appgetaccountname-string) to retrieve an account object.
 
-2. Then call method [`Account.asUser()`](#accountasuser) to cast the account object into a user object.
+2. Then call method [`Account.asUser()`](/triplydb-js/account#accountasuser) to cast the account object into a user object.
 
 The following snippet returns the same result as the previous examples, but uses two methods instead of one:
 
@@ -199,7 +199,7 @@ const user = account.asUser()
 
 ### See also
 
-This method returns a user object. See class [User](#user) for an overview of the methods that can be called on such objects.
+This method returns a user object. See class [User](/triplydb-js/user#user) for an overview of the methods that can be called on such objects.
 
 
 ## App.isCompatibleWith(minimumVersion: string)

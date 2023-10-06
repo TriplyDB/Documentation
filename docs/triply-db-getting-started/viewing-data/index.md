@@ -130,7 +130,7 @@ Open Source [Yasgui](/yasgui) query editor.
 
 It is often useful to save a SPARQL query for later use. This is
 achieved by clicking on the save icon in the top-right corner of the
-SPARQL Editor. Doing so will create a [Save Query](#saved-queries).
+SPARQL Editor. Doing so will create a [Save Query](/triply-db-getting-started/saved-queries#saved-queries).
 
 ### Sharing a SPARQL query
 
@@ -146,7 +146,7 @@ from which the SPARQL query can be copied in the following three forms:
    visualizations. Long URLs are not supported by some application
    that cut off a URL after a maximum length (often 1,024
    characters). Use one of the other two options or use [Saved
-   Queries](#saved-queries) to avoid such restrictions.
+   Queries](/triply-db-getting-started/saved-queries#saved-queries) to avoid such restrictions.
 
 2. A short URL that redirects to the full URL-encoded SPARQL query.
 
@@ -154,7 +154,7 @@ from which the SPARQL query can be copied in the following three forms:
    application that supports this command. cURL is often used by
    programmers to test HTTP(S) requests.
 
-[Saved Queries](#saved-queries) are a more modern way of sharing SPARQL queries.
+[Saved Queries](/triply-db-getting-started/saved-queries#saved-queries) are a more modern way of sharing SPARQL queries.
 They do not have any of the technical limitations that occur with
 URL-encoded queries.
 

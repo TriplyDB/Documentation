@@ -121,7 +121,7 @@ It currently does not support the use of variables.
 
 `Query.results()` function will automatically return all the results from a saved query. You can retrieve both results from a `select` or `ask` query and a `construct` or `describe` query. The results are returned as an `async iterator`.
 
-If there are more than 10 000 query results, they could be retrieved using [pagination with TriplyDB.js](/triply-db-getting-started/#pagination-with-triplydbjs).
+If there are more than 10 000 query results, they could be retrieved using [pagination with TriplyDB.js](/triply-db-getting-started/saved-queries#pagination-with-triplydbjs).
 
 ### Examples
 

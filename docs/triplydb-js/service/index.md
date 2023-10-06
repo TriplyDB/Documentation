@@ -4,8 +4,8 @@ Service objects describe specific functionalities that can be created over datas
 
 Service objects are obtained through the the following methods:
 
-- [`Dataset.addService`](#datasetaddservicename-string-metadata-object)
-- [`Dataset.getServices`](#datasetgetservices)
+- [`Dataset.addService`](/triplydb-js/dataset#datasetaddservicename-string-metadata-object)
+- [`Dataset.getServices`](/triplydb-js/dataset#datasetgetservices)
 
 A service always has one of the following statuses:
 

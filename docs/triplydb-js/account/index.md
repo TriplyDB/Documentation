@@ -1,10 +1,10 @@
 # Account
 
-Instances of the `Account` class denote TriplyDB accounts. Accounts can be either organizations ([`Organization`](#organization)) or users ([`User`](#user)).
+Instances of the `Account` class denote TriplyDB accounts. Accounts can be either organizations ([`Organization`](/triplydb-js/organization#organization)) or users ([`User`](/triplydb-js/user#user)).
 
 Account objects are obtained by calling the following method:
 
-- [`App.getAccount(name?: string)`](#appgetaccountname-string)
+- [`App.getAccount(name?: string)`](/triplydb-js/app#appgetaccountname-string)
 
 
 ## Account.addDataset(name: string, metadata?: object)
@@ -95,7 +95,7 @@ const dataset = await account.addDataset('iris', {
 
 ### See also
 
-This method returns a dataset object. See the [Dataset](#dataset) section for an overview of the methods that can be called on such objects.
+This method returns a dataset object. See the [Dataset](/triplydb-js/dataset#dataset) section for an overview of the methods that can be called on such objects.
 
 
 ## Account.addQuery(name: string, metadata: object)
@@ -114,10 +114,10 @@ Adds a new SPARQL query to the account.
   <dd>The SPARQL query string (e.g., <code>'select * { ?s ?p ?o }'</code>).</dd>
 
   <dt><code>dataset: Dataset</code> </dt>
-  <dd>An instance of class <a href='#dataset'><code>Dataset</code></a> that the current API token gives access to.</dd>
+  <dd>An instance of class <a href='/triplydb-js/dataset#dataset'><code>Dataset</code></a> that the current API token gives access to.</dd>
 or
   <dt><code>service: Service</code> </dt>
-  <dd>An instance of class <a href='#service'><code>Service</code></a> that the current API token gives access to and that you want to be associated with this query. The Service given will be used as a preferred service for this query.</code></dd>
+  <dd>An instance of class <a href='/triplydb-js/service#service'><code>Service</code></a> that the current API token gives access to and that you want to be associated with this query. The Service given will be used as a preferred service for this query.</code></dd>
 </dl>
 
 **Optional:**
@@ -276,7 +276,7 @@ A story element is an object with the following keys:
   <dd>The Markdown content of a story paragraph. Only allowed when the type is set to <code>'paragraph'</code> </dd>
 
   <dt><code>query: Query</code></dt>
-  <dd>An instance of class <a href='#query'><code>Query</code></a>.</dd>
+  <dd>An instance of class <a href='/triplydb-js/query#query'><code>Query</code></a>.</dd>
 
   <dt>queryVersion: number</code>
   <dd>The version that is used of the specified query.</dd>
@@ -310,7 +310,7 @@ const newStory = await user.addStory('name-of-story', {
 
 Casts the TriplyDB account object to its corresponding organization object.
 
-Class [Organization](#organization) is a specialization of class [Account](#account).
+Class [Organization](/triplydb-js/organization#organization) is a specialization of class [Account](#account).
 
 Calling this method on an `Organization` object does nothing.
 
@@ -325,7 +325,7 @@ const organization = account.asOrganization()
 
 ### Alternatives
 
-This method is not needed if the organization is directly retrieved with the specialization method [`App.getOrganization(name: string)`](#appgetorganizationname-string).
+This method is not needed if the organization is directly retrieved with the specialization method [`App.getOrganization(name: string)`](/triplydb-js/app#appgetorganizationname-string).
 
 The following snippet returns the same result as the above example, but in a more direct way:
 
@@ -335,16 +335,16 @@ const organization = await triply.getOrganization('Triply')
 
 ### See also
 
-This method returns an organization object. See class [Organization](#organization) for an overview of the methods that can be called on such objects.
+This method returns an organization object. See class [Organization](/triplydb-js/organization#organization) for an overview of the methods that can be called on such objects.
 
 
 ## Account.asUser()
 
 Casts the TriplyDB account object to its corresponding user object.
 
-Class [User](#user) is a specialization of class [Account](#account).
+Class [User](/triplydb-js/user#user) is a specialization of class [Account](#account).
 
-Calling this method on a [User](#user) object does nothing.
+Calling this method on a [User](/triplydb-js/user#user) object does nothing.
 
 ### Examples
 
@@ -357,7 +357,7 @@ const user = account.asUser()
 
 ### Alternatives
 
-This method is not needed if the user is directly retrieved with the specialization method [`App.getUser(name?: string)`](#appgetusername-string).
+This method is not needed if the user is directly retrieved with the specialization method [`App.getUser(name?: string)`](/triplydb-js/app#appgetusername-string).
 
 The following snippet returns the same result as the above example, but in a more direct way:
 
@@ -367,7 +367,7 @@ const user = await triply.getUser()
 
 ### See also
 
-This method returns an organization object. See class [Organization](#organization) for an overview of the methods that can be called on such objects.
+This method returns an organization object. See class [Organization](/triplydb-js/organization#organization) for an overview of the methods that can be called on such objects.
 
 
 ## Account.ensureDataset(name: string, metadata?: object)
@@ -413,12 +413,12 @@ console.log((await dataset.getInfo()).name)
 
 ### See also
 
-This method returns a dataset object. See class [Dataset](#dataset) for an overview of the methods that can be called on such objects.
+This method returns a dataset object. See class [Dataset](/triplydb-js/dataset#dataset) for an overview of the methods that can be called on such objects.
 
 
 ## Account.getDatasets()
 
-Returns an [async iterator](#what-is-an-async-iterator) over the accessible datasets for the current account.
+Returns an [async iterator](/triplydb-js/faq#what-is-an-async-iterator) over the accessible datasets for the current account.
 
 ### Access restrictions
 
@@ -563,9 +563,9 @@ for await (const item of account.getPinnedItems()) {
 
 This method returns various types of objects. Each class has different functionalities:
 
-- See class [Dataset](#dataset) for an overview of the methods for dataset objects.
-- See class [Query](#query) for an overview of the methods for query objects.
-- See class [Story](#story) for an overview of the methods for story objects.
+- See class [Dataset](/triplydb-js/dataset#dataset) for an overview of the methods for dataset objects.
+- See class [Query](/triplydb-js/query#query) for an overview of the methods for query objects.
+- See class [Story](/triplydb-js/story#story) for an overview of the methods for story objects.
 
 
 ## Account.getQuery(name: string)
@@ -584,12 +584,12 @@ console.log((await query.getInfo()).requestConfig?.payload.query)
 
 ### See also
 
-See class [Query](#query) for an overview of the methods for query objects.
+See class [Query](/triplydb-js/query#query) for an overview of the methods for query objects.
 
 
 ## Account.getQueries()
 
-Returns an [async iterator](#what-is-an-async-iterator) over the accessible queries that belong to the account.
+Returns an [async iterator](/triplydb-js/faq#what-is-an-async-iterator) over the accessible queries that belong to the account.
 
 ### Access restrictions
 
@@ -612,7 +612,7 @@ for await (const query of account.getQueries()) {
 
 ### See also
 
-See class [Query](#query) for an overview of the methods for query objects.
+See class [Query](/triplydb-js/query#query) for an overview of the methods for query objects.
 
 
 ## Account.ensureStory(name: string, metadata: object)
@@ -714,7 +714,7 @@ const story = await account.getStory('the-iris-dataset')
 
 ### See also
 
-See class [Story](#story) for an overview of the methods for story objects.
+See class [Story](/triplydb-js/story#story) for an overview of the methods for story objects.
 
 
 ## Account.getStories()
@@ -734,7 +734,7 @@ for await (const story of account.getStories()) {
 
 ### See also
 
-See class [Story](#story) for an overview of the methods for story objects.
+See class [Story](/triplydb-js/story#story) for an overview of the methods for story objects.
 
 
 ## Account.pinItems(items: array[Dataset|Story|Query])
