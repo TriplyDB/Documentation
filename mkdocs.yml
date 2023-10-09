@@ -79,8 +79,3 @@ extra_css:
 extra_javascript:
     - js/triply.js
     - js/highlight.min.js
-
-
-markdown_extensions:
-    - pymdownx.superfences
-

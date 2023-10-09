@@ -147,31 +147,31 @@ The `metadata` argument specifies the required Dataset or Service and access lev
   <dd>The visualization plugin that is used to display the result set of the query. If none is set it defaults to <code>'table'</code>.
     <dl>
       <dt><code>'boolean'</code></dt>
-      <dd>The [boolean](https://triply.cc/docs/yasgui#table) view is a special view for ask queries. The value is either 'true' or 'false', and is visualized as  <code>`X`</code>(False) or <code>`V`</code>(True).</dd>
+      <dd>The <a href='/yasgui#table'>boolean</a> view is a special view for ask queries. The value is either 'true' or 'false', and is visualized as  <code>`X`</code>(False) or <code>`V`</code>(True).</dd>
       <dt><code>'gallery'</code></dt>
-      <dd>The [gallery](https://triply.cc/docs/yasgui#gallery) view allows SPARQL results to be displayed in an HTML gallery.</dd>
+      <dd>The <a href='/yasgui#gallery-triplydb-plugin'>gallery</a> view allows SPARQL results to be displayed in an HTML gallery.</dd>
       <dt><code>'gchart'</code></dt>
-      <dd>The [gchart](https://triply.cc/docs/yasgui#charts) renders geographical, temporal and numerical data in interactive charts such as bar-, line- and pie charts.</dd>
+      <dd>The <a href='/yasgui#chart-triplydb-plugin'>gchart</a> renders geographical, temporal and numerical data in interactive charts such as bar-, line- and pie charts.</dd>
       <dt><code>'geo'</code></dt>
-      <dd>The [geo](https://triply.cc/docs/yasgui#geo) allows SPARQL results that contain GeoSPARQL semantics to be automatically interpreted and displayed on a 2D map.</dd>
+      <dd>The <a href='/yasgui#geo-triplydb-plugin'>geo</a> allows SPARQL results that contain GeoSPARQL semantics to be automatically interpreted and displayed on a 2D map.</dd>
       <dt><code>'geoEvents'</code></dt>
-      <dd>The [geoEvents](https://triply.cc/docs/yasgui#geoEvents) plugin renders geographical events as a story map.</dd>
+      <dd>The <a href='/yasgui#geo-events-triplydb-plugin'>geoEvents</a> plugin renders geographical events as a story map.</dd>
       <dt><code>'geo3d'</code></dt>
-      <dd>The [geo3d](https://triply.cc/docs/yasgui#geo3d) allows SPARQL results that contain GeoSPARQL semantics to be automatically interpreted and displayed on a 3D globe.</dd>
+      <dd>The <a href='/yasgui#geo-3d-triplydb-only'>geo3d</a> allows SPARQL results that contain GeoSPARQL semantics to be automatically interpreted and displayed on a 3D globe.</dd>
       <dt><code>'markup'</code></dt>
-      <dd>The [markup](https://triply.cc/docs/yasgui#markup) can be used to render a variety of markup languages. This requires the use of the `?markup` variable to identify which variable to render.</dd>
+      <dd>The <a href='/yasgui#markup-triplydb-plugin'>markup</a> can be used to render a variety of markup languages. This requires the use of the `?markup` variable to identify which variable to render.</dd>
       <dt><code>'network'</code></dt>
-      <dd>The [network](https://triply.cc/docs/yasgui#network) renders SPARQL Construct results in a graph representation. The maximum amount of results that can be visualized is 1.000 due to performance.</dd>
+      <dd>The <a href='/yasgui#network-triplydb-plugin'>network</a> renders SPARQL Construct results in a graph representation. The maximum amount of results that can be visualized is 1.000 due to performance.</dd>
       <dt><code>'pivot'</code></dt>
-      <dd>The [pivot](https://triply.cc/docs/yasgui#pivot) view renders SPARQL results in an interactive pivot table where you are able to aggregate the results by dragging your binding variables to columns or rows.</dd>
+      <dd>The <a href='/yasgui#pivot-table-triplydb-plugin'>pivot</a> view renders SPARQL results in an interactive pivot table where you are able to aggregate the results by dragging your binding variables to columns or rows.</dd>
       <dt><code>'response'</code></dt>
-      <dd>The [response](https://triply.cc/docs/yasgui#response) view shows the body of the response and offers a easy way to download the result as a file.</dd>
+      <dd>The <a href='/yasgui#response'>response</a> view shows the body of the response and offers a easy way to download the result as a file.</dd>
       <dt><code>'table'</code></dt>
-      <dd>The [table](https://triply.cc/docs/yasgui#table) view allows SPARQL results to be displayed in a table. Each
+      <dd>The <a href='/yasgui#table'>table</a> view allows SPARQL results to be displayed in a table. Each
       column in the table corresponds to a variable that belongs to the
       outer projection.</dd>
       <dt><code>'timeline'</code></dt>
-      <dd>The [timeline](https://triply.cc/docs/yasgui#timeline) timeline renders the SPARQL results on a Timeline. </dd>
+      <dd>The <a href='/yasgui#timeline-triplydb-plugin'>timeline</a> timeline renders the SPARQL results on a Timeline. </dd>
     </dl>
   </dd>
 
