@@ -57,8 +57,7 @@ This function emits an error if `NEW_KEY` already exists in the current Record.
 
 ## See also
 
-Notice that it is bad practice to use `custom.add()` for adding a new entry that is based on exactly one existing entry.  In such cases, the use of function [custom.copy()](#function-customcopy) is better, since it does not require access to the full Context.
-
+Notice that it is bad practice to use `custom.add()` for adding a new entry that is based on exactly one existing entry.  In such cases, the use of function `custom.copy()`
 ## Example: Numeric calculations
 
 Suppose the source data contains a numeric balance and a numeirc rate.  We can use function `custom.add()` to calculate the interest and store it in a new key:
@@ -133,7 +132,7 @@ The function can be configured in the following way:
 
 ## Error conditions
 
-This function emits an error if the specified key (`KEY_NAME`) does not exist in the RATT record.  Use [custom.copy()](#function-customcopy) if you want to create a new entry based on an existing one.
+This function emits an error if the specified key (`KEY_NAME`) does not exist in the RATT record.  Use `custom.copy()` if you want to create a new entry based on an existing one.
 
 ## Example: Numeric calculation
 

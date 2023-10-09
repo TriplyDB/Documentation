@@ -6,7 +6,7 @@ The following term assertions are available:
 | --- | --- |
 | [iri()](#function-iri) | Creates an IRI term. |
 | [iris()](#function-iris) | Creates multiple IRI terms. |
-| [list()](#list) | Creates a list of terms. |
+| [list()](#function-list) | Creates a list of terms. |
 | [literal()](#function-literal) | Creates a literal term. |
 | [literals()](#function-literals) | Creates multiple literal terms. |
 | [str()](#function-str) | Creates a static string. |
@@ -56,7 +56,7 @@ triple(iri('url'), a, owl.NamedIndividual),
 
 ### See also
 
-If the same IRI is used in multiple statements, repeating the same assertion multiple times may impose a maintenance burden. In such cases, it is possible to first add the IRI to the record using transformation function [addIri()](/triply-etl/transform/ratt#function-addIri), and refer to that one IRI in multiple statements.
+If the same IRI is used in multiple statements, repeating the same assertion multiple times may impose a maintenance burden. In such cases, it is possible to first add the IRI to the record using transformation function [addIri()](/triply-etl/transform/ratt#function-addiri), and refer to that one IRI in multiple statements.
 
 Use function [iris()](#function-iris) to create multiple IRIs in one step.
 
@@ -165,7 +165,7 @@ basket[basket:123]:::data
 pear["'pear'@en"]:::data
 classDef data fill:yellow
 ```
-Note that the predicate differs from the above example of the [literals()](#function-literals-literals) function. In order to use `list()` middleware we need to be sure that the `rdfs:domain` property of the predicates allows to be of `rdf:List`. 
+Note that the predicate differs from the above example of the [literals()](#function-literals) function. In order to use `list()` middleware we need to be sure that the `rdfs:domain` property of the predicates allows to be of `rdf:List`. 
 
 ## Example: Children
 
@@ -258,7 +258,7 @@ id:amsterdam
 
 ### See also
 
-If the same literal is used in multiple statements, repeating the same assertion multiple times can impose a maintenance burden. In such cases, it is possible to first add the literal to the record with transformation [addLiteral()](/triply-etl/transform/ratt#function-addLiteral), and refer to that one literal in multiple statements.
+If the same literal is used in multiple statements, repeating the same assertion multiple times can impose a maintenance burden. In such cases, it is possible to first add the literal to the record with transformation [addLiteral()](/triply-etl/transform/ratt#function-addliteral), and refer to that one literal in multiple statements.
 
 Use assertion [literals()](#function-literals) to create multiple literals in one step.
 

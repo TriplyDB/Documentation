@@ -209,7 +209,7 @@ This transformation can be used in the following two ways:
 
 ## See also
 
-If the created IRI is used exactly once, it is often better to use inline function [iri()](/triply-etl/assert/ratt#function-iri) instead.
+If the created IRI is used exactly once, it is often better to use inline function [iri()](/triply-etl/assert/ratt/term#function-iri) instead.
 
 ## Example: Prefix declaration and local name
 
@@ -240,7 +240,7 @@ graph LR
   johndoe(person:johndoe):::data
 ```
 
-The following snippet makes the same assertion, but uses assertion [iri()](/triply-etl/assert/ratt#function-iri) instead of transformation `addIri()`:
+The following snippet makes the same assertion, but uses assertion [iri()](/triply-etl/assert/ratt/term#function-iri) instead of transformation `addIri()`:
 
 ```ts
 triple(iri(prefix.person, 'username'), a, sdo.Person),
@@ -268,7 +268,7 @@ graph LR
   johndoe(https://example.com/id/person/johndoe):::data
 ```
 
-The following snippet uses assertion [iri()](/triply-etl/assert/ratt#function-iri) instead of transformation `addIri()`:
+The following snippet uses assertion [iri()](/triply-etl/assert/ratt/term#function-iri) instead of transformation `addIri()`:
 
 ```ts
 triple(iri('https://example.com/id/person/johndoe'), a, sdo.Person),
@@ -290,19 +290,19 @@ This transformation can be used in the following 3 ways:
 
 This transformation is typically used when:
 
-- The same literal occurs in two or more statement assertions (function [triple()](/triply-etl/assert/ratt#function-triple) or [quad()](/triply-etl/assert/ratt#function-quad)). This avoids having to specify the same literal multiple times using function [literal()](/triply-etl/assert/ratt#function-literal).
+- The same literal occurs in two or more statement assertions (function [triple()](/triply-etl/assert/ratt/statement#function-triple) or [quad()](/triply-etl/assert/ratt/statement#function-quad)). This avoids having to specify the same literal multiple times using function [literal()](/triply-etl/assert/ratt/term#function-literal).
 - The datatype or language tag is derived from the source data record.
 
 ## Parameters
 
-- `content` A key that contains a string value, or a string specified with function [str()](/triply-etl/assert/ratt#function-str).
+- `content` A key that contains a string value, or a string specified with function [str()](/triply-etl/assert/ratt/term#function-str).
 - `datatype` Optionally, a key that stores an IRI or a static IRI.
 - `languageTag` Optionally, a language tag from the [`lang`](/triply-etl/declare#language-declarations) object, or a key that stores such a language tag.
 - `key` A new key where the created literal is stored.
 
 ## See also
 
-If the created literal is used exactly once, it is often better to use the inline function [literal()](/triply-etl/assert/ratt#function-literal) instead.
+If the created literal is used exactly once, it is often better to use the inline function [literal()](/triply-etl/assert/ratt/term#function-literal) instead.
 
 ## Example: Typed literal
 
@@ -1145,7 +1145,7 @@ id:0002 dct:created '1702'^^xsd:gYear.
 
 
 
-# Function `replace()` {#replace}
+# Function `replace()`
 
 ## Description
 
@@ -1153,7 +1153,7 @@ Performs a regular expression replacement to the given input string, and stores 
 
 ## Parameters
 
-- `content` A key that contains a string value, or a static string specified with assertion [str()](/triply-etl/assert/ratt#function-str).
+- `content` A key that contains a string value, or a static string specified with assertion [str()](/triply-etl/assert/ratt/term#function-str).
 - `from` A [JavaScript Regular Expression](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions).
 - `to` Optionally, a string that replaces potential matches of the Regular Expression (`from`). Use `$1`, `$2`, etc. to insert matches. If absent, the empty string is used.
 - `key` A new key where the result of the replacement is stored.
@@ -1315,7 +1315,7 @@ result in a new key.
 
 ## Parameters
 
-- `content` A key that stores a string value, or a string specified with assertion [str()](/triply-etl/assert/ratt#str).
+- `content` A key that stores a string value, or a string specified with assertion [str()](/triply-etl/assert/ratt/term#function-str).
 - `start` The index of the first character that is included in the substring. The first character has index 0.
 - `end` Optionally, the index of the first character that is excluded from the substring. If absent, the substring ends at the end of the source string.
 - `key` The new key in which the substring is stored.
@@ -1454,7 +1454,7 @@ This transformation is used when string values must be mapped onto literals with
 
 The datatype IRIs that could apply are specified in a list. The specified datatype IRIs are tried out from left to right. The first datatype IRI that results in a valid literal is chosen.
 
-- `content` A key that contains a string value, or a string value specified with assertion [str()](/triply-etl/assert/ratt#str).
+- `content` A key that contains a string value, or a string value specified with assertion [str()](/triply-etl/assert/ratt/term#function-str).
 - `datatypes` An array of two or more datatype IRIs.
 - `key` A new key where the created literal is stored.
 
@@ -1484,7 +1484,7 @@ If we do not want to emit errors for string values that cannot be satisfy any of
 
 ## See also
 
-You only need to use `tryLiteral()` if the datatype IRI varies from record to record. If the datatype IRI is the same for every record, then the regular assertion function [literal()](/triply-etl/assert/ratt#literal) should be used instead.
+You only need to use `tryLiteral()` if the datatype IRI varies from record to record. If the datatype IRI is the same for every record, then the regular assertion function [literal()](/triply-etl/assert/ratt/term#function-literal) should be used instead.
 
 
 

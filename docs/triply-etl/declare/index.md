@@ -8,16 +8,18 @@ Declarations introduce constants that you can use in the rest of your ETL config
 
 TriplyETL supports the following kinds of declarations:
 
-- [Prefix declarations](#prefix-declarations)
-- [External prefix declarations](#external-prefix-declarations)
-- [Vocabulary declarations](#vocabulary-declarations)
-- [External vocabularies](#external-vocabularies)
-- [Custom abbreviations](#custom-abbreviations)
-- [Instance declarations](#instance-declarations)
-- [Graph name declarations](#graph-name-declarations)
-- [Language declarations](#language-declarations)
-- [Geospatial declarations](#geospatial-declarations)
-- [Supported vocabularies](#supported-vocabularies)
+- [Declare](#declare)
+  - [Overview](#overview)
+  - [Prefix declarations](#prefix-declarations)
+  - [External prefix declarations](#external-prefix-declarations)
+  - [Vocabulary declarations](#vocabulary-declarations)
+  - [External vocabularies](#external-vocabularies)
+  - [Custom abbreviations](#custom-abbreviations)
+  - [Instance declarations](#instance-declarations)
+  - [Graph name declarations](#graph-name-declarations)
+  - [Language declarations](#language-declarations)
+  - [Geospatial declarations](#geospatial-declarations)
+  - [Supported vocabularies](#supported-vocabularies)
 
 Declaration functions and objects are found in the following two modules:
 
@@ -76,7 +78,7 @@ iri(prefix.vehicle, 'id')
 iri(prefix.vehicle, str('123')),
 ```
 
-See assertion functions [iri()](/triply-etl/assert/ratt#function-iri) and [str()](/triply-etl/assert/ratt#function-str) for more information.
+See assertion functions [iri()](/triply-etl/assert/ratt/term/#function-iri) and [str()](/triply-etl/assert/ratt/term#function-str) for more information.
 
 
 
@@ -305,7 +307,7 @@ triples(graph.metadata,
 ),
 ```
 
-See assertion function [triples()](/triply-etl/assert/ratt#function-triples) for more information.
+See assertion function [triples()](/triply-etl/assert/ratt/statement#function-triples) for more information.
 
 
 
@@ -333,7 +335,7 @@ Or they can be used to directly assert language-tagged strings in the Internal S
 triple('_city', rdfs.label, literal('label', lang.fr)),
 ```
 
-See transformation function [addLiteral()](/triply-etl/transform/ratt#function-addliteral) and assertion function [literal()](/triply-etl/assert/ratt#function-literal) for more information.
+See transformation function [addLiteral()](/triply-etl/transform/ratt#function-addliteral) and assertion function [literal()](/triply-etl/assert/ratt/term#function-literal) for more information.
 
 
 

@@ -25,7 +25,7 @@ import { nestedPairs, objects, pairs, quad, quads,
 
 Creates a nested node and makes multiple assertions about that node.
 
-Since linked data is composed of triples, more complex n-ary information must often be asserted by using a nested node. Nested nodes must be IRIs, so they must be specified with [iri()](/triply-etl/assert/ratt/term#function-iri) or [addIri()](/triply-etl/transform/ratt#function-function-addiri).
+Since linked data is composed of triples, more complex n-ary information must often be asserted by using a nested node. Nested nodes must be IRIs, so they must be specified with [iri()](/triply-etl/assert/ratt/term#function-iri) or [addIri()](/triply-etl/transform/ratt#function-addiri).
 
 Signature: `nestedPairs(subject, predicate, nestedNode, pairs...)`
 

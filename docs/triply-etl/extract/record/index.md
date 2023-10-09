@@ -101,7 +101,7 @@ The `loadRecords()` function allows us to run a sub ETL and store its records to
 
  The function expects two arguments and can be run with the following snippet:
 
- - `fromSrc` - The Source to load the data from. The list of available extractors can be seen in [Data Formats overview page](https://triply.cc/docs/triply-etl/extract/formats/#overview). 
+ - `fromSrc` - The Source to load the data from. The list of available extractors can be seen in [Data Formats overview page](/triply-etl/extract/formats/#overview). 
  - `key` - A new key where the records are stored.
 
 ```ts
@@ -231,7 +231,6 @@ Do note that it is generally better to run the TriplyETL for a specific record u
 
 The TriplyETL record contains special key `$environment`. Its value denotes the DTAP environment that the pipeline is currently running in. This is one of the followin values: "Development", "Test", "Acceptance", or "Production".
 
-See [the Automation tutorial](/triply-etl/tmp/automation.md) for more information.
 
 
 

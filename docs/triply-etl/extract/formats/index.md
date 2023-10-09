@@ -526,7 +526,7 @@ fromPostgres(
 
 
 
-## Exctractor `fromShapeFile()`
+## Extractor `fromShapeFile()`
 
 The ESRI [Shapefile format](https://doc.arcgis.com/en/arcgis-online/reference/shapefiles.htm) was developed by Esri (Environmental Systems Research Institute) for interoperability among geographic information system (GIS) applications. The Shapefile format stores nontopological geometry and attribute information for spatial features in a data set.  A Shapefile consists minimally of a main file, an index file, and a dBASE  table. In the TriplyETL we can load data from shapefile with `.shp` extension (main file). 
 
@@ -588,7 +588,7 @@ For example, the first record in file `nl_1km.shp` (downloaded from [European En
 }
 ```
 
-You can now work with shapefiles and use [geojsonToWkt()](/triply-etl/transform/ratt/#geojsonToWkt) transfrom function to create geomerty. 
+You can now work with shapefiles and use [geojsonToWkt()](/triply-etl/transform/ratt/#function-geojsontowkt) transfrom function to create geomerty. 
 
 
 

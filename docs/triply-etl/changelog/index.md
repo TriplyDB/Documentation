@@ -12,7 +12,7 @@ Release dates: 2023-06-17 through 2023-09-29
 
 The following bugs have been fixed:
 
-- Processing an Excel sheet with [fromXml()](/docs/triply-etl/extract/formats#fromXml) would sometimes consume too much memory.
+- Processing an Excel sheet with [fromXml()](/triply-etl/extract/formats#extractor-fromxml) would sometimes consume too much memory.
 - Several installation issues on Windows have been resolved.
 - The `async-saxophone` library for XML processing was adjusted to support the current LTS version of Node.js (v18).
 
@@ -45,15 +45,15 @@ See the documentation about [external vocabulary declarations](/triply-etl/decla
 
 ### [Added] New debug function logMemory()
 
-A new debug function [logMemory()](/triply-etl/debug#logMemory) is added. This function prints an overview of the current memory usage of TriplyETL. This allows users to detect fluctuations in memory consumption inside their pipelines.
+A new debug function [logMemory()](/triply-etl/debug#function-logmemory) is added. This function prints an overview of the current memory usage of TriplyETL. This allows users to detect fluctuations in memory consumption inside their pipelines.
 
-See the [debug functions documentation page](/triply-etl/debug#logMemory) for more information.
+See the [debug functions documentation page](/triply-etl/debug) for more information.
 
 ### [Added] Support for the `ListIdentifiers` verb in the OAI-PMH extractor
 
 The `fromOai()` extractor already supported the `ListRecords` verb. This release adds support for the `ListIdentifiers` verb. The latter allows used to stream through the headers of all records in an OAI-PMG collection, without requiring the full record (i.e. body) to be retrieved as well.
 
-See the [fromOai()](/triply-etl/extract/formats#fromOai) documentation for more information.
+See the [fromOai()](/triply-etl/extract/formats#extractor-fromoai) documentation for more information.
 
 
 
@@ -214,7 +214,7 @@ This release introduces a new approach for communicating errors back to the user
 The following bug fixes are included in this release:
 
 - Incorrect behavior of the [_switch() control function](/triply-etl/control#switch-between-different-cases-_switch).
-- The [fromOai() extractor](/triply-etl/extract/formats#fromOai) now communicates clearer when the accessed OAI-PMH endpoint encounters any issues.
+- The [fromOai() extractor](/triply-etl/extract/formats#extractor-fromoai) now communicates clearer when the accessed OAI-PMH endpoint encounters any issues.
 - When a key with a NULL value was accessed, the name of the key is now included in the error message.
 
 

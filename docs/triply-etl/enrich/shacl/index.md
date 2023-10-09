@@ -222,7 +222,7 @@ In this example, we start out with a data source that is not linked data:
 { "age": 12, "name": "peter" },
 ```
 
-We use the [fromJson()](/triply-etl/extract/formats#extractor-fromjson) extractor and specify the source data [inline](/triply-etl/extract/types#inline-json). We use RATT assertion function [pairs()](/triply-etl/assert/ratt#function-pairs) to add linked data to the internal store.
+We use the [fromJson()](/triply-etl/extract/formats#extractor-fromjson) extractor and specify the source data [inline](/triply-etl/extract/types#inline-json). We use RATT assertion function [pairs()](/triply-etl/assert/ratt/statement#function-pairs) to add linked data to the internal store.
 
 ```ts
 import { logQuads } from '@triplyetl/etl/debug'

@@ -48,7 +48,7 @@ Adds a member to the given `Organization`, with the given `role` of either membe
 </dl>
 
 ### Examples
-
+user
 The following snippet adds user John Doe to the Triply organization as a regular member.
 
 ```ts

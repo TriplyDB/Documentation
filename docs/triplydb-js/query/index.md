@@ -56,7 +56,7 @@ The returned dictionary object includes the following keys:
   <dd>A dictionary object representing the account (organization or user) to which the query belongs.</dd>
 
   <dt>🚧<code>link</code></dt>
-  <dd>Stores part of the URL to run the query. Please use <code>Query.getRunLink()</code> to obtain the full URL to run the query.</dd>
+  <dd>Stores part of the URL to run the query. Please use <a href='#querygetrunlink'><code>Query.getRunLink()</code> </a> to obtain the full URL to run the query.</dd>
 
   <dt><code>service</code></dt>
   <dd>The location of the SPARQL endpoint that is used to run the query.</dd>
@@ -107,8 +107,8 @@ At least one of the following arguments is required to create a new version. Any
   </dd>
 </dl>
 
-* You can see how many versions exist on a query accessing `Query.getInfo().numOfVersions`
-* You can use a specified version of a query accessing `Query.useVersion(x: number)`
+* You can see how many versions exist on a query accessing [`Query.getInfo().numOfVersions`](#querygetinfo)
+* You can use a specified version of a query accessing [`Query.useVersion(x: number)`](#queryuseversionversion-numberlatest)
 
 
 ## Query.getRunLink()

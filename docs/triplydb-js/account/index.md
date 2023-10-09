@@ -274,7 +274,7 @@ A story element is an object with the following keys:
 
   <dt>paragraph: string</dt>
   <dd>The Markdown content of a story paragraph. Only allowed when the type is set to <code>'paragraph'</code> </dd>
-
+  
   <dt><code>query: Query</code></dt>
   <dd>An instance of class <a href='/triplydb-js/query#query'><code>Query</code></a>.</dd>
 

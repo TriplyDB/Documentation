@@ -277,8 +277,8 @@ Saved SPARQL queries in TriplyDB can be used as data sources. SPARQL queries are
 | Query form | Source extractor |
 | --- | --- |
 | [SPARQL Ask](#sparql-ask-queries) | [fromJson()](/triply-etl/extract/formats#extractor-fromjson), [fromXml()](/triply-etl/extract/formats#extractor-fromxml) |
-| [SPARQL Construct](#sparql-construct-and-describe-queries) | [loadRdf()](/triply-etl/extract/formats#extractor-loadrdf) |
-| [SPARQL Describe](#sparql-construct-and-describe-queries) | [loadRdf()](/triply-etl/extract/formats#extractor-loadrdf) |
+| [SPARQL Construct](#sparql-construct-and-describe-queries) | [loadRdf()](/triply-etl/extract/formats#function-loadrdf) |
+| [SPARQL Describe](#sparql-construct-and-describe-queries) | [loadRdf()](/triply-etl/extract/formats#function-loadrdf) |
 | [SPARQL Select](#sparql-select-queries) | [fromCsv()](/triply-etl/extract/formats#extractor-fromcsv), [fromJson()](/triply-etl/extract/formats#extractor-fromjson), [fromTsv()](/triply-etl/extract/formats#extractor-fromtsv), [fromXml()](/triply-etl/extract/formats#extractor-fromxml) |
 
 

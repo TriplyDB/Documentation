@@ -34,7 +34,7 @@ This method is useful in practice, because it removes the burden on the programm
 The changes made as a result of calling this method depend on the current state of the connected-to TriplyDB server:
 
 - If this dataset does not yet have a service with the given `name`, then the behavior is identical to calling [`Dataset.addService(name: string, metadata?: object)`](#datasetaddservicename-string-metadata-object) with the same arguments.
-- If this dataset already has a service with the given `name`, but with different `metadata` specified for it, then the behavior is identical to calling [`Account.getDataset(name: string)`](#datasetgetservicename-string) and [`Dataset.update(metadata: object)`](#serviceupdatemetadata-object).
+- If this dataset already has a service with the given `name`, but with different `metadata` specified for it, then the behavior is identical to calling [`Account.getDataset(name: string)`](/triplydb-js/account#accountgetdatasetname-string) and [`Dataset.update(metadata: object)`](#datasetupdatemetadata-object).
 - If this dataset already has a service with the given `name` and with the same `metadata`, then this method returns that service.
 
 ### Required
