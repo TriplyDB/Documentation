@@ -8,3 +8,7 @@
 div.document p ~ ul {
   margin-top: -20px;
 }
+
+code {
+  line-height: 170% !important;
+}

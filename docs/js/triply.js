@@ -1,3 +1,6 @@
 // This file we can use to create more customization using Javascript.
-// window.onload = () => {
-// }
+const onLoad = window.onload
+window.onload = () => {
+  hljs.highlightAll()
+  if (typeof onLoad === 'function') onLoad()
+}
