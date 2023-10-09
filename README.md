@@ -27,6 +27,12 @@ You are able to use [GitHub Flavored Markdown](https://github.github.com/gfm/). 
 - **Custom ID headers**:
 Using the following syntax you are able to assign id's to headers (without having to resort to `html`)
 
+## Guideline for authors
+- Always start your page with a heading of level 1 (1 hashsign)
+- Subheadings of level 2 (2 hashsigns) will appear as submenu on that page
+- Level 1 links in the menu that only contain subpage will not be clickable until a developer creates a mapping in `docs/js/triply.js`
+
+
 ```md
 # Header {#id}
 ```

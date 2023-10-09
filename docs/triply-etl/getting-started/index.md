@@ -8,7 +8,7 @@ This page helps you to get started with TriplyETL. You can get started with Trip
 
 
 
-# Prerequisites 
+## Prerequisites 
 
 In order to use TriplyETL, you must first install the following programs on your computer:
 
@@ -58,7 +58,7 @@ git config --global user.name "Ada Lovelace"</pre>
 
 
 
-# TriplyETL Generator <!-- {#generator} -->
+## TriplyETL Generator <!-- {#generator} -->
 
 The TriplyETL Generator allows you to create new ETL projects in your terminal application.
 
@@ -128,7 +128,7 @@ npx etl
 
 
 
-# TriplyETL Runner <!-- {#runner} -->
+## TriplyETL Runner <!-- {#runner} -->
 
 The TriplyETL Runner allows you to run a local TriplyETL project in your terminal application.
 
@@ -180,7 +180,7 @@ Visit the [TriplyETL CLI documentation](/triply-etl/cli#triplyetl-runner) to lea
 
 
 
-# TriplyETL Library <!-- {#library} -->
+## TriplyETL Library <!-- {#library} -->
 
 If you are a software developer that is building a software application in TypeScript, you can include the TriplyETL Library in your project.
 
