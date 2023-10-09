@@ -74,7 +74,7 @@ theme:
 
 extra_css:
   - css/triply.css
-  - css/vs.css
+  - css/intellij-light.css
 
 extra_javascript:
     - js/triply.js
