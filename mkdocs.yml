@@ -74,6 +74,8 @@ theme:
 extra_css:
   - css/triply.css
 
+extra_javascript:
+    - js/triply.js
 
 markdown_extensions:
   - pymdownx.highlight:

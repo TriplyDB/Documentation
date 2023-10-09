@@ -1,10 +1,10 @@
-code {
-  background: #e5eff5 !important;
-  color: #343f44 !important;
+:not(pre) > code {
+  background: #f8f8f8 !important;
+  color: #000 !important;
   padding: .3em .4em !important;
   border-radius: .3em !important;
 }
 
- div.document p ~ ul {
+div.document p ~ ul {
   margin-top: -20px;
 }
