@@ -1,0 +1,81 @@
+site_name: Triply Documentation
+plugins:
+  - search
+  - mermaid2
+
+nav:
+  - Home: index.md
+  - TriplyDB:
+      - Getting started:
+            - Overview: triply-db-getting-started/index.md
+            - Uploading data: triply-db-getting-started/uploading-data/index.md
+            - Publishing data: triply-db-getting-started/publishing-data/index.md
+            - Viewing data: triply-db-getting-started/viewing-data/index.md
+            - Exporting data: triply-db-getting-started/exporting-data/index.md
+            - Saved queries: triply-db-getting-started/saved-queries/index.md
+            - Data stories: triply-db-getting-started/data-stories/index.md
+            - Admin settings pages: triply-db-getting-started/admin-settings-pages/index.md
+            - Reference: triply-db-getting-started/reference/index.md
+      - API: triply-api/index.md
+      - TriplyDB-JS: 
+            - Overview: triplydb-js/index.md
+            - App: triplydb-js/app/index.md
+            - Account: triplydb-js/account/index.md
+            - Asset: triplydb-js/asset/index.md
+            - Dataset: triplydb-js/dataset/index.md
+            - Graph: triplydb-js/graph/index.md
+            - Organization: triplydb-js/organization/index.md
+            - Query: triplydb-js/query/index.md
+            - Service: triplydb-js/service/index.md
+            - Story: triplydb-js/story/index.md
+            - User: triplydb-js/user/index.md
+            - FAQ: triplydb-js/faq/index.md
+  - TriplyETL:
+      - Generics:
+          - Overview: triply-etl/index.md
+          - Getting started: triply-etl/getting-started/index.md
+          - Command Line Interface: triply-etl/cli/index.md
+          - Changelog: triply-etl/changelog/index.md
+          - Declare: triply-etl/declare/index.md
+          - Control Structures: triply-etl/control/index.md
+          - Debug: triply-etl/debug/index.md
+          - Maintenance: triply-etl/maintenance/index.md
+      - Extract: 
+          - Overview: triply-etl/extract/index.md
+          - Formats: triply-etl/extract/formats/index.md
+          - Record: triply-etl/extract/record/index.md
+          - Source types: triply-etl/extract/types/index.md
+      - Transform:
+          - Overview: triply-etl/transform/index.md
+          - RATT: triply-etl/transform/ratt/index.md
+          - TypeScript: triply-etl/transform/typescript/index.md
+      - Assert: 
+          - Overview: triply-etl/assert/index.md
+          - JSON-LD: triply-etl/assert/json-ld/index.md
+          - RATT:
+              - Terms: triply-etl/assert/ratt/term.md
+              - Statements: triply-etl/assert/ratt/statement.md
+      - Enrich: 
+          - Overview: triply-etl/enrich/index.md
+          - SHACL: triply-etl/enrich/shacl/index.md
+          - SPARQL: triply-etl/enrich/sparql/index.md
+      - Validate: 
+          - Overview: triply-etl/validate/index.md
+          - Graph comparison: triply-etl/validate/graph-comparison/index.md
+          - SHACL: triply-etl/validate/shacl/index.md
+      - Publish: triply-etl/publish/index.md
+  - Yasgui:
+      - Introduction: yasgui/index.md
+      - For developers:  yasgui-api/index.md
+theme:
+  name: readthedocs
+  locale: en
+  highlightjs: false
+
+extra_css:
+  - css/triply.css
+  - css/intellij-light.css
+
+extra_javascript:
+    - js/triply.js
+    - js/highlight.min.js

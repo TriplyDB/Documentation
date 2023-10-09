@@ -12,9 +12,9 @@ This section explains the use of SPARQL via Yasgui. Yasgui provides
 various advanced features for creating, sharing, and visualizing
 SPARQL queries and their results.
 
-## SPARQL Editor {#sparql-editor}
+## SPARQL Editor
 
-The Yasgui SPARQL editor is a query editor that offers syntax highlighting, syntax validation, autocompletion, a variety of different SPARQL result visualizations, with a plugin architecture that [enables customization](/docs/yasgui-api).
+The Yasgui SPARQL editor is a query editor that offers syntax highlighting, syntax validation, autocompletion, a variety of different SPARQL result visualizations, with a plugin architecture that [enables customization](/yasgui-api).
 
 By default, the query editor provides autocomplete suggestions via the [LOV](https://lov.linkeddata.es/dataset/lov/) API.
 Website maintainers can add their own autocompletion logic as well. For example, the Yasgui integration in [TriplyDB](https://triplydb.com) uses the TriplyDB API to more accurately provide suggestions based on the underlying data.
@@ -59,7 +59,7 @@ constructing such labels and widgets is a bit cumbersome.
 #### SPARQL-concat
 
 For example, the following SPARQL query returns HTML widgets that can
-be displayed in a web browser (see [SPARQL Gallery](#gallery)). It uses the
+be displayed in a web browser (see [SPARQL Gallery](#gallery-triplydb-plugin)). It uses the
 `concat` function which allows an arbitrary number of string arguments
 to be concatenated into one string. Notice that this requires
 extensive quoting for each argument (e.g., `'<h3>'`), as well as
@@ -124,10 +124,10 @@ select * {
 limit 25
 ```
 
-SPARQL Templates can be combined with the [SPARQL Gallery](#gallery) feature in
+SPARQL Templates can be combined with the [SPARQL Gallery](#gallery-triplydb-plugin) feature in
 order to generate galleries of HTML widgets.
 
-### Rendering HTML {#htmlRender}
+### Rendering HTML
 
 To distinguish between text and `HTML` result values the visualization library checks for the `rdf:HTML` datatype.
 
@@ -157,9 +157,9 @@ rendering them.  This means that tags like `<embed>`, `<iframe>` and
 `<script>` are sanitized away, as are attributes such as `onerror` and
 `onload`.
 
-## Visualizations {#visualizations}
+## Visualizations
 
-### Table {#table}
+### Table
 
 This view allows SPARQL results to be displayed in a table. Each
 column in the table corresponds to a variable that belongs to the
@@ -201,11 +201,11 @@ select ?pokemon ?happiness {
 
 ![SPARQL Table view over the above query](sparql-table-example.png)
 
-### Response {#response}
+### Response
 
 This view shows the body of the response and offers an easy way to download the result as a file.
 
-### Gallery ([TriplyDB Plugin](/docs/yasgui-api#triplyDbPlugins)) {#gallery}
+### Gallery ([TriplyDB Plugin](/yasgui-api#triplyDbPlugins))
 
 This view allows SPARQL results to be displayed in an HTML gallery.
 Each individual result corresponds to one HTML widget. Widgets are
@@ -217,13 +217,13 @@ The gallery will render an item based on variables in the following table:
 
 | **Variable name**     | **Purpose**                                                                       |
 | --------------------- | --------------------------------------------------------------------------------- |
-| `?widget`             | The text or [HTML](#htmlRender) content. meant for creating widget from scrap     |
+| `?widget`             | The text or [HTML](#rendering-html) content. meant for creating widget from scrap     |
 | `?widgetLabel`        | Title of the widget. Also used as the alternative text for the image              |
 | `?widgetLabelLink`    | A url which converts the title into a link, depends on `?widgetLabel`             |
 | `?widgetImage`        | A url of an image to display                                                      |
 | `?widgetImageLink`    | A url which adds a link to the image, depends on `?widgetImage`                   |
-| `?widgetImageCaption` | A text or [HTML](#htmlRender) description of the image, depends on `?widgetImage` |
-| `?widgetDescription`  | A text or [HTML](#htmlRender) description, meant for adding links and             |
+| `?widgetImageCaption` | A text or [HTML](#rendering-html) description of the image, depends on `?widgetImage` |
+| `?widgetDescription`  | A text or [HTML](#rendering-html) description, meant for adding links and             |
 
 #### Format
 
@@ -298,7 +298,7 @@ order by desc(?experience)
 limit 20
 ```
 
-### Chart ([TriplyDB Plugin](/docs/yasgui-api#triplyDbPlugins)) {#charts}
+### Chart ([TriplyDB Plugin](/yasgui-api#triplyDbPlugins))
 
 The chart plugin renders geographical, temporal and numerical data in interactive charts such as bar-, line- and pie charts.
 
@@ -314,12 +314,12 @@ subtree; right clicking on a node will move up to the subtree of its
 parent node.
 The chart configuration enables tweaking the treemap properties such as the number of displayed hierarchy levels.
 
-### Geo ([TriplyDB Plugin](/docs/yasgui-api#triplyDbPlugins)) {#geo}
+### Geo ([TriplyDB Plugin](/yasgui-api#triplyDbPlugins))
 
 This view allows SPARQL results that contain GeoSPARQL semantics to be
 automatically interpreted and displayed on a 2D map.
 
-#### Variables {#geo-variables}
+#### Variables
 
 This view recognizes the following SPARQL variable names:
 
@@ -327,8 +327,8 @@ This view recognizes the following SPARQL variable names:
 | ----------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `?x`              | An arbitrary variable name that is bound to literals with datatype IRI `geo:wktLiteral`, and whose name is the prefix of the other variable names in this table. |
 | `?xColor`         | The color of the shape bound to `?x`.                                                                                                                            |
-| `?xLabel`         | The text or [HTML](#htmlRender) content of popups that appear when clicking the shape bound to `?x`.                                                             |
-| `?xTooltip`       | Text or [HTML](#htmlRender) that will appear when the shape of bound to `?x` is hovered                                                                          |
+| `?xLabel`         | The text or [HTML](#rendering-html) content of popups that appear when clicking the shape bound to `?x`.                                                             |
+| `?xTooltip`       | Text or [HTML](#rendering-html) that will appear when the shape of bound to `?x` is hovered                                                                          |
 | `?mapEndpoint`    | A URL pointing to a WMS tile-server                                                                                                                               |
 
 ##### Color values
@@ -346,12 +346,12 @@ To include layers from a WMS tile-server, use the `mapEndpoint` variable to refe
 
 - https://maps.heigit.org/histosm/wms
 
-### Geo-3D (TriplyDB-only) {#geo-3d}
+### Geo-3D (TriplyDB-only)
 
 This view allows SPARQL results that contain GeoSPARQL semantics to be
 automatically interpreted and displayed on a 3D globe. It supports both 3D and 2.5D visualizations, depending on whether the GeoSPARQL data is stored in native 3D or in 2D
 
-#### Variables {#geo-3d-variables}
+#### Variables
 
 This view recognizes the following SPARQL variable names:
 
@@ -360,27 +360,27 @@ This view recognizes the following SPARQL variable names:
 | `?x`              | An arbitrary variable name that is bound to 2D or 3D literals with datatype IRI `geo:wktLiteral`, and whose name is the prefix of the other variable names in this table. |
 | `?xColor`         | The color of the shape bound to `?x`.                                                                                                                                     |
 | `?xHeight`        | The height in meters of the 2.5D shape that is based on the 2D shape that is bound to `?x`. This variable is not needed if data is stored in native 3D.                   |
-| `?xLabel`         | The text or [HTML](#htmlRender) content of the popups that appears when the shape that is bound to `?x` is clicked.                                                       |
+| `?xLabel`         | The text or [HTML](#rendering-html) content of the popups that appears when the shape that is bound to `?x` is clicked.                                                       |
 | `?xZ`             | The height in meters at which the 2.5D shape that is based on the 2D shape that is bound to `?x` starts. This variable is not needed if data is stored in native 3D.      |
 
-### Geo Events ([TriplyDB Plugin](/docs/yasgui-api#triplyDbPlugins)) {#geo-events}
+### Geo Events ([TriplyDB Plugin](/yasgui-api#triplyDbPlugins))
 
 The SPARQL Geo Events plugin renders geographical events as a story map ([example](https://api.triplydb.com/s/USQ5oNpL)). This view recognizes the following SPARQL variable names:
 
 | **Variable name**           | **Purpose**                                                                                                                                                           |
 | --------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `?eventLocation` (required) | A `geo:wktLiteral`.                                                                                                                                                   |
-| `?eventLabel`               | Text or [HTML](#htmlRender) event label.                                                                                                                              |
-| `?eventDescription`         | Text or [HTML](#htmlRender) event description.                                                                                                                        |
+| `?eventLabel`               | Text or [HTML](#rendering-html) event label.                                                                                                                              |
+| `?eventDescription`         | Text or [HTML](#rendering-html) event description.                                                                                                                        |
 | `?eventMedia`               | A URL pointing to a media source. Supported media types are described [here](https://github.com/NUKnightLab/StoryMapJS/tree/master/src/js/media). |
-| `?eventMediaCaption`        | Text or [HTML](#htmlRender) media caption.                                                                                                                            |
-| `?eventMediaCredit`         | Text or [HTML](#htmlRender) media credit.                                                                                                                             |
+| `?eventMediaCaption`        | Text or [HTML](#rendering-html) media caption.                                                                                                                            |
+| `?eventMediaCredit`         | Text or [HTML](#rendering-html) media credit.                                                                                                                             |
 
-### Pivot Table ([TriplyDB Plugin](/docs/yasgui-api#triplyDbPlugins)) {#pivot}
+### Pivot Table ([TriplyDB Plugin](/yasgui-api#triplyDbPlugins))
 
 This view renders SPARQL results in an interactive pivot table where you are able to aggregate the results by dragging your binding variables to columns or rows.
 
-### Timeline ([TriplyDB Plugin](/docs/yasgui-api#triplyDbPlugins)) {#timeline}
+### Timeline ([TriplyDB Plugin](/yasgui-api#triplyDbPlugins))
 
 The SPARQL timeline renders the SPARQL results on a Timeline ([example](https://triplydb.com/DBpedia-association/-/queries/timeline-cars))
 To get started with this visualization you need at least a result containing a `?eventStart` or `?eventDate` with either a `?eventDescription`, `?eventLabel` or a `?eventMedia`. (Combinations are also possible)
@@ -391,24 +391,24 @@ The following parameters can be used, Parameters in _Italic_ are experimental:
 | `?eventStart`            | A date when an event started                                                                                                                |
 | `?eventEnd`              | A date when an event Stopped                                                                                                                |
 | `?eventDate`             | A date when an event happened                                                                                                               |
-| `?eventDescription`      | Text/[HTML](#htmlRender) about the event                                                                                                    |
-| `?eventLabel`            | Text/[HTML](#htmlRender) title                                                                                                              |
+| `?eventDescription`      | Text/[HTML](#rendering-html) about the event                                                                                                    |
+| `?eventLabel`            | Text/[HTML](#rendering-html) title                                                                                                              |
 | `?eventMedia`            | Link to most forms of media see [documentation](https://timeline.knightlab.com/docs/media-types.html) for which type of links are supported |
 | _`?eventType`_           | Groups events                                                                                                                               |
 | _`?eventColor`_          | Colors event                                                                                                                                |
 | _`?eventBackground`_     | Background of the event when selected                                                                                                       |
-| _`?eventMediaCaption`_   | Text/[HTML](#htmlRender) caption of the Media                                                                                               |
-| _`?eventMediaCredit`_    | Text/[HTML](#htmlRender) credit of the Media                                                                                                |
+| _`?eventMediaCaption`_   | Text/[HTML](#rendering-html) caption of the Media                                                                                               |
+| _`?eventMediaCredit`_    | Text/[HTML](#rendering-html) credit of the Media                                                                                                |
 | _`?eventMediaThumbnail`_ | The thumbnail of Media                                                                                                                      |
 | _`?eventMediaAlt`_       | The Alt text of the Media                                                                                                                   |
 | _`?eventMediaTitle`_     | The Title of the Media                                                                                                                      |
 | _`?eventMediaLink`_      | The URL the image should link to                                                                                                            |
 
-### Network ([TriplyDB Plugin](/docs/yasgui-api#triplyDbPlugins)) {#network}
+### Network ([TriplyDB Plugin](/yasgui-api#triplyDbPlugins))
 
 This view renders SPARQL Construct results in a graph representation. It works for `Turtle`, `Trig`, `N-Triples` and `N-Quads` responses. The maximum amount of results that can be visualized is 1.000 due to performance.
 
-### Markup ([TriplyDB Plugin](/docs/yasgui-api#triplyDbPlugins)) {#markup}
+### Markup ([TriplyDB Plugin](/yasgui-api#triplyDbPlugins))
 
 The markup view can be used to render a variety of markup languages. This requires the use of the `?markup` variable to identify which variable to render. Based on the datatype of the variable the plugin will identify which markup language to use:
 

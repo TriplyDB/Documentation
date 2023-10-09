@@ -1,13 +1,61 @@
 ---
-title: "JSON-LD frames"
+title: "JSON-LD Framing"
 path: "/docs/jsonld-frames"
 ---
 
-# What are JSON-LD frames
+# Why JSON-LD Framing?
 
-Linked data queries most often support two ways of returning results. Either in flat dataformat, for example `.csv`, where each result is a separate line or record. Or as a set of linked data triples. An unordered list, in a data formats such as `.ttl` or `.nq`. The data can be interpreted by linked data tooling but the data does not follow a predefined structure. When a REST-API is queried the data is returned according to a predefined structure. The API already knows beforehand how the data will look like. With JSON-LD frames there now is a way to create predefined REST-APIs.
+SPARQL Construct and SPARQL Describe queries can return results in the JSON-LD format. Here is an example:
 
-JSON-LD frames are a deterministic translation from a graph, which has an unordered set of triples where no node is "first" or "special", into a tree, which has ordered branches and exactly one "root" node. In other words, JSON-LD framing allows one to force a specific tree layout to a JSON-LD document. This makes it possible to translate SPARQL queries to REST-APIs.
+```json
+[
+  {
+    "@id": "john",
+    "livesIn": { "@id": "amsterdam" }
+  },
+  {
+    "@id": "jane",
+    "livesIn": { "@id": "berlin" }
+  },
+  {
+    "@id": "tim",
+    "livesIn": { "@id": "berlin" }
+  }
+]
+```
+
+JSON-LD is one of the serialization formats for RDF, and encodes a graph structure. For example, the JSON-LD snippet above encodes the following graph:
+
+```mermaid
+graph TB
+  Tim -- livesIn --> Berlin
+  John -- livesIn --> Amsterdam
+  Jane -- livesIn --> Berlin
+```
+
+The triples in a graphs do not have any specific order. In our graph picture, the triple about Tim is mentioned first, but this is arbitrary. A graph is a set of triples, so there is no 'first' or 'last' triple. Similarly, there is no 'primary' or 'secondary' element in a graph structure either. In our graph picture, persons occur on the left hand-side and cities occur on the right hand-side. In fact, the same information can be expressed with the following graph:
+
+Most REST APIs return data with a specific, often tree-shaped structure. For example:
+
+```json
+{
+  "amsterdam": {
+    "inhabitants": [
+      "john"
+    ]
+  },
+  "berlin": {
+    "inhabitants": [
+      "jane",
+      "tim"
+    ]
+  }
+}
+```
+
+JSON-LD Framing is a standard that is used to assign additional structure to JSON-LD. With JSON-LD Framing, we can configure the extra structure that is needed to create REST APIs over SPARQL queries.
+
+JSON-LD Framing are a deterministic translation from a graph, which has an unordered set of triples where no node is "first" or "special", into a tree, which has ordered branches and exactly one "root" node. In other words, JSON-LD framing allows one to force a specific tree layout to a JSON-LD document. This makes it possible to translate SPARQL queries to REST-APIs.
 
 The TriplyDB API for saved queries has been equipped with a JSON-LD profiler which can apply a JSON-LD profile to a JSON-LD result, transforming the plain JSON-LD to framed JSON. To do this you need two things. A SPARQL construct query and a JSON-LD frame. When you have both of these, you can retrieve plain JSON from a SPARQL query. The revelant cURL command when both the SPARQL query and JSON-LD frame are available is:
 

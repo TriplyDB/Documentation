@@ -1,13 +1,10 @@
----
-title: "TriplyETL: Control Structures"
-path: "/docs/triply-etl/control"
----
+# Control Structures
 
 This page documents how you can use control structures in your ETL configuration.
 
 
 
-# Process data conditionally (`when()`)
+## Process data conditionally (`when()`)
 
 Source data often contains optional values.  These are values that appear in some, but not all records.
 
@@ -31,7 +28,7 @@ Notice that it is often useful to specify multiple statements under the same con
 
 
 
-## Missing values
+### Missing values
 
 If a value is sometimes completely missing from a source data record, the `when()` conditional function can be used.
 
@@ -53,7 +50,7 @@ when('zipcode',
 
 
 
-## The empty string
+### The empty string
 
 In many source data formats, the empty string is used to signify a missing value, this particular string is treated in a special way by `when()`.  A key whose value is the empty string is treated in the same way as a key that is altogether absent.
 
@@ -102,7 +99,7 @@ whenNotEqual('created', [-1, 9999],
 
 
 
-# Iterating over lists of objects (`forEach()`)
+## Iterating over lists of objects (`forEach()`)
 
 In the previous section, we saw that we were able to assert the name of the first country and the name of the second country.  But what do we do if we want to assert the name for every country in the world?  And what do we do if some countries have a name in 2 languages, but other countries have a name in 1 or 3 languages?  What we need is a simple way to express that we want to make an assertion for every element in a list.
 
@@ -126,20 +123,20 @@ country:nl rdfs:label 'The Netherlands'.
 country:de rdfs:label 'Germany'.
 ```
 
-Notice that `forEach()` only works for lists whose elements areobjects*.  See [Iterating over lists of primitives](#list-primitive) for dealing with lists that do not contain objects.
+Notice that `forEach()` only works for lists whose elements are objects*.  See [Iterating over lists of primitives](/triply-etl/tmp/tmp.md#list-primitive) for dealing with lists that do not contain objects.
 
 The elements that `forEach()` iterates over are themselves (sub)records.  This implies that all functions that work for full records also work for the (sub)records inside `forEach()`.  The (sub)records inside an `forEach()` function are smaller.  This allows the regular keys of the iterated-over elements to be accessed directly.
 
 In addition to these regular keys, (sub)records inside `forEach()` also contain additional keys that simplify common operations.  The following subsections explain the following special keys:
 
-- [Index key (`$index`)](#index-key)
-- [Parent key (`$parent`)](#parent-key)
-- [Root key (`$root`)](#root-key)
+- [Index key (`$index`)](#index-key-index)
+- [Parent key (`$parent`)](#parent-key-parent)
+- [Root key (`$root`)](#root-key-root)
 
 
-## Index key (`$index`) {#index-key}
+### Index key (`$index`)
 
-Each (sub)record that is made available in `forEach()` contains the `$index` key.  The value of this key is the index of the element in the list.  This is the same index that is used to access specific elements in an list, as explained in [the section on accessing lists by index](#accessing-lists-by-index).
+Each (sub)record that is made available in `forEach()` contains the `$index` key.  The value of this key is the index of the element in the list.  This is the same index that is used to access specific elements in an list, as explained in [the section on accessing lists by index](/triply-etl/extract/formats#accessing-lists-by-index).
 
 The index key is often useful for assigning a unique subject IRI to every element.
 
@@ -178,7 +175,7 @@ country:2 rdfs:label 'Italy'.
 ```
 
 
-## Parent key (`$parent`) {#parent-key}
+### Parent key (`$parent`)
 
 When `forEach()` iterates through a list of elements, it makes the enclosingparent* record available under key `$parent`.
 
@@ -251,10 +248,10 @@ and:
 }
 ```
 
-The `$root` key is explained in [the next section](#root-key).
+The `$root` key is explained in [the next section](#root-key-root).
 
 
-## Root key (`$root`) {#root-key}
+### Root key (`$root`)
 
 Sometimes it may be necessary to access a part of the original record that is outside of the scope of the `forEach()` call.
 
@@ -354,13 +351,13 @@ The following record is printed first (3 records are printed in total).  Notice 
 
 
 
-# Specify multiple conditions (`ifElse()`)
+## Specify multiple conditions (`ifElse()`)
 
 The `ifElse()` function in TriplyETL allows us to specify multiple conditions based on which other functions are run.
 Every condition is specified with an `if` key. In case the condition is true, the functions specified in the `then` key are run.
 If none of the `if` conditions are true, the functions specified in an `else` key, if present, are run.
  
-## Parameters
+### Parameters
 
 The first parameter must be an `{ if: ..., then: ... }` object. 
 The non-first parameters are either additional `{ if: ..., then: ... }` objects or a final `{ else: ... }` object.
@@ -373,7 +370,7 @@ Specifying a key name is identical to specifying the following function:
  
 The `then` and `else` keys take either one function, or an array of zero or more functions.
 
-## Example 1
+### Example 1
 
 The following code snippet uses different conditions to determine the age category that a person belongs to:
  
@@ -408,7 +405,7 @@ ifElse({
 }),
 ```
  
-## Example 2
+### Example 2
 
 The following snippet either asserts data about persons or data about organizations, and uses an `ifElse` to make the conditional determination on which assertion to make:
  
@@ -442,7 +439,7 @@ ifElse({
 
 
 
-# Switch between different cases (`_switch()`)
+## Switch between different cases (`_switch()`)
 
 The function `_switch()` allows us to switch between different cases, based on the value of a specified key.
 
@@ -457,7 +454,7 @@ _switch(key,
 )
 ```
 
-## Parameters
+### Parameters
 
 - `key` The key parameter whose value is compared against the specified values.
 - Each case consists of a list of two elements:
@@ -469,7 +466,7 @@ Notice that we must write `_switch()` because `switch` is a reserved keyword in 
 
 An error is emitted if the value for `key` does not match any of the cases and no default case is specified.
  
-## Example 1
+### Example 1
 
 When an ETL uses multiple data sources, we can use a `_switch()` to run a dedicated sub-ETL for each data source.
  
@@ -483,7 +480,7 @@ _switch(key.fileName,
 ),
 ```
  
-## Example 2
+### Example 2
 
 When ETLs transform different kinds of entities, it can be useful to run a sub-ETL based on the type of entity.
  

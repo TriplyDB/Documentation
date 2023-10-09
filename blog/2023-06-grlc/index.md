@@ -26,7 +26,7 @@ limit 200
 
 This is a syntactically valid query, but we do not know anything about how it should be used. For example, we do not know against which dataset we should run this query. We also lack the context in which this query was originally written, so we may not understand its purpose.
 
-In TriplyDB, the author of a query can specify the specific dataset and SPARQL endpoint against which the query should be run. In addition, the author of the query can add a human-readable description that explains the intention behind the query. The following screenshot shows how metadata is edited and stored in TriplyDB. See the [TriplyDB  documentation](/docs/triply-db-getting-started#query-metadata) for more information.
+In TriplyDB, the author of a query can specify the specific dataset and SPARQL endpoint against which the query should be run. In addition, the author of the query can add a human-readable description that explains the intention behind the query. The following screenshot shows how metadata is edited and stored in TriplyDB. See the [TriplyDB  documentation](/triply-db-getting-started#query-metadata) for more information.
 
 <figure>
   <a href="https://triplydb.com/JD/-/queries/pokemonNetwork" target="_blank">
@@ -69,7 +69,7 @@ Here is an example that retrieves the GRLC format for the Pokémon query that we
 curl -vL -H 'Accept: text/plain' 'https://api.triplydb.com/queries/JD/pokemonNetwork'
 ```
 
-See the [TriplyDB API documentation](/docs/triply-api#grlc) for more information.
+See the [TriplyDB API documentation](/triply-api#grlc) for more information.
 
 ## Using GRLC metadata in applications
 

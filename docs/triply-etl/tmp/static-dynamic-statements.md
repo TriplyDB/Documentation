@@ -10,7 +10,7 @@ We use the following Record as an example:
 | Germany     | 83190556    |
 | Netherlands | 17650200    |
 
-We start with creating the prefix and term declarations (see the [Declare](/docs/triply-etl/declare) documentation for more information):
+We start with creating the prefix and term declarations (see the [Declare](/triply-etl/declare) documentation for more information):
 
 ```ts
 const base = declarePrefix('https://triplydb.com/Triply/example/')

@@ -1,0 +1,30 @@
+:not(pre) > code {
+  background: #f8f8f8 !important;
+  color: #000 !important;
+  padding: .3em .4em !important;
+  border-radius: .3em !important;
+}
+
+ul + pre {
+  margin-bottom: 2rem;
+}
+
+div.document p ~ ul {
+  margin-top: -20px;
+}
+
+code {
+  line-height: 170% !important;
+}
+
+div.mermaid svg {
+  max-width: 100% !important;
+}
+
+table th, table td {
+  white-space: normal !important;
+}
+
+p {
+  text-align: justify !important;
+}

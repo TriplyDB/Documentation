@@ -1,4 +1,4 @@
-## Configuring the Context {#context}
+## Configuring the Context <!-- {#context} -->
 
 The TriplyETL Context is specified when the `Etl` object is instantiated.  This often appears towards the start of a pipeline script.  The TriplyETL Context allows the following things to be specified:
 

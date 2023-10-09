@@ -1,35 +1,18 @@
----
-title: "TriplyETL: Changelog"
-path: "/docs/triply-etl/changelog"
----
+# Changelog
 
-The current version of TriplyETL is **2.0.15**
+The current version of TriplyETL is **2.0.19**
 
-You can use this changelog to perform a safe update from an older version of TriplyETL to a newer one. See the documentation for [Upgrading TriplyETL repositories](/docs/triply-etl/cli#update) for the advised approach, and how the changelog factors into that.
+You can use this changelog to perform a safe update from an older version of TriplyETL to a newer one. See the documentation for [Upgrading TriplyETL repositories](/triply-etl/cli) for the advised approach, and how the changelog factors into that.
 
 
 
-# Changelogs for TriplyETL 2.0.x
+## TriplyETL 2.0.7 through 2.0.19
 
-## TriplyETL 2.0.12 through 2.0.15
-
-Release dates: between 2023-07-11 and 2034-09-13
-
-No known changes
-
-## TriplyETL 2.0.11
-
-Release date: 2023-07-11
-
-The following bug has been fixed:
-- Processing an Excel sheet with [fromXml()](/docs/triply-etl/extract/formats#fromXml) would sometimes consume too much memory.
-
-
-## TriplyETL 2.0.7 through 2.0.10
-
-Release dates: 2023-06-17 through 2023-06-28
+Release dates: 2023-06-17 through 2023-09-29
 
 The following bugs have been fixed:
+
+- Processing an Excel sheet with [fromXml()](/triply-etl/extract/formats#extractor-fromxml) would sometimes consume too much memory.
 - Several installation issues on Windows have been resolved.
 - The `async-saxophone` library for XML processing was adjusted to support the current LTS version of Node.js (v18).
 
@@ -58,28 +41,29 @@ pairs(iri(id, 'some-file'),
 triple(iri(id, 'some-location'), a, premis.StorageLocation),
 ```
 
-See the documentation about [external vocabulary declarations](/docs/triply-etl/declare#external-vocabularies) for more information.
+See the documentation about [external vocabulary declarations](/triply-etl/declare#external-vocabularies) for more information.
 
 ### [Added] New debug function logMemory()
 
-A new debug function [logMemory()](/docs/triply-etl/debug#logMemory) is added. This function prints an overview of the current memory usage of TriplyETL. This allows users to detect fluctuations in memory consumption inside their pipelines.
+A new debug function [logMemory()](/triply-etl/debug#function-logmemory) is added. This function prints an overview of the current memory usage of TriplyETL. This allows users to detect fluctuations in memory consumption inside their pipelines.
 
-See the [debug functions documentation page](/docs/triply-etl/debug#logMemory) for more information.
+See the [debug functions documentation page](/triply-etl/debug) for more information.
 
 ### [Added] Support for the `ListIdentifiers` verb in the OAI-PMH extractor
 
 The `fromOai()` extractor already supported the `ListRecords` verb. This release adds support for the `ListIdentifiers` verb. The latter allows used to stream through the headers of all records in an OAI-PMG collection, without requiring the full record (i.e. body) to be retrieved as well.
 
-See the [fromOai()](/docs/triply-etl/extract/formats#fromOai) documentation for more information.
+See the [fromOai()](/triply-etl/extract/formats#extractor-fromoai) documentation for more information.
 
 
-## TriplyETL 2.0.5
+
+## Changelog for TriplyETL 2.0.5
 
 Release date: 2023-05-25
 
 ### [Changed] New default engine for SPARQL Construct
 
-The default engine for evaluating SPARQL Construct queries (function [construct()](/docs/triply-etl/enrich/sparql)) has changed from Comunica to Speedy. Speedy is a new SPARQL implementation that is developed by Triply; Comunica is an open source engine that is developed by the open source community. Since SPARQL is a standardized query language, this change should not cause a difference in behavior for your ETL pipelines.
+The default engine for evaluating SPARQL Construct queries (function [construct()](/triply-etl/enrich/sparql)) has changed from Comunica to Speedy. Speedy is a new SPARQL implementation that is developed by Triply; Comunica is an open source engine that is developed by the open source community. Since SPARQL is a standardized query language, this change should not cause a difference in behavior for your ETL pipelines.
 
 In the unexpected case where an ETL pipeline *is* negatively affected by this change, the old situation can be restored by explicitly configuring the Comunica engine:
 
@@ -93,7 +77,7 @@ The benefit of switching to the Speedy engine is that this engine is expected to
 
 ### [Added] New CLI tool for comparing graphs
 
-The new CLI tool [compare](/docs/triply-etl/cli#tools-compare) allows graph comparison to be performed from the command-line. This uses the same algorithm that is used by the [compareGraphs()](/docs/triply-etl/validate/graph-comparison) validator function.
+The new CLI tool [compare](/triply-etl/cli#tools-compare) allows graph comparison to be performed from the command-line. This uses the same algorithm that is used by the [compareGraphs()](/triply-etl/validate/graph-comparison) validator function.
 
 ### Bug fixes
 
@@ -104,7 +88,8 @@ This release includes the following bug fixes:
 - Some RDF processors did not handle empty RDF inputs correctly.
 
 
-## TriplyETL 2.0.4
+
+## Changelog for TriplyETL 2.0.4
 
 Release date: 2023-05-11
 
@@ -153,7 +138,8 @@ graph LR
 It is possible to map `_:2a` and `_:2b` onto `_:1`, but there is no mapping that works the other way round.
 
 
-## TriplyETL 2.0.3
+
+## Changelog for TriplyETL 2.0.3
 
 Release date: 2023-05-10
 
@@ -165,7 +151,8 @@ This release includes the following bug fixes:
 - Issue when a URL data source (`Source.url()`) includes an HTTP body.
 
 
-## TriplyETL 2.0.2
+
+## Changelog for TriplyETL 2.0.2
 
 Release date: 2023-05-09
 
@@ -177,7 +164,8 @@ This release fixes bugs related to the recent switch from CommonJS to ESM:
 - Error reporting issues due to ESM imports.
 
 
-## TriplyETL 2.0.1
+
+## Changelog for TriplyETL 2.0.1
 
 Release date: 2023-05-03
 
@@ -187,10 +175,11 @@ The TriplyETL Runner is the CLI tool that is used to run ETL pipelines. Starting
 
 When the indicated timeout is reached before the pipeline finishes, the TriplyETL Runner will gracefully terminate the ETL by acting as if there are no more incoming records.
 
-See the [TriplyETL Runner documentation page](/docs/triply-etl/cli#timeout) for more information.
+See the [TriplyETL Runner documentation page](/triply-etl/cli#set-a-timeout) for more information.
 
 
-## TriplyETL 2.0.0
+
+## Changelog for TriplyETL 2.0.0
 
 Release date: 2023-05-01
 
@@ -224,12 +213,12 @@ This release introduces a new approach for communicating errors back to the user
 
 The following bug fixes are included in this release:
 
-- Incorrect behavior of the [_switch() control function](/docs/triply-etl/control#switch).
-- The [fromOai() extractor](/docs/triply-etl/extract#fromOai) now communicates clearer when the accessed OAI-PMH endpoint encounters any issues.
+- Incorrect behavior of the [_switch() control function](/triply-etl/control#switch-between-different-cases-_switch).
+- The [fromOai() extractor](/triply-etl/extract/formats#extractor-fromoai) now communicates clearer when the accessed OAI-PMH endpoint encounters any issues.
 - When a key with a NULL value was accessed, the name of the key is now included in the error message.
 
 
 
-# Start of the changelog
+## TriplyETL 1.0.x
 
 TriplyETL 1.0.0 was released on 2023-03-20.
