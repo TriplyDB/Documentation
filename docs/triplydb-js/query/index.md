@@ -102,7 +102,7 @@ At least one of the following arguments is required to create a new version. Any
     <dl>
       <dt>IRI variable</dt>
       <dd>An object of the form `Variable`
-      (see [`Account.addQuery()`](#accountaddqueryname-string-metadata-object)
+      (see  <a href="/triplydb-js/account#accountaddqueryname-string-metadata-object">Account.addQuery()</a>)
       </dd>
   </dd>
 </dl>

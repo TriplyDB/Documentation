@@ -25,16 +25,25 @@ When an API token is specified, the operations that can be performed through the
 
 The following token access levels are available:
 
-1. “Read access” allows:
+1\. “Read access” allows:
+
    - Read operations over data with access level “Public”.
+
    - Read operations over data with access level “Internal”.
+
    - Read operations over data with access level “Private” that belongs to the user who created the token.
+
    - Read operations over data with access level “Private” that belongs to organizations to which the user who created the token is a member.
-2. “Write acces” allows:
+
+2\. “Write acces” allows:
+
    - All operations allows by “Read acces”.
+
    - Write operations over data that has access setting “Internal”.
+
    - Write operations over data 
-3. “Management access” allows the following operations to be performed: creating organizations, adding/removing members to/from organizations.
+
+3\. “Management access” allows the following operations to be performed: creating organizations, adding/removing members to/from organizations.
 
 The following creates a `App` object with an API token that is made available through an environment variable (see section [Setting up a secure read/write project](/triplydb-js#setting-up-a-readwrite-project)):
 
@@ -56,15 +65,15 @@ If `name` is omitted, the TriplyDB account that is associated with the current A
 
 - The following snippet returns the account called `'Triply'`.
 
-  ```ts
-  const account = await triply.getAccount('Triply')
-  ```
+```ts
+const account = await triply.getAccount('Triply')
+```
 
 - The following snippet returns the current account. This is the account for which the currently configured API token was created.
 
-  ```ts
-  const account = await triply.getAccount()
-  ```
+```ts
+const account = await triply.getAccount()
+```
 
 ### See also
 
@@ -85,18 +94,18 @@ Returns an [async iterator](/triplydb-js/faq#what-is-an-async-iterator) over all
 
 - The following snippet prints the display names for all accounts in the TriplyDB server at <https://triplydb.com>:
 
-  ```ts
-  const triply = App.get({ url: 'https://api.triplydb.com' })
-  for await (const account of triply.getAccounts()) {
-    console.log((await account.getInfo()).name)
-  }
-  ```
+```ts
+const triply = App.get({ url: 'https://api.triplydb.com' })
+for await (const account of triply.getAccounts()) {
+  console.log((await account.getInfo()).name)
+}
+```
 
 - The following snippet returns an array that contains all account objects:
 
-  ```ts
-  console.log(await triply.getAccounts().toArray())
-  ```
+```ts
+console.log(await triply.getAccounts().toArray())
+```
 
 See class [Account](/triplydb-js/account#account) for an overview of the methods that can be used with account objects.
 

@@ -12,3 +12,15 @@ div.document p ~ ul {
 code {
   line-height: 170% !important;
 }
+
+div.mermaid svg {
+  max-width: 100% !important;
+}
+
+table th, table td {
+  white-space: normal !important;
+}
+
+p {
+  text-align: justify !important;
+}

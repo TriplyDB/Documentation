@@ -419,7 +419,7 @@ for await (const statement of dataset.getStatements()) {
 }
 ```
 
-- The following prints the description of the Amsterdam resource in the DBpedia dataset:
+The following prints the description of the Amsterdam resource in the DBpedia dataset:
 
 ```ts
 const association = triply.getOrganization('DBpedia-association')

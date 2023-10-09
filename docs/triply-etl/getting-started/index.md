@@ -76,9 +76,9 @@ Perform the following steps to use the TriplyETL Generator:
 
 1. Run the following command:
 
-   ```sh
-   npx triply-etl-generator
-   ```
+```sh
+npx triply-etl-generator
+```
 
    If you use TriplyETL Generator for the first time, this command automatically downloads and installs the latest version on your computer. If you have used TriplyETL Generator in the past, this command automatically updates your installation to the latest version.
 
@@ -102,29 +102,29 @@ Perform the following steps to use the TriplyETL Generator:
 
     Here is an example of a possible run:
 
-    ```sh
-    ? TriplyETL License Key: [hidden]
-    ? Project name: my-etl
-    ? Target folder: my-etl
-    ? Dataset name: my-etl
-    ? Create a new TriplyDB API Token? Yes
-    ? Your TriplyDB URL: triplydb.com
-    ? Your TriplyDB email: my-account@my-organization.com
-    ? Your TriplyDB password: [hidden]
-    🏁 Your project my-etl is ready for use in my-etl.
-    ```
+```sh
+? TriplyETL License Key: [hidden]
+? Project name: my-etl
+? Target folder: my-etl
+? Dataset name: my-etl
+? Create a new TriplyDB API Token? Yes
+? Your TriplyDB URL: triplydb.com
+? Your TriplyDB email: my-account@my-organization.com
+? Your TriplyDB password: [hidden]
+🏁 Your project my-etl is ready for use in my-etl.
+```
 
 3. Go to the target folder that you have specified:
 
-   ```sh
-   cd my-etl
-   ```
+```sh
+cd my-etl
+```
 
 4. You can now use the [TriplyETL Runner](/triply-etl/cli#triplyetl-runner) to run the ETL:
 
-   ```sh
-   npx etl
-   ```
+```sh
+npx etl
+```
 
 
 
@@ -146,33 +146,33 @@ Perform the following steps to use the TriplyETL Runner:
 
    If you have access to an existing TriplyETL project, use the following command to make a local copy with Git:
 
-   ```sh
-   git clone ssh://git@git.triply.cc:10072/customers/my-org/my-project.git
-   ```
+```sh
+git clone ssh://git@git.triply.cc:10072/customers/my-org/my-project.git
+```
 
 2. Once you have created a local copy of an existing ETL project, go into the corresponding directory:
 
-   ```sh
-   cd my-project
-   ```
+```sh
+cd my-project
+```
 
 3. Install the dependencies:
 
-   ```sh
-   npm i
-   ```
+```sh
+npm i
+```
 
 4. Transpile the TypeScript files into JavaScript:
 
-   ```sh
-   npm run build
-   ```
+```sh
+npm run build
+```
 
 5. You can now use the TriplyETL Runner:
 
-   ```sh
-   npx etl
-   ```
+```sh
+npx etl
+```
 
 At this point, you should see a first TriplyETL process in your terminal application. If this is not the case, please contact [support@triply.cc](mailto:support@triply.cc) to help you out.
 
@@ -196,22 +196,22 @@ Perform the following steps to use the TriplyETL Library:
 
 1. Open the file `.npmrc` in your text editor, or create the file if it does not yet exist. Add the following content:
 
-   ```
-   @triplydb:registry=https://git.triply.cc/api/v4/packages/npm/
-   @triplyetl:registry=https://git.triply.cc/api/v4/packages/npm/
-   //git.triply.cc/api/v4/packages/npm/:_authToken={LICENSE_KEY}
-   ```
+```
+@triplydb:registry=https://git.triply.cc/api/v4/packages/npm/
+@triplyetl:registry=https://git.triply.cc/api/v4/packages/npm/
+//git.triply.cc/api/v4/packages/npm/:_authToken={LICENSE_KEY}
+```
 
    Replace `{LICENSE_KEY}` with your TriplyETL License Key. Contact [support@triply.cc](mailto:support@triply.cc) if you do not have such a license key yet.
 
   2. Run the following command to add the TriplyETL dependency to your `package.json` file:
 
-     ```sh
-     npm i @triplyetl/etl
-     ```
+```sh
+npm i @triplyetl/etl
+```
 
   3. Open one of the TypeScript files in your software project. When you add the following line to the top of your file, it should be recognized by your TypeScript editor:
 
-     ```ts
-     import { sdo } from '@triplyetl/etl/vocab'
-     ```
+```ts
+import { sdo } from '@triplyetl/etl/vocab'
+```

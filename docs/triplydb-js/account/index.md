@@ -432,19 +432,19 @@ The iterator only includes datasets that are accessible for the current connecti
 
 - The following snippet prints the names of all accessible dataset under the Triply account:
 
-  ```ts
-  const account = await triply.getAccount('Triply')
-  for await (const dataset of account.getDatasets()) {
-    console.log((await dataset.getInfo()).name)
-  }
-  ```
+```ts
+const account = await triply.getAccount('Triply')
+for await (const dataset of account.getDatasets()) {
+  console.log((await dataset.getInfo()).name)
+}
+```
 
 - The following snippet prints the list of names of all accessible datasets under the Triply account:
 
-  ```ts
-  const account = await triply.getAccount('Triply')
-  console.log(await account.getDatasets().toArray())
-  ```
+```ts
+const account = await triply.getAccount('Triply')
+console.log(await account.getDatasets().toArray())
+```
 
 
 ## Account.getInfo()
@@ -509,33 +509,33 @@ The information object for accounts includes the following keys:
 
 - The following snippet prints the full information object for the account called ‘Triply’:
 
-  ```ts
-  const account = await triply.getAccount('Triply')
-  console.log(await account.getInfo())
-  ```
+```ts
+const account = await triply.getAccount('Triply')
+console.log(await account.getInfo())
+```
 
   The output for this snippet can look as follows:
 
-  ```json
-  {
-    'accountName': 'Triply',
-    'avatarUrl': 'https://www.gravatar.com/avatar/9bc28997dd1074e405e1c66196d5e117?d=mm',
-    'createdAt': 'Mon Mar 19 2018 14:39:18 GMT+0000 (Coordinated Universal Time)',
-    'datasetCount': 16,
-    'name': 'Triply',
-    'queryCount': 37,
-    'storyCount': 7,
-    'type': 'org',
-    'updatedAt': 'Tue Nov 27 2018 09:29:38 GMT+0000 (Coordinated Universal Time)'
-  }
-  ```
+```json
+{
+  'accountName': 'Triply',
+  'avatarUrl': 'https://www.gravatar.com/avatar/9bc28997dd1074e405e1c66196d5e117?d=mm',
+  'createdAt': 'Mon Mar 19 2018 14:39:18 GMT+0000 (Coordinated Universal Time)',
+  'datasetCount': 16,
+  'name': 'Triply',
+  'queryCount': 37,
+  'storyCount': 7,
+  'type': 'org',
+  'updatedAt': 'Tue Nov 27 2018 09:29:38 GMT+0000 (Coordinated Universal Time)'
+}
+```
 
 - The following snippet prints the name of the account called ‘Triply’:
 
-  ```ts
-  const account = await triply.getAccount('Triply')
-  console.log((await account.getInfo()).name)
-  ```
+```ts
+const account = await triply.getAccount('Triply')
+console.log((await account.getInfo()).name)
+```
 
 
 ## Account.getPinnedItems()

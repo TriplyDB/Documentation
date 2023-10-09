@@ -107,73 +107,74 @@ link:
 
 To get the output for a `construct` or `select` query, follow these steps:
 
-1. Import the TriplyDB library and set your parameters, regarding the TriplyDB instance and the account in which you have saved the query as well as the name of the query. Do not forget that we perform TriplyDB.js requests within an async context.
+1\. Import the TriplyDB library and set your parameters, regarding the TriplyDB instance and the account in which you have saved the query as well as the name of the query. Do not forget that we perform TriplyDB.js requests within an async context.
 
-   ```ts
-   import Client from '@triply/triplydb'
-   async function run() {
-     // Your code goes here.
-     const client = Client.get({token: process.env.TRIPLYDB_TOKEN})
-     const account = await client.getAccount('account-name')
-     const query = await account.getQuery('name-of-some-query')
-   }
-   run()
-   ```
+```ts
+import Client from '@triply/triplydb'
+async function run() {
+  // Your code goes here.
+  const client = Client.get({token: process.env.TRIPLYDB_TOKEN})
+  const account = await client.getAccount('account-name')
+  const query = await account.getQuery('name-of-some-query')
+}
+run()
+```
 
-2. Get the results of a query by setting a `results` variable.  More specifically, for construct queries you use the `statements()` call:
+2\. Get the results of a query by setting a `results` variable.  More specifically, for construct queries you use the `statements()` call:
 
-   ```ts
-   const query = await account.getQuery('name-of-some-query')
-   const results = query.results().statements()
-   ```
+```ts
+const query = await account.getQuery('name-of-some-query')
+const results = query.results().statements()
+```
 
    For select queries you use the `bindings()` call:
 
-   ```ts
-   const query = await account.getQuery('name-of-some-query')
-   const results = query.results().bindings()
-   ```
+```ts
+const query = await account.getQuery('name-of-some-query')
+const results = query.results().bindings()
+```
 
    Additionally, saved queries can have 'API variables' that allow you to specify variables that are used in the query. Thus, if you have query parameters, pass their values as the first argument to `results` as follows:
 
-   ```ts
-   // For SPARQL construct queries.
-   const results = query.results({
-     someVariable: 'value of someVariable',
-     anotherVariable: 'value of anotherVariable'
-   }).statements()
-   // For SPARQL select queries.
-   const results = query.results({
-     someVariable: 'value of someVariable',
-     anotherVariable: 'value of anotherVariable'
-   }).bindings()
-   ```
+```ts
+// For SPARQL construct queries.
+const results = query.results({
+  someVariable: 'value of someVariable',
+  anotherVariable: 'value of anotherVariable'
+}).statements()
+// For SPARQL select queries.
+const results = query.results({
+  someVariable: 'value of someVariable',
+  anotherVariable: 'value of anotherVariable'
+}).bindings()
+```
 
-3. To iterate the results of your SPARQL query you have three options:
+3\. To iterate the results of your SPARQL query you have three options:
 
-    a. Iterate through the results per row in a `for`-loop:
+  a. Iterate through the results per row in a `for`-loop:
 
-      ```ts
-      // Iterating over the results.
-      for await (const row of results) {
-        // execute something
-      }
-      ```
-      Note: For select queries the `for`-loop iterates over the rows of the result set. For construct queries the `for`-loop iterates over the statements in the result set.
+```ts
+// Iterating over the results.
+for await (const row of results) {
+  // execute something
+}
+```
 
-    b. Save the results to a file. This is only supported for SPARQL `construct` queries:
+  Note: For select queries the `for`-loop iterates over the rows of the result set. For construct queries the `for`-loop iterates over the statements in the result set.
 
-      ```ts
-      // Saving the results of a SPARQL construct query to a file.
-      await results.toFile('my-file.nt')
-      ```
+  b. Save the results to a file. This is only supported for SPARQL `construct` queries:
 
-    c. Load all results into memory in the form of an Array. Note that this is almost never used. If you want to process results, then use the 3a option; if you want to persist results, then option 3b suits better.
+```ts
+// Saving the results of a SPARQL construct query to a file.
+await results.toFile('my-file.nt')
+```
 
-      ```ts
-      // Loading results for a SPARQL construct or SPARQL select query into memory.
-      const array = await results.toArray()
-      ```
+  c. Load all results into memory in the form of an Array. Note that this is almost never used. If you want to process results, then use the 3a option; if you want to persist results, then option 3b suits better.
+
+```ts
+// Loading results for a SPARQL construct or SPARQL select query into memory.
+const array = await results.toArray()
+```
 
 ### Using a saved query as REST-API (Advanced)
 
