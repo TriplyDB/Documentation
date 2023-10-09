@@ -5,6 +5,10 @@
   border-radius: .3em !important;
 }
 
+ul + pre {
+  margin-bottom: 2rem;
+}
+
 div.document p ~ ul {
   margin-top: -20px;
 }
