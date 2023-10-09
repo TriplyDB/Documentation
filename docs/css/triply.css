@@ -5,6 +5,21 @@
   border-radius: .3em !important;
 }
 
+h1 {
+  font-size: 190% !important;
+}
+
+h2 {
+  font-size: 140% !important;
+}
+
+h3 {
+  font-size: 120% !important;
+  font-style: italic;
+}
+
+
+
 ul + pre {
   margin-bottom: 2rem;
 }
