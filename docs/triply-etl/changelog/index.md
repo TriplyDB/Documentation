@@ -33,7 +33,7 @@ nestedPairs(S, P, [a, sdo.Person])
 5\. Manually specified and standard prefixes are automatically added to TriplyDb when [toRdf()](/triply-etl/publish/#local-data-destinations) is used. The middleware `uploadPrefixes()` is removed.
 
 
-### [Changed]
+### Changed
 1\. A new flag now bypasses generating the trace for very large records: `---skip-error-trace`. Thus, no trace file is created.
 
 2\. The [loadRdf()](/triply-etl/extract/formats/#function-loadrdf) middleware is able to parse known RDF serilaizations (`Turtle`, `TriG`, `n-triples`, `n-quads`) provided as a string without specifying mimetype.
