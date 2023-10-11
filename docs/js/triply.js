@@ -22,11 +22,11 @@ window.onload = () => {
   hljs.highlightAll()
   Array.from(document.querySelectorAll('.toctree-l1 a'))
     .filter(el => customUrlMappingLevel1.has(el.innerText))
-    .map(el => el.href = customUrlMappingLevel1.get(`${prefix}${el.innerText}`))
+    .map(el => el.href = prefix + customUrlMappingLevel1.get(el.innerText))
 
   Array.from(document.querySelectorAll('.toctree-l2 a'))
     .filter(el => customUrlMappingLevel2.has(el.innerText))
-    .map(el => el.href = customUrlMappingLevel2.get(`${prefix}${el.innerText}`))
+    .map(el => el.href = prefix + customUrlMappingLevel2.get(el.innerText))
 
   if (window.location.pathname.endsWith('search.html')) {
     const li = document.createElement('li')
@@ -37,6 +37,9 @@ window.onload = () => {
     document.querySelectorAll('#mkdocs-search-results article h3 a')
       .forEach(el => el.innerText = 'aaa' )
   }
-
-  // if (typeof onLoad === 'function') onLoad()
+  // activate hamburger menu:
+  document.querySelector('[data-toggle="wy-nav-top"]').addEventListener('click', (e) => {
+    document.querySelectorAll('[data-toggle="wy-nav-shift"]')
+      .forEach(el => el.classList.toggle('shift'))
+  })
 }
