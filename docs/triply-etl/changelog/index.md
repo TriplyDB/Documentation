@@ -8,23 +8,32 @@ You can use this changelog to perform a safe update from an older version of Tri
 
 Release dates: 2023-10-11 
 
-### [Feature] 
-- The middlewares `fromCsv()`, `fromJson()`, `fromTsv()` and `fromXml()` now supports TriplyDB `select` and `ask` queries.
+### Feature 
+- The middlewares [fromCsv()](/triply-etl/extract/formats/#extractor-fromcsv), [fromJson()](/triply-etl/extract/formats/#extractor-fromjson), [fromTsv()](/triply-etl/extract/formats/#extractor-fromtsv) and [fromXml()](/triply-etl/extract/formats/#extractor-fromxml) now supports TriplyDB `select` and `ask` queries.
+
+
 -  It is now possible to validate and publish a TriplyDB dataset to the (Dutch) [NDE Termennetwerk](https://datasetregister.netwerkdigitaalerfgoed.nl):
-    - Instantiate the NDE Class by providing it with the ETL object: `const nde = new NDEDatasetRegister({et;, accountName, datasetname})`
-    - Validate  dataset: `nde.validate()`
-    - Submit a dataset: `nde.submit()`
-    - Note that this is not implemented middleware!
+    - Instantiate the NDE Class by providing it with the ETL object: 
+```ts
+const nde = new NDEDatasetRegister({et;, accountName, datasetname})`
+```
+  - Validate  dataset: `nde.validate()`
+  - Submit a dataset: `nde.submit()`
 
- - The `nestedPairs()` middleware can now be used without providing the subject node that connects the pairs to the object/predicate. The following is now valid: `nestedPairs(S, P, [a, sdo.Person])`. When used like this, the middleware will automatically create a skolem-iri.
+ - The `nestedPairs()` middleware can be used without providing the subject node that connects the pairs to the object/predicate. The following is valid: 
+```ts
+nestedPairs(S, P, [a, sdo.Person])
+```
+When used like this, the middleware will automatically create a skolem-iri.
 
-- TriplyETL now supports transformations using RDF mapping language.
-- Prefixes (manually added and standard) are now automatically added to TriplyDb when `toRdf()` is used. The middleware `uploadPrefixes()` is now removed.
-- Extra override for `nestedPairs()`: we now accept calling this middleware without an object (=subject for the nested triples). When ommitted, a skolem iri is used.
+
+- TriplyETL supports transformations using RDF mapping language.
+- Prefixes (manually added and standard) are automatically added to TriplyDb when `toRdf()` is used. The middleware `uploadPrefixes()` is removed.
+- Extra override for `nestedPairs()`: we accept calling this middleware without an object (=subject for the nested triples). When ommitted, a skolem iri is used.
 
 
 ### [Changed]
-- The generation of the trace, more specifically the part that creates a diff for the record takes too long if the record is very large. A new flag has been introduced to bypass this feature: `---skip-error-trace`. Obviously using this flag means no trace file is created.
+- Generating the trace, especially the part that creates a diff for the record takes too long for very large records. A new flag now lets you bypass this feature: `---skip-error-trace`. Using this flag means no trace file is created.
 - The `loadRdf()` middleware now assumes the data provided is parsable using one of the known RDF serilaizations (Turtle, TriG, n-triples, n-quads) by assuming the simple RDF parses should be used if mimetype is 'text/plain' (e.g. when you provide a simple `Source.string()`). This is similair to how it used to work before we accepted other RDF sources (e.g. RDFa). For those more advanced use, the mimetype is still required as argument.
 - The logfile produced by an ETL provides better and more detailed feedback. We also no longer use human friendly time representations, but exact times are now used.
 - The `toRdf()` middleware now accepts "me" as account name, resulting in the user defined by the token.
@@ -47,26 +56,74 @@ Release dates: 2023-10-11
     - deleteQueries
     - deleteGraphs
 - We now support XSLT processing in the `fromXML()` and `loadRdf()` middleware by providing an optional `Source.file()` to the `stylesheet` parameter that uses an XSL-XML Stylesheet.
-- The vocabularies and languages are no longer part of `@triplyetl/etl package`. A new module has been released: `@triplyetl/vocabularies`.
-   - individual imports:
-      - old: `import { a, rdf, sdo } from '@triplyetl/etl/vocab/index.js'`
-      - new: `import { a, rdf, sdo } from '@triplyetl/vocabularies'`
-   - import all vocabularies (e.g. for `vocab.sdo.name'`):
-      - old: `import { vocab } from '@triplyetl/etl/vocab/index.js'`
-      - new: `import * as vocab from "@triplyetl/vocabularies"`
-   - to use a `prefixer` function (e.g. `aat(123456)`) (note that the name has changed from `prefix` to `prefixer`):
-      - old: `import { prefix } from '@triplyetl/etl/vocab'` => `prefix.aat('300379271')`
-      - new: `import { prefixer } from '@triplyetl/etl/vocab'` => `prefixer.aat('300379271')`
-   - to get a Iri from a specific prefix:
-      - old: `import { prefix } from '@triplyetl/etl/vocab'` => `prefix.skos('')`
-      - new: `import { prefix } from '@triplyetl/etl/vocab'` => `prefix.skos`
-   - to use the RATT `lang` tools
+
+- The vocabularies and languages are no longer part of `@triplyetl/etl package`. A new module has been released: `@triplyetl/vocabularies`:
+  
+        1\. Individual imports:
+
+```ts
+import { a, rdf, sdo } from '@triplyetl/vocabularies'
+```
+#
+    - Import all vocabularies (e.g. for `vocab.sdo.name'`):
+        - Old:
+
+```ts
+import * as vocab from "@triplyetl/vocabularies"
+```
+
+   - To use a `prefixer` function (e.g. `aat(123456)`) (note that the name has changed from `prefix` to `prefixer`):
+      - Old:
+
+```ts
+import { prefix } from '@triplyetl/etl/vocab'` => `prefix.aat('300379271')
+```
+
+      - New:
+
+```ts 
+import { prefixer } from '@triplyetl/etl/vocab'` => `prefixer.aat('300379271')
+```
+
+   - To get a Iri from a specific prefix:
+      - Old:
+
+```ts
+import { prefix } from '@triplyetl/etl/vocab'` => `prefix.skos('')
+```
+
+      - New:
+
+```ts
+import { prefix } from '@triplyetl/etl/vocab'` => `prefix.skos
+```
+
+   - To use the RATT `lang` tools
       - The old `lang` code only had a very limited amount of languages defined, the new version has almost evry language known.
-      - old: `import { lang } from '@triplyetl/etl/vocab/index.js'`
-      - new: `import { languages } from '@triplyetl/vocabularies'`
-      - Also see this examples:
-        - `import { region, language } from '@triplyetl/vocabularies'; const nl_BE = language.nl.addRegion(region.BE)`      
-- A new way of dealing with prefixes has been introduced: we no longer define prefixes as function that can concat a value to an Iri and return an Iri, but the Iri is a new type of Object in TriplyETL. The main function still is `declarePrefix()` which is now a wrapper for `new Iri(...)`. The new iri object has a `concat()` method which allows you to add a value to the first part of an Iri. The result is a new Iri. You can do `const johnDoe = declarePrefix('http://ex.com/').concat('John').concat('/Doe')` (= http://ex.com/John/Doe). All Iri's can be used in asserting new statements.
+      - Old: 
+
+```ts 
+import { lang } from '@triplyetl/etl/vocab/index.js'
+```
+
+      - New: 
+
+```ts
+import { languages } from '@triplyetl/vocabularies'
+```
+
+      - Another example:
+
+```ts
+import { region, language } from '@triplyetl/vocabularies'; const nl_BE = language.nl.addRegion(region.BE)
+``` 
+
+- A new way of dealing with prefixes has been introduced: we no longer define prefixes as function that can concat a value to an Iri and return an Iri, but the Iri is a new type of Object in TriplyETL. The main function still is `declarePrefix()` which is now a wrapper for `new Iri(...)`. The new iri object has a `concat()` method which allows you to add a value to the first part of an Iri. The result is a new Iri. You can do 
+```ts
+const johnDoe = declarePrefix('http://ex.com/').concat('John').concat('/Doe')
+```
+
+(= http://ex.com/John/Doe). All Iri's can be used in asserting new statements.
 - Developers notes:
     - switched from `yarn` to `npm`.
     - removes some unused packages and types
