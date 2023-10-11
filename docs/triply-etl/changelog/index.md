@@ -1,10 +1,144 @@
 # Changelog
 
-The current version of TriplyETL is **2.0.19**
+The current version of TriplyETL is **3.0.0**
 
 You can use this changelog to perform a safe update from an older version of TriplyETL to a newer one. See the documentation for [Upgrading TriplyETL repositories](/triply-etl/cli) for the advised approach, and how the changelog factors into that.
 
+## TriplyETL 3.0.0 
 
+Release dates: 2023-10-11 
+
+### Feature 
+1\. The middlewares [fromCsv()](/triply-etl/extract/formats/#extractor-fromcsv), [fromJson()](/triply-etl/extract/formats/#extractor-fromjson), [fromTsv()](/triply-etl/extract/formats/#extractor-fromtsv) and [fromXml()](/triply-etl/extract/formats/#extractor-fromxml) now supports TriplyDB `SELECT` and `ASK` queries.
+
+2\.  It is now possible to validate and publish a TriplyDB dataset to the [NDE Termennetwerk](https://datasetregister.netwerkdigitaalerfgoed.nl):
+   
+  - Instantiate the NDE Class by providing it with the ETL object: 
+
+```ts
+const nde = new NDEDatasetRegister({et;, accountName, datasetname})
+```
+  - Validate  dataset: `nde.validate()`  
+
+  - Submit a dataset: `nde.submit()`  
+
+ 3\. The [nestedPairs()](/triply-etl/assert/ratt/statement/#function-nestedpairs) middleware can be used without providing the subject node that connects the pairs to the object/predicate. This will automatically create a skolem-iri for the subject:
+
+```ts
+nestedPairs(S, P, [a, sdo.Person])
+```
+
+4\. TriplyETL supports transformations using [RDF mapping language](https://rml.io/docs/rml/introduction/).
+
+5\. Manually specified and standard prefixes are automatically added to TriplyDb when [toRdf()](/triply-etl/publish/#local-data-destinations) is used. The middleware `uploadPrefixes()` is removed.
+
+
+### Changed
+1\. A new flag now bypasses generating the trace for very large records: `---skip-error-trace`. Thus, no trace file is created.
+
+2\. The [loadRdf()](/triply-etl/extract/formats/#function-loadrdf) middleware is able to parse known RDF serilaizations (`Turtle`, `TriG`, `n-triples`, `n-quads`) provided as a string without specifying mimetype.
+
+```ts
+const data = Source.string('...')
+loadRdf(data)
+```
+
+3\. The output of the logfile and terminal output is changed. It contains more information to help users debugging ETL's. The format of time representation is now `H:i:s.u` where:  
+
+   -  **H**: 24-hour format of an hour with leading zeros	(00 through 23)  
+   - **i**: Minutes with leading zeros	(00 to 59)  
+   - **s**: Seconds with leading zeros (00 through 59)  
+   - **u**: Microseconds (example: 654321)  
+
+4\. The [toRdf()](/triply-etl/publish/#local-data-destinations) middleware now accepts `"me"` as account name based on the token.  
+
+5\. The `resetStore()` middleware is now moved from `ratt` to the `generic` namespace . The `randomKey()` middleware moved from `generic` to `ratt`.  
+
+6\. You can now use `--offset` and `--limit` instead of `--from-record-id` and `--head`, e.g. `LIMIT=1 OFFSET=8 npx etl`.  The old arguments can still be used for backwards compatibility.
+
+7\. Middleware `mapQuads()` is removed.  
+
+8\. If the users Node.JS version is older that the recommendend version (currently \>=18.0.0) a warning is shown.  
+
+9\. A SHACL Validation Engine improved performance. 
+ 
+10\. We support XSLT processing in the [fromXml()](/triply-etl/extract/formats/#extractor-fromxml) and [loadRdf()](/triply-etl/extract/formats/#function-loadrdf) middlewares by providing an optional `Source.file()` to the `stylesheet` parameter.
+
+11\. The vocabularies and languages are no longer part of `@triplyetl/etl package`. A new module has been released: `@triplyetl/vocabularies`:  
+
+  - Individual imports:
+
+```ts
+import { a, rdf, sdo } from '@triplyetl/vocabularies'
+```
+
+  - Import all vocabularies:
+
+```ts
+import * as vocab from "@triplyetl/vocabularies"
+```
+
+   - To use a `prefixer` function (e.g. `aat(123456)`) (note that the name has changed from `prefix` to `prefixer`):
+
+```ts 
+import { prefixer } from '@triplyetl/etl/vocab'
+prefixer.aat('300379271')
+```
+
+   - To get an Iri from a specific prefix:
+
+```ts
+import { prefix } from '@triplyetl/etl/vocab'
+prefix.skos
+```
+
+   - To use the RATT `lang` tools:
+	 
+a\. Import `languages`:
+
+```ts
+import { languages } from '@triplyetl/vocabularies'
+```
+b\. Import `languages` and `region`:
+
+```ts
+import { region, language } from '@triplyetl/vocabularies'
+
+const nl_BE = language.nl.addRegion(region.BE)
+``` 
+
+12\. Prefixes are no longer defined as function that concatenates a value to an Iri. The Iri is a new type of Object in TriplyETL, that has a `concat()` method which allows you to add a value to the first part of an Iri. For example:
+```ts
+const johnDoe = declarePrefix('http://ex.com/').concat('John').concat('/Doe')
+```  
+
+13\. Developers notes:  
+
+   - Switched from `yarn` to `npm`.  
+   - Removes some unused packages and types.    
+   - Most @ts-ignore / @ts-expect-error derictives have been removed and fixed.    
+
+### Bug fixes
+
+1\. Report which file contains errors when multiple files are used in [fromCsv()](/triply-etl/extract/formats/#extractor-fromcsv), [fromTsv()](/triply-etl/extract/formats/#extractor-fromtsv) and [fromXml()](/triply-etl/extract/formats/#extractor-fromxml)  middleware.
+
+2\. When a WKT point is created with the `addPoint()` function, and the CRS parameter is not specified, the CRS <http://www.opengis.net/def/crs/OGC/1.3/CRS84> is used.  
+
+3\. We can use an API Token from the `.env` file and a TriplyDB instance URL in the function call (e.g. `loadRdf(Source.TriplyDb.rdf('test',{triplyDb:{url:'https://api.triplydb.com'}}))`). An error is thrown if the decoded token information conflicts with the provided arguments.
+
+4\. Communicate non-success HTTP status codes.
+
+5\. Adds better metadata in ETL logs: 
+
+ - TriplyETL version
+ - Node.js version
+ - DTAP mode
+ - Start date/time
+ - End date/time
+
+6\. Disable support for multiple [Extractors](http://127.0.0.1:8000/triply-etl/extract/formats/). 
+
+7\. Fixes out-of-memory issue when using SHACL validation. 
 
 ## TriplyETL 2.0.7 through 2.0.19
 
