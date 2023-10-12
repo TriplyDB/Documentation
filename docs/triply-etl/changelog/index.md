@@ -6,17 +6,18 @@ You can use this changelog to perform a safe update from an older version of Tri
 
 ## TriplyETL 3.0.0 
 
-Release dates: 2023-10-11 
+Release dates: 2023-11-11 
 
 ### Feature 
-1\. The extractors [fromCsv()](../extract/formats/#extractor-fromcsv), [fromJson()](../extract/formats/#extractor-fromjson), [fromTsv()](../extract/formats/#extractor-fromtsv) and [fromXml()](../extract/formats/#extractor-fromxml) now support [SPARQL Select](../extract/types/#sparql-select-queries) queries. [fromJson()](../extract/formats/#extractor-fromjson) and [fromXml()](../extract/formats/#extractor-fromxml) also support [SPARQL Ask](../extract/types/#sparql-ask-queries) queries. 
+1\. The extractors [fromCsv()](../extract/formats/#extractor-fromcsv), [fromJson()](../extract/formats/#extractor-fromjson), [fromTsv()](../extract/formats/#extractor-fromtsv) and [fromXml()](../extract/formats/#extractor-fromxml) now support [SPARQL Select](../extract/types/#sparql-select-queries) queries. The extractors [fromJson()](../extract/formats/#extractor-fromjson) and [fromXml()](../extract/formats/#extractor-fromxml) also support [SPARQL Ask](../extract/types/#sparql-ask-queries) queries. 
 
-2\.  It is now possible to validate and publish a TriplyDB dataset to the [NDE Termennetwerk](https://datasetregister.netwerkdigitaalerfgoed.nl):
+2\.  It is now possible to validate and publish a TriplyDB dataset to the [NDE Dataset Register](https://datasetregister.netwerkdigitaalerfgoed.nl), a centralized registry of digital heritage datasets:
    
   - Instantiate the NDE Class by providing it with the ETL object: 
 
 ```ts
-const nde = new NDEDatasetRegister({et;, accountName, datasetname})
+import { NDE } from "@triplyetl/etl/utils";
+const nde = new NDE({etl, accountName, datasetname})
 ```
   - Validate  dataset: `nde.validate()`  
 
@@ -137,7 +138,7 @@ const johnDoe = declarePrefix('http://ex.com/').concat('John').concat('/Doe')
  - Start date/time
  - End date/time
 
-6\. Disable support for multiple [Extractors](http://127.0.0.1:8000/triply-etl/extract/formats/). 
+6\. Disable support for multiple [Extractors](../extract/formats/). 
 
 7\. Fixes out-of-memory issue when using SHACL validation. 
 
@@ -195,7 +196,7 @@ See the [fromOai()](../extract/formats#extractor-fromoai) documentation for more
 
 
 
-## Changelog for TriplyETL 2.0.5
+## TriplyETL 2.0.5
 
 Release date: 2023-05-25
 
@@ -223,7 +224,7 @@ The new CLI tool [compare](../cli#tools-compare) allows graph comparison to be p
 
 ### Bug fixes
 
-1\. `fromXlsx()` did not remove trailing whitespace in cell values.
+1\. [fromXlsx()](../extract/formats/#extractor-fromxlsx) did not remove trailing whitespace in cell values.
 
 2\. When a SHACL result was printed, an incorrect message about a faulty SHACL model would be shown.
 
@@ -231,7 +232,7 @@ The new CLI tool [compare](../cli#tools-compare) allows graph comparison to be p
 
 
 
-## Changelog for TriplyETL 2.0.4
+## TriplyETL 2.0.4
 
 Release date: 2023-05-11
 
@@ -283,7 +284,7 @@ It is possible to map `_:2a` and `_:2b` onto `_:1`, but there is no mapping that
 
 
 
-## Changelog for TriplyETL 2.0.3
+## TriplyETL 2.0.3
 
 Release date: 2023-05-10
 
@@ -295,7 +296,7 @@ Release date: 2023-05-10
 
 
 
-## Changelog for TriplyETL 2.0.2
+## TriplyETL 2.0.2
 
 Release date: 2023-05-09
 
@@ -309,7 +310,7 @@ This release fixes bugs related to the recent switch from CommonJS to ESM:
 
 
 
-## Changelog for TriplyETL 2.0.1
+## TriplyETL 2.0.1
 
 Release date: 2023-05-03
 
@@ -325,7 +326,7 @@ See the [TriplyETL Runner documentation page](../cli#set-a-timeout) for more inf
 
 
 
-## Changelog for TriplyETL 2.0.0
+## TriplyETL 2.0.0
 
 Release date: 2023-05-01
 
