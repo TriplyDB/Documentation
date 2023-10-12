@@ -2,27 +2,28 @@
 
 The current version of TriplyETL is **3.0.0**
 
-You can use this changelog to perform a safe update from an older version of TriplyETL to a newer one. See the documentation for [Upgrading TriplyETL repositories](/triply-etl/cli) for the advised approach, and how the changelog factors into that.
+You can use this changelog to perform a safe update from an older version of TriplyETL to a newer one. See the documentation for [Upgrading TriplyETL repositories](../cli) for the advised approach, and how the changelog factors into that.
 
 ## TriplyETL 3.0.0 
 
-Release dates: 2023-10-11 
+Release dates: 2023-10-12 
 
 ### Feature 
-1\. The middlewares [fromCsv()](/triply-etl/extract/formats/#extractor-fromcsv), [fromJson()](/triply-etl/extract/formats/#extractor-fromjson), [fromTsv()](/triply-etl/extract/formats/#extractor-fromtsv) and [fromXml()](/triply-etl/extract/formats/#extractor-fromxml) now supports TriplyDB `SELECT` and `ASK` queries.
+1\. The extractors [fromCsv()](../extract/formats/#extractor-fromcsv), [fromJson()](../extract/formats/#extractor-fromjson), [fromTsv()](../extract/formats/#extractor-fromtsv) and [fromXml()](../extract/formats/#extractor-fromxml) now support [SPARQL Select](../extract/types/#sparql-select-queries) queries. The extractors [fromJson()](../extract/formats/#extractor-fromjson) and [fromXml()](../extract/formats/#extractor-fromxml) also support [SPARQL Ask](../extract/types/#sparql-ask-queries) queries. 
 
-2\.  It is now possible to validate and publish a TriplyDB dataset to the [NDE Termennetwerk](https://datasetregister.netwerkdigitaalerfgoed.nl):
+2\.  It is now possible to validate and publish a TriplyDB dataset to the [NDE Dataset Register](https://datasetregister.netwerkdigitaalerfgoed.nl), a centralized registry of digital heritage datasets:
    
   - Instantiate the NDE Class by providing it with the ETL object: 
 
 ```ts
-const nde = new NDEDatasetRegister({et;, accountName, datasetname})
+import { NDE } from "@triplyetl/etl/utils";
+const nde = new NDE({etl, accountName, datasetname})
 ```
   - Validate  dataset: `nde.validate()`  
 
   - Submit a dataset: `nde.submit()`  
 
- 3\. The [nestedPairs()](/triply-etl/assert/ratt/statement/#function-nestedpairs) middleware can be used without providing the subject node that connects the pairs to the object/predicate. This will automatically create a skolem-iri for the subject:
+ 3\. The [nestedPairs()](../assert/ratt/statement/#function-nestedpairs) middleware can be used without providing the subject node that connects the pairs to the object/predicate. This will automatically create a skolem-iri for the subject:
 
 ```ts
 nestedPairs(S, P, [a, sdo.Person])
@@ -30,13 +31,13 @@ nestedPairs(S, P, [a, sdo.Person])
 
 4\. TriplyETL supports transformations using [RDF mapping language](https://rml.io/docs/rml/introduction/).
 
-5\. Manually specified and standard prefixes are automatically added to TriplyDb when [toRdf()](/triply-etl/publish/#local-data-destinations) is used. The middleware `uploadPrefixes()` is removed.
+5\. Manually specified and standard prefixes are automatically added to TriplyDb when [toRdf()](../publish/#local-data-destinations) is used. The middleware `uploadPrefixes()` is removed.
 
 
 ### Changed
 1\. A new flag now bypasses generating the trace for very large records: `---skip-error-trace`. Thus, no trace file is created.
 
-2\. The [loadRdf()](/triply-etl/extract/formats/#function-loadrdf) middleware is able to parse known RDF serilaizations (`Turtle`, `TriG`, `n-triples`, `n-quads`) provided as a string without specifying mimetype.
+2\. The [loadRdf()](../extract/formats/#function-loadrdf) middleware is able to parse known RDF serilaizations (`Turtle`, `TriG`, `n-triples`, `n-quads`) provided as a string without specifying mimetype.
 
 ```ts
 const data = Source.string('...')
@@ -50,7 +51,7 @@ loadRdf(data)
    - **s**: Seconds with leading zeros (00 through 59)  
    - **u**: Microseconds (example: 654321)  
 
-4\. The [toRdf()](/triply-etl/publish/#local-data-destinations) middleware now accepts `"me"` as account name based on the token.  
+4\. The [toRdf()](../publish/#local-data-destinations) middleware now accepts `"me"` as account name based on the token.  
 
 5\. The `resetStore()` middleware is now moved from `ratt` to the `generic` namespace . The `randomKey()` middleware moved from `generic` to `ratt`.  
 
@@ -62,7 +63,7 @@ loadRdf(data)
 
 9\. A SHACL Validation Engine improved performance. 
  
-10\. We support XSLT processing in the [fromXml()](/triply-etl/extract/formats/#extractor-fromxml) and [loadRdf()](/triply-etl/extract/formats/#function-loadrdf) middlewares by providing an optional `Source.file()` to the `stylesheet` parameter.
+10\. We support XSLT processing in the [fromXml()](../extract/formats/#extractor-fromxml) and [loadRdf()](../extract/formats/#function-loadrdf) middlewares by providing an optional `Source.file()` to the `stylesheet` parameter.
 
 11\. The vocabularies and languages are no longer part of `@triplyetl/etl package`. A new module has been released: `@triplyetl/vocabularies`:  
 
@@ -118,9 +119,10 @@ const johnDoe = declarePrefix('http://ex.com/').concat('John').concat('/Doe')
    - Removes some unused packages and types.    
    - Most @ts-ignore / @ts-expect-error derictives have been removed and fixed.    
 
+14\. [Comunica](https://comunica.dev) is no longer part of TriplyETL, the in-memory engine is now Triply's Speedy.
 ### Bug fixes
 
-1\. Report which file contains errors when multiple files are used in [fromCsv()](/triply-etl/extract/formats/#extractor-fromcsv), [fromTsv()](/triply-etl/extract/formats/#extractor-fromtsv) and [fromXml()](/triply-etl/extract/formats/#extractor-fromxml)  middleware.
+1\. Report which file contains errors when multiple files are used in [fromCsv()](../extract/formats/#extractor-fromcsv), [fromTsv()](../extract/formats/#extractor-fromtsv) and [fromXml()](../extract/formats/#extractor-fromxml)  middleware.
 
 2\. When a WKT point is created with the `addPoint()` function, and the CRS parameter is not specified, the CRS <http://www.opengis.net/def/crs/OGC/1.3/CRS84> is used.  
 
@@ -136,7 +138,7 @@ const johnDoe = declarePrefix('http://ex.com/').concat('John').concat('/Doe')
  - Start date/time
  - End date/time
 
-6\. Disable support for multiple [Extractors](http://127.0.0.1:8000/triply-etl/extract/formats/). 
+6\. Disable support for multiple [Extractors](../extract/formats/). 
 
 7\. Fixes out-of-memory issue when using SHACL validation. 
 
@@ -144,18 +146,21 @@ const johnDoe = declarePrefix('http://ex.com/').concat('John').concat('/Doe')
 
 Release dates: 2023-06-17 through 2023-09-29
 
-The following bugs have been fixed:
+### Bug fixes
 
-- Processing an Excel sheet with [fromXml()](/triply-etl/extract/formats#extractor-fromxml) would sometimes consume too much memory.
-- Several installation issues on Windows have been resolved.
-- The `async-saxophone` library for XML processing was adjusted to support the current LTS version of Node.js (v18).
+1\. Processing an Excel sheet with [fromXml()](../extract/formats#extractor-fromxml) would sometimes consume too much memory.
+
+2\. Several installation issues on Windows have been resolved.
+
+3\. The `async-saxophone` library for XML processing was adjusted to support the current LTS version of Node.js (v18).
 
 
 ## TriplyETL 2.0.6
 
 Release date: 2023-06-07
 
-### [Added] Support for the PREMIS vocabulary
+### Feature 
+1\. Support for the PREMIS vocabulary
 
 Support was added for the PREMIS 3.0.0 vocabulary. This vocabulary is published by the Library of Congress and can be used to publish metadata about the preservation of digital objects. See the [PREMIS documentation](https://id.loc.gov/ontologies/premis-3-0-0.html) for more information.
 
@@ -175,29 +180,31 @@ pairs(iri(id, 'some-file'),
 triple(iri(id, 'some-location'), a, premis.StorageLocation),
 ```
 
-See the documentation about [external vocabulary declarations](/triply-etl/declare#external-vocabularies) for more information.
+See the documentation about [external vocabulary declarations](../declare#external-vocabularies) for more information.
 
-### [Added] New debug function logMemory()
+2\. New debug function logMemory()
 
-A new debug function [logMemory()](/triply-etl/debug#function-logmemory) is added. This function prints an overview of the current memory usage of TriplyETL. This allows users to detect fluctuations in memory consumption inside their pipelines.
+A new debug function [logMemory()](../debug#function-logmemory) is added. This function prints an overview of the current memory usage of TriplyETL. This allows users to detect fluctuations in memory consumption inside their pipelines.
 
-See the [debug functions documentation page](/triply-etl/debug) for more information.
+See the [debug functions documentation page](../debug) for more information.
 
-### [Added] Support for the `ListIdentifiers` verb in the OAI-PMH extractor
+3\. Support for the `ListIdentifiers` verb in the OAI-PMH extractor
 
 The `fromOai()` extractor already supported the `ListRecords` verb. This release adds support for the `ListIdentifiers` verb. The latter allows used to stream through the headers of all records in an OAI-PMG collection, without requiring the full record (i.e. body) to be retrieved as well.
 
-See the [fromOai()](/triply-etl/extract/formats#extractor-fromoai) documentation for more information.
+See the [fromOai()](../extract/formats#extractor-fromoai) documentation for more information.
 
 
 
-## Changelog for TriplyETL 2.0.5
+## TriplyETL 2.0.5
 
 Release date: 2023-05-25
 
-### [Changed] New default engine for SPARQL Construct
+### Changed
 
-The default engine for evaluating SPARQL Construct queries (function [construct()](/triply-etl/enrich/sparql)) has changed from Comunica to Speedy. Speedy is a new SPARQL implementation that is developed by Triply; Comunica is an open source engine that is developed by the open source community. Since SPARQL is a standardized query language, this change should not cause a difference in behavior for your ETL pipelines.
+1\. New default engine for SPARQL Construct
+
+The default engine for evaluating SPARQL Construct queries (function [construct()](../enrich/sparql)) has changed from Comunica to Speedy. Speedy is a new SPARQL implementation that is developed by Triply; Comunica is an open source engine that is developed by the open source community. Since SPARQL is a standardized query language, this change should not cause a difference in behavior for your ETL pipelines.
 
 In the unexpected case where an ETL pipeline *is* negatively affected by this change, the old situation can be restored by explicitly configuring the Comunica engine:
 
@@ -209,25 +216,29 @@ construct(Source.TriplyDb.query('my-query'), { sparqlEngine: 'comunica' }),
 
 The benefit of switching to the Speedy engine is that this engine is expected to be faster for most queries. Overall, this change will therefore result in speed improvements for your TriplyETL pipelines.
 
-### [Added] New CLI tool for comparing graphs
+### Feature
 
-The new CLI tool [compare](/triply-etl/cli#tools-compare) allows graph comparison to be performed from the command-line. This uses the same algorithm that is used by the [compareGraphs()](/triply-etl/validate/graph-comparison) validator function.
+1\. New CLI tool for comparing graphs
+
+The new CLI tool [compare](../cli#tools-compare) allows graph comparison to be performed from the command-line. This uses the same algorithm that is used by the [compareGraphs()](../validate/graph-comparison) validator function.
 
 ### Bug fixes
 
-This release includes the following bug fixes:
+1\. [fromXlsx()](../extract/formats/#extractor-fromxlsx) did not remove trailing whitespace in cell values.
 
-- `fromXlsx()` did not remove trailing whitespace in cell values.
-- When a SHACL result was printed, an incorrect message about a faulty SHACL model would be shown.
-- Some RDF processors did not handle empty RDF inputs correctly.
+2\. When a SHACL result was printed, an incorrect message about a faulty SHACL model would be shown.
+
+3\. Some RDF processors did not handle empty RDF inputs correctly.
 
 
 
-## Changelog for TriplyETL 2.0.4
+## TriplyETL 2.0.4
 
 Release date: 2023-05-11
 
-### [Enhanced] Better output for checking graph isomorphism
+### Enhanced
+
+1\. Better output for checking graph isomorphism
 
 Before this release, when two graphs were not isomorph and their difference consisted of a mapping from blank nodes onto blank nodes exclusively, an empty difference message was communicated.
 
@@ -273,20 +284,19 @@ It is possible to map `_:2a` and `_:2b` onto `_:1`, but there is no mapping that
 
 
 
-## Changelog for TriplyETL 2.0.3
+## TriplyETL 2.0.3
 
 Release date: 2023-05-10
 
 ### Bug fixes
 
-This release includes the following bug fixes:
+1\. Error location information is not shown in TriplyETL Runner.
 
-- Error location information is not shown in TriplyETL Runner.
-- Issue when a URL data source (`Source.url()`) includes an HTTP body.
-
+2\. Issue when a URL data source (`Source.url()`) includes an HTTP body.
 
 
-## Changelog for TriplyETL 2.0.2
+
+## TriplyETL 2.0.2
 
 Release date: 2023-05-09
 
@@ -294,30 +304,35 @@ Release date: 2023-05-09
 
 This release fixes bugs related to the recent switch from CommonJS to ESM:
 
-- Dynamic import bug on Windows.
-- Error reporting issues due to ESM imports.
+1\. Dynamic import bug on Windows.
+
+2\. Error reporting issues due to ESM imports.
 
 
 
-## Changelog for TriplyETL 2.0.1
+## TriplyETL 2.0.1
 
 Release date: 2023-05-03
 
-### [Added] Timeout flag for TriplyETL Runner
+### Feature
+
+1\. Timeout flag for TriplyETL Runner
 
 The TriplyETL Runner is the CLI tool that is used to run ETL pipelines. Starting with this version, you can specify a `--timeout` flag when using the TriplyETL Runner.
 
 When the indicated timeout is reached before the pipeline finishes, the TriplyETL Runner will gracefully terminate the ETL by acting as if there are no more incoming records.
 
-See the [TriplyETL Runner documentation page](/triply-etl/cli#set-a-timeout) for more information.
+See the [TriplyETL Runner documentation page](../cli#set-a-timeout) for more information.
 
 
 
-## Changelog for TriplyETL 2.0.0
+## TriplyETL 2.0.0
 
 Release date: 2023-05-01
 
-### [Changed] Modules infrastructure moves from CommonJS to ESM
+### Changed
+
+1\. Modules infrastructure moves from CommonJS to ESM
 
 Before this release, TriplyETL used CommonJS modules to modularize its functionality into different components. Starting in this release, ECMAScript Modules (ESM) are used to modularize TriplyETL functionality into different modules.
 
@@ -329,7 +344,7 @@ All documentation examples were update to use ESM syntax for module imports, for
 import { logRecord } from '@triplyetl/etl/debug'
 ```
 
-### [Changed] Debug functions move to a new module
+2\. Debug functions move to a new module
 
 Before this release, debug functions like `logRecord()` and `startTrace()` were part of the RATT module. Since debug functions are generic / not RATT-specific, they were moved into a new module.
 
@@ -339,17 +354,19 @@ Function are imported from this new module in the following way:
 import { logRecord, traceEnd, traceStart } from '@triplyetl/etl/debug'
 ```
 
-### [Enhanced] Better error messages when things go wrong
+### Enhanced 
+
+1\. Better error messages when things go wrong
 
 This release introduces a new approach for communicating errors back to the user. When TriplyETL functionality detects an error condition, a unified 'trace middleware' is now used to retrieve information from the environment in which the error occurred. This information is then printed to the error output stream for communication with the user.
 
 ### Bug fixes
 
-The following bug fixes are included in this release:
+1\. Incorrect behavior of the [_switch() control function](../control#switch-between-different-cases-_switch).
 
-- Incorrect behavior of the [_switch() control function](/triply-etl/control#switch-between-different-cases-_switch).
-- The [fromOai() extractor](/triply-etl/extract/formats#extractor-fromoai) now communicates clearer when the accessed OAI-PMH endpoint encounters any issues.
-- When a key with a NULL value was accessed, the name of the key is now included in the error message.
+2\. The [fromOai() extractor](../extract/formats#extractor-fromoai) now communicates clearer when the accessed OAI-PMH endpoint encounters any issues.
+
+3\. When a key with a NULL value was accessed, the name of the key is now included in the error message.
 
 
 
