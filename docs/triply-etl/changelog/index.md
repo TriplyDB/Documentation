@@ -6,7 +6,7 @@ You can use this changelog to perform a safe update from an older version of Tri
 
 ## TriplyETL 3.0.0 
 
-Release dates: 2023-11-11 
+Release dates: 2023-10-12 
 
 ### Feature 
 1\. The extractors [fromCsv()](../extract/formats/#extractor-fromcsv), [fromJson()](../extract/formats/#extractor-fromjson), [fromTsv()](../extract/formats/#extractor-fromtsv) and [fromXml()](../extract/formats/#extractor-fromxml) now support [SPARQL Select](../extract/types/#sparql-select-queries) queries. The extractors [fromJson()](../extract/formats/#extractor-fromjson) and [fromXml()](../extract/formats/#extractor-fromxml) also support [SPARQL Ask](../extract/types/#sparql-ask-queries) queries. 
