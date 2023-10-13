@@ -29,9 +29,9 @@ const nde = new NDE({etl, accountName, datasetname})
 nestedPairs(S, P, [a, sdo.Person])
 ```
 
-4\. TriplyETL supports transformations using [RDF mapping language](https://rml.io/docs/rml/introduction/).
+4\. TriplyETL supports transformations using [RDF mapping language](https://rml.io/docs/rml/introduction/) (RML).
 
-5\. Manually specified and standard prefixes are automatically added to TriplyDB when `toRdf()` is used. The middleware `uploadPrefixes()` is removed.
+5\. Manually specified and standard prefixes are automatically added to TriplyDB when [toRdf()](../publish/#local-data-destinations) is used. The middleware `uploadPrefixes()` is removed.
 
 
 ### Changed
@@ -41,7 +41,7 @@ nestedPairs(S, P, [a, sdo.Person])
 const johnDoe = declarePrefix('http://ex.com/').concat('John').concat('/Doe')
 ```  
 
-2\. The vocabularies and languages are no longer part of `@triplyetl/etl package`. A new module has been released: `@triplyetl/vocabularies`:  
+2\. The vocabularies and languages are no longer part of `@triplyetl/etl` package. A new module has been released: `@triplyetl/vocabularies`:  
 
   - Individual imports:
 
@@ -98,7 +98,7 @@ loadRdf(data)
    - **s**: Seconds with leading zeros (00 through 59)  
    - **u**: Microseconds (example: 654321)  
 
-5\. The `toRdf()` middleware now accepts `"me"` as account name based on the token.  
+5\. The [toRdf()](../publish/#local-data-destinations) middleware now accepts `"me"` as account name based on the token.  
 
 6\. The `resetStore()` middleware is now moved from `ratt` to the `generic` namespace . The `randomKey()` middleware moved from `generic` to `ratt`.  
 
