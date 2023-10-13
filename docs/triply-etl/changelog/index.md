@@ -35,37 +35,13 @@ nestedPairs(S, P, [a, sdo.Person])
 
 
 ### Changed
-1\. A new flag now bypasses generating the trace for very large records: `---skip-error-trace`. Thus, no trace file is created.
 
-2\. The [loadRdf()](../extract/formats/#function-loadrdf) middleware is able to parse known RDF serilaizations (`Turtle`, `TriG`, `N-Triples`, `N-Quads`) provided as a string without specifying mimetype.
-
+1\. Prefixes are no longer defined as function that concatenates a value to an Iri. The Iri is a new type of Object in TriplyETL, that has a `concat()` method which allows you to add a value to the first part of an Iri. For example:
 ```ts
-const data = Source.string('...')
-loadRdf(data)
-```
+const johnDoe = declarePrefix('http://ex.com/').concat('John').concat('/Doe')
+```  
 
-3\. The output of the logfile and terminal output is changed. It contains more information to help users debugging ETL's. The format of time representation is now `H:i:s.u` where:  
-
-   -  **H**: 24-hour format of an hour with leading zeros	(00 through 23)  
-   - **i**: Minutes with leading zeros	(00 to 59)  
-   - **s**: Seconds with leading zeros (00 through 59)  
-   - **u**: Microseconds (example: 654321)  
-
-4\. The [toRdf()](../publish/#local-data-destinations) middleware now accepts `"me"` as account name based on the token.  
-
-5\. The `resetStore()` middleware is now moved from `ratt` to the `generic` namespace . The `randomKey()` middleware moved from `generic` to `ratt`.  
-
-6\. You can now use `--offset` and `--limit` instead of `--from-record-id` and `--head`, e.g. `LIMIT=1 OFFSET=8 npx etl`.  The old arguments can still be used for backwards compatibility.
-
-7\. Middleware `mapQuads()` is removed.  
-
-8\. If the users Node.JS version is older that the recommendend version (currently \>=18.0.0) a warning is shown.  
-
-9\. A SHACL Validation Engine improved performance. 
- 
-10\. We support XSLT processing in the [fromXml()](../extract/formats/#extractor-fromxml) and [loadRdf()](../extract/formats/#function-loadrdf) middlewares by providing an optional `Source.file()` to the `stylesheet` parameter.
-
-11\. The vocabularies and languages are no longer part of `@triplyetl/etl package`. A new module has been released: `@triplyetl/vocabularies`:  
+2\. The vocabularies and languages are no longer part of `@triplyetl/etl package`. A new module has been released: `@triplyetl/vocabularies`:  
 
   - Individual imports:
 
@@ -108,10 +84,35 @@ import { region, language } from '@triplyetl/vocabularies'
 const nl_BE = language.nl.addRegion(region.BE)
 ``` 
 
-12\. Prefixes are no longer defined as function that concatenates a value to an Iri. The Iri is a new type of Object in TriplyETL, that has a `concat()` method which allows you to add a value to the first part of an Iri. For example:
+3\. The [loadRdf()](../extract/formats/#function-loadrdf) middleware is able to parse known RDF serilaizations (`Turtle`, `TriG`, `N-Triples`, `N-Quads`) provided as a string without specifying mimetype.
+
 ```ts
-const johnDoe = declarePrefix('http://ex.com/').concat('John').concat('/Doe')
-```  
+const data = Source.string('...')
+loadRdf(data)
+```
+
+4\. The output of the logfile and terminal output is changed. It contains more information to help users debugging ETL's. The format of time representation is now `H:i:s.u` where:  
+
+   -  **H**: 24-hour format of an hour with leading zeros	(00 through 23)  
+   - **i**: Minutes with leading zeros	(00 to 59)  
+   - **s**: Seconds with leading zeros (00 through 59)  
+   - **u**: Microseconds (example: 654321)  
+
+5\. The `toRdf()` middleware now accepts `"me"` as account name based on the token.  
+
+6\. The `resetStore()` middleware is now moved from `ratt` to the `generic` namespace . The `randomKey()` middleware moved from `generic` to `ratt`.  
+
+7\. You can now use `--offset` and `--limit` instead of `--from-record-id` and `--head`, e.g. `LIMIT=1 OFFSET=8 npx etl`.  The old arguments can still be used for backwards compatibility.
+
+8\. Middleware `mapQuads()` is removed.  
+
+9\. If the users Node.JS version is older that the recommendend version (currently \>=18.0.0) a warning is shown.  
+
+10\. A SHACL Validation Engine improved performance. 
+ 
+11\. We support XSLT processing in the [fromXml()](../extract/formats/#extractor-fromxml) and [loadRdf()](../extract/formats/#function-loadrdf) middlewares by providing an optional `Source.file()` to the `stylesheet` parameter.
+
+12\. A new flag now bypasses generating the trace for very large records: `---skip-error-trace`. Thus, no trace file is created.
 
 13\. Developers notes:  
 
