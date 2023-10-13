@@ -68,8 +68,8 @@ h5 { counter-reset: h6; }
 h1:before, h2:before, h3:before, h4:before, h5:before {
   color: #666;
 }
-h1:before { content: counter(h1)". "; counter-increment: h1; }
-h2:before { content: counter(h1) "." counter(h2)". "; counter-increment: h2; }
+h1:not(#search):before { content: counter(h1)". "; counter-increment: h1; }
+div:not(#mkdocs-search-results) h2:before { content: counter(h1) "." counter(h2)". "; counter-increment: h2; }
 h3:before { content: counter(h1) "." counter(h2) "." counter(h3) ". "; counter-increment: h3; }
 h4:before { content: counter(h1) "." counter(h2) "." counter(h3) "." counter(h4) ". "; counter-increment: h4; }
 h5:before { content: counter(h1) "." counter(h2) "." counter(h3) "." counter(h4) "." counter(h5) ". "; counter-increment: h5; }

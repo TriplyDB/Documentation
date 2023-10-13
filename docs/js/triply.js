@@ -34,8 +34,8 @@ window.onload = () => {
     document.querySelector('.wy-breadcrumbs')
       .appendChild(li)
 
-    document.querySelectorAll('#mkdocs-search-results article h3 a')
-      .forEach(el => el.innerText = 'aaa' )
+    // document.querySelectorAll('#mkdocs-search-results article h3 a')
+    //   .forEach(el => el.innerText = 'aaa' )
   }
   // activate hamburger menu:
   document.querySelector('[data-toggle="wy-nav-top"]').addEventListener('click', (e) => {
