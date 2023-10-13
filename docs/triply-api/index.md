@@ -811,82 +811,80 @@ curl -X POST 'https://api.triplydb.com/datasets/academy/pokemon/services/search/
      -d '{"query":{"simple_query_string":{"query":"pikachu"}}}' \
      -H 'content-type: application/json'
 ```
-### Setting up index templates for ElasticSearch
+## Setting up index templates for ElasticSearch
 TriplyDB allows you to configure a custom mapping for Elasticsearch services in TriplyDB using index templates.
 #### Index templates
 Index templates make it possible to create indices with user defined configuration, which an index can then pull from. A template will be defined with a name pattern and some configuration in it. If the name of the index matches the template’s naming pattern, the new index will be created with the configuration defined in the template.
 Official documentation from ElasticSearch on how to use Index templates can be found [here](https://www.elastic.co/guide/en/elasticsearch/reference/current/index-templates.html). 
 
-Index templates on TriplyDB can be configured through either `TriplyDB API` or `TriplyDB-JS`.
+Index templates on TriplyDB can be configured through either `TriplyDB API` or [TriplyDB-JS](../triplydb-js/service/#index-templates). 
 
-1\. `TriplyDB API`
 
-This is done by making a POST request to the following URL: 
+Index template can be created by making a POST request to the following URL: 
 ```
-https://api.INSTANCE/datasets/ACCOUNT/DATASET/services/SERVICE/
+https://api.INSTANCE/datasets/ACCOUNT/DATASET/services/
 ```
 with this body:
 ```
 {
   "type": "elasticSearch",
-  "name": "api-test-1",
+  "name": "SERVICE_NAME",
   "config": {
     "indexTemplates": [
       {
         "index_patterns": "index",
+        "name": "TEMPLATE_NAME",
        ...
       }
     ]
   }
 }
 ```
-2\. `TriplyDB-JS` 
-
-When creating a new service for the dataset (using this function), we add the config object to the metadata:
-```
-Dataset.addService("api-test-1", {
-  type: "elasticSearch",
-  config: {
-    indexTemplates: ...
-  }
-})
-```
+`index_patterns` and `name` are obligatory fields to include in the body of index template.
 It's important that every index template has the field `"index_patterns"` equal `"index"`!
+
+Below is the example of the post request:
+```
+curl  -H "Authorization: Bearer TRIPLYDB_TOKEN"  -H "Content-Type: application/json" -d '{"type":"elasticSearch","name":"SERVICE_NAME","config":{"indexTemplates":[{"index_patterns":"index", "name": "TEMPLATE_NAME"}]}}' -X POST "https://api.INSTANCE/datasets/ACCOUNT/DATASET/services/"
+```
+
 ### Component templates
 Component templates are building blocks for constructing index templates that specify index mappings, settings, and aliases.
 You can find the official documentation on their use in ElasticSearch [here](https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-component-template.html).
-They can be configured through either `TriplyDB API` or `TriplyDB-JS`.
+They can be configured through either `TriplyDB API` or [TriplyDB-JS](../triplydb-js/service/#component-templates).
 
-1\. `TriplyDB API`
    
-This is done by making a POST request to the following URL: 
+A component template can be created by making a POST request to the following URL: 
 ```
-https://api.INSTANCE/datasets/ACCOUNT/DATASET/services/SERVICE/
+https://api.INSTANCE/datasets/ACCOUNT/DATASET/services/
 ```
 with this body:
 ```
 {
-  "type": "elasticSearch",
-  "name": "api-test-1",
-  "config": {
-    "componentTemplates": [
-      { ... }
-    ]
-  }
+    "type": "elasticSearch",
+    "name": "SERVICE_NAME",
+    "config": {
+        "componentTemplates": [
+            {
+                "name": "TEMPLATE_NAME",
+                "template": {
+                    "mappings": {
+                        "properties": {
+                            ...
+                        }
+                    }
+                }
+             ...
+            }
+        ]
+    }
 }
 ```
-2\. `TriplyDB-JS`
+`name` and `template` are obligatory fields to include in the body of component template.
 
-When creating a new service for the dataset (using this function), we add the config object to the metadata:
+Component template can only be created together with an index template. In this case Index template needs to contain the field `composed_of` with the name of the component template.
+
+Below is an example of a POST request to create a component template for the property `https://schema.org/dateCreated` to be of type `date`.
 ```
-Dataset.addService("api-test-1", {
-  type: "elasticSearch",
-  config: {
-    componentTemplates: ...
-  }
-})
-```
-An example of a POST request to create a component template for `dateCreated` to be of type `date` can be seen below. 
-```
-curl  -H "Authorization: Bearer {TOKEN}"  -H "Content-Type: application/json" -d "{"type":"elasticSearch","name":"api-test-1","config":{"indexTemplates":[{"name":"test_index_1","index_patterns":"index","template":{"settings":{"index":{"analysis":{"normalizer":{"lowercase":{"filter":["lowercase"],"type":"custom"}}},"number_of_shards":"1"}},"mappings":{"_source":{"enabled":true}}},"composed_of":["test_mappings"],"priority":100,"version":3,"_meta":{"description":"This is a test index template"}}],"componentTemplates":[{"name":"test_mappings","template":{"mappings":{"date_detection":false,"properties":{"@id":{"type":"text","fields":{"keyword":{"type":"keyword","ignore_above":256}}},"geoPoint":{"type":"geo_point","ignore_malformed":true},"geoShape":{"type":"geo_shape","ignore_malformed":true},"https://schema org/dateCreated":{"type":"date","fields":{"keyword":{"type":"keyword","ignore_above":256}}}}}}}]}}" -X POST "https://triplydb.com/_api/datasets/test/dataset/services/"
+curl  -H "Authorization: Bearer TRIPLYDB_TOKEN"  -H "Content-Type: application/json" -d '{"type":"elasticSearch","name":"SERVICE_NAME","config":{"indexTemplates":[{"index_patterns":"index", "name": "INDEX_TEMPLATE_NAME","composed_of":["COMPONENT_TEMPLATE_NAME"]}], "componentTemplates":[{"name":"COMPONENT_TEMPLATE_NAME","template":{"mappings":{"properties":{"https://schema org/dateCreated":{"type":"date"}}}}}]}}' -X POST "https://api.INSTANCE/datasets/ACCOUNT/DATASET/services/"
 ```
