@@ -15,8 +15,18 @@ h2 {
 
 h3 {
   font-size: 120% !important;
-  font-style: italic;
 }
+
+h4 {
+  font-size: 100% !important;
+  margin-bottom: 10px !important;
+}
+
+
+h5 {
+  font-size: 85% !important;
+}
+
 
 
 
