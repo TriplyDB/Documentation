@@ -49,6 +49,11 @@ div.mermaid svg {
 
 table th, table td {
   white-space: normal !important;
+  padding: 4px;
+}
+
+table {
+  margin-bottom: 10px;
 }
 
 p {
@@ -78,4 +83,45 @@ h1#search::before,
 #mkdocs-search-results h3::before
  {
   display: none;
+}
+
+div.toc {
+    display: none;
+    position: fixed;
+    left: 1100px;
+    top: 0px;
+    border-left: 2px solid #ddd;
+    display: table;
+    font-size: 90%;
+    padding: 20px;
+    width: auto;
+}
+
+div.toc li, div.toc  ul, div.toc  ul li{
+  list-style: outside none none !important;
+}
+
+div.toc .toctitle {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+div.toc  ul {
+  margin: 0px !important;
+}
+
+div.toc > ul > li  {
+  margin: 0 !important;
+}
+
+
+div.toc  ul li {
+  margin-left: 10px !important;
+  line-height: 18px;
+}
+
+@media screen and (min-width: 1300px) {
+  div.toc {
+    display: block;
+  }
 }

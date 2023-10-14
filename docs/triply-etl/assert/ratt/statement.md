@@ -1,5 +1,7 @@
 # RATT Statement Assertions
 
+[TOC]
+
 The following statement assertions are available:
 
 | Assertion | Description |

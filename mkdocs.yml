@@ -84,3 +84,4 @@ extra_javascript:
 markdown_extensions:
   - toc:
       permalink: True
+      title: "On this page:"
