@@ -120,6 +120,20 @@ div.toc  ul li {
   line-height: 18px;
 }
 
+div.toc a {
+  padding: 2px;
+}
+div.toc a:visited {
+  color: inherit;
+}
+div.toc a:hover {
+  color: #55a5d9;
+}
+div.toc a.active {
+  background-color: #55a5d9;
+  color: #fff;
+}
+
 @media screen and (min-width: 1300px) {
   div.toc {
     display: block;

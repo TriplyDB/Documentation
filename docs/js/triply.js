@@ -42,4 +42,23 @@ window.onload = () => {
     document.querySelectorAll('[data-toggle="wy-nav-shift"]')
       .forEach(el => el.classList.toggle('shift'))
   })
+
+  const activeTOClink = () => {
+    const el = Array.from(document.querySelectorAll('h1, h2, h3, h4, h5'))
+      .filter(heading => heading.getBoundingClientRect().y <= 40 ).pop()
+    if (el) {
+      Array.from(document.querySelectorAll('div.toc a')).map(a => a.classList.remove('active'))
+      document.querySelector(`div.toc a[href="#${el.id}"]`).classList.add('active')
+    }
+  }
+
+  if ('onscrollend' in window) {
+    document.addEventListener('scrollend', activeTOClink)
+  } else {
+    document.addEventListener('scroll', () => {
+      clearTimeout(window.scrollEndTimer)
+      window.scrollEndTimer = setTimeout(activeTOClink, 100)
+    })
+  }
+
 }
