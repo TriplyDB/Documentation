@@ -5,11 +5,12 @@ path: "/docs/triply-etl/validate/shacl"
 
 [TOC]
 
+# SHACL
+
 This page documents how SHACL is used to validate linked data in the internal store of your ETL pipeline.
 
 
-
-# Prerequisites
+## Prerequisites
 
 SHACL Validation can be used when the following preconditions are met:
 
@@ -24,7 +25,7 @@ import { validate } from '@triplyetl/etl/shacl'
 
 
 
-# A complete example
+## A complete example
 
 We use the following full TriplyETL script to explain the validation feature. Do not worry about the length of the script; we will go through each part step-by-step.
 
@@ -74,7 +75,7 @@ export default async function (): Promise<Etl> {
 ```
 
 
-## Step 1: Source data
+### Step 1: Source data
 
 In our example we are using the following source data that records the age of a person:
 
@@ -92,7 +93,7 @@ fromJson([{ age: 'twelve', id: '1' }]),
 ```
 
 
-## Step 2: Target data (informal)
+### Step 2: Target data (informal)
 
 Based on the source data in Step 1, we want to publish the following linked data in TriplyDB:
 
@@ -103,7 +104,7 @@ id:123
 ```
 
 
-## Step 3: Information Model (informal)
+### Step 3: Information Model (informal)
 
 Our intended target data in Step 2 looks ok at first glance.  But we want to specify the requirements for our data in generic terms.  Such a specification is called an *Information Model*.
 
@@ -121,7 +122,7 @@ classDiagram
 This Information Model specifies that instances of class `foaf:Person` must have exactly one value for the `foaf:age` property.  Values for this property must have datatype `xsd:nonNegativeInteger`.
 
 
-## Step 4: Transformation
+### Step 4: Transformation
 
 We now have source data (Step 1), and a fair intuition about our target data (Step 2), and an Information Model (Step 3).  We can automate the mapping from source to target data with an [Assertion](/triply-etl/assert):
 
@@ -144,7 +145,7 @@ How can we automate such checks?  The above example is relatively simple, so a l
 Triply considers having an automated validation step best practice for *any* ETL.  This is the case even for small and simple ETLs, since they tend to grow into complex ones some day.
 
 
-## Step 5: Information Model (formal)
+### Step 5: Information Model (formal)
 
 The linked data ecosystem includes the SHACL standard for encoding Information Models.  SHACL allows us to formally express the picture from Step 3.  The model is itself expressed in linked data:
 
@@ -178,7 +179,7 @@ Notice the following details:
   - Property shapes such as `shp:Person_age` relate to a specific property such as `foaf:age`.
 
 
-## Step 6: Use the `validate()` function
+### Step 6: Use the `validate()` function
 
 TriplyETL has a dedicated function that can be used to automatically enforce Information Models such as the one expressed in Step 5.
 
@@ -246,7 +247,7 @@ validate(Source.file('static/model.trig'), {
 ```
 
 
-## Step 7: Fix the validation error
+### Step 7: Fix the validation error
 
 Now that we receive the automated validation error in Step 6, we can look for ways to fix our ETL.  Let us take one more look at our current assertions:
 
@@ -280,11 +281,11 @@ As in any ETL error, there are 3 possible solutions:
 2. Change the ETL transformations and/or assertions.
 3. Change the Information Model.
 
-## Option 1: Change the source data
+#### Option 1: Change the source data
 
 In this case, changing the data in the source system seem the most logical.  After all, there may be multiple ways in which the age of a person can be described using one or more English words.  Expressing ages numerically is a good idea in general, since it will make the source data easier to interpret.
 
-## Option 2: Change the transformation and/or assertions
+#### Option 2: Change the transformation and/or assertions
 
 Alternatively, it is possible to transform English words that denote numbers to their corresponding numeric values.  Since people can get up to one hundred years old, or even older, there are many words that we must consider and transform.  This can be done with the [`translateAll()` transformation](/triply-etl/transform/ratt#function-translateall):
 
@@ -309,7 +310,7 @@ pairs(iri(prefix.id, 'id'),
 
 But even the above transformation may not suffice.  The same number can be expressed in multiple ways in natural language, so the mapping will never be truly complete and reliable.  This seems to be the worst of the three options in this case.
 
-## Option 3: Change the Information Model
+#### Option 3: Change the Information Model
 
 Finally, we could loosen the Information Model.  For example, we could change the datatype to check for strings:
 
@@ -321,7 +322,7 @@ But that would invalidate ETLs that generate numeric ages for persons, even thou
 
 Alternatively, we can remove the `sh:datatype` requirement from our Information Model entirely.  That would allow either string-based ages or numeric ages to be specified.  But now even weirder values for age, e.g. `'2023-01-01'^^xsd:date`, would be considered valid values for age.
 
-## Reflections on which option to choose
+### Reflections on which option to choose
 
 Notice that TriplyETL does not tell you which of the 3 options you should follow in order to fix issues in your ETL.  After all, creating an ETL requires domain knowledge based on which you weight the pros and const of different options.  However, TriplyETL does give you the tools to discover issues that prompt you to come up with such solutions.  And once you have decided on a specific solution, TriplyETL provides you with the tools to implement it.
 

@@ -5,6 +5,8 @@ path: "/docs/pagination"
 
 [TOC]
 
+# SPARQL Pagination
+
 This page explains how to retrieve all results from a SPARQL query using pagination.
 
 Often SPARQL queries can return more than 10.000 results, but due to limitations the result set will only consist out of the first 10.000 results. To retrieve more than 10.000 results you can use pagination. TriplyDB supports two methods to retrieve all results from a SPARQL query. Pagination with the saved query API or Pagination with TriplyDB.js.

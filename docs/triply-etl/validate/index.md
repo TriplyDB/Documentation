@@ -5,6 +5,8 @@ path: "/docs/triply-etl/validate"
 
 [TOC]
 
+# Validate
+
 The **Validate** step ensures that the linked data a pipeline produces conforms to the requirements specified in the data model.
 
 ```mermaid
@@ -23,7 +25,7 @@ graph LR
   tdb[(Triple Store)]
 ```
 
-Triply believes that *every* ETL should include the Validate step to ensure that only valid data is published in knowlede graphs.
+Triply believes that *every* ETL should include the Validate step to ensure that only valid data is published in knowledge graphs.
 
 ## Two approaches
 

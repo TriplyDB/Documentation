@@ -109,17 +109,17 @@ graph LR
 
 
 
-# Function `list()`
+## Function `list()`
 
 This function allows us to create ordered closed collections [rdf:List](https://triplydb.com/how-to-model/-/stories/collections) in TriplyETL.
 The elements of such collections must be represented using a single-linked list (`rdf:first` and `rdf:rest`). Such collections are closed by the empty list (`rdf:nil`).
 
-## Parameters
+### Parameters
 
 - `prefix` A prefix for linked lists that is declared with [declarePrefix()](/triply-etl/declare#declarePrefix). 
 - `listOrReference`  term, literal, key or string or an array of terms/literals/keys/strings
 
-## Example: Fruit basket
+### Example: Fruit basket
 
 The following code snippet creates linked lists (linked by `rdf:rest`), where each value stored in the `'contents'` key is `rdf:first` object:
 
@@ -169,7 +169,7 @@ classDef data fill:yellow
 ```
 Note that the predicate differs from the above example of the [literals()](#function-literals) function. In order to use `list()` middleware we need to be sure that the `rdfs:domain` property of the predicates allows to be of `rdf:List`. 
 
-## Example: Children
+### Example: Children
 
 The following code snippet creates linked lists (linked by `rdf:rest`), where each value stored in the `'children'` key is `rdf:first` object:
 
