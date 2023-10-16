@@ -48,7 +48,7 @@ window.onload = () => {
       .filter(heading => heading.getBoundingClientRect().y <= 40 ).pop()
     if (el) {
       Array.from(document.querySelectorAll('div.toc a')).map(a => a.classList.remove('active'))
-      document.querySelector(`div.toc a[href="#${el.id}"]`).classList.add('active')
+      document.querySelector(`div.toc a[href="#${el.id}"]`)?.classList.add('active')
     }
   }
 

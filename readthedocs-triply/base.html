@@ -5,7 +5,13 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    {%- if page and page.is_homepage %}<meta name="description" content="{{ config.site_description }}" />{%- endif %}
+    {%- if page and page.meta and page.meta.description %}
+      <meta name="description" content="{{ page.meta.description }}" />
+    {%- else %}
+      {%- if page %}
+      <meta name="description" content="{{ config.site_description }}" />
+      {%- endif %}
+    {%- endif %}
     {%- if config.site_author %}<meta name="author" content="{{ config.site_author }}" />{%- endif %}
     {%- if page and page.canonical_url %}<link rel="canonical" href="{{ page.canonical_url }}" />{%- endif %}
     {%- if config.site_favicon %}
@@ -16,7 +22,11 @@
   {%- endblock %}
 
   {%- block htmltitle %}
+    {%- if page and page.meta and page.meta.title and not page.is_homepag %}
+    <title>{{ page.meta.title }} - {{ config.site_name }}</title>
+    {%- else %}
     <title>{% if page and page.title and not page.is_homepage %}{{ page.title }} - {% endif %}{{ config.site_name }}</title>
+    {%- endif %}
   {%- endblock %}
 
   {%- block styles %}
