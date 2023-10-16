@@ -1,3 +1,5 @@
+[TOC]
+
 # Extract
 
 The **Extract** step is the first step in any TriplyETL pipeline.  It extracts data in different formats and from different source types.  Examples of data formats are 'Microsoft Excel' and 'JSON'.  Examples of source types are 'file' or 'URL'.  Source data are represented in a uniform Record.

@@ -1,3 +1,5 @@
+[TOC]
+
 # Query
 
 A Saved Query is a versioned SPARQL query with its own URL. Using this URL,

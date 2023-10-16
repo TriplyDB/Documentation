@@ -3,6 +3,8 @@ title: "5. Validate: SHACL"
 path: "/docs/triply-etl/validate/shacl"
 ---
 
+[TOC]
+
 This page documents how SHACL is used to validate linked data in the internal store of your ETL pipeline.
 
 

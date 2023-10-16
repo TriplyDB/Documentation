@@ -3,6 +3,8 @@ title: "5. TriplyETL: Validate"
 path: "/docs/triply-etl/validate"
 ---
 
+[TOC]
+
 The **Validate** step ensures that the linked data a pipeline produces conforms to the requirements specified in the data model.
 
 ```mermaid

@@ -8,6 +8,8 @@ redirect_from:
   - "/docs/data-stories"
 ---
 
+[TOC]
+
 This section explains the use of SPARQL via Yasgui. Yasgui provides
 various advanced features for creating, sharing, and visualizing
 SPARQL queries and their results.

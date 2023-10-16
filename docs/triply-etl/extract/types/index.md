@@ -1,3 +1,5 @@
+[TOC]
+
 # Source types
 ## Overview
 

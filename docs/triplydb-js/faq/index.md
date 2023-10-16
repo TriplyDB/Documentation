@@ -1,3 +1,5 @@
+[TOC]
+
 # FAQ
 
 This section includes answers to frequently asked questions. Please contact [info@triply.cc](mailto:info@triply.cc) if you have a question that does not appear in this list.

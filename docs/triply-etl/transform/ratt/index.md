@@ -1,3 +1,5 @@
+[TOC]
+
 # Transform: RATT
 
 RATT transformations are a core set of functions that are commonly used to change the content of TriplyETL Records.
@@ -1518,6 +1520,3 @@ This results in the following linked data assertion:
 ```ttl
 city:Amsterdam geonames:countryCode "NL"
 ```
-
-
-

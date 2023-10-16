@@ -3,6 +3,8 @@ title: "Triply API"
 path: "/docs/triply-api"
 ---
 
+[TOC]
+
 Each Triply instance has a fully RESTful API. All functionality, from managing
 the Triply instance to working with your data, is done through the API. This
 document describes the general setup of the API, contact

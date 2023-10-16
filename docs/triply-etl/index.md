@@ -1,3 +1,5 @@
+[TOC]
+
 # TriplyETL Overview
 TriplyETL allows you to create and maintain production-grade linked data pipelines.
 

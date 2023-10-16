@@ -1,3 +1,5 @@
+[TOC]
+
 # Account
 
 Instances of the `Account` class denote TriplyDB accounts. Accounts can be either organizations ([`Organization`](/triplydb-js/organization#organization)) or users ([`User`](/triplydb-js/user#user)).

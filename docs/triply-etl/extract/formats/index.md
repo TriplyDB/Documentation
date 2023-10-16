@@ -1,3 +1,5 @@
+[TOC]
+
 # Data Formats
 
 ## Overview

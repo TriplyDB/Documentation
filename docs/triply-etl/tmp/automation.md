@@ -3,6 +3,8 @@ title: "TriplyETL: Automation"
 path: "/docs/triply-etl/automation"
 ---
 
+[TOC]
+
 TriplyETL runs within a Gitlab CI environment ([Figure 1](#figure-1)).
 
 <figure id="figure-1">

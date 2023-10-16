@@ -1,3 +1,5 @@
+[TOC]
+
 # App
 
 Instances of the `App` class are specific application connections that are set-up with a TriplyDB server.

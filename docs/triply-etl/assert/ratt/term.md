@@ -1,3 +1,5 @@
+[TOC]
+
 # RATT Term Assertions
 
 The following term assertions are available:

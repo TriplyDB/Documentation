@@ -1,3 +1,5 @@
+[TOC]
+
 # SPARQL Update
 
 SPARQL Update is a powerful feature that allows you to modify and enrich linked data in the internal store. With SPARQL Update, you can generate new linked data based on existing linked data, thereby enhancing the content of the store.

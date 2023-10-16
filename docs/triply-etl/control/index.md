@@ -1,3 +1,5 @@
+[TOC]
+
 # Control Structures
 
 This page documents how you can use control structures in your ETL configuration.

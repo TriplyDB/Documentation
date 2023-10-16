@@ -1,3 +1,5 @@
+[TOC]
+
 # Publishing data
 
 With TriplyDB you can easily make your data available to the outside world.

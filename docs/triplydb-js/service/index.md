@@ -1,3 +1,5 @@
+[TOC]
+
 # Service
 
 Service objects describe specific functionalities that can be created over datasets in TriplyDB.

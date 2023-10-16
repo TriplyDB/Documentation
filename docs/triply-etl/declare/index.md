@@ -1,3 +1,5 @@
+[TOC]
+
 # Declare
 
 Declarations introduce constants that you can use in the rest of your ETL configuration.

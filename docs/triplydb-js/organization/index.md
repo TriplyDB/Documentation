@@ -1,3 +1,5 @@
+[TOC]
+
 # Organization
 
 Instances of class `Organization` denote organizations in TriplyDB.

@@ -1,3 +1,5 @@
+[TOC]
+
 # Assert
 
 The **Assert** step uses data from the Record to add linked data to the Internal Store.

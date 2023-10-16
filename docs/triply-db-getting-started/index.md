@@ -3,6 +3,8 @@ title: "TriplyDB"
 path: "/docs/triply-db-getting-started"
 ---
 
+[TOC]
+
 # Introduction
 
 TriplyDB allows you to store, publish, and use linked data Knowledge

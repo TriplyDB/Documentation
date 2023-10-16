@@ -1,3 +1,5 @@
+[TOC]
+
 # Graph
 
 Each dataset with data consists out of one or more named graphs. All graphs together is thus the collection of triples of the dataset. Often the graph is used to denote a part of the dataset. For example the data model of the dataset or the metadata of the dataset. A graph has as advantage that is can partition data while at the same time keep the data in the same dataset. Reducing the overhead of having to move between datasets to traverse a graph.

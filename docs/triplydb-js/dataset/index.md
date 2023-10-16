@@ -1,3 +1,5 @@
+[TOC]
+
 # Dataset
 
 The `Dataset` class represents a TriplyDB dataset.

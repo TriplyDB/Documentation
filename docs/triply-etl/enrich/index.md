@@ -1,3 +1,5 @@
+[TOC]
+
 # Enrich
 
 The **Enrich** step uses linked data that is asserted in the Internal Store to derive new linked data.

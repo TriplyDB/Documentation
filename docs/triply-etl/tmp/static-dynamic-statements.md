@@ -1,3 +1,5 @@
+[TOC]
+
 # Create dynamic statements
 
 Dynamic statements are statements that are based on some aspect of the source data.

@@ -1,3 +1,5 @@
+[TOC]
+
 # User
 
 Instances of class `User` denote users in TriplyDB.

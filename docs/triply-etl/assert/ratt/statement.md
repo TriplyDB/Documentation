@@ -1,3 +1,5 @@
+[TOC]
+
 # RATT Statement Assertions
 
 [TOC]

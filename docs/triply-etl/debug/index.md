@@ -1,3 +1,5 @@
+[TOC]
+
 # Debug
 
 TriplyETL includes functions that can be used during debugging. These debug function allow you to inspect in a detailed way how data flows through your pipeline. This allows you to find problems more quickly, and allows you to determine whether data is handled correctly by your TriplyETL configuration.

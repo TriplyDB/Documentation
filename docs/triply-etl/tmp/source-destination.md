@@ -1,3 +1,5 @@
+[TOC]
+
 ##### An easier way to configure graph names and prefixes
 
 Instead of setting the graph name and the prefixes for every ETL, you can use functions for their generation:

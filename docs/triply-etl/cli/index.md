@@ -1,3 +1,5 @@
+[TOC]
+
 # Command Line Interface (CLI)
 
 TriplyETL allows you to manually perform various tasks in a terminal application (a Command-Line Interface or CLI).

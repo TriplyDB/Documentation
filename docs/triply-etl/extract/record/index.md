@@ -1,3 +1,5 @@
+[TOC]
+
 # Record
 
 When a TriplyETL is connected to one of more data sources, a stream of **Records** will be generated. Records use a generic representation that is independent of the format used in the data sources.

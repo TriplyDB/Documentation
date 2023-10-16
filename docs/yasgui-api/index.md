@@ -3,6 +3,8 @@ title: "Yasgui API Reference"
 path: "/docs/yasgui-api"
 ---
 
+[TOC]
+
 Yasgui consists of three components: Yasqe (a SPARQL Query Editor), Yasr (a SPARQL result visualizer), and Yasgui which binds the former together.
 Here you can find documentation on ways to include, configure and extend these components as suitable to your use-case.
 

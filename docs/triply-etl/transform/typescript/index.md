@@ -3,6 +3,8 @@ title: "2. Transform: TypeScript"
 path: "/docs/triply-etl/transform/typescript"
 ---
 
+[TOC]
+
 The vast majority of ETLs can be written with the core set of [RATT Transformations](/triply-etl/transform/ratt).  But sometimes a custom transformation is necessary that cannot be handled by this core set.  For such circumstances, TriplyETL allows a custom TypeScript function to be written.
 
 Notice that the use of a custom TypeScript function should be somewhat uncommon.  The vast majority of real-world transformations should be supported by the core set of RATT Transformations.

@@ -1,3 +1,5 @@
+[TOC]
+
 # Asset
 
 Not all data can be stored as RDF data. For example images and video files use a binary format. Such files can also be stored in TriplyDB as Assets and can be integrated into the Knowledge Graph. Each asset has a specific identifier that can be used in the Knowledge Graph.

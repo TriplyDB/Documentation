@@ -1,3 +1,5 @@
+[TOC]
+
 # Uploading Data
 
 This section explains how to create a linked dataset in TriplyDB.

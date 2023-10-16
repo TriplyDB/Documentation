@@ -1,3 +1,5 @@
+[TOC]
+
 ## Transforming RDF data
 
 If you have RDF data that does not need to be transformed, see [copying source data](https://triply.cc/docs/ratt-working-with-ratt#function-direct-copying-of-source-data-to-destination).

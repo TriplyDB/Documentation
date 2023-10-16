@@ -1,3 +1,5 @@
+[TOC]
+
 # SHACL Rules
 
 SHACL Rules allow new data to be asserted based on existing data patterns. This makes them a great approach for data enrichment. Since SHACL Rules can be defined as part of the data model, it is one of the best approaches for creating and maintaining business rules in complex domains.

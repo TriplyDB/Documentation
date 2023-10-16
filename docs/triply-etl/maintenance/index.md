@@ -1,3 +1,5 @@
+[TOC]
+
 # Maintenance
 
 Once a TriplyETL repository is configured, it goes into maintenance mode. TriplyETL contains specific functionality to support maintenance.

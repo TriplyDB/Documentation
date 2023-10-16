@@ -1,3 +1,5 @@
+[TOC]
+
 # Transform
 
 The transform step makes changes to the Record:

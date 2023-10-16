@@ -1,3 +1,5 @@
+[TOC]
+
 # Changelog
 
 The current version of TriplyETL is **3.0.0**

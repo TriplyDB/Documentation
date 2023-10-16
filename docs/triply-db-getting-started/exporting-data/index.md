@@ -1,3 +1,5 @@
+[TOC]
+
 # Exporting Data
 
 This section explains how a user of TriplyDB can export linked data stored in the triple store.

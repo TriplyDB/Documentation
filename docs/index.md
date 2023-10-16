@@ -1,3 +1,5 @@
+[TOC]
+
 <img src="https://triplydb.com/imgs/logos/logo-lg.svg?v=0" style="height: 100px;"/>
 
 # Welcome to the Triply Documentation

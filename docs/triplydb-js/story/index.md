@@ -1,3 +1,5 @@
+[TOC]
+
 # Story
 
 A TriplyDB data story is a way of communicating information about your linked data along with explanatory text while also being able to integrate query results. To create Data stories with `TriplyDB.js` You can use the

@@ -1,3 +1,5 @@
+[TOC]
+
 # TriplyETL: Publish
 
 The **Publish** step makes the linked data that is produced by the TriplyETL pipeline available in a Triple Store for use by others.

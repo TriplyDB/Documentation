@@ -1,3 +1,5 @@
+[TOC]
+
 # FAQ
 
 ### Why does my pipeline schedule only run an `install` job?

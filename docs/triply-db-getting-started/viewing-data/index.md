@@ -1,3 +1,5 @@
+[TOC]
+
 # Viewing Data
 
 TriplyDB offers several ways to explore your datasets.

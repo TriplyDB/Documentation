@@ -3,6 +3,8 @@ title: "JSON-LD Framing"
 path: "/docs/jsonld-frames"
 ---
 
+[TOC]
+
 # Why JSON-LD Framing?
 
 SPARQL Construct and SPARQL Describe queries can return results in the JSON-LD format. Here is an example:
@@ -182,5 +184,3 @@ This can also be accessed by the generated API Link above the SPARQL editor.
 Copying and pasting the generated link will direct you to a page where you can view the script:
 
 ![](json-ld-in-api.png)
-
-
