@@ -57,18 +57,18 @@ import { a, rdf, sdo } from '@triplyetl/vocabularies'
 import * as vocab from "@triplyetl/vocabularies"
 ```
 
-   - To use a `prefixer` function (e.g. `aat(123456)`) (note that the name has changed from `prefix` to `prefixer`):
+   - Some vocabularies are too large to include, the can still be used like this:
 
 ```ts 
-import { prefixer } from '@triplyetl/etl/vocab'
-prefixer.aat('300379271')
+import { aat } from '@triplyetl/etl/vocab'
+const moustache = aat.concat('300379271')
 ```
 
-   - To get an Iri from a specific prefix:
+or
 
 ```ts
-import { prefix } from '@triplyetl/etl/vocab'
-prefix.skos
+import { aat } from '@triplyetl/etl/vocab'
+addIri({prefix: aat, content: str('300379271'), key: 'moustache'})
 ```
 
    - To use the RATT `lang` tools:
