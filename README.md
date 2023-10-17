@@ -56,11 +56,6 @@ mkdocs gh-deploy
 
 Required plugins:
 - To render `mermaid` you will need to install [this plugin](https://github.com/fralau/mkdocs-mermaid2-plugin).
-- Theme [Mkdocs - GitBook Theme](https://gitlab.com/lramage/mkdocs-gitbook-theme)
-- Theme [Material for MkDocs](https://squidfunk.github.io/mkdocs-material/)
-
-Other dependencies:
-- [Pygments](https://pygments.org) for syntax highlighting
 
 ### Notes abouth syntax highlighting
 This project uses [highlightjs.org](https://highlightjs.org) for rendering code blocks with syntax highlighting. This projects does not have supprt for Turtle/SPARQL by default. We use a custom build to provide syntax hightlighting for these.
