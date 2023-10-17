@@ -42,4 +42,4 @@ process.on('unhandledRejection', (reason, p) => {
 
 The following sections document the various TriplyDB.js classes. Each class comes with its own methods. Classes are related through methods that connect them. For example, calling the `getAccount` method on a `App` object returns an `Account` object.
 
-![](ClassDiagram.png)
+![](../assets/ClassDiagram.png)

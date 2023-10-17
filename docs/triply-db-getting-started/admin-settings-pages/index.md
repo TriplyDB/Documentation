@@ -44,7 +44,7 @@ For changing the metadata follow the next steps:
 
 2. On that page navigate to "Site metadata", it looks as follows:
 
-![Metadata settings](metadata-settings.png)
+![Metadata settings](../../assets/metadata-settings.png)
 
 3. Here you can set the name, tag line, description and welcome text. The name of your website appears in your browser tab. The welcome text appears on the homepage of your TriplyDB instance. The tagline and description are for metadata purposes (e.g. findability and website previews).
 
@@ -158,8 +158,8 @@ The type of account can be observed based on the following icons:
 
 | **Icon**              | **Account type** |
 | --------------------- | ---------------- |
-| ![](organization.png) | organization     |
-| ![](user.png)         | user             |
+| ![](../../assets/organization.png) | organization     |
+| ![](../../assets/user.png)         | user             |
 
 ### Create a new user
 

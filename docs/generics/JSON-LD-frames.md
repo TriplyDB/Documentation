@@ -170,18 +170,18 @@ Another way to create a frame is by using the SPARQL editor in TriplyDB.
 
 You can access the JSON-LD editor by clicking the three dots next to the SPARQL editor, and then selecting "To JSON-LD frame editor".
 
-![SPARQL editor](json-ld-navigator.png)
+![SPARQL editor](../assets/json-ld-navigator.png)
 
 Afterwards, the JSON script from above should be added to the JSON-LD Frame editor.
 
-![Ld-Frame box](json-ld-script.png)
+![Ld-Frame box](../assets/json-ld-script.png)
 
 
 Running the script results in the following REST-API result: 
 
-![REST-API result](json-ld-result.png)
+![REST-API result](../assets/json-ld-result.png)
 
 This can also be accessed by the generated API Link above the SPARQL editor. 
 Copying and pasting the generated link will direct you to a page where you can view the script:
 
-![](json-ld-in-api.png)
+![](../assets/json-ld-in-api.png)

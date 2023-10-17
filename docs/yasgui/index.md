@@ -18,7 +18,7 @@ SPARQL queries and their results.
 
 ## SPARQL Editor
 
-The Yasgui SPARQL editor is a query editor that offers syntax highlighting, syntax validation, autocompletion, a variety of different SPARQL result visualizations, with a plugin architecture that [enables customization](/yasgui-api).
+The Yasgui SPARQL editor is a query editor that offers syntax highlighting, syntax validation, autocompletion, a variety of different SPARQL result visualizations, with a plugin architecture that [enables customization](../yasgui-api).
 
 By default, the query editor provides autocomplete suggestions via the [LOV](https://lov.linkeddata.es/dataset/lov/) API.
 Website maintainers can add their own autocompletion logic as well. For example, the Yasgui integration in [TriplyDB](https://triplydb.com) uses the TriplyDB API to more accurately provide suggestions based on the underlying data.
@@ -143,7 +143,7 @@ select * {
 }
 ```
 
-![The result is interpreted as plain text and will not parse the HTML](./html-plain.png)
+![The result is interpreted as plain text and will not parse the HTML](../assets/html-plain.png)
 
 This query will render the result as `HTML`
 
@@ -154,7 +154,7 @@ select * {
 }
 ```
 
-![The result is interpreted as HTML](./html-rendered.png)
+![The result is interpreted as HTML](../assets/html-rendered.png)
 
 In order to guarantee safety, TriplyDB sanitizes HTML literals before
 rendering them.  This means that tags like `<embed>`, `<iframe>` and
@@ -203,13 +203,13 @@ select ?pokemon ?happiness {
 }
 ```
 
-![SPARQL Table view over the above query](sparql-table-example.png)
+![SPARQL Table view over the above query](../assets/sparql-table-example.png)
 
 ### Response
 
 This view shows the body of the response and offers an easy way to download the result as a file.
 
-### Gallery ([TriplyDB Plugin](/yasgui-api#triplyDbPlugins))
+### Gallery ([TriplyDB Plugin](../yasgui-api#triplyDbPlugins))
 
 This view allows SPARQL results to be displayed in an HTML gallery.
 Each individual result corresponds to one HTML widget. Widgets are
@@ -260,7 +260,7 @@ displaying a Pokémon. (This SPARQL query also uses [[SPARQL
 Templates]] in order to simplify its syntax.) This query can be [run
 online](https://triplydb.com/academy/-/queries/gallery).
 
-![SPARQL Gallery view of a Pokémon query that uses SPARQL Templating](pokemon-gallery.png)
+![SPARQL Gallery view of a Pokémon query that uses SPARQL Templating](../assets/pokemon-gallery.png)
 
 ```sparql
 prefix def: <https://triplydb.com/academy/pokemon/def/>
@@ -302,7 +302,7 @@ order by desc(?experience)
 limit 20
 ```
 
-### Chart ([TriplyDB Plugin](/yasgui-api#triplyDbPlugins))
+### Chart ([TriplyDB Plugin](../yasgui-api#triplyDbPlugins))
 
 The chart plugin renders geographical, temporal and numerical data in interactive charts such as bar-, line- and pie charts.
 
@@ -318,7 +318,7 @@ subtree; right clicking on a node will move up to the subtree of its
 parent node.
 The chart configuration enables tweaking the treemap properties such as the number of displayed hierarchy levels.
 
-### Geo ([TriplyDB Plugin](/yasgui-api#triplyDbPlugins))
+### Geo ([TriplyDB Plugin](../yasgui-api#triplyDbPlugins))
 
 This view allows SPARQL results that contain GeoSPARQL semantics to be
 automatically interpreted and displayed on a 2D map.
@@ -380,11 +380,11 @@ The SPARQL Geo Events plugin renders geographical events as a story map ([exampl
 | `?eventMediaCaption`        | Text or [HTML](#rendering-html) media caption.                                                                                                                            |
 | `?eventMediaCredit`         | Text or [HTML](#rendering-html) media credit.                                                                                                                             |
 
-### Pivot Table ([TriplyDB Plugin](/yasgui-api#triplyDbPlugins))
+### Pivot Table ([TriplyDB Plugin](../yasgui-api#triplyDbPlugins))
 
 This view renders SPARQL results in an interactive pivot table where you are able to aggregate the results by dragging your binding variables to columns or rows.
 
-### Timeline ([TriplyDB Plugin](/yasgui-api#triplyDbPlugins))
+### Timeline ([TriplyDB Plugin](../yasgui-api#triplyDbPlugins))
 
 The SPARQL timeline renders the SPARQL results on a Timeline ([example](https://triplydb.com/DBpedia-association/-/queries/timeline-cars))
 To get started with this visualization you need at least a result containing a `?eventStart` or `?eventDate` with either a `?eventDescription`, `?eventLabel` or a `?eventMedia`. (Combinations are also possible)
@@ -408,11 +408,11 @@ The following parameters can be used, Parameters in _Italic_ are experimental:
 | _`?eventMediaTitle`_     | The Title of the Media                                                                                                                      |
 | _`?eventMediaLink`_      | The URL the image should link to                                                                                                            |
 
-### Network ([TriplyDB Plugin](/yasgui-api#triplyDbPlugins))
+### Network ([TriplyDB Plugin](../yasgui-api#triplyDbPlugins))
 
 This view renders SPARQL Construct results in a graph representation. It works for `Turtle`, `Trig`, `N-Triples` and `N-Quads` responses. The maximum amount of results that can be visualized is 1.000 due to performance.
 
-### Markup ([TriplyDB Plugin](/yasgui-api#triplyDbPlugins))
+### Markup ([TriplyDB Plugin](../yasgui-api#triplyDbPlugins))
 
 The markup view can be used to render a variety of markup languages. This requires the use of the `?markup` variable to identify which variable to render. Based on the datatype of the variable the plugin will identify which markup language to use:
 

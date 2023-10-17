@@ -683,7 +683,7 @@ Schema markup is how Google can serve up rich results (also called rich snippets
 
 The schema is included in HTML in the following way:
 
-![basic JSON-LD markup ](html-schema.png)
+![basic JSON-LD markup ](../../../assets/html-schema.png)
 
 1. `The Script Type`: What format your structured data will take (JSON-LD)
 2. `The Context`: Where the language you’re using comes from (schema.org)

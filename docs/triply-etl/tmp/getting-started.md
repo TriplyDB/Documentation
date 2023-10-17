@@ -111,7 +111,6 @@ npx etl
 
 The TriplyETL script will give you a link to the uploaded dataset.  This dataset contains the following graph content:
 
-![](connect-a-data-source.png)
 
 
 

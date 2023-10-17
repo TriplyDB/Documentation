@@ -205,7 +205,7 @@ https://api.triplydb.com/datasets/DBpedia-association/dbpedia/describe.nt?resour
 ```
 in your browser, the `.nt` document describing the 'Mona Lisa' instance will be automatically downloaded. You can then upload this file to a dataset and [visualize it in a graph](/yasgui/#network-triplydb-plugin). Figure 1 illustrates the retrieved graph for the ‘Mona Lisa’ instance.
 
-![Figure 1](MonaLisaGraph.png)
+![Figure 1](../assets/MonaLisaGraph.png)
 
 The requested resource will be displayed in the center of the graph, forming an 'ego graph'. It will include all direct properties, as well as some indirect properties that are also pulled in by LD Browser. The labels for all classes and properties will be included for easy human-readable display.
 

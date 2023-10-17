@@ -15,7 +15,7 @@ _You need to be logged in and have authorization rights on the dataset to use th
 1. When working from the [SPARQL IDE](/triply-db-getting-started/viewing-data#sparql-ide)
 2. Using the Saved Queries tab in a dataset
 
-Creating a saved query with the SPARQL IDE is done by writing a query/visualization and hitting the save button ![The save query button highlighted](save-query-highlighted.png)
+Creating a saved query with the SPARQL IDE is done by writing a query/visualization and hitting the save button ![The save query button highlighted](../../assets/save-query-highlighted.png)
 
 ## Creating a new version
 
@@ -25,7 +25,7 @@ Updating the saved query can be done by clicking a query in the Saved Queries ta
 
 If you want to delete a saved query, you can do so by clicking the three dots on the top right corner of the query, as shown in the image below, and then clicking `Delete`.
 
-![Deleting a saved query](delete-query.png)
+![Deleting a saved query](../../assets/delete-query.png)
 
 ## Using a saved query
 
@@ -53,8 +53,8 @@ The result of a query can be downloaded via the TriplyDB interface. After saving
 You can download results in different data format, depending on which [visualization option](/yasgui/#visualizations) you use.
 For example, if you want to download the results in a `.json` format, you can choose the option `Response` and click on the download icon or scroll down and click on `Download result`.
 
-![Download the query result via the download icon.](queryResult.png)
-![Download the query result via the button `Download result`.](queryResult2.png)
+![Download the query result via the download icon.](../../assets/queryResult.png)
+![Download the query result via the button `Download result`.](../../assets/queryResult2.png)
 
 The downloaded file is automatically stored in the `Downloads`-folder and has the name of the query. In our example, the file is called `timeline-cars.json`. The downloaded file contains the query result as a json-object. TriplyDB also displays the json-object when selecting the option `Response`.
 
@@ -205,7 +205,7 @@ Every Saved Query has a metadata section. This metadata section includes the fol
 
 Users can specify a query title and description, both of which are included as metadata. The access level and version of the query are also exposed as metadata. See the following screenshot for how the metadata fields are shown in TriplyDB:
 
-![Metadata fields for a Saved Query in TriplyDB](saved-query-metadata.png)
+![Metadata fields for a Saved Query in TriplyDB](../../assets/saved-query-metadata.png)
 
 Users can specify additional metadata inside the query string, by using the GRLC annotation format. GRLC annotations start with the hash and plus sign characters (`#+`). Visit the [GRLC project](https://github.com/CLARIAH/grlc) to learn more about this format. For example, the following GRLC annotation could indicate to a software application that the query should be repeated every hour:
 
