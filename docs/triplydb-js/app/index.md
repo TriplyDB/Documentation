@@ -22,7 +22,7 @@ Notice that the URL must point to the API of the TriplyDB server that the `App` 
 
 When an API token is specified, the operations that can be performed through the `App` object are determined by:
 
-1. The access level of the token: either “Read access”, “Write acces”, or “Management access”.
+1. The access level of the token: either “Read access”, “Write access”, or “Management access”.
 2. The credentials of the user account for which the API token is created. When a user is a member of an organization, she has access to all its datasets, stories, and queries; a user always has access to her own datasets, stores and queries.
 
 The following token access levels are available:
@@ -37,9 +37,9 @@ The following token access levels are available:
 
    - Read operations over data with access level “Private” that belongs to organizations to which the user who created the token is a member.
 
-2\. “Write acces” allows:
+2\. “Write access” allows:
 
-   - All operations allows by “Read acces”.
+   - All operations allows by “Read access”.
 
    - Write operations over data that has access setting “Internal”.
 
@@ -79,9 +79,9 @@ const account = await triply.getAccount()
 
 ### See also
 
-This method returns an account object. See class [Account](/triplydb-js/account#account) for an overview of the methods that can be called on such objects.
+This method returns an account object. See class [Account](../account#account) for an overview of the methods that can be called on such objects.
 
-Class [Account](/triplydb-js/account#account) has two specializations: class [Organization](/triplydb-js/organization#organization) and class [User](/triplydb-js/user/#user). In line with these class specializations, there are also two method specializations:
+Class [Account](../account#account) has two specializations: class [Organization](../organization#organization) and class [User](../user/#user). In line with these class specializations, there are also two method specializations:
 
 - Method [`App.getOrganization(name: string)`](#appgetorganizationname-string) returns an organization object.
 
@@ -90,7 +90,7 @@ Class [Account](/triplydb-js/account#account) has two specializations: class [Or
 
 ## App.getAccounts()
 
-Returns an [async iterator](/triplydb-js/faq#what-is-an-async-iterator) over all accounts in the TriplyDB server.
+Returns an [async iterator](../faq#what-is-an-async-iterator) over all accounts in the TriplyDB server.
 
 ### Example
 
@@ -109,7 +109,7 @@ for await (const account of triply.getAccounts()) {
 console.log(await triply.getAccounts().toArray())
 ```
 
-See class [Account](/triplydb-js/account#account) for an overview of the methods that can be used with account objects.
+See class [Account](../account#account) for an overview of the methods that can be used with account objects.
 
 
 ## App.getInfo()
@@ -141,7 +141,7 @@ This method is similar to [`App.getAccount(name?: string)`](#appgetaccountname-s
 
 - This method only works for accounts that represent TriplyDB organizations.
 
-- This method returns an organization object. Class [Organization](/triplydb-js/organization#organization) is a specialization of class [Account](/triplydb-js/account#account).
+- This method returns an organization object. Class [Organization](../organization#organization) is a specialization of class [Account](../account#account).
 
 ### Examples
 
@@ -151,7 +151,7 @@ The following snippet returns the organization called `'Triply'`:
 const organization = await triply.getOrganization('Triply')
 ```
 
-See class [Organization](/triplydb-js/organization#organization) for an overview of the methods that can be used with organization objects.
+See class [Organization](../organization#organization) for an overview of the methods that can be used with organization objects.
 
 ### Alternatives
 
@@ -159,7 +159,7 @@ This method is a shorthand for calling the following two methods:
 
 - Call method [`App.getAccount(name?: string)`](#appgetaccountname-string) to retrieve an account object.
 
-- Then call method [`Account.asOrganization()`](/triplydb-js/account#accountasorganization) to cast the account object into an organization object.
+- Then call method [`Account.asOrganization()`](../account#accountasorganization) to cast the account object into an organization object.
 
 The following snippet returns the same result as the previous example, but uses two methods instead of one:
 
@@ -170,7 +170,7 @@ const organization = account.asOrganization()
 
 ### See also
 
-This method returns an organization object. See class [Organization](/triplydb-js/organization#organization) for an overview of the methods that can be called on such objects.
+This method returns an organization object. See class [Organization](../organization#organization) for an overview of the methods that can be called on such objects.
 
 
 ## App.getUser(name?: string)
@@ -199,7 +199,7 @@ This method is a shorthand for the following two methods:
 
 1. Call method [`App.getAccount()`](#appgetaccountname-string) to retrieve an account object.
 
-2. Then call method [`Account.asUser()`](/triplydb-js/account#accountasuser) to cast the account object into a user object.
+2. Then call method [`Account.asUser()`](../account#accountasuser) to cast the account object into a user object.
 
 The following snippet returns the same result as the previous examples, but uses two methods instead of one:
 
@@ -210,7 +210,7 @@ const user = account.asUser()
 
 ### See also
 
-This method returns a user object. See class [User](/triplydb-js/user#user) for an overview of the methods that can be called on such objects.
+This method returns a user object. See class [User](../user#user) for an overview of the methods that can be called on such objects.
 
 
 ## App.isCompatibleWith(minimumVersion: string)

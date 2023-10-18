@@ -56,9 +56,9 @@ TriplyETL uses the Semantic Versioning approach: `{major}.{minor}.{patch}` The i
   <dt>Patch update</dt>
   <dd>Only the <code>{patch}</code> number has increased. This means that one or more bugs have been fixed in a <em>backward compatible</em> manner. You should always be able to perform a patch update without having to make any changes to your configuration.</dd>
   <dt>Minor update</dt>
-  <dd>The <code>{minor}</code> number has increased, but the <code>{major}</code> number is still the same. This means that new functionality was added in a <em>backward compatible</em> manner. You should always be able to perform a minor update without having to make any changes to your configuration. But you may want to check the <a href="/triply-etl/changelog" target="_blank">changelog</a> to see which new functionalities were added.</dd>
+  <dd>The <code>{minor}</code> number has increased, but the <code>{major}</code> number is still the same. This means that new functionality was added in a <em>backward compatible</em> manner. You should always be able to perform a minor update without having to make any changes to your configuration. But you may want to check the <a href="../changelog" target="_blank">changelog</a> to see which new functionalities were added.</dd>
   <dt>Major update</dt>
-  <dd>The <code>{major}</code> number has increased. This means that there are <em>incompatible</em> changes. This means that features may have been removed, or existing features may have changed. In such cases, changes to your configuration are almost certainly necessary, and may take some time to implement. Any changes you need to make are described in the <a href="/triply-etl/changelog" target="_blank">changelog</a>.</dd>
+  <dd>The <code>{major}</code> number has increased. This means that there are <em>incompatible</em> changes. This means that features may have been removed, or existing features may have changed. In such cases, changes to your configuration are almost certainly necessary, and may take some time to implement. Any changes you need to make are described in the <a href="../changelog" target="_blank">changelog</a>.</dd>
 </dl>
 
 ### Perform the update
@@ -101,7 +101,7 @@ TriplyETL pipelines can be configured to run automatically in any CI/CD environm
 
 ### CI/CD configuration file
 
-The [TriplyETL Generator](/triply-etl/getting-started#triplyetl-generator) creates a basic configuration file for running TriplyETL in GitLab CI/CD. The configuration file is called `.gitlab-ci.yml`.
+The [TriplyETL Generator](../getting-started#triplyetl-generator) creates a basic configuration file for running TriplyETL in GitLab CI/CD. The configuration file is called `.gitlab-ci.yml`.
 
 The configuration contains a list of stages:
 

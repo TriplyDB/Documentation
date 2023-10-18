@@ -29,15 +29,15 @@ import { nestedPairs, objects, pairs, quad, quads,
 
 Creates a nested node and makes multiple assertions about that node.
 
-Since linked data is composed of triples, more complex n-ary information must often be asserted by using a nested node. Nested nodes must be IRIs, so they must be specified with [iri()](/triply-etl/assert/ratt/term#function-iri) or [addIri()](/triply-etl/transform/ratt#function-addiri).
+Since linked data is composed of triples, more complex n-ary information must often be asserted by using a nested node. Nested nodes must be IRIs, so they must be specified with [iri()](../term#function-iri) or [addIri()](../../../transform/ratt#function-addiri).
 
 Signature: `nestedPairs(subject, predicate, nestedNode, pairs...)`
 
 ### Parameters
 
-- `subject` A subject term. This must be an IRI (see function [iri()](/triply-etl/assert/ratt/term#function-iri)).
-- `predicate` A predicate term. This must be an IRI (see function [iri()](/triply-etl/assert/ratt/term#function-iri)).
-- `nestedNode` The nested node. This must be an IRI (see function [iri()](/triply-etl/assert/ratt/term#function-iri)).
+- `subject` A subject term. This must be an IRI (see function [iri()](../term#function-iri)).
+- `predicate` A predicate term. This must be an IRI (see function [iri()](../term#function-iri)).
+- `nestedNode` The nested node. This must be an IRI (see function [iri()](../term#function-iri)).
 - `pairs` One or more pairs that make assertions about the nested node. Every pair consists of a predicate term and an object term (in that order).
 
 ### Example: Unit of measure
@@ -137,9 +137,9 @@ pairs(iri(prefix.geometry, 'id'),
 ### See also
 
 In some cases, it is inconvenient to come up with a naming scheme for intermediate nodes. In such cases, the following options are available:
-- Use transformation [addHashedIri()](/triply-etl/transform/ratt#function-addhashediri) to create a content-based IRI.
-- Use transformation [addRandomIri()](/triply-etl/transform/ratt#function-addrandomiri) to create a random IRI.
-- Use transformation [addSkolemIri()](/triply-etl/transform/ratt#function-addskolemiri) to create a random Skolem IRI.
+- Use transformation [addHashedIri()](../../../transform/ratt#function-addhashediri) to create a content-based IRI.
+- Use transformation [addRandomIri()](../../../transform/ratt#function-addrandomiri) to create a random IRI.
+- Use transformation [addSkolemIri()](../../../transform/ratt#function-addskolemiri) to create a random Skolem IRI.
 
 
 
@@ -151,9 +151,9 @@ This function provides a shorthand notation for assertions that can also be made
 
 ### Parameters
 
-- `subject` A subject term. This must be either an IRI (see function [iri()](/triply-etl/assert/ratt/term#function-iri)) or a literal (see function [literal()](/triply-etl/assert/ratt/term#function-literal)).
-- `predicate` A predicate term. This must be an IRI (see function [iri()](/triply-etl/assert/ratt/term#function-iri)).
-- `objects` An array of object terms. This must be either an IRI (see function [iri()](/triply-etl/assert/ratt/term#function-iri)) or a literal (see function [literal](/triply-etl/assert/ratt/term#function-literal)). Every distinct object term in the array results in a distinct triple assertion.
+- `subject` A subject term. This must be either an IRI (see function [iri()](../term#function-iri)) or a literal (see function [literal()](../term#function-literal)).
+- `predicate` A predicate term. This must be an IRI (see function [iri()](../term#function-iri)).
+- `objects` An array of object terms. This must be either an IRI (see function [iri()](../term#function-iri)) or a literal (see function [literal](../term#function-literal)). Every distinct object term in the array results in a distinct triple assertion.
 
 ### Example: Alternative labels
 
@@ -266,10 +266,10 @@ A quadruple is a triple with a graph name as its fourth parameter.
 
 ### Parameters
 
-- `subject` A subject term. This must be an IRI (see function [iri()](/triply-etl/assert/ratt/term#function-iri)).
-- `predicate` A predicate term. This must be an IRI (see function [iri()](/triply-etl/assert/ratt/term#function-iri)).
-- `object` An object term. This must be either an IRI (see function [iri()](/triply-etl/assert/ratt/term#function-iri)) or a literal (see function [literal()](/triply-etl/assert/ratt/term#function-literal)).
-- `graph` A graph name. This must be an IRI (see function [iri()](/triply-etl/assert/ratt/term#function-iri)).
+- `subject` A subject term. This must be an IRI (see function [iri()](../term#function-iri)).
+- `predicate` A predicate term. This must be an IRI (see function [iri()](../term#function-iri)).
+- `object` An object term. This must be either an IRI (see function [iri()](../term#function-iri)) or a literal (see function [literal()](../term#function-literal)).
+- `graph` A graph name. This must be an IRI (see function [iri()](../term#function-iri)).
 
 ### Example: Data and metadata
 
@@ -296,10 +296,10 @@ A quadruple is a triple with a graph name as its fourth parameter.
 
 ### Parameters
 
-- `subject` A subject term. This must be an IRI (see function [iri()](/triply-etl/assert/ratt/term#function-iri)).
-- `predicate` A predicate term. This must be an IRI (see function [iri()](/triply-etl/assert/ratt/term#function-iri)).
-- `object` An object term. This must be either an IRI (see function [iri()](/triply-etl/assert/ratt/term#function-iri)) or a literal (see function [literal()](/triply-etl/assert/ratt/term#function-literal)).
-- `graph` A graph name. This must be an IRI (see function [iri()](/triply-etl/assert/ratt/term#function-iri)).
+- `subject` A subject term. This must be an IRI (see function [iri()](../term#function-iri)).
+- `predicate` A predicate term. This must be an IRI (see function [iri()](../term#function-iri)).
+- `object` An object term. This must be either an IRI (see function [iri()](../term#function-iri)) or a literal (see function [literal()](../term#function-literal)).
+- `graph` A graph name. This must be an IRI (see function [iri()](../term#function-iri)).
 
 ### Example: Data and metadata
 
@@ -332,9 +332,9 @@ A triple is a sequence of three terms: subject, predicate, and object. A triple 
 
 ### Parameters
 
-- `subject` A subject term. This must be an IRI (see function [iri()](/triply-etl/assert/ratt/term#function-iri)).
-- `predicate` A predicate term. This must be an IRI (see function [iri()](/triply-etl/assert/ratt/term#function-iri)).
-- `object` An object term. This must be either an IRI (see function [iri()](/triply-etl/assert/ratt/term#function-iri)) or a literal (see function [literal()](/triply-etl/assert/ratt/term#function-literal)).
+- `subject` A subject term. This must be an IRI (see function [iri()](../term#function-iri)).
+- `predicate` A predicate term. This must be an IRI (see function [iri()](../term#function-iri)).
+- `object` An object term. This must be either an IRI (see function [iri()](../term#function-iri)) or a literal (see function [literal()](../term#function-literal)).
 
 ### Example 1
 
@@ -350,7 +350,7 @@ triple(iri(prefix.person, 'id'), a, foaf.Person),
 
 The following triple asserts that something has an age that is derived from the `'age'` key in the record. Notice that:
 
-- the subject term is an IRI that is stored in the `'_person'` key of the record (possibly created with transformation function [addIri()](/triply-etl/transform/ratt#function-addiri)),
+- the subject term is an IRI that is stored in the `'_person'` key of the record (possibly created with transformation function [addIri()](../../../transform/ratt#function-addiri)),
 - the predicate term is an IRI (`foaf.age`) that is imported from the vocabulary module,
 - and the object term is a typed literal with a datatype IRI that is imported from the vocabulary module.
 
@@ -368,7 +368,7 @@ Asserts multiple triples in the same named graph:
 
 ### Parameters
 
-- `graph` A graph name. This must be an IRI (see function [iri()](/triply-etl/assert/ratt/term#function-iri)).
+- `graph` A graph name. This must be an IRI (see function [iri()](../term#function-iri)).
 - `triples` An array of triples. Every triple is represented by an array of 3 terms: subject, predicate, and object.
 
 ### When to use
@@ -414,7 +414,7 @@ triples(iri(prefix.ex, 'myGraph'),
 
 ## Shorthand notation
 
-Since literals with datatype IRI `xsd:string` are very common, statement assertions allow such literals to be specified without using [`literal()`](/triply-etl/assert/ratt/term#function-literal).
+Since literals with datatype IRI `xsd:string` are very common, statement assertions allow such literals to be specified without using [`literal()`](../term#function-literal).
 
 For example, the following two triple assertions result in the same linked data:
 

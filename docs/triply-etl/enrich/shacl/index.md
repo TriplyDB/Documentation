@@ -8,7 +8,7 @@ SHACL Rules are applied to the linked data that is currently present in the inte
 
 The SHACL Rules engine in TriplyETL processes rules iteratively. This supports rules whose execution depends on the outcome of other rules. Triply observes that this iterative functionality is often necessary for complex production systems in which SHACL Rules are applied.
 
-See the [enrichment step overview page](/triply-etl/enrich) for other enrichment approaches.
+See the [enrichment step overview page](../) for other enrichment approaches.
 
 
 
@@ -17,7 +17,7 @@ See the [enrichment step overview page](/triply-etl/enrich) for other enrichment
 SHACL Rules can be used when the following preconditions are met:
 
 1. You have a data model that has one or more SHACL Rules.
-2. You have some linked data in the internal store. If your internal store is still empty, you can read [the Assert documentation](/triply-etl/assert) on how to add linked data to the internal store.
+2. You have some linked data in the internal store. If your internal store is still empty, you can read [the Assert documentation](../../assert) on how to add linked data to the internal store.
 
 The function for executing SHACL Rules is imported as follows:
 
@@ -224,7 +224,7 @@ In this example, we start out with a data source that is not linked data:
 { "age": 12, "name": "peter" },
 ```
 
-We use the [fromJson()](/triply-etl/extract/formats#extractor-fromjson) extractor and specify the source data [inline](/triply-etl/extract/types#inline-json). We use RATT assertion function [pairs()](/triply-etl/assert/ratt/statement#function-pairs) to add linked data to the internal store.
+We use the [fromJson()](../../extract/formats#extractor-fromjson) extractor and specify the source data [inline](../../extract/types#inline-json). We use RATT assertion function [pairs()](../../assert/ratt/statement#function-pairs) to add linked data to the internal store.
 
 ```ts
 import { logQuads } from '@triplyetl/etl/debug'
