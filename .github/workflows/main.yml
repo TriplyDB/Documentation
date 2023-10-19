@@ -12,4 +12,4 @@ jobs:
         with:
           python-version: '3.10'
       - run: pip install mkdocs mkdocs-mermaid2-plugin
-      - run: mkdocs gh-deploy --force --clean --verbose
+      - run: mkdocs gh-deploy
