@@ -33,9 +33,17 @@ The settings page is the main page for administrators to institute instance wide
 ### Set logos and banner
 
 For changing the logos and the banner follow the next steps:
+
 1. Click on the “Admin settings” link in the user menu (top-right corner) and click the "Settings" tab. This brings up an overview of all the settings an admin can set for the TriplyDB instance.
 
-2. Under "Site logos" and "Site banner" you can upload a site logo (square and landscape) or a banner. Make sure you use SVG files with a maximum size of 5 MB.
+2. Under "Site logos" and "Site banner" you can upload a site logo (square and landscape) or a banner. 
+
+    - The logo (preferably squared) is required to be SVG. In the UI the 30x30px image is displayed. 
+
+    - The banner can be of any format, however, the WEBP is preferred. The image's resolution should be between 1920x500 and up to 4000x500. The banner is displayed at a height 500px. If the image is smaller than the browser screen size, the image will be stretched. 
+
+    - Make sure you use files with a maximum size of 5 MB.
+    
 
 ### Setting metadata
 
