@@ -47,7 +47,7 @@ The following token access levels are available:
 
 3\. “Management access” allows the following operations to be performed: creating organizations, adding/removing members to/from organizations.
 
-The following creates a `App` object with an API token that is made available through an environment variable (see section [Setting up a secure read/write project](/triplydb-js#setting-up-a-readwrite-project)):
+The following creates an `App` object with an API token that is made available through an environment variable:
 
 ```ts
 import App from '@triply/triplydb'

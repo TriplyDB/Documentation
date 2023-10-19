@@ -120,13 +120,13 @@ show the triples in which that term appears in the subject position.
 
 Queries in the linked data Table can also be performed automatically
 through the Statements API and the [Triple Pattern Fragments
-API](/triply-api#triple-pattern-fragments-tpf).
+API](../../triply-api#triple-pattern-fragments-tpf).
 
 ## SPARQL IDE
 
 When a dataset has a running SPARQL service, the data can be queried
 from the SPARQL IDE. The SPARQL IDE is an extended version of the
-Open Source [Yasgui](../yasgui) query editor.
+Open Source [Yasgui](../../yasgui) query editor.
 
 ### Saving a SPARQL query
 

@@ -47,7 +47,7 @@ Creates an IRI based on the specified IRI prefix and the hash calculated over th
 ### Parameters
 
 - `prefix` An IRI, or a key that contains an IRI value.
-- `content` A key that contains a string value, or a string value specified with function `str()`.
+- `content` A key that contains a string value, or a string value specified with function [str()](../../assert/ratt/term#function-str).
 - `key` A new key where the created hashed IRI is stored.
 
 ### Use cases
@@ -297,7 +297,7 @@ This transformation is typically used when:
 
 ### Parameters
 
-- `content` A key that contains a string value, or a string specified with function `str()`.
+- `content` A key that contains a string value, or a string specified with function [str()](../../assert/ratt/term#function-str).
 - `datatype` Optionally, a key that stores an IRI or a static IRI.
 - `languageTag` Optionally, a language tag from the [`lang`](../../declare#language-declarations) object, or a key that stores such a language tag.
 - `key` A new key where the created literal is stored.
@@ -655,7 +655,7 @@ An optionally specified separator is placed in between every two consecutive str
 
 ### Parameters
 
-- `content` An array of key that contain a string and/or strings specified with assertion [str()](../../assert/ratt#function-str).
+- `content` An array of key that contain a string and/or strings specified with assertion [str()](../../assert/ratt/term#function-str).
 - `separator` Optionally, the string that is places between every two consecutive string values.
 - `key` A new key where the concatenated string is stored.
 
@@ -1210,7 +1210,7 @@ The transformation is used when:
 
 ### Parameters
 
-- `content` A key that stores a string, or a string specified with assertion [str()](../../assert/ratt#str).
+- `content` A key that stores a string, or a string specified with assertion [str()](../../assert/ratt/term#function-str).
 - `separator` A string or a regular expression that is used to separate the content.
 - `key` A new key where the array of split strings is stored.
 
