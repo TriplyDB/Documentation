@@ -56,6 +56,10 @@ git config --global user.name "Ada Lovelace"</pre>
       <dd>Most Linux versions come with a preinstalled terminal application. For example, on Ubuntu the <a href="https://help.gnome.org/users/gnome-terminal/stable/" target="_blank">GNOME Terminal application</a> is preinstalled.</dd>
     </dl>
   </dd>
+  <dt>Update NPM</dt>
+  <dd>
+    <p>Open the terminal application selected from the previous step and run the following command to update npm: <code>npm install -g npm@10.2.1</code> </p>
+  </dd>
 </dl>
 
 
