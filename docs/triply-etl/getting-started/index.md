@@ -31,7 +31,7 @@ git config --global user.name "Ada Lovelace"</pre>
   </dd>
   <dt>Install Node.js (simple approach)</dt>
   <dd>
-    <p>Go to <href="https://nodejs.org" target="_blank">nodejs.org</a> and click on option “18.x.y LTS (Recommended For Most Users)”. This will download the installer for your operating system. Run the installer on your computer.</p>
+    <p>Go to <a href="https://nodejs.org" target="_blank">nodejs.org</a> and click on option “18.x.y LTS (Recommended For Most Users)”. This will download the installer for your operating system. Run the installer on your computer.</p>
     <p>On Windows, you must also select the number of bits on your computer: 32 or 64. The correct number of bits is 64 for almost all Windows computers.</p>
   </dd>
   <dt>Install Node.js (advanced approach)</dt>
