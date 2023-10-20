@@ -31,7 +31,7 @@ const nde = new NDE({etl, accountName, datasetname})
 nestedPairs(S, P, [a, sdo.Person])
 ```
 
-4\. TriplyETL supports transformations using [RDF mapping language](https://rml.io/docs/rml/introduction/) (RML).
+4\. TriplyETL supports transformations using [RDF mapping language](../transform/rml) (RML).
 
 5\. Manually specified and standard prefixes are automatically added to TriplyDB when [toRdf()](../publish/#local-data-destinations) is used. The middleware `uploadPrefixes()` is removed.
 
