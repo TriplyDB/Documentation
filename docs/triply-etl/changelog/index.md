@@ -12,8 +12,13 @@ Release dates: 2023-10-12
 
 ### [Added] Support for the `SPARQL Select` and `SPARQL Ask` queries
 The extractors [fromCsv()](../extract/formats/#extractor-fromcsv), [fromJson()](../extract/formats/#extractor-fromjson), [fromTsv()](../extract/formats/#extractor-fromtsv) and [fromXml()](../extract/formats/#extractor-fromxml) now support [SPARQL Select](../extract/types/#sparql-select-queries) queries.
- The extractors [fromJson()](../extract/formats/#extractor-fromjson) and [fromXml()](../extract/formats/#extractor-fromxml) also support [SPARQL Ask](../extract/types/#sparql-ask-queries) queries. 
+The extractors [fromJson()](../extract/formats/#extractor-fromjson) and [fromXml()](../extract/formats/#extractor-fromxml) also support [SPARQL Ask](../extract/types/#sparql-ask-queries) queries. 
 
+The example below hows how to use a SPARQL ask query in the `fromJson()` extractor:
+
+```ts
+fromJson(Source.TriplyDb.query('account', 'query-name', { triplyDb: { url: 'https://api.triplydb.com' } }))
+```
 ### [Added] [RDF mapping language](https://rml.io/docs/rml/introduction/) (RML) for transformations
 TriplyETL supports transformations using [RDF mapping language](https://rml.io/docs/rml/introduction/) (RML).
 
@@ -99,7 +104,20 @@ The output of the logfile and terminal output is changed. It contains more infor
    - **u**: Microseconds (example: 654321)  
 
 ### [Changed] [toRdf()](../publish/#local-data-destinations) for account-based token access
-The [toRdf()](../publish/#local-data-destinations) middleware now accepts `"me"` as account name based on the token.  
+The [toRdf()](../publish/#local-data-destinations) middleware now accepts `"me"` as account name based on the token.
+Below are some examples of this being used.
+
+```ts
+toTriplyDb({account: "me", dataset: "myDataset"})
+``` 
+```ts
+loadRdf(Source.TriplyDb.rdf("me", datasetName))
+```
+```ts
+Destination.TriplyDb.rdf("me", datasetName)
+```
+
+ 
 
 ### [Changed] Relocation middleware: `resetStore()` and `randomKey()` 
 The `resetStore()` middleware is now moved from `ratt` to the `generic` namespace . The `randomKey()` middleware moved from `generic` to `ratt`.  
@@ -119,6 +137,23 @@ A SHACL Validation Engine improved performance.
 ### [Changed] XSLT Processing support in [fromXml()](../extract/formats/#extractor-fromxml) and [loadRdf()](../extract/formats/#function-loadrdf) middlewares
 We support XSLT processing in the [fromXml()](../extract/formats/#extractor-fromxml) and [loadRdf()](../extract/formats/#function-loadrdf) middlewares by providing an optional `Source.file()` to the `stylesheet` parameter.
 
+Example of usage in `fromXml()`:
+
+```ts
+fromXml(Source.file(XMLFile), {
+        selectors: "rdf:RDF.sdo:Person",
+        stylesheet: Source.file(XSLTStylesheet),
+      }),
+```
+Example of usage in `loadRdf()`:
+
+```ts
+loadRdf(Source.file(XMLFile), {
+        contentType: "application/rdf+xml",
+        stylesheet: Source.file(XSLTStylesheet),
+      }),
+```
+
 ### [Changed] Trace for large records
 A new flag now bypasses generating the trace for very large records: `---skip-error-trace`. Thus, no trace file is created.
 
@@ -134,7 +169,6 @@ Developer notes:
 
 
 ### Bug fixes    
-
 
 This release includes the following bug fixes:
 
