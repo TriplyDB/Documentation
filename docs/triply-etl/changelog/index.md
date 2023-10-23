@@ -14,19 +14,6 @@ Release dates: 2023-10-12
 The extractors [fromCsv()](../extract/formats/#extractor-fromcsv), [fromJson()](../extract/formats/#extractor-fromjson), [fromTsv()](../extract/formats/#extractor-fromtsv) and [fromXml()](../extract/formats/#extractor-fromxml) now support [SPARQL Select](../extract/types/#sparql-select-queries) queries.
  The extractors [fromJson()](../extract/formats/#extractor-fromjson) and [fromXml()](../extract/formats/#extractor-fromxml) also support [SPARQL Ask](../extract/types/#sparql-ask-queries) queries. 
 
-### [Added] Validate and publish TriplyDB dataset to NDE Dataset Register
-It is now possible to validate and publish a TriplyDB dataset to the [NDE Dataset Register](https://datasetregister.netwerkdigitaalerfgoed.nl), a centralized registry of digital heritage datasets:
-   
-  - Instantiate the NDE Class by providing it with the ETL object: 
-
-```ts
-import { NDE } from "@triplyetl/etl/utils";
-const nde = new NDE({etl, accountName, datasetname})
-```
-  - Validate  dataset: `nde.validate()`  
-
-  - Submit a dataset: `nde.submit()`  
-
 ### [Added] [RDF mapping language](https://rml.io/docs/rml/introduction/) (RML) for transformations
 TriplyETL supports transformations using [RDF mapping language](https://rml.io/docs/rml/introduction/) (RML).
 
@@ -43,27 +30,30 @@ Manually specified and standard prefixes are automatically added to TriplyDB whe
 
 ### [Changed] New approach to prefix handling in TriplyETL 
 Prefixes are no longer defined as function that concatenates a value to an Iri. The Iri is a new type of Object in TriplyETL, that has a `concat()` method which allows you to add a value to the first part of an Iri. For example:
+
 ```ts
-const johnDoe = declarePrefix('http://ex.com/').concat('John').concat('/Doe')
+const baseIri = Iri('https://example.com/')
+const prefixId = baseIri.concat('id/')
+const johnDoe = prefixId.concat('john-doe')
 ```  
 
 ### [Changed] New package `@triplyetl/vocabularies` 
 
 The vocabularies and languages are no longer part of `@triplyetl/etl` package. A new module has been released: `@triplyetl/vocabularies`:  
 
-Individual vocabularies rdf, schema.org can be imported in the following way:
+Individual vocabularies like `rdf` and `schema.org` can be imported in the following way:
 
 ```ts
 import { a, rdf, sdo } from '@triplyetl/vocabularies'
 ```
 
-  - Import all vocabularies:
+To import all vocabularies, use:
 
 ```ts
 import * as vocab from "@triplyetl/vocabularies"
 ```
 
-   - Some vocabularies are too large to include, they can still be used like this:
+Some vocabularies are too large to include, but they can still be used like this:
 
 ```ts 
 import { aat } from '@triplyetl/etl/vocab'
@@ -77,14 +67,14 @@ import { aat } from '@triplyetl/etl/vocab'
 addIri({prefix: aat, content: str('300379271'), key: 'moustache'})
 ```
 
-   - To use the RATT `lang` tools:
+To use the RATT `lang` tools:
 	 
-a\. Import `languages`:
+Import `languages`:
 
 ```ts
 import { languages } from '@triplyetl/vocabularies'
 ```
-b\. Import `languages` and `region`:
+Import `languages` and `region`:
 
 ```ts
 import { region, language } from '@triplyetl/vocabularies'
@@ -121,7 +111,7 @@ The `resetStore()` middleware is now moved from `ratt` to the `generic` namespac
 The middleware `mapQuads()` is removed.  
 
 ### [Changed] Warning for old Node.JS versions
-If the users Node.JS version is older that the recommendend version (currently \>=18.0.0) a warning is shown.  
+If the users Node.JS version is older that the recommended version (currently \>=18.0.0) a warning is shown.  
 
 ### [Changed] SHACL Validation Engine 
 A SHACL Validation Engine improved performance. 
@@ -132,6 +122,9 @@ We support XSLT processing in the [fromXml()](../extract/formats/#extractor-from
 ### [Changed] Trace for large records
 A new flag now bypasses generating the trace for very large records: `---skip-error-trace`. Thus, no trace file is created.
 
+### [Changed] Transition to in-memory engine Speedy
+[Comunica](https://comunica.dev) is no longer part of TriplyETL, the in-memory engine is now Triply's Speedy.
+
 ### [Changed] Developer notes 
 
 Developer notes:    
@@ -139,8 +132,6 @@ Developer notes:
  - Removes some unused packages and types.    
  - Most @ts-ignore / @ts-expect-error derictives have been removed and fixed.    
 
-### [Changed] Transition to in-memory engine Speedy
-[Comunica](https://comunica.dev) is no longer part of TriplyETL, the in-memory engine is now Triply's Speedy.
 
 ### Bug fixes    
 
