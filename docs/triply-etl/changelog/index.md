@@ -67,7 +67,7 @@ import { aat } from '@triplyetl/etl/vocab'
 addIri({prefix: aat, content: str('300379271'), key: 'moustache'})
 ```
 
-To use the RATT `lang` tools:
+**To use the RATT `lang` tools**:
 	 
 Import `languages`:
 
