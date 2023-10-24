@@ -1202,6 +1202,10 @@ Splits a string into an array of strings, and stores that array in a new key.
 
 This transformation removes any trailing whitespace that remains after the strings are split. This ensures that irregular use of whitespace in the source data is taken care of automatically.
 
+### Empty values
+
+This transformation removes any elements of the splitted string that are empty (after trimmimng). To keep empty entries, use the `` flag.
+
 ### Use cases
 
 The transformation is used when:
@@ -1213,6 +1217,7 @@ The transformation is used when:
 - `content` A key that stores a string, or a string specified with assertion [str()](../../assert/ratt/term#function-str).
 - `separator` A string or a regular expression that is used to separate the content.
 - `key` A new key where the array of split strings is stored.
+- `keepEmptyEntities` A boolean flag indicating if the empty values of a splitted string should be kept or not. By default empty values are removed.
 
 ### Example: Multiple values in singular table cells
 
