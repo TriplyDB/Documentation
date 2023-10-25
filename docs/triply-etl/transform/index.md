@@ -33,7 +33,7 @@ TriplyETL supports the following transformation approaches:
 
 - 2A. [**RATT**](ratt) transformations are a set of commonly used transformation functions that are developed and maintained by Triply.
 - 2B. [**TypeScript**](typescript) can be used to write new customer transformations.
-- 2C. [**RML**](rml) can be used to to convert non-RDF data into RDF triples.
+- 2C. [**RML**](../rml) can be used to to convert non-RDF data into RDF triples.
 
 
 

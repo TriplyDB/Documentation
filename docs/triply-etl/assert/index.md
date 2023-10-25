@@ -33,6 +33,7 @@ TriplyETL supports the following assertion approaches:
 - 3B. [**JSON-LD**](/triply-etl/assert/json-ld) can be used to assert data according to a JSON-LD Context.
 -->
 
+- 3B. [**RML**](../rml) inserts the data that has been transformed (from a non-RDF format into RDF triples) into the store.
 ## Next steps
 
 After linked data has been asserted into the Internal Store, the following steps can be performend:
