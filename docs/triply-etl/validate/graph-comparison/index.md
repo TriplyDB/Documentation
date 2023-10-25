@@ -1,7 +1,3 @@
----
-title: "5. Validate: Graph Comparison"
-path: "/docs/triply-etl/validate/graph-comparison"
----
 
 [TOC]
 
