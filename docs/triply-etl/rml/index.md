@@ -81,3 +81,20 @@ etl.use(map(Source.file("static/mapping.ttl")))
 ```
 
 Where mapping.ttl file should be replaced with your specific file with RML mapping rules.
+
+Keep in mind that if you wish to view the ETL's output, you can achieve this by including functions like logQuads() and toRdf(), as demonstrated in the following code:
+
+```
+import { logQuads } from '@triplyetl/etl/debug'
+import { Destination, Etl, Source, toRdf } from '@triplyetl/etl/generic'
+import { map } from '@triplyetl/etl/rml'
+export default async function (): Promise<Etl> {
+  // Create an extract-transform-load (ETL) process.
+  const etl = new Etl()
+  etl.use(map(Source.file("static/mapping.ttl")),
+    logQuads(),
+    toRdf(Destination.file('my-file.ttl'))
+  )
+  return etl
+}
+```
