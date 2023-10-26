@@ -20,7 +20,7 @@ The example below hows how to use a SPARQL ask query in the `fromJson()` extract
 fromJson(Source.TriplyDb.query('account', 'query-name', { triplyDb: { url: 'https://api.triplydb.com' } }))
 ```
 ### [Added] [RDF mapping language](https://rml.io/docs/rml/introduction/) (RML) for transformations
-TriplyETL supports transformations using [RDF mapping language](https://rml.io/docs/rml/introduction/) (RML). To see how this works, please refer to our documentation about RDF, available [here](../rml).
+TriplyETL supports transformations using [RDF mapping language](https://rml.io/docs/rml/introduction/) (RML). To see how this works, please refer to our documentation about RML, available [here](../rml).
 
 ### [Enhanced] Simplified usage of [nestedPairs()](../assert/ratt/statement/#function-nestedpairs) Middleware
  The [nestedPairs()](../assert/ratt/statement/#function-nestedpairs) middleware can be used without providing the subject node that connects the pairs to the object/predicate. This will automatically create a skolem-iri for the subject:
