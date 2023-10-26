@@ -62,7 +62,7 @@ const query = await account.getQuery('name-of-some-query')
 const triply = App.get({ token: process.env.TOKEN })
 ```
 
-3\. Do not forget that we perform TriplyDB.js requests within an [async context](#create-your-first-script). That is:
+3\. Do not forget that we perform TriplyDB.js requests within an async context. That is:
 
 ```ts
 async function run() {
@@ -142,7 +142,7 @@ const array = await results.toArray()
 
 TriplyDB.js makes use of async iterators for retrieving lists of objects. Async iterators are a method of fetching and iterating through large lists, without having to first fetch the whole set.
 
-An example of an async iterator in TriplyDB.js is [`App.getAccounts()`](/triplydb-js/app#appgetaccounts). The following code illustrates how it can be used.
+An example of an async iterator in TriplyDB.js is [`App.getAccounts()`](../app#appgetaccounts). The following code illustrates how it can be used.
 
 ```ts
 for await (const account of triply.getAccounts()) {
@@ -158,13 +158,13 @@ const accounts = await triply.getAccounts().toArray()
 
 TriplyDB.js returns async iterators from the following methods:
 
-- [`App.getAccounts()`](/triplydb-js/app#appgetaccounts)
-- [`Account.getDatasets()`](/triplydb-js/account#accountgetdatasets)
-- [`Account.getQueries()`](/triplydb-js/account#accountgetqueries)
-- [`Account.getStories()`](/triplydb-js/account#accountgetstories)
-- [`Dataset.getServices()`](/triplydb-js/dataset#datasetgetservices)
-- [`Dataset.getAssets()`](/triplydb-js/dataset#datasetgetassets)
-- [`Dataset.getGraphs()`](/triplydb-js/dataset#datasetgetgraphs)
-- [`Dataset.getStatements()`](/triplydb-js/dataset#datasetgetstatementssubject-string-predicate-string-object-string-graph-string)
-- [`Query.results().statements()`](/triplydb-js/query#queryresultsapivariables-object-options-object) for SPARQL `construct` and `describe` queries
-- [`Query.results().bindings()`](/triplydb-js/query/#queryresultsapivariables-object-options-object) for SPARQL `select` queries
+- [`App.getAccounts()`](../app#appgetaccounts)
+- [`Account.getDatasets()`](../account#accountgetdatasets)
+- [`Account.getQueries()`](../account#accountgetqueries)
+- [`Account.getStories()`](../account#accountgetstories)
+- [`Dataset.getServices()`](../dataset#datasetgetservices)
+- [`Dataset.getAssets()`](../dataset#datasetgetassets)
+- [`Dataset.getGraphs()`](../dataset#datasetgetgraphs)
+- [`Dataset.getStatements()`](../dataset#datasetgetstatementssubject-string-predicate-string-object-string-graph-string)
+- [`Query.results().statements()`](../query#queryresultsapivariables-object-options-object) for SPARQL `construct` and `describe` queries
+- [`Query.results().bindings()`](../query/#queryresultsapivariables-object-options-object) for SPARQL `select` queries

@@ -7,7 +7,7 @@ path: "/docs/triply-etl/transform/typescript"
 
 # TypeScript
 
-The vast majority of ETLs can be written with the core set of [RATT Transformations](/triply-etl/transform/ratt).  But sometimes a custom transformation is necessary that cannot be handled by this core set.  For such circumstances, TriplyETL allows a custom TypeScript function to be written.
+The vast majority of ETLs can be written with the core set of [RATT Transformations](../ratt).  But sometimes a custom transformation is necessary that cannot be handled by this core set.  For such circumstances, TriplyETL allows a custom TypeScript function to be written.
 
 Notice that the use of a custom TypeScript function should be somewhat uncommon.  The vast majority of real-world transformations should be supported by the core set of RATT Transformations.
 
@@ -64,7 +64,7 @@ This function emits an error if `NEW_KEY` already exists in the current Record.
 Notice that it is bad practice to use `custom.add()` for adding a new entry that is based on exactly one existing entry.  In such cases, the use of function `custom.copy()`
 ### Example: Numeric calculations
 
-Suppose the source data contains a numeric balance and a numeirc rate.  We can use function `custom.add()` to calculate the interest and store it in a new key:
+Suppose the source data contains a numeric balance and a numeric rate.  We can use function `custom.add()` to calculate the interest and store it in a new key:
 
 ```ts
 import { Etl, fromJson } from '@triplyetl/etl/generic'
@@ -176,7 +176,7 @@ Notice that the values for the `balance` keys were changed.
 
 ### Example: Cast numeric data
 
-Some source data formats are unable to represent numeric data. A good example are the [CSV](/triply-etl/extract/formats#extractor-fromcsv) and [TSV](/triply-etl/extract/formats#extractor-fromtsv) formats, where every cell value is represented as a string.
+Some source data formats are unable to represent numeric data. A good example are the [CSV](../../extract/formats#extractor-fromcsv) and [TSV](../../extract/formats#extractor-fromtsv) formats, where every cell value is represented as a string.
 
 If such a source data format that cannot represent numeric data is used, it is often useful to explicitly cast string values to numbers.
 
@@ -210,12 +210,12 @@ After `custom.change()` has been applied, the record looks as follows:
 | Italy       | null        |
 | Netherlands | 17650200    |
 
-Notice that strings that encode a number are correctly transformed, and non-empty strings that do not encode a number are transformed to `null`.  Most of the time, this is the behaviour that you want in a linked data pipeline.
+Notice that strings that encode a number are correctly transformed, and non-empty strings that do not encode a number are transformed to `null`.  Most of the time, this is the behavior that you want in a linked data pipeline.
 <!-- TODO
 When [creating statements](#create-statements) later, no statement will be created for entries that have value `null`.  See the [section on working with null values](#null-values) for more information.
 -->
 
-Also notice that the empty string is cast to the number zero. Most of the time, this is *not* what you want. If you want to prevent this transformation from happening, and you almost certainly do, you must process the source data conditionally, using [control structures](/triply-etl/control).
+Also notice that the empty string is cast to the number zero. Most of the time, this is *not* what you want. If you want to prevent this transformation from happening, and you almost certainly do, you must process the source data conditionally, using [control structures](../../control).
 
 ### Example: Variant type
 

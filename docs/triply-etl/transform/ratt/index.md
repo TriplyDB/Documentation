@@ -4,7 +4,7 @@
 
 RATT transformations are a core set of functions that are commonly used to change the content of TriplyETL Records.
 
-RATT transformations started out as [TypeScript transformations](/triply-etl/transform/typescript) that turned out to be useful in a wide variety of TriplyETL pipelines. Triply maintains this core set of transformation functions to allow new ETLs to make use of off-the-shelf functionality that has proven useful in the past.
+RATT transformations started out as [TypeScript transformations](../typescript) that turned out to be useful in a wide variety of TriplyETL pipelines. Triply maintains this core set of transformation functions to allow new ETLs to make use of off-the-shelf functionality that has proven useful in the past.
 
 ## Overview
 
@@ -47,7 +47,7 @@ Creates an IRI based on the specified IRI prefix and the hash calculated over th
 ### Parameters
 
 - `prefix` An IRI, or a key that contains an IRI value.
-- `content` A key that contains a string value, or a string value specified with function [str()](/triply-etl/assert/ratt#function-str).
+- `content` A key that contains a string value, or a string value specified with function [str()](../../assert/ratt/term#function-str).
 - `key` A new key where the created hashed IRI is stored.
 
 ### Use cases
@@ -211,7 +211,7 @@ This transformation can be used in the following two ways:
 
 ### See also
 
-If the created IRI is used exactly once, it is often better to use inline function [iri()](/triply-etl/assert/ratt/term#function-iri) instead.
+If the created IRI is used exactly once, it is often better to use inline function [iri()](../../assert/ratt/term#function-iri) instead.
 
 ### Example: Prefix declaration and local name
 
@@ -242,7 +242,7 @@ graph LR
   johndoe(person:johndoe):::data
 ```
 
-The following snippet makes the same assertion, but uses assertion [iri()](/triply-etl/assert/ratt/term#function-iri) instead of transformation `addIri()`:
+The following snippet makes the same assertion, but uses assertion [iri()](../../assert/ratt/term#function-iri) instead of transformation `addIri()`:
 
 ```ts
 triple(iri(prefix.person, 'username'), a, sdo.Person),
@@ -270,7 +270,7 @@ graph LR
   johndoe(https://example.com/id/person/johndoe):::data
 ```
 
-The following snippet uses assertion [iri()](/triply-etl/assert/ratt/term#function-iri) instead of transformation `addIri()`:
+The following snippet uses assertion [iri()](../../assert/ratt/term#function-iri) instead of transformation `addIri()`:
 
 ```ts
 triple(iri('https://example.com/id/person/johndoe'), a, sdo.Person),
@@ -292,19 +292,19 @@ This transformation can be used in the following 3 ways:
 
 This transformation is typically used when:
 
-- The same literal occurs in two or more statement assertions (function [triple()](/triply-etl/assert/ratt/statement#function-triple) or [quad()](/triply-etl/assert/ratt/statement#function-quad)). This avoids having to specify the same literal multiple times using function [literal()](/triply-etl/assert/ratt/term#function-literal).
+- The same literal occurs in two or more statement assertions (function [triple()](../../assert/ratt/statement#function-triple) or [quad()](../../assert/ratt/statement#function-quad)). This avoids having to specify the same literal multiple times using function [literal()](../../assert/ratt/term#function-literal).
 - The datatype or language tag is derived from the source data record.
 
 ### Parameters
 
-- `content` A key that contains a string value, or a string specified with function [str()](/triply-etl/assert/ratt/term#function-str).
+- `content` A key that contains a string value, or a string specified with function [str()](../../assert/ratt/term#function-str).
 - `datatype` Optionally, a key that stores an IRI or a static IRI.
-- `languageTag` Optionally, a language tag from the [`lang`](/triply-etl/declare#language-declarations) object, or a key that stores such a language tag.
+- `languageTag` Optionally, a language tag from the [`lang`](../../declare#language-declarations) object, or a key that stores such a language tag.
 - `key` A new key where the created literal is stored.
 
 ### See also
 
-If the created literal is used exactly once, it is often better to use the inline function [literal()](/triply-etl/assert/ratt/term#function-literal) instead.
+If the created literal is used exactly once, it is often better to use the inline function [literal()](../../assert/ratt/term#function-literal) instead.
 
 ### Example: Typed literal
 
@@ -326,7 +326,7 @@ This makes the following linked data assertion:
 book:123 sdo:dateCreated '2022-30-01'^^xsd:date.
 ```
 
-Notice that the same linked data could have been asserted with the following use the the [literal} assertion middleware:
+Notice that the same linked data could have been asserted with the following use the the [literal()](../../assert/ratt/term#function-literal) assertion middleware:
 
 ```ts
 fromJson([{ id: '123', date: '2022-01-30' }]),
@@ -381,7 +381,7 @@ This results in the following linked data assertion:
 city:London skos:prefLabel 'London'@en-gb.
 ```
 
-Notice that the same linked data could have been asserted with the following use the the [literal} assertion middleware:
+Notice that the same linked data could have been asserted with the following use the the [literal()](../../assert/ratt/term#function-literal) assertion middleware:
 
 ```ts
 fromJson([{ name: 'London' }]),
@@ -462,7 +462,7 @@ The snippet includes the prefix declarations to illustrate that the path of the 
 const base = 'https://example.com/'
 const prefix = {
   feature: declarePrefix(base('id/feature/')),
-  skolem: declarePrefix(base('.well-known/genid/'),
+  skolem: declarePrefix(base('.well-known/genid/')),
 }
 
 // Etc
@@ -655,7 +655,7 @@ An optionally specified separator is placed in between every two consecutive str
 
 ### Parameters
 
-- `content` An array of key that contain a string and/or strings specified with assertion [str()](/triply-etl/assert/ratt#function-str).
+- `content` An array of key that contain a string and/or strings specified with assertion [str()](../../assert/ratt/term#function-str).
 - `separator` Optionally, the string that is places between every two consecutive string values.
 - `key` A new key where the concatenated string is stored.
 
@@ -809,7 +809,7 @@ Transforms GeoJSON objects to their corresponding Well-Known Text (WKT) serializ
 ### Parameters
 
 - `content` A key that stores a GeoJSON object.
-- `crs` Optionally, an IRI that denotes a Coordinate Reference System (CRS). You can use IRIs from the [`epsg`](/triply-etl/declare#geospatial-declarations) object. If absent, uses [https://epsg.io/4326](EPSG:4326/WGS84) as the CRS.
+- `crs` Optionally, an IRI that denotes a Coordinate Reference System (CRS). You can use IRIs from the [`epsg`](../../declare#geospatial-declarations) object. If absent, uses [https://epsg.io/4326](EPSG:4326/WGS84) as the CRS.
 - `key` A new key where the WKT serialization string is stored
 
 ### GeoJSON and Well-Known Text (WKT)
@@ -982,7 +982,7 @@ Older data formats sometimes use uppercase letters for header names or codes. Th
 
 ### Example
 
-The following snppet starts out with header values that use uppercase characters exclusively. The `lowerCase` transformation is used to create lowercase names that can be used to create property IRIs.
+The following snippet starts out with header values that use uppercase characters exclusively. The `lowerCase` transformation is used to create lowercase names that can be used to create property IRIs.
 
 ```ts
 fromJson([
@@ -1155,7 +1155,7 @@ Performs a regular expression replacement to the given input string, and stores 
 
 ### Parameters
 
-- `content` A key that contains a string value, or a static string specified with assertion [str()](/triply-etl/assert/ratt/term#function-str).
+- `content` A key that contains a string value, or a static string specified with assertion [str()](../../assert/ratt/term#function-str).
 - `from` A [JavaScript Regular Expression](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions).
 - `to` Optionally, a string that replaces potential matches of the Regular Expression (`from`). Use `$1`, `$2`, etc. to insert matches. If absent, the empty string is used.
 - `key` A new key where the result of the replacement is stored.
@@ -1202,17 +1202,22 @@ Splits a string into an array of strings, and stores that array in a new key.
 
 This transformation removes any trailing whitespace that remains after the strings are split. This ensures that irregular use of whitespace in the source data is taken care of automatically.
 
+### Empty values
+
+This transformation removes any elements of the splitted string that are empty (after trimmimng). To keep empty entries, use the `` flag.
+
 ### Use cases
 
 The transformation is used when:
-- Tablular source data encodes multiple values inside singular cells. (Such concatenated storage inside cells is a data quality issue, because the table format cannot guarantee that the separator character does not (accidentally) occur inside individual values inside a cell. Tree-shaped source formats are able to store multiple values for the same key reliably, e.g. JSON and XML.)
+- Tabular source data encodes multiple values inside singular cells. (Such concatenated storage inside cells is a data quality issue, because the table format cannot guarantee that the separator character does not (accidentally) occur inside individual values inside a cell. Tree-shaped source formats are able to store multiple values for the same key reliably, e.g. JSON and XML.)
 - Source data contains complex string values that can be decomposed into stand-alone components with distinct meaning.
 
 ### Parameters
 
-- `content` A key that stores a string, or a string specified with assertion [str()](/triply-etl/assert/ratt#str).
+- `content` A key that stores a string, or a string specified with assertion [str()](../../assert/ratt/term#function-str).
 - `separator` A string or a regular expression that is used to separate the content.
-- `key` A new key where the array of splitted strings is stored.
+- `key` A new key where the array of split strings is stored.
+- `keepEmptyEntities` A boolean flag indicating if the empty values of a splitted string should be kept or not. By default empty values are removed.
 
 ### Example: Multiple values in singular table cells
 
@@ -1317,7 +1322,7 @@ result in a new key.
 
 ### Parameters
 
-- `content` A key that stores a string value, or a string specified with assertion [str()](/triply-etl/assert/ratt/term#function-str).
+- `content` A key that stores a string value, or a string specified with assertion [str()](../../assert/ratt/term#function-str).
 - `start` The index of the first character that is included in the substring. The first character has index 0.
 - `end` Optionally, the index of the first character that is excluded from the substring. If absent, the substring ends at the end of the source string.
 - `key` The new key in which the substring is stored.
@@ -1456,7 +1461,7 @@ This transformation is used when string values must be mapped onto literals with
 
 The datatype IRIs that could apply are specified in a list. The specified datatype IRIs are tried out from left to right. The first datatype IRI that results in a valid literal is chosen.
 
-- `content` A key that contains a string value, or a string value specified with assertion [str()](/triply-etl/assert/ratt/term#function-str).
+- `content` A key that contains a string value, or a string value specified with assertion [str()](../../assert/ratt/term#function-str).
 - `datatypes` An array of two or more datatype IRIs.
 - `key` A new key where the created literal is stored.
 
@@ -1486,7 +1491,7 @@ If we do not want to emit errors for string values that cannot be satisfy any of
 
 ### See also
 
-You only need to use `tryLiteral()` if the datatype IRI varies from record to record. If the datatype IRI is the same for every record, then the regular assertion function [literal()](/triply-etl/assert/ratt/term#function-literal) should be used instead.
+You only need to use `tryLiteral()` if the datatype IRI varies from record to record. If the datatype IRI is the same for every record, then the regular assertion function [literal()](../../assert/ratt/term#function-literal) should be used instead.
 
 
 

@@ -31,7 +31,7 @@ git config --global user.name "Ada Lovelace"</pre>
   </dd>
   <dt>Install Node.js (simple approach)</dt>
   <dd>
-    <p>Go to <href="https://nodejs.org" target="_blank">nodejs.org</a> and click on option “18.x.y LTS (Recommended For Most Users)”. This will download the installer for your operating system. Run the installer on your computer.</p>
+    <p>Go to <a href="https://nodejs.org" target="_blank">nodejs.org</a> and click on option “18.x.y LTS (Recommended For Most Users)”. This will download the installer for your operating system. Run the installer on your computer.</p>
     <p>On Windows, you must also select the number of bits on your computer: 32 or 64. The correct number of bits is 64 for almost all Windows computers.</p>
   </dd>
   <dt>Install Node.js (advanced approach)</dt>
@@ -46,7 +46,7 @@ git config --global user.name "Ada Lovelace"</pre>
   </dd>
   <dt>Find a terminal application</dt>
   <dd>
-    <p>You must use a terminal application in order to run commands from the <a href="/triply-etl/cli/">TriplyETL CLI</a>. Here are some examples of terminal applications on different operating systems:</p>
+    <p>You must use a terminal application in order to run commands from the <a href="../cli/">TriplyETL CLI</a>. Here are some examples of terminal applications on different operating systems:</p>
     <dl>
       <dt>On Windows</dt>
       <dd>Most Windows versions come with some version of PowerShell preinstalled. You can also follow <a href="https://learn.microsoft.com/en-us/powershell/scripting/install/installing-powershell-on-windows?view=powershell-7.3#install-powershell-using-winget-recommended" target="_blank">these instructions by Microsoft</a> to update to the latest version of PowerShell.</dd>
@@ -56,6 +56,10 @@ git config --global user.name "Ada Lovelace"</pre>
       <dd>Most Linux versions come with a preinstalled terminal application. For example, on Ubuntu the <a href="https://help.gnome.org/users/gnome-terminal/stable/" target="_blank">GNOME Terminal application</a> is preinstalled.</dd>
     </dl>
   </dd>
+  <dt>Update NPM</dt>
+  <dd>
+    <p>Open the terminal application selected from the previous step and run the following command to update npm: <code>npm install -g npm@10.2.1</code> </p>
+  </dd>
 </dl>
 
 
@@ -64,7 +68,7 @@ git config --global user.name "Ada Lovelace"</pre>
 
 The TriplyETL Generator allows you to create new ETL projects in your terminal application.
 
-If a TriplyETL project already exists, use the [TriplyETL Runner](/triply-etl/cli/#triplyetl-runner) instead.
+If a TriplyETL project already exists, use the [TriplyETL Runner](../cli/#triplyetl-runner) instead.
 
 In order to use TriplyETL Generator, you must have:
 
@@ -122,7 +126,7 @@ npx triply-etl-generator
 cd my-etl
 ```
 
-4. You can now use the [TriplyETL Runner](/triply-etl/cli#triplyetl-runner) to run the ETL:
+4. You can now use the [TriplyETL Runner](../cli#triplyetl-runner) to run the ETL:
 
 ```sh
 npx etl
@@ -178,7 +182,7 @@ npx etl
 
 At this point, you should see a first TriplyETL process in your terminal application. If this is not the case, please contact [support@triply.cc](mailto:support@triply.cc) to help you out.
 
-Visit the [TriplyETL CLI documentation](/triply-etl/cli#triplyetl-runner) to learn more about how you can use the TriplyETL Runner. Visit the [TriplyETL CI/CD documentation](/triply-etl/maintenance#configure-cicd) to learn more about how you can automate TriplyETL runs.
+Visit the [TriplyETL CLI documentation](../cli#triplyetl-runner) to learn more about how you can use the TriplyETL Runner. Visit the [TriplyETL CI/CD documentation](../maintenance#configure-cicd) to learn more about how you can automate TriplyETL runs.
 
 
 

@@ -8,7 +8,7 @@ When a TriplyETL is connected to one of more data sources, a stream of **Records
 
 ## The generic Record
 
-We illustrate the representation of the generic Record with the following code snippet. This snippet uses extractor [fromJson()](/triply-etl/extract/formats#extractor-fromjson) to extract data from [inline JSON](/triply-etl/extract/types#inline-json) source data:
+We illustrate the representation of the generic Record with the following code snippet. This snippet uses extractor [fromJson()](../formats#extractor-fromjson) to extract data from [inline JSON](../types#inline-json) source data:
 
 ```ts
 import { Etl, fromJson, logRecord } from '@triplyetl/etl/generic'
@@ -25,7 +25,7 @@ export default async function (): Promise<Etl> {
 }
 ```
 
-Debug function [logRecord()](/triply-etl/debug#function-logrecord) prints the current record to standard output. When this pipeline is run, the two inline records are printed as follows:
+Debug function [logRecord()](../../debug#function-logrecord) prints the current record to standard output. When this pipeline is run, the two inline records are printed as follows:
 
 ```json
 {
@@ -60,7 +60,7 @@ Now suppose that we change the source system. We no longer use inline JSON, but 
 </persons>
 ```
 
-Let us change the TriplyETL script to use extractor [fromXml()](/triply-etl/extract/formats#extractor-fromxml) and the [local file](/triply-etl/extract/types#local-files) source type:
+Let us change the TriplyETL script to use extractor [fromXml()](../formats#extractor-fromxml) and the [local file](../types#local-files) source type:
 
 ```ts
 import { Etl, fromXml, logRecord } from '@triplyetl/etl/generic'
@@ -103,7 +103,7 @@ The `loadRecords()` function allows us to run a sub ETL and store its records to
 
  The function expects two arguments and can be run with the following snippet:
 
- - `fromSrc` - The Source to load the data from. The list of available extractors can be seen in [Data Formats overview page](/triply-etl/extract/formats/#overview). 
+ - `fromSrc` - The Source to load the data from. The list of available extractors can be seen in [Data Formats overview page](../formats/#overview). 
  - `key` - A new key where the records are stored.
 
 ```ts
@@ -225,19 +225,19 @@ When you are debugging the configuration of a TriplyETL pipeline, it is sometime
 whenEqual('$recordId', 908, logRecord()),
 ```
 
-Do note that it is generally better to run the TriplyETL for a specific record using the `--from-record-id 908 --head 1` command line flags (see [CLI](/triply-etl/cli)).
+Do note that it is generally better to run the TriplyETL for a specific record using the `--from-record-id 908 --head 1` command line flags (see [CLI](../../cli)).
 
 
 
 ## Special key `$environment`
 
-The TriplyETL record contains special key `$environment`. Its value denotes the DTAP environment that the pipeline is currently running in. This is one of the followin values: "Development", "Test", "Acceptance", or "Production".
+The TriplyETL record contains special key `$environment`. Its value denotes the DTAP environment that the pipeline is currently running in. This is one of the following values: "Development", "Test", "Acceptance", or "Production".
 
 
 
 
 ## Special key `$sheetName`
 
-The special key `$sheetName` only occurs in records that original from data source that use the Microsoft Excel format. In such records, this special key contains the name of the sheet from which the record originats.
+The special key `$sheetName` only occurs in records that original from data source that use the Microsoft Excel format. In such records, this special key contains the name of the sheet from which the record originates.
 
-See [the documentation for the Microsoft Excel format](/triply-etl/extract/formats/#extractor-fromxlsx) for more information about this special key.
+See [the documentation for the Microsoft Excel format](../formats/#extractor-fromxlsx) for more information about this special key.

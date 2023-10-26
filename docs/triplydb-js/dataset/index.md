@@ -36,7 +36,7 @@ This method is useful in practice, because it removes the burden on the programm
 The changes made as a result of calling this method depend on the current state of the connected-to TriplyDB server:
 
 - If this dataset does not yet have a service with the given `name`, then the behavior is identical to calling [`Dataset.addService(name: string, metadata?: object)`](#datasetaddservicename-string-metadata-object) with the same arguments.
-- If this dataset already has a service with the given `name`, but with different `metadata` specified for it, then the behavior is identical to calling [`Account.getDataset(name: string)`](/triplydb-js/account#accountgetdatasetname-string) and [`Dataset.update(metadata: object)`](#datasetupdatemetadata-object).
+- If this dataset already has a service with the given `name`, but with different `metadata` specified for it, then the behavior is identical to calling [`Account.getDataset(name: string)`](../account#accountgetdatasetname-string) and [`Dataset.update(metadata: object)`](#datasetupdatemetadata-object).
 - If this dataset already has a service with the given `name` and with the same `metadata`, then this method returns that service.
 
 ### Required
@@ -137,7 +137,7 @@ const reasoning = await dataset.addService('reasoning', {
 
 ### See also
 
-See class [Service](/triplydb-js/service#service) for an overview of the methods that can be used with service objects.
+See class [Service](../service#service) for an overview of the methods that can be used with service objects.
 
 
 ## Dataset.clear(...resourceType: string)
@@ -261,7 +261,7 @@ const asset = await dataset.getAsset('file.png', 1)
 
 ## Dataset.getAssets()
 
-Returns an [async iterator](/triplydb-js/faq#what-is-an-async-iterator) over the assets that belong to this dataset.
+Returns an [async iterator](../faq#what-is-an-async-iterator) over the assets that belong to this dataset.
 
 Assets are binary files that are stored together with data graphs. Common examples include documents, images and videos.
 
@@ -307,7 +307,7 @@ const graph = dataset.getGraph('https://example.com/cats')
 
 ## Dataset.getGraphs()
 
-Returns an [async iterator](/triplydb-js/faq#what-is-an-async-iterator) over graphs that belong to this dataset.
+Returns an [async iterator](../faq#what-is-an-async-iterator) over graphs that belong to this dataset.
 
 ### Examples
 
@@ -373,9 +373,9 @@ const service = dataset.getService('acceptance')
 
 ## Dataset.getServices()
 
-Returns an [async iterator](/triplydb-js/faq#what-is-an-async-iterator) over TriplyDB services under a dataset.
+Returns an [async iterator](../faq#what-is-an-async-iterator) over TriplyDB services under a dataset.
 
-See class [Service](/triplydb-js/service#service) for an overview of the methods for service objects.
+See class [Service](../service#service) for an overview of the methods for service objects.
 
 ### Examples
 
@@ -400,7 +400,7 @@ console.log(await dataset.getServices().toArray())
 
 ## Dataset.getStatements({subject?: string, predicate?: string, object?: string, graph?: string})
 
-Returns an [async iterator](/triplydb-js/faq#what-is-an-async-iterator) with statements (quadruples) that fit the specified pattern.
+Returns an [async iterator](../faq#what-is-an-async-iterator) with statements (quadruples) that fit the specified pattern.
 
 ### Arguments
 

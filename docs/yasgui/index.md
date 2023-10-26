@@ -106,8 +106,7 @@ one, but allows the entire HTML string to be written at once as a
 SPARQL Template. Notice that this removes the need for concatenating
 (`concat/n`), explicit to-string conversion (`str/1`), and also allows
 the HTML literal to be constructed more easily (no `strdt/2` needed).
-You can [try this query
-online](https://triplydb.com/academy/-/queries/sparql-templating).
+You can [try this query online](https://triplydb.com/academy/-/queries/sparql-templating).
 
 ```sparql
 prefix def: <https://triplydb.com/academy/pokemon/def/>
@@ -367,7 +366,7 @@ This view recognizes the following SPARQL variable names:
 | `?xLabel`         | The text or [HTML](#rendering-html) content of the popups that appears when the shape that is bound to `?x` is clicked.                                                       |
 | `?xZ`             | The height in meters at which the 2.5D shape that is based on the 2D shape that is bound to `?x` starts. This variable is not needed if data is stored in native 3D.      |
 
-### Geo Events ([TriplyDB Plugin](/yasgui-api#triplyDbPlugins))
+### Geo Events ([TriplyDB Plugin](../yasgui-api#triplyDbPlugins))
 
 The SPARQL Geo Events plugin renders geographical events as a story map ([example](https://api.triplydb.com/s/USQ5oNpL)). This view recognizes the following SPARQL variable names:
 

@@ -4,7 +4,7 @@
 
 SPARQL Update is a powerful feature that allows you to modify and enrich linked data in the internal store. With SPARQL Update, you can generate new linked data based on existing linked data, thereby enhancing the content of the store.
 
-*Support for SPARQL Update is currently experimental. In the meantime, you can use [SHACL Rules](/triply-etl/enrich/shacl) to implement the Enrich Step of your pipeline.*
+*Support for SPARQL Update is currently experimental. In the meantime, you can use [SHACL Rules](../shacl) to implement the Enrich Step of your pipeline.*
 
 
 
@@ -39,7 +39,7 @@ insert data { <john> <knows> <mary>. }`),
 }
 ```
 
-Debug function [logQuads()](/triply-etl/debug#function-logquads) prints the content of the internal store to standard output:
+Debug function [logQuads()](../../debug#function-logquads) prints the content of the internal store to standard output:
 
 ```turtle
 base <https://triplydb.com/>
@@ -104,7 +104,7 @@ prefix sdo: <${prefix.sdo('').value}>
 delete data { <john> sdo:children <mary>. }`),
 ```
 
-You can use the debug function [logQuads()](/triply-etl/debug#function-logquads) before and after this function call, to see the effects on the internal store.
+You can use the debug function [logQuads()](../../debug#function-logquads) before and after this function call, to see the effects on the internal store.
 
 
 

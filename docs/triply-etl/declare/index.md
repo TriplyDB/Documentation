@@ -80,7 +80,7 @@ iri(prefix.vehicle, 'id')
 iri(prefix.vehicle, str('123')),
 ```
 
-See assertion functions [iri()](/triply-etl/assert/ratt/term/#function-iri) and [str()](/triply-etl/assert/ratt/term#function-str) for more information.
+See assertion functions [iri()](../assert/ratt/term/#function-iri) and [str()](../assert/ratt/term#function-str) for more information.
 
 
 
@@ -309,7 +309,7 @@ triples(graph.metadata,
 ),
 ```
 
-See assertion function [triples()](/triply-etl/assert/ratt/statement#function-triples) for more information.
+See assertion function [triples()](../assert/ratt/statement#function-triples) for more information.
 
 
 
@@ -337,7 +337,7 @@ Or they can be used to directly assert language-tagged strings in the Internal S
 triple('_city', rdfs.label, literal('label', lang.fr)),
 ```
 
-See transformation function [addLiteral()](/triply-etl/transform/ratt#function-addliteral) and assertion function [literal()](/triply-etl/assert/ratt/term#function-literal) for more information.
+See transformation function [addLiteral()](../transform/ratt#function-addliteral) and assertion function [literal()](../assert/ratt/term#function-literal) for more information.
 
 
 
@@ -350,7 +350,7 @@ import { geojsonToWkt } from '@triplyetl/etl/ratt'
 import { epsg } from '@triplyetl/etl/vocab'
 ```
 
-Such IRIs that denote coordinate reference systems can be used in several geospatial functions, for example in transformation function [geojsonToWkt()](/triply-etl/transform/ratt#function-geojsontowkt):
+Such IRIs that denote coordinate reference systems can be used in several geospatial functions, for example in transformation function [geojsonToWkt()](../transform/ratt#function-geojsontowkt):
 
 ```ts
 geojsonToWkt({
