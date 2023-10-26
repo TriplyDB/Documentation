@@ -20,13 +20,36 @@ The example below hows how to use a SPARQL ask query in the `fromJson()` extract
 fromJson(Source.TriplyDb.query('account', 'query-name', { triplyDb: { url: 'https://api.triplydb.com' } }))
 ```
 ### [Added] [RDF mapping language](https://rml.io/docs/rml/introduction/) (RML) for transformations
-TriplyETL supports transformations using [RDF mapping language](https://rml.io/docs/rml/introduction/) (RML).
+TriplyETL supports transformations using [RDF mapping language](https://rml.io/docs/rml/introduction/) (RML). To see how this works, please refer to our documentation about RDF, available [here](../rml).
 
 ### [Enhanced] Simplified usage of [nestedPairs()](../assert/ratt/statement/#function-nestedpairs) Middleware
  The [nestedPairs()](../assert/ratt/statement/#function-nestedpairs) middleware can be used without providing the subject node that connects the pairs to the object/predicate. This will automatically create a skolem-iri for the subject:
 
 ```ts
 nestedPairs(S, P, [a, sdo.Person])
+```
+
+For example:
+
+```ts
+fromJson([{ id: '1', height: 15 }]),
+addSkolemIri({
+  prefix: prefix.skolem,
+  key: '_height',
+}),
+nestedPairs(iri(prefix.product, 'id'), sdo.height,
+  [qudt.unit, unit.CentiM],
+  [rdf.value, 'height'],
+),
+```
+
+Will result in the following linked data assertions:
+
+```ts
+product:1
+  sdo:height
+    [ qudt:unit unit:CentiM;
+      rdf:value 15 ].
 ```
 
 ### [Changed] Automatic prefix handling in TriplyDB using [toRdf()](../publish/#local-data-destinations)
