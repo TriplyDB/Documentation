@@ -1,23 +1,36 @@
----
-title: "TriplyETL: Maintenance"
-path: "/docs/triply-etl/maintenance"
----
+[TOC]
 
-Once a TriplyETL repository is configured, it goes into maintenance mode. Maintenance includes the following tasks:
+# Maintenance
 
-- [Update the TriplyETL dependency](#update)
-- [Configure the TriplyETL CI/CD](#cicd)
-- Monitor the TriplyETL CI/CD
+Once a TriplyETL repository is configured, it goes into maintenance mode. TriplyETL contains specific functionality to support maintenance.
+
+## Overview
+
+ETL maintenance includes the following tasks:
+
+- [Maintenance](#maintenance)
+  - [Overview](#overview)
+  - [Update the TriplyETL dependency](#update-the-triplyetl-dependency)
+    - [Check the current version](#check-the-current-version)
+    - [Check for new versions](#check-for-new-versions)
+    - [Assess the impact of updating](#assess-the-impact-of-updating)
+    - [Perform the update](#perform-the-update)
+      - [Patch and Minor version update](#patch-and-minor-version-update)
+      - [Major version update](#major-version-update)
+  - [Configure CI/CD](#configure-cicd)
+    - [CI/CD configuration file](#cicd-configuration-file)
+    - [CI/CD environment variables](#cicd-environment-variables)
+<!-- - [Monitor CI/CD](#monitor-cicd) -->
 
 
 
-# Update the TriplyETL dependency {#update}
+## Update the TriplyETL dependency
 
 New versions of TriplyETL are released regularly. Moving to a new version is generally a good idea, because it allows new features to be used and will include fixes for known/reported bugs. At the same time, updating to a new version may require you to make some changes to your pipeline.
 
 It is important to determine an approach for updating your TriplyETL projects that fits your team and organization. The following sections describe how you can make such a determination.
 
-## Check the current version
+### Check the current version
 
 The following command prints the TriplyETL version that you are currently using:
 
@@ -25,7 +38,7 @@ The following command prints the TriplyETL version that you are currently using:
 npm list @triplyetl/etl
 ```
 
-## Check for new versions
+### Check for new versions
 
 The following command prints the latest TriplyETL version that is available:
 
@@ -35,28 +48,24 @@ npm outdated
 
 TriplyETL repositories typically include several developer dependencies as well. These developer dependencies make it easier to write and maintain your ETLs. These developer dependencies are not part of TriplyETL, and must therefore be updated independently of TriplyETL.
 
-## Assess the impact of updating
+### Assess the impact of updating
 
 TriplyETL uses the Semantic Versioning approach: `{major}.{minor}.{patch}` The impact of updating to a new TriplyETL version can therefore be determined as follows:
 
 <dl>
-MAJOR version when you make incompatible API changes
-MINOR version when you add functionality in a backward compatible manner
-
-
   <dt>Patch update</dt>
-  <dd>Only the <code>{patch}</code> number has increased. This means that one or more bugs have been fixed in a backward compatible manner. You should always be able to perform a patch update without having to make any changes to your configuration.</dd>
+  <dd>Only the <code>{patch}</code> number has increased. This means that one or more bugs have been fixed in a <em>backward compatible</em> manner. You should always be able to perform a patch update without having to make any changes to your configuration.</dd>
   <dt>Minor update</dt>
-  <dd>The <code>{minor}</code> number has increased, but the <code>{major}</code> number is still the same. This means that new functionality was added in a backward compatible manner. You should always be able to perform a minor update without having to make any changes to your configuration. But you may want to check the <a href="/docs/triply-etl/changelog" target="_blank">changelog</a> to see which new functionalities were added.</dd>
+  <dd>The <code>{minor}</code> number has increased, but the <code>{major}</code> number is still the same. This means that new functionality was added in a <em>backward compatible</em> manner. You should always be able to perform a minor update without having to make any changes to your configuration. But you may want to check the <a href="../changelog" target="_blank">changelog</a> to see which new functionalities were added.</dd>
   <dt>Major update</dt>
-  <dd>The <code>{major}</code> number has increased. This means that there are incompatible changes. This means that features may have been removed, or existing features may have changed. In such cases, changes to your configuration are almost certainly necessary, and may take some time to implement. Any changes you need to make are described in the <a href="/docs/triply-etl/changelog" target="_blank">changelog</a>.</dd>
+  <dd>The <code>{major}</code> number has increased. This means that there are <em>incompatible</em> changes. This means that features may have been removed, or existing features may have changed. In such cases, changes to your configuration are almost certainly necessary, and may take some time to implement. Any changes you need to make are described in the <a href="../changelog" target="_blank">changelog</a>.</dd>
 </dl>
 
-## Perform the update
+### Perform the update
 
 Based on the outcome of the previous step, a maintainer of the repository decides which dependencies should be updated to which versions. Since Patch and Minor version updates are always safe to make, we discuss them separately from the more impactful Major version updates.
 
-### Patch and Minor version update
+#### Patch and Minor version update
 
 You can update to the latest patch or minor version with the following command:
 
@@ -68,7 +77,7 @@ This command may change the contents of the `package-lock.json` file. These chan
 
 Notice that this command will only perform safe (i.e. patch and/or minor) updates.
 
-### Major version update
+#### Major version update
 
 You can update to the latest major version with the following command:
 
@@ -86,13 +95,13 @@ This command will change the contents of the `package.json` file. These changes 
 
 
 
-# Configure the TriplyETL CI/CD {#cicd}
+## Configure CI/CD
 
 TriplyETL pipelines can be configured to run automatically in any CI/CD environment. This section explains how you can configure an automated TriplyETL pipeline in GitLab. Notice that the configuration in any other CI/CD environment will be more or less similar to what is explained in this section.
 
-## CI/CD configuration file
+### CI/CD configuration file
 
-The [TriplyETL Generator](/docs/triply-etl/getting-started#generator) creates a basic configuration file for running TriplyETL in GitLab CI/CD. The configuration file is called `.gitlab-ci.yml`.
+The [TriplyETL Generator](../getting-started#triplyetl-generator) creates a basic configuration file for running TriplyETL in GitLab CI/CD. The configuration file is called `.gitlab-ci.yml`.
 
 The configuration contains a list of stages:
 
@@ -172,7 +181,7 @@ create_knowledge_graph:
     - !reference [.etl-template, rules]
 ```
 
-## CI/CD environment variables
+### CI/CD environment variables
 
 In a normal ETL the only variables that should be present AFAIK are: **ENV** (value: acceptance or production), **TRIPLYDB_TOKEN** (value: customer's TriplyDB token), **PIPELINE_NAME** (value: explained below), and optionally **TIMEOUT** (value: time description e.g. "1H")
 

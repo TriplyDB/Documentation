@@ -1,4 +1,6 @@
-# Copy an existing entry over to a new entry {#copy}
+[TOC]
+
+# Copy an existing entry over to a new entry <!-- {#copy} -->
 
 Copying is the act of creating a new thing that is based on a specific existing thing.
 

@@ -1,7 +1,6 @@
----
-title: "6. TriplyETL: Publish"
-path: "/docs/triply-etl/publish"
----
+[TOC]
+
+# TriplyETL: Publish
 
 The **Publish** step makes the linked data that is produced by the TriplyETL pipeline available in a Triple Store for use by others.
 
@@ -23,7 +22,7 @@ graph LR
 
 
 
-# Remote data destinations {#toTriplyDb}
+## Remote data destinations
 
 Destinations are usually online locations in TriplyDB where the output of your pipeline will be published.
 
@@ -60,7 +59,7 @@ The following options can be specified to configure the destination behavior:
 
 
 
-# Local data destinations
+## Local data destinations
 
 TriplyETL supports publishing RDF output into a local file.  This is not often used, because files lack many of the features that TriplyDB destinations support, such as:
 
@@ -76,7 +75,7 @@ toRdf(Destination.file('my-file.trig')),
 ```
 
 
-# Static and Dynamic destinations
+## Static and Dynamic destinations
 
 Destinations can be defined as static objects meaning that you can define destination beforehand. But it might be the case that you want to have multiple destinations for different records. In this case, you would need a dynamic destination, which should change based on certain information inside your source data.
 
@@ -96,7 +95,7 @@ const etl = new Etl({
 
 
 
-# Configuring multiple TriplyDB instances
+## Configuring multiple TriplyDB instances
 
 It is possible to use multiple TriplyDB instances in one TriplyETL pipeline.
 
@@ -133,7 +132,7 @@ const etl = new Etl({
 
 
 
-# Direct copying of source data to destination
+## Direct copying of source data to destination
 
 TriplyETL supports copying sources directly to destination locations. This function is useful when you already have linked data that is used as a source, but is also needed at the destination. An example would be the information model. This would be available as a source, and with the copy function it can be uploaded to TriplyDB via TriplyETL.
 
@@ -151,9 +150,9 @@ The function destination expects that source data is linked data. Copying a sour
 
 
 
-# Using TriplyDB.js in TriplyETL
+## Using TriplyDB.js in TriplyETL
 
-All operations that can be performed in a TriplyDB instance can be automated with classes and methods in the [TriplyDB.js](triplydb-js) library.  This library is also used by TriplyETL in the background to implement many of the TriplyETL functionalities.
+All operations that can be performed in a TriplyDB instance can be automated with classes and methods in the [TriplyDB.js](../../triplydb-js) library.  This library is also used by TriplyETL in the background to implement many of the TriplyETL functionalities.
 
 Sometimes it is useful to use classes and methods in TriplyDB.js directly.  This is done in the following way:
 
@@ -165,7 +164,7 @@ const etl = new Etl()
 console.log((await etl.triplyDb.getInfo()).name)
 ```
 
-The above example prints the name of the TriplyDB instance.  But any other [TriplyDB.js](triplydb-js) operations can be performed.  For example, the user of the current API Token can change their avatar image in TriplyDB:
+The above example prints the name of the TriplyDB instance.  But any other [TriplyDB.js](../../triplydb-js) operations can be performed.  For example, the user of the current API Token can change their avatar image in TriplyDB:
 
 
 ```ts
@@ -175,7 +174,7 @@ await user.setAvatar('my-avatar.png')
 
 
 
-# Setting up Acceptance/Production runs (DTAP)
+## Setting up Acceptance/Production runs (DTAP)
 
 When working on a pipeline it is best to at least run it in the following two modes:
 
@@ -221,11 +220,11 @@ You can also set the `ENV` variable in the GitLab CI/CD environment. This allows
 
 
 
-# Upload prefix declarations
+## Upload prefix declarations
 
-At the end of a TriplyETL script, it is common to upload the [prefix declarations](/docs/triply-etl/declare#declarePrefix) that are configured for that pipeline. 
+At the end of a TriplyETL script, it is common to upload the [prefix declarations](../declare#declarePrefix) that are configured for that pipeline. 
 
-This is often done directly before or after graphs are uploaded (function [toTriplyDb()](#toTriplyDb)):
+This is often done directly before or after graphs are uploaded (function [toTriplyDb()](#remote-data-destinations)):
 
 ```ts
 import { declarePrefix, toTriplyDb, uploadPrefixes } from '@triplyetl/etl/generic'

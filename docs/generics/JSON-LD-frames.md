@@ -1,13 +1,64 @@
 ---
-title: "JSON-LD frames"
+title: "JSON-LD Framing"
 path: "/docs/jsonld-frames"
 ---
 
-# What are JSON-LD frames
+[TOC]
 
-Linked data queries most often support two ways of returning results. Either in flat dataformat, for example `.csv`, where each result is a separate line or record. Or as a set of linked data triples. An unordered list, in a data formats such as `.ttl` or `.nq`. The data can be interpreted by linked data tooling but the data does not follow a predefined structure. When a REST-API is queried the data is returned according to a predefined structure. The API already knows beforehand how the data will look like. With JSON-LD frames there now is a way to create predefined REST-APIs.
+# JSON-LD Framing
+## Why JSON-LD Framing?
 
-JSON-LD frames are a deterministic translation from a graph, which has an unordered set of triples where no node is "first" or "special", into a tree, which has ordered branches and exactly one "root" node. In other words, JSON-LD framing allows one to force a specific tree layout to a JSON-LD document. This makes it possible to translate SPARQL queries to REST-APIs.
+SPARQL Construct and SPARQL Describe queries can return results in the JSON-LD format. Here is an example:
+
+```json
+[
+  {
+    "@id": "john",
+    "livesIn": { "@id": "amsterdam" }
+  },
+  {
+    "@id": "jane",
+    "livesIn": { "@id": "berlin" }
+  },
+  {
+    "@id": "tim",
+    "livesIn": { "@id": "berlin" }
+  }
+]
+```
+
+JSON-LD is one of the serialization formats for RDF, and encodes a graph structure. For example, the JSON-LD snippet above encodes the following graph:
+
+```mermaid
+graph TB
+  Tim -- livesIn --> Berlin
+  John -- livesIn --> Amsterdam
+  Jane -- livesIn --> Berlin
+```
+
+The triples in a graphs do not have any specific order. In our graph picture, the triple about Tim is mentioned first, but this is arbitrary. A graph is a set of triples, so there is no 'first' or 'last' triple. Similarly, there is no 'primary' or 'secondary' element in a graph structure either. In our graph picture, persons occur on the left hand-side and cities occur on the right hand-side. In fact, the same information can be expressed with the following graph:
+
+Most REST APIs return data with a specific, often tree-shaped structure. For example:
+
+```json
+{
+  "amsterdam": {
+    "inhabitants": [
+      "john"
+    ]
+  },
+  "berlin": {
+    "inhabitants": [
+      "jane",
+      "tim"
+    ]
+  }
+}
+```
+
+JSON-LD Framing is a standard that is used to assign additional structure to JSON-LD. With JSON-LD Framing, we can configure the extra structure that is needed to create REST APIs over SPARQL queries.
+
+JSON-LD Framing are a deterministic translation from a graph, which has an unordered set of triples where no node is "first" or "special", into a tree, which has ordered branches and exactly one "root" node. In other words, JSON-LD framing allows one to force a specific tree layout to a JSON-LD document. This makes it possible to translate SPARQL queries to REST-APIs.
 
 The TriplyDB API for saved queries has been equipped with a JSON-LD profiler which can apply a JSON-LD profile to a JSON-LD result, transforming the plain JSON-LD to framed JSON. To do this you need two things. A SPARQL construct query and a JSON-LD frame. When you have both of these, you can retrieve plain JSON from a SPARQL query. The revelant cURL command when both the SPARQL query and JSON-LD frame are available is:
 
@@ -21,7 +72,7 @@ curl -X POST [SAVED-QUERY-URL] \
 
 When sending a curl request, a few things are important. First, the request needs to be a `POST` request. Only a `POST` request can accept a frame as a body. The `Accept` header needs to be set to a specific value. The `Accept` header needs to have both the expected returned content-type and the JSON-LD profile, e.g. `application/ld+json;profile=http://www.w3.org/ns/json-ld#framed`. When querying an internal or private query you need to add an authorization token. Finally, it is important to set the `Content-type`. It refers to the content-type of the input body and needs to be `application/json`, as the frame is of type `application/json`.
 
-# The SPARQL Query
+## The SPARQL Query
 
 Let's start with the SPARQL query. A JSON-LD frame query needs a SPARQL `CONSTRUCT` query to create an RDF graph that is self contained and populated with relevant vocabulary and data. The graph in JSON-LD is used as input for the REST API call. The SPARQL `CONSTRUCT` query can be designed with API variables.
 
@@ -41,7 +92,7 @@ https://api.triplydb.com/queries/JD/JSON-LD-frame/run
 
 You could use API variables with a `?` e.g. `?[queryVariable]=[value]`
 
-# The Frame
+## The Frame
 
 The SPARQL query is not enough to provide the RDF data in a JSON serialization format. It requires additional syntactic conformities that cannot be defined in a SPARQL query. Thus the SPARQL query that was created needs a frame to restructure JSON-LD objects into JSON. The JSON-LD 1.1 standard allows for restructuring JSON-LD objects with a frame to JSON.
 
@@ -113,26 +164,24 @@ curl -X POST https://api.triplydb.com/queries/JD/JSON-LD-frame/run \
 The JSON-LD frame turns SPARQL results for the query in step 1 into a format that is accepted as plain REST API request.
 
 
-# Using SPARQL to create a frame
+## Using SPARQL to create a frame
 
 Another way to create a frame is by using the SPARQL editor in TriplyDB. 
 
 You can access the JSON-LD editor by clicking the three dots next to the SPARQL editor, and then selecting "To JSON-LD frame editor".
 
-![SPARQL editor](json-ld-navigator.png)
+![SPARQL editor](../assets/json-ld-navigator.png)
 
 Afterwards, the JSON script from above should be added to the JSON-LD Frame editor.
 
-![Ld-Frame box](json-ld-script.png)
+![Ld-Frame box](../assets/json-ld-script.png)
 
 
 Running the script results in the following REST-API result: 
 
-![REST-API result](json-ld-result.png)
+![REST-API result](../assets/json-ld-result.png)
 
 This can also be accessed by the generated API Link above the SPARQL editor. 
 Copying and pasting the generated link will direct you to a page where you can view the script:
 
-![](json-ld-in-api.png)
-
-
+![](../assets/json-ld-in-api.png)
