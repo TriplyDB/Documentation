@@ -2,11 +2,11 @@
 
 # XSLT (Extensible Stylesheet Language Transformations)
 
-XSLT (Extensible Stylesheet Language Transformations) is a language used to transform and manipulate XML data. However, it's not limited to XML alone. XSLT can also be used to transform and manipulate data in various other formats. With XSLT, you have the capability to create rules and transformations that convert data documents into different formats or structures.
+XSLT (Extensible Stylesheet Language Transformations) is a language used to transform and manipulate XML data. With XSLT, you have the capability to create rules and transformations that convert data documents into different formats or structures.
 
 ## Example
 
-Here's an example of an XML file, an XSLT stylesheet, and the resulting output in RDF format (Linked Data) after applying the XSLT transformation. In this example, we'll transform a simple XML representation of books into RDF triples.
+Here's an example of an XML file, an XSLT stylesheet, and the resulting output in RDF format after applying the XSLT transformation. In this example, we'll transform a simple XML representation of books into RDF triples.
 
 ### Input XML file (books.xml)
 
@@ -73,16 +73,15 @@ Here's an example of an XML file, an XSLT stylesheet, and the resulting output i
 ```
 ## Using XSLT in TriplyETL
 
-In TriplyETL, XSLT processing is supported in the `fromXML()` and `loadRdf()` middlewares by providing an optional `Source.file()` to the stylesheet parameter that uses an XSL-XML Stylesheet. Below we will explain in steps how it can be used:
+In TriplyETL, XSLT processing is supported in the [`fromXML()`](../extract/formats/#extractor-fromxml) and [`loadRdf()`](../extract/formats/#function-loadrdf) middlewares by providing an optional `Source.file()` to the stylesheet parameter that uses an XSL-XML Stylesheet. Below we will explain in steps how it can be used:
 
 1\. Create your XSLT stylesheet: 
 
-First, you need to create an XSLT stylesheet. This stylesheet defines the rules for transforming your XML data. It should have a .xslt or .xsl file extension. You can create this stylesheet using any text editor or XML/XSLT development tool. In your case, it seems you can provide this stylesheet as an optional Source.file(). Make sure you have this stylesheet ready.
+First, you need to create an XSLT stylesheet. This stylesheet defines the rules for transforming your XML data. It should have a .xslt or .xsl file extension. You can create this stylesheet using any text editor or XML/XSLT development tool.
 
-2\. Use XSLT in `fromXml()` or `loadRdf()` by providing an extra parameter:
+2\. Load the data and apply XSLT transformation using either [`fromXml()`](../extract/formats/#extractor-fromxml) or [`loadRdf()`](../extract/formats/#function-loadrdf):
 
-- `fromXml()`
-
+- `fromXml()` is used to load and transform xml to xml with different structure:
 ```
 fromXml(Source.file(xml), {
         selectors: "rdf:RDF.sdo:Person",
@@ -90,7 +89,7 @@ fromXml(Source.file(xml), {
       })
 ```
 
-- `loadRdf()`:
+- `loadRdf()` is used to load and transform xml to xml/rdf to internal store:
 
 ```
 loadRdf(Source.file(xml), {
