@@ -107,6 +107,7 @@ Upper-case letter words in json after `-d` must be replaced by the following val
 
 ### Upload data to a dataset
 
+
 You can upload a data file via the Triply API. You need to [use the API Token](#using-the-api-token) and send an HTTP POST request with data specifying the local file path. 
 The list of supported file extensions can be checked in [Adding data: File upload](../triply-db-getting-started/uploading-data/#adding-data-file-upload) documentation. 
 
@@ -118,6 +119,14 @@ curl -H 'Authorization: Bearer TOKEN' -X POST https://api.INSTANCE/datasets/ACCO
 Upper-case letter word after `-F` must be replaced by the following value:
 
 - `FILENAME` :: path to the local file, for example `example.ttl`. 
+
+
+You can upload data to an existing dataset without overwriting it by adding and setting the `mergeGraphs` functionality to `true`, like in the example below.
+
+```sh
+curl -H 'Authorization: Bearer TOKEN' -X POST https://api.INSTANCE/datasets/ACCOUNT/DATASET/jobs  -F file=@FILENAME -F mergeGraphs=true
+
+```
 
 ## Accounts
 
