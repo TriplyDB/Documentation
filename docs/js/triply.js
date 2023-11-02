@@ -25,7 +25,7 @@ window.onload = () => {
     .map(el => el.href = prefix + customUrlMappingLevel1.get(el.innerText))
 
   Array.from(document.querySelectorAll('.toctree-l2 a'))
-    .filter(el => customUrlMappingLevel2.has(el.innerText))
+    .filter(el => customUrlMappingLevel2.has(el.innerText) && el.href.endsWith('#'))
     .map(el => el.href = prefix + customUrlMappingLevel2.get(el.innerText))
 
   if (window.location.pathname.endsWith('search.html')) {
