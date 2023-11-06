@@ -27,6 +27,7 @@ The following pages cover the Extract step in detail:
 - 1A. [**Data Formats**](formats) gives an overview of the data formats that are supported by TriplyETL.
 - 1B. [**Source Types**](types) given an overview of the source types that are supported by TriplyETL
 - 1C. [**Record**](record) documents the basic structure of every record in TriplyETL.
+- 1D. [**XSLT**](../xslt) can be employed during the Extract step to transform data extracted from XML source for further processing in the TriplyETL pipeline.
 
 ## Next steps
 

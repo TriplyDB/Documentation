@@ -157,7 +157,7 @@ If the users Node.JS version is older that the recommended version (currently \>
 ### [Changed] SHACL Validation Engine 
 A SHACL Validation Engine improved performance. 
  
-### [Changed] XSLT Processing support in [fromXml()](../extract/formats/#extractor-fromxml) and [loadRdf()](../extract/formats/#function-loadrdf) middlewares
+### [Changed] [XSLT Processing](../xslt) support in [fromXml()](../extract/formats/#extractor-fromxml) and [loadRdf()](../extract/formats/#function-loadrdf) middlewares
 We support XSLT processing in the [fromXml()](../extract/formats/#extractor-fromxml) and [loadRdf()](../extract/formats/#function-loadrdf) middlewares by providing an optional `Source.file()` to the `stylesheet` parameter.
 
 Example of usage in `fromXml()`:

@@ -51,6 +51,7 @@ nav:
           - RATT: triply-etl/transform/ratt/index.md
           - TypeScript: triply-etl/transform/typescript/index.md
       - RML: triply-etl/rml/index.md
+      - XSLT: triply-etl/xslt/index.md
       - Assert:
           - Overview: triply-etl/assert/index.md
           - JSON-LD: triply-etl/assert/json-ld/index.md
