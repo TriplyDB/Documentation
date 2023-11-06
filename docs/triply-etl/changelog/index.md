@@ -20,15 +20,13 @@ For example:
 toTriplyDb({dataset: 'nde', opts: {submitToNDEDatasetRegister: true}})
 ```
 
-### [Changed] All packages are updated to their latest versions.
-
 
 ## TriplyETL 3.0.2
 
 Release date: 2023-10-23
 
 ### [Added] Static triples
-You can now assert so called `static triples` as a one-time assertion, before or without any Extractors. Those are triples that are not related to the source extractors, but should only be asserted once per ETL.
+You can now assert so called `static triples` as a one-time assertion, before or without any [Extractors](../extract/formats). Those are triples that are not related to the source extractors, but should only be asserted once per ETL.
 
 ```ts
 import { Destination, Etl, fromJson, toRdf } from '@triplyetl/etl/generic'
@@ -57,15 +55,15 @@ export default async function (): Promise<Etl> {
 ### Bug fixes
 The following bugs have been fixed:
 
-- There error in the `ifElse` middleware that caused ETL's to not use the fallback `else` in certain situations was fixed.
+- The error in the `ifElse` middleware that caused ETLs to not use the fallback `else` in certain situations was fixed.
 
 ## TriplyETL 3.0.1
 
 Release date: 2023-10-19
 
 ### [Changed] Synchronize specific services with [toRdf()](../publish/#local-data-destinations) middleware
-It is now possible to use the [toRdf()](../publish/#local-data-destinations) middleware to synchronize specific services instead of all of them. The example below shows how to use this to upgrade only a service called `test`.
-<!-- check this with DIT -->
+It is now possible to use the [toRdf()](../publish/#local-data-destinations) middleware to synchronize specific services instead of all of them. The example below shows how to use this to upgrade only a service called `my-service` on dataset `my-dataset`.
+
 ```ts
 import { Destination, Etl, fromJson, toRdf } from '@triplyetl/etl/generic'
 import { triple } from '@triplyetl/etl/ratt'
@@ -79,13 +77,16 @@ export default async function (): Promise<Etl> {
   etl.use(
     triple(owl.sameAs, owl.sameAs, owl.sameAs)
   )
-  etl.use(toRdf(Destination.TriplyDb.rdf('test', {synchronizeServices: 'default'})))
+  etl.use(toRdf(Destination.TriplyDb.rdf('my-dataset', {synchronizeServices: 'my-service'})))
   return etl
 }
 
+
 ```
-### [Changed] Validator support in addLiteral() with the `validate` key
-It is now possible to use an optional validate key inside the addLiteral() mw. The validate key accepts a function (value: any) => boolean, and can be used in some other functions. Please refer to the documentation on `validate` to learn more about which validators are supported and to learn more about this functionality.
+### [Changed] Validator support in `addLiteral()` with the `validate` key
+It is now possible to use an optional validate key inside the `addLiteral()` middleware. The validate key accepts a function `(value: any) => boolean`, and can be used in some other functions. 
+<!-- TODO add external documentation and link it here -->
+Please refer to the documentation on addLiteral() to learn more about which validators are supported and to learn more about this functionality.
 
 ### Bug fixes
 The following bugs have been fixed:
