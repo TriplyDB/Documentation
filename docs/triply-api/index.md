@@ -49,6 +49,14 @@ In the above, `TOKEN` should be replaced by your personal API token (a
 lengthy sequence of characters). See [Creating an API token](#creating-an-api-token) for
 information on how to create an API token.
 
+### Important Security Considerations
+
+- **Do Not Commit Your Token to a Git Repository**: Under no circumstances should you commit your TriplyDB token to a Git repository. This practice is not allowed according to our ISO standards.
+
+- **Do Not Share Your Token: Avoid sharing your TriplyDB token with anyone who should not have access to your TriplyDB resources**. Tokens should be treated as sensitive information and shared only with trusted parties.
+
+- **Change Tokens Regularly**: To enhance security, consider regularly generating a new token to replace the existing one especially if you suspect any compromise.
+
 ## Exporting linked data
 
 Every TriplyDB API path that returns linked data provides a number of serializations to choose from. We support the following serializations:

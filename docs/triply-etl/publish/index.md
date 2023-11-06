@@ -57,8 +57,6 @@ The following options can be specified to configure the destination behavior:
   <dd>Whether the results of the new graph should be added to the old graph without overwriting it.  The default value is <code>false</code>.</dd>
 </dl>
 
-
-
 ## Local data destinations
 
 TriplyETL supports publishing RDF output into a local file.  This is not often used, because files lack many of the features that TriplyDB destinations support, such as:
