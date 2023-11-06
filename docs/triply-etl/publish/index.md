@@ -148,7 +148,7 @@ etl.copySource(
 
 The function destination expects that source data is linked data. Copying a source that is not linked data can result in errors.
 
-
+Please note that the `copySource` function is not considered part of the middleware layer but is a specialized function used for direct source-to-destination copying. As a result, it won't be counted in the middleware runtime.
 
 ## Using TriplyDB.js in TriplyETL
 

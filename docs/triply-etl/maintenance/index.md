@@ -20,7 +20,7 @@ ETL maintenance includes the following tasks:
   - [Configure CI/CD](#configure-cicd)
     - [CI/CD configuration file](#cicd-configuration-file)
     - [CI/CD environment variables](#cicd-environment-variables)
-<!-- - [Monitor CI/CD](#monitor-cicd) -->
+  - [Understanding Runtime Differences](#understanding-runtime-differences)
 
 
 
@@ -200,3 +200,15 @@ TriplyETL pipelines interpret the following environment variables, that may be s
   <dt><code>HEAD</code></dt>
   <dd>The maximum number of records that is being processed by the TriplyETL pipeline. This environment variable can be set in test runs that only want to test whether the ETL works for some records, without requiring it to run for all records. For example, in a DTAP Test run this number may be set to 10 to test whether the source can be accessed and the generated data can be uploaded to a TriplyDB server.</dd>
 </dl>
+
+## Understanding Runtime Differences
+
+It's important to be aware that runtime differences can occur when comparing TriplyETL pipeline runtimes in different environments, particularly when comparing them to GitLab CI/CD runtimes. There are two main factors that can influence runtime differences:
+
+1. Overhead in CI Jobs: GitLab CI jobs may introduce overhead beyond the actual ETL computation, such as setting up a containerized environment and additional CI-specific steps. A difference of 1 to 5 minutes between GitLab CI and TriplyETL runtimes is normal due to this overhead.
+
+2. Use of [`copySource`](../publish/#direct-copying-of-source-data-to-destination) Function: Significant runtime differences exceeding 5 minutes can be attributed to the use of the [`copySource` ](../publish/#direct-copying-of-source-data-to-destination) function, which operates outside of the ETL application and contributes to the total runtime but not the middleware runtime.
+
+If you encounter a runtime difference greater than 5 minutes, and the [`copySource`](../publish/#direct-copying-of-source-data-to-destination) function hasn't been used, it is recommended to report the issue to Triply. The issue will be further investigated to identify and address any potential causes.
+
+Understanding these factors and taking appropriate action will help you manage your TriplyETL pipelines effectively in a CI/CD environment.
