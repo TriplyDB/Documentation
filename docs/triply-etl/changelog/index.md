@@ -84,20 +84,18 @@ export default async function (): Promise<Etl> {
 
 ```
 ### [Changed] Validator support in `addLiteral()` with the `validate` key
-It is now possible to use an optional validate key inside the `addLiteral()` middleware. The validate key accepts a function `(value: any) => boolean`, and can be used in some other functions. 
-<!-- TODO add external documentation and link it here -->
-Please refer to the documentation on addLiteral() to learn more about which validators are supported and to learn more about this functionality.
+It is now possible to use an optional validate key inside the `addLiteral()` middleware. The validate key accepts a function `(value: any) => boolean`, and can be used in some other middlewares, like [when()](../control##process-data-conditionally-when).
 
 ### Bug fixes
 The following bugs have been fixed:
 
 - In some very specific situations the progressbar could go well over 100%, this is now fixed.
   
-- In some cases when the _switch() or ifElse() middleware were used and the ETL came to an unexpected halt (e.g. an Error occurred), the file `etl.err` contained the latest Record processed including keys of format `$sentinel-$MD5-HASH}` with the value of `true`. These keys are needed to keep track of the condition being met in the the middlewares. These keys are now no longer part of the Record.
+- In some cases when the [_switch()](../control#switch-between-different-cases-_switch) or [ifElse()](../control#specify-multiple-conditions-ifelse) middleware were used and the ETL came to an unexpected halt (e.g. an Error occurred), the file `etl.err` contained the latest Record processed including keys of format `$sentinel-$MD5-HASH}` with the value of `true`. These keys are needed to keep track of the condition being met in the the middlewares. These keys are now no longer part of the Record.
   
 - Importing the new RML map() middleware was not possible because of missing ESM exports. This has now been fixed.
 
-- Using XSLT failed on Windows system because of wrong redirecting of error messages.
+- Using XSLT failed on Windows system because of wrong redirecting of error messages. This is now fixed.
 
 - All dependencies are up to date, no warnings should be shown when installing TriplyETL.
 
