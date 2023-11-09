@@ -65,7 +65,7 @@ ID,NAME
 ```ts
 import { Etl, declarePrefix, fromCsv, iri, literal, rdfs,
         Source, toRdf, triple } from '@triplyetl/etl/generic'
-import { rdfs } from '@triplyetl/etl/vocab'
+import { rdfs } from '@triplyetl/vocabularies'
 
 export default async function (): Promise<Etl> {
   const etl = new Etl({

@@ -54,7 +54,7 @@ The following example asserts three triples, and uses the `prefix` object to ins
 import { logQuads } from '@triplyetl/etl/debug'
 import { Etl } from '@triplyetl/etl/generic'
 import { update } from '@triplyetl/etl/sparql'
-import { prefix } from '@triplyetl/etl/vocab'
+import { prefix } from '@triplyetl/vocabularies'
 
 export default async function (): Promise<Etl> {
   const etl = new Etl()
@@ -126,7 +126,7 @@ The rule can be formalized as follows:
 import { logQuads } from '@triplyetl/etl/debug'
 import { Etl } from '@triplyetl/etl/generic'
 import { update } from '@triplyetl/etl/sparql'
-import { prefix } from '@triplyetl/etl/vocab'
+import { prefix } from '@triplyetl/vocabularies'
 
 const baseIri = 'https://triplydb.com/'
 export default async function (): Promise<Etl> {
@@ -214,7 +214,7 @@ To demonstrate the usage of the `update()` function with SPARQL Update queries, 
 import { Etl, Source, declarePrefix, fromJson, toTriplyDb } from "@triplyetl/etl/generic";
 import { iri, pairs } from "@triplyetl/etl/ratt";
 import { update } from '@triplyetl/etl/sparql';
-import { a, foaf } from "@triplyetl/etl/vocab";
+import { a, foaf } from "@triplyetl/vocabularies";
 
 const prefix = {
   id: declarePrefix('https://triplydb.com/Triply/example/id/'),

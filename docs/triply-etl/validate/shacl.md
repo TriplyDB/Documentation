@@ -28,7 +28,7 @@ We use the following full TriplyETL script to explain the validation feature. Do
 import { Etl, Source, declarePrefix, fromJson, toTriplyDb } from '@triplyetl/etl/generic'
 import { iri, pairs } from '@triplyetl/etl/ratt'
 import { validate } from '@triplyetl/etl/shacl'
-import { a, foaf } from '@triplyetl/etl/vocab'
+import { a, foaf } from '@triplyetl/vocabularies'
 
 const prefix = {
   id: declarePrefix('https://triplydb.com/Triply/example/id/'),
