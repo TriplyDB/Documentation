@@ -827,8 +827,32 @@ Perform a search using the custom query:
 }
 ```
 
+This request is issued in the following way with the cURL command-line tool:
+
 ```sh
 curl -X POST 'https://api.triplydb.com/datasets/academy/pokemon/services/search/search' \
      -d '{"query":{"simple_query_string":{"query":"pikachu"}}}' \
      -H 'content-type: application/json'
+```
+
+#### Count API
+
+Elasticsearch allows the number of results to be determined without having to actually retrieve all these results. This is done with the "Count API". This API comes in handy when the number of results is shown in applications such as faceted search interfaces.
+
+The following two requests return the number of results for the search strings "Iris" and "Setosa". Notice that "Iris" occurs more often (184 times) than "Setosa" (52 times):
+
+```sh
+curl 'https://api.triplydb.com/datasets/Triply/iris/services/iris-es/_count'
+     -H 'Content-Type: application/json'
+     --data-raw $'{"query": { "simple_query_string": { "query": "Iris" } } }'
+{"count":184,"_shards":{"total":1,"successful":1,"skipped":0,"failed":0}}
+```
+
+and:
+
+```sh
+curl 'https://api.triplydb.com/datasets/Triply/iris/services/iris-es/_count'
+     -H 'Content-Type: application/json'
+     --data-raw $'{"query": { "simple_query_string": { "query": "Setosa" } } }'
+{"count":52,"_shards":{"total":1,"successful":1,"skipped":0,"failed":0}}wouter@wouter-XPS-15-9510:~/triply/documentation$ 
 ```
