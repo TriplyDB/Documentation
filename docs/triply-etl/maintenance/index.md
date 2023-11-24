@@ -88,7 +88,7 @@ npm i <package-name>@version
 This means that the following command is used to update to a specific TriplyETL major version:
 
 ```sh
-npm i @triplyetyl/etl@3.0.0
+npm i @triplyetl/etl@3.0.0
 ```
 
 This command will change the contents of the `package.json` file. These changes must be committed and pushed as part of performing the update.
