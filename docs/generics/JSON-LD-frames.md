@@ -3,7 +3,10 @@ title: "JSON-LD Framing"
 path: "/docs/jsonld-frames"
 ---
 
-# Why JSON-LD Framing?
+[TOC]
+
+# JSON-LD Framing
+## Why JSON-LD Framing?
 
 SPARQL Construct and SPARQL Describe queries can return results in the JSON-LD format. Here is an example:
 
@@ -69,7 +72,7 @@ curl -X POST [SAVED-QUERY-URL] \
 
 When sending a curl request, a few things are important. First, the request needs to be a `POST` request. Only a `POST` request can accept a frame as a body. The `Accept` header needs to be set to a specific value. The `Accept` header needs to have both the expected returned content-type and the JSON-LD profile, e.g. `application/ld+json;profile=http://www.w3.org/ns/json-ld#framed`. When querying an internal or private query you need to add an authorization token. Finally, it is important to set the `Content-type`. It refers to the content-type of the input body and needs to be `application/json`, as the frame is of type `application/json`.
 
-# The SPARQL Query
+## The SPARQL Query
 
 Let's start with the SPARQL query. A JSON-LD frame query needs a SPARQL `CONSTRUCT` query to create an RDF graph that is self contained and populated with relevant vocabulary and data. The graph in JSON-LD is used as input for the REST API call. The SPARQL `CONSTRUCT` query can be designed with API variables.
 
@@ -89,7 +92,7 @@ https://api.triplydb.com/queries/JD/JSON-LD-frame/run
 
 You could use API variables with a `?` e.g. `?[queryVariable]=[value]`
 
-# The Frame
+## The Frame
 
 The SPARQL query is not enough to provide the RDF data in a JSON serialization format. It requires additional syntactic conformities that cannot be defined in a SPARQL query. Thus the SPARQL query that was created needs a frame to restructure JSON-LD objects into JSON. The JSON-LD 1.1 standard allows for restructuring JSON-LD objects with a frame to JSON.
 
@@ -161,26 +164,24 @@ curl -X POST https://api.triplydb.com/queries/JD/JSON-LD-frame/run \
 The JSON-LD frame turns SPARQL results for the query in step 1 into a format that is accepted as plain REST API request.
 
 
-# Using SPARQL to create a frame
+## Using SPARQL to create a frame
 
 Another way to create a frame is by using the SPARQL editor in TriplyDB. 
 
 You can access the JSON-LD editor by clicking the three dots next to the SPARQL editor, and then selecting "To JSON-LD frame editor".
 
-![SPARQL editor](json-ld-navigator.png)
+![SPARQL editor](../assets/json-ld-navigator.png)
 
 Afterwards, the JSON script from above should be added to the JSON-LD Frame editor.
 
-![Ld-Frame box](json-ld-script.png)
+![Ld-Frame box](../assets/json-ld-script.png)
 
 
 Running the script results in the following REST-API result: 
 
-![REST-API result](json-ld-result.png)
+![REST-API result](../assets/json-ld-result.png)
 
 This can also be accessed by the generated API Link above the SPARQL editor. 
 Copying and pasting the generated link will direct you to a page where you can view the script:
 
-![](json-ld-in-api.png)
-
-
+![](../assets/json-ld-in-api.png)

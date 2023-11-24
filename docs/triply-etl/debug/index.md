@@ -1,3 +1,5 @@
+[TOC]
+
 # Debug
 
 TriplyETL includes functions that can be used during debugging. These debug function allow you to inspect in a detailed way how data flows through your pipeline. This allows you to find problems more quickly, and allows you to determine whether data is handled correctly by your TriplyETL configuration.
@@ -102,7 +104,7 @@ limit 10
 
 ## Function `logRecord()`
 
-This function prints the current state of the record to standard output. The record is a generic representation of the data that is extracted from one of the data sources (see the [Record documentation page](/triply-etl/extract/record) for more information).
+This function prints the current state of the record to standard output. The record is a generic representation of the data that is extracted from one of the data sources (see the [Record documentation page](../extract/record) for more information).
 
 The following snippet prints the inline JSON record to standard output:
 
@@ -134,7 +136,7 @@ Since this prints a full overview of what is available in the data source, this 
 
 ### Observe the effects of transformations
 
-Another common use case for `logRecord()` is to observe the record at different moments in time. This is specifically useful to observe the effects of [transformation functions](/triply-etl/transform), since these are the functions that modify the record.
+Another common use case for `logRecord()` is to observe the record at different moments in time. This is specifically useful to observe the effects of [transformation functions](../transform), since these are the functions that modify the record.
 
 The following snippet logs the record directly before and directly after the transformation function `split()` is called.
 

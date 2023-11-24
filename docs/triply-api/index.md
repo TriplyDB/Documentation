@@ -3,6 +3,10 @@ title: "Triply API"
 path: "/docs/triply-api"
 ---
 
+[TOC]
+
+# Triply API
+
 Each Triply instance has a fully RESTful API. All functionality, from managing
 the Triply instance to working with your data, is done through the API. This
 document describes the general setup of the API, contact
@@ -44,6 +48,14 @@ Authorization: Bearer TOKEN
 In the above, `TOKEN` should be replaced by your personal API token (a
 lengthy sequence of characters). See [Creating an API token](#creating-an-api-token) for
 information on how to create an API token.
+
+### Important Security Considerations
+
+- **Do Not Commit Your Token to a Git Repository**: Under no circumstances should you commit your TriplyDB token to a Git repository. This practice is not allowed according to our ISO standards.
+
+- **Do Not Share Your Token: Avoid sharing your TriplyDB token with anyone who should not have access to your TriplyDB resources**. Tokens should be treated as sensitive information and shared only with trusted parties.
+
+- **Change Tokens Regularly**: To enhance security, consider regularly generating a new token to replace the existing one especially if you suspect any compromise.
 
 ## Exporting linked data
 
@@ -97,14 +109,15 @@ curl -H 'Authorization: Bearer TOKEN' -H 'Content-Type: application/json' -X POS
 Upper-case letter words in json after `-d` must be replaced by the following values:
 
 - `NAME` :: The name of the dataset in the url.
-- `ACCESS_LEVEL` ::  *public*, *private* or *internal*. For more information visit [Access levels in TriplyDB](/triply-db-getting-started/reference/#access-levels).
+- `ACCESS_LEVEL` ::  *public*, *private* or *internal*. For more information visit [Access levels in TriplyDB](../triply-db-getting-started/reference/#access-levels).
 - `DISPLAY_NAME` :: The display name of the dataset. 
 
 
 ### Upload data to a dataset
 
+
 You can upload a data file via the Triply API. You need to [use the API Token](#using-the-api-token) and send an HTTP POST request with data specifying the local file path. 
-The list of supported file extentions can be checked in [Adding data: File upload](/triply-db-getting-started/uploading-data/#adding-data-file-upload) documentation. 
+The list of supported file extensions can be checked in [Adding data: File upload](../triply-db-getting-started/uploading-data/#adding-data-file-upload) documentation. 
 
 The  example of the URI:
 ```sh
@@ -114,6 +127,14 @@ curl -H 'Authorization: Bearer TOKEN' -X POST https://api.INSTANCE/datasets/ACCO
 Upper-case letter word after `-F` must be replaced by the following value:
 
 - `FILENAME` :: path to the local file, for example `example.ttl`. 
+
+
+You can upload data to an existing dataset without overwriting it by adding and setting the `mergeGraphs` functionality to `true`, like in the example below.
+
+```sh
+curl -H 'Authorization: Bearer TOKEN' -X POST https://api.INSTANCE/datasets/ACCOUNT/DATASET/jobs  -F file=@FILENAME -F mergeGraphs=true
+
+```
 
 ## Accounts
 
@@ -186,7 +207,7 @@ The above example includes the following GRLC annotations:
 
 ## LD Browser API
 
-Triply APIs provide a convenient way to access data used by [LD Browser](/triply-db-getting-started/viewing-data/#linked-data-browser), which offers a comprehensive overview of a specific IRI. By using Triply API for a specific IRI, you can retrieve the associated 'document' in the `.nt` format that describes the IRI.
+Triply APIs provide a convenient way to access data used by [LD Browser](../triply-db-getting-started/viewing-data/#linked-data-browser), which offers a comprehensive overview of a specific IRI. By using Triply API for a specific IRI, you can retrieve the associated 'document' in the `.nt` format that describes the IRI.
 
 To make an API request for a specific instance, you can use the following URI path:
 
@@ -199,9 +220,9 @@ To illustrate this, let's take the example of the DBpedia dataset and the [speci
 ```none
 https://api.triplydb.com/datasets/DBpedia-association/dbpedia/describe.nt?resource=http%3A%2F%2Fdbpedia.org%2Fresource%2FMona_Lisa
 ```
-in your browser, the `.nt` document describing the 'Mona Lisa' instance will be automatically downloaded. You can then upload this file to a dataset and [visualize it in a graph](/yasgui/#network-triplydb-plugin). Figure 1 illustrates the retrieved graph for the ‘Mona Lisa’ instance.
+in your browser, the `.nt` document describing the 'Mona Lisa' instance will be automatically downloaded. You can then upload this file to a dataset and [visualize it in a graph](../yasgui/#network-triplydb-plugin). Figure 1 illustrates the retrieved graph for the ‘Mona Lisa’ instance.
 
-![Figure 1](MonaLisaGraph.png)
+![Figure 1](../assets/MonaLisaGraph.png)
 
 The requested resource will be displayed in the center of the graph, forming an 'ego graph'. It will include all direct properties, as well as some indirect properties that are also pulled in by LD Browser. The labels for all classes and properties will be included for easy human-readable display.
 
@@ -377,7 +398,7 @@ Everybody who has access to the dataset also has access to its services, includi
 - For *Internal* datasets, only users that are logged into the triple store can issue queries.
 - For *Private* datasets, only users that are logged into the triple store and are members of `ACCOUNT` can issue queries.
 
-Notice that for professional use it is easier and better to use [saved queries](/triply-db-getting-started/saved-queries/#saved-queries).  Saved queries have persistent URIs, descriptive metadata, versioning, and support for reliable large-scale pagination ([see how to use pagination with saved query API](/triply-db-getting-started/saved-queries/#pagination-with-the-saved-query-api)).  Still, if you do not have a saved query at your disposal and want to perform a custom SPARQL request against an accessible endpoint, you can do so.  TriplyDB implements the SPARQL 1.1 Query Protocol standard for this purpose.
+Notice that for professional use it is easier and better to use [saved queries](../triply-db-getting-started/saved-queries/#saved-queries).  Saved queries have persistent URIs, descriptive metadata, versioning, and support for reliable large-scale pagination ([see how to use pagination with saved query API](../triply-db-getting-started/saved-queries/#pagination-with-the-saved-query-api)).  Still, if you do not have a saved query at your disposal and want to perform a custom SPARQL request against an accessible endpoint, you can do so.  TriplyDB implements the SPARQL 1.1 Query Protocol standard for this purpose.
 
 ### Sending a SPARQL Query request
 
@@ -806,11 +827,36 @@ Perform a search using the custom query:
 }
 ```
 
+This request is issued in the following way with the cURL command-line tool:
+
 ```sh
 curl -X POST 'https://api.triplydb.com/datasets/academy/pokemon/services/search/search' \
      -d '{"query":{"simple_query_string":{"query":"pikachu"}}}' \
      -H 'content-type: application/json'
 ```
+
+#### Count API
+
+Elasticsearch allows the number of results to be determined without having to actually retrieve all these results. This is done with the "Count API". This API comes in handy when the number of results is shown in applications such as faceted search interfaces.
+
+The following two requests return the number of results for the search strings "Iris" and "Setosa". Notice that "Iris" occurs more often (184 times) than "Setosa" (52 times):
+
+```sh
+curl 'https://api.triplydb.com/datasets/Triply/iris/services/iris-es/_count'
+     -H 'Content-Type: application/json'
+     --data-raw $'{"query": { "simple_query_string": { "query": "Iris" } } }'
+{"count":184,"_shards":{"total":1,"successful":1,"skipped":0,"failed":0}}
+```
+
+and:
+
+```sh
+curl 'https://api.triplydb.com/datasets/Triply/iris/services/iris-es/_count'
+     -H 'Content-Type: application/json'
+     --data-raw $'{"query": { "simple_query_string": { "query": "Setosa" } } }'
+{"count":52,"_shards":{"total":1,"successful":1,"skipped":0,"failed":0}}
+```
+
 ## Setting up index templates for ElasticSearch
 TriplyDB allows you to configure a custom mapping for Elasticsearch services in TriplyDB using index templates.
 #### Index templates

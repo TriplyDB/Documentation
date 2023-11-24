@@ -1,3 +1,5 @@
+[TOC]
+
 ## Create statements {#create-statements}
 
 After source data is connected and transformed, the RATT Record is ready to be transformed to linked data.  Linked data statements are assertions or factual statements that consist of 3 terms (triple) or 4 terms (quadruples).

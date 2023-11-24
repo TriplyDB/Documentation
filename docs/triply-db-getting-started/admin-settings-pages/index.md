@@ -1,3 +1,5 @@
+[TOC]
+
 # Admin settings Pages
 
 You can use the console to perform administrator tasks. The administrator tasks are performed within the admin settings page. The admin settings pages are accessible by clicking on the user menu in the top-right corner and selecting the “Admin settings” menu item. You must have administrator privileges to access these pages and perform administrator tasks.
@@ -31,9 +33,17 @@ The settings page is the main page for administrators to institute instance wide
 ### Set logos and banner
 
 For changing the logos and the banner follow the next steps:
+
 1. Click on the “Admin settings” link in the user menu (top-right corner) and click the "Settings" tab. This brings up an overview of all the settings an admin can set for the TriplyDB instance.
 
-2. Under "Site logos" and "Site banner" you can upload a site logo (square and landscape) or a banner. Make sure you use SVG files with a maximum size of 5 MB.
+2. Under "Site logos" and "Site banner" you can upload a site logo (square and landscape) or a banner. 
+
+    - The logo (preferably squared) is required to be SVG. In the UI the 30x30px image is displayed. 
+
+    - The banner can be of any format, however, the WEBP is preferred. The image's resolution should be between 1920x500 and up to 4000x500. The banner is displayed at a height 500px. If the image is smaller than the browser screen size, the image will be stretched. 
+
+    - Make sure you use files with a maximum size of 5 MB.
+    
 
 ### Setting metadata
 
@@ -42,7 +52,7 @@ For changing the metadata follow the next steps:
 
 2. On that page navigate to "Site metadata", it looks as follows:
 
-![Metadata settings](metadata-settings.png)
+![Metadata settings](../../assets/metadata-settings.png)
 
 3. Here you can set the name, tag line, description and welcome text. The name of your website appears in your browser tab. The welcome text appears on the homepage of your TriplyDB instance. The tagline and description are for metadata purposes (e.g. findability and website previews).
 
@@ -156,8 +166,8 @@ The type of account can be observed based on the following icons:
 
 | **Icon**              | **Account type** |
 | --------------------- | ---------------- |
-| ![](organization.png) | organization     |
-| ![](user.png)         | user             |
+| ![](../../assets/organization.png) | organization     |
+| ![](../../assets/user.png)         | user             |
 
 ### Create a new user
 

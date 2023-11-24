@@ -1,3 +1,5 @@
+[TOC]
+
 # Data Formats
 
 ## Overview
@@ -44,7 +46,7 @@ The following code snippet extracts records from an online CSV file, that is hos
 fromCsv(Source.url('https://somewhere.com/data.csv')),
 ```
 
-The following code snippet extracts records from a [TriplyDB Asset](/triply-etl/extract/types#triplydb-assets). The asset is store in the data with name `'some-data'`, under an account with name `'some-account'`. The name of the asset is `'example.csv'`:
+The following code snippet extracts records from a [TriplyDB Asset](../types#triplydb-assets). The asset is store in the data with name `'some-data'`, under an account with name `'some-account'`. The name of the asset is `'example.csv'`:
 
 ```ts
 fromCsv(
@@ -136,7 +138,7 @@ which is emitted as the following two TriplyETL records:
 ```
 
 Notice that:
-- All values have type `string`, including `"ID"` and `"Age"`. The value for field `"Age"` should probably be considered numeric, but the CSV format cannot express this. A TriplyETL [transformation](/triply-etl/transform) can be used to cast string values to numeric values.
+- All values have type `string`, including `"ID"` and `"Age"`. The value for field `"Age"` should probably be considered numeric, but the CSV format cannot express this. A TriplyETL [transformation](../../transform) can be used to cast string values to numeric values.
 - The trailing space in `"D., Jane "` is omitted from the second record, since training whitespace is removed from all keys and values.
 - The `"Age"` key is missing from the second record, since the corresponding CSV cell contains the empty string, which is considered to denote an empty value.
 
@@ -146,7 +148,7 @@ Notice that:
 
 JSON (JavaScript Object Notation) is a popular open standard for interchanging tree-shaped data. TriplyETL has a dedicated `fromJson()` extractor for this format.
 
-The following code snippet connects to a JSON source that is stored as a [TriplyDB asset](/triply-etl/extract/types#triplydb-assets):
+The following code snippet connects to a JSON source that is stored as a [TriplyDB asset](../types#triplydb-assets):
 
 ```ts
 fromJson(
@@ -337,7 +339,7 @@ logRecord(),
 
 TSV or Tab-Separated Values (file name extension `.tsv`) is a popular format for tabular source data. TriplyETL has a `fromTsv()` extractor to support this format.
 
-The following code snippet extracts records for TSV file that is stored as a [TriplyDB Asset](/triply-etl/extract/types#triplydb-assets):
+The following code snippet extracts records for TSV file that is stored as a [TriplyDB Asset](../types#triplydb-assets):
 
 ```ts
 fromTsv(
@@ -386,7 +388,8 @@ which is emitted as the following two TriplyETL records:
 ```
 
 Notice that:
-- All values have type `string`, including `"ID"` and `"Age"`. The value for field `"Age"` should probably be considered numeric, but the TSV format cannot express this. A TriplyETL [transformation](/triply-etl/transform) can be used to cast string values to numeric values.
+
+- All values have type `string`, including `"ID"` and `"Age"`. The value for field `"Age"` should probably be considered numeric, but the TSV format cannot express this. A TriplyETL [transformation](../../transform) can be used to cast string values to numeric values.
 - The trailing space in `"D., Jane "` is omitted from the second record, since training whitespace is removed from all keys and values.
 - The `"Age"` key is missing from the second record, since the corresponding TSV cell contains the empty string, which is considered to denote an empty value.
 
@@ -396,7 +399,7 @@ Notice that:
 
 XLSX or Office Open XML Workbook (file name extension `.xlsx`) is a popular format for storing tabular source data. This is the standard file format for Microsoft Excel. TriplyETL has a dedicated `fromXlsx()` extractor for such sources.
 
-The following code snippet shows how a [TriplyDB assets](/triply-etl/extract/types#triplydb-assets) is used to process records from an XLSX source:
+The following code snippet shows how a [TriplyDB assets](../types#triplydb-assets) is used to process records from an XLSX source:
 
 ```ts
 fromXlsx(
@@ -465,7 +468,7 @@ Notice the following:
 
 For every record emitted by the `fromXlsx()` extractor. the `$sheetName` special key contains the name of the Excel sheet from which that record originates. The presence of the sheet name allows the TriplyETL configuration to be adjusted for different sheet.
 
-For example, an Excel spreadsheet may contain a 'companies' sheet and a 'persons' sheet. The name of the sheet may be used to determine which class should be asserted. The following snippet uses transformation [translateAll()](/triply-etl/transform/ratt#function-translateall) to map sheet names to class IRIs:
+For example, an Excel spreadsheet may contain a 'companies' sheet and a 'persons' sheet. The name of the sheet may be used to determine which class should be asserted. The following snippet uses transformation [translateAll()](../../transform/ratt#function-translateall) to map sheet names to class IRIs:
 
 ```ts
 fromXlsx(Source.file('example.xlsx')),
@@ -535,7 +538,7 @@ The following snippet shows how to load a local shapefile:
 ```ts
 fromShapeFile(Source.file("example.shp"))
 ```
-If the shapefile is stored as the asset for the dataaset in the TriplyDB instance, you can load it from there:
+If the shapefile is stored as the asset for the dataset in the TriplyDB instance, you can load it from there:
 ```ts
 fromShapeFile(
   Source.TriplyDb.asset(
@@ -588,7 +591,7 @@ For example, the first record in file `nl_1km.shp` (downloaded from [European En
 }
 ```
 
-You can now work with shapefiles and use [geojsonToWkt()](/triply-etl/transform/ratt/#function-geojsontowkt) transfrom function to create geomerty. 
+You can now work with shapefiles and use [geojsonToWkt()](../../transform/ratt/#function-geojsontowkt) transfrom function to create geomerty. 
 
 
 
@@ -596,7 +599,7 @@ You can now work with shapefiles and use [geojsonToWkt()](/triply-etl/transform/
 
 XML or Extensible Markup Language is a popular open format for tree-shaped source data.
 
-The following snippets connects to an XML file that is made available as a [TriplyDB asset](/triply-etl/extract/types#triplydb-assets):
+The following snippets connects to an XML file that is made available as a [TriplyDB asset](../types#triplydb-assets):
 
 ```ts
 fromXml(
@@ -681,7 +684,7 @@ Schema markup is how Google can serve up rich results (also called rich snippets
 
 The schema is included in HTML in the following way:
 
-![basic JSON-LD markup ](html-schema.png)
+![basic JSON-LD markup ](../../../assets/html-schema.png)
 
 1. `The Script Type`: What format your structured data will take (JSON-LD)
 2. `The Context`: Where the language you’re using comes from (schema.org)

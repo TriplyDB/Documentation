@@ -1,3 +1,5 @@
+[TOC]
+
 This document explains how to maintain an ETL that runs in the gitlab CI.
 
 # How to create a TriplyETL CI pipeline?

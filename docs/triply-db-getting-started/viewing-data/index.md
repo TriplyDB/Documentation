@@ -1,3 +1,5 @@
+[TOC]
+
 # Viewing Data
 
 TriplyDB offers several ways to explore your datasets.
@@ -7,7 +9,7 @@ TriplyDB offers several ways to explore your datasets.
 The linked data browser offers to traverse the data by focusing on one node
 at the time. The node is describe using it's properties, which can be followed
 to other nodes in the graph.
-![Image of the linked Data Browser](ld-browser.png)
+![Image of the linked Data Browser](../../assets/ld-browser.png)
 
 The following properties provide additional information about your linked data, enabling the LD-browser to display visualizations and provide a better user experience.
 
@@ -19,7 +21,7 @@ By using `rdf:type`, you can indicate the category or classification of the reso
 
 In the [example below](https://triplydb.com/Triply/iris/browser?resource=http%3A%2F%2Fdbpedia.org%2Fresource%2FIris_setosa), you can see that "Iris setosa" is the type of flowering plant due to the usage of the `rdf:type` property.
 
-![rdf:type in the LD-browser](type.png)
+![rdf:type in the LD-browser](../../assets/type.png)
 
 #### Labels
 
@@ -31,7 +33,7 @@ These predicates allow you to provide human-readable labels or names for your re
 
 In the [example below](https://triplydb.com/academy/pokemon/browser?resource=https%3A%2F%2Ftriplydb.com%2Facademy%2Fpokemon%2Fid%2Fpokemon%2Fpikachu), the `rdfs:label` property was used to denote the label(name) of the Pokemon, resulting in the display of "Pikachu" above its corresponding image.
 
-![rdfs:label in the LD-browser](label.png)
+![rdfs:label in the LD-browser](../../assets/label.png)
 #### Descriptions
 
 Descriptions can provide additional context or information about a resource, helping users understand its purpose, content, or significance.
@@ -42,7 +44,7 @@ These predicates allow you to provide textual descriptions or comments about you
 
 In the [following example](https://triplydb.com/Triply/iris/browser?resource=http%3A%2F%2Fdbpedia.org%2Fresource%2FIris_setosa) `rdfs:comment` was used to provide additional information on Iris Setosa.
 
-![rdfs:comment in the LD-browser](description.png)
+![rdfs:comment in the LD-browser](../../assets/description.png)
 
 
 #### Geo 
@@ -55,7 +57,7 @@ These are some of the predicates used for representing geographic information in
 
 In the [following example](https://triplydb.com/osm/osm/browser?resource=https%3A%2F%2Fdata.osm.pldn.nl%2Fway%2F34997507) `geo:hasGeometry` property was used to showcase a map depicting the location of Instituut voor Beeld en Geluid.
 
-![geo:hasGeometry in the LD-browser](geo.png)
+![geo:hasGeometry in the LD-browser](../../assets/geo.png)
 #### Images
 
 These predicates allow you to associate images or visual representations with your resources:
@@ -71,7 +73,7 @@ By using these predicates, you can provide URLs or references to images that can
 
 In the [example below](https://triplydb.com/academy/pokemon/browser?resource=https%3A%2F%2Ftriplydb.com%2Facademy%2Fpokemon%2Fid%2Fpokemon%2Fpikachu), `foaf:depiction` was used to display picture of Pikachu in the LD-browser:
 
-![foaf:depiction in the LD-browser](image.png)
+![foaf:depiction in the LD-browser](../../assets/image.png)
 #### Audio
 
 These predicates allow you to associate audio content with your resources:
@@ -84,7 +86,7 @@ You can use these predicates to provide URLs or references to audio files that c
 
 In the [following example](https://nightly.triplydb.com/Triply/efteling/browser?resource=https%3A%2F%2Fnightly.triplydb.com%2Fefteling%2FCarnavalFestival), `sdo:audio` was used to showcase audio content of the Carnival Festival within the LD-browser.
 
-![sdo:audio in the LD-browser](audio.png)
+![sdo:audio in the LD-browser](../../assets/audio.png)
 #### Video
 
 These predicates allow you to associate video content with your resources:
@@ -97,7 +99,7 @@ You can use these predicates to provide URLs or references to video files that c
 
 In the [following example](https://test.triply.cc/Philippe/ld-patterns/browser?resource=https%3A%2F%2Ftest.triply.cc%2FPhilippe%2Fld-patterns%2Fid%2Fvideo%2Fkleine-piep_0.0), `sdo:contentUrl` was used to showcase video content of the Kleine Piep within the LD-browser.
 
-![sdo:contentUrl in the LD-browser](video.png)
+![sdo:contentUrl in the LD-browser](../../assets/video.png)
 
 ## Linked Data Table
 
@@ -106,7 +108,7 @@ three columns represent the subject, predicate, and object position of
 the triple. The fourth column represents the graph to which the
 triple belongs.
 
-![Image of the linked data Table](linked-data-table.png)
+![Image of the linked data Table](../../assets/linked-data-table.png)
 
 The linked data Table can be used to perform simple queries by filling
 in the subject, predicate, object, and/or graph using the text field.
@@ -118,19 +120,19 @@ show the triples in which that term appears in the subject position.
 
 Queries in the linked data Table can also be performed automatically
 through the Statements API and the [Triple Pattern Fragments
-API](/triply-api#triple-pattern-fragments-tpf).
+API](../../triply-api#triple-pattern-fragments-tpf).
 
 ## SPARQL IDE
 
 When a dataset has a running SPARQL service, the data can be queried
 from the SPARQL IDE. The SPARQL IDE is an extended version of the
-Open Source [Yasgui](/yasgui) query editor.
+Open Source [Yasgui](../../yasgui) query editor.
 
 ### Saving a SPARQL query
 
 It is often useful to save a SPARQL query for later use. This is
 achieved by clicking on the save icon in the top-right corner of the
-SPARQL Editor. Doing so will create a [Save Query](/triply-db-getting-started/saved-queries#saved-queries).
+SPARQL Editor. Doing so will create a [Save Query](../saved-queries#saved-queries).
 
 ### Sharing a SPARQL query
 
@@ -146,7 +148,7 @@ from which the SPARQL query can be copied in the following three forms:
    visualizations. Long URLs are not supported by some application
    that cut off a URL after a maximum length (often 1,024
    characters). Use one of the other two options or use [Saved
-   Queries](/triply-db-getting-started/saved-queries#saved-queries) to avoid such restrictions.
+   Queries](../saved-queries#saved-queries) to avoid such restrictions.
 
 2. A short URL that redirects to the full URL-encoded SPARQL query.
 
@@ -154,7 +156,7 @@ from which the SPARQL query can be copied in the following three forms:
    application that supports this command. cURL is often used by
    programmers to test HTTP(S) requests.
 
-[Saved Queries](/triply-db-getting-started/saved-queries#saved-queries) are a more modern way of sharing SPARQL queries.
+[Saved Queries](../saved-queries#saved-queries) are a more modern way of sharing SPARQL queries.
 They do not have any of the technical limitations that occur with
 URL-encoded queries.
 
@@ -162,15 +164,15 @@ URL-encoded queries.
 
 The SPARQL queries could be transferred to another account or an organization. To do that, go to the setting field at the query page,
 
-![Transfer a SPARQL query](where-find-transfer.png)
+![Transfer a SPARQL query](../../assets/where-find-transfer.png)
 
 choose transfer
 
-![Transfer a SPARQL query](transfer-query.png)
+![Transfer a SPARQL query](../../assets/transfer-query.png)
 
 and then choose where the SPARQL query should be moved to.
 
-![Transfer a SPARQL query](transfer-to-organization.png)
+![Transfer a SPARQL query](../../assets/transfer-to-organization.png)
 
 After the destination is set you would be redirected to the SPARQL query new page. The SPARQL query could be transferred from an account to an organization and vice versa.
 
@@ -178,11 +180,11 @@ After the destination is set you would be redirected to the SPARQL query new pag
 
 Users can copy SPARQL queries to another account or an organization. To do that, click on three dots in the upper right corner of the query and choose the copy option.
 
-![Copy query](copyQuery.png)
+![Copy query](../../assets/copyQuery.png)
 
 Then, choose where the SPARQL query should be moved to.
 
-![Select organization](selectOrganization.png)
+![Select organization](../../assets/selectOrganization.png)
 
 After setting the destination, you will be redirected to the SPARQL query new page. The SPARQL query can be copied from an account to an organization and vice versa.
 ## ElasticSearch

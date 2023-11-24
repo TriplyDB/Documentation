@@ -1,3 +1,5 @@
+[TOC]
+
 # Saved Queries
 
 A Saved Query is a versioned SPARQL query with its own URL. Using this URL,
@@ -10,10 +12,10 @@ removing the hassle of figuring out how to run a SPARQL query.
 There are two ways to create a saved query.
 _You need to be logged in and have authorization rights on the dataset to use this feature_
 
-1. When working from the [SPARQL IDE](/triply-db-getting-started/viewing-data#sparql-ide)
+1. When working from the [SPARQL IDE](../viewing-data#sparql-ide)
 2. Using the Saved Queries tab in a dataset
 
-Creating a saved query with the SPARQL IDE is done by writing a query/visualization and hitting the save button ![The save query button highlighted](save-query-highlighted.png)
+Creating a saved query with the SPARQL IDE is done by writing a query/visualization and hitting the save button ![The save query button highlighted](../../assets/save-query-highlighted.png)
 
 ## Creating a new version
 
@@ -23,13 +25,13 @@ Updating the saved query can be done by clicking a query in the Saved Queries ta
 
 If you want to delete a saved query, you can do so by clicking the three dots on the top right corner of the query, as shown in the image below, and then clicking `Delete`.
 
-![Deleting a saved query](delete-query.png)
+![Deleting a saved query](../../assets/delete-query.png)
 
 ## Using a saved query
 
 ### Sharing a saved query
 
-To share a saved query, for example in [Data Stories](/triply-db-getting-started/data-stories#data-stories), you can copy the link that is
+To share a saved query, for example in [Data Stories](../data-stories#data-stories), you can copy the link that is
 used when you open the query in TriplyDB. Let's say you have a query called
 `Timelined-Cars-BETA` in the dataset `core` under the account `dbpedia` and you
 want to use version 9. Then the following link would be used
@@ -48,11 +50,11 @@ https://triplydb.com/DBpedia-association/-/queries/timeline-cars
 
 The result of a query can be downloaded via the TriplyDB interface. After saving the query, open it in TriplyDB. e.g. <https://triplydb.com/DBpedia-association/-/queries/timeline-cars/>. 
 
-You can download results in different data format, depending on which [visualization option](/yasgui/#visualizations) you use.
+You can download results in different data format, depending on which [visualization option](../../yasgui/#visualizations) you use.
 For example, if you want to download the results in a `.json` format, you can choose the option `Response` and click on the download icon or scroll down and click on `Download result`.
 
-![Download the query result via the download icon.](queryResult.png)
-![Download the query result via the button `Download result`.](queryResult2.png)
+![Download the query result via the download icon.](../../assets/queryResult.png)
+![Download the query result via the button `Download result`.](../../assets/queryResult2.png)
 
 The downloaded file is automatically stored in the `Downloads`-folder and has the name of the query. In our example, the file is called `timeline-cars.json`. The downloaded file contains the query result as a json-object. TriplyDB also displays the json-object when selecting the option `Response`.
 
@@ -60,16 +62,16 @@ Below is a table of all supported visualizations and what format of results they
 
 |                     **Visualization option**                 | **Result data format** |
 | ------------------------------------------------------------ | ---------------------- |
-|       [Table](/yasgui/#table)          | `.csv`                 |
-|       [Response](/yasgui/#response)    | `.json`                |
-|       [Gallery](/yasgui/#gallery-triplydb-plugin)      | Download not supported |
-|       [Chart](/yasgui/#chart-triplydb-plugin)         | `.svg`                 |
-|       [Geo](/yasgui/#geo-triplydb-plugin)              | Download not supported |
-|       [Geo-3D](/yasgui/#geo-3d-triplydb-only)        | Download not supported |
-|       [Geo events](/yasgui/#geo-events-triplydb-plugin)| Download not supported |
-|       [Markup](/yasgui/#markup-triplydb-plugin)        | `.svg`, `.html`        |
-|       [Network](/yasgui/#network-triplydb-plugin)      | `.png`                 |
-|       [Timeline](/yasgui/#timeline-triplydb-plugin)    | Download not supported |
+|       [Table](../../yasgui/#table)          | `.csv`                 |
+|       [Response](../../yasgui/#response)    | `.json`                |
+|       [Gallery](../../yasgui/#gallery-triplydb-plugin)      | Download not supported |
+|       [Chart](../../yasgui/#chart-triplydb-plugin)         | `.svg`                 |
+|       [Geo](../../yasgui/#geo-triplydb-plugin)              | Download not supported |
+|       [Geo-3D](../../yasgui/#geo-3d-triplydb-only)        | Download not supported |
+|       [Geo events](../../yasgui/#geo-events-triplydb-plugin)| Download not supported |
+|       [Markup](../../yasgui/#markup-triplydb-plugin)        | `.svg`, `.html`        |
+|       [Network](../../yasgui/#network-triplydb-plugin)      | `.png`                 |
+|       [Timeline](../../yasgui/#timeline-triplydb-plugin)    | Download not supported |
 
 
 
@@ -103,7 +105,7 @@ link:
 
 #### Pagination with TriplyDB.js
 
-**TriplyDB.js** is the official programming library for interacting with [TriplyDB](/triply-db-getting-started/). TriplyDB.js allows the user to connect to a TriplyDB instance via the TypeScript language. TriplyDB.js has the advantage that it can handle pagination internally so it can reliably retrieve a large number of results.
+**TriplyDB.js** is the official programming library for interacting with [TriplyDB](../). TriplyDB.js allows the user to connect to a TriplyDB instance via the TypeScript language. TriplyDB.js has the advantage that it can handle pagination internally so it can reliably retrieve a large number of results.
 
 To get the output for a `construct` or `select` query, follow these steps:
 
@@ -191,7 +193,7 @@ SPARQL queries as a RESTful API, also means you can transport your data to your 
 
 Clicking the '</>' button opens the code snippet screen. Here you select the snippet in the language you want to have, either Python or R. You can then copy the snippet, by clicking the 'copy to clipboard' button or selecting the snippet and pressing `ctrl-c`. Now you can paste the code in the location you want to use the data. The data is stored in the `data` variable in `JSON` format.
 
-When the SPARQL query is not public, but instead either private or internal, you will need to add an authorization header to the get request. Without the authorization header the request will return an incorrect response. Checkout [Creating your API token](/triply-api/#creating-an-api-token) about creating your API-token for the authorization header.
+When the SPARQL query is not public, but instead either private or internal, you will need to add an authorization header to the get request. Without the authorization header the request will return an incorrect response. Checkout [Creating your API token](../../triply-api/#creating-an-api-token) about creating your API-token for the authorization header.
 
 Check out the [SPARQL pagination page](#download-more-than-10-000-query-results-sparql-pagination) when you want to query a SPARQL query that holds more than 10.000 results. The [SPARQL pagination page ](#download-more-than-10-000-query-results-sparql-pagination) will explain how you can retrieve the complete set.   
 
@@ -203,7 +205,7 @@ Every Saved Query has a metadata section. This metadata section includes the fol
 
 Users can specify a query title and description, both of which are included as metadata. The access level and version of the query are also exposed as metadata. See the following screenshot for how the metadata fields are shown in TriplyDB:
 
-![Metadata fields for a Saved Query in TriplyDB](saved-query-metadata.png)
+![Metadata fields for a Saved Query in TriplyDB](../../assets/saved-query-metadata.png)
 
 Users can specify additional metadata inside the query string, by using the GRLC annotation format. GRLC annotations start with the hash and plus sign characters (`#+`). Visit the [GRLC project](https://github.com/CLARIAH/grlc) to learn more about this format. For example, the following GRLC annotation could indicate to a software application that the query should be repeated every hour:
 
@@ -211,4 +213,4 @@ Users can specify additional metadata inside the query string, by using the GRLC
 #+ frequency: hourly
 ```
 
-See the [Triply API documentation](/triply-api#queries) for how to retrieve query metadata, including how to retrieve GRLC annotations.
+See the [Triply API documentation](../../triply-api#queries) for how to retrieve query metadata, including how to retrieve GRLC annotations.

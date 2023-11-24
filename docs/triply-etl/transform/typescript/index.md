@@ -3,13 +3,17 @@ title: "2. Transform: TypeScript"
 path: "/docs/triply-etl/transform/typescript"
 ---
 
-The vast majority of ETLs can be written with the core set of [RATT Transformations](/triply-etl/transform/ratt).  But sometimes a custom transformation is necessary that cannot be handled by this core set.  For such circumstances, TriplyETL allows a custom TypeScript function to be written.
+[TOC]
+
+# TypeScript
+
+The vast majority of ETLs can be written with the core set of [RATT Transformations](../ratt).  But sometimes a custom transformation is necessary that cannot be handled by this core set.  For such circumstances, TriplyETL allows a custom TypeScript function to be written.
 
 Notice that the use of a custom TypeScript function should be somewhat uncommon.  The vast majority of real-world transformations should be supported by the core set of RATT Transformations.
 
 
 
-# Context
+## Context
 
 Custom TypeScript functions have access to various resources inside the TriplyETL.  These resources include, but are not limited to, the full Record and the full Internal Store.
 
@@ -28,13 +32,13 @@ TriplyETL refers to these resources as the **Context**.
 
 
 
-# Function `custom.add()`
+## Function `custom.add()`
 
 Adds a new entry to the Record, based on more than one existing entry.
 
 The value of the entry is the result of an arbitrary TypeScript function that has access to the full [Context](#context).
 
-## Function signature
+### Function signature
 
 The `custom.add` function has the following signature:
 
@@ -51,16 +55,16 @@ The function can be configured in the following ways:
 - `FUNCTION_BODY` the body of a function, taking the Context as its input parameter (`context)` and ending with a `return` statement returning the newly added value.
 - `NEW_KEY` must be the name of a new entry in the Record.
 
-## Error conditions
+### Error conditions
 
 This function emits an error if `NEW_KEY` already exists in the current Record.
 
-## See also
+### See also
 
 Notice that it is bad practice to use `custom.add()` for adding a new entry that is based on exactly one existing entry.  In such cases, the use of function `custom.copy()`
-## Example: Numeric calculations
+### Example: Numeric calculations
 
-Suppose the source data contains a numeric balance and a numeirc rate.  We can use function `custom.add()` to calculate the interest and store it in a new key:
+Suppose the source data contains a numeric balance and a numeric rate.  We can use function `custom.add()` to calculate the interest and store it in a new key:
 
 ```ts
 import { Etl, fromJson } from '@triplyetl/etl/generic'
@@ -100,11 +104,11 @@ This prints the following two records:
 
 
 
-# Function `custom.change()` <!-- {#change} -->
+## Function `custom.change()` <!-- {#change} -->
 
 Changes an existing entry in the Record.  The `change` function takes the old value and returns the new value.
 
-## Function signature
+### Function signature
 
 This function has the following signature:
 
@@ -130,11 +134,11 @@ The function can be configured in the following way:
   - `'unknown'` an unknown type.
 - `FUNCTION_BODY` a function body that returns the new value.
 
-## Error conditions
+### Error conditions
 
 This function emits an error if the specified key (`KEY_NAME`) does not exist in the RATT record.  Use `custom.copy()` if you want to create a new entry based on an existing one.
 
-## Example: Numeric calculation
+### Example: Numeric calculation
 
 Suppose the source data contains a balance in thousands.  We can use function `custom.change()` to multiply the balance inplace:
 
@@ -170,9 +174,9 @@ This prints the following two records:
 
 Notice that the values for the `balance` keys were changed.
 
-## Example: Cast numeric data
+### Example: Cast numeric data
 
-Some source data formats are unable to represent numeric data. A good example are the [CSV](/triply-etl/extract/formats#extractor-fromcsv) and [TSV](/triply-etl/extract/formats#extractor-fromtsv) formats, where every cell value is represented as a string.
+Some source data formats are unable to represent numeric data. A good example are the [CSV](../../extract/formats#extractor-fromcsv) and [TSV](../../extract/formats#extractor-fromtsv) formats, where every cell value is represented as a string.
 
 If such a source data format that cannot represent numeric data is used, it is often useful to explicitly cast string values to numbers.
 
@@ -206,14 +210,14 @@ After `custom.change()` has been applied, the record looks as follows:
 | Italy       | null        |
 | Netherlands | 17650200    |
 
-Notice that strings that encode a number are correctly transformed, and non-empty strings that do not encode a number are transformed to `null`.  Most of the time, this is the behaviour that you want in a linked data pipeline.
+Notice that strings that encode a number are correctly transformed, and non-empty strings that do not encode a number are transformed to `null`.  Most of the time, this is the behavior that you want in a linked data pipeline.
 <!-- TODO
 When [creating statements](#create-statements) later, no statement will be created for entries that have value `null`.  See the [section on working with null values](#null-values) for more information.
 -->
 
-Also notice that the empty string is cast to the number zero. Most of the time, this is *not* what you want. If you want to prevent this transformation from happening, and you almost certainly do, you must process the source data conditionally, using [control structures](/triply-etl/control).
+Also notice that the empty string is cast to the number zero. Most of the time, this is *not* what you want. If you want to prevent this transformation from happening, and you almost certainly do, you must process the source data conditionally, using [control structures](../../control).
 
-## Example: Variant type
+### Example: Variant type
 
 A *variant* is a value that does not always have the same type.  Variants may appear in dirty source data, where a value is sometimes given in one way and sometimes in another.
 
@@ -259,7 +263,7 @@ This prints the following two records, where the balance is now always a number 
 }
 ```
 
-## Example: String or object
+### Example: String or object
 
 In the following example the `name` of a person is sometimes given as a plain string and sometimes as an object with a `fistName` and a `lastName` key:
 
@@ -315,11 +319,11 @@ This print the following two records that can now be uniformly processed:
 
 
 
-# `custom.replace()` 
+## `custom.replace()` 
 
 Replaces the value of an existing key based on the value from another key.
 
-## Function signature
+### Function signature
 
 The `custom.replace()` function has the following signature:
 
@@ -339,14 +343,14 @@ etl.use(
 - The `change` key optionally specifies a function that takes the cast `value` of `fromKey` and that returns the value that will be stored in `toKey`.  If the `change` function is not specified, it is identical to `value => value`.
 - `toKey` is the name of the existing key whose value is going to be replaced.
 
-## Error conditions
+### Error conditions
 
 This function emits an error under the following conditions:
 - `fromKey` does not specify a key name that exists in the current Record.
 - `toKey` does not specify a key name that exists in the current Record.
 - `fromKey` and `toKey` are the same.
 
-## See also
+### See also
 
 If `fromKey` and `toKey` are the same, then function [custom.change()](#function-customchange) must be used instead.
 

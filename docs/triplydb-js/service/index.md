@@ -1,11 +1,13 @@
+[TOC]
+
 # Service
 
 Service objects describe specific functionalities that can be created over datasets in TriplyDB.
 
 Service objects are obtained through the the following methods:
 
-- [`Dataset.addService`](/triplydb-js/dataset#datasetaddservicename-string-metadata-object)
-- [`Dataset.getServices`](/triplydb-js/dataset#datasetgetservices)
+- [`Dataset.addService`](../dataset#datasetaddservicename-string-metadata-object)
+- [`Dataset.getServices`](../dataset#datasetgetservices)
 
 A service always has one of the following statuses:
 
@@ -111,7 +113,7 @@ await Promise.all(dataset.getServices().map(service => service.update()))
 
 ## Service.waitUntilRunning()
 
-A service can be stopped or updated. The use of asynchronous code means that when a start command is given it takes a while before the service is ready for use. To make sure a service is available for querying you can uesr the function `waitUntilRunning()` to make sure that the script will wait until the service is ready for use.
+A service can be stopped or updated. The use of asynchronous code means that when a start command is given it takes a while before the service is ready for use. To make sure a service is available for querying you can user the function `waitUntilRunning()` to make sure that the script will wait until the service is ready for use.
 
 ### Example
 

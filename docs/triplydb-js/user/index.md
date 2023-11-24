@@ -1,17 +1,19 @@
+[TOC]
+
 # User
 
 Instances of class `User` denote users in TriplyDB.
 
 ### Obtaining instances
 
-Users are obtained with method [`App.getUser(name?: string)`](/triplydb-js/app#appgetusername-string):
+Users are obtained with method [`App.getUser(name?: string)`](../app#appgetusername-string):
 
 ```ts
 const user = triply.getUser('john-doe')
 const user = triply.getUser()
 ```
 
-Alternatively, users are obtained by first obtaining an account ([`App.getAccount(name?: string)`](/triplydb-js/app#appgetaccountname-string)) and then casting it to a use ([`Account.asUser()`](/triplydb-js/account#accountasuser)):
+Alternatively, users are obtained by first obtaining an account ([`App.getAccount(name?: string)`](../app#appgetaccountname-string)) and then casting it to a use ([`Account.asUser()`](../account#accountasuser)):
 
 ```ts
 const account = await triply.getAccount('john-doe')
@@ -20,39 +22,39 @@ const user = account.asUser()
 
 ### Inheritance
 
-`User` is a subclass of [Account](/triplydb-js/account#account), from which it inherits most of its methods.
+`User` is a subclass of [Account](../account#account), from which it inherits most of its methods.
 
 ### Limitations
 
-Users cannot be created or deleted through the TriplyDB.js library. See the [Triply Console documentation](/triply-db-getting-started) for how to create and delete users through the web-based GUI.
+Users cannot be created or deleted through the TriplyDB.js library. See the [Triply Console documentation](../../triply-db-getting-started) for how to create and delete users through the web-based GUI.
 
 
 ## User.addDataset(name: string, metadata?: object)
 
 Adds a new TriplyDB dataset with the given `name` to the current account.
 
-Inherited from [`Account.addDataset(name: string, metadata?: object)`](/triplydb-js/account#accountadddatasetname-string-metadata-object).
+Inherited from [`Account.addDataset(name: string, metadata?: object)`](../account#accountadddatasetname-string-metadata-object).
 
 
 ## User.addQuery(metadata: object)
 
 Adds a new TriplyDB query to the current user.
 
-Inherited from [`Account.addQuery(name:string, metadata: object)`](/triplydb-js/account#accountaddqueryname-string-metadata-object).
+Inherited from [`Account.addQuery(name:string, metadata: object)`](../account#accountaddqueryname-string-metadata-object).
 
 
 ## User.ensureStory(name: string, metadata: object)
 
 Ensures the existence of a story with the given `name` and with the specified `metadata`.
 
-Inherited from [`Account.ensureStory(name: string, metadata: object)`](/triplydb-js/account#accountensurestoryname-string-metadata-object).
+Inherited from [`Account.ensureStory(name: string, metadata: object)`](../account#accountensurestoryname-string-metadata-object).
 
 
 ## User.addStory(name: string, metadata?: object)
 
 Adds a new TriplyDB story with the given `name` to the current user.
 
-Inherited from [`Account.addStory(name: string, metadata?: object)`](/triplydb-js/account#accountaddstoryname-string-metadata-object).
+Inherited from [`Account.addStory(name: string, metadata?: object)`](../account#accountaddstoryname-string-metadata-object).
 
 
 ## User.createOrganization(name: string, metadata?: object)
@@ -94,21 +96,21 @@ await user.createOrganization(my-organization, {name: 'My Organization'}))
 
 Ensures the existence of a dataset with the given `name` and with the specified `metadata`.
 
-Inherited from [`Account.ensureDataset(name: string, metadata?: object)`](/triplydb-js/account#accountensuredatasetname-string-metadata-object).
+Inherited from [`Account.ensureDataset(name: string, metadata?: object)`](../account#accountensuredatasetname-string-metadata-object).
 
 
 ## User.getDataset(name: string)
 
 Returns the TriplyDB dataset with the given `name` that is published by this user.
 
-Inherited from [`Account.getDataset(name: string)`](/triplydb-js/account#accountgetdatasetname-string).
+Inherited from [`Account.getDataset(name: string)`](../account#accountgetdatasetname-string).
 
 
 ## User.getDatasets()
 
-Returns an [async iterator](/triplydb-js/faq#what-is-an-async-iterator) over the accessible datasets for the current user.
+Returns an [async iterator](../faq#what-is-an-async-iterator) over the accessible datasets for the current user.
 
-Inherited from [`Account.getDatasets()`](/triplydb-js/account#accountgetdatasets).
+Inherited from [`Account.getDatasets()`](../account#accountgetdatasets).
 
 
 ## User.getInfo()
@@ -175,7 +177,7 @@ console.log(await user.getInfo())
 
 ## User.getOrganizations()
 
-Returns an [async iterator](/triplydb-js/faq#what-is-an-async-iterator) over the organizations that this user is a member of.
+Returns an [async iterator](../faq#what-is-an-async-iterator) over the organizations that this user is a member of.
 
 ### Order considerations
 
@@ -194,25 +196,25 @@ for await (const organization of await user.getOrganizations()) {
 
 ### See also
 
-The [async iterator](/triplydb-js/faq#what-is-an-async-iterator) contains organization objects. See the section about the [`Organization`](/triplydb-js/organizaton#organization) class for methods that can be used on such objects.
+The [async iterator](../faq#what-is-an-async-iterator) contains organization objects. See the section about the [`Organization`](../organizaton#organization) class for methods that can be used on such objects.
 
 
 ## User.getPinnedItems()
 
 Returns the list of datasets, stories and queries that are pinned for the current user.
 
-Inherited from [`Account.getPinnedItems()`](/triplydb-js/account#accountgetpinneditems).
+Inherited from [`Account.getPinnedItems()`](../account#accountgetpinneditems).
 
 
 ## User.setAvatar(file: string)
 
 Sets a new image that characterized this user.
 
-Inherited from [`Account.setAvatar(file: string)`](/triplydb-js/account#accountsetavatarfile-string).
+Inherited from [`Account.setAvatar(file: string)`](../account#accountsetavatarfile-string).
 
 
 ## User.update(metadata: object)
 
 Updates the metadata for this user.
 
-Inherited from [`Account.update(metadata: object)`](/triplydb-js/account#accountupdatemetadata-object).
+Inherited from [`Account.update(metadata: object)`](../account#accountupdatemetadata-object).

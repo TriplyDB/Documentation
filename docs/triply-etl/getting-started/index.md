@@ -1,3 +1,5 @@
+[TOC]
+
 # Getting Started
 
 This page helps you to get started with TriplyETL. You can get started with TriplyETL in any of the following ways:
@@ -29,7 +31,7 @@ git config --global user.name "Ada Lovelace"</pre>
   </dd>
   <dt>Install Node.js (simple approach)</dt>
   <dd>
-    <p>Go to <href="https://nodejs.org" target="_blank">nodejs.org</a> and click on option “18.x.y LTS (Recommended For Most Users)”. This will download the installer for your operating system. Run the installer on your computer.</p>
+    <p>Go to <a href="https://nodejs.org" target="_blank">nodejs.org</a> and click on option “18.x.y LTS (Recommended For Most Users)”. This will download the installer for your operating system. Run the installer on your computer.</p>
     <p>On Windows, you must also select the number of bits on your computer: 32 or 64. The correct number of bits is 64 for almost all Windows computers.</p>
   </dd>
   <dt>Install Node.js (advanced approach)</dt>
@@ -44,7 +46,7 @@ git config --global user.name "Ada Lovelace"</pre>
   </dd>
   <dt>Find a terminal application</dt>
   <dd>
-    <p>You must use a terminal application in order to run commands from the <a href="/triply-etl/cli/">TriplyETL CLI</a>. Here are some examples of terminal applications on different operating systems:</p>
+    <p>You must use a terminal application in order to run commands from the <a href="../cli/">TriplyETL CLI</a>. Here are some examples of terminal applications on different operating systems:</p>
     <dl>
       <dt>On Windows</dt>
       <dd>Most Windows versions come with some version of PowerShell preinstalled. You can also follow <a href="https://learn.microsoft.com/en-us/powershell/scripting/install/installing-powershell-on-windows?view=powershell-7.3#install-powershell-using-winget-recommended" target="_blank">these instructions by Microsoft</a> to update to the latest version of PowerShell.</dd>
@@ -54,6 +56,10 @@ git config --global user.name "Ada Lovelace"</pre>
       <dd>Most Linux versions come with a preinstalled terminal application. For example, on Ubuntu the <a href="https://help.gnome.org/users/gnome-terminal/stable/" target="_blank">GNOME Terminal application</a> is preinstalled.</dd>
     </dl>
   </dd>
+  <dt>Update NPM</dt>
+  <dd>
+    <p>Open the terminal application selected from the previous step and run the following command to update npm: <code>npm install -g npm@10.2.1</code> </p>
+  </dd>
 </dl>
 
 
@@ -62,7 +68,7 @@ git config --global user.name "Ada Lovelace"</pre>
 
 The TriplyETL Generator allows you to create new ETL projects in your terminal application.
 
-If a TriplyETL project already exists, use the [TriplyETL Runner](/triply-etl/cli/#triplyetl-runner) instead.
+If a TriplyETL project already exists, use the [TriplyETL Runner](../cli/#triplyetl-runner) instead.
 
 In order to use TriplyETL Generator, you must have:
 
@@ -74,7 +80,7 @@ In order to use TriplyETL Generator, you must have:
 
 Perform the following steps to use the TriplyETL Generator:
 
-1. Run the following command:
+Run the following command:
 
 ```sh
 npx triply-etl-generator
@@ -82,7 +88,7 @@ npx triply-etl-generator
 
    If you use TriplyETL Generator for the first time, this command automatically downloads and installs the latest version on your computer. If you have used TriplyETL Generator in the past, this command automatically updates your installation to the latest version.
 
-2. When asked, enter the following information:
+When asked, enter the following information:
 
       a. TriplyETL License Key
 
@@ -100,7 +106,7 @@ npx triply-etl-generator
 
       h. TriplyDB password
 
-    Here is an example of a possible run:
+Here is an example of a possible run:
 
 ```sh
 ? TriplyETL License Key: [hidden]
@@ -114,13 +120,13 @@ npx triply-etl-generator
 🏁 Your project my-etl is ready for use in my-etl.
 ```
 
-3. Go to the target folder that you have specified:
+Go to the target folder that you have specified:
 
 ```sh
 cd my-etl
 ```
 
-4. You can now use the [TriplyETL Runner](/triply-etl/cli#triplyetl-runner) to run the ETL:
+You can now use the [TriplyETL Runner](../cli#triplyetl-runner) to run the ETL:
 
 ```sh
 npx etl
@@ -140,7 +146,7 @@ In order to use TriplyETL Runner, you must have:
 
 Perform the following steps to use the TriplyETL Runner:
 
-1. Create a local copy of an existing ETL project.
+Create a local copy of an existing ETL project.
 
    If you do not have access to an existing TriplyETL project yet, use the [TriplyETL Generator](#triplyetl-generator) to create a new one.
 
@@ -150,25 +156,25 @@ Perform the following steps to use the TriplyETL Runner:
 git clone ssh://git@git.triply.cc:10072/customers/my-org/my-project.git
 ```
 
-2. Once you have created a local copy of an existing ETL project, go into the corresponding directory:
+Once you have created a local copy of an existing ETL project, go into the corresponding directory:
 
 ```sh
 cd my-project
 ```
 
-3. Install the dependencies:
+Install the dependencies:
 
 ```sh
 npm i
 ```
 
-4. Transpile the TypeScript files into JavaScript:
+Transpile the TypeScript files into JavaScript:
 
 ```sh
 npm run build
 ```
 
-5. You can now use the TriplyETL Runner:
+You can now use the TriplyETL Runner:
 
 ```sh
 npx etl
@@ -176,7 +182,7 @@ npx etl
 
 At this point, you should see a first TriplyETL process in your terminal application. If this is not the case, please contact [support@triply.cc](mailto:support@triply.cc) to help you out.
 
-Visit the [TriplyETL CLI documentation](/triply-etl/cli#triplyetl-runner) to learn more about how you can use the TriplyETL Runner. Visit the [TriplyETL CI/CD documentation](/triply-etl/maintenance#configure-cicd) to learn more about how you can automate TriplyETL runs.
+Visit the [TriplyETL CLI documentation](../cli#triplyetl-runner) to learn more about how you can use the TriplyETL Runner. Visit the [TriplyETL CI/CD documentation](../maintenance#configure-cicd) to learn more about how you can automate TriplyETL runs.
 
 
 
@@ -194,7 +200,7 @@ In order to use the TriplyETL Library, you must have:
 
 Perform the following steps to use the TriplyETL Library:
 
-1. Open the file `.npmrc` in your text editor, or create the file if it does not yet exist. Add the following content:
+Open the file `.npmrc` in your text editor, or create the file if it does not yet exist. Add the following content:
 
 ```
 @triplydb:registry=https://git.triply.cc/api/v4/packages/npm/
@@ -202,15 +208,15 @@ Perform the following steps to use the TriplyETL Library:
 //git.triply.cc/api/v4/packages/npm/:_authToken={LICENSE_KEY}
 ```
 
-   Replace `{LICENSE_KEY}` with your TriplyETL License Key. Contact [support@triply.cc](mailto:support@triply.cc) if you do not have such a license key yet.
+Replace `{LICENSE_KEY}` with your TriplyETL License Key. Contact [support@triply.cc](mailto:support@triply.cc) if you do not have such a license key yet.
 
-  2. Run the following command to add the TriplyETL dependency to your `package.json` file:
+Run the following command to add the TriplyETL dependency to your `package.json` file:
 
 ```sh
 npm i @triplyetl/etl
 ```
 
-  3. Open one of the TypeScript files in your software project. When you add the following line to the top of your file, it should be recognized by your TypeScript editor:
+Open one of the TypeScript files in your software project. When you add the following line to the top of your file, it should be recognized by your TypeScript editor:
 
 ```ts
 import { sdo } from '@triplyetl/etl/vocab'

@@ -1,3 +1,5 @@
+[TOC]
+
 # Control Structures
 
 This page documents how you can use control structures in your ETL configuration.
@@ -123,7 +125,7 @@ country:nl rdfs:label 'The Netherlands'.
 country:de rdfs:label 'Germany'.
 ```
 
-Notice that `forEach()` only works for lists whose elements are objects*.  See [Iterating over lists of primitives](/triply-etl/tmp/tmp.md#list-primitive) for dealing with lists that do not contain objects.
+Notice that `forEach()` only works for lists whose elements are objects*.  See [Iterating over lists of primitives](../tmp/tmp/#iterating-over-lists-of-primitives) for dealing with lists that do not contain objects.
 
 The elements that `forEach()` iterates over are themselves (sub)records.  This implies that all functions that work for full records also work for the (sub)records inside `forEach()`.  The (sub)records inside an `forEach()` function are smaller.  This allows the regular keys of the iterated-over elements to be accessed directly.
 
@@ -136,7 +138,7 @@ In addition to these regular keys, (sub)records inside `forEach()` also contain 
 
 ### Index key (`$index`)
 
-Each (sub)record that is made available in `forEach()` contains the `$index` key.  The value of this key is the index of the element in the list.  This is the same index that is used to access specific elements in an list, as explained in [the section on accessing lists by index](/triply-etl/extract/formats#accessing-lists-by-index).
+Each (sub)record that is made available in `forEach()` contains the `$index` key.  The value of this key is the index of the element in the list.  This is the same index that is used to access specific elements in an list, as explained in [the section on accessing lists by index](../extract/formats#accessing-lists-by-index).
 
 The index key is often useful for assigning a unique subject IRI to every element.
 

@@ -1,3 +1,5 @@
+[TOC]
+
 # Uploading Data
 
 This section explains how to create a linked dataset in TriplyDB.
@@ -20,18 +22,18 @@ The following steps allow a new linked datasets to be created:
 
 5. Optionally, enter a dataset description. You can use rich text
    formatting by using Markdown. See [our section about
-   Markdown](/triply-db-getting-started/reference#markdown-support) for details.
+   Markdown](../reference#markdown-support) for details.
 
 6. Optionally, change the access level for the dataset. By default
    this is set to “Private”. See [dataset access
-   levels](/triply-db-getting-started/reference#access-levels) for more information.
+   levels](../reference#access-levels) for more information.
 
 
-![The “Add dataset” dialog](createdataset.png)
+![The “Add dataset” dialog](../../assets/createdataset.png)
 
-When datasets are Public (see [Access Levels](/triply-db-getting-started/reference#access-levels)), they
+When datasets are Public (see [Access Levels](../reference#access-levels)), they
 automatically expose metadata and are automatically crawled and
-indexed by popular search engines (see [Metadata](/triply-db-getting-started/publishing-data#entering-metadata)).
+indexed by popular search engines (see [Metadata](../publishing-data#entering-metadata)).
 
 ## Adding data
 
@@ -48,7 +50,7 @@ screenshot). In this view data can be added in three ways:
 </dl>
 
 ![The “Add data” view.  The three ways in which data can be added are
-displayed on top of one another.](add-data.png)
+displayed on top of one another.](../../assets/add-data.png)
 
 The “Add data” view is also available for existing datasets:
 
@@ -113,7 +115,7 @@ TriplyDB will show an error message that indicates which part of the
 RDF data is malformed (see screenshot). If such malformed data is
 encountered, the RDF file must first be corrected and uploaded again.
 
-![Screenshot of an error message indicating syntactically malformed RDF data](upload-error.png)
+![Screenshot of an error message indicating syntactically malformed RDF data](../../assets/upload-error.png)
 
 TriplyDB follows the linked data standards strictly. Many triple
 stores allow incorrect RDF data to be added. This may seem convenient

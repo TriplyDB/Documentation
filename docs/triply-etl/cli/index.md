@@ -1,3 +1,5 @@
+[TOC]
+
 # Command Line Interface (CLI)
 
 TriplyETL allows you to manually perform various tasks in a terminal application (a Command-Line Interface or CLI).
@@ -49,7 +51,7 @@ Notice that this prevents you from using the terminal application for new comman
 
 The TriplyETL Runner allows you to run a local TriplyETL project in your terminal application.
 
-We assume that you have a local TriplyETL project in which you can successfully run the `npx etl` command. Follow the [Getting Started instructions for TriplyETL Runner](/triply-etl/getting-started#triplyetl-runner) if this is not yet the case.
+We assume that you have a local TriplyETL project in which you can successfully run the `npx etl` command. Follow the [Getting Started instructions for TriplyETL Runner](../getting-started#triplyetl-runner) if this is not yet the case.
 
 Run the following command to run the ETL pipeline:
 
@@ -84,12 +86,19 @@ TriplyETL Runner will start processing data. Depending on the size of the data s
 ```
 
 This summary includes the following information:
+
 - **"#Error"** shows the number of errors encountered. With default settings, this number is at most 1, since the Runner will immediately stop after an error occurs.
-- **"#Warning"** shows the number of warnings encountered. With default settings, this includes warnings emitted by the [SHACL Validator](/triply-etl/validate/shacl).
-- **"#Info"** shows the number of informational messages. With default settings, this includes informational messages emitted by the [SHACL Validator](/triply-etl/validate/shacl).
+  
+- **"#Warning"** shows the number of warnings encountered. With default settings, this includes warnings emitted by the [SHACL Validator](../validate/shacl).
+  
+- **"#Info"** shows the number of informational messages. With default settings, this includes informational messages emitted by the [SHACL Validator](../validate/shacl).
+  
 - **"#Statements"** shows the number of triples or quads that was generated. This number is equal to or higher than the number of statements that is uploaded to the triple store. The reason for this is that TriplyETL processes records in parallel. If the same statement is generated for two records, the number of statements with be incremented by 2, but only 1 unique statement will be uploaded to the triple store.
+  
 - **"#Records"** shows the number of records that was processed.
+  
 - **"Started at"** shows the date and time at which the Runner started.
+  
 - **"Runtime"** shows the wall time duration of the run.
 
 ### Limit the number of records
@@ -172,7 +181,7 @@ This fixes the reset issue, but also makes the output less colorful.
 
 TriplyETL Tools is a collection of small tools that can be used to run isolated tasks from your terminal application. TriplyETL Tools can be used when you are inside a TriplyETL project.
 
-If you do not have an ETL project yet, use the [TriplyETL Generator](/triply-etl/getting-started#triplyetl-generator) first to create one.
+If you do not have an ETL project yet, use the [TriplyETL Generator](../getting-started#triplyetl-generator) first to create one.
 
 The following command prints an overview of the supported tools:
 
@@ -233,6 +242,7 @@ npx tools create-token
 ```
 
 The command will ask a couple of questions in order to create the TriplyDB API Token:
+
 - The hostname of the TriplyDB instance
 - The name of the token
 - Your TriplyDB account e-mail
@@ -284,4 +294,4 @@ The command can be used as follows:
 $ npx tools validate -d data.trig -s model.trig 
 ```
 
-See [this section](/triply-etl/validate/shacl#validation-report) to learn more about the SHACL validation report.
+See [this section](../validate/shacl#validation-report) to learn more about the SHACL validation report.

@@ -25,7 +25,7 @@ window.onload = () => {
     .map(el => el.href = prefix + customUrlMappingLevel1.get(el.innerText))
 
   Array.from(document.querySelectorAll('.toctree-l2 a'))
-    .filter(el => customUrlMappingLevel2.has(el.innerText))
+    .filter(el => customUrlMappingLevel2.has(el.innerText) && el.href.endsWith('#'))
     .map(el => el.href = prefix + customUrlMappingLevel2.get(el.innerText))
 
   if (window.location.pathname.endsWith('search.html')) {
@@ -34,12 +34,31 @@ window.onload = () => {
     document.querySelector('.wy-breadcrumbs')
       .appendChild(li)
 
-    document.querySelectorAll('#mkdocs-search-results article h3 a')
-      .forEach(el => el.innerText = 'aaa' )
+    // document.querySelectorAll('#mkdocs-search-results article h3 a')
+    //   .forEach(el => el.innerText = 'aaa' )
   }
   // activate hamburger menu:
   document.querySelector('[data-toggle="wy-nav-top"]').addEventListener('click', (e) => {
     document.querySelectorAll('[data-toggle="wy-nav-shift"]')
       .forEach(el => el.classList.toggle('shift'))
   })
+
+  const activeTOClink = () => {
+    const el = Array.from(document.querySelectorAll('h1, h2, h3, h4, h5'))
+      .filter(heading => heading.getBoundingClientRect().y <= 40 ).pop()
+    if (el) {
+      Array.from(document.querySelectorAll('div.toc a')).map(a => a.classList.remove('active'))
+      document.querySelector(`div.toc a[href="#${el.id}"]`)?.classList.add('active')
+    }
+  }
+
+  if ('onscrollend' in window) {
+    document.addEventListener('scrollend', activeTOClink)
+  } else {
+    document.addEventListener('scroll', () => {
+      clearTimeout(window.scrollEndTimer)
+      window.scrollEndTimer = setTimeout(activeTOClink, 100)
+    })
+  }
+
 }

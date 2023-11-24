@@ -1,3 +1,5 @@
+[TOC]
+
 # Maintenance
 
 Once a TriplyETL repository is configured, it goes into maintenance mode. TriplyETL contains specific functionality to support maintenance.
@@ -18,7 +20,7 @@ ETL maintenance includes the following tasks:
   - [Configure CI/CD](#configure-cicd)
     - [CI/CD configuration file](#cicd-configuration-file)
     - [CI/CD environment variables](#cicd-environment-variables)
-<!-- - [Monitor CI/CD](#monitor-cicd) -->
+  - [Understanding Runtime Differences](#understanding-runtime-differences)
 
 
 
@@ -54,9 +56,9 @@ TriplyETL uses the Semantic Versioning approach: `{major}.{minor}.{patch}` The i
   <dt>Patch update</dt>
   <dd>Only the <code>{patch}</code> number has increased. This means that one or more bugs have been fixed in a <em>backward compatible</em> manner. You should always be able to perform a patch update without having to make any changes to your configuration.</dd>
   <dt>Minor update</dt>
-  <dd>The <code>{minor}</code> number has increased, but the <code>{major}</code> number is still the same. This means that new functionality was added in a <em>backward compatible</em> manner. You should always be able to perform a minor update without having to make any changes to your configuration. But you may want to check the <a href="/triply-etl/changelog" target="_blank">changelog</a> to see which new functionalities were added.</dd>
+  <dd>The <code>{minor}</code> number has increased, but the <code>{major}</code> number is still the same. This means that new functionality was added in a <em>backward compatible</em> manner. You should always be able to perform a minor update without having to make any changes to your configuration. But you may want to check the <a href="../changelog" target="_blank">changelog</a> to see which new functionalities were added.</dd>
   <dt>Major update</dt>
-  <dd>The <code>{major}</code> number has increased. This means that there are <em>incompatible</em> changes. This means that features may have been removed, or existing features may have changed. In such cases, changes to your configuration are almost certainly necessary, and may take some time to implement. Any changes you need to make are described in the <a href="/triply-etl/changelog" target="_blank">changelog</a>.</dd>
+  <dd>The <code>{major}</code> number has increased. This means that there are <em>incompatible</em> changes. This means that features may have been removed, or existing features may have changed. In such cases, changes to your configuration are almost certainly necessary, and may take some time to implement. Any changes you need to make are described in the <a href="../changelog" target="_blank">changelog</a>.</dd>
 </dl>
 
 ### Perform the update
@@ -86,7 +88,7 @@ npm i <package-name>@version
 This means that the following command is used to update to a specific TriplyETL major version:
 
 ```sh
-npm i @triplyetyl/etl@3.0.0
+npm i @triplyetl/etl@3.0.0
 ```
 
 This command will change the contents of the `package.json` file. These changes must be committed and pushed as part of performing the update.
@@ -99,7 +101,7 @@ TriplyETL pipelines can be configured to run automatically in any CI/CD environm
 
 ### CI/CD configuration file
 
-The [TriplyETL Generator](/triply-etl/getting-started#triplyetl-generator) creates a basic configuration file for running TriplyETL in GitLab CI/CD. The configuration file is called `.gitlab-ci.yml`.
+The [TriplyETL Generator](../getting-started#triplyetl-generator) creates a basic configuration file for running TriplyETL in GitLab CI/CD. The configuration file is called `.gitlab-ci.yml`.
 
 The configuration contains a list of stages:
 
@@ -198,3 +200,15 @@ TriplyETL pipelines interpret the following environment variables, that may be s
   <dt><code>HEAD</code></dt>
   <dd>The maximum number of records that is being processed by the TriplyETL pipeline. This environment variable can be set in test runs that only want to test whether the ETL works for some records, without requiring it to run for all records. For example, in a DTAP Test run this number may be set to 10 to test whether the source can be accessed and the generated data can be uploaded to a TriplyDB server.</dd>
 </dl>
+
+## Understanding Runtime Differences
+
+It's important to be aware that runtime differences can occur when comparing TriplyETL pipeline runtimes in different environments, particularly when comparing them to GitLab CI/CD runtimes. There are two main factors that can influence runtime differences:
+
+1. `Overhead in CI Jobs`: GitLab CI jobs may introduce overhead beyond the actual ETL computation, such as setting up a containerized environment and additional CI-specific steps. A difference of 1 to 5 minutes between GitLab CI and TriplyETL runtimes is normal due to this overhead.
+
+2. `Use of copySource() Function`: Significant runtime differences exceeding 5 minutes can be attributed to the use of the [copySource()](../publish/#direct-copying-of-source-data-to-destination) function, which operates outside of the ETL application and contributes to the total runtime but not the middleware runtime.
+
+If you encounter a runtime difference greater than 5 minutes, and the [copySource()](../publish/#direct-copying-of-source-data-to-destination) function hasn't been used, it is recommended to report the issue to Triply. The issue will be further investigated to identify and address any potential causes.
+
+Understanding these factors and taking appropriate action will help you manage your TriplyETL pipelines effectively in a CI/CD environment.

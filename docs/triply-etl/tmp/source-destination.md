@@ -1,4 +1,6 @@
-##### An easier way to configure graph names and prefixes
+[TOC]
+# Source destination
+## An easier way to configure graph names and prefixes
 
 Instead of setting the graph name and the prefixes for every ETL, you can use functions for their generation:
 
@@ -38,9 +40,9 @@ export function create_graphs(
 
 ```
 
-### Configuring data destinations
+## Configuring data destinations
 
-#### Remote data destinations
+### Remote data destinations
 Destinations are usually online locations in TriplyDB where the output of your pipeline will be published.
 
 If no `accountName` is given, pipeline output is uploaded under the user account tied to the currently used API Token.
@@ -65,7 +67,7 @@ The following options can be specified to configure the destination behavior:
 </dl>
 
 
-#### Local data destinations
+### Local data destinations
 
 RATT supports publishing RDF output into a local file.  This is not often used, because files lack many of the features that TriplyDB destinations support, such as:
 
@@ -79,7 +81,7 @@ Still, there may be cases in which a local file destination is useful, for examp
 ```ts
 Ratt.Destination.file("my-file.trig"),
 ```
-#### Static and Dynamic destinations
+### Static and Dynamic destinations
 Destinations can be defined as static objects meaning that you can define destination beforehand. But it might be the case that you want to have multiple destinations for different records. In this case, you would need a dynamic destination, which should change based on certain information inside your source data.
 
 You can set static and dynamic destinations, like below:
@@ -94,7 +96,7 @@ const app = new Ratt({
 ```
 
 
-### Configuring multiple TriplyDB instances
+## Configuring multiple TriplyDB instances
 
 It is possible to use multiple TriplyDB instances in one RATT pipeline.
 
@@ -121,7 +123,7 @@ const app = new Ratt({
 })
 ```
 
-### Direct copying of source data to destination
+## Direct copying of source data to destination
 
 RATT supports copying sources directly to destination locations. This function is useful when you already have linked data that is used as a source, but is also needed at the destination. An example would be the information model. This would be available as a source, and with the copy function it can be uploaded to TriplyDB via RATT.
 

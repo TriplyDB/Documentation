@@ -1,3 +1,6 @@
+[TOC]
+
+# Getting started
 ## Transforming RDF data
 
 If you have RDF data that does not need to be transformed, see [copying source data](https://triply.cc/docs/ratt-working-with-ratt#function-direct-copying-of-source-data-to-destination).
@@ -47,40 +50,41 @@ This section extends the pipeline from [the previous section](#publish-to-triply
 
 We then perform the following steps to build a pipelines that processes this data source:
 
-1. Create a text file called `example.csv` in a text editor, and copy/paste the following source data into that file:
+1\. Create a text file called `example.csv` in a text editor, and copy/paste the following source data into that file:
 
-   ```csv
-   ID,NAME
-   00001,Anna
-   00002,Bob
-   00003,Carol
-   ```
+```csv
+ID,NAME
+00001,Anna
+00002,Bob
+00003,Carol
+```
 
-2. Open text file `main.ts` and add the following content:
+2\. Open text file `main.ts` and add the following content:
 
-   ```ts
-   import { Etl, declarePrefix, fromCsv, iri, literal, rdfs,
-            Source, toRdf, triple } from '@triplyetl/etl/generic'
-   import { rdfs } from '@triplyetl/etl/vocab'
 
-   export default async function (): Promise<Etl> {
-     const etl = new Etl({
-       prefixes: {
-         ex: declarePrefix('https://example.com/'),
-       },
-     })
-     etl.use(
-       // Connects the tabular source data to the pipeline.
-       // Every row in the table is processed as a TriplyETL record.
-       fromCsv(Source.file('example.csv')),
-       // Create a linked data statement that is based on the
-			 // source data.
-       triple(iri(etl.prefix.ex, 'ID'), rdfs.label, 'NAME'),
-       toRdf(Destination.file('example.ttl'))
-     )
-     return etl
-   }
-   ```
+```ts
+import { Etl, declarePrefix, fromCsv, iri, literal, rdfs,
+        Source, toRdf, triple } from '@triplyetl/etl/generic'
+import { rdfs } from '@triplyetl/etl/vocab'
+
+export default async function (): Promise<Etl> {
+  const etl = new Etl({
+    prefixes: {
+      ex: declarePrefix('https://example.com/'),
+    },
+  })
+  etl.use(
+    // Connects the tabular source data to the pipeline.
+    // Every row in the table is processed as a TriplyETL record.
+    fromCsv(Source.file('example.csv')),
+    // Create a linked data statement that is based on the
+    // source data.
+    triple(iri(etl.prefix.ex, 'ID'), rdfs.label, 'NAME'),
+    toRdf(Destination.file('example.ttl'))
+  )
+  return etl
+}
+```
 
 <!--
 // Create a universally unique identifier (IRI) based
@@ -91,21 +95,22 @@ We then perform the following steps to build a pipelines that processes this dat
 // 'NAME' column.
 -->
 
-3. Transpile the code with:
+3\. Transpile the code with:
 
-   ```sh
-   npm run build
-   ```
 
-4. Run the ETL with:
+```sh
+npm run build
+```
 
-   ```sh
-   npx etl
-   ```
+4\. Run the ETL with:
+
+
+```sh
+npx etl
+```
 
 The TriplyETL script will give you a link to the uploaded dataset.  This dataset contains the following graph content:
 
-![](connect-a-data-source.png)
 
 
 

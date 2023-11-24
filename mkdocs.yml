@@ -1,4 +1,5 @@
 site_name: Triply Documentation
+site_description: Learn how to integrate TriplyDB in your workflow, create production-grade Extract-Transform-Load pipelines with TriplyETL and about our SPARQL editor Yasgui.
 plugins:
   - search
   - mermaid2
@@ -49,7 +50,9 @@ nav:
           - Overview: triply-etl/transform/index.md
           - RATT: triply-etl/transform/ratt/index.md
           - TypeScript: triply-etl/transform/typescript/index.md
-      - Assert: 
+      - RML: triply-etl/rml/index.md
+      - XSLT: triply-etl/xslt/index.md
+      - Assert:
           - Overview: triply-etl/assert/index.md
           - JSON-LD: triply-etl/assert/json-ld/index.md
           - RATT:
@@ -70,6 +73,7 @@ nav:
 theme:
   name: readthedocs
   locale: en
+  custom_dir: readthedocs-triply/
   highlightjs: false
 
 extra_css:
@@ -83,3 +87,4 @@ extra_javascript:
 markdown_extensions:
   - toc:
       permalink: True
+      title: "On this page:"

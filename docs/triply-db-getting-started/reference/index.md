@@ -1,3 +1,5 @@
+[TOC]
+
 # Reference
 
 ## Access levels
@@ -7,9 +9,9 @@ stories.
 
 | **Access level** | **Description**                                                                           | **Icon**          |
 | ---------------- | ----------------------------------------------------------------------------------------- | ----------------- |
-| Private          | The dataset/query/story is only visible to you.                                           | ![](private.png)  |
-| Internal         | The dataset/query/story is only visible to people who are logged in to the same TriplyDB. | ![](internal.png) |
-| Public           | The dataset/query/story is visible to everybody on the Internet.                          | ![](public.png)   |
+| Private          | The dataset/query/story is only visible to you.                                           | ![](../../assets/private.png)  |
+| Internal         | The dataset/query/story is only visible to people who are logged in to the same TriplyDB. | ![](../../assets/internal.png) |
+| Public           | The dataset/query/story is visible to everybody on the Internet.                          | ![](../../assets/public.png)   |
 
 ### Access level dependencies
 

@@ -1,3 +1,5 @@
+[TOC]
+
 # Publishing data
 
 With TriplyDB you can easily make your data available to the outside world.
@@ -25,7 +27,7 @@ Metadata is entered from the dataset settings page, which is accessed
 by clicking on the “Dataset settings” (cog icon) option from the
 left-hand sidebar (see screenshot).
 
-![“Dataset settings” page](cog-wheel.png) The dataset homepage looks empty without metadata. Notice the cog wheel icon, which provides access to the “Dataset settings” page.
+![“Dataset settings” page](../../assets/cog-wheel.png) The dataset homepage looks empty without metadata. Notice the cog wheel icon, which provides access to the “Dataset settings” page.
 
 The dataset settings page allows the following metadata to be entered:
 
@@ -36,7 +38,7 @@ The dataset settings page allows the following metadata to be entered:
 - The example resources for the dataset.
 - The license of the dataset.
 
-![The dataset settings page](dataset-settings-page.png) The dataset settings page allows various forms of dataset metadata to be added.
+![The dataset settings page](../../assets/dataset-settings-page.png) The dataset settings page allows various forms of dataset metadata to be added.
 
 Within the TriplyDB instance your dataset is now more findable for users. Whenever
 a user searches on one of the topics of your dataset, or types in a word that is
@@ -44,7 +46,7 @@ present in the description of your dataset, the dataset will be shown as a searc
 result. The metadata will allow TriplyDB to give a better impression of your dataset
 when a user visits:
 
-![The dataset home page](dataset-homepage-with-metadata.png) The dataset home page after metadata has been entered.
+![The dataset home page](../../assets/dataset-homepage-with-metadata.png) The dataset home page after metadata has been entered.
 
 Search engines and social media applications can recognize the
 metadata that is entered for datasets in TriplyDB. The following
@@ -52,11 +54,11 @@ screenshot shows the widget created by the Slack chat application upon
 entering a link to the dataset. Notice that the chat application
 understands metadata properties like title, description, and image.
 
-![A Slack widget](slack-widget.png) Widget created by the Slack chat application upon sharing a link to a dataset in TriplyDB.
+![A Slack widget](../../assets/slack-widget.png) Widget created by the Slack chat application upon sharing a link to a dataset in TriplyDB.
 
 ## Starting services
 
-By default, datasets in TriplyDB can be queried through [TriplyDB-js](/triplydb-js) as well as through the Linked Data Fragments API.
+By default, datasets in TriplyDB can be queried through [TriplyDB-js](../../triplydb-js) as well as through the Linked Data Fragments API.
 
 In order to allow additional query paradigms, specific services can be
 started from the “Create service” page. This page is accessed by
@@ -67,7 +69,7 @@ The below screenshot shows the “Create service” page for a TriplyDB
 instance that allows SPARQL, Jena SPARQL, and Elasticsearch services
 to be created.
 
-![The “Create service” page](create-service.png) Notice that three different types of services can be created.
+![The “Create service” page](../../assets/create-service.png) Notice that three different types of services can be created.
 
 It is possible to create multiple services for one dataset.
 
@@ -76,7 +78,7 @@ It is possible to create multiple services for one dataset.
 Existing services are displayed on service widgets (see screenshot).
 From these widgets, services can be created or deleted.
 
-![An example of a service widget](service-widget.png)
+![An example of a service widget](../../assets/service-widget.png)
 
 Datasets can change whenever a graph is added, deleted or renamed. When this
 happens, the data in a service is out of sync with the data in the dataset and
@@ -89,7 +91,7 @@ If you want to be notified or trigger an event when anything changes in your dat
 
 The webhook page can be found under dataset's settings on the right, as shown in the image below.
 
-![Webhooks settings page](webhook.png)
+![Webhooks settings page](../../assets/webhook.png)
 
 To create a webhook, you will need to provide the following information:
 - `Payload target`: The URL to which the webhook message should be sent.
@@ -111,4 +113,4 @@ https://gitlab.example.com/api/v4/projects/<project_id>/trigger/pipeline?token=<
 ```
 When your webhook is created and active, you can see every occasion the webhook was called in the webhook trigger history.
 
-![Active webhook trigger history](webhook_trigger_history.png)
+![Active webhook trigger history](../../assets/webhook_trigger_history.png)

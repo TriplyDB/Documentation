@@ -1,3 +1,5 @@
+[TOC]
+
 # TriplyETL Overview
 TriplyETL allows you to create and maintain production-grade linked data pipelines.
 
@@ -9,17 +11,17 @@ TriplyETL allows you to create and maintain production-grade linked data pipelin
 TriplyETL uses the following unique approach:
 
 ```mermaid
-flowchart LR
-  source -- "1. Extract" --> record
-  record -- "2. Transform" --> record
-  record -- "3. Assert" --> ld
-  ld -- "4. Enrich" --> ld
-  ld -- "5. Validate" --> ld
-  ld -- "6. Publish" --> tdb
+graph LR
+  source -- 1. Extract --> record
+  record -- 2. Transform --> record
+  record -- 3. Assert --> ld
+  ld -- 4. Enrich --> ld
+  ld -- 5. Validate --> ld
+  ld -- 6. Publish --> tdb
 
-  source[Data Sources]
-  record[Record]
   ld[Internal Store]
+  record[Record]
+  source[Data Sources]
   tdb[(Triple Store)]
 ```
 
