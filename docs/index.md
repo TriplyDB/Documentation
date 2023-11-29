@@ -21,3 +21,5 @@ Use TriplyETL to quickly connect your data sources to your linked database / tri
 ---
 
 Didn't find what you were looking for? Contact us via [our form](https://triply.cc/contact) or by e-mailing to [info@triply.cc](mailto:info@triply.cc).
+
+---
