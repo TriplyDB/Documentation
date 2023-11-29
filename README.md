@@ -24,18 +24,26 @@ This repository includes documentation for the following Triply products:
 
 You are able to use [GitHub Flavored Markdown](https://github.github.com/gfm/). As well as the following extensions
 
-- **Custom ID headers**:
-Using the following syntax you are able to assign id's to headers (without having to resort to `html`)
+**Custom ID headers**:
+By default ID's will be created from the content of a header, allowing deeplinking to them using the #hash part of a URL. 
+```md
+## My Header
+```
+
+This will result in link `http://docs.triply.cc/path-to-file/#my-header`.
+
+Using the following syntax you are able to assign custom id's to headers if you do not want the default ID:
+
+```md
+## My Header {: #my-custom-header-id}
+```
+This will result in link `http://docs.triply.cc/path-to-file/#my-custom-header-id`.
 
 ## Guideline for authors
 - Always start your page with a heading of level 1 (1 hashsign)
 - Subheadings of level 2 (2 hashsigns) will appear as submenu on that page
 - Level 1 links in the menu that only contain subpage will not be clickable until a developer creates a mapping in `docs/js/triply.js`
 
-
-```md
-# Header {#id}
-```
 
 ## Building and running the Documentation website
 This website uses [MkDocs](https://www.mkdocs.org/) to convert Markdown to HTML so the documentation can be veiwed in a webbrowser. Follow the instructions on their website to isnatll MkDocs. After you've sucessfully installed MkDocs, you can run a local webserver with the following command (run from the toot of this repository):
