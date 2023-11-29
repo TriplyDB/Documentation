@@ -31,6 +31,7 @@ nav:
             - Story: triplydb-js/story/index.md
             - User: triplydb-js/user/index.md
             - FAQ: triplydb-js/faq/index.md
+      - Changelog: triplydb-changelog/index.md
   - TriplyETL:
       - Generics:
           - Overview: triply-etl/index.md
