@@ -17,4 +17,5 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           CUSTOM_DOMAIN: docs.triply.cc
+          EXTRA_PACKAGES: git-lfs
           REQUIREMENTS: requirements.txt
