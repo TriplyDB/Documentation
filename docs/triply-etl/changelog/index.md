@@ -2,13 +2,107 @@
 
 # Changelog
 
-The current version of TriplyETL is **3.0.0**
+The current version of TriplyETL is **3.0.3**
 
 You can use this changelog to perform a safe update from an older version of TriplyETL to a newer one. See the documentation for [Upgrading TriplyETL repositories](../cli) for the advised approach, and how the changelog factors into that.
 
+## TriplyETL 3.0.3
+
+Release date: 2023-11-01
+
+### [Changed] Submit Datasets in the NDE Dataset Register with TriplyDB-JS.
+It is now possible to submit datasets to the NDE Dataset Register using [TriplyDB-JS](../../triplydb-js). You can do this by adding the following option to the [toTriplyDb() middleware](../publish/#remote-data-destinations): 
+
+`{submitToNDEDatasetRegister: true}`. 
+
+For example: 
+```ts
+toTriplyDb({dataset: 'nde', opts: {submitToNDEDatasetRegister: true}})
+```
+
+
+## TriplyETL 3.0.2
+
+Release date: 2023-10-23
+
+### [Added] Static triples
+You can now assert so called `static triples` as a one-time assertion, before or without any [Extractors](../extract/formats). Those are triples that are not related to the source extractors, but should only be asserted once per ETL.
+
+```ts
+import { Destination, Etl, fromJson, toRdf } from '@triplyetl/etl/generic'
+import { iri, literal, pairs, str, triple } from '@triplyetl/etl/ratt'
+import { a, dcat, dct, lang, sdo, skos, xsd } from '@triplyetl/etl/vocab'
+
+export default async function (): Promise<Etl> {
+  const etl = new Etl()
+  await etl.staticAssertions(
+    pairs(iri(etl.standardGraphs.default),
+      [a, dcat.Dataset],
+      [skos.prefLabel, literal(str('Family Doe'), lang.en)],
+      [dct.created, literal(str((new Date()).toISOString()), xsd.dateTime)],
+    )
+  )
+  etl.use( 
+    fromJson([{ name: "John Doe" }, { name: "Jane Doe" }]),
+    triple(iri(etl.standardPrefixes.id, '$recordId'), sdo.name, 'name'),
+    toRdf(Destination.file('out.trig')),
+  )
+  return etl
+}
+
+```
+
+### Bug fixes
+The following bugs have been fixed:
+
+- The error in the `ifElse` middleware that caused ETLs to not use the fallback `else` in certain situations was fixed.
+
+## TriplyETL 3.0.1
+
+Release date: 2023-10-19
+
+### [Changed] Synchronize specific services with [toRdf()](../publish/#local-data-destinations) middleware
+It is now possible to use the [toRdf()](../publish/#local-data-destinations) middleware to synchronize specific services instead of all of them. The example below shows how to use this to upgrade only a service called `my-service` on dataset `my-dataset`.
+
+```ts
+import { Destination, Etl, fromJson, toRdf } from '@triplyetl/etl/generic'
+import { triple } from '@triplyetl/etl/ratt'
+import { owl } from '@triplyetl/vocabularies'
+
+export default async function (): Promise<Etl> {
+  const etl = new Etl()
+  etl.use(
+    fromJson([{a: 1}])
+  )
+  etl.use(
+    triple(owl.sameAs, owl.sameAs, owl.sameAs)
+  )
+  etl.use(toRdf(Destination.TriplyDb.rdf('my-dataset', {synchronizeServices: 'my-service'})))
+  return etl
+}
+
+
+```
+### [Changed] Validator support in `addLiteral()` with the `validate` key
+It is now possible to use an optional validate key inside the `addLiteral()` middleware. The validate key accepts a function `(value: any) => boolean`, and can be used in some other middlewares, like [when()](../control##process-data-conditionally-when).
+
+### Bug fixes
+The following bugs have been fixed:
+
+- In some very specific situations the progressbar could go well over 100%, this is now fixed.
+  
+- In some cases when the [_switch()](../control#switch-between-different-cases-_switch) or [ifElse()](../control#specify-multiple-conditions-ifelse) middleware were used and the ETL came to an unexpected halt (e.g. an Error occurred), the file `etl.err` contained the latest Record processed including keys of format `$sentinel-$MD5-HASH}` with the value of `true`. These keys are needed to keep track of the condition being met in the the middlewares. These keys are now no longer part of the Record.
+  
+- Importing the new RML map() middleware was not possible because of missing ESM exports. This has now been fixed.
+
+- Using XSLT failed on Windows system because of wrong redirecting of error messages. This is now fixed.
+
+- All dependencies are up to date, no warnings should be shown when installing TriplyETL.
+
+
 ## TriplyETL 3.0.0 
 
-Release dates: 2023-10-12 
+Release date: 2023-10-12 
 
 ### [Added] Support for the `SPARQL Select` and `SPARQL Ask` queries
 The extractors [fromCsv()](../extract/formats/#extractor-fromcsv), [fromJson()](../extract/formats/#extractor-fromjson), [fromTsv()](../extract/formats/#extractor-fromtsv) and [fromXml()](../extract/formats/#extractor-fromxml) now support [SPARQL Select](../extract/types/#sparql-select-queries) queries.
