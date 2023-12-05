@@ -155,7 +155,7 @@ The value for `@context` refers to a small JSON-LD file that Triply created for 
 
 The value for `@type` indicates which item should be at the root of the JSON object that is exposed through our API. In linked data, information is not stored in a specific order. There is no 'first' or 'root' item. But the IIIF standards mandate that we return the manifest in a JSON format; and there the order of the items is crucial. Luckily, JSON-LD Frames allows us to force a specific order, thereby translating the outcomes of SPARQL Construct queries into REST API responses.
 
-For more information, see the TriplyDB documentation about JSON-LD Frames support: [link](https://triply.cc/docs/jsonld-frames).
+For more information, see the TriplyDB documentation about JSON-LD Frames support: [link](https://docs.triply.cc/generics/JSON-LD-frames).
 
 ## Conclusion
 
