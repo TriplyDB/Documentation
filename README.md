@@ -25,7 +25,7 @@ This repository includes documentation for the following Triply products:
 You are able to use [GitHub Flavored Markdown](https://github.github.com/gfm/). As well as the following extensions
 
 **Custom ID headers**:
-By default ID's will be created from the content of a header, allowing deeplinking to them using the #hash part of a URL. 
+By default ID's will be created from the content of a header, allowing deep linking to them using the #hash part of a URL. 
 ```md
 ## My Header
 ```
@@ -44,9 +44,21 @@ This will result in link `http://docs.triply.cc/path-to-file/#my-custom-header-i
 - Subheadings of level 2 (2 hashsigns) will appear as submenu on that page
 - Level 1 links in the menu that only contain subpage will not be clickable until a developer creates a mapping in `docs/js/triply.js`
 
+## Installation
+
+This website uses [MkDocs](https://www.mkdocs.org/) to convert Markdown to HTML so the documentation can be viewed in a web browser. Follow the instructions on their website to install MkDocs.
+
+Required plugins:
+- To render `mermaid` you will need to install [this plugin](https://github.com/fralau/mkdocs-mermaid2-plugin).
+
+The following steps often work/suffice:
+1. Install Python and Pip.
+2. Run `pip install mkdocs`
+3. Run `pip install mkdocs-mermaid2-plugin`
 
 ## Building and running the Documentation website
-This website uses [MkDocs](https://www.mkdocs.org/) to convert Markdown to HTML so the documentation can be veiwed in a webbrowser. Follow the instructions on their website to isnatll MkDocs. After you've sucessfully installed MkDocs, you can run a local webserver with the following command (run from the toot of this repository):
+
+After you have successfully installed MkDocs, you can run a local web server with the following command (run from the toot of this repository):
 ```bash
 mkdocs serve
 ```
@@ -62,11 +74,8 @@ To publish this website to [Github Pages](https://triplydb.github.io/Documentati
 mkdocs gh-deploy
 ```
 
-Required plugins:
-- To render `mermaid` you will need to install [this plugin](https://github.com/fralau/mkdocs-mermaid2-plugin).
-
-### Notes abouth syntax highlighting
-This project uses [highlightjs.org](https://highlightjs.org) for rendering code blocks with syntax highlighting. This projects does not have supprt for Turtle/SPARQL by default. We use a custom build to provide syntax hightlighting for these.
+### Notes about syntax highlighting
+This project uses [highlightjs.org](https://highlightjs.org) for rendering code blocks with syntax highlighting. This projects does not have support for Turtle/SPARQL by default. We use a custom build to provide syntax highlighting for these.
 
 ```bash
 mkdir Highlight.js
