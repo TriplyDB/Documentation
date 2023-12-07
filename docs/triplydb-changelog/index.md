@@ -6,6 +6,16 @@ path: "/docs/triplydb-changelog"
 [TOC]
 
 
+## 23.12.0 {#23.12.0}
+
+**Features**
+
+
+- `#8420` `#8457` [SPARQL speedy] Improve performance of most SPARQL queries with 40% to 200%
+- `#8504` Improve UX for service selection in saved queries: a create service has precendence now over speedy
+- `#8456` Support in the UI for deleting all dataset assets
+- `#8481` Include link to changelog in the footer of all TriplyDB pages
+
 
 ## 23.11.1 {#23.11.1}
 
