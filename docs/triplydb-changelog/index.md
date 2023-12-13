@@ -10,9 +10,13 @@ path: "/docs/triplydb-changelog"
 
 **Features**
 
-
+- `#8224` [SPARQL IDE] Replace the current SPARQL editor with SPARQL IDE.
+  - The editor and result visualization have a slightly different look
+  - Consolidated the visualization renderers. E.g., the geo 3d plugin is now combined with the regular geo plugin.
+  - The new editor is backwards compatible with the old editor.
+  - The geo-events plugin (where geographic information can be rendered as a timeline) is deprecated and not present in the SPARQL IDE.
 - `#8420` `#8457` [SPARQL speedy] Improve performance of most SPARQL queries with 40% to 200%
-- `#8504` Improve UX for service selection in saved queries: a create service has precendence now over speedy
+- `#8504` Improve UX for service selection in saved queries: a manually created service has precendence now over speedy
 - `#8456` Support in the UI for deleting all dataset assets
 - `#8481` Include link to changelog in the footer of all TriplyDB pages
 
