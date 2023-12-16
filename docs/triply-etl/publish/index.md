@@ -57,6 +57,12 @@ The following options can be specified to configure the destination behavior:
   <dd>Whether to delete all graphs in the dataset before uploading any graphs from TriplyETL. Notice that this will also remove graphs that will not be re-uploaded by TriplyETL. The default value is <code>false</code>.</dd>
 </dl>
 
+The following code snippet publishes linked data to a TriplyDB dataset called 'my-dataset' and synchronizes only the 'acceptance' service for that dataset:
+
+```ts
+toRdf(Destination.TriplyDb.rdf('my-dataset', {synchronizeServices: 'acceptance'})),
+```
+
 ## Local data destinations
 
 TriplyETL supports publishing RDF output into a local file. This is not often used, because files lack many of the features that TriplyDB destinations support, such as:
