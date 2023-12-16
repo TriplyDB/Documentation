@@ -353,6 +353,28 @@ The following record is printed first (3 records are printed in total).  Notice 
 
 
 
+## Iterating over lists of primitives
+
+Notice that [forEach()](#iterating-over-lists-of-objects-foreach) can only iterate over Records. Sometimes, it is necessary to iterate over primitive values, for example strings. If the iteration directly results in RDF assertions, [iris()](#function-iris) and [literals()](#function-literals) can be used. But in other cases, we must map the primitive values to objects. These objects can then be processed as regular Records.
+
+Here is an example:
+
+```ts
+fromJson({value: 'a b c'}),
+split({content: 'value', separator: ' ', key: 'valueStrings'}),
+// Since we cannot transform 'valueStrings' directly, we first create
+// objects that contain those strings ('valueObjects').
+custom.addFrom.value({
+  content: 'valueStrings',
+  change: values => (values as string[]).map(value => ({'valueObject': value})),
+  type: 'unknown',
+  key: 'valueObjects'
+}),
+// Here we can apply any regular transformation that works with Records.
+```
+
+
+
 ## Specify multiple conditions (`ifElse()`)
 
 The `ifElse()` function in TriplyETL allows us to specify multiple conditions based on which other functions are run.
