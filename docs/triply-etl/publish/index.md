@@ -45,21 +45,21 @@ It is still possible to upload to TriplyDB using `toRdf()`, but the new `toTripl
 The following options can be specified to configure the destination behavior:
 
 <dl>
+  <dt><code>mergeGraphs</code></dt>
+  <dd>Whether the results of the new graph should be added to the old graph without overwriting it. The default value is <code>false</code>.</dd>
   <dt><code>overwrite</code></dt>
   <dd>Whether the graphs that are being uploaded by TriplyETL should replace any existing graphs with the same name in the dataset. Graphs appearing in the dataset with a different name than those uploaded by TriplyETL are kept. The default value is <code>false</code>.</dd>
   <dt><code>synchronizeServices</code></dt>
-  <dd>Whether active services should be automatically synchronized once new data is uploaded.  The default value is <code>false</code>.</dd>
+  <dd>Whether or more active services should be automatically synchronized once new data is uploaded. The default value is <code>false</code>. This value can be changed to `true`, to automatically synchronize all services. Alternatively, this value can be set to a string that names a specific services, to automatically synchronize only that specific service.</dd>
   <dt><code>triplyDb</code></dt>
-  <dd>A configuration object describing a TriplyDB instance that is different from the one associated with the current API Token.  (See the section on <a href="#configuring-multiple-triplydb-instances">configuring multiple TriplyDB instance</a> for more information.)</dd>
+  <dd>A configuration object describing a TriplyDB instance that is different from the one associated with the current API Token. (See the section on <a href="#configuring-multiple-triplydb-instances">configuring multiple TriplyDB instance</a> for more information.)</dd>
   <dt><code>truncateGraphs</code></dt>
-  <dd>Whether to delete all graphs in the dataset before uploading any graphs from TriplyETL.  Notice that this will also remove graphs that will not be re-uploaded by TriplyETL.  The default value is <code>false</code>.</dd>
-  <dt><code>mergeGraphs</code></dt>
-  <dd>Whether the results of the new graph should be added to the old graph without overwriting it.  The default value is <code>false</code>.</dd>
+  <dd>Whether to delete all graphs in the dataset before uploading any graphs from TriplyETL. Notice that this will also remove graphs that will not be re-uploaded by TriplyETL. The default value is <code>false</code>.</dd>
 </dl>
 
 ## Local data destinations
 
-TriplyETL supports publishing RDF output into a local file.  This is not often used, because files lack many of the features that TriplyDB destinations support, such as:
+TriplyETL supports publishing RDF output into a local file. This is not often used, because files lack many of the features that TriplyDB destinations support, such as:
 
 - The ability to browse the data.
 - The ability to query the data.
@@ -150,9 +150,9 @@ Please note that the `copySource` function is not considered part of the middlew
 
 ## Using TriplyDB.js in TriplyETL
 
-All operations that can be performed in a TriplyDB instance can be automated with classes and methods in the [TriplyDB.js](../../triplydb-js) library.  This library is also used by TriplyETL in the background to implement many of the TriplyETL functionalities.
+All operations that can be performed in a TriplyDB instance can be automated with classes and methods in the [TriplyDB.js](../../triplydb-js) library. This library is also used by TriplyETL in the background to implement many of the TriplyETL functionalities.
 
-Sometimes it is useful to use classes and methods in TriplyDB.js directly.  This is done in the following way:
+Sometimes it is useful to use classes and methods in TriplyDB.js directly. This is done in the following way:
 
 ```ts
 // Create the ETL context.
@@ -162,7 +162,7 @@ const etl = new Etl()
 console.log((await etl.triplyDb.getInfo()).name)
 ```
 
-The above example prints the name of the TriplyDB instance.  But any other [TriplyDB.js](../../triplydb-js) operations can be performed.  For example, the user of the current API Token can change their avatar image in TriplyDB:
+The above example prints the name of the TriplyDB instance. But any other [TriplyDB.js](../../triplydb-js) operations can be performed. For example, the user of the current API Token can change their avatar image in TriplyDB:
 
 
 ```ts
