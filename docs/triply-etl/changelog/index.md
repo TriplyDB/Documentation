@@ -6,9 +6,40 @@ The current version of TriplyETL is **3.0.0**
 
 You can use this changelog to perform a safe update from an older version of TriplyETL to a newer one. See the documentation for [Upgrading TriplyETL repositories](../cli) for the advised approach, and how the changelog factors into that.
 
-## TriplyETL 3.0.0 
+## TriplyETL 3.0.0
 
-Release dates: 2023-10-12 
+Release date: 2023-10-12
+
+### [Added] Support for RML
+
+Support was added for the RDF mapping language (RML). For more information, see [the RML documentation](../rml).
+
+### [Added] Support for XSLT
+
+Support was added for Extensible Stylesheet Language Transformations (XSLT). This can be used in the following two functions:
+
+1. The [fromXml()](../extract/formats/#extractor-fromxml) extractor function, for XML sources that transformed to regular XML.
+2. The [loadRdf()](../extract/formats/#function-loadrdf) function, for XML sources that are transformed into RDF/XML.
+
+In both cases, this functionality is used by configuring the `stylesheet` parameter with an XSLT Stylesheet (e.g. using `Source.file()`).
+
+Example code that uses `fromXml()`:
+
+```ts
+fromXml(Source.file(XMLFile), {
+        selectors: "rdf:RDF.sdo:Person",
+        stylesheet: Source.file(XSLTStylesheet),
+      }),
+```
+
+Example code that uses `loadRdf()`:
+
+```ts
+loadRdf(Source.file(XMLFile), {
+        contentType: "application/rdf+xml",
+        stylesheet: Source.file(XSLTStylesheet),
+      }),
+```
 
 ### [Added] Support for the `SPARQL Select` and `SPARQL Ask` queries
 The extractors [fromCsv()](../extract/formats/#extractor-fromcsv), [fromJson()](../extract/formats/#extractor-fromjson), [fromTsv()](../extract/formats/#extractor-fromtsv) and [fromXml()](../extract/formats/#extractor-fromxml) now support [SPARQL Select](../extract/types/#sparql-select-queries) queries.
@@ -19,8 +50,6 @@ The example below hows how to use a SPARQL ask query in the `fromJson()` extract
 ```ts
 fromJson(Source.TriplyDb.query('account', 'query-name', { triplyDb: { url: 'https://api.triplydb.com' } }))
 ```
-### [Added] [RDF mapping language](https://rml.io/docs/rml/introduction/) (RML) for transformations
-TriplyETL supports transformations using [RDF mapping language](https://rml.io/docs/rml/introduction/) (RML). To see how this works, please refer to our documentation about RML, available [here](../rml).
 
 ### [Enhanced] Simplified usage of [nestedPairs()](../assert/ratt/statement/#function-nestedpairs) Middleware
  The [nestedPairs()](../assert/ratt/statement/#function-nestedpairs) middleware can be used without providing the subject node that connects the pairs to the object/predicate. This will automatically create a skolem-iri for the subject:
@@ -157,26 +186,6 @@ If the users Node.JS version is older that the recommended version (currently \>
 ### [Changed] SHACL Validation Engine 
 A SHACL Validation Engine improved performance. 
  
-### [Changed] [XSLT Processing](../xslt) support in [fromXml()](../extract/formats/#extractor-fromxml) and [loadRdf()](../extract/formats/#function-loadrdf) middlewares
-We support XSLT processing in the [fromXml()](../extract/formats/#extractor-fromxml) and [loadRdf()](../extract/formats/#function-loadrdf) middlewares by providing an optional `Source.file()` to the `stylesheet` parameter.
-
-Example of usage in `fromXml()`:
-
-```ts
-fromXml(Source.file(XMLFile), {
-        selectors: "rdf:RDF.sdo:Person",
-        stylesheet: Source.file(XSLTStylesheet),
-      }),
-```
-Example of usage in `loadRdf()`:
-
-```ts
-loadRdf(Source.file(XMLFile), {
-        contentType: "application/rdf+xml",
-        stylesheet: Source.file(XSLTStylesheet),
-      }),
-```
-
 ### [Changed] Trace for large records
 A new flag now bypasses generating the trace for very large records: `---skip-error-trace`. Thus, no trace file is created.
 
