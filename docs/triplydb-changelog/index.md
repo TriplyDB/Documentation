@@ -12,7 +12,7 @@ path: "/docs/triplydb-changelog"
 
 - `#8224` [SPARQL IDE] Replace the current SPARQL editor with SPARQL IDE. The new SPARQL IDE will be gradually enabled on all TriplyDB deployments.
     - The editor and result visualization have a slightly different look
-    - Documented all shortcuts (press `<ctrl>-?` on the SPARQL IDE page to show them)
+    - Added shortcuts for powerusers (press `<ctrl>-?` on the SPARQL IDE page to show them)
     - Performance improvements when writing larger queries
     - Consolidated the visualizations: the geo 3d plugin is now combined with the regular geo plugin, and the markup visualization is now part of the gallery visualization.
     - The new editor is backwards compatible with the old editor.
