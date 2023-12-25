@@ -1,26 +1,53 @@
 [TOC]
 
-# SPARQL Update
+# SPARQL
 
-SPARQL Update is a powerful feature that allows you to modify and enrich linked data in the internal store. With SPARQL Update, you can generate new linked data based on existing linked data, thereby enhancing the content of the store.
+SPARQL is a powerful query language that can be used to modify and enrich linked data in the Internal Store. With SPARQL, you can generate new linked data based on existing linked data, thereby enhancing the contents of the store.
 
 *Support for SPARQL Update is currently experimental. In the meantime, you can use [SHACL Rules](../shacl) to implement the Enrich Step of your pipeline.*
 
-
-
-## Prerequisites
-
-The function for executing SPARQL Update requests is imported as follows:
+The functions for running SPARQL queries can be imported as follows:
 
 ```ts
-import { update } from '@triplyetl/etl/sparql'
+import { construct, update } from '@triplyetl/etl/sparql'
 ```
 
 
 
-## Add data to the internal store
+## Construct
 
-SPARQL Update can be used to add linked data to the internal store. The following example adds one triple:
+SPARQL Construct queries can be used to enrich the data that is in the Internal Store.
+
+The following full TriplyETL script loads one triple into the Internal Store, and then uses a SPARQL Construct query to add a second triple:
+
+```ts
+import { logQuads } from '@triplyetl/etl/debug'
+import { Etl, loadRdf, Source } from '@triplyetl/etl/generic'
+import { construct } from '@triplyetl/etl/sparql'
+
+export default async function (): Promise<Etl> {
+  const etl = new Etl()
+  etl.use(
+    loadRdf(Source.string('<s><p><o>.')),
+    construct('construct { ?o ?p ?s. } where { ?s ?p ?o. }'),
+    logQuads(),
+  )
+  return etl
+}
+```
+
+This results in the following linked data:
+
+```turtle
+<s> <p> <o>.
+<o> <p> <s>.
+```
+
+
+
+## Insert Data
+
+Insert Data can be used to add linked data to the Internal Store. The following example adds one triple:
 
 ```ts
 import { logQuads } from '@triplyetl/etl/debug'
@@ -92,7 +119,7 @@ prefix sdo: <https://schema.org/>
 
 
 
-## Remove data from the internal store
+## Delete Data
 
 While there are not many uses cases for removing data from the internal store, this is an operation that is supported by the SPARQL Update standard.
 
@@ -108,7 +135,7 @@ You can use the debug function [logQuads()](../../debug#function-logquads) befor
 
 
 
-## Conditionally adding/removing data
+## Delete Insert Where
 
 SPARQL Update can be used to conditionally add and/or remove linked data to/from the internal store. It uses the following keywords for this:
 
@@ -163,7 +190,7 @@ where {
 ```
 
 <!-- TODO
-### Moving data between graphs
+### Load
 
 This operation reads the contents of a document representing a graph and loads it into a graph in the Graph Store.
    
@@ -191,14 +218,14 @@ load <g> into graph <h>`),
 
 In this example, the `LOAD` operation is used to load the contents of a document specified by `<IRIref_from>` into the graph specified by `<IRIref_to>`. The document referred to by `<IRIref_from>` represents a graph, and its contents will be added to the graph identified by `<IRIref_to>`. This allows you to incorporate data from an external source or document into a specific graph within the Graph Store.
 
-#### 5. `CLEAR`
+## Clear
 
 This operation removes all triples in one or more graphs.
 
 Example:
 
 ```
-CLEAR GRAPH <IRIref>
+clear graph <IRIref>
 ```
 
 In this example, the `CLEAR` operation is used to remove all the triples contained within a specific graph identified by `<IRIref>`. It clears the entire contents of the graph, effectively deleting all the triples associated with that graph. This operation allows you to start with a clean slate by removing all existing data within the specified graph, providing a way to reset or empty the graph as needed.
