@@ -2,88 +2,169 @@
 
 # Declare
 
-Declarations introduce constants that you can use in the rest of your ETL configuration.
+This page documents the declaration functionalities that are supported in TriplyETL.
 
+## Introduction
 
+This section explains what declarations are, and what are the benefits of using them.
 
-## Overview
+### What is a declaration?
 
-TriplyETL supports the following kinds of declarations:
+A declarations introduces a constant that can be (re)used throughout the rest of the ETL configuration. This is best shown through an example.
 
-- [Declare](#declare)
-  - [Overview](#overview)
-  - [Prefix declarations](#prefix-declarations)
-  - [External prefix declarations](#external-prefix-declarations)
-  - [Vocabulary declarations](#vocabulary-declarations)
-  - [External vocabularies](#external-vocabularies)
-  - [Custom abbreviations](#custom-abbreviations)
-  - [Instance declarations](#instance-declarations)
-  - [Graph name declarations](#graph-name-declarations)
-  - [Language declarations](#language-declarations)
-  - [Geospatial declarations](#geospatial-declarations)
-  - [Supported vocabularies](#supported-vocabularies)
+The following code snippet asserts that John Doe is a person. It uses the following components that probably occur multiple times in the same ETL configuration:
 
-Declaration functions and objects are found in the following two modules:
-
+- The namespace for this dataset is `<https://triplydb.com/my-account/my-dataset/>`.
+- The IRI for each person in the dataset starts with `<https://triplydb.com/my-account/my-dataset/id/person/>`.
+- The IRI `<http://www.w3.org/1999/02/22-rdf-syntax-ns#type>` is used by the external RDF vocabulary to relate instances to their class.
+- The IRI `<http://xmlns.com/foaf/0.1/Person>` is used by the external FOAF vocabulary to denote the set of all persons.
 
 ```ts
-import { declarePrefix } from '@triplyetl/etl/generic'
-import { prefix } from '@triplyetl/etl/vocab'
+triple(
+  iri('https://triplydb.com/my-account/my-dataset/id/person/john-doe'),
+  iri('http://www.w3.org/1999/02/22-rdf-syntax-ns#type'),
+  iri('http://xmlns.com/foaf/0.1/Person')
+),
 ```
+
+By using declarations, we can use constants to abbreviate the components that occur many times. This results in the following, identical assertion:
+
+```ts
+triple(iri(prefix.person, str('john-doe')), a, foaf.Person),
+```
+
+### Why use declarations?
+
+The use of declarations has the following benefits:
+
+1. **Readability**: Shorter expressions are easier to read. See the example from [the previous subsection](#what-is-a-declaration) for an example.
+2. **Modularity**: By putting all declarations in one place, it is easy to include them into multiple places in the ETL configuration.
+3. **Maintenance**: A configuration change that is made in a declaration immediately becomes available to all the locations in which it is used. This makes it easy to update things like namespaces, that would be cumbersome and error-prone to change in each location of use.
+4. **Editor support**: Declarations support auto-complete functionality in text editors. When documentation is included, this is shown alongside the declarations in text editors.
+
+### How to import declaration functionality?
+
+Declaration objects are found in the following modules:
+
+```ts
+import { Iri } from '@triplyetl/etl/generic'
+import { sdo, owl, sh, skos } from '@triplyetl/etl/vocab'
+```
+
+
+
+## Base IRI declaration
+
+Within one dataset, it is common for the majority of IRIs to share the same IRI prefix or 'namespace'. It is convenient to declare this shared IRI prefix or namespace once, and use it throughout the rest of the ETL. This most broadly shared IRI prefix is called the *base IRI*.
+
+In TriplyETL, the base IRI is declared in the following way:
+
+```ts
+const baseIri = Iri('https://triplydb.com/triply/iris/')
+```
+
+Notice that the base IRI that is declared above, is also the location where the dataset that uses this base IRI can be found: <https://triplydb.com/triply/iris/>. This is the *dereferencing principle* of linked data: IRIs are used for both naming ánd locating data.
 
 
 
 ## Prefix declarations
 
-Linked data uses IRIs for uniquely identifying most data items. Since IRIs can be long and complex, it is a best practice to declare short aliases that can be used to abbreviate them. Such aliases are introduced in prefix declarations.
+Linked data uses IRIs for uniquely identifying most data items. Since IRIs can be long and complex, it is common to declare shorter aliases that can be used to abbreviate them. Such aliases are introduced in *prefix declarations*.
 
-The function for declaring prefixes can be imported from the generic TriplyETL library:
+### Individual prefix declarations
+
+A new prefix declaration is created by using the `concat()` member function on an existing `IRI` object. The `concat()` function specifies the string that is added to the existing IRI. The added string must meet the syntactic criteria for the *path segment* component in IRI syntax (see [RFC 3987](https://datatracker.ietf.org/doc/html/rfc3987#section-2.2) for the official syntax). It is common practice to end the added string with a forward slash, which ends a path segment in IRI syntax.
+
+Prefix declarations are often based off of the [base IRI](#base-iri-declaration), since that is the prefix IRI that is shared by most IRIs in a dataset.
+
+#### Example
+
+The following code snippet declares a base IRI, and then adds the following two prefix declarations:
+
+1. Alias `prefix_id` abbreviates IRI `<https://triplydb.com/my-account/my-dataset/id/>`, which is used by all IRIs that denote instances.
+2. Alias `prefix_model` abbreviates IRI `<https://triplydb.com/my-account/my-dataset/model/>`, which is used by all IRIs that are used in the data model.
 
 ```ts
-import { declarePrefix } from '@triplyetl/etl/generic'
+import { Iri } from '@triplyetl/etl/generic'
+
+const baseIri = Iri('https://triplydb.com/my-account/my-dataset/')
+const prefix_id = baseIri.concat('id/')
+const prefix_model = baseIri.concat('model/')
 ```
 
-The following function introduces `ALIAS` as shorthandnotation for `IRI_PREFIX`:
+### Prefix declaration tree / IRI strategy
+
+It is common to declare the base IRI declaration and all prefix declarations in one single spot. This consolidates the full *IRI strategy* for a dataset in one place. This is easy for documentation purposes, since all project members can see the full set of IRI prefixes in one place. And this supports optimal reuse of these declarations throughout the ETL configuration.
+
+IRI prefixes form a *tree*:
+
+- The *root* of the tree is the base IRI.
+- The *internal nodes* of the tree are prefix declarations that are extended by some other prefix declaration.
+- The *external nodes* or *leaves* of the tree are prefix declarations that are not extended by another prefix declaration.
+
+It is common to declare the leaves of the IRI prefix tree in an object, since such an object can be conveniently used to make term assertions throughout the ETL.
+
+#### Example
+
+The following code snippet gives an example of such an IRI prefix tree, where:
+
+- The base IRI is `<https://triplydb.com/my-account/my-dataset/>`.
+- The internal nodes are the base IRI, `prefix_id`, and `prefix_model`.
+- The leaves are the three prefix declarations that appear in the `prefix` object.
 
 ```ts
-const base = declarePrefix('https://example.com/')
-```
+import { Iri } from '@triplyetl/etl/generic'
 
-Once an alias has been declared, future declarations can make use of that alias to extend it:
-
-```ts
-const id = declarePrefix(base('id/'))
-```
-
-Notice that it is common practice to end every IRI prefix in a forward slash.
-
-It is common to make declarations for the full IRI strategy in one place, with an intent to reuse them through the ETL configuration. To distinguish prefix declarations from other declarations, it is best practice to put all prefix declaration that will be used in transformations and assertions into an single object called `prefix`:
-
-```ts
-const base = declarePrefix('https://example.com/')
-const id = declarePrefix(base('id/'))
+const baseIri = Iri('https://triplydb.com/my-account/my-dataset/')
+const prefix_id = baseIri.concat('id/')
+const prefix_model = baseIri.concat('model/')
 const prefix = {
-  person: declarePrefix(id('person/')),
-  def: declarePrefix(base('model/def/')),
-  vehicle: declarePrefix(id('vehicle/')),
+  city: prefix_id.concat('city/'),
+  def: prefix_model.concat('def/'),
+  person: prefix_id.concat('person/'),
 }
 ```
 
-Notice that `base` and `id` are not intended to be used in transformations or assertions, but are only used to declare other prefixes that are used.
-
-With the above declarations in place, the following IRI assertion can be made:
+With the above declarations in place, the following IRI term assertions can be made (see the [iri()](../assert/ratt/term/#function-iri) function for more information):
 
 ```ts
-iri(prefix.person, 'name')
+iri(prefix.city, 'name')
+iri(prefix.city, str('Amsterdam')),
+iri(prefix.def, str('livesIn')),
+iri(prefix.person, 'first name')
 iri(prefix.person, str('John')),
-iri(prefix.vehicle, 'id')
-iri(prefix.vehicle, str('123')),
 ```
 
-See assertion functions [iri()](../assert/ratt/term/#function-iri) and [str()](../assert/ratt/term#function-str) for more information.
+Static terms can also be expressed with the `concat()` member function:
+
+```ts
+prefix.city.concat('Amsterdam')
+prefix.def.concat('livesIn')
+prefix.person.concat('John')
+```
+
+The following statement assertion can be made (see the [triple()](../assert/ratt/statement/#function-triple) function for more information). Notice that it is possible to mix (dynamic and static) `iri()` term assertions with IRIs created with `concat()`:
+
+```ts
+triple(
+  iri(prefix.person, 'first name'),
+  iri(prefix.def, str('livesIn')),
+  prefix.city.concat('Amsterdam')
+),
+```
+
+The statement assertion results in the following linked data:
+
+```turtle
+<https://triplydb.com/my-account/my-dataset/id/person/John>
+<https://triplydb.com/my-account/my-dataset/model/def/livesIn>
+<https://triplydb.com/my-account/my-dataset/id/city/Amsterdam>
+.
+```
 
 
 
+<!--
 ## External prefix declarations
 
 In linked data, it is common to reuse existing vocabularies and datasets. TriplyETL allows you to use popular namespaces from predefined prefix declarations.
@@ -119,64 +200,82 @@ This may create literals like the following:
 'Amsterdam'^^xsd:string
 'Berlin'^^xsd:string
 ```
+-->
 
 
 
-## Vocabulary declarations
+## Term declarations
 
-Vocabularies are collections of IRIs that have the same namespace. The namespace can be declared with a prefix (see [Prefix declarations](#prefix-declarations)). We use the following prefix declaration as the namespace for our vocabulary:
+When a term is used in multiple places in the ETL configuration, it is often better to declare it first and (re)use it later. This ensures that changes to the term are applied in every location of use.
+
+We will use the following prefix declaration tree in our examples:
 
 ```ts
-const base = declarePrefix('https://example.com/')
+import { Iri } from '@triplyetl/etl/generic'
+
+const baseIri = Iri('https://triplydb.com/my-account/my-dataset/')
+const prefix_id = baseIri.concat('id/')
+const prefix_model = baseIri.concat('model/')
 const prefix = {
-  def: declarePrefix(base('model/def/')),
+  city: prefix_id.concat('city/'),
+  con: prefix_model.concat('con/'),
+  def: prefix_model.concat('def/'),
+  graph: prefix_id.concat('graph/')),
+  person: prefix_id.concat('person/'),
+  shp: prefix_model.concat('shp/'),
 }
 ```
 
-Individual terms in the vocabulary can be declared by using the declaration of the namespace as a function:
+### Concept term declarations
+
+Concepts are expressed in linked data with SKOS. Concepts are often (re)used in multiple places, and they often form a fixed collection. This makes terms that denote concepts eligible for a term declaration object.
+
+The following code snippet declares the terms that denote concepts:
 
 ```ts
-prefix.def('Person')
-prefix.def('Vehicle')
-prefix.def('knows')
-prefix.def('owns')
+const concept = {
+  animal: prefix.con.concat('animal'),
+  mammal: prefix.con.concat('mammal'),
+}
 ```
 
-These are equivalent to the following full IRIs:
+This object can be used through the ETL configuration. For example in the following statement assertion:
 
-```iri
-https://example.com/model/def/Person
-https://example.com/model/def/Vehicle
-https://example.com/model/def/knows
-https://example.com/model/def/owns
+```ts
+triple(concept.mammal, skos.broader, concept.animal),
 ```
 
-It is best practice to place IRI terms that belong to the same vocabulary or namespace in an object:
+### Vocabulary term declarations
+
+Classes and properties are expressed in linked data with RDFS/OWL. Classes and properties are often (re)used in multiple places, and they often form a fixed vocabulary. This makes terms that denote classes or properties eligible for a term declaration object.
+
+The following code snippet declares the terms that denote classes and properties:
 
 ```ts
 const def = {
-  Person: prefix.def('Person'),
-  Vehicle: prefix.def('Vehicle'),
-  knows: prefix.def('knows'),
-  owns: prefix.def('owns'),
+  City: prefix.def.concat('City'),
+  Person: prefix.def.concat('Person'),
+  livesIn: prefix.def.concat('livesIn'),
 }
 ```
 
-With the above declarations in place, we can now make the following assertions:
+Vocabulary term declarations can be used in statement assertions, for example:
 
 ```ts
-pairs(iri(prefix.person, 'name'),
+triple(iri(prefix.city, 'name'), a, def.City),
+pairs(iri(prefix.person, 'first name'),
   [a, def.Person],
-  [def.owns, iri(prefix.vehicle, 'id')],
+  [def.livesIn, iri(prefix.city, 'name')],
 ),
 ```
 
 This results in the following linked data:
 
 ```turtle
+city:Amsterdam a def:City.
 person:John
   a def:Person;
-  def:owns vehicle:123.
+  def:livesIn city:Amsterdam.
 ```
 
 Or diagrammatically:
@@ -184,84 +283,85 @@ Or diagrammatically:
 ```mermaid
 graph LR
   john -- a --> Person
-  john -- def:owns --> vehicle
+  john -- def:livesIn --> amsterdam
 
   Person[def:Person]:::model
+  amsterdam[city:Amsterdam]:::data
   john[person:John]:::data
-  vehicle[vehicle:123]:::data
 
   classDef data fill:yellow
   classDef model fill:lightblue
 ```
 
+### Shape term declarations
 
+Shapes are expressed in linked data with SHACL. shapes are often (re)used in multiple places, and they often form a fixed vocabulary. This makes terms that denote shapes eligible for a term declaration object.
 
-## External vocabularies
-
-In linked data, it is common to reuse existing vocabularies. Popular vocabularies can be imported from the TriplyETL vocabulary library:
+The following code snippet declares the terms that denote shapes:
 
 ```ts
-import { a, foaf, owl, premis } from '@triplyetl/etl/vocab'
+const shp = {
+  City: prefix.shp.concat('City'),
+  Person: prefix.shp.concat('Person'),
+  Person_livesIn: prefix.shp.concat('livesIn'),
+}
 ```
 
-This allows you to make the following assertions:
+This object can be used through the ETL configuration. For example in the following statement assertions:
 
 ```ts
-triple(foaf.Person, a, owl.Class),
+pairs(shp.Person,
+  [a, sh.NodeShape],
+  [sh.property, shp.Person_livesIn],
+  [sh.targetClass, def.Person],
+),
+pairs(shp.Person_livesIn,
+  [a, sh.PropertyShape],
+  [sh.class, def.City],
+  [sh.path, def:livesIn],
+),
 ```
 
 This results in the following linked data:
 
 ```turtle
-foaf:Person a owl:Class.
+shp:Person
+  a sh:NodeShape;
+  sh:property shp:Person_livesIn;
+  sh:targetClass def:Person.
+shp:Person_livesIn
+  a sh:PropertyShape;
+  sh:class def:City;
+  sh:path def:livesIn.
 ```
 
-Notice that the notation in TriplyETL comes very close to the notation in Turtle/TriG/SPARQL that is familiar to linked data users.
+Or diagrammatically:
 
-The following code snippet uses the specialized PREMIS 3.0.0 vocabulary. This vocabulary is published by the Library of Congress and is used to publish metadata about the preservation of digital objects. The following code snippet asserts that a PREMIS file is stored in a PREMIS storage location:
+```mermaid
+graph LR
+  shp_Person -- a --> sh:NodeShape
+  shp_Person -- sh:property --> shp_Person_livesIn
+  shp_Person -- sh:targetClass --> def_Person
 
-```ts
-pairs(iri(id, 'some-file'),
-  [a, premis.File],
-  [premis.storedAt, iri(id, 'some-location')],
-),
-triple(iri(id, 'some-location'), a, premis.StorageLocation),
+  shp_Person_livesIn -- a --> sh:PropertyShape
+  shp_Person_livesIn -- sh:class --> def_City
+  shp_Person_livesIn -- sh:path --> def_livesIn
+
+  def_City[def:City]:::model
+  def_Person[def:Person]:::model
+  def_livesIn[def:livesIn]:::model
+  shp_Person[shp:Person]:::shape
+  shp_Person_livesIn[shp:Person_livesIn]:::shape
+
+  classDef model fill:lightblue
+  classDef shape fill:orange
 ```
 
+### Individual term declarations
 
+Individuals are instances of classes. For example, John Doe is an individual of class `def:Person`; Amsterdam is an individual of class `def:City`. If terms that denote individuals are used multiple times in an ETL configuration, term declarations may be introduced for them.
 
-## Custom abbreviations
-
-The custom abbreviation `a` is available in the popular Turtle/TriG/SPARQL languages. TriplyETL allows you to introduce this custom abbreviation from the vocabulary library:
-
-```ts
-import { a } from '@triplyetl/etl/vocab'
-```
-
-In Turtle/TriG syntax this abbreviation is only allowed to be used in the predicate position. This restriction is not enforced in TriplyETL, where you can use the `a` abbreviation in the subject, predicate, object, and even graph position.
-
-You can introduce your own custom abbreviations as needed. For example, the following code snippet introduces `is_a` as a custom abbreviation for the IRI `rdfs:subClassOf`:
-
-```ts
-import { foaf, rdfs } from '@triplyetl/etl/vocab'
-const is_a = rdfs.subClassOf
-```
-
-This allows you to write the following assertion:
-
-```ts
-triple(foaf.Person, is_a, foaf.Agent),
-```
-
-This may make assertions more readable for users from certain domains. For example, "is a" is a commonly use phrase [in many other modeling languages](https://en.wikipedia.org/wiki/Is-a) to denote the subsumption relation.
-
-
-
-## Instance declarations
-
-The same approach that is used for [vocabulary declarations](#vocabulary-declarations) can also be used for instance declarations.
-
-The following example introduces constants for individual persons:
+The following code snippet declares the terms that denote individual persons:
 
 ```ts
 const person = {
@@ -271,36 +371,33 @@ const person = {
 }
 ```
 
-Instance declarations are used in assertions similar to how vocabulary declarations as used:
+Instance term declarations can be used in statement assertions, for example:
 
 ```ts
-triple(person.john, def.knows, person.mary),
+triple(person.john, foaf.knows, person.mary),
 ```
 
+This results in the following linked data:
 
+```turtle
+person:john foaf:knows person:mary.
+```
 
-## Graph name declarations
+### Graph name declarations
 
-A linked dataset contains one or more graphs. Each graph can be given a name. It is common practice to declare a fixed set of graph names that will be used throughout the TriplyETL configuration.
+Linked data statements belong to graphs. Graphs are denoted by graph names. For example, a graph name may denote a graph that contains metadata statements, while another graph name may denote a graph that contains instance data. If graph names are used multiple times in an ETL configuration, term declarations may be introduced for them.
 
-The following code snippet declares graph names for graphs that store metadata, model, and instances:
+The following code snippet declares three graph names:
 
 ```ts
-import { declarePrefix } from '@triplyetl/etl/generic'
-
-const id = declarePrefix('https://example.com/id/')
-const prefix = {
-  graph: declarePrefix(id('graph/')),
-}
-
 const graph = {
-  metadata: prefix.graph('metadata'),
-  model: prefix.graph('model'),
-  instances: prefix.graph('instances'),
+  metadata: prefix.graph.concat('metadata'),
+  model: prefix.graph.concat('model'),
+  instances: prefix.graph.concat('instances'),
 }
 ```
 
-The declared graph names can now be used in assertions:
+The declared graph names can now be used in statement assertions:
 
 ```ts
 triples(graph.metadata,
@@ -309,19 +406,64 @@ triples(graph.metadata,
 ),
 ```
 
-See assertion function [triples()](../assert/ratt/statement#function-triples) for more information.
 
 
+## External vocabularies
 
-## Language declarations
+In linked data, it is common to reuse existing vocabularies. Popular vocabularies can be imported from the TriplyETL vocabulary library. See the [table of currently supported vocabularies](./vocabularies.md) for a full overview.
 
-Commonly used language tags can be imported in the following way:
+The following example imports three vocabularies (FOAF, OWL, PREMIS):
 
 ```ts
-import { lang } from '@triplyetl/etl/vocab'
+import { foaf, owl, premis } from '@triplyetl/etl/vocab'
 ```
 
-These language declarations can be used to add language-tagged strings to the Record:
+This allows you to make the following statement assertion:
+
+```ts
+triple(foaf.Person, a, owl.Class),
+```
+
+Notice that the notation in TriplyETL comes very close to the notation in the standardized linked data syntax for Turtle, TriG, and SPARQL. For the example above:
+
+```turtle
+foaf:Person a owl:Class.
+```
+
+### Example: Using the PREMIS external vocabulary
+
+The following code snippet uses the external PREMIS vocabulary. This vocabulary is published by the Library of Congress and is used to publish metadata about the preservation of digital objects. The following code snippet asserts that a PREMIS file is stored in a PREMIS storage location:
+
+```ts
+pairs(iri(prefix.file, 'File ID'),
+  [a, premis.File],
+  [premis.storedAt, iri(prefix.location, 'Location ID')],
+),
+triple(iri(prefix.location, 'Location ID'), a, premis.StorageLocation),
+```
+
+
+
+## Language code declarations
+
+Linked data includes support for *language-tagged strings*. These are literals that specify a string value and a code that denotes the natural language in which that string value should be interpreted.
+
+The natural language codes follow a syntax that is standardized in [RFC 5646](https://datatracker.ietf.org/doc/html/rfc5646), and must occur in the Language Subtag Registry that is maintained by IANA.
+
+TriplyETL includes declarations for these natural language codes. They can be imported as follows:
+
+```ts
+import { language } from '@triplyetl/etl/vocab'
+```
+
+Language code declaration can be used in [literal()](../assert/ratt/term.md) term assertions:
+
+```ts
+literal(str('Nederland'), language.nl)
+literal(str('Netherlangs'), language.en)
+```
+
+Language code declarations can also be used in [addLiteral()](../transform/ratt/index.md#function-addliteral) transformations:
 
 ```ts
 addLiteral({
@@ -331,26 +473,72 @@ addLiteral({
 }),
 ```
 
-Or they can be used to directly assert language-tagged strings in the Internal Store:
+
+
+## Shorthand declarations
+
+Shorthands are convenient names that stand for commonly used IRIs. There is one standard shorthand (`a`), and TriplyETL allows other shorthands to be declared as needed.
+
+### The standard shorthand
+
+The standardized linked data syntax for Turtle, TriG, and SPARQL allow the shorthand `a` to be used to stand for the `rdf:type` property. TriplyETL supports this standard shorthand, which can be imported from the vocabulary library:
 
 ```ts
-triple('_city', rdfs.label, literal('label', lang.fr)),
+import { a } from '@triplyetl/etl/vocab'
 ```
 
-See transformation function [addLiteral()](../transform/ratt#function-addliteral) and assertion function [literal()](../assert/ratt/term#function-literal) for more information.
+In the standardized linked data syntax for Turtle, TriG and SPARQL, this shorthand can only be used in the predicate position. This restriction is not enforced in TriplyETL, where the `a` shorthand can be used in the subject, predicate, object, and even graph position.
+
+#### Example
+
+The following code snippet makes a true statement assertion, while using the stands shorthand twice:
+
+```ts
+triple(a, a, rdf.Property),
+```
+
+This results in the following linked data:
+
+```turtle
+rdf:type a rdf:Property.
+```
+
+### User-defined shorthands
+
+TriplyETL allows the introduction of arbitrary, user-defined shorthands. User-defined shorthands can make linked data assertions in the ETL configuration more readable for users from certain domains. For example, "is a" is a commonly used phrase [in many modeling languages](https://en.wikipedia.org/wiki/Is-a) to denote the subsumption relation.
+
+#### Example
+
+The following code snippet declares `is_a` as a user-defined shorthand for the `rdfs:subClassOf` property (which is the subsumption relation in linked data):
+
+```ts
+import { foaf, rdfs } from '@triplyetl/etl/vocab'
+const is_a = rdfs.subClassOf
+```
+
+This declaration is used in the following statement assertion:
+
+```ts
+triple(foaf.Person, is_a, foaf.Agent),
+```
+
+This results in the following linked data:
+
+```turtle
+foaf:Person rdfs:subClassOf foaf:Agent.
+```
 
 
 
 ## Geospatial declarations
 
-IRIs that denote commonly used coordinate reference systems can be imported from the `epsg` object:
+TriplyETL includes declarations for geospatial coordinate reference systems. These are identified by EPSG codes, and can imported as follows:
 
 ```ts
-import { geojsonToWkt } from '@triplyetl/etl/ratt'
 import { epsg } from '@triplyetl/etl/vocab'
 ```
 
-Such IRIs that denote coordinate reference systems can be used in several geospatial functions, for example in transformation function [geojsonToWkt()](../transform/ratt#function-geojsontowkt):
+EPSG codes can be used in geospatial transformation functions like [geojsonToWkt()](../transform/ratt#function-geojsontowkt):
 
 ```ts
 geojsonToWkt({
@@ -359,69 +547,3 @@ geojsonToWkt({
   key: '_wkt',
 }),
 ```
-
-## Supported vocabularies
-
-While any vocabulary can be used in TriplyETL, the following list of commonly used vocabularies have out-of-the-box support.
-
-| Name | Version | Use cases | Description |
-| --- | --- | --- | --- |
-| Argument Model Ontology (AMO) | 1.0 | Fake news detection, argumentation structure | An ontology for describing argumentation according to Toulmin's argumentation model. |
-| Bibliographic Ontology Specification (BIBO) | no version | Libraries, citation graphs, bibliography | The Bibliographic Ontology Specification provides main concepts and properties for describing citations and bibliographic references (i.e. quotes, books, articles, etc) on the Semantic Web. |
-| Building Topology Ontology (BOT) | 0.3.2 | Buildings | The Building Topology Ontology (BOT) is a minimal ontology for describing the core topological concepts of a building.|
-| Brick: A uniform metadata schema for buildings | no version | Buildings | Brick is an open-source effort to standardize semantic descriptions of the physical, logical and virtual assets in buildings and the relationships between them. |
-| Cultural Heritage Ontology (CEO) | 1.41 | Cultural heritage | The CEO is the complete semantic representation of the logical data models CHO and KENNIS from the data layer of the RCE. |
-| Conceptual Reference Model (CRM) | 7.1.2 | Cultural heritage | The CIDOC Conceptual Reference Model (CRM) provides definitions and a formal structure for describing the implicit and explicit concepts and relationships used in cultural heritage documentation. |
-| CRM Digital | no version | Digitization products | An ontology and RDF Schema to encode metadata about the steps and methods of production (“provenance”) of digitization products and synthetic digital representations such as 2D, 3D or even animated Models created by various technologies.  Its distinct features compared to competitive models is the complete inclusion of the initial physical measurement processes and their parameters. |
-| Conceptual Reference Model (CRM) - PC | no version | Cultural heritage | CIDOC CRM v7.1.2 module for the implementation of properties of properties in RDFs. |
-| DBpedia Ontology | 1.0.0 | DBpedia | Ontology for DBpedia |
-| Data Catalog Vocabulary (DCAT) | 2.0.0 | Data catalogs, datasets | DCAT is an RDF vocabulary designed to facilitate interoperability between data catalogs published on the Web. | 
-| Dublin Core Type Vocabulary | 2012-06-14 | Classes | The DCMI Type Vocabulary was created in 2001.  It defines classes for basic types of thing that can be described using DCMI metadata terms. |
-| Dublin Core Terms | 1.1.0 | Metadata terms | This document is an up-to-date specification of all metadata terms maintained by the Dublin Core Metadata Initiative, including properties, vocabulary encoding schemes, syntax encoding schemes, and classes. |
-| Document Elements Ontology (DEO) | 2015-07-03 | Rhetorical elements within documents | DEO, The Discourse Elements Ontology, is an ontology written in OWL 2 DL that provides a structured vocabulary for rhetorical elements within documents (e.g. Introduction, Discussion, Acknowledgements, Reference List, Figures, Appendix), enabling these to be described in RDF.  It uses some of the rhetorical block elements from the SALT Rhetorical Ontology and the Ontology of Rhetorical Blocks. |
-| Document Components Ontology (DoCo) | 1.3.0 | Document components | The Document Components Ontology (DoCO) in an ontology that provides a structured vocabulary written of document components, both structural (e.g., block, inline, paragraph, section, chapter) and rhetorical (e.g., introduction, discussion, acknowledgements, reference list, figure, appendix). |
-| ERA Vocabulary | 2022-02-02 | Railway infrastructure | Vocabulary defined by the European Union Agency for Railways to describe the concepts and relationships related to the European railway infrastructure and the vehicles authorized to operate over it. |
-| FRBR-aligned Bibliographic Ontology (FaBiO) | no version | Publishing, bibliography, textual publications| An ontology for recording and publishing on the Semantic Web descriptions of entities that are published or potentially publishable, and that contain or are referred to by bibliographic references, or entities used to define such bibliographic references. |
-| Friend of a Friend (FOAF) | 0.1.0 | People, information | FOAF is a project devoted to linking people and information using the Web.  Regardless of whether information is in people's heads, in physical or digital documents, or in the form of factual data, it can be linked.  FOAF integrates three kinds of network: social networks of human collaboration, friendship and association; representational networks that describe a simplified view of a cartoon universe in factual terms, and information networks that use Web-based linking to share independently published descriptions of this inter-connected world.  FOAF does not compete with socially-oriented Web sites; rather it provides an approach in which different sites can tell different parts of the larger story, and by which users can retain some control over their information in a non-proprietary format. |
-| Functional Requirements for Bibliographic Records (FRBR) | 2005-08-10 | Bibliography | This vocabulary is an expression in RDF of the concepts and relations described in the IFLA report on the Functional Requirements for Bibliographic Records (FRBR). |
-| GeoSPARQL | 1.0 | Geospatial data | The OGC GeoSPARQL standard supports representing and querying geospatial data on the Semantic Web.  GeoSPARQL defines a vocabulary for representing geospatial data in RDF, and it defines an extension to the SPARQL query language for processing geospatial data.  In addition, GeoSPARQL is designed to accommodate systems based on qualitative spatial reasoning and systems based on quantitative spatial computations. |
-| Geography Markup Language (GML) Encoding Standard | 3.2.1 | Geography | XML grammar for expressing geographical features.  GML serves as a modeling language for geographic systems as well as an open interchange format for geographic transactions on the Internet. |
-| Getty Vocabulary Program (GVP) | 3.3.0 | Classes, properties and values in GVP LOD | The GVP Ontology defines classes, properties and values ([`skos:Concept`](https://triplydb.com/w3c/skos/table?subject=http%3A%2F%2Fwww.w3.org%2F2004%2F02%2Fskos%2Fcore%23Concept)s) used in GVP LOD. |
-| Linked Art | no version | Cultural heritage | Linked Art describes cultural heritage resources, with a focus on artworks and museum-oriented activities. It defines common patterns and terms to ensure that the resulting data can be easily used and is based on real-world data and use cases. |
-| Metagegevens voor duurzaam toegankelijke overheidsinformatie (MDTO) | 1.0 | Government information | MDTO (Metadata for sustainably accessible government information) is a standard for recording and exchanging unambiguous metadata to enable the sustainable accessibility of government information. |
-| Organization ontology | 0.8.0 | Organizational structures | Vocabulary for describing organizational structures, specializable to a broad variety of types of organization. |
-| Web Ontology Language (OWL) | 2.0.0 | Things, groups of things, and relations between things | Language (OWL) is a Semantic Web language designed to represent rich and complex knowledge about things, groups of things, and relations between things. |
-| Person Name Vocabulary (PNV) | 1.1 | Persons' names | The Person Name Vocabulary (PNV) is an RDF vocabulary and data model for persons' names. It is applicable to many datasets in which persons are described, as it accommodates different levels of data granularity. It furthermore allows for easy alignment of name elements, including idiosyncratic ones, such as family name prefixes and patronymics, with standard vocabularies such as Schema.org, FOAF, DBpedia and Wikidata, thus guaranteeing optimal data interoperability. |
-| PREMIS 3 Ontology | 3.0.0 | Digital objects | Ontology for PREMIS 3, the international standard for metadata to support the preservation of digital objects and ensure their long-term usability. |
-| PROV Ontology (PROV-O) | no version | Provenance information | The PROV Ontology (PROV-O) expresses the [PROV Data Model](http://www.w3.org/TR/2013/REC-prov-dm-20130430/) using the OWL2 Web Ontology Language (OWL2).  It provides a set of classes, properties, and restrictions that can be used to represent and interchange provenance information generated in different systems and under different contexts.  It can also be specialized to create new classes and properties to model provenance information for different applications and domains. |
-| Data Cube Vocabulary | 0.2 | Statistical data, multi-dimensional data sets| There are many situations where it would be useful to be able to publish multi-dimensional data, such as statistics, on the web in such a way that it can be linked to related data sets and concepts.  The Data Cube vocabulary provides a means to do this using the W3C [RDF](http://www.w3.org/TR/REC-rdf-syntax/) (Resource Description Framework) standard.  The model underpinning the Data Cube vocabulary is compatible with the cube model that underlies [SDMX](http://sdmx.org/) (Statistical Data and Metadata eXchange), an ISO standard for exchanging and sharing statistical data and metadata among organizations.  The Data Cube vocabulary is a core foundation which supports extension vocabularies to enable publication of other aspects of statistical data flows or other multi-dimensional data sets. |
-| Quantities, Units, Dimensions and Types (QUDT) | 2.1.2 | Physical quantities, units of measure, dimensions | The QUDT, or “Quantity, Unit, Dimension and Type” schema defines the base classes properties, and restrictions used for modeling physical quantities, units of measure, and their dimensions in various measurement systems. |
-| RDA element sets: Agent properties | 1.0.0 | RDA Agent | The Agent properties element set consists of properties representing attributes and relationships of the RDA *Agent*, *Collective Agent*, *Person*, *Family*, and *Corporate Body* entities. |
-| RDA element sets: Classes | 1.0.0 | Classes representing the RDA entities | The Classes element set consists of classes representing the RDA entities, including RDA Entity, Work, Expression, Manifestation, Item, Agent, Collective Agent, Person, Family, Corporate Body, Nomen, Place, and Timespan. |
-| RDA Content Type | 1.0.0 | Content | A categorization reflecting the fundamental form of communication in which the content is expressed and the human sense through which it is intended to be perceived. |
-| RDA Carrier Type | 1.0.0 | Carrier | A categorization reflecting the format of the storage medium and housing of a carrier in combination with the type of intermediation device required to view, play, run, etc., the content of a resource. |  
-| RDA Element Sets: Expression Properties | 1.0.0 | RDA Expression properties | The Expression properties element set consists of properties representing attributes and relationships of the RDA *Expression* entity. |
-| RDA element sets: Item properties | 5.0.12 | RDA Item | The Item properties element set consists of properties representing attributes and relationships of the RDA *Item* entity. |
-| RDA Element Sets: Manifestation Properties | 1.0.0 | RDA Manifestation | The Manifestation properties element set consists of properties representing attributes and relationships of the RDA *Manifestation* entity. |
-| RDA Media Type | 1.0.0 | Media type  | A categorization reflecting the general type of intermediation device required to view, play, run, etc., the content of a resource. |
-| RDA element sets: Nomen properties | 1.0.0 | RDA Nomen | The Nomen properties element set consists of properties representing attributes and relationships of the RDA *Nomen* entity. |
-| RDA element sets: Place properties | 1.0.0 | RDA Place | The Place properties element set consists of properties representing attributes and relationships of the RDA *Place* entity. |
-| RDA element sets: Timespan properties | 1.0.0 | RDA Timespan | The Expression properties element set consists of properties representing attributes and relationships of the RDA *Timespan* entity. |
-| RDA element sets: Unconstrained properties | 1.0.0 |Properties of all RDA entities | The Unconstrained properties element set consists of properties representing the elements of all of the RDA entities.  Each property in the element set has semantics which are independent of the LRM model and has no specified domain or range. |
-| RDA element sets: Work properties | 1.0.0 | RDA Work | The Work properties element set consists of properties representing attributes and relationships of the RDA *Work* entity. |
-| RDA element sets: Entity properties | 1.0.0 | RDA Entity | The RDA Entity properties element set consists of properties representing elements of the RDA *Entity* entity. |
-| Resource Description Framework (RDF) | 1.1.0 | RDF | This is the RDF Schema for the RDF vocabulary terms in the RDF Namespace, defined in RDF Concepts. |
-| RDF Schema | 1.1.0 | Data-modelling vocabulary for RDF data | RDF Schema provides a data-modelling vocabulary for RDF data.  RDF Schema is an extension of the basic RDF vocabulary. |
-| MARC Code List for Relators Scheme | 2017-09-07 | Relator terms | Relator terms and their associated codes designate the relationship between a name and a bibliographic resource.  The relator codes are three-character lowercase alphabetic strings that serve as identifiers.  Either the term or the code may be used as controlled values. |
-| Records in Contexts Ontology (ICA RiC-O) | 0.2 | Archives | RiC-O (Records in Contexts-Ontology) is an OWL ontology for describing archival record resources. As the second part of Records in Contexts standard, it is a formal representation of Records in Contexts Conceptual Model (RiC-CM). |
-| Reconstructions and Observations in Archival Resources (ROAR) | 0.1 | Archives | Ontology to describe person, location etc. observations in archival resources. One or multiple observations can be bundled into a reconstruction that combines complementary (or sometimes conflicting) information from the observation(s) so that a single entity is reconstructed out of several entity observations from one or multiple sources. |
-| Schema.org | 22.0 | Collection of shared vocabularies | The Schema.org vocabulary, including the core vocabulary and all domain-specific layers. |
-| Shapes Constraint Language (SHACL) | 1.0.0 | Validation of RDF graphs | SHACL Shapes Constraint Language is a language for validating RDF graphs against a set of conditions.  These conditions are provided as shapes and other constructs expressed in the form of an RDF graph.  RDF graphs that are used in this manner are called “shapes graphs” in SHACL and the RDF graphs that are validated against a shapes graph are called “data graphs”.  As SHACL shape graphs are used to validate that data graphs satisfy a set of conditions they can also be viewed as a description of the data graphs that do satisfy these conditions.  Such descriptions may be used for a variety of purposes beside validation, including user interface building, code generation and data integration. |
-| Simple Knowledge Organization System (SKOS) | 1.2.0 | Knowledge organization systems | The Simple Knowledge Organization System (SKOS) is a common data model for sharing and linking knowledge organization systems via the Semantic Web. |
-| Simple Knowledge Organization System eXtension for Labels | 1.4.0 | Labels | SKOS-XL defines an extension for the Simple Knowledge Organization System, providing additional support for describing and linking lexical entities. |
-| SPARQL Service Description | 1.1 | SPARQL | SPARQL Service Description |
-| Time Ontology | 1.0.0 | Temporal properties | OWL-Time is an OWL-2 DL ontology of temporal concepts, for describing the temporal properties of resources in the world or described in Web pages.  The ontology provides a vocabulary for expressing facts about topological (ordering) relations among instants and intervals, together with information about durations, and about temporal position including date-time information.  Time positions and durations may be expressed using either the conventional (Gregorian) calendar and clock, or using another temporal reference system such as Unix-time, geologic time, or different calendars. |
-| All Units Ontology | 2.1.2 | Units of measure | Standard units of measure for all units. |
-| Vocabulary for Annotating Vocabulary Descriptions (VANN) | 1.0.0 | Annotation | A vocabulary for annotating descriptions of vocabularies with examples and usage notes. |
-| Vocabulary of Interlinked Datasets (VoID) | 1.0.0 | Metadata about RDF datasets | VoID is an RDF Schema vocabulary for expressing metadata about RDF datasets.  It is intended as a bridge between the publishers and users of RDF data, with applications ranging from data discovery to cataloging and archiving of datasets. |
-| WGS84 Geo Positioning | 1.22.0 | Latitude, longitude and altitude | A vocabulary for representing latitude, longitude and altitude information in the WGS84 geodetic reference datum.  WGS stands for the World Geodetic Survey. |
