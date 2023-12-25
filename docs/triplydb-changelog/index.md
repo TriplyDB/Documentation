@@ -6,18 +6,36 @@ path: "/docs/triplydb-changelog"
 [TOC]
 
 
+## 23.12.1 {#23.12.1}
+
+**Features**
+
+- `#4209` Add queries overview page for TriplyDB administrators   
+- `#8494` Improve UX for service selection in saved queries by removing the option for selecting one specific service. This option was unintuitive and not recommended. Instead, using a service type is recommended (and not the only available option).
+- `#8558` `#8556`:[SPARQL speedy] Improve performance of queries with `filter not exists` and `optionals` by 30% to 180%.
+
+
+
+**Issues fixed**
+
+- `#8584` Uninformative error message when using terms autocompletion API
+- `#8512` Uninformative error message when requesting elasticsearch mapping information during a sync operation
+
+
+
 ## 23.12.0 {#23.12.0}
 
 **Features**
 
 - `#8224` [SPARQL IDE] Replace the current SPARQL editor with SPARQL IDE. The new SPARQL IDE will be gradually enabled on all TriplyDB deployments.
     - The editor and result visualization have a slightly different look
-    - Consolidated the visualization renderers. E.g., the geo 3d plugin is now combined with the regular geo plugin, and the markup visualization is now part of the gallery visualization.
+    - Added shortcuts for powerusers (press `<ctrl>-?` on the SPARQL IDE page to show them)
+    - Performance improvements when writing larger queries
+    - Consolidated the visualizations: the geo 3d plugin is now combined with the regular geo plugin, and the markup visualization is now part of the gallery visualization.
     - The new editor is backwards compatible with the old editor.
     - The geo-events plugin (where geographic information can be rendered as a timeline) is deprecated and not present in the SPARQL IDE.
-    - The pivot table plugin does not support chart visualizations anymore. Note that chart visualizations without using the pivot table is still supported.
 - `#8420` `#8457` [SPARQL speedy] Improve performance of most SPARQL queries with 40% to 200%
-- `#8504` Improve UX for service selection in saved queries: a manually created service has precendence now over speedy
+- `#8504` Improve UX for service selection in saved queries: the type of a manually created service has precendence now over speedy
 - `#8456` Support in the UI for deleting all dataset assets
 - `#8481` Include link to changelog in the footer of all TriplyDB pages
 
