@@ -33,11 +33,11 @@ link:
 
 ## Pagination with TriplyDB.js
 
-**TriplyDB.js** is the official programming library for interacting with [TriplyDB](../../triply-db-getting-started). TriplyDB.js allows the user to connect to a TriplyDB instance via the TypeScript language. TriplyDB.js has the advantage that it can handle pagination internally so it can reliably retrieve a large number of results.
+**TriplyDB.js** is the official programming library for interacting with [TriplyDB](../triply-db-getting-started/index.md). TriplyDB.js allows the user to connect to a TriplyDB instance via the TypeScript language. TriplyDB.js has the advantage that it can handle pagination internally so it can reliably retrieve a large number of results.
 
 To get the output for a `construct` or `select` query, follow these steps:
 
-1\. Import the triplydb library and set your parameters, regarding the TriplyDB instance and the account in which you have saved the query as well as the name of the query. Do not forget that we perform TriplyDB.js requests within an [async context](#create-your-first-script).
+1\. Import the triplyDB.js library and set your parameters, regarding the TriplyDB instance and the account in which you have saved the query as well as the name of the query. Do not forget that we perform TriplyDB.js requests within an [async context](#create-your-first-script).
 
 ```ts
 import Client from '@triply/triplydb'
@@ -50,7 +50,7 @@ async function run() {
 run()
 ```
 
-2\. Get the results of a query by setting a `results` variable.  More specifically, for construct queries you use the `statements()` call:
+2\. Get the results of a query by setting a `results` variable. More specifically, for construct queries you use the `statements()` call:
 
 ```ts
 const query = await account.getQuery('name-of-some-query')

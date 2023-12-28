@@ -58,7 +58,7 @@ understands metadata properties like title, description, and image.
 
 ## Starting services
 
-By default, datasets in TriplyDB can be queried through [TriplyDB-js](../../triplydb-js) as well as through the Linked Data Fragments API.
+By default, datasets in TriplyDB can be queried through [TriplyDB-js](../../triplydb-js/index.md) as well as through the Linked Data Fragments API.
 
 In order to allow additional query paradigms, specific services can be
 started from the “Create service” page. This page is accessed by
@@ -97,7 +97,7 @@ To create a webhook, you will need to provide the following information:
 - `Payload target`: The URL to which the webhook message should be sent.
 - `Payload format`: The format of the message.
 - `Trigger events`: Select for which event you wish to trigger the webhook. The options are:
-  - **Graph import**: Happens when data is imported from a different dataset and where the data is already stored on the instance. 
+  - **Graph import**: Happens when data is imported from a different dataset and where the data is already stored on the instance.
   - **Linked data upload**: Happens when a person uploads data to the instance. The data did not exist on the instance before.
   - **Asset upload**: Happens when an asset is uploaded.
 

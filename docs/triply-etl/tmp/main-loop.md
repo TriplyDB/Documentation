@@ -2,7 +2,7 @@
 
 # The main loop
 
-The following code snippet shows the main TriplyETL loop.  Every TriplyETL pipeline consists of such a loop.
+The following code snippet shows the main TriplyETL loop. Every TriplyETL pipeline consists of such a loop.
 
 ```ts
 import { Etl } from '@triplyetl/etl/generic'

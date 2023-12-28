@@ -103,30 +103,29 @@ You can create a new dataset via the Triply API. You need to [use the API Token]
 
 The  example of the URI:
 ```sh
-curl -H 'Authorization: Bearer TOKEN' -H 'Content-Type: application/json' -X POST https://api.INSTANCE/datasets/ACCOUNT/ -d '{"name": "NAME", "accessLevel": "ACCESS_LEVEL", "displayName": "DISPLAY_NAME"}' 
+curl -H 'Authorization: Bearer TOKEN' -H 'Content-Type: application/json' -X POST https://api.INSTANCE/datasets/ACCOUNT/ -d '{"name": "NAME", "accessLevel": "ACCESS_LEVEL", "displayName": "DISPLAY_NAME"}'
 
 ```
 Upper-case letter words in json after `-d` must be replaced by the following values:
 
 - `NAME` :: The name of the dataset in the url.
-- `ACCESS_LEVEL` ::  *public*, *private* or *internal*. For more information visit [Access levels in TriplyDB](../triply-db-getting-started/reference/#access-levels).
-- `DISPLAY_NAME` :: The display name of the dataset. 
+- `ACCESS_LEVEL` ::  *public*, *private* or *internal*. For more information visit [Access levels in TriplyDB](../triply-db-getting-started/reference/index.md#access-levels).
+- `DISPLAY_NAME` :: The display name of the dataset.
 
 
 ### Upload data to a dataset
 
-
-You can upload a data file via the Triply API. You need to [use the API Token](#using-the-api-token) and send an HTTP POST request with data specifying the local file path. 
-The list of supported file extensions can be checked in [Adding data: File upload](../triply-db-getting-started/uploading-data/#adding-data-file-upload) documentation. 
+You can upload a data file via the Triply API. You need to [use the API Token](#using-the-api-token) and send an HTTP POST request with data specifying the local file path.
+The list of supported file extensions can be checked in [Adding data: File upload](../triply-db-getting-started/uploading-data/index.md#adding-data-file-upload) documentation.
 
 The  example of the URI:
 ```sh
-curl -H 'Authorization: Bearer TOKEN' -X POST https://api.INSTANCE/datasets/ACCOUNT/DATASET/jobs  -F file=@FILENAME 
+curl -H 'Authorization: Bearer TOKEN' -X POST https://api.INSTANCE/datasets/ACCOUNT/DATASET/jobs  -F file=@FILENAME
 
 ```
 Upper-case letter word after `-F` must be replaced by the following value:
 
-- `FILENAME` :: path to the local file, for example `example.ttl`. 
+- `FILENAME` :: path to the local file, for example `example.ttl`.
 
 
 You can upload data to an existing dataset without overwriting it by adding and setting the `mergeGraphs` functionality to `true`, like in the example below.
@@ -207,20 +206,21 @@ The above example includes the following GRLC annotations:
 
 ## LD Browser API
 
-Triply APIs provide a convenient way to access data used by [LD Browser](../triply-db-getting-started/viewing-data/#linked-data-browser), which offers a comprehensive overview of a specific IRI. By using Triply API for a specific IRI, you can retrieve the associated 'document' in the `.nt` format that describes the IRI.
+Triply APIs provide a convenient way to access data used by [LD Browser](../triply-db-getting-started/viewing-data/index.md#linked-data-browser), which offers a comprehensive overview of a specific IRI. By using Triply API for a specific IRI, you can retrieve the associated 'document' in the `.nt` format that describes the IRI.
 
 To make an API request for a specific instance, you can use the following URI path:
 
-```none
+```iri
 https://api.triplydb.com/datasets/ACCOUNT/DATASET/describe.nt?resource=RESOURCE
 ```
 
-To illustrate this, let's take the example of the DBpedia dataset and the [specific instance of 'Mona Lisa'](https://triplydb.com/DBpedia-association/dbpedia/browser?resource=http%3A%2F%2Fdbpedia.org%2Fresource%2FMona_Lisa). If you use this URI path: 
+To illustrate this, let's take the example of the DBpedia dataset and the [specific instance of 'Mona Lisa'](https://triplydb.com/DBpedia-association/dbpedia/browser?resource=http%3A%2F%2Fdbpedia.org%2Fresource%2FMona_Lisa). If you use this URI path:
 
-```none
+```iri
 https://api.triplydb.com/datasets/DBpedia-association/dbpedia/describe.nt?resource=http%3A%2F%2Fdbpedia.org%2Fresource%2FMona_Lisa
 ```
-in your browser, the `.nt` document describing the 'Mona Lisa' instance will be automatically downloaded. You can then upload this file to a dataset and [visualize it in a graph](../yasgui/#network-triplydb-plugin). Figure 1 illustrates the retrieved graph for the ‘Mona Lisa’ instance.
+
+In your browser, the `.nt` document describing the 'Mona Lisa' instance will be automatically downloaded. You can then upload this file to a dataset and [visualize it in a graph](../yasgui/index.md#network-triplydb-plugin). Figure 1 illustrates the retrieved graph for the ‘Mona Lisa’ instance.
 
 ![Figure 1](../assets/MonaLisaGraph.png)
 
@@ -228,34 +228,29 @@ The requested resource will be displayed in the center of the graph, forming an 
 
 In addition, this API also supports traversing blank node-replacing well-known IRIs (CBD style), and limits the number of objects per subject/property to manage the description size. This corresponds to the "Show more" button in the LD Browser GUI, ensuring a manageable and user-friendly experience.
 
+
+
 ## Triple Pattern Fragments (TPF)
 
-Triple Pattern Fragments (TPF) is a community standard that allows
-individual linked datasets to be queried for Triply Patterns (TP), a
-subset of the more complex SPARQL query language. The Triply API
-implements [Triple Pattern
-Fragments](http://www.hydra-cg.com/spec/latest/triple-pattern-fragments/)
-version 2019-01-18 and [Linked Data
-Fragments](http://www.hydra-cg.com/spec/latest/linked-data-fragments/)
-version 2016-06-05.
+Triple Pattern Fragments (TPF) is a community standard that allows individual linked datasets to be queried for Triple Patterns (TP), a subset of the more complex SPARQL query language. The Triply API implements [Triple Pattern Fragments](http://www.hydra-cg.com/spec/latest/triple-pattern-fragments/) version 2019-01-18 and [Linked Data Fragments](http://www.hydra-cg.com/spec/latest/linked-data-fragments/) version 2016-06-05.
 
-The Triple Pattern Fragments (TPF) API is available for all datasets
-in Triply and does not require running a dedicated service.
+The Triple Pattern Fragments (TPF) API is available for all datasets in Triply and does not require running a dedicated service.
 
 
-#### URI path
+### URI path
 
 TPF requests are sent to the following URI path:
 
-```none
+```iri
 https://api.INSTANCE/datasets/ACCOUNT/DATATSET/fragments
 ```
 
-#### Reply format
+
+### Reply format
 
 Since TPF replies distinguish between data and metadata that are stored in different graphs, it is recommended to request the TriG content type with the following HTTP request header:
 
-```none
+```http
 Accept: application/trig
 ```
 
@@ -265,8 +260,8 @@ Triple Pattern Fragments (TPF) uses the following query parameters in order to r
 
 | _Key_       | _Value_                       | _Purpose_                                                                          |
 | ----------- | ----------------------------- | ---------------------------------------------------------------------------------- |
-| `subject`   | A URL-encoded IRI.            | Only return triples where the given IRI appears in the subject position.           |
-| `predicate` | A URL-encoded IRI.            | Only return triples where the given IRI appears in the predicate position.         |
+| `subject`   | A URL-encoded IRI.           | Only return triples where the given IRI appears in the subject position.          |
+| `predicate` | A URL-encoded IRI.           | Only return triples where the given IRI appears in the predicate position.        |
 | `object`    | A URL-encoded IRI or literal. | Only return triples where the given IRI or literal appears in the object position. |
 
 #### Example request
@@ -277,6 +272,7 @@ curl -G \
        --data-urlencode 'predicate=http://www.w3.org/2000/01/rdf-schema#label' \
        -H 'Accept: application/trig'
 ```
+
 
 ### Exporting data
 
@@ -292,17 +288,17 @@ By default, an export includes all linked data graphs. Use a query argument to s
 
 | _Key_       | _Value_                       | _Purpose_                                                                          |
 | ----------- | ----------------------------- | ---------------------------------------------------------------------------------- |
-| `graph`   | A URL-encoded IRI.            | Only download the export of the given graph IRI.           |
+| `graph`   | A URL-encoded IRI.           | Only download the export of the given graph IRI.          |
 
 Therefore, to export the linked data of a **graph**, use the following path:
 
-```none
+```iri
 https://api.INSTANCE/datasets/ACCOUNT/DATATSET/download/?graph=GRAPH
 ```
 
 To find out which graphs are available, use the following path:
 
-```none
+```iri
 https://api.INSTANCE/datasets/ACCOUNT/DATATSET/graphs
 ```
 
@@ -348,18 +344,21 @@ Upper-case letter words must be replaced by the following values:
 Here is an example of a URI path that points to a SPARQL endpoint over the Pokémon dataset:
 
 ```none
-https://api.triplydb.com/datasets/academy/pokemon/services/pokemon/ 
+https://api.triplydb.com/datasets/academy/pokemon/services/pokemon/
 ```
 
 See the following sections for more information on how to query the endpoints provided by services:
+
 - [SPARQL](#sparql)
+
 - [Elasticsearch](#elasticsearch)
 
-### Create a service 
+### Create a service
 
 You can create a service for a dataset via TriplyDB API. You need to [use the API Token](#using-the-api-token) and send an HTTP POST request with data specifying: `"type"` and `"name"`.
 
 The  example of the URI:
+
 ```sh
 curl -H 'Authorization: Bearer TOKEN' -H 'Content-Type: application/json' -X POST https://api.INSTANCE/datasets/ACCOUNT/DATASET/services/ -d '{"type": "TYPE", "name": "NAME"}'
 ```
@@ -367,17 +366,19 @@ curl -H 'Authorization: Bearer TOKEN' -H 'Content-Type: application/json' -X POS
 Upper-case letter words in json after `-d` must be replaced by the following values:
 
 - `TYPE` :: [SPARQL](#sparql) (`virtuoso` or `jena`) or [Elasticsearch](#elasticsearch)
+
 - `NAME` :: The name of the service
 
-### Synchronize a service 
+### Synchronize a service
 
 You can synchronize existing service for a dataset via TriplyDB API. You need to [use the API Token](#using-the-api-token) and send an HTTP POST request with data:
 
-```
+```json
 {"sync": "true"}
 ```
 
 The  example of the URI:
+
 ```sh
 curl -H 'Authorization: Bearer TOKEN' -H 'Content-Type: application/json' -X POST https://api.INSTANCE/datasets/ACCOUNT/DATASET/services/SERVICE -d '{"sync": "true"}'
 ```
@@ -385,7 +386,7 @@ curl -H 'Authorization: Bearer TOKEN' -H 'Content-Type: application/json' -X POS
 
 ## SPARQL
 
-There are two service types in TriplyDB that expose the SPARQL 1.1 Query Language: "Sparql" and "Jena".  The former works well for large quantities of instance data with a relatively small data model; the latter works well for smaller quantities of data with a richer data model.
+There are two service types in TriplyDB that expose the SPARQL 1.1 Query Language: "Sparql" and "Jena". The former works well for large quantities of instance data with a relatively small data model; the latter works well for smaller quantities of data with a richer data model.
 
 SPARQL services expose a generic endpoint URI at the following location (where `ACCOUNT`, `DATASET` and `SERVICE` are user-chosen names):
 
@@ -398,11 +399,11 @@ Everybody who has access to the dataset also has access to its services, includi
 - For *Internal* datasets, only users that are logged into the triple store can issue queries.
 - For *Private* datasets, only users that are logged into the triple store and are members of `ACCOUNT` can issue queries.
 
-Notice that for professional use it is easier and better to use [saved queries](../triply-db-getting-started/saved-queries/#saved-queries).  Saved queries have persistent URIs, descriptive metadata, versioning, and support for reliable large-scale pagination ([see how to use pagination with saved query API](../triply-db-getting-started/saved-queries/#pagination-with-the-saved-query-api)).  Still, if you do not have a saved query at your disposal and want to perform a custom SPARQL request against an accessible endpoint, you can do so.  TriplyDB implements the SPARQL 1.1 Query Protocol standard for this purpose.
+Notice that for professional use it is easier and better to use [saved queries](../triply-db-getting-started/saved-queries/index.md#saved-queries). Saved queries have persistent URIs, descriptive metadata, versioning, and support for reliable large-scale pagination ([see how to use pagination with saved query API](../triply-db-getting-started/saved-queries/index.md#pagination-with-the-saved-query-api)). Still, if you do not have a saved query at your disposal and want to perform a custom SPARQL request against an accessible endpoint, you can do so. TriplyDB implements the SPARQL 1.1 Query Protocol standard for this purpose.
 
 ### Sending a SPARQL Query request
 
-According to the SPARQL 1.1 Protocol, queries can be send in the 3 different ways that are displayed in <a href='#table-http-sparql-query'>Table 1</a>.  For small query strings it is possible to send an HTTP GET request (row 1 in <a href='#table-http-sparql-query'>Table 1</a>).  A benefit of this approach is that all information is stored in one URI.  For public data, copy/pasting this URI in a web browser runs the query.  For larger query strings it is required to send an HTTP POST request (rows 2 and 3 in <a href='#table-http-sparql-query'>Table 1</a>).  The reason for this is that longer query strings result in longer URIs when following the HTTP GET approach.  Some applications do not support longer URIs, or they even silently truncate them resulting in an error down the line.  The direct POST approach (row 3 in <a href='#table-http-sparql-query'>Table 1</a>) is the best of these 3 variants, since it most clearly communicates that it is sending a SPARQL query request (see the `Content-Type` column).
+According to the SPARQL 1.1 Protocol, queries can be send in the 3 different ways that are displayed in [Table 1](#table-http-sparql-query). For small query strings it is possible to send an HTTP GET request (row 1 in [Table 1](#table-http-sparql-query)). A benefit of this approach is that all information is stored in one URI. For public data, copy/pasting this URI in a web browser runs the query. For larger query strings it is required to send an HTTP POST request (rows 2 and 3 in [Table 1](#table-http-sparql-query)). The reason for this is that longer query strings result in longer URIs when following the HTTP GET approach. Some applications do not support longer URIs, or they even silently truncate them resulting in an error down the line. The direct POST approach (row 3 in [Table 1](#table-http-sparql-query)) is the best of these 3 variants, since it most clearly communicates that it is sending a SPARQL query request (see the `Content-Type` column).
 
 <figure id='table-http-sparql-query'>
   <table>
@@ -444,7 +445,7 @@ According to the SPARQL 1.1 Protocol, queries can be send in the 3 different way
 
 ### SPARQL Query result formats
 
-SPARQL services are able to return results in different formats.  The user can specify the preferred format by specifying the corresponding Media Type in the HTTP `Accept` header.  TriplyDB supports the following Media Types.  Notice that the chosen result format must be supported for your query form.
+SPARQL services are able to return results in different formats. The user can specify the preferred format by specifying the corresponding Media Type in the HTTP `Accept` header. TriplyDB supports the following Media Types. Notice that the chosen result format must be supported for your query form.
 
 | Result format | Media Type                        | Query forms         |
 | ------------- | --------------------------------- | ------------------- |
@@ -462,7 +463,7 @@ SPARQL services are able to return results in different formats.  The user can s
 
 ### Examples of SPARQL Query requests
 
-This section contains examples of SPARQL HTTP requests.  The requests run either of the following two SPARQL queries against a public SPARQL endpoint that contains data about Pokemon:
+This section contains examples of SPARQL HTTP requests. The requests run either of the following two SPARQL queries against a public SPARQL endpoint that contains data about Pokemon:
 
 ```sparql
 select * { ?s ?p ?o. } limit 1
@@ -472,7 +473,7 @@ select * { ?s ?p ?o. } limit 1
 construct where { ?s ?p ?o. } limit 1
 ```
 
-The examples made use of the popular command-line tool [cURL](https://curl.se).  These examples should also work in any other HTTP client tool or library.
+The examples made use of the popular command-line tool [cURL](https://curl.se). These examples should also work in any other HTTP client tool or library.
 
 ### GET request
 
@@ -636,7 +637,7 @@ curl -X POST https://api.triplydb.com/datasets/academy/pokemon/services/pokemon/
 
 Result:
 
-```none
+```csv
 "s","p","o"
 "https://triplydb.com/academy/pokemon/vocab/","http://www.w3.org/1999/02/22-rdf-syntax-ns#type","http://www.w3.org/2002/07/owl#Ontology"
 ```
@@ -673,7 +674,7 @@ curl -X POST https://api.triplydb.com/datasets/academy/pokemon/services/pokemon/
 ```
 
 Result:
-
+<!-- TODO -->
 ```json
 { "@graph": [
     { "@id": "https://triplydb.com/academy/pokemon/vocab/",
@@ -740,44 +741,27 @@ Result:
 
 ## Elasticsearch
 
-The text search API returns a list of linked data entities based on a
-supplied text string. The text string is matched against the text in
-literals and IRIs that appear in the linked data description of the
-returned entities.
+The text search API returns a list of linked data entities based on a supplied text string. The text string is matched against the text in literals and IRIs that appear in the linked data description of the returned entities.
 
-The text search API is only available for a dataset after an
-Elasticsearch service has been created for that dataset.
+The text search API is only available for a dataset after an Elasticsearch service has been created for that dataset.
 
-Two types of searches can be performed: a simple search, and a custom
-search. Simple searches require one search term for a fuzzy match. Custom
-searches accept a JSON object conforming to [the Elasticsearch query DSL](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl.html).
+Two types of searches can be performed: a simple search, and a custom search. Simple searches require one search term for a fuzzy match. Custom searches accept a JSON object conforming to [the Elasticsearch query DSL](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl.html).
 
 ### URI path
 
 Text search requests are sent to the following URI path:
 
-```none
+```iri
 https://api.INSTANCE/datasets/ACCOUNT/DATASET/services/SERVICE/search
 ```
 
 ### Reply format
 
-The reply format is a JSON object. Search results are returned in the
-JSON array that is stored under key sequence `"hits"/"hits"`. The
-order in which search results appear in the array is meaningful:
-better matches appear earlier.
+The reply format is a JSON object. Search results are returned in the JSON array that is stored under key sequence `"hits"/"hits"`. The order in which search results appear in the array is meaningful: better matches appear earlier.
 
-Every search result is represented by a JSON object. The name of the
-linked data entity is specified under key sequence `"_id"`.
-Properties of the linked data entity are stored as IRI keys. The
-values of these properties appear in a JSON array in order to allow
-more than one object term per predicate term (as is often the case in
-linked data).
+Every search result is represented by a JSON object. The name of the linked data entity is specified under key sequence `"_id"`. Properties of the linked data entity are stored as IRI keys. The values of these properties appear in a JSON array in order to allow more than one object term per predicate term (as is often the case in linked data).
 
-The following code snippet shows part of the reply for the below
-example request. The reply includes two results for search string
-“mew”, returning the Pokémon Mew (higher ranked result) and Mewtwo
-(lower ranked result).
+The following code snippet shows part of the reply for the below example request. The reply includes two results for search string “mew”, returning the Pokémon Mew (higher ranked result) and Mewtwo (lower ranked result).
 
 ```json
 {
@@ -802,6 +786,7 @@ example request. The reply includes two results for search string
   …
 }
 ```
+
 
 ### Examples
 
@@ -857,21 +842,28 @@ curl 'https://api.triplydb.com/datasets/Triply/iris/services/iris-es/_count'
 {"count":52,"_shards":{"total":1,"successful":1,"skipped":0,"failed":0}}
 ```
 
+
+
 ## Setting up index templates for ElasticSearch
+
 TriplyDB allows you to configure a custom mapping for Elasticsearch services in TriplyDB using index templates.
-#### Index templates
-Index templates make it possible to create indices with user defined configuration, which an index can then pull from. A template will be defined with a name pattern and some configuration in it. If the name of the index matches the template’s naming pattern, the new index will be created with the configuration defined in the template.
-Official documentation from ElasticSearch on how to use Index templates can be found [here](https://www.elastic.co/guide/en/elasticsearch/reference/current/index-templates.html). 
-
-Index templates on TriplyDB can be configured through either `TriplyDB API` or [TriplyDB-JS](../triplydb-js/service/#index-templates). 
 
 
-Index template can be created by making a POST request to the following URL: 
-```
+### Index templates
+
+Index templates make it possible to create indices with user defined configuration, which an index can then pull from. A template will be defined with a name pattern and some configuration in it. If the name of the index matches the template’s naming pattern, the new index will be created with the configuration defined in the template. Official documentation from ElasticSearch on how to use Index templates can be found [here](https://www.elastic.co/guide/en/elasticsearch/reference/current/index-templates.html).
+
+Index templates on TriplyDB can be configured through either `TriplyDB API` or [TriplyDB-JS](../triplydb-js/service/index.md#index-templates).
+
+Index template can be created by making a POST request to the following URL:
+
+```iri
 https://api.INSTANCE/datasets/ACCOUNT/DATASET/services/
 ```
+
 with this body:
-```
+
+```json
 {
   "type": "elasticSearch",
   "name": "SERVICE_NAME",
@@ -886,51 +878,57 @@ with this body:
   }
 }
 ```
+
 `index_patterns` and `name` are obligatory fields to include in the body of index template.
 It's important that every index template has the field `"index_patterns"` equal `"index"`!
 
 Below is the example of the post request:
-```
+
+```sh
 curl  -H "Authorization: Bearer TRIPLYDB_TOKEN"  -H "Content-Type: application/json" -d '{"type":"elasticSearch","name":"SERVICE_NAME","config":{"indexTemplates":[{"index_patterns":"index", "name": "TEMPLATE_NAME"}]}}' -X POST "https://api.INSTANCE/datasets/ACCOUNT/DATASET/services/"
 ```
 
-### Component templates
-Component templates are building blocks for constructing index templates that specify index mappings, settings, and aliases.
-You can find the official documentation on their use in ElasticSearch [here](https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-component-template.html).
-They can be configured through either `TriplyDB API` or [TriplyDB-JS](../triplydb-js/service/#component-templates).
 
-   
-A component template can be created by making a POST request to the following URL: 
-```
+### Component templates
+
+Component templates are building blocks for constructing index templates that specify index mappings, settings, and aliases. You can find the official documentation on their use in ElasticSearch [here](https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-component-template.html). They can be configured through either `TriplyDB API` or [TriplyDB-JS](../triplydb-js/index.md#component-templates).
+
+A component template can be created by making a POST request to the following URL:
+
+```iri
 https://api.INSTANCE/datasets/ACCOUNT/DATASET/services/
 ```
+
 with this body:
-```
+
+```json
 {
-    "type": "elasticSearch",
-    "name": "SERVICE_NAME",
-    "config": {
-        "componentTemplates": [
-            {
-                "name": "TEMPLATE_NAME",
-                "template": {
-                    "mappings": {
-                        "properties": {
-                            ...
-                        }
-                    }
-                }
-             ...
+  "type": "elasticSearch",
+  "name": "SERVICE_NAME",
+  "config": {
+    "componentTemplates": [
+      {
+        "name": "TEMPLATE_NAME",
+        "template": {
+          "mappings": {
+            "properties": {
+              ...
             }
-        ]
-    }
+          }
+        }
+       ...
+      }
+    ]
+  }
 }
 ```
+
 `name` and `template` are obligatory fields to include in the body of component template.
 
 Component template can only be created together with an index template. In this case Index template needs to contain the field `composed_of` with the name of the component template.
 
 Below is an example of a POST request to create a component template for the property `https://schema.org/dateCreated` to be of type `date`.
-```
+
+```sh
 curl  -H "Authorization: Bearer TRIPLYDB_TOKEN"  -H "Content-Type: application/json" -d '{"type":"elasticSearch","name":"SERVICE_NAME","config":{"indexTemplates":[{"index_patterns":"index", "name": "INDEX_TEMPLATE_NAME","composed_of":["COMPONENT_TEMPLATE_NAME"]}], "componentTemplates":[{"name":"COMPONENT_TEMPLATE_NAME","template":{"mappings":{"properties":{"https://schema org/dateCreated":{"type":"date"}}}}}]}}' -X POST "https://api.INSTANCE/datasets/ACCOUNT/DATASET/services/"
 ```

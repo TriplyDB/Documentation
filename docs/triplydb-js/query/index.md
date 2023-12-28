@@ -104,7 +104,7 @@ At least one of the following arguments is required to create a new version. Any
     <dl>
       <dt>IRI variable</dt>
       <dd>An object of the form `Variable`
-      (see  <a href="../account#accountaddqueryname-string-metadata-object">Account.addQuery()</a>)
+      (see  <a href="../account/index.md#accountaddqueryname-string-metadata-object">Account.addQuery()</a>)
       </dd>
   </dd>
 </dl>
@@ -123,7 +123,7 @@ It currently does not support the use of variables.
 
 `Query.results()` function will automatically return all the results from a saved query. You can retrieve both results from a `select` or `ask` query and a `construct` or `describe` query. The results are returned as an `async iterator`.
 
-If there are more than 10 000 query results, they could be retrieved using [pagination with TriplyDB.js](../../triply-db-getting-started/saved-queries#pagination-with-triplydbjs).
+If there are more than 10 000 query results, they could be retrieved using [pagination with TriplyDB.js](../../triply-db-getting-started/saved-queries/index.md#pagination-with-triplydbjs).
 
 ### Examples
 

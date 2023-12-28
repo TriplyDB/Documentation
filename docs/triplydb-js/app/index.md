@@ -43,7 +43,7 @@ The following token access levels are available:
 
    - Write operations over data that has access setting “Internal”.
 
-   - Write operations over data 
+   - Write operations over data
 
 3\. “Management access” allows the following operations to be performed: creating organizations, adding/removing members to/from organizations.
 
@@ -79,9 +79,9 @@ const account = await triply.getAccount()
 
 ### See also
 
-This method returns an account object. See class [Account](../account#account) for an overview of the methods that can be called on such objects.
+This method returns an account object. See class [Account](../account/index.md#account) for an overview of the methods that can be called on such objects.
 
-Class [Account](../account#account) has two specializations: class [Organization](../organization#organization) and class [User](../user/#user). In line with these class specializations, there are also two method specializations:
+Class [Account](../account/index.md#account) has two specializations: class [Organization](../organization/index.md#organization) and class [User](../user/index.md#user). In line with these class specializations, there are also two method specializations:
 
 - Method [`App.getOrganization(name: string)`](#appgetorganizationname-string) returns an organization object.
 
@@ -90,7 +90,7 @@ Class [Account](../account#account) has two specializations: class [Organization
 
 ## App.getAccounts()
 
-Returns an [async iterator](../faq#what-is-an-async-iterator) over all accounts in the TriplyDB server.
+Returns an [async iterator](../faq/index.md#what-is-an-async-iterator) over all accounts in the TriplyDB server.
 
 ### Example
 
@@ -109,7 +109,7 @@ for await (const account of triply.getAccounts()) {
 console.log(await triply.getAccounts().toArray())
 ```
 
-See class [Account](../account#account) for an overview of the methods that can be used with account objects.
+See class [Account](../account/index.md#account) for an overview of the methods that can be used with account objects.
 
 
 ## App.getInfo()
@@ -141,7 +141,7 @@ This method is similar to [`App.getAccount(name?: string)`](#appgetaccountname-s
 
 - This method only works for accounts that represent TriplyDB organizations.
 
-- This method returns an organization object. Class [Organization](../organization#organization) is a specialization of class [Account](../account#account).
+- This method returns an organization object. Class [Organization](../organization/index.md#organization) is a specialization of class [Account](../account/index.md#account).
 
 ### Examples
 
@@ -151,7 +151,7 @@ The following snippet returns the organization called `'Triply'`:
 const organization = await triply.getOrganization('Triply')
 ```
 
-See class [Organization](../organization#organization) for an overview of the methods that can be used with organization objects.
+See class [Organization](../organization/index.md#organization) for an overview of the methods that can be used with organization objects.
 
 ### Alternatives
 
@@ -159,7 +159,7 @@ This method is a shorthand for calling the following two methods:
 
 - Call method [`App.getAccount(name?: string)`](#appgetaccountname-string) to retrieve an account object.
 
-- Then call method [`Account.asOrganization()`](../account#accountasorganization) to cast the account object into an organization object.
+- Then call method [`Account.asOrganization()`](../account/index.md#accountasorganization) to cast the account object into an organization object.
 
 The following snippet returns the same result as the previous example, but uses two methods instead of one:
 
@@ -170,7 +170,7 @@ const organization = account.asOrganization()
 
 ### See also
 
-This method returns an organization object. See class [Organization](../organization#organization) for an overview of the methods that can be called on such objects.
+This method returns an organization object. See class [Organization](../organization/index.md#organization) for an overview of the methods that can be called on such objects.
 
 
 ## App.getUser(name?: string)
@@ -199,7 +199,7 @@ This method is a shorthand for the following two methods:
 
 1. Call method [`App.getAccount()`](#appgetaccountname-string) to retrieve an account object.
 
-2. Then call method [`Account.asUser()`](../account#accountasuser) to cast the account object into a user object.
+2. Then call method [`Account.asUser()`](../account/index.md#accountasuser) to cast the account object into a user object.
 
 The following snippet returns the same result as the previous examples, but uses two methods instead of one:
 
@@ -210,7 +210,7 @@ const user = account.asUser()
 
 ### See also
 
-This method returns a user object. See class [User](../user#user) for an overview of the methods that can be called on such objects.
+This method returns a user object. See class [User](../user/index.md#user) for an overview of the methods that can be called on such objects.
 
 
 ## App.isCompatibleWith(minimumVersion: string)

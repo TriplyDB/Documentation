@@ -6,8 +6,8 @@ Service objects describe specific functionalities that can be created over datas
 
 Service objects are obtained through the the following methods:
 
-- [`Dataset.addService`](../dataset#datasetaddservicename-string-metadata-object)
-- [`Dataset.getServices`](../dataset#datasetgetservices)
+- [`Dataset.addService`](../dataset/index.md#datasetaddservicename-string-metadata-object)
+- [`Dataset.getServices`](../dataset/index.md#datasetgetservices)
 
 A service always has one of the following statuses:
 
@@ -134,12 +134,13 @@ await service.waitUntilRunning()
 TriplyDB allows you to configure a custom mapping for Elasticsearch services in TriplyDB using index templates.
 #### Index templates
 Index templates make it possible to create indices with user defined configuration, which an index can then pull from. A template will be defined with a name pattern and some configuration in it. If the name of the index matches the template’s naming pattern, the new index will be created with the configuration defined in the template.
-Official documentation from ElasticSearch on how to use Index templates can be found [here](https://www.elastic.co/guide/en/elasticsearch/reference/current/index-templates.html). 
+Official documentation from ElasticSearch on how to use Index templates can be found [here](https://www.elastic.co/guide/en/elasticsearch/reference/current/index-templates.html).
 
-Index templates on TriplyDB can be configured through either [TriplyDB API](../../triply-api/#index-templates) or `TriplyDB-JS`. 
+Index templates on TriplyDB can be configured through either [TriplyDB API](../../triply-api/index.md#index-templates) or TriplyDB.js.
 
 When creating a new service for the dataset, we add the config object to the metadata:
-```
+
+```ts
 Dataset.addService("SERVICE_NAME", {
   type: "elasticSearch",
   config: {
@@ -153,11 +154,13 @@ Dataset.addService("SERVICE_NAME", {
   }
 })
 ```
+
 `index_patterns` and `name` are obligatory fields to include in the body of index template.
 It's important that every index template has the field `index_patterns` equal `index`!
 
 Below is an example of creating an index template in TriplyDB-JS:
-```
+
+```ts
 import App from '@triply/triplydb/App.js'
 import dotenv from 'dotenv'
 dotenv.config()
@@ -166,55 +169,53 @@ const app = App.get({ token: process.env.TRIPLYDB_TOKEN })
 const account = await app.getAccount('ACCOUNT')
 const dataset = await account.getDataset('DATASET')
 
-await dataset.addService('SERVICE_NAME',
-        {
-            "type": "elasticSearch",
-            "config": {
-                "indexTemplates": [
-                    {
-                        "name": "TEMPLATE_NAME",
-                        "index_patterns": "index"
-                    }
-
-                ]
-            }
-        }
-    )
+await dataset.addService('SERVICE_NAME', {
+  "type": "elasticSearch",
+  "config": {
+    "indexTemplates": [
+      {
+        "name": "TEMPLATE_NAME",
+        "index_patterns": "index"
+      }
+    ]
+  }
+})
 ```
 
 ### Component templates
 Component templates are building blocks for constructing index templates that specify index mappings, settings, and aliases.
 You can find the official documentation on their use in ElasticSearch [here](https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-component-template.html).
-They can be configured through either [TriplyDB API](../../triply-api/#component-templates) or `TriplyDB-JS`.
-
+They can be configured through either [TriplyDB API](../../triply-api/index.md#component-templates) or `TriplyDB-JS`.
 
 When creating a new service for the dataset, we add the config object to the metadata:
-```
+
+```ts
 Dataset.addService("SERVICE_NAME", {
   type: "elasticSearch",
   config: {
     componentTemplates: [
-            {
-                "name": "TEMPLATE_NAME",
-                "template": {
-                    "mappings": {
-                        "properties": {
-                            ...
-                        }
-                    }
-                }
-             ...
+      {
+        "name": "TEMPLATE_NAME",
+        "template": {
+          "mappings": {
+            "properties": {
+              ...
             }
-        ]
+          }
+        },
+        ...
+      }
+    ]
   }
 })
 ```
+
 `name` and `template` are obligatory fields to include in the body of component template.
 Component template can only be created together with an index template. In this case Index template needs to contain the field `composed_of` with the name of the component template.
 
 Below is an example of creating a component template for the property `https://schema.org/dateCreated` to be of type `date`.
 
-```
+```ts
 import App from '@triply/triplydb/App.js'
 import dotenv from 'dotenv'
 dotenv.config()
@@ -223,33 +224,30 @@ const app = App.get({ token: process.env.TRIPLYDB_TOKEN })
 const account = await app.getAccount('ACCOUNT')
 const dataset = await account.getDataset('DATASET')
 
-await dataset.addService('SERVICE_NAME',
-        {
-            "type": "elasticSearch",
-            "config": {
-                "indexTemplates": [
-                    {
-                        "name": "TEMPLATE_NAME",
-                        "index_patterns": "index",
-                        "composed_of": ["COMPONENT_TEMPLATE_NAME"],
-                    }
-
-                ],
-                "componentTemplates": [
-                    {
-                        "name": "COMPONENT_TEMPLATE_NAME",
-                        "template": {
-                            "mappings": {
-                                "properties": {
-                                    "https://schema org/dateCreated": {
-                                        "type": "date"
-                                    }
-                                }
-                            }
-                        }
-                    }
-                ]
+await dataset.addService('SERVICE_NAME', {
+  "type": "elasticSearch",
+  "config": {
+    "indexTemplates": [
+      {
+        "name": "TEMPLATE_NAME",
+        "index_patterns": "index",
+        "composed_of": ["COMPONENT_TEMPLATE_NAME"],
+      }
+    ],
+    "componentTemplates": [
+      {
+        "name": "COMPONENT_TEMPLATE_NAME",
+        "template": {
+          "mappings": {
+            "properties": {
+              "https://schema org/dateCreated": {
+                "type": "date"
+              }
             }
+          }
         }
-    )
+      }
+    ]
+  }
+})
 ```

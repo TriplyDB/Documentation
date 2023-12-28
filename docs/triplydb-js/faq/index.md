@@ -142,7 +142,7 @@ const array = await results.toArray()
 
 TriplyDB.js makes use of async iterators for retrieving lists of objects. Async iterators are a method of fetching and iterating through large lists, without having to first fetch the whole set.
 
-An example of an async iterator in TriplyDB.js is [`App.getAccounts()`](../app#appgetaccounts). The following code illustrates how it can be used.
+An example of an async iterator in TriplyDB.js is [`App.getAccounts()`](../app/index.md#appgetaccounts). The following code illustrates how it can be used.
 
 ```ts
 for await (const account of triply.getAccounts()) {
@@ -158,13 +158,13 @@ const accounts = await triply.getAccounts().toArray()
 
 TriplyDB.js returns async iterators from the following methods:
 
-- [`App.getAccounts()`](../app#appgetaccounts)
-- [`Account.getDatasets()`](../account#accountgetdatasets)
-- [`Account.getQueries()`](../account#accountgetqueries)
-- [`Account.getStories()`](../account#accountgetstories)
-- [`Dataset.getServices()`](../dataset#datasetgetservices)
-- [`Dataset.getAssets()`](../dataset#datasetgetassets)
-- [`Dataset.getGraphs()`](../dataset#datasetgetgraphs)
-- [`Dataset.getStatements()`](../dataset#datasetgetstatementssubject-string-predicate-string-object-string-graph-string)
-- [`Query.results().statements()`](../query#queryresultsapivariables-object-options-object) for SPARQL `construct` and `describe` queries
-- [`Query.results().bindings()`](../query/#queryresultsapivariables-object-options-object) for SPARQL `select` queries
+- [`App.getAccounts()`](../app/index.md#appgetaccounts)
+- [`Account.getDatasets()`](../account/index.md#accountgetdatasets)
+- [`Account.getQueries()`](../account/index.md#accountgetqueries)
+- [`Account.getStories()`](../account/index.md#accountgetstories)
+- [`Dataset.getServices()`](../dataset/index.md#datasetgetservices)
+- [`Dataset.getAssets()`](../dataset/index.md#datasetgetassets)
+- [`Dataset.getGraphs()`](../dataset/index.md#datasetgetgraphs)
+- [`Dataset.getStatements()`](../dataset/index.md#datasetgetstatementssubject-string-predicate-string-object-string-graph-string)
+- [`Query.results().statements()`](../query/index.md#queryresultsapivariables-object-options-object) for SPARQL `construct` and `describe` queries
+- [`Query.results().bindings()`](../query/index.md#queryresultsapivariables-object-options-object) for SPARQL `select` queries

@@ -40,7 +40,7 @@ mapQuads(
 
 ## Connect a data source
 
-This section extends the pipeline from [the previous section](#publish-to-triplydb) by connecting a data source.  TriplyETL can connect to database systems and web APIs, but to keep things simple we will use the following tabular input data from a local file:
+This section extends the pipeline from [the previous section](#publish-to-triplydb) by connecting a data source. TriplyETL can connect to database systems and web APIs, but to keep things simple we will use the following tabular input data from a local file:
 
 | ID    | NAME  |
 | ----- | ----- |
@@ -109,7 +109,7 @@ npm run build
 npx etl
 ```
 
-The TriplyETL script will give you a link to the uploaded dataset.  This dataset contains the following graph content:
+The TriplyETL script will give you a link to the uploaded dataset. This dataset contains the following graph content:
 
 
 
@@ -175,7 +175,7 @@ export default async function (): Promise<Etl> {
 }
 ```
 
-Debug function `logRecord()` prints the current record to standard output.  When this pipeline is run, the two records are printed as follows:
+Debug function `logRecord()` prints the current record to standard output. When this pipeline is run, the two records are printed as follows:
 
 ```json
 {
@@ -198,7 +198,7 @@ Notice that TriplyETL adds two keys to both records: `$recordId` and `$environme
 
 ## An XML data source
 
-Now suppose that we change the source system.  We no longer use in-line JSON, but will instead use an XML file.  The contents of the XML file are as follows:
+Now suppose that we change the source system. We no longer use in-line JSON, but will instead use an XML file. The contents of the XML file are as follows:
 
 ```xml
 <?xml version="1.0"?>
@@ -245,4 +245,4 @@ This new script logs the following two records:
 }
 ```
 
-Notice that the two records that are logged from an XML source are completely identical to the two records that were previously logged from a JSON source.  This is an essential property of TriplyETL: it treats data from any source system in the same way, using the same intermediary record format.  This makes it easy to write pipelines that process data from a large number of different data sources.  This also makes replacing a data source in one format with a data source in another format a relatively cheap operation.  More often than not, only the source connector needs to be changed, and all transformations and assertions remain as they were.
+Notice that the two records that are logged from an XML source are completely identical to the two records that were previously logged from a JSON source. This is an essential property of TriplyETL: it treats data from any source system in the same way, using the same intermediary record format. This makes it easy to write pipelines that process data from a large number of different data sources. This also makes replacing a data source in one format with a data source in another format a relatively cheap operation. More often than not, only the source connector needs to be changed, and all transformations and assertions remain as they were.

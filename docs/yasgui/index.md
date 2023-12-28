@@ -18,7 +18,7 @@ SPARQL queries and their results.
 
 ## SPARQL Editor
 
-The Yasgui SPARQL editor is a query editor that offers syntax highlighting, syntax validation, autocompletion, a variety of different SPARQL result visualizations, with a plugin architecture that [enables customization](../yasgui-api).
+The Yasgui SPARQL editor is a query editor that offers syntax highlighting, syntax validation, autocompletion, a variety of different SPARQL result visualizations, with a plugin architecture that [enables customization](../yasgui-api/index.md).
 
 By default, the query editor provides autocomplete suggestions via the [LOV](https://lov.linkeddata.es/dataset/lov/) API.
 Website maintainers can add their own autocompletion logic as well. For example, the Yasgui integration in [TriplyDB](https://triplydb.com) uses the TriplyDB API to more accurately provide suggestions based on the underlying data.
@@ -32,26 +32,26 @@ by the SPARQL Editor.
 
 | **Key combination** | **Behavior**                                                                                      |
 | ------------------- | ------------------------------------------------------------------------------------------------- |
-| `Alt + Left`        | Move the cursor to the beginning of the current line.                                             |
-| `Alt + Right`       | Move the cursor to the end of the current line.                                                   |
-| `Alt + U`           | Redo the last change within the current selection.                                                |
-| `Ctrl + Backspace`  | Delete to the beginning of the group before the cursor.                                           |
-| `Ctrl + Delete`     | Delete to the beginning of the group after the cursor.                                            |
-| `Ctrl + End`        | Move the cursor to the end of the query.                                                          |
-| `Ctrl + Home`       | Move the cursor to the start of the query.                                                        |
-| `Ctrl + Left`       | Move the cursor to the left of the group before the cursor.                                       |
-| `Ctrl + Right`      | Move the cursor to the right of the group the cursor.                                             |
-| `Ctrl + [`          | Decrements the indentation for the current line or the lines involved in the current selection.   |
-| `Ctrl + ]`          | Increments the indentation for the current line or the lines involved in the current selection.   |
+| `Alt + Left`        | Move the cursor to the beginning of the current line.                                            |
+| `Alt + Right`       | Move the cursor to the end of the current line.                                                  |
+| `Alt + U`           | Redo the last change within the current selection.                                               |
+| `Ctrl + Backspace`  | Delete to the beginning of the group before the cursor.                                          |
+| `Ctrl + Delete`     | Delete to the beginning of the group after the cursor.                                           |
+| `Ctrl + End`        | Move the cursor to the end of the query.                                                         |
+| `Ctrl + Home`       | Move the cursor to the start of the query.                                                       |
+| `Ctrl + Left`       | Move the cursor to the left of the group before the cursor.                                      |
+| `Ctrl + Right`      | Move the cursor to the right of the group the cursor.                                            |
+| `Ctrl + [`          | Decrements the indentation for the current line or the lines involved in the current selection.  |
+| `Ctrl + ]`          | Increments the indentation for the current line or the lines involved in the current selection.  |
 | `Ctrl + /`          | Toggles on/off the commenting of the current line or the lines involved in the current selection. |
-| `Ctrl + A`          | Select the whole query.                                                                           |
-| `Ctrl + D`          | Deletes the current line or all lines involved in the current selection.                          |
-| `Ctrl + U`          | Undo the last change within the current selection.                                                |
-| `Ctrl + Y`          | Redo the last undone edit action.                                                                 |
-| `Ctrl + Z`          | Undo the last edit action.                                                                        |
-| `Ctrl + Shift + F`  | Auto-formats the whole query or the lines involved in the current selection.                      |
-| `Shift + Tab`       | Auto-indents the current line or the lines involved in the current selection.                     |
-| `Tab`               | Indents the current line or the lines involved in the current selection.                          |
+| `Ctrl + A`          | Select the whole query.                                                                          |
+| `Ctrl + D`          | Deletes the current line or all lines involved in the current selection.                         |
+| `Ctrl + U`          | Undo the last change within the current selection.                                               |
+| `Ctrl + Y`          | Redo the last undone edit action.                                                                |
+| `Ctrl + Z`          | Undo the last edit action.                                                                       |
+| `Ctrl + Shift + F`  | Auto-formats the whole query or the lines involved in the current selection.                     |
+| `Shift + Tab`       | Auto-indents the current line or the lines involved in the current selection.                    |
+| `Tab`               | Indents the current line or the lines involved in the current selection.                         |
 
 ### Templates
 
@@ -156,7 +156,7 @@ select * {
 ![The result is interpreted as HTML](../assets/html-rendered.png)
 
 In order to guarantee safety, TriplyDB sanitizes HTML literals before
-rendering them.  This means that tags like `<embed>`, `<iframe>` and
+rendering them. This means that tags like `<embed>`, `<iframe>` and
 `<script>` are sanitized away, as are attributes such as `onerror` and
 `onload`.
 
@@ -176,10 +176,10 @@ the following features:
 
 |                   |                                                                                                                                                                                                                                                                                                                                                               |
 | ----------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Abbreviations** | The SPARQL Table uses the prefix declarations in the SPARQL query in order to abbreviate IRIs that appear in table cells.                                                                                                                                                                                                                                     |
-| **Filter**        | By entering a search string into the “Filter query results” field, the table will only display result rows in which the entered search string appears.                                                                                                                                                                                                        |
-| **Indices**       | The first column in the table indicates the index of each row in the SPARQL result set.                                                                                                                                                                                                                                                                       |
-| **Pagination**    | By default the Table displays at most 50 rows. This maximum value can be changed to 10, 100, 1.000, or “All”.                                                                                                                                                                                                                                                 |
+| **Abbreviations** | The SPARQL Table uses the prefix declarations in the SPARQL query in order to abbreviate IRIs that appear in table cells.                                                                                                                                                                                                                                    |
+| **Filter**        | By entering a search string into the “Filter query results” field, the table will only display result rows in which the entered search string appears.                                                                                                                                                                                                       |
+| **Indices**       | The first column in the table indicates the index of each row in the SPARQL result set.                                                                                                                                                                                                                                                                      |
+| **Pagination**    | By default the Table displays at most 50 rows. This maximum value can be changed to 10, 100, 1.000, or “All”.                                                                                                                                                                                                                                                |
 | **Sorting**       | A sort widget appears to the right of each header label. By pressing on the upward pointing arrow of the sort widget, rows will be sorted based on the lexicographic order of the values within the corresponding column. By pressing the downward pointing arrow of the sort widget, rows will be inversely sorted according to the same lexicographic order. |
 
 #### Table Example
@@ -208,7 +208,7 @@ select ?pokemon ?happiness {
 
 This view shows the body of the response and offers an easy way to download the result as a file.
 
-### Gallery ([TriplyDB Plugin](../yasgui-api#triplyDbPlugins))
+### Gallery ([TriplyDB Plugin](../yasgui-api/index.md#triplyDbPlugins))
 
 This view allows SPARQL results to be displayed in an HTML gallery.
 Each individual result corresponds to one HTML widget. Widgets are
@@ -301,7 +301,7 @@ order by desc(?experience)
 limit 20
 ```
 
-### Chart ([TriplyDB Plugin](../yasgui-api#triplyDbPlugins))
+### Chart ([TriplyDB Plugin](../yasgui-api/index.md#triplyDbPlugins))
 
 The chart plugin renders geographical, temporal and numerical data in interactive charts such as bar-, line- and pie charts.
 
@@ -317,7 +317,7 @@ subtree; right clicking on a node will move up to the subtree of its
 parent node.
 The chart configuration enables tweaking the treemap properties such as the number of displayed hierarchy levels.
 
-### Geo ([TriplyDB Plugin](../yasgui-api#triplyDbPlugins))
+### Geo ([TriplyDB Plugin](../yasgui-api/index.md#triplyDbPlugins))
 
 This view allows SPARQL results that contain GeoSPARQL semantics to be
 automatically interpreted and displayed on a 2D map.
@@ -329,8 +329,8 @@ This view recognizes the following SPARQL variable names:
 | **Variable name** | **Purpose**                                                                                                                                                      |
 | ----------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `?x`              | An arbitrary variable name that is bound to literals with datatype IRI `geo:wktLiteral`, and whose name is the prefix of the other variable names in this table. |
-| `?xColor`         | The color of the shape bound to `?x`.                                                                                                                            |
-| `?xLabel`         | The text or [HTML](#rendering-html) content of popups that appear when clicking the shape bound to `?x`.                                                             |
+| `?xColor`         | The color of the shape bound to `?x`.                                                                                                                           |
+| `?xLabel`         | The text or [HTML](#rendering-html) content of popups that appear when clicking the shape bound to `?x`.                                                            |
 | `?xTooltip`       | Text or [HTML](#rendering-html) that will appear when the shape of bound to `?x` is hovered                                                                          |
 | `?mapEndpoint`    | A URL pointing to a WMS tile-server                                                                                                                               |
 
@@ -361,29 +361,29 @@ This view recognizes the following SPARQL variable names:
 | **Variable name** | **Purpose**                                                                                                                                                               |
 | ----------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `?x`              | An arbitrary variable name that is bound to 2D or 3D literals with datatype IRI `geo:wktLiteral`, and whose name is the prefix of the other variable names in this table. |
-| `?xColor`         | The color of the shape bound to `?x`.                                                                                                                                     |
-| `?xHeight`        | The height in meters of the 2.5D shape that is based on the 2D shape that is bound to `?x`. This variable is not needed if data is stored in native 3D.                   |
-| `?xLabel`         | The text or [HTML](#rendering-html) content of the popups that appears when the shape that is bound to `?x` is clicked.                                                       |
-| `?xZ`             | The height in meters at which the 2.5D shape that is based on the 2D shape that is bound to `?x` starts. This variable is not needed if data is stored in native 3D.      |
+| `?xColor`         | The color of the shape bound to `?x`.                                                                                                                                    |
+| `?xHeight`        | The height in meters of the 2.5D shape that is based on the 2D shape that is bound to `?x`. This variable is not needed if data is stored in native 3D.                  |
+| `?xLabel`         | The text or [HTML](#rendering-html) content of the popups that appears when the shape that is bound to `?x` is clicked.                                                      |
+| `?xZ`             | The height in meters at which the 2.5D shape that is based on the 2D shape that is bound to `?x` starts. This variable is not needed if data is stored in native 3D.     |
 
-### Geo Events ([TriplyDB Plugin](../yasgui-api#triplyDbPlugins))
+### Geo Events ([TriplyDB Plugin](../yasgui-api/index.md#triplyDbPlugins))
 
 The SPARQL Geo Events plugin renders geographical events as a story map ([example](https://api.triplydb.com/s/USQ5oNpL)). This view recognizes the following SPARQL variable names:
 
 | **Variable name**           | **Purpose**                                                                                                                                                           |
 | --------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `?eventLocation` (required) | A `geo:wktLiteral`.                                                                                                                                                   |
-| `?eventLabel`               | Text or [HTML](#rendering-html) event label.                                                                                                                              |
-| `?eventDescription`         | Text or [HTML](#rendering-html) event description.                                                                                                                        |
+| `?eventLocation` (required) | A `geo:wktLiteral`.                                                                                                                                                  |
+| `?eventLabel`               | Text or [HTML](#rendering-html) event label.                                                                                                                             |
+| `?eventDescription`         | Text or [HTML](#rendering-html) event description.                                                                                                                       |
 | `?eventMedia`               | A URL pointing to a media source. Supported media types are described [here](https://github.com/NUKnightLab/StoryMapJS/tree/master/src/js/media). |
-| `?eventMediaCaption`        | Text or [HTML](#rendering-html) media caption.                                                                                                                            |
-| `?eventMediaCredit`         | Text or [HTML](#rendering-html) media credit.                                                                                                                             |
+| `?eventMediaCaption`        | Text or [HTML](#rendering-html) media caption.                                                                                                                           |
+| `?eventMediaCredit`         | Text or [HTML](#rendering-html) media credit.                                                                                                                            |
 
-### Pivot Table ([TriplyDB Plugin](../yasgui-api#triplyDbPlugins))
+### Pivot Table ([TriplyDB Plugin](../yasgui-api/index.md#triplyDbPlugins))
 
 This view renders SPARQL results in an interactive pivot table where you are able to aggregate the results by dragging your binding variables to columns or rows.
 
-### Timeline ([TriplyDB Plugin](../yasgui-api#triplyDbPlugins))
+### Timeline ([TriplyDB Plugin](../yasgui-api/index.md#triplyDbPlugins))
 
 The SPARQL timeline renders the SPARQL results on a Timeline ([example](https://triplydb.com/DBpedia-association/-/queries/timeline-cars))
 To get started with this visualization you need at least a result containing a `?eventStart` or `?eventDate` with either a `?eventDescription`, `?eventLabel` or a `?eventMedia`. (Combinations are also possible)
@@ -407,11 +407,11 @@ The following parameters can be used, Parameters in _Italic_ are experimental:
 | _`?eventMediaTitle`_     | The Title of the Media                                                                                                                      |
 | _`?eventMediaLink`_      | The URL the image should link to                                                                                                            |
 
-### Network ([TriplyDB Plugin](../yasgui-api#triplyDbPlugins))
+### Network ([TriplyDB Plugin](../yasgui-api/index.md#triplyDbPlugins))
 
 This view renders SPARQL Construct results in a graph representation. It works for `Turtle`, `Trig`, `N-Triples` and `N-Quads` responses. The maximum amount of results that can be visualized is 1.000 due to performance.
 
-### Markup ([TriplyDB Plugin](../yasgui-api#triplyDbPlugins))
+### Markup ([TriplyDB Plugin](../yasgui-api/index.md#triplyDbPlugins))
 
 The markup view can be used to render a variety of markup languages. This requires the use of the `?markup` variable to identify which variable to render. Based on the datatype of the variable the plugin will identify which markup language to use:
 

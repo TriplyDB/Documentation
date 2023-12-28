@@ -1,92 +1,125 @@
-site_name: Triply Documentation
-site_description: Learn how to integrate TriplyDB in your workflow, create production-grade Extract-Transform-Load pipelines with TriplyETL and about our SPARQL editor Yasgui.
-plugins:
-  - search
-  - mermaid2
-
+extra_css:
+  - css/intellij-light.css
+  - css/triply.css
+extra_javascript:
+  - js/triply.js
+  - js/highlight.min.js
 nav:
   - Home: index.md
   - TriplyDB:
       - Getting started:
-            - Overview: triply-db-getting-started/index.md
-            - Uploading data: triply-db-getting-started/uploading-data/index.md
-            - Publishing data: triply-db-getting-started/publishing-data/index.md
-            - Viewing data: triply-db-getting-started/viewing-data/index.md
-            - Exporting data: triply-db-getting-started/exporting-data/index.md
-            - Saved queries: triply-db-getting-started/saved-queries/index.md
-            - Data stories: triply-db-getting-started/data-stories/index.md
-            - Admin settings pages: triply-db-getting-started/admin-settings-pages/index.md
-            - Reference: triply-db-getting-started/reference/index.md
+          - Overview: triply-db-getting-started/index.md
+          - Uploading Data: triply-db-getting-started/uploading-data/index.md
+          - Publishing Data: triply-db-getting-started/publishing-data/index.md
+          - Viewing Data: triply-db-getting-started/viewing-data/index.md
+          - Exporting Data: triply-db-getting-started/exporting-data/index.md
+          - Saved Queries: triply-db-getting-started/saved-queries/index.md
+          - Data Stories: triply-db-getting-started/data-stories/index.md
+          - Admin Settings Pages: triply-db-getting-started/admin-settings-pages/index.md
+          - Reference: triply-db-getting-started/reference/index.md
       - API: triply-api/index.md
-      - TriplyDB-JS: 
-            - Overview: triplydb-js/index.md
-            - App: triplydb-js/app/index.md
-            - Account: triplydb-js/account/index.md
-            - Asset: triplydb-js/asset/index.md
-            - Dataset: triplydb-js/dataset/index.md
-            - Graph: triplydb-js/graph/index.md
-            - Organization: triplydb-js/organization/index.md
-            - Query: triplydb-js/query/index.md
-            - Service: triplydb-js/service/index.md
-            - Story: triplydb-js/story/index.md
-            - User: triplydb-js/user/index.md
-            - FAQ: triplydb-js/faq/index.md
+      - TriplyDB-JS:
+          - Overview: triplydb-js/index.md
+          - App: triplydb-js/app/index.md
+          - Account: triplydb-js/account/index.md
+          - Asset: triplydb-js/asset/index.md
+          - Dataset: triplydb-js/dataset/index.md
+          - Graph: triplydb-js/graph/index.md
+          - Organization: triplydb-js/organization/index.md
+          - Query: triplydb-js/query/index.md
+          - Service: triplydb-js/service/index.md
+          - Story: triplydb-js/story/index.md
+          - User: triplydb-js/user/index.md
+          - FAQ: triplydb-js/faq/index.md
       - Changelog: triplydb-changelog/index.md
   - TriplyETL:
       - Generics:
           - Overview: triply-etl/index.md
-          - Getting started: triply-etl/getting-started/index.md
-          - Command Line Interface: triply-etl/cli/index.md
-          - Changelog: triply-etl/changelog/index.md
-          - Declare: triply-etl/declare/index.md
-          - Control Structures: triply-etl/control/index.md
-          - Debug: triply-etl/debug/index.md
-          - Maintenance: triply-etl/maintenance/index.md
-      - Extract: 
+          - Getting Started: triply-etl/generic/getting-started.md
+          - Changelog: triply-etl/generic/changelog.md
+          - Command Line Interface (CLI): triply-etl/generic/cli.md
+          - Declarations: triply-etl/generic/declarations.md
+          - Control Structures: triply-etl/generic/control-structures.md
+          - Debug: triply-etl/generic/debug.md
+          - Internal Store: triply-etl/generic/internal-store.md
+          - Maintenance: triply-etl/generic/maintenance.md
+          - Record: triply-etl/generic/record.md
+          - Vocabularies: triply-etl/generic/vocabularies.md
+      - Sources:
+          - Overview: triply-etl/sources/index.md
+          - APIs: triply-etl/sources/apis.md
+          - Inline JSON: triply-etl/sources/inline-json.md
+          - Inline Strings: triply-etl/sources/inline-strings.md
+          - Local Files: triply-etl/sources/local-files.md
+          - Online Files: triply-etl/sources/online-files.md
+          - RML Sources: triply-etl/sources/rml.md
+          - TriplyDB Assets: triply-etl/sources/triplydb-assets.md
+          - TriplyDB Datasets: triply-etl/sources/triplydb-datasets.md
+          - TriplyDB Queries: triply-etl/sources/triplydb-queries.md
+      - Extract:
           - Overview: triply-etl/extract/index.md
-          - Formats: triply-etl/extract/formats/index.md
-          - Record: triply-etl/extract/record/index.md
-          - Source types: triply-etl/extract/types/index.md
+          - CSV: triply-etl/extract/csv.md
+          - JSON: triply-etl/extract/json.md
+          - OAI-PMH: triply-etl/extract/oai-pmh.md
+          - Postgres: triply-etl/extract/postgres.md
+          - RDF: triply-etl/extract/rdf.md
+          - Shapefile: triply-etl/extract/shapefile.md
+          - TSV: triply-etl/extract/tsv.md
+          - XLSX: triply-etl/extract/xlsx.md
+          - XML: triply-etl/extract/xml.md
       - Transform:
           - Overview: triply-etl/transform/index.md
-          - RATT: triply-etl/transform/ratt/index.md
-          - TypeScript: triply-etl/transform/typescript/index.md
-      - RML: triply-etl/rml/index.md
-      - XSLT: triply-etl/xslt/index.md
+          - RATT: triply-etl/transform/ratt.md
+          - RML: triply-etl/transform/rml.md
+          - TypeScript: triply-etl/transform/typescript.md
+          - XSLT: triply-etl/transform/xslt.md
       - Assert:
           - Overview: triply-etl/assert/index.md
-          - JSON-LD: triply-etl/assert/json-ld/index.md
-          - RATT:
-              - Terms: triply-etl/assert/ratt/term.md
-              - Statements: triply-etl/assert/ratt/statement.md
-      - Enrich: 
+          - JSON-LD: triply-etl/assert/json-ld.md
+          - RATT Terms: triply-etl/assert/ratt/terms.md
+          - RATT Statements: triply-etl/assert/ratt/statements.md
+          - RML: triply-etl/assert/rml.md
+          - XSLT: triply-etl/assert/xslt.md
+      - Enrich:
           - Overview: triply-etl/enrich/index.md
-          - SHACL: triply-etl/enrich/shacl/index.md
-          - SPARQL: triply-etl/enrich/sparql/index.md
-      - Validate: 
+          - SHACL: triply-etl/enrich/shacl.md
+          - SPARQL: triply-etl/enrich/sparql.md
+      - Validate:
           - Overview: triply-etl/validate/index.md
-          - Graph comparison: triply-etl/validate/graph-comparison/index.md
-          - SHACL: triply-etl/validate/shacl/index.md
+          - Graph Comparison: triply-etl/validate/graph-comparison.md
+          - SHACL: triply-etl/validate/shacl.md
       - Publish: triply-etl/publish/index.md
   - Yasgui:
       - Introduction: yasgui/index.md
-      - For developers:  yasgui-api/index.md
-theme:
-  name: readthedocs
-  locale: en
-  custom_dir: readthedocs-triply/
-  highlightjs: false
-
-extra_css:
-  - css/triply.css
-  - css/intellij-light.css
-
-extra_javascript:
-    - js/triply.js
-    - js/highlight.min.js
-
+      - For Developers:  yasgui-api/index.md
 markdown_extensions:
   - attr_list:
   - toc:
       permalink: True
       title: "On this page:"
+plugins:
+  - mermaid2
+  - redirects:
+      redirect_maps:
+        'triply-etl/assert/ratt/statement/index.md': 'triply-etl/assert/ratt/statements.md'
+        'triply-etl/assert/ratt/term/index.md': 'triply-etl/assert/ratt/terms.md'
+        'triply-etl/changelog/index.md': 'triply-etl/generic/changelog.md'
+        'triply-etl/cli/index.md': 'triply-etl/generic/cli.md'
+        'triply-etl/control/index.md': 'triply-etl/generic/control-structures.md'
+        'triply-etl/debug/index.md': 'triply-etl/generic/debug.md'
+        'triply-etl/declare/index.md': 'triply-etl/generic/declarations.md'
+        'triply-etl/extract/formats/index.md': 'triply-etl/extract/index.md'
+        'triply-etl/extract/record/index.md': 'triply-etl/generic/record.md'
+        'triply-etl/extract/types/index.md': 'triply-etl/sources/index.md'
+        'triply-etl/getting-started/index.md': 'triply-etl/generic/getting-started.md'
+        'triply-etl/maintenance/index.md': 'triply-etl/generic/maintenance.md'
+        'triply-etl/rml.md': 'triply-etl/transform/rml.md'
+        'triply-etl/xslt.md': 'triply-etl/transform/xslt.md'
+  - search
+site_description: "The official documentation for the Triply products: TriplyDB, TriplyDB.js, and TriplyETL."
+site_name: Triply Documentation
+theme:
+  custom_dir: readthedocs-triply/
+  highlightjs: false
+  locale: en
+  name: readthedocs

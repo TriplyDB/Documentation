@@ -7,19 +7,26 @@ users are able to view any version of the query and its results. It can also be
 used to run the query and retrieve the results from a browser or a program,
 removing the hassle of figuring out how to run a SPARQL query.
 
+
+
 ## How to save a query
 
 There are two ways to create a saved query.
 _You need to be logged in and have authorization rights on the dataset to use this feature_
 
-1. When working from the [SPARQL IDE](../viewing-data#sparql-ide)
+1. When working from the [SPARQL IDE](../viewing-data/index.md#sparql-ide)
+
 2. Using the Saved Queries tab in a dataset
 
 Creating a saved query with the SPARQL IDE is done by writing a query/visualization and hitting the save button ![The save query button highlighted](../../assets/save-query-highlighted.png)
 
+
+
 ## Creating a new version
 
 Updating the saved query can be done by clicking a query in the Saved Queries tab and editing the query or the visualization. Hit the save button to save it as a new version.
+
+
 
 ## Deleting a saved query
 
@@ -27,55 +34,54 @@ If you want to delete a saved query, you can do so by clicking the three dots on
 
 ![Deleting a saved query](../../assets/delete-query.png)
 
+
+
 ## Using a saved query
 
 ### Sharing a saved query
 
-To share a saved query, for example in [Data Stories](../data-stories#data-stories), you can copy the link that is
-used when you open the query in TriplyDB. Let's say you have a query called
-`Timelined-Cars-BETA` in the dataset `core` under the account `dbpedia` and you
-want to use version 9. Then the following link would be used
+To share a saved query, for example in [Data Stories](../data-stories/index.md#data-stories), you can copy the link that is used when you open the query in TriplyDB. Let's say you have a query called `Timelined-Cars-BETA` in the dataset `core` under the account `dbpedia` and you want to use version 9. Then the following link would be used:
 
-```url
+```uri
 https://triplydb.com/DBpedia-association/-/queries/timeline-cars/9
 ```
 
-If you want to always use the **latest** query, you can simply omit the version
-number like so
+If you want to always use the **latest** query, you can simply omit the version number like so:
 
-```url
+```uri
 https://triplydb.com/DBpedia-association/-/queries/timeline-cars
 ```
+
+
 ### Downloading a query result
 
-The result of a query can be downloaded via the TriplyDB interface. After saving the query, open it in TriplyDB. e.g. <https://triplydb.com/DBpedia-association/-/queries/timeline-cars/>. 
+The result of a query can be downloaded via the TriplyDB interface. After saving the query, open it in TriplyDB. e.g. <https://triplydb.com/DBpedia-association/-/queries/timeline-cars/>.
 
-You can download results in different data format, depending on which [visualization option](../../yasgui/#visualizations) you use.
-For example, if you want to download the results in a `.json` format, you can choose the option `Response` and click on the download icon or scroll down and click on `Download result`.
+You can download results in different data format, depending on which [visualization option](../../yasgui/index.md#visualizations) you use. For example, if you want to download the results in a `.json` format, you can choose the option `Response` and click on the download icon or scroll down and click on `Download result`.
 
 ![Download the query result via the download icon.](../../assets/queryResult.png)
+
 ![Download the query result via the button `Download result`.](../../assets/queryResult2.png)
 
 The downloaded file is automatically stored in the `Downloads`-folder and has the name of the query. In our example, the file is called `timeline-cars.json`. The downloaded file contains the query result as a json-object. TriplyDB also displays the json-object when selecting the option `Response`.
 
 Below is a table of all supported visualizations and what format of results they produce.
 
-|                     **Visualization option**                 | **Result data format** |
-| ------------------------------------------------------------ | ---------------------- |
-|       [Table](../../yasgui/#table)          | `.csv`                 |
-|       [Response](../../yasgui/#response)    | `.json`                |
-|       [Gallery](../../yasgui/#gallery-triplydb-plugin)      | Download not supported |
-|       [Chart](../../yasgui/#chart-triplydb-plugin)         | `.svg`                 |
-|       [Geo](../../yasgui/#geo-triplydb-plugin)              | Download not supported |
-|       [Geo-3D](../../yasgui/#geo-3d-triplydb-only)        | Download not supported |
-|       [Geo events](../../yasgui/#geo-events-triplydb-plugin)| Download not supported |
-|       [Markup](../../yasgui/#markup-triplydb-plugin)        | `.svg`, `.html`        |
-|       [Network](../../yasgui/#network-triplydb-plugin)      | `.png`                 |
-|       [Timeline](../../yasgui/#timeline-triplydb-plugin)    | Download not supported |
-
-
+| **Visualization option**                                       | **Result data format** |
+| -------------------------------------------------------------- | ---------------------- |
+| [Table](../../yasgui/index.md#table)                           | `.csv`                 |
+| [Response](../../yasgui/index.md#response)                     | `.json`                |
+| [Gallery](../../yasgui/index.md#gallery-triplydb-plugin)       | Download not supported |
+| [Chart](../../yasgui/index.md#chart-triplydb-plugin)           | `.svg`                 |
+| [Geo](../../yasgui/index.md#geo-triplydb-plugin)               | Download not supported |
+| [Geo-3D](../../yasgui/index.md#geo-3d-triplydb-only)           | Download not supported |
+| [Geo events](../../yasgui/index.md#geo-events-triplydb-plugin) | Download not supported |
+| [Markup](../../yasgui/index.md#markup-triplydb-plugin)         | `.svg`, `.html`        |
+| [Network](../../yasgui/index.md#network-triplydb-plugin)       | `.png`                 |
+| [Timeline](../../yasgui/index.md#timeline-triplydb-plugin)     | Download not supported |
 
 As another example, to download the query result in CSV-format, select the option `Table` and click on the download icon. The downloaded file is named after the query with the suffix `.csv`.
+
 
 ### Download more than 10 000 query results - SPARQL pagination
 
@@ -96,7 +102,7 @@ he RESTful API for the saved SPARQL queries follows the [RFC 8288](https://www.r
 
 The request will return an response body containing the result set and a response header. The response header contains a link header with the relative "next" request, the relative "prev" request, and the relative "first" request. By following the "next" link header request you can chain the pagination and retrieve all results.
 
-```json
+```http
 link:
     <https://api.triplydb.com/queries/academy/pokemon-color/run?page=4&pageSize=100>; rel="next",
     <https://api.triplydb.com/queries/academy/pokemon-color/run?page=2&pageSize=100>; rel="prev",
@@ -105,7 +111,7 @@ link:
 
 #### Pagination with TriplyDB.js
 
-**TriplyDB.js** is the official programming library for interacting with [TriplyDB](../). TriplyDB.js allows the user to connect to a TriplyDB instance via the TypeScript language. TriplyDB.js has the advantage that it can handle pagination internally so it can reliably retrieve a large number of results.
+**TriplyDB.js** is the official programming library for interacting with [TriplyDB](../../triply-db-getting-started/index.md). TriplyDB.js allows the user to connect to a TriplyDB instance via the TypeScript language. TriplyDB.js has the advantage that it can handle pagination internally so it can reliably retrieve a large number of results.
 
 To get the output for a `construct` or `select` query, follow these steps:
 
@@ -122,21 +128,21 @@ async function run() {
 run()
 ```
 
-2\. Get the results of a query by setting a `results` variable.  More specifically, for construct queries you use the `statements()` call:
+2\. Get the results of a query by setting a `results` variable. More specifically, for construct queries you use the `statements()` call:
 
 ```ts
 const query = await account.getQuery('name-of-some-query')
 const results = query.results().statements()
 ```
 
-   For select queries you use the `bindings()` call:
+For select queries you use the `bindings()` call:
 
 ```ts
 const query = await account.getQuery('name-of-some-query')
 const results = query.results().bindings()
 ```
 
-   Additionally, saved queries can have 'API variables' that allow you to specify variables that are used in the query. Thus, if you have query parameters, pass their values as the first argument to `results` as follows:
+Additionally, saved queries can have 'API variables' that allow you to specify variables that are used in the query. Thus, if you have query parameters, pass their values as the first argument to `results` as follows:
 
 ```ts
 // For SPARQL construct queries.
@@ -178,14 +184,17 @@ await results.toFile('my-file.nt')
 const array = await results.toArray()
 ```
 
+
 ### Using a saved query as REST-API (Advanced)
 
 Each TriplyDB instance has a fully RESTful API. The TriplyDB RESTful API is extended for saved SPARQL queries. A saved query can be used as a RESTful API to retrieve data from your linked dataset. The URL next to the keywork `API` is the RESTful API URL and can be used with RESTful API libraries. You can copy the RESTful API by pressing the copy button just behind the URL. Pressing the copy button from the above query will result in the following run url:
 
-```url
+```uri
 https://api.triplydb.com/queries/DBpedia-association/timeline-cars/run
 ```
+
 When you copy this URL in your browser or fetch the URL with curl, you will get a get request to a RESTful API and get a JSON representation of the data in your browser or command window.
+
 
 ### Using a saved query in Python or R notebooks (Advanced)
 
@@ -193,14 +202,18 @@ SPARQL queries as a RESTful API, also means you can transport your data to your 
 
 Clicking the '</>' button opens the code snippet screen. Here you select the snippet in the language you want to have, either Python or R. You can then copy the snippet, by clicking the 'copy to clipboard' button or selecting the snippet and pressing `ctrl-c`. Now you can paste the code in the location you want to use the data. The data is stored in the `data` variable in `JSON` format.
 
-When the SPARQL query is not public, but instead either private or internal, you will need to add an authorization header to the get request. Without the authorization header the request will return an incorrect response. Checkout [Creating your API token](../../triply-api/#creating-an-api-token) about creating your API-token for the authorization header.
+When the SPARQL query is not public, but instead either private or internal, you will need to add an authorization header to the get request. Without the authorization header the request will return an incorrect response. Checkout [Creating your API token](../../triply-api/index.md#creating-an-api-token) about creating your API-token for the authorization header.
 
-Check out the [SPARQL pagination page](#download-more-than-10-000-query-results-sparql-pagination) when you want to query a SPARQL query that holds more than 10.000 results. The [SPARQL pagination page ](#download-more-than-10-000-query-results-sparql-pagination) will explain how you can retrieve the complete set.   
+Check out the [SPARQL pagination page](#download-more-than-10-000-query-results-sparql-pagination) when you want to query a SPARQL query that holds more than 10.000 results. The [SPARQL pagination page](#download-more-than-10-000-query-results-sparql-pagination) will explain how you can retrieve the complete set.
+
+
 
 ## Query metadata
 
 Every Saved Query has a metadata section. This metadata section includes the following two links:
+
 - A link to the dataset over which the query is executed. Clicking this links navigates to the dataset homepage.
+
 - A link to the service by which the query is executed. Clicking this link navigates to the services page that includes that service.
 
 Users can specify a query title and description, both of which are included as metadata. The access level and version of the query are also exposed as metadata. See the following screenshot for how the metadata fields are shown in TriplyDB:
@@ -213,4 +226,4 @@ Users can specify additional metadata inside the query string, by using the GRLC
 #+ frequency: hourly
 ```
 
-See the [Triply API documentation](../../triply-api#queries) for how to retrieve query metadata, including how to retrieve GRLC annotations.
+See the [Triply API documentation](../../triply-api/index.md#queries) for how to retrieve query metadata, including how to retrieve GRLC annotations.

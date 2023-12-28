@@ -20,25 +20,23 @@ graph LR
   tdb[(Triple Store)]
 ```
 
-Assertion are statements of fact.  In linked data, assertions are commonly called 'triples' or 'quads'.  A triple is composed of three parts: a subject term, a predicate term, and an object term.  A quad or quadruple also has a fourth graph term.
-
-## Overview
+Assertion are statements of fact. In linked data, assertions are commonly called 'triples' or 'quads'. A triple is composed of three parts: a subject term, a predicate term, and an object term. A quad or quadruple also has a fourth graph term.
 
 TriplyETL supports the following assertion approaches:
 
 - 3A. **RATT** (RDF All The Things) contains a core set of TypeScript functions for making linked data assertions:
-    - [RATT Term Assertions](ratt/term): functions that are used to assert terms (IRIs or literals).
-    - [RATT Statement Assertions](ratt/statement): functions that are used to assert statements (triples or quads).
-<!--
-- 3B. [**JSON-LD**](/triply-etl/assert/json-ld) can be used to assert data according to a JSON-LD Context.
--->
+    - [RATT Term Assertions](./ratt/terms.md): functions that are used to assert terms (IRIs or literals).
+    - [RATT Statement Assertions](./ratt/statements.md): functions that are used to assert statements (triples or quads).
+- 3B. [**JSON-LD**](./json-ld.md) can be used to assert data according to a JSON-LD Context.
+- 3C. [**RML**](./rml.md) inserts the data that has been transformed (from a non-RDF format into RDF triples) into the store.
+- 3D. [**XSLT**](./xslt.md) inserts the data that has been transformed (from XML to XML or RDF) using stylesheet parameter in `loadRdf()` function into the store
 
-- 3B. [**RML**](../rml) inserts the data that has been transformed (from a non-RDF format into RDF triples) into the store.
-- 3C. [**XSLT**](../xslt) inserts the data that has been transformed (from XML to XML or RDF) using stylesheet parameter in `loadRdf()` function into the store 
+
+
 ## Next steps
 
 After linked data has been asserted into the Internal Store, the following steps can be preformed:
 
-- [4. **Enrich**](../enrich/) improves or extends linked data in the Internal Store.
-- [5. **Validate**](../validate) ensures that linked data in the Internal Store is correct.
-- [6. **Publish**](../publish) makes linked data available in a Triple Store for others to use.
+- [4. **Enrich**](../enrich/index.md) improves or extends linked data in the Internal Store.
+- [5. **Validate**](../validate/index.md) ensures that linked data in the Internal Store is correct.
+- [6. **Publish**](../publish/index.md) makes linked data available in a Triple Store for others to use.

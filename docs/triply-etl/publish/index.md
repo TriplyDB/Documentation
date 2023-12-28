@@ -1,6 +1,6 @@
 [TOC]
 
-# TriplyETL: Publish
+# Publish
 
 The **Publish** step makes the linked data that is produced by the TriplyETL pipeline available in a Triple Store for use by others.
 
@@ -22,7 +22,11 @@ graph LR
 
 
 
-## Remote data destinations
+## Destinations
+
+Linked data that is produced by a TriplyETL pipeline can be published to one or more destinations.
+
+### Remote data destinations
 
 Destinations are usually online locations in TriplyDB where the output of your pipeline will be published.
 
@@ -136,7 +140,7 @@ const etl = new Etl({
 
 
 
-## Direct copying of source data to destination
+## Direct copying from source to destination
 
 TriplyETL supports copying sources directly to destination locations. This function is useful when you already have linked data that is used as a source, but is also needed at the destination. An example would be the information model. This would be available as a source, and with the copy function it can be uploaded to TriplyDB via TriplyETL.
 
@@ -154,9 +158,11 @@ The function destination expects that source data is linked data. Copying a sour
 
 Please note that the `copySource` function is not considered part of the middleware layer but is a specialized function used for direct source-to-destination copying. As a result, it won't be counted in the middleware runtime.
 
+
+
 ## Using TriplyDB.js in TriplyETL
 
-All operations that can be performed in a TriplyDB instance can be automated with classes and methods in the [TriplyDB.js](../../triplydb-js) library. This library is also used by TriplyETL in the background to implement many of the TriplyETL functionalities.
+All operations that can be performed in a TriplyDB instance can be automated with classes and methods in the [TriplyDB.js](../../triplydb-js/index.md) library. This library is also used by TriplyETL in the background to implement many of the TriplyETL functionalities.
 
 Sometimes it is useful to use classes and methods in TriplyDB.js directly. This is done in the following way:
 
@@ -168,7 +174,7 @@ const etl = new Etl()
 console.log((await etl.triplyDb.getInfo()).name)
 ```
 
-The above example prints the name of the TriplyDB instance. But any other [TriplyDB.js](../../triplydb-js) operations can be performed. For example, the user of the current API Token can change their avatar image in TriplyDB:
+The above example prints the name of the TriplyDB instance. But any other [TriplyDB.js](../../triplydb-js/index.md) operations can be performed. For example, the user of the current API Token can change their avatar image in TriplyDB:
 
 
 ```ts
@@ -226,12 +232,12 @@ You can also set the `ENV` variable in the GitLab CI/CD environment. This allows
 
 ## Upload prefix declarations
 
-At the end of a TriplyETL script, it is common to upload the [prefix declarations](../declare#declarePrefix) that are configured for that pipeline. 
+At the end of a TriplyETL script, it is common to upload the [prefix declarations](../generic/declarations.md#prefix-declarations) that are configured for that pipeline.
 
 This is often done directly before or after graphs are uploaded (function [toTriplyDb()](#remote-data-destinations)):
 
 ```ts
-import { declarePrefix, toTriplyDb, uploadPrefixes } from '@triplyetl/etl/generic'
+import { toTriplyDb, uploadPrefixes } from '@triplyetl/etl/generic'
 
 const prefix = {
   // Your prefix declarations.
@@ -240,7 +246,7 @@ const prefix = {
 export default async function(): Promise<Etl> {
   const etl = new Etl({ prefixes: prefix })
   etl.run(
-    // You ETL pipeline
+    // You ETL pipeline.
     toTriplyDb({ account: 'my-account', dataset: 'my-dataset' }),
     uploadPrefixes({ account: 'my-account', dataset: 'my-dataset' }),
   )

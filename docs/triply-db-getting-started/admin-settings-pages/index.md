@@ -4,31 +4,40 @@
 
 You can use the console to perform administrator tasks. The administrator tasks are performed within the admin settings page. The admin settings pages are accessible by clicking on the user menu in the top-right corner and selecting the “Admin settings” menu item. You must have administrator privileges to access these pages and perform administrator tasks.
 
+
+
 ## Overview page
 
 The first page that comes into view when opening the admin settings pages is the overview page. This page contains an overview of all the important statistics of the instance. The page also shows how close the instance is to hitting one or more limits.
 
-If no limit is set, the statistics are shown as a counter. If a limit is set a gauge is shown with a green, orange or red bar. The colors denote how far that statistic of the instance is to the limit. Green means not close to the limit, Orange means close to the limit, Red means over the limit.    
+If no limit is set, the statistics are shown as a counter. If a limit is set a gauge is shown with a green, orange or red bar. The colors denote how far that statistic of the instance is to the limit. Green means not close to the limit, Orange means close to the limit, Red means over the limit.
+
 
 ### General overview
 
 The general overview gives an insight into the software version of the instance. Each instance consists of a console and an API. The console is the web interface of the instance and has a build date corresponding to the build date of the docker image of the console and a version number corresponding to the version of the docker image. The API is the layer between the console and the data. The API is separate from the console and is a different docker image. The API also has a version and build date of the docker image. Also contains a starting time, and an updated time, the moments when the docker image is started for this instance or when the docker image is updated for the instance.
 
+
 ### Accounts overview
 
 The accounts overview shows how many organizations and users are in this instance. The organizations and users are shown in a counter if no limit is set. If a limit is set on the number of organizations and/or users of the instance a gauge is shown.
 
+
 ### Data overview
 
-The data overview shows multiple statistics about datasets. The first counter shows the amount of datasets on the instance. The second and third counters show the amount of graphs and statements in all graphs.  The fourth and fifth counters show the amount of unique graphs and statements. When a graph is copied from one dataset to another, the data in that graph does not change. The amount of unique data does not change either. The amount of unique data is a more representative way of calculating the amount of data in the instance. All statistics are shown in a counter, if no limit is set. If a limit is set on one of the statistics of the instance a gauge is shown.
+The data overview shows multiple statistics about datasets. The first counter shows the amount of datasets on the instance. The second and third counters show the amount of graphs and statements in all graphs. The fourth and fifth counters show the amount of unique graphs and statements. When a graph is copied from one dataset to another, the data in that graph does not change. The amount of unique data does not change either. The amount of unique data is a more representative way of calculating the amount of data in the instance. All statistics are shown in a counter, if no limit is set. If a limit is set on one of the statistics of the instance a gauge is shown.
+
 
 ### Services overview
 
 The data overview shows how multiple statistics about services. The first counter shows the total amount of services on the instance, The second counter shows the total amount of statements in all the services. Then for each of our service types a specific counter is created. Each containing the amount of services and the amount of statements in that service. All statistics are shown in a counter if no limit is set. If a limit is set on one of the statistics of the instance a gauge is shown.
 
+
+
 ## Settings page
 
 The settings page is the main page for administrators to institute instance wide changes. An administrator can change the site logo's here, change the contact email or update site wide prefixes.
+
 
 ### Set logos and banner
 
@@ -36,14 +45,14 @@ For changing the logos and the banner follow the next steps:
 
 1. Click on the “Admin settings” link in the user menu (top-right corner) and click the "Settings" tab. This brings up an overview of all the settings an admin can set for the TriplyDB instance.
 
-2. Under "Site logos" and "Site banner" you can upload a site logo (square and landscape) or a banner. 
+2. Under "Site logos" and "Site banner" you can upload a site logo (square and landscape) or a banner.
 
-    - The logo (preferably squared) is required to be SVG. In the UI the 30x30px image is displayed. 
+    - The logo (preferably squared) is required to be SVG. In the UI the 30x30px image is displayed.
 
-    - The banner can be of any format, however, the WEBP is preferred. The image's resolution should be between 1920x500 and up to 4000x500. The banner is displayed at a height 500px. If the image is smaller than the browser screen size, the image will be stretched. 
+    - The banner can be of any format, however, the WEBP is preferred. The image's resolution should be between 1920x500 and up to 4000x500. The banner is displayed at a height 500px. If the image is smaller than the browser screen size, the image will be stretched.
 
     - Make sure you use files with a maximum size of 5 MB.
-    
+
 
 ### Setting metadata
 
@@ -56,12 +65,14 @@ For changing the metadata follow the next steps:
 
 3. Here you can set the name, tag line, description and welcome text. The name of your website appears in your browser tab. The welcome text appears on the homepage of your TriplyDB instance. The tagline and description are for metadata purposes (e.g. findability and website previews).
 
+
 ### Setting contact email
 
 For changing the contact email follow the next steps:
 1. Click on the “Admin settings” link in the user menu (top-right corner) and click the "Settings" tab. This brings up an overview of all the settings an admin can set for the TriplyDB instance.
 
 2. On that page navigate to "Contact Email". Here, you can change the contact email to a new contact email for the instance.
+
 
 ### Setting example datasets
 
@@ -76,6 +87,7 @@ For editing the example datasets follow the next steps:
  - In the search field below the already added datasets you can add a new example dataset by typing in the search field and selecting the correct dataset.
  - You can remove datasets by pressing the `x` on the right side of the dataset name to remove it from the example dataset list.
 
+
 ### Setting Starter dataset
 
 The starter dataset is a beginner-friendly linked dataset that can be an introduction into linked data when a user creates an account for the first time. The starter dataset is visible for a user when the user has not yet created a dataset on its own account.
@@ -84,6 +96,7 @@ For editing the example datasets follow the next steps:
 1. Click on the “Admin settings” link in the user menu (top-right corner) and click the "Settings" tab. This brings up an overview of all the settings an admin can set for the TriplyDB instance.
 
 2. On that page navigate to "Starter dataset". Here you can change the starter dataset to a new starter dataset for the instance by typing in the search bar a name of an existing dataset to replace the started dataset. This dataset then will be presented to users on their account page, with an option to import(copy) them immediately. This needs to be a public dataset! If it's not public, new users will have to create a dataset. The starter dataset is only shown if the user currently has no datasets.
+
 
 ### Setting Authentication
 
@@ -94,6 +107,7 @@ For changing the authentication protocols follow the next steps:
 
 2. On that page navigate to "Authentication". Now you can change the password sign up. Allowing people to only register with a password or they are only allowed to register with a google or Github account. When password signup is enabled, the administrator can also set the permitted signup domains.
 Only users with e-mail addresses that match these domains are allowed to sign-up. Wildcards are allowed and domains are comma separated, for example: mydomain.com,*.mydomain.com.
+
 
 ### Setting Site-wide prefixes
 
@@ -107,6 +121,8 @@ For editing the side-wide prefixes follow the next steps:
 - Each field of the already added site-wide prefixes you can edit. You can edit the prefix label by typing in the first field. You can edit the prefix IRI and in the second field. Pressing `UPDATE PREFIXES` updates the list.
 - In the last field below the already added site-wide prefixes you can add a new site-wide prefix by typing in the first field the prefix label, and in the second field the prefix IRI. Pressing `UPDATE PREFIXES` updates the list.
 - You can remove prefixes by pressing the `x` on the right side of the prefixes name to remove it from the site-wide prefixes list.
+
+
 
 ## Account overview page
 
@@ -157,6 +173,7 @@ For each account you can execute the following actions:
   <dd>For each account, there is a button such that the administrator can directly go to the account settings of the user or organization. The account settings are behind the `cogwheel` button. </dd>
 </dl>
 
+
 ### Add new user(s)
 
 Go to the “Accounts tab” to receive an overview of all accounts on the
@@ -169,25 +186,18 @@ The type of account can be observed based on the following icons:
 | ![](../../assets/organization.png) | organization     |
 | ![](../../assets/user.png)         | user             |
 
+
 ### Create a new user
 
-New users can only be created by administrators by performing the
-following steps:
+New users can only be created by administrators by performing the following steps:
 
-1. Click on the “Admin settings” link in
-   the user menu (top-right corner) and click the “Accounts” tab.
-   This brings up an overview of all users and organizations on the
-   TriplyDB instance.
+1. Click on the “Admin settings” link in the user menu (top-right corner) and click the “Accounts” tab. This brings up an overview of all users and organizations on the TriplyDB instance.
 
 2. Click the “Add user” button.
 
-3. Fill in the user name and email address of the prospective user.
-   The user name must consist of alphanumeric characters (`A-Za-z`)
-   and hyphens (`-`).
+3. Fill in the user name and email address of the prospective user. The user name must consist of alphanumeric characters (`A-Za-z`) and hyphens (`-`).
 
-4. Click the “Add user” button. This sends an account creation
-   email to the prospective user, containing a link that allows them
-   to log in.
+4. Click the “Add user” button. This sends an account creation email to the prospective user, containing a link that allows them to log in.
 
 In addition to the above default procedure, the following two options
 are provided for user account creation:
@@ -201,6 +211,8 @@ are provided for user account creation:
   account creation email. When a password is entered in the
   “Password” field, the user must enter this password in order to
   log in for the first time.
+
+
 
 ## Datasets page
 
@@ -251,10 +263,11 @@ For each dataset you can execute the following actions:
   <dd>For each dataset there is button such that the administrator can directly go to the dataset settings of the dataset. The dataset settings are behind the `cogwheel` button. </dd>
 </dl>
 
+
+
 ## Services page
 
-The services page governs all the services of an instance. The paginated table shows all the services of the instance. The table is equipped with filters and sorting mechanisms to quickly search for and locate specific services according to search and filter criteria. The table also has a search field at the right side to quickly do wildcard searching.
-The table sorts all services automatically if a service is in an error state or not. All services that are in error state will be shown at the top of the table. This way immediate action can be taken to check the service.
+The services page governs all the services of an instance. The paginated table shows all the services of the instance. The table is equipped with filters and sorting mechanisms to quickly search for and locate specific services according to search and filter criteria. The table also has a search field at the right side to quickly do wildcard searching. The table sorts all services automatically if a service is in an error state or not. All services that are in error state will be shown at the top of the table. This way immediate action can be taken to check the service.
 
 The filters on top of the table can be used to filter the following columns:
 
@@ -314,9 +327,12 @@ For each service you can execute the following actions:
 
 Some of these actions can be cumbersome when you need to do them one at a time. To help with this, on the left side of the table you can click on the tickbox. This will select all the services that match search criteria if there search criteria and all tables when there are no search criteria. When pressed you can now remove all selected services or update all selected services to a new software version.
 
+
+
 ## Redirects page
 
-The great thing about linked data is that IRIs are used to define objects in linked data. Then when you visit the IRIs you find useful information about the object. But sometimes the data is not on the location where the IRI is pointing towards. You have the IRI: https://example.org/resource/Amsterdam but the information about the object is located in the dataset https://api.triplydb.com/MyAccount/myCities. This is a problem as the IRI is pointing to a location that does not contain the data, and the data is at a location that is not found without the correct IRI. This is where you can use redirects to redirect the user from the IRI to the location where the data is found.  
+The great thing about linked data is that IRIs are used to define objects in linked data. Then when you visit the IRIs you find useful information about the object. But sometimes the data is not on the location where the IRI is pointing towards. You have the IRI: https://example.org/resource/Amsterdam but the information about the object is located in the dataset https://api.triplydb.com/MyAccount/myCities. This is a problem as the IRI is pointing to a location that does not contain the data, and the data is at a location that is not found without the correct IRI. This is where you can use redirects to redirect the user from the IRI to the location where the data is found.
+
 
 ### How to setup a redirects for dereferencing
 

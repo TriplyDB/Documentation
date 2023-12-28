@@ -4,13 +4,13 @@
 
 Not all data can be stored as RDF data. For example images and video files use a binary format. Such files can also be stored in TriplyDB as Assets and can be integrated into the Knowledge Graph. Each asset has a specific identifier that can be used in the Knowledge Graph.
 
-An asset is always uploaded per dataset, for which the function `uploadAsset()` is used. see [Dataset.uploadAsset()](../dataset#datasetuploadassetassetname-string-filepath-string) for uploading an asset.
+An asset is always uploaded per dataset, for which the function `uploadAsset()` is used. see [Dataset.uploadAsset()](../dataset/index.md#datasetuploadassetassetname-string-filepath-string) for uploading an asset.
 
 If the asset already has been created following functions can retrieve it from the dataset.
 
-- [Dataset.getAsset(assetName: string, versionNumber?: number)](../dataset#datasetgetassetname-string-version-number)
-  
-- [Dataset.getAssets()](../dataset#datasetgetassets)
+- [Dataset.getAsset(assetName: string, versionNumber?: number)](../dataset/index.md#datasetgetassetname-string-version-number)
+
+- [Dataset.getAssets()](../dataset/index.md#datasetgetassets)
 
 
 TriplyDB.js supports several functions to manipulate an asset on TriplyDB.

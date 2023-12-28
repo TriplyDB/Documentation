@@ -86,11 +86,13 @@ The result is a set of triples according to the query. Saving the SPARQL query w
 
 The saved query url of an example query is:
 
-```bash
+```iri
 https://api.triplydb.com/queries/JD/JSON-LD-frame/run
 ```
 
 You could use API variables with a `?` e.g. `?[queryVariable]=[value]`
+
+
 
 ## The Frame
 
@@ -100,7 +102,7 @@ A JSON-LD frame consists out of 2 parts. The `@context` of the response, and the
 
 The `@context` is the translation of the linked data to the JSON naming. In the `@context` all the IRIs that occur in the JSON-LD response are documented, with key-value pairs, where the key corresponds to a name the IRI will take in the REST-API response and the value corresponds to the IRI in the JSON-LD response. Most of the time the key-value pairs are one-to-one relations, where one key is mapped to a single string. Sometimes the value is an object. The object contains at least the `@id`, which is the IRI in the JSON-LD response. The object can also contain other modifiers, that change the REST-API response. Examples are, `@type` to define the datatype of the object value, or `@container` to define the container where the value in the REST-API response is stored in. The context can also hold references to vocabularies or prefixes.
 
-The second part of the JSON-LD frame is the structure of the data. The structure defines how the REST-API response will look like. Most of the time the structure starts with `@type` to denote the type that the rootnode should have. Setting the `@type` is the most straightforward way of selecting your rootnode. The structure is built outward from the rootnode. You can define a leafnode in the structure by adding an opening and closing bracket, as shown in the example. To define a nested node you first need to define the key that is a object property in the JSON-LD response that points to another IRI. Then from that IRI the node is created filling in the properties of that node.
+The second part of the JSON-LD frame is the structure of the data. The structure defines how the REST-API response will look like. Most of the time the structure starts with `@type` to denote the type that the root node should have. Setting the `@type` is the most straightforward way of selecting your root node. The structure is built outward from the root node. You can define a leaf node in the structure by adding an opening and closing bracket, as shown in the example. To define a nested node you first need to define the key that is a object property in the JSON-LD response that points to another IRI. Then from that IRI the node is created filling in the properties of that node.
 
 ```json
 {
@@ -131,7 +133,7 @@ The second part of the JSON-LD frame is the structure of the data. The structure
 
 The JSON-LD frame together with the SPARQL query will now result in a REST-API result:
 
-```bash
+```sh
 curl -X POST https://api.triplydb.com/queries/JD/JSON-LD-frame/run \
   -H 'Accept: application/ld+json;profile=http://www.w3.org/ns/json-ld#framed' \
   -H 'Content-type: application/json' \
@@ -164,24 +166,25 @@ curl -X POST https://api.triplydb.com/queries/JD/JSON-LD-frame/run \
 The JSON-LD frame turns SPARQL results for the query in step 1 into a format that is accepted as plain REST API request.
 
 
+
 ## Using SPARQL to create a frame
 
-Another way to create a frame is by using the SPARQL editor in TriplyDB. 
+Another way to create a frame is by using the SPARQL editor in TriplyDB.
 
 You can access the JSON-LD editor by clicking the three dots next to the SPARQL editor, and then selecting "To JSON-LD frame editor".
 
-![SPARQL editor](/assets/json-ld-navigator.png)
+![SPARQL editor](../assets/json-ld-navigator.png)
 
 Afterwards, the JSON script from above should be added to the JSON-LD Frame editor.
 
-![Ld-Frame box](/assets/json-ld-script.png)
+![Ld-Frame box](../assets/json-ld-script.png)
 
 
-Running the script results in the following REST-API result: 
+Running the script results in the following REST-API result:
 
-![REST-API result](/assets/json-ld-result.png)
+![REST-API result](../assets/json-ld-result.png)
 
-This can also be accessed by the generated API Link above the SPARQL editor. 
+This can also be accessed by the generated API Link above the SPARQL editor.
 Copying and pasting the generated link will direct you to a page where you can view the script:
 
-![](/assets/json-ld-in-api.png)
+![](../assets/json-ld-in-api.png)

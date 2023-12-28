@@ -2,16 +2,16 @@
 
 ## Create statements {#create-statements}
 
-After source data is connected and transformed, the RATT Record is ready to be transformed to linked data.  Linked data statements are assertions or factual statements that consist of 3 terms (triple) or 4 terms (quadruples).
+After source data is connected and transformed, the RATT Record is ready to be transformed to linked data. Linked data statements are assertions or factual statements that consist of 3 terms (triple) or 4 terms (quadruples).
 
 
-Statements are created with the `triple` function.  Calls to this function are part of the pipeline, and must appear inside the scope of `app.use`.
+Statements are created with the `triple` function. Calls to this function are part of the pipeline, and must appear inside the scope of `app.use`.
 
 
 
 ### Create static statements {#static-assertions}
 
-Static linked data statements are statements that only make use of constant terms (see [working with IRIs](https://triply.cc/docs/ratt-extract#working-with-iris)).  Constant terms are introduced at the beginning of a RATT pipeline, typically prior to the occurrence of the first `app.use` scope.
+Static linked data statements are statements that only make use of constant terms (see [working with IRIs](https://triply.cc/docs/ratt-extract#working-with-iris)). Constant terms are introduced at the beginning of a RATT pipeline, typically prior to the occurrence of the first `app.use` scope.
 
 The following static statements make use of the constant terms introduced in the section on [working with IRIs](https://triply.cc/docs/ratt-extract#working-with-iris).
 
@@ -77,7 +77,7 @@ Notice the following details:
 - Arguments `Country` and `Inhabitants` allow values for these keys to be used from processed RATT Records.
 - The IRI prefix for the subject term is specified with constant `prefix.id`.
 - `literal` is used to create a dynamic literal term.
-- For literals a datatype IRI can be specified.  If no datatype IRI is specified then the default IRI is `xsd.string`.
+- For literals a datatype IRI can be specified. If no datatype IRI is specified then the default IRI is `xsd.string`.
 
 `iri.hashed`can be used instead of `iri` when the ETL has a high number of blank nodes and they need more than one constant as input to hash a unique IRI.
 
@@ -109,9 +109,9 @@ Be aware that there are different approaches for *static* and *dynamic* IRIs:
 
 ```
 
-Notation [1a] creates the *static* IRI [1b].  This IRI does not depend on the currently processed RATT record.
+Notation [1a] creates the *static* IRI [1b]. This IRI does not depend on the currently processed RATT record.
 
-Notation [2a] creates the *dynamic* IRI in [2b], assuming the `"person"` key contains the value `"John"`.  This IRI depends on the currently processed RATT record.
+Notation [2a] creates the *dynamic* IRI in [2b], assuming the `"person"` key contains the value `"John"`. This IRI depends on the currently processed RATT record.
 
 For a different RATT record, IRI [2c] may be created instead (assuming the `"person"` key contains the value `"Jane"`).
 
@@ -163,9 +163,9 @@ app.use(
 
 ## Record IDs
 
-If your RATT Records do not contain a unique ID then you can use the `recordId` entry that RATT adds automatically.  These `recordId` values are unique for every record processed in the same pipeline, but they are not an entry into the RATT Record by default.
+If your RATT Records do not contain a unique ID then you can use the `recordId` entry that RATT adds automatically. These `recordId` values are unique for every record processed in the same pipeline, but they are not an entry into the RATT Record by default.
 
-Record IDs are consistently assigned across runs of the same pipeline.  They generate the same output as long as the input does not change.
+Record IDs are consistently assigned across runs of the same pipeline. They generate the same output as long as the input does not change.
 
 The following example code shows how the record ID can be added to each RATT Record:
 
@@ -182,11 +182,11 @@ app.use(
 
 ## Process data conditionally {#process-data-conditionally}
 
-Source data often contains optional values.  These are values that appear in some, but not all records.
+Source data often contains optional values. These are values that appear in some, but not all records.
 
-Source data often contains 'special' values to denote the absence of a value.  Common examples are values such as `'NULL'` or the empty string (`''`) or 'clear' outliers such as `9999` for a missing year.  We call such values ‘null values’.
+Source data often contains 'special' values to denote the absence of a value. Common examples are values such as `'NULL'` or the empty string (`''`) or 'clear' outliers such as `9999` for a missing year. We call such values ‘null values’.
 
-The `when` function supports the creation of triples under certain conditions.  The first argument that this function takes establishes whether or not a certain condition is met.  After that, one or more additional statement arguments appear that will only be called if the condition is satisfied.  The generic structure of `when` is as follows:
+The `when` function supports the creation of triples under certain conditions. The first argument that this function takes establishes whether or not a certain condition is met. After that, one or more additional statement arguments appear that will only be called if the condition is satisfied. The generic structure of `when` is as follows:
 
 ```ts
 app.use(
@@ -242,7 +242,7 @@ app.use(
 )
 ```
 
-Because missing values are very common in source data, RATT introduces special support for when the value for a specific key is missing.  Instead of having to write `context => context.isNotEmpty('foo')` one can simply write the key name instead.  The above example is equivalent to the following:
+Because missing values are very common in source data, RATT introduces special support for when the value for a specific key is missing. Instead of having to write `context => context.isNotEmpty('foo')` one can simply write the key name instead. The above example is equivalent to the following:
 
 ```ts
 app.use(
@@ -277,7 +277,7 @@ app.use(
 )
 ```
 
-Notice that it is almost never useful to store the empty string in linked data.  So the treatment of the empty string as a NULL value is the correct default behavior.
+Notice that it is almost never useful to store the empty string in linked data. So the treatment of the empty string as a NULL value is the correct default behavior.
 
 ### Custom functions
 
@@ -296,7 +296,7 @@ Notice details:
 
 ## Tree-shaped data
 
-Tree-shaped data is very common in different source systems.  We will use the following JSON source data as an example in this section:
+Tree-shaped data is very common in different source systems. We will use the following JSON source data as an example in this section:
 
 ```json
 {
@@ -320,7 +320,7 @@ Tree-shaped data is very common in different source systems.  We will use the fo
 }
 ```
 
-The principles that are documented in this section can be applied to any form of tree-shaped data.  For example, the following XML snippet is very similar to the JSON example:
+The principles that are documented in this section can be applied to any form of tree-shaped data. For example, the following XML snippet is very similar to the JSON example:
 
 ```xml
 <?xml version="1.0"?>
@@ -345,16 +345,16 @@ The principles that are documented in this section can be applied to any form of
 
 ### Specifying paths (nested keys)
 
-In tabular data, keys (or column names) are singular.  But in tree-shaped data a *path* of the tree can consist of one or more keys that must be traversed in sequence.
+In tabular data, keys (or column names) are singular. But in tree-shaped data a *path* of the tree can consist of one or more keys that must be traversed in sequence.
 
-Paths are specified as dot-separated sequences of keys, starting at the top-level and ending at the required value.  For the JSON example in the previous section, RATT can access the `"name"` key inside the `"title"` key, which itself is nested inside the `"metadata"` key.  This path is expressed in [1].  Notice that the path expressed in [1] is different from the path expressed in [2], which also accesses the `"name"` key, but nested inside the `"countries"` and then `"data"` keys.  (The use of the `[0]` index is explained in the next section.)
+Paths are specified as dot-separated sequences of keys, starting at the top-level and ending at the required value. For the JSON example in the previous section, RATT can access the `"name"` key inside the `"title"` key, which itself is nested inside the `"metadata"` key. This path is expressed in [1]. Notice that the path expressed in [1] is different from the path expressed in [2], which also accesses the `"name"` key, but nested inside the `"countries"` and then `"data"` keys. (The use of the `[0]` index is explained in the next section.)
 
 ```
 [1] metadata.title.name
 [2] data.countries[0].name
 ```
 
-Path expressions can be used as string keys in many places in RATT.  For example, we can assert the title of a dataset in the following way:
+Path expressions can be used as string keys in many places in RATT. For example, we can assert the title of a dataset in the following way:
 
 ```ts
 app.use(
@@ -374,9 +374,9 @@ dataset:my-dataset dct:title 'Data about countries.'@en.
 
 ### Dealing with dots in RATT keys
 
-Mishandling dots in RATT keys can be quite troubling and difficult to detect since RATT would not always show an error in the code. In order to prevent that, there is a syntax that allow us to give the code the functionality that is needed. RATT uses the lodash library to implement dot-based path notation. 
+Mishandling dots in RATT keys can be quite troubling and difficult to detect since RATT would not always show an error in the code. In order to prevent that, there is a syntax that allow us to give the code the functionality that is needed. RATT uses the lodash library to implement dot-based path notation.
 
-Example: 
+Example:
 
 ```ts
   when('narrower_term_lref', [
@@ -385,10 +385,10 @@ Example:
 
   when('["soort_collectie.lref"]', [
     triple(iri('_entity'), crm.P2_has_type, iri(prefix.thesaurus, '["soort_collectie.lref"][0].$text')),
-  ]), 
+  ]),
 ```
 
-Here we can notice that in the first code snippet the notation does not seem to have extra requirements since it is referring to a key that does not use a special character such as dot. The second one, however, has a condition name that contains a dot. Therefore, when conditioning the statement we use the ‘[“a.b”]’ syntax. In this case we can observe using a RATT key as an array key. If we need an element from this array, the key should be addressed with the name notation – ‘[“a.b”].$text’. 
+Here we can notice that in the first code snippet the notation does not seem to have extra requirements since it is referring to a key that does not use a special character such as dot. The second one, however, has a condition name that contains a dot. Therefore, when conditioning the statement we use the ‘[“a.b”]’ syntax. In this case we can observe using a RATT key as an array key. If we need an element from this array, the key should be addressed with the name notation – ‘[“a.b”].$text’.
 
 Overall, ‘a.b’ notation allow going into nested object and accessing values within the nest while ‘[“a.b”]’ takes value a.b key as a name, therefore does not go into the nest.
  In the following example the differences can be seen with the corresponding result:
@@ -430,15 +430,15 @@ Overall, ‘a.b’ notation allow going into nested object and accessing values 
 ```
 | Key                       | Value       |
 | ------------------------  | ----------- |
-| 'a.$text'                 | 1           | 
+| 'a.$text'                 | 1           |
 | 'b.c.$text'               | 2           |
-| '["b.c"].$text'           | 3           |    
+| '["b.c"].$text'           | 3           |
 | '["d.d"].e.$text'         | 4           |
 | '["d.d"].f'.$text'        | 5           |
-| '["g.g"][0]["h.h"].$text' | 6           | 
+| '["g.g"][0]["h.h"].$text' | 6           |
 | '["g.g"][1]["h.h"].$text' | 7           |
 
-Using the example at the top: 
+Using the example at the top:
 
 
 ```ts
@@ -467,22 +467,22 @@ when('["soort_collectie.lref"]', [
 │     {                                                                │
 │       "$text": "63335"                                               │
 │     }                                                                │
-│   ], 
+│   ],
 ```
 
 ```
 | Key                                | Value       |
 | ------------------------           | ----------- |
-| ‘[“soort_collectie.lref”][0].$text | 63335       | 
+| ‘[“soort_collectie.lref”][0].$text | 63335       |
 | ‘soort_collectie.lref[0].$text’    | empty       |
-| ‘soort_collectie.value[0]$text’    | museum      |    
+| ‘soort_collectie.value[0]$text’    | museum      |
 ```
 
 ### Accessing lists by index <!-- {#accessing-lists-by-index} -->
 
-Tree-shaped data formats often allow multiple values to be specified in an ordered list.  Examples of this are arrays in JSON and XML elements with the same tag that are directly nested under the same parent element.
+Tree-shaped data formats often allow multiple values to be specified in an ordered list. Examples of this are arrays in JSON and XML elements with the same tag that are directly nested under the same parent element.
 
-RATT is able to access specific elements from lists based on their *index* or position.  Following the standard practice in Computer Science, RATT refers to the first element in the list as having index 0.  The second element has index 1, etc.
+RATT is able to access specific elements from lists based on their *index* or position. Following the standard practice in Computer Science, RATT refers to the first element in the list as having index 0. The second element has index 1, etc.
 
 For the above example record, we can assert the name of the *first* country as follows:
 
@@ -501,7 +501,7 @@ This results in the following assertion:
 country:nl rdfs:label 'The Netherlands'@en.
 ```
 
-We can also assert the name of the *second* country.  Notice that only the index is different (‘1’ instead of ‘0’):
+We can also assert the name of the *second* country. Notice that only the index is different (‘1’ instead of ‘0’):
 
 ```ts
 app.use(
@@ -517,9 +517,9 @@ country:de rdfs:label 'Germany'@en.
 
 ### Iterating over lists of objects <!-- {#list-object} -->
 
-In the previous section, we saw that we were able to assert the name of the first country and the name of the second country.  But what do we do if we want to assert the name for every country in the world?  And what do we do if some countries have a name in 2 languages, but other countries have a name in 1 or 3 languages?  What we need is a simple way to express that we want RATT to make an assertion for every element in a list.
+In the previous section, we saw that we were able to assert the name of the first country and the name of the second country. But what do we do if we want to assert the name for every country in the world?  And what do we do if some countries have a name in 2 languages, but other countries have a name in 1 or 3 languages?  What we need is a simple way to express that we want RATT to make an assertion for every element in a list.
 
-RATT uses the `forEach` function for this purpose.  The following code snippet asserts the name for *each* country in the example data:
+RATT uses the `forEach` function for this purpose. The following code snippet asserts the name for *each* country in the example data:
 
 ```ts
 app.use(
@@ -543,11 +543,11 @@ country:nl rdfs:label 'The Netherlands'@en.
 country:de rdfs:label 'Germany'@en.
 ```
 
-Notice that `forEach` only works for lists whose elements are *objects*.  See [Iterating over lists of primitives](#list-primitive) for dealing with lists that do not contain objects.
+Notice that `forEach` only works for lists whose elements are *objects*. See [Iterating over lists of primitives](#list-primitive) for dealing with lists that do not contain objects.
 
-The elements that `forEach` iterates over are themselves RATT records.  This implies that all functions that work for full RATT records also work for the RATT records inside `forEach`.  The RATT records inside an `forEach `function are smaller.  This allows the regular keys of the iterated-over elements to be accessed directly.
+The elements that `forEach` iterates over are themselves RATT records. This implies that all functions that work for full RATT records also work for the RATT records inside `forEach`. The RATT records inside an `forEach `function are smaller. This allows the regular keys of the iterated-over elements to be accessed directly.
 
-In addition to these regular keys, RATT records inside `forEach` also contain additional keys that simplify common operations.  The following subsections explain the following special keys:
+In addition to these regular keys, RATT records inside `forEach` also contain additional keys that simplify common operations. The following subsections explain the following special keys:
 
 - [Index key (`$index`)](#index-key)
 - [Parent key (`$parent`)](#parent-key)
@@ -556,11 +556,11 @@ In addition to these regular keys, RATT records inside `forEach` also contain ad
 
 #### Index key (`$index`) <!-- {#index-key} -->
 
-Each RATT record that is made available in `forEach` contains the `$index` key.  The value of this key is the index of the element in the list.  This is the same index that is used to access specific elements in an list, as explained in [the section on accessing lists by index](#accessing-lists-by-index).
+Each RATT record that is made available in `forEach` contains the `$index` key. The value of this key is the index of the element in the list. This is the same index that is used to access specific elements in an list, as explained in [the section on accessing lists by index](#accessing-lists-by-index).
 
 The index key is often useful for assigning a unique subject IRI to every element.
 
-Suppose we have the following source data.  We do not want to use the values of the `"name"` key for our subject IRI, because these names contain spaces and possibly other problematic characters that make the IRI more difficult to read and use.
+Suppose we have the following source data. We do not want to use the values of the `"name"` key for our subject IRI, because these names contain spaces and possibly other problematic characters that make the IRI more difficult to read and use.
 
 ```json
 {
@@ -683,9 +683,9 @@ The `$root` key is explained in [the next section](#root-key).
 
 Sometimes it may be necessary to access a part of the original RATT record that is outside of the scope of the `forEach` call.
 
-Every RATT record inside a ` forEach` call contains the `"$root"` key.  The value of the root key provides a link to the full RATT record.  Because the `$root` key is part of the linked-to RATT record, it is not possible to print the value of the root key.  (This would result in infinite output.)  For this reason, the value of the `$root` key is printed as the special value `"__circular__"`.
+Every RATT record inside a ` forEach` call contains the `"$root"` key. The value of the root key provides a link to the full RATT record. Because the `$root` key is part of the linked-to RATT record, it is not possible to print the value of the root key. (This would result in infinite output.)  For this reason, the value of the `$root` key is printed as the special value `"__circular__"`.
 
-For the above examples, the parent record and root record are the same, but this is not always the case.  Specifically, the parent record and root record are different when `forEach` calls are nested.
+For the above examples, the parent record and root record are the same, but this is not always the case. Specifically, the parent record and root record are different when `forEach` calls are nested.
 
 The following data contains an inner list (key `"labels"`) inside an outer list (`"countries"`):
 
@@ -720,7 +720,7 @@ The following data contains an inner list (key `"labels"`) inside an outer list 
 }
 ```
 
-The following nested `forEach` call shows the difference between the `"$parent"` key and the `$root` key.  The `$parent` key allows the individual country objects to be accessed, while the `"$root"` key allows the entire tree to be accessed:
+The following nested `forEach` call shows the difference between the `"$parent"` key and the `$root` key. The `$parent` key allows the individual country objects to be accessed, while the `"$root"` key allows the entire tree to be accessed:
 
 ```ts
 app.use(
@@ -730,7 +730,7 @@ app.use(
 )
 ```
 
-The following RATT record is printed first (3 records are printed in total).  Notice that the value of the outer `$parent` and `"$root"` keys are now different:
+The following RATT record is printed first (3 records are printed in total). Notice that the value of the outer `$parent` and `"$root"` keys are now different:
 - The `$parent` key allows access to the first country.
 - The `$root` key allows access to the full record (describing multiple countries).
 
@@ -780,9 +780,9 @@ The following RATT record is printed first (3 records are printed in total).  No
 
 ### Iterating over lists of primitives <!-- {#list-primitive} -->
 
-In [the previous section](#list-object) we showed how to iterate over lists of objects.  But what happens if a list does not contain objects but elements of primitive type?  Examples include lists of strings or lists of numbers.
+In [the previous section](#list-object) we showed how to iterate over lists of objects. But what happens if a list does not contain objects but elements of primitive type?  Examples include lists of strings or lists of numbers.
 
-Function `forEach` does not work with lists containing primitive types, because it assumes a RATT record structure which can only be provided by objects.  Luckily, RATT includes the functions `iri.forEach` and `literal.forEach` that can be specifically used to iterate over lists of primitives.
+Function `forEach` does not work with lists containing primitive types, because it assumes a RATT record structure which can only be provided by objects. Luckily, RATT includes the functions `iri.forEach` and `literal.forEach` that can be specifically used to iterate over lists of primitives.
 
 ```ts
   app.use(

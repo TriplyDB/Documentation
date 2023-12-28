@@ -1,89 +1,82 @@
 [TOC]
 
 # TriplyETL Overview
+
 TriplyETL allows you to create and maintain production-grade linked data pipelines.
 
-- [Getting Started](getting-started) explains how you can use TriplyETL for the first time.
-- [CLI](cli) explains the commands that you can use to manually create, run, and maintain ETL pipelines.
-- [Changelog](changelog) documents the changes introduced by each TriplyETL version.
-- [Maintenance](maintenance) explains how you can perform updates and configure pipeline automation.
+- [**Getting Started**](./generic/getting-started.md) explains how TriplyETL can be used for the first time.
+- [**CLI**](./generic/cli.md) explains the commands that are used to install, compile, and run TriplyETL pipelines.
+- The [**Changelog**](./generic/changelog.md) documents the changes that are introduced in new TriplyETL version.
+- [**Maintenance**](./generic/maintenance.md) explains how TriplyETL can be updated and can be configured to run in automated pipelines.
 
 TriplyETL uses the following unique approach:
 
 ```mermaid
 graph LR
-  source -- 1. Extract --> record
+  sources -- 1. Extract --> record
   record -- 2. Transform --> record
   record -- 3. Assert --> ld
   ld -- 4. Enrich --> ld
   ld -- 5. Validate --> ld
-  ld -- 6. Publish --> tdb
+  ld -- 6. Publish --> destinations
 
+  destinations[("Destinations\n(TriplyDB)")]
   ld[Internal Store]
   record[Record]
-  source[Data Sources]
-  tdb[(Triple Store)]
+  sources[Data Sources]
 ```
 
-This approach consists of the following steps (see diagram):
+This approach consists of the following six steps (see diagram):
 
-- Step 1 [**Extract**](extract) extracts data records from one or more data sources.
-- Step 2 [**Transform**](transform) cleans, combines, and extends data in the Record representation.
-- Step 3 [**Assert**](assert) uses data from the Record to generate linked data assertions.
-- Step 4 [**Enrich**](enrich) improves or extends linked data in the Internal Store.
-- Step 5 [**Validate**](validate) ensures that linked data in the Internal Store is correct.
-- Step 6 [**Publish**](publish) makes linked data available in a Triple Store for others to use.
+- Step 1 [**Extract**](./extract/index.md) extracts a stream of [records](./generic/record.md) from one or more [data sources](./sources/index.md).
+- Step 2 [**Transform**](./transform/index.md) cleans, combines, and extends data in the [record](./generic/record.md).
+- Step 3 [**Assert**](./assert/index.md) uses data from the [record](./generic/record.md) to make linked data assertions in the [internal store](./generic/internal-store.md).
+- Step 4 [**Enrich**](./enrich/index.md) improves and extends linked data in the [internal store](./generic/internal-store.md).
+- Step 5 [**Validate**](./validate/index.md) ensures that linked data in the [internal store](./generic/internal-store.md) meets the specified quality criteria.
+- Step 6 [**Publish**](./publish/index.md) takes the linked data from the [internal store](./generic/internal-store.md), and publishes it to a destination such as [TriplyDB](../triply-db-getting-started/index.md).
 
-In addition, the following things are used throughout the 6 TriplyETL steps:
+TriplyETL uses the following data storage types, to connect the six steps in the approach (see diagram):
 
-- [**Declarations**](declare) introduce constants that you can reuse throughout your TriplyETL configuration.
-- [**Control structures**](control) make parts of the TriplyETL configuration optional or repeating (loops).
-- [**Debug functions**](debug) allow you to gain insight in TriplyETL internals for the purpose of finding issues and performing maintenance.
+- The [**Sources**](./extract/index.md) are used as the inputs to the pipeline.
+- The [**TriplyETL record**](./generic/record.md) provides a uniform format for data from any source system.
+- The **TriplyETL internal store** holds linked data that is generated in the pipeline.
+- The [**Destinations**](./publish/index.md) are places that the output of the pipeline can be published to, for example [TriplyDB](../triply-db-getting-started/index.md).
 
-TriplyETL uses the following data environments (see diagram):
+In addition, the following configuration tools can be used throughout the six TriplyETL steps:
 
-- The **Data Sources** are used as the input to the pipeline.
-- The **Record** provides a uniform format for data from any source system.
-- The **Internal Store** holds linked data that is generated inside the pipeline.
-- The **Triple Store** is where the results of the pipeline are stored.
+- [**Declarations**](./generic/declarations.md) introduce constants that you can reuse throughout your TriplyETL configuration.
+- [**Control structures**](./generic/control-structures.md) make parts of the TriplyETL configuration optional or repeating (loops).
+- [**Debug functions**](./generic/debug.md) allow you to gain insight in TriplyETL internals for the purpose of finding issues and performing maintenance.
 
-<!-- TODO
-## Reference
 
-The following pages document all TriplyETL features and configuration options:
 
-- [**Source Connectors**](source-connectors) allows your TriplyETL pipeline to connect to a large number of source systems: relational databases, APIs, spreadsheets, etc.
-- [**Declarations**](declarations) allow you to declare and later reuse commonly uses IRI prefixes, graph names, etc.
-- Paradigms: TriplyETL supports multiple parasigms for *transforming* source data and *asserting* linked data.
-- [**Transformations**](transformations)
-  - [**JSON-LD**](transformations/jsonld) Transform records with JSON-LD Frames, assert linked data usong JSON-LD Expansion and Deserialization.
-  - [**RATT**](transformations/ratt) RDF All The Things
-    - [**Assertions**](transformations/ratt/assertions)
-    - [**Transformations**](transformations/ratt/transformations)
-  - [**SHACL**](transformations/shacl) Generate additional linked data by applying SHACL Rules.
-  - [**SPARQL**](transformations/sparql) Transform from and to linked data (graph-to-graph) with SPARQL Construct and SPARQL Update.
-- [**Publication**](publication) allow you to store the output of your TriplyETL pipeline in a data catalog.
-- [**Validation**](validation) ensures that data generated by your TriplyETL pipeline conforms to your data model.
-  - [**Graph Comparison**](validation/graph-comparison)
-  - [**SHACL Validation**](validation/shacl)
-- [**Control Structures**](control-structures)
-- [**Debugging**](debugging)
-- [**Production Systems**](production-systems) allows your TriplyETL pipelines to run in the four DTAP environments that are commonly used in production systems: Development, Testing, Acceptance, and Production.
+## Supported standards and formats
 
-    - [**Frames**](transformations/jsonld/frames) Transform source data records by applying one or more JSON-LD Frames.
-    - [**Expansion**](transformations/jsonld/expansion) Assert linked data by applying JSON-LD Expansion to source data records.
-    - [**Tree-shaped data**](transformations/ratt/tree-shaped-data)
-    - [**Numeric data**](transformations/ratt/numeric-data)
-  - [**RML**](transformations/rml) Perform transformations and assertions with RML.
--->
+TriplyETL follows a multi-paradigm approach. This means that TriplyETL seeks to support a wide variety of source data formats, a wide variety of ETL configuration languages, and a large variety of linked data standards. This allows users to most optimally combine the formats, languages, and standards that make most sense from their point of view.
+
+## Supported source formats
+
+TriplyETL supports the following source formats:
+
+- CSV (Comma-Separated Values)
+- JSON (JavaScript Object Notation)
+- OAI-PMH (Open Archives Initiative, Protocol for Metadata Harvesting)
+- PostgreSQL (Postgres, SQL)
+- RDF (Resource Description Language)
+- TSV (Tab-Separated Values)
+- XLSX (Office Open XML Workbook, Microsoft Excel)
+- XML ()
+
+- **Standards-compliant**: TriplyETL implements the latest versions of the linked data standards and best practices: RDF 1.1, SHACL Core, SHACL Advanced, XML Schema Datatypes 1.1, IETF RFC3987 (IRIs), IETF RFC5646 (Language Tags), SPARQL 1.1 Query Languahge, SPARQL 1.1 Update, SPARQL 1.1 Federation, N-Triples 1.1, N-Quads 1.1, Turtle 1.1, TriG 1.1, RDF/XML 1.1, JSON-LD 1.1 (TBA), JSON-LD Framing (TBA), and JSON-LD Algorithms (TBA).
+
+
 
 ## Why TriplyETL?
 
 TriplyETL has the following core features, that set it apart from other data pipeline products:
 
 - **Backend-agnostic**: TriplyETL supports a large number of data source formats and types. Source data is processed in a unified record. This decouples configuration from source format specific. In TriplyETL, changing the source system often only requires changing the extractor.
-- **Multi-paradigm**: TriplyETL supports all major paradigms for transforming and asserting linked data: SPARQL, SHACL, RML JSON-LD, and RATT (RDF All The Things).  You can also write your own transformations in TypeScript for optimal extensibility.
-- **Scalable**: TriplyETL processes data in a stream of self-contained records.  This allows TriplyETL pipelines to run in parallel, ensuring a high pipeline throughput.
-- **Standards-compliant**: TriplyETL implements the latest versions of the linked data standards and best practices: RDF 1.1, SHACL Core, SHACL Advanced, XML Schema Datatypes 1.1, IETF RFC3987 (IRIs), IETF RFC5646 (Language Tags), SPARQL 1.1 Query Languahge, SPARQL 1.1 Update, SPARQL 1.1 Federation, N-Triples 1.1, N-Quads 1.1, Turtle 1.1, TriG 1.1, RDF/XML 1.1, JSON-LD 1.1 (TBA), JSON-LD Framing (TBA), and JSON-LD Algorithms (TBA).
+- **Multi-paradigm**: TriplyETL supports all major paradigms for transforming and asserting linked data: SPARQL, SHACL, RML JSON-LD, and RATT (RDF All The Things). You can also write your own transformations in TypeScript for optimal extensibility.
+- **Scalable**: TriplyETL processes data in a stream of self-contained records. This allows TriplyETL pipelines to run in parallel, ensuring a high pipeline throughput.
 - **High Quality**: The output of TriplyETL pipelines is automatically validated against the specified data model, and/or against a set of preconfigured 'gold records'.
 - **Production-grade**: TriplyETL pipelines run in GitLab CI/CD, and support the four DTAP environments that are often used in production systems: Development, Testing, Acceptance, Production.

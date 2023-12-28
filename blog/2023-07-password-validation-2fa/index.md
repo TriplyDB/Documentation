@@ -11,7 +11,7 @@ banner: banner.jpg
 In the latest TriplyDB release, we encourage people to write good passwords. But what constitutes a good password, and how do we encourage people to write such passwords?
 
 The [National Institute of Standards and Technology (NIST)](https://www.nist.gov) is a U.S. government science laboratory, and considered an authority in the area of Information Security. ISO standards such as ISO 27001 often take inspiration from NIST guidelines.
-NIST published a guideline for digital identity management[^1] that covers the topic of password composition and validation.  
+NIST published a guideline for digital identity management[^1] that covers the topic of password composition and validation.
 
 In this blog we'll discuss what this guideline means in practice, and how this is implemented in TriplyDB.
 
@@ -39,7 +39,7 @@ A typical measure for encouraging stronger passwords is requiring a particular s
 ### Rotating passwords
 
 Some organization force users to rotate their password every several months. The intent of such password rotation mechanism is to avoid the threat that a password is compromised by a leak on other websites (given that some passwords may be re-used across websites).
-That means that the longer a password is in use and not renewed, the larger the chance of the password being exposed. 
+That means that the longer a password is in use and not renewed, the larger the chance of the password being exposed.
 
 The problem with such password rotation policies is that users tend to choose a weaker password when they know they'll have to change it in the near future. For instance, users with the password `Password1!` may simply append the date they created the password and end up with `Password1~June22`.
 
@@ -47,14 +47,14 @@ In addition to that, such password rotation policies have a great impact on usab
 
 ## How Triply encourage good passwords TriplyDB
 
-In general, a good password policy strikes a balance between maximizing security and usability. 
+In general, a good password policy strikes a balance between maximizing security and usability.
 We implemented a password validator for TriplyDB that estimates the strength of a password and communicates this via a strength meter. When a password is not good enough, suggestions are given to the user on how to improve the password.
 
 ![TriplyDB Password Validator](password.png)
 
 The TriplyDB password validator satisfies all of the NIST guidelines for password best practices, as listed in the [What does a good password look like?](#best) section above. Specifically:
 
-1. Large passwords are encouraged. 
+1. Large passwords are encouraged.
 2. Any character is valid, not just numbers, letters and symbols.
 3. The validator takes words from the dictionary into account. Using dictionary words will negatively impact the password score. Variants of dictionary words are also included, i.e. `P@ssword` will be recognized as the word `Password`.
 4. Repetition of characters negatively influence the password score. This includes `aaaa`, `12345` and repetition using your keyboard layout such as `asdfg`.
@@ -83,7 +83,7 @@ Here's how 2FA works with TriplyDB:
 When logging in using 2FA:
 
 - When they log in to TriplyDB, they will need to enter their password as usual.
-- They will then have to use their Authenticator App to obtain their TOTP code. 
+- They will then have to use their Authenticator App to obtain their TOTP code.
 - If the code is correct, they will be granted access to their account.
 
 If a user is locked out of their account:
@@ -93,7 +93,7 @@ If a user is locked out of their account:
 
 The idea behind 2FA is that even if a hacker manages to obtain a user's password, they still cannot access the account without the second factor. This provides an additional layer of security and helps to prevent unauthorized access to sensitive information.
 
-## What's on the horizon 
+## What's on the horizon
 
 A good password policy is an important part of securing TriplyDB and its accounts. That being said, there are other large improvements coming to make TriplyDB even more secure such as:
 

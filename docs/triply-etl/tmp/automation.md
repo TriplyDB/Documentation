@@ -1,8 +1,3 @@
----
-title: "TriplyETL: Automation"
-path: "/docs/triply-etl/automation"
----
-
 [TOC]
 
 TriplyETL runs within a Gitlab CI environment ([Figure 1](#figure-1)).
@@ -16,6 +11,6 @@ TriplyETL runs within a Gitlab CI environment ([Figure 1](#figure-1)).
 
 ## Special key: `$environment`
 
-The special key `$environment` denotes the DTAP environment in which the TriplyETL pipeline is running.  This allows special actions to be performed based on whether the pipeline runs in `"Debug"`, `"Test"`, `"Acceptance"`, or `"Production"` mode.
+The special key `$environment` denotes the DTAP environment in which the TriplyETL pipeline is running. This allows special actions to be performed based on whether the pipeline runs in `"Debug"`, `"Test"`, `"Acceptance"`, or `"Production"` mode.
 
-See the [DTAP documentation](../../publish/#setting-up-acceptanceproduction-runs-dtap) for more information.
+See the [DTAP documentation](../publish/index.md#setting-up-acceptanceproduction-runs-dtap) for more information.

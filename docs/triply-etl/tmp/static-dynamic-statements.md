@@ -13,7 +13,7 @@ We use the following Record as an example:
 | Germany     | 83190556    |
 | Netherlands | 17650200    |
 
-We start with creating the prefix and term declarations (see the [Declare](../../declare) documentation for more information):
+We start with creating the prefix and term declarations (see the [Declare](../generic/declarations.md) documentation for more information):
 
 ```ts
 const base = declarePrefix('https://triplydb.com/Triply/example/')
@@ -52,7 +52,7 @@ Notice the following details:
 - Arguments `Country` and `Inhabitants` allow values for these keys to be used from processed Records.
 - The IRI prefix for the subject term is specified with constant `prefix.id`.
 - `literal` is used to create a dynamic literal term.
-- For literals a datatype IRI can be specified.  If no datatype IRI is specified then the default IRI is `xsd.string`.
+- For literals a datatype IRI can be specified. If no datatype IRI is specified then the default IRI is `xsd.string`.
 
 `iri.hashed`can be used instead of `iri` when the ETL has a high number of blank nodes and they need more than one constant as input to hash a unique IRI.
 
@@ -82,9 +82,9 @@ Be aware that there are different approaches forstatic* anddynamic* IRIs:
 
 ```
 
-Notation [1a] creates thestatic* IRI [1b].  This IRI does not depend on the currently processed record.
+Notation [1a] creates thestatic* IRI [1b]. This IRI does not depend on the currently processed record.
 
-Notation [2a] creates thedynamic* IRI in [2b], assuming the `"person"` key contains the value `"John"`.  This IRI depends on the currently processed record.
+Notation [2a] creates thedynamic* IRI in [2b], assuming the `"person"` key contains the value `"John"`. This IRI depends on the currently processed record.
 
 For a different record, IRI [2c] may be created instead (assuming the `"person"` key contains the value `"Jane"`).
 
@@ -113,9 +113,9 @@ An IRI can be created with `iri()`, while an URI is created by using `literal()`
 
 ## Limitation of `literal()` and `iri()`
 
-There is a limitation for both `literal()` and `iri()`.  It is not possible to change the value in the record in the `literal()` and `iri()` assertions.  The value that is at that moment stored in the record for that key, is then added as either an IRI when called with the `iri()` function or as a literal when called with the function `literal()`.
+There is a limitation for both `literal()` and `iri()`. It is not possible to change the value in the record in the `literal()` and `iri()` assertions. The value that is at that moment stored in the record for that key, is then added as either an IRI when called with the `iri()` function or as a literal when called with the function `literal()`.
 
-The limitation is shown in the example below.  In the example we want to round the inhabitants number to the nearest thousand. We can not transform this in the `literal()` function.  Instead we need to add a `custom.change()` middleware which will execute the transformation.
+The limitation is shown in the example below. In the example we want to round the inhabitants number to the nearest thousand. We can not transform this in the `literal()` function. Instead we need to add a `custom.change()` middleware which will execute the transformation.
 
 ```ts
 custom.change({

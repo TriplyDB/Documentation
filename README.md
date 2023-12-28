@@ -1,6 +1,6 @@
 # Documentation for TriplyDB
 
-This repository contains the TriplyDB documentation files.  These files are used by the Triply documentation website over at <https://triply.cc/docs>.
+This repository contains the TriplyDB documentation files. These files are used by the Triply documentation website over at <https://triply.cc/docs>.
 
 ## Covered products
 
@@ -25,7 +25,7 @@ This repository includes documentation for the following Triply products:
 You are able to use [GitHub Flavored Markdown](https://github.github.com/gfm/). As well as the following extensions
 
 **Custom ID headers**:
-By default ID's will be created from the content of a header, allowing deep linking to them using the #hash part of a URL. 
+By default ID's will be created from the content of a header, allowing deep linking to them using the #hash part of a URL.
 ```md
 ## My Header
 ```
@@ -55,29 +55,33 @@ The following steps often work/suffice:
 1. Install Python and Pip.
 2. Run `pip install mkdocs`
 3. Run `pip install mkdocs-mermaid2-plugin`
+4. Run `pip install mkdocs-redirects`
 
 ## Building and running the Documentation website
 
-After you have successfully installed MkDocs, you can run a local web server with the following command (run from the toot of this repository):
-```bash
-mkdocs serve
+After you have successfully installed MkDocs, you can run a local web server with the following command (run from the root of this repository):
+
+```sh
+mkdocs serve --strict
 ```
 
 To build a static HTML website for deployment, run this command:
-```bash
+
+```sh
 mkdocs build
 ```
 This will generate the required HTML and CSS in a folder `./site`.
 
 To publish this website to [Github Pages](https://triplydb.github.io/Documentation/) run this command:
-```bash
+
+```sh
 mkdocs gh-deploy
 ```
 
 ### Notes about syntax highlighting
 This project uses [highlightjs.org](https://highlightjs.org) for rendering code blocks with syntax highlighting. This projects does not have support for Turtle/SPARQL by default. We use a custom build to provide syntax highlighting for these.
 
-```bash
+```sh
 mkdir Highlight.js
 cd Highlight.js
 git clone https://github.com/highlightjs/highlight.js.git
