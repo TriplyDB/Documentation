@@ -4,7 +4,8 @@ const onLoad = window.onload
 const prefix = window.location.hostname === 'triplydb.github.io' ? '/Documentation' : ''
 
 const customUrlMappingLevel1 = new Map([
-  ['Generics', '/triply-etl'],
+  ['Generic', '/triply-etl'],
+  ['Sources', '/triply-etl/sources'],
   ['Extract', '/triply-etl/extract'],
   ['Transform', '/triply-etl/transform'],
   ['Assert', '/triply-etl/assert'],
@@ -15,7 +16,7 @@ const customUrlMappingLevel1 = new Map([
 ])
 
 const customUrlMappingLevel2 = new Map([
-  ['RATT', '/triply-etl/assert/ratt/statement'],
+  ['RATT', '/triply-etl/assert/ratt/statements'],
 ])
 
 window.onload = () => {
@@ -45,7 +46,7 @@ window.onload = () => {
 
   const activeTOClink = () => {
     const el = Array.from(document.querySelectorAll('h1, h2, h3, h4, h5'))
-      .filter(heading => heading.getBoundingClientRect().y <= 40 ).pop()
+      .filter(heading => heading.getBoundingClientRect().y <= 40).pop()
     if (el) {
       Array.from(document.querySelectorAll('div.toc a')).map(a => a.classList.remove('active'))
       document.querySelector(`div.toc a[href="#${el.id}"]`)?.classList.add('active')

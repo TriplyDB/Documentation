@@ -33,7 +33,7 @@ nav:
           - FAQ: triplydb-js/faq/index.md
       - Changelog: triplydb-changelog/index.md
   - TriplyETL:
-      - Generics:
+      - Generic:
           - Overview: triply-etl/index.md
           - Getting Started: triply-etl/generic/getting-started.md
           - Changelog: triply-etl/generic/changelog.md
@@ -76,8 +76,9 @@ nav:
       - Assert:
           - Overview: triply-etl/assert/index.md
           - JSON-LD: triply-etl/assert/json-ld.md
-          - RATT Terms: triply-etl/assert/ratt/terms.md
-          - RATT Statements: triply-etl/assert/ratt/statements.md
+          - RATT:
+              - RATT Terms: triply-etl/assert/ratt/terms.md
+              - RATT Statements: triply-etl/assert/ratt/statements.md
           - RML: triply-etl/assert/rml.md
           - XSLT: triply-etl/assert/xslt.md
       - Enrich:
