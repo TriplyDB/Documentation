@@ -11,7 +11,8 @@ const customUrlMappingLevel1 = new Map([
   ['Enrich', '/triply-etl/enrich'],
   ['Validate', '/triply-etl/validate'],
   ['Getting started', '/triply-db-getting-started'],
-  ['TriplyDB-JS', '/triplydb-js']
+  ['TriplyDB-JS', '/triplydb-js'],
+  ['Sources', '/triply-etl/sources']
 ])
 
 const customUrlMappingLevel2 = new Map([
