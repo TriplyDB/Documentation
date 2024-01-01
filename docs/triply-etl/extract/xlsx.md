@@ -86,7 +86,7 @@ Notice the following:
 
 For every record emitted by the `fromXlsx()` extractor. the `$sheetName` special key contains the name of the Excel sheet from which that record originates. The presence of the sheet name allows the TriplyETL configuration to be adjusted for different sheet.
 
-For example, an Excel spreadsheet may contain a 'companies' sheet and a 'persons' sheet. The name of the sheet may be used to determine which class should be asserted. The following snippet uses transformation [translateAll()](../transform/ratt.md#function-translateall) to map sheet names to class IRIs:
+For example, an Excel spreadsheet may contain a 'companies' sheet and a 'persons' sheet. The name of the sheet may be used to determine which class should be asserted. The following snippet uses transformation [translateAll()](../transform/ratt.md#translateall) to map sheet names to class IRIs:
 
 ```ts
 fromXlsx(Source.file('example.xlsx')),

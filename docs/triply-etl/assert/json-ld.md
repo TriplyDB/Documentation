@@ -1,6 +1,6 @@
 [TOC]
 
-# JSON-LD assertions
+# JSON-LD Assert
 
 The JSON-LD standard includes the following algorithms that allow linked data to be added to the internal store:
 

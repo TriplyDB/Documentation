@@ -2,28 +2,29 @@
 
 # Enrich
 
-The **Enrich** step uses linked data that is asserted in the Internal Store to derive new linked data.
+The **Enrich** step uses linked data that is asserted in the [internal store](../generic/internal-store.md) to derive new linked data.
 
 ```mermaid
 graph LR
-  source -- 1. Extract --> record
+  sources -- 1. Extract --> record
   record -- 2. Transform --> record
   record -- 3. Assert --> ld
   ld -- 4. Enrich --> ld
   ld -- 5. Validate --> ld
-  ld -- 6. Publish --> tdb
+  ld -- 6. Publish --> destinations
 
   linkStyle 3 stroke:red,stroke-width:3px;
-  ld[Internal Store]
-  record[Record]
-  source[Data Sources]
-  tdb[(Triple Store)]
+  destinations[("D. Destinations\n(TriplyDB)")]
+  ld[C. Internal Store]
+  record[B. Record]
+  sources[A. Data Sources]
 ```
 
-TriplyETL supports the following enrichment approaches:
+TriplyETL supports the following languages for making enrichments:
 
-- 4A. [**SHACL Rules**](./shacl.md) are able to apply SPARQL Ask and Construct queries to the internal store.
-- 4B. [**SPARQL Construct and SPARQL Update**](./sparql.md) allow linked data to be added to and deleted from the internal store.
+- [**SHACL Rules**](./shacl.md) are able to apply SPARQL Ask and Construct queries to the internal store.
+- [**SPARQL Construct**](./sparql/construct.md) allows linked data to be added to the internal store.
+- [**SPARQL Update**](./sparql/update.md) allows linked data to be added to and deleted from the internal store.
 
 
 

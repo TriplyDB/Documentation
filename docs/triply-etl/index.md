@@ -20,54 +20,57 @@ graph LR
   ld -- 5. Validate --> ld
   ld -- 6. Publish --> destinations
 
-  destinations[("Destinations\n(TriplyDB)")]
-  ld[Internal Store]
-  record[Record]
-  sources[Data Sources]
+  destinations[("D. Destinations\n(TriplyDB)")]
+  ld[C. Internal Store]
+  record[B. Record]
+  sources[A. Data Sources]
 ```
 
 This approach consists of the following six steps (see diagram):
 
-- Step 1 [**Extract**](./extract/index.md) extracts a stream of [records](./generic/record.md) from one or more [data sources](./sources/index.md).
-- Step 2 [**Transform**](./transform/index.md) cleans, combines, and extends data in the [record](./generic/record.md).
-- Step 3 [**Assert**](./assert/index.md) uses data from the [record](./generic/record.md) to make linked data assertions in the [internal store](./generic/internal-store.md).
-- Step 4 [**Enrich**](./enrich/index.md) improves and extends linked data in the [internal store](./generic/internal-store.md).
-- Step 5 [**Validate**](./validate/index.md) ensures that linked data in the [internal store](./generic/internal-store.md) meets the specified quality criteria.
-- Step 6 [**Publish**](./publish/index.md) takes the linked data from the [internal store](./generic/internal-store.md), and publishes it to a destination such as [TriplyDB](../triply-db-getting-started/index.md).
+- Step 1. [**Extract**](./extract/index.md): extracts a stream of [records](./generic/record.md) from one or more [data sources](./sources/index.md).
+- Step 2. [**Transform**](./transform/index.md): cleans, combines, and extends data in the [record](./generic/record.md).
+- Step 3. [**Assert**](./assert/index.md): uses data from the [record](./generic/record.md) to make linked data assertions in the [internal store](./generic/internal-store.md).
+- Step 4. [**Enrich**](./enrich/index.md): improves and extends linked data in the [internal store](./generic/internal-store.md).
+- Step 5. [**Validate**](./validate/index.md) ensures that linked data in the [internal store](./generic/internal-store.md) meets the specified quality criteria.
+- Step 6. [**Publish**](./publish/index.md): takes the linked data from the [internal store](./generic/internal-store.md), and publishes it to a destination such as [TriplyDB](../triply-db-getting-started/index.md).
 
-TriplyETL uses the following data storage types, to connect the six steps in the approach (see diagram):
+TriplyETL uses the following data storage stages, to connect the six steps in the approach (see diagram):
 
-- The [**Sources**](./extract/index.md) are used as the inputs to the pipeline.
-- The [**TriplyETL record**](./generic/record.md) provides a uniform format for data from any source system.
-- The **TriplyETL internal store** holds linked data that is generated in the pipeline.
-- The [**Destinations**](./publish/index.md) are places that the output of the pipeline can be published to, for example [TriplyDB](../triply-db-getting-started/index.md).
+- Stage A. [**Sources**](./extract/index.md): the data inputs to the pipeline.
+- Stage B. [**Record**](./generic/record.md): provides a uniform representation for data from any source system.
+- Stage C. [**Internal Store**](./generic/internal-store.md): temporarily holds linked data generated in the pipeline.
+- Stage D. [**Destinations**](./publish/index.md): places where output from the pipeline is published to, for example [TriplyDB](../triply-db-getting-started/index.md).
 
-In addition, the following configuration tools can be used throughout the six TriplyETL steps:
+In addition, the following configuration tools are used throughout the six TriplyETL steps:
 
-- [**Declarations**](./generic/declarations.md) introduce constants that you can reuse throughout your TriplyETL configuration.
-- [**Control structures**](./generic/control-structures.md) make parts of the TriplyETL configuration optional or repeating (loops).
-- [**Debug functions**](./generic/debug.md) allow you to gain insight in TriplyETL internals for the purpose of finding issues and performing maintenance.
+- [**Declarations**](./generic/declarations.md): introduce constants are reuse throughout the TriplyETL configuration.
+- [**Control structures**](./generic/control-structures.md): make parts of the TriplyETL configuration optional or repeating (loops).
+- [**Debug functions**](./generic/debug.md): give insights into TriplyETL internals for the purpose of finding issues and performing maintenance.
 
 
 
 ## Supported standards and formats
 
-TriplyETL follows a multi-paradigm approach. This means that TriplyETL seeks to support a wide variety of source data formats, a wide variety of ETL configuration languages, and a large variety of linked data standards. This allows users to most optimally combine the formats, languages, and standards that make most sense from their point of view.
+TriplyETL follows a multi-paradigm approach. This means that TriplyETL seeks to support a wide variety of data formats, configuration languages, and linked data standards. This allows users to most optimally combine the formats, languages, and standards that they wish to use. Other ETL approaches focus on one format/language/standard, which severely limits what users that use those approaches can do.
 
-## Supported source formats
 
-TriplyETL supports the following source formats:
+## Supported data formats
+
+TriplyETL supports the following data formats through its [extractors](./extract/index.md):
 
 - CSV (Comma-Separated Values)
 - JSON (JavaScript Object Notation)
 - OAI-PMH (Open Archives Initiative, Protocol for Metadata Harvesting)
 - PostgreSQL (Postgres, SQL)
-- RDF (Resource Description Language)
+- RDF 1.1 (Resource Description Language)
 - TSV (Tab-Separated Values)
 - XLSX (Office Open XML Workbook, Microsoft Excel)
-- XML ()
+- XML 1.1 (Extensible Markup Language)
 
-- **Standards-compliant**: TriplyETL implements the latest versions of the linked data standards and best practices: RDF 1.1, SHACL Core, SHACL Advanced, XML Schema Datatypes 1.1, IETF RFC3987 (IRIs), IETF RFC5646 (Language Tags), SPARQL 1.1 Query Languahge, SPARQL 1.1 Update, SPARQL 1.1 Federation, N-Triples 1.1, N-Quads 1.1, Turtle 1.1, TriG 1.1, RDF/XML 1.1, JSON-LD 1.1 (TBA), JSON-LD Framing (TBA), and JSON-LD Algorithms (TBA).
+
+
+TriplyETL implements the latest versions of the linked data standards and best practices: RDF 1.1, SHACL Core, SHACL Advanced, XML Schema Datatypes 1.1, IETF RFC3987 (IRIs), IETF RFC5646 (Language Tags), SPARQL 1.1 Query Languahge, SPARQL 1.1 Update, SPARQL 1.1 Federation, N-Triples 1.1, N-Quads 1.1, Turtle 1.1, TriG 1.1, RDF/XML 1.1, JSON-LD 1.1 (TBA), JSON-LD Framing (TBA), and JSON-LD Algorithms (TBA).
 
 
 

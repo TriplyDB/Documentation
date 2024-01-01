@@ -84,7 +84,9 @@ nav:
       - Enrich:
           - Overview: triply-etl/enrich/index.md
           - SHACL: triply-etl/enrich/shacl.md
-          - SPARQL: triply-etl/enrich/sparql.md
+          - SPARQL:
+              - SPARQL Construct: triply-etl/enrich/sparql/construct.md
+              - SPARQL Update: triply-etl/enrich/sparql/update.md
       - Validate:
           - Overview: triply-etl/validate/index.md
           - Graph Comparison: triply-etl/validate/graph-comparison.md
@@ -109,6 +111,7 @@ plugins:
         'triply-etl/control/index.md': 'triply-etl/generic/control-structures.md'
         'triply-etl/debug/index.md': 'triply-etl/generic/debug.md'
         'triply-etl/declare/index.md': 'triply-etl/generic/declarations.md'
+        'triply-etl/enrich/sparql/index.md': 'triply-etl/enrich/sparql/construct.md'
         'triply-etl/extract/formats/index.md': 'triply-etl/extract/index.md'
         'triply-etl/extract/record/index.md': 'triply-etl/generic/record.md'
         'triply-etl/extract/types/index.md': 'triply-etl/sources/index.md'

@@ -6,66 +6,83 @@ RATT transformations are a core set of functions that are commonly used to chang
 
 RATT transformations started out as [TypeScript transformations](./typescript.md) that turned out to be useful in a wide variety of TriplyETL pipelines. Triply maintains this core set of transformation functions to allow new ETLs to make use of off-the-shelf functionality that has proven useful in the past.
 
+
+
 ## Overview
 
 The following transformation functions are currently available:
 
 | Function | Description |
 | --- | --- |
-| [addHashedIri()](#function-addhashediri) | Create a new IRI with a content-based local name. |
-| [addIri()](#function-addiri) | Create a new IRI based on a prefix and a local name. |
-| [addLiteral()](#function-addliteral) | Create a new literal based on a lexical for and a datatype IRI or language tag. |
-| [addRandomIri()](#function-addrandomiri) | Create a new IRI with a random local name. |
-| [addSkolemIri()](#function-addskolemiri) | Create a new IRI with a random local name, which advertises that it may be consistently replaced with blank nodes. |
-| [addTag()](#function-addtag) | Create a language tag. |
-| [addValue()](#function-addvalue) | Create a TypeScript value. |
-| [capitalize()](#function-capitalize) | Transforms a string value to its capitalized variant. |
-| [concat()](#function-concat) | Combine multiple strings into a new string. |
-| [copy()](#function-copy) | Copy a value from an old into a new key. |
-| [decodeHtml()](#function-decodehtml) | Decode HTML entities that occur in strings. |
-| [geojsonToWkt()](#function-geojsontowkt) | Change GeoJSON strings to WKT strings. |
-| [jpath()](#function-jpath) | Uses the JSONPath query language to select a value from the record. |
-| [lowercase()](#function-lowercase) | Change strings to their lowercase variants. |
-| [padEnd()](#function-padend) | Pad the end of strings. |
-| [padStart()](#function-padstart) | Pad the start of strings. |
-| [replace()](#function-replace) | Replace part of a string. |
-| [split()](#function-split) | Split a string into multiple substrings. |
-| [substring()](#function-substring) | Extract a substring from a string. |
-| [translateAll()](#function-translateall) | Translate *all* string values to other values. |
-| [translateSome()](#function-translatesome) | Translate *some* string values to other strings. |
-| [tryLiteral()](#function-tryliteral) | Create literals for which the datatype is not know beforehand. |
-| [uppercase()](#function-uppercase) | Change a string to its uppercase variant. |
-| [wkt.addPoint()](#function-wktaddpoint) | Add a geospatial point using the Well-Known Text (WKT) format. |
-| [wkt.project()](#function-wktproject) | Change the projection of a Well-Known Text (WKT) literal from from Coordinate Reference System into another. |
+| [addHashedIri()](#addhashediri) | Creates an IRI with a content-based hash as the local name. |
+| [addIri()](#addiri) | Create a new IRI based on a prefix and a local name. |
+| [addLiteral()](#addliteral) | Create a new literal based on a lexical for and a datatype IRI or language tag. |
+| [addRandomIri()](#addrandomiri) | Create a new IRI with a random local name. |
+| [addSkolemIri()](#addskolemiri) | Create a new IRI with a random local name, which advertises that it may be consistently replaced with blank nodes. |
+| [addTag()](#addtag) | Create a language tag. |
+| [addValue()](#addvalue) | Create a TypeScript value. |
+| [capitalize()](#capitalize) | Transforms a string value to its capitalized variant. |
+| [concat()](#concat) | Combine multiple strings into a new string. |
+| [copy()](#copy) | Copy a value from an old into a new key. |
+| [decodeHtml()](#decodehtml) | Decode HTML entities that occur in strings. |
+| [geojsonToWkt()](#geojsontowkt) | Change GeoJSON strings to WKT strings. |
+| [jpath()](#jpath) | Uses the JSONPath query language to select a value from the record. |
+| [lowercase()](#lowercase) | Change strings to their lowercase variants. |
+| [padEnd()](#padend) | Pad the end of strings. |
+| [padStart()](#padstart) | Pad the start of strings. |
+| [replace()](#replace) | Replace part of a string. |
+| [split()](#split) | Split a string into multiple substrings. |
+| [substring()](#substring) | Extract a substring from a string. |
+| [translateAll()](#translateall) | Translate *all* string values to other values. |
+| [translateSome()](#translatesome) | Translate *some* string values to other strings. |
+| [tryLiteral()](#tryliteral) | Create literals for which the datatype is not know beforehand. |
+| [uppercase()](#uppercase) | Change a string to its uppercase variant. |
+| [wkt.addPoint()](#wktaddpoint) | Add a geospatial point using the Well-Known Text (WKT) format. |
+| [wkt.project()](#wktproject) | Change the projection of a Well-Known Text (WKT) literal from from Coordinate Reference System into another. |
 
 
 
-## Function `addHashedIri()`
+## addHashedIri()
 
-Creates an IRI based on the specified IRI prefix and the hash calculated over the input content string(s).
+Creates an IRI with a content-based hash as the local name.
+
+
+### Signature
+
+This function has the following signature:
+
+```ts
+addHashedIri({ prefix, content, key })
+```
+
 
 ### Parameters
 
-- `prefix` An IRI, or a key that contains an IRI value.
-- `content` A key that contains a string value, or a string value specified with function [str()](../assert/ratt/terms.md#function-str).
-- `key` A new key where the created hashed IRI is stored.
+- `prefix` is a dynamic or static IRI.
+- `content` is an array with static value, or a key that contains a dynamic arrays of values.
+- `key` is a new key where the created IRI is stored.
 
-### Use cases
+
+### When to use?
 
 This function is used under the following circumstances:
-1. You want to identify something with an IRI.
-2. The thing that you want to identify does not have a readily available identifier.
-3. The thing that you want to identify has one or more properties that together allow the thing to be uniquely identified.
 
-A benefit of `#!ts addHashedIri()` is that the created IRIs are the same across different ETL runs over the same source data.
+1. Something must be identified with an IRI.
+2. The thing that must be identified does not have a readily available identifier.
+3. The thing that must be identified does have properties whose combination of values is unique, and can therefore act as a composite identifier. This is called a *composite key* in database theory.
 
-A downside of `addHashedIri()` is that it can take a lot of time to figure out which set of properties make every IRI unique. (In database theory this process is known as 'composite key detection'.)  Furthermore, having to adjust the hashed content later may pose a maintenance burden.
+Benefits:
 
-### Example: Lazy identifiers
+- The created IRIs are the same across different ETL runs over the same source data. This supports important use cases like change managements / versioning and graph signing.
 
-Some source data does not include good identifiers for all data items.
+Downsides:
 
-The following source table does not include a good identifier. What is more, none of the columns contains values that are unique for each row:
+- It can take a lot of time to figure out which set of properties make every IRI unique. In database theory this process is known as *composite key detection*. Furthermore, keeping the list of identifying properties up-to-date over time poses a maintenance burden.
+
+
+### Example: lazy identifiers
+
+Some source data does not include good identifiers for all data items. For example, the following source table contains first names and last names of persons, but neither property is by itself unique:
 
 | First name | Last name |
 | ---------- | --------- |
@@ -73,12 +90,12 @@ The following source table does not include a good identifier. What is more, non
 | Jane       | Smith     |
 | John       | Doe       |
 
-In such cases it may be an option to take a combination of columns, and use that combined sequence of columns for identification. This is called a 'composite key' in database theory.
+In such cases it may be an option to take a combination of columns, and use that combined sequence of columns for identification.
 
-The following snippet uses the combination of the first name and last name fields (in that order) to create a locally unique hash, that can be used to create a globally IRI. (This does assume that every person in the dataset has a unique first/last name combination!)
+The following snippet uses the combination of the first name and last name fields (in that order) to create a locally unique hash. Together with an IRI prefix, this can be used to create globally unique IRIs:
 
 ``` typescript
-fromXlsx(Source.file('data.xlsx')),
+fromJson([{ 'First name': 'John', 'Last name': 'Doe' }]),
 addHashedIri({
   prefix: prefix.person,
   content: ['First name', 'Last name'],
@@ -91,7 +108,7 @@ pairs('_person',
 ),
 ```
 
-This results in the following linked data assertions:
+This results in the following linked data:
 
 ```turtle
 person:70020947bea6c39cccea20d27e30fbdf
@@ -117,35 +134,61 @@ graph LR
   classDef meta fill:sandybrown
 ```
 
-### Example: Statement Reification
 
-The RDF standard allows individual statements to be identified. This approach is called 'Statement Reification' and is often used for asserting metadata about statements or to represent modalities such as probability or belief.
+### Example: dynamic IRI prefix
 
-The following snippet uses `addHashedIri` to create a unique identifier for every reified statement:
+It is possible to specify a dynamic IRI prefix to `addHashedIri()`.
+
+The following code snippet uses a dynamic IRI prefix from the data source record:
+
+```ts
+fromJson([
+  {
+    prefix: Iri('https://triplydb.com/my-account/my-dataset/id/person/'),
+    name: 'John Doe',
+  },
+  {
+    prefix: Iri('https://triplydb.com/my-account/my-dataset/id/product/'),
+    name: '123',
+  },
+]),
+addHashedIri({
+  prefix: 'prefix',
+  content: ['name'],
+  key: '_subject',
+}),
+triple('_subject', a, owl.NamedIndividual),
+```
+
+This results in the following linked data:
+
+```turtle
+prefix person: <https://triplydb.com/my-account/my-dataset/id/person/>
+prefix product: <https://triplydb.com/my-account/my-dataset/id/product/>
+
+person:76f294ac31199b65ec25048439b66f78 a owl:NamedIndividual.
+product:9154deaa364b289c6b012e99f947f30e a owl:NamedIndividual.
+```
+
+
+### Example: statement reification
+
+The RDF standard allows individual statements to be identified by a node. This approach is called *statement reification* and can be used to assert metadata about statements or can represent modalities such as probability and belief.
+
+The following snippet uses `addHashedIri()` to create a unique identifier for each reified statement:
 
 ```ts
 fromJson([{ id: '1', name: 'John Doe' }]),
 
-// We first create the subject term, predicate term, and object.
-addIri({
-  prefix: prefix.person,
-  content: 'id',
-  key: 'subject',
-}),
-addIri({
-  prefix: prefix.def,
-  content: str('name'),
-  key: 'predicate',
-}),
-addLiteral({
-  content: 'name',
-  key: 'object',
-}),
+// Step 1. Create the subject, predicate, and object terms.
+addIri({ prefix: prefix.person, content: 'id', key: 'subject' }),
+addIri({ prefix: prefix.def, content: str('name'), key: 'predicate' }),
+addLiteral({ content: 'name', key: 'object' }),
 
-// We then create the triple statement.
+// Step 2. Create the triple statement.
 triple('subject', 'predicate', 'object'),
 
-// We can now create the reified statement.
+// Step 3. Create the reified statement.
 addHashedIri({
   prefix: prefix.statement,
   content: ['subject', 'predicate', 'object'],
@@ -159,7 +202,7 @@ pairs('statement',
 ),
 ```
 
-This results in the following linked data assertions:
+This results in the following linked data:
 
 ```turtle
 person:1 def:name 'John Doe'.
@@ -193,25 +236,35 @@ graph TB
 
 
 
-## Function `addIri()`
+## addIri()
 
-### Description
+Creates an IRI based on a specified local name.
 
-Creates an IRI based on the specified parameters.
+
+### Signature
+
+```ts
+addIri({ prefix, content, key })
+```
+
+
+### Parameters
+
+- `prefix` Optionally, a static or dynamic IRI. This IRI will appear before the local name specified for the `content` parameter. If the `prefix` parameter is absent, parameter `content` is must contain an absolute IRI.
+- `content` A string, or a key that contains a string. If the `prefix` parameter is specified, `content` specifies the IRI local name that appears after the IRI prefix. If the `prefix` argument is not specified, `content` is assumed to encode a full absolute IRI.
+- `key` A new key where the created IRI is stored.
+
+
+### When to use?
 
 This transformation can be used in the following two ways:
 1. By using an IRI prefix and a local name.
 2. By using a full absolute IRI.
 
-### Parameters
-
-- `prefix` Optionally, an IRI or a key that contains an IRI. If specified, this is the IRI prefix that will appear before the local name that is specified by the `content` argument. If this parameter is absent, `content` is assumed to contain a full absolute IRI.
-- `content` A string, or a key that contains a string. If the `prefix` parameter is specified, `content` specifies the IRI local name that appears after the IRI prefix. If the `prefix` argument is not specified, `content` is assumed to encode a full absolute IRI.
-- `key` A new key where the created IRI is stored.
 
 ### See also
 
-If the created IRI is used exactly once, it is often better to use inline function [iri()](../assert/ratt/terms.md#function-iri) instead.
+If the created IRI is used exactly once, it is often better to use inline function [iri()](../assert/ratt/terms.md#iri-function) instead.
 
 ### Example: Prefix declaration and local name
 
@@ -242,7 +295,7 @@ graph LR
   johndoe(person:johndoe):::data
 ```
 
-The following snippet makes the same assertion, but uses assertion [iri()](../assert/ratt/terms.md#function-iri) instead of transformation `addIri()`:
+The following snippet makes the same assertion, but uses assertion [iri()](../assert/ratt/terms.md#iri-function) instead of transformation `addIri()`:
 
 ```ts
 triple(iri(prefix.person, 'username'), a, sdo.Person),
@@ -270,7 +323,7 @@ graph LR
   johndoe(https://example.com/id/person/johndoe):::data
 ```
 
-The following snippet uses assertion [iri()](../assert/ratt/terms.md#function-iri) instead of transformation `addIri()`:
+The following snippet uses assertion [iri()](../assert/ratt/terms.md#iri-function) instead of transformation `addIri()`:
 
 ```ts
 triple(iri('https://example.com/id/person/johndoe'), a, sdo.Person),
@@ -278,7 +331,7 @@ triple(iri('https://example.com/id/person/johndoe'), a, sdo.Person),
 
 
 
-## Function `addLiteral()`
+## addLiteral()
 
 Creates an new literal and adds it to the Record under the specified key.
 
@@ -292,19 +345,19 @@ This transformation can be used in the following 3 ways:
 
 This transformation is typically used when:
 
-- The same literal occurs in two or more statement assertions (function [triple()](../assert/ratt/statements.md#function-triple) or [quad()](../assert/ratt/statements.md#function-quad)). This avoids having to specify the same literal multiple times using function [literal()](../assert/ratt/terms.md#function-literal).
+- The same literal occurs in two or more statement assertions (function [triple()](../assert/ratt/statements.md#triple) or [quad()](../assert/ratt/statements.md#quad)). This avoids having to specify the same literal multiple times using function [literal()](../assert/ratt/terms.md#literal).
 - The datatype or language tag is derived from the source data record.
 
 ### Parameters
 
-- `content` A key that contains a string value, or a string specified with function [str()](../assert/ratt/terms.md#function-str).
+- `content` A key that contains a string value, or a string specified with function [str()](../assert/ratt/terms.md#str).
 - `datatype` Optionally, a key that stores an IRI or a static IRI.
 - `languageTag` Optionally, a language tag from the [`lang`](../generic/declarations.md#language-declarations) object, or a key that stores such a language tag.
 - `key` A new key where the created literal is stored.
 
 ### See also
 
-If the created literal is used exactly once, it is often better to use the inline function [literal()](../assert/ratt/terms.md#function-literal) instead.
+If the created literal is used exactly once, it is often better to use the inline function [literal()](../assert/ratt/terms.md#literal) instead.
 
 ### Example: Typed literal
 
@@ -326,7 +379,7 @@ This makes the following linked data assertion:
 book:123 sdo:dateCreated '2022-30-01'^^xsd:date.
 ```
 
-Notice that the same linked data could have been asserted with the following use the the [literal()](../assert/ratt/terms.md#function-literal) assertion middleware:
+Notice that the same linked data could have been asserted with the following use the the [literal()](../assert/ratt/terms.md#literal) assertion middleware:
 
 ```ts
 fromJson([{ id: '123', date: '2022-01-30' }]),
@@ -381,7 +434,7 @@ This results in the following linked data assertion:
 city:London skos:prefLabel 'London'@en-gb.
 ```
 
-Notice that the same linked data could have been asserted with the following use the the [literal()](../assert/ratt/terms.md#function-literal) assertion middleware:
+Notice that the same linked data could have been asserted with the following use the the [literal()](../assert/ratt/terms.md#literal) assertion middleware:
 
 ```ts
 fromJson([{ name: 'London' }]),
@@ -390,7 +443,7 @@ triple(iri(prefix.city, 'name'), skos.prefLabel, literal('name', lang['en-gb']))
 
 
 
-## Function `addRandomIri()`
+## addRandomIri()
 
 Creates an IRI based on the specified IRI prefix and a universally unique random identifier.
 
@@ -399,12 +452,12 @@ Creates an IRI based on the specified IRI prefix and a universally unique random
 This function is used under the following circumstances:
 
 1. You want to identify something with an IRI.
-2. The thing that you want to identify does not have a readily available identifier. If an identifier is available, use transformation [addIri()](#function-addiri) instead.
-3. The thing that you want to identify does not have unique properties in the source data, or it is too difficult or too expensive to specify these properties. If unique properties are available, use transformation [addHashedIri()](#function-addhashediri) instead.
+2. The thing that you want to identify does not have a readily available identifier. If an identifier is available, use transformation [addIri()](#addiri) instead.
+3. The thing that you want to identify does not have unique properties in the source data, or it is too difficult or too expensive to specify these properties. If unique properties are available, use transformation [addHashedIri()](#addhashediri) instead.
 
-This function has the advantage that, unlike transformation [addHashedIri()](#function-addhashediri), no identifying criteria need to be specified.
+This function has the advantage that, unlike transformation [addHashedIri()](#addhashediri), no identifying criteria need to be specified.
 
-This function has the disadvantage that, unlike transformation [addHashedIri()](#function-addhashediri), running the same ETL twice over the same source data results in different IRIs.
+This function has the disadvantage that, unlike transformation [addHashedIri()](#addhashediri), running the same ETL twice over the same source data results in different IRIs.
 
 ### Parameters
 
@@ -431,13 +484,13 @@ id:acb3ea010fe748bfa73a2ee2b65bef65 sdo:dateCreated '2000-12-30'^^xsd:date.
 
 ### See also
 
-- Use transformation [addIri()](#function-addiri) instead, if a unique identifier can be readily specified.
-- Use transformation [addHashedIri](#function-addhashediri) instead, if one or more properties that together uniquely identify a thing can be specified.
-- Use transformation [addSkolemIri()](#function-addskolemiri) instead, if you want to communicate that the IRI can be replaced with a blank node.
+- Use transformation [addIri()](#addiri) instead, if a unique identifier can be readily specified.
+- Use transformation [addHashedIri](#addhashediri) instead, if one or more properties that together uniquely identify a thing can be specified.
+- Use transformation [addSkolemIri()](#addskolemiri) instead, if you want to communicate that the IRI can be replaced with a blank node.
 
 
 
-## Function `addSkolemIri()`
+## addSkolemIri()
 
 Creates a globally unique IRI that is intended to be used as a blank node identifier.
 
@@ -502,7 +555,7 @@ feature:22238008e490f725979118f8f2dd9b5a geo:hasGeometry
 
 
 
-## Function `addTag()`
+## addTag()
 
 This middleware creates a language tag based on a given string value.
 
@@ -536,7 +589,7 @@ triple(iri(prefix.city, 'label'), rdfs.label, literal('label', 'lang')),
 
 
 
-## Function `addValue()`
+## addValue()
 
 This middleware allows any value to be added to the Record.
 
@@ -604,7 +657,7 @@ event:456 sdo:startDate 'unknown'.
 
 
 
-## Function `capitalize()`
+## capitalize()
 
 Transforms a string value to its capitalized variant.
 
@@ -645,7 +698,7 @@ id:2 a def:Person.
 ```
 
 
-## Function `concat()`
+## concat()
 
 ### Description
 
@@ -655,7 +708,7 @@ An optionally specified separator is placed in between every two consecutive str
 
 ### Parameters
 
-- `content` An array of key that contain a string and/or strings specified with assertion [str()](../assert/ratt/terms.md#function-str).
+- `content` An array of key that contain a string and/or strings specified with assertion [str()](../assert/ratt/terms.md#str).
 - `separator` Optionally, the string that is places between every two consecutive string values.
 - `key` A new key where the concatenated string is stored.
 
@@ -681,7 +734,7 @@ person:1 foaf:name 'John Doe'.
 
 
 
-## Function `copy()`
+## copy()
 
 Makes a plain copy from the value stored in the given key to a new key.
 
@@ -756,7 +809,7 @@ city:2 rdfs:label 'Parijs'.
 
 
 
-## Function `encodeHtml()`
+## encodeHtml()
 
 ### Description
 
@@ -802,7 +855,7 @@ id:2 rdfs:label '1 < 2'.
 
 
 
-## Function `geojsonToWkt()`
+## geojsonToWkt()
 
 Transforms GeoJSON objects to their corresponding Well-Known Text (WKT) serialization strings.
 
@@ -890,80 +943,81 @@ graph LR
 
 
 
-## Function `jpath()`
+## jpath()
 
 ### Description
 
-Filters a value based on a key specification using [JSONPath](https://github.com/dchester/jsonpath) expression. JSONPath is a query language for JSON.
-For the syntax of JSONPath expressions, please visit the [JSONPath documentation page](https://github.com/dchester/jsonpath#jsonpath-syntax).
+Filters a value based on a JSON Path expression. JSON Path is a query language for JSON. For the syntax of JSON Path expressions, please visit the [JSON Path documentation page](https://github.com/dchester/jsonpath#jsonpath-syntax).
 
 ### Use cases
 
-This function simplifies the complex key specification to filter specific values. It can only be used for an object of a triple to create a literal.
-The result of a function should be one value and not an array.
+This function simplifies the complex key specification to filter specific values. It can only be used for an object of a triple to create a literal. The result of a function must have a fundamental type.
 
 ### Parameters
 
-- `value`  A [JSONPath](https://github.com/dchester/jsonpath#jsonpath-syntax) expression.
+- `value`  A JSON Path expression.
 
 ### Example
 
 The following examples will create a literal based on key `value`:
 
-
-- if key `'ISO_639-2'` exists
+If key `'ISO_639-2'` exists:
 
 ```ts
 fromJson({
-  language: [{ "ISO_639-1": 'en', lcid: 2057, value: "Paris" },
-  { "ISO_639-1": 'nl', "ISO_639-2": 'nld', lcid: 1043, value: "Parijs" }]
+  language: [
+    { 'ISO_639-1': 'en', lcid: 2057, value: 'Paris' },
+    { 'ISO_639-1': 'nl', 'ISO_639-2': 'nld', lcid: 1043, value: 'Parijs' },
+  ],
 }),
 triple(
   iri(prefix.city, '$recordId'),
   rdfs.label,
   literal(jpath("$.language[?(@['ISO_639-2'])].value"), language.nl)
 ),
-
 ```
-- if key `'ISO_639-1'` is equal to `nl`
+
+If key `'ISO_639-1'` is equal to `nl`:
 
 ```ts
 fromJson({
-  language: [{ "ISO_639-1": 'en', lcid: 2057, value: "Paris" },
-  { "ISO_639-1": 'nl', "ISO_639-2": 'nld', lcid: 1043, value: "Parijs" }]
+  language: [
+    { 'ISO_639-1': 'en', lcid: 2057, value: 'Paris' },
+    { 'ISO_639-1': 'nl', 'ISO_639-2': 'nld', lcid: 1043, value: 'Parijs' },
+  ],
 }),
 triple(
   iri(prefix.city, '$recordId'),
   rdfs.label,
   literal(jpath("$.language[?(@['ISO_639-1'] =='nl')].value"), language.nl)
-)
-
+),
 ```
 
-- if key `lcid` is lower than `1100`
+If key `'lcid'` is lower than 1,100:
 
 ```ts
 fromJson({
-  language: [{ "ISO_639-1": 'en', lcid: 2057, value: "Paris" },
-  { "ISO_639-1": 'nl', "ISO_639-2": 'nld', lcid: 1043, value: "Parijs" }]
+  language: [
+    { 'ISO_639-1': 'en', lcid: 2057, value: 'Paris' },
+    { 'ISO_639-1': 'nl', 'ISO_639-2': 'nld', lcid: 1043, value: 'Parijs' },
+  ],
 }),
 triple(
-      iri(prefix.city, '$recordId'),
-      rdfs.label,
-      literal(jpath("$.language[?(@.lcid < 1100)].value"), language.nl)
-    ),
-
+  iri(prefix.city, '$recordId'),
+  rdfs.label,
+  literal(jpath('$.language[?(@.lcid < 1100)].value'), language.nl)
+),
 ```
 
-All three examples will generate the following linked data assertion:
+All three examples generate the following linked data:
 
 ```turtle
-record:1 rdfs:label "Parijs"@nl.
+record:1 rdfs:label 'Parijs'@nl.
 ```
 
 
 
-## Function `lowercase()`
+## lowercase()
 
 ### Description
 
@@ -1009,7 +1063,7 @@ id:2 def:child id:1.
 
 
 
-## Function `padEnd()`
+## padEnd()
 
 ### Description
 
@@ -1061,7 +1115,7 @@ This results in the following two Records:
 
 
 
-## Function `padStart()`
+## padStart()
 
 ### Description
 
@@ -1147,7 +1201,7 @@ id:0002 dct:created '1702'^^xsd:gYear.
 
 
 
-## Function `replace()`
+## replace()
 
 ### Description
 
@@ -1155,7 +1209,7 @@ Performs a regular expression replacement to the given input string, and stores 
 
 ### Parameters
 
-- `content` A key that contains a string value, or a static string specified with assertion [str()](../assert/ratt/terms.md#function-str).
+- `content` A key that contains a string value, or a static string specified with assertion [str()](../assert/ratt/terms.md#str).
 - `from` A [JavaScript Regular Expression](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions).
 - `to` Optionally, a string that replaces potential matches of the Regular Expression (`from`). Use `$1`, `$2`, etc. to insert matches. If absent, the empty string is used.
 - `key` A new key where the result of the replacement is stored.
@@ -1192,7 +1246,8 @@ This results in the following Record:
 ```
 
 
-## Function `split()`
+
+## split()
 
 ### Description
 
@@ -1214,7 +1269,7 @@ The transformation is used when:
 
 ### Parameters
 
-- `content` A key that stores a string, or a string specified with assertion [str()](../assert/ratt/terms.md#function-str).
+- `content` A key that stores a string, or a string specified with assertion [str()](../assert/ratt/terms.md#str).
 - `separator` A string or a regular expression that is used to separate the content.
 - `key` A new key where the array of split strings is stored.
 - `keepEmptyEntities` A boolean flag indicating if the empty values of a splitted string should be kept or not. By default empty values are removed.
@@ -1313,7 +1368,7 @@ id:1 sdo:postalCode '1231FZ'.
 
 
 
-## Function `substring()`
+## substring()
 
 ### Description
 
@@ -1322,14 +1377,14 @@ result in a new key.
 
 ### Parameters
 
-- `content` A key that stores a string value, or a string specified with assertion [str()](../assert/ratt/terms.md#function-str).
+- `content` A key that stores a string value, or a string specified with assertion [str()](../assert/ratt/terms.md#str).
 - `start` The index of the first character that is included in the substring. The first character has index 0.
 - `end` Optionally, the index of the first character that is excluded from the substring. If absent, the substring ends at the end of the source string.
 - `key` The new key in which the substring is stored.
 
 ### Example
 
-The Library of Congress MARC format stores the type of record in the sixth character that appears in the leader key. We use `substring()` to extract this character, and then use transformation [translateAll()](#function-translateall) to map them to a corresponding class IRI:
+The Library of Congress MARC format stores the type of record in the sixth character that appears in the leader key. We use `substring()` to extract this character, and then use transformation [translateAll()](#translateall) to map them to a corresponding class IRI:
 
 ```ts
 substring({
@@ -1351,7 +1406,7 @@ triple('_iri', a, '_class'),
 
 
 
-## Function `translateAll()`
+## translateAll()
 
 ### Description
 
@@ -1417,7 +1472,7 @@ triple('_creativeWork', '_relator', '_creator'),
 
 
 
-## Function `translateSome()`
+## translateSome()
 
 ### Description
 
@@ -1453,7 +1508,7 @@ transform.translateSome({
 
 
 
-## Function `tryLiteral()`
+## tryLiteral()
 
 ### Description
 
@@ -1461,7 +1516,7 @@ This transformation is used when string values must be mapped onto literals with
 
 The datatype IRIs that could apply are specified in a list. The specified datatype IRIs are tried out from left to right. The first datatype IRI that results in a valid literal is chosen.
 
-- `content` A key that contains a string value, or a string value specified with assertion [str()](../assert/ratt/terms.md#function-str).
+- `content` A key that contains a string value, or a string value specified with assertion [str()](../assert/ratt/terms.md#str).
 - `datatypes` An array of two or more datatype IRIs.
 - `key` A new key where the created literal is stored.
 
@@ -1491,11 +1546,11 @@ If we do not want to emit errors for string values that cannot be satisfy any of
 
 ### See also
 
-You only need to use `tryLiteral()` if the datatype IRI varies from record to record. If the datatype IRI is the same for every record, then the regular assertion function [literal()](../assert/ratt/terms.md#function-literal) should be used instead.
+You only need to use `tryLiteral()` if the datatype IRI varies from record to record. If the datatype IRI is the same for every record, then the regular assertion function [literal()](../assert/ratt/terms.md#literal) should be used instead.
 
 
 
-## Function `uppercase()`
+## uppercase()
 
 ### Description
 
@@ -1522,6 +1577,18 @@ triple(iri(prefix.id, 'place'), iri(prefix.geonames, str('countryCode')), '_coou
 ```
 This results in the following linked data assertion:
 
-```ttl
+```turtle
 city:Amsterdam geonames:countryCode "NL"
 ```
+
+
+
+## wkt.addPoint()
+
+TODO
+
+
+
+## wkt.project()
+
+TODO

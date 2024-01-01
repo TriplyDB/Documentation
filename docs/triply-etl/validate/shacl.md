@@ -285,7 +285,7 @@ In this case, changing the data in the source system seem the most logical. Afte
 
 #### Option 2: Change the transformation and/or assertions
 
-Alternatively, it is possible to transform English words that denote numbers to their corresponding numeric values. Since people can get up to one hundred years old, or even older, there are many words that we must consider and transform. This can be done with the [`translateAll()` transformation](../transform/ratt.md#function-translateall):
+Alternatively, it is possible to transform English words that denote numbers to their corresponding numeric values. Since people can get up to one hundred years old, or even older, there are many words that we must consider and transform. This can be done with the [`translateAll()` transformation](../transform/ratt.md#translateall):
 
 ```ts
 translateAll({

@@ -347,7 +347,7 @@ This function emits an error under the following conditions:
 
 ### See also
 
-If `fromKey` and `toKey` are the same, then function [custom.change()](#function-customchange) must be used instead.
+If `fromKey` and `toKey` are the same, then function [custom.change()](#customchange) must be used instead.
 
 
 

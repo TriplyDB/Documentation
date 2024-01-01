@@ -10,10 +10,10 @@ The following debug function are available:
 
 | Function | Description |
 | --- | --- |
-| [logMemory()](#function-logmemory) | Prints the current memory consumption. |
-| [logQuads()](#function-logquads) | Prints the contents of the internal store to standard output. |
-| [logQuery()](#function-logquery) | Prints a query string to standard output. |
-| [logRecord()](#function-logrecord) | Prints the record in its current state to standard output. |
+| [logMemory()](#logmemory) | Prints the current memory consumption. |
+| [logQuads()](#logquads) | Prints the contents of the internal store to standard output. |
+| [logQuery()](#logquery) | Prints a query string to standard output. |
+| [logRecord()](#logrecord) | Prints the record in its current state to standard output. |
 | [traceEnd()](#functions-tracestart-and-traceend) | Ends a trace of the record and internal store. |
 | [traceStart()](#functions-tracestart-and-traceend) | Starts a trace of the record and internal store. |
 

@@ -132,7 +132,7 @@ const prefix = {
 }
 ```
 
-With the above declarations in place, the following IRI term assertions can be made (see the [iri()](../assert/ratt/terms.md#function-iri) function for more information):
+With the above declarations in place, the following IRI term assertions can be made (see the [iri()](../assert/ratt/terms.md#iri-function) function for more information):
 
 ```ts
 iri(prefix.city, 'name')
@@ -150,7 +150,7 @@ prefix.def.concat('livesIn')
 prefix.person.concat('John')
 ```
 
-The following statement assertion can be made (see the [triple()](../assert/ratt/statements.md#function-triple) function for more information). Notice that it is possible to mix (dynamic and static) `iri()` term assertions with IRIs created with `concat()`:
+The following statement assertion can be made (see the [triple()](../assert/ratt/statements.md#triple) function for more information). Notice that it is possible to mix (dynamic and static) `iri()` term assertions with IRIs created with `concat()`:
 
 ```ts
 triple(
@@ -457,26 +457,26 @@ triple(iri(prefix.location, 'Location ID'), a, premis.StorageLocation),
 
 
 
-## Language code declarations
+## Language tag declarations
 
 Linked data includes support for *language-tagged strings*. These are literals that specify a string value and a code that denotes the natural language in which that string value should be interpreted.
 
-The natural language codes follow a syntax that is standardized in [RFC 5646](https://datatracker.ietf.org/doc/html/rfc5646), and must occur in the Language Subtag Registry that is maintained by IANA.
+The natural language tags follow a syntax that is standardized in [RFC 5646](https://datatracker.ietf.org/doc/html/rfc5646), and must occur in the Language Subtag Registry that is maintained by IANA.
 
-TriplyETL includes declarations for these natural language codes. They can be imported as follows:
+TriplyETL includes declarations for these natural language tags. They can be imported as follows:
 
 ```ts
 import { language } from '@triplyetl/etl/vocab'
 ```
 
-Language code declaration can be used in [literal()](../assert/ratt/terms.md) term assertions:
+Language tag declaration can be used in [literal()](../assert/ratt/terms.md) term assertions:
 
 ```ts
 literal(str('Nederland'), language.nl)
 literal(str('Netherlangs'), language.en)
 ```
 
-Language code declarations can also be used in [addLiteral()](../transform/ratt.md#function-addliteral) transformations:
+Language tag declarations can also be used in [addLiteral()](../transform/ratt.md#addliteral) transformations:
 
 ```ts
 addLiteral({
@@ -553,7 +553,7 @@ TriplyETL includes declarations for geospatial coordinate reference systems. The
 import { epsg } from '@triplyetl/etl/vocab'
 ```
 
-EPSG codes can be used in geospatial transformation functions like [geojsonToWkt()](../transform/ratt.md#function-geojsontowkt):
+EPSG codes can be used in geospatial transformation functions like [geojsonToWkt()](../transform/ratt.md#geojsontowkt):
 
 ```ts
 geojsonToWkt({

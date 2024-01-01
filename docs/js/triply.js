@@ -17,6 +17,7 @@ const customUrlMappingLevel1 = new Map([
 
 const customUrlMappingLevel2 = new Map([
   ['RATT', '/triply-etl/assert/ratt/statements'],
+  ['SPARQL', '/triply-etl/enrich/sparql/construct'],
 ])
 
 window.onload = () => {

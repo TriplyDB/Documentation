@@ -81,6 +81,59 @@ This command will change the contents of the `package.json` file. These changes 
 
 
 
+## DTAP configuration
+
+TriplyETL provides out-of-the-box support for the DTAP approach for configuring production systems. DTAP stands for the four environments in which the ETL can run:
+
+- Development
+- Test
+- Acceptance
+- Production
+
+When working on a pipeline it is best to at least run it in the following two modes:
+
+<dl>
+  <dt>Acceptance mode</dt>
+  <dd>Upload the result of the pipeline to the user account for which the API Token was created.</dd>
+  <dt>Production mode</dt>
+  <dd>Upload the result of the pipeline to the organization where the production version of the data is published.</dd>
+</dl>
+
+Having multiple modes ensures that the production version of a dataset is not accidentally overwritten during development.
+
+```ts
+export function account(): any {
+  switch (Etl.environment) {
+    case 'Development':
+      return undefined
+    case 'Testing':
+      return 'my-org-testing'
+    case 'Acceptance':
+      return 'my-org-acceptance'
+    case 'Production':
+      return 'my-org'
+  }
+}
+
+const etl = new Etl()
+etl.use(
+  // Your ETL pipeline is configured here.
+  toRdf(Destination.triplyDb.rdf(account(), 'my-dataset')),
+)
+```
+
+By default, you run the pipeline in Development mode. If you want to run in another mode, you must set the `ENV` environment variable. You can do this in the `.env` file of your TriplyETL repository.
+
+For example, the following runs the pipeline in Testing mode:
+
+```
+ENV=Testing
+```
+
+You can also set the `ENV` variable in the GitLab CI/CD environment. This allows you to automatically run different pipelines, according to the DTAP approach for production systems.
+
+
+
 ## Configure CI/CD
 
 TriplyETL pipelines can be configured to run automatically in any CI/CD environment. This section explains how you can configure an automated TriplyETL pipeline in GitLab. Notice that the configuration in any other CI/CD environment will be more or less similar to what is explained in this section.

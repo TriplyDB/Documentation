@@ -25,7 +25,7 @@ export default async function (): Promise<Etl> {
 }
 ```
 
-Debug function [logRecord()](./debug.md#function-logrecord) prints the current record to standard output. When this pipeline is run, the two inline records are printed as follows:
+Debug function [logRecord()](./debug.md#logrecord) prints the current record to standard output. When this pipeline is run, the two inline records are printed as follows:
 
 ```json
 {

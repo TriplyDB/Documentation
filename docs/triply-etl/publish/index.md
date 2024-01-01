@@ -6,18 +6,18 @@ The **Publish** step makes the linked data that is produced by the TriplyETL pip
 
 ```mermaid
 graph LR
-  source -- 1. Extract --> record
+  sources -- 1. Extract --> record
   record -- 2. Transform --> record
   record -- 3. Assert --> ld
   ld -- 4. Enrich --> ld
   ld -- 5. Validate --> ld
-  ld -- 6. Publish --> tdb
+  ld -- 6. Publish --> destinations
 
   linkStyle 5 stroke:red,stroke-width:3px;
-  ld[Internal Store]
-  record[Record]
-  source[Data Sources]
-  tdb[(Triple Store)]
+  destinations[("D. Destinations\n(TriplyDB)")]
+  ld[C. Internal Store]
+  record[B. Record]
+  sources[A. Data Sources]
 ```
 
 
@@ -148,10 +148,10 @@ The following example shows the `copy` function:
 
 
 ```ts
-etl.copySource(
+await etl.copySource(
   Source.file(`${source_location}`),
   Destination.TriplyDb.rdf(`${destination_name}`)
-),
+)
 ```
 
 The function destination expects that source data is linked data. Copying a source that is not linked data can result in errors.
@@ -181,52 +181,6 @@ The above example prints the name of the TriplyDB instance. But any other [Tripl
 const user = await etl.triplyDb.getUser()
 await user.setAvatar('my-avatar.png')
 ```
-
-
-
-## Setting up Acceptance/Production runs (DTAP)
-
-When working on a pipeline it is best to at least run it in the following two modes:
-
-<dl>
-  <dt>Acceptance mode</dt>
-  <dd>Upload the result of the pipeline to the user account for which the API Token was created.</dd>
-  <dt>Production mode</dt>
-  <dd>Upload the result of the pipeline to the organization where the production version of the data is published.</dd>
-</dl>
-
-Having multiple modes ensures that the production version of a dataset is not accidentally overwritten during development.
-
-```ts
-export function account(): any {
-  switch (Etl.environment) {
-    case 'Development':
-      return undefined
-    case 'Testing':
-      return 'my-org-testing'
-    case 'Acceptance':
-      return 'my-org-acceptance'
-    case 'Production':
-      return 'my-org'
-  }
-}
-
-const etl = new Etl()
-etl.use(
-  // Your ETL pipeline is configured here.
-  toRdf(Destination.triplyDb.rdf(account(), 'my-dataset')),
-)
-```
-
-By default, you run the pipeline in Development mode. If you want to run in another mode, you must set the `ENV` environment variable. You can do this in the `.env` file of your TriplyETL repository.
-
-For example, the following runs the pipeline in Testing mode:
-
-```
-ENV=Testing
-```
-
-You can also set the `ENV` variable in the GitLab CI/CD environment. This allows you to automatically run different pipelines, according to the DTAP approach for production systems.
 
 
 

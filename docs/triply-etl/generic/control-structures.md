@@ -355,7 +355,7 @@ The following record is printed first (3 records are printed in total). Notice t
 
 ## Iterating over lists of primitives
 
-Notice that [forEach()](#iterating-over-lists-of-objects-foreach) can only iterate over Records. Sometimes, it is necessary to iterate over primitive values, for example strings. If the iteration directly results in RDF assertions, [iris()](#function-iris) and [literals()](#function-literals) can be used. But in other cases, we must map the primitive values to objects. These objects can then be processed as regular Records.
+Notice that [forEach()](#iterating-over-lists-of-objects-foreach) can only iterate over Records. Sometimes, it is necessary to iterate over primitive values, for example strings. If the iteration directly results in RDF assertions, [iris()](#iris) and [literals()](#literals) can be used. But in other cases, we must map the primitive values to objects. These objects can then be processed as regular Records.
 
 Here is an example:
 

@@ -2,23 +2,30 @@
 
 # Changelog
 
-The current version of TriplyETL is **3.0.17**
+The current version of TriplyETL is **3.0.18**
 
 You can use this changelog to perform a safe update from an older version of TriplyETL to a newer one. See the documentation for [Upgrading TriplyETL repositories](./maintenance.md#update-the-triplyetl-dependency) for the advised approach, and how the changelog factors into that.
 
 
 
-## TriplyETL 3.0.15 through 3.0.17
+## TriplyETL 3.0.15 through 3.0.18
 
-Release date: 2023-12-07 through 2023-12-13
+Release date: 2023-12-07 through 2023-12-28
 
-### [Enhanced] Skolem IRI prefix use
-
-TriplyETL now emits an error when a Skolem IRI prefix is used with [addHashedIri()](../transform/ratt.md#function-addhashediri).
 
 ### [Enhanced] RDF compression before upload
 
 It is now possible to enable compression of RDF data before being uploaded to TriplyDB. See the [toRdf()](../publish/index.md) function for more information.
+
+
+### [Enhanced] Skolem IRI prefix use
+
+TriplyETL now emits an error when a Skolem IRI prefix is used with [addHashedIri()](../transform/ratt.md#addhashediri).
+
+
+### Bug fixes
+
+This release provides bug fixes to XSLT support (see [XSLT Transformations](../transform/xslt.md) and [XSLT Assertions](../assert/xslt.md)).
 
 
 
@@ -26,69 +33,130 @@ It is now possible to enable compression of RDF data before being uploaded to Tr
 
 Release date: 2023-12-04
 
-- *FEATURE*
-  - build in hack to overrule the standard environments, see [issue #342](https://git.triply.cc/triplyetl/etl/-/issues/342)
-  - [RML transformations](../transform/rml.md) can now be applied to the TriplyETL Record.
 
-- *FIX*
-  - fixed error in URL/Request in `fromOai`
-- *CHANGE*
-  - Updates most (but not all) packages to their latest version, including new vocabularies.
+### [Added] Support for RML
 
-## v.3.0.9
+This release introduces support for the RML transformation and assertion language. RML is an ETL configuration language that has gained traction in the linked data community over the last couple of years. See the following pages for more information:
+
+- [RML Transformations](../transform/rml.md)
+- [RML Assertions](../assert/rml.md)
+
+
+### [Build] Environments beyond the DTAP defaults
+
+It is now possible to extend the standard environments offered by TriplyETL.
+
+
+### Bug fixes
+
+This release fixes a URL/request-related error in the [fromOai](../extract/oai-pmh.md) extractor.
+
+
+
+## TriplyETL 3.0.7 through 3.0.9
 
 Release date: 2023-11-29
+
 
 ### [Added] CLI flag to skip version check
 
 Introduced the cli flag `--skip-version-check` because some users can not use remote connections because of security policies.
 
-## v.3.0.7
 
-Release date: 2023-11-??
+### [Added] Support for JPath expressions
 
-- *FEATURE*
-  - `toJson()` middleware now uses path selectors just as `fromXml()`, but also JPath expressions. See [issue #353](https://git.triply.cc/triplyetl/etl/-/issues/323).
-  - `fromOai()` now accepts a [`Request` object](https://developer.mozilla.org/en-US/docs/Web/API/Request) as the value for the `url` option, allowing more fine graded use of the HTTP request (including authentication information).
-  - `validate()` now deskolimizes (see the [RDF standard on this topic](https://www.w3.org/TR/rdf11-concepts/#h3_section-skolemization)) skolem iri's to blanknodes before validation. This behaviour can be skipped by setting the `skipDesklomize` flag to `true`. This will speed up the validation process.
-  - `fromOai()` now accepts an optional parameter `stylesheet`. The argument must be an object with 1 required key `source`pointing to the source of the stylesheet and 1 optional argument `yieldsRdf`. When provided the XSL Stylesheet `source` is processed using the OAI response. It is important that the resulting transformed XML document is still a full OAI response after transformation! An example on how to do this can be found in `src/__tests__/resources/xslt/oai-ListRecords.xslt`. When the optional; `yieldsRdf` flag is set to `true`, the result of the transformation is treated as valid RDF XML and added to the Triply Store. The records will still be available as unit of streaming using the original OAI response. An example on how such a stylesheet could look like can be found in `src/__tests__/resources/xslt/oai-ListRecords-yieldsRdf.xslt`.
-  - `fromOai()` now accepts an optional parameter `metadataYieldsRdf`. If this flag is true, the `<metadata>` envelop of the OAI response is expected to contain valid RDF. This can be combined with the new `stylesheet` parameter. You can not use `metadataYieldsRdf` when the applied stylesheet uses the `yieldsRdf` flag since we can not guarantee that the resulting XML still is a valid OAI-PMH response.
-  - A full explanation of these new features for `fromOai()` can be found in [the merge request](https://git.triply.cc/triplyetl/etl/-/merge_requests/243).
-- *FiX*
-  - Fixes issue when sentinel keys use for `ifElse()` and `switch()` middlewares where printed in the logfile when errors occured.
-## v.3.0.6
-- releasedate: 2023-11-14
-- *FIX*
-  - Fixes issues with upstream packages that had breaking changes.
-## v.3.0.5
-- releasedate: 2023-11-09
-- *Fix*
-  - Progress bar now always termintes to 100%, in some rare situations the bars stopped at 99% or 101%.
-  - Bumps all NPM packages to their latest versions.
-## v.3.0.4
-- releasedate: 2023-11-07
-- *FEATURE*
-  - It is now possible to use metadata when creating datasets. If a new dataset is created then the metadata is always used, for existing datasets you can choose to ignore, merge or replace existing metadata. This feature is to prevent ETL's accidentally overwriting metadata might have changed in the UI/Dashboard of their TriplyDB instance. Example code is available in the [Merge Request](https://git.triply.cc/triply/etl/-/merge_requests/237), but here is a short version: `toTriplyDb({dataset})`, where dataset is an object like this: `{name: 'my-name', displayName: 'My dataset', description: 'My Dataset is the best.', accessLevel: 'public', license: 'CC BY-NC', exampleResources: ['https://ex.com/1']}`.
-  The following options are available for this new feature in the `opts.existingMetadata` parameter:
-    - `ignore`: no metadata will be changed even if no metadata is present for this dataset (this is the default value)
-    - `merge`: only properties that have no value will be overwritten bij the provided metadata
-    - `replace`: all existing metadata will be replaced, even if the provided metadata contains empty keys
-_ *CHANGE*
-  - The cli flag `--skip-error-trace` is now removed in favour of a reversed logic flag `--create-error-trace`. This means error traces are never created unless requested by a auser. Skipping error traces gives extra performance and users hwo need it can still create it during debugging.
-- *FIX*
-  - Number of synchronized services was not reported correctly, see [issue #334](https://git.triply.cc/triply/etl/-/issues/334)
-  - A regression was introduced when solving [issue #218](https://git.triply.cc/triply/etl/-/issues/218) as reported in [issue #331](https://git.triply.cc/triply/etl/-/issues/334). This regression caused certain `HEAD` request to fail. Those `HEAD` are only used to implement cachng, it is not needed to fail on errors on such a request.
-  - Multiple tweaks where made to improve the speed of ETL's. A detailed overviews can be found is i[issue #285](https://git.triply.cc/triply/etl/-/issues/285).
-  - A package we depend on introduced a breaking change causing a function not to be there anymore. This was reported in [issue #336](https://git.triply.cc/triply/etl/-/issues/336).
-## v.3.0.3
-- releasedate: 2023-11-01
-- *CHANGE*
-  - The code to submit datasets to the [NDE Dataset Register](https://datasetregister.netwerkdigitaalerfgoed.nl) has been moved to TriplyDB-JS. The way to publish a dataset now is to add an option to the `toTriplyDb()` middleware: `{submitToNDEDatasetRegister: true}`. <br>**Example:** `toTriplyDb({dataset: 'nde', opts: {submitToNDEDatasetRegister: true}})`
-  - Bumps all packages to their latest versions.
+`toJson()` middleware now uses path selectors just as `fromXml()`, but also JPath expressions.
+
+
+### [Added] Authentication for the OAI-PMH extractor
+
+`fromOai()` now accepts a [`Request` object](https://developer.mozilla.org/en-US/docs/Web/API/Request) as the value for the `url` option, allowing more fine graded use of the HTTP request (including authentication information).
+
+
+### [Added] XSLT support for the OAI-PMH extractor
+
+`fromOai()` now accepts an optional parameter `stylesheet`. The argument must be an object with 1 required key `source` pointing to the source of the stylesheet and 1 optional argument `yieldsRdf`. When provided the XSL Stylesheet `source` is processed using the OAI response. The result of the transformation must still be a valid OAI response.
+
+
+### Bug fixes
+
+Fixes issue where keys that are used for internal administration were shown in logged records, after using the `ifElse()` and `switch()` control structures.
+
+
+
+## TriplyETL 3.0.6
+
+Release date: 2023-11-14
+
+
+### Bug fixes
+
+This release fixes issues with upstream packages that contained breaking changes.
+
+
+
+## TriplyETL 3.0.5
+
+Release date: 2023-11-09
+
+
+### Bug fixes
+
+The progress bar would sometimes terminate at 99% or 101%, instead of the expected 100%.
+
+
+
+## TriplyETL 3.0.4
+
+Release date: 2023-11-07
+
+
+### [Added] Dataset metadata specification
+
+It is now possible to use metadata when creating datasets. If a new dataset is created then the metadata is always used, for existing datasets you can choose to ignore, merge or replace existing metadata. This feature is to prevent ETLs accidentally overwriting metadata might have changed in the UI/Dashboard of their TriplyDB instance.
+
+The following options are available for this new feature in the `opts.existingMetadata` parameter:
+
+- `ignore`: no metadata will be changed even if no metadata is present for this dataset (this is the default value)
+- `merge`: only properties that have no value will be overwritten bij the provided metadata
+- `replace`: all existing metadata will be replaced, even if the provided metadata contains empty keys
+
+
+### [CLI] Reverse logic for creating error traces
+
+Before this release, running an ETL would always create an error trace file. It was possible to disable this behavior with CLI flag `--skip-error-trace`. Starting in this release, the error trace file is no longer created by default, and a newly added CLI flag `--create-error-trace` must now be specified in order ot create the error trace file.
+
+
+### Bug fixes
+
+The following bugs were fixed:
+
+- The number of synchronized services was not always reported correctly in CLI output.
+- A package we depend on introduced a breaking change causing a function not to be there anymore.
+
+
+
+## TriplyETL 3.0.3
+
+Release date: 2023-11-01
+
+
+## [Changed] Support for the NDE Dataset Register
+
+The code to submit datasets to the [NDE Dataset Register](https://datasetregister.netwerkdigitaalerfgoed.nl) has been moved to TriplyDB-JS. The way to publish a dataset now is to add an option to the `toTriplyDb()` function: `{ submitToNDEDatasetRegister: true }`.
+
+Example:
+
+```ts
+toTriplyDb({dataset: 'nde', opts: {submitToNDEDatasetRegister: true}})
+```
+
+
 
 ## TriplyETL 3.0.2
 
 Release date: 2023-10-23
+
 
 ### [Added] Static statement assertion
 
@@ -104,23 +172,29 @@ export default async function(): Promise<Etl> {
 }
 ```
 
-You can now assert so called "static triples": triples that are not related to the source extractors but should only be asserted once per ETL. This closes issue #216, a usage example is available in the merge request.
+You can now assert so called "static triples": triples that are not related to the source extractors but should only be asserted once per ETL.
 
-FIX
 
-There was an error in the ifElse middleware that caused ETL's to not use the falback else in certain situations.
+### Bug fixes
+
+There was an error in the [ifElse()](./control-structures.md#specify-multiple-conditions-ifelse) control structure, that caused ETLs to not use the fallback 'else' block in some situations.
+
+
 
 ## TriplyETL 3.0.1
 
 Release date: 2023-10-19
 
+
 ### [Enhanced] Source string validation
 
 The `addLiteral()` function can now validate string data that occurs in the Record. Such validation can be used in addition to validation in the Internal Store (graph comparison and SHACL validation). Look at the documentation of [`addLiteral()`](../assert/ratt/terms.md) for more information.
 
+
 ### [Enhanced] Synchronize specific services
 
 When publishing linked data to TriplyDB, it is now possible to synchronize one specific service. This is specifically useful in case an Acceptance and a Production service are used, and only the former should be synchronized. See the documentation for publishing to [remote data destinations](../publish/index.md#remote-data-destinations) for more information.
+
 
 ### [Fixed] Bug fixes
 
@@ -128,7 +202,6 @@ The following bugs have been fixed:
 
 - The progress bar would sometimes go over 100%.
 - the error report file (`etl.err`) would sometimes contain sentinel keys like `$sentinel-${MD5-HASH}`. These sentinel keys are used for internal bookkeeping in TriplyETL, and are no longer part of the Record.
-- The RML `map()` function could not be imported.
 - Some XSLT transformations failed on Windows, because of incorrect redirecting of error messages.
 
 
@@ -137,13 +210,6 @@ The following bugs have been fixed:
 
 Release date: 2023-10-12
 
-### [Added] Support for RML
-
-Support was added for the RDF Mapping Language (RML). This is an ETL configuration language that has gained traction in the linked data community over the last couple of years. See the following documentation pages for more information:
-
-- [RML Sources](../sources/rml.md)
-- [RML Transformations](../transform/rml.md)
-- [RML Assertions](../assert/rml.md)
 
 ### [Added] Support for XSLT
 
@@ -172,8 +238,11 @@ loadRdf(Source.file(XMLFile), {
       }),
 ```
 
+
 ### [Added] Support for the `SPARQL Select` and `SPARQL Ask` queries
+
 The extractors [fromCsv()](../extract/csv.md), [fromJson()](../extract/json.md), [fromTsv()](../extract/tsv.md) and [fromXml()](../extract/xml.md) now support [SPARQL Select](../sources/triplydb-queries.md#sparql-select-queries) queries.
+
 The extractors [fromJson()](../extract/json.md) and [fromXml()](../extract/xml.md) also support [SPARQL Ask](../sources/triplydb-queries.md#sparql-ask-queries) queries.
 
 The example below hows how to use a SPARQL ask query in the `fromJson()` extractor:
@@ -182,9 +251,10 @@ The example below hows how to use a SPARQL ask query in the `fromJson()` extract
 fromJson(Source.TriplyDb.query('account', 'query-name', { triplyDb: { url: 'https://api.triplydb.com' } }))
 ```
 
+
 ### [Enhanced] Simplified usage of 'nestedPairs()'
 
-The [nestedPairs()](../assert/ratt/statements.md#function-nestedpairs) middleware can be used without providing the subject node that connects the pairs to the object/predicate. This will automatically create a Skolem IRI for the subject:
+The [nestedPairs()](../assert/ratt/statements.md#nestedpairs) middleware can be used without providing the subject node that connects the pairs to the object/predicate. This will automatically create a Skolem IRI for the subject:
 
 ```ts
 nestedPairs(S, P, [a, sdo.Person])
@@ -213,7 +283,8 @@ product:1
       rdf:value 15 ].
 ```
 
-### [Changed] Automatic prefix handling in TriplyDB using [toRdf()](../publish/index.md#local-data-destinations)
+
+### [Changed] Automatic prefix handling in TriplyDB using 'toRdf()'
 
 Manually specified and standard prefixes are automatically added to TriplyDB when [toRdf()](../publish/index.md#local-data-destinations) is used. The middleware `uploadPrefixes()` is removed.
 
@@ -228,7 +299,8 @@ const prefixId = baseIri.concat('id/')
 const johnDoe = prefixId.concat('john-doe')
 ```
 
-### [Changed] New package `@triplyetl/vocabularies`
+
+### [Changed] New package '@triplyetl/vocabularies'
 
 The vocabularies and languages are no longer part of `@triplyetl/etl` package. A new module has been released: `@triplyetl/vocabularies`:
 
@@ -273,6 +345,7 @@ import { region, language } from '@triplyetl/vocabularies'
 const nl_BE = language.nl.addRegion(region.BE)
 ```
 
+
 ### [Changed] RDF serialization parsing with 'loadRdf()'
 
 The [loadRdf()](../extract/rdf.md) function is able to parse known RDF serializations (`Turtle`, `TriG`, `N-Triples`, `N-Quads`) provided as a string without specifying mimetype.
@@ -282,82 +355,108 @@ const data = Source.string('...')
 loadRdf(data)
 ```
 
+
 ### [Changed] Extended log and terminal output for ETL debugging
 The output of the logfile and terminal output is changed. It contains more information to help users debugging ETL's. The format of time representation is now `H:i:s.u` where:
 
-   -  **H**: 24-hour format of an hour with leading zeros	(00 through 23)
+   - **H**: 24-hour format of an hour with leading zeros	(00 through 23)
    - **i**: Minutes with leading zeros	(00 to 59)
    - **s**: Seconds with leading zeros (00 through 59)
    - **u**: Microseconds (example: 654321)
 
-### [Changed] [toRdf()](../publish/index.md#local-data-destinations) for account-based token access
+
+### [Changed] 'toRdf()' for account-based token access
+
 The [toRdf()](../publish/index.md#local-data-destinations) middleware now accepts `"me"` as account name based on the token.
 Below are some examples of this being used.
 
 ```ts
 toTriplyDb({account: "me", dataset: "myDataset"})
 ```
+
 ```ts
 loadRdf(Source.TriplyDb.rdf("me", datasetName))
 ```
+
 ```ts
 Destination.TriplyDb.rdf("me", datasetName)
 ```
 
 
+### [Changed] Relocation middleware: 'resetStore()' and 'randomKey()'
 
-### [Changed] Relocation middleware: `resetStore()` and `randomKey()`
 The `resetStore()` middleware is now moved from `ratt` to the `generic` namespace . The `randomKey()` middleware moved from `generic` to `ratt`.
 
-### [Changed] Record selection with `--offset` and `--limit`
+
+### [Changed] Record selection with '--offset' and '--limit'
+
  You can now use `--offset` and `--limit` instead of `--from-record-id` and `--head`, e.g. `LIMIT=1 OFFSET=8 npx etl`. The old arguments can still be used for backwards compatibility.
 
-### [Changed] Removal `mapQuads()` middleware
-The middleware `mapQuads()` is removed.
+
+### [Changed] Removal of 'mapQuads()'
+
+The `mapQuads()` function was removed.
+
 
 ### [Changed] Warning for old Node.JS versions
+
 If the users Node.JS version is older that the recommended version (currently \>=18.0.0) a warning is shown.
 
+
 ### [Changed] SHACL Validation Engine
+
 A SHACL Validation Engine improved performance.
 
+
 ### [Changed] Trace for large records
+
 A new flag now bypasses generating the trace for very large records: `---skip-error-trace`. Thus, no trace file is created.
 
+
 ### [Changed] Transition to in-memory engine Speedy
+
 [Comunica](https://comunica.dev) is no longer part of TriplyETL, the in-memory engine is now Triply's Speedy.
 
-### [Changed] Developer notes
 
-Developer notes:
- - Switched from `yarn` to `npm`.
- - Removes some unused packages and types.
- - Most @ts-ignore / @ts-expect-error derictives have been removed and fixed.
+### [Enhanced] Improvements to ETL logs
+
+The logging format was improved by including the following information:
+
+- the TriplyETL version
+- the Node.js version
+- the [DTAP](./maintenance.md#dtap-configuration) mode
+- the start date and time
+- the end date and time
+
+
+### [Enhanced] Prevent using multiple extractors
+
+TriplyETL only supports one [extractor](../extract/index.md) per ETL configuration object. In the past, it was possible to use multiple extractors, which would result in faulty behavior during ETL runs. Starting in this release, TriplyETL will emit an error when multiple extractors are used.
+
+
+### [Enhanced] Better error reporting for CSV, TSV, and XML sources.
+
+In previous releases, the extractor functions [fromCsv()](../extract/csv.md), [fromTsv()](../extract/tsv.md), and [fromXml()](../extract/xml.md) would not emit the file name in case an error occurred. This was specifically problematic when a large number of data source files were used. Starting in this release, the file name is included in error message.
+
+
+## [Enhanced] Default CRS for 'wkt.addPoint()'
+
+In previous releases, the Coordinate Reference System (CRS) was a required attribute for transformation function [wkt.addPoint()](../transform/ratt.md#wkt-addpoint). Starting in this release, the CRS argument has become optional. When not specified, the default CRS <http://www.opengis.net/def/crs/OGC/1.3/CRS84> is used.
+
+
+### [Enhanced] Handle conflicting TriplyDB instance specifications
+
+In previous releases, it was possible to introduce an ambiguity in specify the TriplyDB instance to publish data to. This was possible by (1) specifying a TriplyDB API Token in the environment (e.g. though an `.env` file), and (2) by configuring the `triplyDb` option in the [loadRdf()](../extract/rdf.md) function. Starting in this release, TriplyETL will emit an error if the TriplyDB instance in the API Token differs from the TriplyDB instance configured in the `triplyDb` option.
+
+
+### [Enhanced] More information for failing HTTP calls
+
+In previous releases, when a failing HTTP call resulted in an error message, only the body of that HTTP call would be included in the error message. Starting in this release, the HTTP status code of the failing HTTP call is included in the error message as well.
 
 
 ### Bug fixes
 
-This release includes the following bug fixes:
-
-- Report which file contains errors when multiple files are used in [fromCsv()](../extract/csv.md), [fromTsv()](../extract/tsv.md) and [fromXml()](../extract/xml.md)  middleware.
-
-- When a WKT point is created with the `addPoint()` function, and the CRS parameter is not specified, the CRS <http://www.opengis.net/def/crs/OGC/1.3/CRS84> is used.
-
-- We can use an API Token from the `.env` file and a TriplyDB instance URL in the function call (e.g. `loadRdf(Source.TriplyDb.rdf('test',{triplyDb:{url:'https://api.triplydb.com'}}))`). An error is thrown if the decoded token information conflicts with the provided arguments.
-
-- Communicate non-success HTTP status codes.
-
-- Adds better metadata in ETL logs:
-
- - TriplyETL version
- - Node.js version
- - DTAP mode
- - Start date/time
- - End date/time
-
-- Disable support for multiple [Extractors](../extract/index.md).
-
-- Fixes out-of-memory issue when using SHACL validation.
+This release fixes several out-of-memory bugs in the [SHACL validation function](../validate/index.md).
 
 
 
@@ -367,7 +466,7 @@ Release dates: 2023-06-17 through 2023-09-29
 
 ### Bug fixes
 
-The following bugs have been fixed:
+The following bugs were fixed:
 
 - Processing an Excel sheet with [fromXml()](../extract/xml.md) would sometimes consume too much memory.
 - Several installation issues on Windows have been resolved.
@@ -378,6 +477,7 @@ The following bugs have been fixed:
 ## TriplyETL 2.0.6
 
 Release date: 2023-06-07
+
 
 ### [Added] Support for the PREMIS vocabulary
 
@@ -391,13 +491,15 @@ import { premis } from '@triplyetl/etl/vocab'
 
 See the documentation on [external vocabulary declarations](./declarations.md#external-vocabularies) for more information.
 
+
 ### [Added] New debug function logMemory()
 
-A new debug function [logMemory()](./debug.md#function-logmemory) is added. This function prints an overview of the current memory usage of TriplyETL. This allows users to detect fluctuations in memory consumption inside their pipelines.
+A new debug function [logMemory()](./debug.md#logmemory) is added. This function prints an overview of the current memory usage of TriplyETL. This allows users to detect fluctuations in memory consumption inside their pipelines.
+
 
 ### [Added] Support for the 'ListIdentifiers' verb in the OAI-PMH extractor
 
-The `fromOai()` extractor already supported the `ListRecords` verb. This release adds support for the [ListIdentifiers](../extract/oai-pmh.md#verb-listidentifiers) verb as well. This new verb allows users to stream through the headers of all records in an OAI-PMH collection, without requiring the full record (i.e. body) to be retrieved.
+The [fromOai()](../extract/oai-pmh.md) extractor already supported the `ListRecords` verb. This release adds support for the [ListIdentifiers](../extract/oai-pmh.md#verb-listidentifiers) verb as well. This new verb allows users to stream through the headers of all records in an OAI-PMH collection, without requiring the full record (i.e. body) to be retrieved.
 
 
 
@@ -405,9 +507,10 @@ The `fromOai()` extractor already supported the `ListRecords` verb. This release
 
 Release date: 2023-05-25
 
+
 ### [Changed] New default engine for SPARQL Construct
 
-The default engine for evaluating SPARQL Construct queries (function [construct()](../enrich/sparql.md#construct)) has changed from Comunica to Speedy. Speedy is a new SPARQL engine that is developed by Triply. Comunica is an open source engine that is developed by the open source community. Since SPARQL is a standardized query language, this change should not cause a difference in behavior for your ETL pipelines.
+The default engine for evaluating SPARQL Construct queries (function [construct()](../enrich/sparql/construct.md)) has changed from Comunica to Speedy. Speedy is a new SPARQL engine that is developed by Triply. Comunica is an open source engine that is developed by the open source community. Since SPARQL is a standardized query language, this change should not cause a difference in behavior for your ETL pipelines.
 
 In the unexpected case where an ETL pipeline *is* negatively affected by this change, the old situation can be restored by explicitly configuring the Comunica engine:
 
@@ -419,13 +522,15 @@ construct(Source.TriplyDb.query('my-query'), { sparqlEngine: 'comunica' }),
 
 The benefit of switching to the Speedy engine is that this engine is expected to be faster for most queries. Overall, this change will therefore result in speed improvements for your TriplyETL pipelines.
 
+
 ### [Added] New CLI tool for comparing graphs
 
 The new CLI tool [compare](./cli.md#compare) allows graph comparison to be performed from the command-line. This uses the same algorithm that is used by the [compareGraphs()](../validate/graph-comparison.md) validation function.
 
+
 ### Bug fixes
 
-This release includes the following bug fixes:
+This release fixes the following bugs:
 
 - [fromXlsx()](../extract/xlsx.md) did not remove trailing whitespace in cell values.
 - When a SHACL result was printed, an incorrect message about a faulty SHACL model was shown.

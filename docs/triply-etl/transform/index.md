@@ -2,22 +2,22 @@
 
 # Transform
 
-The transform step makes changes to the Record:
+The transform step makes changes to the [record](../generic/record.md):
 
 ```mermaid
 graph LR
-  source -- 1. Extract --> record
+  sources -- 1. Extract --> record
   record -- 2. Transform --> record
   record -- 3. Assert --> ld
   ld -- 4. Enrich --> ld
   ld -- 5. Validate --> ld
-  ld -- 6. Publish --> tdb
+  ld -- 6. Publish --> destinations
 
   linkStyle 1 stroke:red,stroke-width:3px;
-  ld[Internal Store]
-  record[Record]
-  source[Data Sources]
-  tdb[(Triple Store)]
+  destinations[("D. Destinations\n(TriplyDB)")]
+  ld[C. Internal Store]
+  record[B. Record]
+  sources[A. Data Sources]
 ```
 
 If you do not have a stream of records yet, read the documentation for the [**Extract** step](../extract/index.md) first.
@@ -29,12 +29,12 @@ Once you have a stream of records, the following transformations are typically n
 - A single value needs to be split into multiple values (e.g., from `'apple, orange'` to `'apple'` and `'orange'`).
 - Values need to be cleaned because they are dirty in the source (e.g., from `'001 '` to `1`).
 
-TriplyETL supports the following transformation approaches:
+TriplyETL supports the following four transformation approaches:
 
-- 2A. [**RATT**](./ratt.md) transformations are a set of commonly used transformation functions that are developed and maintained by Triply.
-- 2B. [**TypeScript**](./typescript.md) can be used to write new customer transformations.
-- 2C. [**RML**](./rml.md) can be used to convert non-RDF data into RDF triples.
-- 2D. [**XSLT**](./xslt.md) used to transform XML data through the definition of transformation rules in XSLT stylesheets.
+- [**RATT**](./ratt.md) transformations are a set of commonly used transformation functions that are developed and maintained by Triply.
+- [**RML**](./rml.md) can be used to convert non-RDF data into RDF triples.
+- [**TypeScript**](./typescript.md) can be used to write new customer transformations.
+- [**XSLT**](./xslt.md) used to transform XML data through the definition of transformation rules in XSLT stylesheets.
 
 
 
@@ -42,4 +42,4 @@ TriplyETL supports the following transformation approaches:
 
 The Transform step results in a cleaned and enriched record. The following link documents how you can use the record to make linked data assertions:
 
--  [3. **Assert**](../assert/index.md) uses data from the Record to generate linked data in the Internal Store.
+- Step 3. [**Assert**](../assert/index.md): uses data from the record to make linked data assertions in the internal store.

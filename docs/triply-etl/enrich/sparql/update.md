@@ -1,46 +1,15 @@
 [TOC]
 
-# SPARQL
+# SPARQL Update
 
 SPARQL is a powerful query language that can be used to modify and enrich linked data in the Internal Store. With SPARQL, you can generate new linked data based on existing linked data, thereby enhancing the contents of the store.
 
-*Support for SPARQL Update is currently experimental. In the meantime, you can use [SHACL Rules](./shacl.md) to implement the Enrich Step of your pipeline.*
+*Support for SPARQL Update is currently experimental. In the meantime, you can use [SHACL Rules](../shacl.md) and [SPARQL Construct](./construct.md) to configure the enrichment step in production systems.*
 
-The functions for running SPARQL queries can be imported as follows:
-
-```ts
-import { construct, update } from '@triplyetl/etl/sparql'
-```
-
-
-
-## Construct
-
-SPARQL Construct queries can be used to enrich the data that is in the Internal Store.
-
-The following full TriplyETL script loads one triple into the Internal Store, and then uses a SPARQL Construct query to add a second triple:
+The function for using SPARQL Update can be imported as follows:
 
 ```ts
-import { logQuads } from '@triplyetl/etl/debug'
-import { Etl, loadRdf, Source } from '@triplyetl/etl/generic'
-import { construct } from '@triplyetl/etl/sparql'
-
-export default async function (): Promise<Etl> {
-  const etl = new Etl()
-  etl.use(
-    loadRdf(Source.string('<s><p><o>.')),
-    construct('construct { ?o ?p ?s. } where { ?s ?p ?o. }'),
-    logQuads(),
-  )
-  return etl
-}
-```
-
-This results in the following linked data:
-
-```turtle
-<s> <p> <o>.
-<o> <p> <s>.
+import { update } from '@triplyetl/etl/sparql'
 ```
 
 
@@ -66,7 +35,7 @@ insert data { <john> <knows> <mary>. }`),
 }
 ```
 
-Debug function [logQuads()](../generic/debug.md#function-logquads) prints the content of the internal store to standard output:
+Debug function [logQuads()](../../generic/debug.md#logquads) prints the content of the internal store to standard output:
 
 ```turtle
 base <https://triplydb.com/>
@@ -131,7 +100,7 @@ prefix sdo: <${prefix.sdo('').value}>
 delete data { <john> sdo:children <mary>. }`),
 ```
 
-You can use the debug function [logQuads()](../generic/debug.md#function-logquads) before and after this function call, to see the effects on the internal store.
+You can use the debug function [logQuads()](../../generic/debug.md#logquads) before and after this function call, to see the effects on the internal store.
 
 
 
@@ -288,7 +257,7 @@ In our example, we are using the following source data that records the age of a
 }
 ```
 
-In this example, the data source is in the form of [inline JSON](../sources/inline-json.md), but please note that any valid source format can be used:
+In this example, the data source is in the form of [inline JSON](../../sources/inline-json.md), but please note that any valid source format can be used:
 
 ```ts
 fromJson([{ age: 'twenty', id: '1' }]),
