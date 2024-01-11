@@ -61,10 +61,19 @@ The following options can be specified to configure the destination behavior:
   <dd>Whether to delete all graphs in the dataset before uploading any graphs from TriplyETL. Notice that this will also remove graphs that will not be re-uploaded by TriplyETL. The default value is <code>false</code>.</dd>
 </dl>
 
+Example:  
 The following code snippet publishes linked data to a TriplyDB dataset called 'my-dataset' and synchronizes only the 'acceptance' service for that dataset:
 
 ```ts
 toRdf(Destination.TriplyDb.rdf('my-dataset', {synchronizeServices: 'acceptance'})),
+```
+
+### Publishing datasets to the NDE Dataset Register 
+
+If you wat to publish a dataset to the NDE Dataset Register, you can do it by adding the `{submitToNDEDatasetRegister: true}` option to `toTriplyDB()` middleware.
+
+```ts
+toTriplyDb({dataset: 'nde', opts: {submitToNDEDatasetRegister: true}})
 ```
 
 ## Local data destinations
