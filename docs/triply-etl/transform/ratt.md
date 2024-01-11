@@ -330,7 +330,8 @@ triple(iri('https://example.com/id/person/johndoe'), a, sdo.Person),
 ```
 
 
-
+<!-- TODO add add literal validator documentation  
+-->
 ## addLiteral()
 
 Creates an new literal and adds it to the Record under the specified key.
@@ -353,6 +354,7 @@ This transformation is typically used when:
 - `content` A key that contains a string value, or a string specified with function [str()](../assert/ratt/terms.md#str).
 - `datatype` Optionally, a key that stores an IRI or a static IRI.
 - `languageTag` Optionally, a language tag from the [`lang`](../generic/declarations.md#language-declarations) object, or a key that stores such a language tag.
+- `validate` Optionally provide a single validator condition or an array of validator conditions that the literal `content` should hold to, will return a boolean and throw and error when a validator condition does not hold.
 - `key` A new key where the created literal is stored.
 
 ### See also
@@ -441,7 +443,44 @@ fromJson([{ name: 'London' }]),
 triple(iri(prefix.city, 'name'), skos.prefLabel, literal('name', lang['en-gb'])),
 ```
 
+### Example: Validate usage
 
+The following snippet asserts a triple of a person's email, with the email address being validated in the object position, and should throw an error when the record contains an ivalid email address:
+
+```ts
+fromJson([{ name: "John", email: 'john.appleseed@example.com' }, {name: 'NA', email: 'notAnEmail' } ]),
+addLiteral({
+  content: 'email',
+  validate: isEmail(),
+  key: '_email',
+}),
+triple(iri(prefix.person, 'name'), foaf.mbox, '_email'),
+```
+
+This results in the following error for the second record:
+
+```sh
+ ERROR (Record #2)  String "notAnEmail" is not an email address.
+```
+
+Notice that when using only correct email addresses:
+
+```ts
+fromJson([{ name: "John", email: 'john.appleseed@example.com' }, { name: "Lisa", email: 'lisa.appleseed@example.com' } ]),
+addLiteral({
+  content: 'email',
+  validate: isEmail(),
+  key: '_email',
+}),
+triple(iri(prefix.person, 'name'), foaf.mbox, '_email'),
+```
+
+It results in the following correct linked data assertion:
+
+```turtle
+person:John foaf:mbox "john.appleseed@example.com"
+person:Lisa foaf:mbox "lisa.appleseed@example.com"
+```
 
 ## addRandomIri()
 
