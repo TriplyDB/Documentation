@@ -201,7 +201,10 @@ fromJson([{
    alt4:  'The City That Never Sleeps',
 }]),
 objects(iri(prefix.city, 'name'), skos.altLabel,
-  ['alt1', 'alt2', 'alt3', 'alt4']
+  'alt1',
+  'alt2',
+  'alt3',
+  'alt4',
 ),
 ```
 
@@ -254,12 +257,12 @@ city:New%20York skos:altLabel
 is structurally similar to the following code snippet that uses `objects()`:
 
 ```ts
-objects(iri(prefix.city, 'name'), skos.altLabel, [
+objects(iri(prefix.city, 'name'), skos.altLabel,
   'alt1',
   'alt2',
   'alt3',
   'alt4',
-]),
+),
 ```
 
 
