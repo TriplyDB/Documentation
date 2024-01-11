@@ -353,7 +353,7 @@ This transformation is typically used when:
 
 - `content` A key that contains a string value, or a string specified with function [str()](../assert/ratt/terms.md#str).
 - `datatype` Optionally, a key that stores an IRI or a static IRI.
-- `languageTag` Optionally, a language tag from the [`lang`](../generic/declarations.md#language-declarations) object, or a key that stores such a language tag.
+- `language` Optionally, a language tag from the [`lang`](../generic/declarations.md#language-declarations) object, or a key that stores such a language tag.
 - `validate` Optionally provide a single validator condition or an array of validator conditions that the literal `content` should hold to, will return a boolean and throw and error when a validator condition does not hold.
 - `key` A new key where the created literal is stored.
 
@@ -424,7 +424,7 @@ The following snippet asserts a triple with a language-tagged string in the obje
 fromJson([{ name: 'London' }]),
 addLiteral({
   content: 'name',
-  languageTag: lang['en-gb'],
+  language: language.en,
   key: '_name',
 }),
 triple(iri(prefix.city, 'name'), skos.prefLabel, '_name'),
@@ -433,19 +433,19 @@ triple(iri(prefix.city, 'name'), skos.prefLabel, '_name'),
 This results in the following linked data assertion:
 
 ```turtle
-city:London skos:prefLabel 'London'@en-gb.
+city:London skos:prefLabel 'London'@en.
 ```
 
 Notice that the same linked data could have been asserted with the following use the the [literal()](../assert/ratt/terms.md#literal) assertion middleware:
 
 ```ts
 fromJson([{ name: 'London' }]),
-triple(iri(prefix.city, 'name'), skos.prefLabel, literal('name', lang['en-gb'])),
+triple(iri(prefix.city, 'name'), skos.prefLabel, literal('name', lang['en'])),
 ```
 
 ### Example: Validate usage
 
-The following snippet asserts a triple of a person's email, with the email address being validated in the object position, and should throw an error when the record contains an ivalid email address:
+The following snippet asserts a triple of a person's email, with the email address being validated in the object position, and should throw an error when the record contains an invalid email address:
 
 ```ts
 fromJson([{ name: "John", email: 'john.appleseed@example.com' }, {name: 'NA', email: 'notAnEmail' } ]),
@@ -459,7 +459,7 @@ triple(iri(prefix.person, 'name'), foaf.mbox, '_email'),
 
 This results in the following error for the second record:
 
-```sh
+```terminal
  ERROR (Record #2)  String "notAnEmail" is not an email address.
 ```
 
