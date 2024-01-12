@@ -28,7 +28,7 @@ Declaration functions and objects are found in the following two modules:
 
 ```ts
 import { declarePrefix } from '@triplyetl/etl/generic'
-import { prefix } from '@triplyetl/vocabularies'
+import { dbo } from '@triplyetl/vocabularies'
 ```
 
 
@@ -52,7 +52,7 @@ const base = declarePrefix('https://example.com/')
 Once an alias has been declared, future declarations can make use of that alias to extend it:
 
 ```ts
-const id = declarePrefix(base('id/'))
+const id = base.concat('id/')
 ```
 
 Notice that it is common practice to end every IRI prefix in a forward slash.
@@ -61,11 +61,11 @@ It is common to make declarations for the full IRI strategy in one place, with a
 
 ```ts
 const base = declarePrefix('https://example.com/')
-const id = declarePrefix(base('id/'))
+const id = base.concat('id/')
 const prefix = {
-  person: declarePrefix(id('person/')),
-  def: declarePrefix(base('model/def/')),
-  vehicle: declarePrefix(id('vehicle/')),
+  person: id.concat('person/'),
+  def: base.concat('model/def/'),
+  vehicle: id.concat('vehicle/'),
 }
 ```
 
@@ -91,13 +91,15 @@ In linked data, it is common to reuse existing vocabularies and datasets. Triply
 Popular namespaces are imported from the vocabulary library:
 
 ```ts
-import { prefix } from '@triplyetl/vocabularies'
+import { <vocabularyName> } from '@triplyetl/vocabularies'
 ```
 
 For example, you can use the prefix declaration for DBpedia resources as follows:
 
 ```ts
-iri(prefix.dbr, 'cityName')
+import { dbr } from '@triplyetl/vocabularies'
+
+iri(dbr, 'cityName')
 ```
 
 This may create IRIs like the following:
@@ -129,17 +131,17 @@ Vocabularies are collections of IRIs that have the same namespace. The namespace
 ```ts
 const base = declarePrefix('https://example.com/')
 const prefix = {
-  def: declarePrefix(base('model/def/')),
+  def: base.concat('model/def/'),
 }
 ```
 
 Individual terms in the vocabulary can be declared by using the declaration of the namespace as a function:
 
 ```ts
-prefix.def('Person')
-prefix.def('Vehicle')
-prefix.def('knows')
-prefix.def('owns')
+prefix.def.concat('Person')
+prefix.def.concat('Vehicle')
+prefix.def.concat('knows')
+prefix.def.concat('owns')
 ```
 
 These are equivalent to the following full IRIs:
@@ -155,10 +157,10 @@ It is best practice to place IRI terms that belong to the same vocabulary or nam
 
 ```ts
 const def = {
-  Person: prefix.def('Person'),
-  Vehicle: prefix.def('Vehicle'),
-  knows: prefix.def('knows'),
-  owns: prefix.def('owns'),
+  Person: prefix.def.concat('Person'),
+  Vehicle: prefix.def.concat('Vehicle'),
+  knows: prefix.def.concat('knows'),
+  owns: prefix.def.concat('owns'),
 }
 ```
 
@@ -265,9 +267,9 @@ The following example introduces constants for individual persons:
 
 ```ts
 const person = {
-  jane: prefix.person('Jane'),
-  john: prefix.person('John'),
-  mary: prefix.person('Mary'),
+  jane: prefix.person.concat('Jane'),
+  john: prefix.person.concat('John'),
+  mary: prefix.person.concat('Mary'),
 }
 ```
 
@@ -290,13 +292,13 @@ import { declarePrefix } from '@triplyetl/etl/generic'
 
 const id = declarePrefix('https://example.com/id/')
 const prefix = {
-  graph: declarePrefix(id('graph/')),
+  graph: id.concat('graph/'),
 }
 
 const graph = {
-  metadata: prefix.graph('metadata'),
-  model: prefix.graph('model'),
-  instances: prefix.graph('instances'),
+  metadata: prefix.graph.concat('metadata'),
+  model: prefix.graph.concat('model'),
+  instances: prefix.graph.concat('instances'),
 }
 ```
 

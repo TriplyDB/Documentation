@@ -54,14 +54,14 @@ The following example asserts three triples, and uses the `prefix` object to ins
 import { logQuads } from '@triplyetl/etl/debug'
 import { Etl } from '@triplyetl/etl/generic'
 import { update } from '@triplyetl/etl/sparql'
-import { prefix } from '@triplyetl/vocabularies'
+import { sdo } from '@triplyetl/vocabularies'
 
 export default async function (): Promise<Etl> {
   const etl = new Etl()
   etl.use(
     update(`
 base <https://triplydb.com/>
-prefix sdo: <${prefix.sdo('').value}>
+prefix sdo: <${sdo.$namespace}>
 insert data {
   <john>
     a sdo:Person;
@@ -96,7 +96,7 @@ The following function call removes the parent/child relationship assertion that
 
 ```ts
 update(`
-prefix sdo: <${prefix.sdo('').value}>
+prefix sdo: <${sdo.$namespace}>
 delete data { <john> sdo:children <mary>. }`),
 ```
 
@@ -126,7 +126,7 @@ The rule can be formalized as follows:
 import { logQuads } from '@triplyetl/etl/debug'
 import { Etl } from '@triplyetl/etl/generic'
 import { update } from '@triplyetl/etl/sparql'
-import { prefix } from '@triplyetl/vocabularies'
+import { sdo } from '@triplyetl/vocabularies'
 
 const baseIri = 'https://triplydb.com/'
 export default async function (): Promise<Etl> {
@@ -134,7 +134,7 @@ export default async function (): Promise<Etl> {
   etl.use(
     update(`
 base <${baseIri}>
-prefix sdo: <${prefix.sdo('').value}>
+prefix sdo: <${sdo.$namespace}>
 insert data {
   <john>
     a sdo:Person;
@@ -143,7 +143,7 @@ insert data {
 }`),
     update(`
 base <${baseIri}>
-prefix sdo: <${prefix.sdo('').value}>
+prefix sdo: <${sdo.$namespace}>
 delete { $person sdo:children ?child. }
 insert { $person a <Father>. }
 where {
