@@ -329,9 +329,6 @@ The following snippet uses assertion [iri()](../assert/ratt/terms.md#iri-functio
 triple(iri('https://example.com/id/person/johndoe'), a, sdo.Person),
 ```
 
-
-<!-- TODO add add literal validator documentation  
--->
 ## addLiteral()
 
 Creates an new literal and adds it to the Record under the specified key.
