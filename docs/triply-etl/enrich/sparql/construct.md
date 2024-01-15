@@ -44,3 +44,7 @@ This results in the following linked data:
 <s> <p> <o>.
 <o> <p> <s>.
 ```
+
+## Relation to standards
+
+This function is an implementation of the SPARQL Construct, for more information on the standard [see SPARQL Construct](https://www.w3.org/TR/sparql11-query/#construct).
