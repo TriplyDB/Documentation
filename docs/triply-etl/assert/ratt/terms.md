@@ -568,11 +568,11 @@ triple(iri(prefix.person, 'parent'), sdo.children, literals('children', xsd.stri
 
 ## str()
 
-Creates a static string value.
+Creates a `StaticString` value.
 
-RATT uses strings to denote keys in the record. This results in *dynamic values*: a value that is different for each record. Sometimes we want to specify a *static string* instead: a string that is the same for each record.
+RATT uses strings to denote keys in the record. The used string denotes a key that results in *dynamic values*: a value that is different for each record. Sometimes we want to specify a *static string* instead: a string that is the same for each record.
 
-With the `str()` function we indicate that a string should not be processed as a key, but should be processed as a regular (static) string value.
+With the `str()` function we indicate that a string **should not** be processed as a key, but should be processed as a regular (static) string value. This is usefull in case we want to provide a regular string to a middleware, and not a key that could relate to the record.
 
 
 ### Signature
@@ -602,6 +602,65 @@ If we want to assert the regular (static) string `'abc'`, we must use the `str()
 
 ```ts
 triple(iri(prefix.id, str('abc')), rdfs.label, str('abc')),
+```
+
+To illustrate the difference between a dynamic string `'key'` and the static string `str('key')` in a more complex usecase, imagine we use the following `ifElse` condition in our ETL:
+
+```ts
+  etl.use(
+
+    fromJson([
+      { parent: 'John', child: 'Jane', notchild: 'Joe' }, 
+      { parent: 'Lisa', child: 'James', notchild: 'Mike' } 
+      ]),
+
+    ifElse({
+      if: ctx => ctx.getString('parent') === 'John',
+      then: triple(iri(prefix.id, 'parent'), sdo.children, iri(prefix.id, 'child'))
+
+    }),
+    logQuads()
+  )
+```
+
+In the context of the first record `{ parent: 'John', child: 'Jane', notchild: 'Joe' }`, we grab the string in the key `parent` for string comparison to the string `'John'`. This value is dynamic and will be `'John'` for the first record (returning `true` for the string comparison) and `Lisa` for the second record (returning `false` for the string comparison).
+
+This results in the created triple:
+
+```nt
+<https://example.com/id/John> sdo:children <https://example.com/id/Jane>
+```
+
+If we would use `str()` in the `ifElse` for the string comparison, it would statically compare the two strings. This means that in the following example we compare string `'parent' === 'John'`, which will return `false` for each record.
+
+```ts
+  ifElse({
+      if: ctx => ctx.getString(str('parent')) === 'John',
+      then: triple(iri(prefix.id, 'parent'), sdo.children, iri(prefix.id, 'child'))
+```
+
+However, if we would change the static string from `str('parent')` to `str('John')`, the string comparison will always return `true` for each record:
+```ts
+  etl.use(
+
+    fromJson([
+      { parent: 'John', child: 'Jane', notchild: 'Joe' }, 
+      { parent: 'Lisa', child: 'James', notchild: 'Mike' } 
+      ]),
+
+    ifElse({
+      if: ctx => ctx.getString(str('John')) === 'John',
+      then: triple(iri(prefix.id, 'parent'), sdo.children, iri(prefix.id, 'child'))
+
+    }),
+    logQuads()
+  )
+```
+This results in the created triples:
+
+```nt
+<https://example.com/id/John> sdo:children <https://example.com/id/Jane>
+<https://example.com/id/Lisa> sdo:children <https://example.com/id/James>
 ```
 
 
