@@ -527,3 +527,73 @@ etl.run(
  ),
 )
 ```
+
+## Skipping remaining functions (`skipRest()`)
+
+The `skipRest()` function allows us to stop the execution of any subsequent functions declared within the same code block where the `skipRest()` function is located. When you provide a `key` argument, `skipRest()` will skip over any following functions if the specified key is found in the record. Whenever there is no `key` argument specified, any functions after `skipRest()` will not be executed.
+
+### Parameters
+- `key` The optional key parameter value is compared against the keys in the record, if present in the record the remaining functions will not be executed.
+
+**Example 1**: 
+The following code snippet will stop executing any function after `skipRest()`, because no `key` is specified:
+```ts
+  fromJson([
+    { id: '123', first: 'John', last: 'Doe' },
+    { id: '456', first: 'Jane', last: 'Smith' },
+  ]),
+  addIri({
+    content: 'id',
+    key: '_id',
+    prefix: prefix.person,
+  }),
+  triple('_id', foaf.lastName, 'last'),
+
+  skipRest(),
+
+  triple('_id', foaf.firstName, 'first')
+
+```
+Since `skipRest()` is declared before `triple('_id', foaf.firstName, 'first')`, the following assertion is not made: 
+```ts
+  triple('_id', foaf.firstName, 'first') 
+```
+
+
+
+**Example 2**:
+ `whenForEach` with a specified key for `skipRest()`:
+```ts
+  fromJson(
+    { Person: 
+      [
+        { firstName: 'John', lastName: 'Doe' }, 
+        { firstName: 'Tom', last: 'Smith' }, 
+        { firstName: 'Lisa', lastName: 'Kennedy' }
+      ] 
+    }
+  ),
+  whenForEach("Person", 
+    skipRest('last'),
+
+    addIri({
+      content: 'firstName',
+      key: '_firstName',
+      prefix: prefix.person
+    }),
+    triple('_firstName', foaf.firstName, 'firstName'),
+    triple('_firstName', foaf.lastName, 'lastName')),
+
+```
+ As a result, only the following triples will be asserted:
+
+```nt
+<https://example.com/person/John> <http://xmlns.com/foaf/0.1/firstName> "John";
+                                  <http://xmlns.com/foaf/0.1/lastName> "Doe".
+
+<https://example.com/person/Lisa> <http://xmlns.com/foaf/0.1/firstName> "Lisa";
+                                  <http://xmlns.com/foaf/0.1/lastName> "Kennedy"
+
+```
+
+Note that the record for `"Tom Smith"` was skipped, and no triples were asserted! This because the `key` `'last'` was present in that record, and due to the usage of `skipRest('last')`, all functions after `skipRest()` will not be executed.
