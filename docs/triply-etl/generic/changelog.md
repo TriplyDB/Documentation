@@ -20,7 +20,7 @@ Function `addRandomIri()` does not add anything beyond `addSkolemIri()`. Random 
 
 ## [Enhanced] Improved SHACL report.
 
- When a SHACL shape is used to validate data does by itself not conform to the SHACL-SHACL shape, the report of that non-conforming shape is now printed.
+When a SHACL shape is used to validate data does by itself not conform to the SHACL-SHACL shape, the report of that non-conforming shape is now printed.
 
 ## [Enhanced] Improved `objects()` function
 
@@ -30,14 +30,62 @@ The `objects()` middleware now requires a minimum of 2 objects, deviating from i
 
 RML `map()` middleware now allows a string Source and a string primitive as input.
 
+## [Enhanced] Static vocabularies
+
+With the latest update, TriplyETL vocabularies are now represented as `Vocabulary` objects, replacing the previous usage of objects with the type `IRI`. This change may necessitate adjustments to existing ETLs that utilize static vocabularies, such as `aat`. In this case, the vocabulary would need to be updated to `aat.toIri()` to ensure compatibility with the correct type.
+
+## [Enhanced] NPM packages
+
+All NPM packages are up to date with their latest version.
+
+## [Fixed] Base IRI when using `loadRdf()`
+
+There were some inconsistency between the expected base IRI. For example, the following snippet:
+
+```ts
+import { logQuads } from '@triplyetl/etl/debug'
+import { Etl, loadRdf, Source } from '@triplyetl/etl/generic'
+
+export default async function (): Promise<Etl> {
+  const etl = new Etl()
+  etl.use(
+    loadRdf(Source.string('<s><p><o>.')),
+    logQuads(),
+  )
+  return etl
+}
+```
+
+would result in:
+
+```ttl
+<https://triplydb.com/graph/default> {
+<https://triplydb.com/graph/s> <https://triplydb.com/graph/p> <https://triplydb.com/graph/o>
+}
+```
+
+rather than:
+
+```ttl
+<https://triplydb.com/graph/default> {
+<https://triplydb.com/s> <https://triplydb.com/p> <https://triplydb.com/o>
+}
+```
+
+This issue has been fixed.
+
 
 ## TriplyETL 3.0.20
 
 Release date: 2024-01-04
 
-###  [Enhanced] Function etl.copySource() accepts the same destination format as toTriplyDB(), so that the same destination does not need to be specified twice.
+###  [Enhanced] Improved `copySource()` function
 
-###  [Enhanced] Prefixes are no longer uploaded by default, only explicit prefixes that are defined when constructing an ETL with `new Etl({ prefixes })`.
+Function etl.copySource() accepts the same destination format as toTriplyDB(), so that the same destination does not need to be specified twice.
+
+###  [Enhanced] Prefix uploading
+
+Prefixes are no longer uploaded by default, only explicit prefixes that are defined when constructing an ETL with `new Etl({ prefixes })`.
 
 
 
