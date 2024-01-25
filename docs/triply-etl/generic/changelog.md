@@ -2,9 +2,42 @@
 
 # Changelog
 
-The current version of TriplyETL is **3.0.18**
+The current version of TriplyETL is **3.1.0**
 
 You can use this changelog to perform a safe update from an older version of TriplyETL to a newer one. See the documentation for [Upgrading TriplyETL repositories](./maintenance.md#update-the-triplyetl-dependency) for the advised approach, and how the changelog factors into that.
+
+
+
+## TriplyETL 3.1.0
+
+Release date: 2024-01-15
+
+## [Enhanced] Renamed `fromShapeFile()` to `fromShapefile()`
+
+## [Deprecated] Removed `addRandomIri()` function. 
+
+Function `addRandomIri()` does not add anything beyond `addSkolemIri()`. Random IRIs should be skolem IRIs that can be readily replaced by blank nodes.
+
+## [Enhanced] Improved SHACL report.
+
+ When a SHACL shape is used to validate data does by itself not conform to the SHACL-SHACL shape, the report of that non-conforming shape is now printed.
+
+## [Enhanced] Improved `objects()` function
+
+The `objects()` middleware now requires a minimum of 2 objects, deviating from its previous behavior, which was limited to functionality similar to the `triple()` function.
+
+## [Enhanced] RML middleware
+
+RML `map()` middleware now allows a string Source and a string primitive as input.
+
+
+## TriplyETL 3.0.20
+
+Release date: 2024-01-04
+
+###  [Enhanced] Function etl.copySource() accepts the same destination format as toTriplyDB(), so that the same destination does not need to be specified twice.
+
+###  [Enhanced] Prefixes are no longer uploaded by default, only explicit prefixes that are defined when constructing an ETL with `new Etl({ prefixes })`.
 
 
 
