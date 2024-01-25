@@ -219,5 +219,5 @@ npm i @triplyetl/etl
 Open one of the TypeScript files in your software project. When you add the following line to the top of your file, it should be recognized by your TypeScript editor:
 
 ```ts
-import { sdo } from '@triplyetl/etl/vocab'
+import { sdo } from '@triplyetl/vocabularies'
 ```

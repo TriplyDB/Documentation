@@ -232,7 +232,7 @@ import { logQuads } from '@triplyetl/etl/debug'
 import { Etl, Source, declarePrefix, fromJson } from '@triplyetl/etl/generic'
 import { iri, pairs } from '@triplyetl/etl/ratt'
 import { executeRules } from '@triplyetl/etl/shacl'
-import { a, foaf } from '@triplyetl/etl/vocab'
+import { a, foaf } from '@triplyetl/vocabularies'
 
 const id = declarePrefix('https://triplydb.com/')
 

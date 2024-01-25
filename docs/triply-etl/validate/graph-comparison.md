@@ -124,7 +124,7 @@ By completing the 4 steps, we end up with the following full TriplyETL script th
 ```ts
 import { _switch, compareGraphs, Etl, fromJson, Source, when } from '@triplyetl/etl/generic'
 import { addSkolemIri, triple } from '@triplyetl/etl/ratt'
-import { sdo } from '@triplyetl/etl/vocab'
+import { sdo } from '@triplyetl/vocabularies'
 
 export default async function (): Promise<Etl> {
   const etl = new Etl()

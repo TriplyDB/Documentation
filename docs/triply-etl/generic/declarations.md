@@ -53,7 +53,7 @@ Declaration objects are found in the following modules:
 
 ```ts
 import { Iri } from '@triplyetl/etl/generic'
-import { sdo, owl, sh, skos } from '@triplyetl/etl/vocab'
+import { sdo, owl, sh, skos } from '@triplyetl/vocabularies'
 ```
 
 
@@ -179,7 +179,7 @@ In linked data, it is common to reuse existing vocabularies and datasets. Triply
 Popular namespaces are imported from the vocabulary library:
 
 ```ts
-import { prefix } from '@triplyetl/etl/vocab'
+import { prefix } from '@triplyetl/vocabularies'
 ```
 
 For example, you can use the prefix declaration for DBpedia resources as follows:
@@ -427,7 +427,7 @@ In linked data, it is common to reuse existing vocabularies. Popular vocabularie
 The following example imports three vocabularies (FOAF, OWL, PREMIS):
 
 ```ts
-import { foaf, owl, premis } from '@triplyetl/etl/vocab'
+import { foaf, owl, premis } from '@triplyetl/vocabularies'
 ```
 
 This allows you to make the following statement assertion:
@@ -466,7 +466,7 @@ The natural language tags follow a syntax that is standardized in [RFC 5646](htt
 TriplyETL includes declarations for these natural language tags. They can be imported as follows:
 
 ```ts
-import { language } from '@triplyetl/etl/vocab'
+import { language } from '@triplyetl/vocabularies'
 ```
 
 Language tag declaration can be used in [literal()](../assert/ratt/terms.md) term assertions:
@@ -498,7 +498,7 @@ Shorthands are convenient names that stand for commonly used IRIs. There is one 
 The standardized linked data syntax for Turtle, TriG, and SPARQL allow the shorthand `a` to be used to stand for the `rdf:type` property. TriplyETL supports this standard shorthand, which can be imported from the vocabulary library:
 
 ```ts
-import { a } from '@triplyetl/etl/vocab'
+import { a } from '@triplyetl/vocabularies'
 ```
 
 In the standardized linked data syntax for Turtle, TriG and SPARQL, this shorthand can only be used in the predicate position. This restriction is not enforced in TriplyETL, where the `a` shorthand can be used in the subject, predicate, object, and even graph position.
@@ -527,7 +527,7 @@ TriplyETL allows the introduction of arbitrary, user-defined shorthands. User-de
 The following code snippet declares `is_a` as a user-defined shorthand for the `rdfs:subClassOf` property (which is the subsumption relation in linked data):
 
 ```ts
-import { foaf, rdfs } from '@triplyetl/etl/vocab'
+import { foaf, rdfs } from '@triplyetl/vocabularies'
 const is_a = rdfs.subClassOf
 ```
 
@@ -550,7 +550,7 @@ foaf:Person rdfs:subClassOf foaf:Agent.
 TriplyETL includes declarations for geospatial coordinate reference systems. These are identified by EPSG codes, and can imported as follows:
 
 ```ts
-import { epsg } from '@triplyetl/etl/vocab'
+import { epsg } from '@triplyetl/vocabularies'
 ```
 
 EPSG codes can be used in geospatial transformation functions like [geojsonToWkt()](../transform/ratt.md#geojsontowkt):

@@ -319,14 +319,14 @@ import * as vocab from "@triplyetl/vocabularies"
 Some vocabularies are too large to include, but they can still be used like this:
 
 ```ts
-import { aat } from '@triplyetl/etl/vocab'
+import { aat } from '@triplyetl/vocabularies'
 const moustache = aat.concat('300379271')
 ```
 
 or
 
 ```ts
-import { aat } from '@triplyetl/etl/vocab'
+import { aat } from '@triplyetl/vocabularies'
 addIri({prefix: aat, content: str('300379271'), key: 'moustache'})
 ```
 
@@ -486,7 +486,7 @@ Support was added for the PREMIS 3.0.0 vocabulary. This vocabulary is published 
 The vocabulary can be imported from the 'vocab' module:
 
 ```ts
-import { premis } from '@triplyetl/etl/vocab'
+import { premis } from '@triplyetl/vocabularies'
 ```
 
 See the documentation on [external vocabulary declarations](./declarations.md#external-vocabularies) for more information.
