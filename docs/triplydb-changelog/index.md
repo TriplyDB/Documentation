@@ -6,7 +6,7 @@ path: "/docs/triplydb-changelog"
 [TOC]
 
 
-## 24.01.1 {#24.01.0}
+## 24.01.0 {#24.01.0}
 
 **Features**
 - `#8502` [SPARQL IDE] Add confirmation mechanisms in the browser to avoid the browser rendering too much information. This avoids issues where the browser is rendered unresponsive
