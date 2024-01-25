@@ -6,6 +6,22 @@ path: "/docs/triplydb-changelog"
 [TOC]
 
 
+## 24.01.1 {#24.01.0}
+
+**Features**
+- `#8502` [SPARQL IDE] Add confirmation mechanisms in the browser to avoid the browser rendering too much information. This avoids issues where the browser is rendered unresponsive
+
+
+**Issues fixed**
+
+- `#8584` Insufficient request validation using the saved-query API
+- `#8092` Dataset metadata may report wrong number of statements for atypical uploads
+- `#8364` Uploads with combinations of atypical invalid IRIs may result in an error
+- `#8697` [SPARQL IDE] Changing the network visualization may result in an client-side error
+- `#8588` Saved queries with an LD-Frame always show up as modified and in draft state
+
+
+
 ## 23.12.1 {#23.12.1}
 
 **Features**
