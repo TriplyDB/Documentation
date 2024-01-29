@@ -6,15 +6,52 @@ The current version of TriplyETL is **3.1.0**
 
 You can use this changelog to perform a safe update from an older version of TriplyETL to a newer one. See the documentation for [Upgrading TriplyETL repositories](./maintenance.md#update-the-triplyetl-dependency) for the advised approach, and how the changelog factors into that.
 
+## TriplyETL 4.0.0
 
+Release date: 2024-??-??
 
-## TriplyETL 3.1.0
+### [Changed] IRI-related middlewares no longer use skolem URLs
 
-Release date: 2024-01-15
+The following middlewares: `addHashedIri()`, `addIri()`, `addRandomIri()`, would no longer allow users to create URLs that have pathnames start with "/.well-known/genid/", since they would be consideres skolemised URLs.
 
-## [Enhanced] Renamed `fromShapeFile()` to `fromShapefile()`
+### [Changed] `fromShapeFile()` is now called `fromShapefile()`
 
-## [Deprecated] Removed `addRandomIri()` function. 
+The format is called ESRI Shapefile, hence our extractor function's name had to be changed from `fromShapeFile()` to `fromShapefile()`.
+
+### [Removed] Function `addRandomIri()` 
+
+Since function `addRandomIri()` does not add anything beyond `addSkolemIri()`, the function has been removed from the TriplyETL library. Random IRIs should be skolem IRIs that can be readily replaced by blank nodes. 
+
+### [Added] New variables added to ETL
+
+New flag has been introduced when constructing an ETL: 
+
+```ts
+  /**
+   * Timeout ETL after set duration in milliseconds
+   */
+  timeout: number;
+
+  /**
+   * If set to TRUE, the ETL will do a hard exit, preventing uploads to TDB on timeouts
+   */
+  exitOnTimeout: boolean;
+```
+
+which can be set as following:
+
+```ts
+ const etl = new Etl({timeout: 1000, exitOnTimeout: true})
+```
+This will cause a hard exit when a timeout occurs and nothing will be executed after this timeout.
+
+## TriplyETL 3.1.0 && 3.1.1
+
+Release date: 2024-01-15 && 2024-01-17
+
+## [Deprecated] Deprecated `fromShapeFile()` for `fromShapefile()`
+
+## [Deprecated] Deprecated `addRandomIri()` function. 
 
 Function `addRandomIri()` does not add anything beyond `addSkolemIri()`. Random IRIs should be skolem IRIs that can be readily replaced by blank nodes.
 
@@ -73,6 +110,38 @@ rather than:
 ```
 
 This issue has been fixed.
+
+### [Fixed] String encoding for IRIs
+
+It is now possible to check whether a value of a key used to create an IRI contains valid characters. 
+A previous warning incorrectly flagged a space (' ') as an invalid character in the IRI, but that has been taken care of that. Now, when you run the script, you won't encounter the misleading warning, providing a more accurate and hassle-free execution. 
+
+In this case, [1] is resulting in [2] instead of invalid [3]:
+
+```
+[1] a b
+[2] http://ex.com/a%20b
+[3] http://ex.com/ a b
+```
+ 
+As well as [4] being encoded as [5]:
+
+```
+[4] a&b
+[5] a&amp;b
+```
+
+Or [6] can be legitimately encoded in CSV using [7]:
+```
+[6] a,b
+[7] "a,b"
+```
+
+### [Fixed] New datatype added to `addPoint()` middleware
+
+Datatype `wktLiteral` has been added to the `addPoint()` middleware.
+
+
 
 
 ## TriplyETL 3.0.20
