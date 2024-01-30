@@ -49,33 +49,33 @@ This will cause a hard exit when a timeout occurs and nothing will be executed a
 
 Release date: 2024-01-15 && 2024-01-17
 
-## [Deprecated] Deprecated `fromShapeFile()` for `fromShapefile()`
+### [Deprecated] Deprecated `fromShapeFile()` for `fromShapefile()`
 
-## [Deprecated] Deprecated `addRandomIri()` function. 
+### [Deprecated] Deprecated `addRandomIri()` function. 
 
 Function `addRandomIri()` does not add anything beyond `addSkolemIri()`. Random IRIs should be skolem IRIs that can be readily replaced by blank nodes.
 
-## [Enhanced] Improved SHACL report.
+### [Enhanced] Improved SHACL report.
 
 When a SHACL shape is used to validate data does by itself not conform to the SHACL-SHACL shape, the report of that non-conforming shape is now printed.
 
-## [Enhanced] Improved `objects()` function
+### [Enhanced] Improved `objects()` function
 
 The `objects()` middleware now requires a minimum of 2 objects, deviating from its previous behavior, which was limited to functionality similar to the `triple()` function.
 
-## [Enhanced] RML middleware
+### [Enhanced] RML middleware
 
 RML `map()` middleware now allows a string Source and a string primitive as input.
 
-## [Enhanced] Static vocabularies
+### [Enhanced] Static vocabularies
 
 With the latest update, TriplyETL vocabularies are now represented as `Vocabulary` objects, replacing the previous usage of objects with the type `IRI`. This change may necessitate adjustments to existing ETLs that utilize static vocabularies, such as `aat`. In this case, the vocabulary would need to be updated to `aat.toIri()` to ensure compatibility with the correct type.
 
-## [Enhanced] NPM packages
+### [Enhanced] NPM packages
 
 All NPM packages are up to date with their latest version.
 
-## [Fixed] Base IRI when using `loadRdf()`
+### [Fixed] Base IRI when using `loadRdf()`
 
 There were some inconsistency between the expected base IRI. For example, the following snippet:
 
