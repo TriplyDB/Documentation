@@ -237,7 +237,7 @@ graph LR
 
 ### Maintenance impact
 
-Every use of `objects()` can be replaced by multiple uses of the [triple()](#triple) assertion function. However, doing so requires the subject and predicate terms to be repeated for each use of `triple()`. This is why the use of `objects()` results in configuration that is shorter and easier to maintain.
+Every use of `objects()` can be replaced by multiple uses of the [triple()](#triple) assertion function. However, doing so requires the subject and predicate terms to be repeated for each use of `triple()`. This is why the use of `objects()` results in configuration that is shorter and easier to maintain. With the release of 4.0.0 version, it is no longer allowed to have less than 2 objects, otherwise refer to transformation [triple()](#triple).
 
 
 ### Relation to standards

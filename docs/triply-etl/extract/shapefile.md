@@ -25,7 +25,7 @@ fromShapefile(Source.file('example.shp'))
 The following code snippet extracts records from a Shapefile that is stored as a TriplyDB Asset:
 
 ```ts
-fromShapeFile(
+fromShapefile(
   Source.TriplyDb.asset(
     'some-account',
     'some-dataset',

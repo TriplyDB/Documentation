@@ -4,7 +4,11 @@
 
 TriplyETL includes out-of-the-box support for a large number of external vocabularies, enumerated in the table below. If you miss an external vocabulary in that table, then let us know via: <mailto:support@triply.cc>
 
+
+With the latest update, TriplyETL vocabularies are now represented as `Vocabulary` objects, replacing the previous usage of objects with the type `IRI`. This change may necessitate adjustments to existing ETLs that utilize static vocabularies, such as `aat`. In this case, the vocabulary would need to be updated to `aat.toIri()` to ensure compatibility with the correct type.
+
 See the [external vocabularies](./declarations.md#external-vocabularies) section for more information on how to use external vocabularies in ETL configuration.
+
 
 The following table lists the currently supported vocabularies:
 
