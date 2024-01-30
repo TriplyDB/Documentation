@@ -2,9 +2,159 @@
 
 # Changelog
 
-The current version of TriplyETL is **3.0.18**
+The current version of TriplyETL is **3.1.0**
 
 You can use this changelog to perform a safe update from an older version of TriplyETL to a newer one. See the documentation for [Upgrading TriplyETL repositories](./maintenance.md#update-the-triplyetl-dependency) for the advised approach, and how the changelog factors into that.
+
+## TriplyETL 4.0.0
+
+Release date: 2024-01-29
+
+### [Changed] IRI-related middlewares no longer use skolem URLs
+
+The following middlewares: `addHashedIri()`, `addIri()`, `addRandomIri()`, would no longer allow users to create URLs that have pathnames start with "/.well-known/genid/", since they would be consideres skolemised URLs.
+
+### [Changed] `fromShapeFile()` is now called `fromShapefile()`
+
+The format is called ESRI Shapefile, hence our extractor function's name had to be changed from `fromShapeFile()` to `fromShapefile()`.
+
+### [Removed] Function `addRandomIri()` 
+
+Since function `addRandomIri()` does not add anything beyond `addSkolemIri()`, the function has been removed from the TriplyETL library. Random IRIs should be skolem IRIs that can be readily replaced by blank nodes. 
+
+### [Added] New variables added to ETL
+
+New flag has been introduced when constructing an ETL: 
+
+```ts
+  /**
+   * Timeout ETL after set duration in milliseconds
+   */
+  timeout: number;
+
+  /**
+   * If set to TRUE, the ETL will do a hard exit, preventing uploads to TDB on timeouts
+   */
+  exitOnTimeout: boolean;
+```
+
+which can be set as following:
+
+```ts
+ const etl = new Etl({timeout: 1000, exitOnTimeout: true})
+```
+This will cause a hard exit when a timeout occurs and nothing will be executed after this timeout.
+
+## TriplyETL 3.1.0 && 3.1.1
+
+Release date: 2024-01-15 && 2024-01-17
+
+## [Deprecated] Deprecated `fromShapeFile()` for `fromShapefile()`
+
+## [Deprecated] Deprecated `addRandomIri()` function. 
+
+Function `addRandomIri()` does not add anything beyond `addSkolemIri()`. Random IRIs should be skolem IRIs that can be readily replaced by blank nodes.
+
+## [Enhanced] Improved SHACL report.
+
+When a SHACL shape is used to validate data does by itself not conform to the SHACL-SHACL shape, the report of that non-conforming shape is now printed.
+
+## [Enhanced] Improved `objects()` function
+
+The `objects()` middleware now requires a minimum of 2 objects, deviating from its previous behavior, which was limited to functionality similar to the `triple()` function.
+
+## [Enhanced] RML middleware
+
+RML `map()` middleware now allows a string Source and a string primitive as input.
+
+## [Enhanced] Static vocabularies
+
+With the latest update, TriplyETL vocabularies are now represented as `Vocabulary` objects, replacing the previous usage of objects with the type `IRI`. This change may necessitate adjustments to existing ETLs that utilize static vocabularies, such as `aat`. In this case, the vocabulary would need to be updated to `aat.toIri()` to ensure compatibility with the correct type.
+
+## [Enhanced] NPM packages
+
+All NPM packages are up to date with their latest version.
+
+## [Fixed] Base IRI when using `loadRdf()`
+
+There were some inconsistency between the expected base IRI. For example, the following snippet:
+
+```ts
+import { logQuads } from '@triplyetl/etl/debug'
+import { Etl, loadRdf, Source } from '@triplyetl/etl/generic'
+
+export default async function (): Promise<Etl> {
+  const etl = new Etl()
+  etl.use(
+    loadRdf(Source.string('<s><p><o>.')),
+    logQuads(),
+  )
+  return etl
+}
+```
+
+would result in:
+
+```ttl
+<https://triplydb.com/graph/default> {
+<https://triplydb.com/graph/s> <https://triplydb.com/graph/p> <https://triplydb.com/graph/o>
+}
+```
+
+rather than:
+
+```ttl
+<https://triplydb.com/graph/default> {
+<https://triplydb.com/s> <https://triplydb.com/p> <https://triplydb.com/o>
+}
+```
+
+This issue has been fixed.
+
+### [Fixed] String encoding for IRIs
+
+It is now possible to check whether a value of a key used to create an IRI contains valid characters. 
+A previous warning incorrectly flagged a space (' ') as an invalid character in the IRI, but that has been taken care of that. Now, when you run the script, you won't encounter the misleading warning, providing a more accurate and hassle-free execution. 
+
+In this case, [1] is resulting in [2] instead of invalid [3]:
+
+```
+[1] a b
+[2] http://ex.com/a%20b
+[3] http://ex.com/ a b
+```
+ 
+As well as [4] being encoded as [5]:
+
+```
+[4] a&b
+[5] a&amp;b
+```
+
+Or [6] can be legitimately encoded in CSV using [7]:
+```
+[6] a,b
+[7] "a,b"
+```
+
+### [Fixed] New datatype added to `addPoint()` middleware
+
+Datatype `wktLiteral` has been added to the `addPoint()` middleware.
+
+
+
+
+## TriplyETL 3.0.20
+
+Release date: 2024-01-04
+
+###  [Enhanced] Improved `copySource()` function
+
+Function etl.copySource() accepts the same destination format as toTriplyDB(), so that the same destination does not need to be specified twice.
+
+###  [Enhanced] Prefix uploading
+
+Prefixes are no longer uploaded by default, only explicit prefixes that are defined when constructing an ETL with `new Etl({ prefixes })`.
 
 
 

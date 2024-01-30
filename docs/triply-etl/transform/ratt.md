@@ -70,6 +70,7 @@ This function is used under the following circumstances:
 1. Something must be identified with an IRI.
 2. The thing that must be identified does not have a readily available identifier.
 3. The thing that must be identified does have properties whose combination of values is unique, and can therefore act as a composite identifier. This is called a *composite key* in database theory.
+4. The composed URL is not allowed to be skolemised anymore, e.g. the `prefix` cannot be an IRI where the pathname starts with `/.well-known/genid/`. For this purpose, use transformation [addskolemiri()](#addskolemiri) instead.
 
 Benefits:
 
@@ -260,6 +261,7 @@ addIri({ prefix, content, key })
 This transformation can be used in the following two ways:
 1. By using an IRI prefix and a local name.
 2. By using a full absolute IRI.
+3. The composed URL is not allowed to be skolemised anymore, e.g. the `prefix` cannot be an IRI where the pathname starts with `/.well-known/genid/`. For this purpose, use transformation [addskolemiri()](#addskolemiri) instead.
 
 
 ### See also
@@ -485,38 +487,7 @@ Creates an IRI based on the specified IRI prefix and a universally unique random
 
 ### When to use?
 
-This function is used under the following circumstances:
-
-1. You want to identify something with an IRI.
-2. The thing that you want to identify does not have a readily available identifier. If an identifier is available, use transformation [addIri()](#addiri) instead.
-3. The thing that you want to identify does not have unique properties in the source data, or it is too difficult or too expensive to specify these properties. If unique properties are available, use transformation [addHashedIri()](#addhashediri) instead.
-
-This function has the advantage that, unlike transformation [addHashedIri()](#addhashediri), no identifying criteria need to be specified.
-
-This function has the disadvantage that, unlike transformation [addHashedIri()](#addhashediri), running the same ETL twice over the same source data results in different IRIs.
-
-### Parameters
-
-- `prefix` An IRI or a key that contains an IRI.
-- `key` A new key where the created IRI is stored.
-
-### Example
-
-The following snippet creates a triple with a subject that that is a random IRI:
-
-```ts
-addRandomIri({
-  prefix: prefix.id,
-  key: 'subject',
-}),
-triple('subject', sdo.dateCreated, literal('date', xsd.date)),
-```
-
-This makes the following assertion in linked data:
-
-```turtle
-id:acb3ea010fe748bfa73a2ee2b65bef65 sdo:dateCreated '2000-12-30'^^xsd:date.
-```
+This function has been removed from the TriplyETL library. See next section to find information on which tranformation to use instead.
 
 ### See also
 
