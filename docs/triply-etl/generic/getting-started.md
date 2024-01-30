@@ -56,15 +56,48 @@ git config --global user.name "Ada Lovelace"</pre>
       <dd>Most Linux versions come with a preinstalled terminal application. For example, on Ubuntu the <a href="https://help.gnome.org/users/gnome-terminal/stable/" target="_blank">GNOME Terminal application</a> is preinstalled.</dd>
     </dl>
   </dd>
-  <dt>Update NPM</dt>
-  <dd>
-    <p>Open the terminal application selected from the previous step and run the following command to update npm: <code>npm install -g npm@10.2.1</code> </p>
-  </dd>
 </dl>
 
+### Updating Node, NPM, and Git
 
+**Updating NPM:**
+
+If you have NPM installed, you can run `npm -v` to see your current version, if you want to upgrade to a different version (for example 10.2.1), you can:
+
+* Open the terminal application selected from the previous step and run the following command to update npm: `npm install -g npm@10.2.1`
+
+For more information see NPM's ["try latest stable version of npm" documentation](https://docs.npmjs.com/try-the-latest-stable-version-of-npm).
+
+**Updating Node:**
+
+If you have Node installed, you can run `node -v` to see your current version, if you want to upgrade to a different version you need to use a Node package manager (e.g. `nvm`, `n` etc.). For more information please visit [Installing Node.js via package manager](https://nodejs.org/en/download/package-manager).
+
+**Updating Git:**
+
+If you have Git installed, you can run `git -v` to see your current version, if you want to upgrade to latest version you can:
+
+* **Linux**: run the command `sudo apt-get update && sudo apt-get install git`
+* **Windows**:
+  * If your Git version is older than version 2.14.1:
+    * Please uninstall Git from your system and reinstall Git for Windows: https://git-scm.com/downloads 
+  * If your Git version is between versions 2.14.2 to 2.16.1:
+    * Run the command: `git update`
+  * If your Git version is greater or equal to version 2.16.1:
+    * run the command: `git update-git-for-windows`
+* **MacOS (with Homebrew)**:
+  * Install Homebrew: https://brew.sh/
+  * Run `brew update && brew install git && brew upgrade git`
 
 ## TriplyETL Generator <!-- {#generator} -->
+
+### Package Requirements
+
+The TriplyETL Generator package requires the following: 
+
+* NPM version greater or equal to v10.2.1
+* Node version greater or equal to version 18
+
+-----------
 
 The TriplyETL Generator allows you to create new ETL projects in your terminal application.
 
