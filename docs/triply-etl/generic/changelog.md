@@ -8,7 +8,7 @@ You can use this changelog to perform a safe update from an older version of Tri
 
 ## TriplyETL 4.0.0
 
-Release date: 2024-??-??
+Release date: 2024-01-29
 
 ### [Changed] IRI-related middlewares no longer use skolem URLs
 
