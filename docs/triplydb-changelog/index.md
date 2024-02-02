@@ -5,6 +5,20 @@ path: "/docs/triplydb-changelog"
 
 [TOC]
 
+## 24.02.0 {#24.02.0}
+
+**Features**
+
+- `#7616` Render skolemized IRIs better
+- `#8728` [SPARQL IDE] Improved ui for rendering grouped geo shapes
+
+
+**Issues fixed**
+
+- Speedy may return too many results when using a `FROM` clause 
+- `#8695 #8602 #8603 #8770` [SPARQL IDE] Fixed UX issues with tabs and autocompletion
+
+
 
 ## 24.01.0 {#24.01.0}
 
