@@ -31,7 +31,7 @@ import { logMemory, logQuads, logQuery, logRecord, traceEnd,
 This function prints information about the current memory consumption. It includes the following fields:
 
 | Field name | Meaning | Use case |
-| --- | --- |
+| --- | --- | --- |
 | CallCount | The number of times that a specific use of `logMemory()` can been invoked. | Find a location in your ETL script that is visited many times, e.g. because it occurs inside a (nested) loop. |
 | RecordId | The numeric identifier of the record that is currently processed. | Find a specific record that causes memory consumption to increase. |
 | Heap used | The number of megabytes that are currently used on the heap. | Find places in your ETL where an unexpected amount of memory is used. |

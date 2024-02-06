@@ -1578,9 +1578,9 @@ In the following example, the string in the key `'countryCode'` becomes the uppe
 fromJson({ place: 'Amsterdam', countryCode: 'nl' }),
 uppercase({
   content: 'countryCode',
-  key: '_coountryCode'
+  key: '_countryCode'
 }),
-triple(iri(prefix.id, 'place'), iri(prefix.geonames, str('countryCode')), '_coountryCode')
+triple(iri(prefix.id, 'place'), iri(prefix.geonames, str('countryCode')), '_countryCode')
 ```
 This results in the following linked data assertion:
 
@@ -1588,14 +1588,11 @@ This results in the following linked data assertion:
 city:Amsterdam geonames:countryCode "NL"
 ```
 
-
-
+<!-- 
 ## wkt.addPoint()
 
 TODO
 
-
-
 ## wkt.project()
 
-TODO
+TODO -->
