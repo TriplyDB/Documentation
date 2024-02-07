@@ -114,3 +114,15 @@ https://gitlab.example.com/api/v4/projects/<project_id>/trigger/pipeline?token=<
 When your webhook is created and active, you can see every occasion the webhook was called in the webhook trigger history.
 
 ![Active webhook trigger history](../../assets/webhook_trigger_history.png)
+
+### Data quality graph
+
+When users import data into TriplyDB and encounter data quality issues, a summary report is provided on the graphs page. 
+However, this report is limited, displaying only the initial 5 issues of each type, with access restricted to one statement where the issue occurs. 
+The recent enhancement enables users to import the complete graph underlying this report. This comprehensive graph includes every issue and related statement allowing users to gain in-depth insights into data 
+quality problems. Leveraging TriplyDB's standard graph features, users can utilize tools such as the LD browser, SPARQL queries, and more to explore and present these insights, enhancing their ability to address and communicate data quality concerns effectively.
+This functionality is conveniently located within the "Insights" menu and is specifically referred to as "Class Frequency." Users can easily access and leverage this feature to gain valuable insights into the distribution of classes within their data.
+
+![Data Quality Graph](../../assets/graphQuality.png)
+
+
