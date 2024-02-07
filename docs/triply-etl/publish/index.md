@@ -68,6 +68,31 @@ The following code snippet publishes linked data to a TriplyDB dataset called 'm
 toRdf(Destination.TriplyDb.rdf('my-dataset', {synchronizeServices: 'acceptance'})),
 ```
 
+With v.3.0.20 this is reduntant. The following previous implementation:
+
+```ts
+const destination1 = { account: get_account(), dataset: get_dataset() }
+const destination2 = Destination.TriplyDb.rdf(get_account(), get_dataset())
+
+etl.use(
+  ...,
+  toTriplyDb(destination1),
+)
+await etl.copySource(Source.file('my-file.trig'), destination2)
+```
+
+has been replaced by:
+
+```ts
+const destination = { account: get_account(), dataset: get_dataset() }
+
+etl.use(
+  ...,
+  toTriplyDb(destination),
+)
+await etl.copySource(Source.file('my-file.trig'), destination)
+```
+
 ### Publishing datasets to the NDE Dataset Register 
 
 If you wat to publish a dataset to the NDE Dataset Register, you can do it by adding the `{submitToNDEDatasetRegister: true}` option to `toTriplyDB()` middleware.

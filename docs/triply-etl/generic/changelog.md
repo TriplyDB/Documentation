@@ -215,7 +215,7 @@ Introduced the cli flag `--skip-version-check` because some users can not use re
 
 ### [Added] Support for JPath expressions
 
-`toJson()` middleware now uses path selectors just as `fromXml()`, but also JPath expressions.
+`fromJson()` middleware now uses path selectors just as `fromXml()`, but also JPath expressions.
 
 
 ### [Added] Authentication for the OAI-PMH extractor

@@ -5,7 +5,12 @@ Datasets in TriplyDB store linked data in one or more graphs. Such datasets can 
 ```ts
 loadRdf(Source.TriplyDb.rdf('my-account', 'my-dataset')),
 ```
+as well as:
 
+```ts
+loadRdf(Source.TriplyDb.rdf('test', { triplyDb: { url: 'https://api.nightly.triplydb.com' } })),
+
+```
 As with other TriplyDB sources, the account name is optional. When omitted, a dataset from the user account that is associated with the current API Token is used:
 
 ```ts

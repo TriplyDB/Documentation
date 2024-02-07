@@ -136,9 +136,6 @@ toTriplyDb({account: "me", dataset: "myDataset"})
 ```ts
 loadRdf(Source.TriplyDb.rdf("me", datasetName))
 ```
-```ts
-Destination.TriplyDb.rdf("me", datasetName)
-```
 
  
 

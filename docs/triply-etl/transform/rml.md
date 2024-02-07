@@ -148,7 +148,7 @@ prefix ql: <http://semweb.mmlab.be/ns/ql#>
 You can use RML in TriplyETL with the following code:
 
 ```ts
-import { map } from
+import { map } from "@triplyetl/etl/rml"
 
 const etl = new Etl();
 etl.use(
