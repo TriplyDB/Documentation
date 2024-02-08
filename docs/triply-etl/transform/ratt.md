@@ -1588,15 +1588,15 @@ This results in the following linked data assertion:
 city:Amsterdam geonames:countryCode "NL"
 ```
 
-## Function `wkt.addPoint()` {#wktAddPoint()}
-## Description
+## wkt.addPoint() {#wktAddPoint()}
+### Description
 Creates a Well-Known Text (WKT) serialization string from the corresponding geospatial point.
-## Parameters
+### Parameters
 - `latitude` A key or a string assertion ([str()](/docs/triply-etl/assert/ratt#str)) with latitude.
 - `longitude` A key or a string assertion ([str()](/docs/triply-etl/assert/ratt#str)) with longitude.
 - `crs` Optionally, an IRI that denotes a Coordinate Reference System (CRS). You can use IRIs from the [`epsg`](/docs/triply-etl/declare#geospatial-declarations) object. If absent, uses [EPSG:4326/WGS84](https://epsg.io/4326) as the CRS.
 - `key` A new key where the WKT string is stored.
-## Example
+### Example
 The following example creates a WKT literal from the geo coordinates of Amsterdam:
 ```ts
 fromJson({ place: 'Amsterdam', lat: 52.37308, long: 4.89245 }),
@@ -1629,15 +1629,15 @@ And in the following linked data assertion:
 ```
 city:Amstedam geo:asWKT "Point (52.37308 4.89245)"^^geo:wktLiteral
 ```
-# Function `wkt.project()` {#wktProject()}
-## Description
+## wkt.project() {#wktProject()}
+### Description
 Converts the projection of a Well-Known Text (WKT) literal from one Coordinate Reference System to another one. 
-## Parameters
+### Parameters
 - `content` An array of keys or numbers.
 - `key` A new key where the new projection is stored.
 - `fromCrs`: an IRI that denotes a Coordinate Reference System (CRS) of the `content`. 
 - `toCrs`: Optionally, an IRI that denotes a Coordinate Reference System (CRS) we want to convert to. If absent, uses [EPSG:4326/WGS84](https://epsg.io/4326) as the CRS.
-## Example
+### Example
 The following example converts an array with latitude and longitude in `content` key from Dutch grid coordinates (Rijksdriehoeks-coordinates) to WGS84 coordinates. 
 ```ts
 fromJson({ place: 'Amsterdam', lat: 121307, long: 487360 }),
