@@ -68,8 +68,9 @@ when('zipcode',
 Notice that it is almost never useful to store the empty string in linked data. So the treatment of empty strings as NULL values is the correct default behavior.
 
 
-
 ## NULL values (`when()` and `whenNotEqual()`)
+
+### `when()`
 
 If a key contains specific values that are indended to represent NULL values, then these must be specifically identified the first `when()` parameter.
 
@@ -80,8 +81,15 @@ when(context => context.getNumber('created') != 9999,
   triple(iri(prefix.id, 'id'), dct.created, literal('created', xsd.gYear)),
 ),
 ```
+### `whenForEach()`
 
-Since checking the value of one specific key is very common, the above can be written as follows, using the more specific `whenNotEqual` function:
+Executes the identical middleware for every object within a given list of objects, similar to the functionality provided by `forEach`. Unlike `when`, it does not generate an error if the specified key is absent.
+
+### `whenNotEqual()`
+
+Since checking the value of one specific key is very common, the above can be written as follows, using the more specific `whenNotEqual` function. 
+
+If the provided key is not present, or if the key exists but contains an empty value (such as null, undefined, an empty string (''), an empty array ([]), or an empty object ({})), the associated middlewares will not be executed.:
 
 ```ts
 whenNotEqual('created', 9999,
@@ -98,6 +106,39 @@ whenNotEqual('created', [-1, 9999],
   triple(iri(prefix.id, 'id'), dct.created, literal('created', xsd.gYear)),
 ),
 ```
+
+### `whenEqual()`
+
+Similarly, we can run middlewares under the condition that the given key exists and has the specified value or one of the specified values.
+If the provided key is not present, or if the key exists but contains an empty value (such as null, undefined, an empty string (''), an empty array ([]), or an empty object ({})), the associated middlewares will not be executed.
+
+```ts
+whenEqual('created', 9999,
+  triple(iri(prefix.id, 'id'), dct.created, literal('created', xsd.gYear)),
+),
+```
+
+It behaves the same way as `whenNotEqual()`, meaning that it can check for multiple values.
+
+```ts
+whenEqual('created', [-1, 9999],
+  triple(iri(prefix.id, 'id'), dct.created, literal('created', xsd.gYear)),
+),
+```
+
+### `whenNot()`
+
+This condition is used when one or more middlewares have to be executes when the specified key does not exists or exists but contains an empty value. The value for a key is considered empty if it is `undefined`, `null`, the empty string (`''`), the empty array (`[]`), or the empty object (`{}`).
+
+The following snippet will only assert information when the created year is not 9999:
+
+```ts
+whenNot(context => context.getNumber('created') = 9999,
+  triple(iri(prefix.id, 'id'), dct.created, literal('created', xsd.gYear)),
+),
+```
+
+
 
 
 
