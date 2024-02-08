@@ -12,33 +12,33 @@ RATT transformations started out as [TypeScript transformations](./typescript.md
 
 The following transformation functions are currently available:
 
-| Function | Description |
-| --- | --- |
-| [addHashedIri()](#addhashediri) | Creates an IRI with a content-based hash as the local name. |
-| [addIri()](#addiri) | Create a new IRI based on a prefix and a local name. |
-| [addLiteral()](#addliteral) | Create a new literal based on a lexical for and a datatype IRI or language tag. |
-| [addRandomIri()](#addrandomiri) | Create a new IRI with a random local name. |
-| [addSkolemIri()](#addskolemiri) | Create a new IRI with a random local name, which advertises that it may be consistently replaced with blank nodes. |
-| [addTag()](#addtag) | Create a language tag. |
-| [addValue()](#addvalue) | Create a TypeScript value. |
-| [capitalize()](#capitalize) | Transforms a string value to its capitalized variant. |
-| [concat()](#concat) | Combine multiple strings into a new string. |
-| [copy()](#copy) | Copy a value from an old into a new key. |
-| [decodeHtml()](#decodehtml) | Decode HTML entities that occur in strings. |
-| [geojsonToWkt()](#geojsontowkt) | Change GeoJSON strings to WKT strings. |
-| [jpath()](#jpath) | Uses the JSONPath query language to select a value from the record. |
-| [lowercase()](#lowercase) | Change strings to their lowercase variants. |
-| [padEnd()](#padend) | Pad the end of strings. |
-| [padStart()](#padstart) | Pad the start of strings. |
-| [replace()](#replace) | Replace part of a string. |
-| [split()](#split) | Split a string into multiple substrings. |
-| [substring()](#substring) | Extract a substring from a string. |
-| [translateAll()](#translateall) | Translate *all* string values to other values. |
-| [translateSome()](#translatesome) | Translate *some* string values to other strings. |
-| [tryLiteral()](#tryliteral) | Create literals for which the datatype is not know beforehand. |
-| [uppercase()](#uppercase) | Change a string to its uppercase variant. |
-| [wkt.addPoint()](#wktaddpoint) | Add a geospatial point using the Well-Known Text (WKT) format. |
-| [wkt.project()](#wktproject) | Change the projection of a Well-Known Text (WKT) literal from from Coordinate Reference System into another. |
+| Function                          | Description                                                                                                        |
+| --------------------------------- | ------------------------------------------------------------------------------------------------------------------ |
+| [addHashedIri()](#addhashediri)   | Creates an IRI with a content-based hash as the local name.                                                        |
+| [addIri()](#addiri)               | Create a new IRI based on a prefix and a local name.                                                               |
+| [addLiteral()](#addliteral)       | Create a new literal based on a lexical for and a datatype IRI or language tag.                                    |
+| [addRandomIri()](#addrandomiri)   | Create a new IRI with a random local name.                                                                         |
+| [addSkolemIri()](#addskolemiri)   | Create a new IRI with a random local name, which advertises that it may be consistently replaced with blank nodes. |
+| [addTag()](#addtag)               | Create a language tag.                                                                                             |
+| [addValue()](#addvalue)           | Create a TypeScript value.                                                                                         |
+| [capitalize()](#capitalize)       | Transforms a string value to its capitalized variant.                                                              |
+| [concat()](#concat)               | Combine multiple strings into a new string.                                                                        |
+| [copy()](#copy)                   | Copy a value from an old into a new key.                                                                           |
+| [decodeHtml()](#decodehtml)       | Decode HTML entities that occur in strings.                                                                        |
+| [geojsonToWkt()](#geojsontowkt)   | Change GeoJSON strings to WKT strings.                                                                             |
+| [jpath()](#jpath)                 | Uses the JSONPath query language to select a value from the record.                                                |
+| [lowercase()](#lowercase)         | Change strings to their lowercase variants.                                                                        |
+| [padEnd()](#padend)               | Pad the end of strings.                                                                                            |
+| [padStart()](#padstart)           | Pad the start of strings.                                                                                          |
+| [replace()](#replace)             | Replace part of a string.                                                                                          |
+| [split()](#split)                 | Split a string into multiple substrings.                                                                           |
+| [substring()](#substring)         | Extract a substring from a string.                                                                                 |
+| [translateAll()](#translateall)   | Translate *all* string values to other values.                                                                     |
+| [translateSome()](#translatesome) | Translate *some* string values to other strings.                                                                   |
+| [tryLiteral()](#tryliteral)       | Create literals for which the datatype is not know beforehand.                                                     |
+| [uppercase()](#uppercase)         | Change a string to its uppercase variant.                                                                          |
+| [wkt.addPoint()](#wktaddpoint)    | Add a geospatial point using the Well-Known Text (WKT) format.                                                     |
+| [wkt.project()](#wktproject)      | Change the projection of a Well-Known Text (WKT) literal from from Coordinate Reference System into another.       |
 
 
 
@@ -825,7 +825,7 @@ This transformation decodes any HTML entities that appear in a given key.
 The following HTML entities are common in source data:
 
 | HTML entity | Decoded |
-|------------ | --------|
+| ----------- | ------- |
 | `&amp;`     | `&`     |
 | `&gt;`      | `>`     |
 | `&lt;`      | `<`     |
@@ -1180,7 +1180,7 @@ Suppose that the source data looks as follows:
 
 | Artifact | Year |
 | -------- | ---- |
-| 0001     |  612 |
+| 0001     | 612  |
 | 0002     | 1702 |
 
 We can ensure that all years have at least 4 decimal digits by calling the following function:
@@ -1287,10 +1287,10 @@ Tabular formats are unable to store more than one value in a cell. Because of th
 
 Suppose that the source data looks as follows:
 
-| Parent | Child         |
-| ------ | ------------- |
-| John   | Jane, Jake ,  |
-| Kate   | ,,            |
+| Parent | Child        |
+| ------ | ------------ |
+| John   | Jane, Jake , |
+| Kate   | ,,           |
 
 The following transformation splits the cells that encode zero or more children for each parent:
 
@@ -1543,11 +1543,11 @@ tryLiteral({
 }),
 ```
 
-| Source data in key `'date'`   | Result in key `'_date'`   |
-| ----------------------------- | ------------------------- |
-| `'1900-01-02'`                | `'1900-01-02'^^xsd:date`  |
-| `'1900'`                      | `'1900'^^xsd:gYear`       |
-| `'02-01-1900'`                | An error is emitted.    |
+| Source data in key `'date'` | Result in key `'_date'`  |
+| --------------------------- | ------------------------ |
+| `'1900-01-02'`              | `'1900-01-02'^^xsd:date` |
+| `'1900'`                    | `'1900'^^xsd:gYear`      |
+| `'02-01-1900'`              | An error is emitted.     |
 
 If we do not want to emit errors for string values that cannot be satisfy any of the specified datatype IRIs, we may choose to include `xsd.string` as the last datatype IRI in the list. Do notice however that this will result in dates that cannot be compared on a timeline, since they were not transformed to an XSD date/time datatype.
 
@@ -1588,11 +1588,88 @@ This results in the following linked data assertion:
 city:Amsterdam geonames:countryCode "NL"
 ```
 
-<!-- 
-## wkt.addPoint()
+## Function `wkt.addPoint()` {#wktAddPoint()}
+## Description
+Creates a Well-Known Text (WKT) serialization string from the corresponding geospatial point.
+## Parameters
+- `latitude` A key or a string assertion ([str()](/docs/triply-etl/assert/ratt#str)) with latitude.
+- `longitude` A key or a string assertion ([str()](/docs/triply-etl/assert/ratt#str)) with longitude.
+- `crs` Optionally, an IRI that denotes a Coordinate Reference System (CRS). You can use IRIs from the [`epsg`](/docs/triply-etl/declare#geospatial-declarations) object. If absent, uses [EPSG:4326/WGS84](https://epsg.io/4326) as the CRS.
+- `key` A new key where the WKT string is stored.
+## Example
+The following example creates a WKT literal from the geo coordinates of Amsterdam:
+```ts
+fromJson({ place: 'Amsterdam', lat: 52.37308, long: 4.89245 }),
+wkt.addPoint({
+  latitude: 'lat',
+  longitude: 'long',
+  key: '_point'
+}),
 
-TODO
+triple(iri(prefix.city, 'place'), geo.asWKT, '_point'),
+```
+This results in the following record of the key `'_point'`:
+```json
+{
+  "_point": {
+    "termType": "Literal",
+    "value": "Point (52.37308 4.89245)",
+    "language": "",
+    "datatype": {
+      "termType": "NamedNode",
+      "value": "http://www.opengis.net/ont/geosparql#wktLiteral",
+      "validationStatus": "canonical"
+    },
+    "validationStatus": "canonical"
+  }
+}
 
-## wkt.project()
+```
+And in the following linked data assertion:
+```
+city:Amstedam geo:asWKT "Point (52.37308 4.89245)"^^geo:wktLiteral
+```
+# Function `wkt.project()` {#wktProject()}
+## Description
+Converts the projection of a Well-Known Text (WKT) literal from one Coordinate Reference System to another one. 
+## Parameters
+- `content` An array of keys or numbers.
+- `key` A new key where the new projection is stored.
+- `fromCrs`: an IRI that denotes a Coordinate Reference System (CRS) of the `content`. 
+- `toCrs`: Optionally, an IRI that denotes a Coordinate Reference System (CRS) we want to convert to. If absent, uses [EPSG:4326/WGS84](https://epsg.io/4326) as the CRS.
+## Example
+The following example converts an array with latitude and longitude in `content` key from Dutch grid coordinates (Rijksdriehoeks-coordinates) to WGS84 coordinates. 
+```ts
+fromJson({ place: 'Amsterdam', lat: 121307, long: 487360 }),
+wkt.project({
+    content: ['lat', 'long'],
+    key: '_coordinates',
+    fromCrs: epsg[666],
+    toCrs: epsg[4326]
+  }),
 
-TODO -->
+```
+This results in the following record of the key `'_coordinates'`:
+```json
+{
+  "_coordinates": [
+    52.374671935135474,
+    4.892803721020475
+    
+  ]
+}
+```
+We can now use the converted result to create a WKT `Point()` using [addPoint()](#function-wktaddpoint-wktaddpoint):
+```ts
+wkt.addPoint({
+  latitude: '_coordinates[0]',
+  longitude: '_coordinates[1]',
+  key: '_point'
+}),
+
+triple(iri(prefix.id, 'place'), geo.asWKT, '_point')
+```
+This code snippet creates the following linked data assertion:
+```turtle
+city:Amstedam geo:asWKT "Point (52.374671935135474 4.892803721020475)"^^geo:asWKT
+```
