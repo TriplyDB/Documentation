@@ -127,13 +127,10 @@ Upper-case letter word after `-F` must be replaced by the following value:
 
 - `FILENAME` :: path to the local file, for example `example.ttl`.
 
+**Limitations**: We only support this API route for uploads less than 5MB. To upload more data, use:
 
-You can upload data to an existing dataset without overwriting it by adding and setting the `mergeGraphs` functionality to `true`, like in the example below.
-
-```sh
-curl -H 'Authorization: Bearer TOKEN' -X POST https://api.INSTANCE/datasets/ACCOUNT/DATASET/jobs  -F file=@FILENAME -F mergeGraphs=true
-
-```
+1. [TriplyDB-JS](../triplydb-js/index.md): See the `importFrom*` methods under [the `Dataset` class](../triplydb-js/dataset).
+2. [TriplyDB Command-line Interface](../triply-cli/index.md)
 
 ## Accounts
 
