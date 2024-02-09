@@ -312,12 +312,23 @@ Release date: 2023-10-23
 
 ```ts
 export default async function(): Promise<Etl> {
-  const etl = new Etl({base: Iri('https://example.com/')})
-  await etl.staticAssertions)
+  const etl = new Etl({baseIri: Iri('https://example.com/')})
+  await etl.staticAssertions(
+    pairs(
+      iri(etl.standardGraphs.default),
+      [a, dcat.Dataset],
+      [skos.prefLabel, literal(str("Family Doe"), lang.en)],
+      [dct.created, literal(str(new Date().toISOString()), xsd.dateTime)],
+    ),
+  );
+  await etl.staticAssertions(
+    pairs(iri(etl.standardGraphs.default), [skos.prefLabel, literal(str("Familie Doe"), lang.nl)]),
+  );
   etl.use(
-    fromJson([{name: 'John Doe'}]),
-    triple(iri)
-  )
+    fromJson([{ name: "John Doe" }, { name: "Jane Doe" }]),
+    triple(iri(etl.standardPrefixes.id, "$recordId"), sdo.name, "name"),
+    logQuads(),
+  );
   return etl
 }
 ```
