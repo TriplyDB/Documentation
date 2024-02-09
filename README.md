@@ -72,11 +72,8 @@ mkdocs build
 ```
 This will generate the required HTML and CSS in a folder `./site`.
 
-To publish this website to [Github Pages](https://triplydb.github.io/Documentation/) run this command:
 
-```sh
-mkdocs gh-deploy
-```
+To publish this website, push your changes to the master branch. The live documentation site should be updated shortly after that. If there are any errors, you can find more details in [the GitHub Actions](https://github.com/TriplyDB/Documentation/actions).
 
 ### Notes about syntax highlighting
 This project uses [highlightjs.org](https://highlightjs.org) for rendering code blocks with syntax highlighting. This projects does not have support for Turtle/SPARQL by default. We use a custom build to provide syntax highlighting for these.
