@@ -24,5 +24,6 @@ TriplyETL supports the following two approaches for validating linked data:
 
 - [**Graph Comparison**](./graph-comparison.md) uses one or more manually created 'gold records'. Graph comparison ensures that these records are transformed in the intended way by the ETL pipeline.
 - [**SHACL Validation**](./shacl.md) uses a generic data model. SHACL Validation ensures that each individual record is processed in accordance with the generic data model.
+- [**Value Validation**](./validators.md) 
 
 Notice that it is possible to combine these two approaches in the same ETL pipeline: you can use graph comparison to test for specific conformities, and use SHACL to test for generic conformities.
