@@ -16,6 +16,7 @@ path: "/docs/triplydb-changelog"
 
 
 **Issues fixed**
+
 - `#8720` Invalid saved-query variables are not validated in the stories UI
 - `#8792` [SPARQL-IDE] A combination of the pivot table and google charts visualization may not render
 - `#8779` [SPARQL-IDE] Multiline errors are not rendered correctly
