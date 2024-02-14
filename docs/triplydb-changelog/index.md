@@ -5,6 +5,30 @@ path: "/docs/triplydb-changelog"
 
 [TOC]
 
+
+## 24.02.1 {#24.02.1}
+
+**Features**
+
+- `#8795` Support use of the `<style></style>` attribute in markdown and HTML (used in dataset/account/query descriptions, or by the SPARQL  IDE)
+- `#8796` Support different size dimensions for story elements
+
+
+
+**Issues fixed**
+- `#8720` Invalid saved-query variables are not validated in the stories UI
+- `#8792` [SPARQL-IDE] A combination of the pivot table and google charts visualization may not render
+- `#8779` [SPARQL-IDE] Multiline errors are not rendered correctly
+- `#8690` [Speedy] Some atypical queries with large group-by's may result in an error
+- `#8606` [Speedy] Some valid regular expressions throw an error
+- `#8765` [Speedy] Federating to virtuoso does not work in some cases
+- `#8749` Syncing a service may fail when there are many concurrent requests
+- `#8686` Syncing a service may fail after a service is renamed
+- `#8793` [SPARQL IDE] The gallery image-widget result (populated by the `?imageWidget` variable) is not shown when printing a story
+
+
+
+
 ## 24.02.0 {#24.02.0}
 
 **Features**
