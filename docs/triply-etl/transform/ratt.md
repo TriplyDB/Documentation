@@ -17,7 +17,6 @@ The following transformation functions are currently available:
 | [addHashedIri()](#addhashediri)   | Creates an IRI with a content-based hash as the local name.                                                        |
 | [addIri()](#addiri)               | Create a new IRI based on a prefix and a local name.                                                               |
 | [addLiteral()](#addliteral)       | Create a new literal based on a lexical for and a datatype IRI or language tag.                                    |
-| [addRandomIri()](#addrandomiri)   | Create a new IRI with a random local name.                                                                         |
 | [addSkolemIri()](#addskolemiri)   | Create a new IRI with a random local name, which advertises that it may be consistently replaced with blank nodes. |
 | [addTag()](#addtag)               | Create a language tag.                                                                                             |
 | [addValue()](#addvalue)           | Create a TypeScript value.                                                                                         |
@@ -480,20 +479,6 @@ It results in the following correct linked data assertion:
 person:John foaf:mbox "john.appleseed@example.com"
 person:Lisa foaf:mbox "lisa.appleseed@example.com"
 ```
-
-## addRandomIri()
-
-Creates an IRI based on the specified IRI prefix and a universally unique random identifier.
-
-### When to use?
-
-This function has been removed from the TriplyETL library. See next section to find information on which tranformation to use instead.
-
-### See also
-
-- Use transformation [addIri()](#addiri) instead, if a unique identifier can be readily specified.
-- Use transformation [addHashedIri](#addhashediri) instead, if one or more properties that together uniquely identify a thing can be specified.
-- Use transformation [addSkolemIri()](#addskolemiri) instead, if you want to communicate that the IRI can be replaced with a blank node.
 
 
 
@@ -1631,14 +1616,14 @@ city:Amstedam geo:asWKT "Point (52.37308 4.89245)"^^geo:wktLiteral
 ```
 ## wkt.project() {#wktProject()}
 ### Description
-Converts the projection of a Well-Known Text (WKT) literal from one Coordinate Reference System to another one. 
+Converts the projection of a Well-Known Text (WKT) literal from one Coordinate Reference System to another one.
 ### Parameters
 - `content` An array of keys or numbers.
 - `key` A new key where the new projection is stored.
-- `fromCrs`: an IRI that denotes a Coordinate Reference System (CRS) of the `content`. 
+- `fromCrs`: an IRI that denotes a Coordinate Reference System (CRS) of the `content`.
 - `toCrs`: Optionally, an IRI that denotes a Coordinate Reference System (CRS) we want to convert to. If absent, uses [EPSG:4326/WGS84](https://epsg.io/4326) as the CRS.
 ### Example
-The following example converts an array with latitude and longitude in `content` key from Dutch grid coordinates (Rijksdriehoeks-coordinates) to WGS84 coordinates. 
+The following example converts an array with latitude and longitude in `content` key from Dutch grid coordinates (Rijksdriehoeks-coordinates) to WGS84 coordinates.
 ```ts
 fromJson({ place: 'Amsterdam', lat: 121307, long: 487360 }),
 wkt.project({
@@ -1655,7 +1640,6 @@ This results in the following record of the key `'_coordinates'`:
   "_coordinates": [
     52.374671935135474,
     4.892803721020475
-    
   ]
 }
 ```
