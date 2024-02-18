@@ -125,8 +125,6 @@ TriplyETL requires the following minimum versions for the prerequisites:
 
 ## TriplyETL Generator
 
-### Package Requirements
-
 The TriplyETL Generator allows you to create new ETL projects in your terminal application. If a TriplyETL project already exists, use the [TriplyETL Runner](./cli.md#triplyetl-runner) instead.
 
 In order to use TriplyETL Generator, you must have:
