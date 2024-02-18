@@ -58,50 +58,76 @@ git config --global user.name "Ada Lovelace"</pre>
   </dd>
 </dl>
 
-### Updating Node, NPM, and Git
 
-**Updating NPM:**
+### Minimum versions
 
-If you have NPM installed, you can run `npm -v` to see your current version, if you want to upgrade to a different version (for example 10.2.1), you can:
+TriplyETL requires the following minimum versions for the prerequisites:
 
-* Open the terminal application selected from the previous step and run the following command to update npm: `npm install -g npm@10.2.1`
+- NPM v10.2.1
+- Node.js v18
 
-For more information see NPM's ["try latest stable version of npm" documentation](https://docs.npmjs.com/try-the-latest-stable-version-of-npm).
 
-**Updating Node:**
+### Update the prerequisites
 
-If you have Node installed, you can run `node -v` to see your current version, if you want to upgrade to a different version you need to use a Node package manager (e.g. `nvm`, `n` etc.). For more information please visit [Installing Node.js via package manager](https://nodejs.org/en/download/package-manager).
+<dl>
+  <dt>Update NPM</dt>
+  <dd>
+    <p>If you have NPM installed, you can run <code>npm -v</code> to see your current version. If you want to upgrade to a different version (for example 10.2.1), you can run the following command:</p>
+    <pre>npm install -g npm@10.2.1</pre>
+    <p>For more information see NPM's <a href="https://docs.npmjs.com/try-the-latest-stable-version-of-npm">"try latest stable version of npm"</a> documentation.</p>
+  </dd>
+  <dt>Update Node.js</dt>
+  <dd>
+    <p>If you have Node.js installed, you can run <code>node -v</code> to see your current version. If you want to upgrade to a different version you need to use a Node package manager (e.g. <code>nvm</code>, <code>n</code> etc.). For more information visit <a href="https://nodejs.org/en/download/package-manager">Installing Node.js via package manager</a>.</p>
+  </dd>
+  <dt>Update Git</dt>
+  <dd>
+    <p>If you have Git installed, you can run <code>git -v</code> to see your current version, if you want to upgrade to latest version you can:</p>
+    <dl>
+      <dt>Linux</dt>
+      <dd>
+        <p>Run command <code>sudo apt-get update && sudo apt-get install git</code></p>
+      </dd>
+      <dt>Windows</dt>
+      <dd>
+        <p>What you need to do depends on your current Git version:</p>
+        <dl>
+          <dt>Older than 2.14.1</dt>
+          <dd>
+            <p>Uninstall Git from your system and reinstall <a href="https://git-scm.com/downloads">Git for Windows</a>.</p>
+          </dd>
+          <dt>Between 2.14.2 and 2.16.1</dt>
+          <dd>
+            <p>Run command <code>git update</code></p>
+          </dd>
+          <dt>Greater than or equal to 2.16.1</dt>
+          <dd>
+            <p>Run command <code>git update-git-for-windows</code></p>
+          </dd>
+        </dl>
+      </dd>
+      <dt>MacOS (with Homebrew)</dt>
+      <dd>
+        <ol>
+          <li>
+            <p>Install <a href="https://brew.sh">Homebrew</a></p>
+          </li>
+          <li>
+            <p>Run command <code>brew update && brew install git && brew upgrade git</code></p>
+          </li>
+        </ol>
+      </dd>
+    </dl>
+  </dd>
+</dl>
 
-**Updating Git:**
 
-If you have Git installed, you can run `git -v` to see your current version, if you want to upgrade to latest version you can:
 
-* **Linux**: run the command `sudo apt-get update && sudo apt-get install git`
-* **Windows**:
-  * If your Git version is older than version 2.14.1:
-    * Please uninstall Git from your system and reinstall Git for Windows: https://git-scm.com/downloads 
-  * If your Git version is between versions 2.14.2 to 2.16.1:
-    * Run the command: `git update`
-  * If your Git version is greater or equal to version 2.16.1:
-    * run the command: `git update-git-for-windows`
-* **MacOS (with Homebrew)**:
-  * Install Homebrew: https://brew.sh/
-  * Run `brew update && brew install git && brew upgrade git`
-
-## TriplyETL Generator <!-- {#generator} -->
+## TriplyETL Generator
 
 ### Package Requirements
 
-The TriplyETL Generator package requires the following: 
-
-* NPM version greater or equal to v10.2.1
-* Node version greater or equal to version 18
-
------------
-
-The TriplyETL Generator allows you to create new ETL projects in your terminal application.
-
-If a TriplyETL project already exists, use the [TriplyETL Runner](./cli.md#triplyetl-runner) instead.
+The TriplyETL Generator allows you to create new ETL projects in your terminal application. If a TriplyETL project already exists, use the [TriplyETL Runner](./cli.md#triplyetl-runner) instead.
 
 In order to use TriplyETL Generator, you must have:
 
@@ -111,15 +137,17 @@ In order to use TriplyETL Generator, you must have:
 
 3. A user account on a TriplyDB server. Contact [info@triply.cc](mailto:info@triply.cc) to set up a TriplyDB server for your organization, or create a free account on <https://triplydb.com>.
 
-Perform the following steps to use the TriplyETL Generator:
+Run the following command to install the TriplyETL Generator:
 
-Run the following command:
-
-```sh
-npx triply-etl-generator
+```
+npm install -g @triply/etl-generator
 ```
 
-   If you use TriplyETL Generator for the first time, this command automatically downloads and installs the latest version on your computer. If you have used TriplyETL Generator in the past, this command automatically updates your installation to the latest version.
+Run the following command to use the TriplyETL Generator:
+
+```sh
+npx @triply/etl-generator
+```
 
 When asked, enter the following information:
 
@@ -167,7 +195,7 @@ npx etl
 
 
 
-## TriplyETL Runner <!-- {#runner} -->
+## TriplyETL Runner
 
 The TriplyETL Runner allows you to run a local TriplyETL project in your terminal application.
 
@@ -219,7 +247,7 @@ Visit the [TriplyETL CLI documentation](./cli.md#triplyetl-runner) to learn more
 
 
 
-## TriplyETL Library <!-- {#library} -->
+## TriplyETL Library
 
 If you are a software developer that is building a software application in TypeScript, you can include the TriplyETL Library in your project.
 
