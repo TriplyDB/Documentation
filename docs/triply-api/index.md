@@ -129,7 +129,7 @@ Upper-case letter word after `-F` must be replaced by the following value:
 
 **Limitations**: We only support this API route for uploads less than 5MB. To upload more data, use:
 
-1. [TriplyDB-JS](../triplydb-js/index.md): See the `importFrom*` methods under [the `Dataset` class](../triplydb-js/dataset).
+1. [TriplyDB-JS](../triplydb-js/index.md): See the `importFrom*` methods under [the `Dataset` class](../triplydb-js/dataset/index.md).
 2. [TriplyDB Command-line Interface](../triply-cli/index.md)
 
 ## Accounts

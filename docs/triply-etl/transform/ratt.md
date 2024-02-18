@@ -1577,9 +1577,9 @@ city:Amsterdam geonames:countryCode "NL"
 ### Description
 Creates a Well-Known Text (WKT) serialization string from the corresponding geospatial point.
 ### Parameters
-- `latitude` A key or a string assertion ([str()](/docs/triply-etl/assert/ratt#str)) with latitude.
-- `longitude` A key or a string assertion ([str()](/docs/triply-etl/assert/ratt#str)) with longitude.
-- `crs` Optionally, an IRI that denotes a Coordinate Reference System (CRS). You can use IRIs from the [`epsg`](/docs/triply-etl/declare#geospatial-declarations) object. If absent, uses [EPSG:4326/WGS84](https://epsg.io/4326) as the CRS.
+- `latitude` A key or a string assertion ([str()](../assert/ratt/terms.md#str)) with latitude.
+- `longitude` A key or a string assertion ([str()](../assert/ratt/terms.md#str)) with longitude.
+- `crs` Optionally, an IRI that denotes a Coordinate Reference System (CRS). You can use IRIs from the [`epsg`](../generic/declarations.md#geospatial-declarations) object. If absent, uses [EPSG:4326/WGS84](https://epsg.io/4326) as the CRS.
 - `key` A new key where the WKT string is stored.
 ### Example
 The following example creates a WKT literal from the geo coordinates of Amsterdam:
