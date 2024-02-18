@@ -52,3 +52,18 @@ The actual formulation of the SHACL Rules depends on the kind of SHACL Rule that
 - [SPARQL Rules](./sparql-rules.md)
 
 SHACL Rules are typically included in the information model of the dataset. Notice that it is possible to combine different kinds of SHACL Rules in the same information model.
+
+
+## Iterative rules
+
+It is possible to apply SHACL Rules multiple times. This is useful when one rule generates data that can be used by another rule, whose results can be used by another rule, etc. Since it is easy for rules to end up in an infinite loop, the user must set a maximum to the number of iterations that are allowed. This is done with the following options:
+
+- `maxIterations` is the maximum number of iterations that are used by the SHACL Rules engine. By default, this value is set to 0, which means that no iterative behavior is used. By setting this value to 2 or higher, iterative behavior is enabled.
+
+- `errorOnMaxIterations` is the behavior that is used when the last iteration produced new linked data assertions. This may indicate that more iterations are needed. The possible values for this option are:
+
+    - `'throw'` which throws an exception, which terminates the ETL.
+
+    - `'warn'` which emits a warning, after which the ETL continues.
+
+    - `'none'` which is the default value.
