@@ -84,7 +84,10 @@ nav:
           - XSLT: triply-etl/assert/xslt.md
       - Enrich:
           - Overview: triply-etl/enrich/index.md
-          - SHACL: triply-etl/enrich/shacl.md
+          - SHACL:
+              - Overview: triply-etl/enrich/shacl/index.md
+              - Triple Rules: triply-etl/enrich/shacl/triple-rules.md
+              - SPARQL Rules: triply-etl/enrich/shacl/sparql-rules.md
           - SPARQL:
               - SPARQL Construct: triply-etl/enrich/sparql/construct.md
               - SPARQL Update: triply-etl/enrich/sparql/update.md

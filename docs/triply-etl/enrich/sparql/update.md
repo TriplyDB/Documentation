@@ -4,8 +4,6 @@
 
 SPARQL is a powerful query language that can be used to modify and enrich linked data in the Internal Store. With SPARQL, you can generate new linked data based on existing linked data, thereby enhancing the contents of the store.
 
-*Support for SPARQL Update is currently experimental. In the meantime, you can use [SHACL Rules](../shacl.md) and [SPARQL Construct](./construct.md) to configure the enrichment step in production systems.*
-
 The function for using SPARQL Update can be imported as follows:
 
 ```ts

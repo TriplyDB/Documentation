@@ -22,9 +22,15 @@ graph LR
 
 TriplyETL supports the following languages for making enrichments:
 
-- [**SHACL Rules**](./shacl.md) are able to apply SPARQL Ask and Construct queries to the internal store.
-- [**SPARQL Construct**](./sparql/construct.md) allows linked data to be added to the internal store.
-- [**SPARQL Update**](./sparql/update.md) allows linked data to be added to and deleted from the internal store.
+- [**SHACL Rules**](./shacl/index.md) allows the implementation of business rules that can add linked data to the internal store. TriplyETL supports the following forms of SHACL Rules:
+
+    - [**Triple Rules**](./shacl/triple-rules.md)
+    - [**SPARQL Rules**](./shacl/sparql-rules.md)
+
+- SPARQL is a query language that can also be used to add and remove data. This allows SPARQL to be used as an enrichment language. TriplyETL supports the following forms of SPARQL enrichment:
+
+    - [**SPARQL Construct**](./sparql/construct.md) allows linked data to be added to the internal store.
+    - [**SPARQL Update**](./sparql/update.md) allows linked data to be added to and deleted from the internal store.
 
 
 
