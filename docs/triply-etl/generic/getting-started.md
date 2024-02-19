@@ -135,19 +135,15 @@ In order to use TriplyETL Generator, you must have:
 
 3. A user account on a TriplyDB server. Contact [info@triply.cc](mailto:info@triply.cc) to set up a TriplyDB server for your organization, or create a free account on <https://triplydb.com>.
 
-Run the following command to install the TriplyETL Generator:
-
-```
-npm install -g @triply/etl-generator
-```
-
 Run the following command to use the TriplyETL Generator:
 
 ```sh
 npx @triply/etl-generator
 ```
 
-When asked, enter the following information:
+If you use TriplyETL Generator for the first time, this command automatically downloads and installs the latest version on your computer. If you have used TriplyETL Generator in the past, this command automatically updates your installation to the latest version, if one is available.
+
+TriplyETL Generator will ask the following questions (the exact sequence of questions depends on the answers given):
 
       a. TriplyETL License Key
 
@@ -173,7 +169,7 @@ Here is an example of a possible run:
 ? Target folder: my-etl
 ? Dataset name: my-etl
 ? Create a new TriplyDB API Token? Yes
-? Your TriplyDB URL: triplydb.com
+? Your TriplyDB URL: my-org.triply.cc
 ? Your TriplyDB email: my-account@my-organization.com
 ? Your TriplyDB password: [hidden]
 🏁 Your project my-etl is ready for use in my-etl.
