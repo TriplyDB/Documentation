@@ -23,6 +23,7 @@ graph LR
 If you do not have a stream of records yet, read the documentation for the [**Extract** step](../extract/index.md) first.
 
 Once you have a stream of records, the following transformations are typically needed:
+
 - Values need to be mapped onto a prepared list of IRIs or literals (e.g. from country names to country-denoting IRIs).
 - Values need to be translated into standards-compliant formats (e.g., from country name to ISO 3166 country codes).
 - Multiple existing values need to be combined into one new value (e.g., street name and house number may be combined into an address).
