@@ -6,6 +6,31 @@ path: "/docs/triplydb-changelog"
 [TOC]
 
 
+## 24.02.2 {#24.02.2}
+
+**Features**
+
+- `#8659` [SPARQL-IDE] Show a notification when a SPARQL resultset contains unrecognized geographic shapes
+- `#8868` [Speedy] Improved the performance of some aggregates queries.
+- `#8834 / #8892` [SPARQL-IDE] More errors are now validated by the SPARQL IDE. For example, nested aggregates (`count(count(...))`) now report as an error.
+- `#8834` TriplyDB supports query annotations. An TriplyDB SPARQL annotation looks like this:
+    ```
+    #! cache: false
+    ```
+    This annotation makes ensure that the TriplyDB cache is bypassed.
+
+
+
+
+**Issues fixed**
+
+- `#8913` [Speedy] Some arithmetic SPARQL functions return 0 results
+- `#8598` [SPARQL-IDE] Triggering context menu behaves odd when one is already open
+- `#8660` [SPARQL-IDE] QGIS does not recognized the an exported shapefile
+- `#8918` Some small services fail to consistently start
+
+
+
 ## 24.02.1 {#24.02.1}
 
 **Features**
