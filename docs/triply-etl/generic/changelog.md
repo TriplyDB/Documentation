@@ -2,8 +2,6 @@
 
 # Changelog
 
-The current version of TriplyETL is **3.1.0**
-
 You can use this changelog to perform a safe update from an older version of TriplyETL to a newer one. See the documentation for [Upgrading TriplyETL repositories](./maintenance.md#update-the-triplyetl-dependency) for the advised approach, and how the changelog factors into that.
 
 ## TriplyETL 4.0.0
