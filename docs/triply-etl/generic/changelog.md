@@ -4,6 +4,76 @@
 
 You can use this changelog to perform a safe update from an older version of TriplyETL to a newer one. See the documentation for [Upgrading TriplyETL repositories](./maintenance.md#update-the-triplyetl-dependency) for the advised approach, and how the changelog factors into that.
 
+## TriplyETL 4.1.8
+Release date: 2024-03-10
+
+### [Added] `preventServiceDowntime` option to avoid Service downtime in `toTriplyDb()` function
+You can now update services on TriplyDB without experiencing any downtime. Once data uploading is complete, each service will be recreated using a temporary name and the same configuration as the outdated service. Once the temporary service is up and running, the outdated one will be removed. 
+
+```ts
+toTriplyDb({dataset: 'my-dataset',
+  opts: {
+    synchronizeServices: ['my-elastic-service', 'my-jena-service'],
+    preventServiceDowntime: true
+  }
+})
+```
+
+The execution of the above snippet will result in the following console output:
+```console
+Warning Service my-elastic-service of type elasticSearch with status running is out of sync.
+Info Creating temporary elasticSearch service triplyetl-temp-1710169198327 for my-elastic-service.
+Warning Service my-jena-service of type jena with status running is out of sync.
+Info Creating temporary jena service triplyetl-temp-1710169198339 for my-jena-service.
+Info Swapping service my-jena-service with triplyetl-temp-1710169198339
+Info Service my-jena-service updated in 1 minute, 
+Info Swapping service my-elastic-service with triplyetl-temp-1710169198327
+Info Service my-elastic-service updated in 2 minutes, 7 seconds
+```
+
+## TriplyETL 4.1.7
+
+Release date: 2024-03-09
+
+### [Enhanced] Using NamedNodes and/or Literal as content for `addHashedIri()`
+
+The [addHashedIri()](../transform/ratt/#addhashediri) function now considers whether a NamedNode and/or Literal object is utilized to generate a hash. In such cases, the internal JSON representation is no longer employed. Instead, we utilize the value property for a NamedNode or the combination of the value, language, and datatype value properties for a Literal. This enhancement aims to produce more consistent hashed IRIs over time.
+
+### Bug fixes
+
+Using `skipRest()` in `ifElse()` and `switch()` middlewares have caused unexpected ETL execution. 
+
+## TriplyETL 4.1.6
+
+Release date: 2024-03-07
+
+### [Fixed]  SHACL `validate()` with SPARQL target returned incorrect results
+Each shape undergoes conversion to a SHACL Validator object only once during ETL to avoid reloading shapes from disk or string for every record. This approach isn't feasible when SPARQL target nodes alter the model, as it would result in adding those targets for each record. 
+
+## TriplyETL 4.1.2 through 4.1.5
+
+Release date: 2024-03-01
+
+### [Enhanced] Improved the timeouts handling for `fromOai()` extractor
+This enhancement resolves timeout errors that occurred with requests taking an extended period to respond. By utilizing a custom Fetch Agent from [undici](https://www.npmjs.com/package/undici) package,  we've eliminated internal timeouts. 
+
+
+## TriplyETL 4.1.1 
+
+Release date: 2024-02-18
+
+### [Changed] `executeRules()` supports only two arguments
+
+ To set a maximum number of iterations of the execution of the SHACL rules the `maxIterations` or `errorOnMaxIterations` needs to be specified in the [executeRules()](../enrich/shacl/#iterative-rules) function. 
+
+### [Enhanced] Increased stack size 
+Maximum call stack size has increased to load the large datasets without trowing an errors. 
+
+###  [Added] CLI flag `--keep-tmp-dir` to save temporary data directory
+
+Introduced the cli flag `--keep-tmp-dir` in order to store all temporary files disregarding the completion status. This allows the user to debug ETL's by studying the intermediate files the ETL has created. 
+
+
 ## TriplyETL 4.0.0
 
 Release date: 2024-01-29
