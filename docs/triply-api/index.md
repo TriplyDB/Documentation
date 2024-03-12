@@ -442,21 +442,21 @@ According to the SPARQL 1.1 Protocol, queries can be send in the 3 different way
 
 ### SPARQL Query result formats
 
-SPARQL services are able to return results in different formats. The user can specify the preferred format by specifying the corresponding Media Type in the HTTP `Accept` header. TriplyDB supports the following Media Types. Notice that the chosen result format must be supported for your query form.
+SPARQL services are able to return results in different formats. The user can specify the preferred format by specifying the corresponding Media Type in the HTTP `Accept` header. TriplyDB supports the Media Types in the following table. Notice that the chosen result format must be supported for your query form. Alternatively, it is possible (but not preferred) to specify the requested format as an URI path suffix; see the [GET request](#get-request) section for an example.
 
-| Result format | Media Type                        | Query forms         |
-| ------------- | --------------------------------- | ------------------- |
-| CSV           | `text/csv`                        | SELECT              |
-| JSON          | `application/json`                | ASK, SELECT         |
-| JSON-LD       | `application/ld+json`             | CONSTRUCT, DESCRIBE |
-| N-Quads       | `application/n-quads`             | CONSTRUCT, DESCRIBE |
-| N-Triples     | `application/n-triples`           | CONSTRUCT, DESCRIBE |
-| RDF/XML       | `application/rdf+xml`             | CONSTRUCT, DESCRIBE |
-| SPARQL JSON   | `application/sparql-results+json` | ASK, SELECT         |
-| SPARQL XML    | `application/sparql-results+xml`  | ASK, SELECT         |
-| TriG          | `application/trig`                | CONSTRUCT, DESCRIBE |
-| TSV           | `text/tab-separated-values`       | SELECT              |
-| Turtle        | `text/turtle`                     | CONSTRUCT, DESCRIBE |
+| Result format | Media Type                        | Query forms         | Suffix    |
+| ------------- | --------------------------------- | ------------------- | --------- |
+| CSV           | `text/csv`                        | SELECT              | `.csv`    |
+| JSON          | `application/json`                | ASK, SELECT         | `.json`   |
+| JSON-LD       | `application/ld+json`             | CONSTRUCT, DESCRIBE | `.jsonld` |
+| N-Quads       | `application/n-quads`             | CONSTRUCT, DESCRIBE | `.nq`     |
+| N-Triples     | `application/n-triples`           | CONSTRUCT, DESCRIBE | `.nt`     |
+| RDF/XML       | `application/rdf+xml`             | CONSTRUCT, DESCRIBE |           |
+| SPARQL JSON   | `application/sparql-results+json` | ASK, SELECT         | `.srj`    |
+| SPARQL XML    | `application/sparql-results+xml`  | ASK, SELECT         | `.srx`    |
+| TriG          | `application/trig`                | CONSTRUCT, DESCRIBE | `.trig`   |
+| TSV           | `text/tab-separated-values`       | SELECT              | `.tsv`    |
+| Turtle        | `text/turtle`                     | CONSTRUCT, DESCRIBE | `.ttl`    |
 
 ### Examples of SPARQL Query requests
 
@@ -489,6 +489,47 @@ Result:
   }
 ]
 ```
+
+The following request is identical to the previous one, but adds the ".srj" suffix to the URI path (see `/sparql.srj`). All suffixes from the table in Section [SPARQL Query result formats](#sparql-query-result-formats) are supported.
+
+```sh
+curl https://api.triplydb.com/datasets/academy/pokemon/services/pokemon/sparql.srj?query=select%20%2A%20%7B%20%3Fs%20%3Fp%20%3Fo.%20%7D%20limit%201
+```
+
+This returns the official SPARQL Result Set JSON (SRJ) format. Notice that this official format is more verbose than the standard JSON format:
+
+```json
+{
+  "head": {
+    "link": [],
+    "vars": [
+      "s",
+      "p",
+      "o"
+    ]
+  },
+  "results": {
+    "bindings": [
+      {
+        "s": {
+          "type": "uri",
+          "value": "https://triplydb.com/academy/pokemon/"
+        },
+        "p": {
+          "type": "uri",
+          "value": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
+        },
+        "o": {
+          "type": "uri",
+          "value": "http://rdfs.org/ns/void#Dataset"
+        }
+      }
+    ]
+  }
+}
+```
+
+
 
 ### URL-encoded POST request
 
