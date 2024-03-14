@@ -5,6 +5,13 @@ path: "/docs/triplydb-changelog"
 
 [TOC]
 
+## 24.03.0 {#24.03.0}
+
+**Issues fixed**
+
+- `#8600` [SPARQL-IDE] Automatically inserted brackets caused syntax errors
+- `#8999` [SPARQL-IDE] Editor inserts duplicate prefix delcarations when comments are used
+- `#8780` [Speedy] Queries with `LIMIT` statements took longer to execute than expected
 
 ## 24.02.2 {#24.02.2}
 
