@@ -5,19 +5,39 @@ path: "/docs/triplydb-changelog"
 
 [TOC]
 
+## 24.03.1 {#24.03.1}
+
+**Features**
+
+- `#8580` Added saved query execution status in the TriplyDB administrator view
+- `#8798` Improved the performance when navigating to most queries and stories, by proactively cache query results
+- `#8580` [Speedy] Added support for `xsd:negativeinteger`, `xsd:positiveInteger`, `xsd:nonNegativeInteger` and `xsd:nonPositiveInteger` casting functions
+- `#8681` [Speedy] Improved query performance when federating to a public dataset on the same TriplyDB instance
+- `#9000` [SPARQL-IDE] Unreferenced variables are now identifiable by their colour
+- `#9028` [SPARQL-IDE] Improved the rendering of polygons on a map and map interactions on mobile devices
+
+**Issues fixed**
+
+- `#8601` [SPARQL-IDE] Unexpected auto-complete after operator
+- `#8954` [SPARQL-IDE] SPARQL IDE shows 2D data in tilted view
+- `#9004` [SPARQL-IDE] LD-frame editor doesn't show icon to display the entire query
+- `#9006` [SPARQL-IDE] Auto-indent references the next line instead of the previous line
+- `#9029` [SPARQL-IDE] Unactionable warning for some plugins in stories
+
+
 ## 24.03.0 {#24.03.0}
 
 **Issues fixed**
 
 - `#8600` [SPARQL-IDE] Automatically inserted brackets caused syntax errors
-- `#8999` [SPARQL-IDE] Editor inserts duplicate prefix delcarations when comments are used
+- `#8999` [SPARQL-IDE] Editor inserts duplicate prefix declarations when comments are used
 - `#8780` [Speedy] Queries with `LIMIT` statements took longer to execute than expected
 
 ## 24.02.2 {#24.02.2}
 
 **Features**
 
-- `#8659` [SPARQL-IDE] Show a notification when a SPARQL resultset contains unrecognized geographic shapes
+- `#8659` [SPARQL-IDE] Show a notification when a SPARQL result set contains unrecognized geographic shapes
 - `#8868` [Speedy] Improved the performance of some aggregates queries.
 - `#8834 / #8892` [SPARQL-IDE] More errors are now validated by the SPARQL IDE. For example, nested aggregates (`count(count(...))`) now report as an error.
 - `#8834` TriplyDB supports query annotations. An TriplyDB SPARQL annotation looks like this:
