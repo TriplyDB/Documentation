@@ -10,7 +10,7 @@ path: "/docs/triplydb-changelog"
 **Features**
 
 - `#8580` Added saved query execution status in the TriplyDB administrator view
-- `#8798` Improved the performance when navigating to most queries and stories, by proactively cache query results
+- `#8798` Improved the performance when navigating to most queries and stories, by proactively caching query results
 - `#8580` [Speedy] Added support for `xsd:negativeinteger`, `xsd:positiveInteger`, `xsd:nonNegativeInteger` and `xsd:nonPositiveInteger` casting functions
 - `#8681` [Speedy] Improved query performance when federating to a public dataset on the same TriplyDB instance
 - `#9000` [SPARQL-IDE] Unreferenced variables are now identifiable by their colour
