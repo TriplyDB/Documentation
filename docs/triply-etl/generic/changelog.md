@@ -8,7 +8,7 @@ You can use this changelog to perform a safe update from an older version of Tri
 Release date: 2024-03-10
 
 ### [Added] `preventServiceDowntime` option to avoid Service downtime in `toTriplyDb()` function
-You can now update services on TriplyDB without experiencing any downtime. Once data uploading is complete, each service will be recreated using a temporary name and the same configuration as the outdated service. Once the temporary service is up and running, the outdated one will be removed. 
+You can now update services on TriplyDB without experiencing any downtime. Once data uploading is complete, each service will be recreated using a temporary name and the same configuration as the outdated service. Once the temporary service is up and running, the outdated one will be removed.
 
 ```ts
 toTriplyDb({dataset: 'my-dataset',
@@ -26,7 +26,7 @@ Info Creating temporary elasticSearch service triplyetl-temp-1710169198327 for m
 Warning Service my-jena-service of type jena with status running is out of sync.
 Info Creating temporary jena service triplyetl-temp-1710169198339 for my-jena-service.
 Info Swapping service my-jena-service with triplyetl-temp-1710169198339
-Info Service my-jena-service updated in 1 minute, 
+Info Service my-jena-service updated in 1 minute,
 Info Swapping service my-elastic-service with triplyetl-temp-1710169198327
 Info Service my-elastic-service updated in 2 minutes, 7 seconds
 ```
@@ -37,41 +37,41 @@ Release date: 2024-03-09
 
 ### [Enhanced] Using NamedNodes and/or Literal as content for `addHashedIri()`
 
-The [addHashedIri()](../transform/ratt/#addhashediri) function now considers whether a NamedNode and/or Literal object is utilized to generate a hash. In such cases, the internal JSON representation is no longer employed. Instead, we utilize the value property for a NamedNode or the combination of the value, language, and datatype value properties for a Literal. This enhancement aims to produce more consistent hashed IRIs over time.
+The [addHashedIri()](../transform/ratt.md#addhashediri) function now considers whether a NamedNode and/or Literal object is utilized to generate a hash. In such cases, the internal JSON representation is no longer employed. Instead, we utilize the value property for a NamedNode or the combination of the value, language, and datatype value properties for a Literal. This enhancement aims to produce more consistent hashed IRIs over time.
 
 ### Bug fixes
 
-Using `skipRest()` in `ifElse()` and `switch()` middlewares have caused unexpected ETL execution. 
+Using `skipRest()` in `ifElse()` and `switch()` middlewares have caused unexpected ETL execution.
 
 ## TriplyETL 4.1.6
 
 Release date: 2024-03-07
 
 ### [Fixed]  SHACL `validate()` with SPARQL target returned incorrect results
-Each shape undergoes conversion to a SHACL Validator object only once during ETL to avoid reloading shapes from disk or string for every record. This approach isn't feasible when SPARQL target nodes alter the model, as it would result in adding those targets for each record. 
+Each shape undergoes conversion to a SHACL Validator object only once during ETL to avoid reloading shapes from disk or string for every record. This approach isn't feasible when SPARQL target nodes alter the model, as it would result in adding those targets for each record.
 
 ## TriplyETL 4.1.2 through 4.1.5
 
 Release date: 2024-03-01
 
 ### [Enhanced] Improved the timeouts handling for `fromOai()` extractor
-This enhancement resolves timeout errors that occurred with requests taking an extended period to respond. By utilizing a custom Fetch Agent from [undici](https://www.npmjs.com/package/undici) package,  we've eliminated internal timeouts. 
+This enhancement resolves timeout errors that occurred with requests taking an extended period to respond. By utilizing a custom Fetch Agent from [undici](https://www.npmjs.com/package/undici) package,  we've eliminated internal timeouts.
 
 
-## TriplyETL 4.1.1 
+## TriplyETL 4.1.1
 
 Release date: 2024-02-18
 
 ### [Changed] `executeRules()` supports only two arguments
 
- To set a maximum number of iterations of the execution of the SHACL rules the `maxIterations` or `errorOnMaxIterations` needs to be specified in the [executeRules()](../enrich/shacl/#iterative-rules) function. 
+ To set a maximum number of iterations of the execution of the SHACL rules the `maxIterations` or `errorOnMaxIterations` needs to be specified in the [executeRules()](../enrich/shacl/index.md#iterative-rules) function.
 
-### [Enhanced] Increased stack size 
-Maximum call stack size has increased to load the large datasets without trowing an errors. 
+### [Enhanced] Increased stack size
+Maximum call stack size has increased to load the large datasets without trowing an errors.
 
 ###  [Added] CLI flag `--keep-tmp-dir` to save temporary data directory
 
-Introduced the cli flag `--keep-tmp-dir` in order to store all temporary files disregarding the completion status. This allows the user to debug ETL's by studying the intermediate files the ETL has created. 
+Introduced the cli flag `--keep-tmp-dir` in order to store all temporary files disregarding the completion status. This allows the user to debug ETL's by studying the intermediate files the ETL has created.
 
 
 ## TriplyETL 4.0.0
@@ -86,13 +86,13 @@ The following middlewares: `addHashedIri()`, `addIri()`, `addRandomIri()`, would
 
 The format is called ESRI Shapefile, hence our extractor function's name had to be changed from `fromShapeFile()` to `fromShapefile()`.
 
-### [Removed] Function `addRandomIri()` 
+### [Removed] Function `addRandomIri()`
 
-Since function `addRandomIri()` does not add anything beyond `addSkolemIri()`, the function has been removed from the TriplyETL library. Random IRIs should be skolem IRIs that can be readily replaced by blank nodes. 
+Since function `addRandomIri()` does not add anything beyond `addSkolemIri()`, the function has been removed from the TriplyETL library. Random IRIs should be skolem IRIs that can be readily replaced by blank nodes.
 
 ### [Added] New variables added to ETL
 
-New flag has been introduced when constructing an ETL: 
+New flag has been introduced when constructing an ETL:
 
 ```ts
   /**
@@ -119,7 +119,7 @@ Release date: 2024-01-15 && 2024-01-17
 
 ### [Deprecated] Deprecated `fromShapeFile()` for `fromShapefile()`
 
-### [Deprecated] Deprecated `addRandomIri()` function. 
+### [Deprecated] Deprecated `addRandomIri()` function.
 
 Function `addRandomIri()` does not add anything beyond `addSkolemIri()`. Random IRIs should be skolem IRIs that can be readily replaced by blank nodes.
 
@@ -181,8 +181,8 @@ This issue has been fixed.
 
 ### [Fixed] String encoding for IRIs
 
-It is now possible to check whether a value of a key used to create an IRI contains valid characters. 
-A previous warning incorrectly flagged a space (' ') as an invalid character in the IRI, but that has been taken care of that. Now, when you run the script, you won't encounter the misleading warning, providing a more accurate and hassle-free execution. 
+It is now possible to check whether a value of a key used to create an IRI contains valid characters.
+A previous warning incorrectly flagged a space (' ') as an invalid character in the IRI, but that has been taken care of that. Now, when you run the script, you won't encounter the misleading warning, providing a more accurate and hassle-free execution.
 
 In this case, [1] is resulting in [2] instead of invalid [3]:
 
@@ -191,7 +191,7 @@ In this case, [1] is resulting in [2] instead of invalid [3]:
 [2] http://ex.com/a%20b
 [3] http://ex.com/ a b
 ```
- 
+
 As well as [4] being encoded as [5]:
 
 ```
