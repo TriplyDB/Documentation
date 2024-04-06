@@ -79,7 +79,7 @@ TriplyETL implements the latest versions of the linked data standards and best p
 TriplyETL has the following core features, that set it apart from other data pipeline products:
 
 - **Backend-agnostic**: TriplyETL supports a large number of data source formats and types. Source data is processed in a unified record. This decouples configuration from source format specific. In TriplyETL, changing the source system often only requires changing the extractor.
-- **Multi-paradigm**: TriplyETL supports all major paradigms for transforming and asserting linked data: SPARQL, SHACL, RML JSON-LD, and RATT (RDF All The Things). You can also write your own transformations in TypeScript for optimal extensibility.
+- **Multi-paradigm**: TriplyETL supports all major paradigms for transforming and asserting linked data: SPARQL, SHACL, RML, JSON-LD, XSLT, and RATT (RDF All The Things). You can also write your own transformations in TypeScript for optimal extensibility.
 - **Scalable**: TriplyETL processes data in a stream of self-contained records. This allows TriplyETL pipelines to run in parallel, ensuring a high pipeline throughput.
 - **High Quality**: The output of TriplyETL pipelines is automatically validated against the specified data model, and/or against a set of preconfigured 'gold records'.
 - **Production-grade**: TriplyETL pipelines run in GitLab CI/CD, and support the four DTAP environments that are often used in production systems: Development, Testing, Acceptance, Production.

@@ -20,13 +20,12 @@ Downsides:
 The rest of this page describes a examples that uses SPARQL Rules.
 
 
-
 ## Example 1: Deducing fatherhood
 
 This example uses the same data and rule as the corresponding [Triple Rule example](./triple-rules.md).
 
 
-### Step 1: Implement the SPARQL Construct query
+### Step 1A: Implement the SPARQL Construct query
 
 In natural language, we can define the following rule for deducing fatherhood:
 
@@ -57,9 +56,11 @@ Notice the following details:
 We can run this query directly from TriplyETL, and this will result in the correct deductions. In fact, this is why [SPARQL Construct](../sparql/construct.md) is one of the enrichment configuration languages that are supported by TriplyETL.
 
 
-### Step 2: Create the node shape
+### Step 1B: Create the node shape
 
-However, SPARQL Rules add more features on top of SPARQL Construct. A SPARQL Rule is added to the information model. In the information model, rules are related to node shapes. When instance data conforms to the node shape, the SPARQL Rule is executed. Notice that this is different from calling SPARQL Construct queries directly, where we must determine when to run which query. SPARQL Rules are triggered by the information model instead. This has many benefits, especially for large collections of business rules, where the execution order may no longer be straightforward.
+In Step 1A, we used a SPARQL Construct query to deduce new data.In this step, we will wrap that query inside a SPARQL Rule. This allows us to relate the rule to our information model.
+
+In the information model, rules are related to node shapes. When instance data conforms to the node shape, the SPARQL Rule is executed. Notice that this is different from calling SPARQL Construct queries directly, where we must determine when to run which query. SPARQL Rules are triggered by the information model instead. This has many benefits, especially for large collections of business rules, where the execution order may no longer be straightforward.
 
 In order for our SPARQL Construct query to be triggered by a node shape, we need to identify some target criterion that will allow the node shape to trigger the query. One target criterion for node shapes is `sh:targetClass`. We can trigger the SPARQL Construct query for every instance of the class `sdo:Person`. This means that we move the check of whether a resource is a person from the SPARQL Construct query into the node shape. This results in the following linked data snippet:
 
@@ -95,14 +96,14 @@ Notice the following details:
 - The literal that contains the SPARQL Construct query uses triple quoted literals notation (`'''...'''`). This notation allows us to use unescaped newlines inside the literal, which allows us to inline the query string in a readable way.
 
 
-### Step 3: Write and run the script
+### Step 1C: Write and run the script
 
 The following script is completely self-contained. By copy/pasting it into TriplyETL, you can execute the rule over the instance data, and deduce the fact that John is a father.
 
 Notice that the script includes the following components:
 
-  1. Load the instance data from [Step 1](#step-1-load-instance-data) with [loadRdf()](../../extract/rdf.md).
-  2. Execute the rule from [Step 2](#step-2-create-the-node-shape) with [executeRules()](./index.md).
+  1. Load the instance data from [Step 1A](#step-1a-load-instance-data) with [loadRdf()](../../extract/rdf.md).
+  2. Execute the rule from [Step 1B](#step-1b-create-the-node-shape) with [executeRules()](./index.md).
   3. Print the contents of the internal store with [logQuads()](../../generic/debug.md#function-logquads).
 
 ```ts
@@ -159,9 +160,9 @@ When we run this script (command `npx etl`), the following linked data is printe
 Notice that the fatherhood assertion was correctly added to the internal store, based on the Triple Rule in the data model.
 
 
-### Step 4: Using files (optional)
+### Step 1D: Using files (optional)
 
-The script in [Step 3](#step-3-write-and-run-the-script) includes both the instance data and the information model as inline strings, using [Source.string()](../../sources/inline-strings.md). This is great for creating a self-contained example, but not realistic when the number of rules increases.
+The script in [Step 1C](#step-1c-write-and-run-the-script) includes both the instance data and the information model as inline strings, using [Source.string()](../../sources/inline-strings.md). This is great for creating a self-contained example, but not realistic when the number of rules increases.
 
 We therefore show the same script after these inline components have been stored in separate files:
 
@@ -187,6 +188,9 @@ export default async function (): Promise<Etl> {
 ```
 
 
+
+<!--
+## Example 2: Calculating the area of a rectangle
 
 ## Example 2:
 
@@ -259,3 +263,4 @@ Notice that the SPARQL query string (the value of `sh:construct`) does not decla
 ```
 
 This notation allows the same prefix declarations to be reused by an arbitrary number of SPARQL Rules.
+-->

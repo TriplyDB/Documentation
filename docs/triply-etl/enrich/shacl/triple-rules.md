@@ -26,7 +26,7 @@ The rest of this page describes a complete example that uses Triple Rules.
 This section describes a full example of a Triple Rule that can deduce that somebody is a father, based on other facts that are known about the person.
 
 
-### Step 1: Load instance data
+### Step A: Load instance data
 
 We first need to load some instance data, so that we can apply a rule and enrich the loaded data with some new data. We start with linked data assertions that state that John is a male who has a child (Mary):
 
@@ -69,9 +69,9 @@ graph
 ```
 
 
-### Step 2. Formulate the SHACL rule
+### Step B: Formulate the SHACL rule
 
-In Step 1 we applied a rule to the instance John. But our dataset may contain information about other people too: people with or without children, people with different genders, etc.
+In Step A, we applied a rule to the instance John. But our dataset may contain information about other people too: people with or without children, people with different genders, etc.
 
 Suppose our dataset contains information about Peter, who has two children and has the male gender. We can apply the same rule to deduce that Peter is also a father.
 
@@ -118,14 +118,14 @@ Notice the following details:
 - Notice that the term `sh:this` is used to refer to individuals for whom all conditions are met (in our example: John).
 
 
-### Step 3: Write and run the script
+### Step C: Write and run the script
 
 The following script is completely self-contained. By copy/pasting it into TriplyETL, you can execute the rule over the instance data, and deduce the fact that John is a father.
 
 Notice that the script includes the following components:
 
-  1. Load the instance data from [Step 1](#step-1-load-instance-data) with [loadRdf()](../../extract/rdf.md).
-  2. Execute the rule from [Step 2](#step-2-formulate-the-shacl-rule) with [executeRules()](./index.md).
+  1. Load the instance data from [Step A](#step-a-load-instance-data) with [loadRdf()](../../extract/rdf.md).
+  2. Execute the rule from [Step B](#step-b-formulate-the-shacl-rule) with [executeRules()](./index.md).
   3. Print the contents of the internal store with [logQuads()](../../generic/debug.md#function-logquads).
 
 ```ts
@@ -182,9 +182,9 @@ When we run this script (command `npx etl`), the following linked data is printe
 Notice that the fatherhood assertion was correctly added to the internal store, based on the Triple Rule in the data model.
 
 
-### Step 4: Using files (optional)
+### Step D: Using files (optional)
 
-The script in [Step 3](#step-3-write-and-run-the-script) includes both the instance data and the information model as inline strings, using [Source.string()](../../sources/inline-strings.md). This is great for creating a self-contained example, but not realistic when the number of rules increases.
+The script in [Step C](#step-c-write-and-run-the-script) includes both the instance data and the information model as inline strings, using [Source.string()](../../sources/inline-strings.md). This is great for creating a self-contained example, but not realistic when the number of rules increases.
 
 We therefore show the same script after these inline components have been stored in separate files:
 
