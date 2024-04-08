@@ -99,7 +99,7 @@ At least one of the following arguments is required to create a new version. Any
   <dd>The visualization plugin that is used to display the result set. If none is set it defaults to <code>'table'</code>. Other options may include: <code>'response'</code>, <code>'geo'</code>, <code>'gallery'</code>, <code>'markup'</code>, etc. Output will take priority over ldFrame</dd>
 
   <dt><code> ldFrame: object</code></dt>
-  <dd></dd> JSON LD frame object used to transform plain JSON LD into a framed JSON. Will be used only if an output is not provided.
+  <dd>JSON LD frame object used to transform plain JSON LD into a framed JSON. Will be used only if an output is not provided.</dd>
 
   <dt><code>variables: Variable[]</code></dt>
   <dd>
