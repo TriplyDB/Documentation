@@ -122,15 +122,63 @@ The example of such a request:
 ```sh
 curl -H 'Authorization: Bearer TOKEN' -X POST https://api.INSTANCE/datasets/ACCOUNT/DATASET/jobs  -F file=@FILENAME
 ```
-Here, `TOKEN` must be replaced with your TriplyDB token, and `FILENAME` must be replaced with the path to a local file. The request will look like this:
+Upper-case letter words must be replaced by the following values:
 
+- `TOKEN` :: Your TriplyDB token.
+- `INSTANCE` :: The domain of your instance
+- `ACCOUNT` :: Your account name
+- `DATASET` :: The dataset name
+- `FILENAME` :: The path to the file you want to upload
+
+A request looks like this:
 ```sh
-curl -H 'Authorization: Bearer xxxxxx' -X POST https://api.INSTANCE/datasets/ACCOUNT/DATASET/jobs  -F file=@./myfile.trig
+curl -H 'Authorization: Bearer xxxxxx' -X POST https://api.triplydb.com/datasets/my-account-name/my-dataset-name/jobs  -F file=@./myfile.trig
 ```
 
 **Limitations**: We only support this API route for uploads less than 5MB. To upload more data, use:
 
 1. [TriplyDB-JS](../triplydb-js/index.md): See the `importFrom*` methods under [the `Dataset` class](../triplydb-js/dataset/index.md).
+2. [TriplyDB Command-line Interface](../triply-cli/index.md)
+
+### Upload assets
+
+You can upload assets via the Triply API. You need to [use the API Token](#using-the-api-token) and send an HTTP POST request with data specifying the local file path.
+
+To add a new asset:
+```sh
+curl -H "Authorization: Bearer TOKEN" -X POST https://api.INSTANCE/datasets/ACCOUNT/DATASET/assets -F file=@FILENAME
+```
+
+To add a version to an existing asset:
+```sh
+curl -H "Authorization: Bearer TOKEN" -X POST https://api.INSTANCE/datasets/ACCOUNT/DATASET/assets/IDENTIFIER -F file=@FILENAME
+```
+
+Upper-case letter words must be replaced by the following values:
+
+- `TOKEN` :: Your TriplyDB token.
+- `INSTANCE` :: The domain of your instance
+- `ACCOUNT` :: Your account name
+- `DATASET` :: The dataset name
+- `IDENTIFIER` :: The asset identifier where you'd like to add a new version to. 
+- `FILENAME` :: The path to the file you want to upload
+
+This request returns a JSON object, that includes (among other things) an `identifier` key, which can be used as a persistent identifier for this asset.
+
+A request to add a new asset looks like this:
+```sh
+curl -H 'Authorization: Bearer xxxxxx' -X POST https://api.triplydb.com/datasets/my-account-name/my-dataset-name/assets -F file=@./myfile.txt
+```
+
+A request to add a version to an existing asset looks like this:
+```sh
+curl -H 'Authorization: Bearer xxxxxx' -X POST https://api.triplydb.com/datasets/my-account-name/my-dataset-name/assets/yyyyy -F file=@./myfile.txt
+```
+
+
+**Limitations**: We only support this API route for uploads less than 5MB. To upload more data, use:
+
+1. [TriplyDB-JS](../triplydb-js/index.md): See the `uploadAsset` methods under [the `Dataset` class](../triplydb-js/dataset/index.md).
 2. [TriplyDB Command-line Interface](../triply-cli/index.md)
 
 ## Accounts
