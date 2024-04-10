@@ -113,19 +113,20 @@ Upper-case letter words in json after `-d` must be replaced by the following val
 - `DISPLAY_NAME` :: The display name of the dataset.
 
 
-### Upload data to a dataset
+### Upload linked data
 
-You can upload a data file via the Triply API. You need to [use the API Token](#using-the-api-token) and send an HTTP POST request with data specifying the local file path.
+You can upload linked data via the Triply API. You need to [use the API Token](#using-the-api-token) and send an HTTP POST request with data specifying the local file path.
 The list of supported file extensions can be checked in [Adding data: File upload](../triply-db-getting-started/uploading-data/index.md#adding-data-file-upload) documentation.
 
-The  example of the URI:
+The example of such a request:
 ```sh
 curl -H 'Authorization: Bearer TOKEN' -X POST https://api.INSTANCE/datasets/ACCOUNT/DATASET/jobs  -F file=@FILENAME
-
 ```
-Upper-case letter word after `-F` must be replaced by the following value:
+Here, `TOKEN` must be replaced with your TriplyDB token, and `FILENAME` must be replaced with the path to a local file. The request will look like this:
 
-- `FILENAME` :: path to the local file, for example `example.ttl`.
+```sh
+curl -H 'Authorization: Bearer xxxxxx' -X POST https://api.INSTANCE/datasets/ACCOUNT/DATASET/jobs  -F file=@./myfile.trig
+```
 
 **Limitations**: We only support this API route for uploads less than 5MB. To upload more data, use:
 
