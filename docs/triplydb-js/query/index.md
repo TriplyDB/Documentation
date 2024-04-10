@@ -216,16 +216,21 @@ const query = await user.getQuery('my-query')
 const query_1 = await query.useVersion(1)
 ```
 
-## Query.duplicate(name: string, metadataToReplace?: object)
+## Query.copy(queryName?: string, accountName?: string, metadataToReplace?: object)
 
-Creates a duplicate of the saved query under a new <code>name</code>. The duplicated query will retain all the metadata from the original query unless <code>metadataToReplace</code> has been provided.
+Copies a query using either the same name or a new name (if <code>queryName</code> is provided) to the current account or a new account (if <code>accountName</code> is provided) with the same metadata or overwritten metadata (if <code>metadataToReplace</code> is provided)
 
 ### Arguments
 
 <dl>
-  <dt><code>name</code></dt>
+  <dt><code>queryName</code></dt>
   <dd>
-    <p>The new URL-friendly name given to the duplicated query that is used in URL paths. This name can only include ASCII letters and hyphens.</p>
+    <p>An optional parameter. The new URL-friendly name given to the duplicated query that is used in URL paths. This name can only include ASCII letters and hyphens. Defaults to the original query name.</p> 
+  </dd>
+
+   <dt><code>accountName</code></dt>
+  <dd>
+    <p>An optional parameter. The new account to which the query will be copied to. Defaults to the current account</p> 
   </dd>
 
   <dt><code>metadataToReplace</code><dt>
@@ -276,10 +281,10 @@ const user = await triply.getAccount('my-account')
 const query = await user.getQuery('my-query')
 const query_1 = await query.useVersion(1)
 
-// Without overwriting any metadata
-const duplicatedQuery_1 = await query.duplicate('newDuplicateQuery')
-// With overwitting metadata
-const duplicatedQuery_1 = await query.duplicate('newDuplicateQuery', {
+// Within the same account under a new name
+const duplicatedQuery_1 = await query.copy('newDuplicateQuery')
+// To a new account with some metadata overwritten using the same query name
+const duplicatedQuery_2 = await query.copy(undefined, 'newAccountName' , {
   description: 'newDescription',
   displayName: 'newDisplayName'
 })
