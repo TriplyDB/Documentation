@@ -118,7 +118,7 @@ The TriplyETL script will give you a link to the uploaded dataset. This dataset 
 
 ### Middlewares
 
-The most common occurrence in ETL are the middlewares. Middlewares are essentially reusable pieces of code that execute a certain long and/or complex piece of functionality. An middleware is a piece of code that transforms a record and can be invoked with app.use().
+The most common occurrence in ETL are the middlewares. Middlewares are essentially reusable pieces of code that execute a certain long and/or complex piece of functionality. An middleware is a piece of code that transforms a record and can be invoked with etl.use().
 
 Example of middleware function:
 

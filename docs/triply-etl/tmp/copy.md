@@ -9,7 +9,7 @@ Copying is the act of creating a new thing that is based on a specific existing 
 The `copy` function has the following signature:
 
 ```ts
-app.use(
+etl.use(
   copy({
     fromKey: 'FROM_KEY',
     toKey: 'TO_KEY',

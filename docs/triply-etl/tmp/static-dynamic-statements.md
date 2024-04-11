@@ -57,7 +57,7 @@ Notice the following details:
 `iri.hashed`can be used instead of `iri` when the ETL has a high number of blank nodes and they need more than one constant as input to hash a unique IRI.
 
 ```ts
-app.use(
+etl.use(
   triple(
     iri.hashed(prefix.id, input_string),
     def.inhabitants,

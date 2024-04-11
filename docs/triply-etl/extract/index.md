@@ -2,7 +2,7 @@
 
 # Extract
 
-The **Extract** step is the first step in any TriplyETL pipeline. It is indicated by the red arrow in the following diagram:
+The TriplyETL **Extract** step is the first step in any TriplyETL pipeline. It is indicated by the red arrow in the following diagram:
 
 ```mermaid
 graph LR
