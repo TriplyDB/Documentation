@@ -36,6 +36,21 @@ TriplyETL supports the [IETF RFC 8259](https://www.rfc-editor.org/rfc/rfc8259) s
 
 
 
+## Path selectors
+
+If the JSON data source is large, it may be necessary to stream through subtrees. The subtrees that should used, can be specified through the `selectors` option. For example, the following snippet streams to each person record individually:
+
+```ts
+fromJson(
+  {data: {persons: [{name: 'John'}, {name: 'Mary'}]}},
+  {selectors: 'data.persons'}
+),
+```
+
+Notice that the dot is used to specify paths, i.e. sequences of keys. It is also possible to specify multiple selectors by using an array of strings.
+
+
+
 ## Nested keys
 
 Since JSON is a tree-shaped format, it is able to store values in a nested structure. This requires a sequence or 'path' of keys to be specified.
@@ -64,7 +79,7 @@ We use the following example data:
 }
 ```
 
-Paths are specified as dot-separated sequences of keys, starting at the top-level and ending at the required value. For the JSON example in the previous section, TriplyETL can access the `"name"` key inside the `"title"` key, which itself is nested inside the `"metadata"` key. This path is expressed in [1]. Notice that the path expressed in [1] is different from the path expressed in [2], which also accesses the `"name"` key, but nested inside the `"countries"` and then `"data"` keys. (The use of the `[0]` index is explained in the next section.)
+Paths are specified as dot-separated sequences of keys, starting at the top-level and ending at the required value. For the JSON example above, TriplyETL can access the `"name"` key inside the `"title"` key, which itself is nested inside the `"metadata"` key. This path is expressed in [1]. Notice that the path expressed in [1] is different from the path expressed in [2], which also accesses the `"name"` key, but nested inside the `"countries"` and then `"data"` keys. (The use of the `[0]` index is explained in the next section.)
 
 ```
 [1] metadata.title.name
@@ -109,9 +124,9 @@ Notice the use of additional escaping: `["..."]`
 
 Tree-shaped data formats often allow multiple values to be specified in an ordered list. Examples of this are arrays in JSON and XML elements with the same tag that are directly nested under the same parent element.
 
-TriplyETL is able to access specific elements from lists based on theirindex* or position. Following the standard practice in Computer Science, TriplyETL refers to the first element in the list as having index 0. The second element has index 1, etc.
+TriplyETL is able to access specific elements from lists based on their index or position. Following the standard practice in Computer Science, TriplyETL refers to the first element in the list as having index 0. The second element has index 1, etc.
 
-For the above example record, we can assert the name of thefirst* country as follows:
+For the above example record, we can assert the name of the first country as follows:
 
 ```ts
 triple(

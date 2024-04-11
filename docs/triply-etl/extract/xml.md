@@ -19,7 +19,7 @@ The following code snippet extracts records from an XML file that is stored as a
 ```ts
 fromXml(
   Source.TriplyDb.asset('my-dataset', {name: 'my-data.xml'}),
-  { selectors: 'first-element' }
+  {selectors: 'first-element'}
 ),
 ```
 
@@ -44,7 +44,7 @@ The following code snippet extracts records for three different paths in the sam
 
 ```ts
 fromXml(
-  Source.TriplyDb.asset('my-dataset', { name: 'my-data.xml' }),
+  Source.TriplyDb.asset('my-dataset', {name: 'my-data.xml'}),
   {
     selectors: [
       'first-element.second-element.third-element',
@@ -61,8 +61,183 @@ TriplyETL supports the W3C XML standard.
 
 ### Nested keys
 
-Since XML can store tree-shaped data, it can have nested keys and indexed array. See the following subsections of the JSON documentation for how to extract data from such tree structures:
+Since XML can store tree-shaped data, it can have nested keys (paths) and indexed arrays.
 
-- [Nested keys](#nested-keys)
-- [Dealing with dots in keys](#dealing-with-dots-in-keys)
-- [Accessing lists by index](#accessing-lists-by-index)
+```xml
+<?xml version="1.0"?>
+<root>
+  <metadata>
+    <title>
+      <name>Data about countries.</name>
+    </title>
+  </metadata>
+  <data>
+    <country "country.id"="nl">
+      <name>The Netherlands</name>
+    </country>
+    <country "country.id"="de">
+      <name>Germany</name>
+    </country>
+  </data>
+</root>
+```
+
+Paths are specified as dot-separated sequences of keys, starting at the top-level and ending at the required value. For the XML example above, TriplyETL can access the textual content inside the `"name"` key, which itself is nested inside the `"title"`, `"metadata"`, and `"root"` keys. This path is expressed in [1]. Notice that the path expressed in [1] is different from the path expressed in [2], which accesses the textual content of the `"name"` key, but nested inside the `"country"`, `"data"`, and `"root"` keys. (The use of the `[0]` index is explained in the next section.)
+
+```
+[1] root.metadata.title.name.$text
+[2] root.data.country[0].name.$text
+```
+
+Path expressions can be used as string keys in many places in TriplyETL. For example, we can assert the title of a dataset in the following way:
+
+```ts
+etl.use(
+  triple(
+    prefix.dataset('my-dataset'),
+    dct.title,
+    literal('root.metadata.title.name.$text', 'en')
+  ),
+)
+```
+
+This results in the following assertion:
+
+```trig
+dataset:my-dataset dct:title 'Data about countries.'@en.
+```
+
+
+### Dealing with dots in keys
+
+In the previous section we saw that dots are used to separate keys in paths. However, sometimes a dot can occur as a regular character inside a key. In such cases, we need to apply additional escaping of the key name to avoid naming conflicts.
+
+The example data from the previous section contains XML attribute [1], which is represented by key [2] in the TriplyETL record.
+
+```
+[1] country.id
+[2] ["@country.id"]
+```
+
+Notice that the dot in [2] is part of the key name. The escape notation `["..."]` ensures that the dot is not misinterpreted as denoting a sequence of keys.
+
+Overall, ‘a.b’ notation allow going into nested object and accessing values within the nest while ‘[“a.b”]’ takes value a.b key as a name, therefore does not go into the nest.
+
+The following extensive example shows how complex sequences of keys with dots in them can be used:
+
+```json
+{
+  "a": {
+    "$text": "1"
+  },
+  "b": {
+    "c": {
+      "$text": "2"
+    }
+  },
+  "b.c": {
+    "$text": "3"
+  },
+  "d.d": {
+    "e": {
+      "$text": "4"
+    },
+    "f": {
+      "$text": "5"
+    }
+  },
+  "g.g": [
+    {
+      "h.h": {
+        "$text": "6"
+      }
+    },
+    {
+      "h.h": {
+        "$text": "7"
+      }
+    }
+  ]
+}
+```
+| Key                       | Value       |
+| ------------------------  | ----------- |
+| 'a.$text'                 | 1           |
+| 'b.c.$text'               | 2           |
+| '["b.c"].$text'           | 3           |
+| '["d.d"].e.$text'         | 4           |
+| '["d.d"].f'.$text'        | 5           |
+| '["g.g"][0]["h.h"].$text' | 6           |
+| '["g.g"][1]["h.h"].$text' | 7           |
+
+<!--
+Another example:
+
+```
+│   "soort_collectie": [                                               │
+│     {                                                                │
+│       "value": [                                                     │
+│         {                                                            │
+│           "$text": "museum",                                         │
+│           "@invariant": "false",                                     │
+│           "@lang": "en-US"                                           │
+│         },                                                           │
+│         {                                                            │
+│           "$text": "museum",                                         │
+│           "@invariant": "false",                                     │
+│           "@lang": "nl-NL"                                           │
+│         }                                                            │
+│       ]                                                              │
+│     }                                                                │
+│   ],                                                                 │
+│   "soort_collectie.lref": [                                          │
+│     {                                                                │
+│       "$text": "63335"                                               │
+│     }                                                                │
+│   ],
+```
+
+```
+| Key                               | Value  |
+| --------------------------------- | ------ |
+| ["soort_collectie.lref"][0].$text | 63335  |
+| soort_collectie.lref[0].$text     | error  |
+| soort_collectie.value[0]$text     | museum |
+```
+--->
+
+## Index-based list access
+
+Tree-shaped data formats often allow multiple values to be specified in an ordered list. Examples of this are arrays in JSON and XML elements with the same tag that are directly nested under the same parent element.
+
+TriplyETL is able to access specific elements from lists based on their index or position. Following the standard practice in Computer Science, TriplyETL refers to the first element in the list as having index 0. The second element has index 1, etc.
+
+For the above example record, we can assert the name of the first country as follows:
+
+```ts
+triple(
+  iri(prefix.country, 'root.data.country[0].["@country.id"]'),
+  rdfs.label,
+  literal('root.data.countries[0].name.$text', 'en')
+),
+```
+
+This results in the following assertion:
+
+```turtle
+country:nl rdfs:label 'The Netherlands'@en.
+```
+
+We can also assert the name of the second country. Notice that only the index is different (‘1’ instead of ‘0’):
+
+```ts
+triple(
+  iri(prefix.country, 'root.data.countries[1].["@country.id"]'),
+  ...
+```
+
+This results in the following assertion:
+
+```r
+country:de rdfs:label 'Germany'@en.
+```
