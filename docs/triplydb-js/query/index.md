@@ -216,7 +216,7 @@ const query = await user.getQuery('my-query')
 const query_1 = await query.useVersion(1)
 ```
 
-## Query.copy(queryName?: string, accountName?: string, metadataToReplace?: object)
+## Query.copy(queryName?: string, account?:object, metadataToReplace?: object)
 
 Copies a query using either the same name or a new name (if <code>queryName</code> is provided) to the current account or a new account (if <code>accountName</code> is provided) with the same metadata or overwritten metadata (if <code>metadataToReplace</code> is provided)
 
@@ -228,9 +228,9 @@ Copies a query using either the same name or a new name (if <code>queryName</cod
     <p>An optional parameter. The new URL-friendly name given to the duplicated query that is used in URL paths. This name can only include ASCII letters and hyphens. Defaults to the original query name.</p> 
   </dd>
 
-   <dt><code>accountName</code></dt>
+   <dt><code>account</code></dt>
   <dd>
-    <p>An optional parameter. The new account to which the query will be copied to. Defaults to the current account</p> 
+    <p>An optional parameter.Expected to be either an User or an Organization object if provided. The new account to which the query will be copied to. Defaults to the current account</p> 
   </dd>
 
   <dt><code>metadataToReplace</code><dt>
@@ -280,11 +280,12 @@ Copies a query using either the same name or a new name (if <code>queryName</cod
 const user = await triply.getAccount('my-account')
 const query = await user.getQuery('my-query')
 const query_1 = await query.useVersion(1)
+const orgAccount = await triply.getAccount('org-account');
 
 // Within the same account under a new name
 const duplicatedQuery_1 = await query.copy('newDuplicateQuery')
 // To a new account with some metadata overwritten using the same query name
-const duplicatedQuery_2 = await query.copy(undefined, 'newAccountName' , {
+const duplicatedQuery_2 = await query.copy(undefined, orgAccount , {
   description: 'newDescription',
   displayName: 'newDisplayName'
 })
