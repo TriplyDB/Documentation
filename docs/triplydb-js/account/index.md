@@ -146,7 +146,7 @@ The `metadata` argument specifies the required Dataset or Service and access lev
   <dd>The human-readable name of the query. This name may include spaces and other characters that are not allowed in the URL-friendly <code>name</code>.</dd>
 
   <dt><code>output: string</code></dt>
-  <dd>The visualization plugin that is used to display the result set of the query. If none is set it defaults to <code>'table'</code>.
+  <dd>The visualization plugin that is used to display the result set of the query. If none is set it will either set <code>ldFrame</code> if provided or default to <code>table</code>.
     <dl>
       <dt><code>'boolean'</code></dt>
       <dd>The <a href='../../yasgui/index.md#table'>boolean</a> view is a special view for ask queries. The value is either 'true' or 'false', and is visualized as  <code>`X`</code>(False) or <code>`V`</code>(True).</dd>
@@ -176,6 +176,9 @@ The `metadata` argument specifies the required Dataset or Service and access lev
       <dd>The <a href='../../yasgui/index.md#timeline-triplydb-plugin'>timeline</a> timeline renders the SPARQL results on a Timeline. </dd>
     </dl>
   </dd>
+
+  <dt><code>ldFrame: object</code></dt>
+  <dd>JSON LD frame object used to transform plain JSON LD into a framed JSON. Will be used only if an output is not provided.</dd>
 
   <dt><code>variables: Variable[]</code></dt>
   <dd>

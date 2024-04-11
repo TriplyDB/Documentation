@@ -5,6 +5,21 @@ path: "/docs/triplydb-changelog"
 
 [TOC]
 
+## 24.04.0 {#24.04.0}
+
+**Features**
+
+- `#9050` Added a button to display the available keyboard shortcuts for the SPARQL-IDE
+- `#9055`-`#9058` [Speedy] Added support for `geof:sfWithin`, `geof:sfOverlaps`, `geof:sfTouches` and `geof:aggBoundingBox` GeoSPARQL functions
+
+**Issues fixed**
+
+- `#9048` [SPARQL-IDE] Non-string literals were not accepted as valid
+- `#9005` [SPARQL-IDE] Variable auto-complete not working in `BIND` clause
+- `#9068` [SPARQL-IDE] Query can be executed when there is no service available
+- `#9053` [SPARQL-IDE] Saved query view shows "large result" dialog when not applicable
+
+
 ## 24.03.1 {#24.03.1}
 
 **Features**

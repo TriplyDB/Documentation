@@ -96,7 +96,10 @@ At least one of the following arguments is required to create a new version. Any
   <dd>the SPARQL compliant query as a string value</dd>
 
   <dt><code>output: string</code></dt>
-  <dd>The visualization plugin that is used to display the result set. If none is set it defaults to <code>'table'</code>. Other options may include: <code>'response'</code>, <code>'geo'</code>, <code>'gallery'</code>, <code>'markup'</code>, etc</dd>
+  <dd>The visualization plugin that is used to display the result set. If none is set it defaults to <code>'table'</code>. Other options may include: <code>'response'</code>, <code>'geo'</code>, <code>'gallery'</code>, <code>'markup'</code>, etc. Output will take priority over ldFrame</dd>
+
+  <dt><code> ldFrame: object</code></dt>
+  <dd>JSON LD frame object used to transform plain JSON LD into a framed JSON. Will be used only if an output is not provided.</dd>
 
   <dt><code>variables: Variable[]</code></dt>
   <dd>
@@ -211,4 +214,79 @@ A saved query is saved with a version number. Each time the query or the visuali
 const user = await triply.getAccount('my-account')
 const query = await user.getQuery('my-query')
 const query_1 = await query.useVersion(1)
+```
+
+## Query.copy(queryName?: string, account?:object, metadataToReplace?: object)
+
+Copies a query using either the same name or a new name (if <code>queryName</code> is provided) to the current account or a new account (if <code>accountName</code> is provided) with the same metadata or overwritten metadata (if <code>metadataToReplace</code> is provided)
+
+### Arguments
+
+<dl>
+  <dt><code>queryName</code></dt>
+  <dd>
+    <p>An optional parameter. The new URL-friendly name given to the duplicated query that is used in URL paths. This name can only include ASCII letters and hyphens. Defaults to the original query name.</p> 
+  </dd>
+
+   <dt><code>account</code></dt>
+  <dd>
+    <p>An optional parameter.Expected to be either an User or an Organization object if provided. The new account to which the query will be copied to. Defaults to the current account</p> 
+  </dd>
+
+  <dt><code>metadataToReplace</code><dt>
+  <dd>
+    <p>An optional metadata object with optionl properties that can be provided to override any of the existing metadata of the duplicated query if required</p>
+    <dl>
+      <dt><code>accessLevel</code></dt>
+      <dd>
+        <p>The access level of the query. The following values are possible:</p>
+        <dl>
+          <dt><code>'private'</code> (default)</dt>
+          <dd>The dataset can only be accessed by organization members.</dd>
+          <dt><code>'internal'</code></dt>
+          <dd>The dataset can only be accessed by users that are logged into the TriplyDB server.
+          <dt><code>'public'</code></dt>
+          <dd>The dataset can be accessed by everybody.</dd>
+        </dl>
+      </dd>
+      <dt><code>queryString: string</code></dt>
+      <dd>the SPARQL compliant query as a string value</dd>
+      <dt><code>output: string</code></dt>
+      <dd>The visualization plugin that is used to display the result set. If none is set it defaults to <code>'table'</code>. Other options may include: <code>'response'</code>, <code>'geo'</code>, <code>'gallery'</code>, <code>'markup'</code>, etc</dd>
+      <dt><code>dataset: object</code></dt>
+      <dd>A dictionary object representing the dataset against which the query is evaluated.</dd>
+      <dt><code>description: string</code></dt>
+      <dd>The human-readable description of the query. This typically explains what the query does in natural language.</dd>
+      <dt><code>displayName: string</code></dt>
+      <dd>The human-readable name of the query. This name may include spaces and other characters that are not allowed in the URL-friendly name.</dd>
+      <dt><code>variables: Variable[]</code></dt>
+      <dd>
+        <p>A list of objects with the following keys:</p>
+        <dl>
+          <dt>IRI variable</dt>
+          <dd>An object of the form `Variable`
+          (see  <a href="../account/index.md#accountaddqueryname-string-metadata-object">Account.addQuery()</a>)
+          </dd>
+      </dd>
+      <dt><code>serviceType: string</code>("speedy" | "virtuoso" | "jena" | "blazegraph" | "prolog")</dt>
+      <dd>The SPARQL service type the duplicated query needs to be configured to</dd>
+    </dl>
+  </dd>
+</dl>
+
+### Example
+
+```ts
+const user = await triply.getAccount('my-account')
+const query = await user.getQuery('my-query')
+const query_1 = await query.useVersion(1)
+const orgAccount = await triply.getAccount('org-account');
+
+// Within the same account under a new name
+const duplicatedQuery_1 = await query.copy('newDuplicateQuery')
+// To a new account with some metadata overwritten using the same query name
+const duplicatedQuery_2 = await query.copy(undefined, orgAccount , {
+  description: 'newDescription',
+  displayName: 'newDisplayName'
+})
 ```
