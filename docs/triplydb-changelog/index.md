@@ -5,6 +5,19 @@ path: "/docs/triplydb-changelog"
 
 [TOC]
 
+## 24.04.1 {#24.04.1}
+
+**Features**
+
+- `#9136` [SPARQL-IDE] Added support for rendering gLTF 3D models
+- `#9059`-`#9062` [Speedy] Added support for `geof:distance`, `geof:minZ`, `geof:maxZ` and `geof:boundary` GeoSPARQL functions
+
+**Issues fixed**
+
+- `#9114` TriplyDB reports valid IRIs as invalid when they contain atypical characters
+- `#9152` Virtuoso SPARQL service exhibits different querying behaviour after sync operation
+- `#9160` [SPARQL-IDE] Chart visualization not working for certain SPARQL responses
+
 ## 24.04.0 {#24.04.0}
 
 **Features**
