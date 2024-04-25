@@ -11,9 +11,9 @@ The TriplyDB Command-line Interface (CLI) offers a more convenient way to upload
 
 The latest version of the CLI for the respective OS can be found here:
 
-- [Linux](http://static.triply.cc/cli/triplydb-linux)
-- [Windows](http://static.triply.cc/cli/triplydb.exe)
-- [MacOS](http://static.triply.cc/cli/triplydb-macos)
+- [Linux](https://static.triply.cc/cli/triplydb-linux)
+- [Windows](https://static.triply.cc/cli/triplydb.exe)
+- [MacOS](https://static.triply.cc/cli/triplydb-macos)
 
 For more information about how to use the CLI, execute it with the `--help` argument.
 
