@@ -5,6 +5,17 @@ path: "/docs/triplydb-changelog"
 
 [TOC]
 
+## 24.05.0 {#24.05.0}
+
+**Features**
+
+- `#9063` [Speedy] Added support for `geof:buffer` GeoSPARQL functions
+
+**Issues fixed**
+
+- `#8960` Inconsistent formatting notation for numbers
+- `#9174` [SPARQL IDE] Saved Query editor crashes when a JSON-LD Frame is applied
+
 ## 24.04.1 {#24.04.1}
 
 **Features**
