@@ -5,6 +5,17 @@ path: "/docs/triplydb-changelog"
 
 [TOC]
 
+## 24.05.1 {#24.05.1}
+
+**Features**
+
+- `#9081` [SPARQL-IDE] Support for a JSON-LD visualization is now more prominent
+- `#9146` [SPARQL-IDE] Added informative hints for SPARQL queries that return 0 results
+
+**Issues fixed**
+
+- `#9083` Parallel LD-uploads cause conflicting graphs
+
 ## 24.05.0 {#24.05.0}
 
 **Features**
