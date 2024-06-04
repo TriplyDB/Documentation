@@ -112,21 +112,20 @@ Adds a new SPARQL query to the account.
   <dt><code>name: string</code> </dt>
   <dd>The URL-friendly name of the new query. The name must only contain alphanumeric characters and hyphens (<code>[A-Za-z0-9\-]</code>).</dd>
 
+  <dt><code>dataset: Dataset</code> </dt>
+  <dd>An instance of class <a href='../dataset/#dataset'><code>Dataset</code></a> that the current API token gives access to.</dd>
+
+  <dt><code>serviceType: "speedy" | "virtuoso" | "jena" | "blazegraph"</code> </dt>
+  <dd>A service type that will be used as a preferred SPARQL service to execute the query against. If serviceType is "virtuoso", "jena" or "blazegraph", that service is expected to exist in the dataset before the query can be successfully run. See <a href='../dataset/#datasetensureservicename-string-metadata-object'>Dataset</a></code></dd>
+
   <dt><code>queryString: string</code> </dt>
   <dd>The SPARQL query string (e.g., <code>'select * { ?s ?p ?o }'</code>).</dd>
 
-  <dt><code>dataset: Dataset</code> </dt>
-  <dd>An instance of class <a href='../dataset/index.md#dataset'><code>Dataset</code></a> that the current API token gives access to.</dd>
-or
-  <dt><code>service: Service</code> </dt>
-  <dd>An instance of class <a href='../service/index.md#service'><code>Service</code></a> that the current API token gives access to and that you want to be associated with this query. The Service given will be used as a preferred service for this query.</code></dd>
 </dl>
 
 **Optional:**
 
-The `metadata` argument specifies the required Dataset or Service and access level. Other important metadata can be set optionally:
-
-<dl>
+<dl>  
   <dt><code>accessLevel</code> </dt>
   <dd> The access level of the query. If none is set it defaults to <code>'private'</code>. The following values are supported:
     <dl>
@@ -230,6 +229,7 @@ const user = await triply.getUser()
 const myDataset = await user.getDataset('my-dataset')
 const query = await user.addQuery('my-query', {
   dataset: myDataset,
+  serviceType: "speedy",
   queryString: 'select (count(*) as ?n) { ?s ?p ?o. }',
   output: 'response',
 })
