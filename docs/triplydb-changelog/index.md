@@ -5,6 +5,13 @@ path: "/docs/triplydb-changelog"
 
 [TOC]
 
+## 24.06.0 {#24.06.0}
+
+**Issues fixed**
+
+- `#9212` [SPARQL-IDE] Unused variables are sometimes displayed incorrectly on first load
+- `#9214` [SPARQL-IDE] Unexpected syntax error for a valid query
+
 ## 24.05.1 {#24.05.1}
 
 **Features**
