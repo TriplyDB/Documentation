@@ -50,7 +50,7 @@ The core description of a IIIF object is the Manifest. We construct the Manifest
 
 ### Configuration Step 1 out of 2: SPARQL Construct
 
-The SPARQL Construct query is the largest configuration component. You can see the full query [over here](https://triplydb.com/Triply/-/queries/iris-iiif-manifest/61). We will go through this query piece-by-piece, and explain how it works.
+The SPARQL Construct query is the largest configuration component. You can see the full query [over here](https://triplydb.com/Triply/-/queries/iris-iiif-manifest). We will go through this query piece-by-piece, and explain how it works.
 
 At the beginning of the query, we declare the namespaces that are used in the rest of the query. IIIF relies on numerous community standards, including Dublin Core and Web Annotation Ontology. The declaration for "mf" refers to our own IIIF Presentation API. This allows us to refer to the API itself (self-description).
 
@@ -69,7 +69,7 @@ prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 prefix sdo: <https://schema.org/>
 ```
 
-The 'construct'-clause declares the structures that are mandated by the IIIF Presentation API. We first construct the Manifest itself. This includes a label (`rdfs:label`), thumbnail (`iiif_prezi:thumbnail`), and other metadata. Some metadata items require additional specifications; you can see these in [the online version](https://triplydb.com/Triply/-/queries/iris-iiif-manifest/61) of the query. How much metadata you include here depends on your use case; linked data allows you to freely change or extend the metadata that you expose.
+The 'construct'-clause declares the structures that are mandated by the IIIF Presentation API. We first construct the Manifest itself. This includes a label (`rdfs:label`), thumbnail (`iiif_prezi:thumbnail`), and other metadata. Some metadata items require additional specifications; you can see these in [the online version](https://triplydb.com/Triply/-/queries/iris-iiif-manifest) of the query. How much metadata you include here depends on your use case; linked data allows you to freely change or extend the metadata that you expose.
 
 ```sparql
 construct {
@@ -133,10 +133,10 @@ where {
 
 ### Configuration Step 2 out of 2: JSON-LD Frame configuration
 
-When you visit the SPARQL Construct query [online](https://triplydb.com/Triply/-/queries/iris-iiif-manifest/61), you see the SPARQL Query Editor, the JSON-LD Frame Editor, and the REST API result all on one page (Figure 3). These tools allow us to configure REST APIs, including the IIIF Presentation API.
+When you visit the SPARQL Construct query [online](https://triplydb.com/Triply/-/queries/iris-iiif-manifest), you see the SPARQL Query Editor, the JSON-LD Frame Editor, and the REST API result all on one page (Figure 3). These tools allow us to configure REST APIs, including the IIIF Presentation API.
 
 <figure>
-  <a href="https://triplydb.com/Triply/-/queries/iris-iiif-manifest/61" target="_blank">
+  <a href="https://triplydb.com/Triply/-/queries/iris-iiif-manifest" target="_blank">
     <img src="saved-query.png">
   </a>
   <figcaption>Figure 3 - Screenshot of a Saved Query in TriplyDB. The SPARQL Query Editor is shown at the top, the JSON-LD Frame Editor is shown in the middle, and the REST API result is displayed at the bottom.</figcaption>
