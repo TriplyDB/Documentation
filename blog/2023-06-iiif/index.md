@@ -159,7 +159,7 @@ For more information, see the TriplyDB documentation about JSON-LD Frames suppor
 
 ## Conclusion
 
-Users of TriplyDB are able to configure their own IIIF Presentation API. They do so without using custom/external software, but instead fully reply on the standardized features of TriplyDB. The configuration is entirely performed in two open standards: SPARQL Construct and JSON-LD Frames.
+Users of TriplyDB are able to configure their own IIIF Presentation API. They do so without using custom/external software, but instead fully rely on the standardized features of TriplyDB. The configuration is entirely performed in two open standards: SPARQL Construct and JSON-LD Frames.
 
 Every standards-compliant IIIF viewer can now access our endpoint and display our images and metadata. You can try this out by going to [Mirador](https://projectmirador.org/embed/?iiif-content=https://api.triplydb.com/queries/Triply/iris-iiif-manifest/run) to see the result.
 
