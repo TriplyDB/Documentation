@@ -804,7 +804,7 @@ dataset.update({
 ```
 
 
-## Dataset.uploadAsset( filePath: string, opts?: {mode?: "throw-if-exists"| "replace-if-exists"| "append-version", name?: string})
+## Dataset.uploadAsset( filePath: string, opts?: {mode?: 'throw-if-exists'| 'replace-if-exists'| 'append-version', name?: string})
 
 Uploads a file that does not contain RDF data as an asset. You can specify the name on the asset and what to do if the asset already exists (throws an error by default).
 
@@ -827,6 +827,6 @@ const account = await triply.getAccount()
 const dataset = await account.getDataset('my-dataset')
 await dataset.uploadAsset('my-source-data', {name: 'source.csv.gz'})
 await dataset.uploadAsset('my-documentation', {name: 'documentation.pdf'})
-await dataset.uploadAsset('my-documentation', {mode:"append-version", name: 'documentation.pdf'})
+await dataset.uploadAsset('my-documentation', {mode:'append-version', name: 'documentation.pdf'})
 
 ```
