@@ -5,6 +5,18 @@ path: "/docs/triplydb-changelog"
 
 [TOC]
 
+## 24.06.1 {#24.06.1}
+
+**Features**
+
+- `#9122` [Speedy] Added support for the `units` vocabulary in the GeoSPARQL functions `geof:distance` and `geof:buffer`.
+
+**Issues fixed**
+
+- `#9298` Unable to upload files from a URL with many redirects
+- `#9237` [SPARQL-IDE] Repair messages do not signify their actions well enough
+- `#9122` [Speedy] GeoSPARQL functions `geof:sfWithin`, `geof:sfOverlaps` and `geof:sfTouches` did not support complex polygons
+
 ## 24.06.0 {#24.06.0}
 
 **Issues fixed**
