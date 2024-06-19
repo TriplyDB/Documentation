@@ -14,6 +14,7 @@ path: "/docs/triplydb-changelog"
 **Issues fixed**
 
 - `#9298` Unable to upload files from a URL with many redirects
+- `#9312` SPARQL results in CSV and TSV formats incorrectly handle escape characters in literals
 - `#9237` [SPARQL-IDE] Repair messages do not signify their actions well enough
 - `#9122` [Speedy] GeoSPARQL functions `geof:sfWithin`, `geof:sfOverlaps` and `geof:sfTouches` did not support complex polygons
 
