@@ -4,6 +4,88 @@
 
 You can use this changelog to perform a safe update from an older version of TriplyETL to a newer one. See the documentation for [Upgrading TriplyETL repositories](./maintenance.md#update-the-triplyetl-dependency) for the advised approach, and how the changelog factors into that.
 
+## TriplyETL 4.4.6
+Release data: 2024-06-24
+
+### [Fixed] Minor clean-ups
+
+Replacing rdf-js for @rdfjs/types. Adding a resolution for what-wg and rimraf so that there are no deprecation warnings for those modules. Removing some old yarn specific commands, such as pinst.
+
+## TriplyETL 4.4.5
+Release data: 2024-06-12
+
+### [Fixed] TriplyDB-JS instantiation
+
+Ensure TriplyDB-JS is instantiated properly when proxy settings are passed to TriplyETL
+
+## TriplyETL 4.4.0
+Release data: 2024-06-04
+
+### [Added] linked data event stream middleware (LDES)
+
+## TriplyETL 4.2.0
+Release data: 2024-05-10
+
+### [Added] retry mechanism for OAI
+
+Added retry-mechanism to from-oai. By default, all OAI requests now retry 3 times
+
+## TriplyETL 4.1.16
+Release data: 2024-05-09
+
+### [Fixed] SHACL version update and fixing `now()` in SHACL rules engine
+
+## TriplyETL 4.1.15
+Release data: 2024-05-08
+
+### [Fixed] large default timeout for OAI requests
+
+Add (very) large default timeout for oai requests, to avoid possibly hanging when server does not respond
+
+### [Added] support for parsing multiple RDF/XML docs from OAI 
+
+## TriplyETL 4.1.14
+Release data: 2024-04-18
+
+### [Fixed] SHACL dependency version
+
+Update SHACL dependency, with some performance improvements
+
+## TriplyETL 4.1.13
+Release data: 2024-04-18
+
+### [Fixed] hanging ETL and preparations for a simplified eslint / prettier setup
+
+## TriplyETL 4.1.12
+Release data: 2024-04-16
+
+### [Fixed] SHACL `executeRules()` and added Speedy as a peer dependency
+
+Includes fix regarding SPARQL Functions used in `executeRules()`, the used Speedy SPARQL engine is now a peer dependency, which will use the same version as the one used as in the `@triplyetl/etl` package
+
+## TriplyETL 4.1.11
+Release data: 2024-03-27
+
+### [Added] multiple hashing algorithms to `hashedIri()`
+
+`hashedIri()` now supports SHA1, SHA256, SHA384 & SHA512 hashtypes, next to the existing (and still default) MD5 hashtype. See [issue #390](https://git.triply.cc/triplyetl/etl/-/issues/390).
+
+Improvements in the SHACL performance and usage.
+
+## TriplyETL 4.1.10
+Release data: 2024-03-12
+
+### [Fixed] performance issue with `validate()`
+
+Because of a previous fix, the validate middleware become slower. This fix makes it performant again.
+
+## TriplyETL 4.1.9
+Release data: 2024-03-12
+
+### [Fixed] issue with `fromOai()` in combination with  `metadataYieldsRdf`
+
+Fixed issue where `fromOai()` middleware reported an error when using `metadataYieldsRdf` and OAI response contained exactly 1 record.
+
 ## TriplyETL 4.1.8
 Release date: 2024-03-10
 
