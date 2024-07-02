@@ -84,11 +84,13 @@ console.log(await service.isUpToDate())
 ```
 
 
-## Service.update()
+## Service.update( opts?)
 
 Synchronizes the service. Synchronization means that the data that is used in the service is made consistent with the data that is present in the graphs of the dataset.
 
 When one or more graphs are added or deleted, existing services keep exposing the old state of the data. The changes in the data are only exposed in the services after synchronization is performed.
+
+You can choose to perform a rolling update, during which a new service is replacing the old one, in order to eliminate downtime. For a rolling update you should use the object `{rollingUpdate:true}` as `opts`. However, be aware that when using a rolling update, depending on your dataset statements, you might reach your instance's limit of statements' number for services. In this case, you will not be able to do a successful rolling update and you should switch to a regular update.
 
 ### Examples
 
@@ -100,6 +102,12 @@ The following code synchronizes all services of a dataset in sequence:
 for (const service of await dataset.getServices()) {
   service.update()
 }
+
+// For a rolling update
+for (const service of await dataset.getServices()) {
+  service.update({ rollingUpdate: true })
+}
+
 ```
 
 Although less common, it is also possible to synchronize all services of a dataset *in parallel*. This is typically not used in production systems, where data changes must not result in any downtime. Still, parallel synchronization can be useful in development and/or acceptance environments.
