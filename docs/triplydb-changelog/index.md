@@ -5,11 +5,24 @@ path: "/docs/triplydb-changelog"
 
 [TOC]
 
+## 24.07.0 {#24.07.0}
+
+**Features**
+
+- `#9191` [Speedy] Added support for using SHACL SPARQL functions defined within a dataset
+- `#7003` [Speedy] Added support for the `x` and `q` flags, in the `regex()` and `replace()` functions
+- `#9051` [SPARQL-IDE] Added a button to auto-format SPARQL queries
+
+**Issues fixed**
+
+- `#9330` Using saved query variables sometimes creates a syntactically invalid query
+- `#9173` Unclear error message when upload JSON-LD files with an invalid IRI
+
 ## 24.06.1 {#24.06.1}
 
 **Features**
 
-- `#9122` [Speedy] Added support for the `units` vocabulary in the GeoSPARQL functions `geof:distance` and `geof:buffer`.
+- `#9122` [Speedy] Added support for the `units` vocabulary in the GeoSPARQL functions `geof:distance` and `geof:buffer`
 
 **Issues fixed**
 
