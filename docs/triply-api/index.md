@@ -824,7 +824,27 @@ Result:
 <https://triplydb.com/academy/pokemon/vocab/>	rdf:type	owl:Ontology .
 ```
 
+## GraphQL
+This endpoint can be used for GraphQL queries. It uses information from user-provided SHACL shapes for the schema creation.
 
+### Schema
+ <!-- This is about shapes -->
+- Types and root queries represent classes that are mentioned as objects of a NodeShape's `sh:targetClass` or an `sh:NodeShape` without an `sh:targetClass`.
+- Fields in types represent properties of nodes. By default, fields return arrays of values, except for when the property has `sh:maxCount: 1`, then the field returns a single value. The fields whose property shape includes an `sh:datatype` return values of GraphQL scalar type, while those with an `sh:class` with this class is also an object of a nodeShape's targetclass return values of an object type. If the class is not mentioned as a targetClass, then the type of the returned values is `ExternalIri`
+
+<!-- #### Example -->
+
+- XSD datatypes are represented with GraphQL scalars.
+
+
+ <!-- This is about data -->
+- The ID of an GraphQL object represents the IRI of the resource in linked data.
+
+
+
+### Filtering
+
+### Pagination
 
 ## Elasticsearch
 
