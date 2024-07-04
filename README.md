@@ -1,6 +1,6 @@
 # Documentation for TriplyDB
 
-This repository contains the TriplyDB documentation files. These files are used by the Triply documentation website over at <https://triply.cc/docs>.
+This repository contains the TriplyDB documentation files. These files are used by the Triply documentation website over at <https://docs.triply.cc/>.
 
 ## Covered products
 
