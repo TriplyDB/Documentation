@@ -90,7 +90,7 @@ Synchronizes the service. Synchronization means that the data that is used in th
 
 When one or more graphs are added or deleted, existing services keep exposing the old state of the data. The changes in the data are only exposed in the services after synchronization is performed.
 
-You can choose to perform a rolling update, during which a new service is replacing the old one, in order to eliminate downtime. For a rolling update you should use the object `{rollingUpdate:true}` as `opts`. However, be aware that when using a rolling update, depending on your dataset statements, you might reach your instance's limit of statements' number for services. In this case, you will not be able to do a successful rolling update and you should switch to a regular update.
+You can choose to perform a rolling update, during which a new service is replacing the old one, in order to eliminate downtime. For a rolling update you should use the object `{rollingUpdate:true}` as `opts`. In case you want to be able to track the progress of the rolling update, you can use a logging function in the second argument of `opts`, called `onProgress`. However, be aware that when using a rolling update, depending on your dataset statements, you might reach your instance's limit of statements' number for services. In this case, you will not be able to do a successful rolling update and you should switch to a regular update.
 
 ### Examples
 
