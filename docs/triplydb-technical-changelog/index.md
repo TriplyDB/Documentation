@@ -23,5 +23,7 @@ None
 
 ## 24.06.0 {#24.06.0}
 
+### Version tags
+
 Version tags changed. If you have hardcoded versions in your values file (e.g. `api.version` or `console.version`), then remove the `-k8` postfix. 
 E.g., change `24.05.1-k8` to `24.05.1`
