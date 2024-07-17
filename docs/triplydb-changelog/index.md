@@ -5,6 +5,20 @@ path: "/docs/triplydb-changelog"
 
 [TOC]
 
+## 24.07.1 {#24.07.1}
+
+**Features**
+
+- `#8928` [SPARQL-IDE] Improved usability of the gallery visualization with customization of keywords
+- `#8587` [Speedy] Improved the performance of queries that use arbitrary length path matching by 5-100x
+- `#9380` Improved the look and feel of the dataset panel to accommodate upcoming features
+
+**Issues fixed**
+
+- `#9371` Changing a query in a data story does not update the query result
+- `#9385` [Speedy] Using SHACL SPARQL functions in combination with a `LIMIT` clause returned an error
+- `#9395` [Speedy] In a rare instance, query reordering produces incorrect results
+
 ## 24.07.0 {#24.07.0}
 
 **Features**
