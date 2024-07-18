@@ -11,6 +11,7 @@ path: "/docs/triplydb-changelog"
 
 - `#8928` [SPARQL-IDE] Improved usability of the gallery visualization with customization of keywords
 - `#8587` [Speedy] Improved the performance of queries that use arbitrary length path matching by 5-100x
+- `#9035` [Speedy] Added support for federating to internal or private Speedy SPARQL endpoints on the same instance, given the necessary permissions
 - `#9380` Improved the look and feel of the dataset panel to accommodate upcoming features
 
 **Issues fixed**
