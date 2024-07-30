@@ -9,7 +9,7 @@ path: "/docs/triplydb-changelog"
 
 **Issues fixed**
 
-- `#9328` Captions to query visualizations in stories is too wide
+- `#9328` Captions to query visualizations in stories are too wide
 - `#9428` [SPARQL-IDE] API variables that are used in the query string are incorrectly colored
 
 ## 24.07.1 {#24.07.1}
