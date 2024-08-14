@@ -5,6 +5,18 @@ path: "/docs/triplydb-changelog"
 
 [TOC]
 
+## 24.08.1 {#24.08.1}
+
+**Features**
+
+- `#9388` Improved navigation of the admin settings pages
+- `#9453` [SPARQL-IDE] Increased the maximum pitch in the geo visualization
+- `#8495` [Speedy] Support more Coordinate Reference Systems
+
+**Issues fixed**
+
+- `#9483` When paginating over the results of a saved query, in certain cases the limit of a subselect is wrongfully removed
+
 ## 24.08.0 {#24.08.0}
 
 **Issues fixed**
