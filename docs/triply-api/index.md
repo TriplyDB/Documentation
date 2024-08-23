@@ -828,17 +828,69 @@ Result:
 This endpoint can be used for GraphQL queries. It uses information from user-provided SHACL shapes for the schema creation.
 
 ### Schema
- <!-- This is about shapes -->
-- Root queries and their corresponding object types represent classes that are mentioned as objects of a NodeShape's `sh:targetClass` or an `sh:NodeShape` without an `sh:targetClass`.
-- Fields in types represent properties of nodes. By default, fields return arrays of values. The only exception is when the property has `sh:maxCount: 1`, then the field returns a single value. The fields whose property shape includes an `sh:datatype` return values of GraphQL scalar type, while those with an `sh:class` pointing to a class that has a shape return values of the corresponding object type. If the class is not mentioned as a targetClass in a node shape, then the type of the returned values is `ExternalIri`
+#### Object types
+A basic element of the schema is object types, which represents the type of the objects that you can query.
 
-<!-- #### Example -->
+```graphql
+type Book {
+  id:ID!
+  title:[XsdString]!
+}
+```
+This object type corresponds to the shape below:
+
+```turtle
+shp:Book a sh:NodeShape;
+         sh:targetClass sdo:Book;
+         sh:property [ 
+           sh:path dc:title;
+           sh:datatype xsd:string.]
+```
+#### Fields
+Fields in object types, such as `title`, represent properties of nodes. By default, fields return arrays of values. The only exception is when the property has `sh:maxCount: 1`, then the field returns a single value. Then the object type will be like this:
+
+```graphql
+type Book {
+  id:ID!
+  title:XsdString
+}
+```
+Additionally, following the [best practices](https://graphql.org/learn/best-practices/#nullability), fields can give null results, except for:
+
+- IDs, which represents the IRI of the resource.
+- Lists, but not their elements
+- Properties that have sh:minCount 1 and sh:maxCount 1
+
+Thus, for this shape:
+```turtle
+shp:Book a sh:NodeShape;
+         sh:targetClass sdo:Book;
+         sh:property [ 
+           sh:path dc:title;
+           sh:maxCount "1"^^xsd:integer;
+           sh:minCount "1"^^xsd:integer;
+           sh:datatype xsd:string.]
+```
+The corresponding object type is:
+```graphql
+type Book {
+  id:ID!
+  title:XsdString!
+}
+```
+
+ <!-- This is about shapes -->
+<!-- - Root queries and their corresponding object types represent classes that are mentioned as objects of a NodeShape's `sh:targetClass` or a `sh:NodeShape` without a `sh:targetClass`.
+- Fields in types represent properties of nodes. By default, fields return arrays of values. The only exception is when the property has `sh:maxCount: 1`, then the field returns a single value. The field whose property shape includes an `sh:datatype` returns values of GraphQL scalar type, while those with an `sh:class` pointing to a class that has a shape return values of the corresponding object type. If the class is not mentioned as a targetClass in a node shape, then the type of the returned values is `ExternalIri` -->
+
+<!-- #### Example
 
 - XSD datatypes are represented with GraphQL scalars.
 
 
  <!-- This is about data -->
-- The ID of an GraphQL object represents the IRI of the resource in linked data.
+<!-- - The ID of an GraphQL object represents the IRI of the resource in linked data. --> 
+<!-- -->
 
 
 
