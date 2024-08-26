@@ -986,8 +986,72 @@ An example:
 ```
 
 For more information on global object identification, see [graphql specification](https://graphql.org/learn/global-object-identification/). 
-#### Filtering
 
+#### Filtering
+When you query for objects, you might want to get back objects based on specific values in certain fields. You can do this by filtering.
+
+For example, you can query for people with a specific id:
+```graphql
+{
+  PersonConnection(filter: {id: "https://example.com/Anna"}) {
+    edges {
+      node {
+        id
+        name
+      }
+    }
+  }
+}
+```
+Another query would be to search for a person with a specific name:
+```graphql
+{
+  PersonConnection(filter: {name: {eq: "https://example.com/Anna"}}) {
+    edges {
+      node {
+        id
+        name
+      }
+    }
+  }
+}
+```
+
+Notice that in the second example, there is a new field for filteringcalled `eq`. When we want to filter on a field with returns a scalar, meaning that its value is represented by a literal in linked data, we have to use comparison operators: `eq`,`in` for equality, and `notEq` and `notIn` for inequality. The operators `in` and`notIn` are refering to lists.
+
+On the other hand, when we are filtering based on IDs - or in linked data terms, based on the IRI - , as in the first example, we don't use comparison operators.
+
+Furthermore, there is possibility for nested filtering:
+
+
+
+```graphql
+{
+  BookConnection(
+    filter: {author: {name: {eq: "Anna"}}}
+  ) {
+    edges {
+      node {
+        id
+      }
+    }
+  }
+}
+```
+and for combination of filters:
+```graphql
+{
+  BookConnection(
+    filter: {author: {name: {eq: "Anna"}}, name: {eq: "Anna's book"}}
+  ) {
+    edges {
+      node {
+        id
+      }
+    }
+  }
+}
+```
 ## Elasticsearch
 
 The text search API returns a list of linked data entities based on a supplied text string. The text string is matched against the text in literals and IRIs that appear in the linked data description of the returned entities.
