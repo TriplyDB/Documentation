@@ -847,7 +847,18 @@ shp:Book a sh:NodeShape;
            sh:datatype xsd:string.]
 ```
 #### Fields
-Fields in object types, such as `title`, represent properties of nodes. By default, fields return arrays of values. The only exception is when the property has `sh:maxCount: 1`, then the field returns a single value. Then the object type will be:
+Fields in object types, such as `title`, represent properties of nodes. By default, fields return arrays of values. The only exception is when the property has `sh:maxCount: 1`, then the field returns a single value. 
+Thus, for the shape:
+```turtle
+shp:Book a sh:NodeShape;
+         sh:targetClass sdo:Book;
+         sh:property [ 
+           sh:path dc:title;
+           sh:maxCount "1"^^xsd:integer;
+           sh:datatype xsd:string.]
+```
+
+The object type will be:
 
 ```graphql
 type Book {
