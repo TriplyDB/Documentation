@@ -925,7 +925,7 @@ type Person {
 }
 ```
 #### IDs 
-IDs represent the IRI of each object. This ID is unique. You can read more information on the `ID` scalar in [graphql.org](https://graphql.org/learn/schema/#scalar-types). Also, the use of the `id` field is mentioned later in the section [Object global identification](#global-object-identification).
+IDs represent the IRI of each object. This ID is unique. You can read more information on the `ID` scalar in [graphql.org](https://graphql.org/learn/schema/#scalar-types). Also, the use of the `id` field is mentioned later in the section [Object Global Identification](#global-object-identification).
 
 #### Naming
 In order to name the GraphQL types in correspondence to shapes, we follow the below conventions:
@@ -966,7 +966,7 @@ The user can query for objects using their unique ID. Also, they can query for o
 
 
 #### Global Object identification
-For several reasons, such as caching, the user should be able to query an object by their unique ID. This is possible using global object identification, using the `node(id:ID)` query. 
+For reasons, such as caching, the user should be able to query an object by their unique ID. This is possible using global object identification, using the `node(id:ID)` query. 
 An example:
 
 ```graphql
