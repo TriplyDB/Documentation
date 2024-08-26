@@ -847,7 +847,7 @@ shp:Book a sh:NodeShape;
            sh:datatype xsd:string.]
 ```
 #### Fields
-Fields in object types, such as `title`, represent properties of nodes. By default, fields return arrays of values. The only exception is when the property has `sh:maxCount: 1`, then the field returns a single value. Then the object type will be like this:
+Fields in object types, such as `title`, represent properties of nodes. By default, fields return arrays of values. The only exception is when the property has `sh:maxCount: 1`, then the field returns a single value. Then the object type will be:
 
 ```graphql
 type Book {
@@ -881,8 +881,8 @@ type Book {
 
 
 If the property shape includes an `sh:datatype`, the field returns values of GraphQL scalar type (see example above). On the other hand, if the property shape has an `sh:class` pointing to a class that:
-- is the targetClass of a node shape, the field returns values of the corresponding object type.
-- that is not mentioned as a targetClass in a node shape, then the type of the returned values is `ExternalIri`.
+- is the `sh:targetClass` of a node shape, the field returns values of the corresponding object type.
+- that is not mentioned as a `sh:targetClass` in a node shape, then the type of the returned values is `ExternalIri`.
 Thus, the shapes :
 ```turtle
 shp:Book a sh:NodeShape;
@@ -917,20 +917,21 @@ type Person {
 #### IDs 
 IDs represent the IRI of each object. This ID is unique.
 #### Naming
-But how do we name the GraphQL types in correspondence to shapes?
+In order to name the GraphQL types in correspondence to shapes, we follow the below conventions:
 - For object types, we use the `sh:targetClass` of the node shape.
-- For fields, we use the `sh:path` of the property shape.
+- For object type fields, we use the `sh:path` of the property shape.
 
 More specifically, the name comes from the part of the IRI after the last `#` or otherwise the last `/`, converted from kebab-case to camelCase. 
 
-Notice that if the selected name is illegal or causes a name collision, we'll return an error informing the writer about the problem and skip this type/field. 
+Notice that if the selected name is illegal or causes a name collision, we'll return an error informing the user about the problem and ignore this type or field. 
 
  ##### Renaming
- Shape designers are use their custom names by using a special property (https://triplydb.com/Triply/sparql/graphqlName).
- More specifically, the designer has to add a triple with the above predicate, a string literal with the custom name as object and :
+ Shape designers are able use their custom names by using a special property: `<https://triplydb.com/Triply/sparql/graphqlName>`.
+ More specifically, the designer has to add a triple with :
  - for object types, the class IRI 
  - for fields, the IRI of the property shape
- as a subject.
+
+as a subject, the above-mentioned predicate and a string literal with the custom name as object.
 
  If we wanted to rename using the first example of the section, we would do:
 ```turtle
@@ -938,9 +939,9 @@ shp:Book a sh:NodeShape;
          sh:targetClass sdo:Book;
          sh:property [ 
            sh:path dc:title;
-           sh:graphqlName "name"
+           sh:graphqlName "name" // Renaming the object type field
            sh:datatype xsd:string.]
-sdo:Book triply:graphqlName "PieceOfArt".
+sdo:Book triply:graphqlName "PieceOfArt". // Renaming the object type
 ```
 Then the corresponding object type would be:
 ```graphql
@@ -950,9 +951,22 @@ type PieceOfArt {
 }
 ```
 ### Queries
-Which queries is the user allowed to make?
+The user can query for objects using their unique ID. Also, they can query for objects of a specific type along with fields, and get nested information. Last, the user can get information by filtering results. Let's see some important concepts.
 
-The user can query for objects using their unique ID. Also, they can query for objects of a specific type along with fields, and get even nested information. The user can lastly get information by filtering results. Let's see some important concepts.
+
+#### Global Object identification
+For several reasons, the user should be able to query an object by their unique ID. This is possible using global object identification, using the `node(id:ID)` query. 
+An example:
+
+```graphql
+{
+  node(id: "https://example.com/Anna") {
+    id
+  }
+}
+```
+
+For more information on global object identification, see [graphql specification](https://graphql.org/learn/global-object-identification/). 
 
 #### Pagination
 A simple query would be:
@@ -968,24 +982,9 @@ A simple query would be:
   }
 }
  ```
-The results would include the IRIs of all books together with their titles. But what are `edges` and `nodes`?
+The results would include the IRIs of books together with their titles and would be paginated.
 
 In order to allow the user to use limit and offset, our GraphQL implementation supports **cursor-based pagination using connections**. For more information, please visit the Relay project's [cursor-based connection pagination specification](https://relay.dev/graphql/connections.htm).
-
-#### Global Object identification
-https://graphql.org/learn/global-object-identification/
-For several reasons, the user should be able to query an object by their unique ID. This is possible using global object identification, using the `node(id:ID)` query. 
-An example:
-
-```graphql
-{
-  node(id: "https://example.com/Anna") {
-    id
-  }
-}
-```
-
-For more information on global object identification, see [graphql specification](https://graphql.org/learn/global-object-identification/). 
 
 #### Filtering
 When you query for objects, you might want to get back objects based on specific values in certain fields. You can do this by filtering.
