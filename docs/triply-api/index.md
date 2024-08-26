@@ -1027,7 +1027,7 @@ Another query would be to search for a person with a specific name:
 }
 ```
 
-Notice that in the second example, there is a new field for filteringcalled `eq`. When we want to filter on a field with returns a scalar, meaning that its value is represented by a literal in linked data, we have to use comparison operators: `eq`,`in` for equality, and `notEq` and `notIn` for inequality. The operators `in` and`notIn` are refering to lists.
+Notice that in the second example, there is a new field for filtering called `eq`. When we want to filter on a field with returns a scalar, meaning that its value is represented by a literal in linked data, we have to use comparison operators: `eq`,`in` for equality, and `notEq` and `notIn` for inequality. The operators `in` and`notIn` are refering to lists.
 
 On the other hand, when we are filtering based on IDs - or in linked data terms, based on the IRI - , as in the first example, we don't use comparison operators.
 
