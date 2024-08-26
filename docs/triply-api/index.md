@@ -893,7 +893,7 @@ type Book {
 
 If the property shape includes an `sh:datatype`, the field returns values of GraphQL scalar type (see example above). On the other hand, if the property shape has an `sh:class` pointing to a class that:
 - is the `sh:targetClass` of a node shape, the field returns values of the corresponding object type.
-- that is not mentioned as a `sh:targetClass` in a node shape, then the type of the returned values is `ExternalIri`.
+- is not mentioned as a `sh:targetClass` in a node shape, then the type of the returned values is `ExternalIri`.
 Thus, the shapes :
 ```turtle
 shp:Book a sh:NodeShape;
