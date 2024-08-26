@@ -1061,6 +1061,7 @@ and for combination of filters:
   }
 }
 ```
+Note: Combination of filters is executed in 'and' logic.
 ## Elasticsearch
 
 The text search API returns a list of linked data entities based on a supplied text string. The text string is matched against the text in literals and IRIs that appear in the linked data description of the returned entities.
