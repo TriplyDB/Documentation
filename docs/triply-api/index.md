@@ -859,7 +859,6 @@ shp:Book a sh:NodeShape;
 ```
 
 The object type will be:
-
 ```graphql
 type Book {
   id:ID!
@@ -966,12 +965,12 @@ The user can query for objects using their unique ID. Also, they can query for o
 
 
 #### Global Object identification
-For several reasons, the user should be able to query an object by their unique ID. This is possible using global object identification, using the `node(id:ID)` query. 
+For several reasons, such as caching, the user should be able to query an object by their unique ID. This is possible using global object identification, using the `node(id:ID)` query. 
 An example:
 
 ```graphql
 {
-  node(id: "https://example.com/Anna") {
+  node(id: "https://example.com/book/Odyssey") {
     id
   }
 }
@@ -1003,7 +1002,7 @@ When you query for objects, you might want to get back objects based on specific
 For example, you can query for people with a specific id:
 ```graphql
 {
-  PersonConnection(filter: {id: "https://example.com/Anna"}) {
+  PersonConnection(filter: {id: "https://example.com/person/Homer"}) {
     edges {
       node {
         id
@@ -1016,7 +1015,7 @@ For example, you can query for people with a specific id:
 Another query would be to search for a person with a specific name:
 ```graphql
 {
-  PersonConnection(filter: {name: {eq: "https://example.com/Anna"}}) {
+  PersonConnection(filter: {name: {eq: "https://example.com/person/Homer"}}) {
     edges {
       node {
         id
@@ -1038,7 +1037,7 @@ Furthermore, there is possibility for nested filtering:
 ```graphql
 {
   BookConnection(
-    filter: {author: {name: {eq: "Anna"}}}
+    filter: {author: {name: {eq: "Homer"}}}
   ) {
     edges {
       node {
@@ -1052,7 +1051,7 @@ and for combination of filters:
 ```graphql
 {
   BookConnection(
-    filter: {author: {name: {eq: "Anna"}}, name: {eq: "Anna's book"}}
+    filter: {author: {name: {eq: "Homer"}}, name: {eq: "Odyssey"}}
   ) {
     edges {
       node {
