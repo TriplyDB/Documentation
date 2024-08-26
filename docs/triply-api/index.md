@@ -995,7 +995,7 @@ A simple query would be:
  ```
 The results would include the IRIs of books together with their titles and would be paginated.
 
-In order to allow the user to use limit and offset, our GraphQL implementation supports **cursor-based pagination using connections**. For more information, please visit the Relay project's [cursor-based connection pagination specification](https://relay.dev/graphql/connections.htm).
+In order to paginate through a large number of results, our GraphQL implementation supports **cursor-based pagination using connections**. For more information, please visit the Relay project's [cursor-based connection pagination specification](https://relay.dev/graphql/connections.htm).
 
 #### Filtering
 When you query for objects, you might want to get back objects based on specific values in certain fields. You can do this by filtering.
