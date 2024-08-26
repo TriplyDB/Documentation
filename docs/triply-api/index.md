@@ -925,7 +925,8 @@ type Person {
 }
 ```
 #### IDs 
-IDs represent the IRI of each object. This ID is unique.
+IDs represent the IRI of each object. This ID is unique. You can read more information on the `ID` scalar in [graphql.org](https://graphql.org/learn/schema/#scalar-types). Also, the use of the `id` field is mentioned later in the section [Object global identification](#global-object-identification).
+
 #### Naming
 In order to name the GraphQL types in correspondence to shapes, we follow the below conventions:
 - For object types, we use the `sh:targetClass` of the node shape.
@@ -1061,7 +1062,7 @@ and for combination of filters:
   }
 }
 ```
-Note: Combination of filters is executed in 'and' logic.
+Note: Combination of filters is executed in an 'and' logic.
 ## Elasticsearch
 
 The text search API returns a list of linked data entities based on a supplied text string. The text string is matched against the text in literals and IRIs that appear in the linked data description of the returned entities.
