@@ -966,12 +966,12 @@ The user can query for objects using their unique ID. Also, they can query for o
 
 
 #### Global Object identification
-For reasons, such as caching, the user should be able to query an object by their unique ID. This is possible using global object identification, using the `node(id:ID)` query. 
+For reasons such as caching, the user should be able to query an object by their unique ID. This is possible using global object identification, using the `node(id:ID)` query. 
 An example:
 
 ```graphql
 {
-  node(id: "https://example.com/book/Odyssey") {
+  node(id: "https://example.org/book/Odyssey") {
     id
   }
 }
@@ -999,11 +999,11 @@ In order to paginate through a large number of results, our GraphQL implementati
 
 #### Filtering
 When you query for objects, you might want to get back objects based on specific values in certain fields. You can do this by filtering.
-
+#### Simple cases
 For example, you can query for people with a specific id:
 ```graphql
 {
-  PersonConnection(filter: {id: "https://example.com/person/Homer"}) {
+  PersonConnection(filter: {id: "https://example.org/person/Homer"}) {
     edges {
       node {
         id
@@ -1013,10 +1013,10 @@ For example, you can query for people with a specific id:
   }
 }
 ```
-Another query would be to search for a person with a specific name:
+Another query would be to search for a book with a specific name:
 ```graphql
 {
-  PersonConnection(filter: {name: {eq: "https://example.com/person/Homer"}}) {
+  PersonConnection(filter: {name: {eq: "Homer"}}) {
     edges {
       node {
         id
@@ -1031,9 +1031,168 @@ Notice that in the second example, there is a new field for filtering called `eq
 
 On the other hand, when we are filtering based on IDs - or in linked data terms, based on the IRI - , as in the first example, we don't use comparison operators.
 
+##### Language filtering
+The only idiomatic case is the literal with a language tag and `rdf:langString` as a datatype. This literal is represented as ` { value: "example-string", language: "en" }` and the scalar is `RdfsLangString` . This means that in order to filter using a value of this scalar type, you have to execute the query bellow:
+
+```graphql
+{
+  PersonConnection(filter: {name: {eq: {value: "Ulysses", language: "en"}}}) {
+    edges {
+      node {
+        id
+        name
+      }
+    }
+  }
+}
+```
+
+Also, there is support for filtering results based on the language tag.
+An example is:
+- Linked data:
+```turtle
+person:Ulysses a sdo:Person;
+              sdo:name "Ulysses"@"en";
+              sdo:name "Oδυσσέυς"@"gr".
+
+
+shp:Person a sh:NodeShape;
+         sh:targetClass sdo:Person;
+         sh:property [ 
+           sh:path sdo:name;
+           sh:datatype rdf:langString.].
+```
+- GraphQL query:
+```graphql
+{
+  PersonConnection {
+    edges {
+      node {
+        id
+        name(language:"gr")
+      }
+    }
+  }
+}
+```
+- Results:
+```graphql
+{
+  "data": {
+    "PersonConnection": {
+      "edges": [
+        {
+          "node": {
+            "id": "https://example.org/person/Ulysses",
+            "name": [
+              {
+                "value": "Oδυσσέυς",
+                "language": "gr"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  }
+}
+```
+We support using the HTTP Accept-Language syntax, for filtering based on a language-tag.
+For example,
+- GraphQL query:
+```graphql
+{
+  PersonConnection {
+    edges {
+      node {
+        id
+        name(language:"gr, en;q=.5")
+      }
+    }
+  }
+}
+```
+- Results:
+```graphql
+{
+  "data": {
+    "PersonConnection": {
+      "edges": [
+        {
+          "node": {
+            "id": "https://example.org/person/Ulysses",
+            "name": [
+              {
+                "value": "Oδυσσέυς",
+                "language": "gr"
+              },
+              {
+                "value": "Ulysses",
+                "language": "en"
+              },
+            ]
+          }
+        }
+      ]
+    }
+  }
+}
+```
+
+If the writer of the shapes include the `sh:uniqueLang` constraint, then the result returned is a single value, instead of an array.
+Thus, the example becomes:
+- Linked data:
+```turtle
+person:Ulysses a sdo:Person;
+              sdo:name "Ulysses"@"en";
+              sdo:name "Oδυσσέυς"@"gr".
+
+
+shp:Person a sh:NodeShape;
+         sh:targetClass sdo:Person;
+         sh:property [ 
+           sh:path sdo:name;
+           sh:uniqueLang true; 
+           sh:datatype rdf:langString.].
+```
+- GraphQL query:
+```graphql
+{
+  PersonConnection {
+    edges {
+      node {
+        id
+        name(language:"gr, en;q=.5")
+      }
+    }
+  }
+}
+```
+- Results:
+```graphql
+{
+  "data": {
+    "PersonConnection": {
+      "edges": [
+        {
+          "node": {
+            "id": "https://example.org/person/Ulysses",
+            "name": [
+              {
+                "value": "Oδυσσέυς",
+                "language": "gr"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  }
+}
+```
+#### Advanced filtering
+
 Furthermore, there is possibility for nested filtering:
-
-
 
 ```graphql
 {
@@ -1062,7 +1221,7 @@ and for combination of filters:
   }
 }
 ```
-Note: Combination of filters is executed in an 'and' logic.
+Note: The combination of filters is executed in an **'and'** logic.
 ## Elasticsearch
 
 The text search API returns a list of linked data entities based on a supplied text string. The text string is matched against the text in literals and IRIs that appear in the linked data description of the returned entities.
