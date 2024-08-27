@@ -1054,8 +1054,8 @@ An example is:
 - Linked data:
 ```turtle
 person:Odysseus a sdo:Person;
-              sdo:name "Odysseus"@"en";
-              sdo:name "Oδυσσέυς"@"gr".
+              sdo:name "Odysseus"@en;
+              sdo:name "Οδυσσεύς"@gr.
 
 
 shp:Person a sh:NodeShape;
@@ -1088,7 +1088,7 @@ shp:Person a sh:NodeShape;
             "id": "https://example.org/person/Odysseus",
             "name": [
               {
-                "value": "Oδυσσέυς",
+                "value": "Οδυσσεύς",
                 "language": "gr"
               }
             ]
@@ -1125,7 +1125,7 @@ For example,
             "id": "https://example.org/person/Odysseus",
             "name": [
               {
-                "value": "Oδυσσέυς",
+                "value": "Οδυσσεύς",
                 "language": "gr"
               },
               {
@@ -1146,8 +1146,8 @@ Thus, the example becomes:
 - Linked data:
 ```turtle
 person:Odysseus a sdo:Person;
-              sdo:name "Odysseus"@"en";
-              sdo:name "Oδυσσέυς"@"gr".
+              sdo:name "Odysseus"@en;
+              sdo:name "Οδυσσεύς"@gr.
 
 
 shp:Person a sh:NodeShape;
@@ -1181,7 +1181,7 @@ shp:Person a sh:NodeShape;
             "id": "https://example.org/person/Odysseus",
             "name": [
               {
-                "value": "Oδυσσέυς",
+                "value": "Οδυσσεύς",
                 "language": "gr"
               }
             ]
