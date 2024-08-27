@@ -827,6 +827,8 @@ Result:
 ## GraphQL
 This endpoint can be used for GraphQL queries. It uses information from user-provided SHACL shapes for the schema creation.
 
+The goal of this documentation is to inform users about Triply's implementation of the GraphQL endpoint. For more generic information about GraphQL, you can visit [graphql.org](https://graphql.org/) or other resources.
+
 ### Schema
 #### Object types
 A basic element of the schema is object types, which represents the type of the objects that you can query.
@@ -926,7 +928,13 @@ type Person {
 }
 ```
 #### IDs 
-IDs represent the IRI of each object. This ID is unique.
+The id field is of type ID, which represents the IRI of each object. This ID is unique.
+For example:
+```turtle
+book:Odyssey a sdo:Book;
+           dc:title "Odyssey".
+```
+The id field of this resource would be `https://example.org/book/Odyssey`.
 You can read more information on the `ID` scalar in [graphql.org](https://graphql.org/learn/schema/#scalar-types). Also, the use of the `id` field is mentioned later in the section [Object Global Identification](#global-object-identification).
 
 #### Naming
