@@ -893,7 +893,8 @@ type Book {
 If the property shape includes an `sh:datatype`, the field returns values of GraphQL scalar type (see example above). On the other hand, if the property shape has an `sh:class` pointing to a class that:
 - is the `sh:targetClass` of a node shape, the field returns values of the corresponding object type.
 - is not mentioned as a `sh:targetClass` in a node shape, then the type of the returned values is `ExternalIri`.
-Thus, the shapes :
+
+Therefore, the shapes :
 ```turtle
 shp:Book a sh:NodeShape;
          sh:targetClass sdo:Book;
@@ -925,7 +926,8 @@ type Person {
 }
 ```
 #### IDs 
-IDs represent the IRI of each object. This ID is unique. You can read more information on the `ID` scalar in [graphql.org](https://graphql.org/learn/schema/#scalar-types). Also, the use of the `id` field is mentioned later in the section [Object Global Identification](#global-object-identification).
+IDs represent the IRI of each object. This ID is unique.
+You can read more information on the `ID` scalar in [graphql.org](https://graphql.org/learn/schema/#scalar-types). Also, the use of the `id` field is mentioned later in the section [Object Global Identification](#global-object-identification).
 
 #### Naming
 In order to name the GraphQL types in correspondence to shapes, we follow the below conventions:
@@ -1013,7 +1015,7 @@ For example, you can query for people with a specific id:
   }
 }
 ```
-Another query would be to search for a book with a specific name:
+Another query would be to search for a person with a specific name:
 ```graphql
 {
   PersonConnection(filter: {name: {eq: "Homer"}}) {
@@ -1032,7 +1034,7 @@ Notice that in the second example, there is a new field for filtering called `eq
 On the other hand, when we are filtering based on IDs - or in linked data terms, based on the IRI - , as in the first example, we don't use comparison operators.
 
 ##### Language filtering
-The only idiomatic case is the literal with a language tag and `rdf:langString` as a datatype. This literal is represented as ` { value: "example-string", language: "en" }` and the scalar is `RdfsLangString` . This means that in order to filter using a value of this scalar type, you have to execute the query bellow:
+The only idiomatic case is the literal with a language tag and `rdf:langString` as a datatype. This literal is represented as ` { value: "example-string", language: "en" }` and the corresponding scalar is `RdfsLangString` . This means that in order to filter using a value of this scalar type, you have to execute the query below:
 
 ```graphql
 {
