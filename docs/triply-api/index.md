@@ -1038,7 +1038,7 @@ The only idiomatic case is the literal with a language tag and `rdf:langString` 
 
 ```graphql
 {
-  PersonConnection(filter: {name: {eq: {value: "Ulysses", language: "en"}}}) {
+  PersonConnection(filter: {name: {eq: {value: "Odysseus", language: "en"}}}) {
     edges {
       node {
         id
@@ -1053,8 +1053,8 @@ Additionally, there is support for filtering results based on the language tag.
 An example is:
 - Linked data:
 ```turtle
-person:Ulysses a sdo:Person;
-              sdo:name "Ulysses"@"en";
+person:Odysseus a sdo:Person;
+              sdo:name "Odysseus"@"en";
               sdo:name "Oδυσσέυς"@"gr".
 
 
@@ -1085,7 +1085,7 @@ shp:Person a sh:NodeShape;
       "edges": [
         {
           "node": {
-            "id": "https://example.org/person/Ulysses",
+            "id": "https://example.org/person/Odysseus",
             "name": [
               {
                 "value": "Oδυσσέυς",
@@ -1122,14 +1122,14 @@ For example,
       "edges": [
         {
           "node": {
-            "id": "https://example.org/person/Ulysses",
+            "id": "https://example.org/person/Odysseus",
             "name": [
               {
                 "value": "Oδυσσέυς",
                 "language": "gr"
               },
               {
-                "value": "Ulysses",
+                "value": "Odysseus",
                 "language": "en"
               },
             ]
@@ -1145,8 +1145,8 @@ If the writer of the shapes includes the `sh:uniqueLang` constraint, then the re
 Thus, the example becomes:
 - Linked data:
 ```turtle
-person:Ulysses a sdo:Person;
-              sdo:name "Ulysses"@"en";
+person:Odysseus a sdo:Person;
+              sdo:name "Odysseus"@"en";
               sdo:name "Oδυσσέυς"@"gr".
 
 
@@ -1178,7 +1178,7 @@ shp:Person a sh:NodeShape;
       "edges": [
         {
           "node": {
-            "id": "https://example.org/person/Ulysses",
+            "id": "https://example.org/person/Odysseus",
             "name": [
               {
                 "value": "Oδυσσέυς",
