@@ -939,7 +939,7 @@ More specifically, the name comes from the part of the IRI after the last `#` or
 Notice that if the selected name is illegal or causes a name collision, we'll return an error informing the user about the problem and ignore this type or field. 
 
  ##### Renaming
- Shape designers are able use their custom names by using a special property: `<https://triplydb.com/Triply/sparql/graphqlName>`.
+ Shape designers are able use their custom names by using a special property: `<https://triplydb.com/Triply/GraphQL/def/graphqlName>`.
  More specifically, the designer has to add a triple with :
  - for object types, the class IRI 
  - for fields, the IRI of the property shape
