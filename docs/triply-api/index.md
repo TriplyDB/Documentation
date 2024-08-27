@@ -1033,7 +1033,7 @@ Notice that in the second example, there is a new field for filtering called `eq
 
 On the other hand, when we are filtering based on IDs - or in linked data terms, based on the IRI - , as in the first example, we don't use comparison operators.
 
-##### Language filtering
+
 The only idiomatic case is the literal with a language tag and `rdf:langString` as a datatype. This literal is represented as ` { value: "example-string", language: "en" }` and the corresponding scalar is `RdfsLangString` . This means that in order to filter using a value of this scalar type, you have to execute the query below:
 
 ```graphql
@@ -1048,8 +1048,8 @@ The only idiomatic case is the literal with a language tag and `rdf:langString` 
   }
 }
 ```
-
-Also, there is support for filtering results based on the language tag.
+##### Language filtering
+Additionally, there is support for filtering results based on the language tag.
 An example is:
 - Linked data:
 ```turtle
@@ -1099,7 +1099,7 @@ shp:Person a sh:NodeShape;
   }
 }
 ```
-We support using the HTTP Accept-Language syntax, for filtering based on a language-tag.
+Our implementation supports using the HTTP Accept-Language syntax, for filtering based on a language-tag.
 For example,
 - GraphQL query:
 ```graphql
@@ -1141,7 +1141,7 @@ For example,
 }
 ```
 
-If the writer of the shapes include the `sh:uniqueLang` constraint, then the result returned is a single value, instead of an array.
+If the writer of the shapes includes the `sh:uniqueLang` constraint, then the result returned will be a single value, instead of an array.
 Thus, the example becomes:
 - Linked data:
 ```turtle
