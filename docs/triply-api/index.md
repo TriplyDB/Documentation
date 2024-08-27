@@ -952,7 +952,7 @@ shp:Book a sh:NodeShape;
          sh:targetClass sdo:Book;
          sh:property [ 
            sh:path dc:title;
-           sh:graphqlName "name" // Renaming the object type field
+           triply:graphqlName "name" // Renaming the object type field
            sh:datatype xsd:string.]
 sdo:Book triply:graphqlName "PieceOfArt". // Renaming the object type
 ```
