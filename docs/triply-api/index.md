@@ -1186,7 +1186,7 @@ shp:Person a sh:NodeShape;
       "edges": [
         {
           "node": {
-            "id": "https://example.org/Ulysses",
+            "id": "https://example.org/person/Odysseus",
             "name": {
               "value": "Οδυσσεύς",
               "language": "gr"
