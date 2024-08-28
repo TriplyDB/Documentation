@@ -871,7 +871,7 @@ Additionally, following the [best practices](https://graphql.org/learn/best-prac
 
 - IDs, which represents the IRI of the resource.
 - Lists, but not their elements
-- Properties that have sh:minCount 1 and sh:maxCount 1
+- Properties that have `sh:minCount 1` and `sh:maxCount 1`
 
 Thus, for this shape:
 ```turtle
@@ -1186,13 +1186,11 @@ shp:Person a sh:NodeShape;
       "edges": [
         {
           "node": {
-            "id": "https://example.org/person/Odysseus",
-            "name": [
-              {
-                "value": "Οδυσσεύς",
-                "language": "gr"
-              }
-            ]
+            "id": "https://example.org/Ulysses",
+            "name": {
+              "value": "Οδυσσεύς",
+              "language": "gr"
+            }
           }
         }
       ]
