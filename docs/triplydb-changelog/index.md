@@ -9,9 +9,9 @@ path: "/docs/triplydb-changelog"
 
 **Features**
 
-- `#8929` Display the name of the user who added a specific query version
+- `#8929` Added the display name of the user who created a version to the list of query versions
 - `#9399` The class frequencies have been added to Graphs page of a dataset. The Class frequency tab under Insights is still available but is deprecated. This will be removed in a future release
-- `#9400` The `Copy dataset` button has been moved from the Dataset panel to a drop-down menu instead. This makes it consistent with actions on saved queries and stories
+- `#9400` The Copy dataset button has been moved from the Dataset panel to a drop-down menu instead. This makes it consistent with actions on saved queries and stories
 
 **Issues fixed**
 
