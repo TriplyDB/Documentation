@@ -5,6 +5,20 @@ path: "/docs/triplydb-changelog"
 
 [TOC]
 
+## 24.08.2 {#24.08.2}
+
+**Features**
+
+- `#8929` Display the name of the user who added a specific query version
+- `#9399` The class frequencies have been added to Graphs page of a dataset. The Class frequency tab under Insights is still available but is deprecated. This will be removed in a future release
+- `#9400` The `Copy dataset` button has been moved from the Dataset panel to a drop-down menu instead. This makes it consistent with actions on saved queries and stories
+
+**Issues fixed**
+
+- `#9565` Failing uploads aren't reported to users in real-time
+- `#9507` [SPARQL-IDE] The edit dialog of the Google chart visualization has incorrect styling
+- `#9271` [SPARQL-IDE] Incorrect coloring for SPARQL variables that are used after the `WHERE` clause and are not projected outward
+
 ## 24.08.1 {#24.08.1}
 
 **Features**
