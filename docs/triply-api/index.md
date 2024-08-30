@@ -825,7 +825,44 @@ Result:
 ```
 
 ## GraphQL
+
 This endpoint can be used for GraphQL queries. It uses information from user-provided SHACL shapes for the schema creation.
+
+
+### URI path
+
+GraphQL requests are sent to the following URI path:
+
+```iri
+https://api.INSTANCE/datasets/ACCOUNT/DATASET/graphql
+```
+
+### Requests and Response
+The format of requests and the response expected are described by [graphql.org](https://graphql.org/learn/serving-over-http/)
+
+
+### Example
+
+
+Perform a search using the custom query:
+
+```json
+{
+  "query": {
+    "{ PersonConnection { edges { node { id name } } } }"
+  }
+}
+```
+
+This request is issued in the following way with the cURL command-line tool:
+
+```sh
+    curl -X POST http://api.<instance>/datasets/<account>/<dataset>/graphql
+         -d '{"query":"{ PersonConnection { edges { node { id name } } } }"}' 
+         -H 'Content-Type: application/json'
+```
+
+<!-- This endpoint can be used for GraphQL queries. It uses information from user-provided SHACL shapes for the schema creation.
 
 The goal of this documentation is to inform users about Triply's implementation of the GraphQL endpoint. For more generic information about GraphQL, you can visit [graphql.org](https://graphql.org/) or other resources.
 
@@ -1229,7 +1266,7 @@ and for combination of filters:
   }
 }
 ```
-Note: The combination of filters is executed in an **'and'** logic.
+Note: The combination of filters is executed in an **'and'** logic. -->
 ## Elasticsearch
 
 The text search API returns a list of linked data entities based on a supplied text string. The text string is matched against the text in literals and IRIs that appear in the linked data description of the returned entities.
