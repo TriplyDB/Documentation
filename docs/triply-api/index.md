@@ -849,7 +849,7 @@ Perform a search using the custom query:
 ```json
 {
   "query": {
-    "{ PersonConnection { edges { node { id name } } } }"
+    "{ CapitalConnection { edges { node { label } } } }"
   }
 }
 ```
@@ -857,9 +857,9 @@ Perform a search using the custom query:
 This request is issued in the following way with the cURL command-line tool:
 
 ```sh
-    curl -X POST http://api.<instance>/datasets/<account>/<dataset>/graphql
-         -d '{"query":"{ PersonConnection { edges { node { id name } } } }"}' 
-         -H 'Content-Type: application/json'
+  curl -X POST https://api.triplydb.com/datasets/iish/cshapes/graphql \
+       -d '{ "query":"{ CapitalConnection { edges { node { label } } } }"}' \
+       -H "Content-Type: application/json"
 ```
 
 
