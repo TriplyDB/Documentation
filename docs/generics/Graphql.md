@@ -11,7 +11,7 @@ TriplyDB exposes a GraphQL endpoint. This endpoint uses information from user-pr
 The goal of this documentation is to inform users about Triply's implementation of the GraphQL endpoint. For more generic information about GraphQL, you can visit [graphql.org](https://graphql.org/) or other resources. In order to understand this documentation, you have to be familiar with the SHACL language.
 
 
-Note: in order to avoid confusion we will use the word `object` as a synonym for `resource` and `triple object` for the third element of a triple.
+Note: in order to avoid confusion we will use the word `object` as a synonym for `resource` and `triple object` when referring to the third element of a triple.
 ### Schema
 #### Object types
 A basic element of the schema is object types, which represents the type of the resources that you can query.
