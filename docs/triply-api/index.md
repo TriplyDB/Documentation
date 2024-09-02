@@ -826,7 +826,7 @@ Result:
 
 ## GraphQL
 
-This endpoint can be used for GraphQL queries. It uses information from user-provided SHACL shapes for the schema creation. See more information about this subject [here](../generics/graphql).
+This endpoint can be used for GraphQL queries. It uses information from user-provided SHACL shapes for the schema creation. See more information about this subject [here](../generics/Graphql.md).
 
 
 ### URI path
