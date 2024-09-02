@@ -10,9 +10,11 @@ TriplyDB exposes a GraphQL endpoint. This endpoint uses information from user-pr
 
 The goal of this documentation is to inform users about Triply's implementation of the GraphQL endpoint. For more generic information about GraphQL, you can visit [graphql.org](https://graphql.org/) or other resources. In order to understand this documentation, you have to be familiar with the SHACL language.
 
+
+Note: in order to avoid confusion we will use the word `object` as a synonym for `resource` and `triple object` for the third element of a triple.
 ### Schema
 #### Object types
-A basic element of the schema is object types, which represents the type of the objects that you can query.
+A basic element of the schema is object types, which represents the type of the resources that you can query.
 
 ```graphql
 type Book {
@@ -109,7 +111,7 @@ type Person {
 }
 ```
 #### IDs 
-The id field is of type ID, which represents the IRI of each object. This ID is unique.
+The id field is of type ID, which represents the IRI of each resource. This ID is unique.
 For example:
 ```turtle
 book:Odyssey a sdo:Book;
@@ -133,7 +135,7 @@ Notice that if the selected name is illegal or causes a name collision, we'll re
  - for object types, the class IRI 
  - for fields, the IRI of the property shape
 
-as a subject, the above-mentioned predicate and a string literal with the custom name as object.
+as a subject, the above-mentioned predicate and a string literal with the custom name as triple object.
 
  If we wanted to rename using the first example of the section, we would do:
 ```turtle
@@ -185,13 +187,13 @@ A simple query would be:
   }
 }
  ```
- 
+
 The results would include the IRIs of books together with their titles and would be paginated.
 
 In order to paginate through a large number of results, our GraphQL implementation supports **cursor-based pagination using connections**. For more information, please visit the Relay project's [cursor-based connection pagination specification](https://relay.dev/graphql/connections.htm).
 
 #### Filtering
-When you query for objects, you might want to get back objects based on specific values in certain fields. You can do this by filtering.
+When you query for objects, you might want to get back resources based on specific values in certain fields. You can do this by filtering.
 #### Simple cases
 For example, you can query for people with a specific id:
 ```graphql
