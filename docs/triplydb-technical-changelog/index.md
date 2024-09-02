@@ -8,11 +8,13 @@ path: "/docs/triplydb-technical-changelog"
 This changelog covers technical changes related to TriplyDB on-premise deployments. See [here](/triplydb-changelog) for the TriplyDB changelog that is user facing.
 This intent of this changelog is primarily for documenting breaking changes or changes that are useful to know when deploying/upgrading TriplyDB.
 
-## 24.09.0 {#24.09.0}
+## 24.09.1 {#24.09.1}
 
 in `values.yaml`
 - `indexingChunkSize` (if present) should move to `indexJobs.chunkSize`
 - `queryJobs.nodeMemoryLimitInGb` is renamed to `queryJobs.nodejsMemoryLimitInGb`
+
+From now on, versions in a month will start at `.1` instead of `.0`.
 
 ## 24.08.1 {#24.08.1}
 
