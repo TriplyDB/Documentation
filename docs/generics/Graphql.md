@@ -1,11 +1,11 @@
 ---
-title: "GraphQL endpoint"
+title: "GraphQL implementation information"
 path: "/docs/graphql"
 ---
 
 [TOC]
 
-# Graphql endpoint
+# Graphql implementation
 TriplyDB exposes a GraphQL endpoint. This endpoint uses information from user-provided SHACL shapes for the schema creation.
 
 The goal of this documentation is to inform users about Triply's implementation of the GraphQL endpoint. For more generic information about GraphQL, you can visit [graphql.org](https://graphql.org/) or other resources. In order to understand this documentation, you have to be familiar with the SHACL language.
