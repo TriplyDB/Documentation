@@ -2,7 +2,7 @@
 
 # TriplyDB Overview
 
-TriplyDB allows you to store, publish, and use linked data knowledge graphs. TriplyDB makes it easy to upload linked data and expose it through various APIs, including SPARQL, Elasticsearch, Linked Data Fragments, and REST.
+TriplyDB allows you to store, publish, and use linked data knowledge graphs. TriplyDB makes it easy to upload linked data and expose it through various APIs, including SPARQL, GraphQL, Elasticsearch, Linked Data Fragments, and REST.
 
 Learn more about the following features:
 

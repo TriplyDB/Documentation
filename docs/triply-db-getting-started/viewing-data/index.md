@@ -178,7 +178,9 @@ After setting the destination, you will be redirected to the SPARQL query new pa
 
 When a dataset has a running Elasticsearch service, textual searches can be performed over the entire dataset. Text search with Elasticsearch works like a search engine and returns any node that contains your search term, or contains the search term in any of its properties. It is also possible to write a custom query using the Elasticsearch [Query DSL (Domain Specific Language)](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl.html).
 
+## GraphQL
 
+When a dataset includes shapes, there is also a functional GraphQL endpoint. Queries can be performed using [GraphQL language](https://graphql.org/). For more information on the schema and possible queries, also read [this document](../../generics/Graphql.md).
 
 ## Insights
 
