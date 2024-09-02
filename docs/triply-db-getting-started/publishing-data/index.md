@@ -94,6 +94,7 @@ The webhook page can be found under dataset's settings on the right, as shown in
 ![Webhooks settings page](../../assets/webhook.png)
 
 To create a webhook, you will need to provide the following information:
+
 - `Payload target`: The URL to which the webhook message should be sent.
 - `Payload format`: The format of the message.
 - `Trigger events`: Select for which event you wish to trigger the webhook. The options are:
