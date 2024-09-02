@@ -85,7 +85,7 @@ happens, the data in a service is out of sync with the data in the dataset and
 a synchronization button will appear in the service widget. By clicking the
 button, the service will be synchronized with the current state of the dataset.
 
-### Webhooks
+## Webhooks
 
 If you want to be notified or trigger an event when anything changes in your dataset, you can set up a webhook.
 
