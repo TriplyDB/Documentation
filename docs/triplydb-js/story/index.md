@@ -47,3 +47,17 @@ for (const element of (await story.getInfo()).content) {
   }
 }
 ```
+
+## Story.setBanner(file: string)
+
+Sets a new banner for the story.
+
+### Examples
+
+The following snippet uploads the local image in file `banner.webp` and sets it as the banner image for the story:
+
+```ts
+const user = await triply.getUser()
+const story = await user.getStory('example-story')
+await story.setBanner("banner.webp");
+```
