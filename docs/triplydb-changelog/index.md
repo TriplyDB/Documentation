@@ -5,6 +5,21 @@ path: "/docs/triplydb-changelog"
 
 [TOC]
 
+## 24.09.1 {#24.09.1}
+
+**Features**
+
+- `#9535` [SPARQL-IDE] The camera point-of-view can be saved as part of a query, in the geo visualization. This enables more precise use in stories
+- `#9527` [Speedy] Improved the user message when there are errors within a SHACL SPARQL function
+
+**Issues fixed**
+
+- `#9556 / #9550` [Speedy] Reordering of queries with both an OPTIONAL and ORDER BY clause did not always return the correct result
+- `#9579` [Speedy] Incorrect coordinate transformation from epsg:7415 to epsg:28992 when using `geof:transform` GeoSPARQL function
+- `#9528` [Speedy] Incorrect results when using a SPARQL SPARQL function due to reordering
+- `#9569` [Speedy] Incorrect results when using a SPARQL SPARQL function with blank nodes
+- `#9523` [SPARQL-IDE] Unable to export certain chart visualizations to SVG
+
 ## 24.08.2 {#24.08.2}
 
 **Features**
