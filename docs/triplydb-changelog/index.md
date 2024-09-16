@@ -16,8 +16,8 @@ path: "/docs/triplydb-changelog"
 
 - `#9556 / #9550` [Speedy] Reordering of queries with both an OPTIONAL and ORDER BY clause did not always return the correct result
 - `#9579` [Speedy] Incorrect coordinate transformation from epsg:7415 to epsg:28992 when using `geof:transform` GeoSPARQL function
-- `#9528` [Speedy] Incorrect results when using a SPARQL SPARQL function due to reordering
-- `#9569` [Speedy] Incorrect results when using a SPARQL SPARQL function with blank nodes
+- `#9528` [Speedy] Incorrect results when using a SHACL SPARQL function due to reordering
+- `#9569` [Speedy] Incorrect results when using a SHACL SPARQL function with blank nodes
 - `#9523` [SPARQL-IDE] Unable to export certain chart visualizations to SVG
 
 ## 24.08.2 {#24.08.2}
