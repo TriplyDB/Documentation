@@ -6,12 +6,13 @@ path: "/docs/graphql"
 [TOC]
 
 # Graphql implementation
-TriplyDB exposes a GraphQL endpoint. This endpoint uses information from user-provided SHACL shapes for the schema creation.
+Some TriplyDB instances expose a GraphQL endpoint. This endpoint uses information from user-provided SHACL shapes for the schema creation.
 
 The goal of this documentation is to inform users about Triply's implementation of the GraphQL endpoint. For more generic information about GraphQL, you can visit [graphql.org](https://graphql.org/) or other resources. In order to understand this documentation, you have to be familiar with the SHACL language.
 
 
-Note: in order to avoid confusion we will use the word `object` as a synonym for `resource` and `triple object` when referring to the third element of a triple.
+Note: in order to avoid confusion we will use the noun `object` as a synonym for `resource` and `triple object` when referring to the third element of a triple.
+
 ### Schema
 #### Object types
 A basic element of the schema is object types, which represents the type of the resources that you can query.
@@ -27,17 +28,17 @@ This object type corresponds to the shape below:
 ```turtle
 shp:Book a sh:NodeShape;
          sh:targetClass sdo:Book;
-         sh:property [ 
+         sh:property [
            sh:path dc:title;
            sh:datatype xsd:string.]
 ```
 #### Fields
-Fields in object types, such as `title`, represent properties of nodes. By default, fields return arrays of values. The only exception is when the property has `sh:maxCount: 1`, then the field returns a single value. 
+Fields in object types, such as `title`, represent properties of nodes. By default, fields return arrays of values. The only exception is when the property has `sh:maxCount: 1`, then the field returns a single value.
 Thus, for the shape:
 ```turtle
 shp:Book a sh:NodeShape;
          sh:targetClass sdo:Book;
-         sh:property [ 
+         sh:property [
            sh:path dc:title;
            sh:maxCount "1"^^xsd:integer;
            sh:datatype xsd:string.]
@@ -60,7 +61,7 @@ Thus, for this shape:
 ```turtle
 shp:Book a sh:NodeShape;
          sh:targetClass sdo:Book;
-         sh:property [ 
+         sh:property [
            sh:path dc:title;
            sh:maxCount "1"^^xsd:integer;
            sh:minCount "1"^^xsd:integer;
@@ -83,17 +84,17 @@ Therefore, the shapes :
 ```turtle
 shp:Book a sh:NodeShape;
          sh:targetClass sdo:Book;
-         sh:property [ 
+         sh:property [
            sh:path sdo:author;
            sh:class sdo:Person.];
-         sh:property [ 
+         sh:property [
            sh:path sdo:audio;
            sh:class sdo:AudioObject.].
 
 
 shp:Person a sh:NodeShape;
          sh:targetClass sdo:Person;
-         sh:property [ 
+         sh:property [
            sh:path sdo:name;
            sh:datatype xsd:string.].
 ```
@@ -110,7 +111,7 @@ type Person {
   name:[XsdString]!
 }
 ```
-#### IDs 
+#### IDs
 The id field is of type ID, which represents the IRI of each resource. This ID is unique.
 For example:
 ```turtle
@@ -125,14 +126,14 @@ In order to name the GraphQL types in correspondence to shapes, we follow the be
 - For object types, we use the `sh:targetClass` of the node shape.
 - For object type fields, we use the `sh:path` of the property shape.
 
-More specifically, the name comes from the part of the IRI after the last `#` or otherwise the last `/`, converted from kebab-case to camelCase. 
+More specifically, the name comes from the part of the IRI after the last `#` or otherwise the last `/`, converted from kebab-case to camelCase.
 
-Notice that if the selected name is illegal or causes a name collision, we'll return an error informing the user about the problem and ignore this type or field. 
+Notice that if the selected name is illegal or causes a name collision, we'll return an error informing the user about the problem and ignore this type or field.
 
  ##### Renaming
  Shape designers are able use their custom names by using a special property: `<https://triplydb.com/Triply/GraphQL/def/graphqlName>`.
  More specifically, the designer has to add a triple with :
- - for object types, the class IRI 
+ - for object types, the class IRI
  - for fields, the IRI of the property shape
 
 as a subject, the above-mentioned predicate and a string literal with the custom name as triple object.
@@ -141,7 +142,7 @@ as a subject, the above-mentioned predicate and a string literal with the custom
 ```turtle
 shp:Book a sh:NodeShape;
          sh:targetClass sdo:Book;
-         sh:property [ 
+         sh:property [
            sh:path dc:title;
            triply:graphqlName "name" // Renaming the object type field
            sh:datatype xsd:string.]
@@ -159,7 +160,7 @@ The user can query for objects using their unique ID. Also, they can query for o
 
 
 #### Global Object identification
-For reasons such as caching, the user should be able to query an object by their unique ID. This is possible using global object identification, using the `node(id:ID)` query. 
+For reasons such as caching, the user should be able to query an object by their unique ID. This is possible using global object identification, using the `node(id:ID)` query.
 An example:
 
 ```graphql
@@ -170,7 +171,7 @@ An example:
 }
 ```
 
-For more information on global object identification, see [graphql specification](https://graphql.org/learn/global-object-identification/). 
+For more information on global object identification, see [graphql specification](https://graphql.org/learn/global-object-identification/).
 
 #### Pagination
 A simple query would be:
@@ -253,7 +254,7 @@ person:Odysseus a sdo:Person;
 
 shp:Person a sh:NodeShape;
          sh:targetClass sdo:Person;
-         sh:property [ 
+         sh:property [
            sh:path sdo:name;
            sh:datatype rdf:langString.].
 ```
@@ -345,9 +346,9 @@ person:Odysseus a sdo:Person;
 
 shp:Person a sh:NodeShape;
          sh:targetClass sdo:Person;
-         sh:property [ 
+         sh:property [
            sh:path sdo:name;
-           sh:uniqueLang true; 
+           sh:uniqueLang true;
            sh:datatype rdf:langString.].
 ```
 - GraphQL query:
