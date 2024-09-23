@@ -160,7 +160,7 @@ Upper-case letter words must be replaced by the following values:
 - `INSTANCE` :: The domain of your instance
 - `ACCOUNT` :: Your account name
 - `DATASET` :: The dataset name
-- `IDENTIFIER` :: The asset identifier where you'd like to add a new version to. 
+- `IDENTIFIER` :: The asset identifier where you'd like to add a new version to.
 - `FILENAME` :: The path to the file you want to upload
 
 This request returns a JSON object, that includes (among other things) an `identifier` key, which can be used as a persistent identifier for this asset.
@@ -826,7 +826,7 @@ Result:
 
 ## GraphQL
 
-This endpoint can be used for GraphQL queries. It uses information from user-provided SHACL shapes for the schema creation. See more information about this subject [here](../generics/Graphql.md).
+Some TriplyDB instances publish a GraphQL endpoint for every dataset. This endpoint can be used for GraphQL queries. It uses information from user-provided SHACL shapes to generate the GraphQL schema. See more information about this subject [here](../generics/Graphql.md).
 
 
 ### URI path
@@ -838,7 +838,7 @@ https://api.INSTANCE/datasets/ACCOUNT/DATASET/graphql
 ```
 
 ### Requests and Response
-The format of requests and the response expected are described by [graphql.org](https://graphql.org/learn/serving-over-http/)
+The format of requests and corresponding responses are described by [graphql.org](https://graphql.org/learn/serving-over-http/)
 
 
 ### Example

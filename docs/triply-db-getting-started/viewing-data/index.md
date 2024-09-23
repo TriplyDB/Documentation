@@ -4,8 +4,6 @@
 
 TriplyDB offers several ways to explore your datasets.
 
-
-
 ## Linked Data Browser
 
 The linked data browser offers to traverse the data by focusing on one node at the time. The node is describe using it's properties, which can be followed to other nodes in the graph.
@@ -90,6 +88,7 @@ You can use these predicates to provide URLs or references to audio files that c
 In the [following example](https://nightly.triplydb.com/Triply/efteling/browser?resource=https%3A%2F%2Fnightly.triplydb.com%2Fefteling%2FCarnavalFestival), `sdo:audio` was used to showcase audio content of the Carnival Festival within the LD-browser.
 
 ![sdo:audio in the LD-browser](../../assets/audio.png)
+
 #### Video
 
 These predicates allow you to associate video content with your resources:
@@ -104,8 +103,6 @@ In the [following example](https://test.triply.cc/Philippe/ld-patterns/browser?r
 
 ![sdo:contentUrl in the LD-browser](../../assets/video.png)
 
-
-
 ## Linked Data Table
 
 The linked data Table shows a dataset at the triple level. The first three columns represent the subject, predicate, and object position of the triple. The fourth column represents the graph to which the triple belongs.
@@ -118,17 +115,13 @@ Terms in the linked data Table can be dragged and dropped between columns. This 
 
 Queries in the linked data Table can also be performed automatically through the Statements API and the [Triple Pattern Fragments API](../../triply-api/index.md#triple-pattern-fragments-tpf).
 
-
-
 ## SPARQL IDE
 
 When a dataset has a running SPARQL service, the data can be queried from the SPARQL IDE. The SPARQL IDE is an extended version of the Open Source [Yasgui](../../yasgui/index.md) query editor.
 
-
 ### Saving a SPARQL query
 
 It is often useful to save a SPARQL query for later use. This is achieved by clicking on the save icon in the top-right corner of the SPARQL Editor. Doing so will create a [Save Query](../saved-queries/index.md#saved-queries).
-
 
 ### Sharing a SPARQL query
 
@@ -141,7 +134,6 @@ It is sometimes useful to share a SPARQL query with somebody else, or to have a 
 3. A cURL command that can be copy/pasted into a terminal application that supports this command. cURL is often used by programmers to test HTTP(S) requests.
 
 [Saved Queries](../saved-queries/index.md#saved-queries) are a more modern way of sharing SPARQL queries. They do not have any of the technical limitations that occur with URL-encoded queries.
-
 
 ### Transfer a SPARQL query
 
@@ -159,7 +151,6 @@ and then choose where the SPARQL query should be moved to:
 
 After the destination is set you would be redirected to the SPARQL query new page. The SPARQL query could be transferred from an account to an organization and vice versa.
 
-
 ### Copy a SPARQL query
 
 Users can copy SPARQL queries to another account or an organization. To do that, click on three dots in the upper right corner of the query and choose the copy option:
@@ -172,25 +163,23 @@ Then, choose where the SPARQL query should be moved to:
 
 After setting the destination, you will be redirected to the SPARQL query new page. The SPARQL query can be copied from an account to an organization and vice versa.
 
-
-
 ## ElasticSearch
 
 When a dataset has a running Elasticsearch service, textual searches can be performed over the entire dataset. Text search with Elasticsearch works like a search engine and returns any node that contains your search term, or contains the search term in any of its properties. It is also possible to write a custom query using the Elasticsearch [Query DSL (Domain Specific Language)](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl.html).
 
 ## GraphQL
 
-When a dataset includes shapes, there is also a functional GraphQL endpoint. Queries can be performed using [GraphQL language](https://graphql.org/). For more information on the schema and possible queries, also read [this document](../../generics/Graphql.md).
+Some TriplyDB instances also support querying using the [GraphQL
+language](https://graphql.org/). For more information on the schema and possible
+queries, also read [this document](../../generics/Graphql.md).
 
 ## Insights
 
 The insights page has been developed to give you a succinct overview of the linked data at hand. It holds two views: the class frequency and the class hierarchy view.
 
-
 ### Class frequency
 
 The class frequency diagram shows how often classes and properties appear in a graph. The drop-down on the top of the visualization selects the graph for which the class frequency is drawn. The visualization shows the 10 most frequent classes in the selected graph. The exact number of occurrences can be seen when hovering over the bar of a class, also showing the complete IRI/prefixed IRI. When clicking on the bar of a class the node will expand and show the 10 most frequent predicates of that class.
-
 
 ### Class hierarchy
 
@@ -203,7 +192,7 @@ TriplyDB has three different visualization methods for the classHierarchy:
 - Treemap visualization
 - Sunburst visualization
 
-All three visualizations are interactive in two ways. It is possible to hover over them, which will show information about the layer the mouse is on, or to click on them, so the visualization zooms in one or more layers. For each  visualization it is also possible to zoom out:
+All three visualizations are interactive in two ways. It is possible to hover over them, which will show information about the layer the mouse is on, or to click on them, so the visualization zooms in one or more layers. For each visualization it is also possible to zoom out:
 
 - Bubbles visualization: click the outside of the bubble
 - Treemap visualization: use the breadcrumbs trail shown above the visualization
