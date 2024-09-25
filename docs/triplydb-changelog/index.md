@@ -5,6 +5,20 @@ path: "/docs/triplydb-changelog"
 
 [TOC]
 
+## 24.09.2 {#24.09.2}
+
+**Features**
+
+- `#8471` Admins on a TriplyDB instance can restrict users to only one active session
+- `#9148` [SPARQL-IDE] Added support for overlaying 3D tiles in the Geo visualization, from a URL
+
+**Issues fixed**
+
+- `#9646` Base URI when uploading data always uses the uploading account instead of the target account
+- `#9561` Saving a new version of a saved query does not always save its visualization configuration
+- `#9600` When editing query metadata, the service "Speedy" is not always visible
+- `#9633` [Speedy] Regression, introduced in version 24.09.1, causing fatal error when executing certain queries
+
 ## 24.09.1 {#24.09.1}
 
 **Features**
