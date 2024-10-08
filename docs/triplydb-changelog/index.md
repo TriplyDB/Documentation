@@ -5,12 +5,19 @@ path: "/docs/triplydb-changelog"
 
 [TOC]
 
+## 24.10.1 {#24.10.1}
+
+**Issues fixed**
+
+- `#9695` [Speedy] `ORDER BY` doesn't order by the second operand if the first one is an error
+- `#9658` [SPARQL-IDE] Capture position doesn't work with height settings for stories
+
 ## 24.09.2 {#24.09.2}
 
 **Features**
 
 - `#8471` Admins on a TriplyDB instance can restrict users to only one active session
-- `#9148` [SPARQL-IDE] Added support for overlaying 3D tiles in the Geo visualization, from a URL
+- `#9148` [SPARQL-IDE] Added support for overlaying 3D tiles, from a URL, in the Geo visualization
 
 **Issues fixed**
 
