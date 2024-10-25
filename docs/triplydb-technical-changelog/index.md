@@ -8,6 +8,29 @@ path: "/docs/triplydb-technical-changelog"
 This changelog covers technical changes related to TriplyDB on-premise deployments. See [here](/triplydb-changelog) for the TriplyDB changelog that is user facing.
 This intent of this changelog is primarily for documenting breaking changes or changes that are useful to know when deploying/upgrading TriplyDB.
 
+
+## 24.10.200 {#24.10.200}
+
+The `.defaultImageRegistry` and `triplydbImageRegistry` fields are now removed.
+If you used these fields, then you should instead reference the full image path (without the tag) for the images.
+
+If you used `.defaultImageRegistry` with a custom registry, then set the full image tags for these keys:
+- `mongodb.image`
+- `redis.image`
+
+If you used `.triplydbImageRegistry` with a custom registry, then set the full image tags for these keys:
+- `api.image`
+- `console.image`
+- `orchestrator.image`
+
+## 24.10.100 {#24.10.100}
+
+None
+
+## 24.9.200 {#24.9.200}
+
+None
+
 ## 24.9.100 {#24.9.100}
 
 The version scheme for the TriplyDB helm charts changed. This is now reflected in this technical changelog.
