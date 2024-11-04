@@ -14,11 +14,15 @@ This intent of this changelog is primarily for documenting breaking changes or c
 The `.defaultImageRegistry` and `triplydbImageRegistry` fields are now removed.
 If you used these fields, then you should instead reference the full image path (without the tag) for the images.
 
-If you used `.defaultImageRegistry` with a custom registry, then set the full image tags for these keys:
+If you used `.defaultImageRegistry` with a custom registry, then set the full image tags
+for these keys:
+
 - `mongodb.image`
 - `redis.image`
 
-If you used `.triplydbImageRegistry` with a custom registry, then set the full image tags for these keys:
+If you used `.triplydbImageRegistry` with a custom registry, then set the full image tags
+for these keys:
+
 - `api.image`
 - `console.image`
 - `orchestrator.image`
