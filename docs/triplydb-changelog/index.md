@@ -5,6 +5,20 @@ path: "/docs/triplydb-changelog"
 
 [TOC]
 
+## 24.11.1 {#24.11.1}
+
+**Issues fixed**
+
+- `#8878` The date when adataset was last updated is not included in the dataset NDE descriptions
+- `#9694` Speedy SPARQL endpoints are not included in the dataset NDE descriptions
+- `#9807` Parsing of XML content assigns an incorrect datatype 
+- `#9752` Parsing of XML is incorrect for escaped ampersand
+- `#9718` Unintentional grey bar after renaming a graph
+- `#9767` [Speedy] Incorrect n-triples serialization when handling blank nodes from external SPARQL endpoints
+- `#9557` [SPARQL-IDE] Yellow marker in SPARQL Editor is incorrect. This feature has been disabled until we improve some of the rough edges in future releases.
+- `#9791` [SPARQL-IDE] Error when tying to view a populated query from a gallery visualization with a query variable
+- `#9774` [SPARQL-IDE] Copy shortened URL doesn't work for webkit browsers
+
 ## 24.10.1 {#24.10.1}
 
 **Issues fixed**
