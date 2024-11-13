@@ -196,7 +196,7 @@ https://api.triplydb.com/queries/DBpedia-association/timeline-cars/run
 When you copy this URL in your browser or fetch the URL with curl, you will get a get request to a RESTful API and get a JSON representation of the data in your browser or command window.
 
 
-### Using a saved query in Python or R notebooks (Advanced)
+### Using a saved query in Python or R notebooks
 
 SPARQL queries as a RESTful API, also means you can transport your data to your Python script, R script or Jupyter notebook. To use the result set from your SPARQL query you need to connect your script to the saved SPARQL query. To do this you will need to write a small connector. To help you out TriplyDB has added a code snippet generator for Python and R. This snippet contains the code to retrieve the data from the SPARQL query into your script or notebook. You can open the code snippet generator by clicking on the '</>' button on the right side of the screen.
 
