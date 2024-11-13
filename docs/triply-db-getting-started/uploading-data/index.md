@@ -8,86 +8,161 @@ This section explains how to create a linked dataset in TriplyDB.
 
 ## Creating a new dataset
 
-The following steps allow a new linked datasets to be created:
+You must be logged in before you can create a new dataset.
+<!-- TODO: See page [logging in](../logging-in/index.md) for more information. -->
 
-1. Log into a TriplyDB instance.
+### Opening the “Create dataset” dialog
 
-2. Click the `+` button on the dataset pane that appears on the right-hand side of the home screen.
+You can create a new dataset in either of the following two ways:
 
-3. This brings up the dialog for creating a new dataset. Enter a dataset name that consists of alpha-numeric characters (`A-Za-z0-9`) and hyphens (`-`).
+1. From the home screen (see [Figure 1a](#home-screen-logged-in)), click on the `+` button next to "Your datasets", on the right-hand side of the screen.
 
-4. Optionally, enter a dataset display name. This name will be used in the GUI and will be exposed in dataset metadata.
+2. From the user screen (see [Figure 1b](#user-screen-logged-in)), click on the “Create dataset” button on the right-hand side.
 
-5. Optionally, enter a dataset description. You can use rich text formatting by using Markdown. See [our section about Markdown](../reference/index.md#markdown-support) for details.
+<figure id="home-screen-logged-in">
+  <img src="../../assets/home-screen-logged-in.png">
+  <figcaption>Figure 1a. The home screen for a logged in user.</figcaption>
+</figure>
 
-6. Optionally, change the access level for the dataset. By default this is set to “Private”. See [dataset access levels](../reference/index.md#access-levels) for more information.
+<figure id="user-screen-logged-in">
+  <img src="../../assets/user-screen-logged-in.png">
+  <figcaption>Figure 1b. The user screen for a logged in user.</figcaption>
+</figure>
 
-![The “Add dataset” dialog](../../assets/createdataset.png)
+### Inside the “Create dataset” dialog
 
-When datasets are Public (see [Access Levels](../reference/index.md#access-levels)), they
-automatically expose metadata and are automatically crawled and
-indexed by popular search engines (see [Metadata](../publishing-data/index.md#entering-metadata)).
+This opens the “Create dataset” dialog (see [Figure 2](#add-dataset-dialog)).
+
+<figure id="add-dataset-dialog">
+  <img src="../../assets/add-dataset-dialog.png">
+  <figcaption>Figure 2. The “Create dataset” dialog</figcaption>
+</figure>
+
+In the “Create dataset” dialog, perform the following steps:
+
+1. Required: Enter a dataset name. A dataset name can contain letters, number, and hyphens.
+
+2. Optional: Enter a dataset display name. The display name will be shown in the GUI and will be included in dataset metadata.
+
+3. Optional: Enter a dataset description. This description will be shown in the GUI, and will be included in dataset metadata. The description can be formatted with Markdown. See Section [Markdown](../reference/index.md#markdown-support) for details.
+
+4. Optional: Change the access level of the dataset. The standard access level is “Private”. See Section [Dataset Access Levels](../reference/index.md#access-levels) for more information.
+
+This creates a new dataset, and displays the “Add data” page (see Section [Adding data](#adding-data)).
+
+<!-- move
+When datasets are Public (see [Access Levels](../reference/index.md#access-levels)), they automatically expose metadata and are automatically crawled and indexed by popular search engines (see [Metadata](../publishing-data/index.md#entering-metadata)).
+-->
 
 
 
 ## Adding data
 
-Once the dataset is created, the “Add data” view is displayed (see screenshot). In this view data can be added in three ways:
+You must first have a dataset, before you can add data. See Section [Creating a new dataset](#creating-a-new-dataset) for more information.
+
+### Opening the “Add data” pane
+
+You can open the “Add data” pane in either of the following two ways:
+
+<!-- TODO: (see Section [Graphs page](#graphs-page)) -->
+1. From the Graphs page, click on the "Import a new graph" button (see [Figure 3](#graphs-page)). This opens the "Add data" pane.
+2. After creating a new dataset, the "Add data" pane is automatically opened.
+
+<figure id="graphs-page">
+  <img src="../../assets/graphs-page.png">
+  <figcaption>Figure 3. The Graphs page of a dataset.</figcaption>
+</figure>
+
+### Inside the “Add data” pane
+
+The “Add data” pane is now displayed (see [Figure 4](#add-data-pane)).
+
+<figure id="add-data-pane">
+  <img src="../../assets/add-data-pane.png">
+  <figcaption>Figure 4. The “Add data” pane.</figcaption>
+</figure>
+
+In the "Add data" pane, choose one of the following approaches for adding data:
 
 <dl>
-  <dt>File upload</dt>
-  <dd>Select files from your local machine. It is also possible to drag-and-drop local files on the cloud icon with the upward pointing arrow.</dd>
-  <dt>URL upload</dt>
-  <dd>Copy/paste a URL that points to an online RDF file.</dd>
-  <dt>Import</dt>
-  <dd>Import a dataset that is already published in the same TriplyDB instance.</dd>
+  <dt>"Add data from an existing dataset"</dt>
+  <dd>Search for data from a dataset that you have access to in the TriplyDB system. After you have found a dataset, you can choose which graphs to add. See Section <a href="#add-data-from-an-existing-dataset">Add data from an existing dataset</a> for more details.</dd>
+  <dt>"Add data from URL"</dt>
+  <dd>Enter a URL to a data file that is published online. The URL must be publicly accessible. The URL must point to a file that contains RDF or CSV data. See Section <a href="#add-data-from-url">Add data from a URL</a> for more details.</dd>
+  <dt>"Add data from files"</dt>
+  <dd>Click the cloud icon to open a file explorer window, in which you can select one or more files from your computer. Alternatively, drag-and-drop the local files from your computer onto the cloud icon with the upward pointing arrow. Files must contain RDF or CSV data. See Section <a href="#add-data-from-files">Add data from files</a> for more details.</dd>
 </dl>
 
-![The “Add data” view. The three ways in which data can be added are displayed on top of one another.](../../assets/add-data.png)
+### Add data from an existing dataset
 
-The “Add data” view is also available for existing datasets:
+The first option for adding data is to add it from datasets that are already published in the same TriplyDB instance. This is done with the “Add data from an existing dataset” field. By typing in this field, a dropdown list of existing datasets is shown (see [Figure 5](#add-data-from-an-existing-dataset-field)).
 
-1. Go to the “Graphs” view by clicking on the graph icon in the left-hand sidebar.
+<figure id="add-data-from-an-existing-dataset-field">
+  <img src="../../assets/add-data-from-an-existing-dataset-field.png">
+  <figcaption>Figure 5. The dropdown list that shows existing datasets.</figcaption>
+</figure>
 
-2. Click the “Import a new graph” button.
+Once the correct dataset appears in the dropdown list, click it to select it. This will open the "Import from dataset" pane (see [Figure 6](#add-data-from-an-existing-dataset-choose-graphs)). You can choose which graphs to import from the existing dataset. Click "Import graphs" to start importing from an existing dataset. Moments later, the graphs are added to your dataset.
 
+<figure id="add-data-from-an-existing-dataset-choose-graphs">
+  <img src="../../assets/add-data-from-an-existing-dataset-choose-graphs.png">
+  <figcaption>Figure 6. The "Import from dataset" pane.</figcaption>
+</figure>
 
-### Adding data: File upload
+### Add data from URL
 
-The file upload feature allows you to upload RDF files from your local machine. This can be done in either of two ways:
+The second option for adding data is to add it from an online URL. This is done by entering the URL inside the “Add data from a URL” text field (see [Figure 7](#add-data-from-a-url-field)). After you have entered the URL, click the orange button on the right to start adding data. The data is now being downloaded to your dataset. How long this takes depends on the size of the data and the speed of the remote server where the data is retrieved from.
 
-- Click on the cloud icons to open a dialog that allows local RDF files from your machine to be selected.
+<figure id="add-data-from-a-url-field">
+  <img src="../../assets/add-data-from-a-url-field.png">
+  <figcaption>Figure 7. The "Add data from URL" field.</figcaption>
+</figure>
 
-- Drag-and-drop RDF files from your local machine onto the cloud icon.
+Only URLs that contain supported data formats will be added. See Section [Supported data formats](#supported-data-formats) for more information.
 
-The following RDF serialization formats are currently supported:
+### Add data from files
 
-| **Serialization Format** | **File extension**     |
-| ------------------------ | ---------------------- |
-| N-Quads                  | `.nq`                  |
-| N-Triples                | `.nt`                  |
-| RDF/XML                  | `.rdf`, `.owl`, `.owx` |
-| TriG                     | `.trig`                |
-| Turtle                   | `.ttl`, `.n3`          |
-| JSON-LD                  | `.jsonld`, `.json`     |
+The third option for adding data is to add it from files that are on your computer. This can be done in two ways:
 
-Up to 1,000 separate files can be uploaded in one go. It is also possible to upload compressed files and archives. When the number of files exceeds 1,000, it is more efficient to combine them in archives and upload those. This allows an arbitrary number of files to be uploaded. The following archive/compression formats are currently supported:
+1. Click the cloud icon to open a file finder dialog. Here you can select one or more files from your computer (see [Figure 8](#add-data-from-files-dialog)). The file finder dialog that opens, depends on your Operating System. In [Figure 8](#add-data-from-files-dialog), the Windows file finder dialog is shown.
+2. Drag-and-drop one or more files from your computer onto the cloud icon with the upward pointing arrow.
 
-| **Format** | **File extensions** |
-| ---------- | ------------------- |
-| gzip       | `.gz`               |
-| bzip2      | `.bz2`              |
-| tar        | `tar`               |
-| XZ         | `.xz`               |
-| ZIP        | `.zip`              |
+<figure id="add-data-from-files-dialog">
+  <img src="../../assets/add-data-from-files-dialog.png">
+  <figcaption>Figure 8. The file finder dialog that is opened when adding data from files.</figcaption>
+</figure>
 
-### Adding data by URL upload
+After you have added one of more files, a list of uploaded appears (see [Figure 9](#add-data-from-files-job)). You can add or remove more files, until you have the complete upload job configured. Once the list of files is complete, you can click "Import from files" to start adding data from files. How long this takes depends on the size of the data.
 
-The second option for adding data is to include it from an online URL location. This is done by entering the URL inside the “Add data from a URL” text field.
+<figure id="add-data-from-files-job">
+  <img src="../../assets/add-data-from-files-job.png">
+  <figcaption>Figure 9. The list of uploaded files in the "Add data from files" pane.</figcaption>
+</figure>
 
-### Adding data by import
+Only files that contain supported data formats will be added. See Section [Supported data formats](#supported-data-formats) for more information.
 
-The third option for adding data is to import from datasets that are published in the same TriplyDB instance. This is done with the “Add data from an existing dataset” dropdown list (see screenshot).
+### Supported data formats
+
+Files must contain RDF and/or CSV data, and must use one of the supported file name extensions:
+
+| **Serialization Format** | **File name extension** |
+| ------------------------ | ----------------------- |
+| N-Quads                  | `.nq`                   |
+| N-Triples                | `.nt`                   |
+| RDF/XML                  | `.rdf`, `.owl`, `.owx`  |
+| TriG                     | `.trig`                 |
+| Turtle                   | `.ttl`, `.n3`           |
+| JSON-LD                  | `.jsonld`, `.json`      |
+
+It is possible to upload up to 1,000 separate files in this way. When you have a lot of files and/or large files, it is better to compress them into an archive format. This allows an any number of files of any size to be uploaded. The following archive/compression formats are supported:
+
+| **Archive format** | **File name extension** |
+| ------------------ | ----------------------- |
+| gzip               | `.gz`                   |
+| bzip2              | `.bz2`                  |
+| tar                | `tar`                   |
+| XZ                 | `.xz`                   |
+| ZIP                | `.zip`                  |
 
 ### Adding malformed data
 
