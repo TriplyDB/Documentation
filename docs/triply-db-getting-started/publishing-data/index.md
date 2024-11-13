@@ -32,7 +32,7 @@ The dataset settings page contains the following items:
 - [Prefixes](#prefixes)
 - [Transfer ownership](#transfer-ownership)
 - [Delete dataset](#delete-dataset)
-- Webhooks
+- [Webhooks](#webhooks)
 
 ### Update dataset profile
 
