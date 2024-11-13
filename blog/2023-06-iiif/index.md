@@ -133,13 +133,13 @@ where {
 
 ### Configuration Step 2 out of 2: JSON-LD Frame configuration
 
-When you visit the SPARQL Construct query [online](https://triplydb.com/Triply/-/queries/iris-iiif-manifest), you see the SPARQL Query Editor, the JSON-LD Frame Editor, and the REST API result all on one page (Figure 3). These tools allow us to configure REST APIs, including the IIIF Presentation API.
+When you visit the SPARQL Construct query [online](https://triplydb.com/Triply/-/queries/iris-iiif-manifest), you see the SPARQL Query Editor, the JSON-LD Frame Editor, and the RESTful API result all on one page (Figure 3). These tools allow us to configure RESTful APIs, including the IIIF Presentation API.
 
 <figure>
   <a href="https://triplydb.com/Triply/-/queries/iris-iiif-manifest" target="_blank">
     <img src="saved-query.png">
   </a>
-  <figcaption>Figure 3 - Screenshot of a Saved Query in TriplyDB. The SPARQL Query Editor is shown at the top, the JSON-LD Frame Editor is shown in the middle, and the REST API result is displayed at the bottom.</figcaption>
+  <figcaption>Figure 3 - Screenshot of a Saved Query in TriplyDB. The SPARQL Query Editor is shown at the top, the JSON-LD Frame Editor is shown in the middle, and the RESTful API result is displayed at the bottom.</figcaption>
 </figure>
 
 JSON-LD Frames is an international standard that allows us to create JSON structures from linked data. Which structure we create, and how we create it from our linked dataset, is configured in a frame. For our current example, the frame looks as follows:
@@ -153,7 +153,7 @@ JSON-LD Frames is an international standard that allows us to create JSON struct
 
 The value for `@context` refers to a small JSON-LD file that Triply created for version 3 of the IIIF Presentation API. The official IIIF website publishes a similar file for version 2, but not (yet) for the latest version.
 
-The value for `@type` indicates which item should be at the root of the JSON object that is exposed through our API. In linked data, information is not stored in a specific order. There is no 'first' or 'root' item. But the IIIF standards mandate that we return the manifest in a JSON format; and there the order of the items is crucial. Luckily, JSON-LD Frames allows us to force a specific order, thereby translating the outcomes of SPARQL Construct queries into REST API responses.
+The value for `@type` indicates which item should be at the root of the JSON object that is exposed through our API. In linked data, information is not stored in a specific order. There is no 'first' or 'root' item. But the IIIF standards mandate that we return the manifest in a JSON format; and there the order of the items is crucial. Luckily, JSON-LD Frames allows us to force a specific order, thereby translating the outcomes of SPARQL Construct queries into RESTful API responses.
 
 For more information, see the TriplyDB documentation about JSON-LD Frames support: [link](https://docs.triply.cc/generics/JSON-LD-frames).
 

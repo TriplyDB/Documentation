@@ -340,7 +340,7 @@ maxLines = 30;
 
 ### Writing a Yasr plugin
 
-To register a Yasr plugin, add it to Yasr by running `Yasr.registerPlugin(pluginName: string, plugin: Plugin)`. Below is an example implementation for rendering the result of an ASK query, which returns either `true` or `false`. See also the implementations of the [Table](https://github.com/TriplyDB/YASGUI.YASR/blob/gh-pages/src/table.js) and [Raw Response](https://github.com/TriplyDB/YASGUI.YASR/blob/gh-pages/src/rawResponse.js) plugins.
+To register a Yasr plugin, add it to Yasr by running `Yasr.registerPlugin(pluginName: string, plugin: Plugin)`. Below is an example implementation for rendering the result of an Ask query, which returns either `true` or `false`. See also the implementations of the [Table](https://github.com/TriplyDB/YASGUI.YASR/blob/gh-pages/src/table.js) and [Raw Response](https://github.com/TriplyDB/YASGUI.YASR/blob/gh-pages/src/rawResponse.js) plugins.
 
 ```ts
 class Boolean {

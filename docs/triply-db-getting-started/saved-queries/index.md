@@ -185,7 +185,7 @@ const array = await results.toArray()
 ```
 
 
-### Using a saved query as REST-API (Advanced)
+### Using a saved query as RESTful API
 
 Each TriplyDB instance has a fully RESTful API. The TriplyDB RESTful API is extended for saved SPARQL queries. A saved query can be used as a RESTful API to retrieve data from your linked dataset. The URL next to the keywork `API` is the RESTful API URL and can be used with RESTful API libraries. You can copy the RESTful API by pressing the copy button just behind the URL. Pressing the copy button from the above query will result in the following run url:
 

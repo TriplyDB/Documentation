@@ -246,7 +246,7 @@ The above example includes the following GRLC annotations:
 
 - `description` gives a human-readable description of the meaning of the query. This typically includes an explanation of the purpose or goal for which this query is used, the content returned, or the process or task in which this query is used.
 - `endpoint` The URL of the SPARQL endpoint where queries are sent to.
-- `endpoint_in_url` configures whether the URL of the SPARQL endpoint should be specified through the API. In TriplyDB, this configuration is by default set to `false`. (Users of the REST API typically expect domain parameters such as `countryName` or `maximumAge`, but they do not necessarily expect technical parameters like an endpoint URL.)
+- `endpoint_in_url` configures whether the URL of the SPARQL endpoint should be specified through the API. In TriplyDB, this configuration is by default set to `false`. (Users of the RESTful API typically expect domain parameters such as `countryName` or `maximumAge`, but they do not necessarily expect technical parameters like an endpoint URL.)
 
 
 
@@ -495,17 +495,17 @@ SPARQL services are able to return results in different formats. The user can sp
 
 | Result format | Media Type                        | Query forms         | Suffix    |
 | ------------- | --------------------------------- | ------------------- | --------- |
-| CSV           | `text/csv`                        | SELECT              | `.csv`    |
-| JSON          | `application/json`                | ASK, SELECT         | `.json`   |
-| JSON-LD       | `application/ld+json`             | CONSTRUCT, DESCRIBE | `.jsonld` |
-| N-Quads       | `application/n-quads`             | CONSTRUCT, DESCRIBE | `.nq`     |
-| N-Triples     | `application/n-triples`           | CONSTRUCT, DESCRIBE | `.nt`     |
-| RDF/XML       | `application/rdf+xml`             | CONSTRUCT, DESCRIBE |           |
-| SPARQL JSON   | `application/sparql-results+json` | ASK, SELECT         | `.srj`    |
-| SPARQL XML    | `application/sparql-results+xml`  | ASK, SELECT         | `.srx`    |
-| TriG          | `application/trig`                | CONSTRUCT, DESCRIBE | `.trig`   |
-| TSV           | `text/tab-separated-values`       | SELECT              | `.tsv`    |
-| Turtle        | `text/turtle`                     | CONSTRUCT, DESCRIBE | `.ttl`    |
+| CSV           | `text/csv`                        | Select              | `.csv`    |
+| JSON          | `application/json`                | Ask, Select         | `.json`   |
+| JSON-LD       | `application/ld+json`             | Construct, Describe | `.jsonld` |
+| N-Quads       | `application/n-quads`             | Construct, Describe | `.nq`     |
+| N-Triples     | `application/n-triples`           | Construct, Describe | `.nt`     |
+| RDF/XML       | `application/rdf+xml`             | Construct, Describe |           |
+| SPARQL JSON   | `application/sparql-results+json` | Ask, Select         | `.srj`    |
+| SPARQL XML    | `application/sparql-results+xml`  | Ask, Select         | `.srx`    |
+| TriG          | `application/trig`                | Construct, Describe | `.trig`   |
+| TSV           | `text/tab-separated-values`       | Select              | `.tsv`    |
+| Turtle        | `text/turtle`                     | Construct, Describe | `.ttl`    |
 
 ### Examples of SPARQL Query requests
 

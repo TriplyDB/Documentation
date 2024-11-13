@@ -4,7 +4,7 @@
 
 The URL source type can also be used to extract records from online endpoints and APIs.
 
-The following code snippet extracts records from a TriplyDB REST API:
+The following code snippet extracts records from a TriplyDB RESTful API:
 
 ```ts
 fromJson(Source.url('https://api.triplydb.com/datasets')),

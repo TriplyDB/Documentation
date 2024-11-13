@@ -108,6 +108,15 @@ plugins:
   - mermaid2
   - redirects:
       redirect_maps:
+       #'triply-db-getting-started/admin-settings-pages/index.md': 'triply-db/admin-settings/index.md'
+       #'triply-db-getting-started/data-stories/index.md': 'triply-db/data-stories/index.md'
+       #'triply-db-getting-started/exporting-data/index.md': 'triply-db/exporting-data/index.md'
+       #'triply-db-getting-started/index.md': 'triply-db/index.md'
+       #'triply-db-getting-started/publishing-data/index.md': 'triply-db/exposing-data/index.md'
+       #'triply-db-getting-started/reference/index.md': 'triply-db/reference/index.md'
+       #'triply-db-getting-started/saved-queries/index.md': 'triply-db/saved-queries/index.md'
+       #'triply-db-getting-started/uploading-data/index.md': 'triply-db/adding-data/index.md'
+       #'triply-db-getting-started/viewing-data/index.md': 'triply-db/viewing-data/index.md'
         'triply-etl/assert/ratt/statement/index.md': 'triply-etl/assert/ratt/statements.md'
         'triply-etl/assert/ratt/term/index.md': 'triply-etl/assert/ratt/terms.md'
         'triply-etl/changelog/index.md': 'triply-etl/generic/changelog.md'

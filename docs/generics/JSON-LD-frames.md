@@ -38,7 +38,7 @@ graph TB
 
 The triples in a graphs do not have any specific order. In our graph picture, the triple about Tim is mentioned first, but this is arbitrary. A graph is a set of triples, so there is no 'first' or 'last' triple. Similarly, there is no 'primary' or 'secondary' element in a graph structure either. In our graph picture, persons occur on the left hand-side and cities occur on the right hand-side. In fact, the same information can be expressed with the following graph:
 
-Most REST APIs return data with a specific, often tree-shaped structure. For example:
+Most RESTful APIs return data with a specific, often tree-shaped structure. For example:
 
 ```json
 {
@@ -56,11 +56,11 @@ Most REST APIs return data with a specific, often tree-shaped structure. For exa
 }
 ```
 
-JSON-LD Framing is a standard that is used to assign additional structure to JSON-LD. With JSON-LD Framing, we can configure the extra structure that is needed to create REST APIs over SPARQL queries.
+JSON-LD Framing is a standard that is used to assign additional structure to JSON-LD. With JSON-LD Framing, we can configure the extra structure that is needed to create RESTful APIs over SPARQL queries.
 
 JSON-LD Framing are a deterministic translation from a graph, which has an unordered set of triples where no node is "first" or "special", into a tree, which has ordered branches and exactly one "root" node. In other words, JSON-LD framing allows one to force a specific tree layout to a JSON-LD document. This makes it possible to translate SPARQL queries to REST-APIs.
 
-The TriplyDB API for saved queries has been equipped with a JSON-LD profiler which can apply a JSON-LD profile to a JSON-LD result, transforming the plain JSON-LD to framed JSON. To do this you need two things. A SPARQL construct query and a JSON-LD frame. When you have both of these, you can retrieve plain JSON from a SPARQL query. The revelant cURL command when both the SPARQL query and JSON-LD frame are available is:
+The TriplyDB API for saved queries has been equipped with a JSON-LD profiler which can apply a JSON-LD profile to a JSON-LD result, transforming the plain JSON-LD to framed JSON. To do this you need two things. A SPARQL construct query and a JSON-LD frame. When you have both of these, you can retrieve plain JSON from a SPARQL query. The cURL command when both the SPARQL query and JSON-LD frame are available is:
 
 ```bash
 curl -X POST [SAVED-QUERY-URL] \
@@ -74,13 +74,13 @@ When sending a curl request, a few things are important. First, the request need
 
 ## The SPARQL Query
 
-Let's start with the SPARQL query. A JSON-LD frame query needs a SPARQL `CONSTRUCT` query to create an RDF graph that is self contained and populated with relevant vocabulary and data. The graph in JSON-LD is used as input for the REST API call. The SPARQL `CONSTRUCT` query can be designed with API variables.
+Let's start with the SPARQL query. A JSON-LD frame query needs a SPARQL Construct query to create an RDF graph that is self contained and populated with relevant vocabulary and data. The graph in JSON-LD is used as input for the RESTful API call. The SPARQL Construct query can be designed with API variables.
 
 Do note that API variables with `OPTIONAL`s can sometimes behave a bit different than regular API variables. This is due to how SPARQL interprets `OPTIONAL`s. If an API variable is used in an `OPTIONAL`, the query will return false positives, as the `OPTIONAL` does not filter out results matching the API-variable.
 
 Also note that the use of `UNION`s can have unexpected effects on the SPARQL query. A union could split up the result set of the SPARQL query. Meaning that the SPARQL engine first exhausts the top part of the `UNION` and then starts with the second part of the `UNION`. This means that the first part of the result set can be disconnected from the second part. If the limit is set too small the result set is separated in two different JSON-LD documents. This could result in missing data in the response.
 
-Finally, please note that it can happen that you set a `pageSize` of `10` but the response contains less than `10` results, while the next page is not empty. This is possible as the result set of the `WHERE` clause is limited with a limit and not the `CONSTRUCT` clause. This means that two rows of the resulting `WHERE` clause are condensed into a single result in the `CONSTRUCT` clause. Thus the response of the API can differ from the `pageSize`.
+Finally, please note that it can happen that you set a `pageSize` of `10` but the response contains less than 10 results, while the next page is not empty. This is possible as the result set of the `WHERE` clause is limited with a limit and not the Construct clause. This means that two rows of the resulting `WHERE` clause are condensed into a single result in the Construct clause. Thus the response of the API can differ from the `pageSize`.
 
 The result is a set of triples according to the query. Saving the SPARQL query will resolve in a saved query. The saved query has an API URL that we can now use in our cURL command. The URL most of the time starts with `api` and ends with `run`.
 
@@ -163,7 +163,7 @@ curl -X POST https://api.triplydb.com/queries/JD/JSON-LD-frame/run \
   }'
 ```
 
-The JSON-LD frame turns SPARQL results for the query in step 1 into a format that is accepted as plain REST API request.
+The JSON-LD frame turns SPARQL results for the query in step 1 into a format that is accepted as plain RESTful API request.
 
 
 

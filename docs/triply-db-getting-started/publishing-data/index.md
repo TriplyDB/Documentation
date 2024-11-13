@@ -21,7 +21,7 @@ the following consequences:
 
 The dataset settings page can be accessed from any dataset page. It appears as the last item in the menu to the left (see [Figure 1](#fig-dataset-homepage)).
 
-<figure id=fig-dataset-homepage">
+<figure id="fig-dataset-homepage">
   <img src="../../assets/dataset-homepage.png">
   <figcaption>Figure 1. The homepage of a dataset.</figcaption>
 </figure>
@@ -29,9 +29,9 @@ The dataset settings page can be accessed from any dataset page. It appears as t
 The dataset settings page contains the following items:
 
 - [Update dataset profile](#update-dataset-profile)
-- [Prefixes](#prefixes)
-- [Transfer ownership](#transfer-ownership)
-- [Delete dataset](#delete-dataset)
+- Prefixes <!-- TODO: [](#prefixes) -->
+- Transfer ownership <!-- TODO: [](#transfer-ownership) -->
+- Delete dataset <!-- TODO: [](#delete-dataset) -->
 - [Webhooks](#webhooks)
 
 ### Update dataset profile
@@ -41,7 +41,7 @@ The "Update dataset profile" pane (see [Figure 2](#fig-update-dataset-profile-pa
 - Dataset Access Level, see Section [Access Levels](../reference/index.md#access-levels).
 - Dataset metadata, see Section [Dataset metadata](#dataset-metadata).
 
-<figure id=fig-update-dataset-profile-pane">
+<figure id="fig-update-dataset-profile-pane">
   <img src="../../assets/update-dataset-profile-pane.png">
   <figcaption>Figure 2. The "Update dataset profile" pane.</figcaption>
 </figure>

@@ -7,7 +7,7 @@ users are able to view any version of the query and its results. It can also be
 used to run the query and retrieve the results from a browser or a program,
 removing the hassle of figuring out how to run a SPARQL query.
 
-Saved queries come with a REST API that can be configured with the use a SPARQL API variables.
+Saved queries come with a RESTful API that can be configured with the use a SPARQL API variables.
 
 
 ## Query.delete()
@@ -225,12 +225,12 @@ Copies a query using either the same name or a new name (if <code>queryName</cod
 <dl>
   <dt><code>queryName</code></dt>
   <dd>
-    <p>An optional parameter. The new URL-friendly name given to the duplicated query that is used in URL paths. This name can only include ASCII letters and hyphens. Defaults to the original query name.</p> 
+    <p>An optional parameter. The new URL-friendly name given to the duplicated query that is used in URL paths. This name can only include ASCII letters and hyphens. Defaults to the original query name.</p>
   </dd>
 
    <dt><code>account</code></dt>
   <dd>
-    <p>An optional parameter.Expected to be either an User or an Organization object if provided. The new account to which the query will be copied to. Defaults to the current account</p> 
+    <p>An optional parameter.Expected to be either an User or an Organization object if provided. The new account to which the query will be copied to. Defaults to the current account</p>
   </dd>
 
   <dt><code>metadataToReplace</code><dt>
