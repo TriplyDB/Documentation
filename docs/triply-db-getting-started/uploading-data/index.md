@@ -20,12 +20,12 @@ You can create a new dataset in either of the following two ways:
 2. From the user screen (see [Figure 1b](#user-screen-logged-in)), click on the “Create dataset” button on the right-hand side.
 
 <figure id="home-screen-logged-in">
-  <img src="../../assets/home-screen-logged-in.png">
+  <img src="../../assets/home-screen-logged-in-raw.png">
   <figcaption>Figure 1a. The home screen for a logged in user.</figcaption>
 </figure>
 
 <figure id="user-screen-logged-in">
-  <img src="../../assets/user-screen-logged-in.png">
+  <img src="../../assets/user-screen-logged-in-raw.png">
   <figcaption>Figure 1b. The user screen for a logged in user.</figcaption>
 </figure>
 
