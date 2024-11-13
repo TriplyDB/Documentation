@@ -17,44 +17,61 @@ the following consequences:
    to anybody on the web. This includes SPARQL, Text
    Search, and Linked Data Fragments.
 
-## Entering metadata
+## Dataset settings page
 
-Adding metadata to your datasets is important. This makes it easier
-to find your dataset later and also allows search engines and social
-media applications to understand your dataset.
+The dataset settings page can be accessed from any dataset page. It appears as the last item in the menu to the left (see [Figure 1](#fig-dataset-homepage)).
 
-Metadata is entered from the dataset settings page, which is accessed
-by clicking on the “Dataset settings” (cog icon) option from the
-left-hand sidebar (see screenshot).
+<figure id=fig-dataset-homepage">
+  <img src="../../assets/dataset-homepage.png">
+  <figcaption>Figure 1. The homepage of a dataset.</figcaption>
+</figure>
 
-![“Dataset settings” page](../../assets/cog-wheel.png) The dataset homepage looks empty without metadata. Notice the cog wheel icon, which provides access to the “Dataset settings” page.
+The dataset settings page contains the following items:
 
-The dataset settings page allows the following metadata to be entered:
+- [Update dataset profile](#update-dataset-profile)
+- [Prefixes](#prefixes)
+- [Transfer ownership](#transfer-ownership)
+- [Delete dataset](#delete-dataset)
+- Webhooks
 
-- The dataset description. This can consist of text with (optional) Markdown formatting.
-- The avatar (image) of the dataset.
-- The access level of the dataset.
-- The topics of the dataset.
-- The example resources for the dataset.
-- The license of the dataset.
+### Update dataset profile
 
-![The dataset settings page](../../assets/dataset-settings-page.png) The dataset settings page allows various forms of dataset metadata to be added.
+The "Update dataset profile" pane (see [Figure 2](#fig-update-dataset-profile-pane)) allows the following things to be configured:
 
-Within the TriplyDB instance your dataset is now more findable for users. Whenever
-a user searches on one of the topics of your dataset, or types in a word that is
-present in the description of your dataset, the dataset will be shown as a search
-result. The metadata will allow TriplyDB to give a better impression of your dataset
-when a user visits:
+- Dataset Access Level, see Section [Access Levels](../reference/index.md#access-levels).
+- Dataset metadata, see Section [Dataset metadata](#dataset-metadata).
 
-![The dataset home page](../../assets/dataset-homepage-with-metadata.png) The dataset home page after metadata has been entered.
+<figure id=fig-update-dataset-profile-pane">
+  <img src="../../assets/update-dataset-profile-pane.png">
+  <figcaption>Figure 2. The "Update dataset profile" pane.</figcaption>
+</figure>
 
-Search engines and social media applications can recognize the
-metadata that is entered for datasets in TriplyDB. The following
-screenshot shows the widget created by the Slack chat application upon
-entering a link to the dataset. Notice that the chat application
-understands metadata properties like title, description, and image.
+### Dataset metadata
 
-![A Slack widget](../../assets/slack-widget.png) Widget created by the Slack chat application upon sharing a link to a dataset in TriplyDB.
+Adding metadata for your datasets is important. This makes it easier to find your dataset later and also allows search engines and social media applications to understand your dataset.
+
+The "Update dataset profile" pane allows the following metadata to be configured:
+
+- Dataset name
+- Dataset slug
+- Dataset description
+- Example resources
+- License
+- Avatar
+
+Within the TriplyDB instance your dataset is now more findable for users. Whenever a user searches on one of the topics of your dataset, or types in a word that is present in the description of your dataset, the dataset will be shown as a search result. The metadata will allow TriplyDB to give a better impression of your dataset when a user visits. [Figure 3](#fig-dataset-homepage-with-metadata) shows the dataset homepage of a dataset for which metadata has been configured.
+
+<figure id="fig-dataset-homepage-with-metadata">
+  <img src="../../assets/dataset-homepage-with-metadata.png">
+  <figcaption>Figure 3. The dataset homepage of a dataset with configured metadata.</figcaption>
+</figure>
+
+Search engines and social media applications can recognize the metadata that is entered for datasets in TriplyDB. [Figure 4](#fig-slack-widget) shows an example of a Social Media widget in the Slack chat application. Such widgets are automatically generated upon entering the link to a public dataset in TriplyDB. The chat application in [Figure 4](#fig-slack-widget) understands the metadata properties: title, description, and image. Different Social Media applications may make use of different metadata properties.
+
+<figure id="fig-slack-widget">
+  <img src="../../assets/slack-widget.png">
+  <figcaption>Figure 4. A dataset widget in the Slack chat application.</figcaption>
+</figure>
 
 ## Starting services
 
