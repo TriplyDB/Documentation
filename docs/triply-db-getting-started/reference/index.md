@@ -2,36 +2,66 @@
 
 # Reference
 
-## Access levels
+## Access Levels
 
-TriplyDB uses the following access levels for datasets, queries, and
-stories.
+TriplyDB uses Access Levels that determine who can access content.
 
-| **Access level** | **Description**                                                                           | **Icon**          |
-| ---------------- | ----------------------------------------------------------------------------------------- | ----------------- |
-| Private          | The dataset/query/story is only visible to you.                                          | ![](../../assets/private.png)  |
-| Internal         | The dataset/query/story is only visible to people who are logged in to the same TriplyDB. | ![](../../assets/internal.png) |
-| Public           | The dataset/query/story is visible to everybody on the Internet.                         | ![](../../assets/public.png)   |
+Access Levels can be specified for the following content:
 
-### Access level dependencies
+- Datasets, including everything that exist at the dataset level, such as metadata, settings, graphs, and services.
+- Queries
+- Stories
 
-The access levels for datasets, queries, and stories may affect each
-other. For example, if a public query references a private dataset,
-other users will be able to view the query string, but none of the
-query results. TriplyDB always uses the most conservative access
-level in such cases, ensuring that information is never exposed
-unintentionally.
+### Access level control
+
+The Access Level control (see [Figure 1](#fig-access-level-control)) is available on the settings page for these content types. The Access Level control also appears on the create dialog for these content types. The standard Access Level is always "Private". An explicit user action is needed to set the Access Level to "Internal" or "Public".
+
+<figure id="fig-access-level-control">
+  <img src="../../assets/access-level-control.png">
+  <figcaption>Figure 1. The Access Level control for content in TriplyDB.</figcaption>
+</figure>
+
+### Access Level meaning
+
+What an Access Level means, depends on whether content belongs to a user or to an organization. The following table contains the meaning of the Access Levels for content that belongs to a user:
+
+| **Icon**                       | **Access Level** | **Meaning**                                                                       |
+| ------------------------------ | ---------------- | --------------------------------------------------------------------------------- |
+| ![](../../assets/private.png)  | Private          | Content is only accessible to you.                                                |
+| ![](../../assets/internal.png) | Internal         | Content is accessible to anyone who is logged into the same TriplyDB environment. |
+| ![](../../assets/public.png)   | Public           | Content is accessible to anyone on the Internet.                                  |
+
+The following table contains the meaning of the Access Levels for content that belongs to an organization:
+
+| **Icon**                       | **Access Level** | **Meaning**                                                                       |
+| ------------------------------ | ---------------- | --------------------------------------------------------------------------------- |
+| ![](../../assets/private.png)  | Private          | Content is only accessible to organization members.                               |
+| ![](../../assets/internal.png) | Internal         | Content is accessible to anyone who is logged into the same TriplyDB environment. |
+| ![](../../assets/public.png)   | Public           | Content is accessible to anyone on the Internet.                                  |
+
+Access Levels cannot be specified for the following content. This means that this content is always publicly accessible:
+
+- Organizations, including their metadata and members.
+- Users, including their metadata.
+
+### Access Level dependencies
+
+The Access Levels for datasets, queries, and stories may affect each other. For example, a public query may use a private dataset. This means that visitors who are not logged in, can see the query, its metadata, and its query string; however, such visitors will never receive query results from the private dataset. This ensures that private content always stays private, as intended.
+
+A warning is shown to the user when a dependency is introduced to content with a stricter Access Level (see [Figure 2](#fig-access-level-dependencies)). This allows the user to change the Access Levels to a consistent state.
+
+<figure id="fig-access-level-dependencies">
+  <img src="../../assets/access-level-dependencies.png">
+  <figcaption>Figure 2. A public query over a private dataset.</figcaption>
+</figure>
 
 ### Access levels and workflows
 
 These access levels are often used for the following workflow:
 
-- You create a new dataset/query/story starts with access level
-  ‘Private’.
-- As the dataset/query/story progresses, give it access level
-  ‘Internal’ to receive feedback from other users.
-- Once the dataset/query/story is ready, give it access level
-  ‘Public’ to publish it to the world.
+- You create a new dataset/query/story starts with access level ‘Private’.
+- As the dataset/query/story progresses, give it access level ‘Internal’ to receive feedback from other users.
+- Once the dataset/query/story is ready, give it access level ‘Public’ to publish it to the world.
 
 ## Markdown support
 
