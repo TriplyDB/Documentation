@@ -10,7 +10,8 @@ nav:
       - Getting started:
           - Overview: triply-db-getting-started/index.md
           - Uploading Data: triply-db-getting-started/uploading-data/index.md
-          - Publishing Data: triply-db-getting-started/publishing-data/index.md
+          - Editing (SKOS) Data: triply-db-getting-started/editing-data/index.md
+          - Sharing Data: triply-db-getting-started/publishing-data/index.md
           - Viewing Data: triply-db-getting-started/viewing-data/index.md
           - Exporting Data: triply-db-getting-started/exporting-data/index.md
           - Saved Queries: triply-db-getting-started/saved-queries/index.md
