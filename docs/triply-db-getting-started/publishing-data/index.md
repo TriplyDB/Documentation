@@ -1,12 +1,12 @@
 [TOC]
 
-# Publishing data
+# Sharing data
 
 With TriplyDB you can easily make your data available to the outside world.
 
-## Publishing your dataset
+## Sharing your dataset
 
-You can publish your dataset by setting the visibility to “Public” in
+You can share your dataset by setting the visibility to “Public” in
 the dataset settings menu. Making a dataset public in TriplyDB has
 the following consequences:
 
