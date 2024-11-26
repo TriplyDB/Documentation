@@ -5,7 +5,9 @@ path: "/docs/triplydb-changelog"
 
 [TOC]
 
-## 24.11.1 {#24.11.1}
+## 24.11.1 {#24.11.1} 
+
+**Release date:** 2024-11-21
 
 **Issues fixed**
 
