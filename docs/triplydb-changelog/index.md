@@ -5,9 +5,19 @@ path: "/docs/triplydb-changelog"
 
 [TOC]
 
+
+## 24.11.2 {#24.11.2} 
+
+**Release date:** 2024-11-22
+
+**Issues fixed**
+
+- `#9017` [Speedy] Some queries take too long when reordering/optimizing a query
+- `#9780` [SaaS] Enable OCSP stapling for TLS
+
 ## 24.11.1 {#24.11.1} 
 
-**Release date:** 2024-11-21
+**Release date:** 2024-11-08
 
 **Issues fixed**
 
@@ -21,7 +31,21 @@ path: "/docs/triplydb-changelog"
 - `#9791` [SPARQL-IDE] Error when tying to view a populated query from a gallery visualization with a query variable
 - `#9774` [SPARQL-IDE] Copy shortened URL doesn't work for webkit browsers
 
+## 24.10.2 {#24.10.2} 
+
+**Release date:** 2024-10-25
+
+**Issues fixed**
+
+- `#9739` [Query jobs] Query job artifacts, exposed to system administrators, are
+  incomplete
+- `#9740` [Query jobs] Cannot start a query job for queries with a default variable
+- `#9701` [Query jobs] A query job with invalid graph name fails at a late stage, where we
+  expect it to fail early
+
 ## 24.10.1 {#24.10.1}
+
+**Release date:** 2024-10-11
 
 **Issues fixed**
 
@@ -29,6 +53,8 @@ path: "/docs/triplydb-changelog"
 - `#9658` [SPARQL-IDE] Capture position doesn't work with height settings for stories
 
 ## 24.09.2 {#24.09.2}
+
+**Release date:** 2024-09-27
 
 **Features**
 

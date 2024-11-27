@@ -8,8 +8,21 @@ path: "/docs/triplydb-technical-changelog"
 This changelog covers technical changes related to TriplyDB on-premise deployments. See [here](/triplydb-changelog) for the TriplyDB changelog that is user facing.
 This intent of this changelog is primarily for documenting breaking changes or changes that are useful to know when deploying/upgrading TriplyDB.
 
+## 24.11.200 {#24.11.200}
+
+**Release date:** 2024-11-22
+
+None
+
+## 24.11.100 {#24.11.100}
+
+**Release date:** 2024-11-08
+
+None
 
 ## 24.10.200 {#24.10.200}
+
+**Release date:** 2024-10-25
 
 The `.defaultImageRegistry` and `triplydbImageRegistry` fields are now removed.
 If you used these fields, then you should instead reference the full image path (without the tag) for the images.
@@ -29,9 +42,13 @@ for these keys:
 
 ## 24.10.100 {#24.10.100}
 
+**Release date:** 2024-10-11
+
 None
 
 ## 24.9.200 {#24.9.200}
+
+**Release date:** 2024-09-27
 
 None
 
