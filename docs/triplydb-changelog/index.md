@@ -21,7 +21,7 @@ path: "/docs/triplydb-changelog"
 
 **Issues fixed**
 
-- `#8878` The date when adataset was last updated is not included in the dataset NDE descriptions
+- `#8878` Include correct dataset modification date for JSON schema descriptions
 - `#9694` Speedy SPARQL endpoints are not included in the dataset NDE descriptions
 - `#9807` Parsing of XML content assigns an incorrect datatype 
 - `#9752` Parsing of XML is incorrect for escaped ampersand
