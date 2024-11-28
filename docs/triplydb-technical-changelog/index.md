@@ -32,6 +32,7 @@ for these keys:
 
 - `mongodb.image`
 - `redis.image`
+- `kubernetesWaitFor.image`
 
 If you used `.triplydbImageRegistry` with a custom registry, then set the full image tags
 for these keys:
