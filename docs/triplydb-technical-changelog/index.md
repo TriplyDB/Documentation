@@ -40,6 +40,12 @@ for these keys:
 - `api.image`
 - `console.image`
 - `orchestrator.image`
+- `indexJobs.image`
+- `queryJobs.image`
+- `tdbServices.virtuoso.image`
+- `tdbServices.jena.image`
+- `tdbServices.elastic.image`
+- `tdbServices.blazegraph.image`
 
 ## 24.10.100 {#24.10.100}
 
