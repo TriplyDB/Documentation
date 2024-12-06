@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <meta name="description" content="The official documentation for the Triply products: TriplyDB, TriplyDB.js, and TriplyETL." />
+      <link rel="shortcut icon" href="../../../img/favicon.ico" />
+    <title>CSV - Triply Documentation</title>
+    <link rel="stylesheet" href="../../../css/theme.css" />
+    <link rel="stylesheet" href="../../../css/theme_extra.css" />
+        <link href="../../../css/intellij-light.css" rel="stylesheet" />
+        <link href="../../../css/triply.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "CSV";
+        var mkdocs_page_input_path = "triply-etl/extract/csv.md";
+        var mkdocs_page_url = null;
+      </script>
+     
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../../.." class="icon icon-home"> Triply Documentation
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../..">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">TriplyDB</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Getting started</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../../triply-db-getting-started/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../triply-db-getting-started/uploading-data/">Uploading Data</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../triply-db-getting-started/editing-data/">Editing (SKOS) Data</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../triply-db-getting-started/publishing-data/">Sharing Data</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../triply-db-getting-started/viewing-data/">Viewing Data</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../triply-db-getting-started/exporting-data/">Exporting Data</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../triply-db-getting-started/saved-queries/">Saved Queries</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../triply-db-getting-started/data-stories/">Data Stories</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../triply-db-getting-started/admin-settings-pages/">Admin Settings Pages</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../triply-db-getting-started/reference/">Reference</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../triply-api/">API</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">TriplyDB-JS</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../../triplydb-js/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../triplydb-js/app/">App</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../triplydb-js/account/">Account</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../triplydb-js/asset/">Asset</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../triplydb-js/dataset/">Dataset</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../triplydb-js/graph/">Graph</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../triplydb-js/organization/">Organization</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../triplydb-js/query/">Query</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../triplydb-js/service/">Service</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../triplydb-js/story/">Story</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../triplydb-js/user/">User</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../triplydb-js/faq/">FAQ</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../triply-cli/">Command-line Interface</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../triplydb-changelog/">Changelog</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">TriplyETL</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="#">Generic</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../generic/getting-started/">Getting Started</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../generic/changelog/">Changelog</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../generic/cli/">Command Line Interface (CLI)</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../generic/declarations/">Declarations</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../generic/control-structures/">Control Structures</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../generic/debug/">Debug</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../generic/internal-store/">Internal Store</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../generic/maintenance/">Maintenance</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../generic/record/">Record</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../generic/vocabularies/">Vocabularies</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Sources</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../sources/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../sources/apis/">APIs</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../sources/inline-json/">Inline JSON</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../sources/inline-strings/">Inline Strings</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../sources/local-files/">Local Files</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../sources/online-files/">Online Files</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../sources/rml/">RML Sources</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../sources/triplydb-assets/">TriplyDB Assets</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../sources/triplydb-datasets/">TriplyDB Datasets</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../sources/triplydb-queries/">TriplyDB Queries</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Extract</a>
+    <ul class="current">
+                <li class="toctree-l2"><a class="reference internal" href="../">Overview</a>
+                </li>
+                <li class="toctree-l2 current"><a class="reference internal current" href="./">CSV</a>
+    <ul class="current">
+    <li class="toctree-l3"><a class="reference internal" href="#basic-usage">Basic usage</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#standards-compliance">Standards-compliance</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#encoding-configuration">Encoding configuration</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#separator-configuration">Separator configuration</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#csv-with-tab-separators-is-not-tsv">CSV with tab separators is not TSV</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#record-representation">Record representation</a>
+    </li>
+    </ul>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../json/">JSON</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../oai-pmh/">OAI-PMH</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../postgres/">Postgres</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../rdf/">RDF</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../shapefile/">Shapefile</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../tsv/">TSV</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../xlsx/">XLSX</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../xml/">XML</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Transform</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../transform/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../transform/ratt/">RATT</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../transform/rml/">RML</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../transform/typescript/">TypeScript</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../transform/xslt/">XSLT</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Assert</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../assert/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../assert/json-ld/">JSON-LD</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="#">RATT</a>
+    <ul>
+                <li class="toctree-l3"><a class="reference internal" href="../../assert/ratt/terms/">RATT Terms</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../../assert/ratt/statements/">RATT Statements</a>
+                </li>
+    </ul>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../assert/rml/">RML</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../assert/xslt/">XSLT</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Enrich</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../enrich/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="#">SHACL</a>
+    <ul>
+                <li class="toctree-l3"><a class="reference internal" href="../../enrich/shacl/">Overview</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../../enrich/shacl/triple-rules/">Triple Rules</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../../enrich/shacl/sparql-rules/">SPARQL Rules</a>
+                </li>
+    </ul>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="#">SPARQL</a>
+    <ul>
+                <li class="toctree-l3"><a class="reference internal" href="../../enrich/sparql/construct/">SPARQL Construct</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../../enrich/sparql/update/">SPARQL Update</a>
+                </li>
+    </ul>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Validate</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../validate/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../validate/graph-comparison/">Graph Comparison</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../validate/shacl/">SHACL</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../publish/">Publish</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Yasgui</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../yasgui/">Introduction</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../yasgui-api/">For Developers</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../..">Triply Documentation</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../.." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">TriplyETL</li>
+          <li class="breadcrumb-item">Extract</li>
+      <li class="breadcrumb-item active">CSV</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <div class="toc"><span class="toctitle">On this page:</span><ul>
+<li><a href="#csv-extractor">CSV extractor</a><ul>
+<li><a href="#basic-usage">Basic usage</a></li>
+<li><a href="#standards-compliance">Standards-compliance</a></li>
+<li><a href="#encoding-configuration">Encoding configuration</a></li>
+<li><a href="#separator-configuration">Separator configuration</a></li>
+<li><a href="#csv-with-tab-separators-is-not-tsv">CSV with tab separators is not TSV</a></li>
+<li><a href="#record-representation">Record representation</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<h1 id="csv-extractor">CSV extractor<a class="headerlink" href="#csv-extractor" title="Permanent link">&para;</a></h1>
+<p>CSV or Comma Separated Values (file name extension <code>.csv</code>) is a popular format for storing tabular source data. TriplyETL has a dedicated <code>fromCsv()</code> extractor for this data format.</p>
+<h2 id="basic-usage">Basic usage<a class="headerlink" href="#basic-usage" title="Permanent link">&para;</a></h2>
+<p>The CSV extractor is imported in the following way:</p>
+<pre><code class="language-ts">import { fromCsv, Source } from '@triplyetl/etl/generic'
+</code></pre>
+<p>The following code snippet extracts records from a local CSV file:</p>
+<pre><code class="language-ts">fromCsv(Source.file('data.csv')),
+</code></pre>
+<p>The following code snippet extracts records from an online CSV file, that is hosted at the specified URL:</p>
+<pre><code class="language-ts">fromCsv(Source.url('https://somewhere.com/data.csv')),
+</code></pre>
+<p>The following code snippet extracts records from a <a href="../../sources/triplydb-assets/">TriplyDB Asset</a>. The asset is store in the data with name <code>'some-data'</code>, under an account with name <code>'some-account'</code>. The name of the asset is <code>'example.csv'</code>:</p>
+<pre><code class="language-ts">fromCsv(
+  Source.TriplyDb.asset(
+    'some-account',
+    'some-dataset',
+    { name: 'example.csv' }
+  )
+),
+</code></pre>
+<h2 id="standards-compliance">Standards-compliance<a class="headerlink" href="#standards-compliance" title="Permanent link">&para;</a></h2>
+<p>The <code>fromCsv()</code> extractor implements the official CSV standard: <a href="https://www.ietf.org/rfc/rfc4180.html">IETF RFC 4180</a>.</p>
+<p>Some CSV files do not follow the standard precisely. In order to process such CSV files, the default behavior of the extractor can be changed through an optional options parameter. See the <a href="https://csv.js.org/parse/options/">CSV Parse for Node.js</a> documentation for all the available options.</p>
+<h2 id="encoding-configuration">Encoding configuration<a class="headerlink" href="#encoding-configuration" title="Permanent link">&para;</a></h2>
+<p>According to the official CSV standard, CSV sources are allowed to use any encoding. Since the CSV format does not allow the used encoding to be specified in the format itself, a non-standard encoding must always be configured manually. By default, TriplyETL assumes that CSV sources use the UTF-8 encoding. If another encoding is used, this must be explicitly specified by using the optional options parameter.</p>
+<p>The following snippet configures that the CSV source uses the ISO Latin-1 encoding:</p>
+<pre><code class="language-ts">fromCsv(
+  Source.TriplyDb.asset('my-dataset', { name: 'example.csv' }),
+  { encoding: 'latin1' }
+),
+</code></pre>
+<p>The following encodings are currently supported:</p>
+<table>
+<thead>
+<tr>
+<th>Value</th>
+<th>Encoding</th>
+<th>Standard</th>
+<th>Alternative values</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>'ascii'</code></td>
+<td>US-ASCII</td>
+<td>ANSI</td>
+<td></td>
+</tr>
+<tr>
+<td><code>'latin1'</code></td>
+<td>Latin-1</td>
+<td>ISO-8859-1</td>
+<td><code>binary</code></td>
+</tr>
+<tr>
+<td><code>'utf8'</code></td>
+<td>UTF-8</td>
+<td>Unicode</td>
+<td></td>
+</tr>
+<tr>
+<td><code>'utf16le'</code></td>
+<td>UTF-16 Little Endian</td>
+<td>Unicode</td>
+<td><code>'ucs2'</code>, <code>'ucs-2'</code>, <code>'utf16-le'</code></td>
+</tr>
+</tbody>
+</table>
+<p>Read the <a href="https://csv.js.org/parse/options/encoding/">CSV Parse for Node.js</a> documentation for more information.</p>
+<h2 id="separator-configuration">Separator configuration<a class="headerlink" href="#separator-configuration" title="Permanent link">&para;</a></h2>
+<p>Some CSV files only deviate in their use of a different separator character. For example, some CSV files use the semi-colon (<code>;</code>) or the at-sign (<code>@</code>) for this.</p>
+<p>The following snippet extracts records for a CSV file that uses the semi-colon (<code>;</code>) as the separator character:</p>
+<pre><code class="language-ts">fromCsv(Source.file('example.csv'), { separator: ';' }),
+</code></pre>
+<h2 id="csv-with-tab-separators-is-not-tsv">CSV with tab separators is not TSV<a class="headerlink" href="#csv-with-tab-separators-is-not-tsv" title="Permanent link">&para;</a></h2>
+<p>Notice that the popular Tab-Separate Values (TSV) format is not the same as the standardized CSV format with a tab separator character. If you want to process standards-conforming TSV source data, use the <a href="#extractor-fromtsv"><code>fromTsv()</code> extractor</a> instead.</p>
+<h2 id="record-representation">Record representation<a class="headerlink" href="#record-representation" title="Permanent link">&para;</a></h2>
+<p>TriplyETL treats every row in a CSV source as one <a href="../../sources/">record</a>. The columns are emitted as keys and the cells are emitted as values. All values are of type <code>string</code>. Empty cells (i.e. those containing the empty string) are treated as denoting a null value and are therefore excluded from the record. Any trailing whitespace that appears in headers or cells is removed from the keys and values in the record.</p>
+<p>For example, the following table:</p>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Name</th>
+<th>Age</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Doe, John</td>
+<td>32</td>
+</tr>
+<tr>
+<td>2</td>
+<td>D., Jane</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>can be expressed by the following CSV snippet:</p>
+<pre><code class="language-txt">ID,Name,Age
+1,&quot;Doe, John&quot;,32
+2,&quot;D., Jane &quot;,
+</code></pre>
+<p>which is emitted as the following two TriplyETL records:</p>
+<pre><code class="language-json">{
+  &quot;ID&quot;: &quot;1&quot;,
+  &quot;Name&quot;: &quot;Doe, John&quot;,
+  &quot;Age&quot;: &quot;32&quot;
+}
+{
+  &quot;ID&quot;: &quot;2&quot;,
+  &quot;Name&quot;: &quot;D., Jane&quot;
+}
+</code></pre>
+<p>Notice the following details:
+- All values have type <code>string</code>, including <code>"ID"</code> and <code>"Age"</code>. The value for field <code>"Age"</code> should probably be considered numeric, but the CSV format cannot express this. A TriplyETL <a href="../../transform/">transformation</a> can be used to cast string values to numeric values.
+- The trailing space in <code>"D., Jane "</code> is omitted from the second record, since training whitespace is removed from all keys and values.
+- The <code>"Age"</code> key is missing from the second record, since the corresponding CSV cell contains the empty string, which is considered to denote an empty value.</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../" class="btn btn-neutral float-left" title="Overview"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../json/" class="btn btn-neutral float-right" title="JSON">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../json/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script>var base_url = '../../..';</script>
+      <script src="../../../js/triply.js" defer></script>
+      <script src="../../../js/highlight.min.js" defer></script>
+      <script src="../../../search/main.js" defer></script>
+
+</body>
+</html>
