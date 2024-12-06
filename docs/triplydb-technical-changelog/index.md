@@ -8,6 +8,29 @@ path: "/docs/triplydb-technical-changelog"
 This changelog covers technical changes related to TriplyDB on-premise deployments. See [here](/triplydb-changelog) for the TriplyDB changelog that is user facing.
 This intent of this changelog is primarily for documenting breaking changes or changes that are useful to know when deploying/upgrading TriplyDB.
 
+
+
+## 24.12.100 {#24.12.100} 
+
+**Release date:** 2024-12-05
+
+- The `.disableNetworkPolicies` property is removed. Instead, use the
+  `networkPolicies.enabled` property.
+- The API and console apply stricter network policies. As a consequence, you will need to
+  specify a source selector that references your ingress. See the [kubernetes
+  documentation](https://kubernetes.io/docs/concepts/services-networking/network-policies/#behavior-of-to-and-from-selectors)
+ for more info on such selectors. Specify this selector in
+  `networkPolicies.ingressSelector`. An example definition is the following:
+
+```
+networkPolicies:
+  ingressSelector:
+    namespaceSelector:
+      matchLabels:
+        kubernetes.io/metadata.name: ingress-nginx
+```
+
+
 ## 24.11.200 {#24.11.200}
 
 **Release date:** 2024-11-22

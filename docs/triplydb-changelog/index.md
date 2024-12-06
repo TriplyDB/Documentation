@@ -6,6 +6,21 @@ path: "/docs/triplydb-changelog"
 [TOC]
 
 
+
+
+## 24.12.1 {#24.12.1} 
+
+**Release date:** 2024-12-05
+
+**Issues fixed**
+
+- `#9888` [Query job] Query job for very simple construct query may fail
+- `#9959` [SPARQL IDE] SPARQL IDE may show same autocomplete suggestion multiple times
+- `#9954` [Query job] Query jobs may get sometimes inadvertently cancelled
+- `#9927` [Stories] Stories with many queries are slow to load in the browser 
+
+
+
 ## 24.11.2 {#24.11.2} 
 
 **Release date:** 2024-11-22
