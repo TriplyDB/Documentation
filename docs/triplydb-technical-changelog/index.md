@@ -10,9 +10,9 @@ This intent of this changelog is primarily for documenting breaking changes or c
 
 
 
-## 24.12.100 {#24.12.100} 
+## 24.12.104 {#24.12.104} 
 
-**Release date:** 2024-12-05
+**Release date:** 2024-12-06
 
 - The `.disableNetworkPolicies` property is removed. Instead, use the
   `networkPolicies.enabled` property.
