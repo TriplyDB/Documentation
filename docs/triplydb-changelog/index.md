@@ -6,6 +6,15 @@ path: "/docs/triplydb-changelog"
 [TOC]
 
 
+## 24.12.2 {#24.12.2} 
+
+**Release date:** 2024-12-18
+
+**Issues fixed**
+
+- `#10006` Cancelling a linked data upload may result in an error
+- `#9711` [SaaS] Incidental requests are dropped
+
 
 
 ## 24.12.1 {#24.12.1} 
