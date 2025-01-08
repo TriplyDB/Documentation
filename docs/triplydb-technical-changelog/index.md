@@ -8,6 +8,15 @@ path: "/docs/triplydb-technical-changelog"
 This changelog covers technical changes related to TriplyDB on-premise deployments. See [here](/triplydb-changelog) for the TriplyDB changelog that is user facing.
 This intent of this changelog is primarily for documenting breaking changes or changes that are useful to know when deploying/upgrading TriplyDB.
 
+## 25.01.100 {#25.01.100} 
+
+**Release date:** 2025-01-09
+
+- `indexJobs.storageClass` and `queryJobs.storageclass` are both required properties now. 
+- Some properties from the values file are now propagated to the console and API via a
+  configmap. This change _only_ has affects on-premise deployments where the helm manifests
+  are post-processed and manipulated.
+
 ## 24.12.200 {#24.12.200} 
 
 **Release date:** 2024-12-18

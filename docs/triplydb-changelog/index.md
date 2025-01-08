@@ -5,6 +5,17 @@ path: "/docs/triplydb-changelog"
 
 [TOC]
 
+## 25.01.1 {#25.01.1} 
+
+**Release date:** 2025-01-09
+
+**Issues fixed**
+
+- `#9929` Query jobs may incidentally hang
+- `#10062` Speedy queries that use federation may now work in firewalled on-premise
+  environments
+- `#9999` Default variable values of saved queries are not always applied in query jobs.
+
 
 ## 24.12.2 {#24.12.2} 
 
