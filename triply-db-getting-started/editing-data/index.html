@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+
+<html class="writer-html5" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="IE=edge" http-equiv="X-UA-Compatible"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="The official documentation for the Triply products: TriplyDB, TriplyDB.js, and TriplyETL." name="description"/>
+<link href="../../img/favicon.ico" rel="shortcut icon"/>
+<title>Editing (SKOS) Data - Triply Documentation</title>
+<link href="../../css/theme.css" rel="stylesheet"/>
+<link href="../../css/theme_extra.css" rel="stylesheet"/>
+<link href="../../css/intellij-light.css" rel="stylesheet"/>
+<link href="../../css/triply.css" rel="stylesheet"/>
+<script>
+        // Current page data
+        var mkdocs_page_name = "Editing (SKOS) Data";
+        var mkdocs_page_input_path = "triply-db-getting-started/editing-data/index.md";
+        var mkdocs_page_url = null;
+      </script>
+</head>
+<body class="wy-body-for-nav" role="document">
+<div class="wy-grid-for-nav">
+<nav class="wy-nav-side stickynav" data-toggle="wy-nav-shift">
+<div class="wy-side-scroll">
+<div class="wy-side-nav-search">
+<a class="icon icon-home" href="../.."> Triply Documentation
+        </a><div role="search">
+<form action="../../search.html" class="wy-form" id="rtd-search-form" method="get">
+<input aria-label="Search docs" name="q" placeholder="Search docs" title="Type search term here" type="text"/>
+</form>
+</div>
+</div>
+<div aria-label="Navigation menu" class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">TriplyDB</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal current" href="#">Getting started</a>
+<ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../">Overview</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../uploading-data/">Uploading Data</a>
+</li>
+<li class="toctree-l2 current"><a class="reference internal current" href="./">Editing (SKOS) Data</a>
+<ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="#choosing-a-class">Choosing a Class</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#iri-naming">IRI Naming</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#input-fields">Input Fields</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#groups-and-order">Groups and Order</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#workflow">Workflow</a>
+<ul>
+<li class="toctree-l4"><a class="reference internal" href="#editing-draft">Editing (Draft)</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#submit-for-review-staged">Submit for Review (Staged)</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#accept-accepted">Accept (Accepted)</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#revoke-deprecated">Revoke (Deprecated)</a>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#skos-support">SKOS Support</a>
+<ul>
+<li class="toctree-l4"><a class="reference internal" href="#skos-hierarchy">SKOS Hierarchy</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#skos-concept-schemas">SKOS Concept Schemas</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../publishing-data/">Sharing Data</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../viewing-data/">Viewing Data</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../exporting-data/">Exporting Data</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../saved-queries/">Saved Queries</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../data-stories/">Data Stories</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../admin-settings-pages/">Admin Settings Pages</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/">Reference</a>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../triply-api/">API</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#">TriplyDB-JS</a>
+<ul>
+<li class="toctree-l2"><a class="reference internal" href="../../triplydb-js/">Overview</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../triplydb-js/app/">App</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../triplydb-js/account/">Account</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../triplydb-js/asset/">Asset</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../triplydb-js/dataset/">Dataset</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../triplydb-js/graph/">Graph</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../triplydb-js/organization/">Organization</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../triplydb-js/query/">Query</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../triplydb-js/service/">Service</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../triplydb-js/story/">Story</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../triplydb-js/user/">User</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../triplydb-js/faq/">FAQ</a>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../triply-cli/">Command-line Interface</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../triplydb-changelog/">Changelog</a>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">TriplyETL</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="#">Generic</a>
+<ul>
+<li class="toctree-l2"><a class="reference internal" href="../../triply-etl/">Overview</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../triply-etl/generic/getting-started/">Getting Started</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../triply-etl/generic/changelog/">Changelog</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../triply-etl/generic/cli/">Command Line Interface (CLI)</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../triply-etl/generic/declarations/">Declarations</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../triply-etl/generic/control-structures/">Control Structures</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../triply-etl/generic/debug/">Debug</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../triply-etl/generic/internal-store/">Internal Store</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../triply-etl/generic/maintenance/">Maintenance</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../triply-etl/generic/record/">Record</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../triply-etl/generic/vocabularies/">Vocabularies</a>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#">Sources</a>
+<ul>
+<li class="toctree-l2"><a class="reference internal" href="../../triply-etl/sources/">Overview</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../triply-etl/sources/apis/">APIs</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../triply-etl/sources/inline-json/">Inline JSON</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../triply-etl/sources/inline-strings/">Inline Strings</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../triply-etl/sources/local-files/">Local Files</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../triply-etl/sources/online-files/">Online Files</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../triply-etl/sources/rml/">RML Sources</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../triply-etl/sources/triplydb-assets/">TriplyDB Assets</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../triply-etl/sources/triplydb-datasets/">TriplyDB Datasets</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../triply-etl/sources/triplydb-queries/">TriplyDB Queries</a>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#">Extract</a>
+<ul>
+<li class="toctree-l2"><a class="reference internal" href="../../triply-etl/extract/">Overview</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../triply-etl/extract/csv/">CSV</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../triply-etl/extract/json/">JSON</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../triply-etl/extract/oai-pmh/">OAI-PMH</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../triply-etl/extract/postgres/">Postgres</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../triply-etl/extract/rdf/">RDF</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../triply-etl/extract/shapefile/">Shapefile</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../triply-etl/extract/tsv/">TSV</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../triply-etl/extract/xlsx/">XLSX</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../triply-etl/extract/xml/">XML</a>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#">Transform</a>
+<ul>
+<li class="toctree-l2"><a class="reference internal" href="../../triply-etl/transform/">Overview</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../triply-etl/transform/ratt/">RATT</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../triply-etl/transform/rml/">RML</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../triply-etl/transform/typescript/">TypeScript</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../triply-etl/transform/xslt/">XSLT</a>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#">Assert</a>
+<ul>
+<li class="toctree-l2"><a class="reference internal" href="../../triply-etl/assert/">Overview</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../triply-etl/assert/json-ld/">JSON-LD</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#">RATT</a>
+<ul>
+<li class="toctree-l3"><a class="reference internal" href="../../triply-etl/assert/ratt/terms/">RATT Terms</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../triply-etl/assert/ratt/statements/">RATT Statements</a>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../triply-etl/assert/rml/">RML</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../triply-etl/assert/xslt/">XSLT</a>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#">Enrich</a>
+<ul>
+<li class="toctree-l2"><a class="reference internal" href="../../triply-etl/enrich/">Overview</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#">SHACL</a>
+<ul>
+<li class="toctree-l3"><a class="reference internal" href="../../triply-etl/enrich/shacl/">Overview</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../triply-etl/enrich/shacl/triple-rules/">Triple Rules</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../triply-etl/enrich/shacl/sparql-rules/">SPARQL Rules</a>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#">SPARQL</a>
+<ul>
+<li class="toctree-l3"><a class="reference internal" href="../../triply-etl/enrich/sparql/construct/">SPARQL Construct</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../triply-etl/enrich/sparql/update/">SPARQL Update</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#">Validate</a>
+<ul>
+<li class="toctree-l2"><a class="reference internal" href="../../triply-etl/validate/">Overview</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../triply-etl/validate/graph-comparison/">Graph Comparison</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../triply-etl/validate/shacl/">SHACL</a>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../triply-etl/publish/">Publish</a>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Yasgui</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../yasgui/">Introduction</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../yasgui-api/">For Developers</a>
+</li>
+</ul>
+</div>
+</div>
+</nav>
+<section class="wy-nav-content-wrap" data-toggle="wy-nav-shift">
+<nav aria-label="Mobile navigation menu" class="wy-nav-top" role="navigation">
+<i class="fa fa-bars" data-toggle="wy-nav-top"></i>
+<a href="../..">Triply Documentation</a>
+</nav>
+<div class="wy-nav-content">
+<div class="rst-content"><div aria-label="breadcrumbs navigation" role="navigation">
+<ul class="wy-breadcrumbs">
+<li><a aria-label="Docs" class="icon icon-home" href="../.."></a></li>
+<li class="breadcrumb-item">TriplyDB</li>
+<li class="breadcrumb-item">Getting started</li>
+<li class="breadcrumb-item active">Editing (SKOS) Data</li>
+<li class="wy-breadcrumbs-aside">
+</li>
+</ul>
+<hr/>
+</div>
+<div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
+<div class="section" itemprop="articleBody">
+<div class="toc"><span class="toctitle">On this page:</span><ul>
+<li><a href="#editing-data">Editing Data</a><ul>
+<li><a href="#choosing-a-class">Choosing a Class</a></li>
+<li><a href="#iri-naming">IRI Naming</a></li>
+<li><a href="#input-fields">Input Fields</a></li>
+<li><a href="#groups-and-order">Groups and Order</a></li>
+<li><a href="#workflow">Workflow</a><ul>
+<li><a href="#editing-draft">Editing (Draft)</a></li>
+<li><a href="#submit-for-review-staged">Submit for Review (Staged)</a></li>
+<li><a href="#accept-accepted">Accept (Accepted)</a></li>
+<li><a href="#revoke-deprecated">Revoke (Deprecated)</a></li>
+</ul>
+</li>
+<li><a href="#skos-support">SKOS Support</a><ul>
+<li><a href="#skos-hierarchy">SKOS Hierarchy</a></li>
+<li><a href="#skos-concept-schemas">SKOS Concept Schemas</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<h1 id="editing-data">Editing Data<a class="headerlink" href="#editing-data" title="Permanent link">¶</a></h1>
+<p>In specific instances of TriplyDB, a SKOS editor is available that enables the editing of SKOS instance data based on a specified Data Model. The Editing Data section provides basic instructions for using the SKOS Editor to create and adapt new data instances. Although the Data Editor is currently limited to SKOS, future editions will enable more types of editing. </p>
+<p>In order to open the Editor, select the Dataset that you want to work with. If your instance provides the feature, you will see <code>Editor</code> on the left-hand side.</p>
+<p><img alt="Open the editor" src="../../assets/open-the-editor.png"/></p>
+<h2 id="choosing-a-class">Choosing a Class<a class="headerlink" href="#choosing-a-class" title="Permanent link">¶</a></h2>
+<p>When searching for a class, you can type any unique character combination contained in the name into the search box. You don't need to press return in order to see all the class names that contain the pattern anywhere in the class name.</p>
+<p><img alt="Example substring pattern filter" src="../../assets/choose-class.png"/></p>
+<h2 id="iri-naming">IRI Naming<a class="headerlink" href="#iri-naming" title="Permanent link">¶</a></h2>
+<p>When you create a class, you can define the IRI (Internationalized Resource Identifier) naming conventions to uniquely identify the class.</p>
+<p><img alt="Create class dialog" src="../../assets/name-IRI.png"/></p>
+<h2 id="input-fields">Input Fields<a class="headerlink" href="#input-fields" title="Permanent link">¶</a></h2>
+<p>Fields can be added by clicking on the plus symbol on the right side of the list of fields. Required fields are marked by an asterisk. In the image, you can see a drop-down choice menu for the <em>required</em> value of the <code>heeft contentstatus</code> field. When you click on the downward pointing triangle on the right side of the search field, it points upwards and a list unfolds to reveal a set of choices for possible values. If you want free-form entry, you can click on the <code>x</code> that is revealed when the mouse is over the arrow. You can remove a field by clicking on the garbage can symbol on the right.</p>
+<p><img alt="Content status choice menu" src="../../assets/choice-menu-content-status.png"/></p>
+<p>It is also possible to search such menus with pattern search.
+<img alt="Content status choice menu" src="../../assets/choice-menu-pattern-search.png"/></p>
+<h2 id="groups-and-order">Groups and Order<a class="headerlink" href="#groups-and-order" title="Permanent link">¶</a></h2>
+<p>Once you've selected a Dataset, you can go to the Data Model editor on the left side of the screen.</p>
+<p><img alt="Data Model" src="../../assets/editing-the-data-model.png"/></p>
+<p>When adding a new property, you are able to specify groups of properties and set the order in which properties should appear.</p>
+<p><img alt="Groups and order" src="../../assets/groups-and-order.png"/></p>
+<p>The group choice menu can be used or the <code>+</code> can be used to add a new property group.</p>
+<p><img alt="Groups choice list" src="../../assets/groups-choice-list.png"/></p>
+<p>An integer assigned to the property in the <code>Order</code> field will be used to order it against the value of <code>order</code> in other properties in the SKOS Editor. In the image, you can see the <code>heeft voorkeurslabel</code> has Order of 1 and <code>heeft creatiedatum</code> has Order of 2, so it will come after the first one in the Property sheets of the editor.</p>
+<p><img alt="Use of Order" src="../../assets/use-of-order.png"/></p>
+<h2 id="workflow">Workflow<a class="headerlink" href="#workflow" title="Permanent link">¶</a></h2>
+<p>The workflow provides a structured process for data entry and review, enabling seamless transitions between stages.</p>
+<p>The workflow consists of the following stages:</p>
+<div class="mermaid">flowchart LR
+  Start(( )) -- Create --&gt; Draft
+  Draft -- Stage --&gt; Staged
+  Draft -- Delete --&gt; Start
+  Draft -- Edit --&gt; Draft
+  Staged -- Accept --&gt; Accepted
+  Staged -- Reject --&gt; Draft
+  Accepted -- Revoke --&gt; Deprecated
+  Accepted -- Edit --&gt; Draft
+  Deprecated -- Edit --&gt; Draft
+</div>
+<h3 id="editing-draft">Editing (Draft)<a class="headerlink" href="#editing-draft" title="Permanent link">¶</a></h3>
+<p>The initial phase where data can be created or modified in draft form.</p>
+<h3 id="submit-for-review-staged">Submit for Review (Staged)<a class="headerlink" href="#submit-for-review-staged" title="Permanent link">¶</a></h3>
+<p>After drafting, the data can be submitted for review to ensure accuracy and completeness.</p>
+<h3 id="accept-accepted">Accept (Accepted)<a class="headerlink" href="#accept-accepted" title="Permanent link">¶</a></h3>
+<p>Once reviewed and approved, the data entry moves to the accepted stage, making it an official part of the dataset. Content status is set to <code>active</code>. <em>Note: the reviewer must be a different person than the one who made the last edit.</em></p>
+<h3 id="revoke-deprecated">Revoke (Deprecated)<a class="headerlink" href="#revoke-deprecated" title="Permanent link">¶</a></h3>
+<p>If data becomes outdated or invalid, it can be moved to the deprecated status, effectively removing it from active use. Content status is set to <code>inactive</code>.</p>
+<h2 id="skos-support">SKOS Support<a class="headerlink" href="#skos-support" title="Permanent link">¶</a></h2>
+<p>Support for SKOS (Simple Knowledge Organization System) allows for hierarchical and conceptual data organization.</p>
+<h3 id="skos-hierarchy">SKOS Hierarchy<a class="headerlink" href="#skos-hierarchy" title="Permanent link">¶</a></h3>
+<p>Define and manage hierarchical relationships between data entries within SKOS.</p>
+<h3 id="skos-concept-schemas">SKOS Concept Schemas<a class="headerlink" href="#skos-concept-schemas" title="Permanent link">¶</a></h3>
+<p>This section allows for the creation and use of SKOS concept schemas, aiding in the classification and linking of related data concepts.</p>
+</div>
+</div><footer>
+<div aria-label="Footer Navigation" class="rst-footer-buttons" role="navigation">
+<a class="btn btn-neutral float-left" href="../uploading-data/" title="Uploading Data"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+<a class="btn btn-neutral float-right" href="../publishing-data/" title="Sharing Data">Next <span class="icon icon-circle-arrow-right"></span></a>
+</div>
+<hr/>
+<div role="contentinfo">
+<!-- Copyright etc -->
+</div>
+</footer>
+</div>
+</div>
+</section>
+</div>
+<div aria-label="Versions" class="rst-versions" role="note">
+<span class="rst-current-version" data-toggle="rst-current-version">
+<span><a href="../uploading-data/" style="color: #fcfcfc">« Previous</a></span>
+<span><a href="../publishing-data/" style="color: #fcfcfc">Next »</a></span>
+</span>
+</div>
+<script>var base_url = '../..';</script>
+<script defer="" src="../../js/triply.js"></script>
+<script defer="" src="../../js/highlight.min.js"></script>
+<script defer="" src="../../search/main.js"></script>
+<script type="module">import mermaid from "https://unpkg.com/mermaid@10.4.0/dist/mermaid.esm.min.mjs";
+mermaid.initialize({});</script></body>
+</html>
