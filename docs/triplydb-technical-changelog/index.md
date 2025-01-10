@@ -13,6 +13,8 @@ This intent of this changelog is primarily for documenting breaking changes or c
 **Release date:** 2025-01-09
 
 - `indexJobs.storageClass` and `queryJobs.storageclass` are both required properties now. 
+- `tdbServices.podNodeAffinity` and `tdbServices.podTolerations` now take a yaml string as
+  argument, instead of a yaml object.
 - Some properties from the values file are now propagated to the console and API via a
   configmap. This change _only_ has affects on-premise deployments where the helm manifests
   are post-processed and manipulated.
