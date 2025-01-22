@@ -5,6 +5,23 @@ path: "/docs/triplydb-changelog"
 
 [TOC]
 
+## 25.01.2 {#25.01.2} 
+
+**Release date:** 2025-01-23
+
+**Features**
+
+- `#9581` Added the ability to restore queries that would have been lost due to navigating away from (or refreshing) the query page
+- `#3170` Account API tokens are now copied to the clipboard when clicked
+- Improved the usability of admin tables
+
+**Issues fixed**
+
+- `#9716` [Speedy] Unexpected `group_concat` result when pre-bindings are used
+- `#10066` [Speedy] SHACL SPARQL function is executed even when the argument to it is unbound
+- `#9171` [SPARQL-IDE] Unexpected indentation after semi-colon
+- `#10045` [SPARQL-IDE] Empty lines are introduced when adding prefix declarations
+
 ## 25.01.1 {#25.01.1} 
 
 **Release date:** 2025-01-09
@@ -12,10 +29,8 @@ path: "/docs/triplydb-changelog"
 **Issues fixed**
 
 - `#9929` Query jobs may incidentally hang
-- `#10062` Speedy queries that use federation may now work in firewalled on-premise
-  environments
-- `#9999` Default variable values of saved queries are not always applied in query jobs.
-
+- `#10062` Speedy queries that use federation may now work in firewalled on-premise environments
+- `#9999` Default variable values of saved queries are not always applied in query jobs
 
 ## 24.12.2 {#24.12.2} 
 
@@ -25,8 +40,6 @@ path: "/docs/triplydb-changelog"
 
 - `#10006` Cancelling a linked data upload may result in an error
 - `#9711` [SaaS] Incidental requests are dropped
-
-
 
 ## 24.12.1 {#24.12.1} 
 
@@ -38,8 +51,6 @@ path: "/docs/triplydb-changelog"
 - `#9959` [SPARQL IDE] SPARQL IDE may show same autocomplete suggestion multiple times
 - `#9954` [Query job] Query jobs may get sometimes inadvertently cancelled
 - `#9927` [Stories] Stories with many queries are slow to load in the browser 
-
-
 
 ## 24.11.2 {#24.11.2} 
 
