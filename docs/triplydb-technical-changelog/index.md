@@ -8,7 +8,14 @@ path: "/docs/triplydb-technical-changelog"
 This changelog covers technical changes related to TriplyDB on-premise deployments. See [here](/triplydb-changelog) for the TriplyDB changelog that is user facing.
 This intent of this changelog is primarily for documenting breaking changes or changes that are useful to know when deploying/upgrading TriplyDB.
 
-## 25.01.100 {#25.01.100} 
+## 25.1.200 {#25.1.200} 
+
+**Release date:** 2025-01-23
+
+- `disablePreUpgradeHook` setting is no longer needed. If you have set this, you can
+  safely remove it
+
+## 25.1.100 {#25.1.100} 
 
 **Release date:** 2025-01-09
 

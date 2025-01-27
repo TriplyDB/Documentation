@@ -5,12 +5,14 @@ path: "/docs/triplydb-changelog"
 
 [TOC]
 
-## 25.01.2 {#25.01.2} 
+## 25.1.200 {#25.1.200} 
 
 **Release date:** 2025-01-23
 
 **Features**
 
+- New version scheme as of this release. Instead of `25.01.2`, we now release `25.1.200`.
+  A patch release will be released as `25.1.201`
 - `#9581` Added the ability to restore queries that would have been lost due to navigating away from (or refreshing) the query page
 - `#3170` Account API tokens are now copied to the clipboard when clicked
 - Improved the usability of admin tables
