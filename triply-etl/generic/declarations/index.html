@@ -1,0 +1,774 @@
+<!DOCTYPE html>
+
+<html class="writer-html5" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="IE=edge" http-equiv="X-UA-Compatible"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="The official documentation for the Triply products: TriplyDB, TriplyDB.js, and TriplyETL." name="description"/>
+<link href="../../../img/favicon.ico" rel="shortcut icon"/>
+<title>Declarations - Triply Documentation</title>
+<link href="../../../css/theme.css" rel="stylesheet"/>
+<link href="../../../css/theme_extra.css" rel="stylesheet"/>
+<link href="../../../css/intellij-light.css" rel="stylesheet"/>
+<link href="../../../css/triply.css" rel="stylesheet"/>
+<script>
+        // Current page data
+        var mkdocs_page_name = "Declarations";
+        var mkdocs_page_input_path = "triply-etl/generic/declarations.md";
+        var mkdocs_page_url = null;
+      </script>
+</head>
+<body class="wy-body-for-nav" role="document">
+<div class="wy-grid-for-nav">
+<nav class="wy-nav-side stickynav" data-toggle="wy-nav-shift">
+<div class="wy-side-scroll">
+<div class="wy-side-nav-search">
+<a class="icon icon-home" href="../../.."> Triply Documentation
+        </a><div role="search">
+<form action="../../../search.html" class="wy-form" id="rtd-search-form" method="get">
+<input aria-label="Search docs" name="q" placeholder="Search docs" title="Type search term here" type="text"/>
+</form>
+</div>
+</div>
+<div aria-label="Navigation menu" class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../..">Home</a>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">TriplyDB</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="#">Getting started</a>
+<ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../triply-db-getting-started/">Overview</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../triply-db-getting-started/uploading-data/">Uploading Data</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../triply-db-getting-started/editing-data/">Editing (SKOS) Data</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../triply-db-getting-started/publishing-data/">Sharing Data</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../triply-db-getting-started/viewing-data/">Viewing Data</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../triply-db-getting-started/exporting-data/">Exporting Data</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../triply-db-getting-started/saved-queries/">Saved Queries</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../triply-db-getting-started/data-stories/">Data Stories</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../triply-db-getting-started/admin-settings-pages/">Admin Settings Pages</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../triply-db-getting-started/reference/">Reference</a>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../triply-api/">API</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#">TriplyDB-JS</a>
+<ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../triplydb-js/">Overview</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../triplydb-js/app/">App</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../triplydb-js/account/">Account</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../triplydb-js/asset/">Asset</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../triplydb-js/dataset/">Dataset</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../triplydb-js/graph/">Graph</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../triplydb-js/organization/">Organization</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../triplydb-js/query/">Query</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../triplydb-js/service/">Service</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../triplydb-js/story/">Story</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../triplydb-js/user/">User</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../triplydb-js/faq/">FAQ</a>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../triply-cli/">Command-line Interface</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../triplydb-changelog/">Changelog</a>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">TriplyETL</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal current" href="#">Generic</a>
+<ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../">Overview</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../getting-started/">Getting Started</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog/">Changelog</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../cli/">Command Line Interface (CLI)</a>
+</li>
+<li class="toctree-l2 current"><a class="reference internal current" href="./">Declarations</a>
+<ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="#introduction">Introduction</a>
+<ul>
+<li class="toctree-l4"><a class="reference internal" href="#what-is-a-declaration">What is a declaration?</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#why-use-declarations">Why use declarations?</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#how-to-import-declaration-functionality">How to import declaration functionality?</a>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#base-iri-declaration">Base IRI declaration</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#prefix-declarations">Prefix declarations</a>
+<ul>
+<li class="toctree-l4"><a class="reference internal" href="#individual-prefix-declarations">Individual prefix declarations</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#prefix-declaration-tree-iri-strategy">Prefix declaration tree / IRI strategy</a>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#term-declarations">Term declarations</a>
+<ul>
+<li class="toctree-l4"><a class="reference internal" href="#concept-term-declarations">Concept term declarations</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#vocabulary-term-declarations">Vocabulary term declarations</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#shape-term-declarations">Shape term declarations</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#individual-term-declarations">Individual term declarations</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#graph-name-declarations">Graph name declarations</a>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#external-vocabularies">External vocabularies</a>
+<ul>
+<li class="toctree-l4"><a class="reference internal" href="#example-using-the-premis-external-vocabulary">Example: Using the PREMIS external vocabulary</a>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#language-tag-declarations">Language tag declarations</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#shorthand-declarations">Shorthand declarations</a>
+<ul>
+<li class="toctree-l4"><a class="reference internal" href="#the-standard-shorthand">The standard shorthand</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#user-defined-shorthands">User-defined shorthands</a>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#geospatial-declarations">Geospatial declarations</a>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../control-structures/">Control Structures</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../debug/">Debug</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../internal-store/">Internal Store</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../maintenance/">Maintenance</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../record/">Record</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../vocabularies/">Vocabularies</a>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#">Sources</a>
+<ul>
+<li class="toctree-l2"><a class="reference internal" href="../../sources/">Overview</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../sources/apis/">APIs</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../sources/inline-json/">Inline JSON</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../sources/inline-strings/">Inline Strings</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../sources/local-files/">Local Files</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../sources/online-files/">Online Files</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../sources/rml/">RML Sources</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../sources/triplydb-assets/">TriplyDB Assets</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../sources/triplydb-datasets/">TriplyDB Datasets</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../sources/triplydb-queries/">TriplyDB Queries</a>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#">Extract</a>
+<ul>
+<li class="toctree-l2"><a class="reference internal" href="../../extract/">Overview</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../extract/csv/">CSV</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../extract/json/">JSON</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../extract/oai-pmh/">OAI-PMH</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../extract/postgres/">Postgres</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../extract/rdf/">RDF</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../extract/shapefile/">Shapefile</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../extract/tsv/">TSV</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../extract/xlsx/">XLSX</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../extract/xml/">XML</a>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#">Transform</a>
+<ul>
+<li class="toctree-l2"><a class="reference internal" href="../../transform/">Overview</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../transform/ratt/">RATT</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../transform/rml/">RML</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../transform/typescript/">TypeScript</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../transform/xslt/">XSLT</a>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#">Assert</a>
+<ul>
+<li class="toctree-l2"><a class="reference internal" href="../../assert/">Overview</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../assert/json-ld/">JSON-LD</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#">RATT</a>
+<ul>
+<li class="toctree-l3"><a class="reference internal" href="../../assert/ratt/terms/">RATT Terms</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../assert/ratt/statements/">RATT Statements</a>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../assert/rml/">RML</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../assert/xslt/">XSLT</a>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#">Enrich</a>
+<ul>
+<li class="toctree-l2"><a class="reference internal" href="../../enrich/">Overview</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#">SHACL</a>
+<ul>
+<li class="toctree-l3"><a class="reference internal" href="../../enrich/shacl/">Overview</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../enrich/shacl/triple-rules/">Triple Rules</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../enrich/shacl/sparql-rules/">SPARQL Rules</a>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#">SPARQL</a>
+<ul>
+<li class="toctree-l3"><a class="reference internal" href="../../enrich/sparql/construct/">SPARQL Construct</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../enrich/sparql/update/">SPARQL Update</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#">Validate</a>
+<ul>
+<li class="toctree-l2"><a class="reference internal" href="../../validate/">Overview</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../validate/graph-comparison/">Graph Comparison</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../validate/shacl/">SHACL</a>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../publish/">Publish</a>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Yasgui</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../yasgui/">Introduction</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../yasgui-api/">For Developers</a>
+</li>
+</ul>
+</div>
+</div>
+</nav>
+<section class="wy-nav-content-wrap" data-toggle="wy-nav-shift">
+<nav aria-label="Mobile navigation menu" class="wy-nav-top" role="navigation">
+<i class="fa fa-bars" data-toggle="wy-nav-top"></i>
+<a href="../../..">Triply Documentation</a>
+</nav>
+<div class="wy-nav-content">
+<div class="rst-content"><div aria-label="breadcrumbs navigation" role="navigation">
+<ul class="wy-breadcrumbs">
+<li><a aria-label="Docs" class="icon icon-home" href="../../.."></a></li>
+<li class="breadcrumb-item">TriplyETL</li>
+<li class="breadcrumb-item">Generic</li>
+<li class="breadcrumb-item active">Declarations</li>
+<li class="wy-breadcrumbs-aside">
+</li>
+</ul>
+<hr/>
+</div>
+<div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
+<div class="section" itemprop="articleBody">
+<div class="toc"><span class="toctitle">On this page:</span><ul>
+<li><a href="#declarations">Declarations</a><ul>
+<li><a href="#introduction">Introduction</a><ul>
+<li><a href="#what-is-a-declaration">What is a declaration?</a></li>
+<li><a href="#why-use-declarations">Why use declarations?</a></li>
+<li><a href="#how-to-import-declaration-functionality">How to import declaration functionality?</a></li>
+</ul>
+</li>
+<li><a href="#base-iri-declaration">Base IRI declaration</a></li>
+<li><a href="#prefix-declarations">Prefix declarations</a><ul>
+<li><a href="#individual-prefix-declarations">Individual prefix declarations</a><ul>
+<li><a href="#example">Example</a></li>
+</ul>
+</li>
+<li><a href="#prefix-declaration-tree-iri-strategy">Prefix declaration tree / IRI strategy</a><ul>
+<li><a href="#example_1">Example</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#term-declarations">Term declarations</a><ul>
+<li><a href="#concept-term-declarations">Concept term declarations</a></li>
+<li><a href="#vocabulary-term-declarations">Vocabulary term declarations</a></li>
+<li><a href="#shape-term-declarations">Shape term declarations</a></li>
+<li><a href="#individual-term-declarations">Individual term declarations</a></li>
+<li><a href="#graph-name-declarations">Graph name declarations</a></li>
+</ul>
+</li>
+<li><a href="#external-vocabularies">External vocabularies</a><ul>
+<li><a href="#example-using-the-premis-external-vocabulary">Example: Using the PREMIS external vocabulary</a></li>
+</ul>
+</li>
+<li><a href="#language-tag-declarations">Language tag declarations</a></li>
+<li><a href="#shorthand-declarations">Shorthand declarations</a><ul>
+<li><a href="#the-standard-shorthand">The standard shorthand</a><ul>
+<li><a href="#example_2">Example</a></li>
+</ul>
+</li>
+<li><a href="#user-defined-shorthands">User-defined shorthands</a><ul>
+<li><a href="#example_3">Example</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#geospatial-declarations">Geospatial declarations</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<h1 id="declarations">Declarations<a class="headerlink" href="#declarations" title="Permanent link">¶</a></h1>
+<p>This page documents the declaration functionalities that are supported by TriplyETL.</p>
+<h2 id="introduction">Introduction<a class="headerlink" href="#introduction" title="Permanent link">¶</a></h2>
+<p>This section explains what declarations are, and what are the benefits of using them.</p>
+<h3 id="what-is-a-declaration">What is a declaration?<a class="headerlink" href="#what-is-a-declaration" title="Permanent link">¶</a></h3>
+<p>A declarations introduces a constant that can be (re)used throughout the rest of the ETL configuration. This is best shown through an example.</p>
+<p>The following code snippet asserts that John Doe is a person. It uses the following components that probably occur multiple times in the same ETL configuration:</p>
+<ul>
+<li>The namespace for this dataset is <code>&lt;https://triplydb.com/my-account/my-dataset/&gt;</code>.</li>
+<li>The IRI for each person in the dataset starts with <code>&lt;https://triplydb.com/my-account/my-dataset/id/person/&gt;</code>.</li>
+<li>The IRI <code>&lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#type&gt;</code> is used by the external RDF vocabulary to relate instances to their class.</li>
+<li>The IRI <code>&lt;http://xmlns.com/foaf/0.1/Person&gt;</code> is used by the external FOAF vocabulary to denote the set of all persons.</li>
+</ul>
+<pre><code class="language-ts">triple(
+  iri('https://triplydb.com/my-account/my-dataset/id/person/john-doe'),
+  iri('http://www.w3.org/1999/02/22-rdf-syntax-ns#type'),
+  iri('http://xmlns.com/foaf/0.1/Person')
+),
+</code></pre>
+<p>By using declarations, we can use constants to abbreviate the components that occur many times. This results in the following, identical assertion:</p>
+<pre><code class="language-ts">triple(iri(prefix.person, str('john-doe')), a, foaf.Person),
+</code></pre>
+<h3 id="why-use-declarations">Why use declarations?<a class="headerlink" href="#why-use-declarations" title="Permanent link">¶</a></h3>
+<p>The use of declarations has the following benefits:</p>
+<ol>
+<li><strong>Readability</strong>: Shorter expressions are easier to read. See the example from <a href="#what-is-a-declaration">the previous subsection</a> for an example.</li>
+<li><strong>Modularity</strong>: By putting all declarations in one place, it is easy to include them into multiple places in the ETL configuration.</li>
+<li><strong>Maintenance</strong>: A configuration change that is made in a declaration immediately becomes available to all the locations in which it is used. This makes it easy to update things like namespaces, that would be cumbersome and error-prone to change in each location of use.</li>
+<li><strong>Editor support</strong>: Declarations support auto-complete functionality in text editors. When documentation is included, this is shown alongside the declarations in text editors.</li>
+</ol>
+<h3 id="how-to-import-declaration-functionality">How to import declaration functionality?<a class="headerlink" href="#how-to-import-declaration-functionality" title="Permanent link">¶</a></h3>
+<p>Declaration objects are found in the following modules:</p>
+<pre><code class="language-ts">import { Iri } from '@triplyetl/etl/generic'
+import { sdo, owl, sh, skos } from '@triplyetl/vocabularies'
+</code></pre>
+<h2 id="base-iri-declaration">Base IRI declaration<a class="headerlink" href="#base-iri-declaration" title="Permanent link">¶</a></h2>
+<p>Within one dataset, it is common for the majority of IRIs to share the same IRI prefix or 'namespace'. It is convenient to declare this shared IRI prefix or namespace once, and use it throughout the rest of the ETL. This most broadly shared IRI prefix is called the <em>base IRI</em>.</p>
+<p>In TriplyETL, the base IRI is declared in the following way:</p>
+<pre><code class="language-ts">const baseIri = Iri('https://triplydb.com/triply/iris/')
+</code></pre>
+<p>Notice that the base IRI that is declared above, is also the location where the dataset that uses this base IRI can be found: <a href="https://triplydb.com/triply/iris/">https://triplydb.com/triply/iris/</a>. This is the <em>dereferencing principle</em> of linked data: IRIs are used for both naming ánd locating data.</p>
+<h2 id="prefix-declarations">Prefix declarations<a class="headerlink" href="#prefix-declarations" title="Permanent link">¶</a></h2>
+<p>Linked data uses IRIs for uniquely identifying most data items. Since IRIs can be long and complex, it is common to declare shorter aliases that can be used to abbreviate them. Such aliases are introduced in <em>prefix declarations</em>.</p>
+<h3 id="individual-prefix-declarations">Individual prefix declarations<a class="headerlink" href="#individual-prefix-declarations" title="Permanent link">¶</a></h3>
+<p>A new prefix declaration is created by using the <code>concat()</code> member function on an existing <code>IRI</code> object. The <code>concat()</code> function specifies the string that is added to the existing IRI. The added string must meet the syntactic criteria for the <em>path segment</em> component in IRI syntax (see <a href="https://datatracker.ietf.org/doc/html/rfc3987#section-2.2">RFC 3987</a> for the official syntax). It is common practice to end the added string with a forward slash, which ends a path segment in IRI syntax.</p>
+<p>Prefix declarations are often based off of the <a href="#base-iri-declaration">base IRI</a>, since that is the prefix IRI that is shared by most IRIs in a dataset.</p>
+<h4 id="example">Example<a class="headerlink" href="#example" title="Permanent link">¶</a></h4>
+<p>The following code snippet declares a base IRI, and then adds the following two prefix declarations:</p>
+<ol>
+<li>Alias <code>prefix_id</code> abbreviates IRI <code>&lt;https://triplydb.com/my-account/my-dataset/id/&gt;</code>, which is used by all IRIs that denote instances.</li>
+<li>Alias <code>prefix_model</code> abbreviates IRI <code>&lt;https://triplydb.com/my-account/my-dataset/model/&gt;</code>, which is used by all IRIs that are used in the data model.</li>
+</ol>
+<pre><code class="language-ts">import { Iri } from '@triplyetl/etl/generic'
+
+const baseIri = Iri('https://triplydb.com/my-account/my-dataset/')
+const prefix_id = baseIri.concat('id/')
+const prefix_model = baseIri.concat('model/')
+</code></pre>
+<h3 id="prefix-declaration-tree-iri-strategy">Prefix declaration tree / IRI strategy<a class="headerlink" href="#prefix-declaration-tree-iri-strategy" title="Permanent link">¶</a></h3>
+<p>It is common to declare the base IRI declaration and all prefix declarations in one single spot. This consolidates the full <em>IRI strategy</em> for a dataset in one place. This is easy for documentation purposes, since all project members can see the full set of IRI prefixes in one place. And this supports optimal reuse of these declarations throughout the ETL configuration.</p>
+<p>IRI prefixes form a <em>tree</em>:</p>
+<ul>
+<li>The <em>root</em> of the tree is the base IRI.</li>
+<li>The <em>internal nodes</em> of the tree are prefix declarations that are extended by some other prefix declaration.</li>
+<li>The <em>external nodes</em> or <em>leaves</em> of the tree are prefix declarations that are not extended by another prefix declaration.</li>
+</ul>
+<p>It is common to declare the leaves of the IRI prefix tree in an object, since such an object can be conveniently used to make term assertions throughout the ETL.</p>
+<h4 id="example_1">Example<a class="headerlink" href="#example_1" title="Permanent link">¶</a></h4>
+<p>The following code snippet gives an example of such an IRI prefix tree, where:</p>
+<ul>
+<li>The base IRI is <code>&lt;https://triplydb.com/my-account/my-dataset/&gt;</code>.</li>
+<li>The internal nodes are the base IRI, <code>prefix_id</code>, and <code>prefix_model</code>.</li>
+<li>The leaves are the three prefix declarations that appear in the <code>prefix</code> object.</li>
+</ul>
+<pre><code class="language-ts">import { Iri } from '@triplyetl/etl/generic'
+
+const baseIri = Iri('https://triplydb.com/my-account/my-dataset/')
+const prefix_id = baseIri.concat('id/')
+const prefix_model = baseIri.concat('model/')
+const prefix = {
+  city: prefix_id.concat('city/'),
+  def: prefix_model.concat('def/'),
+  person: prefix_id.concat('person/'),
+}
+</code></pre>
+<p>With the above declarations in place, the following IRI term assertions can be made (see the <a href="../../assert/ratt/terms/#iri-function">iri()</a> function for more information):</p>
+<pre><code class="language-ts">iri(prefix.city, 'name')
+iri(prefix.city, str('Amsterdam')),
+iri(prefix.def, str('livesIn')),
+iri(prefix.person, 'first name')
+iri(prefix.person, str('John')),
+</code></pre>
+<p>Static terms can also be expressed with the <code>concat()</code> member function:</p>
+<pre><code class="language-ts">prefix.city.concat('Amsterdam')
+prefix.def.concat('livesIn')
+prefix.person.concat('John')
+</code></pre>
+<p>The following statement assertion can be made (see the <a href="../../assert/ratt/statements/#triple">triple()</a> function for more information). Notice that it is possible to mix (dynamic and static) <code>iri()</code> term assertions with IRIs created with <code>concat()</code>:</p>
+<pre><code class="language-ts">triple(
+  iri(prefix.person, 'first name'),
+  iri(prefix.def, str('livesIn')),
+  prefix.city.concat('Amsterdam')
+),
+</code></pre>
+<p>The statement assertion results in the following linked data:</p>
+<pre><code class="language-turtle">&lt;https://triplydb.com/my-account/my-dataset/id/person/John&gt;
+&lt;https://triplydb.com/my-account/my-dataset/model/def/livesIn&gt;
+&lt;https://triplydb.com/my-account/my-dataset/id/city/Amsterdam&gt;
+.
+</code></pre>
+<!--
+## External prefix declarations
+
+In linked data, it is common to reuse existing vocabularies and datasets. TriplyETL allows you to use popular namespaces from predefined prefix declarations.
+
+Popular namespaces are imported from the vocabulary library:
+
+
+<pre><code class="language-ts">import { prefix } from '@triplyetl/vocabularies'
+</code></pre>
+
+
+For example, you can use the prefix declaration for DBpedia resources as follows:
+
+
+<pre><code class="language-ts">iri(prefix.dbr, 'cityName')
+</code></pre>
+
+
+This may create IRIs like the following:
+
+
+<pre><code class="language-turtle">http://dbpedia.org/resource/Amsterdam
+http://dbpedia.org/resource/Berlin
+</code></pre>
+
+
+You can use the prefix declaration for XML Schema Datatypes as follows:
+
+
+<pre><code class="language-ts">literal('cityName', xsd.string)
+</code></pre>
+
+
+This may create literals like the following:
+
+
+<pre><code class="language-turtle">'Amsterdam'^^xsd:string
+'Berlin'^^xsd:string
+</code></pre>
+
+-->
+<h2 id="term-declarations">Term declarations<a class="headerlink" href="#term-declarations" title="Permanent link">¶</a></h2>
+<p>When a term is used in multiple places in the ETL configuration, it is often better to declare it first and (re)use it later. This ensures that changes to the term are applied in every location of use.</p>
+<p>We will use the following prefix declaration tree in our examples:</p>
+<pre><code class="language-ts">import { Iri } from '@triplyetl/etl/generic'
+
+const baseIri = Iri('https://triplydb.com/my-account/my-dataset/')
+const prefix_id = baseIri.concat('id/')
+const prefix_model = baseIri.concat('model/')
+const prefix = {
+  city: prefix_id.concat('city/'),
+  con: prefix_model.concat('con/'),
+  def: prefix_model.concat('def/'),
+  graph: prefix_id.concat('graph/')),
+  person: prefix_id.concat('person/'),
+  shp: prefix_model.concat('shp/'),
+}
+</code></pre>
+<h3 id="concept-term-declarations">Concept term declarations<a class="headerlink" href="#concept-term-declarations" title="Permanent link">¶</a></h3>
+<p>Concepts are expressed in linked data with SKOS. Concepts are often (re)used in multiple places, and they often form a fixed collection. This makes terms that denote concepts eligible for a term declaration object.</p>
+<p>The following code snippet declares the terms that denote concepts:</p>
+<pre><code class="language-ts">const concept = {
+  animal: prefix.con.concat('animal'),
+  mammal: prefix.con.concat('mammal'),
+}
+</code></pre>
+<p>This object can be used through the ETL configuration. For example in the following statement assertion:</p>
+<pre><code class="language-ts">triple(concept.mammal, skos.broader, concept.animal),
+</code></pre>
+<h3 id="vocabulary-term-declarations">Vocabulary term declarations<a class="headerlink" href="#vocabulary-term-declarations" title="Permanent link">¶</a></h3>
+<p>Classes and properties are expressed in linked data with RDFS/OWL. Classes and properties are often (re)used in multiple places, and they often form a fixed vocabulary. This makes terms that denote classes or properties eligible for a term declaration object.</p>
+<p>The following code snippet declares the terms that denote classes and properties:</p>
+<pre><code class="language-ts">const def = {
+  City: prefix.def.concat('City'),
+  Person: prefix.def.concat('Person'),
+  livesIn: prefix.def.concat('livesIn'),
+}
+</code></pre>
+<p>Vocabulary term declarations can be used in statement assertions, for example:</p>
+<pre><code class="language-ts">triple(iri(prefix.city, 'name'), a, def.City),
+pairs(iri(prefix.person, 'first name'),
+  [a, def.Person],
+  [def.livesIn, iri(prefix.city, 'name')],
+),
+</code></pre>
+<p>This results in the following linked data:</p>
+<pre><code class="language-turtle">city:Amsterdam a def:City.
+person:John
+  a def:Person;
+  def:livesIn city:Amsterdam.
+</code></pre>
+<p>Or diagrammatically:</p>
+<div class="mermaid">graph LR
+  john -- a --&gt; Person
+  john -- def:livesIn --&gt; amsterdam
+
+  Person[def:Person]:::model
+  amsterdam[city:Amsterdam]:::data
+  john[person:John]:::data
+
+  classDef data fill:yellow
+  classDef model fill:lightblue
+</div>
+<h3 id="shape-term-declarations">Shape term declarations<a class="headerlink" href="#shape-term-declarations" title="Permanent link">¶</a></h3>
+<p>Shapes are expressed in linked data with SHACL. shapes are often (re)used in multiple places, and they often form a fixed vocabulary. This makes terms that denote shapes eligible for a term declaration object.</p>
+<p>The following code snippet declares the terms that denote shapes:</p>
+<pre><code class="language-ts">const shp = {
+  City: prefix.shp.concat('City'),
+  Person: prefix.shp.concat('Person'),
+  Person_livesIn: prefix.shp.concat('livesIn'),
+}
+</code></pre>
+<p>This object can be used through the ETL configuration. For example in the following statement assertions:</p>
+<pre><code class="language-ts">pairs(shp.Person,
+  [a, sh.NodeShape],
+  [sh.property, shp.Person_livesIn],
+  [sh.targetClass, def.Person],
+),
+pairs(shp.Person_livesIn,
+  [a, sh.PropertyShape],
+  [sh.class, def.City],
+  [sh.path, def:livesIn],
+),
+</code></pre>
+<p>This results in the following linked data:</p>
+<pre><code class="language-turtle">shp:Person
+  a sh:NodeShape;
+  sh:property shp:Person_livesIn;
+  sh:targetClass def:Person.
+shp:Person_livesIn
+  a sh:PropertyShape;
+  sh:class def:City;
+  sh:path def:livesIn.
+</code></pre>
+<p>Or diagrammatically:</p>
+<div class="mermaid">graph LR
+  shp_Person -- a --&gt; sh:NodeShape
+  shp_Person -- sh:property --&gt; shp_Person_livesIn
+  shp_Person -- sh:targetClass --&gt; def_Person
+
+  shp_Person_livesIn -- a --&gt; sh:PropertyShape
+  shp_Person_livesIn -- sh:class --&gt; def_City
+  shp_Person_livesIn -- sh:path --&gt; def_livesIn
+
+  def_City[def:City]:::model
+  def_Person[def:Person]:::model
+  def_livesIn[def:livesIn]:::model
+  shp_Person[shp:Person]:::shape
+  shp_Person_livesIn[shp:Person_livesIn]:::shape
+
+  classDef model fill:lightblue
+  classDef shape fill:orange
+</div>
+<h3 id="individual-term-declarations">Individual term declarations<a class="headerlink" href="#individual-term-declarations" title="Permanent link">¶</a></h3>
+<p>Individuals are instances of classes. For example, John Doe is an individual of class <code>def:Person</code>; Amsterdam is an individual of class <code>def:City</code>. If terms that denote individuals are used multiple times in an ETL configuration, term declarations may be introduced for them.</p>
+<p>The following code snippet declares the terms that denote individual persons:</p>
+<pre><code class="language-ts">const person = {
+  jane: prefix.person('Jane'),
+  john: prefix.person('John'),
+  mary: prefix.person('Mary'),
+}
+</code></pre>
+<p>Instance term declarations can be used in statement assertions, for example:</p>
+<pre><code class="language-ts">triple(person.john, foaf.knows, person.mary),
+</code></pre>
+<p>This results in the following linked data:</p>
+<pre><code class="language-turtle">person:john foaf:knows person:mary.
+</code></pre>
+<h3 id="graph-name-declarations">Graph name declarations<a class="headerlink" href="#graph-name-declarations" title="Permanent link">¶</a></h3>
+<p>Linked data statements belong to graphs. Graphs are denoted by graph names. For example, a graph name may denote a graph that contains metadata statements, while another graph name may denote a graph that contains instance data. If graph names are used multiple times in an ETL configuration, term declarations may be introduced for them.</p>
+<p>The following code snippet declares three graph names:</p>
+<pre><code class="language-ts">const graph = {
+  metadata: prefix.graph.concat('metadata'),
+  model: prefix.graph.concat('model'),
+  instances: prefix.graph.concat('instances'),
+}
+</code></pre>
+<p>The declared graph names can now be used in statement assertions:</p>
+<pre><code class="language-ts">triples(graph.metadata,
+  ['_dataset', a, dcat.Dataset],
+  ['_dataset', rdfs.label, str('My Dataset')],
+),
+</code></pre>
+<h2 id="external-vocabularies">External vocabularies<a class="headerlink" href="#external-vocabularies" title="Permanent link">¶</a></h2>
+<p>In linked data, it is common to reuse existing vocabularies. Popular vocabularies can be imported from the TriplyETL vocabulary library. See the <a href="../vocabularies/">table of currently supported vocabularies</a> for a full overview.</p>
+<p>The following example imports three vocabularies (FOAF, OWL, PREMIS):</p>
+<pre><code class="language-ts">import { foaf, owl, premis } from '@triplyetl/vocabularies'
+</code></pre>
+<p>This allows you to make the following statement assertion:</p>
+<pre><code class="language-ts">triple(foaf.Person, a, owl.Class),
+</code></pre>
+<p>Notice that the notation in TriplyETL comes very close to the notation in the standardized linked data syntax for Turtle, TriG, and SPARQL. For the example above:</p>
+<pre><code class="language-turtle">foaf:Person a owl:Class.
+</code></pre>
+<h3 id="example-using-the-premis-external-vocabulary">Example: Using the PREMIS external vocabulary<a class="headerlink" href="#example-using-the-premis-external-vocabulary" title="Permanent link">¶</a></h3>
+<p>The following code snippet uses the external PREMIS vocabulary. This vocabulary is published by the Library of Congress and is used to publish metadata about the preservation of digital objects. The following code snippet asserts that a PREMIS file is stored in a PREMIS storage location:</p>
+<pre><code class="language-ts">pairs(iri(prefix.file, 'File ID'),
+  [a, premis.File],
+  [premis.storedAt, iri(prefix.location, 'Location ID')],
+),
+triple(iri(prefix.location, 'Location ID'), a, premis.StorageLocation),
+</code></pre>
+<h2 id="language-tag-declarations">Language tag declarations<a class="headerlink" href="#language-tag-declarations" title="Permanent link">¶</a></h2>
+<p>Linked data includes support for <em>language-tagged strings</em>. These are literals that specify a string value and a code that denotes the natural language in which that string value should be interpreted.</p>
+<p>The natural language tags follow a syntax that is standardized in <a href="https://datatracker.ietf.org/doc/html/rfc5646">RFC 5646</a>, and must occur in the Language Subtag Registry that is maintained by IANA.</p>
+<p>TriplyETL includes declarations for these natural language tags. They can be imported as follows:</p>
+<pre><code class="language-ts">import { language } from '@triplyetl/vocabularies'
+</code></pre>
+<p>Language tag declaration can be used in <a href="../../assert/ratt/terms/">literal()</a> term assertions:</p>
+<pre><code class="language-ts">literal(str('Nederland'), language.nl)
+literal(str('Netherlangs'), language.en)
+</code></pre>
+<p>Language tag declarations can also be used in <a href="../../transform/ratt/#addliteral">addLiteral()</a> transformations:</p>
+<pre><code class="language-ts">addLiteral({
+  content: 'label',
+  languageTag: lang.fr,
+  key: '_languageTaggedString',
+}),
+</code></pre>
+<h2 id="shorthand-declarations">Shorthand declarations<a class="headerlink" href="#shorthand-declarations" title="Permanent link">¶</a></h2>
+<p>Shorthands are convenient names that stand for commonly used IRIs. There is one standard shorthand (<code>a</code>), and TriplyETL allows other shorthands to be declared as needed.</p>
+<h3 id="the-standard-shorthand">The standard shorthand<a class="headerlink" href="#the-standard-shorthand" title="Permanent link">¶</a></h3>
+<p>The standardized linked data syntax for Turtle, TriG, and SPARQL allow the shorthand <code>a</code> to be used to stand for the <code>rdf:type</code> property. TriplyETL supports this standard shorthand, which can be imported from the vocabulary library:</p>
+<pre><code class="language-ts">import { a } from '@triplyetl/vocabularies'
+</code></pre>
+<p>In the standardized linked data syntax for Turtle, TriG and SPARQL, this shorthand can only be used in the predicate position. This restriction is not enforced in TriplyETL, where the <code>a</code> shorthand can be used in the subject, predicate, object, and even graph position.</p>
+<h4 id="example_2">Example<a class="headerlink" href="#example_2" title="Permanent link">¶</a></h4>
+<p>The following code snippet makes a true statement assertion, while using the stands shorthand twice:</p>
+<pre><code class="language-ts">triple(a, a, rdf.Property),
+</code></pre>
+<p>This results in the following linked data:</p>
+<pre><code class="language-turtle">rdf:type a rdf:Property.
+</code></pre>
+<h3 id="user-defined-shorthands">User-defined shorthands<a class="headerlink" href="#user-defined-shorthands" title="Permanent link">¶</a></h3>
+<p>TriplyETL allows the introduction of arbitrary, user-defined shorthands. User-defined shorthands can make linked data assertions in the ETL configuration more readable for users from certain domains. For example, "is a" is a commonly used phrase <a href="https://en.wikipedia.org/wiki/Is-a">in many modeling languages</a> to denote the subsumption relation.</p>
+<h4 id="example_3">Example<a class="headerlink" href="#example_3" title="Permanent link">¶</a></h4>
+<p>The following code snippet declares <code>is_a</code> as a user-defined shorthand for the <code>rdfs:subClassOf</code> property (which is the subsumption relation in linked data):</p>
+<pre><code class="language-ts">import { foaf, rdfs } from '@triplyetl/vocabularies'
+const is_a = rdfs.subClassOf
+</code></pre>
+<p>This declaration is used in the following statement assertion:</p>
+<pre><code class="language-ts">triple(foaf.Person, is_a, foaf.Agent),
+</code></pre>
+<p>This results in the following linked data:</p>
+<pre><code class="language-turtle">foaf:Person rdfs:subClassOf foaf:Agent.
+</code></pre>
+<h2 id="geospatial-declarations">Geospatial declarations<a class="headerlink" href="#geospatial-declarations" title="Permanent link">¶</a></h2>
+<p>TriplyETL includes declarations for geospatial coordinate reference systems. These are identified by EPSG codes, and can imported as follows:</p>
+<pre><code class="language-ts">import { epsg } from '@triplyetl/vocabularies'
+</code></pre>
+<p>EPSG codes can be used in geospatial transformation functions like <a href="../../transform/ratt/#geojsontowkt">geojsonToWkt()</a>:</p>
+<pre><code class="language-ts">geojsonToWkt({
+  content: 'geojson',
+  crs: epsg[28992],
+  key: '_wkt',
+}),
+</code></pre>
+</div>
+</div><footer>
+<div aria-label="Footer Navigation" class="rst-footer-buttons" role="navigation">
+<a class="btn btn-neutral float-left" href="../cli/" title="Command Line Interface (CLI)"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+<a class="btn btn-neutral float-right" href="../control-structures/" title="Control Structures">Next <span class="icon icon-circle-arrow-right"></span></a>
+</div>
+<hr/>
+<div role="contentinfo">
+<!-- Copyright etc -->
+</div>
+</footer>
+</div>
+</div>
+</section>
+</div>
+<div aria-label="Versions" class="rst-versions" role="note">
+<span class="rst-current-version" data-toggle="rst-current-version">
+<span><a href="../cli/" style="color: #fcfcfc">« Previous</a></span>
+<span><a href="../control-structures/" style="color: #fcfcfc">Next »</a></span>
+</span>
+</div>
+<script>var base_url = '../../..';</script>
+<script defer="" src="../../../js/triply.js"></script>
+<script defer="" src="../../../js/highlight.min.js"></script>
+<script defer="" src="../../../search/main.js"></script>
+<script type="module">import mermaid from "https://unpkg.com/mermaid@10.4.0/dist/mermaid.esm.min.mjs";
+mermaid.initialize({});</script></body>
+</html>

@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <meta name="description" content="The official documentation for the Triply products: TriplyDB, TriplyDB.js, and TriplyETL." />
+      <link rel="shortcut icon" href="../../../img/favicon.ico" />
+    <title>Skolem iris - Triply Documentation</title>
+    <link rel="stylesheet" href="../../../css/theme.css" />
+    <link rel="stylesheet" href="../../../css/theme_extra.css" />
+        <link href="../../../css/intellij-light.css" rel="stylesheet" />
+        <link href="../../../css/triply.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Skolem iris";
+        var mkdocs_page_input_path = "triply-etl/generic/skolem-iris.md";
+        var mkdocs_page_url = null;
+      </script>
+     
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../../.." class="icon icon-home"> Triply Documentation
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../..">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">TriplyDB</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Getting started</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../../triply-db-getting-started/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../triply-db-getting-started/uploading-data/">Uploading Data</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../triply-db-getting-started/editing-data/">Editing (SKOS) Data</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../triply-db-getting-started/publishing-data/">Sharing Data</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../triply-db-getting-started/viewing-data/">Viewing Data</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../triply-db-getting-started/exporting-data/">Exporting Data</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../triply-db-getting-started/saved-queries/">Saved Queries</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../triply-db-getting-started/data-stories/">Data Stories</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../triply-db-getting-started/admin-settings-pages/">Admin Settings Pages</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../triply-db-getting-started/reference/">Reference</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../triply-api/">API</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">TriplyDB-JS</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../../triplydb-js/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../triplydb-js/app/">App</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../triplydb-js/account/">Account</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../triplydb-js/asset/">Asset</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../triplydb-js/dataset/">Dataset</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../triplydb-js/graph/">Graph</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../triplydb-js/organization/">Organization</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../triplydb-js/query/">Query</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../triplydb-js/service/">Service</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../triplydb-js/story/">Story</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../triplydb-js/user/">User</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../triplydb-js/faq/">FAQ</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../triply-cli/">Command-line Interface</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../triplydb-changelog/">Changelog</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">TriplyETL</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Generic</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../getting-started/">Getting Started</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../changelog/">Changelog</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../cli/">Command Line Interface (CLI)</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../declarations/">Declarations</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../control-structures/">Control Structures</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../debug/">Debug</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../internal-store/">Internal Store</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../maintenance/">Maintenance</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../record/">Record</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../vocabularies/">Vocabularies</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Sources</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../sources/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../sources/apis/">APIs</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../sources/inline-json/">Inline JSON</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../sources/inline-strings/">Inline Strings</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../sources/local-files/">Local Files</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../sources/online-files/">Online Files</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../sources/rml/">RML Sources</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../sources/triplydb-assets/">TriplyDB Assets</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../sources/triplydb-datasets/">TriplyDB Datasets</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../sources/triplydb-queries/">TriplyDB Queries</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Extract</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../extract/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../extract/csv/">CSV</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../extract/json/">JSON</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../extract/oai-pmh/">OAI-PMH</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../extract/postgres/">Postgres</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../extract/rdf/">RDF</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../extract/shapefile/">Shapefile</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../extract/tsv/">TSV</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../extract/xlsx/">XLSX</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../extract/xml/">XML</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Transform</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../transform/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../transform/ratt/">RATT</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../transform/rml/">RML</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../transform/typescript/">TypeScript</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../transform/xslt/">XSLT</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Assert</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../assert/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../assert/json-ld/">JSON-LD</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="#">RATT</a>
+    <ul>
+                <li class="toctree-l3"><a class="reference internal" href="../../assert/ratt/terms/">RATT Terms</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../../assert/ratt/statements/">RATT Statements</a>
+                </li>
+    </ul>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../assert/rml/">RML</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../assert/xslt/">XSLT</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Enrich</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../enrich/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="#">SHACL</a>
+    <ul>
+                <li class="toctree-l3"><a class="reference internal" href="../../enrich/shacl/">Overview</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../../enrich/shacl/triple-rules/">Triple Rules</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../../enrich/shacl/sparql-rules/">SPARQL Rules</a>
+                </li>
+    </ul>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="#">SPARQL</a>
+    <ul>
+                <li class="toctree-l3"><a class="reference internal" href="../../enrich/sparql/construct/">SPARQL Construct</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../../enrich/sparql/update/">SPARQL Update</a>
+                </li>
+    </ul>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Validate</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../validate/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../validate/graph-comparison/">Graph Comparison</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../validate/shacl/">SHACL</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../publish/">Publish</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Yasgui</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../yasgui/">Introduction</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../yasgui-api/">For Developers</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../..">Triply Documentation</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../.." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Skolem iris</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <div class="toc"><span class="toctitle">On this page:</span><ul>
+<li><a href="#skolem-iris">Skolem IRIs</a><ul>
+<li><a href="#what-are-skolem-iris">What are Skolem IRIs?</a></li>
+<li><a href="#why-does-triplyetl-use-skolem-iris">Why does TriplyETL use Skolem IRIs?</a></li>
+<li><a href="#skolem-iris-are-a-lossless-approach">Skolem IRIs are a lossless approach</a></li>
+<li><a href="#an-illustrative-example">An illustrative example</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<h1 id="skolem-iris">Skolem IRIs<a class="headerlink" href="#skolem-iris" title="Permanent link">&para;</a></h1>
+<p>TriplyETL uses Skolem IRIs instead of blank nodes. This approach is consistent with the RDF 1.1 standard. This page details why TriplyETL uses Skolem IRIs, and shows how they are used to stand in for blank nodes in a generic and standards-compliant way.</p>
+<h2 id="what-are-skolem-iris">What are Skolem IRIs?<a class="headerlink" href="#what-are-skolem-iris" title="Permanent link">&para;</a></h2>
+<p>Skolem IRIs are IRIs that are used to systematically stand in for blank nodes. Whenever a blank node occurs in linked data, it is allowed to be replaced by a Skolem IRI. Skolem IRIs are guaranteed to universally unique, while blank nodes are only guaranteed to be unique within the context in which they occur.</p>
+<h2 id="why-does-triplyetl-use-skolem-iris">Why does TriplyETL use Skolem IRIs?<a class="headerlink" href="#why-does-triplyetl-use-skolem-iris" title="Permanent link">&para;</a></h2>
+<p>Before linked data that contains blank nodes can be used, all blank nodes in that linked data must be renamed in order to avoid name collisions. Since Skolem IRIs are universally unique, there is no such requirements when using linked data that contains Skolem IRIs instead of blank nodes.</p>
+<p>TriplyETL uses Skolem IRIs instead of blank nodes, because this makes the linked data that TriplyETL creates easier to use. This easy-of-use applies to processing inside TriplyETL, but also applies to the use of linked data produced by TriplyETL after publication.</p>
+<h2 id="skolem-iris-are-a-lossless-approach">Skolem IRIs are a lossless approach<a class="headerlink" href="#skolem-iris-are-a-lossless-approach" title="Permanent link">&para;</a></h2>
+<p>Since Skolem IRIs are required to use a specific path prefix (i.e. <code>/.well-known/genid/</code>), users of linked data containing Skolem IRIs are able to distinguish them from other IRIs.</p>
+<p>As such, it is possible to systematically replace Skolem IRIs with blank nodes again, since the translation from and to Skolem IRIs does not lose any information.</p>
+<p>Notice that while there are no benefits to replacing Skolem IRIs with blank nodes, only downsides, some users may still wish to perform such replacements.</p>
+<h2 id="an-illustrative-example">An illustrative example<a class="headerlink" href="#an-illustrative-example" title="Permanent link">&para;</a></h2>
+<p>We show the downsides of linked data that contains blank nodes, and the benefits of linked data that contains Skolem IRIs that replace blank nodes, with an example. The following two linked data snippets use the same blank node label ('eFsgehcX9k25dv'):</p>
+<pre><code class="language-turtle">prefix ns: &lt;https://example.com/&gt;
+
+ns:product ns:height _:eFsgehcX9k25dv.
+_:eFsgehcX9k25dv
+  ns:unitOfMeasure ns:meter;
+  ns:value 1.1e0.
+</code></pre>
+<p>and:</p>
+<pre><code class="language-turtle">prefix ns: &lt;https://example.com/&gt;
+
+ns:product ns:width _:eFsgehcX9k25dv.
+_:eFsgehcX9k25dv
+  ns:unitOfMeasure ns:centimeter;
+  ns:value 1.5e0.
+</code></pre>
+<p>Since the blank node label occurs in two different contexts, we are not allowed to naively combine these two snippets. In fact, if we would naive combine them, we would end up with the following incorrect information:</p>
+<pre><code class="language-turtle">prefix ns: &lt;https://example.com/&gt;
+
+ns:product
+  ns:height _:eFsgehcX9k25dv.
+  ns:width _:eFsgehcX9k25dv.
+_:eFsgehcX9k25dv
+  ns:unitOfMeasure ns:centimeter, ns:meter;
+  ns:value 1.1e0, 1.5e0.
+</code></pre>
+<p>Notice that in the combined snippet, it is no longer possible to determine what is the height and what is the width of the product. Neither is it possible to determine which unit of measure belongs to which numeric value.</p>
+<p>In order to avoid this issue with blank nodes, users are required to systematically rename them whenever they make use of the data. For example, in order to combine the two original linked data snippets, their blank node labels must first be renamed:</p>
+<pre><code class="language-turtle">prefix ns: &lt;https://example.com/&gt;
+
+ns:product
+  ns:height _:eFsgehcX9k25dv_renamed1;
+  ns:width _:eFsgehcX9k25dv_renamed2.
+_:eFsgehcX9k25dv_renamed1
+  ns:unitOfMeasure ns:meter;
+  ns:value 1.1e0.
+_:eFsgehcX9k25dv_renamed2
+  ns:unitOfMeasure ns:centimeter;
+  ns:value 1.5e0.
+</code></pre>
+<p>This renaming of blank nodes must be performed <em>every time the data is used</em>. This is very cumbersome, and many users of linked data are unable to perform such renaming operations reliably.</p>
+<p>Now we show the same example, but by first replacing all blank nodes with Skolem IRIs. We start with the following two linked data snippets:</p>
+<pre><code class="language-turtle">prefix ns: &lt;https://example.com/&gt;
+prefix skolem: &lt;https://example.com/.well-known/genid/&gt;
+
+ns:product ns:height skolem:eFsgehcX9k25dv.
+skolem:eFsgehcX9k25dv
+  ns:unitOfMeasure ns:meter;
+  ns:value 1.1e0.
+</code></pre>
+<p>and:</p>
+<pre><code class="language-turtle">prefix ns: &lt;https://example.com/&gt;
+prefix skolem: &lt;https://example.com/.well-known/genid/&gt;
+
+ns:product ns:width skolem:JmsR9ev5QgHZyx.
+skolem:JmsR9ev5QgHZyx
+  ns:unitOfMeasure ns:centimeter;
+  ns:value 1.5e0.
+</code></pre>
+<p>Notice that we are able to use these linked data snippets directly, without having to perform a renaming operation. For example, we can naively combine the two snippets into one:</p>
+<pre><code class="language-turtle">prefix ns: &lt;https://example.com/&gt;
+prefix skolem: &lt;https://example.com/.well-known/genid/&gt;
+
+ns:product
+  ns:height skolem:eFsgehcX9k25dv;
+  ns:width skolem:JmsR9ev5QgHZyx.
+skolem:eFsgehcX9k25dv
+  ns:unitOfMeasure ns:meter;
+  ns:value 1.1e0.
+skolem:JmsR9ev5QgHZyx
+  ns:unitOfMeasure ns:centimeter;
+  ns:value 1.5e0.
+</code></pre>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script>var base_url = '../../..';</script>
+      <script src="../../../js/triply.js" defer></script>
+      <script src="../../../js/highlight.min.js" defer></script>
+      <script src="../../../search/main.js" defer></script>
+
+</body>
+</html>
