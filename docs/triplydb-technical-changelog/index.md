@@ -6,7 +6,29 @@ path: "/docs/triplydb-technical-changelog"
 [TOC]
 
 This changelog covers technical changes related to TriplyDB on-premise deployments. See [here](/triplydb-changelog) for the TriplyDB changelog that is user facing.
-This intent of this changelog is primarily for documenting breaking changes or changes that are useful to know when deploying/upgrading TriplyDB.
+This intent of this changelog is primarily for documenting breaking changes or changes
+that are useful to know when deploying/upgrading TriplyDB.
+
+## 25.1.200 {#25.2.100} 
+
+**Release date:** 2025-02-06 
+
+**Features**
+
+- The type `tdbServices.customLabels` changed from an array to an object. I.e., change
+  this:
+```
+tdbServices:
+  customLabels:
+  - VAL=KEY
+```
+to:
+```
+tdbServices:
+  customLabels:
+    VAL: KEY
+```
+
 
 ## 25.1.200 {#25.1.200} 
 

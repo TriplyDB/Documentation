@@ -5,6 +5,18 @@ path: "/docs/triplydb-changelog"
 
 [TOC]
 
+## 25.1.200 {#25.2.100} 
+
+**Release date:** 2025-02-06 
+
+**Features**
+
+- `#10094` [Editor] Show all SPARQL based constraint errors in editor
+- `#10079` [Editor] Show SPARQL based constraint errors at bottom of the form
+- `#10085` [Editor] Remember previous concept scheme hierarchy in the skos tree
+
+
+
 ## 25.1.200 {#25.1.200} 
 
 **Release date:** 2025-01-23
