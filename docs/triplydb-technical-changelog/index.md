@@ -9,11 +9,17 @@ This changelog covers technical changes related to TriplyDB on-premise deploymen
 This intent of this changelog is primarily for documenting breaking changes or changes
 that are useful to know when deploying/upgrading TriplyDB.
 
+
+## 25.2.200 {#25.2.200} 
+
+**Release date:** 2025-02-20 
+
+None
+
+
 ## 25.2.100 {#25.2.100} 
 
 **Release date:** 2025-02-06 
-
-**Features**
 
 - The type `tdbServices.customLabels` changed from an array to an object. I.e., change
   this:
