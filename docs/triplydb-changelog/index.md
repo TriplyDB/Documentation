@@ -5,6 +5,26 @@ path: "/docs/triplydb-changelog"
 
 [TOC]
 
+## 25.2.200 {#25.2.200}
+
+**Release date:** 2025-02-20
+
+**Features**
+
+- `#10037` [SPARQL-IDE] Query autoformat indentation behavior, from now on we use a simple and concise indentation scheme.
+- `#10067` [Editor] It is now possible to configure read-only fields for the SKOS editor.
+- `#10052` [Editor] Configure search fields in the data model so that users can search on user defined labels.
+- `#10078` [Editor] SKOS Search performance improvements.
+- `#10041` [Assets] See who uploaded an asset.
+
+**Issues fixed**
+
+- `#10115` [Saved Queries] Autocomplete UI improvement.
+- `#10144` [Saved Queries] Save as new version bug fix.
+- `#10057` [Speedy] Fix for SPARQL query with SHACL SPARQL functions that returned a 500 error
+- `#10161` [Speedy] Fix for encode_for_uri inside SPARQL
+- `#10163` [Speedy] Allow for a SHACL rule with a limit
+
 ## 25.2.100 {#25.2.100} 
 
 **Release date:** 2025-02-06 
