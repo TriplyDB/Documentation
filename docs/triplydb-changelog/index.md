@@ -5,7 +5,7 @@ path: "/docs/triplydb-changelog"
 
 [TOC]
 
-## 25.1.200 {#25.2.100} 
+## 25.2.100 {#25.2.100} 
 
 **Release date:** 2025-02-06 
 
