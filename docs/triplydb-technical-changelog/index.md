@@ -10,16 +10,16 @@ This intent of this changelog is primarily for documenting breaking changes or c
 that are useful to know when deploying/upgrading TriplyDB.
 
 
-## 25.2.200 {#25.2.200} 
+## 25.2.200 {#25.2.200}
 
-**Release date:** 2025-02-20 
+**Release date:** 2025-02-20
 
 None
 
 
-## 25.2.100 {#25.2.100} 
+## 25.2.100 {#25.2.100}
 
-**Release date:** 2025-02-06 
+**Release date:** 2025-02-06
 
 - The type `tdbServices.customLabels` changed from an array to an object. I.e., change
   this:
@@ -36,31 +36,32 @@ tdbServices:
 ```
 
 
-## 25.1.200 {#25.1.200} 
+## 25.1.200 {#25.1.200}
 
 **Release date:** 2025-01-23
 
 - `disablePreUpgradeHook` setting is no longer needed. If you have set this, you can
   safely remove it
 
-## 25.1.100 {#25.1.100} 
+## 25.1.100 {#25.1.100}
 
 **Release date:** 2025-01-09
 
-- `indexJobs.storageClass` and `queryJobs.storageclass` are both required properties now. 
+- `indexJobs.storageClassName` and `queryJobs.storageClassName` are both required properties now.
 - `tdbServices.podNodeAffinity` and `tdbServices.podTolerations` now take a yaml string as
   argument, instead of a yaml object.
+- `indexJobs.chunkSize` must now be a number and not a string
 - Some properties from the values file are now propagated to the console and API via a
-  configmap. This change _only_ has affects on-premise deployments where the helm manifests
+  configmap. This change _only_ affects on-premise deployments where the helm manifests
   are post-processed and manipulated.
 
-## 24.12.200 {#24.12.200} 
+## 24.12.200 {#24.12.200}
 
 **Release date:** 2024-12-18
 
 None
 
-## 24.12.104 {#24.12.104} 
+## 24.12.104 {#24.12.104}
 
 **Release date:** 2024-12-06
 
