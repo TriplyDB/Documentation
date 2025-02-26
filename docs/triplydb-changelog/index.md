@@ -16,6 +16,7 @@ path: "/docs/triplydb-changelog"
 - `#10052` [Editor] Configure search fields in the data model so that users can search on user defined labels.
 - `#10078` [Editor] SKOS Search performance improvements.
 - `#10041` [Assets] See who uploaded an asset.
+- `#9945` [Speedy] Performance of 20% of our benchmark queries increased by about 40%
 
 **Issues fixed**
 
