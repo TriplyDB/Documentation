@@ -9,13 +9,85 @@ This changelog covers technical changes related to TriplyDB on-premise deploymen
 This intent of this changelog is primarily for documenting breaking changes or changes
 that are useful to know when deploying/upgrading TriplyDB.
 
+## 25.3.100 {#25.3.100}
+
+**Release date:** 2025-03-06
+
+**Features**
+
+- SAML can now be configured through native helm values, instead of using environment variables for the API pod. I.e., A configuration like this:
+```yaml
+api:
+  env:
+    TRIPLY__SAML__0__ENTRY_POINT: some_entrypoint_url
+    TRIPLY__SAML__0__IDP: some_idp_id
+    TRIPLY__SAML__0__IDP_ATTRIBUTE_MAPPINGS__EMAIL__KEY: http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress
+    TRIPLY__SAML__0__IDP_ATTRIBUTE_MAPPINGS__NAME__KEY: http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier
+    TRIPLY__SAML__0__ISSUER: some_issuer_id
+    TRIPLY__SAML__0__LABEL: Login with SAML
+    TRIPLY__SAML__0__SIGNATURE_ALGORITHM: RSA_SHA256
+    TRIPLY__SAML__0__SUPPORT_IDP_LOGOUT: "false"
+    TRIPLY__SAML__0__WANT_AUTHN_RESPONSE_SIGNED: "false"
+    TRIPLY__SAML__0__IDP_CERT:
+      valueFrom:
+        secretKeyRef:
+          name: saml-credentials-0
+          key: CERT
+    TRIPLY__SAML__0__PRIVATE_KEY:
+      valueFrom:
+        secretKeyRef:
+          name: saml-credentials-0
+          key: PRIVATE_KEY
+    TRIPLY__SAML__0__PUBLIC_CERT:
+      valueFrom:
+        secretKeyRef:
+          name: saml-credentials-0
+          key: SIGNING_CERT
+    TRIPLY__SAML__0__DECRYPTION_CERT:
+      valueFrom:
+        secretKeyRef:
+          name: saml-credentials-0
+          key: DECRYPTION_CERT
+    TRIPLY__SAML__0__DECRYPTION_PVK:
+      valueFrom:
+        secretKeyRef:
+          name: saml-credentials-0
+          key: DECRYPTION_PVK
+```
+will now be set like this:
+```yaml
+auth:
+  saml:
+    some_idp_id:
+      entryPoint: some_entrypoint_url
+      issuer: some_issuer_id
+      label: Login with SAML
+      signatureAlgorithm: RSA_SHA256
+      idpAttributeMappings:
+        email:
+          key: http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress
+        name:
+          key: http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier
+      additionalConfig:
+        wantAuthnResponseSigned: false
+        supportIdpLogout: false
+      idpCertSecret:
+        name: saml-credentials-0
+        key: CERT
+      spCertSecret:
+        name: saml-sp-certs
+```
+
+Note that:
+
+- The IDP ID is now the key of the helm values object.
+- Certificates can only be set through secrets. For the IDP certificates this can be any secret with any field. For the SP certificate we expect a secret of type `TLS`, containing the private key and the public certificate.
 
 ## 25.2.200 {#25.2.200}
 
 **Release date:** 2025-02-20
 
 None
-
 
 ## 25.2.100 {#25.2.100}
 
