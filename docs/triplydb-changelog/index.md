@@ -5,6 +5,27 @@ path: "/docs/triplydb-changelog"
 
 [TOC]
 
+## 25.3.100 {#25.3.100}
+
+**Release date:** 2025-03-06
+
+**Features**
+
+- `#9896` [Editor] Improved changelog readability
+- `#10229` [Datasets] Improved metadata display, added changed date
+- `#10150` [Authentication] Improved SAML management
+- `#10184` [Dataset] Configuration of auto-generated ID in dataset settings
+- `#10131` [Triples] Improvement while filtering and creating terms
+
+**Issues fixed**
+
+- `#10123` [Data stories] Unexpected crashes within visualization.
+- `#10116` [Saved queries] API variable dialog, autocomplete display.
+- `#10169` [SPARQL-IDE] Autocompletion for literals is missing
+- `#10036` [Speedy] Union variables are not translated correctly in SHACL SPARQL functions
+- `#10106` [Speedy] GeoSPARQL functions do not work on polygons in different CRSes
+- `#10200` [Speedy] Values clause with 2 terminating bindings does not terminate
+
 ## 25.2.200 {#25.2.200}
 
 **Release date:** 2025-02-20
