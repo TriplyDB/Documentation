@@ -12,6 +12,8 @@ path: "/docs/triplydb-changelog"
 **Features**
 
 - `#10129` [Editor] Display a list of concept schemes when no concept is selected
+- `#9768` [Graphs] General performance improvements
+- `#10189` [SAML] Allow email-based user lookup
 
 **Issues fixed**
 
@@ -23,6 +25,8 @@ path: "/docs/triplydb-changelog"
 - `#10228` [Triples] Adding statements to the default graph does nothing
 - `#10221` [Speedy] Internal performance improvement
 - `#10138` [Speedy] Performance improvement for a queries containing multiple SHACL SPARQL functions
+- `#10276` [Speedy] 500 error for non-compliant literal
+- `#9794` [Data upload] CSV parser throws 500 error when delimiter is not consistent
 
 ## 25.3.100 {#25.3.100}
 
