@@ -5,6 +5,25 @@ path: "/docs/triplydb-changelog"
 
 [TOC]
 
+## 25.3.200 {#25.3.200}
+
+**Release date:** 2025-03-20
+
+**Features**
+
+- `#10129` [Editor] Display a list of concept schemes when no concept is selected
+
+**Issues fixed**
+
+- `#10273` [Editor] Oops something went wrong when using the editor
+- `#10274` [Editor] Wrong title for property edit dialog
+- `#10250` [Editor] Server error when a field was not filled in
+- `#10110` [Editor] Super class / parent class cannot be cleared
+- `#10269` [Editor] Wrong title in staging dialog
+- `#10228` [Triples] Adding statements to the default graph does nothing
+- `#10221` [Speedy] Internal performance improvement
+- `#10138` [Speedy] Performance improvement for a queries containing multiple SHACL SPARQL functions
+
 ## 25.3.100 {#25.3.100}
 
 **Release date:** 2025-03-06
