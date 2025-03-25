@@ -20,7 +20,6 @@ TriplyDB.js contains several classes, each with their own methods. The documenta
 Notice that `process.env.TOKEN` picks up an API token that is stored in the environment variable called `TOKEN`. Follow the steps on [this page](../triply-api/index.md#creating-an-api-token) to create a new API token in the TriplyDB GUI.
 
 ```ts
-require('source-map-support/register')
 import App from '@triply/triplydb'
 const triply = App.get({ token: process.env.TOKEN })
 async function run() {
