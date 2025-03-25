@@ -500,7 +500,6 @@ SPARQL services are able to return results in different formats. The user can sp
 | JSON-LD       | `application/ld+json`             | Construct, Describe | `.jsonld` |
 | N-Quads       | `application/n-quads`             | Construct, Describe | `.nq`     |
 | N-Triples     | `application/n-triples`           | Construct, Describe | `.nt`     |
-| RDF/XML       | `application/rdf+xml`             | Construct, Describe |           |
 | SPARQL JSON   | `application/sparql-results+json` | Ask, Select         | `.srj`    |
 | SPARQL XML    | `application/sparql-results+xml`  | Ask, Select         | `.srx`    |
 | TriG          | `application/trig`                | Construct, Describe | `.trig`   |
