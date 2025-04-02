@@ -9,7 +9,8 @@ You can use this changelog to perform a safe update from an older version of Tri
 Release date: 2025-04-01
 
 ### [Added]
--  Add uniqueBy option to list
+- Add uniqueBy option to list
+- Support node 22
 
 ### [Fixed]
 - DELETE is not working in the MWE of the documentation
