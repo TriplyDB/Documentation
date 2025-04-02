@@ -5,6 +5,17 @@
 You can use this changelog to perform a safe update from an older version of TriplyETL to a newer one. See the documentation for [Upgrading TriplyETL repositories](./maintenance.md#update-the-triplyetl-dependency) for the advised approach, and how the changelog factors into that.
 
 
+### TriplyETL 4.10.0
+Release date: 2025-04-01
+
+### [Added]
+-  Add uniqueBy option to list
+
+### [Fixed]
+- DELETE is not working in the MWE of the documentation
+- SHACL validation broken all together
+- SPARQL targets bleeding to next record
+
 ### TriplyETL 4.8.12
 Release date: 2024-06-24
 
