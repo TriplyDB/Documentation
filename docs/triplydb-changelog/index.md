@@ -5,6 +5,23 @@ path: "/docs/triplydb-changelog"
 
 [TOC]
 
+## 25.4.100 {#25.4.100}
+
+**Release date:** 2025-04-03
+
+**Features**
+
+- `#9776` [Query jobs] Insights into the error encountered by a query job
+- `#9935` [Editor] Allow a SKOS tree hierarchy without concept schemes
+- `#10272` [Assets] Gracefully handle uploading an asset with an existing name in the GUI
+- `#10054` [Output] Ability to export SPARQL results in more readable turtle format
+- `#9768` [SPARQL UPDATE] Performance improvement when using mutations frequently
+
+**Issues fixed**
+
+- `#9765` [Import] XML namespaces not resolved
+
+
 ## 25.3.200 {#25.3.200}
 
 **Release date:** 2025-03-20
