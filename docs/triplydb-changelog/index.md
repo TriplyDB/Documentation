@@ -16,6 +16,7 @@ path: "/docs/triplydb-changelog"
 - `#10272` [Assets] Gracefully handle uploading an asset with an existing name in the GUI
 - `#10054` [Output] Ability to export SPARQL results in more readable turtle format
 - `#9768` [SPARQL UPDATE] Performance improvement when using mutations frequently
+- `#10175` [Import] Support for CSV, TSV and more use cases within those formats
 
 **Issues fixed**
 
