@@ -5,6 +5,24 @@ path: "/docs/triplydb-changelog"
 
 [TOC]
 
+
+## 25.4.200 {#25.4.200}
+
+**Release date:** 2025-04-16
+
+
+**Features**
+
+- `#10297` Support rendering SVGs in LD-Browser and SPARQL-IDE
+
+**Issues fixed**
+
+- `#10205` [Import] Parallel uploads my result in errors
+- `#10348` [SPARQL IDE] Interactions with IDE become sluggish for large query
+- `#10277` User is not always notified when an import from URL fails
+ 
+
+
 ## 25.4.100 {#25.4.100}
 
 **Release date:** 2025-04-03
@@ -20,7 +38,7 @@ path: "/docs/triplydb-changelog"
 
 **Issues fixed**
 
-- `#9765` [Import] XML namespaces not resolved
+- `#9765` [Import] Namespaces are not resolved for uploaded XML files
 
 
 ## 25.3.200 {#25.3.200}
