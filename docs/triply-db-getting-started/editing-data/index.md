@@ -2,11 +2,19 @@
 
 # Editing Data
 
-In specific instances of TriplyDB, a SKOS editor is available that enables the editing of SKOS instance data based on a specified Data Model. The Editing Data section provides basic instructions for using the SKOS Editor to create and adapt new data instances. Although the Data Editor is currently limited to SKOS, future editions will enable more types of editing. 
+The Editor is available in specific instances of TriplyDB. It allows creating, updating or deleting data that have a structure that is defined in a [SHACL](https://www.w3.org/TR/shacl/) shapes graph. For example, a shapes graph could define the structure of a concept scheme based on [SKOS](https://www.w3.org/TR/skos-primer/), or it could define the structure of a data catalogue based on [DCAT](https://www.w3.org/TR/vocab-dcat-3/). 
+
+ This section describes using the Editor to edit SKOS concept schemes. The Editor works in a similar way for other views.
 
 In order to open the Editor, select the Dataset that you want to work with. If your instance provides the feature, you will see `Editor` on the left-hand side.
 
 ![Open the editor](../../assets/open-the-editor.png)
+
+## Choosing an Editor view
+
+In the top left corner of the Editor pane, the _view_ button can be used to select a different view, if multiple views are configured.
+
+![Choose an Editor view](../../assets/view-skos.png)
 
 ## Choosing a Class
 
