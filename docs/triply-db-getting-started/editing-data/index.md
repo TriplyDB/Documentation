@@ -4,56 +4,62 @@
 
 The Editor is available in specific instances of TriplyDB. It allows creating, updating or deleting data that have a structure that is defined in a [SHACL](https://www.w3.org/TR/shacl/) shapes graph. For example, a shapes graph could define the structure of a concept scheme based on [SKOS](https://www.w3.org/TR/skos-primer/), or it could define the structure of a data catalogue based on [DCAT](https://www.w3.org/TR/vocab-dcat-3/). 
 
- This section describes using the Editor to edit SKOS concept schemes. The Editor works in a similar way for other views.
+This section describes using the Editor to edit SKOS concept schemes. The Editor works in a similar way for other views.
 
-In order to open the Editor, select the Dataset that you want to work with. If your instance provides the feature, you will see `Editor` on the left-hand side.
+In order to open the Editor, select the Dataset that you want to work with. If your instance provides the feature, you will see "Editor" on the left-hand side. Pressing there will open the Editor pane.
 
-![Open the editor](../../assets/open-the-editor.png)
+![Open the editor](../../assets/editor-open.png)
+
+## About Editor forms
+
+The Editor uses forms to create or edit instances of a class. The image below shows elements of a form.
+
+![Editor form](../../assets/editor-form.png)
+
+In Editor forms, an asterisk (*) is used to mark mandatory properties of an instance. It is not possible to save resources that do not have a value for all mandatory properties.
+
+In order to add a property, press the  plus symbol (+). Some properties can occur multiple times, with different values.
+
+In order to remove a property, press the waste basket symbol.
+
+Input fields for values support dropdown lists where possible. Alternatively, it is possible to start typing to bring up a list of matching values. The availabilty of dropdown lists is indicated by a small downward facing triangle on the right of the input field.
 
 ## Choosing an Editor view
 
-In the top left corner of the Editor pane, the _view_ button can be used to select a different view, if multiple views are configured.
+In the top left corner of the Editor pane, the _view_ button can be used to select a different view, if multiple views are configured. The image below shows the SKOS view being selected.
 
-![Choose an Editor view](../../assets/view-skos.png)
+![Choose an Editor view](../../assets/editor-view-skos.png)
 
-## Choosing a Class
+## Creating a new instance
+In the top right corner of the Editor pane you can find the _create_ button. It can be used to create a new instance of a class that is defined in the shapes graph.
 
-When searching for a class, you can type any unique character combination contained in the name into the search box. You don't need to press return in order to see all the class names that contain the pattern anywhere in the class name.
+![Create a new instance](../../assets/editor-create.png)
 
-![Example substring pattern filter](../../assets/choose-class.png)
+Clicking the _create_ button will open a form that allows picking the class for the new instance, and setting other properties. By default, each resource needs to have an IRI (Internationalized Resource Identifier). The Editor generates an IRI, which can be changed, if needed.
 
-## IRI Naming
+![Select a class for the new instance](../../assets/editor-new-instance.png)
 
-When you create a class, you can define the IRI (Internationalized Resource Identifier) naming conventions to uniquely identify the class.
+## Finding an instance
 
-![Create class dialog](../../assets/name-IRI.png)
+Next to the _create_ button there is an input box that can be used to find an instance based on its label. All data that are configured to be used by the Editor are included in the search. You can start typing to populate a dropdown list with resources that have a matching sequence of characters somewhere. The matching characters are displayed in boldface.
 
-## Input Fields
+![Find an instance](../../assets/editor-find.png)
 
-Fields can be added by clicking on the plus symbol on the right side of the list of fields. Required fields are marked by an asterisk. In the image, you can see a drop-down choice menu for the *required* value of the `heeft contentstatus` field. When you click on the downward pointing triangle on the right side of the search field, it points upwards and a list unfolds to reveal a set of choices for possible values. If you want free-form entry, you can click on the `x` that is revealed when the mouse is over the arrow. You can remove a field by clicking on the garbage can symbol on the right.
+## SKOS: selecting concept schemes
 
-![Content status choice menu](../../assets/choice-menu-content-status.png)
+In the SKOS view, it is possible to select a concept scheme to work with. Press the _concept scheme(s)_ input field to choose a concept scheme from a dropdown list. Alternatively, start typing to find a concept scheme with a matching character sequence.
 
-It is also possible to search such menus with pattern search.
-![Content status choice menu](../../assets/choice-menu-pattern-search.png)
+![Select a concept scheme](../../assets/editor-select-concept-scheme.png)
 
-## Groups and Order
+SKOS concept schemes are allowed to be chained, by means of [skos:narrowMatch](https://www.w3.org/2009/08/skos-reference/skos.html#narrowMatch) and [skos:broadMatch](https://www.w3.org/2009/08/skos-reference/skos.html#broadMatch) relations between concepts. Once a concept scheme is found, you can press in the space behind its name to find and select nested concept schemes. Concept schemes in the chain will be assigned different colours, as shown in the image below.
 
-Once you've selected a Dataset, you can go to the Data Model editor on the left side of the screen.
+![Expand the concept scheme](../../assets/editor-chained-concept-schemes.png)
 
-![Data Model](../../assets/editing-the-data-model.png)
+## SKOS: navigating concept schemes
 
-When adding a new property, you are able to specify groups of properties and set the order in which properties should appear.
+Once one or more concept schemes have been selected, 
 
-![Groups and order](../../assets/groups-and-order.png)
-
-The group choice menu can be used or the `+` can be used to add a new property group.
-
-![Groups choice list](../../assets/groups-choice-list.png)
-
-An integer assigned to the property in the `Order` field will be used to order it against the value of `order` in other properties in the SKOS Editor. In the image, you can see the `heeft voorkeurslabel` has Order of 1 and `heeft creatiedatum` has Order of 2, so it will come after the first one in the Property sheets of the editor.
-
-![Use of Order](../../assets/use-of-order.png)
+![The concepts hierarchy](../../assets/editor-concept-tree.png)
 
 ## Workflow
 
