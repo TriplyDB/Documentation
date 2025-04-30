@@ -57,53 +57,40 @@ SKOS concept schemes are allowed to be chained, by means of [skos:narrowMatch](h
 
 ## SKOS: navigating concept schemes
 
-Once one or more concept schemes have been selected, 
+Once one or more concept schemes have been selected, the hierarchy of concepts and concept schemes is displayed in a tree view:
 
 ![The concepts hierarchy](../../assets/editor-concept-tree.png)
 
-## Workflow
+The symbol > in front of a concept means that the concept has underlying elements. Pressing > will expand the concept. The symbol will then point downward to show that the concept has been expanded. When a concept has underlying concepts, its name is preceded by a dot (•).
 
-The workflow provides a structured process for data entry and review, enabling seamless transitions between stages.
+As concepts can be defined in different nested concept schemes, the coloured label of the concept scheme is displayed for each concept.
 
-The workflow consists of the following stages:
+To search within the concept hierarchy, use the _Search in hierarchy_ input field.
 
-```mermaid
-flowchart LR
-  Start(( )) -- Create --> Draft
-  Draft -- Stage --> Staged
-  Draft -- Delete --> Start
-  Draft -- Edit --> Draft
-  Staged -- Accept --> Accepted
-  Staged -- Reject --> Draft
-  Accepted -- Revoke --> Deprecated
-  Accepted -- Edit --> Draft
-  Deprecated -- Edit --> Draft
-```
+When a concept in the concept hierarchy is selected, detailled information is displayed on the right-hand side of the Editor pane.
 
-### Editing (Draft)
+## Instance details
 
-The initial phase where data can be created or modified in draft form.
+When an instance (for example, a SKOS concept) is selected on the left side of the Editor pane, a description of the instance is shown on the right:
 
-### Submit for Review (Staged)
+![Instance details](../../assets/editor-instance-details.png)
 
-After drafting, the data can be submitted for review to ensure accuracy and completeness.
+Below the name of the instance, its IRI is displayed as a hyperlink (blue underlined). The hyperlink can be dragged to other visualisation in TriplyDB, like _Browser_ or _Triples_. To the right of the instance hyperlink its class is shown.
 
-### Accept (Accepted)
+For instances that have been edited in the Editor, a history of changes is recorded. Details of the last change are shown by _Modified by_ and
+_Modified_. The symbol of the backward turning clock can be pressed to show the complete modification history of the selected instance. The image below shows an example.
 
-Once reviewed and approved, the data entry moves to the accepted stage, making it an official part of the dataset. Content status is set to `active`. *Note: the reviewer must be a different person than the one who made the last edit.*
+![Instance modification history](../../assets/editor-history.png)
 
-### Revoke (Deprecated)
+### Copying an instance
 
-If data becomes outdated or invalid, it can be moved to the deprecated status, effectively removing it from active use. Content status is set to `inactive`.
+The _copy_ button can be used to copy an instance. That can be useful if a new instance is needed that is similar to an existing one.
 
-## SKOS Support
+### Editing an instance
 
-Support for SKOS (Simple Knowledge Organization System) allows for hierarchical and conceptual data organization.
+The _edit_ button can be used to edit the properties of an instance.
 
-### SKOS Hierarchy
+### Deleting an instance
 
-Define and manage hierarchical relationships between data entries within SKOS.
+To remove an instance, press the _delete_ button. You will be asked for a confirmation before the instance is really deleted.
 
-### SKOS Concept Schemas
-
-This section allows for the creation and use of SKOS concept schemas, aiding in the classification and linking of related data concepts.
