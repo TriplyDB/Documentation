@@ -4,11 +4,13 @@
 
 The Editor is available in specific instances of TriplyDB. It allows creating, updating or deleting data that have a structure that is defined in a [SHACL](https://www.w3.org/TR/shacl/) shapes graph. For example, a shapes graph could define the structure of a concept scheme based on [SKOS](https://www.w3.org/TR/skos-primer/), or it could define the structure of a data catalogue based on [DCAT](https://www.w3.org/TR/vocab-dcat-3/). 
 
-This section describes using the Editor to edit SKOS concept schemes. The Editor works in a similar way for other views.
+This section describes using the Editor to edit SKOS concept schemes as an example. The Editor works in a similar way for other views.
 
-In order to open the Editor, select the Dataset that you want to work with. If your instance provides the feature, you will see "Editor" on the left-hand side. Pressing there will open the Editor pane.
+In order to open the Editor, select the dataset that you want to work with. If your instance provides the feature, you will see "Editor" on the left-hand side. Pressing there will open the Editor pane.
 
 ![Open the editor](../../assets/editor-open.png)
+
+Alternatively, instance hyperlinks can be dragged and dropped on the "Editor" menu entry, to directly view the instance in the Editor.
 
 ## About Editor forms
 
@@ -35,7 +37,7 @@ In the top right corner of the Editor pane you can find the _create_ button. It 
 
 ![Create a new instance](../../assets/editor-create.png)
 
-Clicking the _create_ button will open a form that allows picking the class for the new instance, and setting other properties. By default, each resource needs to have an IRI (Internationalized Resource Identifier). The Editor generates an IRI, which can be changed, if needed.
+Pressing the _create_ button will open a form that allows picking the class for the new instance, and setting other properties. By default, each resource needs to have an IRI (Internationalized Resource Identifier). The Editor generates an IRI, which can be changed, if needed.
 
 ![Select a class for the new instance](../../assets/editor-new-instance.png)
 
@@ -61,7 +63,7 @@ Once one or more concept schemes have been selected, the hierarchy of concepts a
 
 ![The concepts hierarchy](../../assets/editor-concept-tree.png)
 
-The symbol > in front of a concept means that the concept has underlying elements. Pressing > will expand the concept. The symbol will then point downward to show that the concept has been expanded. When a concept has underlying concepts, its name is preceded by a dot (•).
+The symbol __>__ in front of a concept means that the concept has underlying elements. Pressing __>__ will expand the concept. The symbol will then point downward to show that the concept has been expanded. When a concept has no underlying concepts, its name is preceded by a dot (•).
 
 As concepts can be defined in different nested concept schemes, the coloured label of the concept scheme is displayed for each concept.
 
@@ -75,7 +77,7 @@ When an instance (for example, a SKOS concept) is selected on the left side of t
 
 ![Instance details](../../assets/editor-instance-details.png)
 
-Below the name of the instance, its IRI is displayed as a hyperlink (blue underlined). The hyperlink can be dragged to other visualisation in TriplyDB, like _Browser_ or _Triples_. To the right of the instance hyperlink its class is shown.
+Below the name of the instance, its IRI is displayed as a hyperlink (blue underlined). The hyperlink can be dragged and dropped on other visualisation in TriplyDB, like _Browser_ or _Triples_. To the right of the instance hyperlink its class is shown.
 
 For instances that have been edited in the Editor, a history of changes is recorded. Details of the last change are shown by _Modified by_ and
 _Modified_. The symbol of the backward turning clock can be pressed to show the complete modification history of the selected instance. The image below shows an example.
