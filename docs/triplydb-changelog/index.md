@@ -6,6 +6,24 @@ path: "/docs/triplydb-changelog"
 [TOC]
 
 
+## 25.4.300 {#25.4.300}
+
+**Release date:** 2025-04-28
+
+
+
+**Features**
+
+- `#10095` Improved speedy performance when querying more graphs. Depending on the query
+  and datastructure, you may get performance improvements of around 20%, with outliers to 100%.
+
+**Issues fixed**
+
+- `#10353` [Editor] Editor may show outdated views with simultaneous errors
+- `#10288` [Editor] `sh:prefixes` are unrecognized in the SHACL SPARQL constraints model
+- `#10359` [SPARQL IDE] Opening a chart visualization via a URL may result in an error
+
+
 ## 25.4.200 {#25.4.200}
 
 **Release date:** 2025-04-16
