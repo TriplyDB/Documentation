@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+
+<html class="writer-html5" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="IE=edge" http-equiv="X-UA-Compatible"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="The official documentation for the Triply products: TriplyDB, TriplyDB.js, and TriplyETL." name="description"/>
+<link href="../../../../img/favicon.ico" rel="shortcut icon"/>
+<title>RATT Terms - Triply Documentation</title>
+<link href="../../../../css/theme.css" rel="stylesheet"/>
+<link href="../../../../css/theme_extra.css" rel="stylesheet"/>
+<link href="../../../../css/intellij-light.css" rel="stylesheet"/>
+<link href="../../../../css/triply.css" rel="stylesheet"/>
+<script>
+        // Current page data
+        var mkdocs_page_name = "RATT Terms";
+        var mkdocs_page_input_path = "triply-etl/assert/ratt/terms.md";
+        var mkdocs_page_url = null;
+      </script>
+</head>
+<body class="wy-body-for-nav" role="document">
+<div class="wy-grid-for-nav">
+<nav class="wy-nav-side stickynav" data-toggle="wy-nav-shift">
+<div class="wy-side-scroll">
+<div class="wy-side-nav-search">
+<a class="icon icon-home" href="../../../.."> Triply Documentation
+        </a><div role="search">
+<form action="../../../../search.html" class="wy-form" id="rtd-search-form" method="get">
+<input aria-label="Search docs" name="q" placeholder="Search docs" title="Type search term here" type="text"/>
+</form>
+</div>
+</div>
+<div aria-label="Navigation menu" class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../..">Home</a>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">TriplyDB</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="#">Getting started</a>
+<ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../triply-db-getting-started/">Overview</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../triply-db-getting-started/uploading-data/">Uploading Data</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../triply-db-getting-started/editing-data/">Editing (SKOS) Data</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../triply-db-getting-started/publishing-data/">Sharing Data</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../triply-db-getting-started/viewing-data/">Viewing Data</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../triply-db-getting-started/exporting-data/">Exporting Data</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../triply-db-getting-started/saved-queries/">Saved Queries</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../triply-db-getting-started/data-stories/">Data Stories</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../triply-db-getting-started/admin-settings-pages/">Admin Settings Pages</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../triply-db-getting-started/reference/">Reference</a>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../triply-api/">API</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#">TriplyDB-JS</a>
+<ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../triplydb-js/">Overview</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../triplydb-js/app/">App</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../triplydb-js/account/">Account</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../triplydb-js/asset/">Asset</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../triplydb-js/dataset/">Dataset</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../triplydb-js/graph/">Graph</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../triplydb-js/organization/">Organization</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../triplydb-js/query/">Query</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../triplydb-js/service/">Service</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../triplydb-js/story/">Story</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../triplydb-js/user/">User</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../triplydb-js/faq/">FAQ</a>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../triply-cli/">Command-line Interface</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../triplydb-changelog/">Changelog</a>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">TriplyETL</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="#">Generic</a>
+<ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../">Overview</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../generic/getting-started/">Getting Started</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../generic/changelog/">Changelog</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../generic/cli/">Command Line Interface (CLI)</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../generic/declarations/">Declarations</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../generic/control-structures/">Control Structures</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../generic/debug/">Debug</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../generic/internal-store/">Internal Store</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../generic/maintenance/">Maintenance</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../generic/record/">Record</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../generic/vocabularies/">Vocabularies</a>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#">Sources</a>
+<ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../sources/">Overview</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../sources/apis/">APIs</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../sources/inline-json/">Inline JSON</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../sources/inline-strings/">Inline Strings</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../sources/local-files/">Local Files</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../sources/online-files/">Online Files</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../sources/rml/">RML Sources</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../sources/triplydb-assets/">TriplyDB Assets</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../sources/triplydb-datasets/">TriplyDB Datasets</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../sources/triplydb-queries/">TriplyDB Queries</a>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#">Extract</a>
+<ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../extract/">Overview</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../extract/csv/">CSV</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../extract/json/">JSON</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../extract/oai-pmh/">OAI-PMH</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../extract/postgres/">Postgres</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../extract/rdf/">RDF</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../extract/shapefile/">Shapefile</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../extract/tsv/">TSV</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../extract/xlsx/">XLSX</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../extract/xml/">XML</a>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#">Transform</a>
+<ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../transform/">Overview</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../transform/ratt/">RATT</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../transform/rml/">RML</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../transform/typescript/">TypeScript</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../transform/xslt/">XSLT</a>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal current" href="#">Assert</a>
+<ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../">Overview</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../json-ld/">JSON-LD</a>
+</li>
+<li class="toctree-l2 current"><a class="reference internal current" href="#">RATT</a>
+<ul class="current">
+<li class="toctree-l3 current"><a class="reference internal current" href="./">RATT Terms</a>
+<ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="#iri-constructor">Iri() constructor</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#iri-function">iri() function</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#iris">iris()</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#list">list()</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#literal">literal()</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#literals">literals()</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#str">str()</a>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../statements/">RATT Statements</a>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../rml/">RML</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../xslt/">XSLT</a>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#">Enrich</a>
+<ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../enrich/">Overview</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#">SHACL</a>
+<ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../enrich/shacl/">Overview</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../enrich/shacl/triple-rules/">Triple Rules</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../enrich/shacl/sparql-rules/">SPARQL Rules</a>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#">SPARQL</a>
+<ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../enrich/sparql/construct/">SPARQL Construct</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../enrich/sparql/update/">SPARQL Update</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#">Validate</a>
+<ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../validate/">Overview</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../validate/graph-comparison/">Graph Comparison</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../validate/shacl/">SHACL</a>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../publish/">Publish</a>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Yasgui</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../yasgui/">Introduction</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../yasgui-api/">For Developers</a>
+</li>
+</ul>
+</div>
+</div>
+</nav>
+<section class="wy-nav-content-wrap" data-toggle="wy-nav-shift">
+<nav aria-label="Mobile navigation menu" class="wy-nav-top" role="navigation">
+<i class="fa fa-bars" data-toggle="wy-nav-top"></i>
+<a href="../../../..">Triply Documentation</a>
+</nav>
+<div class="wy-nav-content">
+<div class="rst-content"><div aria-label="breadcrumbs navigation" role="navigation">
+<ul class="wy-breadcrumbs">
+<li><a aria-label="Docs" class="icon icon-home" href="../../../.."></a></li>
+<li class="breadcrumb-item">TriplyETL</li>
+<li class="breadcrumb-item">Assert</li>
+<li class="breadcrumb-item">RATT</li>
+<li class="breadcrumb-item active">RATT Terms</li>
+<li class="wy-breadcrumbs-aside">
+</li>
+</ul>
+<hr/>
+</div>
+<div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
+<div class="section" itemprop="articleBody">
+<div class="toc"><span class="toctitle">On this page:</span><ul>
+<li><a href="#ratt-term-assertion">RATT Term Assertion</a><ul>
+<li><a href="#iri-constructor">Iri() constructor</a><ul>
+<li><a href="#signature">Signature</a></li>
+<li><a href="#parameters">Parameters</a></li>
+<li><a href="#example-iri-declaration">Example: IRI declaration</a></li>
+<li><a href="#example-in-line-iri">Example: in-line IRI</a></li>
+<li><a href="#example-iri-concatenation">Example: IRI concatenation</a></li>
+</ul>
+</li>
+<li><a href="#iri-function">iri() function</a><ul>
+<li><a href="#signature_1">Signature</a></li>
+<li><a href="#parameters_1">Parameters</a></li>
+<li><a href="#example-explicit-cast-to-iri">Example: explicit cast to IRI</a></li>
+<li><a href="#example-dynamic-iri">Example: dynamic IRI</a></li>
+<li><a href="#example-static-iri">Example: static IRI</a></li>
+<li><a href="#see-also">See also</a></li>
+</ul>
+</li>
+<li><a href="#iris">iris()</a><ul>
+<li><a href="#signature_2">Signature</a></li>
+<li><a href="#parameters_2">Parameters</a></li>
+<li><a href="#example">Example</a></li>
+</ul>
+</li>
+<li><a href="#list">list()</a><ul>
+<li><a href="#signature_3">Signature</a></li>
+<li><a href="#parameters_3">Parameters</a></li>
+<li><a href="#example-fruit-basket">Example: fruit basket</a></li>
+<li><a href="#example-children">Example: children</a></li>
+<li><a href="#maintenance-impact">Maintenance impact</a></li>
+<li><a href="#relation-to-standards">Relation to standards</a></li>
+</ul>
+</li>
+<li><a href="#literal">literal()</a><ul>
+<li><a href="#signature_4">Signature</a></li>
+<li><a href="#parameters_4">Parameters</a></li>
+<li><a href="#example-language-tagged-string">Example: language-tagged string</a></li>
+<li><a href="#example-typed-literal">Example: typed literal</a></li>
+<li><a href="#example-string-literal">Example: string literal</a></li>
+<li><a href="#see-also_1">See also</a></li>
+</ul>
+</li>
+<li><a href="#literals">literals()</a><ul>
+<li><a href="#signature_5">Signature</a></li>
+<li><a href="#parameters_5">Parameters</a></li>
+<li><a href="#example-fruit-basket_1">Example: fruit basket</a></li>
+<li><a href="#example-string-literals">Example: string literals</a></li>
+</ul>
+</li>
+<li><a href="#str">str()</a><ul>
+<li><a href="#signature_6">Signature</a></li>
+<li><a href="#parameters_6">Parameters</a></li>
+<li><a href="#example_1">Example</a></li>
+<li><a href="#relation-to-standards_1">Relation to standards</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<h1 id="ratt-term-assertion">RATT Term Assertion<a class="headerlink" href="#ratt-term-assertion" title="Permanent link">¶</a></h1>
+<p>This page documents RATT functions that are used to create RDF terms. These RDF terms are used in <a href="../statements/">statement assertions</a>.</p>
+<p>The term assertion functions are imported in the following way:</p>
+<pre><code class="language-ts">import { iri, iris, literal, literals, str } from '@triplyetl/etl/ratt'
+</code></pre>
+<h2 id="iri-constructor">Iri() constructor<a class="headerlink" href="#iri-constructor" title="Permanent link">¶</a></h2>
+<p>Creates static IRIs.</p>
+<h3 id="signature">Signature<a class="headerlink" href="#signature" title="Permanent link">¶</a></h3>
+<p>The signature of this constructor is as follows:</p>
+<pre><code class="language-ts">Iri(string): Iri
+</code></pre>
+<h3 id="parameters">Parameters<a class="headerlink" href="#parameters" title="Permanent link">¶</a></h3>
+<ul>
+<li><code>string</code> is a string that encodes an absolute IRI.</li>
+</ul>
+<p>Once an IRI object is constructed, the <code>concat()</code> member function can be used to create new IRIs according to the following signature:</p>
+<pre><code class="language-ts">Iri.concat(string): Iri
+</code></pre>
+<h3 id="example-iri-declaration">Example: IRI declaration<a class="headerlink" href="#example-iri-declaration" title="Permanent link">¶</a></h3>
+<p>The following code snippet creates a static IRI by using the <code>Iri()</code> constructor:</p>
+<pre><code class="language-ts">const subject = Iri('https://example.com/123')
+
+etl.use(
+  triple(subject, a, sdo.Product),
+)
+</code></pre>
+<h3 id="example-in-line-iri">Example: in-line IRI<a class="headerlink" href="#example-in-line-iri" title="Permanent link">¶</a></h3>
+<p>It is also possible to add the static IRI in-line, without declaring a constant:</p>
+<pre><code class="language-ts">etl.use(
+  triple(Iri('https://example.com/123'), a, sdo.Product),
+)
+</code></pre>
+<h3 id="example-iri-concatenation">Example: IRI concatenation<a class="headerlink" href="#example-iri-concatenation" title="Permanent link">¶</a></h3>
+<p>The following code snippet uses a static IRI that is created by applying the <code>concat()</code> member function</p>
+<pre><code class="language-ts">const prefix = Iri('https://example.com/')
+
+etl.use(
+  triple(prefix.concat('123'), a, sdo.Product),
+)
+</code></pre>
+<h2 id="iri-function">iri() function<a class="headerlink" href="#iri-function" title="Permanent link">¶</a></h2>
+<p>Creates a static or dynamic IRI that can be used in statement assertions.</p>
+<p>Notice that this function is more powerful than the <a href="#iri-constructor">Iri() constructor</a>, which can only create static</p>
+<h3 id="signature_1">Signature<a class="headerlink" href="#signature_1" title="Permanent link">¶</a></h3>
+<p>This function has the following signature:</p>
+<pre><code class="language-ts">iri(fullIri)           // 1
+iri(prefix, localName) // 2
+</code></pre>
+<p>Signature 1 is used to explicitly cast a strings that encodes an absolute IRI to an IRI.</p>
+<p>Signature 2 is used to create IRIs based on an IRI prefix and multiple local names.</p>
+<h3 id="parameters_1">Parameters<a class="headerlink" href="#parameters_1" title="Permanent link">¶</a></h3>
+<ul>
+<li><code>fullIri</code> is either a key that contains a dynamic string that encodes an absolute IRI, or a static string that encodes an absolute IRI.</li>
+<li><code>prefix</code> is an IRI prefix that is declared with the <a href="#iri-constructor">Iri() constructor</a>.</li>
+<li><code>localName</code> is ither a key that contains a dynamic string, or a static string. This string is used as the local name of the IRI. The local name is suffixed to the given IRI prefix.</li>
+</ul>
+<h3 id="example-explicit-cast-to-iri">Example: explicit cast to IRI<a class="headerlink" href="#example-explicit-cast-to-iri" title="Permanent link">¶</a></h3>
+<p>The following code snippets casts strings that encode IRIs in the source data to subject and object IRIs that are used in triple assertions:</p>
+<pre><code class="language-ts">fromJson([
+  { url: 'https://example.com/id/person/Jane' },
+  { url: 'https://example.com/id/person/John' },
+]),
+triple(iri('url'), owl:sameAs, iri('url')),
+</code></pre>
+<p>This results in the following linked data:</p>
+<pre><code class="language-turtle">&lt;https://example.com/id/person/Jane&gt; owl:sameAs &lt;https://example.com/id/person/Jane&gt;.
+&lt;https://example.com/id/person/John&gt; owl:sameAs &lt;https://example.com/id/person/John&gt;.
+</code></pre>
+<p>Notice that the use of <code>iri()</code> it is not required in the subject position, but is required in the object position. The following code snippet results in the same linked data, but uses an implicit cast for the subject term:</p>
+<pre><code class="language-ts">fromJson([
+  { url: 'https://example.com/id/person/Jane' },
+  { url: 'https://example.com/id/person/John' },
+]),
+triple('url', owl:sameAs, iri('url')),
+</code></pre>
+<p>See the section on <a href="../statements/#automatic-casts">automatic casts</a> for more information.</p>
+<h3 id="example-dynamic-iri">Example: dynamic IRI<a class="headerlink" href="#example-dynamic-iri" title="Permanent link">¶</a></h3>
+<p>The following code snippet asserts an IRI based on a declared prefix (<code>prefix.ex</code>) and the string stored in key (<code>'firstName'</code>):</p>
+<pre><code class="language-ts">fromJson([{ firstName: 'Jane' }, { firstName: 'John' }]),
+triple(iri(prefix.person, 'fistName'), a, sdo.Person),
+</code></pre>
+<p>This creates a <em>dynamic IRI</em>. This means that the asserted IRI depends on the content of the <code>'firstName'</code> key in each record. For the first record, IRI <code>person:Jane</code> is created. For the second record, IRI <code>person:John</code> is created.</p>
+<h3 id="example-static-iri">Example: static IRI<a class="headerlink" href="#example-static-iri" title="Permanent link">¶</a></h3>
+<p>The following asserts an IRI based on a declared prefix (<code>prefix.ex</code>) and a static string (see function <a href="#str">str()</a>):</p>
+<pre><code class="language-ts">triple(iri(prefix.person, str('John')), a, sdo.Person),
+</code></pre>
+<p>This creates a <em>static IRI</em>. This means that the same IRI is used for each record (always <code>person:John</code>).</p>
+<p>Notice that the same triple assertion can be made by using the <a href="#iri-constructor">Iri()</a> instead of the <code>iri()</code> function:</p>
+<pre><code class="language-ts">triple(prefix.person.concat('John'), a, sdo.Person),
+</code></pre>
+<h3 id="see-also">See also<a class="headerlink" href="#see-also" title="Permanent link">¶</a></h3>
+<p>If the same IRI is used in multiple statements, repeating the same assertion multiple times may impose a maintenance burden. In such cases, it is possible to first add the IRI to the record by using the <a href="../../../transform/ratt/#addiri">addIri()</a> function, and refer to that one IRI in multiple statement assertions.</p>
+<p>Use function <a href="#iris">iris()</a> to create multiple IRIs at once.</p>
+<h2 id="iris">iris()<a class="headerlink" href="#iris" title="Permanent link">¶</a></h2>
+<p>Creates multiple dynamic or static IRIs, one for each entry in an array of strings.</p>
+<h3 id="signature_2">Signature<a class="headerlink" href="#signature_2" title="Permanent link">¶</a></h3>
+<p>This function has the following signature:</p>
+<pre><code class="language-ts">iris(fullIris)           // 1
+iris(prefix, localNames) // 2
+</code></pre>
+<p>Signature 1 is used to explicitly cast strings that encode IRIs to IRIs.</p>
+<p>Signature 2 is used to create an IRI based on an IRI prefix and a local name.</p>
+<h3 id="parameters_2">Parameters<a class="headerlink" href="#parameters_2" title="Permanent link">¶</a></h3>
+<ul>
+<li><code>fullIri</code> is either a key that contains a dynamic string that encodes an absolute IRI, or a static string that encodes an absolute IRI.</li>
+<li><code>prefix</code> is an IRI prefix that is declared with the <a href="#iri-constructor">Iri() constructor</a>.</li>
+<li><code>localNames</code> is either a key that contains an array of strings, or an array of keys that store dynamic strings and static strings. These string are used as the local names of the IRIs that are created. These local names are suffixed to the given IRI prefix.</li>
+</ul>
+<h3 id="example">Example<a class="headerlink" href="#example" title="Permanent link">¶</a></h3>
+<p>The following code snippet asserts one IRI for each entry in record key <code>'children'</code>:</p>
+<pre><code class="language-ts">fromJson([{ parent: 'John', children: ['Joe', 'Jane'] }]),
+triple(iri(prefix.person, 'parent'), sdo.children, iris(prefix.person, 'children')),
+</code></pre>
+<p>This makes the following linked data assertions:</p>
+<pre><code class="language-turtle">person:John sdo:children person:Joe, person:Jane.
+</code></pre>
+<p>Or diagrammatically:</p>
+<div class="mermaid">graph LR
+  john -- sdo:children --&gt; joe
+  john -- sdo:children --&gt; jane
+
+  john[person:John]:::data
+  joe[person:Joe]:::data
+  jane[person:Jane]:::data
+
+  classDef data fill:yellow
+</div>
+<h2 id="list">list()<a class="headerlink" href="#list" title="Permanent link">¶</a></h2>
+<p>Creates an RDF collection or singly-linked list (class <code>rdf:List</code>).</p>
+<p>See the <a href="https://triplydb.com/how-to-model/-/stories/collections">Triply Data Story about collections</a> for more information.</p>
+<h3 id="signature_3">Signature<a class="headerlink" href="#signature_3" title="Permanent link">¶</a></h3>
+<p>This function has the following signature:</p>
+<pre><code class="language-ts">list(prefix, terms)
+</code></pre>
+<h3 id="parameters_3">Parameters<a class="headerlink" href="#parameters_3" title="Permanent link">¶</a></h3>
+<ul>
+<li><code>prefix</code> is an IRI prefix that is declared with the <a href="#iri-constructor">Iri() constructor</a>.</li>
+<li><code>terms</code> is an array of dynamic and/or static terms.</li>
+</ul>
+<h3 id="example-fruit-basket">Example: fruit basket<a class="headerlink" href="#example-fruit-basket" title="Permanent link">¶</a></h3>
+<p>The following code snippet creates linked lists (linked by <code>rdf:rest</code>), where each value stored in the <code>'contents'</code> key is <code>rdf:first</code> object:</p>
+<pre><code class="language-ts">fromJson([{ id: 123, contents: ['apple', 'pear', 'banana'] }]),
+triple(iri(prefix.basket, 'id'), def.contains, list(prefix.basket, literals('contents', lang.en))),
+</code></pre>
+<p>This results in the following linked data:</p>
+<pre><code class="language-turtle">basket:123 def:contains ( 'apple'@en 'pear'@en 'banana'@en ).
+</code></pre>
+<p>When we do not make use of the collection notation <code>( ... )</code>, the asserted linked data looks as follows:</p>
+<pre><code class="language-turtle">basket:123 def:contains _:list1.
+_:list1
+  rdf:first 'apple'@en;
+  rdf:rest _:list2.
+_:list2
+  rdf:first 'pear'@en;
+  rdf:rest _:list3.
+_:list3
+  rdf:first 'banana'@en;
+  rdf:rest rdf:nil.
+</code></pre>
+<p>Or diagrammatically:</p>
+<div class="mermaid">graph LR
+basket -- def:contains --&gt;  list1
+
+list1 -- rdf:first --&gt; apple
+list1 -- rdf:rest --&gt;  list2
+
+list2 -- rdf:first --&gt; pear
+list2 --  rdf:rest --&gt; list3
+
+list3 -- rdf:first --&gt; banana
+list3 --  rdf:rest --&gt; rdf:nil
+
+apple["'apple'@en"]:::data
+list1[_:list1]:::data
+list2[_:list2]:::data
+list3[_:list3]:::data
+banana["'banana'@en"]:::data
+basket[basket:123]:::data
+pear["'pear'@en"]:::data
+classDef data fill:yellow
+</div>
+<h3 id="example-children">Example: children<a class="headerlink" href="#example-children" title="Permanent link">¶</a></h3>
+<p>The following code snippet creates linked lists for the children of every parent:</p>
+<pre><code class="language-ts">fromJson([{ parent: 'John', children: ['Joe', 'Jane'] }]),
+triple(iri(prefix.person, 'parent'), sdo.children, list(prefix.skolem, iris(prefix.person, 'children'))),
+</code></pre>
+<p>This results in the following linked data:</p>
+<pre><code class="language-turtle">person:John sdo:children _:list1.
+_:list1
+  rdf:first person:Joe;
+  rdf:rest _:list2.
+_:list2
+  rdf:first person:Jane;
+  rdf:rest rdf:nil.
+</code></pre>
+<p>Or diagrammatically:</p>
+<div class="mermaid">graph LR
+john -- sdo:children --&gt; list1
+
+list1 -- rdf:first --&gt; joe
+list1 --  rdf:rest --&gt;  list2
+
+list2 -- rdf:first --&gt;  jane
+list2 -- rdf:rest --&gt; rdf:nil
+
+list1[_:list1]:::data
+list2[_:list2]:::data
+john[person:John]:::data
+joe[person:Joe]:::data
+jane[person:Jane]:::data
+
+classDef data fill:yellow
+</div>
+<p>The above diagram can be translated into the statement: "John has two children, where Joe is his first child and Jane is his second child".</p>
+<h3 id="maintenance-impact">Maintenance impact<a class="headerlink" href="#maintenance-impact" title="Permanent link">¶</a></h3>
+<p>Since RDF collections (or single-linked lists) require a large number of triple assertions to establish the structure of the singly-linked list, creating such collections by hand imposes a maintenance risk. It is very easy to forget one link, or to break an existing link later during maintenance. For this reason, it is always better to use the <code>list()</code> function in order to assert collections.</p>
+<h3 id="relation-to-standards">Relation to standards<a class="headerlink" href="#relation-to-standards" title="Permanent link">¶</a></h3>
+<p>The functionality of <code>list()</code> is similar to the collections notation in the linked data standards TriG, Turtle, and SPARQL.</p>
+<p>Notice that the following notation in these standards:</p>
+<pre><code class="language-turtle">person:John sdo:children ( person:Joe person:Jane ).
+</code></pre>
+<p>is structurally similar to the following code snippet that uses <code>list()</code>:</p>
+<pre><code class="language-ts">triple(iri(prefix.person, str('John')), sdo.children, list(prefix.skolem, [str('Joe'), str('Jane')])),
+</code></pre>
+<h2 id="literal">literal()<a class="headerlink" href="#literal" title="Permanent link">¶</a></h2>
+<p>Creates a literal term, based on a lexical form and a datatype IRI or language tag.</p>
+<h3 id="signature_4">Signature<a class="headerlink" href="#signature_4" title="Permanent link">¶</a></h3>
+<p>This function has the following signature:</p>
+<pre><code class="language-ts">literal(lexicalForm, languageTagOrDatatype)
+</code></pre>
+<h3 id="parameters_4">Parameters<a class="headerlink" href="#parameters_4" title="Permanent link">¶</a></h3>
+<ul>
+<li><code>lexicalForm</code> is a static string (see function <a href="#str">str()</a>), or a key that contains a dynamic string.</li>
+<li><code>languageTagOrDatatype</code> is a static language tag or datatype IRI, or a key that contains a dynamic language tag or datatype IRI.</li>
+</ul>
+<h3 id="example-language-tagged-string">Example: language-tagged string<a class="headerlink" href="#example-language-tagged-string" title="Permanent link">¶</a></h3>
+<p>The following code snippet uses a language-tagged string:</p>
+<pre><code class="language-ts">triple('_city', sdo.name, literal('name', lang.nl)),
+</code></pre>
+<p>This results in the following linked data:</p>
+<pre><code class="language-turtle">city:Amsterdam sdo:name 'Amsterdam'@nl.
+city:Berlin sdo:name 'Berlijn'@nl.
+</code></pre>
+<p>The <code>lang</code> object contains declarations for all language tags. See the sector on <a href="../../../generic/declarations/#language-tag-declarations">language tag declarations</a> for more information.</p>
+<h3 id="example-typed-literal">Example: typed literal<a class="headerlink" href="#example-typed-literal" title="Permanent link">¶</a></h3>
+<p>The following code snippet uses a typed literal:</p>
+<pre><code class="language-ts">triple('_city', vocab.population, literal('population', xsd.nonNegativeInteger)),
+</code></pre>
+<p>This results in the following linked data:</p>
+<pre><code class="language-turtle">city:Amsterdam vocab:population '1000000'^^xsd:nonNegativeInteger.
+city:Berlin vocab:population '2000000'^^xsd:nonNegativeInteger.
+</code></pre>
+<p>New datatype IRIs can be declared and used, and existing datatype IRIs can be reused from external vocabularies. The following code snippet imports four external vocabularies that contain datatype IRIs:</p>
+<pre><code class="language-ts">import { dbt, geo, rdf, xsd } from '@triplyetl/etl/generic'
+</code></pre>
+<p>Here is one example of a datatype IRI for each of these four external vocabularies:</p>
+<ul>
+<li><code>dbt.kilogram</code></li>
+<li><code>geo.wktLiteral</code></li>
+<li><code>rdf.HTML</code></li>
+<li><code>xsd.dateTime</code></li>
+</ul>
+<h3 id="example-string-literal">Example: string literal<a class="headerlink" href="#example-string-literal" title="Permanent link">¶</a></h3>
+<p>Statement assertions support <a href="../statements/#implicit-casts">implicit casts</a> from strings to string literals. This means that the following code snippet:</p>
+<pre><code class="language-ts">triple('_city', dct.identifier, literal('id', xsd.string)),
+triple('_person', sdo.name, literal(str('John Doe'), xsd.string)),
+</code></pre>
+<p>can also be expressed with the following code snippet, which does not use <code>literal()</code>:</p>
+<pre><code class="language-ts">triple('_city', dct.identifier, 'id'),
+triple('_person', sdo.name, str('John Doe')),
+</code></pre>
+<p>Both code snippets result in the following linked data:</p>
+<pre><code class="language-turtle">city:amsterdam dct:identifier '0200'.
+person:john-doe sdo:name 'John Doe'.
+</code></pre>
+<h3 id="see-also_1">See also<a class="headerlink" href="#see-also_1" title="Permanent link">¶</a></h3>
+<p>If the same literal is used in multiple statements, repeating the same literal assertion multiple times may impose a maintenance burden. In such cases, it is possible to first add the literal to the record with transformation <a href="../../../transform/ratt/#addliteral">addLiteral()</a>, and refer to that one literal in multiple statements.</p>
+<p>If multiple literals with the same language tag or datatype IRI are created, repeating the same language tag or datatype IRI may impose a maintenance burden. In such cases, the <a href="#literals">literals()</a> assertion function can be sued instead.</p>
+<h2 id="literals">literals()<a class="headerlink" href="#literals" title="Permanent link">¶</a></h2>
+<p>Creates multiple literals, one for each lexical form that appears in an array.</p>
+<h3 id="signature_5">Signature<a class="headerlink" href="#signature_5" title="Permanent link">¶</a></h3>
+<p>The signature for this function is as follows:</p>
+<pre><code class="language-ts">literals(lexicalForms, languageTagOrDatatype)
+</code></pre>
+<h3 id="parameters_5">Parameters<a class="headerlink" href="#parameters_5" title="Permanent link">¶</a></h3>
+<ul>
+<li><code>lexicalForms</code> is an array that contains string values, or a key that stores an array that contains string values.</li>
+<li><code>languageTagOrDatatype</code> is a language tag or datatype IRI.</li>
+</ul>
+<h3 id="example-fruit-basket_1">Example: fruit basket<a class="headerlink" href="#example-fruit-basket_1" title="Permanent link">¶</a></h3>
+<p>The following code snippet creates one literal for each value in the array that is stored in the <code>'contents'</code> key:</p>
+<pre><code class="language-ts">fromJson([{ id: 123, contents: ['apple', 'pear', 'banana'] }]),
+triple(iri(prefix.basket, 'id'), rdfs.member, literals('contents', lang.en)),
+</code></pre>
+<p>This results in the following linked data:</p>
+<pre><code class="language-turtle">basket:123 rdfs:member 'apple'@en, 'banana'@en, 'pear'@en.
+</code></pre>
+<p>Or diagrammatically:</p>
+<div class="mermaid">graph LR
+  basket -- rdfs:member --&gt; apple
+  basket -- rdfs:member --&gt; banana
+  basket -- rdfs:member --&gt; pear
+
+  apple["'apple'@en"]:::data
+  banana["'banana'@en"]:::data
+  basket[basket:123]:::data
+  pear["'pear'@en"]:::data
+
+  classDef data fill:yellow
+</div>
+<h3 id="example-string-literals">Example: string literals<a class="headerlink" href="#example-string-literals" title="Permanent link">¶</a></h3>
+<p>String literals can be asserted directly from a key that stores an array of strings.</p>
+<p>The following code snippet asserts one string literal for each child:</p>
+<pre><code class="language-ts">fromJson([{ parent: 'John', children: ['Joe', 'Jane'] }]),
+triple(iri(prefix.person, 'parent'), sdo.children, 'children'),
+</code></pre>
+<p>This results in the following linked data assertions:</p>
+<pre><code class="language-turtle">person:John sdo:children 'Jane', 'Joe'.
+</code></pre>
+<p>Or diagrammatically:</p>
+<div class="mermaid">graph LR
+  john -- sdo:children --&gt; jane
+  john -- sdo:children --&gt; joe
+
+  jane['Jane']:::data
+  joe['Joe']:::data
+  john['John']:::data
+
+  classDef data fill:yellow
+</div>
+<p>The same thing can be achieved by specifying an explicit datatype IRI:</p>
+<pre><code class="language-ts">triple(iri(prefix.person, 'parent'), sdo.children, literals('children', xsd.string)),
+</code></pre>
+<h2 id="str">str()<a class="headerlink" href="#str" title="Permanent link">¶</a></h2>
+<p>Creates a <code>StaticString</code> value.</p>
+<p>RATT uses strings to denote keys in the record. The used string denotes a key that results in <em>dynamic values</em>: a value that is different for each record. Sometimes we want to specify a <em>static string</em> instead: a string that is the same for each record.</p>
+<p>With the <code>str()</code> function we indicate that a string <strong>should not</strong> be processed as a key, but should be processed as a regular (static) string value. This is usefull in case we want to provide a regular string to a middleware, and not a key that could relate to the record.</p>
+<h3 id="signature_6">Signature<a class="headerlink" href="#signature_6" title="Permanent link">¶</a></h3>
+<p>This function has the following signature:</p>
+<pre><code class="language-ts">str(string)
+</code></pre>
+<h3 id="parameters_6">Parameters<a class="headerlink" href="#parameters_6" title="Permanent link">¶</a></h3>
+<ul>
+<li><code>string</code> is a string value.</li>
+</ul>
+<h3 id="example_1">Example<a class="headerlink" href="#example_1" title="Permanent link">¶</a></h3>
+<p>In RATT, strings often denote keys in the record. For example, the string <code>'abc'</code> in the following code snippet indicates that the <em>value</em> of key <code>'abc'</code> should be used as the local name of the IRI in the subject position, and should be used as the lexical form of the literal in the object position:</p>
+<pre><code class="language-ts">triple(iri(prefix.id, 'abc'), rdfs.label, 'abc'),
+</code></pre>
+<p>If we want to assert the regular (static) string <code>'abc'</code>, we must use the <code>str()</code> function. The following code snippet asserts the IRI <code>id:abc</code> and the literal <code>'abc'</code>:</p>
+<pre><code class="language-ts">triple(iri(prefix.id, str('abc')), rdfs.label, str('abc')),
+</code></pre>
+<p>To illustrate the difference between a dynamic string <code>'key'</code> and the static string <code>str('key')</code> in a more complex usecase, imagine we use the following <code>ifElse</code> condition in our ETL:</p>
+<pre><code class="language-ts">  etl.use(
+
+    fromJson([
+      { parent: 'John', child: 'Jane', notchild: 'Joe' }, 
+      { parent: 'Lisa', child: 'James', notchild: 'Mike' } 
+      ]),
+
+    ifElse({
+      if: ctx =&gt; ctx.getString('parent') === 'John',
+      then: triple(iri(prefix.id, 'parent'), sdo.children, iri(prefix.id, 'child'))
+
+    }),
+    logQuads()
+  )
+</code></pre>
+<p>In the context of the first record <code>{ parent: 'John', child: 'Jane', notchild: 'Joe' }</code>, we grab the string in the key <code>parent</code> for string comparison to the string <code>'John'</code>. This value is dynamic and will be <code>'John'</code> for the first record (returning <code>true</code> for the string comparison) and <code>Lisa</code> for the second record (returning <code>false</code> for the string comparison).</p>
+<p>This results in the created triple:</p>
+<pre><code class="language-nt">&lt;https://example.com/id/John&gt; sdo:children &lt;https://example.com/id/Jane&gt;
+</code></pre>
+<p>If we would use <code>str()</code> in the <code>ifElse</code> for the string comparison, it would statically compare the two strings. This means that in the following example we compare string <code>'parent' === 'John'</code>, which will return <code>false</code> for each record.</p>
+<pre><code class="language-ts">  ifElse({
+      if: ctx =&gt; ctx.getString(str('parent')) === 'John',
+      then: triple(iri(prefix.id, 'parent'), sdo.children, iri(prefix.id, 'child'))
+</code></pre>
+<p>However, if we would change the static string from <code>str('parent')</code> to <code>str('John')</code>, the string comparison will always return <code>true</code> for each record:</p>
+<pre><code class="language-ts">  etl.use(
+
+    fromJson([
+      { parent: 'John', child: 'Jane', notchild: 'Joe' }, 
+      { parent: 'Lisa', child: 'James', notchild: 'Mike' } 
+      ]),
+
+    ifElse({
+      if: ctx =&gt; ctx.getString(str('John')) === 'John',
+      then: triple(iri(prefix.id, 'parent'), sdo.children, iri(prefix.id, 'child'))
+
+    }),
+    logQuads()
+  )
+</code></pre>
+<p>This results in the created triples:</p>
+<pre><code class="language-nt">&lt;https://example.com/id/John&gt; sdo:children &lt;https://example.com/id/Jane&gt;
+&lt;https://example.com/id/Lisa&gt; sdo:children &lt;https://example.com/id/James&gt;
+</code></pre>
+<h3 id="relation-to-standards_1">Relation to standards<a class="headerlink" href="#relation-to-standards_1" title="Permanent link">¶</a></h3>
+<p>The functionality of <code>str()</code> is conceptually similar to the <code>str</code> function in SPARQL. In SPARQL, the <code>str</code> function is used to explicitly cast IRIs to their string value, and literals to their lexical form.</p>
+</div>
+</div><footer>
+<div aria-label="Footer Navigation" class="rst-footer-buttons" role="navigation">
+<a class="btn btn-neutral float-left" href="../../json-ld/" title="JSON-LD"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+<a class="btn btn-neutral float-right" href="../statements/" title="RATT Statements">Next <span class="icon icon-circle-arrow-right"></span></a>
+</div>
+<hr/>
+<div role="contentinfo">
+<!-- Copyright etc -->
+</div>
+</footer>
+</div>
+</div>
+</section>
+</div>
+<div aria-label="Versions" class="rst-versions" role="note">
+<span class="rst-current-version" data-toggle="rst-current-version">
+<span><a href="../../json-ld/" style="color: #fcfcfc">« Previous</a></span>
+<span><a href="../statements/" style="color: #fcfcfc">Next »</a></span>
+</span>
+</div>
+<script>var base_url = '../../../..';</script>
+<script defer="" src="../../../../js/triply.js"></script>
+<script defer="" src="../../../../js/highlight.min.js"></script>
+<script defer="" src="../../../../search/main.js"></script>
+<script type="module">import mermaid from "https://unpkg.com/mermaid@10.4.0/dist/mermaid.esm.min.mjs";
+mermaid.initialize({});</script></body>
+</html>
