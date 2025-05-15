@@ -10,6 +10,12 @@ This intent of this changelog is primarily for documenting breaking changes or c
 that are useful to know when deploying/upgrading TriplyDB.
 
 
+## 25.5.100 {#25.5.100}
+
+**Release date:** 2025-05-14
+
+None
+
 ## 25.4.300 {#25.4.300}
 
 **Release date:** 2025-04-28
