@@ -5,6 +5,23 @@ path: "/docs/triplydb-changelog"
 
 [TOC]
 
+## 25.5.100 {#25.5.100}
+
+**Release date:** 2025-05-14
+
+**Features**
+- `#10058` Apply stricter content-security-policies in the UI, making the UI more robust
+  against illegal use and cross site scripting
+- `#6218` Make API error messages more consistent
+
+
+
+**Issues fixed**
+- `#10386` Uploading CSVs may result in errors
+- `#10369` Improve visual queues in the UI for which resources are public, internal or
+  private
+- `#10429` API requests are dropped in rare cases (0.0002% of all requests)
+
 
 ## 25.4.300 {#25.4.300}
 
