@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <meta name="description" content="The official documentation for the Triply products: TriplyDB, TriplyDB.js, and TriplyETL." />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>GraphQL implementation information - Triply Documentation</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link href="../../css/intellij-light.css" rel="stylesheet" />
+        <link href="../../css/triply.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "GraphQL implementation information";
+        var mkdocs_page_input_path = "generics/Graphql.md";
+        var mkdocs_page_url = null;
+      </script>
+     
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> Triply Documentation
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">TriplyDB</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Getting started</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-db-getting-started/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-db-getting-started/uploading-data/">Uploading Data</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-db-getting-started/editing-data/">Editing (SKOS) Data</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-db-getting-started/publishing-data/">Sharing Data</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-db-getting-started/viewing-data/">Viewing Data</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-db-getting-started/exporting-data/">Exporting Data</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-db-getting-started/saved-queries/">Saved Queries</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-db-getting-started/data-stories/">Data Stories</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-db-getting-started/admin-settings-pages/">Admin Settings Pages</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-db-getting-started/reference/">Reference</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../triply-api/">API</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">TriplyDB-JS</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../triplydb-js/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triplydb-js/app/">App</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triplydb-js/account/">Account</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triplydb-js/asset/">Asset</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triplydb-js/dataset/">Dataset</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triplydb-js/graph/">Graph</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triplydb-js/organization/">Organization</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triplydb-js/query/">Query</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triplydb-js/service/">Service</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triplydb-js/story/">Story</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triplydb-js/user/">User</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triplydb-js/faq/">FAQ</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../triply-cli/">Command-line Interface</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../triplydb-changelog/">Changelog</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">TriplyETL</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Generic</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/generic/getting-started/">Getting Started</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/generic/changelog/">Changelog</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/generic/cli/">Command Line Interface (CLI)</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/generic/declarations/">Declarations</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/generic/control-structures/">Control Structures</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/generic/debug/">Debug</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/generic/internal-store/">Internal Store</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/generic/maintenance/">Maintenance</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/generic/record/">Record</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/generic/vocabularies/">Vocabularies</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Sources</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/sources/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/sources/apis/">APIs</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/sources/inline-json/">Inline JSON</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/sources/inline-strings/">Inline Strings</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/sources/local-files/">Local Files</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/sources/online-files/">Online Files</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/sources/rml/">RML Sources</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/sources/triplydb-assets/">TriplyDB Assets</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/sources/triplydb-datasets/">TriplyDB Datasets</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/sources/triplydb-queries/">TriplyDB Queries</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Extract</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/extract/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/extract/csv/">CSV</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/extract/json/">JSON</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/extract/oai-pmh/">OAI-PMH</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/extract/postgres/">Postgres</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/extract/rdf/">RDF</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/extract/shapefile/">Shapefile</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/extract/tsv/">TSV</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/extract/xlsx/">XLSX</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/extract/xml/">XML</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Transform</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/transform/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/transform/ratt/">RATT</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/transform/rml/">RML</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/transform/typescript/">TypeScript</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/transform/xslt/">XSLT</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Assert</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/assert/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/assert/json-ld/">JSON-LD</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="#">RATT</a>
+    <ul>
+                <li class="toctree-l3"><a class="reference internal" href="../../triply-etl/assert/ratt/terms/">RATT Terms</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../../triply-etl/assert/ratt/statements/">RATT Statements</a>
+                </li>
+    </ul>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/assert/rml/">RML</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/assert/xslt/">XSLT</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Enrich</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/enrich/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="#">SHACL</a>
+    <ul>
+                <li class="toctree-l3"><a class="reference internal" href="../../triply-etl/enrich/shacl/">Overview</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../../triply-etl/enrich/shacl/triple-rules/">Triple Rules</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../../triply-etl/enrich/shacl/sparql-rules/">SPARQL Rules</a>
+                </li>
+    </ul>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="#">SPARQL</a>
+    <ul>
+                <li class="toctree-l3"><a class="reference internal" href="../../triply-etl/enrich/sparql/construct/">SPARQL Construct</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../../triply-etl/enrich/sparql/update/">SPARQL Update</a>
+                </li>
+    </ul>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Validate</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/validate/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/validate/graph-comparison/">Graph Comparison</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/validate/shacl/">SHACL</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../triply-etl/publish/">Publish</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Yasgui</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../yasgui/">Introduction</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../yasgui-api/">For Developers</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">Triply Documentation</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">GraphQL implementation information</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <div class="toc"><span class="toctitle">On this page:</span><ul>
+<li><a href="#graphql-implementation">Graphql implementation</a><ul>
+<li><a href="#schema">Schema</a><ul>
+<li><a href="#object-types">Object types</a></li>
+<li><a href="#fields">Fields</a></li>
+<li><a href="#ids">IDs</a></li>
+<li><a href="#naming">Naming</a><ul>
+<li><a href="#renaming">Renaming</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#queries">Queries</a><ul>
+<li><a href="#global-object-identification">Global Object identification</a></li>
+<li><a href="#pagination">Pagination</a></li>
+<li><a href="#filtering">Filtering</a></li>
+<li><a href="#simple-cases">Simple cases</a><ul>
+<li><a href="#language-filtering">Language filtering</a></li>
+</ul>
+</li>
+<li><a href="#advanced-filtering">Advanced filtering</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<h1 id="graphql-implementation">Graphql implementation<a class="headerlink" href="#graphql-implementation" title="Permanent link">&para;</a></h1>
+<p>Some TriplyDB instances expose a GraphQL endpoint. This endpoint uses information from user-provided SHACL shapes for the schema creation.</p>
+<p>The goal of this documentation is to inform users about Triply's implementation of the GraphQL endpoint. For more generic information about GraphQL, you can visit <a href="https://graphql.org/">graphql.org</a> or other resources. In order to understand this documentation, you have to be familiar with the SHACL language.</p>
+<p>Note: in order to avoid confusion we will use the noun <code>object</code> as a synonym for <code>resource</code> and <code>triple object</code> when referring to the third element of a triple.</p>
+<h2 id="schema">Schema<a class="headerlink" href="#schema" title="Permanent link">&para;</a></h2>
+<h3 id="object-types">Object types<a class="headerlink" href="#object-types" title="Permanent link">&para;</a></h3>
+<p>A basic element of the schema is object types, which represents the type of the resources that you can query.</p>
+<pre><code class="language-graphql">type Book {
+  id:ID!
+  title:[XsdString]!
+}
+</code></pre>
+<p>This object type corresponds to the shape below:</p>
+<pre><code class="language-turtle">shp:Book
+  a sh:NodeShape;
+  sh:targetClass sdo:Book;
+  sh:property
+    [ sh:path dc:title;
+      sh:datatype xsd:string ].
+</code></pre>
+<h3 id="fields">Fields<a class="headerlink" href="#fields" title="Permanent link">&para;</a></h3>
+<p>Fields in object types, such as <code>title</code>, represent properties of nodes. By default, fields return arrays of values. The only exception is when the property has <code>sh:maxCount: 1</code>, then the field returns a single value.
+Thus, for the shape:</p>
+<pre><code class="language-turtle">shp:Book
+  a sh:NodeShape;
+  sh:targetClass sdo:Book;
+  sh:property
+    [ sh:path dc:title;
+      sh:maxCount 1;
+      sh:datatype xsd:string ].
+</code></pre>
+<p>The object type will be:</p>
+<pre><code class="language-graphql">type Book {
+  id:ID!
+  title:XsdString
+}
+</code></pre>
+<p>Additionally, following the <a href="https://graphql.org/learn/best-practices/#nullability">best practices</a>, fields can give null results, except for:</p>
+<ul>
+<li>IDs, which represents the IRI of the resource.</li>
+<li>Lists, but not their elements</li>
+<li>Properties that have <code>sh:minCount 1</code> and <code>sh:maxCount 1</code></li>
+</ul>
+<p>Thus, for this shape:</p>
+<pre><code class="language-turtle">shp:Book
+  a sh:NodeShape;
+  sh:targetClass sdo:Book;
+  sh:property
+    [ sh:path dc:title;
+      sh:maxCount 1;
+      sh:minCount 1;
+      sh:datatype xsd:string ].
+</code></pre>
+<p>The corresponding object type is:</p>
+<pre><code class="language-graphql">type Book {
+  id:ID!
+  title:XsdString!
+}
+</code></pre>
+<p>If the property shape includes an <code>sh:datatype</code>, the field returns values of GraphQL scalar type (see example above). On the other hand, if the property shape has an <code>sh:class</code> pointing to a class that:
+- is the <code>sh:targetClass</code> of a node shape, the field returns values of the corresponding object type.
+- is not mentioned as a <code>sh:targetClass</code> in a node shape, then the type of the returned values is <code>ExternalIri</code>.</p>
+<p>Therefore, the shapes:</p>
+<pre><code class="language-turtle">shp:Book
+  a sh:NodeShape;
+  sh:targetClass sdo:Book;
+  sh:property
+    [ sh:path sdo:author;
+      sh:class sdo:Person ];
+    [ sh:path sdo:audio;
+      sh:class sdo:AudioObject ].
+
+shp:Person
+  a sh:NodeShape;
+  sh:targetClass sdo:Person;
+  sh:property
+    [ sh:path sdo:name;
+      sh:datatype xsd:string ].
+</code></pre>
+<p>correspond to the below graphql types:</p>
+<pre><code class="language-graphql">type Book {
+  id:ID!
+  author:[Person]!
+  audio:[ExternalIri]!
+}
+
+type Person {
+  id:ID!
+  name:[XsdString]!
+}
+</code></pre>
+<h3 id="ids">IDs<a class="headerlink" href="#ids" title="Permanent link">&para;</a></h3>
+<p>The id field is of type ID, which represents the IRI of each resource. This ID is unique.</p>
+<p>For example:</p>
+<pre><code class="language-turtle">book:Odyssey
+  a sdo:Book;
+  dct:title &quot;Odyssey&quot;.
+</code></pre>
+<p>The id field of this resource would be <code>https://example.org/book/Odyssey</code>.
+You can read more information on the <code>ID</code> scalar in <a href="https://graphql.org/learn/schema/#scalar-types">graphql.org</a>. Also, the use of the <code>id</code> field is mentioned later in the section <a href="#global-object-identification">Object Global Identification</a>.</p>
+<h3 id="naming">Naming<a class="headerlink" href="#naming" title="Permanent link">&para;</a></h3>
+<p>In order to name the GraphQL types in correspondence to shapes, we follow the below conventions:
+- For object types, we use the <code>sh:targetClass</code> of the node shape.
+- For object type fields, we use the <code>sh:path</code> of the property shape.</p>
+<p>More specifically, the name comes from the part of the IRI after the last <code>#</code> or otherwise the last <code>/</code>, converted from kebab-case to camelCase.</p>
+<p>Notice that if the selected name is illegal or causes a name collision, we'll return an error informing the user about the problem and ignore this type or field.</p>
+<h4 id="renaming">Renaming<a class="headerlink" href="#renaming" title="Permanent link">&para;</a></h4>
+<p>Shape designers are able use their custom names by using a special property: <code>&lt;https://triplydb.com/Triply/GraphQL/def/graphqlName&gt;</code>.
+More specifically, the designer has to add a triple with :
+- for object types, the class IRI
+- for fields, the IRI of the property shape</p>
+<p>as a subject, the above-mentioned predicate and a string literal with the custom name as triple object.</p>
+<p>If we wanted to rename using the first example of the section, we would do:</p>
+<pre><code class="language-turtle">shp:Book
+  a sh:NodeShape;
+  sh:targetClass sdo:Book;
+  sh:property
+    [ sh:path dc:title;
+      triply:graphqlName &quot;name&quot;; # Rename the object type field
+      sh:datatype xsd:string ]
+
+sdo:Book
+  triply:graphqlName &quot;PieceOfArt&quot;. # Rename the object type field.
+</code></pre>
+<p>Then the corresponding object type would be:</p>
+<pre><code class="language-graphql">type PieceOfArt {
+  id:ID!
+  name:[XsdString]!
+}
+</code></pre>
+<h2 id="queries">Queries<a class="headerlink" href="#queries" title="Permanent link">&para;</a></h2>
+<p>The user can query for objects using their unique ID. Also, they can query for objects of a specific type along with fields, and get nested information. Last, the user can get information by filtering results. Let's see some important concepts.</p>
+<h3 id="global-object-identification">Global Object identification<a class="headerlink" href="#global-object-identification" title="Permanent link">&para;</a></h3>
+<p>For reasons such as caching, the user should be able to query an object by their unique ID. This is possible using global object identification, using the <code>node(id:ID)</code> query.</p>
+<p>An example:</p>
+<pre><code class="language-graphql">{
+  node(id: &quot;https://example.org/book/Odyssey&quot;) {
+    id
+  }
+}
+</code></pre>
+<p>For more information on global object identification, see <a href="https://graphql.org/learn/global-object-identification/">graphql specification</a>.</p>
+<h3 id="pagination">Pagination<a class="headerlink" href="#pagination" title="Permanent link">&para;</a></h3>
+<p>A simple query would be:</p>
+<pre><code class="language-graphql">{
+  BookConnection {
+    edges {
+      node {
+        id
+        title
+      }
+    }
+  }
+}
+</code></pre>
+<p>The results would include the IRIs of books together with their titles and would be paginated.</p>
+<p>In order to paginate through a large number of results, our GraphQL implementation supports <strong>cursor-based pagination using connections</strong>. For more information, please visit the Relay project's <a href="https://relay.dev/graphql/connections.htm">cursor-based connection pagination specification</a>.</p>
+<h3 id="filtering">Filtering<a class="headerlink" href="#filtering" title="Permanent link">&para;</a></h3>
+<p>When you query for objects, you might want to get back resources based on specific values in certain fields. You can do this by filtering.</p>
+<h3 id="simple-cases">Simple cases<a class="headerlink" href="#simple-cases" title="Permanent link">&para;</a></h3>
+<p>For example, you can query for people with a specific id:</p>
+<pre><code class="language-graphql">{
+  PersonConnection(filter: {id: &quot;https://example.org/person/Homer&quot;}) {
+    edges {
+      node {
+        id
+        name
+      }
+    }
+  }
+}
+</code></pre>
+<p>Another query would be to search for a person with a specific name:</p>
+<pre><code class="language-graphql">{
+  PersonConnection(filter: {name: {eq: &quot;Homer&quot;}}) {
+    edges {
+      node {
+        id
+        name
+      }
+    }
+  }
+}
+</code></pre>
+<p>Notice that in the second example, there is a new field for filtering called <code>eq</code>. When we want to filter on a field with returns a scalar, meaning that its value is represented by a literal in linked data, we have to use comparison operators: <code>eq</code>,<code>in</code> for equality, and <code>notEq</code> and <code>notIn</code> for inequality. The operators <code>in</code> and<code>notIn</code> are refering to lists.</p>
+<p>On the other hand, when we are filtering based on IDs - or in linked data terms, based on the IRI - , as in the first example, we don't use comparison operators.</p>
+<p>The only idiomatic case is the literal with a language tag and <code>rdf:langString</code> as a datatype. This literal is represented as <code>{ value: "example-string", language: "en" }</code> and the corresponding scalar is <code>RdfsLangString</code> . This means that in order to filter using a value of this scalar type, you have to execute the query below:</p>
+<pre><code class="language-graphql">{
+  PersonConnection(filter: {name: {eq: {value: &quot;Odysseus&quot;, language: &quot;en&quot;}}}) {
+    edges {
+      node {
+        id
+        name
+      }
+    }
+  }
+}
+</code></pre>
+<h4 id="language-filtering">Language filtering<a class="headerlink" href="#language-filtering" title="Permanent link">&para;</a></h4>
+<p>Additionally, there is support for filtering results based on the language tag.</p>
+<p>An example is:</p>
+<ul>
+<li>Linked data:</li>
+</ul>
+<pre><code class="language-turtle">person:Odysseus
+  a sdo:Person;
+  sdo:name
+    &quot;Odysseus&quot;@en,
+    &quot;Οδυσσεύς&quot;@gr.
+
+shp:Person
+  a sh:NodeShape;
+  sh:targetClass sdo:Person;
+  sh:property
+    [ sh:path sdo:name;
+      sh:datatype rdf:langString ].
+</code></pre>
+<ul>
+<li>GraphQL query:</li>
+</ul>
+<pre><code class="language-graphql">{
+  PersonConnection {
+    edges {
+      node {
+        id
+        name(language:&quot;gr&quot;)
+      }
+    }
+  }
+}
+</code></pre>
+<ul>
+<li>Results:</li>
+</ul>
+<pre><code class="language-graphql">{
+  &quot;data&quot;: {
+    &quot;PersonConnection&quot;: {
+      &quot;edges&quot;: [
+        {
+          &quot;node&quot;: {
+            &quot;id&quot;: &quot;https://example.org/person/Odysseus&quot;,
+            &quot;name&quot;: [
+              {
+                &quot;value&quot;: &quot;Οδυσσεύς&quot;,
+                &quot;language&quot;: &quot;gr&quot;
+              }
+            ]
+          }
+        }
+      ]
+    }
+  }
+}
+</code></pre>
+<p>Our implementation supports using the HTTP Accept-Language syntax, for filtering based on a language-tag.</p>
+<p>For example,</p>
+<ul>
+<li>GraphQL query:</li>
+</ul>
+<pre><code class="language-graphql">{
+  PersonConnection {
+    edges {
+      node {
+        id
+        name(language:&quot;gr, en;q=.5&quot;)
+      }
+    }
+  }
+}
+</code></pre>
+<ul>
+<li>Results:</li>
+</ul>
+<pre><code class="language-graphql">{
+  &quot;data&quot;: {
+    &quot;PersonConnection&quot;: {
+      &quot;edges&quot;: [
+        {
+          &quot;node&quot;: {
+            &quot;id&quot;: &quot;https://example.org/person/Odysseus&quot;,
+            &quot;name&quot;: [
+              {
+                &quot;value&quot;: &quot;Οδυσσεύς&quot;,
+                &quot;language&quot;: &quot;gr&quot;
+              },
+              {
+                &quot;value&quot;: &quot;Odysseus&quot;,
+                &quot;language&quot;: &quot;en&quot;
+              },
+            ]
+          }
+        }
+      ]
+    }
+  }
+}
+</code></pre>
+<p>If the writer of the shapes includes the <code>sh:uniqueLang</code> constraint, then the result returned will be a single value, instead of an array.</p>
+<p>Thus, the example becomes:</p>
+<ul>
+<li>Linked data:</li>
+</ul>
+<pre><code class="language-turtle">person:Odysseus
+  a sdo:Person;
+  sdo:name
+    &quot;Odysseus&quot;@en,
+    &quot;Οδυσσεύς&quot;@gr.
+
+shp:Person
+  a sh:NodeShape;
+  sh:targetClass sdo:Person;
+  sh:property
+    [ sh:path sdo:name;
+      sh:uniqueLang true;
+      sh:datatype rdf:langString ].
+</code></pre>
+<ul>
+<li>GraphQL query:</li>
+</ul>
+<pre><code class="language-graphql">{
+  PersonConnection {
+    edges {
+      node {
+        id
+        name(language:&quot;gr, en;q=.5&quot;)
+      }
+    }
+  }
+}
+</code></pre>
+<ul>
+<li>Results:</li>
+</ul>
+<pre><code class="language-graphql">{
+  &quot;data&quot;: {
+    &quot;PersonConnection&quot;: {
+      &quot;edges&quot;: [
+        {
+          &quot;node&quot;: {
+            &quot;id&quot;: &quot;https://example.org/person/Odysseus&quot;,
+            &quot;name&quot;: {
+              &quot;value&quot;: &quot;Οδυσσεύς&quot;,
+              &quot;language&quot;: &quot;gr&quot;
+            }
+          }
+        }
+      ]
+    }
+  }
+}
+</code></pre>
+<h3 id="advanced-filtering">Advanced filtering<a class="headerlink" href="#advanced-filtering" title="Permanent link">&para;</a></h3>
+<p>Furthermore, there is possibility for nested filtering:</p>
+<pre><code class="language-graphql">{
+  BookConnection(
+    filter: {author: {name: {eq: &quot;Homer&quot;}}}
+  ) {
+    edges {
+      node {
+        id
+      }
+    }
+  }
+}
+</code></pre>
+<p>and for combination of filters:</p>
+<pre><code class="language-graphql">{
+  BookConnection(
+    filter: {author: {name: {eq: &quot;Homer&quot;}}, name: {eq: &quot;Odyssey&quot;}}
+  ) {
+    edges {
+      node {
+        id
+      }
+    }
+  }
+}
+</code></pre>
+<p>Note: The combination of filters is executed in an <strong>'and'</strong> logic.</p>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script>var base_url = '../..';</script>
+      <script src="../../js/triply.js" defer></script>
+      <script src="../../js/highlight.min.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+
+</body>
+</html>
