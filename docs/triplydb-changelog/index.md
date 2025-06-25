@@ -5,6 +5,55 @@ path: "/docs/triplydb-changelog"
 
 [TOC]
 
+
+## 25.6.200 {#25.6.200}
+
+**Release date:** 2025-06-26
+
+**Features**
+- `#10308` Added visual cue for readonly properties in the editor
+- `#10300` Display modification dates for saved query versions
+
+**Issues fixed**
+
+- `#10380` Intermediate changes in TriplyDB may interrupt service updates
+- `#10438` Copying a sparql query as curl command may result in an invalid shell command
+- `#10512` Atypical queries that run as query job consistently fail after 5 minutes
+
+
+
+
+## 25.6.100 {#25.6.100}
+
+**Release date:** 2025-06-05
+
+
+**Issues fixed**
+- `#10477` Cannot access index information for elasticsearch
+- `#10380` Intermediate changes in TriplyDB may interrupt service updates
+- `#10438` Copying a sparql query as curl command may result in an invalid shell command
+
+
+
+## 25.5.100 {#25.5.100}
+
+**Release date:** 2025-05-14
+
+**Features**
+- `#10058` Apply stricter content-security-policies in the UI, making the UI more robust
+  against illegal use and cross site scripting
+- `#6218` Make API error messages more consistent
+
+
+
+**Issues fixed**
+- `#10386` Uploading CSVs may result in errors
+- `#10369` Improve visual queues in the UI for which resources are public, internal or
+  private
+- `#10429` API requests are dropped in rare cases (0.0002% of all requests)
+
+
+
 ## 25.5.100 {#25.5.100}
 
 **Release date:** 2025-05-14
