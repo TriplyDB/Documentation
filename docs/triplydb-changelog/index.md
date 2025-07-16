@@ -6,6 +6,31 @@ path: "/docs/triplydb-changelog"
 [TOC]
 
 
+## 25.7.100 {#25.7.100}
+
+**Release date:** 2025-07-16
+
+**Features**
+- `#10261` [Editor] Support entering language-tagged strings
+- `#10543` [Editor] Support collapsing and expanding groups 
+- `#10240` [Editor] Automatically fill in the range class when adding a new instance
+- `#10449` Support long running select-queries in query jobs
+- `#10557` Improve user experience when copying IRIs in LD-Browser
+- `#10542` [SPARQL-IDE] Report errors in the IDE when a query includes expressions (e.g. `BIND(..) as ?x`) that reference a variable that are out of scope
+- `#10478` Improve performance for autocompleting terms in e.g. the SPARQL IDE or data stories.
+- `#10600` Improve error messages when using SHACL functions, reporting whether a function does not exist, or whether a wrong number of arguments is used.
+
+
+**Issues fixed**
+
+- `#10432` [SPARQL-IDE, LD-Browser] SVGs not always rendered correctly in SPARQL
+- `#9967` [SPARQL-update] Concurrent requests may result in wrong modifications
+- `#10489` [LD-Table] Filtering on literals may return 0 autocompletion results
+- `#10522` Dataset sidebar behaves odd on page refresh
+- `#10191` An atypical query job never starts
+- `#10545` An atypical query always returns an error
+
+
 ## 25.6.200 {#25.6.200}
 
 **Release date:** 2025-06-26
