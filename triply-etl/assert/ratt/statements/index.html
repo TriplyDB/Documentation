@@ -1,0 +1,771 @@
+<!DOCTYPE html>
+
+<html class="writer-html5" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="IE=edge" http-equiv="X-UA-Compatible"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="The official documentation for the Triply products: TriplyDB, TriplyDB.js, and TriplyETL." name="description"/>
+<link href="../../../../img/favicon.ico" rel="shortcut icon"/>
+<title>RATT Statements - Triply Documentation</title>
+<link href="../../../../css/theme.css" rel="stylesheet"/>
+<link href="../../../../css/theme_extra.css" rel="stylesheet"/>
+<link href="../../../../css/intellij-light.css" rel="stylesheet"/>
+<link href="../../../../css/triply.css" rel="stylesheet"/>
+<script>
+        // Current page data
+        var mkdocs_page_name = "RATT Statements";
+        var mkdocs_page_input_path = "triply-etl/assert/ratt/statements.md";
+        var mkdocs_page_url = null;
+      </script>
+</head>
+<body class="wy-body-for-nav" role="document">
+<div class="wy-grid-for-nav">
+<nav class="wy-nav-side stickynav" data-toggle="wy-nav-shift">
+<div class="wy-side-scroll">
+<div class="wy-side-nav-search">
+<a class="icon icon-home" href="../../../.."> Triply Documentation
+        </a><div role="search">
+<form action="../../../../search.html" class="wy-form" id="rtd-search-form" method="get">
+<input aria-label="Search docs" name="q" placeholder="Search docs" title="Type search term here" type="text"/>
+</form>
+</div>
+</div>
+<div aria-label="Navigation menu" class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../..">Home</a>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">TriplyDB</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="#">Getting started</a>
+<ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../triply-db-getting-started/">Overview</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../triply-db-getting-started/uploading-data/">Uploading Data</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../triply-db-getting-started/editing-data/">Editing (SKOS) Data</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../triply-db-getting-started/publishing-data/">Sharing Data</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../triply-db-getting-started/viewing-data/">Viewing Data</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../triply-db-getting-started/exporting-data/">Exporting Data</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../triply-db-getting-started/saved-queries/">Saved Queries</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../triply-db-getting-started/data-stories/">Data Stories</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../triply-db-getting-started/admin-settings-pages/">Admin Settings Pages</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../triply-db-getting-started/reference/">Reference</a>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../triply-api/">API</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#">TriplyDB-JS</a>
+<ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../triplydb-js/">Overview</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../triplydb-js/app/">App</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../triplydb-js/account/">Account</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../triplydb-js/asset/">Asset</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../triplydb-js/dataset/">Dataset</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../triplydb-js/graph/">Graph</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../triplydb-js/organization/">Organization</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../triplydb-js/query/">Query</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../triplydb-js/service/">Service</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../triplydb-js/story/">Story</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../triplydb-js/user/">User</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../triplydb-js/faq/">FAQ</a>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../triply-cli/">Command-line Interface</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../triplydb-changelog/">Changelog</a>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">TriplyETL</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="#">Generic</a>
+<ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../">Overview</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../generic/getting-started/">Getting Started</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../generic/changelog/">Changelog</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../generic/cli/">Command Line Interface (CLI)</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../generic/declarations/">Declarations</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../generic/control-structures/">Control Structures</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../generic/debug/">Debug</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../generic/internal-store/">Internal Store</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../generic/maintenance/">Maintenance</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../generic/record/">Record</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../generic/vocabularies/">Vocabularies</a>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#">Sources</a>
+<ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../sources/">Overview</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../sources/apis/">APIs</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../sources/inline-json/">Inline JSON</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../sources/inline-strings/">Inline Strings</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../sources/local-files/">Local Files</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../sources/online-files/">Online Files</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../sources/rml/">RML Sources</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../sources/triplydb-assets/">TriplyDB Assets</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../sources/triplydb-datasets/">TriplyDB Datasets</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../sources/triplydb-queries/">TriplyDB Queries</a>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#">Extract</a>
+<ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../extract/">Overview</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../extract/csv/">CSV</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../extract/json/">JSON</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../extract/oai-pmh/">OAI-PMH</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../extract/postgres/">Postgres</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../extract/rdf/">RDF</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../extract/shapefile/">Shapefile</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../extract/tsv/">TSV</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../extract/xlsx/">XLSX</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../extract/xml/">XML</a>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#">Transform</a>
+<ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../transform/">Overview</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../transform/ratt/">RATT</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../transform/rml/">RML</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../transform/typescript/">TypeScript</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../transform/xslt/">XSLT</a>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal current" href="#">Assert</a>
+<ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../">Overview</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../json-ld/">JSON-LD</a>
+</li>
+<li class="toctree-l2 current"><a class="reference internal current" href="#">RATT</a>
+<ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../terms/">RATT Terms</a>
+</li>
+<li class="toctree-l3 current"><a class="reference internal current" href="./">RATT Statements</a>
+<ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="#nestedpairs">nestedPairs()</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#objects">objects()</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#pairs">pairs()</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#quad">quad()</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#quads">quads()</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#triple">triple()</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#triples">triples()</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#implicit-casts">Implicit casts</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../rml/">RML</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../xslt/">XSLT</a>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#">Enrich</a>
+<ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../enrich/">Overview</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#">SHACL</a>
+<ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../enrich/shacl/">Overview</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../enrich/shacl/triple-rules/">Triple Rules</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../enrich/shacl/sparql-rules/">SPARQL Rules</a>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#">SPARQL</a>
+<ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../enrich/sparql/construct/">SPARQL Construct</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../enrich/sparql/update/">SPARQL Update</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#">Validate</a>
+<ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../validate/">Overview</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../validate/graph-comparison/">Graph Comparison</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../validate/shacl/">SHACL</a>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../publish/">Publish</a>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Yasgui</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../yasgui/">Introduction</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../yasgui-api/">For Developers</a>
+</li>
+</ul>
+</div>
+</div>
+</nav>
+<section class="wy-nav-content-wrap" data-toggle="wy-nav-shift">
+<nav aria-label="Mobile navigation menu" class="wy-nav-top" role="navigation">
+<i class="fa fa-bars" data-toggle="wy-nav-top"></i>
+<a href="../../../..">Triply Documentation</a>
+</nav>
+<div class="wy-nav-content">
+<div class="rst-content"><div aria-label="breadcrumbs navigation" role="navigation">
+<ul class="wy-breadcrumbs">
+<li><a aria-label="Docs" class="icon icon-home" href="../../../.."></a></li>
+<li class="breadcrumb-item">TriplyETL</li>
+<li class="breadcrumb-item">Assert</li>
+<li class="breadcrumb-item">RATT</li>
+<li class="breadcrumb-item active">RATT Statements</li>
+<li class="wy-breadcrumbs-aside">
+</li>
+</ul>
+<hr/>
+</div>
+<div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
+<div class="section" itemprop="articleBody">
+<div class="toc"><span class="toctitle">On this page:</span><ul>
+<li><a href="#ratt-statement-assertion">RATT Statement Assertion</a><ul>
+<li><a href="#nestedpairs">nestedPairs()</a><ul>
+<li><a href="#signature">Signature</a></li>
+<li><a href="#parameters">Parameters</a></li>
+<li><a href="#example-unit-of-measure">Example: Unit of measure</a></li>
+<li><a href="#example-geometry">Example: Geometry</a></li>
+<li><a href="#maintenance-impact">Maintenance impact</a></li>
+<li><a href="#relation-to-standards">Relation to standards</a></li>
+</ul>
+</li>
+<li><a href="#objects">objects()</a><ul>
+<li><a href="#signature_1">Signature</a></li>
+<li><a href="#parameters_1">Parameters</a></li>
+<li><a href="#example-alternative-labels">Example: Alternative labels</a></li>
+<li><a href="#maintenance-impact_1">Maintenance impact</a></li>
+<li><a href="#relation-to-standards_1">Relation to standards</a></li>
+</ul>
+</li>
+<li><a href="#pairs">pairs()</a><ul>
+<li><a href="#signature_2">Signature</a></li>
+<li><a href="#parameters_2">Parameters</a></li>
+<li><a href="#example-alternative-and-preferred-label">Example: Alternative and preferred label</a></li>
+<li><a href="#maintenance-impact_2">Maintenance impact</a></li>
+<li><a href="#relation-to-standards_2">Relation to standards</a></li>
+</ul>
+</li>
+<li><a href="#quad">quad()</a><ul>
+<li><a href="#signature_3">Signature</a></li>
+<li><a href="#parameters_3">Parameters</a></li>
+<li><a href="#example-data-and-metadata">Example: Data and metadata</a></li>
+<li><a href="#see-also">See also</a></li>
+</ul>
+</li>
+<li><a href="#quads">quads()</a><ul>
+<li><a href="#signature_4">Signature</a></li>
+<li><a href="#parameters_4">Parameters</a></li>
+<li><a href="#example-data-and-metadata_1">Example: Data and metadata</a></li>
+<li><a href="#see-also_1">See also</a></li>
+</ul>
+</li>
+<li><a href="#triple">triple()</a><ul>
+<li><a href="#signature_5">Signature</a></li>
+<li><a href="#parameters_5">Parameters</a></li>
+<li><a href="#example-1">Example: 1</a></li>
+<li><a href="#example-2">Example: 2</a></li>
+<li><a href="#example-3">Example: 3</a></li>
+</ul>
+</li>
+<li><a href="#triples">triples()</a><ul>
+<li><a href="#signature_6">Signature</a></li>
+<li><a href="#parameters_6">Parameters</a></li>
+<li><a href="#example">Example</a></li>
+<li><a href="#maintenance-impact_3">Maintenance impact</a></li>
+<li><a href="#relation-to-standards_3">Relation to standards</a></li>
+</ul>
+</li>
+<li><a href="#implicit-casts">Implicit casts</a><ul>
+<li><a href="#relation-to-standards_4">Relation to standards</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<h1 id="ratt-statement-assertion">RATT Statement Assertion<a class="headerlink" href="#ratt-statement-assertion" title="Permanent link">¶</a></h1>
+<p>This page documents the functions that make linked data statement assertions (triples and quads).</p>
+<p>The statement assertion functions are imported as follows:</p>
+<pre><code class="language-ts">import { nestedPairs, objects, pairs, quad, quads, triple, triples } from '@triplyetl/etl/ratt'
+</code></pre>
+<h2 id="nestedpairs">nestedPairs()<a class="headerlink" href="#nestedpairs" title="Permanent link">¶</a></h2>
+<p>Creates a nested node and makes multiple assertions about that node.</p>
+<p>Since linked data is composed of triples, more complex n-ary information must often be asserted by using a nested node. Since they must appear in both the subject and object term position, nested nodes are required to be IRIs.</p>
+<h3 id="signature">Signature<a class="headerlink" href="#signature" title="Permanent link">¶</a></h3>
+<p>This function has the following signature:</p>
+<pre><code class="language-ts">nestedPairs(subject, predicate, ...pairs)                    // [1]
+nestedPairs(subject, predicate, nestedNode, ...pairs)        // [2]
+nestedPairs(graph, subject, predicate, nestedNode, ...pairs) // [3]
+</code></pre>
+<p>When Signature 1 is used, the nested node is automatically generated by TriplyETL. This automatically generated nested node is a Skolem IRI (see the documentation on <a href="../../../generic/skolem-iris/">Skolem IRIs</a> for more information).</p>
+<p>When Signature 2 is used, the nested node must be specified by the user. This allows the nested node to be created in a more structured way, for example by using <a href="../terms/#iri">iri()</a>, <a href="../../../transform/ratt/#addiri">addIri()</a>, or <a href="../../../transform/ratt/#addhashediri">addHashedIri()</a>.</p>
+<p>When Signature 3 is used, a graph name must be specified, resulting in quad statements.</p>
+<h3 id="parameters">Parameters<a class="headerlink" href="#parameters" title="Permanent link">¶</a></h3>
+<ul>
+<li><code>graph</code> is a graph term; this must be an IRI.</li>
+<li><code>subject</code> is a subject term; this must be an IRI.</li>
+<li><code>predicate</code> is a predicate term; this must be an IRI.</li>
+<li><code>nestedNode</code> is the nested node; this must be an IRI.</li>
+<li><code>pairs</code> is one or more pairs that make assertions about the nested node. Every pair consists of a predicate term and an object term (in that order).</li>
+</ul>
+<h3 id="example-unit-of-measure">Example: Unit of measure<a class="headerlink" href="#example-unit-of-measure" title="Permanent link">¶</a></h3>
+<p>The following example asserts a value together with a unit of measure. Since Signature 1 is used, a Skolem IRI is used as the nested node.</p>
+<pre><code class="language-ts">fromJson([{ id: '1', height: 15 }]),
+nestedPairs(iri(prefix.product, 'id'), sdo.height,
+  [qudt.unit, unit.CentiM],
+  [rdf.value, 'height'],
+),
+</code></pre>
+<p>This makes the following linked data assertions:</p>
+<pre><code class="language-turtle">product:1
+  sdo:height
+    [ qudt:unit unit:CentiM;
+      rdf:value 15 ].
+</code></pre>
+<p>Or diagrammatically:</p>
+<div class="mermaid">graph LR
+  product -- sdo:height --&gt; skolem
+  skolem -- qudt:unit --&gt; centim
+  skolem -- rdf:value --&gt; 15
+
+  product[product:1]:::data
+  skolem[_:1]:::data
+  centim[unit:CentiM]:::model
+  15:::data
+
+  classDef data fill:yellow
+  classDef model fill:lightblue
+  classDef meta fill:sandybrown
+</div>
+<h3 id="example-geometry">Example: Geometry<a class="headerlink" href="#example-geometry" title="Permanent link">¶</a></h3>
+<p>The following example asserts a GeoSPARQL geometry. The geometry is created
+as a separate node.</p>
+<pre><code class="language-ts">fromJson([{ id: '1', geometry: 'Point(1.1 2.2)' }]),
+nestedPairs(iri(prefix.feature, 'id'), geo.hasGeometry, iri(prefix.geometry, 'id'),
+  [a, geo.Geometry],
+  [geo.asWKT, literal('geometry', geo.wktLiteral)],
+),
+</code></pre>
+<p>This generates the following linked data:</p>
+<pre><code class="language-turtle">feature:1 geo:hasGeometry geometry:1.
+geometry:1
+  a geo:Geometry;
+  geo:asWKT 'Point(1.1 2.2)'^^geo:wktLiteral.
+</code></pre>
+<p>Or diagrammatically:</p>
+<div class="mermaid">graph LR
+  feature -- geo:hasGeometry --&gt; geometry
+  geometry -- a --&gt; Geometry
+  geometry -- geo:asWKT --&gt; wkt
+
+  feature[feature:1]:::data
+  geometry[geometry:1]:::data
+  Geometry[geo:Geometry]:::model
+  wkt["'Point(1.1 2.2)'^^geo:wktLiteral"]:::data
+
+  classDef data fill:yellow
+  classDef model fill:lightblue
+  classDef meta fill:sandybrown
+</div>
+<h3 id="maintenance-impact">Maintenance impact<a class="headerlink" href="#maintenance-impact" title="Permanent link">¶</a></h3>
+<p>Every use of <code>nestedPairs()</code> can be replaced by multiple uses of other assertion functions, like <code>triple()</code>, <code>quad()</code>, <code>pairs()</code>, and <code>addSkolemIri()</code>.</p>
+<p>For example, when the geometry example is rewritten to not use <code>nestedPairs()</code>, the nested node must be specified twice, which is a maintenance burden:</p>
+<pre><code class="language-ts">fromJson([{ id: '1', geometry: 'Point(1.1 2.2)' }]),
+triple(iri(prefix.feature, 'id'), geo.hasGeometry, iri(prefix.geometry, 'id')),
+pairs(iri(prefix.geometry, 'id'),
+  [a, geo.Geometry],
+  [geo.asWKT, literal('geometry', geo.wktLiteral)],
+),
+</code></pre>
+<p>Notice that the use of <code>nestedPairs()</code> results in configuration that is shorter and easier to maintain. For example, <code>nestedPairs()</code> does not need to repeat the specification of the nested node <code>iri(prefix.geometry, 'id')</code>.</p>
+<h3 id="relation-to-standards">Relation to standards<a class="headerlink" href="#relation-to-standards" title="Permanent link">¶</a></h3>
+<p>The functionality of <code>nestedPairs()</code> is similar to anonymous node notation and predicate list notation in the linked data standards TriG, Turtle, and SPARQL.</p>
+<p>Notice that the following notation in these standards:</p>
+<pre><code class="language-turtle">feature:id geo:hasGeometry
+  [ a geo:Geometry;
+    geo:asWKT 'Point(1.1 2.2)'^^geo:wktLiteral ].
+</code></pre>
+<p>is structurally similar to the following code snippet that uses <code>nestedPairs()</code>:</p>
+<pre><code class="language-ts">nestedPairs(iri(prefix.feature, 'id'), geo.hasGeometry,
+  [a, geo.Geometry],
+  [geo.asWKT, literal('geometry', geo.wktLiteral)],
+),
+</code></pre>
+<h2 id="objects">objects()<a class="headerlink" href="#objects" title="Permanent link">¶</a></h2>
+<p>Asserts multiple triples that share the same subject and predicate term.</p>
+<h3 id="signature_1">Signature<a class="headerlink" href="#signature_1" title="Permanent link">¶</a></h3>
+<p>This function has the following signature:</p>
+<pre><code class="language-ts">objects(subject, predicate, ...objects)
+</code></pre>
+<h3 id="parameters_1">Parameters<a class="headerlink" href="#parameters_1" title="Permanent link">¶</a></h3>
+<ul>
+<li><code>subject</code> is a subject term; this must be an IRI.</li>
+<li><code>predicate</code> is a predicate term; this must be an IRI.</li>
+<li><code>objects</code> is one or more object terms; these must be IRIs and/or literals.</li>
+</ul>
+<h3 id="example-alternative-labels">Example: Alternative labels<a class="headerlink" href="#example-alternative-labels" title="Permanent link">¶</a></h3>
+<p>The following snippet asserts multiple alternative labels for a city:</p>
+<pre><code class="language-ts">fromJson([{
+   name: 'Ney York',
+   alt1: 'The Big Apple',
+   alt2: 'The Capital of the World',
+   alt3: 'The City of Dreams',
+   alt4:  'The City That Never Sleeps',
+}]),
+objects(iri(prefix.city, 'name'), skos.altLabel,
+  'alt1',
+  'alt2',
+  'alt3',
+  'alt4',
+),
+</code></pre>
+<p>This results in the following 4 linked data assertions:</p>
+<pre><code class="language-turtle">city:New%20York
+  skos:altLabel
+    'The Big Apple'@en.
+    'The Capital of the World'@en,
+    'The City of Dreams'@en,
+    'The City That Never Sleeps'@en.
+</code></pre>
+<p>Or diagrammatically:</p>
+<div class="mermaid">graph LR
+  newYork -- skos:altLabel --&gt; a &amp; b &amp; c &amp; d
+
+  newYork[city:New%20York]:::data
+  a["'The Big Apple'@en"]:::data
+  b["'The Capital of the World'@en"]:::data
+  c["'The City of Dreams'@en"]:::data
+  d["'The City That Never Sleeps'@en"]:::data
+
+  classDef data fill:yellow
+</div>
+<h3 id="maintenance-impact_1">Maintenance impact<a class="headerlink" href="#maintenance-impact_1" title="Permanent link">¶</a></h3>
+<p>Every use of <code>objects()</code> can be replaced by multiple uses of the <a href="#triple">triple()</a> assertion function. However, doing so requires the subject and predicate terms to be repeated for each use of <code>triple()</code>. This is why the use of <code>objects()</code> results in configuration that is shorter and easier to maintain. With the release of 4.0.0 version, it is no longer allowed to have less than 2 objects, otherwise refer to transformation <a href="#triple">triple()</a>.</p>
+<h3 id="relation-to-standards_1">Relation to standards<a class="headerlink" href="#relation-to-standards_1" title="Permanent link">¶</a></h3>
+<p>The functionality of <code>objects()</code> is similar to predicate-object list notation in the linked data standards TriG, Turtle, and SPARQL.</p>
+<p>Notice that the following notation in these standards:</p>
+<pre><code class="language-turtle">city:New%20York skos:altLabel
+  'The Big Apple',
+  'The Capital of the World',
+  'The City of Dreams',
+  'The City That Never Sleeps'.
+</code></pre>
+<p>is structurally similar to the following code snippet that uses <code>objects()</code>:</p>
+<pre><code class="language-ts">objects(iri(prefix.city, 'name'), skos.altLabel,
+  'alt1',
+  'alt2',
+  'alt3',
+  'alt4',
+),
+</code></pre>
+<h2 id="pairs">pairs()<a class="headerlink" href="#pairs" title="Permanent link">¶</a></h2>
+<p>Asserts multiple triples that share the same subject term.</p>
+<h3 id="signature_2">Signature<a class="headerlink" href="#signature_2" title="Permanent link">¶</a></h3>
+<p>This function has the following signature:</p>
+<pre><code class="language-ts">pairs(subject, ...pairs)        // [1]
+pairs(graph, subject, ...pairs) // [2]
+</code></pre>
+<p>Signature 1 asserts triples, while Signature 2 asserts quads.</p>
+<h3 id="parameters_2">Parameters<a class="headerlink" href="#parameters_2" title="Permanent link">¶</a></h3>
+<ul>
+<li><code>graph</code> is a graph term; this must be an IRI</li>
+<li><code>subject</code> is a subject term; this must be an IRI.</li>
+<li><code>pairs</code> is one or more pairs that make assertions about the subject term. Every pair consists of a predicate term and an object term (in that order).</li>
+</ul>
+<h3 id="example-alternative-and-preferred-label">Example: Alternative and preferred label<a class="headerlink" href="#example-alternative-and-preferred-label" title="Permanent link">¶</a></h3>
+<p>The following snippet asserts a preferred label and an alternative label for cities:</p>
+<pre><code class="language-ts">fromJson([
+  { name: 'London', alt: 'Home of the Big Ben' },
+  { name: 'Ney York', alt: 'The Big Apple' },
+]),
+pairs(iri(prefix.city, 'name'),
+  [skos.prefLabel, literal('name', lang.en)],
+  [skos.altLabel, literal('alt', lang.en)],
+),
+</code></pre>
+<p>This results in the following 4 linked data assertions:</p>
+<pre><code class="language-turtle">city:London
+  skos:prefLabel 'London'@en;
+  skos:altLabel 'Home of the Big Ben'@en.
+city:New%20York
+  skos:prefLabel 'New York'@en;
+  skos:altLabel 'The Big Apple'@en.
+</code></pre>
+<p>Or diagrammatically:</p>
+<div class="mermaid">graph LR
+  london -- skos:altLabel --&gt; a
+  london -- skos:prefLabel --&gt; b
+  newYork -- skos:altLabel --&gt; c
+  newYork -- skos:prefLabel --&gt; d
+
+  london[city:London]:::data
+  newYork[city:New%20York]:::data
+  a["'Home of the Big Ben'@en"]:::data
+  b["'London'@en"]:::data
+  c["'The Big Apple'@en"]:::data
+  d["'New York'@en"]:::data
+
+  classDef data fill:yellow
+</div>
+<h3 id="maintenance-impact_2">Maintenance impact<a class="headerlink" href="#maintenance-impact_2" title="Permanent link">¶</a></h3>
+<p>This function provides a shorthand notation for assertions that can also be made with multiple uses of assertion <a href="#triple">triple()</a>.</p>
+<h3 id="relation-to-standards_2">Relation to standards<a class="headerlink" href="#relation-to-standards_2" title="Permanent link">¶</a></h3>
+<p>The notational convenience of this middleware is similar to predicate lists in TriG, Turtle, and SPARQL.</p>
+<p>Notice that the following notation in these standards:</p>
+<pre><code class="language-turtle">city:New%20York
+  skos:prefLabel 'New York'@en;
+  skos:altLabel 'The Big Apple'@en.
+</code></pre>
+<p>is structurally similar to the following code snippet that uses <code>pairs()</code>:</p>
+<pre><code class="language-ts">pairs(iri(prefix.city, 'name'),
+  [skos.prefLabel, literal('name', lang.en)],
+  [skos.altLabel, literal('alt', lang.en)],
+),
+</code></pre>
+<h2 id="quad">quad()<a class="headerlink" href="#quad" title="Permanent link">¶</a></h2>
+<p>Asserts a linked data statement that consists of four terms: subject, predicate, object, and graph (in that order).</p>
+<p>A quadruple or 'quad' is a triple to which a graph name is added.</p>
+<h3 id="signature_3">Signature<a class="headerlink" href="#signature_3" title="Permanent link">¶</a></h3>
+<p>This function has the following signature:</p>
+<pre><code class="language-ts">quad(subject, predicate, object, graph)
+</code></pre>
+<h3 id="parameters_3">Parameters<a class="headerlink" href="#parameters_3" title="Permanent link">¶</a></h3>
+<ul>
+<li><code>subject</code> is a subject term; this must be an IRI.</li>
+<li><code>predicate</code> is a predicate term; this must be an IRI.</li>
+<li><code>object</code> is an object term; this must be an IRI or literal.</li>
+<li><code>graph</code> is a graph term; this must be an IRI.</li>
+</ul>
+<h3 id="example-data-and-metadata">Example: Data and metadata<a class="headerlink" href="#example-data-and-metadata" title="Permanent link">¶</a></h3>
+<p>A dataset may distinguish between data statements and metadata statements. Such a distinction can be implemented by placing statements into different graphs. The following code snippet makes one statements assertion in a metadata graph and one statement assertion in a data graph:</p>
+<pre><code class="language-ts">quad(iri(prefix.dataset, 'flowers'), a, dcat.Dataset, graph.metadata),
+quad(iri(prefix.flower, '_id'), a, def.Flower, graph.data),
+</code></pre>
+<h3 id="see-also">See also<a class="headerlink" href="#see-also" title="Permanent link">¶</a></h3>
+<p>Use function <a href="#quads">quads()</a> to make multiple quad assertions.</p>
+<h2 id="quads">quads()<a class="headerlink" href="#quads" title="Permanent link">¶</a></h2>
+<p>Asserts multiple linked data statements that consists of four terms: subject, predicate, object, and graph (in that order).</p>
+<p>A quadruple or 'quad' is a triple to which a graph name is added.</p>
+<h3 id="signature_4">Signature<a class="headerlink" href="#signature_4" title="Permanent link">¶</a></h3>
+<p>This function has the following signature:</p>
+<pre><code class="language-ts">quads(...quads)
+</code></pre>
+<h3 id="parameters_4">Parameters<a class="headerlink" href="#parameters_4" title="Permanent link">¶</a></h3>
+<ul>
+<li><code>quads</code> is one or more quads, represented by arrays that contain four terms: subject, predicate, object, and graph (in that order).</li>
+</ul>
+<h3 id="example-data-and-metadata_1">Example: Data and metadata<a class="headerlink" href="#example-data-and-metadata_1" title="Permanent link">¶</a></h3>
+<p>An ETL can distinguish between data and metadata assertions. Both may be placed into distinct graphs. The following snippet makes assertions in a metadata graph and assertions in a data graph.</p>
+<pre><code class="language-ts">quads(
+  [iri(prefix.dataset, 'flowers'), a, dcat.Dataset, graph.metadata],
+  ...,
+),
+quads(
+  [iri(prefix.flower, '_id'), a, def.Flower, graph.data],
+  ...,
+),
+</code></pre>
+<h3 id="see-also_1">See also<a class="headerlink" href="#see-also_1" title="Permanent link">¶</a></h3>
+<p>Use function <a href="#quad">quad()</a> for asserting a single quad.</p>
+<h2 id="triple">triple()<a class="headerlink" href="#triple" title="Permanent link">¶</a></h2>
+<p>Asserts a linked data statement that consists of three terms: subject, predicate, and object (in that order).</p>
+<p>A triple asserts a factual statement, claiming that the thing denoted by the subject term and the thing denotes by the object term are related to one another according to the relationship denoted by the predicate term. A triple is the smallest unit of meaning in linked data.</p>
+<h3 id="signature_5">Signature<a class="headerlink" href="#signature_5" title="Permanent link">¶</a></h3>
+<p>This function has the following signature:</p>
+<pre><code class="language-ts">triple(subject, predicate, object)
+</code></pre>
+<h3 id="parameters_5">Parameters<a class="headerlink" href="#parameters_5" title="Permanent link">¶</a></h3>
+<ul>
+<li><code>subject</code> is a subject term; this must be an IRI.</li>
+<li><code>predicate</code> is a predicate term; this must be an IRI.</li>
+<li><code>object</code> is an object term; this must be an IRI or literal.</li>
+</ul>
+<h3 id="example-1">Example: 1<a class="headerlink" href="#example-1" title="Permanent link">¶</a></h3>
+<p>The following triple asserts that someone is a person:</p>
+<pre><code class="language-ts">triple(iri(prefix.person, 'id'), a, foaf.Person),
+</code></pre>
+<p>The subject term is an IRI that is constructed from an IRI prefix (<code>prefix.person</code>) and a key that contains the IRI local name (<code>'id'</code>). The predicate and object terms are IRIs that are imported from <a href="../../../generic/declarations/#external-vocabularies">external vocabularies</a>.</p>
+<h3 id="example-2">Example: 2<a class="headerlink" href="#example-2" title="Permanent link">¶</a></h3>
+<p>The following triple asserts that someone has an age that is derived from the <code>'age'</code> key in the record:</p>
+<pre><code class="language-ts">triple('_person', foaf.age, literal('age', xsd.nonNegativeInteger)),
+</code></pre>
+<p>The subject term is an IRI that is stored in the <code>'_person'</code> key of the record. This term was created previously, for example by using the <a href="../../../transform/ratt/#addiri">addIri()</a> function. The predicate term is imported from an <a href="../../../generic/declarations/#external-vocabularies">external vocabulary</a>. The object term is a typed literal that is constructed from a key (<code>'age'</code>) that contains the lexical form, and a datatype IRI that is imported from an external vocabulary.</p>
+<h3 id="example-3">Example: 3<a class="headerlink" href="#example-3" title="Permanent link">¶</a></h3>
+<p>The following triple uses three static IRIs:</p>
+<pre><code class="language-ts">triple(Iri('https://example.com/id/123'), a, sdo.Product),
+</code></pre>
+<h2 id="triples">triples()<a class="headerlink" href="#triples" title="Permanent link">¶</a></h2>
+<p>Asserts multiple linked data statements that consists of three terms: subject, predicate, and object (in that order).</p>
+<h3 id="signature_6">Signature<a class="headerlink" href="#signature_6" title="Permanent link">¶</a></h3>
+<p>This function has the following signature:</p>
+<pre><code class="language-ts">triples(graph, ...triples)
+</code></pre>
+<h3 id="parameters_6">Parameters<a class="headerlink" href="#parameters_6" title="Permanent link">¶</a></h3>
+<ul>
+<li><code>graph</code> is a graph term; this must be an IRI.</li>
+<li><code>triples</code> is one or more triples, represented by arrays that contain three terms: subject, predicate, and object (in that order).</li>
+</ul>
+<h3 id="example">Example<a class="headerlink" href="#example" title="Permanent link">¶</a></h3>
+<p>Suppose that we want to distinguish between data and metadata assertions. We can do so by asserting them in distinct graphs. The following makes multiple metadata assertions in the metadata graph, followed by multiple data assertions in the data graph.</p>
+<pre><code class="language-ts">triples(graph.metadata,
+  [iri(prefix.dataset, str('flowers')), a, dcat.Dataset],
+  ...
+),
+triples(graph.data,
+  [iri(prefix.flower, '_id'), a, def.Flower],
+  ...
+),
+</code></pre>
+<h3 id="maintenance-impact_3">Maintenance impact<a class="headerlink" href="#maintenance-impact_3" title="Permanent link">¶</a></h3>
+<p>It is common for multiple statements to occur in the same graph. In such cases, it is position to use the <a href="#quad">quad()</a> function multiple times, but this requires repeating the graph term. This is why the use of <code>triples()</code> results in configuration that is shorter and easier to maintain.</p>
+<h3 id="relation-to-standards_3">Relation to standards<a class="headerlink" href="#relation-to-standards_3" title="Permanent link">¶</a></h3>
+<p>The functionality of <code>triples()</code> is conceptually similar to graph notation in the linked data standard TriG.</p>
+<p>Notice that the following notation in TriG:</p>
+<pre><code class="language-turtle">graph:metadata {
+  dataset:flowers a dcat:Dataset.
+  ...
+}
+graph:data {
+  flower:123 a def:Flower.
+  ...
+}
+</code></pre>
+<p>is structurally similar to the following code snippet that uses <code>triples()</code>:</p>
+<pre><code class="language-ts">triples(graph.metadata,
+  [iri(prefix.dataset, str('flowers')), a, dcat.Dataset],
+  ...
+),
+triples(graph.data,
+  [iri(prefix.flower, '_id'), a, def.Flower],
+  ...
+),
+</code></pre>
+<h2 id="implicit-casts">Implicit casts<a class="headerlink" href="#implicit-casts" title="Permanent link">¶</a></h2>
+<p>The statement assertion functions use implicit casting from strings to IRIs or literals. The rules for this are as follows:</p>
+<ol>
+<li>If a string value that encodes a valid IRI is specified in the subject, predicate, or graph position, that string is implicitly cast to an IRI.</li>
+<li>If a string value is specified in the object position, that string is implicitly cast to a literal.</li>
+</ol>
+<p>The following code snippet uses implicit casts for all fours terms in the <code>quad()</code> assertion:</p>
+<pre><code class="language-ts">fromJson([{ url: 'https://example.com/123' }]),
+quad('url', 'url', 'url', 'url'),
+</code></pre>
+<p>This results in the following linked data:</p>
+<pre><code class="language-turtle">&lt;https://example.com/123&gt; {
+  &lt;https://example.com/123&gt; &lt;https://example.com/123&gt; 'https://example.com/123'.
+}
+</code></pre>
+<p>Notice that the code snippet can be rewritten to make use of explicit casts:</p>
+<pre><code class="language-ts">fromJson([{ url: 'https://example.com/123' }]),
+quad(iri('url'), iri('url'), literal('url'), iri('url')),
+</code></pre>
+<h3 id="relation-to-standards_4">Relation to standards<a class="headerlink" href="#relation-to-standards_4" title="Permanent link">¶</a></h3>
+<p>The functionality of implicit casts for literals is conceptually similar to shorthand notation for <code>xsd:string</code> literals in the linked data standards Turtle, TriG, and SPARQL.</p>
+<p>Notice that the following notation in Turtle:</p>
+<pre><code class="language-turtle">city:amsterdam dct:identifier '0200'.
+</code></pre>
+<p>is structurally similar to the following code snippet that uses an implicit cast for the string literal:</p>
+<pre><code class="language-ts">triple('_city', dct.identifier, 'id'),
+</code></pre>
+</div>
+</div><footer>
+<div aria-label="Footer Navigation" class="rst-footer-buttons" role="navigation">
+<a class="btn btn-neutral float-left" href="../terms/" title="RATT Terms"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+<a class="btn btn-neutral float-right" href="../../rml/" title="RML">Next <span class="icon icon-circle-arrow-right"></span></a>
+</div>
+<hr/>
+<div role="contentinfo">
+<!-- Copyright etc -->
+</div>
+</footer>
+</div>
+</div>
+</section>
+</div>
+<div aria-label="Versions" class="rst-versions" role="note">
+<span class="rst-current-version" data-toggle="rst-current-version">
+<span><a href="../terms/" style="color: #fcfcfc">« Previous</a></span>
+<span><a href="../../rml/" style="color: #fcfcfc">Next »</a></span>
+</span>
+</div>
+<script>var base_url = '../../../..';</script>
+<script defer="" src="../../../../js/triply.js"></script>
+<script defer="" src="../../../../js/highlight.min.js"></script>
+<script defer="" src="../../../../search/main.js"></script>
+<script type="module">import mermaid from "https://unpkg.com/mermaid@10.4.0/dist/mermaid.esm.min.mjs";
+mermaid.initialize({});</script></body>
+</html>
