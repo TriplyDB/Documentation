@@ -11,6 +11,7 @@ path: "/docs/triplydb-changelog"
 **Release date:** 2025-07-16
 
 **Features**
+
 - `#10261` [Editor] Support entering language-tagged strings
 - `#10543` [Editor] Support collapsing and expanding groups 
 - `#10240` [Editor] Automatically fill in the range class when adding a new instance
@@ -36,6 +37,7 @@ path: "/docs/triplydb-changelog"
 **Release date:** 2025-06-26
 
 **Features**
+
 - `#10308` Added visual cue for readonly properties in the editor
 - `#10300` Display modification dates for saved query versions
 
@@ -65,6 +67,7 @@ path: "/docs/triplydb-changelog"
 **Release date:** 2025-05-14
 
 **Features**
+
 - `#10058` Apply stricter content-security-policies in the UI, making the UI more robust
   against illegal use and cross site scripting
 - `#6218` Make API error messages more consistent
@@ -84,6 +87,7 @@ path: "/docs/triplydb-changelog"
 **Release date:** 2025-05-14
 
 **Features**
+
 - `#10058` Apply stricter content-security-policies in the UI, making the UI more robust
   against illegal use and cross site scripting
 - `#6218` Make API error messages more consistent
