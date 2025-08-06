@@ -5,6 +5,23 @@ path: "/docs/triplydb-changelog"
 
 [TOC]
 
+## 25.08.100 {#25.08.100}
+
+**Release date:** 2025-08-06
+
+**Features**
+
+- `#10604` Editor: support sh:hasValue - when a new field value is added, it gets the value specified with sh:hasValue by default
+- `#10603` Editor: support sh:in - the Editor shows a select field in the form when sh:in is used to specify a list of allowed values
+- `#10309` Editor: Expand all offspring of one top level SKOS concept - allows SHIFT + click to expand one whole top level concept and its offspring
+- `#10226` Api | Allow SPARQL-Update queries in run-path of saved queries
+
+**Issues fixed**
+
+- `#10697` [Data Model] Editing a class label, deletes its order
+- `#10649` [LD Table] Dragging and dropping terms no longer works
+- `#10639` [Data Model View] Min count is displayed as max count
+- `#10121` Concatenation functions are too slow due to reordering
 
 ## 25.7.100 {#25.7.100}
 
