@@ -188,7 +188,7 @@ At least one of the following arguments is required to update the metadata. Any 
   <dd>Whether the SPARQL service is automatically chosen (<code>true</code>), or whether a specific SPARQL service is configured (<code>false</code>).</dd>
 
   <dt><code>dataset</code></dt>
-  <dd>The name of the dataset against which the query is evaluated.</dd>
+  <dd>The Dataset object against which the query is evaluated.</dd>
 
   <dt><code>description</code></dt>
   <dd>The human-readable description of the query. This typically explains what the query does in natural language.</dd>
@@ -253,8 +253,8 @@ Copies a query using either the same name or a new name (if <code>queryName</cod
       <dd>the SPARQL compliant query as a string value</dd>
       <dt><code>output: string</code></dt>
       <dd>The visualization plugin that is used to display the result set. If none is set it defaults to <code>'table'</code>. Other options may include: <code>'response'</code>, <code>'geo'</code>, <code>'gallery'</code>, <code>'markup'</code>, etc</dd>
-      <dt><code>dataset: string</code></dt>
-      <dd>The name of the dataset against which the query is evaluated.</dd>
+      <dt><code>dataset: Dataset</code></dt>
+      <dd>The Dataset object against which the query is evaluated.</dd>
       <dt><code>description: string</code></dt>
       <dd>The human-readable description of the query. This typically explains what the query does in natural language.</dd>
       <dt><code>displayName: string</code></dt>
