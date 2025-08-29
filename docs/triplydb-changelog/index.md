@@ -5,6 +5,34 @@ path: "/docs/triplydb-changelog"
 
 [TOC]
 
+## 25.8.200 {#25.8.200}
+
+**Release date:** 2025-08-28
+
+**Features**
+
+- `#10630` [Editor] Support sh:nodeKind sh:IRI in Editor and Data model
+- `#10605` [Editor] Data model: support sh:hasValue and sh:in
+- `#10590` [Editor] Improve the handling of errors in the form
+- `#10302` [Editor] Automatically create default fields when applicable
+- `#10213` Support all sparql update graph management operations
+- `#9522` / `10534` Optimize performance for SHACL SPARQL functions, and support re-using such functions between datasets
+
+**Issues fixed**
+
+- `#10722` In atypical cases, you may get upload errors saying the graph name already exists
+- `#10711` [Editor] Copy operations use the wrong IRI
+- `#10700` SPARQL drop all fails
+- `#10694` [Data Model] The instances tab may contain duplicate results
+- `#10689` [Editor Dialog] Stem is used incorrectly for nested nodes
+- `#10687` [Data Model] Stem disappears from class
+- `#10659` [Editor View] Editor and Data model does not update after adding/removing graphs
+- `#10648` [Editor View] SHACL SPARQL constraints are not checking the class
+- `#10644` [Editor View] Inconsistent GUI state after deleting an instance
+- `#10607` `anyURI` literals are not validated validated
+- `#10418` Some escape charactes do not work in Regex function
+- `#9267` [TriplyDB-JS] Can't update dataset used by saved query
+
 ## 25.08.100 {#25.08.100}
 
 **Release date:** 2025-08-06

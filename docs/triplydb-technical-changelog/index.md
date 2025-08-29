@@ -9,6 +9,19 @@ This changelog covers technical changes related to TriplyDB on-premise deploymen
 This intent of this changelog is primarily for documenting breaking changes or changes
 that are useful to know when deploying/upgrading TriplyDB.
 
+
+## 25.8.200 {#25.8.200}
+
+**Release date:** 2025-08-28
+
+None
+
+## 25.08.100 {#25.08.100}
+
+**Release date:** 2025-08-06
+
+None
+
 ## 25.7.100 {#25.7.100}
 
 **Release date:** 2025-07-16
