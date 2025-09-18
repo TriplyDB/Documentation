@@ -11,6 +11,7 @@ path: "/docs/triplydb-changelog"
 
 **Features**
 
+- `#10317` [Editor] The history view of a resource is more intuitive - the difference between revisions uses human readable labels as much as possible, and the differences between revisions are clearer.
 - `#10752` [Editor] Add prefix support - IRIs in the editor now apply prefixes for better readability
 - `#10743` [Editor] A SPARQL viewer - SPARQL literals are now displayed with syntax highlighting using a dedicated viewer
 - `#10738` [Editor] Enable map view of wkt literals - geometry data can now be displayed on a map in the Editor
@@ -18,7 +19,7 @@ path: "/docs/triplydb-changelog"
 
 **Issues fixed**
 
-
+- `#10775` [Editor] Automatically focusing the browser to a reported error in a form may not always work
 - `#10770` Support re-using SPARQL functions between datasets - the dataset to re-use can be configured by a site administrator
 - `#10703` [Editor] Searching for a selected item closes the tree - fixed search behavior that incorrectly collapsed the tree view
 - `#10301` [Editor] Sort autocomplete lists alphabetically - autocomplete suggestions are now properly sorted for better usability
