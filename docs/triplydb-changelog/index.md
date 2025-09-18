@@ -18,7 +18,7 @@ path: "/docs/triplydb-changelog"
 
 **Issues fixed**
 
-`#
+
 - `#10770` Support re-using SPARQL functions between datasets - the dataset to re-use can be configured by a site administrator
 - `#10703` [Editor] Searching for a selected item closes the tree - fixed search behavior that incorrectly collapsed the tree view
 - `#10301` [Editor] Sort autocomplete lists alphabetically - autocomplete suggestions are now properly sorted for better usability
