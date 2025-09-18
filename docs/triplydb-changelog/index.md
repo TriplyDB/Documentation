@@ -5,6 +5,24 @@ path: "/docs/triplydb-changelog"
 
 [TOC]
 
+## 25.9.100 {#25.9.100}
+
+**Release date:** 2025-09-18
+
+**Features**
+
+- `#10752` [Editor] Add prefix support - IRIs in the editor now apply prefixes for better readability
+- `#10743` [Editor] A SPARQL viewer - SPARQL literals are now displayed with syntax highlighting using a dedicated viewer
+- `#10738` [Editor] Enable map view of wkt literals - geometry data can now be displayed on a map in the Editor
+- `#10633` [Data model] Support sh:languageIn and sh:uniqueLang for properties with the rdf:langString datatype - enhanced language validation for multilingual content
+
+**Issues fixed**
+
+`#
+- `#10770` Support re-using SPARQL functions between datasets - the dataset to re-use can be configured by a site administrator
+- `#10703` [Editor] Searching for a selected item closes the tree - fixed search behavior that incorrectly collapsed the tree view
+- `#10301` [Editor] Sort autocomplete lists alphabetically - autocomplete suggestions are now properly sorted for better usability
+
 ## 25.8.200 {#25.8.200}
 
 **Release date:** 2025-08-28
@@ -16,7 +34,7 @@ path: "/docs/triplydb-changelog"
 - `#10590` [Editor] Improve the handling of errors in the form
 - `#10302` [Editor] Automatically create default fields when applicable
 - `#10213` Support all sparql update graph management operations
-- `#9522` / `10534` Optimize performance for SHACL SPARQL functions, and support re-using such functions between datasets
+- `#9522` Optimize performance for SHACL SPARQL functions
 
 **Issues fixed**
 
