@@ -1,5 +1,5 @@
 ---
-title: "TriplyDB "
+title: "TriplyDB technical changelog"
 path: "/docs/triplydb-technical-changelog"
 ---
 
