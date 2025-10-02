@@ -5,6 +5,22 @@ path: "/docs/triplydb-changelog"
 
 [TOC]
 
+## 25.10.100 {#25.10.100}
+
+**Release date:** 2025-10-02
+
+**Features**
+
+- `#10790` [Editor] Support providing both instructions and descriptions of form fields - forms now support short instructions (displayed as helper text) and detailed descriptions (displayed behind an info button) using the new `triply:hint` property for instructions and existing description properties for detailed explanations.
+- `#10753` [Editor] Add Numeric editor - numeric fields now use an appropriately sized editor with validation, replacing the oversized string input previously used for numbers.
+- `#10706` [Data Model] Update styling of other forms - class and constraint forms now use the improved styling introduced for property forms, with better organization of fields including collapsible advanced settings.
+- `#10587` [Editor] Ability to rollback a revision of a resource - resources can now be reverted to previous states from the history view, creating a new revision that restores the selected historical state.
+
+**Issues fixed**
+
+- `#10672` [Editor] Required Boolean properties must be set to 'true' - boolean fields are now automatically displayed with checkboxes defaulting to false, allowing forms to be saved with either true or false values.
+- `#10428` [SPARQL] Incorrect handling of unbound parameters in SPARQL Functions - fixed issue where unbound parameters in SPARQL functions were not properly handled, particularly in switch statements with default expressions.
+
 ## 25.9.100 {#25.9.100}
 
 **Release date:** 2025-09-18

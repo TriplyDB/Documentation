@@ -6,9 +6,14 @@ path: "/docs/triplydb-technical-changelog"
 [TOC]
 
 This changelog covers technical changes related to TriplyDB on-premise deployments. See [here](/triplydb-changelog) for the TriplyDB changelog that is user facing.
-This intent of this changelog is primarily for documenting breaking changes or changes
-that are useful to know when deploying/upgrading TriplyDB.
 
+
+## 25.10.100 {#25.10.100}
+
+**Release date:** 2025-10-02
+
+- API service account RBAC permissions changed: added `leases` resource permissions (`get`, `list`, `watch`, `create`, `update`, `patch`) for coordination.k8s.io API group. This enables proper Kubernetes leader election coordination for watching job events.
+- Orchestrator service account removed: orchestrator pods now use default namespace permissions instead of dedicated service account. The orchestrator deployment no longer specifies a `serviceAccountName`.
 
 ## 25.9.100 {#25.9.100}
 
