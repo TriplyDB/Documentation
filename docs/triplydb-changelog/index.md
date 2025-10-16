@@ -5,6 +5,27 @@ path: "/docs/triplydb-changelog"
 
 [TOC]
 
+## 25.10.200 {#25.10.200}
+
+**Release date:** 2025-10-16
+
+**Features**
+
+
+- `#10827` [Data Model] The side panel on the data model page can now be resized for better workspace customization.
+- Upgrade to Node.js 24 - improved performance and support for the latest JavaScript features.
+- Upgrade Redis to resolve security vulnerability - enhanced security by updating Redis to address known vulnerabilities.
+
+**Issues fixed**
+
+- `#10862` [Speedy] Cache not invalidated after update to global functions dataset - query caches are now properly invalidated when global SPARQL functions are modified.
+- `#10842` [Editor] Allowed languages feature (sh:languageIn) is not always correctly applied - language selector now correctly displays and applies configured language constraints from SHACL shapes.
+- `#10835` [Editor] Copy feature doesn't validate copied resource before saving - the copy functionality now validates resources using the same constraints as creating and editing resources.
+- `#10829` [Data Model] Properties appear as inherited - properties are no longer incorrectly marked as inherited when they belong to the current class.
+- `#10777` [Data model]: Update failures during data model operations are now properly reported to users with error messages.
+- `#10665` [Editor] In the Editor properties with same sh:path shown multiple times - properties are now deduplicated by path, showing each unique property only once regardless of how many SHACL shapes constrain it.
+
+
 ## 25.10.100 {#25.10.100}
 
 **Release date:** 2025-10-02

@@ -8,6 +8,14 @@ path: "/docs/triplydb-technical-changelog"
 This changelog covers technical changes related to TriplyDB on-premise deployments. See [here](/triplydb-changelog) for the TriplyDB changelog that is user facing.
 
 
+## 25.10.200 {#25.10.200}
+
+**Release date:** 2025-10-16
+
+- Node.js upgraded from version 22 to version 24. All TriplyDB container images now use Node.js 24 as the base runtime. This affects all pods including API, console, orchestrator, and job runners. 
+- Redis upgraded from version 7.4.2 to 8.2.2 to address security vulnerabilities. Note that the security vulnerability in question could not have been abused in the context of the TriplyDB deployment.
+- Added `indexJobs.legacyDelimitedFormat` configuration property (default: `true`). This controls CSV/TSV import behavior. When set to `true`, uses the legacy simple format. When set to `false`, uses the new format which supports more complex table structures but produces more verbose RDF output. 
+
 ## 25.10.100 {#25.10.100}
 
 **Release date:** 2025-10-02
