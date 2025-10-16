@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+
+<html class="writer-html5" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="IE=edge" http-equiv="X-UA-Compatible"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="The official documentation for the Triply products: TriplyDB, TriplyDB.js, and TriplyETL." name="description"/>
+<link href="../../../img/favicon.ico" rel="shortcut icon"/>
+<title>Inline Strings - Triply Documentation</title>
+<link href="../../../css/theme.css" rel="stylesheet"/>
+<link href="../../../css/theme_extra.css" rel="stylesheet"/>
+<link href="../../../css/intellij-light.css" rel="stylesheet"/>
+<link href="../../../css/triply.css" rel="stylesheet"/>
+<script>
+        // Current page data
+        var mkdocs_page_name = "Inline Strings";
+        var mkdocs_page_input_path = "triply-etl/sources/inline-strings.md";
+        var mkdocs_page_url = null;
+      </script>
+</head>
+<body class="wy-body-for-nav" role="document">
+<div class="wy-grid-for-nav">
+<nav class="wy-nav-side stickynav" data-toggle="wy-nav-shift">
+<div class="wy-side-scroll">
+<div class="wy-side-nav-search">
+<a class="icon icon-home" href="../../.."> Triply Documentation
+        </a><div role="search">
+<form action="../../../search.html" class="wy-form" id="rtd-search-form" method="get">
+<input aria-label="Search docs" name="q" placeholder="Search docs" title="Type search term here" type="text"/>
+</form>
+</div>
+</div>
+<div aria-label="Navigation menu" class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../..">Home</a>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">TriplyDB</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="#">Getting started</a>
+<ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../triply-db-getting-started/">Overview</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../triply-db-getting-started/uploading-data/">Uploading Data</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../triply-db-getting-started/editing-data/">Editing (SKOS) Data</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../triply-db-getting-started/publishing-data/">Sharing Data</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../triply-db-getting-started/viewing-data/">Viewing Data</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../triply-db-getting-started/exporting-data/">Exporting Data</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../triply-db-getting-started/saved-queries/">Saved Queries</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../triply-db-getting-started/data-stories/">Data Stories</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../triply-db-getting-started/admin-settings-pages/">Admin Settings Pages</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../triply-db-getting-started/reference/">Reference</a>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../triply-api/">API</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#">TriplyDB-JS</a>
+<ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../triplydb-js/">Overview</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../triplydb-js/app/">App</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../triplydb-js/account/">Account</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../triplydb-js/asset/">Asset</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../triplydb-js/dataset/">Dataset</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../triplydb-js/graph/">Graph</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../triplydb-js/organization/">Organization</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../triplydb-js/query/">Query</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../triplydb-js/service/">Service</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../triplydb-js/story/">Story</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../triplydb-js/user/">User</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../triplydb-js/faq/">FAQ</a>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../triply-cli/">Command-line Interface</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../triplydb-changelog/">Changelog</a>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">TriplyETL</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="#">Generic</a>
+<ul>
+<li class="toctree-l2"><a class="reference internal" href="../../">Overview</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../generic/getting-started/">Getting Started</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../generic/changelog/">Changelog</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../generic/cli/">Command Line Interface (CLI)</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../generic/declarations/">Declarations</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../generic/control-structures/">Control Structures</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../generic/debug/">Debug</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../generic/internal-store/">Internal Store</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../generic/maintenance/">Maintenance</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../generic/record/">Record</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../generic/vocabularies/">Vocabularies</a>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal current" href="#">Sources</a>
+<ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../">Overview</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../apis/">APIs</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../inline-json/">Inline JSON</a>
+</li>
+<li class="toctree-l2 current"><a class="reference internal current" href="./">Inline Strings</a>
+<ul class="current">
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../local-files/">Local Files</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../online-files/">Online Files</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../rml/">RML Sources</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../triplydb-assets/">TriplyDB Assets</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../triplydb-datasets/">TriplyDB Datasets</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../triplydb-queries/">TriplyDB Queries</a>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#">Extract</a>
+<ul>
+<li class="toctree-l2"><a class="reference internal" href="../../extract/">Overview</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../extract/csv/">CSV</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../extract/json/">JSON</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../extract/oai-pmh/">OAI-PMH</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../extract/postgres/">Postgres</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../extract/rdf/">RDF</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../extract/shapefile/">Shapefile</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../extract/tsv/">TSV</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../extract/xlsx/">XLSX</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../extract/xml/">XML</a>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#">Transform</a>
+<ul>
+<li class="toctree-l2"><a class="reference internal" href="../../transform/">Overview</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../transform/ratt/">RATT</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../transform/rml/">RML</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../transform/typescript/">TypeScript</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../transform/xslt/">XSLT</a>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#">Assert</a>
+<ul>
+<li class="toctree-l2"><a class="reference internal" href="../../assert/">Overview</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../assert/json-ld/">JSON-LD</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#">RATT</a>
+<ul>
+<li class="toctree-l3"><a class="reference internal" href="../../assert/ratt/terms/">RATT Terms</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../assert/ratt/statements/">RATT Statements</a>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../assert/rml/">RML</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../assert/xslt/">XSLT</a>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#">Enrich</a>
+<ul>
+<li class="toctree-l2"><a class="reference internal" href="../../enrich/">Overview</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#">SHACL</a>
+<ul>
+<li class="toctree-l3"><a class="reference internal" href="../../enrich/shacl/">Overview</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../enrich/shacl/triple-rules/">Triple Rules</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../enrich/shacl/sparql-rules/">SPARQL Rules</a>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#">SPARQL</a>
+<ul>
+<li class="toctree-l3"><a class="reference internal" href="../../enrich/sparql/construct/">SPARQL Construct</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../enrich/sparql/update/">SPARQL Update</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#">Validate</a>
+<ul>
+<li class="toctree-l2"><a class="reference internal" href="../../validate/">Overview</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../validate/graph-comparison/">Graph Comparison</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../validate/shacl/">SHACL</a>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../publish/">Publish</a>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Yasgui</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../yasgui/">Introduction</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../yasgui-api/">For Developers</a>
+</li>
+</ul>
+</div>
+</div>
+</nav>
+<section class="wy-nav-content-wrap" data-toggle="wy-nav-shift">
+<nav aria-label="Mobile navigation menu" class="wy-nav-top" role="navigation">
+<i class="fa fa-bars" data-toggle="wy-nav-top"></i>
+<a href="../../..">Triply Documentation</a>
+</nav>
+<div class="wy-nav-content">
+<div class="rst-content"><div aria-label="breadcrumbs navigation" role="navigation">
+<ul class="wy-breadcrumbs">
+<li><a aria-label="Docs" class="icon icon-home" href="../../.."></a></li>
+<li class="breadcrumb-item">TriplyETL</li>
+<li class="breadcrumb-item">Sources</li>
+<li class="breadcrumb-item active">Inline Strings</li>
+<li class="wy-breadcrumbs-aside">
+</li>
+</ul>
+<hr/>
+</div>
+<div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
+<div class="section" itemprop="articleBody">
+<div class="toc"><span class="toctitle">On this page:</span><ul>
+<li><a href="#inline-strings">Inline strings</a></li>
+</ul>
+</div>
+<h1 id="inline-strings">Inline strings<a class="headerlink" href="#inline-strings" title="Permanent link">¶</a></h1>
+<p>Data in the JSON or RDF formats can be specified with inline strings.</p>
+<p>The following code snippet loads triples into the Internal Store:</p>
+<pre><code class="language-ts">loadRdf(
+  Source.string(`
+prefix person: &lt;https://example.com/id/person/&gt;
+prefix sdo: &lt;https://schema.org/&gt;
+
+person:1 a sdo:Person;
+         sdo:name 'J. Doe'.`),
+  { contentType: 'text/turtle' }
+),
+</code></pre>
+<p>This loads the following triples:</p>
+<div class="mermaid">graph LR
+  person:1 -- a --&gt; sdo:Person
+  person:1 -- sdo:name --&gt; J.Doe
+</div>
+<p>Notice that we must specify the RDF serialization format that we use. This is necessary because <code>loadRdf()</code> supports a large number of formats, some of which are difficult to autodetect. The following formats are supported:</p>
+<table>
+<thead>
+<tr>
+<th>Format</th>
+<th><code>contentType</code> value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>HTML</td>
+<td><code>'text/html'</code></td>
+</tr>
+<tr>
+<td>JSON-LD</td>
+<td><code>'application/ld+json'</code></td>
+</tr>
+<tr>
+<td>JSON</td>
+<td><code>'application/json'</code></td>
+</tr>
+<tr>
+<td>N-Quads</td>
+<td><code>'application/n-quads'</code></td>
+</tr>
+<tr>
+<td>N-Triples</td>
+<td><code>'application/n-triples'</code></td>
+</tr>
+<tr>
+<td>N3</td>
+<td><code>'text/n3'</code></td>
+</tr>
+<tr>
+<td>RDF/XML</td>
+<td><code>'application/rdf+xml'</code></td>
+</tr>
+<tr>
+<td>SVG</td>
+<td><code>'image/svg+xml'</code></td>
+</tr>
+<tr>
+<td>TriG</td>
+<td><code>'application/trig'</code></td>
+</tr>
+<tr>
+<td>Turtle</td>
+<td><code>'text/turtle'</code></td>
+</tr>
+<tr>
+<td>XHTML</td>
+<td><code>'application/xhtml+xml'</code></td>
+</tr>
+<tr>
+<td>XML</td>
+<td><code>'application/xml'</code></td>
+</tr>
+</tbody>
+</table>
+<p>The following example makes RDF source data available to the SHACL <a href="../../validate/shacl/">validate()</a> function:</p>
+<pre><code class="language-ts">import { Source } from '@triplyetl/etl/generic'
+import { validate } from '@triplyetl/etl/shacl'
+
+validate(Source.string(`
+prefix sh: &lt;http://www.w3.org/ns/shacl#&gt;
+prefix shp: &lt;https://example.com/model/shp/&gt;
+prefix sdo: &lt;https://schema.org/&gt;
+
+shp:Person
+  a sh:NodeShape;
+  sh:property shp:Person_name;
+  sh:targetClass sdo:Person.
+
+shp:Person_name
+  a sh:PropertyShape;
+  sh:datatype xsd:string;
+  sh:minLength 1;
+  sh:path sdo:name.`))
+</code></pre>
+<p>This makes the following linked data SHACL specification available:</p>
+<div class="mermaid">graph LR
+  shp:Person -- a --&gt; sh:NodeShape
+  shp:Person -- sh:property --&gt; shp:Person_name
+  shp:Person -- sh:targetClass --&gt; sdo:Person
+  shp:Person_name -- a --&gt; sh:PropertyShape
+  shp:Person_name -- sh:datatype --&gt; xsd:string
+  shp:Person_name -- sh:minLength --&gt; 1
+  shp:Person_name -- sh:path --&gt; sdo:name
+</div>
+<p>Notice that <code>validate()</code> does not require us to set the content-type, since it only supports N-Quads, N-Triples, TriG and Turtle (and these formats can be detected automatically).</p>
+<p>The following example makes a string source available to the <code>fromJson()</code> source extractor:</p>
+<pre><code class="language-ts">fromJson(Source.string(`
+[
+  { id: '123', name: 'John' },
+  { id: '456', name: 'Jane' }
+]`)),
+</code></pre>
+<p>Notice that the <a href="#inline-json">inline JSON</a> source is often a more intuitive specification format for the <code>fromJson()</code> source extractor than its corresponding string source.</p>
+<p>While <a href="#inline-json">inline JSON</a> and <a href="#strings">string sources</a> are mostly used for small examples, local files are somewhat more widely used.</p>
+</div>
+</div><footer>
+<div aria-label="Footer Navigation" class="rst-footer-buttons" role="navigation">
+<a class="btn btn-neutral float-left" href="../inline-json/" title="Inline JSON"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+<a class="btn btn-neutral float-right" href="../local-files/" title="Local Files">Next <span class="icon icon-circle-arrow-right"></span></a>
+</div>
+<hr/>
+<div role="contentinfo">
+<!-- Copyright etc -->
+</div>
+</footer>
+</div>
+</div>
+</section>
+</div>
+<div aria-label="Versions" class="rst-versions" role="note">
+<span class="rst-current-version" data-toggle="rst-current-version">
+<span><a href="../inline-json/" style="color: #fcfcfc">« Previous</a></span>
+<span><a href="../local-files/" style="color: #fcfcfc">Next »</a></span>
+</span>
+</div>
+<script>var base_url = '../../..';</script>
+<script defer="" src="../../../js/triply.js"></script>
+<script defer="" src="../../../js/highlight.min.js"></script>
+<script defer="" src="../../../search/main.js"></script>
+<script type="module">import mermaid from "https://unpkg.com/mermaid@10.4.0/dist/mermaid.esm.min.mjs";
+mermaid.initialize({});</script></body>
+</html>
