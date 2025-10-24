@@ -13,8 +13,7 @@ path: "/docs/triplydb-changelog"
 
 
 - `#10827` [Data Model] The side panel on the data model page can now be resized for better workspace customization.
-- Upgrade to Node.js 24 - improved performance and support for the latest JavaScript features.
-- Upgrade Redis to resolve security vulnerability - enhanced security by updating Redis to address known vulnerabilities.
+
 
 **Issues fixed**
 
