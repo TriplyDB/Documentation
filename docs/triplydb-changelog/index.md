@@ -5,6 +5,22 @@ path: "/docs/triplydb-changelog"
 
 [TOC]
 
+## 25.10.300 {#25.10.300}
+
+**Release date:** 2025-10-29
+
+**Features**
+
+
+- `#10885` [Tabular uploads] Introduced a new CSV/TSV import mechanism that preserves all information from the source files, enabling lossless roundtrip conversions between CSV and RDF representations. The new approach properly handles edge cases like duplicate column headers, multiple CSV files collapsing into the same graph, and hierarchical header structures.
+- `#10742` [Data Model] Merged the separate property type and type fields into a single unified type selector. The system automatically infers whether a value should be a literal or IRI based on the selected datatype or class, reducing the number of fields users need to interact with while maintaining full functionality.
+- `#10670` [Speedy] Made SPARQL graph management operations more scalable: Operations now operate on graphs of any size.
+
+**Issues fixed**
+
+- `#10916` [Speedy] Fixed query job failures for certain queries that processed very large CONSTRUCT query results. Query jobs now robustly handles arbitrary result set sizes to generate hundreds of millions of triples without memory errors.
+- `#10892` [Data Editor] Fixed an issue where editing an instance with a root-only prefix would append a random ID to the IRI, causing the instance to appear as lost. The editor now preserves the original root IRI during edits, preventing unexpected IRI modifications.
+
 ## 25.10.200 {#25.10.200}
 
 **Release date:** 2025-10-16

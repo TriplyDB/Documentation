@@ -8,6 +8,14 @@ path: "/docs/triplydb-technical-changelog"
 This changelog covers technical changes related to TriplyDB on-premise deployments. See [here](/triplydb-changelog) for the TriplyDB changelog that is user facing.
 
 
+## 25.10.300 {#25.10.300}
+
+**Release date:** 2025-10-29
+
+- SAML authentication attribute mapping configuration changed. The `auth.saml[*].attributeMappings` structure now supports additional properties for attribute updates. Added `allowOverwrite` boolean property to control whether attributes can be updated on subsequent logins (default: `false`). Added `expiresAt` and `displayedName` attribute mappings for temporary user accounts. Existing SAML configurations will continue to work as is
+- Added `indexJobs.maxJsonLdFileSizeMb` configuration property (default: `50`). This limits the maximum size of JSON-LD files during index job processing to prevent memory issues with very large files. The environment API variable `TRIPLY__JSONLD_MAX_BYTES_SIZE` is not allowed anymore.
+- Removed `speedy.maxNumberOfStatementsInMemory` configuration property. Memory handling for SPARQL operations is now managed automatically without a fixed statement limit, improving support for large result sets.
+
 ## 25.10.200 {#25.10.200}
 
 **Release date:** 2025-10-16
