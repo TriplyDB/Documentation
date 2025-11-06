@@ -5,6 +5,18 @@ path: "/docs/triplydb-changelog"
 
 [TOC]
 
+
+## 25.10.301 {#25.10.301}
+
+**Release date:** 2025-11-06
+
+Patch release for:
+
+- `#10872` [Data model] The search & find functionality may return incomplete results
+- `#10933` [Data editor] Copying a resource does not always work, making it impossible to
+  copy an existing resource
+
+
 ## 25.10.300 {#25.10.300}
 
 **Release date:** 2025-10-29
