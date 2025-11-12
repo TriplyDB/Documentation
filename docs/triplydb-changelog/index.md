@@ -6,6 +6,17 @@ path: "/docs/triplydb-changelog"
 [TOC]
 
 
+## 25.11.100 {#25.11.100}
+
+**Release date:** 2025-11-13
+
+
+**Issues fixed**
+
+- `#10920` [SPARQL IDE] Certain pivot visualization errors would make the SPARQL IDE unrecoverable without refreshing the page.
+- Fixed serialization handling for RDF literals containing unusual Unicode line-break characters.
+
+
 ## 25.10.301 {#25.10.301}
 
 **Release date:** 2025-11-06

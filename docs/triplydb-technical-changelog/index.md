@@ -8,6 +8,14 @@ path: "/docs/triplydb-technical-changelog"
 This changelog covers technical changes related to TriplyDB on-premise deployments. See [here](/triplydb-changelog) for the TriplyDB changelog that is user facing.
 
 
+## 25.11.100 {#25.11.100}
+
+**Release date:** 2025-11-12
+
+- API service account RBAC permissions expanded: added `deployments` resource permissions
+  (`get`, `list`) for `apps` API group better monitoring and management.
+- PersistentVolumeClaim and Service creation now support owner references for proper garbage collection. This ensures Kubernetes automatically cleans up related resources when parent resources are deleted.
+
 ## 25.10.300 {#25.10.300}
 
 **Release date:** 2025-10-29
