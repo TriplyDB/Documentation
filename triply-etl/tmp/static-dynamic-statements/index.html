@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <meta name="description" content="The official documentation for the Triply products: TriplyDB, TriplyDB.js, and TriplyETL." />
+      <link rel="shortcut icon" href="../../../img/favicon.ico" />
+    <title>Static dynamic statements - Triply Documentation</title>
+    <link rel="stylesheet" href="../../../css/theme.css" />
+    <link rel="stylesheet" href="../../../css/theme_extra.css" />
+        <link href="../../../css/intellij-light.css" rel="stylesheet" />
+        <link href="../../../css/triply.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Static dynamic statements";
+        var mkdocs_page_input_path = "triply-etl/tmp/static-dynamic-statements.md";
+        var mkdocs_page_url = null;
+      </script>
+     
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../../.." class="icon icon-home"> Triply Documentation
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../..">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">TriplyDB</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Getting started</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../../triply-db-getting-started/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../triply-db-getting-started/uploading-data/">Uploading Data</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../triply-db-getting-started/editing-data/">Editing (SKOS) Data</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../triply-db-getting-started/publishing-data/">Sharing Data</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../triply-db-getting-started/viewing-data/">Viewing Data</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../triply-db-getting-started/exporting-data/">Exporting Data</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../triply-db-getting-started/saved-queries/">Saved Queries</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../triply-db-getting-started/data-stories/">Data Stories</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../triply-db-getting-started/admin-settings-pages/">Admin Settings Pages</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../triply-db-getting-started/reference/">Reference</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../triply-api/">API</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">TriplyDB-JS</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../../triplydb-js/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../triplydb-js/app/">App</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../triplydb-js/account/">Account</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../triplydb-js/asset/">Asset</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../triplydb-js/dataset/">Dataset</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../triplydb-js/graph/">Graph</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../triplydb-js/organization/">Organization</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../triplydb-js/query/">Query</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../triplydb-js/service/">Service</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../triplydb-js/story/">Story</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../triplydb-js/user/">User</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../triplydb-js/faq/">FAQ</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../triply-cli/">Command-line Interface</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../triplydb-changelog/">Changelog</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">TriplyETL</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Generic</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../generic/getting-started/">Getting Started</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../generic/changelog/">Changelog</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../generic/cli/">Command Line Interface (CLI)</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../generic/declarations/">Declarations</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../generic/control-structures/">Control Structures</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../generic/debug/">Debug</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../generic/internal-store/">Internal Store</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../generic/maintenance/">Maintenance</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../generic/record/">Record</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../generic/vocabularies/">Vocabularies</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Sources</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../sources/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../sources/apis/">APIs</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../sources/inline-json/">Inline JSON</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../sources/inline-strings/">Inline Strings</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../sources/local-files/">Local Files</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../sources/online-files/">Online Files</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../sources/rml/">RML Sources</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../sources/triplydb-assets/">TriplyDB Assets</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../sources/triplydb-datasets/">TriplyDB Datasets</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../sources/triplydb-queries/">TriplyDB Queries</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Extract</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../extract/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../extract/csv/">CSV</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../extract/json/">JSON</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../extract/oai-pmh/">OAI-PMH</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../extract/postgres/">Postgres</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../extract/rdf/">RDF</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../extract/shapefile/">Shapefile</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../extract/tsv/">TSV</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../extract/xlsx/">XLSX</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../extract/xml/">XML</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Transform</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../transform/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../transform/ratt/">RATT</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../transform/rml/">RML</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../transform/typescript/">TypeScript</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../transform/xslt/">XSLT</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Assert</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../assert/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../assert/json-ld/">JSON-LD</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="#">RATT</a>
+    <ul>
+                <li class="toctree-l3"><a class="reference internal" href="../../assert/ratt/terms/">RATT Terms</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../../assert/ratt/statements/">RATT Statements</a>
+                </li>
+    </ul>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../assert/rml/">RML</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../assert/xslt/">XSLT</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Enrich</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../enrich/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="#">SHACL</a>
+    <ul>
+                <li class="toctree-l3"><a class="reference internal" href="../../enrich/shacl/">Overview</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../../enrich/shacl/triple-rules/">Triple Rules</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../../enrich/shacl/sparql-rules/">SPARQL Rules</a>
+                </li>
+    </ul>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="#">SPARQL</a>
+    <ul>
+                <li class="toctree-l3"><a class="reference internal" href="../../enrich/sparql/construct/">SPARQL Construct</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../../enrich/sparql/update/">SPARQL Update</a>
+                </li>
+    </ul>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Validate</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../validate/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../validate/graph-comparison/">Graph Comparison</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../validate/shacl/">SHACL</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../publish/">Publish</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Yasgui</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../yasgui/">Introduction</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../yasgui-api/">For Developers</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../..">Triply Documentation</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../.." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Static dynamic statements</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <div class="toc"><span class="toctitle">On this page:</span><ul>
+<li><a href="#static-and-dynamic-statements">Static and dynamic statements</a><ul>
+<li><a href="#create-dynamic-statements">Create dynamic statements</a></li>
+<li><a href="#static-and-dynamic-triples">Static and dynamic triples</a></li>
+<li><a href="#when-should-you-use-an-iri-instead-of-an-uri-literal">When should you use an IRI instead of an URI literal?</a></li>
+<li><a href="#limitation-of-literal-and-iri">Limitation of literal() and iri()</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<h1 id="static-and-dynamic-statements">Static and dynamic statements<a class="headerlink" href="#static-and-dynamic-statements" title="Permanent link">&para;</a></h1>
+<h2 id="create-dynamic-statements">Create dynamic statements<a class="headerlink" href="#create-dynamic-statements" title="Permanent link">&para;</a></h2>
+<p>Dynamic statements are statements that are based on some aspect of the source data.</p>
+<p>We use the following Record as an example:</p>
+<table>
+<thead>
+<tr>
+<th>Country</th>
+<th>Inhabitants</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>France</td>
+<td>null</td>
+</tr>
+<tr>
+<td>Germany</td>
+<td>83190556</td>
+</tr>
+<tr>
+<td>Netherlands</td>
+<td>17650200</td>
+</tr>
+</tbody>
+</table>
+<p>We start with creating the prefix and term declarations (see the <a href="../../generic/declarations/">Declare</a> documentation for more information):</p>
+<pre><code class="language-ts">const base = declarePrefix('https://triplydb.com/Triply/example/')
+const prefix = {
+  def: declarePrefix(base('def/')),
+  id: declarePrefix(base('id/')),
+  xsd: declarePrefix('http://www.w3.org/2001/XMLSchema#'),
+}
+
+const def = {
+  Country: prefix.def('Country'),
+  name: prefix.def('inhabitants'),
+}
+
+const xsd = {
+  positiveInteger: prefix.xsd('positiveInteger'),
+  string: prefix.xsd('string'),
+}
+
+
+const input_string  = ['Country', 'inhabitants']
+</code></pre>
+<p>With these prefix and term constants in place, a dynamic statement is created as follows:</p>
+<pre><code class="language-ts">triple(
+  iri(prefix.id, 'Country'),
+  def.inhabitants,
+  literal('Inhabitants', xsd.positiveInteger)
+),
+</code></pre>
+<p>Notice the following details:
+- <code>iri()</code> is used to create a dynamic IRI term.
+- Arguments <code>Country</code> and <code>Inhabitants</code> allow values for these keys to be used from processed Records.
+- The IRI prefix for the subject term is specified with constant <code>prefix.id</code>.
+- <code>literal</code> is used to create a dynamic literal term.
+- For literals a datatype IRI can be specified. If no datatype IRI is specified then the default IRI is <code>xsd.string</code>.</p>
+<p><code>iri.hashed</code>can be used instead of <code>iri</code> when the ETL has a high number of blank nodes and they need more than one constant as input to hash a unique IRI.</p>
+<pre><code class="language-ts">etl.use(
+  triple(
+    iri.hashed(prefix.id, input_string),
+    def.inhabitants,
+    mw.toLiteral('Inhabitants', {datatype: xsd.positiveInteger})),
+)
+</code></pre>
+<p>Notice the following details:
+- <code>input_string</code> can pass more than one constant to hash a unique IRI term.</p>
+<h2 id="static-and-dynamic-triples">Static and dynamic triples<a class="headerlink" href="#static-and-dynamic-triples" title="Permanent link">&para;</a></h2>
+<p>Be aware that there are different approaches forstatic<em> anddynamic</em> IRIs:</p>
+<ul>
+<li>Static IRIs are created with prefix declarations (example [1a]).</li>
+<li>Dynamic IRIs are created with <code>iri()</code>,<code>iri.hashed</code> and prefix declarations (example [2a]).</li>
+</ul>
+<pre><code class="language-ts">[1a] prefix.id('person')
+[2a] iri(prefix.id, 'person'),
+[3a] iri.hashed(prefix.id, ['person','age']),
+
+</code></pre>
+<p>Notation [1a] creates thestatic* IRI [1b]. This IRI does not depend on the currently processed record.</p>
+<p>Notation [2a] creates thedynamic* IRI in [2b], assuming the <code>"person"</code> key contains the value <code>"John"</code>. This IRI depends on the currently processed record.</p>
+<p>For a different record, IRI [2c] may be created instead (assuming the <code>"person"</code> key contains the value <code>"Jane"</code>).</p>
+<p>Notation [3a] creates thedynamic* IRI in [3b], assuming the <code>"person"</code> key contains the value <code>"Sam"</code> and the
+<code>"age"</code> key contains the value <code>"30"</code>. For a different record, IRI [3c] may be created instead (assuming the <code>"person"</code> key contains the value <code>"Roland"</code> and <code>"age"</code> key contains the value <code>"20"</code>).</p>
+<pre><code class="language-turtle">[1b] id:person
+[2b] id:John
+[2c] id:Jane
+[3b] id:Sam , age: 30
+[3c] id:Sam , age: 20
+</code></pre>
+<p>--&gt;</p>
+<h2 id="when-should-you-use-an-iri-instead-of-an-uri-literal">When should you use an IRI instead of an URI literal?<a class="headerlink" href="#when-should-you-use-an-iri-instead-of-an-uri-literal" title="Permanent link">&para;</a></h2>
+<p>An IRI is used to identify something, for example the city of Amsterdam. It is expected that accessing it returns linked data. An IRI can be used to make assertions about a subject. On the other hand, a URI is expected to return a non-linked data content, for example an HTML website, and can be used as objects in linked data, for example for inserting further information about the subject resource.
+In the example below, the subject IRI is described further by the object's URL.</p>
+<pre><code class="language-sh">&lt;https://dbpedia.org/resource/Amsterdam&gt; rdfs:seeAlso &quot;https://www.iamsterdam.com&quot;^^xsd:anyURI.
+</code></pre>
+<p>An IRI can be created with <code>iri()</code>, while an URI is created by using <code>literal()</code>.</p>
+<h2 id="limitation-of-literal-and-iri">Limitation of <code>literal()</code> and <code>iri()</code><a class="headerlink" href="#limitation-of-literal-and-iri" title="Permanent link">&para;</a></h2>
+<p>There is a limitation for both <code>literal()</code> and <code>iri()</code>. It is not possible to change the value in the record in the <code>literal()</code> and <code>iri()</code> assertions. The value that is at that moment stored in the record for that key, is then added as either an IRI when called with the <code>iri()</code> function or as a literal when called with the function <code>literal()</code>.</p>
+<p>The limitation is shown in the example below. In the example we want to round the inhabitants number to the nearest thousand. We can not transform this in the <code>literal()</code> function. Instead we need to add a <code>custom.change()</code> middleware which will execute the transformation.</p>
+<pre><code class="language-ts">custom.change({
+  key: 'Inhabitants',
+  type: 'number',
+  change: value =&gt; value / 1_000,
+}),
+triple(
+  iri(prefix.id, 'Country'),
+  def.name,
+  literal('Inhabitants', xsd.positiveInteger)
+),
+</code></pre>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script>var base_url = '../../..';</script>
+      <script src="../../../js/triply.js" defer></script>
+      <script src="../../../js/highlight.min.js" defer></script>
+      <script src="../../../search/main.js" defer></script>
+
+</body>
+</html>
