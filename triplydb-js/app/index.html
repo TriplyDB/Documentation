@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <meta name="description" content="The official documentation for the Triply products: TriplyDB, TriplyDB.js, and TriplyETL." />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>App - Triply Documentation</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link href="../../css/intellij-light.css" rel="stylesheet" />
+        <link href="../../css/triply.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "App";
+        var mkdocs_page_input_path = "triplydb-js/app/index.md";
+        var mkdocs_page_url = null;
+      </script>
+     
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> Triply Documentation
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">TriplyDB</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="#">Getting started</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-db-getting-started/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-db-getting-started/uploading-data/">Uploading Data</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-db-getting-started/editing-data/">Editing (SKOS) Data</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-db-getting-started/publishing-data/">Sharing Data</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-db-getting-started/viewing-data/">Viewing Data</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-db-getting-started/exporting-data/">Exporting Data</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-db-getting-started/saved-queries/">Saved Queries</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-db-getting-started/data-stories/">Data Stories</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-db-getting-started/admin-settings-pages/">Admin Settings Pages</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-db-getting-started/reference/">Reference</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../triply-api/">API</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">TriplyDB-JS</a>
+    <ul class="current">
+                <li class="toctree-l2"><a class="reference internal" href="../">Overview</a>
+                </li>
+                <li class="toctree-l2 current"><a class="reference internal current" href="./">App</a>
+    <ul class="current">
+    <li class="toctree-l3"><a class="reference internal" href="#appgetaccountname-string">App.getAccount(name?: string)</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#examples">Examples</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#see-also">See also</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#appgetaccounts">App.getAccounts()</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#example">Example</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#appgetinfo">App.getInfo()</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#examples_1">Examples</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#appgetorganizationname-string">App.getOrganization(name: string)</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#examples_2">Examples</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#alternatives">Alternatives</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#see-also_1">See also</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#appgetusername-string">App.getUser(name?: string)</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#examples_3">Examples</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#alternatives_1">Alternatives</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#see-also_2">See also</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#appiscompatiblewithminimumversion-string">App.isCompatibleWith(minimumVersion: string)</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#arguments">Arguments</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#see-also_3">See also</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../account/">Account</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../asset/">Asset</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../dataset/">Dataset</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../graph/">Graph</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../organization/">Organization</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../query/">Query</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../service/">Service</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../story/">Story</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../user/">User</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../faq/">FAQ</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../triply-cli/">Command-line Interface</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../triplydb-changelog/">Changelog</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">TriplyETL</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Generic</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/generic/getting-started/">Getting Started</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/generic/changelog/">Changelog</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/generic/cli/">Command Line Interface (CLI)</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/generic/declarations/">Declarations</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/generic/control-structures/">Control Structures</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/generic/debug/">Debug</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/generic/internal-store/">Internal Store</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/generic/maintenance/">Maintenance</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/generic/record/">Record</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/generic/vocabularies/">Vocabularies</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Sources</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/sources/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/sources/apis/">APIs</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/sources/inline-json/">Inline JSON</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/sources/inline-strings/">Inline Strings</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/sources/local-files/">Local Files</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/sources/online-files/">Online Files</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/sources/rml/">RML Sources</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/sources/triplydb-assets/">TriplyDB Assets</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/sources/triplydb-datasets/">TriplyDB Datasets</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/sources/triplydb-queries/">TriplyDB Queries</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Extract</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/extract/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/extract/csv/">CSV</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/extract/json/">JSON</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/extract/oai-pmh/">OAI-PMH</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/extract/postgres/">Postgres</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/extract/rdf/">RDF</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/extract/shapefile/">Shapefile</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/extract/tsv/">TSV</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/extract/xlsx/">XLSX</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/extract/xml/">XML</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Transform</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/transform/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/transform/ratt/">RATT</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/transform/rml/">RML</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/transform/typescript/">TypeScript</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/transform/xslt/">XSLT</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Assert</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/assert/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/assert/json-ld/">JSON-LD</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="#">RATT</a>
+    <ul>
+                <li class="toctree-l3"><a class="reference internal" href="../../triply-etl/assert/ratt/terms/">RATT Terms</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../../triply-etl/assert/ratt/statements/">RATT Statements</a>
+                </li>
+    </ul>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/assert/rml/">RML</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/assert/xslt/">XSLT</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Enrich</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/enrich/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="#">SHACL</a>
+    <ul>
+                <li class="toctree-l3"><a class="reference internal" href="../../triply-etl/enrich/shacl/">Overview</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../../triply-etl/enrich/shacl/triple-rules/">Triple Rules</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../../triply-etl/enrich/shacl/sparql-rules/">SPARQL Rules</a>
+                </li>
+    </ul>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="#">SPARQL</a>
+    <ul>
+                <li class="toctree-l3"><a class="reference internal" href="../../triply-etl/enrich/sparql/construct/">SPARQL Construct</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../../triply-etl/enrich/sparql/update/">SPARQL Update</a>
+                </li>
+    </ul>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Validate</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/validate/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/validate/graph-comparison/">Graph Comparison</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/validate/shacl/">SHACL</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../triply-etl/publish/">Publish</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Yasgui</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../yasgui/">Introduction</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../yasgui-api/">For Developers</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">Triply Documentation</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">TriplyDB</li>
+          <li class="breadcrumb-item">TriplyDB-JS</li>
+      <li class="breadcrumb-item active">App</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <div class="toc"><span class="toctitle">On this page:</span><ul>
+<li><a href="#app">App</a><ul>
+<li><a href="#appgetaccountname-string">App.getAccount(name?: string)</a><ul>
+<li><a href="#examples">Examples</a></li>
+<li><a href="#see-also">See also</a></li>
+</ul>
+</li>
+<li><a href="#appgetaccounts">App.getAccounts()</a><ul>
+<li><a href="#example">Example</a></li>
+</ul>
+</li>
+<li><a href="#appgetinfo">App.getInfo()</a><ul>
+<li><a href="#examples_1">Examples</a></li>
+</ul>
+</li>
+<li><a href="#appgetorganizationname-string">App.getOrganization(name: string)</a><ul>
+<li><a href="#examples_2">Examples</a></li>
+<li><a href="#alternatives">Alternatives</a></li>
+<li><a href="#see-also_1">See also</a></li>
+</ul>
+</li>
+<li><a href="#appgetusername-string">App.getUser(name?: string)</a><ul>
+<li><a href="#examples_3">Examples</a></li>
+<li><a href="#alternatives_1">Alternatives</a></li>
+<li><a href="#see-also_2">See also</a></li>
+</ul>
+</li>
+<li><a href="#appiscompatiblewithminimumversion-string">App.isCompatibleWith(minimumVersion: string)</a><ul>
+<li><a href="#arguments">Arguments</a></li>
+<li><a href="#see-also_3">See also</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<h1 id="app">App<a class="headerlink" href="#app" title="Permanent link">&para;</a></h1>
+<p>Instances of the <code>App</code> class are specific application connections that are set-up with a TriplyDB server.</p>
+<p>Connections to TriplyDB servers can be created with and without setting an API token. When no API token is set, the connection can be used to perform read-only operations over public data. When an API token is set, the connection can be used to perform read/write operations over public/private data the API token grants access to.</p>
+<p>The following snippet creates an instance of the <code>App</code> object that establishes read-only access to the TriplyDB server at <a href="https://triplydb.com">https://triplydb.com</a>:</p>
+<pre><code class="language-ts">import App from '@triply/triplydb'
+const triply = App.get({ url: 'https://api.triplydb.com' })
+</code></pre>
+<p>Notice that the URL must point to the API of the TriplyDB server that the <code>App</code> object connects to. The API URL is typically created by adding the <code>api.</code> subdomain in front of the server's host name. For example, since [1] is the web-based GUI for the TriplyDB server, then [2] is the corresponding API for that instance.</p>
+<pre><code>[1] https://triplydb.com
+[2] https://api.triplydb.com
+</code></pre>
+<p>When an API token is specified, the operations that can be performed through the <code>App</code> object are determined by:</p>
+<ol>
+<li>The access level of the token: either “Read access”, “Write access”, or “Management access”.</li>
+<li>The credentials of the user account for which the API token is created. When a user is a member of an organization, she has access to all its datasets, stories, and queries; a user always has access to her own datasets, stores and queries.</li>
+</ol>
+<p>The following token access levels are available:</p>
+<p>1. “Read access” allows:</p>
+<ul>
+<li>
+<p>Read operations over data with access level “Public”.</p>
+</li>
+<li>
+<p>Read operations over data with access level “Internal”.</p>
+</li>
+<li>
+<p>Read operations over data with access level “Private” that belongs to the user who created the token.</p>
+</li>
+<li>
+<p>Read operations over data with access level “Private” that belongs to organizations to which the user who created the token is a member.</p>
+</li>
+</ul>
+<p>2. “Write access” allows:</p>
+<ul>
+<li>
+<p>All operations allows by “Read access”.</p>
+</li>
+<li>
+<p>Write operations over data that has access setting “Internal”.</p>
+</li>
+<li>
+<p>Write operations over data</p>
+</li>
+</ul>
+<p>3. “Management access” allows the following operations to be performed: creating organizations, adding/removing members to/from organizations.</p>
+<p>The following creates an <code>App</code> object with an API token that is made available through an environment variable:</p>
+<pre><code class="language-ts">import App from '@triply/triplydb'
+const triply = App.get({ token: process.env.TOKEN })
+</code></pre>
+<p>It is typical for one TriplyDB.js script to have exactly one <code>App</code> object.</p>
+<h2 id="appgetaccountname-string">App.getAccount(name?: string)<a class="headerlink" href="#appgetaccountname-string" title="Permanent link">&para;</a></h2>
+<p>Returns the TriplyDB account with the given <code>name</code>.</p>
+<p>If <code>name</code> is omitted, the TriplyDB account that is associated with the current API token is returned.</p>
+<h3 id="examples">Examples<a class="headerlink" href="#examples" title="Permanent link">&para;</a></h3>
+<ul>
+<li>The following snippet returns the account called <code>'Triply'</code>.</li>
+</ul>
+<pre><code class="language-ts">const account = await triply.getAccount('Triply')
+</code></pre>
+<ul>
+<li>The following snippet returns the current account. This is the account for which the currently configured API token was created.</li>
+</ul>
+<pre><code class="language-ts">const account = await triply.getAccount()
+</code></pre>
+<h3 id="see-also">See also<a class="headerlink" href="#see-also" title="Permanent link">&para;</a></h3>
+<p>This method returns an account object. See class <a href="../account/#account">Account</a> for an overview of the methods that can be called on such objects.</p>
+<p>Class <a href="../account/#account">Account</a> has two specializations: class <a href="../organization/#organization">Organization</a> and class <a href="../user/#user">User</a>. In line with these class specializations, there are also two method specializations:</p>
+<ul>
+<li>
+<p>Method <a href="#appgetorganizationname-string"><code>App.getOrganization(name: string)</code></a> returns an organization object.</p>
+</li>
+<li>
+<p>Method <a href="#appgetusername-string"><code>App.getUser(name?: string)</code></a> returns a user object.</p>
+</li>
+</ul>
+<h2 id="appgetaccounts">App.getAccounts()<a class="headerlink" href="#appgetaccounts" title="Permanent link">&para;</a></h2>
+<p>Returns an <a href="../faq/#what-is-an-async-iterator">async iterator</a> over all accounts in the TriplyDB server.</p>
+<h3 id="example">Example<a class="headerlink" href="#example" title="Permanent link">&para;</a></h3>
+<ul>
+<li>The following snippet prints the display names for all accounts in the TriplyDB server at <a href="https://triplydb.com">https://triplydb.com</a>:</li>
+</ul>
+<pre><code class="language-ts">const triply = App.get({ url: 'https://api.triplydb.com' })
+for await (const account of triply.getAccounts()) {
+  console.log((await account.getInfo()).name)
+}
+</code></pre>
+<ul>
+<li>The following snippet returns an array that contains all account objects:</li>
+</ul>
+<pre><code class="language-ts">console.log(await triply.getAccounts().toArray())
+</code></pre>
+<p>See class <a href="../account/#account">Account</a> for an overview of the methods that can be used with account objects.</p>
+<h2 id="appgetinfo">App.getInfo()<a class="headerlink" href="#appgetinfo" title="Permanent link">&para;</a></h2>
+<p>Returns information about the TriplyDB server that the <a href="#app"><code>App</code></a> is connected to.</p>
+<p>Information is returned in a dictionary object. Individual keys can be accessed for specific information values.</p>
+<h3 id="examples_1">Examples<a class="headerlink" href="#examples_1" title="Permanent link">&para;</a></h3>
+<ul>
+<li>The following snippet prints the contact email for the TriplyDB server:</li>
+</ul>
+<pre><code class="language-ts">console.log((await triply.getInfo()).contactEmail)
+</code></pre>
+<ul>
+<li>The following snippet returns an object describing the used TriplyDB server:</li>
+</ul>
+<pre><code class="language-ts">console.log(await triply.getInfo())
+</code></pre>
+<h2 id="appgetorganizationname-string">App.getOrganization(name: string)<a class="headerlink" href="#appgetorganizationname-string" title="Permanent link">&para;</a></h2>
+<p>Returns the TriplyDB organization with the given <code>name</code>.</p>
+<p>This method is similar to <a href="#appgetaccountname-string"><code>App.getAccount(name?: string)</code></a>, but differs in the following ways:</p>
+<ul>
+<li>
+<p>This method only works for accounts that represent TriplyDB organizations.</p>
+</li>
+<li>
+<p>This method returns an organization object. Class <a href="../organization/#organization">Organization</a> is a specialization of class <a href="../account/#account">Account</a>.</p>
+</li>
+</ul>
+<h3 id="examples_2">Examples<a class="headerlink" href="#examples_2" title="Permanent link">&para;</a></h3>
+<p>The following snippet returns the organization called <code>'Triply'</code>:</p>
+<pre><code class="language-ts">const organization = await triply.getOrganization('Triply')
+</code></pre>
+<p>See class <a href="../organization/#organization">Organization</a> for an overview of the methods that can be used with organization objects.</p>
+<h3 id="alternatives">Alternatives<a class="headerlink" href="#alternatives" title="Permanent link">&para;</a></h3>
+<p>This method is a shorthand for calling the following two methods:</p>
+<ul>
+<li>
+<p>Call method <a href="#appgetaccountname-string"><code>App.getAccount(name?: string)</code></a> to retrieve an account object.</p>
+</li>
+<li>
+<p>Then call method <a href="../account/#accountasorganization"><code>Account.asOrganization()</code></a> to cast the account object into an organization object.</p>
+</li>
+</ul>
+<p>The following snippet returns the same result as the previous example, but uses two methods instead of one:</p>
+<pre><code class="language-ts">const account = await triply.getAccount('Triply')
+const organization = account.asOrganization()
+</code></pre>
+<h3 id="see-also_1">See also<a class="headerlink" href="#see-also_1" title="Permanent link">&para;</a></h3>
+<p>This method returns an organization object. See class <a href="../organization/#organization">Organization</a> for an overview of the methods that can be called on such objects.</p>
+<h2 id="appgetusername-string">App.getUser(name?: string)<a class="headerlink" href="#appgetusername-string" title="Permanent link">&para;</a></h2>
+<p>Returns the TriplyDB user with the given <code>name</code>.</p>
+<p>If <code>name</code> is omitted, the TriplyDB user that is associated with the current API token is returned. This only works if an API token is configured for the current <a href="#app"><code>App</code></a> object.</p>
+<h3 id="examples_3">Examples<a class="headerlink" href="#examples_3" title="Permanent link">&para;</a></h3>
+<p>The following snippet returns the user with name <code>'somebody'</code>:</p>
+<pre><code class="language-ts">const user = await triply.getUser('somebody')
+</code></pre>
+<p>The following snippet returns the user for whom the API token was created. This only works if an API token was configured when the <a href="#app"><code>App</code></a> object was created:</p>
+<pre><code class="language-ts">const me = await triply.getUser()
+</code></pre>
+<h3 id="alternatives_1">Alternatives<a class="headerlink" href="#alternatives_1" title="Permanent link">&para;</a></h3>
+<p>This method is a shorthand for the following two methods:</p>
+<ol>
+<li>
+<p>Call method <a href="#appgetaccountname-string"><code>App.getAccount()</code></a> to retrieve an account object.</p>
+</li>
+<li>
+<p>Then call method <a href="../account/#accountasuser"><code>Account.asUser()</code></a> to cast the account object into a user object.</p>
+</li>
+</ol>
+<p>The following snippet returns the same result as the previous examples, but uses two methods instead of one:</p>
+<pre><code class="language-ts">const account = await triply.getAccount('somebody')
+const user = account.asUser()
+</code></pre>
+<h3 id="see-also_2">See also<a class="headerlink" href="#see-also_2" title="Permanent link">&para;</a></h3>
+<p>This method returns a user object. See class <a href="../user/#user">User</a> for an overview of the methods that can be called on such objects.</p>
+<h2 id="appiscompatiblewithminimumversion-string">App.isCompatibleWith(minimumVersion: string)<a class="headerlink" href="#appiscompatiblewithminimumversion-string" title="Permanent link">&para;</a></h2>
+<p>Succeeds if and only if the currently connected to TriplyDB server has a version that is identical to or higher than the given minimum version.</p>
+<h3 id="arguments">Arguments<a class="headerlink" href="#arguments" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Argument <code>minimumVersion</code> must be a string that uses Semantic Versioning. For example <code>'1.2.3'</code>.</li>
+</ul>
+<h3 id="see-also_3">See also<a class="headerlink" href="#see-also_3" title="Permanent link">&para;</a></h3>
+<p>To inspect the current version of the connected-to TriplyDB server, use <a href="#appgetinfo"><code>App.getInfo()</code></a>.</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../" class="btn btn-neutral float-left" title="Overview"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../account/" class="btn btn-neutral float-right" title="Account">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../account/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script>var base_url = '../..';</script>
+      <script src="../../js/triply.js" defer></script>
+      <script src="../../js/highlight.min.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+
+</body>
+</html>
