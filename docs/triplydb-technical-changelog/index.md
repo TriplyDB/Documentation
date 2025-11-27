@@ -12,8 +12,8 @@ This changelog covers technical changes related to TriplyDB on-premise deploymen
 
 **Release date:** 2025-11-27
 
-- Added Prometheus ServiceMonitor support for API pod metrics collection. Configure via `api.metrics.serviceMonitor.enabled` (default: `false`). When enabled, a ServiceMonitor resource is created with configurable scrape interval, timeout, and labels. The implementation uses hashmod relabeling to scrape only one API replica, preventing duplicate metrics across multiple pods.
-- API network policy updated to allow Prometheus ingress when ServiceMonitor is enabled. The network policy configuration is specified via `api.metrics.serviceMonitor.networkPolicy.prometheusIngressSelector` and supports custom namespace and pod selectors for Prometheus access.
+- Added ServiceMonitor support for environments with a Prometheus Operator deployement. Configure via `api.metrics.serviceMonitor.enabled` (default: `false`). When enabled, a ServiceMonitor resource is created with configurable scrape interval, timeout, and labels, allowing automatic scraping of TriplyDB metrics.
+- API network policy updated to allow Prometheus ingress when ServiceMonitor is enabled. The network policy configuration is specified via `api.metrics.serviceMonitor.networkPolicy.prometheusIngressSelector` to specify which namespace/pod combination is allowed to scrape the metrics endpoint.
 
 ## 25.11.100 {#25.11.100}
 
