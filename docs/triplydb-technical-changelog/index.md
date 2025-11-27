@@ -8,6 +8,15 @@ path: "/docs/triplydb-technical-changelog"
 This changelog covers technical changes related to TriplyDB on-premise deployments. See [here](/triplydb-changelog) for the TriplyDB changelog that is user facing.
 
 
+## 25.11.200 {#25.11.200}
+
+**Release date:** 2025-11-27
+
+- Added Prometheus ServiceMonitor support for API pod metrics collection. Configure via `api.metrics.serviceMonitor.enabled` (default: `false`). When enabled, a ServiceMonitor resource is created with configurable scrape interval, timeout, and labels. The implementation uses hashmod relabeling to scrape only one API replica, preventing duplicate metrics across multiple pods.
+- API network policy updated to allow Prometheus ingress when ServiceMonitor is enabled. The network policy configuration is specified via `api.metrics.serviceMonitor.networkPolicy.prometheusIngressSelector` and supports custom namespace and pod selectors for Prometheus access.
+- Flow connector distribution system introduced. Added `flows.connectors.image` and `flows.connectors.version` configuration properties for managing external connector images. This separates connector versioning from the main TriplyDB release cycle, allowing independent connector updates.
+- Improved connector registration security (see ##10972 for details). The connector registration process has been hardened to prevent unauthorized connector access.
+
 ## 25.11.100 {#25.11.100}
 
 **Release date:** 2025-11-12

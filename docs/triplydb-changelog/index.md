@@ -6,6 +6,19 @@ path: "/docs/triplydb-changelog"
 [TOC]
 
 
+## 25.11.200 {#25.11.200}
+
+**Release date:** 2025-11-27
+
+
+
+**Issues fixed**
+
+- `#10861` [Speedy] Fixed intermittent 502 Bad Gateway errors when executing SPARQL queries with complex function calls. Server errors are now properly handled and reported with clear error messages.
+
+
+
+
 ## 25.11.100 {#25.11.100}
 
 **Release date:** 2025-11-13
