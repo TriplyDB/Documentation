@@ -6,6 +6,21 @@ path: "/docs/triplydb-changelog"
 [TOC]
 
 
+## 25.12.100 {#25.12.100}
+
+**Release date:** 2025-12-10
+
+**Features**
+
+None
+
+**Issues fixed**
+
+- `#10251` [Editor] Tree structure in the editor now automatically updates after modifying concept hierarchies, eliminating the need to refresh the browser to see changes reflected in the tree view.
+- `#11024` [Data Model] Resolved inconsistent language display where Dutch and English labels were mixed within the same view. The system now consistently applies language preferences for labels and descriptions.
+- `#11036` [Data Model] Fixed a crash on the Data Model page caused by ambiguous tree root structures in certain datasets.
+
+
 ## 25.11.200 {#25.11.200}
 
 **Release date:** 2025-11-27
