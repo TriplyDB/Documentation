@@ -121,7 +121,7 @@ When a dataset has a running SPARQL service, the data can be queried from the SP
 
 ### Saving a SPARQL query
 
-It is often useful to save a SPARQL query for later use. This is achieved by clicking on the save icon in the top-right corner of the SPARQL Editor. Doing so will create a [Save Query](../saved-queries/index.md#saved-queries).
+It is often useful to save a SPARQL query for later use. This is achieved by clicking on the save icon in the top-right corner of the SPARQL Editor. Doing so will create a [Saved Query](../saved-queries/index.md#saved-queries).
 
 ### Sharing a SPARQL query
 
