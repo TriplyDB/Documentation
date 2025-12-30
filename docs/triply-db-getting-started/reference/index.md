@@ -194,13 +194,13 @@ The table below lists the introspection functions and the datatype of their resu
 
 One way in which introspection functions can be put to use is in making dynamic overviews in [data stories](https://docs.triply.cc/triply-db-getting-started/data-stories/). The example below shows how the URL of the current user can be matched to provenance data in the [Editor](https://docs.triply.cc/triply-db-getting-started/editing-data/) to create a personalised overview of Editor operations:
 
-```
+```sparql
 prefix tf: <https://triplydb.com/Triply/function/>
 prefix editor: <https://triplydb.com/Triply/TriplyDB-instance-editor-vocabulary/>
 select ?action ?time
 where {
   bind (iri(tf:authenticated_user_url()) as ?userIri)
-  ?event 
+  ?event
     editor:actor ?userIri ;
     editor:action ?action ;
     editor:time ?time

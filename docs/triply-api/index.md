@@ -705,7 +705,7 @@ curl -X POST https://api.triplydb.com/datasets/academy/pokemon/services/pokemon/
   -d 'select * { ?s ?p ?o } limit 1'
 ```
 
-```none
+```tsv
 "s"	"p"	"o"
 "https://triplydb.com/academy/pokemon/vocab/"	"http://www.w3.org/1999/02/22-rdf-syntax-ns#type"	"http://www.w3.org/2002/07/owl#Ontology"
 ```
