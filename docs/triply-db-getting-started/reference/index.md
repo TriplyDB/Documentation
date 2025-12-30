@@ -171,3 +171,41 @@ Haskell (`haskell`), Java (`java`), JavaScript (`javascript`), LaTeX
 (`objectivec`), Pascal (`pascal`), Perl (`perl`), Powershell
 (`powershell`), Prolog (`prolog`), Regular Expression (`regex`), Ruby
 (`ruby`), Scala (`scala`), SQL (`sql`), Yaml (`yaml`).
+
+## Introspection
+
+TriplyDB provides SPARQL functions that can be used to obtain data about the current working environment. Examples are the name and URL of the current dataset, or the name and URL of the current user. This concept is called *introspection*. Introspection is supported for TriplyDB's default SPARQL Engine, Speedy. This means that in order to use introspection, **service** should be set to "Speedy" for (saved) SPARQL queries.
+
+All the introspection functions are identified by IRIs in the namespace `https://triplydb.com/Triply/function/`. In the rest of this section, the following prefix is assumed:
+
+```prefix tf: <https://triplydb.com/Triply/function/>```
+
+The table below lists the introspection functions and the datatype of their result. The introspection functions do not need input parameters. 
+
+| **Function** | **Returns datatype**   | **Explanation** |
+| --- | --- | --- |
+| tf:instance_url() | xsd:anyURI | The URL of the TriplyDB instance |
+| tf:authenticated_user_url() | xsd:anyURI | The URL of the user executing the SPARQL query |
+| tf:authenticated_user_name() | xsd:string | The name of the user executing the SPARQL query |
+| tf:queried_dataset_url() | xsd:anyURI | The URL of the dataset that is being queried |
+| tf:queried_dataset_name() | xsd:string | The name of the dataset that is being queried |
+| tf:queried_dataset_owner_url() | xsd:anyURI | The URL of the owner of the dataset that is being queried |
+| tf:queried_dataset_owner_name() | xsd:string | The name of the owner of the dataset that is being queried |
+
+One way in which introspection functions can be put to use is in making dynamic overviews in [data stories](https://docs.triply.cc/triply-db-getting-started/data-stories/). The example below shows how the URL of the current user can be matched to provenance data in the [Editor](https://docs.triply.cc/triply-db-getting-started/editing-data/) to create a personalised overview of Editor operations:
+
+```
+prefix tf: <https://triplydb.com/Triply/function/>
+prefix editor: <https://triplydb.com/Triply/TriplyDB-instance-editor-vocabulary/>
+select ?action ?time
+where {
+  bind (iri(tf:authenticated_user_url()) as ?userIri)
+  ?event 
+    editor:actor ?userIri ;
+    editor:action ?action ;
+    editor:time ?time
+  .
+}
+```
+
+
