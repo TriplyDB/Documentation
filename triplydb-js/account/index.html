@@ -1,0 +1,1196 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <meta name="description" content="The official documentation for the Triply products: TriplyDB, TriplyDB.js, and TriplyETL." />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Account - Triply Documentation</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link href="../../css/intellij-light.css" rel="stylesheet" />
+        <link href="../../css/triply.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Account";
+        var mkdocs_page_input_path = "triplydb-js/account/index.md";
+        var mkdocs_page_url = null;
+      </script>
+     
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> Triply Documentation
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">TriplyDB</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="#">Getting started</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-db-getting-started/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-db-getting-started/uploading-data/">Uploading Data</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-db-getting-started/editing-data/">Editing (SKOS) Data</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-db-getting-started/publishing-data/">Sharing Data</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-db-getting-started/viewing-data/">Viewing Data</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-db-getting-started/exporting-data/">Exporting Data</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-db-getting-started/saved-queries/">Saved Queries</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-db-getting-started/data-stories/">Data Stories</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-db-getting-started/admin-settings-pages/">Admin Settings Pages</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-db-getting-started/reference/">Reference</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../triply-api/">API</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">TriplyDB-JS</a>
+    <ul class="current">
+                <li class="toctree-l2"><a class="reference internal" href="../">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../app/">App</a>
+                </li>
+                <li class="toctree-l2 current"><a class="reference internal current" href="./">Account</a>
+    <ul class="current">
+    <li class="toctree-l3"><a class="reference internal" href="#accountadddatasetname-string-metadata-object">Account.addDataset(name: string, metadata?: object)</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#access-restrictions">Access restrictions</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#arguments">Arguments</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#examples">Examples</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#see-also">See also</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#accountaddqueryname-string-metadata-object">Account.addQuery(name: string, metadata: object)</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#arguments_1">Arguments</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#example">Example</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#accountaddstoryname-string-metadata-object">Account.addStory(name: string, metadata?: object)</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#required">Required</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#optional">Optional</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#examples_1">Examples</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#accountasorganization">Account.asOrganization()</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#examples_2">Examples</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#alternatives">Alternatives</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#see-also_1">See also</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#accountasuser">Account.asUser()</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#examples_3">Examples</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#alternatives_1">Alternatives</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#see-also_2">See also</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#accountensuredatasetname-string-metadata-object">Account.ensureDataset(name: string, metadata?: object)</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#example_1">Example</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#see-also_3">See also</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#accountgetdatasetname-string">Account.getDataset(name: string)</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#examples_4">Examples</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#see-also_4">See also</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#accountgetdatasets">Account.getDatasets()</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#access-restrictions_1">Access restrictions</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#examples_5">Examples</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#accountgetinfo">Account.getInfo()</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#examples_6">Examples</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#accountgetpinneditems">Account.getPinnedItems()</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#order-considerations">Order considerations</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#examples_7">Examples</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#see-also_5">See also</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#accountgetqueryname-string">Account.getQuery(name: string)</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#examples_8">Examples</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#see-also_6">See also</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#accountgetqueries">Account.getQueries()</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#access-restrictions_2">Access restrictions</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#examples_9">Examples</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#see-also_7">See also</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#accountensurestoryname-string-metadata-object">Account.ensureStory(name: string, metadata: object)</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#optional_1">Optional</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#accountaddstoryname-string-newstoryoptions-object">Account.addStory(name: string, newStoryOptions?: object)</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#required_1">Required</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#optional_2">Optional</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#accountgetstoryname-string">Account.getStory(name: string)</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#examples_10">Examples</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#see-also_8">See also</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#accountgetstories">Account.getStories()</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#examples_11">Examples</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#see-also_9">See also</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#accountpinitemsitems-arraydatasetstoryquery">Account.pinItems(items: array[Dataset|Story|Query])</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#accountsetavatarfile-string">Account.setAvatar(file: string)</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#examples_12">Examples</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#accountupdatemetadata-object">Account.update(metadata: object)</a>
+    </li>
+    </ul>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../asset/">Asset</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../dataset/">Dataset</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../graph/">Graph</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../organization/">Organization</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../query/">Query</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../service/">Service</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../story/">Story</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../user/">User</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../faq/">FAQ</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../triply-cli/">Command-line Interface</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../triplydb-changelog/">Changelog</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">TriplyETL</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Generic</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/generic/getting-started/">Getting Started</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/generic/changelog/">Changelog</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/generic/cli/">Command Line Interface (CLI)</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/generic/declarations/">Declarations</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/generic/control-structures/">Control Structures</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/generic/debug/">Debug</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/generic/internal-store/">Internal Store</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/generic/maintenance/">Maintenance</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/generic/record/">Record</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/generic/vocabularies/">Vocabularies</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Sources</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/sources/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/sources/apis/">APIs</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/sources/inline-json/">Inline JSON</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/sources/inline-strings/">Inline Strings</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/sources/local-files/">Local Files</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/sources/online-files/">Online Files</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/sources/rml/">RML Sources</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/sources/triplydb-assets/">TriplyDB Assets</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/sources/triplydb-datasets/">TriplyDB Datasets</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/sources/triplydb-queries/">TriplyDB Queries</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Extract</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/extract/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/extract/csv/">CSV</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/extract/json/">JSON</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/extract/oai-pmh/">OAI-PMH</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/extract/postgres/">Postgres</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/extract/rdf/">RDF</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/extract/shapefile/">Shapefile</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/extract/tsv/">TSV</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/extract/xlsx/">XLSX</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/extract/xml/">XML</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Transform</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/transform/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/transform/ratt/">RATT</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/transform/rml/">RML</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/transform/typescript/">TypeScript</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/transform/xslt/">XSLT</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Assert</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/assert/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/assert/json-ld/">JSON-LD</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="#">RATT</a>
+    <ul>
+                <li class="toctree-l3"><a class="reference internal" href="../../triply-etl/assert/ratt/terms/">RATT Terms</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../../triply-etl/assert/ratt/statements/">RATT Statements</a>
+                </li>
+    </ul>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/assert/rml/">RML</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/assert/xslt/">XSLT</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Enrich</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/enrich/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="#">SHACL</a>
+    <ul>
+                <li class="toctree-l3"><a class="reference internal" href="../../triply-etl/enrich/shacl/">Overview</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../../triply-etl/enrich/shacl/triple-rules/">Triple Rules</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../../triply-etl/enrich/shacl/sparql-rules/">SPARQL Rules</a>
+                </li>
+    </ul>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="#">SPARQL</a>
+    <ul>
+                <li class="toctree-l3"><a class="reference internal" href="../../triply-etl/enrich/sparql/construct/">SPARQL Construct</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../../triply-etl/enrich/sparql/update/">SPARQL Update</a>
+                </li>
+    </ul>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Validate</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/validate/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/validate/graph-comparison/">Graph Comparison</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/validate/shacl/">SHACL</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../triply-etl/publish/">Publish</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Yasgui</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../yasgui/">Introduction</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../yasgui-api/">For Developers</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">Triply Documentation</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">TriplyDB</li>
+          <li class="breadcrumb-item">TriplyDB-JS</li>
+      <li class="breadcrumb-item active">Account</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <div class="toc"><span class="toctitle">On this page:</span><ul>
+<li><a href="#account">Account</a><ul>
+<li><a href="#accountadddatasetname-string-metadata-object">Account.addDataset(name: string, metadata?: object)</a><ul>
+<li><a href="#access-restrictions">Access restrictions</a></li>
+<li><a href="#arguments">Arguments</a></li>
+<li><a href="#examples">Examples</a></li>
+<li><a href="#see-also">See also</a></li>
+</ul>
+</li>
+<li><a href="#accountaddqueryname-string-metadata-object">Account.addQuery(name: string, metadata: object)</a><ul>
+<li><a href="#arguments_1">Arguments</a></li>
+<li><a href="#example">Example</a></li>
+</ul>
+</li>
+<li><a href="#accountaddstoryname-string-metadata-object">Account.addStory(name: string, metadata?: object)</a><ul>
+<li><a href="#required">Required</a></li>
+<li><a href="#optional">Optional</a></li>
+<li><a href="#examples_1">Examples</a></li>
+</ul>
+</li>
+<li><a href="#accountasorganization">Account.asOrganization()</a><ul>
+<li><a href="#examples_2">Examples</a></li>
+<li><a href="#alternatives">Alternatives</a></li>
+<li><a href="#see-also_1">See also</a></li>
+</ul>
+</li>
+<li><a href="#accountasuser">Account.asUser()</a><ul>
+<li><a href="#examples_3">Examples</a></li>
+<li><a href="#alternatives_1">Alternatives</a></li>
+<li><a href="#see-also_2">See also</a></li>
+</ul>
+</li>
+<li><a href="#accountensuredatasetname-string-metadata-object">Account.ensureDataset(name: string, metadata?: object)</a><ul>
+<li><a href="#example_1">Example</a></li>
+<li><a href="#see-also_3">See also</a></li>
+</ul>
+</li>
+<li><a href="#accountgetdatasetname-string">Account.getDataset(name: string)</a><ul>
+<li><a href="#examples_4">Examples</a></li>
+<li><a href="#see-also_4">See also</a></li>
+</ul>
+</li>
+<li><a href="#accountgetdatasets">Account.getDatasets()</a><ul>
+<li><a href="#access-restrictions_1">Access restrictions</a></li>
+<li><a href="#examples_5">Examples</a></li>
+</ul>
+</li>
+<li><a href="#accountgetinfo">Account.getInfo()</a><ul>
+<li><a href="#examples_6">Examples</a></li>
+</ul>
+</li>
+<li><a href="#accountgetpinneditems">Account.getPinnedItems()</a><ul>
+<li><a href="#order-considerations">Order considerations</a></li>
+<li><a href="#examples_7">Examples</a></li>
+<li><a href="#see-also_5">See also</a></li>
+</ul>
+</li>
+<li><a href="#accountgetqueryname-string">Account.getQuery(name: string)</a><ul>
+<li><a href="#examples_8">Examples</a></li>
+<li><a href="#see-also_6">See also</a></li>
+</ul>
+</li>
+<li><a href="#accountgetqueries">Account.getQueries()</a><ul>
+<li><a href="#access-restrictions_2">Access restrictions</a></li>
+<li><a href="#examples_9">Examples</a></li>
+<li><a href="#see-also_7">See also</a></li>
+</ul>
+</li>
+<li><a href="#accountensurestoryname-string-metadata-object">Account.ensureStory(name: string, metadata: object)</a><ul>
+<li><a href="#optional_1">Optional</a></li>
+</ul>
+</li>
+<li><a href="#accountaddstoryname-string-newstoryoptions-object">Account.addStory(name: string, newStoryOptions?: object)</a><ul>
+<li><a href="#required_1">Required</a></li>
+<li><a href="#optional_2">Optional</a></li>
+</ul>
+</li>
+<li><a href="#accountgetstoryname-string">Account.getStory(name: string)</a><ul>
+<li><a href="#examples_10">Examples</a></li>
+<li><a href="#see-also_8">See also</a></li>
+</ul>
+</li>
+<li><a href="#accountgetstories">Account.getStories()</a><ul>
+<li><a href="#examples_11">Examples</a></li>
+<li><a href="#see-also_9">See also</a></li>
+</ul>
+</li>
+<li><a href="#accountpinitemsitems-arraydatasetstoryquery">Account.pinItems(items: array[Dataset|Story|Query])</a></li>
+<li><a href="#accountsetavatarfile-string">Account.setAvatar(file: string)</a><ul>
+<li><a href="#examples_12">Examples</a></li>
+</ul>
+</li>
+<li><a href="#accountupdatemetadata-object">Account.update(metadata: object)</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<h1 id="account">Account<a class="headerlink" href="#account" title="Permanent link">&para;</a></h1>
+<p>Instances of the <code>Account</code> class denote TriplyDB accounts. Accounts can be either organizations (<a href="../organization/#organization"><code>Organization</code></a>) or users (<a href="../user/#user"><code>User</code></a>).</p>
+<p>Account objects are obtained by calling the following method:</p>
+<ul>
+<li><a href="../app/#appgetaccountname-string"><code>App.getAccount(name?: string)</code></a></li>
+</ul>
+<h2 id="accountadddatasetname-string-metadata-object">Account.addDataset(name: string, metadata?: object)<a class="headerlink" href="#accountadddatasetname-string-metadata-object" title="Permanent link">&para;</a></h2>
+<p>Adds a new TriplyDB dataset with the given <code>name</code> to the current account.</p>
+<p>The optional <code>metadata</code> argument is used to specify the metadata for the dataset.</p>
+<h3 id="access-restrictions">Access restrictions<a class="headerlink" href="#access-restrictions" title="Permanent link">&para;</a></h3>
+<p>Creating a new dataset only succeeds if an API token is configured that provides write access to the current account.</p>
+<p>The default access level for a newly created dataset is <code>private</code>. If you want to publish a dataset with a different access level, you must specify the <code>accessLevel</code> key in the <code>metadata</code> argument.</p>
+<h3 id="arguments">Arguments<a class="headerlink" href="#arguments" title="Permanent link">&para;</a></h3>
+<p>The <code>name</code> argument specifies the URL-friendly name of the new dataset. The name must only contain alphanumeric characters and hyphens (<code>[A-Za-z0-9\-]</code>).</p>
+<p>The full URL of the newly created dataset has the following structure:</p>
+<pre><code>https://{host}/{account}/{dataset}
+</code></pre>
+<p>The <code>metadata</code> argument optionally specifies the access level and other important metadata:</p>
+<dl>
+  <dt><code>accessLevel</code></dt>
+  <dd>
+    <p>The access level of the dataset. The following values are supported:</p>
+    <dl>
+      <dt><code>'private'</code> (default)</dt>
+      <dd>The dataset can only be accessed by organization members.</dd>
+      <dt><code>'internal'</code> </dt>
+      <dd>The dataset can only be accessed by users that are logged into the TriplyDB server.</dd>
+      <dt><code>'public'</code></dt>
+      <dd>The dataset can be accessed by everybody.</dd>
+    </dl>
+    <p>When no access level is specified, the most restrictive access level (<code>private</code>) is used.</p>
+  </dd>
+
+  <dt><code>description</code></dt>
+  <dd>The human-readable description of the dataset. This description can make use of Markdown.</dd>
+
+  <dt><code>displayName</code></dt>
+  <dd>The human-readable name of the dataset. This name may contain spaces and other characters that are not allowed in the URL-friendly name.</dd>
+
+  <dt><code>license</code></dt>
+  <dd>
+    <p>The license of the dataset. The following license strings are currently supported:</p>
+    <ul>
+      <li><code>'CC-BY-SA'</code></li>
+      <li><code>'CC0 1.0'</code></li>
+      <li><code>'GFDL'</code></li>
+      <li><code>'ODC-By'</code></li>
+      <li><code>'ODC-ODbL'</code></li>
+      <li><code>'PDDL'</code></li>
+      <li><code>'None'</code> (default)</li>
+    </ul>
+  </dd>
+
+  <dt><code>prefixes</code></dt>
+  <dd>The IRI prefix declarations that are configured for the dataset. This is specified as a dictionary object whose keys are aliases and whose values are IRI prefixes.</dd>
+</dl>
+
+<h3 id="examples">Examples<a class="headerlink" href="#examples" title="Permanent link">&para;</a></h3>
+<p>The following snippet creates a new dataset called <code>'iris'</code> under the account called <code>'Triply'</code>:</p>
+<ul>
+<li>The dataset has private access, because the access level is not specified explicitly.</li>
+<li>The dataset has a description.</li>
+<li>The dataset has a display name.</li>
+<li>The dataset has the PDDL license.</li>
+</ul>
+<pre><code class="language-ts">const account = await triply.getAccount('Triply')
+const dataset = await account.addDataset('iris', {
+  description: 'A multivariate dataset that quantifies morphologic variation of Iris flowers.',
+  displayName: 'Iris',
+  license: 'PDDL',
+  name: 'iris',
+  prefixes: {
+    def: 'https://triplydb.com/Triply/iris/def/',
+    id: 'https://triplydb.com/Triply/iris/id/',
+  },
+})
+</code></pre>
+<h3 id="see-also">See also<a class="headerlink" href="#see-also" title="Permanent link">&para;</a></h3>
+<p>This method returns a dataset object. See the <a href="../dataset/#dataset">Dataset</a> section for an overview of the methods that can be called on such objects.</p>
+<h2 id="accountaddqueryname-string-metadata-object">Account.addQuery(name: string, metadata: object)<a class="headerlink" href="#accountaddqueryname-string-metadata-object" title="Permanent link">&para;</a></h2>
+<p>Adds a new SPARQL query to the account.</p>
+<h3 id="arguments_1">Arguments<a class="headerlink" href="#arguments_1" title="Permanent link">&para;</a></h3>
+<p><strong>Required:</strong></p>
+<dl>
+  <dt><code>name: string</code> </dt>
+  <dd>The URL-friendly name of the new query. The name must only contain alphanumeric characters and hyphens (<code>[A-Za-z0-9\-]</code>).</dd>
+
+  <dt><code>dataset: Dataset</code> </dt>
+  <dd>An instance of class <a href='../dataset/#dataset'><code>Dataset</code></a> that the current API token gives access to.</dd>
+
+  <dt><code>serviceType: "speedy" | "virtuoso" | "jena" | "blazegraph"</code> </dt>
+  <dd>A service type that will be used as a preferred SPARQL service to execute the query against. If serviceType is "virtuoso", "jena" or "blazegraph", that service is expected to exist in the dataset before the query can be successfully run. See <a href='../dataset/#datasetensureservicename-string-metadata-object'>Dataset</a></code></dd>
+
+  <dt><code>queryString: string</code> </dt>
+  <dd>The SPARQL query string (e.g., <code>'select * { ?s ?p ?o }'</code>).</dd>
+
+</dl>
+
+<p><strong>Optional:</strong></p>
+<dl>  
+  <dt><code>accessLevel</code> </dt>
+  <dd> The access level of the query. If none is set it defaults to <code>'private'</code>. The following values are supported:
+    <dl>
+      <dt><code>'private'</code></dt>
+      <dd>The query can only be accessed by the <a href='#account'><code>Account</code></a> object for which it is created.</dd>
+      <dt><code>'internal'</code></dt>
+      <dd>The query can only be accessed by people who are logged into the TriplyDB server.</dd>
+      <dt><code>'public'</code></dt>
+      <dd>The query can be accessed by everybody.</dd>
+    </dl>
+  </dd>
+
+  <dt><code>description: string</code> </dt>
+  <dd>A human-readable description of the query.</dd>
+
+  <dt><code>displayName: string</code></dt>
+  <dd>The human-readable name of the query. This name may include spaces and other characters that are not allowed in the URL-friendly <code>name</code>.</dd>
+
+  <dt><code>output: string</code></dt>
+  <dd>The visualization plugin that is used to display the result set of the query. If none is set it will either set <code>ldFrame</code> if provided or default to <code>table</code>.
+    <dl>
+      <dt><code>'boolean'</code></dt>
+      <dd>The <a href='../../yasgui/index.md#table'>boolean</a> view is a special view for ask queries. The value is either 'true' or 'false', and is visualized as  <code>`X`</code>(False) or <code>`V`</code>(True).</dd>
+      <dt><code>'gallery'</code></dt>
+      <dd>The <a href='../../yasgui/index.md#gallery-triplydb-plugin'>gallery</a> view allows SPARQL results to be displayed in an HTML gallery.</dd>
+      <dt><code>'gchart'</code></dt>
+      <dd>The <a href='../../yasgui/index.md#chart-triplydb-plugin'>gchart</a> renders geographical, temporal and numerical data in interactive charts such as bar-, line- and pie charts.</dd>
+      <dt><code>'geo'</code></dt>
+      <dd>The <a href='../../yasgui/index.md#geo-triplydb-plugin'>geo</a> allows SPARQL results that contain GeoSPARQL semantics to be automatically interpreted and displayed on a 2D map.</dd>
+      <dt><code>'geoEvents'</code></dt>
+      <dd>The <a href='../../yasgui/index.md#geo-events-triplydb-plugin'>geoEvents</a> plugin renders geographical events as a story map.</dd>
+      <dt><code>'geo3d'</code></dt>
+      <dd>The <a href='../../yasgui/index.md#geo-3d-triplydb-only'>geo3d</a> allows SPARQL results that contain GeoSPARQL semantics to be automatically interpreted and displayed on a 3D globe.</dd>
+      <dt><code>'markup'</code></dt>
+      <dd>The <a href='../../yasgui/index.md#markup-triplydb-plugin'>markup</a> can be used to render a variety of markup languages. This requires the use of the `?markup` variable to identify which variable to render.</dd>
+      <dt><code>'network'</code></dt>
+      <dd>The <a href='../../yasgui/index.md#network-triplydb-plugin'>network</a> renders SPARQL Construct results in a graph representation. The maximum amount of results that can be visualized is 1.000 due to performance.</dd>
+      <dt><code>'pivot'</code></dt>
+      <dd>The <a href='../../yasgui/index.md#pivot-table-triplydb-plugin'>pivot</a> view renders SPARQL results in an interactive pivot table where you are able to aggregate the results by dragging your binding variables to columns or rows.</dd>
+      <dt><code>'response'</code></dt>
+      <dd>The <a href='../../yasgui/index.md#response'>response</a> view shows the body of the response and offers a easy way to download the result as a file.</dd>
+      <dt><code>'table'</code></dt>
+      <dd>The <a href='../../yasgui/index.md#table'>table</a> view allows SPARQL results to be displayed in a table. Each
+      column in the table corresponds to a variable that belongs to the
+      outer projection.</dd>
+      <dt><code>'timeline'</code></dt>
+      <dd>The <a href='../../yasgui/index.md#timeline-triplydb-plugin'>timeline</a> timeline renders the SPARQL results on a Timeline. </dd>
+    </dl>
+  </dd>
+
+  <dt><code>ldFrame: object</code></dt>
+  <dd>JSON LD frame object used to transform plain JSON LD into a framed JSON. Will be used only if an output is not provided.</dd>
+
+  <dt><code>variables: Variable[]</code></dt>
+  <dd>
+    A list of objects with the following keys:
+    <dl>
+      <dt>IRI variable</dt>
+      <dd>An object of the form <code>Variable</code> (see below)</dd>
+  </dd>
+</dl>
+
+<p>Instances of <code>Variable</code> are objects that can have the following keys:</p>
+<p><strong>Required:</strong></p>
+<dl>
+  <dt><code>name: string</code> </dt>
+  <dd>A SPARQL variable name. The variable name must appear in the query string. The question mark (<code>?</code>) or dollar sign (<code>$</code>) is not included.</dd>
+
+  <dt><code>termType: 'Literal'|'NamedNode'</code> </dt>
+  <dd>The kind of variable. This must be either <code>'Literal'</code> for literals or <code>'NamedNode'</code> for IRIs.</dd>
+</dl>
+
+<p><strong>Optional:</strong></p>
+<dl>
+  <dt><code>allowedValues: string[]</code></dt>
+  <dd>The list of string values that is allowed for this variable.</dd>
+
+  <dt><code>datatype: string</code> (if <code>termType='Literal'</code>)</dt>
+  <dd>The datatype IRI for the literal variable.</dd>
+
+  <dt><code>language: string</code> (if <code>termType='Literal'</code>)</dt>
+  <dd>The language tag for the literal variable. Setting this implies that the dataset IRI is <code>rdf:langString</code>.</dt>
+
+  <dt><code>defaultValue: string</code></dt>
+  <dd>The default string value for the </dd>
+
+  <dt><code>required: boolean</code></dt>
+  <dd>Whether a query request must include an explicit value for this variable. The default value is <code>false</code>.</dd>
+</dl>
+
+<h3 id="example">Example<a class="headerlink" href="#example" title="Permanent link">&para;</a></h3>
+<p>The following snippet creates a query with the given query string:</p>
+<pre><code class="language-ts">const triply = App.get({ token: process.env.TOKEN })
+const user = await triply.getUser()
+const myDataset = await user.getDataset('my-dataset')
+const query = await user.addQuery('my-query', {
+  dataset: myDataset,
+  serviceType: &quot;speedy&quot;,
+  queryString: 'select (count(*) as ?n) { ?s ?p ?o. }',
+  output: 'response',
+})
+</code></pre>
+<h2 id="accountaddstoryname-string-metadata-object">Account.addStory(name: string, metadata?: object)<a class="headerlink" href="#accountaddstoryname-string-metadata-object" title="Permanent link">&para;</a></h2>
+<p>Adds a new data story.</p>
+<h3 id="required">Required<a class="headerlink" href="#required" title="Permanent link">&para;</a></h3>
+<dl>
+  <dt><code>name: string</code></dt>
+  <dd>The URL-friendly name of the data story. The name must only contain alphanumeric characters and hyphens (<code>[A-Za-z0-9\-]</code>).</dd>
+</dl>
+
+<h3 id="optional">Optional<a class="headerlink" href="#optional" title="Permanent link">&para;</a></h3>
+<dl>
+  <dt><code>accessLevel</code> </dt>
+  <dd>
+    <p>The access level of the dataset. If none is given the default of <code>'private'</code> is used. The following values are supported:</p>
+    <dl>
+      <dt><code>'private'</code></dt>
+      <dd>The dataset can only be accessed by the <a href='#account'><code>Account</code></a> object for which it is created.</dd>
+      <dt><code>'internal'</code></dt>
+      <dd>The dataset can only be accessed by people who are logged into the TriplyDB server.
+      <dt><code>'public'</code></dt>
+      <dd>The dataset can be accessed by everybody.</dd>
+    </dl>
+  </dd>
+  <dt><code>content: StoryElementUpdate[]</code> </dt>
+  <dd>A list of story elements. The building blocks of the Story.</dd>
+  <dt><code>displayName: string</code> </dt>
+  <dd>The human-readable name of the data story. This name may include spaces and other characters that are not allowed in the URL-friendly name.</dd>
+</dl>
+
+<p>A story element is an object with the following keys:</p>
+<dl>
+  <dt>caption: string</dt>
+  <dd>The caption is an explanatory text about a specific query.</dd>
+
+  <dt><code>id: string</code></dt>
+  <dd>Each Story element gets an Id when it is created. When you want to update a Story element you will need this Id. The Id is only required when updating an element and not needed when adding an object.</dd>
+
+  <dt>paragraph: string</dt>
+  <dd>The Markdown content of a story paragraph. Only allowed when the type is set to <code>'paragraph'</code> </dd>
+
+  <dt><code>query: Query</code></dt>
+  <dd>An instance of class <a href='../query/index.md#query'><code>Query</code></a>.</dd>
+
+  <dt>queryVersion: number</code>
+  <dd>The version that is used of the specified query.</dd>
+
+  <dt><code>type</code></dt>
+  <dd>Either <code>'paragraph'</code> or <code>'query'</code>.</dd>
+</dl>
+
+<h3 id="examples_1">Examples<a class="headerlink" href="#examples_1" title="Permanent link">&para;</a></h3>
+<p>Example 1 - creates a new story that has access level <code>'private'</code>:</p>
+<pre><code class="language-ts">const triply = App.get({ token: process.env.TOKEN })
+const user = await triply.getUser()
+const newStory = await user.addStory('name-of-story')
+</code></pre>
+<p>Example 2 - creates a new story that has access level <code>'public'</code>:</p>
+<pre><code class="language-ts">const triply = App.get({ token: process.env.TOKEN })
+const user = await triply.getUser()
+const newStory = await user.addStory('name-of-story', {
+  accessLevel: 'public',
+})
+</code></pre>
+<h2 id="accountasorganization">Account.asOrganization()<a class="headerlink" href="#accountasorganization" title="Permanent link">&para;</a></h2>
+<p>Casts the TriplyDB account object to its corresponding organization object.</p>
+<p>Class <a href="../organization/#organization">Organization</a> is a specialization of class <a href="#account">Account</a>.</p>
+<p>Calling this method on an <code>Organization</code> object does nothing.</p>
+<h3 id="examples_2">Examples<a class="headerlink" href="#examples_2" title="Permanent link">&para;</a></h3>
+<p>The following snippet retrieves the account named <code>'Triply'</code> and casts it to an organization:</p>
+<pre><code class="language-ts">const account = await triply.getAccount('Triply')
+const organization = account.asOrganization()
+</code></pre>
+<h3 id="alternatives">Alternatives<a class="headerlink" href="#alternatives" title="Permanent link">&para;</a></h3>
+<p>This method is not needed if the organization is directly retrieved with the specialization method <a href="../app/#appgetorganizationname-string"><code>App.getOrganization(name: string)</code></a>.</p>
+<p>The following snippet returns the same result as the above example, but in a more direct way:</p>
+<pre><code class="language-ts">const organization = await triply.getOrganization('Triply')
+</code></pre>
+<h3 id="see-also_1">See also<a class="headerlink" href="#see-also_1" title="Permanent link">&para;</a></h3>
+<p>This method returns an organization object. See class <a href="../organization/#organization">Organization</a> for an overview of the methods that can be called on such objects.</p>
+<h2 id="accountasuser">Account.asUser()<a class="headerlink" href="#accountasuser" title="Permanent link">&para;</a></h2>
+<p>Casts the TriplyDB account object to its corresponding user object.</p>
+<p>Class <a href="../user/#user">User</a> is a specialization of class <a href="#account">Account</a>.</p>
+<p>Calling this method on a <a href="../user/#user">User</a> object does nothing.</p>
+<h3 id="examples_3">Examples<a class="headerlink" href="#examples_3" title="Permanent link">&para;</a></h3>
+<p>The following snippet retrieves the account that represents the current user, and casts it to a user object:</p>
+<pre><code class="language-ts">const account = await triply.getAccount()
+const user = account.asUser()
+</code></pre>
+<h3 id="alternatives_1">Alternatives<a class="headerlink" href="#alternatives_1" title="Permanent link">&para;</a></h3>
+<p>This method is not needed if the user is directly retrieved with the specialization method <a href="../app/#appgetusername-string"><code>App.getUser(name?: string)</code></a>.</p>
+<p>The following snippet returns the same result as the above example, but in a more direct way:</p>
+<pre><code class="language-ts">const user = await triply.getUser()
+</code></pre>
+<h3 id="see-also_2">See also<a class="headerlink" href="#see-also_2" title="Permanent link">&para;</a></h3>
+<p>This method returns an organization object. See class <a href="../organization/#organization">Organization</a> for an overview of the methods that can be called on such objects.</p>
+<h2 id="accountensuredatasetname-string-metadata-object">Account.ensureDataset(name: string, metadata?: object)<a class="headerlink" href="#accountensuredatasetname-string-metadata-object" title="Permanent link">&para;</a></h2>
+<p>Ensures the existence of a dataset with the given <code>name</code> and with the specified <code>metadata</code> if given.</p>
+<p>Calling this method ensures that the necessary changes (if any) are made in the connected-to TriplyDB server that result in an end state in which a dataset with the given <code>name</code> and <code>metadata</code> exists.</p>
+<p>This method is useful in practice, because it removes the burden on the programmer to have to write custom code for checking for the existence of a dataset, and conditionally create a new dataset or make metadata changes to an existing dataset.</p>
+<p>The changes made as a result of calling this method depend on the current state of the connected-to TriplyDB server:</p>
+<ul>
+<li>If this account does not yet have a dataset with the given <code>name</code>, then the behavior is identical to calling <a href="#accountadddatasetname-string-metadata-object"><code>Account.addDataset(name: string, metadata?: object)</code></a> with the same arguments.</li>
+<li>If this account already has a dataset with the given <code>name</code> and with the same <code>metadata</code>, then this method makes no changes.</li>
+</ul>
+<h3 id="example_1">Example<a class="headerlink" href="#example_1" title="Permanent link">&para;</a></h3>
+<pre><code class="language-ts">const account = await triply.getAccount('Triply')
+const myDataset = await account.ensureDataset(`my-dataset`, {
+  license: 'PDDL',
+})
+</code></pre>
+<h3 id="see-also_3">See also<a class="headerlink" href="#see-also_3" title="Permanent link">&para;</a></h3>
+<p>The meaning of the argument to this method are identical to those of the <a href="#accountadddatasetname-string-metadata-object"><code>Account.addDataset(name: string, metadata?: object)</code></a> method.</p>
+<h2 id="accountgetdatasetname-string">Account.getDataset(name: string)<a class="headerlink" href="#accountgetdatasetname-string" title="Permanent link">&para;</a></h2>
+<p>Returns the dataset with the given <code>name</code> that is published by this account.</p>
+<h3 id="examples_4">Examples<a class="headerlink" href="#examples_4" title="Permanent link">&para;</a></h3>
+<p>The following snippet prints the name of the Iris dataset that is published by the Triply account:</p>
+<pre><code class="language-ts">const account = await triply.getAccount('Triply')
+const dataset = await triply.getDataset('iris')
+console.log((await dataset.getInfo()).name)
+</code></pre>
+<h3 id="see-also_4">See also<a class="headerlink" href="#see-also_4" title="Permanent link">&para;</a></h3>
+<p>This method returns a dataset object. See class <a href="../dataset/#dataset">Dataset</a> for an overview of the methods that can be called on such objects.</p>
+<h2 id="accountgetdatasets">Account.getDatasets()<a class="headerlink" href="#accountgetdatasets" title="Permanent link">&para;</a></h2>
+<p>Returns an <a href="../faq/#what-is-an-async-iterator">async iterator</a> over the accessible datasets for the current account.</p>
+<h3 id="access-restrictions_1">Access restrictions<a class="headerlink" href="#access-restrictions_1" title="Permanent link">&para;</a></h3>
+<p>The iterator only includes datasets that are accessible for the current connection with a TriplyDB server:</p>
+<ul>
+<li>
+<p>If no API token is configured, the iterator will include all and only public datasets belonging to this account.</p>
+</li>
+<li>
+<p>If an API token is configured, the iterator will include all public and internal datasets belonging to this account, and will include all private datasets belonging to this account if the API token gives read access to the account.</p>
+</li>
+</ul>
+<h3 id="examples_5">Examples<a class="headerlink" href="#examples_5" title="Permanent link">&para;</a></h3>
+<ul>
+<li>The following snippet prints the names of all accessible dataset under the Triply account:</li>
+</ul>
+<pre><code class="language-ts">const account = await triply.getAccount('Triply')
+for await (const dataset of account.getDatasets()) {
+  console.log((await dataset.getInfo()).name)
+}
+</code></pre>
+<ul>
+<li>The following snippet prints the list of names of all accessible datasets under the Triply account:</li>
+</ul>
+<pre><code class="language-ts">const account = await triply.getAccount('Triply')
+console.log(await account.getDatasets().toArray())
+</code></pre>
+<h2 id="accountgetinfo">Account.getInfo()<a class="headerlink" href="#accountgetinfo" title="Permanent link">&para;</a></h2>
+<p>Returns information about this account.</p>
+<p>Information is returned in a dictionary object. Individual keys can be accessed for specific information values.</p>
+<p>The information object for accounts includes the following keys:</p>
+<dl>
+  <dt><code>avatarUrl</code></dt>
+  <dd>A URL to the account image.</dd>
+
+  <dt><code>accountName</code></dt>
+  <dd>The URL-friendly name of the account.</dd>
+
+  <dt><code>name</code></dt>
+  <dd>The human-readable display name of the account</dd>
+
+  <dt><code>description</code></dt>
+  <dd>The human-readable description of the account.</dd>
+
+  <dt><code>createdAt</code></dt>
+  <dd>The date and time on which the account was created.</dd>
+
+  <dt><code>datasetCount</code></dt>
+  <dd>The number of datasets for the account.</dd>
+
+  <dt><code>queryCount</code></dt>
+  <dd>The number of queries for the account.</dd>
+
+  <dt><code>storyCount</code></dt>
+  <dd>The number of stories for the account</dd>
+
+  <dt><code>pinnedDatasets</code></dt>
+  <dd>An array containing the pinned dataset for the account.</dd>
+
+  <dt><code>pinnedItems</code></dt>
+  <dd>An array containing the pinned items (datasets, stories and queries) for the account.</dd>
+
+  <dt><code>type</code></dt>
+  <dd>The account type: either <code>organization</code> or <code>user</code>.</dd>
+
+  <dt><code>role</code></dt>
+  <dd>The role of the account</dd>
+
+  <dt><code>orgs</code></dt>
+  <dd>An array of organizations of which the account is a member.</dd>
+
+  <dt><code>Email address</code></dt>
+  <dd>The email address of the account.</dd>
+
+  <dt><code>updatedAt</code></dt>
+  <dd>The date and time on which the account was last updated.</dd>
+
+  <dt><code>lastActivity</code></dt>
+  <dd>The date and time on which the account was last online on TriplyDB.</dd>
+</dl>
+
+<h3 id="examples_6">Examples<a class="headerlink" href="#examples_6" title="Permanent link">&para;</a></h3>
+<ul>
+<li>The following snippet prints the full information object for the account called ‘Triply’:</li>
+</ul>
+<pre><code class="language-ts">const account = await triply.getAccount('Triply')
+console.log(await account.getInfo())
+</code></pre>
+<p>The output for this snippet can look as follows:</p>
+<pre><code class="language-json">{
+  'accountName': 'Triply',
+  'avatarUrl': 'https://www.gravatar.com/avatar/9bc28997dd1074e405e1c66196d5e117?d=mm',
+  'createdAt': 'Mon Mar 19 2018 14:39:18 GMT+0000 (Coordinated Universal Time)',
+  'datasetCount': 16,
+  'name': 'Triply',
+  'queryCount': 37,
+  'storyCount': 7,
+  'type': 'org',
+  'updatedAt': 'Tue Nov 27 2018 09:29:38 GMT+0000 (Coordinated Universal Time)'
+}
+</code></pre>
+<ul>
+<li>The following snippet prints the name of the account called ‘Triply’:</li>
+</ul>
+<pre><code class="language-ts">const account = await triply.getAccount('Triply')
+console.log((await account.getInfo()).name)
+</code></pre>
+<h2 id="accountgetpinneditems">Account.getPinnedItems()<a class="headerlink" href="#accountgetpinneditems" title="Permanent link">&para;</a></h2>
+<p>Returns the list of datasets, stories and queries that are pinned for the current account.</p>
+<p>A pinned item is an item that is displayed in a prominent way on the account web page.</p>
+<h3 id="order-considerations">Order considerations<a class="headerlink" href="#order-considerations" title="Permanent link">&para;</a></h3>
+<p>The order in which the pinned datasets are returned reflects the order in which they appear on the organization homepage (from top-left to bottom-right).</p>
+<h3 id="examples_7">Examples<a class="headerlink" href="#examples_7" title="Permanent link">&para;</a></h3>
+<p>The following snippet prints the names of the items that are pinned on the Triply account page:</p>
+<pre><code class="language-ts">const account = await triply.getAccount('Triply')
+for await (const item of account.getPinnedItems()) {
+  console.log((await item.getInfo()).name)
+}
+</code></pre>
+<h3 id="see-also_5">See also<a class="headerlink" href="#see-also_5" title="Permanent link">&para;</a></h3>
+<p>This method returns various types of objects. Each class has different functionalities:</p>
+<ul>
+<li>See class <a href="../dataset/#dataset">Dataset</a> for an overview of the methods for dataset objects.</li>
+<li>See class <a href="../query/#query">Query</a> for an overview of the methods for query objects.</li>
+<li>See class <a href="../story/#story">Story</a> for an overview of the methods for story objects.</li>
+</ul>
+<h2 id="accountgetqueryname-string">Account.getQuery(name: string)<a class="headerlink" href="#accountgetqueryname-string" title="Permanent link">&para;</a></h2>
+<p>Returns the TriplyDB query with the given <code>name</code>.</p>
+<h3 id="examples_8">Examples<a class="headerlink" href="#examples_8" title="Permanent link">&para;</a></h3>
+<p>The following snippet prints the query string for a query called <code>animal-gallery</code> that belongs to the account called <code>Triply</code>:</p>
+<pre><code class="language-ts">const account = await triply.getAccount('Triply')
+const query = await account.getQuery('animal-gallery')
+console.log((await query.getInfo()).requestConfig?.payload.query)
+</code></pre>
+<h3 id="see-also_6">See also<a class="headerlink" href="#see-also_6" title="Permanent link">&para;</a></h3>
+<p>See class <a href="../query/#query">Query</a> for an overview of the methods for query objects.</p>
+<h2 id="accountgetqueries">Account.getQueries()<a class="headerlink" href="#accountgetqueries" title="Permanent link">&para;</a></h2>
+<p>Returns an <a href="../faq/#what-is-an-async-iterator">async iterator</a> over the accessible queries that belong to the account.</p>
+<h3 id="access-restrictions_2">Access restrictions<a class="headerlink" href="#access-restrictions_2" title="Permanent link">&para;</a></h3>
+<p>The iterator only includes datasets that are accessible for the current connection with a TriplyDB server:</p>
+<ul>
+<li>
+<p>If no API token is configured, the iterator will include all and only public queries belonging to this account.</p>
+</li>
+<li>
+<p>If an API token is configured, the iterator will include all public and internal queries that belong to this account, and will include all private queries that belong to this account if the API token gives read access to the account.</p>
+</li>
+</ul>
+<h3 id="examples_9">Examples<a class="headerlink" href="#examples_9" title="Permanent link">&para;</a></h3>
+<p>The following snippet prints the names of the queries that belong to the account called <code>Triply</code>:</p>
+<pre><code class="language-ts">const account = await triply.getAccount('Triply')
+for await (const query of account.getQueries()) {
+  console.log((await query.getInfo()).name)
+}
+</code></pre>
+<h3 id="see-also_7">See also<a class="headerlink" href="#see-also_7" title="Permanent link">&para;</a></h3>
+<p>See class <a href="../query/#query">Query</a> for an overview of the methods for query objects.</p>
+<h2 id="accountensurestoryname-string-metadata-object">Account.ensureStory(name: string, metadata: object)<a class="headerlink" href="#accountensurestoryname-string-metadata-object" title="Permanent link">&para;</a></h2>
+<p>Ensures the existence of a story with the given <code>name</code> and with the specified <code>metadata</code>, if given.</p>
+<p>Calling this method ensures that the necessary changes (if any) are made in the connected-to TriplyDB server that result in an end state in which a story with the given <code>name</code> and <code>metadata</code> exists.</p>
+<p>This method is useful in practice, because it removes the burden on the programmer to have to write custom code for checking for the existence of a story, and conditionally create a new story or make metadata changes to an existing story.</p>
+<p>The changes made as a result of calling this method depend on the current state of the connected-to TriplyDB server:</p>
+<ul>
+<li>If this account does not yet have a story with the given <code>name</code>, then the behavior is identical to calling <a href="#accountaddstoryname-string-metadata-object"><code>Account.addStory(name: string, metadata?: object)</code></a> with the same arguments.</li>
+<li>If this account already has a story with the given <code>name</code> and with the same <code>metadata</code>, then this method returns that story.</li>
+</ul>
+<h3 id="optional_1">Optional<a class="headerlink" href="#optional_1" title="Permanent link">&para;</a></h3>
+<dl>
+  <dt><code>displayName</code></dt>
+  <dd>Accepts a string value to be used as the display name for the story.</dd>
+
+  <dt><code>accessLevel</code></dt>
+  <dd>Accepts either of the following values: <code>'private'</code> (default), <code>'internal'</code>, <code>'public'</code>.</dd>
+
+  <dt><code>content</code></dt>
+  <dd>Accepts a list of StoryElementUpdate objects, defined below.</dd>
+</dl>
+
+<p><strong>Note:</strong>
+If no <code>accessLevel</code> is specified, the default used is 'private'.</p>
+<p><strong>Examples</strong></p>
+<p>Example 1: To ensure a <code>Story</code> only requires a <code>name</code> of type string. It's access level will default to private</p>
+<pre><code class="language-ts">await someUser.ensureStory(`someStoryName`)
+</code></pre>
+<p>Example 2: Ensure a <code>Story</code> setting it's <code>accessLevel</code> and <code>displayName</code>.</p>
+<pre><code class="language-ts">await someUser.ensureStory(`someStoryName`, {
+  accessLevel: 'public',
+  displayName: `This is a Story`,
+})
+</code></pre>
+<h2 id="accountaddstoryname-string-newstoryoptions-object">Account.addStory(name: string, newStoryOptions?: object)<a class="headerlink" href="#accountaddstoryname-string-newstoryoptions-object" title="Permanent link">&para;</a></h2>
+<h3 id="required_1">Required<a class="headerlink" href="#required_1" title="Permanent link">&para;</a></h3>
+<p>Adds and returns the TriplyDB story with the given <code>name</code>.</p>
+<h3 id="optional_2">Optional<a class="headerlink" href="#optional_2" title="Permanent link">&para;</a></h3>
+<p>The optional new story object that can be passed accepts the following properties:</p>
+<dl>
+  <dt><code>displayName</code></dt>
+  <dd>Accepts a string value to be used as a display name for the story</dd>
+
+  <dt><code>accessLevel</code></dt>
+  <dd>Sets the access level for the story. Accepts either of the following: <code>'private'</code> (default), <code>'internal'</code>, <code>'public'</code>.</dd>
+</dl>
+
+<p>If <strong>no</strong> <code>accesslevel</code> is specified, the default value <code>private</code> is used.</p>
+<p><strong>Examples</strong>:</p>
+<p>Example 1 - creates a newStory that is 'private'</p>
+<pre><code class="language-ts">const newStory = await someUser.addStory('name-of-story')
+</code></pre>
+<p>Example 2 - creates a newStory that is 'public'</p>
+<pre><code class="language-ts">const newStory = await someUser.addStory('name-of-story', {
+  accessLevel: 'public',
+})
+</code></pre>
+<h2 id="accountgetstoryname-string">Account.getStory(name: string)<a class="headerlink" href="#accountgetstoryname-string" title="Permanent link">&para;</a></h2>
+<p>Returns the TriplyDB story with the given <code>name</code>.</p>
+<h3 id="examples_10">Examples<a class="headerlink" href="#examples_10" title="Permanent link">&para;</a></h3>
+<p>The following snippet prints the paragraphs in the story called <code>the-iris-dataset</code> that is published under the account called <code>Triply</code>. Stories are sequences of paragraphs and queries. This program prints the paragraphs in the sequence in which they appear in the story.</p>
+<pre><code class="language-ts">const account = await triply.getAccount('Triply')
+const story = await account.getStory('the-iris-dataset')
+</code></pre>
+<h3 id="see-also_8">See also<a class="headerlink" href="#see-also_8" title="Permanent link">&para;</a></h3>
+<p>See class <a href="../story/#story">Story</a> for an overview of the methods for story objects.</p>
+<h2 id="accountgetstories">Account.getStories()<a class="headerlink" href="#accountgetstories" title="Permanent link">&para;</a></h2>
+<p>Returns an iterator with the TriplyDB stories that belong to the account.</p>
+<h3 id="examples_11">Examples<a class="headerlink" href="#examples_11" title="Permanent link">&para;</a></h3>
+<p>The following snippet prints the names of the queries that belong to the Triply account:</p>
+<pre><code class="language-ts">const account = await triply.getAccount('Triply')
+for await (const story of account.getStories()) {
+  console.log((await story.getInfo()).name)
+}
+</code></pre>
+<h3 id="see-also_9">See also<a class="headerlink" href="#see-also_9" title="Permanent link">&para;</a></h3>
+<p>See class <a href="../story/#story">Story</a> for an overview of the methods for story objects.</p>
+<h2 id="accountpinitemsitems-arraydatasetstoryquery">Account.pinItems(items: array[Dataset|Story|Query])<a class="headerlink" href="#accountpinitemsitems-arraydatasetstoryquery" title="Permanent link">&para;</a></h2>
+<p>Pins the given datasets, stores, and/or queries to the home page of this account.</p>
+<p>The pinned elements can be seen by people who visit the account online. They are also included in the account metadata.</p>
+<pre><code class="language-ts">const triply = App.get({ token: process.env.TOKEN })
+const user = await triply.getUser()
+const query = await user.getQuery('name-of-query')
+const newStory = await user.getStory('name-of-story')
+user.pinItems([query,newStory])
+</code></pre>
+<h2 id="accountsetavatarfile-string">Account.setAvatar(file: string)<a class="headerlink" href="#accountsetavatarfile-string" title="Permanent link">&para;</a></h2>
+<p>Sets a new image that characterizes this account.</p>
+<p>A circular version of this image is displayed inside the TriplyDB GUI. This image is also published as part of account metadata.</p>
+<h3 id="examples_12">Examples<a class="headerlink" href="#examples_12" title="Permanent link">&para;</a></h3>
+<p>The following snippet uploads the local image in file <code>logo.svg</code> and set it as the characterizing image for the Triply account:</p>
+<pre><code class="language-ts">const account = await triply.getAccount('Triply')
+await account.setAvatar('logo.svg')
+</code></pre>
+<h2 id="accountupdatemetadata-object">Account.update(metadata: object)<a class="headerlink" href="#accountupdatemetadata-object" title="Permanent link">&para;</a></h2>
+<p>Updates the metadata for this account.</p>
+<p>To update the metadata profile with information within the metadata itself, we need the following steps:</p>
+<ol>
+<li>Obtain the relevant piece of information as a variable/const: <code>getObject()</code></li>
+<li>Update the metadata profile with the obtained information stored in the variable/const: <code>update()</code></li>
+</ol>
+<p><strong>getObject()</strong>
+Define a constant (<code>const</code>) and assign it to <code>ctx.store.getObjects()</code>.
+The arguments for the function will be the subject, predicate, and graph. The function retrieves the <strong>object</strong> so the other 3 parts of a quad need to be specified.</p>
+<p><strong>update()</strong>
+Update the relevant part of the metadata profile with the corresponding piece of information. <code>.update({})</code></p>
+<p><strong>Example</strong>
+If one wants to update the <em>display name</em> of a metadata profile with the object of the following triple within the metadata:
+<code>&lt;https://example.org/example&gt; &lt;https://schema.org/name&gt; 'Example Name'@en</code></p>
+<pre><code class="language-ts">async (ctx) =&gt; {
+  // Fetch displayName
+  const displayName = ctx.store
+    .getObjects(
+      'https://example.org/example',
+      'https://schema.org/name',
+      graph.metadata
+    )
+    .find(
+      (node) =&gt; node.termType === 'Literal' &amp;&amp; node.language === 'en'
+    )?.value;
+
+  // Specify the environment variable, if necessary
+  const _dataset =
+    process.env['MODE'] === 'Production'
+      ? (await app.triplyDb.getOrganization(organization)).getDataset(dataset)
+      : (await app.triplyDb.getUser()).getDataset(organization + '-' + dataset)
+
+  // Update the display name
+  if (displayName) await (await _dataset).update({ displayName })
+};
+</code></pre>
+<p>The metadata object for accounts can include the following keys:</p>
+<dl>
+  <dt><code>accountName</code></dt>
+  <dd>The URL-friendly name of the account.</dd>
+
+  <dt><code>name</code></dt>
+  <dd>The human-readable display name of the account</dd>
+
+  <dt><code>description</code></dt>
+  <dd>The human-readable description of the account.</dd>
+
+  <dt><code>pinnedItems</code></dt>
+  <dd>An array containing the pinned items (datasets, stories and queries) for the account.</dd>
+
+  <dt><code>Email address</code></dt>
+  <dd>The email address of the account.</dd>
+</dl>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../app/" class="btn btn-neutral float-left" title="App"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../asset/" class="btn btn-neutral float-right" title="Asset">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../app/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../asset/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script>var base_url = '../..';</script>
+      <script src="../../js/triply.js" defer></script>
+      <script src="../../js/highlight.min.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+
+</body>
+</html>
