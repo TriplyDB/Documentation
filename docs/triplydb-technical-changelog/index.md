@@ -8,6 +8,13 @@ path: "/docs/triplydb-technical-changelog"
 This changelog covers technical changes related to TriplyDB on-premise deployments. See [here](/triplydb-changelog) for the TriplyDB changelog that is user facing.
 
 
+## 26.1.100 {#26.1.100}
+
+**Release date:** 2026-01-07
+
+- API network policy updated to allow inter-API pod communication on the private port. API pods can now send requests to other API pods within the same namespace. This change supports distributed coordination features.
+- Kubernetes lease manager watch restart delay reduced from 5-10 seconds to 1 second, improving leader election responsiveness and reducing failover time for distributed coordination tasks.
+
 ## 25.12.100 {#25.12.100}
 
 **Release date:** 2025-12-10

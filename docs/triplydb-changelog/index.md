@@ -6,6 +6,19 @@ path: "/docs/triplydb-changelog"
 [TOC]
 
 
+## 26.1.100 {#26.1.100}
+
+**Release date:** 2026-01-07
+
+
+**Issues fixed**
+
+- `#11065` [Editor] Fixed issue where too many triples were incorrectly displayed as changed in the editor history view.
+- `#11064` [Dataset Settings] Fixed UI error when removing all prefix declarations from dataset settings.
+- `#11035` [Editor] Fixed issue where autocomplete results weren't shown.
+- `#11033` Fixed form issue, where an error message was not shown to the user
+
+
 ## 25.12.100 {#25.12.100}
 
 **Release date:** 2025-12-10
