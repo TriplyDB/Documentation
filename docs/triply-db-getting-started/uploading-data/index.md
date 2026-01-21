@@ -153,7 +153,7 @@ Files must contain RDF, CSV, TSV or XML data, and must use one of the supported 
 | **Data Format**                                     | **File name extension** |
 | --------------------------------------------------- | ----------------------- |
 | [Comma-Separated Values (CSV)](#csv-and-tsv-format) | `.csv`                  |
-| (Tab-Separated Values (CSV)](#csv-and-tsv-format)   | `.tsv`                  |
+| [Tab-Separated Values (CSV)](#csv-and-tsv-format)   | `.tsv`                  |
 | [XML](#xml-format)                                  | `.xml`                  |
 | JSON-LD                                             | `.jsonld`, `.json`      |
 | N-Quads                                             | `.nq`                   |
