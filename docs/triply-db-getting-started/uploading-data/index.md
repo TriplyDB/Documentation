@@ -4,11 +4,10 @@
 
 This section explains how to create a linked dataset in TriplyDB.
 
-
-
 ## Creating a new dataset
 
 You must be logged in before you can create a new dataset.
+
 <!-- TODO: See page [logging in](../logging-in/index.md) for more information. -->
 
 ### Opening the “Create dataset” dialog
@@ -54,8 +53,6 @@ This creates a new dataset, and displays the “Add data” page (see Section [A
 When datasets are Public (see [Access Levels](../reference/index.md#access-levels)), they automatically expose metadata and are automatically crawled and indexed by popular search engines (see [Metadata](../publishing-data/index.md#entering-metadata)).
 -->
 
-
-
 ## Adding data
 
 You must first have a dataset, before you can add data. See Section [Creating a new dataset](#creating-a-new-dataset) for more information.
@@ -66,6 +63,7 @@ You can open the “Add data” pane in either of the following two ways:
 
 <!-- TODO: (see Section [Graphs page]()) -->
 <!-- TODO: (see Section [Dataset page]()) -->
+
 1. From the Graphs page, click on the "Import a new graph" button (see [Figure 3a](#fig-graphs-page)). This opens the "Add data" pane.
 2. When a dataset does not have any data yet, a message is displayed on the dataset homepage (see [Figure 3b](#fig-dataset-homepage-no-data)) that can be clicked. This opens the "Add data" pane.
 3. After creating a new dataset, the "Add data" pane is automatically opened.
@@ -150,17 +148,19 @@ Only files that contain supported data formats will be added. See Section [Suppo
 
 ### Supported data formats
 
-Files must contain RDF and/or CSV data, and must use one of the supported file name extensions:
+Files must contain RDF, CSV, TSV or XML data, and must use one of the supported file name extensions:
 
-| **Data Format**              | **File name extension** |
-| ---------------------------- | ----------------------- |
-| Comma-Separated Values (CSV) | `.csv`                  |
-| JSON-LD                      | `.jsonld`, `.json`      |
-| N-Quads                      | `.nq`                   |
-| N-Triples                    | `.nt`                   |
-| RDF/XML                      | `.rdf`, `.owl`, `.owx`  |
-| TriG                         | `.trig`                 |
-| Turtle                       | `.ttl`, `.n3`           |
+| **Data Format**                                     | **File name extension** |
+| --------------------------------------------------- | ----------------------- |
+| [Comma-Separated Values (CSV)](#csv-and-tsv-format) | `.csv`                  |
+| (Tab-Separated Values (CSV)](#csv-and-tsv-format)   | `.tsv`                  |
+| [XML](#xml-format)                                  | `.xml`                  |
+| JSON-LD                                             | `.jsonld`, `.json`      |
+| N-Quads                                             | `.nq`                   |
+| N-Triples                                           | `.nt`                   |
+| RDF/XML                                             | `.rdf`, `.owl`, `.owx`  |
+| TriG                                                | `.trig`                 |
+| Turtle                                              | `.ttl`, `.n3`           |
 
 It is possible to upload up to 1,000 separate files in this way. When you have a lot of files and/or large files, it is better to compress them into an archive format. This allows an any number of files of any size to be uploaded. The following archive/compression formats are supported:
 
@@ -171,6 +171,54 @@ It is possible to upload up to 1,000 separate files in this way. When you have a
 | tar                | `tar`                   |
 | XZ                 | `.xz`                   |
 | ZIP                | `.zip`                  |
+
+### CSV and TSV format
+
+When you upload CSV (Comma-Separated Values) or TSV (Tab-Separated Values) files to TriplyDB, they are automatically converted to RDF and stored in two linked data representations:
+
+1. **Facade-X representation**: An expressive RDF model that preserves the full structure
+   of the tabular data. The model is documented in detail [here](https://sparql-anything.readthedocs.io/stable/formats/CSV/).
+2. **Simple representation**: A straightforward row-based model for easier querying
+
+
+
+**Simple representation:**
+
+The simple representation provides a more opinionated and direct mapping, and is suitable
+for tables with a simple structure:
+
+- A table resource is created that links to all rows via `rdfs:member`
+- Each row gets a unique IRI based on the row number (e.g., `.../row/1`, `.../row/2`, etc.)
+- Column headers become properties in the `https://triplydb.com/table/triply/def/` namespace
+- Each property has an `rdfs:label` with the original column header name
+- Cell values are stored as string literals
+
+Take for example this CSV file:
+
+```csv
+product_id,name,category,price,in_stock
+P001,Laptop Stand,Office Equipment,49.99,true
+P002,Ergonomic Keyboard,Peripherals,89.50,true
+```
+
+This can be queried as such:
+
+```sparql
+prefix table: <https://triplydb.com/table/triply/def/>
+prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+select ?name ?category ?price where {
+  ?table rdfs:member ?row .
+  ?row table:name ?name ;
+       table:category ?category ;
+       table:price ?price .
+}
+```
+
+### XML format
+
+When you upload XML files to TriplyDB, they are automatically converted to RDF using the Facade-X data model. This preserves the hierarchical structure of the XML document, making it queryable via SPARQL.
+See [here](https://sparql-anything.readthedocs.io/stable/formats/XML/) for more details on the Facade-X XML data model.
 
 ### Adding malformed data
 

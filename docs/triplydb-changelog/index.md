@@ -6,6 +6,29 @@ path: "/docs/triplydb-changelog"
 [TOC]
 
 
+## 26.1.200 {#26.1.200}
+
+**Release date:** 2026-01-21
+
+**Features**
+
+- `#10979` [Tabular uploads] Improved the CSV, TSV and XML import representation, using
+  the [facade-x](https://sparql-anything.readthedocs.io) representation. This is
+  documented [here](https://docs.triply.cc/triply-db-getting-started/uploading-data/#supported-data-formats).
+
+
+**Issues fixed**
+
+- [Large file uploads] Large file uploads in TriplyDB use the [TUS
+  protocol](https://tus.io). Some TUS clients use the legacy `x-patch` response header,
+  which caused issues. TriplyDB now supports this `x-patch` header in TUS uploads,
+  improving compatibility with additional client libraries such as the Java client.
+- `#11089` Fixed an issue where uploading a file from URL could show a download progress of more than 100%.
+- `#10705` [SPARQL] Improved error handling when federated SPARQL queries (using the
+  `service <...> { ... }` clause) encounter timeouts or errors at third-party endpoints. Users now receive clearer
+  error messages.
+
+
 ## 26.1.100 {#26.1.100}
 
 **Release date:** 2026-01-07
