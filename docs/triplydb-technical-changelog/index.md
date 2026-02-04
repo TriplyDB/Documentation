@@ -8,6 +8,12 @@ path: "/docs/triplydb-technical-changelog"
 This changelog covers technical changes related to TriplyDB on-premise deployments. See [here](/triplydb-changelog) for the TriplyDB changelog that is user facing.
 
 
+## 26.2.100 {#26.2.100}
+
+**Release date:** 2026-02-04
+
+None
+
 ## 26.1.200 {#26.1.200}
 
 **Release date:** 2026-01-21

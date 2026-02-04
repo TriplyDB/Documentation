@@ -6,6 +6,35 @@ path: "/docs/triplydb-changelog"
 [TOC]
 
 
+## 26.2.100 {#26.2.100}
+
+**Release date:** 2026-02-04
+
+**Features**
+
+- `#11097` [Dataset Settings] Added support for disabling features on a dataset level.
+  Dataset owners can now hide specific features such as the SPARQL IDE, LD-Browser, data editor,
+  assets, services, and the triples table from the dataset interface to simplify the user
+  experience.
+- `#11005` [Data Editor] Next to editing skos hierarchies, the dataset editor now supports
+  editing and navigating resources from any data model. 
+- `#11010` [Data Editor] Improved instance search to support searching by IRI in addition to labels. When a class has many instances, the system now fetches and displays labels properly in the outline.
+- `#10838` [Data Editor] Improved layout behavior for the Data Model and Data Editor pages. Menu items are now only shown when there is relevant content for the user to see or edit.
+- `#10962` [Tags] Supports tagging queries, datasets and stories, supporting more
+  flexibility in grouping such items. Searching by tag is possible in the [faceted search](https://triplydb.com/browse) for datasets, queries, and
+  stories.
+
+**Issues fixed**
+
+- `#11094` [Forms] In some cases, the UI does not properly show an error message when
+  there is wrong user input.  Users now
+  receive clear feedback when form values are invalid.
+- [SPARQL] Fixed an issue `SERVICE` and some SPARQL functions were not returning the
+  correct results for SPARQL UPDATE queries.
+- [API] Fixed an API validation issue, where requests to create a saved query were wrongly
+  rejected.
+
+
 ## 26.1.200 {#26.1.200}
 
 **Release date:** 2026-01-21
