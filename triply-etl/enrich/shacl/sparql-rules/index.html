@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <meta name="description" content="The official documentation for the Triply products: TriplyDB, TriplyDB.js, and TriplyETL." />
+      <link rel="shortcut icon" href="../../../../img/favicon.ico" />
+    <title>SPARQL Rules - Triply Documentation</title>
+    <link rel="stylesheet" href="../../../../css/theme.css" />
+    <link rel="stylesheet" href="../../../../css/theme_extra.css" />
+        <link href="../../../../css/intellij-light.css" rel="stylesheet" />
+        <link href="../../../../css/triply.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "SPARQL Rules";
+        var mkdocs_page_input_path = "triply-etl/enrich/shacl/sparql-rules.md";
+        var mkdocs_page_url = null;
+      </script>
+     
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../../../.." class="icon icon-home"> Triply Documentation
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../..">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">TriplyDB</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Getting started</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../triply-db-getting-started/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../triply-db-getting-started/uploading-data/">Uploading Data</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../triply-db-getting-started/editing-data/">Editing (SKOS) Data</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../triply-db-getting-started/publishing-data/">Sharing Data</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../triply-db-getting-started/viewing-data/">Viewing Data</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../triply-db-getting-started/exporting-data/">Exporting Data</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../triply-db-getting-started/saved-queries/">Saved Queries</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../triply-db-getting-started/data-stories/">Data Stories</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../triply-db-getting-started/admin-settings-pages/">Admin Settings Pages</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../triply-db-getting-started/reference/">Reference</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../triply-api/">API</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">TriplyDB-JS</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../triplydb-js/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../triplydb-js/app/">App</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../triplydb-js/account/">Account</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../triplydb-js/asset/">Asset</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../triplydb-js/dataset/">Dataset</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../triplydb-js/graph/">Graph</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../triplydb-js/organization/">Organization</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../triplydb-js/query/">Query</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../triplydb-js/service/">Service</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../triplydb-js/story/">Story</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../triplydb-js/user/">User</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../triplydb-js/faq/">FAQ</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../triply-cli/">Command-line Interface</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../triplydb-changelog/">Changelog</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">TriplyETL</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="#">Generic</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../../">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../generic/getting-started/">Getting Started</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../generic/changelog/">Changelog</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../generic/cli/">Command Line Interface (CLI)</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../generic/declarations/">Declarations</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../generic/control-structures/">Control Structures</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../generic/debug/">Debug</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../generic/internal-store/">Internal Store</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../generic/maintenance/">Maintenance</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../generic/record/">Record</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../generic/vocabularies/">Vocabularies</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Sources</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../../sources/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../sources/apis/">APIs</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../sources/inline-json/">Inline JSON</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../sources/inline-strings/">Inline Strings</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../sources/local-files/">Local Files</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../sources/online-files/">Online Files</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../sources/rml/">RML Sources</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../sources/triplydb-assets/">TriplyDB Assets</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../sources/triplydb-datasets/">TriplyDB Datasets</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../sources/triplydb-queries/">TriplyDB Queries</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Extract</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../../extract/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../extract/csv/">CSV</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../extract/json/">JSON</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../extract/oai-pmh/">OAI-PMH</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../extract/postgres/">Postgres</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../extract/rdf/">RDF</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../extract/shapefile/">Shapefile</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../extract/tsv/">TSV</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../extract/xlsx/">XLSX</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../extract/xml/">XML</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Transform</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../../transform/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../transform/ratt/">RATT</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../transform/rml/">RML</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../transform/typescript/">TypeScript</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../transform/xslt/">XSLT</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Assert</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../../assert/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../assert/json-ld/">JSON-LD</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="#">RATT</a>
+    <ul>
+                <li class="toctree-l3"><a class="reference internal" href="../../../assert/ratt/terms/">RATT Terms</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../../../assert/ratt/statements/">RATT Statements</a>
+                </li>
+    </ul>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../assert/rml/">RML</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../assert/xslt/">XSLT</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Enrich</a>
+    <ul class="current">
+                <li class="toctree-l2"><a class="reference internal" href="../../">Overview</a>
+                </li>
+                <li class="toctree-l2 current"><a class="reference internal current" href="#">SHACL</a>
+    <ul class="current">
+                <li class="toctree-l3"><a class="reference internal" href="../">Overview</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../triple-rules/">Triple Rules</a>
+                </li>
+                <li class="toctree-l3 current"><a class="reference internal current" href="./">SPARQL Rules</a>
+    <ul class="current">
+    <li class="toctree-l4"><a class="reference internal" href="#example-1-deducing-fatherhood">Example 1: Deducing fatherhood</a>
+    </li>
+    </ul>
+                </li>
+    </ul>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="#">SPARQL</a>
+    <ul>
+                <li class="toctree-l3"><a class="reference internal" href="../../sparql/construct/">SPARQL Construct</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../../sparql/update/">SPARQL Update</a>
+                </li>
+    </ul>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Validate</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../../validate/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../validate/graph-comparison/">Graph Comparison</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../validate/shacl/">SHACL</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../publish/">Publish</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Yasgui</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../yasgui/">Introduction</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../yasgui-api/">For Developers</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../..">Triply Documentation</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../.." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">TriplyETL</li>
+          <li class="breadcrumb-item">Enrich</li>
+          <li class="breadcrumb-item">SHACL</li>
+      <li class="breadcrumb-item active">SPARQL Rules</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <div class="toc"><span class="toctitle">On this page:</span><ul>
+<li><a href="#sparql-rules">SPARQL Rules</a><ul>
+<li><a href="#example-1-deducing-fatherhood">Example 1: Deducing fatherhood</a><ul>
+<li><a href="#step-1a-implement-the-sparql-construct-query">Step 1A: Implement the SPARQL Construct query</a></li>
+<li><a href="#step-1b-create-the-node-shape">Step 1B: Create the node shape</a></li>
+<li><a href="#step-1c-write-and-run-the-script">Step 1C: Write and run the script</a></li>
+<li><a href="#step-1d-using-files-optional">Step 1D: Using files (optional)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<h1 id="sparql-rules">SPARQL Rules<a class="headerlink" href="#sparql-rules" title="Permanent link">&para;</a></h1>
+<p>SPARQL Rules are a form of <a href="../">SHACL Rules</a>. SPARQL Rules can be arbitrarily complex, utilizing all features available in the SPARQL query language. SPARQL Rules have the following benefits and downsides.</p>
+<p>Benefits:</p>
+<ul>
+<li>Simple to use if you are familiar with SPARQL.</li>
+<li>Integrated with the information model.</li>
+<li>Can be used to assert any number of triples.</li>
+<li>Allows arbitrarily complex business rules to be formulated, e.g. using aggregation, filters, external data, property paths, function calls.</li>
+<li>Can use the prefix declarations that are represented in the information model (<code>sh:namespace</code> and <code>sh:prefix</code>).</li>
+</ul>
+<p>Downsides:</p>
+<ul>
+<li>No reflection: the rule is encoded in a literal, so its internal structure cannot be queried as RDF.</li>
+<li>No reflection: cannot use the prefix declarations that occur in the serialization format of the information model in which it occurs (e.g. TriG, Turtle).</li>
+</ul>
+<p>The rest of this page describes a examples that uses SPARQL Rules.</p>
+<h2 id="example-1-deducing-fatherhood">Example 1: Deducing fatherhood<a class="headerlink" href="#example-1-deducing-fatherhood" title="Permanent link">&para;</a></h2>
+<p>This example uses the same data and rule as the corresponding <a href="../triple-rules/">Triple Rule example</a>.</p>
+<h3 id="step-1a-implement-the-sparql-construct-query">Step 1A: Implement the SPARQL Construct query<a class="headerlink" href="#step-1a-implement-the-sparql-construct-query" title="Permanent link">&para;</a></h3>
+<p>In natural language, we can define the following rule for deducing fatherhood:</p>
+<blockquote>
+<p>Persons with at least one child and the male gender, are fathers.</p>
+</blockquote>
+<p>We can implement this deduction with the following a SPARQL Construct query:</p>
+<pre><code class="language-sparql">base &lt;https://triplydb.com/&gt;
+prefix sdo: &lt;https://schema.org/&gt;
+
+construct {
+  $this a &lt;Father&gt;.
+} where {
+  $this
+    a sdo:Person;
+    sdo:children [];
+    sdo:gender sdo:Male.
+}
+</code></pre>
+<p>Notice the following details:</p>
+<ul>
+<li>The conditions are specified in the Where clause.</li>
+<li>The assertion is specified in the Construct template.</li>
+<li>We use the variable name <code>$this</code> to bind to the instances for which the rule will be executed. In the SPARQL query language, this name is only a convention, and has exactly the same behavior as using any other variable name such as <code>?person</code> or <code>?x</code>.</li>
+</ul>
+<p>We can run this query directly from TriplyETL, and this will result in the correct deductions. In fact, this is why <a href="../../sparql/construct/">SPARQL Construct</a> is one of the enrichment configuration languages that are supported by TriplyETL.</p>
+<h3 id="step-1b-create-the-node-shape">Step 1B: Create the node shape<a class="headerlink" href="#step-1b-create-the-node-shape" title="Permanent link">&para;</a></h3>
+<p>In Step 1A, we used a SPARQL Construct query to deduce new data.In this step, we will wrap that query inside a SPARQL Rule. This allows us to relate the rule to our information model.</p>
+<p>In the information model, rules are related to node shapes. When instance data conforms to the node shape, the SPARQL Rule is executed. Notice that this is different from calling SPARQL Construct queries directly, where we must determine when to run which query. SPARQL Rules are triggered by the information model instead. This has many benefits, especially for large collections of business rules, where the execution order may no longer be straightforward.</p>
+<p>In order for our SPARQL Construct query to be triggered by a node shape, we need to identify some target criterion that will allow the node shape to trigger the query. One target criterion for node shapes is <code>sh:targetClass</code>. We can trigger the SPARQL Construct query for every instance of the class <code>sdo:Person</code>. This means that we move the check of whether a resource is a person from the SPARQL Construct query into the node shape. This results in the following linked data snippet:</p>
+<pre><code class="language-turtle">base &lt;https://triplydb.com/&gt;
+prefix sdo: &lt;https://schema.org/&gt;
+prefix sh: &lt;http://www.w3.org/ns/shacl#&gt;
+
+&lt;Person&gt;
+  a sh:NodeShape;
+  sh:targetClass sdo:Person;
+  sh:rule
+    [ a sh:SPARQLRule;
+      sh:construct '''
+        base &lt;https://triplydb.com/&gt;
+        prefix sdo: &lt;https://schema.org/&gt;
+        construct {
+          $this a &lt;Father&gt;.
+        } where {
+          $this
+            sdo:children [];
+            sdo:gender sdo:Male.
+        }''' ].
+</code></pre>
+<p>Notice the following details:</p>
+<ul>
+<li>We introduce a node shape that targets all instances of <code>sdo:Person</code>.</li>
+<li>The node shape is connected to a SPARQL Rule via the <code>sh:rule</code> property.</li>
+<li>The SPARQL Rule has its own RDF resource, and is connected to the query string via the <code>sh:construct</code> property.</li>
+<li>The SPARQL Construct query from <a href="#step-1-implement-the-sparql-construct-query">Step 1</a> no longer include the <code>a sdo:Person</code> line. This line is no longer needed, since the node shape will only trigger for instances of <code>sdo:Person</code> in the first place.</li>
+<li>The SPARQL Construct query uses variable name <code>$this</code> to bind to the instances for which the rule will be executed. While this name is only a convention in the SPARQL query language, it has a special meaning in the SPARQL Rule. This variable will be bound for all targets of the node shape (i.e. for every person in the data).</li>
+<li>The literal that contains the SPARQL Construct query uses triple quoted literals notation (<code>'''...'''</code>). This notation allows us to use unescaped newlines inside the literal, which allows us to inline the query string in a readable way.</li>
+</ul>
+<h3 id="step-1c-write-and-run-the-script">Step 1C: Write and run the script<a class="headerlink" href="#step-1c-write-and-run-the-script" title="Permanent link">&para;</a></h3>
+<p>The following script is completely self-contained. By copy/pasting it into TriplyETL, you can execute the rule over the instance data, and deduce the fact that John is a father.</p>
+<p>Notice that the script includes the following components:</p>
+<ol>
+<li>Load the instance data from <a href="#step-1a-load-instance-data">Step 1A</a> with <a href="../../../extract/rdf/">loadRdf()</a>.</li>
+<li>Execute the rule from <a href="#step-1b-create-the-node-shape">Step 1B</a> with <a href="../">executeRules()</a>.</li>
+<li>Print the contents of the internal store with <a href="../../../generic/debug/#function-logquads">logQuads()</a>.</li>
+</ol>
+<pre><code class="language-ts">import { logQuads } from '@triplyetl/etl/debug'
+import { Etl, Source, loadRdf } from '@triplyetl/etl/generic'
+import { executeRules } from '@triplyetl/etl/shacl'
+
+export default async function (): Promise&lt;Etl&gt; {
+  const etl = new Etl()
+  etl.use(
+    loadRdf(Source.string(`
+      base &lt;https://triplydb.com/&gt;
+      prefix sdo: &lt;https://schema.org/&gt;
+      &lt;john&gt;
+        a sdo:Person;
+        sdo:children &lt;mary&gt;;
+        sdo:gender sdo:Male.`)),
+    executeRules(Source.string(`
+      base &lt;https://triplydb.com/&gt;
+      prefix sdo: &lt;https://schema.org/&gt;
+      prefix sh: &lt;http://www.w3.org/ns/shacl#&gt;
+      &lt;Person&gt;
+        a sh:NodeShape;
+        sh:targetClass sdo:Person;
+        sh:rule
+          [ a sh:SPARQLRule;
+            sh:construct '''
+              base &lt;https://triplydb.com/&gt;
+              prefix sdo: &lt;https://schema.org/&gt;
+              construct {
+                $this a &lt;Father&gt;.
+              } where {
+                $this
+                  sdo:children [];
+                  sdo:gender sdo:Male.
+              }''' ].`)),
+    logQuads(),
+  )
+  return etl
+}
+</code></pre>
+<p>When we run this script (command <code>npx etl</code>), the following linked data is printed:</p>
+<pre><code class="language-turtle">&lt;john&gt;
+  a
+    sdo:Person,
+    &lt;Father&gt;;
+  sdo:children &lt;mary&gt;;
+  sdo:gender sdo:Male.
+</code></pre>
+<p>Notice that the fatherhood assertion was correctly added to the internal store, based on the Triple Rule in the data model.</p>
+<h3 id="step-1d-using-files-optional">Step 1D: Using files (optional)<a class="headerlink" href="#step-1d-using-files-optional" title="Permanent link">&para;</a></h3>
+<p>The script in <a href="#step-1c-write-and-run-the-script">Step 1C</a> includes both the instance data and the information model as inline strings, using <a href="../../../sources/inline-strings/">Source.string()</a>. This is great for creating a self-contained example, but not realistic when the number of rules increases.</p>
+<p>We therefore show the same script after these inline components have been stored in separate files:</p>
+<ul>
+<li>The instance data is stored in file <code>static/instances.trig</code>.</li>
+<li>The information model is stored in file <code>static/model.trig</code>.</li>
+</ul>
+<p>Now the instance data and information model can be edited in their own files, and the script stays concise:</p>
+<pre><code class="language-ts">import { logQuads } from '@triplyetl/etl/debug'
+import { Etl, Source, loadRdf } from '@triplyetl/etl/generic'
+import { executeRules } from '@triplyetl/etl/shacl'
+
+export default async function (): Promise&lt;Etl&gt; {
+  const etl = new Etl()
+  etl.use(
+    loadRdf(Source.file('static/instances.trig')),
+    executeRules(Source.file('static/model.trig')),
+    logQuads(),
+  )
+  return etl
+}
+</code></pre>
+<!--
+## Example 2: Calculating the area of a rectangle
+
+## Example 2:
+
+In this example, we start out with a data source that is not linked data:
+
+
+<pre><code class="language-json">{ &quot;age&quot;: 20, &quot;name&quot;: &quot;ann&quot; },
+{ &quot;age&quot;: 12, &quot;name&quot;: &quot;peter&quot; },
+</code></pre>
+
+
+We use the [fromJson()](../../extract/json.md) extractor and specify the source data as [inline JSON](../../sources/inline-json.md). We use the RATT assertion function [pairs()](../../assert/ratt/statements.md#pairs) to add linked data to the internal store.
+
+
+<pre><code class="language-ts">import { logQuads } from '@triplyetl/etl/debug'
+import { Etl, Source, declarePrefix, fromJson } from '@triplyetl/etl/generic'
+import { iri, pairs } from '@triplyetl/etl/ratt'
+import { executeRules } from '@triplyetl/etl/shacl'
+import { a, foaf } from '@triplyetl/vocabularies'
+
+const id = declarePrefix('https://triplydb.com/')
+
+export default async function (): Promise&lt;Etl&gt; {
+  const etl = new Etl()
+  etl.use(
+    fromJson([
+      { age: 20, name: 'ann' },
+      { age: 12, name: 'peter' },
+    ]),
+    pairs(iri(id, 'name'),
+      [a, foaf.Person],
+      [foaf.age, 'age'],
+    ),
+    executeRules(Source.file('static/model.trig')),
+    logQuads(),
+  )
+  return etl
+}
+</code></pre>
+
+
+The model (file `static/model.trig`) makes use of a SPARQL Rule, to assert that persons who are at least 18 years old are adults:
+
+
+<pre><code class="language-turtle">base &lt;https://triplydb.com/&gt;
+prefix foaf: &lt;http://xmlns.com/foaf/0.1/&gt;
+prefix sh: &lt;http://www.w3.org/ns/shacl#&gt;
+
+&lt;Person&gt;
+  sh:targetClass foaf:Person;
+  sh:rule
+    [ a sh:SPARQLRule;
+      sh:prefixes &lt;&gt;;
+      sh:construct '''
+        construct {
+          $this a ex:Adult.
+        } where {
+          $this foaf:age ?age.
+          filter(?age &gt;= 18)
+        }''' ].
+</code></pre>
+
+
+Notice that the SPARQL query string (the value of `sh:construct`) does not declare the `ex:` and `foaf:` prefixes. Instead, the rule refers to generic declarations (with property `sh:prefixes`) that occur later in the `model.trig` file:
+
+
+<pre><code class="language-turtle">&lt;&gt;
+  sh:declare
+    [ sh:namespace &lt;https://triplydb.com/&gt;;
+      sh:prefix 'ex' ],
+    [ sh:namespace &lt;http://xmlns.com/foaf/0.1/&gt;;
+      sh:prefix 'foaf' ].
+</code></pre>
+
+
+This notation allows the same prefix declarations to be reused by an arbitrary number of SPARQL Rules.
+-->
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../triple-rules/" class="btn btn-neutral float-left" title="Triple Rules"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../../sparql/construct/" class="btn btn-neutral float-right" title="SPARQL Construct">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../triple-rules/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../../sparql/construct/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script>var base_url = '../../../..';</script>
+      <script src="../../../../js/triply.js" defer></script>
+      <script src="../../../../js/highlight.min.js" defer></script>
+      <script src="../../../../search/main.js" defer></script>
+
+</body>
+</html>

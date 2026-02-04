@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <meta name="description" content="The official documentation for the Triply products: TriplyDB, TriplyDB.js, and TriplyETL." />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Viewing Data - Triply Documentation</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link href="../../css/intellij-light.css" rel="stylesheet" />
+        <link href="../../css/triply.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Viewing Data";
+        var mkdocs_page_input_path = "triply-db-getting-started/viewing-data/index.md";
+        var mkdocs_page_url = null;
+      </script>
+     
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> Triply Documentation
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">TriplyDB</span></p>
+              <ul class="current">
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Getting started</a>
+    <ul class="current">
+                <li class="toctree-l2"><a class="reference internal" href="../">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../uploading-data/">Uploading Data</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../editing-data/">Editing (SKOS) Data</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../publishing-data/">Sharing Data</a>
+                </li>
+                <li class="toctree-l2 current"><a class="reference internal current" href="./">Viewing Data</a>
+    <ul class="current">
+    <li class="toctree-l3"><a class="reference internal" href="#linked-data-browser">Linked Data Browser</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#types">Types</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#labels">Labels</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#descriptions">Descriptions</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#geo">Geo</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#images">Images</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#audio">Audio</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#video">Video</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#linked-data-table">Linked Data Table</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#sparql-ide">SPARQL IDE</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#saving-a-sparql-query">Saving a SPARQL query</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#sharing-a-sparql-query">Sharing a SPARQL query</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#transfer-a-sparql-query">Transfer a SPARQL query</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#copy-a-sparql-query">Copy a SPARQL query</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#elasticsearch">ElasticSearch</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#graphql">GraphQL</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#insights">Insights</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#class-frequency">Class frequency</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#class-hierarchy">Class hierarchy</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../exporting-data/">Exporting Data</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../saved-queries/">Saved Queries</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../data-stories/">Data Stories</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../admin-settings-pages/">Admin Settings Pages</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../reference/">Reference</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../triply-api/">API</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">TriplyDB-JS</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../triplydb-js/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triplydb-js/app/">App</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triplydb-js/account/">Account</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triplydb-js/asset/">Asset</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triplydb-js/dataset/">Dataset</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triplydb-js/graph/">Graph</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triplydb-js/organization/">Organization</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triplydb-js/query/">Query</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triplydb-js/service/">Service</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triplydb-js/story/">Story</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triplydb-js/user/">User</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triplydb-js/faq/">FAQ</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../triply-cli/">Command-line Interface</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../triplydb-changelog/">Changelog</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">TriplyETL</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Generic</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/generic/getting-started/">Getting Started</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/generic/changelog/">Changelog</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/generic/cli/">Command Line Interface (CLI)</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/generic/declarations/">Declarations</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/generic/control-structures/">Control Structures</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/generic/debug/">Debug</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/generic/internal-store/">Internal Store</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/generic/maintenance/">Maintenance</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/generic/record/">Record</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/generic/vocabularies/">Vocabularies</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Sources</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/sources/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/sources/apis/">APIs</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/sources/inline-json/">Inline JSON</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/sources/inline-strings/">Inline Strings</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/sources/local-files/">Local Files</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/sources/online-files/">Online Files</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/sources/rml/">RML Sources</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/sources/triplydb-assets/">TriplyDB Assets</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/sources/triplydb-datasets/">TriplyDB Datasets</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/sources/triplydb-queries/">TriplyDB Queries</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Extract</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/extract/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/extract/csv/">CSV</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/extract/json/">JSON</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/extract/oai-pmh/">OAI-PMH</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/extract/postgres/">Postgres</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/extract/rdf/">RDF</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/extract/shapefile/">Shapefile</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/extract/tsv/">TSV</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/extract/xlsx/">XLSX</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/extract/xml/">XML</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Transform</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/transform/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/transform/ratt/">RATT</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/transform/rml/">RML</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/transform/typescript/">TypeScript</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/transform/xslt/">XSLT</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Assert</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/assert/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/assert/json-ld/">JSON-LD</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="#">RATT</a>
+    <ul>
+                <li class="toctree-l3"><a class="reference internal" href="../../triply-etl/assert/ratt/terms/">RATT Terms</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../../triply-etl/assert/ratt/statements/">RATT Statements</a>
+                </li>
+    </ul>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/assert/rml/">RML</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/assert/xslt/">XSLT</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Enrich</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/enrich/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="#">SHACL</a>
+    <ul>
+                <li class="toctree-l3"><a class="reference internal" href="../../triply-etl/enrich/shacl/">Overview</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../../triply-etl/enrich/shacl/triple-rules/">Triple Rules</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../../triply-etl/enrich/shacl/sparql-rules/">SPARQL Rules</a>
+                </li>
+    </ul>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="#">SPARQL</a>
+    <ul>
+                <li class="toctree-l3"><a class="reference internal" href="../../triply-etl/enrich/sparql/construct/">SPARQL Construct</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../../triply-etl/enrich/sparql/update/">SPARQL Update</a>
+                </li>
+    </ul>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Validate</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/validate/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/validate/graph-comparison/">Graph Comparison</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/validate/shacl/">SHACL</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../triply-etl/publish/">Publish</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Yasgui</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../yasgui/">Introduction</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../yasgui-api/">For Developers</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">Triply Documentation</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">TriplyDB</li>
+          <li class="breadcrumb-item">Getting started</li>
+      <li class="breadcrumb-item active">Viewing Data</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <div class="toc"><span class="toctitle">On this page:</span><ul>
+<li><a href="#viewing-data">Viewing Data</a><ul>
+<li><a href="#linked-data-browser">Linked Data Browser</a><ul>
+<li><a href="#types">Types</a></li>
+<li><a href="#labels">Labels</a></li>
+<li><a href="#descriptions">Descriptions</a></li>
+<li><a href="#geo">Geo</a></li>
+<li><a href="#images">Images</a></li>
+<li><a href="#audio">Audio</a></li>
+<li><a href="#video">Video</a></li>
+</ul>
+</li>
+<li><a href="#linked-data-table">Linked Data Table</a></li>
+<li><a href="#sparql-ide">SPARQL IDE</a><ul>
+<li><a href="#saving-a-sparql-query">Saving a SPARQL query</a></li>
+<li><a href="#sharing-a-sparql-query">Sharing a SPARQL query</a></li>
+<li><a href="#transfer-a-sparql-query">Transfer a SPARQL query</a></li>
+<li><a href="#copy-a-sparql-query">Copy a SPARQL query</a></li>
+</ul>
+</li>
+<li><a href="#elasticsearch">ElasticSearch</a></li>
+<li><a href="#graphql">GraphQL</a></li>
+<li><a href="#insights">Insights</a><ul>
+<li><a href="#class-frequency">Class frequency</a></li>
+<li><a href="#class-hierarchy">Class hierarchy</a><ul>
+<li><a href="#when-does-the-class-hierarchy-show">When does the class hierarchy show?</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<h1 id="viewing-data">Viewing Data<a class="headerlink" href="#viewing-data" title="Permanent link">&para;</a></h1>
+<p>TriplyDB offers several ways to explore your datasets.</p>
+<h2 id="linked-data-browser">Linked Data Browser<a class="headerlink" href="#linked-data-browser" title="Permanent link">&para;</a></h2>
+<p>The linked data browser offers to traverse the data by focusing on one node at the time. The node is describe using it's properties, which can be followed to other nodes in the graph.</p>
+<p><img alt="Image of the linked Data Browser" src="../../assets/ld-browser.png" /></p>
+<p>The following properties provide additional information about your linked data, enabling the LD-browser to display visualizations and provide a better user experience.</p>
+<h4 id="types">Types<a class="headerlink" href="#types" title="Permanent link">&para;</a></h4>
+<p>The predicate <code>rdf:type</code> allows you to specify the type or class of a resource in your linked data:</p>
+<p>By using <code>rdf:type</code>, you can indicate the category or classification of the resource, which can help the LD-browser understand the nature of the data and display it appropriately.</p>
+<p>In the <a href="https://triplydb.com/Triply/iris/browser?resource=http%3A%2F%2Fdbpedia.org%2Fresource%2FIris_setosa">example below</a>, you can see that "Iris setosa" is the type of flowering plant due to the usage of the <code>rdf:type</code> property.</p>
+<p><img alt="rdf:type in the LD-browser" src="../../assets/type.png" /></p>
+<h4 id="labels">Labels<a class="headerlink" href="#labels" title="Permanent link">&para;</a></h4>
+<p>Labels are typically used to provide a concise and meaningful title or display name for a resource, making it easier for users to understand the content of your linked data.
+These predicates allow you to provide human-readable labels or names for your resources:</p>
+<ul>
+<li>The property <code>rdfs:label</code></li>
+<li>The property <code>skos:prefLabel</code></li>
+</ul>
+<p>In the <a href="https://triplydb.com/academy/pokemon/browser?resource=https%3A%2F%2Ftriplydb.com%2Facademy%2Fpokemon%2Fid%2Fpokemon%2Fpikachu">example below</a>, the <code>rdfs:label</code> property was used to denote the label(name) of the Pokemon, resulting in the display of "Pikachu" above its corresponding image.</p>
+<p><img alt="rdfs:label in the LD-browser" src="../../assets/label.png" /></p>
+<h4 id="descriptions">Descriptions<a class="headerlink" href="#descriptions" title="Permanent link">&para;</a></h4>
+<p>Descriptions can provide additional context or information about a resource, helping users understand its purpose, content, or significance.
+These predicates allow you to provide textual descriptions or comments about your resources:</p>
+<ul>
+<li>The property <code>sdo:description</code></li>
+<li>The property <code>rdfs:comment</code></li>
+</ul>
+<p>In the <a href="https://triplydb.com/Triply/iris/browser?resource=http%3A%2F%2Fdbpedia.org%2Fresource%2FIris_setosa">following example</a> <code>rdfs:comment</code> was used to provide additional information on Iris Setosa.</p>
+<p><img alt="rdfs:comment in the LD-browser" src="../../assets/description.png" /></p>
+<h4 id="geo">Geo<a class="headerlink" href="#geo" title="Permanent link">&para;</a></h4>
+<p>These are some of the predicates used for representing geographic information in your LD-browser:</p>
+<ul>
+<li>The property <code>geo:asWKT</code>: This property allows you to specify the geometries of geographic features using the Well-Known Text (WKT) format, which can be visualized on a map in the LD-browser.</li>
+<li>The property <code>geo:hasGeometry</code>: This property is used to link a geographic feature with its corresponding geometry.</li>
+<li>The property <code>geo:location</code>: This property is used to indicate the location of a resource using geographic coordinates, such as latitude and longitude, in your linked data.</li>
+</ul>
+<p>In the <a href="https://triplydb.com/osm/osm/browser?resource=https%3A%2F%2Fdata.osm.pldn.nl%2Fway%2F34997507">following example</a> <code>geo:hasGeometry</code> property was used to showcase a map depicting the location of Instituut voor Beeld en Geluid.</p>
+<p><img alt="geo:hasGeometry in the LD-browser" src="../../assets/geo.png" /></p>
+<h4 id="images">Images<a class="headerlink" href="#images" title="Permanent link">&para;</a></h4>
+<p>These predicates allow you to associate images or visual representations with your resources:</p>
+<ul>
+<li>Class <code>sdo:ImageObject</code></li>
+<li>The property <code>foaf:depiction</code></li>
+<li>The property <code>foaf:thumbnail</code></li>
+<li>The property <code>foaf:img</code></li>
+<li>The property <code>sdo:image</code></li>
+<li>The property <code>sdo:contentUrl</code></li>
+</ul>
+<p>By using these predicates, you can provide URLs or references to images that can be displayed alongside your linked data in the LD-browser.</p>
+<p>In the <a href="https://triplydb.com/academy/pokemon/browser?resource=https%3A%2F%2Ftriplydb.com%2Facademy%2Fpokemon%2Fid%2Fpokemon%2Fpikachu">example below</a>, <code>foaf:depiction</code> was used to display picture of Pikachu in the LD-browser:</p>
+<p><img alt="foaf:depiction in the LD-browser" src="../../assets/image.png" /></p>
+<h4 id="audio">Audio<a class="headerlink" href="#audio" title="Permanent link">&para;</a></h4>
+<p>These predicates allow you to associate audio content with your resources:</p>
+<ul>
+<li>The class <code>sdo:AudioObject</code></li>
+<li>The property <code>sdo:audio</code></li>
+<li>The property <code>sdo:contentUrl</code></li>
+</ul>
+<p>You can use these predicates to provide URLs or references to audio files that can be played or streamed within the LD-browser.</p>
+<p>In the <a href="https://nightly.triplydb.com/Triply/efteling/browser?resource=https%3A%2F%2Fnightly.triplydb.com%2Fefteling%2FCarnavalFestival">following example</a>, <code>sdo:audio</code> was used to showcase audio content of the Carnival Festival within the LD-browser.</p>
+<p><img alt="sdo:audio in the LD-browser" src="../../assets/audio.png" /></p>
+<h4 id="video">Video<a class="headerlink" href="#video" title="Permanent link">&para;</a></h4>
+<p>These predicates allow you to associate video content with your resources:</p>
+<ul>
+<li>Class <code>sdo:VideoObject</code></li>
+<li>Property <code>sdo:video</code></li>
+<li>Property <code>sdo:contentUrl</code></li>
+</ul>
+<p>You can use these predicates to provide URLs or references to video files that can be played or streamed within the LD-browser.The video formats that are included in this dataset are ".mp4", ".webm", ".ogg".</p>
+<p>In the <a href="https://test.triply.cc/Philippe/ld-patterns/browser?resource=https%3A%2F%2Ftest.triply.cc%2FPhilippe%2Fld-patterns%2Fid%2Fvideo%2Fkleine-piep_0.0">following example</a>, <code>sdo:contentUrl</code> was used to showcase video content of the Kleine Piep within the LD-browser.</p>
+<p><img alt="sdo:contentUrl in the LD-browser" src="../../assets/video.png" /></p>
+<h2 id="linked-data-table">Linked Data Table<a class="headerlink" href="#linked-data-table" title="Permanent link">&para;</a></h2>
+<p>The linked data Table shows a dataset at the triple level. The first three columns represent the subject, predicate, and object position of the triple. The fourth column represents the graph to which the triple belongs.</p>
+<p><img alt="Image of the linked data Table" src="../../assets/linked-data-table.png" /></p>
+<p>The linked data Table can be used to perform simple queries by filling in the subject, predicate, object, and/or graph using the text field.</p>
+<p>Terms in the linked data Table can be dragged and dropped between columns. This allows a simple form of graph navigation. For example, an object term can be dragged to the subject column in order to show the triples in which that term appears in the subject position.</p>
+<p>Queries in the linked data Table can also be performed automatically through the Statements API and the <a href="../../triply-api/#triple-pattern-fragments-tpf">Triple Pattern Fragments API</a>.</p>
+<h2 id="sparql-ide">SPARQL IDE<a class="headerlink" href="#sparql-ide" title="Permanent link">&para;</a></h2>
+<p>When a dataset has a running SPARQL service, the data can be queried from the SPARQL IDE. The SPARQL IDE is an extended version of the Open Source <a href="../../yasgui/">Yasgui</a> query editor.</p>
+<h3 id="saving-a-sparql-query">Saving a SPARQL query<a class="headerlink" href="#saving-a-sparql-query" title="Permanent link">&para;</a></h3>
+<p>It is often useful to save a SPARQL query for later use. This is achieved by clicking on the save icon in the top-right corner of the SPARQL Editor. Doing so will create a <a href="../saved-queries/#saved-queries">Saved Query</a>.</p>
+<h3 id="sharing-a-sparql-query">Sharing a SPARQL query<a class="headerlink" href="#sharing-a-sparql-query" title="Permanent link">&para;</a></h3>
+<p>It is sometimes useful to share a SPARQL query with somebody else, or to have a cURL command that can be used to run the same SPARQL query from a command line. This is achieved by clicking on the share icon in the top-right corner of the SPARQL Editor. This brings us a dialog from which the SPARQL query can be copied in the following three forms:</p>
+<ol>
+<li>
+<p>The URL-encoded SPARQL query. This is a long URL that includes the endpoint, the query, and visualization settings. Notice that this URL can be quite long for complex queries and/or visualizations. Long URLs are not supported by some application that cut off a URL after a maximum length (often 1,024 characters). Use one of the other two options or use <a href="../saved-queries/#saved-queries">Saved Queries</a> to avoid such restrictions.</p>
+</li>
+<li>
+<p>A short URL that redirects to the full URL-encoded SPARQL query.</p>
+</li>
+<li>
+<p>A cURL command that can be copy/pasted into a terminal application that supports this command. cURL is often used by programmers to test HTTP(S) requests.</p>
+</li>
+</ol>
+<p><a href="../saved-queries/#saved-queries">Saved Queries</a> are a more modern way of sharing SPARQL queries. They do not have any of the technical limitations that occur with URL-encoded queries.</p>
+<h3 id="transfer-a-sparql-query">Transfer a SPARQL query<a class="headerlink" href="#transfer-a-sparql-query" title="Permanent link">&para;</a></h3>
+<p>The SPARQL queries could be transferred to another account or an organization. To do that, go to the setting field at the query page,</p>
+<p><img alt="Transfer a SPARQL query" src="../../assets/where-find-transfer.png" /></p>
+<p>choose transfer:</p>
+<p><img alt="Transfer a SPARQL query" src="../../assets/transfer-query.png" /></p>
+<p>and then choose where the SPARQL query should be moved to:</p>
+<p><img alt="Transfer a SPARQL query" src="../../assets/transfer-to-organization.png" /></p>
+<p>After the destination is set you would be redirected to the SPARQL query new page. The SPARQL query could be transferred from an account to an organization and vice versa.</p>
+<h3 id="copy-a-sparql-query">Copy a SPARQL query<a class="headerlink" href="#copy-a-sparql-query" title="Permanent link">&para;</a></h3>
+<p>Users can copy SPARQL queries to another account or an organization. To do that, click on three dots in the upper right corner of the query and choose the copy option:</p>
+<p><img alt="Copy query" src="../../assets/copyQuery.png" /></p>
+<p>Then, choose where the SPARQL query should be moved to:</p>
+<p><img alt="Select organization" src="../../assets/selectOrganization.png" /></p>
+<p>After setting the destination, you will be redirected to the SPARQL query new page. The SPARQL query can be copied from an account to an organization and vice versa.</p>
+<h2 id="elasticsearch">ElasticSearch<a class="headerlink" href="#elasticsearch" title="Permanent link">&para;</a></h2>
+<p>When a dataset has a running Elasticsearch service, textual searches can be performed over the entire dataset. Text search with Elasticsearch works like a search engine and returns any node that contains your search term, or contains the search term in any of its properties. It is also possible to write a custom query using the Elasticsearch <a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl.html">Query DSL (Domain Specific Language)</a>.</p>
+<h2 id="graphql">GraphQL<a class="headerlink" href="#graphql" title="Permanent link">&para;</a></h2>
+<p>Some TriplyDB instances also support querying using the <a href="https://graphql.org/">GraphQL
+language</a>. For more information on the schema and possible
+queries, also read <a href="../../generics/Graphql/">this document</a>.</p>
+<h2 id="insights">Insights<a class="headerlink" href="#insights" title="Permanent link">&para;</a></h2>
+<p>The insights page has been developed to give you a succinct overview of the linked data at hand. It holds two views: the class frequency and the class hierarchy view.</p>
+<h3 id="class-frequency">Class frequency<a class="headerlink" href="#class-frequency" title="Permanent link">&para;</a></h3>
+<p>The class frequency diagram shows how often classes and properties appear in a graph. The drop-down on the top of the visualization selects the graph for which the class frequency is drawn. The visualization shows the 10 most frequent classes in the selected graph. The exact number of occurrences can be seen when hovering over the bar of a class, also showing the complete IRI/prefixed IRI. When clicking on the bar of a class the node will expand and show the 10 most frequent predicates of that class.</p>
+<h3 id="class-hierarchy">Class hierarchy<a class="headerlink" href="#class-hierarchy" title="Permanent link">&para;</a></h3>
+<p>The class hierarchy diagram shows the hierarchy of the dataset in three
+different visualizations. Each of the diagrams are created by the
+<code>rdfs:subClassOf</code> relations and the classes in the dataset.
+TriplyDB has three different visualization methods for the classHierarchy:</p>
+<ul>
+<li>Bubbles visualization</li>
+<li>Treemap visualization</li>
+<li>Sunburst visualization</li>
+</ul>
+<p>All three visualizations are interactive in two ways. It is possible to hover over them, which will show information about the layer the mouse is on, or to click on them, so the visualization zooms in one or more layers. For each visualization it is also possible to zoom out:</p>
+<ul>
+<li>Bubbles visualization: click the outside of the bubble</li>
+<li>Treemap visualization: use the breadcrumbs trail shown above the visualization</li>
+<li>Sunburst visualization: click the innermost circle of the visualization</li>
+</ul>
+<h4 id="when-does-the-class-hierarchy-show">When does the class hierarchy show?<a class="headerlink" href="#when-does-the-class-hierarchy-show" title="Permanent link">&para;</a></h4>
+<ul>
+<li>A class only appears in the class hierarchy tab if it has instances (connected to the class via <code>rdf:type</code>).</li>
+<li>The class hierarchy cannot be shown if it contains a cycle, meaning that some class is (indirectly) its own subclass.</li>
+</ul>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../publishing-data/" class="btn btn-neutral float-left" title="Sharing Data"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../exporting-data/" class="btn btn-neutral float-right" title="Exporting Data">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../publishing-data/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../exporting-data/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script>var base_url = '../..';</script>
+      <script src="../../js/triply.js" defer></script>
+      <script src="../../js/highlight.min.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+
+</body>
+</html>

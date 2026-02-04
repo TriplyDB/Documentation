@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <meta name="description" content="The official documentation for the Triply products: TriplyDB, TriplyDB.js, and TriplyETL." />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Asset - Triply Documentation</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link href="../../css/intellij-light.css" rel="stylesheet" />
+        <link href="../../css/triply.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Asset";
+        var mkdocs_page_input_path = "triplydb-js/asset/index.md";
+        var mkdocs_page_url = null;
+      </script>
+     
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> Triply Documentation
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">TriplyDB</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="#">Getting started</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-db-getting-started/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-db-getting-started/uploading-data/">Uploading Data</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-db-getting-started/editing-data/">Editing (SKOS) Data</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-db-getting-started/publishing-data/">Sharing Data</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-db-getting-started/viewing-data/">Viewing Data</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-db-getting-started/exporting-data/">Exporting Data</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-db-getting-started/saved-queries/">Saved Queries</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-db-getting-started/data-stories/">Data Stories</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-db-getting-started/admin-settings-pages/">Admin Settings Pages</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-db-getting-started/reference/">Reference</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../triply-api/">API</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">TriplyDB-JS</a>
+    <ul class="current">
+                <li class="toctree-l2"><a class="reference internal" href="../">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../app/">App</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../account/">Account</a>
+                </li>
+                <li class="toctree-l2 current"><a class="reference internal current" href="./">Asset</a>
+    <ul class="current">
+    <li class="toctree-l3"><a class="reference internal" href="#assetaddversionpath-file-string">Asset.addVersion(path: File | string)</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#example">Example</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#assetdelete">Asset.delete()</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#example_1">Example</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#assetgetinfoversion-number">Asset.getInfo(version?: number)</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#examples">Examples</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#assetgetversioninfoversion-number">Asset.getVersionInfo(version: number)</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#examples_1">Examples</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#assetselectversionversion-number">Asset.selectVersion(version: number)</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#example_2">Example</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#assettofilepath-string-version-number">Asset.toFile(path: string, version?: number)</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#example_3">Example</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#assettostreamversion-number">Asset.toStream(version?: number)</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#example_4">Example</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../dataset/">Dataset</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../graph/">Graph</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../organization/">Organization</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../query/">Query</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../service/">Service</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../story/">Story</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../user/">User</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../faq/">FAQ</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../triply-cli/">Command-line Interface</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../triplydb-changelog/">Changelog</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">TriplyETL</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Generic</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/generic/getting-started/">Getting Started</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/generic/changelog/">Changelog</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/generic/cli/">Command Line Interface (CLI)</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/generic/declarations/">Declarations</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/generic/control-structures/">Control Structures</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/generic/debug/">Debug</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/generic/internal-store/">Internal Store</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/generic/maintenance/">Maintenance</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/generic/record/">Record</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/generic/vocabularies/">Vocabularies</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Sources</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/sources/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/sources/apis/">APIs</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/sources/inline-json/">Inline JSON</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/sources/inline-strings/">Inline Strings</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/sources/local-files/">Local Files</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/sources/online-files/">Online Files</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/sources/rml/">RML Sources</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/sources/triplydb-assets/">TriplyDB Assets</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/sources/triplydb-datasets/">TriplyDB Datasets</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/sources/triplydb-queries/">TriplyDB Queries</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Extract</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/extract/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/extract/csv/">CSV</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/extract/json/">JSON</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/extract/oai-pmh/">OAI-PMH</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/extract/postgres/">Postgres</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/extract/rdf/">RDF</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/extract/shapefile/">Shapefile</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/extract/tsv/">TSV</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/extract/xlsx/">XLSX</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/extract/xml/">XML</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Transform</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/transform/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/transform/ratt/">RATT</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/transform/rml/">RML</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/transform/typescript/">TypeScript</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/transform/xslt/">XSLT</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Assert</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/assert/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/assert/json-ld/">JSON-LD</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="#">RATT</a>
+    <ul>
+                <li class="toctree-l3"><a class="reference internal" href="../../triply-etl/assert/ratt/terms/">RATT Terms</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../../triply-etl/assert/ratt/statements/">RATT Statements</a>
+                </li>
+    </ul>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/assert/rml/">RML</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/assert/xslt/">XSLT</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Enrich</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/enrich/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="#">SHACL</a>
+    <ul>
+                <li class="toctree-l3"><a class="reference internal" href="../../triply-etl/enrich/shacl/">Overview</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../../triply-etl/enrich/shacl/triple-rules/">Triple Rules</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../../triply-etl/enrich/shacl/sparql-rules/">SPARQL Rules</a>
+                </li>
+    </ul>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="#">SPARQL</a>
+    <ul>
+                <li class="toctree-l3"><a class="reference internal" href="../../triply-etl/enrich/sparql/construct/">SPARQL Construct</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../../triply-etl/enrich/sparql/update/">SPARQL Update</a>
+                </li>
+    </ul>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Validate</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/validate/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/validate/graph-comparison/">Graph Comparison</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/validate/shacl/">SHACL</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../triply-etl/publish/">Publish</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Yasgui</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../yasgui/">Introduction</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../yasgui-api/">For Developers</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">Triply Documentation</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">TriplyDB</li>
+          <li class="breadcrumb-item">TriplyDB-JS</li>
+      <li class="breadcrumb-item active">Asset</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <div class="toc"><span class="toctitle">On this page:</span><ul>
+<li><a href="#asset">Asset</a><ul>
+<li><a href="#assetaddversionpath-file-string">Asset.addVersion(path: File | string)</a><ul>
+<li><a href="#example">Example</a></li>
+</ul>
+</li>
+<li><a href="#assetdelete">Asset.delete()</a><ul>
+<li><a href="#example_1">Example</a></li>
+</ul>
+</li>
+<li><a href="#assetgetinfoversion-number">Asset.getInfo(version?: number)</a><ul>
+<li><a href="#examples">Examples</a></li>
+</ul>
+</li>
+<li><a href="#assetgetversioninfoversion-number">Asset.getVersionInfo(version: number)</a><ul>
+<li><a href="#examples_1">Examples</a></li>
+</ul>
+</li>
+<li><a href="#assetselectversionversion-number">Asset.selectVersion(version: number)</a><ul>
+<li><a href="#example_2">Example</a></li>
+</ul>
+</li>
+<li><a href="#assettofilepath-string-version-number">Asset.toFile(path: string, version?: number)</a><ul>
+<li><a href="#example_3">Example</a></li>
+</ul>
+</li>
+<li><a href="#assettostreamversion-number">Asset.toStream(version?: number)</a><ul>
+<li><a href="#example_4">Example</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<h1 id="asset">Asset<a class="headerlink" href="#asset" title="Permanent link">&para;</a></h1>
+<p>Not all data can be stored as RDF data. For example images and video files use a binary format. Such files can also be stored in TriplyDB as Assets and can be integrated into the Knowledge Graph. Each asset has a specific identifier that can be used in the Knowledge Graph.</p>
+<p>An asset is always uploaded per dataset, for which the function <code>uploadAsset()</code> is used. see <a href="../dataset/#datasetuploadassetassetname-string-filepath-string">Dataset.uploadAsset()</a> for uploading an asset.</p>
+<p>If the asset already has been created following functions can retrieve it from the dataset.</p>
+<ul>
+<li>
+<p><a href="../dataset/#datasetgetassetname-string-version-number">Dataset.getAsset(assetName: string, versionNumber?: number)</a></p>
+</li>
+<li>
+<p><a href="../dataset/#datasetgetassets">Dataset.getAssets()</a></p>
+</li>
+</ul>
+<p>TriplyDB.js supports several functions to manipulate an asset on TriplyDB.</p>
+<h2 id="assetaddversionpath-file-string">Asset.addVersion(path: File | string)<a class="headerlink" href="#assetaddversionpath-file-string" title="Permanent link">&para;</a></h2>
+<p>Update an asset with a new version of the document using the <code>addVersion</code> function. The input of this function is a path to the file location that you want to update the asset with. The file you want to add as a new version does not in any ways have to correspond to the asset.</p>
+<h3 id="example">Example<a class="headerlink" href="#example" title="Permanent link">&para;</a></h3>
+<p>The following snippet uploads the an file <code>my-file.pdf</code> and upload it as the new version of the asset:</p>
+<pre><code class="language-ts">const triply = App.get({ token: process.env.TOKEN })
+const user = await triply.getAccount()
+const dataset = await user.getDataset('my-dataset')
+const asset = await dataset.getAsset('my-asset')
+await asset.addVersion('my-file.pdf')
+</code></pre>
+<h2 id="assetdelete">Asset.delete()<a class="headerlink" href="#assetdelete" title="Permanent link">&para;</a></h2>
+<p>To delete an asset with all of its versions execute the <code>delete()</code> function.</p>
+<h3 id="example_1">Example<a class="headerlink" href="#example_1" title="Permanent link">&para;</a></h3>
+<p>The following snippet uploads the an file <code>my-file.pdf</code> and upload it as the new version of the asset:</p>
+<pre><code class="language-ts">const triply = App.get({ token: process.env.TOKEN })
+const user = await triply.getAccount()
+const dataset = await user.getDataset('my-dataset')
+const asset = await dataset.getAsset('my-asset')
+await asset.delete()
+</code></pre>
+<h2 id="assetgetinfoversion-number">Asset.getInfo(version?: number)<a class="headerlink" href="#assetgetinfoversion-number" title="Permanent link">&para;</a></h2>
+<p>Returns information about this asset.</p>
+<p>Information is returned in a dictionary object. Individual keys can be accessed for specific information values.</p>
+<p>Optionally you can give the version number to retrieve the assetInfo of a particular version.</p>
+<p>The information object for assets includes the following keys:</p>
+<dl>
+  <dt><code>assetName</code></dt>
+  <dd>The URL-friendly name of the asset.</dd>
+
+  <dt><code>identifier</code></dt>
+  <dd>The hexadecimal identifier of the asset</dd>
+
+  <dt><code>createdAt</code></dt>
+  <dd>The date and time on which the asset was created.</dd>
+
+  <dt><code>url</code></dt>
+  <dd>The url of the asset.</dd>
+
+  <dt><code>versions</code></dt>
+  <dd>An array containing all versions of the asset.</dd>
+
+  <dt><code>uploadedAt</code></dt>
+  <dd>The date and time on which the asset was uploaded.</dd>
+
+  <dt><code>fileSize</code></dt>
+  <dd>Number with the bytesize of the asset</dd>
+</dl>
+
+<h3 id="examples">Examples<a class="headerlink" href="#examples" title="Permanent link">&para;</a></h3>
+<ul>
+<li>The following snippet prints the full information object for the asset called ‘my-asset’:</li>
+</ul>
+<pre><code class="language-ts">const triply = App.get({ token: process.env.TOKEN })
+const user = await triply.getAccount()
+const dataset = await user.getDataset('my-dataset')
+const asset = await dataset.getAsset('my-asset')
+console.log(await asset.getInfo())
+</code></pre>
+<h2 id="assetgetversioninfoversion-number">Asset.getVersionInfo(version: number)<a class="headerlink" href="#assetgetversioninfoversion-number" title="Permanent link">&para;</a></h2>
+<p>Returns version specific information about this asset.</p>
+<p>Information is returned in a dictionary object. Individual keys can be accessed for specific information values.</p>
+<p>The version specific information object for assets includes the following keys:</p>
+<dl>
+  <dt><code>id</code></dt>
+  <dd>The hexadecimal identifier of the asset</dd>
+
+  <dt><code>fileSize</code></dt>
+  <dd>Number with the bytesize of the asset</dd>
+
+  <dt><code>url</code></dt>
+  <dd>The url of the asset.</dd>
+
+  <dt><code>uploadedAt</code></dt>
+  <dd>The date and time on which the asset was uploaded.</dd>
+</dl>
+
+<h3 id="examples_1">Examples<a class="headerlink" href="#examples_1" title="Permanent link">&para;</a></h3>
+<ul>
+<li>The following snippet prints the version information object for the asset called ‘my-asset’ at version <code>1</code>:</li>
+</ul>
+<pre><code class="language-ts">const triply = App.get({ token: process.env.TOKEN })
+const user = await triply.getAccount()
+const dataset = await user.getDataset('my-dataset')
+const asset = await dataset.getAsset('my-asset')
+console.log(await asset.getVersionInfo(1))
+</code></pre>
+<h2 id="assetselectversionversion-number">Asset.selectVersion(version: number)<a class="headerlink" href="#assetselectversionversion-number" title="Permanent link">&para;</a></h2>
+<p>With the <code>selectVersion()</code> function you can select a specific version of an Asset.
+Each version corresponds to a iteration of the file that is added as an asset. The
+argument of the <code>selectVersion()</code> function is a number of the version you want to retrieve.</p>
+<h3 id="example_2">Example<a class="headerlink" href="#example_2" title="Permanent link">&para;</a></h3>
+<p>To select the first asset from the list of assets use the selectVersion with the argument <code>1</code>.</p>
+<pre><code class="language-ts">const triply = App.get({ token: process.env.TOKEN })
+const user = await triply.getAccount()
+const dataset = await user.getDataset('my-dataset')
+const asset = await dataset.getAsset('my-asset')
+const versionedAsset = asset.selectVersion(1)
+</code></pre>
+<h2 id="assettofilepath-string-version-number">Asset.toFile(path: string, version?: number)<a class="headerlink" href="#assettofilepath-string-version-number" title="Permanent link">&para;</a></h2>
+<p>The binary representation of an asset can be retrieved and written to file via the <code>asset.toFile()</code>
+function. This function takes as input a string path to the download location and optionally a
+version number.</p>
+<h3 id="example_3">Example<a class="headerlink" href="#example_3" title="Permanent link">&para;</a></h3>
+<p>To download the latest version of <code>my-asset</code> asset to the file <code>my-file-location.txt</code>.</p>
+<pre><code class="language-ts">const triply = App.get({ token: process.env.TOKEN })
+const user = await triply.getAccount()
+const dataset = await user.getDataset('my-dataset')
+const asset = await dataset.getAsset('my-asset')
+asset.toFile('my-file-location.txt')
+</code></pre>
+<h2 id="assettostreamversion-number">Asset.toStream(version?: number)<a class="headerlink" href="#assettostreamversion-number" title="Permanent link">&para;</a></h2>
+<p>If instead of downloading the asset to a file for later usage you want to directly use the asset.
+The <code>toStream()</code> functionality is available. This downloads the asset as a stream for use in a script.
+The <code>toStream()</code> has as optional argument a version number.</p>
+<h3 id="example_4">Example<a class="headerlink" href="#example_4" title="Permanent link">&para;</a></h3>
+<p>To get the latest version of <code>my-asset</code> asset as a stream available.</p>
+<pre><code class="language-ts">const triply = App.get({ token: process.env.TOKEN })
+const user = await triply.getAccount()
+const dataset = await user.getDataset('my-dataset')
+const asset = await dataset.getAsset('my-asset')
+asset.toStream()
+</code></pre>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../account/" class="btn btn-neutral float-left" title="Account"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../dataset/" class="btn btn-neutral float-right" title="Dataset">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../account/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../dataset/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script>var base_url = '../..';</script>
+      <script src="../../js/triply.js" defer></script>
+      <script src="../../js/highlight.min.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+
+</body>
+</html>
