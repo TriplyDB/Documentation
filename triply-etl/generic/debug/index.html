@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <meta name="description" content="The official documentation for the Triply products: TriplyDB, TriplyDB.js, and TriplyETL." />
+      <link rel="shortcut icon" href="../../../img/favicon.ico" />
+    <title>Debug - Triply Documentation</title>
+    <link rel="stylesheet" href="../../../css/theme.css" />
+    <link rel="stylesheet" href="../../../css/theme_extra.css" />
+        <link href="../../../css/intellij-light.css" rel="stylesheet" />
+        <link href="../../../css/triply.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Debug";
+        var mkdocs_page_input_path = "triply-etl/generic/debug.md";
+        var mkdocs_page_url = null;
+      </script>
+     
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../../.." class="icon icon-home"> Triply Documentation
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../..">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">TriplyDB</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Getting started</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../../triply-db-getting-started/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../triply-db-getting-started/uploading-data/">Uploading Data</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../triply-db-getting-started/editing-data/">Editing (SKOS) Data</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../triply-db-getting-started/publishing-data/">Sharing Data</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../triply-db-getting-started/viewing-data/">Viewing Data</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../triply-db-getting-started/exporting-data/">Exporting Data</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../triply-db-getting-started/saved-queries/">Saved Queries</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../triply-db-getting-started/data-stories/">Data Stories</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../triply-db-getting-started/admin-settings-pages/">Admin Settings Pages</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../triply-db-getting-started/reference/">Reference</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../triply-api/">API</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">TriplyDB-JS</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../../triplydb-js/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../triplydb-js/app/">App</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../triplydb-js/account/">Account</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../triplydb-js/asset/">Asset</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../triplydb-js/dataset/">Dataset</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../triplydb-js/graph/">Graph</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../triplydb-js/organization/">Organization</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../triplydb-js/query/">Query</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../triplydb-js/service/">Service</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../triplydb-js/story/">Story</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../triplydb-js/user/">User</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../triplydb-js/faq/">FAQ</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../triply-cli/">Command-line Interface</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../triplydb-changelog/">Changelog</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">TriplyETL</span></p>
+              <ul class="current">
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Generic</a>
+    <ul class="current">
+                <li class="toctree-l2"><a class="reference internal" href="../../">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../getting-started/">Getting Started</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../changelog/">Changelog</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../cli/">Command Line Interface (CLI)</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../declarations/">Declarations</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../control-structures/">Control Structures</a>
+                </li>
+                <li class="toctree-l2 current"><a class="reference internal current" href="./">Debug</a>
+    <ul class="current">
+    <li class="toctree-l3"><a class="reference internal" href="#overview">Overview</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#function-logmemory">Function logMemory()</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#function-logquads">Function logQuads()</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#function-logquery">Function logQuery()</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#function-logrecord">Function logRecord()</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#use-when-writing-a-new-etl">Use when writing a new ETL</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#observe-the-effects-of-transformations">Observe the effects of transformations</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#log-a-specific-key">Log a specific key</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#functions-tracestart-and-traceend">Functions traceStart() and traceEnd()</a>
+    </li>
+    </ul>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../internal-store/">Internal Store</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../maintenance/">Maintenance</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../record/">Record</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../vocabularies/">Vocabularies</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Sources</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../sources/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../sources/apis/">APIs</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../sources/inline-json/">Inline JSON</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../sources/inline-strings/">Inline Strings</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../sources/local-files/">Local Files</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../sources/online-files/">Online Files</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../sources/rml/">RML Sources</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../sources/triplydb-assets/">TriplyDB Assets</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../sources/triplydb-datasets/">TriplyDB Datasets</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../sources/triplydb-queries/">TriplyDB Queries</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Extract</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../extract/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../extract/csv/">CSV</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../extract/json/">JSON</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../extract/oai-pmh/">OAI-PMH</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../extract/postgres/">Postgres</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../extract/rdf/">RDF</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../extract/shapefile/">Shapefile</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../extract/tsv/">TSV</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../extract/xlsx/">XLSX</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../extract/xml/">XML</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Transform</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../transform/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../transform/ratt/">RATT</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../transform/rml/">RML</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../transform/typescript/">TypeScript</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../transform/xslt/">XSLT</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Assert</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../assert/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../assert/json-ld/">JSON-LD</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="#">RATT</a>
+    <ul>
+                <li class="toctree-l3"><a class="reference internal" href="../../assert/ratt/terms/">RATT Terms</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../../assert/ratt/statements/">RATT Statements</a>
+                </li>
+    </ul>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../assert/rml/">RML</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../assert/xslt/">XSLT</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Enrich</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../enrich/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="#">SHACL</a>
+    <ul>
+                <li class="toctree-l3"><a class="reference internal" href="../../enrich/shacl/">Overview</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../../enrich/shacl/triple-rules/">Triple Rules</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../../enrich/shacl/sparql-rules/">SPARQL Rules</a>
+                </li>
+    </ul>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="#">SPARQL</a>
+    <ul>
+                <li class="toctree-l3"><a class="reference internal" href="../../enrich/sparql/construct/">SPARQL Construct</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../../enrich/sparql/update/">SPARQL Update</a>
+                </li>
+    </ul>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Validate</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../validate/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../validate/graph-comparison/">Graph Comparison</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../validate/shacl/">SHACL</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../publish/">Publish</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Yasgui</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../yasgui/">Introduction</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../yasgui-api/">For Developers</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../..">Triply Documentation</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../.." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">TriplyETL</li>
+          <li class="breadcrumb-item">Generic</li>
+      <li class="breadcrumb-item active">Debug</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <div class="toc"><span class="toctitle">On this page:</span><ul>
+<li><a href="#debug">Debug</a><ul>
+<li><a href="#overview">Overview</a></li>
+<li><a href="#function-logmemory">Function logMemory()</a></li>
+<li><a href="#function-logquads">Function logQuads()</a></li>
+<li><a href="#function-logquery">Function logQuery()</a></li>
+<li><a href="#function-logrecord">Function logRecord()</a><ul>
+<li><a href="#use-when-writing-a-new-etl">Use when writing a new ETL</a></li>
+<li><a href="#observe-the-effects-of-transformations">Observe the effects of transformations</a></li>
+<li><a href="#log-a-specific-key">Log a specific key</a></li>
+</ul>
+</li>
+<li><a href="#functions-tracestart-and-traceend">Functions traceStart() and traceEnd()</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<h1 id="debug">Debug<a class="headerlink" href="#debug" title="Permanent link">&para;</a></h1>
+<p>TriplyETL includes functions that can be used during debugging. These debug function allow you to inspect in a detailed way how data flows through your pipeline. This allows you to find problems more quickly, and allows you to determine whether data is handled correctly by your TriplyETL configuration.</p>
+<h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">&para;</a></h2>
+<p>The following debug function are available:</p>
+<table>
+<thead>
+<tr>
+<th>Function</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="#logmemory">logMemory()</a></td>
+<td>Prints the current memory consumption.</td>
+</tr>
+<tr>
+<td><a href="#logquads">logQuads()</a></td>
+<td>Prints the contents of the internal store to standard output.</td>
+</tr>
+<tr>
+<td><a href="#logquery">logQuery()</a></td>
+<td>Prints a query string to standard output.</td>
+</tr>
+<tr>
+<td><a href="#logrecord">logRecord()</a></td>
+<td>Prints the record in its current state to standard output.</td>
+</tr>
+<tr>
+<td><a href="#functions-tracestart-and-traceend">traceEnd()</a></td>
+<td>Ends a trace of the record and internal store.</td>
+</tr>
+<tr>
+<td><a href="#functions-tracestart-and-traceend">traceStart()</a></td>
+<td>Starts a trace of the record and internal store.</td>
+</tr>
+</tbody>
+</table>
+<p>These functions can be imported from the debug module:</p>
+<pre><code class="language-ts">import { logMemory, logQuads, logQuery, logRecord, traceEnd,
+         traceStart } from '@triplyetl/etl/debug'
+</code></pre>
+<h2 id="function-logmemory">Function <code>logMemory()</code><a class="headerlink" href="#function-logmemory" title="Permanent link">&para;</a></h2>
+<p>This function prints information about the current memory consumption. It includes the following fields:</p>
+<table>
+<thead>
+<tr>
+<th>Field name</th>
+<th>Meaning</th>
+<th>Use case</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CallCount</td>
+<td>The number of times that a specific use of <code>logMemory()</code> can been invoked.</td>
+<td>Find a location in your ETL script that is visited many times, e.g. because it occurs inside a (nested) loop.</td>
+</tr>
+<tr>
+<td>RecordId</td>
+<td>The numeric identifier of the record that is currently processed.</td>
+<td>Find a specific record that causes memory consumption to increase.</td>
+</tr>
+<tr>
+<td>Heap used</td>
+<td>The number of megabytes that are currently used on the heap.</td>
+<td>Find places in your ETL where an unexpected amount of memory is used.</td>
+</tr>
+<tr>
+<td>Heap total</td>
+<td>The number of megabytes that are currently allocated on the heap.</td>
+<td>Find places in your ETL where memory reallocation occurs.</td>
+</tr>
+</tbody>
+</table>
+<p>The following code snippet prints the memory consumption of TriplyETL for each record (first call), and for each member of key <code>'a'</code> (second call):</p>
+<pre><code class="language-ts">fromJson([{ a: [{ b: 1 }, { b: 2 }] }, { a: [] }, { a: [] }]),
+logMemory(),
+forEach('a', logMemory()),
+</code></pre>
+<p>This prints the following messages to standard output:</p>
+<pre><code>Info CallCount: 1 | RecordId: 1 | Heap (MB) used: 92 / total: 122
+Info CallCount: 1 | RecordId: 1 | Heap (MB) used: 92 / total: 122
+Info CallCount: 2 | RecordId: 1 | Heap (MB) used: 92 / total: 122
+Info CallCount: 2 | RecordId: 2 | Heap (MB) used: 92 / total: 122
+Info CallCount: 3 | RecordId: 2 | Heap (MB) used: 92 / total: 122
+</code></pre>
+<h2 id="function-logquads">Function <code>logQuads()</code><a class="headerlink" href="#function-logquads" title="Permanent link">&para;</a></h2>
+<p>This function prints the current contents of the internal store to standard output.</p>
+<p>The following snippet asserts one triple into the default graph of the internal store, and then prints the contents of the internal store:</p>
+<pre><code class="language-ts">fromJson([{}]),
+triple(rdfs.Class, a, rdfs.Class),
+logQuads(),
+</code></pre>
+<p>This results in the following output:</p>
+<pre><code class="language-turtle">@prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;.
+@prefix rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt;.
+@prefix sdo: &lt;https://schema.org/&gt;.
+
+&lt;https://triplydb.com/graph/default&gt; {
+rdfs:Class a rdfs:Class
+}
+</code></pre>
+<h2 id="function-logquery">Function <code>logQuery()</code><a class="headerlink" href="#function-logquery" title="Permanent link">&para;</a></h2>
+<p>This function prints a query string to standard output. This is specifically useful when the query string is stored in an external system, e.g. a SPARQL query string that is stored on a TriplyDB server:</p>
+<pre><code class="language-ts">logQuery(Source.TriplyDb.query('my-account', 'my-query')),
+</code></pre>
+<p>Depending on the query string that is stored in <code>'my-query'</code>, this could result in the following output:</p>
+<pre><code class="language-sparql">select * {
+  ?s ?p ?o.
+}
+limit 10
+</code></pre>
+<h2 id="function-logrecord">Function <code>logRecord()</code><a class="headerlink" href="#function-logrecord" title="Permanent link">&para;</a></h2>
+<p>This function prints the current state of the record to standard output. The record is a generic representation of the data that is extracted from one of the data sources (see the <a href="../record/">Record documentation page</a> for more information).</p>
+<p>The following snippet prints the inline JSON record to standard output:</p>
+<pre><code class="language-ts">fromJson([{ a: 1 }]),
+logRecord(),
+</code></pre>
+<p>This emits the following:</p>
+<pre><code class="language-json">{
+  &quot;a&quot;: 1,
+  &quot;$recordId&quot;: 1,
+  &quot;$environment&quot;: &quot;Development&quot;
+}
+</code></pre>
+<h3 id="use-when-writing-a-new-etl">Use when writing a new ETL<a class="headerlink" href="#use-when-writing-a-new-etl" title="Permanent link">&para;</a></h3>
+<p>When writing a new ETL, <code>logRecord()</code> is often used as the first function to invoke immediately after extracting the record. For example:</p>
+<pre><code class="language-ts">fromJson(Source.url('https://example.com/some/api/call')),
+logRecord(),
+</code></pre>
+<p>Since this prints a full overview of what is available in the data source, this forms a good starting point for writing the rest of the ETL configurations.</p>
+<h3 id="observe-the-effects-of-transformations">Observe the effects of transformations<a class="headerlink" href="#observe-the-effects-of-transformations" title="Permanent link">&para;</a></h3>
+<p>Another common use case for <code>logRecord()</code> is to observe the record at different moments in time. This is specifically useful to observe the effects of <a href="../../transform/">transformation functions</a>, since these are the functions that modify the record.</p>
+<p>The following snippet logs the record directly before and directly after the transformation function <code>split()</code> is called.</p>
+<pre><code class="language-ts">fromJson([{ a: '1, 2, 3' }]),
+logRecord(),
+split({ content: 'a', separator: ',', key: 'b' }),
+logRecord(),
+</code></pre>
+<p>This makes it easy to observe the result of applying the transformation function:</p>
+<pre><code class="language-json">Running lib/main.js
+{
+  &quot;a&quot;: &quot;1, 2, 3&quot;,
+  &quot;$recordId&quot;: 1,
+  &quot;$environment&quot;: &quot;Development&quot;
+}
+{
+  &quot;a&quot;: &quot;1, 2, 3&quot;,
+  &quot;$recordId&quot;: 1,
+  &quot;$environment&quot;: &quot;Development&quot;,
+  &quot;b&quot;: [
+    &quot;1&quot;,
+    &quot;2&quot;,
+    &quot;3&quot;
+  ]
+}
+</code></pre>
+<h3 id="log-a-specific-key">Log a specific key<a class="headerlink" href="#log-a-specific-key" title="Permanent link">&para;</a></h3>
+<p>Since records can be quite long, in some cases it may be easier to print only a specific key.</p>
+<p>The following code snippet only prints the key that was added by the transformation function:</p>
+<pre><code class="language-ts">fromJson([{ a: '1, 2, 3' }]),
+split({ content: 'a', separator: ',', key: 'b' }),
+logRecord({ key: 'b' }),
+</code></pre>
+<p>This results in the following output:</p>
+<pre><code class="language-json">[
+  &quot;1&quot;,
+  &quot;2&quot;,
+  &quot;3&quot;
+]
+</code></pre>
+<h2 id="functions-tracestart-and-traceend">Functions <code>traceStart()</code> and <code>traceEnd()</code><a class="headerlink" href="#functions-tracestart-and-traceend" title="Permanent link">&para;</a></h2>
+<p>Sometimes you are interested to find one specific record based on a certain value of a key and/or to see the changes in this record made by specific middlewares. For these purposes, <code>trace</code> middleware can be used.</p>
+<p>Below, there is an example of how this middleware can be used:</p>
+<pre><code class="language-ts">fromJson([
+  { a: 1, b: 1 }, // first dummy record
+  { a: 2, b: 2 }, // second dummy record
+]),
+change({key:'a', type:'number', change: (val) =&gt; val +100}), // change the 'a' key
+traceStart(),
+change({key:'b', type:'number', change: (val) =&gt; val +100}), // change the 'b' key
+traceEnd(),
+</code></pre>
+<p>The result would be:</p>
+<pre><code class="language-sh">┌─────────────────────────────────────┐
+│      Record trace information       │
+│ {                                   │
+│   &quot;a&quot;: 101,                         │
+│   &quot;b&quot;: 1                            │
+│   &quot;b&quot;: 101                          │
+│ }                                   │
+│                                     │
+└─────────────────────────────────────┘
+
+┌─────────────────────────────────────┐
+│ Quads trace information (unchanged) │
+│ empty                               │
+│                                     │
+└─────────────────────────────────────┘
+
+
+ To rerun the traced middlewares for this record use the following command:
+ &gt; npx etl lib/{script-name} --trace .trace-1650542307095
+</code></pre>
+<p>In your terminal the line with <span style="color:red">"b": 1</span> will be red colored, showing the previous state of this key-value and the line with <span style="color:green">"b": 101</span> will be green colored, showing the new state.</p>
+<p>Also you can rerun the  trace information for this specific record by running:</p>
+<pre><code class="language-sh">npx etl lib/{script-name} --trace .trace-1650542307095
+</code></pre>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../control-structures/" class="btn btn-neutral float-left" title="Control Structures"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../internal-store/" class="btn btn-neutral float-right" title="Internal Store">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../control-structures/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../internal-store/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script>var base_url = '../../..';</script>
+      <script src="../../../js/triply.js" defer></script>
+      <script src="../../../js/highlight.min.js" defer></script>
+      <script src="../../../search/main.js" defer></script>
+
+</body>
+</html>
