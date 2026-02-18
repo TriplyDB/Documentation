@@ -8,6 +8,17 @@ path: "/docs/triplydb-technical-changelog"
 This changelog covers technical changes related to TriplyDB on-premise deployments. See [here](/triplydb-changelog) for the TriplyDB changelog that is user facing.
 
 
+## 26.2.200 {#26.2.200}
+
+**Release date:** 2026-02-18
+
+
+- **Breaking** The `ingress.proxyCacheName` values is unused and has been removed. No
+  migration needed, except for removing this property if it's set.
+- Next to Nginx, we now include full support for HAProxy ingress controllers as well.
+Ingress templates have been refactored to support both nginx and HAProxy ingress controllers. A new `ingress.controller` property (default: `"nginx"`) controls which controller-specific annotations are generated. HAProxy support covers both the HAProxy Kubernetes Ingress Controller (`haproxy.org/*`) and OpenShift HAProxy Router (`haproxy.router.openshift.io/*`).
+- Fixed the console-api-proxy ingress rewrite rule for nginx. The path type is now `ImplementationSpecific` with regex pattern `/_api/(.*)` instead of a plain `Prefix` match, ensuring the rewrite-target correctly strips the `/_api/` prefix.
+
 ## 26.2.100 {#26.2.100}
 
 **Release date:** 2026-02-04

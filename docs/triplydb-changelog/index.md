@@ -6,6 +6,22 @@ path: "/docs/triplydb-changelog"
 [TOC]
 
 
+## 26.2.200 {#26.2.200}
+
+**Release date:** 2026-02-18
+
+**Features**
+
+- `#11150` [Data Editor] Improved the SKOS setup experience. When no SKOS concepts are present in a dataset, users now see guidance on how to get started with SKOS navigation.
+- `#11069` [Console] Improved loading performance of the admin queries table.
+
+**Issues fixed**
+
+- `#11175` [Data Upload] Fixed an issue where importing data from a URL could fail because an already decompressed file was incorrectly treated as compressed.
+- `#10653` [SPARQL] Fixed an issue where introspection functions (such as `tf:authenticated_user_url()`) did not work in SPARQL UPDATE queries. These functions now work in any WHERE clause.
+- `#10440` [SPARQL] Fixed an issue where the SERVICE clause did not work in SPARQL UPDATE queries, even though the same clause worked correctly in SELECT queries.
+
+
 ## 26.2.100 {#26.2.100}
 
 **Release date:** 2026-02-04
