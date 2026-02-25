@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <meta name="description" content="The official documentation for the Triply products: TriplyDB, TriplyDB.js, and TriplyETL." />
+      <link rel="shortcut icon" href="../../../img/favicon.ico" />
+    <title>Maintenance - Triply Documentation</title>
+    <link rel="stylesheet" href="../../../css/theme.css" />
+    <link rel="stylesheet" href="../../../css/theme_extra.css" />
+        <link href="../../../css/intellij-light.css" rel="stylesheet" />
+        <link href="../../../css/triply.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Maintenance";
+        var mkdocs_page_input_path = "triply-etl/generic/maintenance.md";
+        var mkdocs_page_url = null;
+      </script>
+     
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../../.." class="icon icon-home"> Triply Documentation
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../..">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">TriplyDB</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Getting started</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../../triply-db-getting-started/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../triply-db-getting-started/uploading-data/">Uploading Data</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../triply-db-getting-started/editing-data/">Editing (SKOS) Data</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../triply-db-getting-started/publishing-data/">Sharing Data</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../triply-db-getting-started/viewing-data/">Viewing Data</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../triply-db-getting-started/exporting-data/">Exporting Data</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../triply-db-getting-started/saved-queries/">Saved Queries</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../triply-db-getting-started/data-stories/">Data Stories</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../triply-db-getting-started/admin-settings-pages/">Admin Settings Pages</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../triply-db-getting-started/reference/">Reference</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../triply-api/">API</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">TriplyDB-JS</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../../triplydb-js/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../triplydb-js/app/">App</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../triplydb-js/account/">Account</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../triplydb-js/asset/">Asset</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../triplydb-js/dataset/">Dataset</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../triplydb-js/graph/">Graph</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../triplydb-js/organization/">Organization</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../triplydb-js/query/">Query</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../triplydb-js/service/">Service</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../triplydb-js/story/">Story</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../triplydb-js/user/">User</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../triplydb-js/faq/">FAQ</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../triply-cli/">Command-line Interface</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../triplydb-changelog/">Changelog</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">TriplyETL</span></p>
+              <ul class="current">
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Generic</a>
+    <ul class="current">
+                <li class="toctree-l2"><a class="reference internal" href="../../">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../getting-started/">Getting Started</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../changelog/">Changelog</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../cli/">Command Line Interface (CLI)</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../declarations/">Declarations</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../control-structures/">Control Structures</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../debug/">Debug</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../internal-store/">Internal Store</a>
+                </li>
+                <li class="toctree-l2 current"><a class="reference internal current" href="./">Maintenance</a>
+    <ul class="current">
+    <li class="toctree-l3"><a class="reference internal" href="#update-the-triplyetl-dependency">Update the TriplyETL dependency</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#check-the-current-version">Check the current version</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#check-for-new-versions">Check for new versions</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#assess-the-impact-of-updating">Assess the impact of updating</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#perform-the-update">Perform the update</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#dtap-configuration">DTAP configuration</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#configure-cicd">Configure CI/CD</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#cicd-configuration-file">CI/CD configuration file</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#cicd-environment-variables">CI/CD environment variables</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#understanding-runtime-differences">Understanding Runtime Differences</a>
+    </li>
+    </ul>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../record/">Record</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../vocabularies/">Vocabularies</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Sources</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../sources/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../sources/apis/">APIs</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../sources/inline-json/">Inline JSON</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../sources/inline-strings/">Inline Strings</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../sources/local-files/">Local Files</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../sources/online-files/">Online Files</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../sources/rml/">RML Sources</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../sources/triplydb-assets/">TriplyDB Assets</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../sources/triplydb-datasets/">TriplyDB Datasets</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../sources/triplydb-queries/">TriplyDB Queries</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Extract</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../extract/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../extract/csv/">CSV</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../extract/json/">JSON</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../extract/oai-pmh/">OAI-PMH</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../extract/postgres/">Postgres</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../extract/rdf/">RDF</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../extract/shapefile/">Shapefile</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../extract/tsv/">TSV</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../extract/xlsx/">XLSX</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../extract/xml/">XML</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Transform</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../transform/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../transform/ratt/">RATT</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../transform/rml/">RML</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../transform/typescript/">TypeScript</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../transform/xslt/">XSLT</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Assert</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../assert/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../assert/json-ld/">JSON-LD</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="#">RATT</a>
+    <ul>
+                <li class="toctree-l3"><a class="reference internal" href="../../assert/ratt/terms/">RATT Terms</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../../assert/ratt/statements/">RATT Statements</a>
+                </li>
+    </ul>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../assert/rml/">RML</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../assert/xslt/">XSLT</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Enrich</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../enrich/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="#">SHACL</a>
+    <ul>
+                <li class="toctree-l3"><a class="reference internal" href="../../enrich/shacl/">Overview</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../../enrich/shacl/triple-rules/">Triple Rules</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../../enrich/shacl/sparql-rules/">SPARQL Rules</a>
+                </li>
+    </ul>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="#">SPARQL</a>
+    <ul>
+                <li class="toctree-l3"><a class="reference internal" href="../../enrich/sparql/construct/">SPARQL Construct</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../../enrich/sparql/update/">SPARQL Update</a>
+                </li>
+    </ul>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Validate</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../validate/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../validate/graph-comparison/">Graph Comparison</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../validate/shacl/">SHACL</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../publish/">Publish</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Yasgui</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../yasgui/">Introduction</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../yasgui-api/">For Developers</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../..">Triply Documentation</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../.." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">TriplyETL</li>
+          <li class="breadcrumb-item">Generic</li>
+      <li class="breadcrumb-item active">Maintenance</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <div class="toc"><span class="toctitle">On this page:</span><ul>
+<li><a href="#maintenance">Maintenance</a><ul>
+<li><a href="#update-the-triplyetl-dependency">Update the TriplyETL dependency</a><ul>
+<li><a href="#check-the-current-version">Check the current version</a></li>
+<li><a href="#check-for-new-versions">Check for new versions</a></li>
+<li><a href="#assess-the-impact-of-updating">Assess the impact of updating</a></li>
+<li><a href="#perform-the-update">Perform the update</a><ul>
+<li><a href="#patch-and-minor-version-update">Patch and Minor version update</a></li>
+<li><a href="#major-version-update">Major version update</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#dtap-configuration">DTAP configuration</a></li>
+<li><a href="#configure-cicd">Configure CI/CD</a><ul>
+<li><a href="#cicd-configuration-file">CI/CD configuration file</a></li>
+<li><a href="#cicd-environment-variables">CI/CD environment variables</a></li>
+</ul>
+</li>
+<li><a href="#understanding-runtime-differences">Understanding Runtime Differences</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<h1 id="maintenance">Maintenance<a class="headerlink" href="#maintenance" title="Permanent link">&para;</a></h1>
+<p>Once a TriplyETL repository is configured, it goes into maintenance mode. TriplyETL contains specific functionality to support maintenance.</p>
+<h2 id="update-the-triplyetl-dependency">Update the TriplyETL dependency<a class="headerlink" href="#update-the-triplyetl-dependency" title="Permanent link">&para;</a></h2>
+<p>New versions of TriplyETL are released regularly. Moving to a new version is generally a good idea, because it allows new features to be used and will include fixes for known/reported bugs. At the same time, updating to a new version may require you to make some changes to your pipeline.</p>
+<p>It is important to determine an approach for updating your TriplyETL projects that fits your team and organization. The following sections describe how you can make such a determination.</p>
+<h3 id="check-the-current-version">Check the current version<a class="headerlink" href="#check-the-current-version" title="Permanent link">&para;</a></h3>
+<p>The following command prints the TriplyETL version that you are currently using:</p>
+<pre><code class="language-sh">npm list @triplyetl/etl
+</code></pre>
+<h3 id="check-for-new-versions">Check for new versions<a class="headerlink" href="#check-for-new-versions" title="Permanent link">&para;</a></h3>
+<p>The following command prints the latest TriplyETL version that is available:</p>
+<pre><code class="language-sh">npm outdated
+</code></pre>
+<p>TriplyETL repositories typically include several developer dependencies as well. These developer dependencies make it easier to write and maintain your ETLs. These developer dependencies are not part of TriplyETL, and must therefore be updated independently of TriplyETL.</p>
+<h3 id="assess-the-impact-of-updating">Assess the impact of updating<a class="headerlink" href="#assess-the-impact-of-updating" title="Permanent link">&para;</a></h3>
+<p>TriplyETL uses the Semantic Versioning approach: <code>{major}.{minor}.{patch}</code> The impact of updating to a new TriplyETL version can therefore be determined as follows:</p>
+<dl>
+  <dt>Patch update</dt>
+  <dd>Only the <code>{patch}</code> number has increased. This means that one or more bugs have been fixed in a <em>backward compatible</em> manner. You should always be able to perform a patch update without having to make any changes to your configuration.</dd>
+  <dt>Minor update</dt>
+  <dd>The <code>{minor}</code> number has increased, but the <code>{major}</code> number is still the same. This means that new functionality was added in a <em>backward compatible</em> manner. You should always be able to perform a minor update without having to make any changes to your configuration. But you may want to check the <a href="../changelog" target="_blank">changelog</a> to see which new functionalities were added.</dd>
+  <dt>Major update</dt>
+  <dd>The <code>{major}</code> number has increased. This means that there are <em>incompatible</em> changes. This means that features may have been removed, or existing features may have changed. In such cases, changes to your configuration are almost certainly necessary, and may take some time to implement. Any changes you need to make are described in the <a href="../changelog" target="_blank">changelog</a>.</dd>
+</dl>
+
+<h3 id="perform-the-update">Perform the update<a class="headerlink" href="#perform-the-update" title="Permanent link">&para;</a></h3>
+<p>Based on the outcome of the previous step, a maintainer of the repository decides which dependencies should be updated to which versions. Since Patch and Minor version updates are always safe to make, we discuss them separately from the more impactful Major version updates.</p>
+<h4 id="patch-and-minor-version-update">Patch and Minor version update<a class="headerlink" href="#patch-and-minor-version-update" title="Permanent link">&para;</a></h4>
+<p>You can update to the latest patch or minor version with the following command:</p>
+<pre><code class="language-sh">npm up
+</code></pre>
+<p>This command may change the contents of the <code>package-lock.json</code> file. These changes must be committed and pushed as part of performing the update.</p>
+<p>Notice that this command will only perform safe (i.e. patch and/or minor) updates.</p>
+<h4 id="major-version-update">Major version update<a class="headerlink" href="#major-version-update" title="Permanent link">&para;</a></h4>
+<p>You can update to the latest major version with the following command:</p>
+<pre><code class="language-sh">npm i &lt;package-name&gt;@version
+</code></pre>
+<p>This means that the following command is used to update to a specific TriplyETL major version:</p>
+<pre><code class="language-sh">npm i @triplyetl/etl@3.0.0
+</code></pre>
+<p>This command will change the contents of the <code>package.json</code> file. These changes must be committed and pushed as part of performing the update.</p>
+<h2 id="dtap-configuration">DTAP configuration<a class="headerlink" href="#dtap-configuration" title="Permanent link">&para;</a></h2>
+<p>TriplyETL provides out-of-the-box support for the DTAP approach for configuring production systems. DTAP stands for the four environments in which the ETL can run:</p>
+<ul>
+<li>Development</li>
+<li>Test</li>
+<li>Acceptance</li>
+<li>Production</li>
+</ul>
+<p>When working on a pipeline it is best to at least run it in the following two modes:</p>
+<dl>
+  <dt>Acceptance mode</dt>
+  <dd>Upload the result of the pipeline to the user account for which the API Token was created.</dd>
+  <dt>Production mode</dt>
+  <dd>Upload the result of the pipeline to the organization where the production version of the data is published.</dd>
+</dl>
+
+<p>Having multiple modes ensures that the production version of a dataset is not accidentally overwritten during development.</p>
+<pre><code class="language-ts">export function account(): any {
+  switch (Etl.environment) {
+    case 'Development':
+      return undefined
+    case 'Testing':
+      return 'my-org-testing'
+    case 'Acceptance':
+      return 'my-org-acceptance'
+    case 'Production':
+      return 'my-org'
+  }
+}
+
+const etl = new Etl()
+etl.use(
+  // Your ETL pipeline is configured here.
+  toRdf(Destination.triplyDb.rdf(account(), 'my-dataset')),
+)
+</code></pre>
+<p>By default, you run the pipeline in Development mode. If you want to run in another mode, you must set the <code>ENV</code> environment variable. You can do this in the <code>.env</code> file of your TriplyETL repository.</p>
+<p>For example, the following runs the pipeline in Testing mode:</p>
+<pre><code>ENV=Testing
+</code></pre>
+<p>You can also set the <code>ENV</code> variable in the GitLab CI/CD environment. This allows you to automatically run different pipelines, according to the DTAP approach for production systems.</p>
+<h2 id="configure-cicd">Configure CI/CD<a class="headerlink" href="#configure-cicd" title="Permanent link">&para;</a></h2>
+<p>TriplyETL pipelines can be configured to run automatically in any CI/CD environment. This section explains how you can configure an automated TriplyETL pipeline in GitLab. Notice that the configuration in any other CI/CD environment will be more or less similar to what is explained in this section.</p>
+<h3 id="cicd-configuration-file">CI/CD configuration file<a class="headerlink" href="#cicd-configuration-file" title="Permanent link">&para;</a></h3>
+<p>The <a href="../getting-started/#triplyetl-generator">TriplyETL Generator</a> creates a basic configuration file for running TriplyETL in GitLab CI/CD. The configuration file is called <code>.gitlab-ci.yml</code>.</p>
+<p>The configuration contains a list of stages:</p>
+<pre><code class="language-yml">stages:
+ - first_stage
+ - second_stage
+ - third_stage
+</code></pre>
+<p>These stages will run sequentially. For the above example: the pipeline starts by running the first stage, then runs the second stage, and finally runs the third stage.</p>
+<p>Within each stage, you can configure one or more TriplyETL scripts. When more then one script is specified for the same stage, these scripts will run in parallel. This allows you to specify any combination of sequential and parallel processes.</p>
+<p>The following example assumes that the following scripts are present in the TriplyETL repository:</p>
+<pre><code>- src/
+    - create_vocabulary.ts
+    - create_dataset_a.ts
+    - create_dataset_b.ts
+    - create_knowledge_graph.ts
+- .gitlab-ci.yml
+</code></pre>
+<p>We want to configure our CI/CD in the following way:</p>
+<ol>
+<li>Start by creating the vocabulary (script <code>create_vocabulary.ts</code>). This vocabulary will be used in the validation step of the two scripts that create the two datasets.</li>
+<li>Once the vocabulary is created, create the two datasets (scripts <code>create_dataset_a.ts</code> and <code>create_dataset_b.ts</code>). The datasets can be created in parallel, but they both require that vocabulary creation is finalized.</li>
+<li>Once the two datasets are created, create the knowledge graph (script <code>create_knowledge_graph.ts</code>), which combines the two datasets and the vocabulary in one dataset.</li>
+</ol>
+<p>This specific configuration looks as follows:</p>
+<pre><code class="language-yml">create_vocabulary:
+  stage: first_stage
+  interruptible: true
+  allow_failure: false
+  artifacts: !reference [.etl-template, artifacts]
+  script:
+    - !reference [.etl-template, install]
+    - !reference [.etl-template, run-etl]
+  rules:
+    - !reference [.etl-template, rules]
+
+create_dataset_a:
+  stage: second_stage
+  interruptible: true
+  allow_failure: false
+  artifacts: !reference [.etl-template, artifacts]
+  script:
+    - !reference [.etl-template, install]
+    - !reference [.etl-template, run-etl]
+  rules:
+    - !reference [.etl-template, rules]
+
+create_dataset_b:
+  stage: second_stage
+  interruptible: true
+  allow_failure: false
+  artifacts: !reference [.etl-template, artifacts]
+  script:
+    - !reference [.etl-template, install]
+    - !reference [.etl-template, run-etl]
+  rules:
+    - !reference [.etl-template, rules]
+
+create_knowledge_graph:
+  stage: third_stage
+  interruptible: true
+  allow_failure: false
+  artifacts: !reference [.etl-template, artifacts]
+  script:
+    - !reference [.etl-template, install]
+    - !reference [.etl-template, run-etl]
+  rules:
+    - !reference [.etl-template, rules]
+</code></pre>
+<h3 id="cicd-environment-variables">CI/CD environment variables<a class="headerlink" href="#cicd-environment-variables" title="Permanent link">&para;</a></h3>
+<p>In a normal ETL the only variables that should be present AFAIK are: <strong>ENV</strong> (value: acceptance or production), <strong>TRIPLYDB_TOKEN</strong> (value: customer's TriplyDB token), <strong>PIPELINE_NAME</strong> (value: explained below), and optionally <strong>TIMEOUT</strong> (value: time description e.g. "1H")</p>
+<p>TriplyETL pipelines interpret the following environment variables, that may be specified in the CI/CD environment:</p>
+<dl>
+  <dt><code>ENV</code></dt>
+  <dd>When DTAP is used, this environment variable specifies whether the pipeline runs in "Development", "Test", "Acceptance", or in "Production".</dd>
+  <dt><code>TRIPLYDB_TOKEN</code></dt>
+  <dd>The TriplyDB API Token that is used by the automated pipeline, and that allows the pipeline to read from and write to a TriplyDB server.</dd>
+  <dt><code>PIPELINE_NAME</code></dt>
+  <dd>A descriptive name that is used by GitLab in pipeline overviews. This is specifically useful if you are running multiple pipelines, in which case this descriptive name helps you to distinguish runs. One example of running multiple pipelines is running in DTAP; in which case the descriptive names for the pipelines may be "Schedule: Acceptance" and "Schedule: Production".</dd>
+  <dt><code>TIMEOUT</code></dt>
+  <dd>This environment variable can be set to a duration that is shorted than the duration of the pipeline. If a timeout is set and reached, TriplyETL will finish the ETL in an orderly fashion: saving the processed data, saving the performance log files, and saving the generated validation report (if any). This is useful for pipelines that would otherwise be terminated by the CI/CD environment, in which case TriplyETL is terminated immediately, without having the ability to nicely save before exiting.
+  <dt><code>HEAD</code></dt>
+  <dd>The maximum number of records that is being processed by the TriplyETL pipeline. This environment variable can be set in test runs that only want to test whether the ETL works for some records, without requiring it to run for all records. For example, in a DTAP Test run this number may be set to 10 to test whether the source can be accessed and the generated data can be uploaded to a TriplyDB server.</dd>
+</dl>
+
+<h2 id="understanding-runtime-differences">Understanding Runtime Differences<a class="headerlink" href="#understanding-runtime-differences" title="Permanent link">&para;</a></h2>
+<p>It's important to be aware that runtime differences can occur when comparing TriplyETL pipeline runtimes in different environments, particularly when comparing them to GitLab CI/CD runtimes. There are two main factors that can influence runtime differences:</p>
+<ol>
+<li>
+<p><code>Overhead in CI Jobs</code>: GitLab CI jobs may introduce overhead beyond the actual ETL computation, such as setting up a containerized environment and additional CI-specific steps. A difference of 1 to 5 minutes between GitLab CI and TriplyETL runtimes is normal due to this overhead.</p>
+</li>
+<li>
+<p><code>Use of copySource() Function</code>: Significant runtime differences exceeding 5 minutes can be attributed to the use of the <a href="../../publish/#direct-copying-of-source-data-to-destination">copySource()</a> function, which operates outside of the ETL application and contributes to the total runtime but not the middleware runtime.</p>
+</li>
+</ol>
+<p>If you encounter a runtime difference greater than 5 minutes, and the <a href="../../publish/#direct-copying-of-source-data-to-destination">copySource()</a> function hasn't been used, it is recommended to report the issue to Triply. The issue will be further investigated to identify and address any potential causes.</p>
+<p>Understanding these factors and taking appropriate action will help you manage your TriplyETL pipelines effectively in a CI/CD environment.</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../internal-store/" class="btn btn-neutral float-left" title="Internal Store"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../record/" class="btn btn-neutral float-right" title="Record">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../internal-store/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../record/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script>var base_url = '../../..';</script>
+      <script src="../../../js/triply.js" defer></script>
+      <script src="../../../js/highlight.min.js" defer></script>
+      <script src="../../../search/main.js" defer></script>
+
+</body>
+</html>

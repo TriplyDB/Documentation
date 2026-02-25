@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <meta name="description" content="The official documentation for the Triply products: TriplyDB, TriplyDB.js, and TriplyETL." />
+      <link rel="shortcut icon" href="../../../../img/favicon.ico" />
+    <title>SPARQL Update - Triply Documentation</title>
+    <link rel="stylesheet" href="../../../../css/theme.css" />
+    <link rel="stylesheet" href="../../../../css/theme_extra.css" />
+        <link href="../../../../css/intellij-light.css" rel="stylesheet" />
+        <link href="../../../../css/triply.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "SPARQL Update";
+        var mkdocs_page_input_path = "triply-etl/enrich/sparql/update.md";
+        var mkdocs_page_url = null;
+      </script>
+     
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../../../.." class="icon icon-home"> Triply Documentation
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../..">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">TriplyDB</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Getting started</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../triply-db-getting-started/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../triply-db-getting-started/uploading-data/">Uploading Data</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../triply-db-getting-started/editing-data/">Editing (SKOS) Data</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../triply-db-getting-started/publishing-data/">Sharing Data</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../triply-db-getting-started/viewing-data/">Viewing Data</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../triply-db-getting-started/exporting-data/">Exporting Data</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../triply-db-getting-started/saved-queries/">Saved Queries</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../triply-db-getting-started/data-stories/">Data Stories</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../triply-db-getting-started/admin-settings-pages/">Admin Settings Pages</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../triply-db-getting-started/reference/">Reference</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../triply-api/">API</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">TriplyDB-JS</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../triplydb-js/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../triplydb-js/app/">App</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../triplydb-js/account/">Account</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../triplydb-js/asset/">Asset</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../triplydb-js/dataset/">Dataset</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../triplydb-js/graph/">Graph</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../triplydb-js/organization/">Organization</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../triplydb-js/query/">Query</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../triplydb-js/service/">Service</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../triplydb-js/story/">Story</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../triplydb-js/user/">User</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../triplydb-js/faq/">FAQ</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../triply-cli/">Command-line Interface</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../triplydb-changelog/">Changelog</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">TriplyETL</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="#">Generic</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../../">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../generic/getting-started/">Getting Started</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../generic/changelog/">Changelog</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../generic/cli/">Command Line Interface (CLI)</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../generic/declarations/">Declarations</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../generic/control-structures/">Control Structures</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../generic/debug/">Debug</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../generic/internal-store/">Internal Store</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../generic/maintenance/">Maintenance</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../generic/record/">Record</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../generic/vocabularies/">Vocabularies</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Sources</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../../sources/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../sources/apis/">APIs</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../sources/inline-json/">Inline JSON</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../sources/inline-strings/">Inline Strings</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../sources/local-files/">Local Files</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../sources/online-files/">Online Files</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../sources/rml/">RML Sources</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../sources/triplydb-assets/">TriplyDB Assets</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../sources/triplydb-datasets/">TriplyDB Datasets</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../sources/triplydb-queries/">TriplyDB Queries</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Extract</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../../extract/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../extract/csv/">CSV</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../extract/json/">JSON</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../extract/oai-pmh/">OAI-PMH</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../extract/postgres/">Postgres</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../extract/rdf/">RDF</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../extract/shapefile/">Shapefile</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../extract/tsv/">TSV</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../extract/xlsx/">XLSX</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../extract/xml/">XML</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Transform</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../../transform/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../transform/ratt/">RATT</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../transform/rml/">RML</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../transform/typescript/">TypeScript</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../transform/xslt/">XSLT</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Assert</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../../assert/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../assert/json-ld/">JSON-LD</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="#">RATT</a>
+    <ul>
+                <li class="toctree-l3"><a class="reference internal" href="../../../assert/ratt/terms/">RATT Terms</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../../../assert/ratt/statements/">RATT Statements</a>
+                </li>
+    </ul>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../assert/rml/">RML</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../assert/xslt/">XSLT</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Enrich</a>
+    <ul class="current">
+                <li class="toctree-l2"><a class="reference internal" href="../../">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="#">SHACL</a>
+    <ul>
+                <li class="toctree-l3"><a class="reference internal" href="../../shacl/">Overview</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../../shacl/triple-rules/">Triple Rules</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../../shacl/sparql-rules/">SPARQL Rules</a>
+                </li>
+    </ul>
+                </li>
+                <li class="toctree-l2 current"><a class="reference internal current" href="#">SPARQL</a>
+    <ul class="current">
+                <li class="toctree-l3"><a class="reference internal" href="../construct/">SPARQL Construct</a>
+                </li>
+                <li class="toctree-l3 current"><a class="reference internal current" href="./">SPARQL Update</a>
+    <ul class="current">
+    <li class="toctree-l4"><a class="reference internal" href="#insert-data">Insert Data</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#delete-data">Delete Data</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#delete-insert-where">Delete Insert Where</a>
+    </li>
+    </ul>
+                </li>
+    </ul>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Validate</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../../validate/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../validate/graph-comparison/">Graph Comparison</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../validate/shacl/">SHACL</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../publish/">Publish</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Yasgui</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../yasgui/">Introduction</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../yasgui-api/">For Developers</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../..">Triply Documentation</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../.." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">TriplyETL</li>
+          <li class="breadcrumb-item">Enrich</li>
+          <li class="breadcrumb-item">SPARQL</li>
+      <li class="breadcrumb-item active">SPARQL Update</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <div class="toc"><span class="toctitle">On this page:</span><ul>
+<li><a href="#sparql-update">SPARQL Update</a><ul>
+<li><a href="#insert-data">Insert Data</a><ul>
+<li><a href="#using-prefix-declarations">Using prefix declarations</a></li>
+</ul>
+</li>
+<li><a href="#delete-data">Delete Data</a></li>
+<li><a href="#delete-insert-where">Delete Insert Where</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<h1 id="sparql-update">SPARQL Update<a class="headerlink" href="#sparql-update" title="Permanent link">&para;</a></h1>
+<p>SPARQL is a powerful query language that can be used to modify and enrich linked data in the Internal Store. With SPARQL, you can generate new linked data based on existing linked data, thereby enhancing the contents of the store.</p>
+<p>The function for using SPARQL Update can be imported as follows:</p>
+<pre><code class="language-ts">import { update } from '@triplyetl/etl/sparql'
+</code></pre>
+<h2 id="insert-data">Insert Data<a class="headerlink" href="#insert-data" title="Permanent link">&para;</a></h2>
+<p>Insert Data can be used to add linked data to the Internal Store. The following example adds one triple:</p>
+<pre><code class="language-ts">import { logQuads } from '@triplyetl/etl/debug'
+import { Etl } from '@triplyetl/etl/generic'
+import { update } from '@triplyetl/etl/sparql'
+
+export default async function (): Promise&lt;Etl&gt; {
+  const etl = new Etl()
+  etl.use(
+    update(`
+base &lt;https://triplydb.com/&gt;
+insert data { &lt;john&gt; &lt;knows&gt; &lt;mary&gt;. }`),
+    logQuads(),
+  )
+  return etl
+}
+</code></pre>
+<p>Debug function <a href="../../../generic/debug/#logquads">logQuads()</a> prints the content of the internal store to standard output:</p>
+<pre><code class="language-turtle">base &lt;https://triplydb.com/&gt;
+&lt;john&gt; &lt;knows&gt; &lt;mary&gt;.
+</code></pre>
+<h3 id="using-prefix-declarations">Using prefix declarations<a class="headerlink" href="#using-prefix-declarations" title="Permanent link">&para;</a></h3>
+<p>Notice that the SPARQL Update function takes a plain string. Any typos you make in this string will only result in errors at runtime, when the query string is interpreted and executed.</p>
+<p>One of the more difficult things to get right in a SPARQL string are the prefix declarations. We can use the <code>prefix</code> object to insert the correct IRI prefixes.</p>
+<p>The following example asserts three triples, and uses the <code>prefix</code> object to insert the IRI prefix for Schema.org:</p>
+<pre><code class="language-ts">import { logQuads } from '@triplyetl/etl/debug'
+import { Etl } from '@triplyetl/etl/generic'
+import { update } from '@triplyetl/etl/sparql'
+import { sdo } from '@triplyetl/vocabularies'
+
+export default async function (): Promise&lt;Etl&gt; {
+  const etl = new Etl()
+  etl.use(
+    update(`
+base &lt;https://triplydb.com/&gt;
+prefix sdo: &lt;${sdo.$namespace}&gt;
+insert data {
+  &lt;john&gt;
+    a sdo:Person;
+    sdo:children &lt;mary&gt;;
+    sdo:gender sdo:Male.
+}`),
+    logQuads(),
+  )
+  return etl
+}
+</code></pre>
+<p>This prints the following linked data to standard output:</p>
+<pre><code class="language-turtle">base &lt;https://triplydb.com/&gt;
+prefix sdo: &lt;https://schema.org/&gt;
+
+&lt;john&gt;
+  a sdo:Person;
+  sdo:children &lt;mary&gt;;
+  sdo:gender sdo:Male.
+</code></pre>
+<h2 id="delete-data">Delete Data<a class="headerlink" href="#delete-data" title="Permanent link">&para;</a></h2>
+<p>While there are not many uses cases for removing data from the internal store, this is an operation that is supported by the SPARQL Update standard.</p>
+<p>The following function call removes the parent/child relationship assertion that was added to the internal store earlier:</p>
+<pre><code class="language-ts">update(`
+prefix sdo: &lt;${sdo.$namespace}&gt;
+delete data { &lt;john&gt; sdo:children &lt;mary&gt;. }`),
+</code></pre>
+<p>You can use the debug function <a href="../../../generic/debug/#logquads">logQuads()</a> before and after this function call, to see the effects on the internal store.</p>
+<h2 id="delete-insert-where">Delete Insert Where<a class="headerlink" href="#delete-insert-where" title="Permanent link">&para;</a></h2>
+<p>SPARQL Update can be used to conditionally add and/or remove linked data to/from the internal store. It uses the following keywords for this:</p>
+<ul>
+<li><code>where</code> is the condition that must be met inside the internal store. Conditions can be specified in a generic way by using SPARQL variables. The bindings for these variables are shared with the other two components.</li>
+<li><code>delete</code> is the pattern that is removed from the internal store. This requires that the <code>where</code> condition is satisfied in the internal store. Any bindings for variables that are shared between the <code>where</code> condition and the <code>delete</code> pattern are instantiated before deletion is performed. Deletion is performed before insertion.</li>
+<li><code>insert</code> is the pattern that is added to the internal store. This requires that the <code>where</code> condition is satisfied in the internal store. Any bindings for variables that are shared between the <code>where</code> condition and the <code>insert</code> pattern are instantiated before insertion is performed. Insertion is performed after deletion.</li>
+</ul>
+<p>We can use this powerful combination of a <code>where</code> condition and a <code>delete</code> and <code>insert</code> follow-up to implement rules. For example, we may want to formalize the following rule:</p>
+<blockquote>
+<p>Persons with at least one child and the male gender, are fathers.</p>
+</blockquote>
+<p>At the same time, we may be restricted in the information we are allowed to publish in our linked dataset:</p>
+<blockquote>
+<p>After fatherhood has been determined, any specific information about parent/child relationships must be removed from the internal store.</p>
+</blockquote>
+<p>The rule can be formalized as follows:</p>
+<pre><code class="language-ts">import { logQuads } from '@triplyetl/etl/debug'
+import { Etl } from '@triplyetl/etl/generic'
+import { update } from '@triplyetl/etl/sparql'
+import { sdo } from '@triplyetl/vocabularies'
+
+const baseIri = 'https://triplydb.com/'
+export default async function (): Promise&lt;Etl&gt; {
+  const etl = new Etl()
+  etl.use(
+    update(`
+base &lt;${baseIri}&gt;
+prefix sdo: &lt;${sdo.$namespace}&gt;
+insert data {
+  &lt;john&gt;
+    a sdo:Person;
+    sdo:children &lt;mary&gt;;
+    sdo:gender sdo:Male.
+}`),
+    update(`
+base &lt;${baseIri}&gt;
+prefix sdo: &lt;${sdo.$namespace}&gt;
+delete { $person sdo:children ?child. }
+insert { $person a &lt;Father&gt;. }
+where {
+  $person
+    a sdo:Person;
+    sdo:children ?child;
+    sdo:gender sdo:Male.
+}`),
+    logQuads(),
+  )
+  return etl
+}
+</code></pre>
+<!-- TODO
+## Load
+
+This operation reads the contents of a document representing a graph and loads it into a graph in the Graph Store.
+
+Example:
+
+
+<pre><code class="language-ts">import { logQuads } from '@triplyetl/etl/debug'
+import { Etl } from '@triplyetl/etl/generic'
+import { update } from '@triplyetl/etl/sparql'
+
+export default async function (): Promise&lt;Etl&gt; {
+  const etl = new Etl()
+  etl.use(
+    update(`
+base &lt;https://triplydb.com/&gt;
+insert data { graph &lt;g&gt; { &lt;s&gt; &lt;p&gt; &lt;o&gt;. } }`),
+    update(`
+base &lt;https://triplydb.com/&gt;
+load &lt;g&gt; into graph &lt;h&gt;`),
+    logQuads(),
+  )
+  return etl
+}
+</code></pre>
+
+
+In this example, the `Load` operation is used to load the contents of a document specified by `<IRIref_from>` into the graph specified by `<IRIref_to>`. The document referred to by `<IRIref_from>` represents a graph, and its contents will be added to the graph identified by `<IRIref_to>`. This allows you to incorporate data from an external source or document into a specific graph within the Graph Store.
+
+
+
+## Clear
+
+This operation removes all triples in one or more graphs.
+
+Example:
+
+
+<pre><code class="language-sparql">clear graph &lt;IRIref&gt;
+</code></pre>
+
+
+In this example, the `Clear` operation is used to remove all the triples contained within a specific graph identified by `<IRIref>`. It clears the entire contents of the graph, effectively deleting all the triples associated with that graph. This operation allows you to start with a clean slate by removing all existing data within the specified graph, providing a way to reset or empty the graph as needed.
+
+* Please note that you need to replace `<IRIref_from>` and `<IRIref_to>` with appropriate IRIs or URLs for the actual data sources or destinations.
+
+
+### A complete example
+
+To demonstrate the usage of the `update()` function with SPARQL Update queries, we provide a complete TriplyETL script example. In this example, we will show how to generate new linked data based on existing linked data using SPARQL Update.
+
+
+<pre><code class="language-ts">import { Etl, Source, declarePrefix, fromJson, toTriplyDb } from &quot;@triplyetl/etl/generic&quot;;
+import { iri, pairs } from &quot;@triplyetl/etl/ratt&quot;;
+import { update } from '@triplyetl/etl/sparql';
+import { a, foaf } from &quot;@triplyetl/vocabularies&quot;;
+
+const prefix = {
+  id: declarePrefix('https://triplydb.com/Triply/example/id/'),
+};
+
+export default async function (): Promise&lt;Etl&gt; {
+  const etl = new Etl();
+  etl.use(
+    fromJson([{ age: 'twenty', id: '1' }]),
+    pairs(
+      iri(prefix.id, 'id'),
+      [a, foaf.Person],
+      [foaf.age, 'age'],
+    ),
+    update(`
+      PREFIX foaf: &lt;http://xmlns.com/foaf/0.1/&gt;
+      INSERT {
+        ?person foaf:isAdult &quot;true&quot;^^xsd:boolean .
+      }
+      WHERE {
+        ?person foaf:age ?age .
+        FILTER (xsd:integer(?age) &gt;= 18)
+      }
+    `),
+    toTriplyDb({ dataset: 'test' }),
+  );
+  return etl;
+}
+</code></pre>
+
+
+
+### Source data
+
+In our example, we are using the following source data that records the age of a person:
+
+
+<pre><code class="language-json">{
+  &quot;age&quot;: &quot;twenty&quot;,
+  &quot;id&quot;:  &quot;id&quot;
+}
+</code></pre>
+
+
+In this example, the data source is in the form of [inline JSON](../../sources/inline-json.md), but please note that any valid source format can be used:
+
+
+<pre><code class="language-ts">fromJson([{ age: 'twenty', id: '1' }]),
+</code></pre>
+
+
+
+### Target data without SPARQL Update
+
+Based on the source data in Step 1, without applying SPARQL Update, the resulting linked data in TriplyDB would be:
+
+
+<pre><code class="language-turtle">id:1
+  a foaf:Person;
+  foaf:age 'twenty'.
+</code></pre>
+
+
+
+### Target data with SPARQL Update
+
+By applying the SPARQL Update query using the `update()` function, an additional triple will be added to the data. In this case, the new triple indicates that the person in the source data is an adult based on the age condition. Consequently, the updated data in TriplyDB would appear as:
+
+
+<pre><code class="language-turtle">id:1
+  a foaf:Person;
+  foaf:age 'twenty';
+  foaf:isAdult 'true'.
+</code></pre>
+
+
+By following this example and adjusting the SPARQL Update query according to your requirements, you can generate new linked data based on existing linked data in your TriplyETL process.
+-->
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../construct/" class="btn btn-neutral float-left" title="SPARQL Construct"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../../../validate/" class="btn btn-neutral float-right" title="Overview">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../construct/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../../../validate/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script>var base_url = '../../../..';</script>
+      <script src="../../../../js/triply.js" defer></script>
+      <script src="../../../../js/highlight.min.js" defer></script>
+      <script src="../../../../search/main.js" defer></script>
+
+</body>
+</html>

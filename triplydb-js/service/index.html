@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <meta name="description" content="The official documentation for the Triply products: TriplyDB, TriplyDB.js, and TriplyETL." />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Service - Triply Documentation</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link href="../../css/intellij-light.css" rel="stylesheet" />
+        <link href="../../css/triply.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Service";
+        var mkdocs_page_input_path = "triplydb-js/service/index.md";
+        var mkdocs_page_url = null;
+      </script>
+     
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> Triply Documentation
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">TriplyDB</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="#">Getting started</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-db-getting-started/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-db-getting-started/uploading-data/">Uploading Data</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-db-getting-started/editing-data/">Editing (SKOS) Data</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-db-getting-started/publishing-data/">Sharing Data</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-db-getting-started/viewing-data/">Viewing Data</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-db-getting-started/exporting-data/">Exporting Data</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-db-getting-started/saved-queries/">Saved Queries</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-db-getting-started/data-stories/">Data Stories</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-db-getting-started/admin-settings-pages/">Admin Settings Pages</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-db-getting-started/reference/">Reference</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../triply-api/">API</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">TriplyDB-JS</a>
+    <ul class="current">
+                <li class="toctree-l2"><a class="reference internal" href="../">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../app/">App</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../account/">Account</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../asset/">Asset</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../dataset/">Dataset</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../graph/">Graph</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../organization/">Organization</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../query/">Query</a>
+                </li>
+                <li class="toctree-l2 current"><a class="reference internal current" href="./">Service</a>
+    <ul class="current">
+    <li class="toctree-l3"><a class="reference internal" href="#servicedelete">Service.delete()</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#examples">Examples</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#servicegetinfo">Service.getInfo()</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#examples_1">Examples</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#serviceisuptodate">Service.isUpToDate()</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#synchronization">Synchronization</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#examples_2">Examples</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#serviceupdate-opts">Service.update( opts?)</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#examples_3">Examples</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#servicewaituntilrunning">Service.waitUntilRunning()</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#example">Example</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#setting-up-index-templates-for-elasticsearch-service">Setting up index templates for ElasticSearch service</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#index-templates">Index templates</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#component-templates">Component templates</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../story/">Story</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../user/">User</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../faq/">FAQ</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../triply-cli/">Command-line Interface</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../triplydb-changelog/">Changelog</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">TriplyETL</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Generic</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/generic/getting-started/">Getting Started</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/generic/changelog/">Changelog</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/generic/cli/">Command Line Interface (CLI)</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/generic/declarations/">Declarations</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/generic/control-structures/">Control Structures</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/generic/debug/">Debug</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/generic/internal-store/">Internal Store</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/generic/maintenance/">Maintenance</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/generic/record/">Record</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/generic/vocabularies/">Vocabularies</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Sources</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/sources/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/sources/apis/">APIs</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/sources/inline-json/">Inline JSON</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/sources/inline-strings/">Inline Strings</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/sources/local-files/">Local Files</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/sources/online-files/">Online Files</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/sources/rml/">RML Sources</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/sources/triplydb-assets/">TriplyDB Assets</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/sources/triplydb-datasets/">TriplyDB Datasets</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/sources/triplydb-queries/">TriplyDB Queries</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Extract</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/extract/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/extract/csv/">CSV</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/extract/json/">JSON</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/extract/oai-pmh/">OAI-PMH</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/extract/postgres/">Postgres</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/extract/rdf/">RDF</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/extract/shapefile/">Shapefile</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/extract/tsv/">TSV</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/extract/xlsx/">XLSX</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/extract/xml/">XML</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Transform</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/transform/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/transform/ratt/">RATT</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/transform/rml/">RML</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/transform/typescript/">TypeScript</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/transform/xslt/">XSLT</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Assert</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/assert/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/assert/json-ld/">JSON-LD</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="#">RATT</a>
+    <ul>
+                <li class="toctree-l3"><a class="reference internal" href="../../triply-etl/assert/ratt/terms/">RATT Terms</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../../triply-etl/assert/ratt/statements/">RATT Statements</a>
+                </li>
+    </ul>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/assert/rml/">RML</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/assert/xslt/">XSLT</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Enrich</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/enrich/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="#">SHACL</a>
+    <ul>
+                <li class="toctree-l3"><a class="reference internal" href="../../triply-etl/enrich/shacl/">Overview</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../../triply-etl/enrich/shacl/triple-rules/">Triple Rules</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../../triply-etl/enrich/shacl/sparql-rules/">SPARQL Rules</a>
+                </li>
+    </ul>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="#">SPARQL</a>
+    <ul>
+                <li class="toctree-l3"><a class="reference internal" href="../../triply-etl/enrich/sparql/construct/">SPARQL Construct</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../../triply-etl/enrich/sparql/update/">SPARQL Update</a>
+                </li>
+    </ul>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Validate</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/validate/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/validate/graph-comparison/">Graph Comparison</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/validate/shacl/">SHACL</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../triply-etl/publish/">Publish</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Yasgui</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../yasgui/">Introduction</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../yasgui-api/">For Developers</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">Triply Documentation</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">TriplyDB</li>
+          <li class="breadcrumb-item">TriplyDB-JS</li>
+      <li class="breadcrumb-item active">Service</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <div class="toc"><span class="toctitle">On this page:</span><ul>
+<li><a href="#service">Service</a><ul>
+<li><a href="#servicedelete">Service.delete()</a><ul>
+<li><a href="#examples">Examples</a></li>
+</ul>
+</li>
+<li><a href="#servicegetinfo">Service.getInfo()</a><ul>
+<li><a href="#examples_1">Examples</a></li>
+</ul>
+</li>
+<li><a href="#serviceisuptodate">Service.isUpToDate()</a><ul>
+<li><a href="#synchronization">Synchronization</a></li>
+<li><a href="#examples_2">Examples</a></li>
+</ul>
+</li>
+<li><a href="#serviceupdate-opts">Service.update( opts?)</a><ul>
+<li><a href="#examples_3">Examples</a></li>
+</ul>
+</li>
+<li><a href="#servicewaituntilrunning">Service.waitUntilRunning()</a><ul>
+<li><a href="#example">Example</a></li>
+</ul>
+</li>
+<li><a href="#setting-up-index-templates-for-elasticsearch-service">Setting up index templates for ElasticSearch service</a><ul>
+<li><a href="#index-templates">Index templates</a></li>
+<li><a href="#component-templates">Component templates</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<h1 id="service">Service<a class="headerlink" href="#service" title="Permanent link">&para;</a></h1>
+<p>Service objects describe specific functionalities that can be created over datasets in TriplyDB.</p>
+<p>Service objects are obtained through the the following methods:</p>
+<ul>
+<li><a href="../dataset/#datasetaddservicename-string-metadata-object"><code>Dataset.addService</code></a></li>
+<li><a href="../dataset/#datasetgetservices"><code>Dataset.getServices</code></a></li>
+</ul>
+<p>A service always has one of the following statuses:</p>
+<dl>
+  <dt>Removing</dt>
+  <dd>The service is being removed.</dd>
+
+  <dt>Running</dt>
+  <dd>The service is running normally.</dd>
+
+  <dt>Starting</dt>
+  <dd>The service is starting up.</dd>
+
+  <dt>Stopped</dt>
+  <dd>The services was stopped in the past. It cannot be used at the moment, but it can be enable again if needed.</dd>
+
+  <dt>Stopping</dt>
+  <dd>The service is currently being stopped.</dd>
+</dl>
+
+<h2 id="servicedelete">Service.delete()<a class="headerlink" href="#servicedelete" title="Permanent link">&para;</a></h2>
+<p>Permanently deletes this service.</p>
+<h3 id="examples">Examples<a class="headerlink" href="#examples" title="Permanent link">&para;</a></h3>
+<pre><code class="language-ts">const user = await triply.getAccount('my-account')
+const dataset = await user.getDataset('my-dataset')
+const service = await dataset.addService('my-service')
+await service.delete()
+</code></pre>
+<h2 id="servicegetinfo">Service.getInfo()<a class="headerlink" href="#servicegetinfo" title="Permanent link">&para;</a></h2>
+<p>Returns information about this service.</p>
+<p>Information is returned in a dictionary object. Individual keys can be accessed for specific information values.</p>
+<h3 id="examples_1">Examples<a class="headerlink" href="#examples_1" title="Permanent link">&para;</a></h3>
+<ul>
+<li>The following snippet prints information about the newly created service (named <code>my-service</code>):</li>
+</ul>
+<pre><code class="language-ts">const account = await triply.getAccount()
+const dataset = await account.getDataset('my-dataset')
+const service = await dataset.addService('my-service')
+console.log(await service.getInfo())
+</code></pre>
+<h2 id="serviceisuptodate">Service.isUpToDate()<a class="headerlink" href="#serviceisuptodate" title="Permanent link">&para;</a></h2>
+<p>Returns whether this service is synchronized with the dataset contents.</p>
+<h3 id="synchronization">Synchronization<a class="headerlink" href="#synchronization" title="Permanent link">&para;</a></h3>
+<p>Because services must be explicitly synchronized in TriplyDB, it is possible to have services that expose an older version of the dataset and services that expose a newer version of the dataset running next to one another. There are two very common use cases for this:</p>
+<ul>
+<li>
+<p>The production version of an application or website runs on an older service. The data does not change, so the application keeps working. The acceptance version of the same application or website runs on a newer service. Once the acceptance version is finished, it becomes the production version and a new service for the new acceptance version is created, etc.</p>
+</li>
+<li>
+<p>An old service is used by legacy software. New users are using the newer endpoint over the current version of the data, but a limited number of older users want to use the legacy version.</p>
+</li>
+</ul>
+<h3 id="examples_2">Examples<a class="headerlink" href="#examples_2" title="Permanent link">&para;</a></h3>
+<p>The following code checks whether a specific service is synchronized:</p>
+<pre><code class="language-ts">const account = await triply.getAccount()
+const dataset = await account.getDataset('my-dataset')
+const service = await dataset.ensureService('my-service', {type: 'sparql'})
+console.log(await service.isUpToDate())
+</code></pre>
+<h2 id="serviceupdate-opts">Service.update( opts?)<a class="headerlink" href="#serviceupdate-opts" title="Permanent link">&para;</a></h2>
+<p>Synchronizes the service. Synchronization means that the data that is used in the service is made consistent with the data that is present in the graphs of the dataset.</p>
+<p>When one or more graphs are added or deleted, existing services keep exposing the old state of the data. The changes in the data are only exposed in the services after synchronization is performed.</p>
+<p>You can choose to perform a rolling update, during which a new service is replacing the old one, in order to eliminate downtime. For a rolling update you should use the object <code>{rollingUpdate:true}</code> as <code>opts</code>. In case you want to be able to track the progress of the rolling update, you can use a logging function in the second argument of <code>opts</code>, called <code>onProgress</code>. However, be aware that when using a rolling update, depending on your dataset statements, you might reach your instance's limit of statements' number for services. In this case, you will not be able to do a successful rolling update and you should switch to a regular update.</p>
+<h3 id="examples_3">Examples<a class="headerlink" href="#examples_3" title="Permanent link">&para;</a></h3>
+<p>When there are multiple services, it is common to synchronize them all <em>in sequence</em>. This ensures that there are always one or more services available. This allows applications to use such services as their backend without any downtime during data changes.</p>
+<p>The following code synchronizes all services of a dataset in sequence:</p>
+<pre><code class="language-ts">for (const service of await dataset.getServices()) {
+  service.update()
+}
+
+// For a rolling update
+for (const service of await dataset.getServices()) {
+  service.update({ rollingUpdate: true })
+}
+
+</code></pre>
+<p>Although less common, it is also possible to synchronize all services of a dataset <em>in parallel</em>. This is typically not used in production systems, where data changes must not result in any downtime. Still, parallel synchronization can be useful in development and/or acceptance environments.</p>
+<p>The following code synchronizes all services of a dataset in parallel:</p>
+<pre><code class="language-ts">await Promise.all(dataset.getServices().map(service =&gt; service.update()))
+</code></pre>
+<h2 id="servicewaituntilrunning">Service.waitUntilRunning()<a class="headerlink" href="#servicewaituntilrunning" title="Permanent link">&para;</a></h2>
+<p>A service can be stopped or updated. The use of asynchronous code means that when a start command is given it takes a while before the service is ready for use. To make sure a service is available for querying you can user the function <code>waitUntilRunning()</code> to make sure that the script will wait until the service is ready for use.</p>
+<h3 id="example">Example<a class="headerlink" href="#example" title="Permanent link">&para;</a></h3>
+<p>An example of a service being updated and afterwards a query needs to be executed:</p>
+<pre><code class="language-ts">const triply = App.get({ token: process.env.TOKEN })
+const user = await triply.getAccount()
+const dataset = await user.getDataset('some-dataset')
+const service = await dataset.getService('some-service')
+// starting a service but does not wait until it is started
+await service.start()
+// Function that checks if a service is available
+await service.waitUntilRunning()
+</code></pre>
+<h2 id="setting-up-index-templates-for-elasticsearch-service">Setting up index templates for ElasticSearch service<a class="headerlink" href="#setting-up-index-templates-for-elasticsearch-service" title="Permanent link">&para;</a></h2>
+<p>TriplyDB allows you to configure a custom mapping for Elasticsearch services in TriplyDB using index templates.</p>
+<h4 id="index-templates">Index templates<a class="headerlink" href="#index-templates" title="Permanent link">&para;</a></h4>
+<p>Index templates make it possible to create indices with user defined configuration, which an index can then pull from. A template will be defined with a name pattern and some configuration in it. If the name of the index matches the template’s naming pattern, the new index will be created with the configuration defined in the template.
+Official documentation from ElasticSearch on how to use Index templates can be found <a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/index-templates.html">here</a>.</p>
+<p>Index templates on TriplyDB can be configured through either <a href="../../triply-api/#index-templates">TriplyDB API</a> or TriplyDB.js.</p>
+<p>When creating a new service for the dataset, we add the config object to the metadata:</p>
+<pre><code class="language-ts">Dataset.addService(&quot;SERVICE_NAME&quot;, {
+  type: &quot;elasticSearch&quot;,
+  config: {
+    indexTemplates: [
+      {
+        &quot;index_patterns&quot;: &quot;index&quot;,
+        &quot;name&quot;: &quot;TEMPLATE_NAME&quot;,
+       ...
+      }
+    ]
+  }
+})
+</code></pre>
+<p><code>index_patterns</code> and <code>name</code> are obligatory fields to include in the body of index template.
+It's important that every index template has the field <code>index_patterns</code> equal <code>index</code>!</p>
+<p>Below is an example of creating an index template in TriplyDB-JS:</p>
+<pre><code class="language-ts">import App from '@triply/triplydb/App.js'
+import dotenv from 'dotenv'
+dotenv.config()
+
+const app = App.get({ token: process.env.TRIPLYDB_TOKEN })
+const account = await app.getAccount('ACCOUNT')
+const dataset = await account.getDataset('DATASET')
+
+await dataset.addService('SERVICE_NAME', {
+  &quot;type&quot;: &quot;elasticSearch&quot;,
+  &quot;config&quot;: {
+    &quot;indexTemplates&quot;: [
+      {
+        &quot;name&quot;: &quot;TEMPLATE_NAME&quot;,
+        &quot;index_patterns&quot;: &quot;index&quot;
+      }
+    ]
+  }
+})
+</code></pre>
+<h3 id="component-templates">Component templates<a class="headerlink" href="#component-templates" title="Permanent link">&para;</a></h3>
+<p>Component templates are building blocks for constructing index templates that specify index mappings, settings, and aliases.
+You can find the official documentation on their use in ElasticSearch <a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-component-template.html">here</a>.
+They can be configured through either <a href="../../triply-api/#component-templates">TriplyDB API</a> or <code>TriplyDB-JS</code>.</p>
+<p>When creating a new service for the dataset, we add the config object to the metadata:</p>
+<pre><code class="language-ts">Dataset.addService(&quot;SERVICE_NAME&quot;, {
+  type: &quot;elasticSearch&quot;,
+  config: {
+    componentTemplates: [
+      {
+        &quot;name&quot;: &quot;TEMPLATE_NAME&quot;,
+        &quot;template&quot;: {
+          &quot;mappings&quot;: {
+            &quot;properties&quot;: {
+              ...
+            }
+          }
+        },
+        ...
+      }
+    ]
+  }
+})
+</code></pre>
+<p><code>name</code> and <code>template</code> are obligatory fields to include in the body of component template.
+Component template can only be created together with an index template. In this case Index template needs to contain the field <code>composed_of</code> with the name of the component template.</p>
+<p>Below is an example of creating a component template for the property <code>https://schema.org/dateCreated</code> to be of type <code>date</code>.</p>
+<pre><code class="language-ts">import App from '@triply/triplydb/App.js'
+import dotenv from 'dotenv'
+dotenv.config()
+
+const app = App.get({ token: process.env.TRIPLYDB_TOKEN })
+const account = await app.getAccount('ACCOUNT')
+const dataset = await account.getDataset('DATASET')
+
+await dataset.addService('SERVICE_NAME', {
+  &quot;type&quot;: &quot;elasticSearch&quot;,
+  &quot;config&quot;: {
+    &quot;indexTemplates&quot;: [
+      {
+        &quot;name&quot;: &quot;TEMPLATE_NAME&quot;,
+        &quot;index_patterns&quot;: &quot;index&quot;,
+        &quot;composed_of&quot;: [&quot;COMPONENT_TEMPLATE_NAME&quot;],
+      }
+    ],
+    &quot;componentTemplates&quot;: [
+      {
+        &quot;name&quot;: &quot;COMPONENT_TEMPLATE_NAME&quot;,
+        &quot;template&quot;: {
+          &quot;mappings&quot;: {
+            &quot;properties&quot;: {
+              &quot;https://schema org/dateCreated&quot;: {
+                &quot;type&quot;: &quot;date&quot;
+              }
+            }
+          }
+        }
+      }
+    ]
+  }
+})
+</code></pre>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../query/" class="btn btn-neutral float-left" title="Query"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../story/" class="btn btn-neutral float-right" title="Story">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../query/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../story/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script>var base_url = '../..';</script>
+      <script src="../../js/triply.js" defer></script>
+      <script src="../../js/highlight.min.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+
+</body>
+</html>

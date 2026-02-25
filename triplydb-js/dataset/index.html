@@ -1,0 +1,1236 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <meta name="description" content="The official documentation for the Triply products: TriplyDB, TriplyDB.js, and TriplyETL." />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Dataset - Triply Documentation</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link href="../../css/intellij-light.css" rel="stylesheet" />
+        <link href="../../css/triply.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Dataset";
+        var mkdocs_page_input_path = "triplydb-js/dataset/index.md";
+        var mkdocs_page_url = null;
+      </script>
+     
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> Triply Documentation
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">TriplyDB</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="#">Getting started</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-db-getting-started/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-db-getting-started/uploading-data/">Uploading Data</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-db-getting-started/editing-data/">Editing (SKOS) Data</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-db-getting-started/publishing-data/">Sharing Data</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-db-getting-started/viewing-data/">Viewing Data</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-db-getting-started/exporting-data/">Exporting Data</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-db-getting-started/saved-queries/">Saved Queries</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-db-getting-started/data-stories/">Data Stories</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-db-getting-started/admin-settings-pages/">Admin Settings Pages</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-db-getting-started/reference/">Reference</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../triply-api/">API</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">TriplyDB-JS</a>
+    <ul class="current">
+                <li class="toctree-l2"><a class="reference internal" href="../">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../app/">App</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../account/">Account</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../asset/">Asset</a>
+                </li>
+                <li class="toctree-l2 current"><a class="reference internal current" href="./">Dataset</a>
+    <ul class="current">
+    <li class="toctree-l3"><a class="reference internal" href="#datasetaddprefixesprefixes-object">Dataset.addPrefixes(prefixes: object)</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#examples">Examples</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#datasetensureservicename-string-metadata-object">Dataset.ensureService(name: string, metadata?: object)</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#required">Required</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#optional-metadata">Optional: metadata</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#datasetaddservicename-string-metadata-object">Dataset.addService(name: string, metadata?: object)</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#arguments">Arguments</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#required_1">Required</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#optional">Optional</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#examples_1">Examples</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#see-also">See also</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#datasetclearresourcetype-string">Dataset.clear(...resourceType: string)</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#arguments_1">Arguments</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#examples_2">Examples</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#datasetcopyaccount-string-dataset-string">Dataset.copy(account: string, dataset: string)</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#examples_3">Examples</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#datasetdelete">Dataset.delete()</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#examples_4">Examples</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#see-also_1">See also</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#datasetdeletegraphname-string">Dataset.deleteGraph(name: string)</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#examples_5">Examples</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#datasetdescribeiri-stringnamednode">Dataset.describe(iri: string|NamedNode)</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#examples_6">Examples</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#datasetgetassetname-string-version-number">Dataset.getAsset(name: string, version?: number)</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#examples_7">Examples</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#datasetgetassets">Dataset.getAssets()</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#examples_8">Examples</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#datasetgetgraphname-string">Dataset.getGraph(name: string)</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#examples_9">Examples</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#datasetgetgraphs">Dataset.getGraphs()</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#examples_10">Examples</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#datasetgetinfo">Dataset.getInfo()</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#examples_11">Examples</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#datasetgetprefixes">Dataset.getPrefixes()</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#examples_12">Examples</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#datasetgetservicename-string">Dataset.getService(name: string)</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#examples_13">Examples</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#datasetgetservices">Dataset.getServices()</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#examples_14">Examples</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#datasetgetstatementssubject-string-predicate-string-object-string-graph-string">Dataset.getStatements({subject?: string, predicate?: string, object?: string, graph?: string})</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#arguments_2">Arguments</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#example">Example</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#get-the-data-locally">Get the data locally</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#datasetgraphstofiledestinationpath-string-arguments-object">Dataset.graphsToFile(destinationPath: string, arguments?: object)</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#optional_1">Optional</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#examples_15">Examples</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#datasetgraphstostoregraph-graph">Dataset.graphsToStore(graph?: Graph)</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#optional_2">Optional</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#examples_16">Examples</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#datasetgraphstostreamtype-compressed-rdf-js-arguments-object">Dataset.graphsToStream(type: 'compressed' | 'rdf-js', arguments?: object)</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#optional_3">Optional</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#examples_17">Examples</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#datasetimportfromdatasetfromdataset-dataset-arguments-object">Dataset.importFromDataset(fromDataset: Dataset, arguments?: object)</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#required_2">Required</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#optional_4">Optional</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#examples_18">Examples</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#datasetimportfromfilesfiles-liststring-file-defaultsconfig-object">Dataset.importFromFiles(files: list(string || File), defaultsConfig?: object)</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#required_3">Required</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#supported-files">Supported files</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#examples_19">Examples</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#datasetimportfromstorestore-n3store-defaultsconfig-object">Dataset.importFromStore(store: n3.Store, defaultsConfig?: object)</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#examples_20">Examples</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#datasetimportfromurlsurls-liststring-defaultsconfig-object">Dataset.importFromUrls(urls: list(string), defaultsConfig?: object)</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#required_4">Required</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#examples_21">Examples</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#datasetremoveallgraphs">Dataset.removeAllGraphs()</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#examples_22">Examples</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#datasetremoveprefixesprefixes-string">Dataset.removePrefixes(prefixes: string[])</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#examples_23">Examples</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#datasetrenamegraphfrom-string-to-string">Dataset.renameGraph(from: string, to: string)</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#examples_24">Examples</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#datasetupdatemetadata-object">Dataset.update(metadata: object)</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#arguments_3">Arguments</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#example_1">Example</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#datasetuploadasset-filepath-string-opts-mode-throw-if-exists-replace-if-exists-append-version-name-string">Dataset.uploadAsset( filePath: string, opts?: {mode?: 'throw-if-exists'| 'replace-if-exists'| 'append-version', name?: string})</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#user-cases">User cases</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#examples_25">Examples</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../graph/">Graph</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../organization/">Organization</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../query/">Query</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../service/">Service</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../story/">Story</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../user/">User</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../faq/">FAQ</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../triply-cli/">Command-line Interface</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../triplydb-changelog/">Changelog</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">TriplyETL</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Generic</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/generic/getting-started/">Getting Started</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/generic/changelog/">Changelog</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/generic/cli/">Command Line Interface (CLI)</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/generic/declarations/">Declarations</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/generic/control-structures/">Control Structures</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/generic/debug/">Debug</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/generic/internal-store/">Internal Store</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/generic/maintenance/">Maintenance</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/generic/record/">Record</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/generic/vocabularies/">Vocabularies</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Sources</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/sources/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/sources/apis/">APIs</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/sources/inline-json/">Inline JSON</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/sources/inline-strings/">Inline Strings</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/sources/local-files/">Local Files</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/sources/online-files/">Online Files</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/sources/rml/">RML Sources</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/sources/triplydb-assets/">TriplyDB Assets</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/sources/triplydb-datasets/">TriplyDB Datasets</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/sources/triplydb-queries/">TriplyDB Queries</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Extract</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/extract/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/extract/csv/">CSV</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/extract/json/">JSON</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/extract/oai-pmh/">OAI-PMH</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/extract/postgres/">Postgres</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/extract/rdf/">RDF</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/extract/shapefile/">Shapefile</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/extract/tsv/">TSV</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/extract/xlsx/">XLSX</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/extract/xml/">XML</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Transform</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/transform/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/transform/ratt/">RATT</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/transform/rml/">RML</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/transform/typescript/">TypeScript</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/transform/xslt/">XSLT</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Assert</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/assert/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/assert/json-ld/">JSON-LD</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="#">RATT</a>
+    <ul>
+                <li class="toctree-l3"><a class="reference internal" href="../../triply-etl/assert/ratt/terms/">RATT Terms</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../../triply-etl/assert/ratt/statements/">RATT Statements</a>
+                </li>
+    </ul>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/assert/rml/">RML</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/assert/xslt/">XSLT</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Enrich</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/enrich/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="#">SHACL</a>
+    <ul>
+                <li class="toctree-l3"><a class="reference internal" href="../../triply-etl/enrich/shacl/">Overview</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../../triply-etl/enrich/shacl/triple-rules/">Triple Rules</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../../triply-etl/enrich/shacl/sparql-rules/">SPARQL Rules</a>
+                </li>
+    </ul>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="#">SPARQL</a>
+    <ul>
+                <li class="toctree-l3"><a class="reference internal" href="../../triply-etl/enrich/sparql/construct/">SPARQL Construct</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../../triply-etl/enrich/sparql/update/">SPARQL Update</a>
+                </li>
+    </ul>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Validate</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/validate/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/validate/graph-comparison/">Graph Comparison</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/validate/shacl/">SHACL</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../triply-etl/publish/">Publish</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Yasgui</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../yasgui/">Introduction</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../yasgui-api/">For Developers</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">Triply Documentation</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">TriplyDB</li>
+          <li class="breadcrumb-item">TriplyDB-JS</li>
+      <li class="breadcrumb-item active">Dataset</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <div class="toc"><span class="toctitle">On this page:</span><ul>
+<li><a href="#dataset">Dataset</a><ul>
+<li><a href="#datasetaddprefixesprefixes-object">Dataset.addPrefixes(prefixes: object)</a><ul>
+<li><a href="#examples">Examples</a></li>
+</ul>
+</li>
+<li><a href="#datasetensureservicename-string-metadata-object">Dataset.ensureService(name: string, metadata?: object)</a><ul>
+<li><a href="#required">Required</a></li>
+<li><a href="#optional-metadata">Optional: metadata</a></li>
+</ul>
+</li>
+<li><a href="#datasetaddservicename-string-metadata-object">Dataset.addService(name: string, metadata?: object)</a><ul>
+<li><a href="#arguments">Arguments</a></li>
+<li><a href="#required_1">Required</a></li>
+<li><a href="#optional">Optional</a></li>
+<li><a href="#examples_1">Examples</a></li>
+<li><a href="#see-also">See also</a></li>
+</ul>
+</li>
+<li><a href="#datasetclearresourcetype-string">Dataset.clear(...resourceType: string)</a><ul>
+<li><a href="#arguments_1">Arguments</a></li>
+<li><a href="#examples_2">Examples</a></li>
+</ul>
+</li>
+<li><a href="#datasetcopyaccount-string-dataset-string">Dataset.copy(account: string, dataset: string)</a><ul>
+<li><a href="#examples_3">Examples</a></li>
+</ul>
+</li>
+<li><a href="#datasetdelete">Dataset.delete()</a><ul>
+<li><a href="#examples_4">Examples</a></li>
+<li><a href="#see-also_1">See also</a></li>
+</ul>
+</li>
+<li><a href="#datasetdeletegraphname-string">Dataset.deleteGraph(name: string)</a><ul>
+<li><a href="#examples_5">Examples</a></li>
+</ul>
+</li>
+<li><a href="#datasetdescribeiri-stringnamednode">Dataset.describe(iri: string|NamedNode)</a><ul>
+<li><a href="#examples_6">Examples</a></li>
+</ul>
+</li>
+<li><a href="#datasetgetassetname-string-version-number">Dataset.getAsset(name: string, version?: number)</a><ul>
+<li><a href="#examples_7">Examples</a></li>
+</ul>
+</li>
+<li><a href="#datasetgetassets">Dataset.getAssets()</a><ul>
+<li><a href="#examples_8">Examples</a></li>
+</ul>
+</li>
+<li><a href="#datasetgetgraphname-string">Dataset.getGraph(name: string)</a><ul>
+<li><a href="#examples_9">Examples</a></li>
+</ul>
+</li>
+<li><a href="#datasetgetgraphs">Dataset.getGraphs()</a><ul>
+<li><a href="#examples_10">Examples</a></li>
+</ul>
+</li>
+<li><a href="#datasetgetinfo">Dataset.getInfo()</a><ul>
+<li><a href="#examples_11">Examples</a></li>
+</ul>
+</li>
+<li><a href="#datasetgetprefixes">Dataset.getPrefixes()</a><ul>
+<li><a href="#examples_12">Examples</a></li>
+</ul>
+</li>
+<li><a href="#datasetgetservicename-string">Dataset.getService(name: string)</a><ul>
+<li><a href="#examples_13">Examples</a></li>
+</ul>
+</li>
+<li><a href="#datasetgetservices">Dataset.getServices()</a><ul>
+<li><a href="#examples_14">Examples</a></li>
+</ul>
+</li>
+<li><a href="#datasetgetstatementssubject-string-predicate-string-object-string-graph-string">Dataset.getStatements({subject?: string, predicate?: string, object?: string, graph?: string})</a><ul>
+<li><a href="#arguments_2">Arguments</a></li>
+<li><a href="#example">Example</a></li>
+<li><a href="#get-the-data-locally">Get the data locally</a></li>
+</ul>
+</li>
+<li><a href="#datasetgraphstofiledestinationpath-string-arguments-object">Dataset.graphsToFile(destinationPath: string, arguments?: object)</a><ul>
+<li><a href="#optional_1">Optional</a></li>
+<li><a href="#examples_15">Examples</a></li>
+</ul>
+</li>
+<li><a href="#datasetgraphstostoregraph-graph">Dataset.graphsToStore(graph?: Graph)</a><ul>
+<li><a href="#optional_2">Optional</a></li>
+<li><a href="#examples_16">Examples</a></li>
+</ul>
+</li>
+<li><a href="#datasetgraphstostreamtype-compressed-rdf-js-arguments-object">Dataset.graphsToStream(type: 'compressed' | 'rdf-js', arguments?: object)</a><ul>
+<li><a href="#optional_3">Optional</a></li>
+<li><a href="#examples_17">Examples</a></li>
+</ul>
+</li>
+<li><a href="#datasetimportfromdatasetfromdataset-dataset-arguments-object">Dataset.importFromDataset(fromDataset: Dataset, arguments?: object)</a><ul>
+<li><a href="#required_2">Required</a></li>
+<li><a href="#optional_4">Optional</a></li>
+<li><a href="#examples_18">Examples</a></li>
+</ul>
+</li>
+<li><a href="#datasetimportfromfilesfiles-liststring-file-defaultsconfig-object">Dataset.importFromFiles(files: list(string || File), defaultsConfig?: object)</a><ul>
+<li><a href="#required_3">Required</a></li>
+<li><a href="#supported-files">Supported files</a></li>
+<li><a href="#examples_19">Examples</a></li>
+</ul>
+</li>
+<li><a href="#datasetimportfromstorestore-n3store-defaultsconfig-object">Dataset.importFromStore(store: n3.Store, defaultsConfig?: object)</a><ul>
+<li><a href="#examples_20">Examples</a></li>
+</ul>
+</li>
+<li><a href="#datasetimportfromurlsurls-liststring-defaultsconfig-object">Dataset.importFromUrls(urls: list(string), defaultsConfig?: object)</a><ul>
+<li><a href="#required_4">Required</a></li>
+<li><a href="#examples_21">Examples</a></li>
+</ul>
+</li>
+<li><a href="#datasetremoveallgraphs">Dataset.removeAllGraphs()</a><ul>
+<li><a href="#examples_22">Examples</a></li>
+</ul>
+</li>
+<li><a href="#datasetremoveprefixesprefixes-string">Dataset.removePrefixes(prefixes: string[])</a><ul>
+<li><a href="#examples_23">Examples</a></li>
+</ul>
+</li>
+<li><a href="#datasetrenamegraphfrom-string-to-string">Dataset.renameGraph(from: string, to: string)</a><ul>
+<li><a href="#examples_24">Examples</a></li>
+</ul>
+</li>
+<li><a href="#datasetupdatemetadata-object">Dataset.update(metadata: object)</a><ul>
+<li><a href="#arguments_3">Arguments</a></li>
+<li><a href="#example_1">Example</a></li>
+</ul>
+</li>
+<li><a href="#datasetuploadasset-filepath-string-opts-mode-throw-if-exists-replace-if-exists-append-version-name-string">Dataset.uploadAsset( filePath: string, opts?: {mode?: 'throw-if-exists'| 'replace-if-exists'| 'append-version', name?: string})</a><ul>
+<li><a href="#user-cases">User cases</a></li>
+<li><a href="#examples_25">Examples</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<h1 id="dataset">Dataset<a class="headerlink" href="#dataset" title="Permanent link">&para;</a></h1>
+<p>The <code>Dataset</code> class represents a TriplyDB dataset.</p>
+<h2 id="datasetaddprefixesprefixes-object">Dataset.addPrefixes(prefixes: object)<a class="headerlink" href="#datasetaddprefixesprefixes-object" title="Permanent link">&para;</a></h2>
+<p>Adds IRI prefix declarations to the dataset.</p>
+<p>The <code>prefixes</code> argument is a dictionary object whose keys are aliases and whose values are IRI prefixes.</p>
+<h3 id="examples">Examples<a class="headerlink" href="#examples" title="Permanent link">&para;</a></h3>
+<p>The following snippet adds prefix declarations for aliases <code>id</code> and <code>def</code> to the Iris dataset:</p>
+<pre><code class="language-ts">const organization = await triply.getOrganization('Triply')
+const dataset = await organization.getDataset(iris)
+await dataset.addPrefixes({
+  def: 'https://triplydb.com/Triply/iris/def/',
+  id: 'https://triplydb.com/Triply/iris/id/',
+})
+</code></pre>
+<h2 id="datasetensureservicename-string-metadata-object">Dataset.ensureService(name: string, metadata?: object)<a class="headerlink" href="#datasetensureservicename-string-metadata-object" title="Permanent link">&para;</a></h2>
+<p>Ensures the existence of a service with the given <code>name</code> and with the specified <code>metadata</code> if given.</p>
+<p>Calling this method ensures that the necessary changes (if any) are made in the connected-to TriplyDB server that result in an end state in which a service with the given <code>name</code> and <code>metadata</code> exists.</p>
+<p>This method is useful in practice, because it removes the burden on the programmer to have to write custom code for checking for the existence of a service, and conditionally create a new service or make metadata changes to an existing service.</p>
+<p>The changes made as a result of calling this method depend on the current state of the connected-to TriplyDB server:</p>
+<ul>
+<li>If this dataset does not yet have a service with the given <code>name</code>, then the behavior is identical to calling <a href="#datasetaddservicename-string-metadata-object"><code>Dataset.addService(name: string, metadata?: object)</code></a> with the same arguments.</li>
+<li>If this dataset already has a service with the given <code>name</code>, but with different <code>metadata</code> specified for it, then the behavior is identical to calling <a href="../account/#accountgetdatasetname-string"><code>Account.getDataset(name: string)</code></a> and <a href="#datasetupdatemetadata-object"><code>Dataset.update(metadata: object)</code></a>.</li>
+<li>If this dataset already has a service with the given <code>name</code> and with the same <code>metadata</code>, then this method returns that service.</li>
+</ul>
+<h3 id="required">Required<a class="headerlink" href="#required" title="Permanent link">&para;</a></h3>
+<dl>
+  <dt><code>name</code></dt>
+  <dd>Accepts a string value which is the name of the service to ensure.</dd>
+</dl>
+
+<h3 id="optional-metadata">Optional: metadata<a class="headerlink" href="#optional-metadata" title="Permanent link">&para;</a></h3>
+<pre><code class="language-ts">serviceMetadata = {
+  type:  'elasticsearch' | 'virtuoso' | 'jena' ;
+  config?: {
+    reasoner?: 'OWL' | 'RDFS' | 'None';
+  };
+};
+</code></pre>
+<dl>
+  <dt><code>type</code></dt>
+  <dd>Accepts a string value of one of the following: <code>'virtuoso'</code>, <code>'elasticsearch'</code>, <code>'jena'</code>.</dd>
+
+  <dt><code>config</code></dt>
+  <dd>
+    <p>Config is an optional property. It accepts an object with a <code>reasoner</code> property.</p>
+    <dl>
+      <dt><code>reasoner</code></dt>
+      <dd>The reasoner property accepts a string value of either <code>'OWL'</code>, <code>'RDFS'</code>, or <code>'None'</code>.</dd>
+    </dl>
+  </dd>
+</dl>
+
+<p><strong>Note:</strong></p>
+<ul>
+<li>If no options are specified the default service is of type: <code>virtuoso</code>.</li>
+<li>Note that the <code>config.reasoner</code> will only accept a value when <code>type</code> is: <code>'jena'</code></li>
+</ul>
+<p><strong>Examples</strong>
+Example 1: Ensure a <code>service</code> with no arguments. If not found it's type defaults to <code>virtuoso</code>.</p>
+<pre><code class="language-ts">await someDataset.ensureService('someServiceName')
+</code></pre>
+<p>Example 2: Ensure a <code>service</code> of type <code>jena</code>.</p>
+<pre><code class="language-ts">await someDataset.ensureService('someServiceName', { type: 'jena' })
+</code></pre>
+<h2 id="datasetaddservicename-string-metadata-object">Dataset.addService(name: string, metadata?: object)<a class="headerlink" href="#datasetaddservicename-string-metadata-object" title="Permanent link">&para;</a></h2>
+<p>Creates a new service for this dataset.</p>
+<h3 id="arguments">Arguments<a class="headerlink" href="#arguments" title="Permanent link">&para;</a></h3>
+<h3 id="required_1">Required<a class="headerlink" href="#required_1" title="Permanent link">&para;</a></h3>
+<dl>
+  <dt><code>name</code></dt>
+  <dd>The URL-friendly name of the service. The name must only contain alphanumeric characters and hyphens (`[A-Za-z0-9\-]`).</dd>
+</dl>
+
+<h3 id="optional">Optional<a class="headerlink" href="#optional" title="Permanent link">&para;</a></h3>
+<p>The service type is specified with the <code>type</code> parameter. If no type is given, a default of <code>'virtuoso'</code> is used. It supports the following values:</p>
+<dl>
+  <dt><code>'virtuoso'</code></dt>
+  <dd>Starts a SPARQL service. A SPARQL 1.1 compliant service is very scalable and performance, but without advanced reasoning capabilities.</dd>
+  <dt><code>'jena'</code></dt>
+  <dd>Starts a SPARQL JENA service. A SPARQL 1.1 compliant service that is less scalable and less performant, but allows reasoning (RDFS or OWL) to be enabled.</dd>
+  <dt><code>'elasticSearch'</code></dt>
+  <dd>Starts an <a href='https://www.elastic.co/guide/en/elasticsearch/reference/current/index.html'>Elasticsearch</a> service. A text search engine that can be used to power a search bar or similar textual search API.</dd>
+</dl>
+
+<p>The <code>name</code> argument can be used to distinguish between different endpoints over the same dataset that are used for different tasks.</p>
+<h3 id="examples_1">Examples<a class="headerlink" href="#examples_1" title="Permanent link">&para;</a></h3>
+<p>The following snippet starts two SPARQL endpoints over a specific dataset. One endpoint will be used in the acceptance environment while the other endpoint will be used in the production system.</p>
+<pre><code class="language-ts">const account = await triply.getAccount()
+const dataset = await account.getDataset('my-dataset')
+const acceptance = await dataset.addService('acceptance')
+const production = await dataset.addService('production', {
+  type: 'elasticsearch',
+})
+const reasoning = await dataset.addService('reasoning', {
+  type: 'jena',
+  config: { reasoner: 'OWL' },
+})
+</code></pre>
+<h3 id="see-also">See also<a class="headerlink" href="#see-also" title="Permanent link">&para;</a></h3>
+<p>See class <a href="../service/#service">Service</a> for an overview of the methods that can be used with service objects.</p>
+<h2 id="datasetclearresourcetype-string">Dataset.clear(...resourceType: string)<a class="headerlink" href="#datasetclearresourcetype-string" title="Permanent link">&para;</a></h2>
+<p>Removes one or more resource types from the current dataset.</p>
+<h3 id="arguments_1">Arguments<a class="headerlink" href="#arguments_1" title="Permanent link">&para;</a></h3>
+<p>The resources are specified by the <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/rest_parameters">rest parameter</a> <code>resourceType</code>, which supports the following values :</p>
+<dl>
+  <dt><code>'assets'</code></dt>
+  <dd>Removes all assets in the dataset.</dd>
+  <dt><code>'graphs'</code></dt>
+  <dd>Removes all graphs in the dataset.</dd>
+  <dt><code>'services'</code></dt>
+  <dd>Removes all services in the dataset.</dd>
+</dl>
+
+<h3 id="examples_2">Examples<a class="headerlink" href="#examples_2" title="Permanent link">&para;</a></h3>
+<p>The following example code removes all graphs and services for a specific dataset:</p>
+<pre><code class="language-ts">const account = await triply.getAccount()
+const dataset = await account.getDataset('my-dataset')
+await dataset.clear('graphs', 'services')
+</code></pre>
+<h2 id="datasetcopyaccount-string-dataset-string">Dataset.copy(account: string, dataset: string)<a class="headerlink" href="#datasetcopyaccount-string-dataset-string" title="Permanent link">&para;</a></h2>
+<p>Creates a copy of the current dataset.</p>
+<p>The owner (user or organization) of the copy is specified with parameter <code>account</code>. The name of the copy is specified with parameter <code>dataset</code>.</p>
+<p>This operation does not overwrite existing datasets: if the copied-to dataset already exists, a new dataset with suffix <code>-1</code> will be created.</p>
+<h3 id="examples_3">Examples<a class="headerlink" href="#examples_3" title="Permanent link">&para;</a></h3>
+<pre><code class="language-ts">const account = await triply.getAccount()
+const dataset = await account.getDataset('my-dataset')
+console.log(await dataset.copy('account name', 'copy dataset name'))
+</code></pre>
+<h2 id="datasetdelete">Dataset.delete()<a class="headerlink" href="#datasetdelete" title="Permanent link">&para;</a></h2>
+<p>Deletes the dataset.</p>
+<p>This includes deleting the dataset metadata, all of its graphs, all of its services, and all of its assets.</p>
+<h3 id="examples_4">Examples<a class="headerlink" href="#examples_4" title="Permanent link">&para;</a></h3>
+<p>The following snippet deletes a specific dataset that is part of the account associated with the current API token:</p>
+<pre><code class="language-ts">const account = await triply.getAccount()
+const dataset = await account.getDataset('my-dataset')
+await dataset.delete()
+</code></pre>
+<h3 id="see-also_1">See also<a class="headerlink" href="#see-also_1" title="Permanent link">&para;</a></h3>
+<p>Sometimes it is more useful to only delete the graphs that belong to a dataset, but leave the dataset metadata, services, and assets in place. The following methods can be used for this purpose:</p>
+<ul>
+<li><a href="#datasetdeletegraphname-string">Dataset.deleteGraph(graphName: string)</a></li>
+<li><a href="#datasetremoveallgraphs">Dataset.removeAllGraphs()</a></li>
+</ul>
+<h2 id="datasetdeletegraphname-string">Dataset.deleteGraph(name: string)<a class="headerlink" href="#datasetdeletegraphname-string" title="Permanent link">&para;</a></h2>
+<p>Deletes the graph with the given <code>name</code> from this dataset.</p>
+<p>Graph names are IRIs.</p>
+<h3 id="examples_5">Examples<a class="headerlink" href="#examples_5" title="Permanent link">&para;</a></h3>
+<p>The following snippet deletes a specific graph from a specified dataset:</p>
+<pre><code class="language-ts">const account = await triply.getAccount()
+const dataset = await account.getDataset('my-dataset')
+await dataset.deleteGraph('https://example.org/some-graph')
+</code></pre>
+<h2 id="datasetdescribeiri-stringnamednode">Dataset.describe(iri: string|NamedNode)<a class="headerlink" href="#datasetdescribeiri-stringnamednode" title="Permanent link">&para;</a></h2>
+<p>Each dataset is a collection of triples that describe objects in linked data. Each object is defined with an IRI, an identifier for that object. An object often has incoming and outgoing connections.
+The <code>Dataset.describe()</code> call can retrieve the incoming and outgoing triples per object. The function returns for a given <code>iri</code> a list of quads where the <code>iri</code> is either in the subject or the object position.</p>
+<h3 id="examples_6">Examples<a class="headerlink" href="#examples_6" title="Permanent link">&para;</a></h3>
+<p>The following snippet returns all triples that have <code>https://example.org/id/some-instance</code> in the subject or the object position:</p>
+<pre><code class="language-ts">const user = await triply.getUser()
+const dataset = await account.getDataset('my-dataset')
+console.log(await dataset.describe('https://example.org/id/some-instance'))
+</code></pre>
+<h2 id="datasetgetassetname-string-version-number">Dataset.getAsset(name: string, version?: number)<a class="headerlink" href="#datasetgetassetname-string-version-number" title="Permanent link">&para;</a></h2>
+<p>Returns the asset with the given <code>name</code> for this dataset.</p>
+<p>Optionally allows the version number (<code>version</code>) of the asset to be specified. If the version number is absent, the latest version of the assert with the given <code>name</code> is returned.</p>
+<h3 id="examples_7">Examples<a class="headerlink" href="#examples_7" title="Permanent link">&para;</a></h3>
+<p>The following snippet returns the original version of an image of a dog from the animals dataset:</p>
+<pre><code class="language-ts">const user = await triply.getUser()
+const dataset = user.getDataset('my-dataset')
+const asset = await dataset.getAsset('file.png', 1)
+</code></pre>
+<h2 id="datasetgetassets">Dataset.getAssets()<a class="headerlink" href="#datasetgetassets" title="Permanent link">&para;</a></h2>
+<p>Returns an <a href="../faq/#what-is-an-async-iterator">async iterator</a> over the assets that belong to this dataset.</p>
+<p>Assets are binary files that are stored together with data graphs. Common examples include documents, images and videos.</p>
+<h3 id="examples_8">Examples<a class="headerlink" href="#examples_8" title="Permanent link">&para;</a></h3>
+<ul>
+<li>The following snippet prints the assets for a specific dataset:</li>
+</ul>
+<pre><code class="language-ts">const user = await triply.getUser()
+const dataset = user.getDataset('my-dataset')
+for await (const asset of dataset.getAssets()) {
+  console.log(asset)
+}
+</code></pre>
+<ul>
+<li>The following snippet prints the list of assets for a specific dataset:</li>
+</ul>
+<pre><code class="language-ts">const account = await triply.getAccount()
+const dataset = await account.getDataset('my-dataset')
+console.log(await dataset.getAssets().toArray())
+</code></pre>
+<h2 id="datasetgetgraphname-string">Dataset.getGraph(name: string)<a class="headerlink" href="#datasetgetgraphname-string" title="Permanent link">&para;</a></h2>
+<p>Each dataset with data consists out of one or more named graphs. All graphs together are thus the collection of triples of the dataset. Often the graph is used to denote a part of the dataset. For example the data model of the dataset or the metadata of the dataset. Instead of searching over the complete dataset where you want to scope it to a certain graph you can use the <code>getGraph()</code> function to specify the graph.</p>
+<p><code>Dataset.getGraph(name: string)</code> returns the graph with the given <code>name</code> that belongs to this dataset. The <code>name</code> is the string representation of the graph IRI.</p>
+<p>The <code>Dataset.getGraph</code> returns a graph object.</p>
+<h3 id="examples_9">Examples<a class="headerlink" href="#examples_9" title="Permanent link">&para;</a></h3>
+<p>The following snippet returns the graph about cats from the dataset about animals:</p>
+<pre><code class="language-ts">const user = await triply.getUser()
+const dataset = await user.getDataset('animals')
+const graph = dataset.getGraph('https://example.com/cats')
+</code></pre>
+<h2 id="datasetgetgraphs">Dataset.getGraphs()<a class="headerlink" href="#datasetgetgraphs" title="Permanent link">&para;</a></h2>
+<p>Returns an <a href="../faq/#what-is-an-async-iterator">async iterator</a> over graphs that belong to this dataset.</p>
+<h3 id="examples_10">Examples<a class="headerlink" href="#examples_10" title="Permanent link">&para;</a></h3>
+<p>The following snippet retrieves the graphs for a specific dataset:</p>
+<pre><code class="language-ts">const account = await triply.getAccount()
+const dataset = await account.getDataset('my-dataset')
+console.log(await dataset.getGraphs().toArray())
+</code></pre>
+<h2 id="datasetgetinfo">Dataset.getInfo()<a class="headerlink" href="#datasetgetinfo" title="Permanent link">&para;</a></h2>
+<p>Returns information about this dataset.</p>
+<p>Information is returned in a dictionary object. Individual keys can be accessed for specific information values.</p>
+<h3 id="examples_11">Examples<a class="headerlink" href="#examples_11" title="Permanent link">&para;</a></h3>
+<p>The following snippet prints the information from the specified dataset of the current user:</p>
+<pre><code class="language-ts">const user = await triply.getUser()
+const dataset = await user.getDataset('my-dataset')
+console.log(await dataset.getInfo())
+</code></pre>
+<h2 id="datasetgetprefixes">Dataset.getPrefixes()<a class="headerlink" href="#datasetgetprefixes" title="Permanent link">&para;</a></h2>
+<p>Returns the prefixes that are defined for this dataset.</p>
+<p>This contains prefix declarations that are generic and configured for this TriplyDB server, and prefix declarations that are defined for this specific dataset.</p>
+<h3 id="examples_12">Examples<a class="headerlink" href="#examples_12" title="Permanent link">&para;</a></h3>
+<p>The following snippet prints the prefix declarations that hold for <code>my-dataset</code>:</p>
+<pre><code class="language-ts">const user = await triply.getUser()
+const dataset = user.getDataset('my-dataset')
+for await (const prefix of dataset.getPrefixes()) {
+  console.log(prefix)
+}
+</code></pre>
+<h2 id="datasetgetservicename-string">Dataset.getService(name: string)<a class="headerlink" href="#datasetgetservicename-string" title="Permanent link">&para;</a></h2>
+<p>Returns the service with the given <code>name</code> for this dataset.</p>
+<h3 id="examples_13">Examples<a class="headerlink" href="#examples_13" title="Permanent link">&para;</a></h3>
+<p>The following snippet retrieves the acceptance service for the product catalog of an imaginary company:</p>
+<pre><code class="language-ts">const organization = triply.getOrganization('some-company')
+const dataset = organization.getDataset('product-catalog')
+const service = dataset.getService('acceptance')
+</code></pre>
+<h2 id="datasetgetservices">Dataset.getServices()<a class="headerlink" href="#datasetgetservices" title="Permanent link">&para;</a></h2>
+<p>Returns an <a href="../faq/#what-is-an-async-iterator">async iterator</a> over TriplyDB services under a dataset.</p>
+<p>See class <a href="../service/#service">Service</a> for an overview of the methods for service objects.</p>
+<h3 id="examples_14">Examples<a class="headerlink" href="#examples_14" title="Permanent link">&para;</a></h3>
+<ul>
+<li>The following snippet emits the services that are enabled for a specific dataset:</li>
+</ul>
+<pre><code class="language-ts">const account = await triply.getAccount()
+const dataset = await account.getDataset('my-dataset')
+for await (const service of dataset.getServices()) {
+  console.log(service)
+}
+</code></pre>
+<p>If you do not want to iterate over the services with an async iterator, but instead want to get an array of services use the <code>.toArray()</code> call instead:</p>
+<pre><code class="language-ts">const account = await triply.getAccount()
+const dataset = await account.getDataset('my-dataset')
+console.log(await dataset.getServices().toArray())
+</code></pre>
+<h2 id="datasetgetstatementssubject-string-predicate-string-object-string-graph-string">Dataset.getStatements({subject?: string, predicate?: string, object?: string, graph?: string})<a class="headerlink" href="#datasetgetstatementssubject-string-predicate-string-object-string-graph-string" title="Permanent link">&para;</a></h2>
+<p>Returns an <a href="../faq/#what-is-an-async-iterator">async iterator</a> with statements (quadruples) that fit the specified pattern.</p>
+<h3 id="arguments_2">Arguments<a class="headerlink" href="#arguments_2" title="Permanent link">&para;</a></h3>
+<ul>
+<li><code>subject</code>, if specified, is the subject term that should be matched.</li>
+<li><code>predicate</code>, if specified, is the predicate term that should be matched.</li>
+<li><code>object</code>, if specified, is the object term that should be matched.</li>
+<li><code>graph</code>, if specified, is the graph name that should be matched.</li>
+</ul>
+<h3 id="example">Example<a class="headerlink" href="#example" title="Permanent link">&para;</a></h3>
+<ul>
+<li>The following prints all statements in the dataset:</li>
+</ul>
+<pre><code class="language-ts">const user = triply.getUser()
+const dataset = await user.getDataset('my-dataset')
+for await (const statement of dataset.getStatements()) {
+  console.log(statement)
+}
+</code></pre>
+<p>The following prints the description of the Amsterdam resource in the DBpedia dataset:</p>
+<pre><code class="language-ts">const association = triply.getOrganization('DBpedia-association')
+const dbpedia = association.getDataset('dbpedia')
+for await (const statement of dbpedia.getStatements({subject: 'http://dbpedia.org/resource/Amsterdam'})) {
+  console.log(statement)
+}
+</code></pre>
+<h3 id="get-the-data-locally">Get the data locally<a class="headerlink" href="#get-the-data-locally" title="Permanent link">&para;</a></h3>
+<p>Most of the time you do not need to download the entire dataset locally as TriplyDB supports a variety of methods to use linked data directly. But if you want to use the entire graph locally that is possible with <code>TriplyDB.js</code>. There are three methods to retrieve linked data from TriplyDB. <code>graphsToFile()</code>, <code>graphsToStore()</code> and <code>graphsToStream()</code>.</p>
+<h2 id="datasetgraphstofiledestinationpath-string-arguments-object">Dataset.graphsToFile(destinationPath: string, arguments?: object)<a class="headerlink" href="#datasetgraphstofiledestinationpath-string-arguments-object" title="Permanent link">&para;</a></h2>
+<p>The first method downloads the linked data graphs directly and writes the data to the location of the <code>destinationPath</code>. The extension on the <code>destinationPath</code> defines the linked data type that is downloaded. The extensions that are supported are: <code>nt</code>, <code>nq</code>, <code>trig</code>, <code>ttl</code>, <code>jsonld</code>, <code>json</code>. If no extension is set or the extension is not recognized the function will throw an error.</p>
+<h3 id="optional_1">Optional<a class="headerlink" href="#optional_1" title="Permanent link">&para;</a></h3>
+<p>The optional properties accepted as arguments for <code>graphsToFile</code></p>
+<dl>
+  <dt>Compressed</dt>
+  <dd>Argument <code>compressed</code> optionally is a boolean defining if a graph is compressed with GNU zip (gzip) compression algorithm and will end with a `.gz` extension. </dd>
+  <dt>Graph</dt>
+  <dd>Argument <code>Graph</code> optionally is an specific graph that you want to write to file. These graph is an instance of a 'Graph' class</dd>
+</dl>
+
+<h3 id="examples_15">Examples<a class="headerlink" href="#examples_15" title="Permanent link">&para;</a></h3>
+<p>The following example downloads the dataset to file:</p>
+<pre><code class="language-ts">const triply = App.get({ token: process.env.TOKEN })
+const user = await triply.getAccount()
+const dataset = await user.getDataset('pokemon')
+await dataset.graphsToFile('my-filename.ttl', {compressed: true})
+</code></pre>
+<h2 id="datasetgraphstostoregraph-graph">Dataset.graphsToStore(graph?: Graph)<a class="headerlink" href="#datasetgraphstostoregraph-graph" title="Permanent link">&para;</a></h2>
+<p>The second method is to download the file into a <code>N3.store</code>. The <a href="https://rdf.js.org/N3.js/docs/N3Store.html">n3 library</a> is one of the most complete libraries for handling linked data in memory. The N3.js library is an implementation of the RDF.js low-level specification that lets you handle RDF in JavaScript easily, with an asynchronous, streaming approach.</p>
+<p>To reduce the overhead of downloading your data to file and then insert it in the N3 Store. TriplyDB.js has a <code>graphsToStore()</code> where a N3 store is returned as a result of the <code>graphsToStore()</code> function.</p>
+<h3 id="optional_2">Optional<a class="headerlink" href="#optional_2" title="Permanent link">&para;</a></h3>
+<p>The optional argument for <code>graphsToStore</code> is <code>Graph</code>. With <code>Graph</code> you can optionally define a specific graph that you want to write to file. These graph is an instance of a 'Graph' class.</p>
+<h3 id="examples_16">Examples<a class="headerlink" href="#examples_16" title="Permanent link">&para;</a></h3>
+<p>The following example downloads the dataset as <code>N3.store</code>:</p>
+<pre><code class="language-ts">const triply = App.get({ token: process.env.TOKEN })
+const user = await triply.getAccount()
+const dataset = await user.getDataset('pokemon')
+const store = await dataset.graphsToStore()
+</code></pre>
+<h2 id="datasetgraphstostreamtype-compressed-rdf-js-arguments-object">Dataset.graphsToStream(type: 'compressed' | 'rdf-js', arguments?: object)<a class="headerlink" href="#datasetgraphstostreamtype-compressed-rdf-js-arguments-object" title="Permanent link">&para;</a></h2>
+<p>The final method to download linked data to a local source is the <code>graphsToStream</code> this function returns a stream of quads that can directly be iterated over. The Stream is either of the type <code>compressed</code> which returns a gzipped stream of linked data, or type <code>rdf-js</code> which returns a stream of quads parsed according to the <a href="https://rdf.js.org/stream-spec/#stream-interface"><code>rdf-js</code> standard</a>.</p>
+<h3 id="optional_3">Optional<a class="headerlink" href="#optional_3" title="Permanent link">&para;</a></h3>
+<p>The following arguments can be defined in the optional arguments object.</p>
+<dl>
+  <dt>Extension</dt>
+  <dd>Argument <code>Extension</code> optionally defines the linked data type that is streamed. The extensions that are supported are: `nt`, `nq`, `trig`, `ttl`, `jsonld`, `json`. </dd>
+  <dt>Graph</dt>
+  <dd>Argument <code>Graph</code> optionally is an specific graph that you want to write to file. This graph is an instance of a 'Graph' class</dd>
+</dl>
+
+<h3 id="examples_17">Examples<a class="headerlink" href="#examples_17" title="Permanent link">&para;</a></h3>
+<p>The following example streams through the dataset as rdf-js quad objects and prints the quad to the screen. Notice that the <code>stream</code> is an async iterator.</p>
+<p><strong>Example 1</strong></p>
+<pre><code class="language-ts">const triply = App.get({ token: process.env.TOKEN })
+const user = await triply.getAccount()
+const dataset = await user.getDataset('pokemon')
+const stream = await dataset.graphsToStream('rdf-js', {extension: '.nq'})
+for await(const quad of stream){
+  console.log(quad)
+}
+</code></pre>
+<p>The following example streams through the dataset as chunks of ttl. and prints the buffer to the screen.</p>
+<p><strong>Example 2</strong></p>
+<pre><code class="language-ts">const triply = App.get({ token: process.env.TOKEN })
+const user = await triply.getAccount()
+const dataset = await user.getDataset('pokemon')
+const stream = await dataset.graphsToStream('compressed', {extension: '.ttl'})
+for await(const quad of stream.pipe(zlib.createGunzip())){
+  console.log((quad as Buffer).toString())
+}
+</code></pre>
+<h2 id="datasetimportfromdatasetfromdataset-dataset-arguments-object">Dataset.importFromDataset(fromDataset: Dataset, arguments?: object)<a class="headerlink" href="#datasetimportfromdatasetfromdataset-dataset-arguments-object" title="Permanent link">&para;</a></h2>
+<p>Imports one or more named graphs from a different dataset into this dataset.</p>
+<p>Data reuse is an important principle in linked data. This functionality makes it very easy to pull in vocabularies and datasets from other places.</p>
+<p>Changes in the <code>fromDataset</code> dataset are not automatically reflected in this dataset. If you want to synchronize with changes made in the imported-from dataset, the graphs must be explicitly imported. This protects this dataset against unanticipated changes in the imported-from dataset, while still being able to stay in sync with the imported-from dataset if this is explicitly requested.</p>
+<h3 id="required_2">Required<a class="headerlink" href="#required_2" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Argument <code>fromDataset</code> is the dataset object from which one or more graphs are imported over to this dataset.</li>
+</ul>
+<h3 id="optional_4">Optional<a class="headerlink" href="#optional_4" title="Permanent link">&para;</a></h3>
+<p>The optional properties accepted as arguments for <code>importFromDataset</code></p>
+<dl>
+  <dt>graphMap</dt>
+  <dd>Argument `<code>graphMap</code>` optionally is an object with keys and values that implements a mapping from existing graph names (keys) to newly created graph names (values). Each key must be an existing graph name in the `from` dataset. Each value must be the corresponding graph name in this dataset. If this argument is not specified, then graph names in the `from` dataset are identical to graph names in this dataset. Note that either graphNames or graphMap can be given as optional argument and not both.</dd>
+  <dt>graphNames</dt>
+  <dd>Argument `<code>graphNames</code>` optionally is an array of graph names. These names can be one of three types: 'string', instances of a 'Graph' class, or instances of 'NamedNodes'. Note that either graphNames or graphMap can be given as optional argument and not both.</dd>
+  <dt>overwrite</dt>
+  <dd>Accepts a Boolean value. An optional property that determines whether existing graph names in this dataset are allowed to be silently overwritten. If this argument is not specified, then `false` is used as the default value.</dd>
+</dl>
+
+<h3 id="examples_18">Examples<a class="headerlink" href="#examples_18" title="Permanent link">&para;</a></h3>
+<p>The following snippet creates a new dataset (<code>newDataset</code>) and imports one graph from an existing dataset (<code>existingDataset</code>). Notice that the graph can be renamed as part of the import.</p>
+<p><strong>Example 1</strong>
+Imports the complete <code>'existingDataset'</code> dataset to the <code>'newDataset'</code>.</p>
+<pre><code class="language-ts">const account = await triply.getAccount()
+const existingDataset = await account.getDataset('existingDataset')
+const newDataset = await account.addDataset('newDataset')
+await newDataset.importFromDataset(existingDataset)
+</code></pre>
+<p><strong>Example 2</strong>
+Imports <code>'anotherDataset'</code> dataset to a <code>'newDataset'</code> Where a graph from the existing dataset is renamed to the a graphname in the new dataset. Only the graphs from the graphMap are imported.</p>
+<pre><code class="language-ts">const account = await triply.getAccount()
+const anotherDataset = await account.getDataset('anotherDataset')
+const newDataset = await account.addDataset('newDataset')
+await newDataset.importFromDataset(anotherDataset, { graphMap:
+  { 'https://example.org/existingDataset/graph':  'https://example.org/newDataset/graph'}
+})
+</code></pre>
+<p><strong>Example 3</strong>
+Import <code>'oneMoreDataset'</code> dataset to the <code>'newDataset'</code> Where a graph specific graph from the existing dataset is added to the new dataset. If the graph name already occurs in the <code>'newDataset'</code> it will get overwritten.</p>
+<pre><code class="language-ts">const account = await triply.getAccount()
+const oneMoreDataset = await account.getDataset('oneMoreDataset')
+const newDataset = await account.addDataset('newDataset')
+await newDataset.importFromDataset(oneMoreDataset, {
+  graphNames: ['https://example.org/existingDataset/graph'],
+  overwrite: true,
+})
+</code></pre>
+<h2 id="datasetimportfromfilesfiles-liststring-file-defaultsconfig-object">Dataset.importFromFiles(files: list(string || File), defaultsConfig?: object)<a class="headerlink" href="#datasetimportfromfilesfiles-liststring-file-defaultsconfig-object" title="Permanent link">&para;</a></h2>
+<h3 id="required_3">Required<a class="headerlink" href="#required_3" title="Permanent link">&para;</a></h3>
+<p>Imports one or more files into this dataset.</p>
+<p>The files must contain RDF data.</p>
+<p><strong>Optional: defaultsConfig: object</strong></p>
+<dl>
+  <dt><code>defaultGraphName</code></dt>
+  <dd>Accepts a <code>string</code> value that is set as the default graph name for each imported file</dd>
+  <dt><code>baseIRI</code></dt>
+  <dd>Accepts a <code>string</code> value that is set as the default baseIRI for each imported file</dd>
+  <dt><code>overwriteAll</code></dt>
+  <dd>Accepts a <code>boolean</code> value that overwrites previously added graph names or baseIRIs (regardless of whether they came from a URL or a file)</dd>
+  <dt>mergeGraphs</dt>
+  <dd>Accepts a Boolean value. An optional property that determines whether existing graph in this dataset are merged with the imported graphs. If this argument is not specified, then `false` is used as the default value.</dd>
+</dl>
+
+<h3 id="supported-files">Supported files<a class="headerlink" href="#supported-files" title="Permanent link">&para;</a></h3>
+<p>The files must contain RDF data and must be encoded in one of the following standardized RDF serialization formats: N-Quads, N-Triples, TriG, Turtle.</p>
+<h3 id="examples_19">Examples<a class="headerlink" href="#examples_19" title="Permanent link">&para;</a></h3>
+<p>Example 1</p>
+<pre><code class="language-ts">const account = await triply.getAccount('Triply')
+const dataset = await account.getDataset(iris)
+await dataset.importFromFiles('test.nt')
+await dataset.importFromFiles(['file.nq', 'file.tar.gz'])
+</code></pre>
+<p>Example 2</p>
+<pre><code class="language-ts">const account = await triply.getAccount('Triply')
+const dataset = await account.getDataset(iris)
+await dataset.importFromFiles('test.nt')
+await dataset.importFromFiles(['file.nq', 'file.tar.gz'], {
+  defaultGraphName: 'https://triplydb.com/Triply/example/graph/default',
+  overwriteAll: true,
+})
+</code></pre>
+<h2 id="datasetimportfromstorestore-n3store-defaultsconfig-object">Dataset.importFromStore(store: n3.Store, defaultsConfig?: object)<a class="headerlink" href="#datasetimportfromstorestore-n3store-defaultsconfig-object" title="Permanent link">&para;</a></h2>
+<p>One of the most complete libraries for handling linked data in memory is the <a href="https://rdf.js.org/N3.js/docs/N3Store.html">n3 library</a>. The N3.js library is an implementation of the RDF.js low-level specification that lets you handle RDF in JavaScript easily, with an asynchronous, streaming approach.</p>
+<p>To reduce the overhead of converting your data from the N3 Store to a file and uploading to TriplyDB. TriplyDB.js has a <code>importFromStore()</code> where a N3 store is given as first argument and uploaded directly to triplyDB.</p>
+<h3 id="examples_20">Examples<a class="headerlink" href="#examples_20" title="Permanent link">&para;</a></h3>
+<pre><code class="language-ts">const store = new Store()
+store.addQuad(DataFactory.namedNode('https://triplydb.com/id/me'),DataFactory.namedNode('http://www.w3.org/2000/01/rdf-schema#label'),DataFactory.literal('me'),DataFactory.namedNode('https://triplydb.com/Triply/example/graph/default'))
+
+const triply = App.get({ token: process.env.TOKEN })
+const user = await triply.getUser()
+const dataset = (await user.getDatasets().toArray())[0]
+dataset.importFromStore(store)
+</code></pre>
+<h2 id="datasetimportfromurlsurls-liststring-defaultsconfig-object">Dataset.importFromUrls(urls: list(string), defaultsConfig?: object)<a class="headerlink" href="#datasetimportfromurlsurls-liststring-defaultsconfig-object" title="Permanent link">&para;</a></h2>
+<h3 id="required_4">Required<a class="headerlink" href="#required_4" title="Permanent link">&para;</a></h3>
+<p>Imports one or more URLs into this dataset.</p>
+<p>The URLs must provide access to RDF data.</p>
+<p><strong>Optional: defaultsConfig: object</strong></p>
+<dl>
+  <dt><code>defaultGraphName</code></dt>
+  <dd>Accepts a <code>string</code> value that is set as the default graph name for each imported URL</dd>
+  <dt><code>baseIRI</code></dt>
+  <dd>Accepts a <code>string</code> value that is set as the default baseIRI for each imported URL</dd>
+  <dt><code>overwriteAll</code></dt>
+  <dd>Accepts a <code>boolean</code> value that overwrites previously added graph names or baseIRIs (regardless of whether they came from a URL or a file)</dd>
+</dl>
+
+<h3 id="examples_21">Examples<a class="headerlink" href="#examples_21" title="Permanent link">&para;</a></h3>
+<pre><code class="language-ts">dataset1.importFromUrls(['url1', 'url2', 'url3'])
+</code></pre>
+<h2 id="datasetremoveallgraphs">Dataset.removeAllGraphs()<a class="headerlink" href="#datasetremoveallgraphs" title="Permanent link">&para;</a></h2>
+<p>Removes all graphs from this dataset.</p>
+<h3 id="examples_22">Examples<a class="headerlink" href="#examples_22" title="Permanent link">&para;</a></h3>
+<p>The following snippet removed all graphs from a specific dataset:</p>
+<pre><code class="language-ts">const user = await triply.getUser()
+const dataset = await user.getDataset('my-dataset')
+await dataset.removeAllGraphs()
+</code></pre>
+<h2 id="datasetremoveprefixesprefixes-string">Dataset.removePrefixes(prefixes: string[])<a class="headerlink" href="#datasetremoveprefixesprefixes-string" title="Permanent link">&para;</a></h2>
+<p>Removes IRI prefixes from this dataset.</p>
+<p>The <code>prefixes</code> argument is a string array, containing the prefix labels to be removed.</p>
+<h3 id="examples_23">Examples<a class="headerlink" href="#examples_23" title="Permanent link">&para;</a></h3>
+<p>The following snippet removes the <code>def</code> and <code>id</code> prefixes from the specified dataset.</p>
+<pre><code class="language-ts">const account = await triply.getAccount()
+const dataset = await account.getDataset('my-dataset')
+await dataset.removePrefixes(['def', 'id'])
+</code></pre>
+<h2 id="datasetrenamegraphfrom-string-to-string">Dataset.renameGraph(from: string, to: string)<a class="headerlink" href="#datasetrenamegraphfrom-string-to-string" title="Permanent link">&para;</a></h2>
+<p>Renames a graph of this dataset, where <code>from</code> is the current graph name and <code>to</code> is the new graph name. The string arguments for <code>from</code> and <code>to</code> must be valid IRIs.</p>
+<h3 id="examples_24">Examples<a class="headerlink" href="#examples_24" title="Permanent link">&para;</a></h3>
+<p>The following snippet renames a specific graph of a specific dataset:</p>
+<pre><code class="language-ts">const account = await triply.getAccount()
+const dataset = await account.getDataset('my-dataset')
+await dataset.renameGraph(
+  'https://example.org/old-graph',
+  'https://example.org/new-graph'
+)
+</code></pre>
+<h2 id="datasetupdatemetadata-object">Dataset.update(metadata: object)<a class="headerlink" href="#datasetupdatemetadata-object" title="Permanent link">&para;</a></h2>
+<p>Updates the metadata for this dataset.</p>
+<h3 id="arguments_3">Arguments<a class="headerlink" href="#arguments_3" title="Permanent link">&para;</a></h3>
+<p>The <code>metadata</code> argument takes a dictionary object with the following optional keys:</p>
+<p><strong>Required:</strong></p>
+<dl>
+  <dt><code>accessLevel</code> </dt>
+  <dd>
+    <p>The access level of the dataset. The following values are supported:</p>
+    <dl>
+      <dt><code>'private'</code></dt>
+      <dd>The dataset can only be accessed by the <a href='#account'><code>Account</code></a> object for which it is created.</dd>
+      <dt><code>'internal'</code></dt>
+      <dd>The dataset can only be accessed by people who are logged into the TriplyDB server.
+      <dt><code>'public'</code></dt>
+      <dd>The dataset can be accessed by everybody.</dd>
+    </dl>
+  </dd>
+</dl>
+
+<p><strong>Optional:</strong></p>
+<dl>
+  <dt><code>description</code> </dt>
+  <dd>The description of the dataset. This description can make use of Markdown.</dd>
+
+  <dt><code>displayName</code> </dt>
+  <dd>The human-readable name of the dataset. This name may contain spaces and other characters that are not allowed in the URL-friendly name.</dd>
+
+  <dt><code>license</code> </dt>
+  <dd>
+    The license of the dataset. The following license strings are currently supported:
+    <ul>
+      <li><code>'CC-BY-SA'</code></li>
+      <li><code>'CC0 1.0'</code></li>
+      <li><code>'GFDL'</code></li>
+      <li><code>'ODC-By'</code></li>
+      <li><code>'ODC-ODbL'</code></li>
+      <li><code>'PDDL'</code></li>
+    </ul>
+  </dd>
+</dl>
+
+<h3 id="example_1">Example<a class="headerlink" href="#example_1" title="Permanent link">&para;</a></h3>
+<p>The following snippet updates the dataset's access level, description, display name and license:</p>
+<pre><code class="language-ts">const account = await triply.getAccount()
+const dataset = await account.getDataset('my-dataset')
+dataset.update({
+  accessLevel: 'private',
+  description: 'desc',
+  displayName: 'disp',
+  license: 'PDDL',
+})
+</code></pre>
+<h2 id="datasetuploadasset-filepath-string-opts-mode-throw-if-exists-replace-if-exists-append-version-name-string">Dataset.uploadAsset( filePath: string, opts?: {mode?: 'throw-if-exists'| 'replace-if-exists'| 'append-version', name?: string})<a class="headerlink" href="#datasetuploadasset-filepath-string-opts-mode-throw-if-exists-replace-if-exists-append-version-name-string" title="Permanent link">&para;</a></h2>
+<p>Uploads a file that does not contain RDF data as an asset. You can specify the name on the asset and what to do if the asset already exists (throws an error by default).</p>
+<h3 id="user-cases">User cases<a class="headerlink" href="#user-cases" title="Permanent link">&para;</a></h3>
+<p>There are several use cases for assets:</p>
+<ul>
+<li>
+<p>Source data that will be used as input files to an ETL process.</p>
+</li>
+<li>
+<p>Documentation files that describe the dataset.</p>
+</li>
+<li>
+<p>Media files (audio/image/video) that are described in the RDF graph.</p>
+</li>
+</ul>
+<h3 id="examples_25">Examples<a class="headerlink" href="#examples_25" title="Permanent link">&para;</a></h3>
+<p>The following snippet uploads a source CSV data file and a PDF documentation file:</p>
+<pre><code class="language-ts">const account = await triply.getAccount()
+const dataset = await account.getDataset('my-dataset')
+await dataset.uploadAsset('my-source-data', {name: 'source.csv.gz'})
+await dataset.uploadAsset('my-documentation', {name: 'documentation.pdf'})
+await dataset.uploadAsset('my-documentation', {mode:'append-version', name: 'documentation.pdf'})
+
+</code></pre>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../asset/" class="btn btn-neutral float-left" title="Asset"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../graph/" class="btn btn-neutral float-right" title="Graph">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../asset/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../graph/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script>var base_url = '../..';</script>
+      <script src="../../js/triply.js" defer></script>
+      <script src="../../js/highlight.min.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+
+</body>
+</html>

@@ -1,0 +1,1385 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <meta name="description" content="The official documentation for the Triply products: TriplyDB, TriplyDB.js, and TriplyETL." />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Triply API - Triply Documentation</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link href="../css/intellij-light.css" rel="stylesheet" />
+        <link href="../css/triply.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "API";
+        var mkdocs_page_input_path = "triply-api/index.md";
+        var mkdocs_page_url = null;
+      </script>
+     
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> Triply Documentation
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">TriplyDB</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="#">Getting started</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../triply-db-getting-started/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../triply-db-getting-started/uploading-data/">Uploading Data</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../triply-db-getting-started/editing-data/">Editing (SKOS) Data</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../triply-db-getting-started/publishing-data/">Sharing Data</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../triply-db-getting-started/viewing-data/">Viewing Data</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../triply-db-getting-started/exporting-data/">Exporting Data</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../triply-db-getting-started/saved-queries/">Saved Queries</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../triply-db-getting-started/data-stories/">Data Stories</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../triply-db-getting-started/admin-settings-pages/">Admin Settings Pages</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../triply-db-getting-started/reference/">Reference</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="./">API</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#authentication">Authentication</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#creating-an-api-token">Creating an API token</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#using-the-api-token">Using the API token</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#important-security-considerations">Important Security Considerations</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#exporting-linked-data">Exporting linked data</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#datasets">Datasets</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#create-a-dataset">Create a dataset</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#upload-linked-data">Upload linked data</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#upload-assets">Upload assets</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#accounts">Accounts</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#queries">Queries</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#query-metadata-grlc">Query metadata (GRLC)</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#ld-browser-api">LD Browser API</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#triple-pattern-fragments-tpf">Triple Pattern Fragments (TPF)</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#uri-path">URI path</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#reply-format">Reply format</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#query-parameters">Query parameters</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#example-request">Example request</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#exporting-data">Exporting data</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#query-parameters_1">Query parameters</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#example-requests">Example requests</a>
+    </li>
+        </ul>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#services">Services</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#create-a-service">Create a service</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#synchronize-a-service">Synchronize a service</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#sparql">SPARQL</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#sending-a-sparql-query-request">Sending a SPARQL Query request</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#sparql-query-result-formats">SPARQL Query result formats</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#examples-of-sparql-query-requests">Examples of SPARQL Query requests</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#get-request">GET request</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#url-encoded-post-request">URL-encoded POST request</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#direct-post-request">Direct POST request</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#sparql-json">SPARQL JSON</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#sparql-xml">SPARQL XML</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#sparql-tab-separated-values">SPARQL tab-separated values</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#sparql-comma-separated-values">SPARQL comma-separated values</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#json-ld">JSON-LD</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#n-quads">N-Quads</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#n-triples">N-Triples</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#trig">TriG</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#turtle">Turtle</a>
+    </li>
+        </ul>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#graphql">GraphQL</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#uri-path_1">URI path</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#requests-and-response">Requests and Response</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#example">Example</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#elasticsearch">Elasticsearch</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#uri-path_2">URI path</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#reply-format_1">Reply format</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#examples">Examples</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#simple-search">Simple search</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#custom-search">Custom search</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#count-api">Count API</a>
+    </li>
+        </ul>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#setting-up-index-templates-for-elasticsearch">Setting up index templates for ElasticSearch</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#index-templates">Index templates</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#component-templates">Component templates</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">TriplyDB-JS</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../triplydb-js/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../triplydb-js/app/">App</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../triplydb-js/account/">Account</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../triplydb-js/asset/">Asset</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../triplydb-js/dataset/">Dataset</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../triplydb-js/graph/">Graph</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../triplydb-js/organization/">Organization</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../triplydb-js/query/">Query</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../triplydb-js/service/">Service</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../triplydb-js/story/">Story</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../triplydb-js/user/">User</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../triplydb-js/faq/">FAQ</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../triply-cli/">Command-line Interface</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../triplydb-changelog/">Changelog</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">TriplyETL</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Generic</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../triply-etl/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../triply-etl/generic/getting-started/">Getting Started</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../triply-etl/generic/changelog/">Changelog</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../triply-etl/generic/cli/">Command Line Interface (CLI)</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../triply-etl/generic/declarations/">Declarations</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../triply-etl/generic/control-structures/">Control Structures</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../triply-etl/generic/debug/">Debug</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../triply-etl/generic/internal-store/">Internal Store</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../triply-etl/generic/maintenance/">Maintenance</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../triply-etl/generic/record/">Record</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../triply-etl/generic/vocabularies/">Vocabularies</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Sources</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../triply-etl/sources/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../triply-etl/sources/apis/">APIs</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../triply-etl/sources/inline-json/">Inline JSON</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../triply-etl/sources/inline-strings/">Inline Strings</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../triply-etl/sources/local-files/">Local Files</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../triply-etl/sources/online-files/">Online Files</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../triply-etl/sources/rml/">RML Sources</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../triply-etl/sources/triplydb-assets/">TriplyDB Assets</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../triply-etl/sources/triplydb-datasets/">TriplyDB Datasets</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../triply-etl/sources/triplydb-queries/">TriplyDB Queries</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Extract</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../triply-etl/extract/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../triply-etl/extract/csv/">CSV</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../triply-etl/extract/json/">JSON</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../triply-etl/extract/oai-pmh/">OAI-PMH</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../triply-etl/extract/postgres/">Postgres</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../triply-etl/extract/rdf/">RDF</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../triply-etl/extract/shapefile/">Shapefile</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../triply-etl/extract/tsv/">TSV</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../triply-etl/extract/xlsx/">XLSX</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../triply-etl/extract/xml/">XML</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Transform</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../triply-etl/transform/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../triply-etl/transform/ratt/">RATT</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../triply-etl/transform/rml/">RML</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../triply-etl/transform/typescript/">TypeScript</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../triply-etl/transform/xslt/">XSLT</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Assert</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../triply-etl/assert/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../triply-etl/assert/json-ld/">JSON-LD</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="#">RATT</a>
+    <ul>
+                <li class="toctree-l3"><a class="reference internal" href="../triply-etl/assert/ratt/terms/">RATT Terms</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../triply-etl/assert/ratt/statements/">RATT Statements</a>
+                </li>
+    </ul>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../triply-etl/assert/rml/">RML</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../triply-etl/assert/xslt/">XSLT</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Enrich</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../triply-etl/enrich/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="#">SHACL</a>
+    <ul>
+                <li class="toctree-l3"><a class="reference internal" href="../triply-etl/enrich/shacl/">Overview</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../triply-etl/enrich/shacl/triple-rules/">Triple Rules</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../triply-etl/enrich/shacl/sparql-rules/">SPARQL Rules</a>
+                </li>
+    </ul>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="#">SPARQL</a>
+    <ul>
+                <li class="toctree-l3"><a class="reference internal" href="../triply-etl/enrich/sparql/construct/">SPARQL Construct</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../triply-etl/enrich/sparql/update/">SPARQL Update</a>
+                </li>
+    </ul>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Validate</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../triply-etl/validate/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../triply-etl/validate/graph-comparison/">Graph Comparison</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../triply-etl/validate/shacl/">SHACL</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../triply-etl/publish/">Publish</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Yasgui</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../yasgui/">Introduction</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../yasgui-api/">For Developers</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">Triply Documentation</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">TriplyDB</li>
+      <li class="breadcrumb-item active">API</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <div class="toc"><span class="toctitle">On this page:</span><ul>
+<li><a href="#triply-api">Triply API</a><ul>
+<li><a href="#authentication">Authentication</a><ul>
+<li><a href="#creating-an-api-token">Creating an API token</a></li>
+<li><a href="#using-the-api-token">Using the API token</a></li>
+<li><a href="#important-security-considerations">Important Security Considerations</a></li>
+</ul>
+</li>
+<li><a href="#exporting-linked-data">Exporting linked data</a></li>
+<li><a href="#datasets">Datasets</a><ul>
+<li><a href="#create-a-dataset">Create a dataset</a></li>
+<li><a href="#upload-linked-data">Upload linked data</a></li>
+<li><a href="#upload-assets">Upload assets</a></li>
+</ul>
+</li>
+<li><a href="#accounts">Accounts</a></li>
+<li><a href="#queries">Queries</a><ul>
+<li><a href="#query-metadata-grlc">Query metadata (GRLC)</a></li>
+</ul>
+</li>
+<li><a href="#ld-browser-api">LD Browser API</a></li>
+<li><a href="#triple-pattern-fragments-tpf">Triple Pattern Fragments (TPF)</a><ul>
+<li><a href="#uri-path">URI path</a></li>
+<li><a href="#reply-format">Reply format</a><ul>
+<li><a href="#query-parameters">Query parameters</a></li>
+<li><a href="#example-request">Example request</a></li>
+</ul>
+</li>
+<li><a href="#exporting-data">Exporting data</a><ul>
+<li><a href="#query-parameters_1">Query parameters</a></li>
+<li><a href="#example-requests">Example requests</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#services">Services</a><ul>
+<li><a href="#create-a-service">Create a service</a></li>
+<li><a href="#synchronize-a-service">Synchronize a service</a></li>
+</ul>
+</li>
+<li><a href="#sparql">SPARQL</a><ul>
+<li><a href="#sending-a-sparql-query-request">Sending a SPARQL Query request</a></li>
+<li><a href="#sparql-query-result-formats">SPARQL Query result formats</a></li>
+<li><a href="#examples-of-sparql-query-requests">Examples of SPARQL Query requests</a></li>
+<li><a href="#get-request">GET request</a></li>
+<li><a href="#url-encoded-post-request">URL-encoded POST request</a></li>
+<li><a href="#direct-post-request">Direct POST request</a><ul>
+<li><a href="#sparql-json">SPARQL JSON</a></li>
+<li><a href="#sparql-xml">SPARQL XML</a></li>
+<li><a href="#sparql-tab-separated-values">SPARQL tab-separated values</a></li>
+<li><a href="#sparql-comma-separated-values">SPARQL comma-separated values</a></li>
+<li><a href="#json-ld">JSON-LD</a></li>
+<li><a href="#n-quads">N-Quads</a></li>
+<li><a href="#n-triples">N-Triples</a></li>
+<li><a href="#trig">TriG</a></li>
+<li><a href="#turtle">Turtle</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#graphql">GraphQL</a><ul>
+<li><a href="#uri-path_1">URI path</a></li>
+<li><a href="#requests-and-response">Requests and Response</a></li>
+<li><a href="#example">Example</a></li>
+</ul>
+</li>
+<li><a href="#elasticsearch">Elasticsearch</a><ul>
+<li><a href="#uri-path_2">URI path</a></li>
+<li><a href="#reply-format_1">Reply format</a></li>
+<li><a href="#examples">Examples</a><ul>
+<li><a href="#simple-search">Simple search</a></li>
+<li><a href="#custom-search">Custom search</a></li>
+<li><a href="#count-api">Count API</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#setting-up-index-templates-for-elasticsearch">Setting up index templates for ElasticSearch</a><ul>
+<li><a href="#index-templates">Index templates</a></li>
+<li><a href="#component-templates">Component templates</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<h1 id="triply-api">Triply API<a class="headerlink" href="#triply-api" title="Permanent link">&para;</a></h1>
+<p>Each Triply instance has a fully RESTful API. All functionality, from managing
+the Triply instance to working with your data, is done through the API. This
+document describes the general setup of the API, contact
+<a href="mailto:support@triply.cc">support@triply.cc</a> for more information.</p>
+<h2 id="authentication">Authentication<a class="headerlink" href="#authentication" title="Permanent link">&para;</a></h2>
+<p>When a dataset is published publicly, most of the read operation on
+that dataset can be performed without authentication.</p>
+<p>Write operations and read operations on datasets that are published
+internally or privately require authentication.</p>
+<h3 id="creating-an-api-token">Creating an API token<a class="headerlink" href="#creating-an-api-token" title="Permanent link">&para;</a></h3>
+<p>Authentication is implemented through API tokens. An API token can be
+created within the TriplyDB UI in the following way:</p>
+<ol>
+<li>Log into your TriplyDB instance.</li>
+<li>Click on the user menu in the top-right corner and click on “User settings”.</li>
+<li>Go to the “API tokens” tab.</li>
+<li>Click the “Create token” button, enter a description for the
+   token (e.g., “test-token”) and select the appropriate access
+   rights.</li>
+<li>Click on “Create” and copy the created API token (a lengthy
+   string of characters). This string is only shown once, upon
+   creation, and must not be shared with others. (Other users
+   can create their own token in the here described way.)</li>
+</ol>
+<h3 id="using-the-api-token">Using the API token<a class="headerlink" href="#using-the-api-token" title="Permanent link">&para;</a></h3>
+<p>API tokens are used by specifying them in an HTTP request header as
+follows:</p>
+<pre><code class="language-none">Authorization: Bearer TOKEN
+</code></pre>
+<p>In the above, <code>TOKEN</code> should be replaced by your personal API token (a
+lengthy sequence of characters). See <a href="#creating-an-api-token">Creating an API token</a> for
+information on how to create an API token.</p>
+<h3 id="important-security-considerations">Important Security Considerations<a class="headerlink" href="#important-security-considerations" title="Permanent link">&para;</a></h3>
+<ul>
+<li>
+<p><strong>Do Not Commit Your Token to a Git Repository</strong>: Under no circumstances should you commit your TriplyDB token to a Git repository. This practice is not allowed according to our ISO standards.</p>
+</li>
+<li>
+<p><strong>Do Not Share Your Token: Avoid sharing your TriplyDB token with anyone who should not have access to your TriplyDB resources</strong>. Tokens should be treated as sensitive information and shared only with trusted parties.</p>
+</li>
+<li>
+<p><strong>Change Tokens Regularly</strong>: To enhance security, consider regularly generating a new token to replace the existing one especially if you suspect any compromise.</p>
+</li>
+</ul>
+<h2 id="exporting-linked-data">Exporting linked data<a class="headerlink" href="#exporting-linked-data" title="Permanent link">&para;</a></h2>
+<p>Every TriplyDB API path that returns linked data provides a number of serializations to choose from. We support the following serializations:</p>
+<table>
+<thead>
+<tr>
+<th>Serialization</th>
+<th>Media type</th>
+<th>File extension</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://www.w3.org/TR/trig/">TriG</a></td>
+<td><code>application/trig</code></td>
+<td><code>.trig</code></td>
+</tr>
+<tr>
+<td><a href="https://www.w3.org/TR/n-triples/">N-Triples</a></td>
+<td><code>application/n-triples</code></td>
+<td><code>.nt</code></td>
+</tr>
+<tr>
+<td><a href="https://www.w3.org/TR/n-quads/">N-Quads</a></td>
+<td><code>application/n-quads</code></td>
+<td><code>.nq</code></td>
+</tr>
+<tr>
+<td><a href="https://www.w3.org/TR/turtle/">Turtle</a></td>
+<td><code>text/turtle</code></td>
+<td><code>.ttl</code></td>
+</tr>
+<tr>
+<td><a href="https://json-ld.org/spec/latest/json-ld/">JSON-LD</a></td>
+<td><code>application/ld+json</code></td>
+<td><code>.jsonld</code></td>
+</tr>
+</tbody>
+</table>
+<p>To request a serialization, use one of the following mechanisms:</p>
+<ol>
+<li>Add an <code>Accept</code> header to the request. E.g. <code>Accept: application/n-triples</code></li>
+<li>Add the extension to the URL path. E.g. https://api.triplydb.com/datasets/Triply/iris/download.nt</li>
+</ol>
+<h2 id="datasets">Datasets<a class="headerlink" href="#datasets" title="Permanent link">&para;</a></h2>
+<p>Triply API requests are always directed towards a specific URI path. URI paths will often have the following form:</p>
+<pre><code class="language-none">https://api.INSTANCE/datasets/ACCOUNT/DATASET/
+</code></pre>
+<p>Upper-case letter words must be replaced by the following values:</p>
+<ul>
+<li><code>INSTANCE</code> :: The host name of the TriplyDB instance that you want to use.</li>
+<li><code>ACCOUNT</code> :: The name of a specific user or a specific organization.</li>
+<li><code>DATASET</code> :: The name of a specific dataset.</li>
+</ul>
+<p>Here is an example of a URI path that points to the Triply API for the Pokémon dataset:</p>
+<pre><code class="language-none">https://api.triplydb.com/datasets/academy/pokemon/
+</code></pre>
+<h3 id="create-a-dataset">Create a dataset<a class="headerlink" href="#create-a-dataset" title="Permanent link">&para;</a></h3>
+<p>You can create a new dataset via the Triply API. You need to <a href="#using-the-api-token">use the API Token</a> and send an HTTP POST request with data specifying: <code>name</code>, <code>accessLevel</code> and <code>displayName</code>.</p>
+<p>The  example of the URI:</p>
+<pre><code class="language-sh">curl -H 'Authorization: Bearer TOKEN' -H 'Content-Type: application/json' -X POST https://api.INSTANCE/datasets/ACCOUNT/ -d '{&quot;name&quot;: &quot;NAME&quot;, &quot;accessLevel&quot;: &quot;ACCESS_LEVEL&quot;, &quot;displayName&quot;: &quot;DISPLAY_NAME&quot;}'
+
+</code></pre>
+<p>Upper-case letter words in json after <code>-d</code> must be replaced by the following values:</p>
+<ul>
+<li><code>NAME</code> :: The name of the dataset in the url.</li>
+<li><code>ACCESS_LEVEL</code> ::  <em>public</em>, <em>private</em> or <em>internal</em>. For more information visit <a href="../triply-db-getting-started/reference/#access-levels">Access levels in TriplyDB</a>.</li>
+<li><code>DISPLAY_NAME</code> :: The display name of the dataset.</li>
+</ul>
+<h3 id="upload-linked-data">Upload linked data<a class="headerlink" href="#upload-linked-data" title="Permanent link">&para;</a></h3>
+<p>You can upload linked data via the Triply API. You need to <a href="#using-the-api-token">use the API Token</a> and send an HTTP POST request with data specifying the local file path.
+The list of supported file extensions can be checked in <a href="../triply-db-getting-started/uploading-data/#adding-data-file-upload">Adding data: File upload</a> documentation.</p>
+<p>The example of such a request:</p>
+<pre><code class="language-sh">curl -H 'Authorization: Bearer TOKEN' -X POST https://api.INSTANCE/datasets/ACCOUNT/DATASET/jobs  -F file=@FILENAME
+</code></pre>
+<p>Upper-case letter words must be replaced by the following values:</p>
+<ul>
+<li><code>TOKEN</code> :: Your TriplyDB token.</li>
+<li><code>INSTANCE</code> :: The domain of your instance</li>
+<li><code>ACCOUNT</code> :: Your account name</li>
+<li><code>DATASET</code> :: The dataset name</li>
+<li><code>FILENAME</code> :: The path to the file you want to upload</li>
+</ul>
+<p>A request looks like this:</p>
+<pre><code class="language-sh">curl -H 'Authorization: Bearer xxxxxx' -X POST https://api.triplydb.com/datasets/my-account-name/my-dataset-name/jobs  -F file=@./myfile.trig
+</code></pre>
+<p><strong>Limitations</strong>: We only support this API route for uploads less than 5MB. To upload more data, use:</p>
+<ol>
+<li><a href="../triplydb-js/">TriplyDB-JS</a>: See the <code>importFrom*</code> methods under <a href="../triplydb-js/dataset/">the <code>Dataset</code> class</a>.</li>
+<li><a href="../triply-cli/">TriplyDB Command-line Interface</a></li>
+</ol>
+<h3 id="upload-assets">Upload assets<a class="headerlink" href="#upload-assets" title="Permanent link">&para;</a></h3>
+<p>You can upload assets via the Triply API. You need to <a href="#using-the-api-token">use the API Token</a> and send an HTTP POST request with data specifying the local file path.</p>
+<p>To add a new asset:</p>
+<pre><code class="language-sh">curl -H &quot;Authorization: Bearer TOKEN&quot; -X POST https://api.INSTANCE/datasets/ACCOUNT/DATASET/assets -F file=@FILENAME
+</code></pre>
+<p>To add a version to an existing asset:</p>
+<pre><code class="language-sh">curl -H &quot;Authorization: Bearer TOKEN&quot; -X POST https://api.INSTANCE/datasets/ACCOUNT/DATASET/assets/IDENTIFIER -F file=@FILENAME
+</code></pre>
+<p>Upper-case letter words must be replaced by the following values:</p>
+<ul>
+<li><code>TOKEN</code> :: Your TriplyDB token.</li>
+<li><code>INSTANCE</code> :: The domain of your instance</li>
+<li><code>ACCOUNT</code> :: Your account name</li>
+<li><code>DATASET</code> :: The dataset name</li>
+<li><code>IDENTIFIER</code> :: The asset identifier where you'd like to add a new version to.</li>
+<li><code>FILENAME</code> :: The path to the file you want to upload</li>
+</ul>
+<p>This request returns a JSON object, that includes (among other things) an <code>identifier</code> key, which can be used as a persistent identifier for this asset.</p>
+<p>A request to add a new asset looks like this:</p>
+<pre><code class="language-sh">curl -H 'Authorization: Bearer xxxxxx' -X POST https://api.triplydb.com/datasets/my-account-name/my-dataset-name/assets -F file=@./myfile.txt
+</code></pre>
+<p>A request to add a version to an existing asset looks like this:</p>
+<pre><code class="language-sh">curl -H 'Authorization: Bearer xxxxxx' -X POST https://api.triplydb.com/datasets/my-account-name/my-dataset-name/assets/yyyyy -F file=@./myfile.txt
+</code></pre>
+<p><strong>Limitations</strong>: We only support this API route for uploads less than 5MB. To upload more data, use:</p>
+<ol>
+<li><a href="../triplydb-js/">TriplyDB-JS</a>: See the <code>uploadAsset</code> methods under <a href="../triplydb-js/dataset/">the <code>Dataset</code> class</a>.</li>
+<li><a href="../triply-cli/">TriplyDB Command-line Interface</a></li>
+</ol>
+<h2 id="accounts">Accounts<a class="headerlink" href="#accounts" title="Permanent link">&para;</a></h2>
+<p>Information about TriplyDB accounts (organizations and users) can be retrieved from the following API path:</p>
+<pre><code class="language-none">https://api.INSTANCE/accounts
+</code></pre>
+<p>Upper-case letter words must be replaced by the following values:</p>
+<ul>
+<li><code>INSTANCE</code> :: The host name of the TriplyDB instance that you want to use.</li>
+</ul>
+<p>Here is an example of a URI path that points to the Triply API for the Triply organization account:</p>
+<pre><code class="language-none">https://api.triplydb.com/accounts/Triply
+</code></pre>
+<h2 id="queries">Queries<a class="headerlink" href="#queries" title="Permanent link">&para;</a></h2>
+<p>TriplyDB allows users to save SPARQL queries. The metadata for all saved query can be accessed as follows:</p>
+<pre><code class="language-none">https://api.triplydb.com/queries
+</code></pre>
+<p>By adding an account name (for example: 'Triply'), metadata for all saved queries for that account can be accessed as follows:</p>
+<pre><code class="language-none">https://api.triplydb.com/queries/Triply
+</code></pre>
+<p>By adding an account name and a query name (for example: 'Triply/flower-length'), metadata for one specific saved query can be accessed as follows:</p>
+<pre><code class="language-none">https://api.triplydb.com/queries/Triply/flower-length
+</code></pre>
+<h3 id="query-metadata-grlc">Query metadata (GRLC)<a class="headerlink" href="#query-metadata-grlc" title="Permanent link">&para;</a></h3>
+<p>You can retrieve a text-based version of each query, by requesting the <code>text/plain</code> content type:</p>
+<pre><code class="language-sh">curl -vL -H 'Accept: text/plain' 'https://api.triplydb.com/queries/JD/pokemonNetwork'
+</code></pre>
+<p>This returns the query string, together with metadata annotations. These metadata annotations use the <a href="https://github.com/CLARIAH/grlc">GRLC format</a>. For example:</p>
+<pre><code class="language-sparql">#+ description: This query shows a small subgraph from the Pokemon dataset.
+#+ endpoint: https://api.triplydb.com/datasets/academy/pokemon/services/pokemon/sparql
+#+ endpoint_in_url: false
+construct where { ?s ?p ?o. }
+limit 100
+</code></pre>
+<p>Notice that the GRLC annotations are encoded in SPARQL comments, i.e. lines that start with the hash character (<code>#</code>). This makes the result immediately usable as a SPARQL query.</p>
+<p>The above example includes the following GRLC annotations:</p>
+<ul>
+<li><code>description</code> gives a human-readable description of the meaning of the query. This typically includes an explanation of the purpose or goal for which this query is used, the content returned, or the process or task in which this query is used.</li>
+<li><code>endpoint</code> The URL of the SPARQL endpoint where queries are sent to.</li>
+<li><code>endpoint_in_url</code> configures whether the URL of the SPARQL endpoint should be specified through the API. In TriplyDB, this configuration is by default set to <code>false</code>. (Users of the RESTful API typically expect domain parameters such as <code>countryName</code> or <code>maximumAge</code>, but they do not necessarily expect technical parameters like an endpoint URL.)</li>
+</ul>
+<h2 id="ld-browser-api">LD Browser API<a class="headerlink" href="#ld-browser-api" title="Permanent link">&para;</a></h2>
+<p>Triply APIs provide a convenient way to access data used by <a href="../triply-db-getting-started/viewing-data/#linked-data-browser">LD Browser</a>, which offers a comprehensive overview of a specific IRI. By using Triply API for a specific IRI, you can retrieve the associated 'document' in the <code>.nt</code> format that describes the IRI.</p>
+<p>To make an API request for a specific instance, you can use the following URI path:</p>
+<pre><code class="language-iri">https://api.triplydb.com/datasets/ACCOUNT/DATASET/describe.nt?resource=RESOURCE
+</code></pre>
+<p>To illustrate this, let's take the example of the DBpedia dataset and the <a href="https://triplydb.com/DBpedia-association/dbpedia/browser?resource=http%3A%2F%2Fdbpedia.org%2Fresource%2FMona_Lisa">specific instance of 'Mona Lisa'</a>. If you use this URI path:</p>
+<pre><code class="language-iri">https://api.triplydb.com/datasets/DBpedia-association/dbpedia/describe.nt?resource=http%3A%2F%2Fdbpedia.org%2Fresource%2FMona_Lisa
+</code></pre>
+<p>In your browser, the <code>.nt</code> document describing the 'Mona Lisa' instance will be automatically downloaded. You can then upload this file to a dataset and <a href="../yasgui/#network-triplydb-plugin">visualize it in a graph</a>. Figure 1 illustrates the retrieved graph for the ‘Mona Lisa’ instance.</p>
+<p><img alt="Figure 1" src="../assets/MonaLisaGraph.png" /></p>
+<p>The requested resource will be displayed in the center of the graph, forming an 'ego graph'. It will include all direct properties, as well as some indirect properties that are also pulled in by LD Browser. The labels for all classes and properties will be included for easy human-readable display.</p>
+<p>In addition, this API also supports traversing blank node-replacing well-known IRIs (CBD style), and limits the number of objects per subject/property to manage the description size. This corresponds to the "Show more" button in the LD Browser GUI, ensuring a manageable and user-friendly experience.</p>
+<h2 id="triple-pattern-fragments-tpf">Triple Pattern Fragments (TPF)<a class="headerlink" href="#triple-pattern-fragments-tpf" title="Permanent link">&para;</a></h2>
+<p>Triple Pattern Fragments (TPF) is a community standard that allows individual linked datasets to be queried for Triple Patterns (TP), a subset of the more complex SPARQL query language. The Triply API implements <a href="http://www.hydra-cg.com/spec/latest/triple-pattern-fragments/">Triple Pattern Fragments</a> version 2019-01-18 and <a href="http://www.hydra-cg.com/spec/latest/linked-data-fragments/">Linked Data Fragments</a> version 2016-06-05.</p>
+<p>The Triple Pattern Fragments (TPF) API is available for all datasets in Triply and does not require running a dedicated service.</p>
+<h3 id="uri-path">URI path<a class="headerlink" href="#uri-path" title="Permanent link">&para;</a></h3>
+<p>TPF requests are sent to the following URI path:</p>
+<pre><code class="language-iri">https://api.INSTANCE/datasets/ACCOUNT/DATATSET/fragments
+</code></pre>
+<h3 id="reply-format">Reply format<a class="headerlink" href="#reply-format" title="Permanent link">&para;</a></h3>
+<p>Since TPF replies distinguish between data and metadata that are stored in different graphs, it is recommended to request the TriG content type with the following HTTP request header:</p>
+<pre><code class="language-http">Accept: application/trig
+</code></pre>
+<h4 id="query-parameters">Query parameters<a class="headerlink" href="#query-parameters" title="Permanent link">&para;</a></h4>
+<p>Triple Pattern Fragments (TPF) uses the following query parameters in order to retrieve only those triples that adhere to a specified Triple Pattern:</p>
+<table>
+<thead>
+<tr>
+<th><em>Key</em></th>
+<th><em>Value</em></th>
+<th><em>Purpose</em></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>subject</code></td>
+<td>A URL-encoded IRI.</td>
+<td>Only return triples where the given IRI appears in the subject position.</td>
+</tr>
+<tr>
+<td><code>predicate</code></td>
+<td>A URL-encoded IRI.</td>
+<td>Only return triples where the given IRI appears in the predicate position.</td>
+</tr>
+<tr>
+<td><code>object</code></td>
+<td>A URL-encoded IRI or literal.</td>
+<td>Only return triples where the given IRI or literal appears in the object position.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="example-request">Example request<a class="headerlink" href="#example-request" title="Permanent link">&para;</a></h4>
+<pre><code class="language-sh">curl -G \
+       'https://api.triplydb.com/datasets/academy/pokemon/fragments' \
+       --data-urlencode 'predicate=http://www.w3.org/2000/01/rdf-schema#label' \
+       -H 'Accept: application/trig'
+</code></pre>
+<h3 id="exporting-data">Exporting data<a class="headerlink" href="#exporting-data" title="Permanent link">&para;</a></h3>
+<p>To export the linked data, use the following path:</p>
+<pre><code class="language-none">https://api.INSTANCE/datasets/ACCOUNT/DATATSET/download
+</code></pre>
+<h4 id="query-parameters_1">Query parameters<a class="headerlink" href="#query-parameters_1" title="Permanent link">&para;</a></h4>
+<p>By default, an export includes all linked data graphs. Use a query argument to specify a particular graph.</p>
+<table>
+<thead>
+<tr>
+<th><em>Key</em></th>
+<th><em>Value</em></th>
+<th><em>Purpose</em></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>graph</code></td>
+<td>A URL-encoded IRI.</td>
+<td>Only download the export of the given graph IRI.</td>
+</tr>
+</tbody>
+</table>
+<p>Therefore, to export the linked data of a <strong>graph</strong>, use the following path:</p>
+<pre><code class="language-iri">https://api.INSTANCE/datasets/ACCOUNT/DATATSET/download/?graph=GRAPH
+</code></pre>
+<p>To find out which graphs are available, use the following path:</p>
+<pre><code class="language-iri">https://api.INSTANCE/datasets/ACCOUNT/DATATSET/graphs
+</code></pre>
+<h4 id="example-requests">Example requests<a class="headerlink" href="#example-requests" title="Permanent link">&para;</a></h4>
+<p>Export a dataset:</p>
+<pre><code class="language-sh">curl 'https://api.triplydb.com/datasets/academy/pokemon/download' \
+       -H 'Accept: application/trig' &gt; exportDataset.trig.gz
+</code></pre>
+<p>Export a graph:</p>
+<p>First, find out which graphs are available:</p>
+<pre><code class="language-sh">curl 'https://api.triplydb.com/datasets/academy/pokemon/graphs'
+</code></pre>
+<p>Then, download one of the graph:</p>
+<pre><code class="language-sh">curl 'curl 'https://api.triplydb.com/datasets/academy/pokemon/download?graph=https://triplydb.com/academy/pokemon/graphs/data' -H 'Accept: application/trig' &gt; exportGraph.trig.gz
+</code></pre>
+<h2 id="services">Services<a class="headerlink" href="#services" title="Permanent link">&para;</a></h2>
+<p>Some API requests require the availability of a specific service over the dataset. These requests are directed towards a URI path of the following form:</p>
+<pre><code class="language-none">https://api.INSTANCE/datasets/ACCOUNT/DATASET/services/SERVICE/
+</code></pre>
+<p>Upper-case letter words must be replaced by the following values:</p>
+<ul>
+<li>
+<p><code>SERVICE</code> :: The name of a specific service that has been started for the corresponding dataset.</p>
+</li>
+<li>
+<p>See the previous section for <a href="#datasets">Datasets</a> to learn the meaning of <code>INSTANCE</code>, <code>ACCOUNT</code>, and <code>DATASET</code>.</p>
+</li>
+</ul>
+<p>Here is an example of a URI path that points to a SPARQL endpoint over the Pokémon dataset:</p>
+<pre><code class="language-none">https://api.triplydb.com/datasets/academy/pokemon/services/pokemon/
+</code></pre>
+<p>See the following sections for more information on how to query the endpoints provided by services:</p>
+<ul>
+<li>
+<p><a href="#sparql">SPARQL</a></p>
+</li>
+<li>
+<p><a href="#elasticsearch">Elasticsearch</a></p>
+</li>
+</ul>
+<h3 id="create-a-service">Create a service<a class="headerlink" href="#create-a-service" title="Permanent link">&para;</a></h3>
+<p>You can create a service for a dataset via TriplyDB API. You need to <a href="#using-the-api-token">use the API Token</a> and send an HTTP POST request with data specifying: <code>"type"</code> and <code>"name"</code>.</p>
+<p>The  example of the URI:</p>
+<pre><code class="language-sh">curl -H 'Authorization: Bearer TOKEN' -H 'Content-Type: application/json' -X POST https://api.INSTANCE/datasets/ACCOUNT/DATASET/services/ -d '{&quot;type&quot;: &quot;TYPE&quot;, &quot;name&quot;: &quot;NAME&quot;}'
+</code></pre>
+<p>Upper-case letter words in json after <code>-d</code> must be replaced by the following values:</p>
+<ul>
+<li>
+<p><code>TYPE</code> :: <a href="#sparql">SPARQL</a> (<code>virtuoso</code> or <code>jena</code>) or <a href="#elasticsearch">Elasticsearch</a></p>
+</li>
+<li>
+<p><code>NAME</code> :: The name of the service</p>
+</li>
+</ul>
+<h3 id="synchronize-a-service">Synchronize a service<a class="headerlink" href="#synchronize-a-service" title="Permanent link">&para;</a></h3>
+<p>You can synchronize existing service for a dataset via TriplyDB API. You need to <a href="#using-the-api-token">use the API Token</a> and send an HTTP POST request with data:</p>
+<pre><code class="language-json">{&quot;sync&quot;: &quot;true&quot;}
+</code></pre>
+<p>The  example of the URI:</p>
+<pre><code class="language-sh">curl -H 'Authorization: Bearer TOKEN' -H 'Content-Type: application/json' -X POST https://api.INSTANCE/datasets/ACCOUNT/DATASET/services/SERVICE -d '{&quot;sync&quot;: &quot;true&quot;}'
+</code></pre>
+<h2 id="sparql">SPARQL<a class="headerlink" href="#sparql" title="Permanent link">&para;</a></h2>
+<p>There are two service types in TriplyDB that expose the SPARQL 1.1 Query Language: "Sparql" and "Jena". The former works well for large quantities of instance data with a relatively small data model; the latter works well for smaller quantities of data with a richer data model.</p>
+<p>SPARQL services expose a generic endpoint URI at the following location (where <code>ACCOUNT</code>, <code>DATASET</code> and <code>SERVICE</code> are user-chosen names):</p>
+<pre><code class="language-none">https://api.triplydb.com/datasets/ACCOUNT/DATASET/services/SERVICE/sparql
+</code></pre>
+<p>Everybody who has access to the dataset also has access to its services, including its SPARQL services:
+- For <em>Public</em> datasets, everybody on the Internet or Intranet can issue queries.
+- For <em>Internal</em> datasets, only users that are logged into the triple store can issue queries.
+- For <em>Private</em> datasets, only users that are logged into the triple store and are members of <code>ACCOUNT</code> can issue queries.</p>
+<p>Notice that for professional use it is easier and better to use <a href="../triply-db-getting-started/saved-queries/#saved-queries">saved queries</a>. Saved queries have persistent URIs, descriptive metadata, versioning, and support for reliable large-scale pagination (<a href="../triply-db-getting-started/saved-queries/#pagination-with-the-saved-query-api">see how to use pagination with saved query API</a>). Still, if you do not have a saved query at your disposal and want to perform a custom SPARQL request against an accessible endpoint, you can do so. TriplyDB implements the SPARQL 1.1 Query Protocol standard for this purpose.</p>
+<h3 id="sending-a-sparql-query-request">Sending a SPARQL Query request<a class="headerlink" href="#sending-a-sparql-query-request" title="Permanent link">&para;</a></h3>
+<p>According to the SPARQL 1.1 Protocol, queries can be send in the 3 different ways that are displayed in <a href="#table-http-sparql-query">Table 1</a>. For small query strings it is possible to send an HTTP GET request (row 1 in <a href="#table-http-sparql-query">Table 1</a>). A benefit of this approach is that all information is stored in one URI. For public data, copy/pasting this URI in a web browser runs the query. For larger query strings it is required to send an HTTP POST request (rows 2 and 3 in <a href="#table-http-sparql-query">Table 1</a>). The reason for this is that longer query strings result in longer URIs when following the HTTP GET approach. Some applications do not support longer URIs, or they even silently truncate them resulting in an error down the line. The direct POST approach (row 3 in <a href="#table-http-sparql-query">Table 1</a>) is the best of these 3 variants, since it most clearly communicates that it is sending a SPARQL query request (see the <code>Content-Type</code> column).</p>
+<figure id='table-http-sparql-query'>
+  <table>
+    <thead>
+      <tr>
+        <th></th>
+        <th>HTTP Method</th>
+        <th>Query String Parameters</th>
+        <th>Request <code>Content-Type</code></th>
+        <th>Request Message Body</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th>query via GET</th>
+        <td>GET</td>
+        <td><code>query</code> (exactly 1)<br><code>default-graph-uri</code> (0 or more)<br><code>named-graph-uri</code> (0 or more)</td>
+        <td>none</td>
+        <td>none</td>
+      </tr>
+      <tr>
+        <th>query via URL-encoded POST</th>
+        <td>POST</td>
+        <td>none</td>
+        <td><code>application/x-www-form-urlencoded</code></td>
+        <td>URL-encoded, ampersand-separated query parameters.<br><code>query</code> (exactly 1)<br><code>default-graph-uri</code> (0 or more)<br><code>named-graph-uri</code> (0 or more)</td>
+      </tr>
+      <tr>
+        <th>query via POST directly</th>
+        <td>POST</td>
+        <td><code>default-graph-uri</code> (0 or more)<br><code>named-graph-uri</code> (0 or more)</td>
+        <td><code>application/sparql-query</code></td>
+        <td>Unencoded SPARQL query string</td>
+      </tr>
+    </tbody>
+  </table>
+  <figcaption>Table 1 - Overview of the three different ways in which SPARQL queries can be issues over HTTP.</figcaption>
+</figure>
+
+<h3 id="sparql-query-result-formats">SPARQL Query result formats<a class="headerlink" href="#sparql-query-result-formats" title="Permanent link">&para;</a></h3>
+<p>SPARQL services are able to return results in different formats. The user can specify the preferred format by specifying the corresponding Media Type in the HTTP <code>Accept</code> header. TriplyDB supports the Media Types in the following table. Notice that the chosen result format must be supported for your query form. Alternatively, it is possible (but not preferred) to specify the requested format as an URI path suffix; see the <a href="#get-request">GET request</a> section for an example.</p>
+<table>
+<thead>
+<tr>
+<th>Result format</th>
+<th>Media Type</th>
+<th>Query forms</th>
+<th>Suffix</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CSV</td>
+<td><code>text/csv</code></td>
+<td>Select</td>
+<td><code>.csv</code></td>
+</tr>
+<tr>
+<td>JSON</td>
+<td><code>application/json</code></td>
+<td>Ask, Select</td>
+<td><code>.json</code></td>
+</tr>
+<tr>
+<td>JSON-LD</td>
+<td><code>application/ld+json</code></td>
+<td>Construct, Describe</td>
+<td><code>.jsonld</code></td>
+</tr>
+<tr>
+<td>N-Quads</td>
+<td><code>application/n-quads</code></td>
+<td>Construct, Describe</td>
+<td><code>.nq</code></td>
+</tr>
+<tr>
+<td>N-Triples</td>
+<td><code>application/n-triples</code></td>
+<td>Construct, Describe</td>
+<td><code>.nt</code></td>
+</tr>
+<tr>
+<td>SPARQL JSON</td>
+<td><code>application/sparql-results+json</code></td>
+<td>Ask, Select</td>
+<td><code>.srj</code></td>
+</tr>
+<tr>
+<td>SPARQL XML</td>
+<td><code>application/sparql-results+xml</code></td>
+<td>Ask, Select</td>
+<td><code>.srx</code></td>
+</tr>
+<tr>
+<td>TriG</td>
+<td><code>application/trig</code></td>
+<td>Construct, Describe</td>
+<td><code>.trig</code></td>
+</tr>
+<tr>
+<td>TSV</td>
+<td><code>text/tab-separated-values</code></td>
+<td>Select</td>
+<td><code>.tsv</code></td>
+</tr>
+<tr>
+<td>Turtle</td>
+<td><code>text/turtle</code></td>
+<td>Construct, Describe</td>
+<td><code>.ttl</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="examples-of-sparql-query-requests">Examples of SPARQL Query requests<a class="headerlink" href="#examples-of-sparql-query-requests" title="Permanent link">&para;</a></h3>
+<p>This section contains examples of SPARQL HTTP requests. The requests run either of the following two SPARQL queries against a public SPARQL endpoint that contains data about Pokemon:</p>
+<pre><code class="language-sparql">select * { ?s ?p ?o. } limit 1
+</code></pre>
+<pre><code class="language-sparql">construct where { ?s ?p ?o. } limit 1
+</code></pre>
+<p>The examples made use of the popular command-line tool <a href="https://curl.se">cURL</a>. These examples should also work in any other HTTP client tool or library.</p>
+<h3 id="get-request">GET request<a class="headerlink" href="#get-request" title="Permanent link">&para;</a></h3>
+<pre><code class="language-sh">curl https://api.triplydb.com/datasets/academy/pokemon/services/pokemon/sparql?query=select%20%2A%20%7B%20%3Fs%20%3Fp%20%3Fo.%20%7D%20limit%201
+</code></pre>
+<p>Result:</p>
+<pre><code class="language-json">[
+  {
+    &quot;s&quot;: &quot;https://triplydb.com/academy/pokemon/vocab/&quot;,
+    &quot;p&quot;: &quot;http://www.w3.org/1999/02/22-rdf-syntax-ns#type&quot;,
+    &quot;o&quot;: &quot;http://www.w3.org/2002/07/owl#Ontology&quot;
+  }
+]
+</code></pre>
+<p>The following request is identical to the previous one, but adds the ".srj" suffix to the URI path (see <code>/sparql.srj</code>). All suffixes from the table in Section <a href="#sparql-query-result-formats">SPARQL Query result formats</a> are supported.</p>
+<pre><code class="language-sh">curl https://api.triplydb.com/datasets/academy/pokemon/services/pokemon/sparql.srj?query=select%20%2A%20%7B%20%3Fs%20%3Fp%20%3Fo.%20%7D%20limit%201
+</code></pre>
+<p>This returns the official SPARQL Result Set JSON (SRJ) format. Notice that this official format is more verbose than the standard JSON format:</p>
+<pre><code class="language-json">{
+  &quot;head&quot;: {
+    &quot;link&quot;: [],
+    &quot;vars&quot;: [
+      &quot;s&quot;,
+      &quot;p&quot;,
+      &quot;o&quot;
+    ]
+  },
+  &quot;results&quot;: {
+    &quot;bindings&quot;: [
+      {
+        &quot;s&quot;: {
+          &quot;type&quot;: &quot;uri&quot;,
+          &quot;value&quot;: &quot;https://triplydb.com/academy/pokemon/&quot;
+        },
+        &quot;p&quot;: {
+          &quot;type&quot;: &quot;uri&quot;,
+          &quot;value&quot;: &quot;http://www.w3.org/1999/02/22-rdf-syntax-ns#type&quot;
+        },
+        &quot;o&quot;: {
+          &quot;type&quot;: &quot;uri&quot;,
+          &quot;value&quot;: &quot;http://rdfs.org/ns/void#Dataset&quot;
+        }
+      }
+    ]
+  }
+}
+</code></pre>
+<h3 id="url-encoded-post-request">URL-encoded POST request<a class="headerlink" href="#url-encoded-post-request" title="Permanent link">&para;</a></h3>
+<pre><code class="language-sh">curl -X POST https://api.triplydb.com/datasets/academy/pokemon/services/pokemon/sparql \
+  -H 'Content-Type: application/x-www-form-urlencoded' \
+  --data query=select%20%2A%20%7B%20%3Fs%20%3Fp%20%3Fo.%20%7D%20limit%201
+</code></pre>
+<p>Result:</p>
+<pre><code class="language-json">[
+  {
+    &quot;s&quot;: &quot;https://triplydb.com/academy/pokemon/vocab/&quot;,
+    &quot;p&quot;: &quot;http://www.w3.org/1999/02/22-rdf-syntax-ns#type&quot;,
+    &quot;o&quot;: &quot;http://www.w3.org/2002/07/owl#Ontology&quot;
+  }
+]
+</code></pre>
+<h3 id="direct-post-request">Direct POST request<a class="headerlink" href="#direct-post-request" title="Permanent link">&para;</a></h3>
+<pre><code class="language-sh">curl -X POST https://api.triplydb.com/datasets/academy/pokemon/services/pokemon/sparql \
+  -H 'Content-Type: application/sparql-query' \
+  -d 'select * { ?s ?p ?o } limit 1'
+</code></pre>
+<p>Result:</p>
+<pre><code class="language-json">[
+  {
+    &quot;s&quot;: &quot;https://triplydb.com/academy/pokemon/vocab/&quot;,
+    &quot;p&quot;: &quot;http://www.w3.org/1999/02/22-rdf-syntax-ns#type&quot;,
+    &quot;o&quot;: &quot;http://www.w3.org/2002/07/owl#Ontology&quot;
+  }
+]
+</code></pre>
+<h4 id="sparql-json">SPARQL JSON<a class="headerlink" href="#sparql-json" title="Permanent link">&para;</a></h4>
+<p>Like the previous example, but with an <code>Accept</code> header that specifies Media Type <code>application/sparql-results+json</code>:</p>
+<pre><code class="language-sh">curl -X POST https://api.triplydb.com/datasets/academy/pokemon/services/pokemon/sparql \
+  -H 'Accept: application/sparql-results+json' \
+  -H 'Content-Type: application/sparql-query' \
+  -d 'select * { ?s ?p ?o } limit 1'
+</code></pre>
+<p>Result:</p>
+<pre><code class="language-json">{
+  &quot;head&quot;: {
+    &quot;vars&quot;: [&quot;s&quot;, &quot;p&quot;, &quot;o&quot;]
+  },
+  &quot;results&quot;: {
+    &quot;bindings&quot;: [
+      {
+        &quot;s&quot;: {
+          &quot;type&quot;: &quot;uri&quot;,
+          &quot;value&quot;: &quot;https://triplydb.com/academy/pokemon/vocab/&quot;
+        },
+        &quot;p&quot;: {
+          &quot;type&quot;: &quot;uri&quot;,
+          &quot;value&quot;: &quot;http://www.w3.org/1999/02/22-rdf-syntax-ns#type&quot;
+        },
+        &quot;o&quot;: {
+          &quot;type&quot;: &quot;uri&quot;,
+          &quot;value&quot;: &quot;http://www.w3.org/2002/07/owl#Ontology&quot;
+        }
+      }
+    ]
+  }
+}
+</code></pre>
+<h4 id="sparql-xml">SPARQL XML<a class="headerlink" href="#sparql-xml" title="Permanent link">&para;</a></h4>
+<p>Like the previous example, but with Media Type <code>application/sparql-results+xml</code> in the <code>Accept</code> header:</p>
+<pre><code class="language-sh">curl -X POST https://api.triplydb.com/datasets/academy/pokemon/services/pokemon/sparql \
+  -H 'Accept: application/sparql-results+xml' \
+  -H 'Content-Type: application/sparql-query' \
+  -d 'select * { ?s ?p ?o } limit 1'
+</code></pre>
+<p>Result:</p>
+<pre><code class="language-xml">&lt;sparql xmlns=&quot;http://www.w3.org/2005/sparql-results#&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xsi:schemaLocation=&quot;http://www.w3.org/2001/sw/DataAccess/rf1/result2.xsd&quot;&gt;
+  &lt;head&gt;
+    &lt;variable name=&quot;s&quot;/&gt;
+    &lt;variable name=&quot;p&quot;/&gt;
+    &lt;variable name=&quot;o&quot;/&gt;
+  &lt;/head&gt;
+  &lt;results distinct=&quot;false&quot; ordered=&quot;true&quot;&gt;
+    &lt;result&gt;
+      &lt;binding name=&quot;s&quot;&gt;
+        &lt;uri&gt;https://triplydb.com/academy/pokemon/vocab/&lt;/uri&gt;
+      &lt;/binding&gt;
+      &lt;binding name=&quot;p&quot;&gt;
+        &lt;uri&gt;http://www.w3.org/1999/02/22-rdf-syntax-ns#type&lt;/uri&gt;
+      &lt;/binding&gt;
+      &lt;binding name=&quot;o&quot;&gt;
+        &lt;uri&gt;http://www.w3.org/2002/07/owl#Ontology&lt;/uri&gt;
+      &lt;/binding&gt;
+    &lt;/result&gt;
+  &lt;/results&gt;
+&lt;/sparql&gt;
+</code></pre>
+<h4 id="sparql-tab-separated-values">SPARQL tab-separated values<a class="headerlink" href="#sparql-tab-separated-values" title="Permanent link">&para;</a></h4>
+<p>Like the previous examples, but with Media Type <code>text/tab-separated-values</code> in the <code>Accept</code> header:</p>
+<pre><code class="language-sh">curl -X POST https://api.triplydb.com/datasets/academy/pokemon/services/pokemon/sparql \
+  -H 'Accept: text/tab-separated-values' \
+  -H 'Content-Type: application/sparql-query' \
+  -d 'select * { ?s ?p ?o } limit 1'
+</code></pre>
+<pre><code class="language-tsv">&quot;s&quot; &quot;p&quot; &quot;o&quot;
+&quot;https://triplydb.com/academy/pokemon/vocab/&quot;   &quot;http://www.w3.org/1999/02/22-rdf-syntax-ns#type&quot;   &quot;http://www.w3.org/2002/07/owl#Ontology&quot;
+</code></pre>
+<h4 id="sparql-comma-separated-values">SPARQL comma-separated values<a class="headerlink" href="#sparql-comma-separated-values" title="Permanent link">&para;</a></h4>
+<p>Like the previous examples, but with Media Type <code>text/csv</code> in the <code>Accept</code> header:</p>
+<pre><code class="language-sh">curl -X POST https://api.triplydb.com/datasets/academy/pokemon/services/pokemon/sparql \
+  -H 'Accept: text/csv' \
+  -H 'Content-Type: application/sparql-query' \
+  -d 'select * { ?s ?p ?o } limit 1'
+</code></pre>
+<p>Result:</p>
+<pre><code class="language-csv">&quot;s&quot;,&quot;p&quot;,&quot;o&quot;
+&quot;https://triplydb.com/academy/pokemon/vocab/&quot;,&quot;http://www.w3.org/1999/02/22-rdf-syntax-ns#type&quot;,&quot;http://www.w3.org/2002/07/owl#Ontology&quot;
+</code></pre>
+<h4 id="json-ld">JSON-LD<a class="headerlink" href="#json-ld" title="Permanent link">&para;</a></h4>
+<p>Like the previous examples, but with a SPARQL construct query and Media Type <code>application/ld+json</code> in the <code>Accept</code> header:</p>
+<pre><code class="language-sh">curl -X POST https://api.triplydb.com/datasets/academy/pokemon/services/pokemon/sparql \
+  -H 'Accept: application/ld+json' \
+  -H 'Content-Type: application/sparql-query' \
+  -d 'construct where { ?s ?p ?o } limit 1'
+</code></pre>
+<p>Result:</p>
+<pre><code class="language-json">{ &quot;@graph&quot;: [
+    { &quot;@id&quot;: &quot;https://triplydb.com/academy/pokemon/vocab/&quot;,
+      &quot;@type&quot;: &quot;http://www.w3.org/2002/07/owl#Ontology&quot; }
+] }
+</code></pre>
+<h4 id="n-quads">N-Quads<a class="headerlink" href="#n-quads" title="Permanent link">&para;</a></h4>
+<p>Like the previous examples, but with Media Type <code>application/n-quads</code> in the <code>Accept</code> header:</p>
+<pre><code class="language-sh">curl -X POST https://api.triplydb.com/datasets/academy/pokemon/services/pokemon/sparql \
+  -H 'Accept: application/n-quads' \
+  -H 'Content-Type: application/sparql-query' \
+  -d 'construct where { ?s ?p ?o } limit 1'
+</code></pre>
+<p>Result:</p>
+<!-- TODO -->
+
+<pre><code class="language-json">{ &quot;@graph&quot;: [
+    { &quot;@id&quot;: &quot;https://triplydb.com/academy/pokemon/vocab/&quot;,
+      &quot;@type&quot;: &quot;http://www.w3.org/2002/07/owl#Ontology&quot; }
+] }
+</code></pre>
+<h4 id="n-triples">N-Triples<a class="headerlink" href="#n-triples" title="Permanent link">&para;</a></h4>
+<p>Like the previous examples, but with Media Type <code>application/n-triples</code> in the <code>Accept</code> header:</p>
+<pre><code class="language-sh">curl -X POST https://api.triplydb.com/datasets/academy/pokemon/services/pokemon/sparql \
+  -H 'Accept: application/n-triples' \
+  -H 'Content-Type: application/sparql-query' \
+  -d 'construct where { ?s ?p ?o } limit 1'
+</code></pre>
+<p>Result:</p>
+<pre><code class="language-turtle">&lt;https://triplydb.com/academy/pokemon/vocab/&gt;   &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#type&gt;   &lt;http://www.w3.org/2002/07/owl#Ontology&gt; .
+</code></pre>
+<h4 id="trig">TriG<a class="headerlink" href="#trig" title="Permanent link">&para;</a></h4>
+<p>Like the previous examples, but with Media Type <code>application/trig</code> in the <code>Accept</code> header:</p>
+<pre><code class="language-sh">curl -X POST https://api.triplydb.com/datasets/academy/pokemon/services/pokemon/sparql \
+  -H 'Accept: application/trig' \
+  -H 'Content-Type: application/sparql-query' \
+  -d 'construct where { ?s ?p ?o } limit 1'
+</code></pre>
+<p>Result:</p>
+<pre><code class="language-turtle">@prefix rdf:    &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt; .
+@prefix owl:    &lt;http://www.w3.org/2002/07/owl#&gt; .
+&lt;https://triplydb.com/academy/pokemon/vocab/&gt;   rdf:type    owl:Ontology .
+</code></pre>
+<h4 id="turtle">Turtle<a class="headerlink" href="#turtle" title="Permanent link">&para;</a></h4>
+<p>Like the previous examples, but with Media Type <code>text/turtle</code> in the <code>Accept</code> header:</p>
+<pre><code class="language-sh">curl -X POST https://api.triplydb.com/datasets/academy/pokemon/services/pokemon/sparql \
+  -H 'Accept: text/turtle' \
+  -H 'Content-Type: application/sparql-query' \
+  -d 'construct where { ?s ?p ?o } limit 1'
+</code></pre>
+<p>Result:</p>
+<pre><code class="language-turtle">@prefix rdf:    &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt; .
+@prefix owl:    &lt;http://www.w3.org/2002/07/owl#&gt; .
+&lt;https://triplydb.com/academy/pokemon/vocab/&gt;   rdf:type    owl:Ontology .
+</code></pre>
+<h2 id="graphql">GraphQL<a class="headerlink" href="#graphql" title="Permanent link">&para;</a></h2>
+<p>Some TriplyDB instances publish a GraphQL endpoint for every dataset. This endpoint can be used for GraphQL queries. It uses information from user-provided SHACL shapes to generate the GraphQL schema. See more information about this subject <a href="../generics/Graphql/">here</a>.</p>
+<h3 id="uri-path_1">URI path<a class="headerlink" href="#uri-path_1" title="Permanent link">&para;</a></h3>
+<p>GraphQL requests are sent to the following URI path:</p>
+<pre><code class="language-iri">https://api.INSTANCE/datasets/ACCOUNT/DATASET/graphql
+</code></pre>
+<h3 id="requests-and-response">Requests and Response<a class="headerlink" href="#requests-and-response" title="Permanent link">&para;</a></h3>
+<p>The format of requests and corresponding responses are described by <a href="https://graphql.org/learn/serving-over-http/">graphql.org</a></p>
+<h3 id="example">Example<a class="headerlink" href="#example" title="Permanent link">&para;</a></h3>
+<p>Perform a search using the custom query:</p>
+<pre><code class="language-json">{
+  &quot;query&quot;: {
+    &quot;{ CapitalConnection { edges { node { label } } } }&quot;
+  }
+}
+</code></pre>
+<p>This request is issued in the following way with the cURL command-line tool:</p>
+<pre><code class="language-sh">  curl -X POST https://api.triplydb.com/datasets/iish/cshapes/graphql \
+       -d '{ &quot;query&quot;:&quot;{ CapitalConnection { edges { node { label } } } }&quot;}' \
+       -H &quot;Content-Type: application/json&quot;
+</code></pre>
+<h2 id="elasticsearch">Elasticsearch<a class="headerlink" href="#elasticsearch" title="Permanent link">&para;</a></h2>
+<p>The text search API returns a list of linked data entities based on a supplied text string. The text string is matched against the text in literals and IRIs that appear in the linked data description of the returned entities.</p>
+<p>The text search API is only available for a dataset after an Elasticsearch service has been created for that dataset.</p>
+<p>Two types of searches can be performed: a simple search, and a custom search. Simple searches require one search term for a fuzzy match. Custom searches accept a JSON object conforming to <a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl.html">the Elasticsearch query DSL</a>.</p>
+<h3 id="uri-path_2">URI path<a class="headerlink" href="#uri-path_2" title="Permanent link">&para;</a></h3>
+<p>Text search requests are sent to the following URI path:</p>
+<pre><code class="language-iri">https://api.INSTANCE/datasets/ACCOUNT/DATASET/services/SERVICE/search
+</code></pre>
+<h3 id="reply-format_1">Reply format<a class="headerlink" href="#reply-format_1" title="Permanent link">&para;</a></h3>
+<p>The reply format is a JSON object. Search results are returned in the JSON array that is stored under key sequence <code>"hits"/"hits"</code>. The order in which search results appear in the array is meaningful: better matches appear earlier.</p>
+<p>Every search result is represented by a JSON object. The name of the linked data entity is specified under key sequence <code>"_id"</code>. Properties of the linked data entity are stored as IRI keys. The values of these properties appear in a JSON array in order to allow more than one object term per predicate term (as is often the case in linked data).</p>
+<p>The following code snippet shows part of the reply for the below example request. The reply includes two results for search string “mew”, returning the Pokémon Mew (higher ranked result) and Mewtwo (lower ranked result).</p>
+<pre><code class="language-json">{
+  &quot;hits&quot;: {
+    &quot;hits&quot;: [
+      {
+        &quot;_id&quot;: &quot;https://triply.cc/academy/pokemon/id/pokemon/mew&quot;,
+        &quot;http://open vocab org/terms/canonicalUri&quot;: [ &quot;http://pokedex.dataincubator.org/pokemon/151&quot; ],
+        &quot;https://triply cc/academy/pokemon/def/baseAttack&quot;: [ 100 ],
+        &quot;https://triply cc/academy/pokemon/def/name&quot;: [ &quot;MEW&quot;, &quot;MEW&quot;, &quot;MEW&quot;, &quot;MEW&quot;, &quot;MEW&quot;, &quot;ミュウ&quot; ],
+        …
+      },
+      {
+        &quot;_id&quot;: &quot;https://triply.cc/academy/pokemon/id/pokemon/mewtwo&quot;,
+        &quot;http://open vocab org/terms/canonicalUri&quot;: [ &quot;http://pokedex.dataincubator.org/pokemon/150&quot; ],
+        &quot;https://triply cc/academy/pokemon/def/baseAttack&quot;: [ 110 ],
+        &quot;https://triply cc/academy/pokemon/def/name&quot;: [ &quot;MEWTU&quot;, &quot;MEWTWO&quot;, &quot;MEWTWO&quot;, &quot;MEWTWO&quot;, &quot;MEWTWO&quot;, &quot;ミュウツー&quot; ],
+        …
+      }
+    ]
+  },
+  …
+}
+</code></pre>
+<h3 id="examples">Examples<a class="headerlink" href="#examples" title="Permanent link">&para;</a></h3>
+<h4 id="simple-search">Simple search<a class="headerlink" href="#simple-search" title="Permanent link">&para;</a></h4>
+<p>Perform a search for the string <em>mew</em>:</p>
+<pre><code class="language-sh">curl 'https://api.triplydb.com/datasets/academy/pokemon/services/search/search?query=mew'
+</code></pre>
+<h4 id="custom-search">Custom search<a class="headerlink" href="#custom-search" title="Permanent link">&para;</a></h4>
+<p>Perform a search using the custom query:</p>
+<pre><code class="language-json">{
+  &quot;query&quot;: {
+    &quot;simple_query_string&quot;: {
+      &quot;query&quot;: &quot;pikachu&quot;
+    }
+  }
+}
+</code></pre>
+<p>This request is issued in the following way with the cURL command-line tool:</p>
+<pre><code class="language-sh">curl -X POST 'https://api.triplydb.com/datasets/academy/pokemon/services/search/search' \
+     -d '{&quot;query&quot;:{&quot;simple_query_string&quot;:{&quot;query&quot;:&quot;pikachu&quot;}}}' \
+     -H 'content-type: application/json'
+</code></pre>
+<h4 id="count-api">Count API<a class="headerlink" href="#count-api" title="Permanent link">&para;</a></h4>
+<p>Elasticsearch allows the number of results to be determined without having to actually retrieve all these results. This is done with the "Count API". This API comes in handy when the number of results is shown in applications such as faceted search interfaces.</p>
+<p>The following two requests return the number of results for the search strings "Iris" and "Setosa". Notice that "Iris" occurs more often (184 times) than "Setosa" (52 times):</p>
+<pre><code class="language-sh">curl 'https://api.triplydb.com/datasets/Triply/iris/services/iris-es/_count'
+     -H 'Content-Type: application/json'
+     --data-raw $'{&quot;query&quot;: { &quot;simple_query_string&quot;: { &quot;query&quot;: &quot;Iris&quot; } } }'
+{&quot;count&quot;:184,&quot;_shards&quot;:{&quot;total&quot;:1,&quot;successful&quot;:1,&quot;skipped&quot;:0,&quot;failed&quot;:0}}
+</code></pre>
+<p>and:</p>
+<pre><code class="language-sh">curl 'https://api.triplydb.com/datasets/Triply/iris/services/iris-es/_count'
+     -H 'Content-Type: application/json'
+     --data-raw $'{&quot;query&quot;: { &quot;simple_query_string&quot;: { &quot;query&quot;: &quot;Setosa&quot; } } }'
+{&quot;count&quot;:52,&quot;_shards&quot;:{&quot;total&quot;:1,&quot;successful&quot;:1,&quot;skipped&quot;:0,&quot;failed&quot;:0}}
+</code></pre>
+<h2 id="setting-up-index-templates-for-elasticsearch">Setting up index templates for ElasticSearch<a class="headerlink" href="#setting-up-index-templates-for-elasticsearch" title="Permanent link">&para;</a></h2>
+<p>TriplyDB allows you to configure a custom mapping for Elasticsearch services in TriplyDB using index templates.</p>
+<h3 id="index-templates">Index templates<a class="headerlink" href="#index-templates" title="Permanent link">&para;</a></h3>
+<p>Index templates make it possible to create indices with user defined configuration, which an index can then pull from. A template will be defined with a name pattern and some configuration in it. If the name of the index matches the template’s naming pattern, the new index will be created with the configuration defined in the template. Official documentation from ElasticSearch on how to use Index templates can be found <a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/index-templates.html">here</a>.</p>
+<p>Index templates on TriplyDB can be configured through either <code>TriplyDB API</code> or <a href="../triplydb-js/service/#index-templates">TriplyDB-JS</a>.</p>
+<p>Index template can be created by making a POST request to the following URL:</p>
+<pre><code class="language-iri">https://api.INSTANCE/datasets/ACCOUNT/DATASET/services/
+</code></pre>
+<p>with this body:</p>
+<pre><code class="language-json">{
+  &quot;type&quot;: &quot;elasticSearch&quot;,
+  &quot;name&quot;: &quot;SERVICE_NAME&quot;,
+  &quot;config&quot;: {
+    &quot;indexTemplates&quot;: [
+      {
+        &quot;index_patterns&quot;: &quot;index&quot;,
+        &quot;name&quot;: &quot;TEMPLATE_NAME&quot;,
+       ...
+      }
+    ]
+  }
+}
+</code></pre>
+<p><code>index_patterns</code> and <code>name</code> are obligatory fields to include in the body of index template.
+It's important that every index template has the field <code>"index_patterns"</code> equal <code>"index"</code>!</p>
+<p>Below is the example of the post request:</p>
+<pre><code class="language-sh">curl  -H &quot;Authorization: Bearer TRIPLYDB_TOKEN&quot;  -H &quot;Content-Type: application/json&quot; -d '{&quot;type&quot;:&quot;elasticSearch&quot;,&quot;name&quot;:&quot;SERVICE_NAME&quot;,&quot;config&quot;:{&quot;indexTemplates&quot;:[{&quot;index_patterns&quot;:&quot;index&quot;, &quot;name&quot;: &quot;TEMPLATE_NAME&quot;}]}}' -X POST &quot;https://api.INSTANCE/datasets/ACCOUNT/DATASET/services/&quot;
+</code></pre>
+<h3 id="component-templates">Component templates<a class="headerlink" href="#component-templates" title="Permanent link">&para;</a></h3>
+<p>Component templates are building blocks for constructing index templates that specify index mappings, settings, and aliases. You can find the official documentation on their use in ElasticSearch <a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-component-template.html">here</a>. They can be configured through either <code>TriplyDB API</code> or <a href="../triplydb-js/#component-templates">TriplyDB-JS</a>.</p>
+<p>A component template can be created by making a POST request to the following URL:</p>
+<pre><code class="language-iri">https://api.INSTANCE/datasets/ACCOUNT/DATASET/services/
+</code></pre>
+<p>with this body:</p>
+<pre><code class="language-json">{
+  &quot;type&quot;: &quot;elasticSearch&quot;,
+  &quot;name&quot;: &quot;SERVICE_NAME&quot;,
+  &quot;config&quot;: {
+    &quot;componentTemplates&quot;: [
+      {
+        &quot;name&quot;: &quot;TEMPLATE_NAME&quot;,
+        &quot;template&quot;: {
+          &quot;mappings&quot;: {
+            &quot;properties&quot;: {
+              ...
+            }
+          }
+        }
+       ...
+      }
+    ]
+  }
+}
+</code></pre>
+<p><code>name</code> and <code>template</code> are obligatory fields to include in the body of component template.</p>
+<p>Component template can only be created together with an index template. In this case Index template needs to contain the field <code>composed_of</code> with the name of the component template.</p>
+<p>Below is an example of a POST request to create a component template for the property <code>https://schema.org/dateCreated</code> to be of type <code>date</code>.</p>
+<pre><code class="language-sh">curl  -H &quot;Authorization: Bearer TRIPLYDB_TOKEN&quot;  -H &quot;Content-Type: application/json&quot; -d '{&quot;type&quot;:&quot;elasticSearch&quot;,&quot;name&quot;:&quot;SERVICE_NAME&quot;,&quot;config&quot;:{&quot;indexTemplates&quot;:[{&quot;index_patterns&quot;:&quot;index&quot;, &quot;name&quot;: &quot;INDEX_TEMPLATE_NAME&quot;,&quot;composed_of&quot;:[&quot;COMPONENT_TEMPLATE_NAME&quot;]}], &quot;componentTemplates&quot;:[{&quot;name&quot;:&quot;COMPONENT_TEMPLATE_NAME&quot;,&quot;template&quot;:{&quot;mappings&quot;:{&quot;properties&quot;:{&quot;https://schema org/dateCreated&quot;:{&quot;type&quot;:&quot;date&quot;}}}}}]}}' -X POST &quot;https://api.INSTANCE/datasets/ACCOUNT/DATASET/services/&quot;
+</code></pre>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../triply-db-getting-started/reference/" class="btn btn-neutral float-left" title="Reference"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../triplydb-js/" class="btn btn-neutral float-right" title="Overview">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../triply-db-getting-started/reference/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../triplydb-js/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script>var base_url = '..';</script>
+      <script src="../js/triply.js" defer></script>
+      <script src="../js/highlight.min.js" defer></script>
+      <script src="../search/main.js" defer></script>
+
+</body>
+</html>

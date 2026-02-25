@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <meta name="description" content="The official documentation for the Triply products: TriplyDB, TriplyDB.js, and TriplyETL." />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Building a RESTful API - Triply Documentation</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link href="../../css/intellij-light.css" rel="stylesheet" />
+        <link href="../../css/triply.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Building a RESTful API";
+        var mkdocs_page_input_path = "tutorial/building-a-restful-api.md";
+        var mkdocs_page_url = null;
+      </script>
+     
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> Triply Documentation
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">TriplyDB</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Getting started</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-db-getting-started/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-db-getting-started/uploading-data/">Uploading Data</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-db-getting-started/editing-data/">Editing (SKOS) Data</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-db-getting-started/publishing-data/">Sharing Data</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-db-getting-started/viewing-data/">Viewing Data</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-db-getting-started/exporting-data/">Exporting Data</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-db-getting-started/saved-queries/">Saved Queries</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-db-getting-started/data-stories/">Data Stories</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-db-getting-started/admin-settings-pages/">Admin Settings Pages</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-db-getting-started/reference/">Reference</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../triply-api/">API</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">TriplyDB-JS</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../triplydb-js/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triplydb-js/app/">App</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triplydb-js/account/">Account</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triplydb-js/asset/">Asset</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triplydb-js/dataset/">Dataset</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triplydb-js/graph/">Graph</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triplydb-js/organization/">Organization</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triplydb-js/query/">Query</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triplydb-js/service/">Service</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triplydb-js/story/">Story</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triplydb-js/user/">User</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triplydb-js/faq/">FAQ</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../triply-cli/">Command-line Interface</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../triplydb-changelog/">Changelog</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">TriplyETL</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Generic</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/generic/getting-started/">Getting Started</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/generic/changelog/">Changelog</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/generic/cli/">Command Line Interface (CLI)</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/generic/declarations/">Declarations</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/generic/control-structures/">Control Structures</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/generic/debug/">Debug</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/generic/internal-store/">Internal Store</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/generic/maintenance/">Maintenance</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/generic/record/">Record</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/generic/vocabularies/">Vocabularies</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Sources</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/sources/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/sources/apis/">APIs</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/sources/inline-json/">Inline JSON</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/sources/inline-strings/">Inline Strings</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/sources/local-files/">Local Files</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/sources/online-files/">Online Files</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/sources/rml/">RML Sources</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/sources/triplydb-assets/">TriplyDB Assets</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/sources/triplydb-datasets/">TriplyDB Datasets</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/sources/triplydb-queries/">TriplyDB Queries</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Extract</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/extract/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/extract/csv/">CSV</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/extract/json/">JSON</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/extract/oai-pmh/">OAI-PMH</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/extract/postgres/">Postgres</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/extract/rdf/">RDF</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/extract/shapefile/">Shapefile</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/extract/tsv/">TSV</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/extract/xlsx/">XLSX</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/extract/xml/">XML</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Transform</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/transform/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/transform/ratt/">RATT</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/transform/rml/">RML</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/transform/typescript/">TypeScript</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/transform/xslt/">XSLT</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Assert</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/assert/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/assert/json-ld/">JSON-LD</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="#">RATT</a>
+    <ul>
+                <li class="toctree-l3"><a class="reference internal" href="../../triply-etl/assert/ratt/terms/">RATT Terms</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../../triply-etl/assert/ratt/statements/">RATT Statements</a>
+                </li>
+    </ul>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/assert/rml/">RML</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/assert/xslt/">XSLT</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Enrich</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/enrich/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="#">SHACL</a>
+    <ul>
+                <li class="toctree-l3"><a class="reference internal" href="../../triply-etl/enrich/shacl/">Overview</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../../triply-etl/enrich/shacl/triple-rules/">Triple Rules</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../../triply-etl/enrich/shacl/sparql-rules/">SPARQL Rules</a>
+                </li>
+    </ul>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="#">SPARQL</a>
+    <ul>
+                <li class="toctree-l3"><a class="reference internal" href="../../triply-etl/enrich/sparql/construct/">SPARQL Construct</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../../triply-etl/enrich/sparql/update/">SPARQL Update</a>
+                </li>
+    </ul>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Validate</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/validate/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/validate/graph-comparison/">Graph Comparison</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/validate/shacl/">SHACL</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../triply-etl/publish/">Publish</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Yasgui</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../yasgui/">Introduction</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../yasgui-api/">For Developers</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">Triply Documentation</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Building a RESTful API</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="building-a-restful-api">Building a RESTful API<a class="headerlink" href="#building-a-restful-api" title="Permanent link">&para;</a></h1>
+<h2 id="write-the-iterator">Write the Iterator<a class="headerlink" href="#write-the-iterator" title="Permanent link">&para;</a></h2>
+<p>The iterator is a SPARQL Select query that returns a sequence of bindings that adheres to the query parameters supported for the REST API path.</p>
+<p>For example, a REST API path for occupations returns bindings for individual occupations, and has the following query parameters:</p>
+<ul>
+<li>The name of the occupation (variable <code>?name</code>)</li>
+</ul>
+<h3 id="configuration-in-case-no-query-parameter-is-specified">Configuration in case no query parameter is specified<a class="headerlink" href="#configuration-in-case-no-query-parameter-is-specified" title="Permanent link">&para;</a></h3>
+<p>The first part of the query string returns the sequence of bindings in case no query parameter is specified. It includes the following things:
+- Recommended: a graph-clause that scopes to the instance data graph.
+- The class that corresponds to the REST API path (example: <code>cnluwv:Occupation</code>).</p>
+<pre><code class="language-sparql">prefix cnluwv: &lt;https://linkeddata.uwv.nl/ns/competentnl_uwv#&gt;
+select $this {
+  $this
+    a cnluwv:Occupation.
+}
+</code></pre>
+<h3 id="configuration-for-query-parameters-that-map-onto-required-properties">Configuration for query parameters that map onto required properties<a class="headerlink" href="#configuration-for-query-parameters-that-map-onto-required-properties" title="Permanent link">&para;</a></h3>
+<p>For every query parameter, determine whether it is mapped into a property that is required or optional.</p>
+<p>In our example, query parameter <code>?name</code> maps onto property <code>skosxl:prefLabel</code>, which is required for every occupation.</p>
+<p>For each required property, add a Basic Graph Pattern:</p>
+<pre><code class="language-sparql">prefix cnluwv: &lt;https://linkeddata.uwv.nl/ns/competentnl_uwv#&gt;
+prefix skosxl: &lt;http://www.w3.org/2008/05/skos-xl#&gt;
+select $this {
+  $this
+    a cnluwv:Occupation;
+    skosxl:prefLabel/skosxl:literalForm $name.
+}
+</code></pre>
+<h3 id="configuration-for-query-parameters-that-map-onto-optional-properties">Configuration for query parameters that map onto optional properties<a class="headerlink" href="#configuration-for-query-parameters-that-map-onto-optional-properties" title="Permanent link">&para;</a></h3>
+<p>For every query parameter that maps onto a property that is optional, and the following 3-line template:</p>
+<pre><code class="language-sparql">bind(?ApiVar as ?ApiVar1)
+optional { $this PROPERTY_PATH ?ApiVar2. }
+filter(!bound(?ApiVar1) || ?ApiVar1 = ?ApiVar2)
+</code></pre>
+<p>We explain each line in detail:</p>
+<ol>
+<li>The Bind clause makes sure that <code>?ApiVar1</code> is only bound if the API variable is specified through a query parameter.</li>
+<li>The Optional clause makes sure that we match the optional property, if it is present.</li>
+<li>The Filter clause ensures that the query succeeds if either the query parameter was not set, or if the query parameter was set to the value of the current binfing for <code>$this</code>.</li>
+</ol>
+<pre><code class="language-sparql">prefix cnluwv: &lt;https://linkeddata.uwv.nl/ns/competentnl_uwv#&gt;
+prefix skosxl: &lt;http://www.w3.org/2008/05/skos-xl#&gt;
+select $this {
+  $this
+    a cnluwv:Occupation;
+    skosxl:prefLabel/skosxl:literalForm $name.
+  bind(?ApiVar as ?ApiVar1)
+  optional { $this PROPERTY_PATH ?ApiVar2. }
+  filter(!bound(?ApiVar1) || ?ApiVar1 = ?ApiVar2)
+}
+</code></pre>
+<h3 id="full-example">Full example<a class="headerlink" href="#full-example" title="Permanent link">&para;</a></h3>
+<p>The following query is an example of an Iterator:</p>
+<pre><code class="language-sparql">prefix cnluwv: &lt;https://linkeddata.uwv.nl/ns/competentnl_uwv#&gt;
+prefix skosxl: &lt;http://www.w3.org/2008/05/skos-xl#&gt;
+select $this {
+  $this
+    a cnluwv:Occupation;
+    skosxl:prefLabel/skosxl:literalForm $name
+}
+</code></pre>
+<h2 id="write-the-generator">Write the Generator<a class="headerlink" href="#write-the-generator" title="Permanent link">&para;</a></h2>
+<p>The Generator is a SPARQL Construct query that returns one record for each binding of the <code>$this</code> variable in our Iterator. Since we are working with linked data graphs, there is no real notion of a 'record'. This requires us to configure which data items we want to include, and which we want to exclude.</p>
+<h3 id="the-basic-construct-query">The basic Construct query<a class="headerlink" href="#the-basic-construct-query" title="Permanent link">&para;</a></h3>
+<p>Since our Generator will be a Construct query, we can start out with the following basic query, which return triples from our graph:</p>
+<pre><code class="language-sparql">construct {
+  $this ?p1 ?o1.
+} where {
+  $this ?p1 ?o1.
+}
+</code></pre>
+<p>We have used the same variable name <code>$this</code> as in our Iterator, but this is merely a naming convention. We must do some extra work to connect the bindings from our Iterator to our Generator...</p>
+<h3 id="integrate-the-iterator-into-the-generator">Integrate the Iterator into the Generator<a class="headerlink" href="#integrate-the-iterator-into-the-generator" title="Permanent link">&para;</a></h3>
+<p>In SPARQL, we can integrate any Select query into what is called a Sub-Select clause. This allows us to connect the binding for <code>$this</code> that come out of our <a href="#write-the-iterator">Iterator</a>, to <a href="#the-basic-construct-query">the basic template in our Generator</a>:</p>
+<pre><code class="language-sparql">prefix cnluwv: &lt;https://linkeddata.uwv.nl/ns/competentnl_uwv#&gt;
+prefix skosxl: &lt;http://www.w3.org/2008/05/skos-xl#&gt;
+construct {
+  $this ?p1 ?o1.
+} where {
+  {
+    select $this {
+      $this
+        a cnluwv:Occupation;
+        skosxl:prefLabel/skosxl:literalForm ?name
+    }
+  }
+  $this ?p1 ?o1.
+}
+</code></pre>
+<p>If we specify a query parameter for <code>?name</code>, we get back the triples that describe the occupation with that name (Basic Triple Pattern <code>$this ?p1 ?o1</code>).</p>
+<h3 id="extend-the-generator-with-nested-information">Extend the Generator with nested information<a class="headerlink" href="#extend-the-generator-with-nested-information" title="Permanent link">&para;</a></h3>
+<p>In <a href="#integrate-the-iterator-into-the-generator">the previous section</a>, we only returned the triples that directly describe the bindings for <code>$this</code>. However, some relevant information may appear in triples that are further removed from <code>$this</code>. For example, SKOS-XL labels use an extra level of nesting, where the actual label content appears 2-hops away from <code>$this</code>.</p>
+<p>If we want to include such nested information into our Generate, we must specify this with additional Basic Triple Patterns. Since only some properties use nesting, we must typically enclose deeper hops inside an Optional clause, together with either a whitelist of properties we want to follow, or a blacklist of properties we do not want to follow.</p>
+<p>In the following example, we use a whitelist to include properties whose textual content is found one nesting level deeper:</p>
+<pre><code class="language-sparql">prefix cnluwv: &lt;https://linkeddata.uwv.nl/ns/competentnl_uwv#&gt;
+prefix skosxl: &lt;http://www.w3.org/2008/05/skos-xl#&gt;
+construct {
+  ?this ?p1 ?o1.
+  ?o1 ?p2 ?o2.
+} where {
+  {
+    select $this {
+      $this
+        a cnluwv:Occupation;
+        skosxl:prefLabel/skosxl:literalForm $name.
+    }
+  }
+  $this ?p1 ?o1.
+  optional {
+    ?o1 ?p2 ?o2.
+    filter(?p1 in (cnluwv:hasContentStatus,
+                   cnluwv:hasDetailedDescription,
+                   skosxl:altLabel,
+                   skosxl:prefLabel))
+  }
+}
+</code></pre>
+<p>Notice that the whitelist is implemented with operator <code>in</code>; blacklists are similarly implemented with operator <code>not in</code>.</p>
+<h3 id="full-example_1">Full example<a class="headerlink" href="#full-example_1" title="Permanent link">&para;</a></h3>
+<p>The following query is an example of a working Generator query:</p>
+<pre><code class="language-sparql">prefix cnluwv: &lt;https://linkeddata.uwv.nl/ns/competentnl_uwv#&gt;
+prefix skosxl: &lt;http://www.w3.org/2008/05/skos-xl#&gt;
+construct {
+  ?this ?p1 ?o1.
+  ?o1 ?p2 ?o2.
+} where {
+  {
+    select $this {
+      $this
+        a cnluwv:Occupation;
+        skosxl:prefLabel/skosxl:literalForm $name.
+    }
+  }
+  $this ?p1 ?o1.
+  optional {
+    ?o1 ?p2 ?o2.
+    filter(?p1 in (cnluwv:hasContentStatus,
+                   cnluwv:hasDetailedDescription,
+                   skosxl:altLabel,
+                   skosxl:prefLabel)) }
+}
+</code></pre>
+<h2 id="returning-json">Returning JSON<a class="headerlink" href="#returning-json" title="Permanent link">&para;</a></h2>
+<p>From a content perspective, our Generator query functions like a REST API path: we can set zero or more query parameters, and we receive the information that conforms to our configuration. By default, the Generator returns various RDF serializations, such as JSON-LD. While the JSON body contains all the relevant information, the syntactic structure of the body looks quite messy.</p>
+<h3 id="adding-a-json-ld-frame">Adding a JSON-LD Frame<a class="headerlink" href="#adding-a-json-ld-frame" title="Permanent link">&para;</a></h3>
+<p>In order to better structure the syntax of the returned JSON body, we make use of a JSON-LD Frame. We start out with the empty frame, and will build this out in subsequent steps:</p>
+<pre><code class="language-json">{}
+</code></pre>
+<p>You can try this out by going to the following query: <a href="https://uwv.triplydb.com/wouter/-/queries/jsonld">link</a>
+In fact, it is best to keep this query open in a separate window or tab, and apply each of the following steps yourself, to see the live effects of changing the JSON-LD Frame configuration.</p>
+<h3 id="configure-the-type">Configure the type<a class="headerlink" href="#configure-the-type" title="Permanent link">&para;</a></h3>
+<p>We want the JSON objects to describe information of a specific type.</p>
+<p>In our example, each object should describe an occupation.</p>
+<p>We can configure this in the JSON-LD Frame by using the <code>"@type"</code> key, together with the IRI of the occupation class:</p>
+<pre><code class="language-json">{
+  &quot;@type&quot;: &quot;https://linkeddata.uwv.nl/ns/competentnl_uwv#Occupation&quot;
+}
+</code></pre>
+<p>We now see that the JSON data starts to form around the occupation node.</p>
+<h3 id="configure-the-context">Configure the context<a class="headerlink" href="#configure-the-context" title="Permanent link">&para;</a></h3>
+<p>The JSON object that describes an occupation contains a lot of confusing syntax and lengthy IRIs. The JSON-LD standard allows us to clean this up through a piece of configuration called the Context. The context is typically the same for all objects that are returned by an API.</p>
+<p>The context is itself a JSON object, that is specified under the <code>"@context"</code> key. We start by including the following sub-keys:</p>
+<ul>
+<li>'<code>"@base"</code> configures the IRI namespace of the instances.</li>
+<li><code>"@version"</code> indicates which JSON-LD version we use.</li>
+<li><code>"@vocab"</code> configures the IRI namespace of the main vocabulary that is used.</li>
+</ul>
+<p>We can now abbreviate the configuration for <code>"@type"</code> to <code>"Occupation"</code>. This will make use of the occupation class within the IRI namespace that is specified under <code>"@vocab"</code>:</p>
+<pre><code class="language-json">{
+  &quot;@context&quot;: {
+    &quot;@base&quot;: &quot;https://linkeddata.uwv.nl/id/&quot;,
+    &quot;@version&quot;: 1.1,
+    &quot;@vocab&quot;: &quot;https://linkeddata.uwv.nl/ns/competentnl_uwv#&quot;
+  },
+  &quot;@type&quot;: &quot;Occupation&quot;
+}
+</code></pre>
+<h3 id="add-iri-prefix-declarations">Add IRI prefix declarations<a class="headerlink" href="#add-iri-prefix-declarations" title="Permanent link">&para;</a></h3>
+<p>We can add IRI prefix declarations to the Context. This results in shorted keys and values in the JSON objects:</p>
+<pre><code class="language-json">{
+  &quot;@context&quot;: {
+    &quot;cnl&quot;: &quot;https://linkeddata.uwv.nl/ns/competentnl_uwv#&quot;,
+    &quot;dct&quot;: &quot;http://purl.org/dc/terms/&quot;,
+    &quot;rdfs&quot;: &quot;http://www.w3.org/2000/01/rdf-schema#&quot;,
+    &quot;skos&quot;: &quot;http://www.w3.org/2004/02/skos/core#&quot;,
+    &quot;skosxl&quot;: &quot;http://www.w3.org/2008/05/skos-xl#&quot;,
+    &quot;xsd&quot;: &quot;http://www.w3.org/2001/XMLSchema#&quot;,
+    ...
+  }
+}
+</code></pre>
+<h3 id="configure-key-names">Configure key names<a class="headerlink" href="#configure-key-names" title="Permanent link">&para;</a></h3>
+<p>While <a href="#add-iri-prefix-declarations">adding IRI prefix declarations</a> makes many keys and values shorter, we can go one step further and use completely different key names that map onto IRIs. This allows us to add keys in a different language (e.g. in Dutch), or it allows us to get rid of the IRI alias that was still included after adding IRI prefix declarations.</p>
+<p>Furthermore, we can introduce our own names for the somewhat awkward looking keys <code>"@id"</code> and <code>"@type"</code>.</p>
+<p>The following Context results in keys that consist in simple names, devoid of any (abbreviated or full) IRIs, and devoid of strange @-signs (except for the Context key, which cannot be renamed):</p>
+<pre><code class="language-json">{
+  &quot;@context&quot;: {
+    &quot;@base&quot;: &quot;https://linkeddata.uwv.nl/id/&quot;,
+    &quot;@version&quot;: 1.1,
+    &quot;@vocab&quot;: &quot;https://linkeddata.uwv.nl/ns/competentnl_uwv#&quot;,
+    &quot;altLabel&quot;: &quot;skosxl:altLabel&quot;,
+    &quot;cnl&quot;: &quot;https://linkeddata.uwv.nl/ns/competentnl_uwv#&quot;,
+    &quot;broadMatch&quot;: &quot;skos:broadMatch&quot;,
+    &quot;created&quot;: &quot;dct:created&quot;,
+    &quot;dct&quot;: &quot;http://purl.org/dc/terms/&quot;,
+    &quot;id&quot;: &quot;@id&quot;,
+    &quot;inScheme&quot;: &quot;skos:inScheme&quot;,
+    &quot;rdfs&quot;: &quot;http://www.w3.org/2000/01/rdf-schema#&quot;,
+    &quot;relatedMatch&quot;: &quot;skos:relatedMatch&quot;,
+    &quot;skos&quot;: &quot;http://www.w3.org/2004/02/skos/core#&quot;,
+    &quot;skosxl&quot;: &quot;http://www.w3.org/2008/05/skos-xl#&quot;,
+    &quot;type&quot;: &quot;@type&quot;,
+    &quot;xsd&quot;: &quot;http://www.w3.org/2001/XMLSchema#&quot;
+  },
+  &quot;type&quot;: &quot;Occupation&quot;
+}
+</code></pre>
+<h3 id="configure-datatypes">Configure datatypes<a class="headerlink" href="#configure-datatypes" title="Permanent link">&para;</a></h3>
+<p>We still have too much syntactic clutter for values with a datatype. For example, this is how a created date is shown:</p>
+<pre><code class="language-json">{
+  &quot;@context&quot;: {
+    ...
+  },
+  ...,
+  &quot;created&quot;: {
+    &quot;type&quot;: &quot;xsd:dateTime&quot;,
+    &quot;@value&quot;: &quot;2024-12-09T00:00:00&quot;
+  },
+  ...
+}
+</code></pre>
+<p>Again, we can use the Context to hide unnecessary details from the JSON object. The following entry specifies that the datatype of 'created' values is XML Schema Datatypes (XSD) date/time:</p>
+<pre><code class="language-json">{
+  &quot;@context&quot;: {
+    ...,
+    &quot;created&quot;: { &quot;@id&quot;: &quot;dct:created&quot;, &quot;@type&quot;: &quot;xsd:dateTime&quot; },
+    ...
+  }
+}
+</code></pre>
+<h3 id="configure-languages">Configure languages<a class="headerlink" href="#configure-languages" title="Permanent link">&para;</a></h3>
+<p>We still have too much syntactic clutter for values with a language tag. For example, this is how a literal form is shown:</p>
+<pre><code class="language-json">{
+  &quot;@context&quot;: {
+    ...
+  },
+  ...,
+  &quot;literalForm&quot;: {
+    &quot;@language&quot;: &quot;nl&quot;,
+    &quot;@value&quot;: &quot;medewerker archief&quot;
+  },
+  ...
+}
+</code></pre>
+<p>Again, we can use the Context to hide unnecessary details from the JSON object. The following entry specifies that the language of 'literalForm' values is Dutch ('nl'):</p>
+<pre><code class="language-json">{
+  &quot;@context&quot;: {
+    ...,
+    &quot;literalForm&quot;: { &quot;@id&quot;: &quot;skosxl:literalForm&quot;, &quot;@language&quot;: &quot;nl&quot; },
+    ...
+  }
+}
+</code></pre>
+<h3 id="scoped-contexts">Scoped contexts<a class="headerlink" href="#scoped-contexts" title="Permanent link">&para;</a></h3>
+<pre><code class="language-json">{
+  &quot;@context&quot;: {
+    ...,
+    &quot;altLabel&quot;: {
+      &quot;@id&quot;: &quot;skosxl:altLabel&quot;,
+      &quot;@context&quot;: {
+        &quot;literalForm&quot;: {
+          &quot;@id&quot;: &quot;skosxl:literalForm&quot;,
+          &quot;@language&quot;: &quot;nl&quot;
+        }
+      }
+    },
+    ...
+  },
+  ...
+}
+</code></pre>
+<h2 id="using-the-restful-api">Using the RESTful API<a class="headerlink" href="#using-the-restful-api" title="Permanent link">&para;</a></h2>
+<p>Once a couple of SPARQL queries have been specified, it is possible to use the REST API through an OpenAPI Specification.</p>
+<p>This is done by the following these steps:</p>
+<ol>
+<li>Create an API Token in the Triply GUI.</li>
+<li>Go to an HTTPS program, and configure the API Token as an HTTPS Bearer Token.</li>
+<li>Specify the standard Accept header for YAML, the format used by the OpenAPI Specification: <code>text/vnd.yaml</code></li>
+<li>Perform an HTTPS request against URL <code>https://${host}/queries/$[account}/</code>, where you enter the host name of your Triply environment and the name of the account under which the queries are stored.</li>
+</ol>
+<p>This downloads the OpenAPI Specification that contains metadata about all queries under the specified account.</p>
+<p>If you want to retrieve the metadata for one specific query version, change the URL in item 4 to <code>https://${host}/queries/$[account}/${query}/${version}</code></p>
+<p>Load the OpenAPI Specification YAML file into an HTTPS program. With the same API Token configured, you can now easily submit queries to the various REST paths.</p>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script>var base_url = '../..';</script>
+      <script src="../../js/triply.js" defer></script>
+      <script src="../../js/highlight.min.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+
+</body>
+</html>

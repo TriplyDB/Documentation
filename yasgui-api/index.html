@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <meta name="description" content="The official documentation for the Triply products: TriplyDB, TriplyDB.js, and TriplyETL." />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Yasgui API Reference - Triply Documentation</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link href="../css/intellij-light.css" rel="stylesheet" />
+        <link href="../css/triply.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "For Developers";
+        var mkdocs_page_input_path = "yasgui-api/index.md";
+        var mkdocs_page_url = null;
+      </script>
+     
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> Triply Documentation
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">TriplyDB</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Getting started</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../triply-db-getting-started/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../triply-db-getting-started/uploading-data/">Uploading Data</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../triply-db-getting-started/editing-data/">Editing (SKOS) Data</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../triply-db-getting-started/publishing-data/">Sharing Data</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../triply-db-getting-started/viewing-data/">Viewing Data</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../triply-db-getting-started/exporting-data/">Exporting Data</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../triply-db-getting-started/saved-queries/">Saved Queries</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../triply-db-getting-started/data-stories/">Data Stories</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../triply-db-getting-started/admin-settings-pages/">Admin Settings Pages</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../triply-db-getting-started/reference/">Reference</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../triply-api/">API</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">TriplyDB-JS</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../triplydb-js/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../triplydb-js/app/">App</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../triplydb-js/account/">Account</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../triplydb-js/asset/">Asset</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../triplydb-js/dataset/">Dataset</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../triplydb-js/graph/">Graph</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../triplydb-js/organization/">Organization</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../triplydb-js/query/">Query</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../triplydb-js/service/">Service</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../triplydb-js/story/">Story</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../triplydb-js/user/">User</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../triplydb-js/faq/">FAQ</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../triply-cli/">Command-line Interface</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../triplydb-changelog/">Changelog</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">TriplyETL</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Generic</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../triply-etl/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../triply-etl/generic/getting-started/">Getting Started</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../triply-etl/generic/changelog/">Changelog</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../triply-etl/generic/cli/">Command Line Interface (CLI)</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../triply-etl/generic/declarations/">Declarations</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../triply-etl/generic/control-structures/">Control Structures</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../triply-etl/generic/debug/">Debug</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../triply-etl/generic/internal-store/">Internal Store</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../triply-etl/generic/maintenance/">Maintenance</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../triply-etl/generic/record/">Record</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../triply-etl/generic/vocabularies/">Vocabularies</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Sources</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../triply-etl/sources/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../triply-etl/sources/apis/">APIs</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../triply-etl/sources/inline-json/">Inline JSON</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../triply-etl/sources/inline-strings/">Inline Strings</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../triply-etl/sources/local-files/">Local Files</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../triply-etl/sources/online-files/">Online Files</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../triply-etl/sources/rml/">RML Sources</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../triply-etl/sources/triplydb-assets/">TriplyDB Assets</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../triply-etl/sources/triplydb-datasets/">TriplyDB Datasets</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../triply-etl/sources/triplydb-queries/">TriplyDB Queries</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Extract</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../triply-etl/extract/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../triply-etl/extract/csv/">CSV</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../triply-etl/extract/json/">JSON</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../triply-etl/extract/oai-pmh/">OAI-PMH</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../triply-etl/extract/postgres/">Postgres</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../triply-etl/extract/rdf/">RDF</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../triply-etl/extract/shapefile/">Shapefile</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../triply-etl/extract/tsv/">TSV</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../triply-etl/extract/xlsx/">XLSX</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../triply-etl/extract/xml/">XML</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Transform</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../triply-etl/transform/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../triply-etl/transform/ratt/">RATT</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../triply-etl/transform/rml/">RML</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../triply-etl/transform/typescript/">TypeScript</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../triply-etl/transform/xslt/">XSLT</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Assert</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../triply-etl/assert/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../triply-etl/assert/json-ld/">JSON-LD</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="#">RATT</a>
+    <ul>
+                <li class="toctree-l3"><a class="reference internal" href="../triply-etl/assert/ratt/terms/">RATT Terms</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../triply-etl/assert/ratt/statements/">RATT Statements</a>
+                </li>
+    </ul>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../triply-etl/assert/rml/">RML</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../triply-etl/assert/xslt/">XSLT</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Enrich</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../triply-etl/enrich/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="#">SHACL</a>
+    <ul>
+                <li class="toctree-l3"><a class="reference internal" href="../triply-etl/enrich/shacl/">Overview</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../triply-etl/enrich/shacl/triple-rules/">Triple Rules</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../triply-etl/enrich/shacl/sparql-rules/">SPARQL Rules</a>
+                </li>
+    </ul>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="#">SPARQL</a>
+    <ul>
+                <li class="toctree-l3"><a class="reference internal" href="../triply-etl/enrich/sparql/construct/">SPARQL Construct</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../triply-etl/enrich/sparql/update/">SPARQL Update</a>
+                </li>
+    </ul>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Validate</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../triply-etl/validate/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../triply-etl/validate/graph-comparison/">Graph Comparison</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../triply-etl/validate/shacl/">SHACL</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../triply-etl/publish/">Publish</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Yasgui</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../yasgui/">Introduction</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="./">For Developers</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#about-additional-plugins">About additional plugins</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#installation">Installation</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#via-package-managers">Via package managers</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#npm">npm</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#yarn">yarn</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#via-cdn">Via cdn</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#api-reference">API Reference</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#yasgui-api">Yasgui API</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#tab-api">Tab API</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#events">Events</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#configuration">Configuration</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#yasqe">Yasqe</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#yasqe-api">Yasqe API</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#events_1">Events</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#configuration_1">Configuration</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#yasr">Yasr</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#yasr-api">Yasr API</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#events_2">Events</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#configuration_2">Configuration</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#yasr-plugins">Yasr plugins</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#table">Table</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#raw-response">Raw Response</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#writing-a-yasr-plugin">Writing a Yasr plugin</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#faq">FAQ</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#using-yasgui-in-react">Using Yasgui in react</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">Triply Documentation</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Yasgui</li>
+      <li class="breadcrumb-item active">For Developers</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <div class="toc"><span class="toctitle">On this page:</span><ul>
+<li><a href="#yasgui-api-reference">Yasgui API Reference</a><ul>
+<li><a href="#about-additional-plugins">About additional plugins</a></li>
+<li><a href="#installation">Installation</a><ul>
+<li><a href="#via-package-managers">Via package managers</a><ul>
+<li><a href="#npm">npm</a></li>
+<li><a href="#yarn">yarn</a></li>
+</ul>
+</li>
+<li><a href="#via-cdn">Via cdn</a></li>
+</ul>
+</li>
+<li><a href="#api-reference">API Reference</a><ul>
+<li><a href="#yasgui-api">Yasgui API</a></li>
+<li><a href="#tab-api">Tab API</a></li>
+<li><a href="#events">Events</a></li>
+<li><a href="#configuration">Configuration</a></li>
+</ul>
+</li>
+<li><a href="#yasqe">Yasqe</a><ul>
+<li><a href="#yasqe-api">Yasqe API</a></li>
+<li><a href="#events_1">Events</a></li>
+<li><a href="#configuration_1">Configuration</a></li>
+</ul>
+</li>
+<li><a href="#yasr">Yasr</a><ul>
+<li><a href="#yasr-api">Yasr API</a></li>
+<li><a href="#events_2">Events</a></li>
+<li><a href="#configuration_2">Configuration</a></li>
+<li><a href="#yasr-plugins">Yasr plugins</a><ul>
+<li><a href="#table">Table</a></li>
+<li><a href="#raw-response">Raw Response</a></li>
+</ul>
+</li>
+<li><a href="#writing-a-yasr-plugin">Writing a Yasr plugin</a></li>
+</ul>
+</li>
+<li><a href="#faq">FAQ</a><ul>
+<li><a href="#using-yasgui-in-react">Using Yasgui in react</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<h1 id="yasgui-api-reference">Yasgui API Reference<a class="headerlink" href="#yasgui-api-reference" title="Permanent link">&para;</a></h1>
+<p>Yasgui consists of three components: Yasqe (a SPARQL Query Editor), Yasr (a SPARQL result visualizer), and Yasgui which binds the former together.
+Here you can find documentation on ways to include, configure and extend these components as suitable to your use-case.</p>
+<p><img alt="Overview of Yasgui Components" src="../assets/yasgui.png" />.</p>
+<h2 id="about-additional-plugins">About additional plugins <!-- {#triplyDbPlugins} --><a class="headerlink" href="#about-additional-plugins" title="Permanent link">&para;</a></h2>
+<p>Yasgui, Yasqe and Yasr are all <a href="https://github.com/TriplyDB/Yasgui">open source</a> and MIT licensed.
+Triply provides additional plugins that are only free to use via <a href="https://yasgui.triply.cc">https://yasgui.triply.cc</a> or <a href="https://triplydb.com/">TriplyDB</a>. These additional plugins are not MIT licensed and cannot be used or included programmatically.</p>
+<h2 id="installation">Installation<a class="headerlink" href="#installation" title="Permanent link">&para;</a></h2>
+<h3 id="via-package-managers">Via package managers<a class="headerlink" href="#via-package-managers" title="Permanent link">&para;</a></h3>
+<p>To include Yasgui in a project include the package run the commands below.</p>
+<h4 id="npm">npm<a class="headerlink" href="#npm" title="Permanent link">&para;</a></h4>
+<pre><code class="language-sh">npm i @triply/yasgui
+</code></pre>
+<h4 id="yarn">yarn<a class="headerlink" href="#yarn" title="Permanent link">&para;</a></h4>
+<pre><code class="language-sh">yarn add @triply/yasgui
+</code></pre>
+<h3 id="via-cdn">Via cdn<a class="headerlink" href="#via-cdn" title="Permanent link">&para;</a></h3>
+<p>To include Yasgui in your webpage, all that's needed is importing the Yasgui JavaScript and CSS files, and initializing a Yasgui object:</p>
+<pre><code class="language-html">&lt;head&gt;
+  &lt;link href=&quot;https://unpkg.com/@triply/yasgui/build/yasgui.min.css&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot; /&gt;
+  &lt;script src=&quot;https://unpkg.com/@triply/yasgui/build/yasgui.min.js&quot;&gt;&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;div id=&quot;yasgui&quot;&gt;&lt;/div&gt;
+  &lt;script&gt;
+    const yasgui = new Yasgui(document.getElementById(&quot;yasgui&quot;));
+  &lt;/script&gt;
+&lt;/body&gt;
+</code></pre>
+<p>If you only want to use Yasgui for querying a specific endpoint, you can add the following styling to disable the endpoint selector:</p>
+<pre><code class="language-html">&lt;style&gt;
+  .yasgui .autocompleteWrapper {
+    display: none !important;
+  }
+&lt;/style&gt;
+</code></pre>
+<p>And pass a second argument to the Yasgui initializer to specify the default endpoint:</p>
+<pre><code class="language-js">const yasgui = new Yasgui(document.getElementById(&quot;yasgui&quot;), {
+  requestConfig: { endpoint: &quot;http://example.com/sparql&quot; },
+  copyEndpointOnNewTab: false,
+});
+</code></pre>
+<p>Note: If you've already opened the Yasgui page before, you must first clear your local-storage cache before you will see the changes taking effect.</p>
+<h2 id="api-reference">API Reference<a class="headerlink" href="#api-reference" title="Permanent link">&para;</a></h2>
+<h3 id="yasgui-api">Yasgui API<a class="headerlink" href="#yasgui-api" title="Permanent link">&para;</a></h3>
+<p>Yasgui features tabs. Each tab has its own isolated query and results.
+These are persistent as the user switches between tabs.</p>
+<pre><code class="language-js">// Add a new Tab. Returns the new Tab object.
+yasgui.addTab(
+  true, // set as active tab
+  { ...Yasgui.Tab.getDefaults(), name: &quot;my new tab&quot; }
+);
+
+// Get a Tab. Returns the current Tab if no tab id is given.
+yasgui.getTab(&quot;tab_id_x&quot;);
+</code></pre>
+<h3 id="tab-api">Tab API<a class="headerlink" href="#tab-api" title="Permanent link">&para;</a></h3>
+<pre><code class="language-js">// set the query of the tab
+tab.setQuery(&quot;select * where {...}&quot;);
+
+// close the tab
+tab.close();
+
+// access the Yasqe API for the tab
+tab.yasqe;
+
+// access the Yasr API for the tab
+tab.yasr;
+</code></pre>
+<h3 id="events">Events<a class="headerlink" href="#events" title="Permanent link">&para;</a></h3>
+<p>Yasgui emits several Events. For information on how to use Events, see <a href="https://nodejs.org/api/events.html">NodeJS's Event documentation</a>.</p>
+<pre><code class="language-ts">// Fires when a query is executed
+yasgui.on(&quot;query&quot;, (instance: Yasgui, tab: Tab) =&gt; {});
+// Fires when a query is finished
+yasgui.on(&quot;queryResponse&quot;, (instance: Yasgui, tab: tab) =&gt; {});
+</code></pre>
+<h3 id="configuration">Configuration <!-- {#yasgui-config} --><a class="headerlink" href="#configuration" title="Permanent link">&para;</a></h3>
+<p>This configuration object is accessible/changeable via <code>Yasgui.defaults</code> or <code>yasgui.config</code>. You can pass these along when initializing Yasgui as well. To change settings to the Yasqe and Yasr components used by Yasgui, you are best off changing the <code>Yasgui.Yasqe.defaults</code> and <code>Yasgui.Yasr.defaults</code> objects before initializing Yasgui.</p>
+<pre><code class="language-js">{
+  /**
+   * Change the default request configuration, such as the headers
+   * and default yasgui endpoint.
+   * Define these fields as plain values, or as a getter function
+   */
+  requestConfig: {
+    endpoint: 'https://example.org/sparql',
+    //Example of using a getter function to define the headers field:
+    headers: () =&gt; ({
+      'key': 'value'
+    }),
+    method: 'POST',
+
+
+  },
+  // Allow resizing of the Yasqe editor
+  resizeable: true,
+
+  // Whether to autofocus on Yasqe on page load
+  autofocus: true,
+
+  // Use the default endpoint when a new tab is opened
+  copyEndpointOnNewTab: false,
+
+  // Configuring which endpoints appear in the endpoint catalogue list
+  endpointCatalogueOptions {
+    getData: () =&gt; {
+      return [
+        //List of objects should contain the endpoint field
+        //Feel free to include any other fields (e.g. a description or icon
+        //that you'd like to use when rendering)
+        {
+          endpoint: &quot;https://dbpedia.org/sparql&quot;
+        },
+        {
+          endpoint: &quot;https://query.wikidata.org&quot;
+        }
+        // ...
+      ];
+    },
+    //Data object keys that are used for filtering. The 'endpoint' key already used by default
+    keys: [],
+    //Data argument contains a `value` property for the matched data object
+    //Source argument is the suggestion DOM element to append your rendered item to
+    renderItem: (data, source) =&gt; {
+        const contentDiv = document.createElement(&quot;div&quot;);
+        contentDiv.innerText = data.value.endpoint;
+        source.appendChild(contentDiv);
+      }
+  }
+}
+</code></pre>
+<h2 id="yasqe">Yasqe<a class="headerlink" href="#yasqe" title="Permanent link">&para;</a></h2>
+<p>Yasqe extends the CodeMirror Library. For an overview of CodeMirror functionality, see the <a href="https://codemirror.net/doc/manual.html">CodeMirror documentation</a>. Note: Where CodeMirror provides <code>CodeMirror</code> in the global namespace, we provide <code>Yasqe</code>.</p>
+<h3 id="yasqe-api">Yasqe API<a class="headerlink" href="#yasqe-api" title="Permanent link">&para;</a></h3>
+<p>The Yasqe API can be accessed via <code>yasqe</code> (if Yasqe is run standalone) or via a tab <code>yasgui.getTab().yasqe</code> when run in Yasgui</p>
+<pre><code class="language-js">// Set query value in editor
+yasqe.setValue(&quot;select * where {...}&quot;);
+
+// Get query value from editor
+yasqe.getValue();
+
+// execute a query
+yasqe.query({
+  url: &quot;https://dbpedia.org/sparql&quot;,
+  reqMethod: &quot;POST&quot;, // or &quot;GET&quot;
+  headers: { Accept: &quot;...&quot; /*...*/ },
+  args: { arg1: &quot;val1&quot; /*...*/ },
+  withCredentials: false,
+});
+
+// get whether we're in query or update mode
+yasqe.getQueryMode();
+
+// get the query type (select, ask, construct, ...)
+yasqe.getQueryType();
+
+// get prefixes map from the query string
+yasqe.getPrefixesFromQuery();
+
+// Add prefixes to the query.
+yasqe.addPrefixes({ dbo: &quot;http://dbpedia.org/ontology/&quot; });
+
+// Remove prefixes to the query.
+yasqe.removePrefixes({ dbo: &quot;http://dbpedia.org/ontology/&quot; });
+
+// set size of input area
+yasqe.setSize(500, 300);
+
+// Collapsing prefixes if there are any. Use false to expand them.
+yasqe.collapsePrefixes(true);
+</code></pre>
+<h3 id="events_1">Events<a class="headerlink" href="#events_1" title="Permanent link">&para;</a></h3>
+<p>Yasqe emits several Events. For information on how to use Events, see <a href="https://nodejs.org/api/events.html">NodeJS's Event documentation</a>.</p>
+<pre><code class="language-ts">// Fires when a query is executed
+yasqe.on(&quot;query&quot;, (instance: Yasqe, req: superagent.SuperAgentRequest) =&gt; {});
+// Fires when a query is finished
+yasqe.on(&quot;queryResponse&quot;, (instance: Yasqe, req: superagent.SuperAgentRequest, duration: number) =&gt; {});
+</code></pre>
+<h3 id="configuration_1">Configuration <!-- {#yasqe-config} --><a class="headerlink" href="#configuration_1" title="Permanent link">&para;</a></h3>
+<p>The configuration options, for Yasqe can be accessed through <code>Yasgui.Yasqe</code> or <code>yasqe.options</code>.</p>
+<p>Here are some configurable fields for Yasqe. They can be accessed and set through <code>Yasqe.defaults</code> and <code>yasqe.options</code>. The configuration object extends the <a href="https://codemirror.net/doc/manual.html#config">CodeMirror config</a>, meaning fields like for example <code>tabSize</code> may also be set.</p>
+<pre><code class="language-ts">// number of seconds to persist query input, stored in the browser
+// set to 0 to always load the default query on page load
+persistencyExpire // default: 30 days
+
+// default settings for how to query the endpoint
+requestOpts: {
+  endpoint: &quot;http://dbpedia.org/sparql&quot;,
+  method: &quot;POST&quot;,
+  headers: {}
+},
+</code></pre>
+<h2 id="yasr">Yasr<a class="headerlink" href="#yasr" title="Permanent link">&para;</a></h2>
+<p>Yasr is an extendable library that renders SPARQL results. Yasr is responsible for gluing the different visualization plugins together, and providing utilities such as SPARQL result parsers.</p>
+<h3 id="yasr-api">Yasr API<a class="headerlink" href="#yasr-api" title="Permanent link">&para;</a></h3>
+<pre><code class="language-ts">// Set and draw a SPARQL response. The parameter is either
+// - a plain response string
+// - a SuperAgent response
+// - or an object with the specified keys
+yasr.setResponse({
+  data: &quot;...&quot;;
+  contentType: &quot;application/sparql-results+json&quot;;
+  status: 200;
+  executionTime: 1000; // ms
+  // error to show
+})
+
+// Draw results with current plugin
+yasr.draw()
+
+// Check whether a result has been drawn
+yasr.somethingDrawn()
+
+// Select a plugin
+yasr.selectPlugin(&quot;table&quot;)
+
+// Download a result set (if possible)
+yasr.download()
+</code></pre>
+<h3 id="events_2">Events<a class="headerlink" href="#events_2" title="Permanent link">&para;</a></h3>
+<pre><code class="language-ts">// Fires just before a plugins draws the results
+yasr.on(&quot;draw&quot;,(instance: Yasr, plugin: Plugin) =&gt; void);
+
+// Fires when a plugin finished drawing the results
+yasr.on(&quot;drawn&quot;,(instance: Yasr, plugin: Plugin) =&gt; void);
+</code></pre>
+<h3 id="configuration_2">Configuration <!-- {#yasr-configuration} --><a class="headerlink" href="#configuration_2" title="Permanent link">&para;</a></h3>
+<p>This configuration object is accessible/changeable via <code>Yasr.defaults</code> and <code>yasr.options</code>, and you can pass these along when initializing Yasr as well. Output visualizations are defined separately.</p>
+<pre><code class="language-ts">// Ordered list of enabled output plugins
+pluginOrder = [&quot;table&quot;, &quot;response&quot;]
+
+// The default plugin
+defaultPlugin = &quot;table&quot;
+
+// seconds before results expire in the browser
+// Set to 0 to disable results persistency
+persistencyExpire // default: 30 days
+
+// Map of prefixes to use in results views
+prefixes: {&quot;dbo&quot;:&quot;http://dbpedia.org/ontology/&quot;,/*...*/}
+</code></pre>
+<h3 id="yasr-plugins">Yasr plugins<a class="headerlink" href="#yasr-plugins" title="Permanent link">&para;</a></h3>
+<p>Each plugin has its own configuration options.
+These options can be accessed through <code>Yasr.plugins</code>.</p>
+<h4 id="table">Table<a class="headerlink" href="#table" title="Permanent link">&para;</a></h4>
+<p>This plugin shows SPARQL results as a table, using the <a href="https://datatables.net/">DataTables.net</a> plugin. This plugin is defined in <code>Yasr.plugins.table</code> and can be configured using <code>Yasr.plugins.table.defaults</code>.</p>
+<pre><code class="language-ts">// Open URIs in results in a new window rather than the current.
+openIriInNewWindow = true;
+</code></pre>
+<h4 id="raw-response">Raw Response<a class="headerlink" href="#raw-response" title="Permanent link">&para;</a></h4>
+<p>A plugin which uses <a href="https://codemirror.net/">CodeMirror</a> to present the SPARQL results as-is. This plugin is defined at <code>Yasr.plugins.response</code> and can be configured using <code>Yasr.plugins.response.defaults</code>.</p>
+<pre><code class="language-ts">// Number of lines to show before hiding rest of response
+// (too large value may cause browser performance issues)
+maxLines = 30;
+</code></pre>
+<h3 id="writing-a-yasr-plugin">Writing a Yasr plugin<a class="headerlink" href="#writing-a-yasr-plugin" title="Permanent link">&para;</a></h3>
+<p>To register a Yasr plugin, add it to Yasr by running <code>Yasr.registerPlugin(pluginName: string, plugin: Plugin)</code>. Below is an example implementation for rendering the result of an Ask query, which returns either <code>true</code> or <code>false</code>. See also the implementations of the <a href="https://github.com/TriplyDB/YASGUI.YASR/blob/gh-pages/src/table.js">Table</a> and <a href="https://github.com/TriplyDB/YASGUI.YASR/blob/gh-pages/src/rawResponse.js">Raw Response</a> plugins.</p>
+<pre><code class="language-ts">class Boolean {
+  // A priority value. If multiple plugin support rendering of a result, this value is used
+  // to select the correct plugin
+  priority = 10;
+
+  // Whether to show a select-button for this plugin
+  hideFromSelection = true;
+
+  constructor(yasr) {
+    this.yasr = yasr;
+  }
+
+  // Draw the result set. This plugin simply draws the string 'True' or 'False'
+  draw() {
+    const el = document.createElement(&quot;div&quot;);
+    el.textContent = this.yasr.results.getBoolean() ? &quot;True&quot; : &quot;False&quot;;
+    this.yasr.resultsEl.appendChild(el);
+  }
+
+  // A required function, used to indicate whether this plugin can draw the current
+  // resultset from yasr
+  canHandleResults() {
+    return (
+      this.yasr.results.getBoolean &amp;&amp;
+      (this.yasr.results.getBoolean() === true || this.yasr.results.getBoolean() == false)
+    );
+  }
+  // A required function, used to identify the plugin, works best with an svg
+  getIcon() {
+    const textIcon = document.createElement(&quot;p&quot;);
+    textIcon.innerText = &quot;✓/✗&quot;;
+    return textIcon;
+  }
+}
+
+//Register the plugin to Yasr
+Yasr.registerPlugin(&quot;MyBooleanPlugin&quot;, Boolean);
+</code></pre>
+<h2 id="faq">FAQ<a class="headerlink" href="#faq" title="Permanent link">&para;</a></h2>
+<h3 id="using-yasgui-in-react">Using Yasgui in react<a class="headerlink" href="#using-yasgui-in-react" title="Permanent link">&para;</a></h3>
+<p>To include Yasgui in React, use the following snippet. This snippet assumes a React repository configured via <a href="https://github.com/facebook/create-react-app">create-react-app</a>, and a minimum React version of 16.8.</p>
+<pre><code class="language-ts">import Yasgui from &quot;@triply/yasgui&quot;;
+import &quot;@triply/yasgui/build/yasgui.min.css&quot;;
+export default function App() {
+  useEffect(() =&gt; {
+    const yasgui = new Yasgui(document.getElementById(&quot;yasgui&quot;));
+    return () =&gt; {};
+  }, []);
+
+  return &lt;div id=&quot;yasgui&quot; /&gt;;
+}
+</code></pre>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../yasgui/" class="btn btn-neutral float-left" title="Introduction"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../yasgui/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+  </span>
+</div>
+    <script>var base_url = '..';</script>
+      <script src="../js/triply.js" defer></script>
+      <script src="../js/highlight.min.js" defer></script>
+      <script src="../search/main.js" defer></script>
+
+</body>
+</html>

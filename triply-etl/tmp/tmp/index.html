@@ -1,0 +1,867 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <meta name="description" content="The official documentation for the Triply products: TriplyDB, TriplyDB.js, and TriplyETL." />
+      <link rel="shortcut icon" href="../../../img/favicon.ico" />
+    <title>Tmp - Triply Documentation</title>
+    <link rel="stylesheet" href="../../../css/theme.css" />
+    <link rel="stylesheet" href="../../../css/theme_extra.css" />
+        <link href="../../../css/intellij-light.css" rel="stylesheet" />
+        <link href="../../../css/triply.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Tmp";
+        var mkdocs_page_input_path = "triply-etl/tmp/tmp.md";
+        var mkdocs_page_url = null;
+      </script>
+     
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../../.." class="icon icon-home"> Triply Documentation
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../..">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">TriplyDB</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Getting started</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../../triply-db-getting-started/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../triply-db-getting-started/uploading-data/">Uploading Data</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../triply-db-getting-started/editing-data/">Editing (SKOS) Data</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../triply-db-getting-started/publishing-data/">Sharing Data</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../triply-db-getting-started/viewing-data/">Viewing Data</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../triply-db-getting-started/exporting-data/">Exporting Data</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../triply-db-getting-started/saved-queries/">Saved Queries</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../triply-db-getting-started/data-stories/">Data Stories</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../triply-db-getting-started/admin-settings-pages/">Admin Settings Pages</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../triply-db-getting-started/reference/">Reference</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../triply-api/">API</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">TriplyDB-JS</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../../triplydb-js/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../triplydb-js/app/">App</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../triplydb-js/account/">Account</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../triplydb-js/asset/">Asset</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../triplydb-js/dataset/">Dataset</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../triplydb-js/graph/">Graph</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../triplydb-js/organization/">Organization</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../triplydb-js/query/">Query</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../triplydb-js/service/">Service</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../triplydb-js/story/">Story</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../triplydb-js/user/">User</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../triplydb-js/faq/">FAQ</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../triply-cli/">Command-line Interface</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../triplydb-changelog/">Changelog</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">TriplyETL</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Generic</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../generic/getting-started/">Getting Started</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../generic/changelog/">Changelog</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../generic/cli/">Command Line Interface (CLI)</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../generic/declarations/">Declarations</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../generic/control-structures/">Control Structures</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../generic/debug/">Debug</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../generic/internal-store/">Internal Store</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../generic/maintenance/">Maintenance</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../generic/record/">Record</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../generic/vocabularies/">Vocabularies</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Sources</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../sources/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../sources/apis/">APIs</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../sources/inline-json/">Inline JSON</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../sources/inline-strings/">Inline Strings</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../sources/local-files/">Local Files</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../sources/online-files/">Online Files</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../sources/rml/">RML Sources</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../sources/triplydb-assets/">TriplyDB Assets</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../sources/triplydb-datasets/">TriplyDB Datasets</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../sources/triplydb-queries/">TriplyDB Queries</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Extract</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../extract/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../extract/csv/">CSV</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../extract/json/">JSON</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../extract/oai-pmh/">OAI-PMH</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../extract/postgres/">Postgres</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../extract/rdf/">RDF</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../extract/shapefile/">Shapefile</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../extract/tsv/">TSV</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../extract/xlsx/">XLSX</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../extract/xml/">XML</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Transform</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../transform/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../transform/ratt/">RATT</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../transform/rml/">RML</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../transform/typescript/">TypeScript</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../transform/xslt/">XSLT</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Assert</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../assert/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../assert/json-ld/">JSON-LD</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="#">RATT</a>
+    <ul>
+                <li class="toctree-l3"><a class="reference internal" href="../../assert/ratt/terms/">RATT Terms</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../../assert/ratt/statements/">RATT Statements</a>
+                </li>
+    </ul>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../assert/rml/">RML</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../assert/xslt/">XSLT</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Enrich</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../enrich/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="#">SHACL</a>
+    <ul>
+                <li class="toctree-l3"><a class="reference internal" href="../../enrich/shacl/">Overview</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../../enrich/shacl/triple-rules/">Triple Rules</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../../enrich/shacl/sparql-rules/">SPARQL Rules</a>
+                </li>
+    </ul>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="#">SPARQL</a>
+    <ul>
+                <li class="toctree-l3"><a class="reference internal" href="../../enrich/sparql/construct/">SPARQL Construct</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../../enrich/sparql/update/">SPARQL Update</a>
+                </li>
+    </ul>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Validate</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../validate/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../validate/graph-comparison/">Graph Comparison</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../validate/shacl/">SHACL</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../publish/">Publish</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Yasgui</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../yasgui/">Introduction</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../yasgui-api/">For Developers</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../..">Triply Documentation</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../.." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Tmp</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <div class="toc"><span class="toctitle">On this page:</span><ul>
+<li><a href="#create-statements">Create statements</a><ul>
+<li><a href="#static-assertions">Create static statements</a></li>
+<li><a href="#dynamic-assertions">Create dynamic statements</a><ul>
+<li><a href="#static-and-dynamic-triples">Static and dynamic triples</a><ul>
+<li><a href="#when-should-you-use-an-iri-instead-of-an-uri-which-is-a-literal">When should you use an IRI instead of an URI (which is a literal)?</a></li>
+<li><a href="#limitation-of-literal-iri-and-irihashed">Limitation of literal, iri and iri.hashed</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#record-ids">Record IDs</a></li>
+<li><a href="#process-data-conditionally">Process data conditionally</a><ul>
+<li><a href="#null-values">Null values</a></li>
+<li><a href="#missing-values">Missing values</a></li>
+<li><a href="#the-empty-string">The empty string</a></li>
+<li><a href="#custom-functions">Custom functions</a></li>
+</ul>
+</li>
+<li><a href="#tree-shaped-data">Tree-shaped data</a><ul>
+<li><a href="#iterating-over-lists-of-objects">Iterating over lists of objects</a><ul>
+<li><a href="#index-key-index">Index key ($index)</a></li>
+<li><a href="#parent-key-parent">Parent key ($parent)</a></li>
+<li><a href="#root-key-root">Root key ($root)</a></li>
+</ul>
+</li>
+<li><a href="#iterating-over-lists-of-primitives">Iterating over lists of primitives</a></li>
+</ul>
+</li>
+<li><a href="#transforming-rdf-data">Transforming RDF data</a></li>
+</ul>
+</div>
+<h2 id="create-statements">Create statements<a class="headerlink" href="#create-statements" title="Permanent link">&para;</a></h2>
+<p>After source data is connected and transformed, the RATT Record is ready to be transformed to linked data. Linked data statements are assertions or factual statements that consist of 3 terms (triple) or 4 terms (quadruples).</p>
+<p>Statements are created with the <code>triple</code> function. Calls to this function are part of the pipeline, and must appear inside the scope of <code>etl.use</code>.</p>
+<h3 id="static-assertions">Create static statements<a class="headerlink" href="#static-assertions" title="Permanent link">&para;</a></h3>
+<p>Static linked data statements are statements that only make use of constant terms (see <a href="https://triply.cc/docs/ratt-extract#working-with-iris">working with IRIs</a>). Constant terms are introduced at the beginning of a RATT pipeline, typically prior to the occurrence of the first <code>etl.use</code> scope.</p>
+<p>The following static statements make use of the constant terms introduced in the section on <a href="https://triply.cc/docs/ratt-extract#working-with-iris">working with IRIs</a>.</p>
+<pre><code class="language-ts">etl.use(
+  // “John is a person.”
+  triple(ex.john, a, foaf.Person),
+  // “Mary is a person.”
+  triple(ex.mary, a, foaf.Person),
+)
+</code></pre>
+<h3 id="dynamic-assertions">Create dynamic statements<a class="headerlink" href="#dynamic-assertions" title="Permanent link">&para;</a></h3>
+<p>Dynamic statements are statements that are based on some aspect of the source data.</p>
+<p>We use the following RATT Record as an example:</p>
+<table>
+<thead>
+<tr>
+<th>Country</th>
+<th>Inhabitants</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>France</td>
+<td>null</td>
+</tr>
+<tr>
+<td>Germany</td>
+<td>83190556</td>
+</tr>
+<tr>
+<td>Netherlands</td>
+<td>17650200</td>
+</tr>
+</tbody>
+</table>
+<p>We start with creating the prefix and term declarations (see the section on <a href="https://triply.cc/docs/ratt-extract#working-with-iris">working with IRIs</a> for more information):</p>
+<pre><code class="language-ts">const prefix_base = Ratt.prefixer('https://triplydb.com/Triply/example/')
+const prefix = {
+  def: Ratt.prefixer(prefix_base('def/')),
+  id: Ratt.prefixer(prefix_base('id/')),
+  xsd: Ratt.prefixer('http://www.w3.org/2001/XMLSchema#'),
+}
+
+const def = {
+  Country: prefix.def('Country'),
+  name: prefix.def('inhabitants'),
+}
+
+const xsd = {
+  positiveInteger: prefix.xsd('positiveInteger'),
+  string: prefix.xsd('string'),
+}
+
+
+const input_string  = ['Country', 'inhabitants']
+</code></pre>
+<p>With these prefix and term constants in place, a dynamic statement is created as follows:</p>
+<pre><code class="language-ts">etl.use(
+  triple(
+    iri('Country', {prefix: prefix.id}),
+    def.inhabitants,
+    literal('Inhabitants', {datatype: xsd.positiveInteger})),
+)
+</code></pre>
+<p>Notice the following details:
+- <code>iri</code> is used to create a dynamic IRI term.
+- Arguments <code>Country</code> and <code>Inhabitants</code> allow values for these keys to be used from processed RATT Records.
+- The IRI prefix for the subject term is specified with constant <code>prefix.id</code>.
+- <code>literal</code> is used to create a dynamic literal term.
+- For literals a datatype IRI can be specified. If no datatype IRI is specified then the default IRI is <code>xsd.string</code>.</p>
+<p><code>iri.hashed</code>can be used instead of <code>iri</code> when the ETL has a high number of blank nodes and they need more than one constant as input to hash a unique IRI.</p>
+<pre><code class="language-ts">etl.use(
+  triple(
+    iri.hashed(prefix.id, input_string),
+    def.inhabitants,
+    mw.toLiteral('Inhabitants', {datatype: xsd.positiveInteger})),
+)
+</code></pre>
+<p>Notice the following details:
+- <code>input_string</code> can pass more than one constant to hash a unique IRI term.</p>
+<h4 id="static-and-dynamic-triples">Static and dynamic triples<a class="headerlink" href="#static-and-dynamic-triples" title="Permanent link">&para;</a></h4>
+<p>Be aware that there are different approaches for <em>static</em> and <em>dynamic</em> IRIs:</p>
+<ul>
+<li>Static IRIs are created with prefix declarations (example [1a]).</li>
+<li>Dynamic IRIs are created with <code>iri</code>,<code>iri.hashed</code> and prefix declarations (example [2a]).</li>
+</ul>
+<pre><code class="language-ts">[1a] prefix.id('person')
+[2a] iri(prefix.id, 'person'),
+[3a] iri.hashed(prefix.id, ['person','age']),
+
+</code></pre>
+<p>Notation [1a] creates the <em>static</em> IRI [1b]. This IRI does not depend on the currently processed RATT record.</p>
+<p>Notation [2a] creates the <em>dynamic</em> IRI in [2b], assuming the <code>"person"</code> key contains the value <code>"John"</code>. This IRI depends on the currently processed RATT record.</p>
+<p>For a different RATT record, IRI [2c] may be created instead (assuming the <code>"person"</code> key contains the value <code>"Jane"</code>).</p>
+<p>Notation [3a] creates the <em>dynamic</em> IRI in [3b], assuming the <code>"person"</code> key contains the value <code>"Sam"</code> and the
+<code>"age"</code> key contains the value <code>"30"</code>. For a different RATT record, IRI [3c] may be created instead (assuming the <code>"person"</code> key contains the value <code>"Roland"</code> and <code>"age"</code> key contains the value <code>"20"</code>).</p>
+<pre><code class="language-turtle">[1b] id:person
+[2b] id:John
+[2c] id:Jane
+[3b] id:Sam , age: 30
+[3c] id:Sam , age: 20
+</code></pre>
+<h5 id="when-should-you-use-an-iri-instead-of-an-uri-which-is-a-literal">When should you use an IRI instead of an URI (which is a literal)?<a class="headerlink" href="#when-should-you-use-an-iri-instead-of-an-uri-which-is-a-literal" title="Permanent link">&para;</a></h5>
+<p>An IRI is used to identify something, for example the city of Amsterdam. It is expected that accessing it returns linked data. An IRI can be used to make assertions about a subject. On the other hand, a URI is expected to return a non-linked data content, for example an HTML website, and can be used as objects in linked data, for example for inserting further information about the subject resource.
+In the example below, the subject IRI is described further by the object's URL.</p>
+<pre><code class="language-sh">&lt;https://dbpedia.org/resource/Amsterdam&gt; rdfs:seeAlso &quot;https://www.iamsterdam.com&quot;^^xsd:anyURI.
+</code></pre>
+<p>An IRI can be created with <code>iri</code>, while an URI is created by using <code>literal</code> .</p>
+<h5 id="limitation-of-literal-iri-and-irihashed">Limitation of <code>literal</code>, <code>iri</code> and <code>iri.hashed</code><a class="headerlink" href="#limitation-of-literal-iri-and-irihashed" title="Permanent link">&para;</a></h5>
+<p>There is a limitation for both <code>literal</code>, <code>iri</code> and <code>iri.hashed</code>. It is not possible to change the value in the record in the <code>literal</code>, <code>iri</code> and <code>iri.hashed</code> middlewares. The value that is at that moment stored in the record for that key, is then added as either an IRI when called with the <code>iri</code>/<code>iri.hashed</code> function or as a literal when called with the function <code>literal</code>.</p>
+<p>The limitation is shown in the example below. In the example we want to round the inhabitants number to the nearest thousand. We can not transform this in the <code>literal</code> function. Instead we need to add a <code>change</code> middleware which will execute the transformation.</p>
+<pre><code class="language-ts">etl.use(
+  change({
+    key: 'Inhabitants',
+    type: 'number',
+    change: (value) =&gt; value/1000
+  }),
+  triple(
+    iri(prefix.id, 'Country'),
+    def.name,
+
+    literal('Inhabitants', xsd.positiveInteger)
+  ),
+)
+</code></pre>
+<h2 id="record-ids">Record IDs<a class="headerlink" href="#record-ids" title="Permanent link">&para;</a></h2>
+<p>If your RATT Records do not contain a unique ID then you can use the <code>recordId</code> entry that RATT adds automatically. These <code>recordId</code> values are unique for every record processed in the same pipeline, but they are not an entry into the RATT Record by default.</p>
+<p>Record IDs are consistently assigned across runs of the same pipeline. They generate the same output as long as the input does not change.</p>
+<p>The following example code shows how the record ID can be added to each RATT Record:</p>
+<pre><code class="language-ts">etl.use(
+  add({
+    key: 'ID',
+    value: context =&gt; app.prefix.observation(context.recordId.toString()) }),
+  triple(iri(prefix.id, key_id), a, def.Country),
+)
+</code></pre>
+<h2 id="process-data-conditionally">Process data conditionally<a class="headerlink" href="#process-data-conditionally" title="Permanent link">&para;</a></h2>
+<p>Source data often contains optional values. These are values that appear in some, but not all records.</p>
+<p>Source data often contains 'special' values to denote the absence of a value. Common examples are values such as <code>'NULL'</code> or the empty string (<code>''</code>) or 'clear' outliers such as <code>9999</code> for a missing year. We call such values ‘null values’.</p>
+<p>The <code>when</code> function supports the creation of triples under certain conditions. The first argument that this function takes establishes whether or not a certain condition is met. After that, one or more additional statement arguments appear that will only be called if the condition is satisfied. The generic structure of <code>when</code> is as follows:</p>
+<pre><code class="language-ts">etl.use(
+  when(
+    '{condition}',
+    '{statement-1}',
+    '{statement-2}',
+    '{statement-3}',
+    ...,
+  )
+)
+</code></pre>
+<p>Notice that it is often useful to specify multiple statements under the same condition:</p>
+<ol>
+<li>The first statement transforms an optional value, and the second statement uses the transformed optional value to make a triple assertion.</li>
+<li>The first statement asserts one triple based on the optional value, and the second statement asserts a second triple based on the same optional value.</li>
+</ol>
+<h3 id="null-values">Null values <!-- {#null-values} --><a class="headerlink" href="#null-values" title="Permanent link">&para;</a></h3>
+<p>If a key contains a null value in some records, then we need to specifically identify the criteria under which a triple must be added.</p>
+<pre><code class="language-ts">etl.use(
+  // The source data uses '9999' to denote an unknown creation year.
+  when(
+    context =&gt; context.getNumber('CREATED') != 9999),
+    triple(
+      iri(prefix.id, 'ID'),
+      dct.created,
+      literal('CREATED', xsd.gYear))),
+</code></pre>
+<p>Notice that the conditional function inside the <code>when</code> function takes the current RATT context as its single argument and returns a Boolean.</p>
+<h3 id="missing-values">Missing values<a class="headerlink" href="#missing-values" title="Permanent link">&para;</a></h3>
+<p>If a value is sometimes completely missing from a source data record, then the following construct can be used to only add a triple in case the value is present:</p>
+<pre><code class="language-ts">etl.use(
+  // The source data does not always include a value for 'zipcode'.
+  when(
+    context =&gt; context.isNotEmpty('ZIPCODE'),
+    triple(
+      iri(prefix.id, 'ID'),
+      def.zipcode,
+      literal('ZIPCODE')),
+    ...,
+  ),
+)
+</code></pre>
+<p>Because missing values are very common in source data, RATT introduces special support for when the value for a specific key is missing. Instead of having to write <code>context =&gt; context.isNotEmpty('foo')</code> one can simply write the key name instead. The above example is equivalent to the following:</p>
+<pre><code class="language-ts">etl.use(
+  // The source data does not always include a value for 'zipcode'.
+  when(
+    'ZIPCODE',
+    triple(
+      iri(prefix.id, 'ID'),
+      def.zipcode,
+      literal('ZIPCODE')),
+    ...,
+  ),
+)
+</code></pre>
+<p>It is also possible to check if a value is completely missing from the source data with <code>ctx.isEmpty()</code></p>
+<p>A note for finding more methods RATT:</p>
+<p>One of the many advantages using Typescript is code completion. As such any methods available on a class in Ratt can be accessed using your IDE's intellisense (<code>ctrl + space</code> in VSCODE). In Ratt the <code>context</code> and <code>mw</code> are two such classes that can be accessed in this way.</p>
+<h3 id="the-empty-string">The empty string<a class="headerlink" href="#the-empty-string" title="Permanent link">&para;</a></h3>
+<p>Because source data often uses the empty string to signify NULL values, this particular string is treated in a special way by RATT.</p>
+<pre><code class="language-ts">etl.use(
+  when(
+    key.zipcode,
+    // Skipped for the empty string.
+    ...),
+)
+</code></pre>
+<p>Notice that it is almost never useful to store the empty string in linked data. So the treatment of the empty string as a NULL value is the correct default behavior.</p>
+<h3 id="custom-functions">Custom functions<a class="headerlink" href="#custom-functions" title="Permanent link">&para;</a></h3>
+<p>If we want to extract a string value from the source data, we can write a custom function which can be used with <code>when</code> . <code>when</code> can receive two parameters: string(a key value) or a function.
+If <code>when</code> receives a string, it checks whether it is empty or not. But in case of a custom method specific instructions are required. For example,</p>
+<pre><code class="language-ts">(ctx) =&gt; ctx.isNotEmpty('foo') &amp;&amp; ctx.getString('foo') === 'foo'
+</code></pre>
+<p>Notice details:</p>
+<p><code>ctx.isNotEmpty('foo')</code> checks whether the string is empty or not and only if it is not empty, the function moves to the next step
+<code>ctx.getString('bla') === 'something’</code>, which is the next step, extracts 'foo' when it fulfills the required criteria</p>
+<h2 id="tree-shaped-data">Tree-shaped data<a class="headerlink" href="#tree-shaped-data" title="Permanent link">&para;</a></h2>
+<p>Tree-shaped data is very common in different source systems. We will use the following JSON source data as an example in this section:</p>
+<pre><code class="language-json">{
+  &quot;metadata&quot;: {
+    &quot;title&quot;: {
+      &quot;name&quot;: &quot;Data about countries.&quot;
+    }
+  },
+  &quot;data&quot;: {
+    &quot;countries&quot;: [
+      {
+        &quot;id&quot;: &quot;nl&quot;,
+        &quot;name&quot;: &quot;The Netherlands&quot;
+      },
+      {
+        &quot;id&quot;: &quot;de&quot;,
+        &quot;name&quot;: &quot;Germany&quot;
+      }
+    ]
+  }
+}
+</code></pre>
+<p>The principles that are documented in this section can be applied to any form of tree-shaped data. For example, the following XML snippet is very similar to the JSON example:</p>
+<pre><code class="language-xml">&lt;?xml version=&quot;1.0&quot;?&gt;
+&lt;root&gt;
+  &lt;metadata&gt;
+    &lt;title&gt;
+      &lt;name&gt;Data about countries.&lt;/name&gt;
+    &lt;/title&gt;
+  &lt;/metadata&gt;
+  &lt;data&gt;
+    &lt;countries&gt;
+      &lt;id&gt;nl&lt;/id&gt;
+      &lt;name&gt;The Netherlands&lt;/name&gt;
+    &lt;/countries&gt;
+    &lt;countries&gt;
+      &lt;id&gt;de&lt;/id&gt;
+      &lt;name&gt;Germany&lt;/name&gt;
+    &lt;/countries&gt;
+  &lt;/data&gt;
+&lt;/root&gt;
+</code></pre>
+<h3 id="iterating-over-lists-of-objects">Iterating over lists of objects<a class="headerlink" href="#iterating-over-lists-of-objects" title="Permanent link">&para;</a></h3>
+<p>In the previous section, we saw that we were able to assert the name of the first country and the name of the second country. But what do we do if we want to assert the name for every country in the world?  And what do we do if some countries have a name in 2 languages, but other countries have a name in 1 or 3 languages?  What we need is a simple way to express that we want RATT to make an assertion for every element in a list.</p>
+<p>RATT uses the <code>forEach</code> function for this purpose. The following code snippet asserts the name for <em>each</em> country in the example data:</p>
+<pre><code class="language-ts">etl.use(
+  forEach('data.countries',
+    triple(
+      iri(prefix.country, 'id'),
+      rdfs.label,
+      literal('name', 'en'))),
+)
+</code></pre>
+<p>Notice the following details:
+- <code>forEach</code> uses the path expression <code>'data.countries'</code> to identify the list.
+- Inside the <code>forEach</code> function, each element in the list is made available separately.
+- This allows the <code>'id'</code> and <code>'name'</code> keys to be identified directly.</p>
+<p>The above code snippet makes one assertion for every element in the <code>"countries"</code> list:</p>
+<pre><code class="language-r">country:nl rdfs:label 'The Netherlands'@en.
+country:de rdfs:label 'Germany'@en.
+</code></pre>
+<p>Notice that <code>forEach</code> only works for lists whose elements are <em>objects</em>. See <a href="#list-primitive">Iterating over lists of primitives</a> for dealing with lists that do not contain objects.</p>
+<p>The elements that <code>forEach</code> iterates over are themselves RATT records. This implies that all functions that work for full RATT records also work for the RATT records inside <code>forEach</code>. The RATT records inside an <code>forEach</code>function are smaller. This allows the regular keys of the iterated-over elements to be accessed directly.</p>
+<p>In addition to these regular keys, RATT records inside <code>forEach</code> also contain additional keys that simplify common operations. The following subsections explain the following special keys:</p>
+<ul>
+<li><a href="#index-key">Index key (<code>$index</code>)</a></li>
+<li><a href="#parent-key">Parent key (<code>$parent</code>)</a></li>
+<li><a href="#root-key">Root key (<code>$root</code>)</a></li>
+</ul>
+<h4 id="index-key-index">Index key (<code>$index</code>) <!-- {#index-key} --><a class="headerlink" href="#index-key-index" title="Permanent link">&para;</a></h4>
+<p>Each RATT record that is made available in <code>forEach</code> contains the <code>$index</code> key. The value of this key is the index of the element in the list. This is the same index that is used to access specific elements in an list, as explained in <a href="#accessing-lists-by-index">the section on accessing lists by index</a>.</p>
+<p>The index key is often useful for assigning a unique subject IRI to every element.</p>
+<p>Suppose we have the following source data. We do not want to use the values of the <code>"name"</code> key for our subject IRI, because these names contain spaces and possibly other problematic characters that make the IRI more difficult to read and use.</p>
+<pre><code class="language-json">{
+  &quot;countries&quot;: [
+    {
+      &quot;name&quot;: &quot;The Netherlands&quot;
+    },
+    {
+      &quot;name&quot;: &quot;Germany&quot;
+    },
+    {
+      &quot;name&quot;: &quot;Italy&quot;
+    },
+    …
+  ]
+}
+</code></pre>
+<p>The following code snippet uses the <code>$index</code> key that is made available inside <code>forEach</code> in order to create a unique subject IRI for each country:</p>
+<pre><code class="language-ts">etl.use(
+  forEach('countries',
+    triple(
+      iri(prefix.country, '$index'),
+      rdfs.label,
+      literal('name', 'en'))),
+)
+</code></pre>
+<p>This results in the following assertions:</p>
+<pre><code class="language-r">country:0 rdfs:label 'The Netherlands'@en.
+country:1 rdfs:label 'Germany'@en.
+country:2 rdfs:label 'Italy'@en.
+</code></pre>
+<h4 id="parent-key-parent">Parent key (<code>$parent</code>) <!-- {#parent-key} --><a class="headerlink" href="#parent-key-parent" title="Permanent link">&para;</a></h4>
+<p>When <code>forEach</code> iterates through a list of elements, it makes the enclosing <em>parent</em> record available under key <code>$parent</code>.</p>
+<p>The parent record is the record that directly contains the first key that appears in the path that was specified in <code>forEach</code>.</p>
+<p>For example, the parent record in the following call is the record that directly contains the <code>"data"</code> key:</p>
+<pre><code class="language-ts">etl.use(
+  forEach('data.countries',
+    …
+  )
+)
+</code></pre>
+<p>The <code>$parent</code> key can be observed when logRecord` is used to print the iterated-over elements to the terminal:</p>
+<pre><code class="language-ts">etl.use(
+  forEach('data.countries',
+    logRecord())
+)
+</code></pre>
+<p>For our example source data, this emits the following 2 RATT records:</p>
+<pre><code class="language-json">{
+  &quot;id&quot;: &quot;en&quot;,
+  &quot;name&quot;: &quot;The Netherlands&quot;,
+  &quot;$index&quot;: 0,
+  &quot;$parent&quot;: {
+    &quot;data&quot;: {
+      &quot;labels&quot;: [
+        {
+          &quot;id&quot;: &quot;en&quot;,
+          &quot;name&quot;: &quot;The Netherlands&quot;,
+        },
+        {
+          &quot;id&quot;: &quot;de&quot;
+          &quot;name&quot;: &quot;Germany&quot;,
+        }
+      ]
+    }
+  },
+  &quot;$root&quot;: &quot;__circular__&quot;
+}
+</code></pre>
+<p>and:</p>
+<pre><code class="language-json">{
+  &quot;id&quot;: &quot;de&quot;,
+  &quot;name&quot;: &quot;Germany&quot;,
+  &quot;$index&quot;: 1,
+  &quot;$parent&quot;: {
+    &quot;data&quot;: {
+      &quot;labels&quot;: [
+        {
+          &quot;id&quot;: &quot;en&quot;,
+          &quot;name&quot;: &quot;The Netherlands&quot;,
+        },
+        {
+          &quot;id&quot;: &quot;de&quot;
+          &quot;name&quot;: &quot;Germany&quot;,
+        }
+      ]
+    }
+  },
+  &quot;$root&quot;: &quot;__circular__&quot;
+}
+</code></pre>
+<p>The <code>$root</code> key is explained in <a href="#root-key">the next section</a>.</p>
+<h4 id="root-key-root">Root key (<code>$root</code>) <!-- {#root-key} --><a class="headerlink" href="#root-key-root" title="Permanent link">&para;</a></h4>
+<p>Sometimes it may be necessary to access a part of the original RATT record that is outside of the scope of the <code>forEach</code> call.</p>
+<p>Every RATT record inside a <code>forEach</code> call contains the <code>"$root"</code> key. The value of the root key provides a link to the full RATT record. Because the <code>$root</code> key is part of the linked-to RATT record, it is not possible to print the value of the root key. (This would result in infinite output.)  For this reason, the value of the <code>$root</code> key is printed as the special value <code>"__circular__"</code>.</p>
+<p>For the above examples, the parent record and root record are the same, but this is not always the case. Specifically, the parent record and root record are different when <code>forEach</code> calls are nested.</p>
+<p>The following data contains an inner list (key <code>"labels"</code>) inside an outer list (<code>"countries"</code>):</p>
+<pre><code class="language-json">{
+  &quot;data&quot;: {
+    &quot;countries&quot;: [
+      {
+        &quot;id&quot;: &quot;NL&quot;,
+        &quot;labels&quot;: [
+          {
+            &quot;name&quot;: &quot;The Netherlands&quot;,
+            &quot;locale&quot;: &quot;en-us&quot;
+          },
+          {
+            &quot;name&quot;: &quot;Nederland&quot;,
+            &quot;locale&quot;: &quot;nl-nl&quot;
+          }
+        ]
+      },
+      {
+        &quot;id&quot;: &quot;EN&quot;,
+        &quot;labels&quot;: [
+          {
+            &quot;name&quot;: &quot;England&quot;,
+            &quot;locale&quot;: &quot;en-gb&quot;
+          }
+        ]
+      }
+    ]
+  }
+}
+</code></pre>
+<p>The following nested <code>forEach</code> call shows the difference between the <code>"$parent"</code> key and the <code>$root</code> key. The <code>$parent</code> key allows the individual country objects to be accessed, while the <code>"$root"</code> key allows the entire tree to be accessed:</p>
+<pre><code class="language-ts">etl.use(
+  forEach('data.countries',
+    forEach('labels',
+      logRecord())),
+)
+</code></pre>
+<p>The following RATT record is printed first (3 records are printed in total). Notice that the value of the outer <code>$parent</code> and <code>"$root"</code> keys are now different:
+- The <code>$parent</code> key allows access to the first country.
+- The <code>$root</code> key allows access to the full record (describing multiple countries).</p>
+<pre><code class="language-json">{
+  &quot;name&quot;: &quot;The Netherlands&quot;,
+  &quot;locale&quot;: &quot;en-us&quot;,
+  &quot;$index&quot;: 0,
+  &quot;$parent&quot;: {
+    &quot;id&quot;: &quot;NL&quot;,
+    &quot;labels&quot;: [
+      {
+        &quot;name&quot;: &quot;The Netherlands&quot;,
+        &quot;locale&quot;: &quot;en-us&quot;
+      },
+      {
+        &quot;name&quot;: &quot;Nederland&quot;,
+        &quot;locale&quot;: &quot;nl-nl&quot;
+      }
+    ],
+    &quot;$index&quot;: 0,
+    &quot;$parent&quot;: {
+      &quot;data&quot;: {
+        &quot;countries&quot;: [
+          {
+            &quot;id&quot;: &quot;NL&quot;,
+            &quot;labels&quot;: &quot;__circular__&quot;
+          },
+          {
+            &quot;id&quot;: &quot;EN&quot;,
+            &quot;labels&quot;: [
+              {
+                &quot;name&quot;: &quot;England&quot;,
+                &quot;locale&quot;: &quot;en-gb&quot;
+              }
+            ]
+          }
+        ]
+      }
+    },
+    &quot;$root&quot;: &quot;__circular__&quot;
+  },
+  &quot;$root&quot;: &quot;__circular__&quot;
+}
+</code></pre>
+<h3 id="iterating-over-lists-of-primitives">Iterating over lists of primitives <!-- {#list-primitive} --><a class="headerlink" href="#iterating-over-lists-of-primitives" title="Permanent link">&para;</a></h3>
+<p>In <a href="#list-object">the previous section</a> we showed how to iterate over lists of objects. But what happens if a list does not contain objects but elements of primitive type?  Examples include lists of strings or lists of numbers.</p>
+<p>Function <code>forEach</code> does not work with lists containing primitive types, because it assumes a RATT record structure which can only be provided by objects. Luckily, RATT includes the functions <code>iri.forEach</code> and <code>literal.forEach</code> that can be specifically used to iterate over lists of primitives.</p>
+<pre><code class="language-ts">  etl.use(
+    fromJson({&quot;id&quot;: &quot;nl&quot;, &quot;names&quot;: [&quot;The Netherlands&quot;, &quot;Holland&quot;]}),
+    triple(
+      iri(prefix.country, 'id'),
+      rdfs.label,
+      literal.forEach('names', 'en')),
+  )
+</code></pre>
+<p>This makes the following assertion:</p>
+<pre><code class="language-r">country:nl rdfs:label 'The Netherlands'@en,
+                      'Holland'@en.
+</code></pre>
+<h2 id="transforming-rdf-data">Transforming RDF data<a class="headerlink" href="#transforming-rdf-data" title="Permanent link">&para;</a></h2>
+<p>If you have RDF data that does not need to be transformed, see <a href="https://triply.cc/docs/ratt-working-with-ratt#direct-copying-of-source-data-to-destination">copying source data</a>.
+If you have RDF data that <em>does</em> need to be transformed, you can use the following pattern. This example renames the graph.</p>
+<pre><code class="language-ts">const app = new Ratt({
+  defaultGraph: graph.model,
+  prefixes: prefix,
+  sources: {
+    inputFile: Ratt.Source.file(`data/shapes.trig`)
+  },
+
+  destinations: {
+   dataset: Ratt.Destination.TriplyDb.rdf(organization, dataset, remoteOptions)
+  },
+})
+
+etl.use(
+  loadRdf(app.sources.inputFile),
+  mapQuads(
+    (quad, ctx) =&gt; ctx.store.quad(
+      quad.subject,
+      quad.predicate,
+      quad.object,
+      app.prefix.somePrefix(&quot;graph&quot;)
+    )
+  ),
+  toRdf(app.destinations.dataset)
+)
+</code></pre>
+<p>Similarly, you can change all the subject, predicates or objects in your data.</p>
+<p>Also, you can choose to transform triples of a specific subject, predicate, object or graph name. in this case, you should use:</p>
+<pre><code class="language-ts">mapQuads(
+  (quad, ctx) =&gt; ctx.store.quad(
+    quad.subject,
+    app.prefix.example('new-predicate'),
+    quad.object,
+    quad.graph
+  ),
+  {predicate: app.prefix.example(&quot;old-predicate&quot;)}
+)
+</code></pre>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script>var base_url = '../../..';</script>
+      <script src="../../../js/triply.js" defer></script>
+      <script src="../../../js/highlight.min.js" defer></script>
+      <script src="../../../search/main.js" defer></script>
+
+</body>
+</html>

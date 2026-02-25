@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <meta name="description" content="The official documentation for the Triply products: TriplyDB, TriplyDB.js, and TriplyETL." />
+      <link rel="shortcut icon" href="../../../img/favicon.ico" />
+    <title>TypeScript - Triply Documentation</title>
+    <link rel="stylesheet" href="../../../css/theme.css" />
+    <link rel="stylesheet" href="../../../css/theme_extra.css" />
+        <link href="../../../css/intellij-light.css" rel="stylesheet" />
+        <link href="../../../css/triply.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "TypeScript";
+        var mkdocs_page_input_path = "triply-etl/transform/typescript.md";
+        var mkdocs_page_url = null;
+      </script>
+     
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../../.." class="icon icon-home"> Triply Documentation
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../..">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">TriplyDB</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Getting started</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../../triply-db-getting-started/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../triply-db-getting-started/uploading-data/">Uploading Data</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../triply-db-getting-started/editing-data/">Editing (SKOS) Data</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../triply-db-getting-started/publishing-data/">Sharing Data</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../triply-db-getting-started/viewing-data/">Viewing Data</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../triply-db-getting-started/exporting-data/">Exporting Data</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../triply-db-getting-started/saved-queries/">Saved Queries</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../triply-db-getting-started/data-stories/">Data Stories</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../triply-db-getting-started/admin-settings-pages/">Admin Settings Pages</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../triply-db-getting-started/reference/">Reference</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../triply-api/">API</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">TriplyDB-JS</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../../triplydb-js/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../triplydb-js/app/">App</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../triplydb-js/account/">Account</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../triplydb-js/asset/">Asset</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../triplydb-js/dataset/">Dataset</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../triplydb-js/graph/">Graph</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../triplydb-js/organization/">Organization</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../triplydb-js/query/">Query</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../triplydb-js/service/">Service</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../triplydb-js/story/">Story</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../triplydb-js/user/">User</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../triplydb-js/faq/">FAQ</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../triply-cli/">Command-line Interface</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../triplydb-changelog/">Changelog</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">TriplyETL</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="#">Generic</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../generic/getting-started/">Getting Started</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../generic/changelog/">Changelog</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../generic/cli/">Command Line Interface (CLI)</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../generic/declarations/">Declarations</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../generic/control-structures/">Control Structures</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../generic/debug/">Debug</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../generic/internal-store/">Internal Store</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../generic/maintenance/">Maintenance</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../generic/record/">Record</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../generic/vocabularies/">Vocabularies</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Sources</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../sources/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../sources/apis/">APIs</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../sources/inline-json/">Inline JSON</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../sources/inline-strings/">Inline Strings</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../sources/local-files/">Local Files</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../sources/online-files/">Online Files</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../sources/rml/">RML Sources</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../sources/triplydb-assets/">TriplyDB Assets</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../sources/triplydb-datasets/">TriplyDB Datasets</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../sources/triplydb-queries/">TriplyDB Queries</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Extract</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../extract/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../extract/csv/">CSV</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../extract/json/">JSON</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../extract/oai-pmh/">OAI-PMH</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../extract/postgres/">Postgres</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../extract/rdf/">RDF</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../extract/shapefile/">Shapefile</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../extract/tsv/">TSV</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../extract/xlsx/">XLSX</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../extract/xml/">XML</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Transform</a>
+    <ul class="current">
+                <li class="toctree-l2"><a class="reference internal" href="../">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../ratt/">RATT</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../rml/">RML</a>
+                </li>
+                <li class="toctree-l2 current"><a class="reference internal current" href="./">TypeScript</a>
+    <ul class="current">
+    <li class="toctree-l3"><a class="reference internal" href="#context">Context</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#function-customadd">Function custom.add()</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#function-signature">Function signature</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#error-conditions">Error conditions</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#see-also">See also</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#example-numeric-calculations">Example: Numeric calculations</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#function-customchange">Function custom.change()</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#function-signature_1">Function signature</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#error-conditions_1">Error conditions</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#example-numeric-calculation">Example: Numeric calculation</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#example-cast-numeric-data">Example: Cast numeric data</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#example-variant-type">Example: Variant type</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#example-string-or-object">Example: String or object</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#customreplace">custom.replace()</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#function-signature_2">Function signature</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#error-conditions_2">Error conditions</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#see-also_1">See also</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../xslt/">XSLT</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Assert</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../assert/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../assert/json-ld/">JSON-LD</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="#">RATT</a>
+    <ul>
+                <li class="toctree-l3"><a class="reference internal" href="../../assert/ratt/terms/">RATT Terms</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../../assert/ratt/statements/">RATT Statements</a>
+                </li>
+    </ul>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../assert/rml/">RML</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../assert/xslt/">XSLT</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Enrich</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../enrich/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="#">SHACL</a>
+    <ul>
+                <li class="toctree-l3"><a class="reference internal" href="../../enrich/shacl/">Overview</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../../enrich/shacl/triple-rules/">Triple Rules</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../../enrich/shacl/sparql-rules/">SPARQL Rules</a>
+                </li>
+    </ul>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="#">SPARQL</a>
+    <ul>
+                <li class="toctree-l3"><a class="reference internal" href="../../enrich/sparql/construct/">SPARQL Construct</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../../enrich/sparql/update/">SPARQL Update</a>
+                </li>
+    </ul>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Validate</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../validate/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../validate/graph-comparison/">Graph Comparison</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../validate/shacl/">SHACL</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../publish/">Publish</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Yasgui</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../yasgui/">Introduction</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../yasgui-api/">For Developers</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../..">Triply Documentation</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../.." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">TriplyETL</li>
+          <li class="breadcrumb-item">Transform</li>
+      <li class="breadcrumb-item active">TypeScript</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <div class="toc"><span class="toctitle">On this page:</span><ul>
+<li><a href="#typescript">TypeScript</a><ul>
+<li><a href="#context">Context</a></li>
+<li><a href="#function-customadd">Function custom.add()</a><ul>
+<li><a href="#function-signature">Function signature</a></li>
+<li><a href="#error-conditions">Error conditions</a></li>
+<li><a href="#see-also">See also</a></li>
+<li><a href="#example-numeric-calculations">Example: Numeric calculations</a></li>
+</ul>
+</li>
+<li><a href="#function-customchange">Function custom.change()</a><ul>
+<li><a href="#function-signature_1">Function signature</a></li>
+<li><a href="#error-conditions_1">Error conditions</a></li>
+<li><a href="#example-numeric-calculation">Example: Numeric calculation</a></li>
+<li><a href="#example-cast-numeric-data">Example: Cast numeric data</a></li>
+<li><a href="#example-variant-type">Example: Variant type</a></li>
+<li><a href="#example-string-or-object">Example: String or object</a></li>
+</ul>
+</li>
+<li><a href="#customreplace">custom.replace()</a><ul>
+<li><a href="#function-signature_2">Function signature</a></li>
+<li><a href="#error-conditions_2">Error conditions</a></li>
+<li><a href="#see-also_1">See also</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<h1 id="typescript">TypeScript<a class="headerlink" href="#typescript" title="Permanent link">&para;</a></h1>
+<p>The vast majority of ETLs can be written with the core set of <a href="../ratt/">RATT Transformations</a>. But sometimes a custom transformation is necessary that cannot be handled by this core set. For such circumstances, TriplyETL allows a custom TypeScript function to be written.</p>
+<p>Notice that the use of a custom TypeScript function should be somewhat uncommon. The vast majority of real-world transformations should be supported by the core set of RATT Transformations.</p>
+<h2 id="context">Context<a class="headerlink" href="#context" title="Permanent link">&para;</a></h2>
+<p>Custom TypeScript functions have access to various resources inside the TriplyETL. These resources include, but are not limited to, the full Record and the full Internal Store.</p>
+<p>TriplyETL refers to these resources as the <strong>Context</strong>.</p>
+<dl>
+<dt><code>context.app</code><dt>
+<dd>The TriplyETL pipeline object.</dd>
+<dt><code>context.getX</code></dt>
+<dd>Tetrieves the value of a specific key in the Record and assumes it has type <code>X</code>, e.g. <code>getAny()</code>, <code>getNumber()</code>, <code>getString()</code>.</dd>
+<dt><code>context.record</code></dt>
+<dd>The current Record.</dd>
+<dt><code>context.store</code></dt>
+<dd>The Internal Store.</dd>
+</dl>
+
+<h2 id="function-customadd">Function <code>custom.add()</code><a class="headerlink" href="#function-customadd" title="Permanent link">&para;</a></h2>
+<p>Adds a new entry to the Record, based on more than one existing entry.</p>
+<p>The value of the entry is the result of an arbitrary TypeScript function that has access to the full <a href="#context">Context</a>.</p>
+<h3 id="function-signature">Function signature<a class="headerlink" href="#function-signature" title="Permanent link">&para;</a></h3>
+<p>The <code>custom.add</code> function has the following signature:</p>
+<pre><code class="language-ts">etl.use(
+  custom.add({
+    value: context =&gt; FUNCTION_BODY,
+    key: 'NEW_KEY',
+  }),
+)
+</code></pre>
+<p>The function can be configured in the following ways:
+- <code>FUNCTION_BODY</code> the body of a function, taking the Context as its input parameter (<code>context)</code> and ending with a <code>return</code> statement returning the newly added value.
+- <code>NEW_KEY</code> must be the name of a new entry in the Record.</p>
+<h3 id="error-conditions">Error conditions<a class="headerlink" href="#error-conditions" title="Permanent link">&para;</a></h3>
+<p>This function emits an error if <code>NEW_KEY</code> already exists in the current Record.</p>
+<h3 id="see-also">See also<a class="headerlink" href="#see-also" title="Permanent link">&para;</a></h3>
+<p>Notice that it is bad practice to use <code>custom.add()</code> for adding a new entry that is based on exactly one existing entry. In such cases, the use of function <code>custom.copy()</code></p>
+<h3 id="example-numeric-calculations">Example: Numeric calculations<a class="headerlink" href="#example-numeric-calculations" title="Permanent link">&para;</a></h3>
+<p>Suppose the source data contains a numeric balance and a numeric rate. We can use function <code>custom.add()</code> to calculate the interest and store it in a new key:</p>
+<pre><code class="language-ts">import { Etl, fromJson } from '@triplyetl/etl/generic'
+import { custom, logRecord } from '@triplyetl/etl/ratt'
+
+export default async function (): Promise&lt;Etl&gt; {
+  const etl = new Etl()
+  etl.use(
+    fromJson([
+      { balance: 100, rate: 0.1 },
+      { balance: 200, rate: 0.2 }
+    ]),
+    custom.add({
+      value: context =&gt; context.getNumber('balance') * context.getNumber('rate'),
+      key: 'interest',
+    }),
+    logRecord(),
+  )
+  return etl
+}
+</code></pre>
+<p>This prints the following two records:</p>
+<pre><code class="language-json">{
+  &quot;balance&quot;: 100,
+  &quot;rate&quot;: 0.1,
+  &quot;interest&quot;: 10
+}
+{
+  &quot;balance&quot;: 200,
+  &quot;rate&quot;: 0.2,
+  &quot;interest&quot;: 40
+}
+</code></pre>
+<h2 id="function-customchange">Function <code>custom.change()</code> <!-- {#change} --><a class="headerlink" href="#function-customchange" title="Permanent link">&para;</a></h2>
+<p>Changes an existing entry in the Record. The <code>change</code> function takes the old value and returns the new value.</p>
+<h3 id="function-signature_1">Function signature<a class="headerlink" href="#function-signature_1" title="Permanent link">&para;</a></h3>
+<p>This function has the following signature:</p>
+<pre><code class="language-ts">etl.use(
+  custom.change({
+    key: 'KEY_NAME',
+    type: 'VALUE_TYPE',
+    change: value =&gt; FUNCTION_BODY,
+  }),
+)
+</code></pre>
+<p>The function can be configured in the following way:
+- <code>KEY_NAME</code> must be the name of a key in the record.
+- <code>VALUE_TYPE</code> must be one of the following type-denoting strings:
+  - <code>'array'</code> an array whose elements have type <code>any</code>.
+  - <code>'boolean'</code> a Boolean value (<code>true</code> or <code>false</code>).
+  - <code>'iri'</code> a universal identifier / IRI term.
+  - <code>'literal'</code> an RDF literal term.
+  - <code>'number'</code> a natural number or floating-point number.
+  - <code>'string'</code> a sequence of characters.
+  - <code>'unknown'</code> an unknown type.
+- <code>FUNCTION_BODY</code> a function body that returns the new value.</p>
+<h3 id="error-conditions_1">Error conditions<a class="headerlink" href="#error-conditions_1" title="Permanent link">&para;</a></h3>
+<p>This function emits an error if the specified key (<code>KEY_NAME</code>) does not exist in the RATT record. Use <code>custom.copy()</code> if you want to create a new entry based on an existing one.</p>
+<h3 id="example-numeric-calculation">Example: Numeric calculation<a class="headerlink" href="#example-numeric-calculation" title="Permanent link">&para;</a></h3>
+<p>Suppose the source data contains a balance in thousands. We can use function <code>custom.change()</code> to multiply the balance inplace:</p>
+<pre><code class="language-ts">import { Etl, fromJson } from '@triplyetl/etl/generic'
+import { custom, logRecord } from '@triplyetl/etl/ratt'
+
+export default async function (): Promise&lt;Etl&gt; {
+  const etl = new Etl()
+  etl.use(
+    fromJson([{ balance: 100 }, { balance: 200 }]),
+    custom.change({
+      change: value =&gt; 1_000 * value,
+      type: 'number',
+      key: 'balance',
+    }),
+    logRecord(),
+  )
+  return etl
+}
+</code></pre>
+<p>This prints the following two records:</p>
+<pre><code class="language-json">{
+  &quot;balance&quot;: 100000
+}
+{
+  &quot;balance&quot;: 200000
+}
+</code></pre>
+<p>Notice that the values for the <code>balance</code> keys were changed.</p>
+<h3 id="example-cast-numeric-data">Example: Cast numeric data<a class="headerlink" href="#example-cast-numeric-data" title="Permanent link">&para;</a></h3>
+<p>Some source data formats are unable to represent numeric data. A good example are the <a href="../../extract/csv/">CSV</a> and <a href="../../extract/tsv/">TSV</a> formats, where every cell value is represented as a string.</p>
+<p>If such a source data format that cannot represent numeric data is used, it is often useful to explicitly cast string values to numbers.</p>
+<p>For example, assume the following input table that uses strings to encode the number of inhabitants for each country:</p>
+<table>
+<thead>
+<tr>
+<th>Country</th>
+<th>Inhabitants</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>France</td>
+<td>''</td>
+</tr>
+<tr>
+<td>Germany</td>
+<td>'83190556'</td>
+</tr>
+<tr>
+<td>Italy</td>
+<td>'empty'</td>
+</tr>
+<tr>
+<td>Netherlands</td>
+<td>'17650200'</td>
+</tr>
+</tbody>
+</table>
+<p>We can use the <code>custom.change()</code> function to cast the values stored in the <code>'Inhabitants'</code> key to numbers in the following way:</p>
+<pre><code class="language-ts">custom.change({
+  change: value =&gt; +(value as number),
+  type: 'unknown',
+  key: 'Inhabitants',
+}),
+</code></pre>
+<p>Notice that the type must be set to <code>'unknown'</code> because a string is not allowed to be cast to a number in TypeScript (because not every string <em>can</em> be cast to a number).</p>
+<p>After <code>custom.change()</code> has been applied, the record looks as follows:</p>
+<table>
+<thead>
+<tr>
+<th>Country</th>
+<th>Inhabitants</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>France</td>
+<td>0</td>
+</tr>
+<tr>
+<td>Germany</td>
+<td>83190556</td>
+</tr>
+<tr>
+<td>Italy</td>
+<td>null</td>
+</tr>
+<tr>
+<td>Netherlands</td>
+<td>17650200</td>
+</tr>
+</tbody>
+</table>
+<p>Notice that strings that encode a number are correctly transformed, and non-empty strings that do not encode a number are transformed to <code>null</code>. Most of the time, this is the behavior that you want in a linked data pipeline.</p>
+<!-- TODO
+When [creating statements](#create-statements) later, no statement will be created for entries that have value `null`. See the [section on working with null values](#null-values) for more information.
+-->
+
+<p>Also notice that the empty string is cast to the number zero. Most of the time, this is <em>not</em> what you want. If you want to prevent this transformation from happening, and you almost certainly do, you must process the source data conditionally, using <a href="../../generic/control-structures/">control structures</a>.</p>
+<h3 id="example-variant-type">Example: Variant type<a class="headerlink" href="#example-variant-type" title="Permanent link">&para;</a></h3>
+<p>A <em>variant</em> is a value that does not always have the same type. Variants may appear in dirty source data, where a value is sometimes given in one way and sometimes in another.</p>
+<p>In such cases, the <code>type</code> parameter must be set to <code>'unknown'</code>. Inside the body of the <code>change</code> function we first cast the <code>value</code> to a variant type. In TypeScript the notation for this is a sequence of types separated by the pipe (<code>|</code>) character. Finally, the <code>typeof</code> operator is used to clean the source data to a uniform type that is easier to process in the rest of the ETL.</p>
+<p>The following code snippet processes source data where the balance is sometimes specified as a number and sometimes as a string:</p>
+<pre><code class="language-ts">import { Etl, fromJson } from '@triplyetl/etl/generic'
+import { custom, logRecord } from '@triplyetl/etl/ratt'
+
+export default async function (): Promise&lt;Etl&gt; {
+  const etl = new Etl()
+  etl.use(
+    fromJson([{ balance: 100 }, { balance: &quot;200&quot; }]),
+    custom.change({
+      key: 'balance',
+      type: 'unknown',
+      change: value =&gt; {
+        const tmp = value as number | string
+        switch (typeof tmp) {
+          case 'number':
+            return value as number
+          case 'string':
+            return parseInt(value as string)
+        }
+      },
+    }),
+    logRecord(),
+  )
+  return etl
+}
+</code></pre>
+<p>This prints the following two records, where the balance is now always a number that can be uniformly processed:</p>
+<pre><code class="language-json">{
+  &quot;balance&quot;: 100
+}
+{
+  &quot;balance&quot;: 200
+}
+</code></pre>
+<h3 id="example-string-or-object">Example: String or object<a class="headerlink" href="#example-string-or-object" title="Permanent link">&para;</a></h3>
+<p>In the following example the <code>name</code> of a person is sometimes given as a plain string and sometimes as an object with a <code>fistName</code> and a <code>lastName</code> key:</p>
+<p>The following function transforms this variant to a uniform string type:</p>
+<pre><code class="language-ts">import { Etl, fromJson } from '@triplyetl/etl/generic'
+import { custom, logRecord } from '@triplyetl/etl/ratt'
+
+export default async function (): Promise&lt;Etl&gt; {
+  const etl = new Etl()
+  etl.use(
+    fromJson([
+      { name: 'John Doe' },
+      { name: { firstName: 'Jane', lastName: 'Doe' } }
+    ]),
+    custom.change({
+      key: 'name',
+      type: 'unknown',
+      change: value =&gt; {
+        const tmp = value as { firstName: string, lastName: string } | string
+        switch (typeof tmp) {
+          case 'string':
+            return tmp
+          case 'object':
+            return tmp.firstName + ' ' + tmp.lastName
+        }
+      },
+    }),
+    logRecord(),
+  )
+  return etl
+}
+</code></pre>
+<p>This print the following two records that can now be uniformly processed:</p>
+<pre><code class="language-json">{
+  &quot;name&quot;: &quot;John Doe&quot;
+}
+{
+  &quot;name&quot;: &quot;Jane Doe&quot;
+}
+</code></pre>
+<!-- TODO
+## `custom.addFrom.context()`
+## `custom.addFrom.value()`
+-->
+
+<h2 id="customreplace"><code>custom.replace()</code><a class="headerlink" href="#customreplace" title="Permanent link">&para;</a></h2>
+<p>Replaces the value of an existing key based on the value from another key.</p>
+<h3 id="function-signature_2">Function signature<a class="headerlink" href="#function-signature_2" title="Permanent link">&para;</a></h3>
+<p>The <code>custom.replace()</code> function has the following signature:</p>
+<pre><code class="language-ts">etl.use(
+  custom.replace({
+    fromKey: 'FROM_KEY',
+    type: 'VALUE_TYPE',
+    change?: value =&gt; FUNCTION_BODY,
+    toKey: 'FROM_TYPE',
+  }),
+)
+</code></pre>
+<ul>
+<li><code>fromKey</code> is the name of the key whose value is going to be used to replace the old value with.</li>
+<li><code>type</code> is the name of the type of the value in <code>fromKey</code>.</li>
+<li>The <code>change</code> key optionally specifies a function that takes the cast <code>value</code> of <code>fromKey</code> and that returns the value that will be stored in <code>toKey</code>. If the <code>change</code> function is not specified, it is identical to <code>value =&gt; value</code>.</li>
+<li><code>toKey</code> is the name of the existing key whose value is going to be replaced.</li>
+</ul>
+<h3 id="error-conditions_2">Error conditions<a class="headerlink" href="#error-conditions_2" title="Permanent link">&para;</a></h3>
+<p>This function emits an error under the following conditions:
+- <code>fromKey</code> does not specify a key name that exists in the current Record.
+- <code>toKey</code> does not specify a key name that exists in the current Record.
+- <code>fromKey</code> and <code>toKey</code> are the same.</p>
+<h3 id="see-also_1">See also<a class="headerlink" href="#see-also_1" title="Permanent link">&para;</a></h3>
+<p>If <code>fromKey</code> and <code>toKey</code> are the same, then function <a href="#customchange">custom.change()</a> must be used instead.</p>
+<!-- TODO
+## `etl.before()`
+etl.before(async () => {
+  BODY
+}
+
+## `etl.after()`
+
+etl.after(async () => {
+  BODY
+}
+-->
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../rml/" class="btn btn-neutral float-left" title="RML"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../xslt/" class="btn btn-neutral float-right" title="XSLT">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../rml/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../xslt/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script>var base_url = '../../..';</script>
+      <script src="../../../js/triply.js" defer></script>
+      <script src="../../../js/highlight.min.js" defer></script>
+      <script src="../../../search/main.js" defer></script>
+
+</body>
+</html>

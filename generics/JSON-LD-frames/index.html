@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+
+<html class="writer-html5" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="IE=edge" http-equiv="X-UA-Compatible"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="The official documentation for the Triply products: TriplyDB, TriplyDB.js, and TriplyETL." name="description"/>
+<link href="../../img/favicon.ico" rel="shortcut icon"/>
+<title>JSON-LD Framing - Triply Documentation</title>
+<link href="../../css/theme.css" rel="stylesheet"/>
+<link href="../../css/theme_extra.css" rel="stylesheet"/>
+<link href="../../css/intellij-light.css" rel="stylesheet"/>
+<link href="../../css/triply.css" rel="stylesheet"/>
+<script>
+        // Current page data
+        var mkdocs_page_name = "JSON-LD Framing";
+        var mkdocs_page_input_path = "generics/JSON-LD-frames.md";
+        var mkdocs_page_url = null;
+      </script>
+</head>
+<body class="wy-body-for-nav" role="document">
+<div class="wy-grid-for-nav">
+<nav class="wy-nav-side stickynav" data-toggle="wy-nav-shift">
+<div class="wy-side-scroll">
+<div class="wy-side-nav-search">
+<a class="icon icon-home" href="../.."> Triply Documentation
+        </a><div role="search">
+<form action="../../search.html" class="wy-form" id="rtd-search-form" method="get">
+<input aria-label="Search docs" name="q" placeholder="Search docs" title="Type search term here" type="text"/>
+</form>
+</div>
+</div>
+<div aria-label="Navigation menu" class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">TriplyDB</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="#">Getting started</a>
+<ul>
+<li class="toctree-l2"><a class="reference internal" href="../../triply-db-getting-started/">Overview</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../triply-db-getting-started/uploading-data/">Uploading Data</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../triply-db-getting-started/editing-data/">Editing (SKOS) Data</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../triply-db-getting-started/publishing-data/">Sharing Data</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../triply-db-getting-started/viewing-data/">Viewing Data</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../triply-db-getting-started/exporting-data/">Exporting Data</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../triply-db-getting-started/saved-queries/">Saved Queries</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../triply-db-getting-started/data-stories/">Data Stories</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../triply-db-getting-started/admin-settings-pages/">Admin Settings Pages</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../triply-db-getting-started/reference/">Reference</a>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../triply-api/">API</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#">TriplyDB-JS</a>
+<ul>
+<li class="toctree-l2"><a class="reference internal" href="../../triplydb-js/">Overview</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../triplydb-js/app/">App</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../triplydb-js/account/">Account</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../triplydb-js/asset/">Asset</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../triplydb-js/dataset/">Dataset</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../triplydb-js/graph/">Graph</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../triplydb-js/organization/">Organization</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../triplydb-js/query/">Query</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../triplydb-js/service/">Service</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../triplydb-js/story/">Story</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../triplydb-js/user/">User</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../triplydb-js/faq/">FAQ</a>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../triply-cli/">Command-line Interface</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../triplydb-changelog/">Changelog</a>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">TriplyETL</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="#">Generic</a>
+<ul>
+<li class="toctree-l2"><a class="reference internal" href="../../triply-etl/">Overview</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../triply-etl/generic/getting-started/">Getting Started</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../triply-etl/generic/changelog/">Changelog</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../triply-etl/generic/cli/">Command Line Interface (CLI)</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../triply-etl/generic/declarations/">Declarations</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../triply-etl/generic/control-structures/">Control Structures</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../triply-etl/generic/debug/">Debug</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../triply-etl/generic/internal-store/">Internal Store</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../triply-etl/generic/maintenance/">Maintenance</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../triply-etl/generic/record/">Record</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../triply-etl/generic/vocabularies/">Vocabularies</a>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#">Sources</a>
+<ul>
+<li class="toctree-l2"><a class="reference internal" href="../../triply-etl/sources/">Overview</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../triply-etl/sources/apis/">APIs</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../triply-etl/sources/inline-json/">Inline JSON</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../triply-etl/sources/inline-strings/">Inline Strings</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../triply-etl/sources/local-files/">Local Files</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../triply-etl/sources/online-files/">Online Files</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../triply-etl/sources/rml/">RML Sources</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../triply-etl/sources/triplydb-assets/">TriplyDB Assets</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../triply-etl/sources/triplydb-datasets/">TriplyDB Datasets</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../triply-etl/sources/triplydb-queries/">TriplyDB Queries</a>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#">Extract</a>
+<ul>
+<li class="toctree-l2"><a class="reference internal" href="../../triply-etl/extract/">Overview</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../triply-etl/extract/csv/">CSV</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../triply-etl/extract/json/">JSON</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../triply-etl/extract/oai-pmh/">OAI-PMH</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../triply-etl/extract/postgres/">Postgres</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../triply-etl/extract/rdf/">RDF</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../triply-etl/extract/shapefile/">Shapefile</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../triply-etl/extract/tsv/">TSV</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../triply-etl/extract/xlsx/">XLSX</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../triply-etl/extract/xml/">XML</a>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#">Transform</a>
+<ul>
+<li class="toctree-l2"><a class="reference internal" href="../../triply-etl/transform/">Overview</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../triply-etl/transform/ratt/">RATT</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../triply-etl/transform/rml/">RML</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../triply-etl/transform/typescript/">TypeScript</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../triply-etl/transform/xslt/">XSLT</a>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#">Assert</a>
+<ul>
+<li class="toctree-l2"><a class="reference internal" href="../../triply-etl/assert/">Overview</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../triply-etl/assert/json-ld/">JSON-LD</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#">RATT</a>
+<ul>
+<li class="toctree-l3"><a class="reference internal" href="../../triply-etl/assert/ratt/terms/">RATT Terms</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../triply-etl/assert/ratt/statements/">RATT Statements</a>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../triply-etl/assert/rml/">RML</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../triply-etl/assert/xslt/">XSLT</a>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#">Enrich</a>
+<ul>
+<li class="toctree-l2"><a class="reference internal" href="../../triply-etl/enrich/">Overview</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#">SHACL</a>
+<ul>
+<li class="toctree-l3"><a class="reference internal" href="../../triply-etl/enrich/shacl/">Overview</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../triply-etl/enrich/shacl/triple-rules/">Triple Rules</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../triply-etl/enrich/shacl/sparql-rules/">SPARQL Rules</a>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#">SPARQL</a>
+<ul>
+<li class="toctree-l3"><a class="reference internal" href="../../triply-etl/enrich/sparql/construct/">SPARQL Construct</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../triply-etl/enrich/sparql/update/">SPARQL Update</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#">Validate</a>
+<ul>
+<li class="toctree-l2"><a class="reference internal" href="../../triply-etl/validate/">Overview</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../triply-etl/validate/graph-comparison/">Graph Comparison</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../triply-etl/validate/shacl/">SHACL</a>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../triply-etl/publish/">Publish</a>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Yasgui</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../yasgui/">Introduction</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../yasgui-api/">For Developers</a>
+</li>
+</ul>
+</div>
+</div>
+</nav>
+<section class="wy-nav-content-wrap" data-toggle="wy-nav-shift">
+<nav aria-label="Mobile navigation menu" class="wy-nav-top" role="navigation">
+<i class="fa fa-bars" data-toggle="wy-nav-top"></i>
+<a href="../..">Triply Documentation</a>
+</nav>
+<div class="wy-nav-content">
+<div class="rst-content"><div aria-label="breadcrumbs navigation" role="navigation">
+<ul class="wy-breadcrumbs">
+<li><a aria-label="Docs" class="icon icon-home" href="../.."></a></li>
+<li class="breadcrumb-item active">JSON-LD Framing</li>
+<li class="wy-breadcrumbs-aside">
+</li>
+</ul>
+<hr/>
+</div>
+<div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
+<div class="section" itemprop="articleBody">
+<div class="toc"><span class="toctitle">On this page:</span><ul>
+<li><a href="#json-ld-framing">JSON-LD Framing</a><ul>
+<li><a href="#why-json-ld-framing">Why JSON-LD Framing?</a></li>
+<li><a href="#the-sparql-query">The SPARQL Query</a></li>
+<li><a href="#the-frame">The Frame</a></li>
+<li><a href="#using-sparql-to-create-a-frame">Using SPARQL to create a frame</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<h1 id="json-ld-framing">JSON-LD Framing<a class="headerlink" href="#json-ld-framing" title="Permanent link">¶</a></h1>
+<h2 id="why-json-ld-framing">Why JSON-LD Framing?<a class="headerlink" href="#why-json-ld-framing" title="Permanent link">¶</a></h2>
+<p>SPARQL Construct and SPARQL Describe queries can return results in the JSON-LD format. Here is an example:</p>
+<pre><code class="language-json">[
+  {
+    "@id": "john",
+    "livesIn": { "@id": "amsterdam" }
+  },
+  {
+    "@id": "jane",
+    "livesIn": { "@id": "berlin" }
+  },
+  {
+    "@id": "tim",
+    "livesIn": { "@id": "berlin" }
+  }
+]
+</code></pre>
+<p>JSON-LD is one of the serialization formats for RDF, and encodes a graph structure. For example, the JSON-LD snippet above encodes the following graph:</p>
+<div class="mermaid">graph TB
+  Tim -- livesIn --&gt; Berlin
+  John -- livesIn --&gt; Amsterdam
+  Jane -- livesIn --&gt; Berlin
+</div>
+<p>The triples in a graphs do not have any specific order. In our graph picture, the triple about Tim is mentioned first, but this is arbitrary. A graph is a set of triples, so there is no 'first' or 'last' triple. Similarly, there is no 'primary' or 'secondary' element in a graph structure either. In our graph picture, persons occur on the left hand-side and cities occur on the right hand-side. In fact, the same information can be expressed with the following graph:</p>
+<p>Most RESTful APIs return data with a specific, often tree-shaped structure. For example:</p>
+<pre><code class="language-json">{
+  "amsterdam": {
+    "inhabitants": [
+      "john"
+    ]
+  },
+  "berlin": {
+    "inhabitants": [
+      "jane",
+      "tim"
+    ]
+  }
+}
+</code></pre>
+<p>JSON-LD Framing is a standard that is used to assign additional structure to JSON-LD. With JSON-LD Framing, we can configure the extra structure that is needed to create RESTful APIs over SPARQL queries.</p>
+<p>JSON-LD Framing are a deterministic translation from a graph, which has an unordered set of triples where no node is "first" or "special", into a tree, which has ordered branches and exactly one "root" node. In other words, JSON-LD framing allows one to force a specific tree layout to a JSON-LD document. This makes it possible to translate SPARQL queries to REST-APIs.</p>
+<p>The TriplyDB API for saved queries has been equipped with a JSON-LD profiler which can apply a JSON-LD profile to a JSON-LD result, transforming the plain JSON-LD to framed JSON. To do this you need two things. A SPARQL construct query and a JSON-LD frame. When you have both of these, you can retrieve plain JSON from a SPARQL query. The cURL command when both the SPARQL query and JSON-LD frame are available is:</p>
+<pre><code class="language-bash">curl -X POST [SAVED-QUERY-URL] \
+  -H 'Accept: application/ld+json;profile=http://www.w3.org/ns/json-ld#framed' \
+  -H 'Authorization: Bearer [YOUR_TOKEN]' \
+  -H 'Content-type: application/json' \
+  -d '[YOUR_FRAME]'
+</code></pre>
+<p>When sending a curl request, a few things are important. First, the request needs to be a <code>POST</code> request. Only a <code>POST</code> request can accept a frame as a body. The <code>Accept</code> header needs to be set to a specific value. The <code>Accept</code> header needs to have both the expected returned content-type and the JSON-LD profile, e.g. <code>application/ld+json;profile=http://www.w3.org/ns/json-ld#framed</code>. When querying an internal or private query you need to add an authorization token. Finally, it is important to set the <code>Content-type</code>. It refers to the content-type of the input body and needs to be <code>application/json</code>, as the frame is of type <code>application/json</code>.</p>
+<h2 id="the-sparql-query">The SPARQL Query<a class="headerlink" href="#the-sparql-query" title="Permanent link">¶</a></h2>
+<p>Let's start with the SPARQL query. A JSON-LD frame query needs a SPARQL Construct query to create an RDF graph that is self contained and populated with relevant vocabulary and data. The graph in JSON-LD is used as input for the RESTful API call. The SPARQL Construct query can be designed with API variables.</p>
+<p>Do note that API variables with <code>OPTIONAL</code>s can sometimes behave a bit different than regular API variables. This is due to how SPARQL interprets <code>OPTIONAL</code>s. If an API variable is used in an <code>OPTIONAL</code>, the query will return false positives, as the <code>OPTIONAL</code> does not filter out results matching the API-variable.</p>
+<p>Also note that the use of <code>UNION</code>s can have unexpected effects on the SPARQL query. A union could split up the result set of the SPARQL query. Meaning that the SPARQL engine first exhausts the top part of the <code>UNION</code> and then starts with the second part of the <code>UNION</code>. This means that the first part of the result set can be disconnected from the second part. If the limit is set too small the result set is separated in two different JSON-LD documents. This could result in missing data in the response.</p>
+<p>Finally, please note that it can happen that you set a <code>pageSize</code> of <code>10</code> but the response contains less than 10 results, while the next page is not empty. This is possible as the result set of the <code>WHERE</code> clause is limited with a limit and not the Construct clause. This means that two rows of the resulting <code>WHERE</code> clause are condensed into a single result in the Construct clause. Thus the response of the API can differ from the <code>pageSize</code>.</p>
+<p>The result is a set of triples according to the query. Saving the SPARQL query will resolve in a saved query. The saved query has an API URL that we can now use in our cURL command. The URL most of the time starts with <code>api</code> and ends with <code>run</code>.</p>
+<p>The saved query url of an example query is:</p>
+<pre><code class="language-iri">https://api.triplydb.com/queries/JD/JSON-LD-frame/run
+</code></pre>
+<p>You could use API variables with a <code>?</code> e.g. <code>?[queryVariable]=[value]</code></p>
+<h2 id="the-frame">The Frame<a class="headerlink" href="#the-frame" title="Permanent link">¶</a></h2>
+<p>The SPARQL query is not enough to provide the RDF data in a JSON serialization format. It requires additional syntactic conformities that cannot be defined in a SPARQL query. Thus the SPARQL query that was created needs a frame to restructure JSON-LD objects into JSON. The JSON-LD 1.1 standard allows for restructuring JSON-LD objects with a frame to JSON.</p>
+<p>A JSON-LD frame consists out of 2 parts. The <code>@context</code> of the response, and the structure of the response. The complete specification on JSON-LD frames can be found <a href="https://w3c.github.io/json-ld-framing/">online</a></p>
+<p>The <code>@context</code> is the translation of the linked data to the JSON naming. In the <code>@context</code> all the IRIs that occur in the JSON-LD response are documented, with key-value pairs, where the key corresponds to a name the IRI will take in the REST-API response and the value corresponds to the IRI in the JSON-LD response. Most of the time the key-value pairs are one-to-one relations, where one key is mapped to a single string. Sometimes the value is an object. The object contains at least the <code>@id</code>, which is the IRI in the JSON-LD response. The object can also contain other modifiers, that change the REST-API response. Examples are, <code>@type</code> to define the datatype of the object value, or <code>@container</code> to define the container where the value in the REST-API response is stored in. The context can also hold references to vocabularies or prefixes.</p>
+<p>The second part of the JSON-LD frame is the structure of the data. The structure defines how the REST-API response will look like. Most of the time the structure starts with <code>@type</code> to denote the type that the root node should have. Setting the <code>@type</code> is the most straightforward way of selecting your root node. The structure is built outward from the root node. You can define a leaf node in the structure by adding an opening and closing bracket, as shown in the example. To define a nested node you first need to define the key that is a object property in the JSON-LD response that points to another IRI. Then from that IRI the node is created filling in the properties of that node.</p>
+<pre><code class="language-json">{
+  "@context": {
+    "addresses": "ex:address",
+    "Address": "ex:Address",
+    "Object": "ex:Object",
+    "street": "ex:street",
+    "number": {
+      "@id": "ex:number",
+      "@type": "xsd:integer"
+    },
+    "labels": {
+      "@id": "ex:label",
+      "@container": "@set"
+    },
+    "ex": "https://triply.cc/example/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#"
+  },
+  "@type": "Object",
+  "labels": {},
+  "addresses": {
+    "street": {},
+    "number": {}
+  }
+}
+</code></pre>
+<p>The JSON-LD frame together with the SPARQL query will now result in a REST-API result:</p>
+<pre><code class="language-sh">curl -X POST https://api.triplydb.com/queries/JD/JSON-LD-frame/run \
+  -H 'Accept: application/ld+json;profile=http://www.w3.org/ns/json-ld#framed' \
+  -H 'Content-type: application/json' \
+  -d '{
+    "@context": {
+      "addresses": "ex:address",
+      "Address": "ex:Address",
+      "Object": "ex:Object",
+      "street": "ex:street",
+      "number": {
+        "@id": "ex:number",
+        "@type": "xsd:integer"
+      },
+      "labels": {
+        "@id": "ex:label",
+        "@container": "@set"
+      },
+      "ex": "https://triply.cc/example/",
+      "xsd": "http://www.w3.org/2001/XMLSchema#"
+    },
+    "@type": "Object",
+    "labels": {},
+    "addresses": {
+      "street": {},
+      "number": {}
+    }
+  }'
+</code></pre>
+<p>The JSON-LD frame turns SPARQL results for the query in step 1 into a format that is accepted as plain RESTful API request.</p>
+<h2 id="using-sparql-to-create-a-frame">Using SPARQL to create a frame<a class="headerlink" href="#using-sparql-to-create-a-frame" title="Permanent link">¶</a></h2>
+<p>Another way to create a frame is by using the SPARQL editor in TriplyDB.</p>
+<p>You can access the JSON-LD editor by clicking the three dots next to the SPARQL editor, and then selecting "To JSON-LD frame editor".</p>
+<p><img alt="SPARQL editor" src="../../assets/json-ld-navigator.png"/></p>
+<p>Afterwards, the JSON script from above should be added to the JSON-LD Frame editor.</p>
+<p><img alt="Ld-Frame box" src="../../assets/json-ld-script.png"/></p>
+<p>Running the script results in the following REST-API result:</p>
+<p><img alt="REST-API result" src="../../assets/json-ld-result.png"/></p>
+<p>This can also be accessed by the generated API Link above the SPARQL editor.
+Copying and pasting the generated link will direct you to a page where you can view the script:</p>
+<p><img alt="" src="../../assets/json-ld-in-api.png"/></p>
+</div>
+</div><footer>
+<hr/>
+<div role="contentinfo">
+<!-- Copyright etc -->
+</div>
+</footer>
+</div>
+</div>
+</section>
+</div>
+<div aria-label="Versions" class="rst-versions" role="note">
+<span class="rst-current-version" data-toggle="rst-current-version">
+</span>
+</div>
+<script>var base_url = '../..';</script>
+<script defer="" src="../../js/triply.js"></script>
+<script defer="" src="../../js/highlight.min.js"></script>
+<script defer="" src="../../search/main.js"></script>
+<script type="module">import mermaid from "https://unpkg.com/mermaid@10.4.0/dist/mermaid.esm.min.mjs";
+mermaid.initialize({});</script></body>
+</html>

@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <meta name="description" content="The official documentation for the Triply products: TriplyDB, TriplyDB.js, and TriplyETL." />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Uploading Data - Triply Documentation</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link href="../../css/intellij-light.css" rel="stylesheet" />
+        <link href="../../css/triply.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Uploading Data";
+        var mkdocs_page_input_path = "triply-db-getting-started/uploading-data/index.md";
+        var mkdocs_page_url = null;
+      </script>
+     
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> Triply Documentation
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">TriplyDB</span></p>
+              <ul class="current">
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Getting started</a>
+    <ul class="current">
+                <li class="toctree-l2"><a class="reference internal" href="../">Overview</a>
+                </li>
+                <li class="toctree-l2 current"><a class="reference internal current" href="./">Uploading Data</a>
+    <ul class="current">
+    <li class="toctree-l3"><a class="reference internal" href="#creating-a-new-dataset">Creating a new dataset</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#opening-the-create-dataset-dialog">Opening the “Create dataset” dialog</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#inside-the-create-dataset-dialog">Inside the “Create dataset” dialog</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#adding-data">Adding data</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#opening-the-add-data-pane">Opening the “Add data” pane</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#inside-the-add-data-pane">Inside the “Add data” pane</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#add-data-from-an-existing-dataset">Add data from an existing dataset</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#add-data-from-url">Add data from URL</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#add-data-from-files">Add data from files</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#supported-data-formats">Supported data formats</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#csv-and-tsv-format">CSV and TSV format</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#xml-format">XML format</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#adding-malformed-data">Adding malformed data</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#assets-binary-data">Assets: binary data</a>
+    </li>
+    </ul>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../editing-data/">Editing (SKOS) Data</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../publishing-data/">Sharing Data</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../viewing-data/">Viewing Data</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../exporting-data/">Exporting Data</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../saved-queries/">Saved Queries</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../data-stories/">Data Stories</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../admin-settings-pages/">Admin Settings Pages</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../reference/">Reference</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../triply-api/">API</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">TriplyDB-JS</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../triplydb-js/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triplydb-js/app/">App</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triplydb-js/account/">Account</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triplydb-js/asset/">Asset</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triplydb-js/dataset/">Dataset</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triplydb-js/graph/">Graph</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triplydb-js/organization/">Organization</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triplydb-js/query/">Query</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triplydb-js/service/">Service</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triplydb-js/story/">Story</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triplydb-js/user/">User</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triplydb-js/faq/">FAQ</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../triply-cli/">Command-line Interface</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../triplydb-changelog/">Changelog</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">TriplyETL</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Generic</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/generic/getting-started/">Getting Started</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/generic/changelog/">Changelog</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/generic/cli/">Command Line Interface (CLI)</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/generic/declarations/">Declarations</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/generic/control-structures/">Control Structures</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/generic/debug/">Debug</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/generic/internal-store/">Internal Store</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/generic/maintenance/">Maintenance</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/generic/record/">Record</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/generic/vocabularies/">Vocabularies</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Sources</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/sources/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/sources/apis/">APIs</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/sources/inline-json/">Inline JSON</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/sources/inline-strings/">Inline Strings</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/sources/local-files/">Local Files</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/sources/online-files/">Online Files</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/sources/rml/">RML Sources</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/sources/triplydb-assets/">TriplyDB Assets</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/sources/triplydb-datasets/">TriplyDB Datasets</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/sources/triplydb-queries/">TriplyDB Queries</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Extract</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/extract/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/extract/csv/">CSV</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/extract/json/">JSON</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/extract/oai-pmh/">OAI-PMH</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/extract/postgres/">Postgres</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/extract/rdf/">RDF</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/extract/shapefile/">Shapefile</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/extract/tsv/">TSV</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/extract/xlsx/">XLSX</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/extract/xml/">XML</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Transform</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/transform/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/transform/ratt/">RATT</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/transform/rml/">RML</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/transform/typescript/">TypeScript</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/transform/xslt/">XSLT</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Assert</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/assert/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/assert/json-ld/">JSON-LD</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="#">RATT</a>
+    <ul>
+                <li class="toctree-l3"><a class="reference internal" href="../../triply-etl/assert/ratt/terms/">RATT Terms</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../../triply-etl/assert/ratt/statements/">RATT Statements</a>
+                </li>
+    </ul>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/assert/rml/">RML</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/assert/xslt/">XSLT</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Enrich</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/enrich/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="#">SHACL</a>
+    <ul>
+                <li class="toctree-l3"><a class="reference internal" href="../../triply-etl/enrich/shacl/">Overview</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../../triply-etl/enrich/shacl/triple-rules/">Triple Rules</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../../triply-etl/enrich/shacl/sparql-rules/">SPARQL Rules</a>
+                </li>
+    </ul>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="#">SPARQL</a>
+    <ul>
+                <li class="toctree-l3"><a class="reference internal" href="../../triply-etl/enrich/sparql/construct/">SPARQL Construct</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../../triply-etl/enrich/sparql/update/">SPARQL Update</a>
+                </li>
+    </ul>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Validate</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/validate/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/validate/graph-comparison/">Graph Comparison</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/validate/shacl/">SHACL</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../triply-etl/publish/">Publish</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Yasgui</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../yasgui/">Introduction</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../yasgui-api/">For Developers</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">Triply Documentation</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">TriplyDB</li>
+          <li class="breadcrumb-item">Getting started</li>
+      <li class="breadcrumb-item active">Uploading Data</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <div class="toc"><span class="toctitle">On this page:</span><ul>
+<li><a href="#uploading-data">Uploading Data</a><ul>
+<li><a href="#creating-a-new-dataset">Creating a new dataset</a><ul>
+<li><a href="#opening-the-create-dataset-dialog">Opening the “Create dataset” dialog</a></li>
+<li><a href="#inside-the-create-dataset-dialog">Inside the “Create dataset” dialog</a></li>
+</ul>
+</li>
+<li><a href="#adding-data">Adding data</a><ul>
+<li><a href="#opening-the-add-data-pane">Opening the “Add data” pane</a></li>
+<li><a href="#inside-the-add-data-pane">Inside the “Add data” pane</a></li>
+<li><a href="#add-data-from-an-existing-dataset">Add data from an existing dataset</a></li>
+<li><a href="#add-data-from-url">Add data from URL</a></li>
+<li><a href="#add-data-from-files">Add data from files</a></li>
+<li><a href="#supported-data-formats">Supported data formats</a></li>
+<li><a href="#csv-and-tsv-format">CSV and TSV format</a></li>
+<li><a href="#xml-format">XML format</a></li>
+<li><a href="#adding-malformed-data">Adding malformed data</a></li>
+</ul>
+</li>
+<li><a href="#assets-binary-data">Assets: binary data</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<h1 id="uploading-data">Uploading Data<a class="headerlink" href="#uploading-data" title="Permanent link">&para;</a></h1>
+<p>This section explains how to create a linked dataset in TriplyDB.</p>
+<h2 id="creating-a-new-dataset">Creating a new dataset<a class="headerlink" href="#creating-a-new-dataset" title="Permanent link">&para;</a></h2>
+<p>You must be logged in before you can create a new dataset.</p>
+<!-- TODO: See page [logging in](../logging-in/index.md) for more information. -->
+
+<h3 id="opening-the-create-dataset-dialog">Opening the “Create dataset” dialog<a class="headerlink" href="#opening-the-create-dataset-dialog" title="Permanent link">&para;</a></h3>
+<p>You can create a new dataset in either of the following two ways:</p>
+<ol>
+<li>
+<p>From the home screen (see <a href="#fig-home-screen-logged-in">Figure 1a</a>), click on the <code>+</code> button next to "Your datasets", on the right-hand side of the screen.</p>
+</li>
+<li>
+<p>From the user screen (see <a href="#fig-user-screen-logged-in">Figure 1b</a>), click on the “Create dataset” button on the right-hand side.</p>
+</li>
+</ol>
+<figure id="fig-home-screen-logged-in">
+  <img src="../../assets/home-screen-logged-in.png">
+  <figcaption>Figure 1a. The home screen for a logged in user.</figcaption>
+</figure>
+
+<figure id="fig-user-screen-logged-in">
+  <img src="../../assets/user-screen-logged-in.png">
+  <figcaption>Figure 1b. The user screen for a logged in user.</figcaption>
+</figure>
+
+<h3 id="inside-the-create-dataset-dialog">Inside the “Create dataset” dialog<a class="headerlink" href="#inside-the-create-dataset-dialog" title="Permanent link">&para;</a></h3>
+<p>This opens the “Create dataset” dialog (see <a href="#fig-add-dataset-dialog">Figure 2</a>).</p>
+<figure id="fig-add-dataset-dialog">
+  <img src="../../assets/add-dataset-dialog.png">
+  <figcaption>Figure 2. The “Create dataset” dialog</figcaption>
+</figure>
+
+<p>In the “Create dataset” dialog, perform the following steps:</p>
+<ol>
+<li>
+<p>Required: Enter a dataset name. A dataset name can contain letters, number, and hyphens.</p>
+</li>
+<li>
+<p>Optional: Enter a dataset display name. The display name will be shown in the GUI and will be included in dataset metadata.</p>
+</li>
+<li>
+<p>Optional: Enter a dataset description. This description will be shown in the GUI, and will be included in dataset metadata. The description can be formatted with Markdown. See Section <a href="../reference/#markdown-support">Markdown</a> for details.</p>
+</li>
+<li>
+<p>Optional: Change the access level of the dataset. The standard access level is “Private”. See Section <a href="../reference/#access-levels">Dataset Access Levels</a> for more information.</p>
+</li>
+</ol>
+<p>This creates a new dataset, and displays the “Add data” page (see Section <a href="#adding-data">Adding data</a>).</p>
+<!-- move
+When datasets are Public (see [Access Levels](../reference/index.md#access-levels)), they automatically expose metadata and are automatically crawled and indexed by popular search engines (see [Metadata](../publishing-data/index.md#entering-metadata)).
+-->
+
+<h2 id="adding-data">Adding data<a class="headerlink" href="#adding-data" title="Permanent link">&para;</a></h2>
+<p>You must first have a dataset, before you can add data. See Section <a href="#creating-a-new-dataset">Creating a new dataset</a> for more information.</p>
+<h3 id="opening-the-add-data-pane">Opening the “Add data” pane<a class="headerlink" href="#opening-the-add-data-pane" title="Permanent link">&para;</a></h3>
+<p>You can open the “Add data” pane in either of the following two ways:</p>
+<!-- TODO: (see Section [Graphs page]()) -->
+<!-- TODO: (see Section [Dataset page]()) -->
+
+<ol>
+<li>From the Graphs page, click on the "Import a new graph" button (see <a href="#fig-graphs-page">Figure 3a</a>). This opens the "Add data" pane.</li>
+<li>When a dataset does not have any data yet, a message is displayed on the dataset homepage (see <a href="#fig-dataset-homepage-no-data">Figure 3b</a>) that can be clicked. This opens the "Add data" pane.</li>
+<li>After creating a new dataset, the "Add data" pane is automatically opened.</li>
+</ol>
+<figure id="fig-graphs-page">
+  <img src="../../assets/graphs-page.png">
+  <figcaption>Figure 3a. The Graphs page of a dataset.</figcaption>
+</figure>
+
+<figure id="fig-dataset-homepage-no-data">
+  <img src="../../assets/dataset-homepage-no-data.png">
+  <figcaption>Figure 3b. The Graphs page of a dataset.</figcaption>
+</figure>
+
+<h3 id="inside-the-add-data-pane">Inside the “Add data” pane<a class="headerlink" href="#inside-the-add-data-pane" title="Permanent link">&para;</a></h3>
+<p>The “Add data” pane is now displayed (see <a href="#fig-add-data-pane">Figure 4</a>).</p>
+<figure id="fig-add-data-pane">
+  <img src="../../assets/add-data-pane.png">
+  <figcaption>Figure 4. The “Add data” pane.</figcaption>
+</figure>
+
+<p>In the "Add data" pane, choose one of the following approaches for adding data:</p>
+<dl>
+  <dt>"Add data from an existing dataset"</dt>
+  <dd>Search for data from a dataset that you have access to in the TriplyDB system. After you have found a dataset, you can choose which graphs to add. See Section <a href="#add-data-from-an-existing-dataset">Add data from an existing dataset</a> for more details.</dd>
+  <dt>"Add data from URL"</dt>
+  <dd>Enter a URL to a data file that is published online. The URL must be publicly accessible. The URL must point to a file that contains RDF or CSV data. See Section <a href="#add-data-from-url">Add data from a URL</a> for more details.</dd>
+  <dt>"Add data from files"</dt>
+  <dd>Click the cloud icon to open a file explorer window, in which you can select one or more files from your computer. Alternatively, drag-and-drop the local files from your computer onto the cloud icon with the upward pointing arrow. Files must contain RDF or CSV data. See Section <a href="#add-data-from-files">Add data from files</a> for more details.</dd>
+</dl>
+
+<h3 id="add-data-from-an-existing-dataset">Add data from an existing dataset<a class="headerlink" href="#add-data-from-an-existing-dataset" title="Permanent link">&para;</a></h3>
+<p>The first option for adding data is to add it from datasets that are already published in the same TriplyDB instance. This is done with the “Add data from an existing dataset” field. By typing in this field, a dropdown list of existing datasets is shown (see <a href="#fig-add-data-from-an-existing-dataset-field">Figure 5</a>).</p>
+<figure id="fig-add-data-from-an-existing-dataset-field">
+  <img src="../../assets/add-data-from-an-existing-dataset-field.png">
+  <figcaption>Figure 5. The dropdown list that shows existing datasets.</figcaption>
+</figure>
+
+<p>Once the correct dataset appears in the dropdown list, click it to select it. This will open the "Import from dataset" pane (see <a href="#fig-add-data-from-an-existing-dataset-choose-graphs">Figure 6</a>). You can choose which graphs to import from the existing dataset. Click "Import graphs" to start importing from an existing dataset. Moments later, the graphs are added to your dataset.</p>
+<figure id="fig-add-data-from-an-existing-dataset-choose-graphs">
+  <img src="../../assets/add-data-from-an-existing-dataset-choose-graphs.png">
+  <figcaption>Figure 6. The "Import from dataset" pane.</figcaption>
+</figure>
+
+<h3 id="add-data-from-url">Add data from URL<a class="headerlink" href="#add-data-from-url" title="Permanent link">&para;</a></h3>
+<p>The second option for adding data is to add it from an online URL. This is done by entering the URL inside the “Add data from a URL” text field (see <a href="#fig-add-data-from-a-url-field">Figure 7</a>). After you have entered the URL, click the orange button on the right to start adding data. The data is now being downloaded to your dataset. How long this takes depends on the size of the data and the speed of the remote server where the data is retrieved from.</p>
+<figure id="fig-add-data-from-a-url-field">
+  <img src="../../assets/add-data-from-a-url-field.png">
+  <figcaption>Figure 7. The "Add data from URL" field.</figcaption>
+</figure>
+
+<p>Only URLs that contain supported data formats will be added. See Section <a href="#supported-data-formats">Supported data formats</a> for more information.</p>
+<h3 id="add-data-from-files">Add data from files<a class="headerlink" href="#add-data-from-files" title="Permanent link">&para;</a></h3>
+<p>The third option for adding data is to add it from files that are on your computer. This can be done in two ways:</p>
+<ol>
+<li>Click the cloud icon to open a file finder dialog. Here you can select one or more files from your computer (see <a href="#fig-add-data-from-files-dialog">Figure 8</a>). The file finder dialog that opens, depends on your Operating System. In <a href="#fig-add-data-from-files-dialog">Figure 8</a>, the Windows file finder dialog is shown.</li>
+<li>Drag-and-drop one or more files from your computer onto the cloud icon with the upward pointing arrow.</li>
+</ol>
+<figure id="fig-add-data-from-files-dialog">
+  <img src="../../assets/add-data-from-files-dialog.png">
+  <figcaption>Figure 8. The file finder dialog that is opened when adding data from files.</figcaption>
+</figure>
+
+<p>After you have added one of more files, a list of uploaded appears (see <a href="#fig-add-data-from-files-job">Figure 9</a>). You can add or remove more files, until you have the complete upload job configured. Once the list of files is complete, you can click "Import from files" to start adding data from files. How long this takes depends on the size of the data.</p>
+<figure id="fig-add-data-from-files-job">
+  <img src="../../assets/add-data-from-files-job.png">
+  <figcaption>Figure 9. The list of uploaded files in the "Add data from files" pane.</figcaption>
+</figure>
+
+<p>Only files that contain supported data formats will be added. See Section <a href="#supported-data-formats">Supported data formats</a> for more information.</p>
+<h3 id="supported-data-formats">Supported data formats<a class="headerlink" href="#supported-data-formats" title="Permanent link">&para;</a></h3>
+<p>Files must contain RDF, CSV, TSV or XML data, and must use one of the supported file name extensions:</p>
+<table>
+<thead>
+<tr>
+<th><strong>Data Format</strong></th>
+<th><strong>File name extension</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="#csv-and-tsv-format">Comma-Separated Values (CSV)</a></td>
+<td><code>.csv</code></td>
+</tr>
+<tr>
+<td><a href="#csv-and-tsv-format">Tab-Separated Values (CSV)</a></td>
+<td><code>.tsv</code></td>
+</tr>
+<tr>
+<td><a href="#xml-format">XML</a></td>
+<td><code>.xml</code></td>
+</tr>
+<tr>
+<td>JSON-LD</td>
+<td><code>.jsonld</code>, <code>.json</code></td>
+</tr>
+<tr>
+<td>N-Quads</td>
+<td><code>.nq</code></td>
+</tr>
+<tr>
+<td>N-Triples</td>
+<td><code>.nt</code></td>
+</tr>
+<tr>
+<td>RDF/XML</td>
+<td><code>.rdf</code>, <code>.owl</code>, <code>.owx</code></td>
+</tr>
+<tr>
+<td>TriG</td>
+<td><code>.trig</code></td>
+</tr>
+<tr>
+<td>Turtle</td>
+<td><code>.ttl</code>, <code>.n3</code></td>
+</tr>
+</tbody>
+</table>
+<p>It is possible to upload up to 1,000 separate files in this way. When you have a lot of files and/or large files, it is better to compress them into an archive format. This allows an any number of files of any size to be uploaded. The following archive/compression formats are supported:</p>
+<table>
+<thead>
+<tr>
+<th><strong>Archive format</strong></th>
+<th><strong>File name extension</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>gzip</td>
+<td><code>.gz</code></td>
+</tr>
+<tr>
+<td>bzip2</td>
+<td><code>.bz2</code></td>
+</tr>
+<tr>
+<td>tar</td>
+<td><code>tar</code></td>
+</tr>
+<tr>
+<td>XZ</td>
+<td><code>.xz</code></td>
+</tr>
+<tr>
+<td>ZIP</td>
+<td><code>.zip</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="csv-and-tsv-format">CSV and TSV format<a class="headerlink" href="#csv-and-tsv-format" title="Permanent link">&para;</a></h3>
+<p>When you upload CSV (Comma-Separated Values) or TSV (Tab-Separated Values) files to TriplyDB, they are automatically converted to RDF and stored in two linked data representations:</p>
+<ol>
+<li><strong>Facade-X representation</strong>: An expressive RDF model that preserves the full structure
+   of the tabular data. The model is documented in detail <a href="https://sparql-anything.readthedocs.io/stable/formats/CSV/">here</a>.</li>
+<li><strong>Simple representation</strong>: A straightforward row-based model for easier querying</li>
+</ol>
+<p><strong>Simple representation:</strong></p>
+<p>The simple representation provides a more opinionated and direct mapping, and is suitable
+for tables with a simple structure:</p>
+<ul>
+<li>A table resource is created that links to all rows via <code>rdfs:member</code></li>
+<li>Each row gets a unique IRI based on the row number (e.g., <code>.../row/1</code>, <code>.../row/2</code>, etc.)</li>
+<li>Column headers become properties in the <code>https://triplydb.com/table/triply/def/</code> namespace</li>
+<li>Each property has an <code>rdfs:label</code> with the original column header name</li>
+<li>Cell values are stored as string literals</li>
+</ul>
+<p>Take for example this CSV file:</p>
+<pre><code class="language-csv">product_id,name,category,price,in_stock
+P001,Laptop Stand,Office Equipment,49.99,true
+P002,Ergonomic Keyboard,Peripherals,89.50,true
+</code></pre>
+<p>This can be queried as such:</p>
+<pre><code class="language-sparql">prefix table: &lt;https://triplydb.com/table/triply/def/&gt;
+prefix rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt;
+
+select ?name ?category ?price where {
+  ?table rdfs:member ?row .
+  ?row table:name ?name ;
+       table:category ?category ;
+       table:price ?price .
+}
+</code></pre>
+<h3 id="xml-format">XML format<a class="headerlink" href="#xml-format" title="Permanent link">&para;</a></h3>
+<p>When you upload XML files to TriplyDB, they are automatically converted to RDF using the Facade-X data model. This preserves the hierarchical structure of the XML document, making it queryable via SPARQL.
+See <a href="https://sparql-anything.readthedocs.io/stable/formats/XML/">here</a> for more details on the Facade-X XML data model.</p>
+<h3 id="adding-malformed-data">Adding malformed data<a class="headerlink" href="#adding-malformed-data" title="Permanent link">&para;</a></h3>
+<p>TriplyDB only allows valid RDF data to be added. If data is malformed, TriplyDB will show an error message that indicates which part of the RDF data is malformed (see screenshot). If such malformed data is encountered, the RDF file must first be corrected and uploaded again.</p>
+<p><img alt="Screenshot of an error message indicating syntactically malformed RDF data" src="../../assets/upload-error.png" /></p>
+<p>TriplyDB follows the linked data standards strictly. Many triple stores allow incorrect RDF data to be added. This may seem convenient during the loading phase, but often results in errors when standards-compliant tools start using the data.</p>
+<h2 id="assets-binary-data">Assets: binary data<a class="headerlink" href="#assets-binary-data" title="Permanent link">&para;</a></h2>
+<p>Not all data can be stored as RDF data. For example images and video files use a binary format. Such files can also be stored in TriplyDB and can be integrated into the Knowledge Graph.</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../" class="btn btn-neutral float-left" title="Overview"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../editing-data/" class="btn btn-neutral float-right" title="Editing (SKOS) Data">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../editing-data/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script>var base_url = '../..';</script>
+      <script src="../../js/triply.js" defer></script>
+      <script src="../../js/highlight.min.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+
+</body>
+</html>

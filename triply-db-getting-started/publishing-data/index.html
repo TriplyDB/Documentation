@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <meta name="description" content="The official documentation for the Triply products: TriplyDB, TriplyDB.js, and TriplyETL." />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Sharing Data - Triply Documentation</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link href="../../css/intellij-light.css" rel="stylesheet" />
+        <link href="../../css/triply.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Sharing Data";
+        var mkdocs_page_input_path = "triply-db-getting-started/publishing-data/index.md";
+        var mkdocs_page_url = null;
+      </script>
+     
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> Triply Documentation
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">TriplyDB</span></p>
+              <ul class="current">
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Getting started</a>
+    <ul class="current">
+                <li class="toctree-l2"><a class="reference internal" href="../">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../uploading-data/">Uploading Data</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../editing-data/">Editing (SKOS) Data</a>
+                </li>
+                <li class="toctree-l2 current"><a class="reference internal current" href="./">Sharing Data</a>
+    <ul class="current">
+    <li class="toctree-l3"><a class="reference internal" href="#sharing-your-dataset">Sharing your dataset</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#dataset-settings-page">Dataset settings page</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#update-dataset-profile">Update dataset profile</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#dataset-metadata">Dataset metadata</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#starting-services">Starting services</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#existing-services">Existing services</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#webhooks">Webhooks</a>
+    </li>
+    </ul>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../viewing-data/">Viewing Data</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../exporting-data/">Exporting Data</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../saved-queries/">Saved Queries</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../data-stories/">Data Stories</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../admin-settings-pages/">Admin Settings Pages</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../reference/">Reference</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../triply-api/">API</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">TriplyDB-JS</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../triplydb-js/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triplydb-js/app/">App</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triplydb-js/account/">Account</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triplydb-js/asset/">Asset</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triplydb-js/dataset/">Dataset</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triplydb-js/graph/">Graph</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triplydb-js/organization/">Organization</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triplydb-js/query/">Query</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triplydb-js/service/">Service</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triplydb-js/story/">Story</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triplydb-js/user/">User</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triplydb-js/faq/">FAQ</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../triply-cli/">Command-line Interface</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../triplydb-changelog/">Changelog</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">TriplyETL</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Generic</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/generic/getting-started/">Getting Started</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/generic/changelog/">Changelog</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/generic/cli/">Command Line Interface (CLI)</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/generic/declarations/">Declarations</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/generic/control-structures/">Control Structures</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/generic/debug/">Debug</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/generic/internal-store/">Internal Store</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/generic/maintenance/">Maintenance</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/generic/record/">Record</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/generic/vocabularies/">Vocabularies</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Sources</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/sources/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/sources/apis/">APIs</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/sources/inline-json/">Inline JSON</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/sources/inline-strings/">Inline Strings</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/sources/local-files/">Local Files</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/sources/online-files/">Online Files</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/sources/rml/">RML Sources</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/sources/triplydb-assets/">TriplyDB Assets</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/sources/triplydb-datasets/">TriplyDB Datasets</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/sources/triplydb-queries/">TriplyDB Queries</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Extract</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/extract/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/extract/csv/">CSV</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/extract/json/">JSON</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/extract/oai-pmh/">OAI-PMH</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/extract/postgres/">Postgres</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/extract/rdf/">RDF</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/extract/shapefile/">Shapefile</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/extract/tsv/">TSV</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/extract/xlsx/">XLSX</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/extract/xml/">XML</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Transform</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/transform/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/transform/ratt/">RATT</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/transform/rml/">RML</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/transform/typescript/">TypeScript</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/transform/xslt/">XSLT</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Assert</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/assert/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/assert/json-ld/">JSON-LD</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="#">RATT</a>
+    <ul>
+                <li class="toctree-l3"><a class="reference internal" href="../../triply-etl/assert/ratt/terms/">RATT Terms</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../../triply-etl/assert/ratt/statements/">RATT Statements</a>
+                </li>
+    </ul>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/assert/rml/">RML</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/assert/xslt/">XSLT</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Enrich</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/enrich/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="#">SHACL</a>
+    <ul>
+                <li class="toctree-l3"><a class="reference internal" href="../../triply-etl/enrich/shacl/">Overview</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../../triply-etl/enrich/shacl/triple-rules/">Triple Rules</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../../triply-etl/enrich/shacl/sparql-rules/">SPARQL Rules</a>
+                </li>
+    </ul>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="#">SPARQL</a>
+    <ul>
+                <li class="toctree-l3"><a class="reference internal" href="../../triply-etl/enrich/sparql/construct/">SPARQL Construct</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../../triply-etl/enrich/sparql/update/">SPARQL Update</a>
+                </li>
+    </ul>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Validate</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/validate/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/validate/graph-comparison/">Graph Comparison</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/validate/shacl/">SHACL</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../triply-etl/publish/">Publish</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Yasgui</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../yasgui/">Introduction</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../yasgui-api/">For Developers</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">Triply Documentation</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">TriplyDB</li>
+          <li class="breadcrumb-item">Getting started</li>
+      <li class="breadcrumb-item active">Sharing Data</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <div class="toc"><span class="toctitle">On this page:</span><ul>
+<li><a href="#sharing-data">Sharing data</a><ul>
+<li><a href="#sharing-your-dataset">Sharing your dataset</a></li>
+<li><a href="#dataset-settings-page">Dataset settings page</a><ul>
+<li><a href="#update-dataset-profile">Update dataset profile</a></li>
+<li><a href="#dataset-metadata">Dataset metadata</a></li>
+</ul>
+</li>
+<li><a href="#starting-services">Starting services</a><ul>
+<li><a href="#existing-services">Existing services</a></li>
+</ul>
+</li>
+<li><a href="#webhooks">Webhooks</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<h1 id="sharing-data">Sharing data<a class="headerlink" href="#sharing-data" title="Permanent link">&para;</a></h1>
+<p>With TriplyDB you can easily make your data available to the outside world.</p>
+<h2 id="sharing-your-dataset">Sharing your dataset<a class="headerlink" href="#sharing-your-dataset" title="Permanent link">&para;</a></h2>
+<p>You can share your dataset by setting the visibility to “Public” in
+the dataset settings menu. Making a dataset public in TriplyDB has
+the following consequences:</p>
+<ol>
+<li>The dataset can be searched for and visited by anybody on the web.</li>
+<li>The dataset will be indexed by web search engines such as Google
+   Dataset Search.</li>
+<li>Any services that are started for that dataset will be available
+   to anybody on the web. This includes SPARQL, Text
+   Search, and Linked Data Fragments.</li>
+</ol>
+<h2 id="dataset-settings-page">Dataset settings page<a class="headerlink" href="#dataset-settings-page" title="Permanent link">&para;</a></h2>
+<p>The dataset settings page can be accessed from any dataset page. It appears as the last item in the menu to the left (see <a href="#fig-dataset-homepage">Figure 1</a>).</p>
+<figure id="fig-dataset-homepage">
+  <img src="../../assets/dataset-homepage.png">
+  <figcaption>Figure 1. The homepage of a dataset.</figcaption>
+</figure>
+
+<p>The dataset settings page contains the following items:</p>
+<ul>
+<li><a href="#update-dataset-profile">Update dataset profile</a></li>
+<li>Prefixes <!-- TODO: <a href="#prefixes"></a> --></li>
+<li>Transfer ownership <!-- TODO: <a href="#transfer-ownership"></a> --></li>
+<li>Delete dataset <!-- TODO: <a href="#delete-dataset"></a> --></li>
+<li><a href="#webhooks">Webhooks</a></li>
+</ul>
+<h3 id="update-dataset-profile">Update dataset profile<a class="headerlink" href="#update-dataset-profile" title="Permanent link">&para;</a></h3>
+<p>The "Update dataset profile" pane (see <a href="#fig-update-dataset-profile-pane">Figure 2</a>) allows the following things to be configured:</p>
+<ul>
+<li>Dataset Access Level, see Section <a href="../reference/#access-levels">Access Levels</a>.</li>
+<li>Dataset metadata, see Section <a href="#dataset-metadata">Dataset metadata</a>.</li>
+</ul>
+<figure id="fig-update-dataset-profile-pane">
+  <img src="../../assets/update-dataset-profile-pane.png">
+  <figcaption>Figure 2. The "Update dataset profile" pane.</figcaption>
+</figure>
+
+<h3 id="dataset-metadata">Dataset metadata<a class="headerlink" href="#dataset-metadata" title="Permanent link">&para;</a></h3>
+<p>Adding metadata for your datasets is important. This makes it easier to find your dataset later and also allows search engines and social media applications to understand your dataset.</p>
+<p>The "Update dataset profile" pane allows the following metadata to be configured:</p>
+<ul>
+<li>Dataset name</li>
+<li>Dataset slug</li>
+<li>Dataset description</li>
+<li>Example resources</li>
+<li>License</li>
+<li>Avatar</li>
+</ul>
+<p>Within the TriplyDB instance your dataset is now more findable for users. Whenever a user searches on one of the topics of your dataset, or types in a word that is present in the description of your dataset, the dataset will be shown as a search result. The metadata will allow TriplyDB to give a better impression of your dataset when a user visits. <a href="#fig-dataset-homepage-with-metadata">Figure 3</a> shows the dataset homepage of a dataset for which metadata has been configured.</p>
+<figure id="fig-dataset-homepage-with-metadata">
+  <img src="../../assets/dataset-homepage-with-metadata.png">
+  <figcaption>Figure 3. The dataset homepage of a dataset with configured metadata.</figcaption>
+</figure>
+
+<p>Search engines and social media applications can recognize the metadata that is entered for datasets in TriplyDB. <a href="#fig-slack-widget">Figure 4</a> shows an example of a Social Media widget in the Slack chat application. Such widgets are automatically generated upon entering the link to a public dataset in TriplyDB. The chat application in <a href="#fig-slack-widget">Figure 4</a> understands the metadata properties: title, description, and image. Different Social Media applications may make use of different metadata properties.</p>
+<figure id="fig-slack-widget">
+  <img src="../../assets/slack-widget.png">
+  <figcaption>Figure 4. A dataset widget in the Slack chat application.</figcaption>
+</figure>
+
+<h2 id="starting-services">Starting services<a class="headerlink" href="#starting-services" title="Permanent link">&para;</a></h2>
+<p>By default, datasets in TriplyDB can be queried through <a href="../../triplydb-js/">TriplyDB-js</a> as well as through the Linked Data Fragments API.</p>
+<p>In order to allow additional query paradigms, specific services can be
+started from the “Create service” page. This page is accessed by
+clicking on the “Services” icon in the left-hand sidebar.</p>
+<p>TriplyDB instances can be configured with different types of services.
+The below screenshot shows the “Create service” page for a TriplyDB
+instance that allows SPARQL, Jena SPARQL, and Elasticsearch services
+to be created.</p>
+<p><img alt="The “Create service” page" src="../../assets/create-service.png" /> Notice that three different types of services can be created.</p>
+<p>It is possible to create multiple services for one dataset.</p>
+<h3 id="existing-services">Existing services<a class="headerlink" href="#existing-services" title="Permanent link">&para;</a></h3>
+<p>Existing services are displayed on service widgets (see screenshot).
+From these widgets, services can be created or deleted.</p>
+<p><img alt="An example of a service widget" src="../../assets/service-widget.png" /></p>
+<p>Datasets can change whenever a graph is added, deleted or renamed. When this
+happens, the data in a service is out of sync with the data in the dataset and
+a synchronization button will appear in the service widget. By clicking the
+button, the service will be synchronized with the current state of the dataset.</p>
+<h2 id="webhooks">Webhooks<a class="headerlink" href="#webhooks" title="Permanent link">&para;</a></h2>
+<p>If you want to be notified or trigger an event when anything changes in your dataset, you can set up a webhook.</p>
+<p>The webhook page can be found under dataset's settings on the right, as shown in the image below.</p>
+<p><img alt="Webhooks settings page" src="../../assets/webhook.png" /></p>
+<p>To create a webhook, you will need to provide the following information:</p>
+<ul>
+<li><code>Payload target</code>: The URL to which the webhook message should be sent.</li>
+<li><code>Payload format</code>: The format of the message.</li>
+<li><code>Trigger events</code>: Select for which event you wish to trigger the webhook. The options are:</li>
+<li><strong>Graph import</strong>: Happens when data is imported from a different dataset and where the data is already stored on the instance.</li>
+<li><strong>Linked data upload</strong>: Happens when a person uploads data to the instance. The data did not exist on the instance before.</li>
+<li><strong>Asset upload</strong>: Happens when an asset is uploaded.</li>
+</ul>
+<p>You can activate or deactivate the webhook with the slider after the <code>Webhook is active</code> message.</p>
+<p>After filling in everything, you can click on the <code>SUBMIT</code> button and the new webhook will be activated.</p>
+<p>For example, if you wish to trigger a pipeline on gitlab every time you upload an asset to your dataset, you can use the below snippet as a payload target, as described on the <a href="https://docs.gitlab.com/ee/ci/triggers/">official gitlab documentation</a> and select <code>Asset upload</code> as a trigger event.</p>
+<pre><code>https://gitlab.example.com/api/v4/projects/&lt;project_id&gt;/trigger/pipeline?token=&lt;token&gt;&amp;ref=&lt;ref_name&gt;
+</code></pre>
+<p>When your webhook is created and active, you can see every occasion the webhook was called in the webhook trigger history.</p>
+<p><img alt="Active webhook trigger history" src="../../assets/webhook_trigger_history.png" /></p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../editing-data/" class="btn btn-neutral float-left" title="Editing (SKOS) Data"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../viewing-data/" class="btn btn-neutral float-right" title="Viewing Data">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../editing-data/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../viewing-data/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script>var base_url = '../..';</script>
+      <script src="../../js/triply.js" defer></script>
+      <script src="../../js/highlight.min.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+
+</body>
+</html>

@@ -1,0 +1,2125 @@
+<!DOCTYPE html>
+
+<html class="writer-html5" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="IE=edge" http-equiv="X-UA-Compatible"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="The official documentation for the Triply products: TriplyDB, TriplyDB.js, and TriplyETL." name="description"/>
+<link href="../../../img/favicon.ico" rel="shortcut icon"/>
+<title>RATT - Triply Documentation</title>
+<link href="../../../css/theme.css" rel="stylesheet"/>
+<link href="../../../css/theme_extra.css" rel="stylesheet"/>
+<link href="../../../css/intellij-light.css" rel="stylesheet"/>
+<link href="../../../css/triply.css" rel="stylesheet"/>
+<script>
+        // Current page data
+        var mkdocs_page_name = "RATT";
+        var mkdocs_page_input_path = "triply-etl/transform/ratt.md";
+        var mkdocs_page_url = null;
+      </script>
+</head>
+<body class="wy-body-for-nav" role="document">
+<div class="wy-grid-for-nav">
+<nav class="wy-nav-side stickynav" data-toggle="wy-nav-shift">
+<div class="wy-side-scroll">
+<div class="wy-side-nav-search">
+<a class="icon icon-home" href="../../.."> Triply Documentation
+        </a><div role="search">
+<form action="../../../search.html" class="wy-form" id="rtd-search-form" method="get">
+<input aria-label="Search docs" name="q" placeholder="Search docs" title="Type search term here" type="text"/>
+</form>
+</div>
+</div>
+<div aria-label="Navigation menu" class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../..">Home</a>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">TriplyDB</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="#">Getting started</a>
+<ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../triply-db-getting-started/">Overview</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../triply-db-getting-started/uploading-data/">Uploading Data</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../triply-db-getting-started/editing-data/">Editing (SKOS) Data</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../triply-db-getting-started/publishing-data/">Sharing Data</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../triply-db-getting-started/viewing-data/">Viewing Data</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../triply-db-getting-started/exporting-data/">Exporting Data</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../triply-db-getting-started/saved-queries/">Saved Queries</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../triply-db-getting-started/data-stories/">Data Stories</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../triply-db-getting-started/admin-settings-pages/">Admin Settings Pages</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../triply-db-getting-started/reference/">Reference</a>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../triply-api/">API</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#">TriplyDB-JS</a>
+<ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../triplydb-js/">Overview</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../triplydb-js/app/">App</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../triplydb-js/account/">Account</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../triplydb-js/asset/">Asset</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../triplydb-js/dataset/">Dataset</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../triplydb-js/graph/">Graph</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../triplydb-js/organization/">Organization</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../triplydb-js/query/">Query</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../triplydb-js/service/">Service</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../triplydb-js/story/">Story</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../triplydb-js/user/">User</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../triplydb-js/faq/">FAQ</a>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../triply-cli/">Command-line Interface</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../triplydb-changelog/">Changelog</a>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">TriplyETL</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="#">Generic</a>
+<ul>
+<li class="toctree-l2"><a class="reference internal" href="../../">Overview</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../generic/getting-started/">Getting Started</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../generic/changelog/">Changelog</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../generic/cli/">Command Line Interface (CLI)</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../generic/declarations/">Declarations</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../generic/control-structures/">Control Structures</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../generic/debug/">Debug</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../generic/internal-store/">Internal Store</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../generic/maintenance/">Maintenance</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../generic/record/">Record</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../generic/vocabularies/">Vocabularies</a>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#">Sources</a>
+<ul>
+<li class="toctree-l2"><a class="reference internal" href="../../sources/">Overview</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../sources/apis/">APIs</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../sources/inline-json/">Inline JSON</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../sources/inline-strings/">Inline Strings</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../sources/local-files/">Local Files</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../sources/online-files/">Online Files</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../sources/rml/">RML Sources</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../sources/triplydb-assets/">TriplyDB Assets</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../sources/triplydb-datasets/">TriplyDB Datasets</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../sources/triplydb-queries/">TriplyDB Queries</a>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#">Extract</a>
+<ul>
+<li class="toctree-l2"><a class="reference internal" href="../../extract/">Overview</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../extract/csv/">CSV</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../extract/json/">JSON</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../extract/oai-pmh/">OAI-PMH</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../extract/postgres/">Postgres</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../extract/rdf/">RDF</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../extract/shapefile/">Shapefile</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../extract/tsv/">TSV</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../extract/xlsx/">XLSX</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../extract/xml/">XML</a>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal current" href="#">Transform</a>
+<ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../">Overview</a>
+</li>
+<li class="toctree-l2 current"><a class="reference internal current" href="./">RATT</a>
+<ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="#overview">Overview</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#addhashediri">addHashedIri()</a>
+<ul>
+<li class="toctree-l4"><a class="reference internal" href="#signature">Signature</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#parameters">Parameters</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#when-to-use">When to use?</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#example-lazy-identifiers">Example: lazy identifiers</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#example-dynamic-iri-prefix">Example: dynamic IRI prefix</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#example-statement-reification">Example: statement reification</a>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#addiri">addIri()</a>
+<ul>
+<li class="toctree-l4"><a class="reference internal" href="#signature_1">Signature</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#parameters_1">Parameters</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#when-to-use_1">When to use?</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#see-also">See also</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#example-prefix-declaration-and-local-name">Example: Prefix declaration and local name</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#example-absolute-iri">Example: Absolute IRI</a>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#addliteral">addLiteral()</a>
+<ul>
+<li class="toctree-l4"><a class="reference internal" href="#when-to-use_2">When to use</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#parameters_2">Parameters</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#see-also_1">See also</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#example-typed-literal">Example: Typed literal</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#example-string-literal">Example: String literal</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#example-language-tagged-string">Example: Language-tagged string</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#example-validate-usage">Example: Validate usage</a>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#addskolemiri">addSkolemIri()</a>
+<ul>
+<li class="toctree-l4"><a class="reference internal" href="#see-also_2">See also</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#example">Example</a>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#addtag">addTag()</a>
+<ul>
+<li class="toctree-l4"><a class="reference internal" href="#parameters_3">Parameters</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#throws">Throws</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#see-also_3">See also</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#example_1">Example</a>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#addvalue">addValue()</a>
+<ul>
+<li class="toctree-l4"><a class="reference internal" href="#description">Description</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#parameters_4">Parameters</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#example_2">Example</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#example_3">Example</a>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#capitalize">capitalize()</a>
+<ul>
+<li class="toctree-l4"><a class="reference internal" href="#parameters_5">Parameters</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#example-class-iris">Example: Class IRIs</a>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#concat">concat()</a>
+<ul>
+<li class="toctree-l4"><a class="reference internal" href="#description_1">Description</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#parameters_6">Parameters</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#example_4">Example</a>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#copy">copy()</a>
+<ul>
+<li class="toctree-l4"><a class="reference internal" href="#parameters_7">Parameters</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#example_5">Example</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#example_6">Example</a>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#encodehtml">encodeHtml()</a>
+<ul>
+<li class="toctree-l4"><a class="reference internal" href="#description_2">Description</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#parameters_8">Parameters</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#example_7">Example</a>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#geojsontowkt">geojsonToWkt()</a>
+<ul>
+<li class="toctree-l4"><a class="reference internal" href="#parameters_9">Parameters</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#geojson-and-well-known-text-wkt">GeoJSON and Well-Known Text (WKT)</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#see-also_4">See also</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#example_8">Example</a>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#jpath">jpath()</a>
+<ul>
+<li class="toctree-l4"><a class="reference internal" href="#description_3">Description</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#use-cases">Use cases</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#parameters_10">Parameters</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#example_9">Example</a>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#lowercase">lowercase()</a>
+<ul>
+<li class="toctree-l4"><a class="reference internal" href="#description_4">Description</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#use-cases_1">Use cases</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#parameters_11">Parameters</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#example_10">Example</a>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#padend">padEnd()</a>
+<ul>
+<li class="toctree-l4"><a class="reference internal" href="#description_5">Description</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#use-cases_2">Use cases</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#parameters_12">Parameters</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#example_11">Example</a>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#padstart">padStart()</a>
+<ul>
+<li class="toctree-l4"><a class="reference internal" href="#description_6">Description</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#use-cases_3">Use cases</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#example-fixed-length-identifiers">Example: Fixed-length identifiers</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#example-create-year-literals">Example: Create year literals</a>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#replace">replace()</a>
+<ul>
+<li class="toctree-l4"><a class="reference internal" href="#description_7">Description</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#parameters_13">Parameters</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#example_12">Example</a>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#split">split()</a>
+<ul>
+<li class="toctree-l4"><a class="reference internal" href="#description_8">Description</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#whitespace-handling">Whitespace handling</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#empty-values">Empty values</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#use-cases_4">Use cases</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#parameters_14">Parameters</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#example-multiple-values-in-singular-table-cells">Example: Multiple values in singular table cells</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#example-split-a-complex-string-into-components">Example: Split a complex string into components</a>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#substring">substring()</a>
+<ul>
+<li class="toctree-l4"><a class="reference internal" href="#description_9">Description</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#parameters_15">Parameters</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#example_13">Example</a>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#translateall">translateAll()</a>
+<ul>
+<li class="toctree-l4"><a class="reference internal" href="#description_10">Description</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#when-to-use_3">When to use?</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#parameters_16">Parameters</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#example-map-source-data-to-iri-values">Example: Map source data to IRI values</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#example-map-source-data-to-iri-properties">Example: Map source data to IRI properties</a>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#translatesome">translateSome()</a>
+<ul>
+<li class="toctree-l4"><a class="reference internal" href="#description_11">Description</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#parameters_17">Parameters</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#use-cases_5">Use cases</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#example_14">Example</a>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#tryliteral">tryLiteral()</a>
+<ul>
+<li class="toctree-l4"><a class="reference internal" href="#description_12">Description</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#throws_1">Throws</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#example_15">Example</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#see-also_5">See also</a>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#uppercase">uppercase()</a>
+<ul>
+<li class="toctree-l4"><a class="reference internal" href="#description_13">Description</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#parameters_18">Parameters</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#example_16">Example</a>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#wktAddPoint()">wkt.addPoint()</a>
+<ul>
+<li class="toctree-l4"><a class="reference internal" href="#description_14">Description</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#parameters_19">Parameters</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#example_17">Example</a>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#wktProject()">wkt.project()</a>
+<ul>
+<li class="toctree-l4"><a class="reference internal" href="#description_15">Description</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#parameters_20">Parameters</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#example_18">Example</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../rml/">RML</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../typescript/">TypeScript</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../xslt/">XSLT</a>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#">Assert</a>
+<ul>
+<li class="toctree-l2"><a class="reference internal" href="../../assert/">Overview</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../assert/json-ld/">JSON-LD</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#">RATT</a>
+<ul>
+<li class="toctree-l3"><a class="reference internal" href="../../assert/ratt/terms/">RATT Terms</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../assert/ratt/statements/">RATT Statements</a>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../assert/rml/">RML</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../assert/xslt/">XSLT</a>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#">Enrich</a>
+<ul>
+<li class="toctree-l2"><a class="reference internal" href="../../enrich/">Overview</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#">SHACL</a>
+<ul>
+<li class="toctree-l3"><a class="reference internal" href="../../enrich/shacl/">Overview</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../enrich/shacl/triple-rules/">Triple Rules</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../enrich/shacl/sparql-rules/">SPARQL Rules</a>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#">SPARQL</a>
+<ul>
+<li class="toctree-l3"><a class="reference internal" href="../../enrich/sparql/construct/">SPARQL Construct</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../enrich/sparql/update/">SPARQL Update</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#">Validate</a>
+<ul>
+<li class="toctree-l2"><a class="reference internal" href="../../validate/">Overview</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../validate/graph-comparison/">Graph Comparison</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../validate/shacl/">SHACL</a>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../publish/">Publish</a>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Yasgui</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../yasgui/">Introduction</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../yasgui-api/">For Developers</a>
+</li>
+</ul>
+</div>
+</div>
+</nav>
+<section class="wy-nav-content-wrap" data-toggle="wy-nav-shift">
+<nav aria-label="Mobile navigation menu" class="wy-nav-top" role="navigation">
+<i class="fa fa-bars" data-toggle="wy-nav-top"></i>
+<a href="../../..">Triply Documentation</a>
+</nav>
+<div class="wy-nav-content">
+<div class="rst-content"><div aria-label="breadcrumbs navigation" role="navigation">
+<ul class="wy-breadcrumbs">
+<li><a aria-label="Docs" class="icon icon-home" href="../../.."></a></li>
+<li class="breadcrumb-item">TriplyETL</li>
+<li class="breadcrumb-item">Transform</li>
+<li class="breadcrumb-item active">RATT</li>
+<li class="wy-breadcrumbs-aside">
+</li>
+</ul>
+<hr/>
+</div>
+<div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
+<div class="section" itemprop="articleBody">
+<div class="toc"><span class="toctitle">On this page:</span><ul>
+<li><a href="#ratt-transformations">RATT transformations</a><ul>
+<li><a href="#overview">Overview</a></li>
+<li><a href="#addhashediri">addHashedIri()</a><ul>
+<li><a href="#signature">Signature</a></li>
+<li><a href="#parameters">Parameters</a></li>
+<li><a href="#when-to-use">When to use?</a></li>
+<li><a href="#example-lazy-identifiers">Example: lazy identifiers</a></li>
+<li><a href="#example-dynamic-iri-prefix">Example: dynamic IRI prefix</a></li>
+<li><a href="#example-statement-reification">Example: statement reification</a></li>
+</ul>
+</li>
+<li><a href="#addiri">addIri()</a><ul>
+<li><a href="#signature_1">Signature</a></li>
+<li><a href="#parameters_1">Parameters</a></li>
+<li><a href="#when-to-use_1">When to use?</a></li>
+<li><a href="#see-also">See also</a></li>
+<li><a href="#example-prefix-declaration-and-local-name">Example: Prefix declaration and local name</a></li>
+<li><a href="#example-absolute-iri">Example: Absolute IRI</a></li>
+</ul>
+</li>
+<li><a href="#addliteral">addLiteral()</a><ul>
+<li><a href="#when-to-use_2">When to use</a></li>
+<li><a href="#parameters_2">Parameters</a></li>
+<li><a href="#see-also_1">See also</a></li>
+<li><a href="#example-typed-literal">Example: Typed literal</a></li>
+<li><a href="#example-string-literal">Example: String literal</a></li>
+<li><a href="#example-language-tagged-string">Example: Language-tagged string</a></li>
+<li><a href="#example-validate-usage">Example: Validate usage</a></li>
+</ul>
+</li>
+<li><a href="#addskolemiri">addSkolemIri()</a><ul>
+<li><a href="#see-also_2">See also</a></li>
+<li><a href="#example">Example</a></li>
+</ul>
+</li>
+<li><a href="#addtag">addTag()</a><ul>
+<li><a href="#parameters_3">Parameters</a></li>
+<li><a href="#throws">Throws</a></li>
+<li><a href="#see-also_3">See also</a></li>
+<li><a href="#example_1">Example</a></li>
+</ul>
+</li>
+<li><a href="#addvalue">addValue()</a><ul>
+<li><a href="#description">Description</a></li>
+<li><a href="#parameters_4">Parameters</a></li>
+<li><a href="#example_2">Example</a></li>
+<li><a href="#example_3">Example</a></li>
+</ul>
+</li>
+<li><a href="#capitalize">capitalize()</a><ul>
+<li><a href="#parameters_5">Parameters</a></li>
+<li><a href="#example-class-iris">Example: Class IRIs</a></li>
+</ul>
+</li>
+<li><a href="#concat">concat()</a><ul>
+<li><a href="#description_1">Description</a></li>
+<li><a href="#parameters_6">Parameters</a></li>
+<li><a href="#example_4">Example</a></li>
+</ul>
+</li>
+<li><a href="#copy">copy()</a><ul>
+<li><a href="#parameters_7">Parameters</a></li>
+<li><a href="#example_5">Example</a></li>
+<li><a href="#example_6">Example</a></li>
+</ul>
+</li>
+<li><a href="#encodehtml">encodeHtml()</a><ul>
+<li><a href="#description_2">Description</a></li>
+<li><a href="#parameters_8">Parameters</a></li>
+<li><a href="#example_7">Example</a></li>
+</ul>
+</li>
+<li><a href="#geojsontowkt">geojsonToWkt()</a><ul>
+<li><a href="#parameters_9">Parameters</a></li>
+<li><a href="#geojson-and-well-known-text-wkt">GeoJSON and Well-Known Text (WKT)</a></li>
+<li><a href="#see-also_4">See also</a></li>
+<li><a href="#example_8">Example</a></li>
+</ul>
+</li>
+<li><a href="#jpath">jpath()</a><ul>
+<li><a href="#description_3">Description</a></li>
+<li><a href="#use-cases">Use cases</a></li>
+<li><a href="#parameters_10">Parameters</a></li>
+<li><a href="#example_9">Example</a></li>
+</ul>
+</li>
+<li><a href="#lowercase">lowercase()</a><ul>
+<li><a href="#description_4">Description</a></li>
+<li><a href="#use-cases_1">Use cases</a></li>
+<li><a href="#parameters_11">Parameters</a></li>
+<li><a href="#example_10">Example</a></li>
+</ul>
+</li>
+<li><a href="#padend">padEnd()</a><ul>
+<li><a href="#description_5">Description</a></li>
+<li><a href="#use-cases_2">Use cases</a></li>
+<li><a href="#parameters_12">Parameters</a></li>
+<li><a href="#example_11">Example</a></li>
+</ul>
+</li>
+<li><a href="#padstart">padStart()</a><ul>
+<li><a href="#description_6">Description</a></li>
+<li><a href="#use-cases_3">Use cases</a></li>
+<li><a href="#example-fixed-length-identifiers">Example: Fixed-length identifiers</a></li>
+<li><a href="#example-create-year-literals">Example: Create year literals</a></li>
+</ul>
+</li>
+<li><a href="#replace">replace()</a><ul>
+<li><a href="#description_7">Description</a></li>
+<li><a href="#parameters_13">Parameters</a></li>
+<li><a href="#example_12">Example</a></li>
+</ul>
+</li>
+<li><a href="#split">split()</a><ul>
+<li><a href="#description_8">Description</a></li>
+<li><a href="#whitespace-handling">Whitespace handling</a></li>
+<li><a href="#empty-values">Empty values</a></li>
+<li><a href="#use-cases_4">Use cases</a></li>
+<li><a href="#parameters_14">Parameters</a></li>
+<li><a href="#example-multiple-values-in-singular-table-cells">Example: Multiple values in singular table cells</a></li>
+<li><a href="#example-split-a-complex-string-into-components">Example: Split a complex string into components</a></li>
+</ul>
+</li>
+<li><a href="#substring">substring()</a><ul>
+<li><a href="#description_9">Description</a></li>
+<li><a href="#parameters_15">Parameters</a></li>
+<li><a href="#example_13">Example</a></li>
+</ul>
+</li>
+<li><a href="#translateall">translateAll()</a><ul>
+<li><a href="#description_10">Description</a></li>
+<li><a href="#when-to-use_3">When to use?</a></li>
+<li><a href="#parameters_16">Parameters</a></li>
+<li><a href="#example-map-source-data-to-iri-values">Example: Map source data to IRI values</a></li>
+<li><a href="#example-map-source-data-to-iri-properties">Example: Map source data to IRI properties</a></li>
+</ul>
+</li>
+<li><a href="#translatesome">translateSome()</a><ul>
+<li><a href="#description_11">Description</a></li>
+<li><a href="#parameters_17">Parameters</a></li>
+<li><a href="#use-cases_5">Use cases</a></li>
+<li><a href="#example_14">Example</a></li>
+</ul>
+</li>
+<li><a href="#tryliteral">tryLiteral()</a><ul>
+<li><a href="#description_12">Description</a></li>
+<li><a href="#throws_1">Throws</a></li>
+<li><a href="#example_15">Example</a></li>
+<li><a href="#see-also_5">See also</a></li>
+</ul>
+</li>
+<li><a href="#uppercase">uppercase()</a><ul>
+<li><a href="#description_13">Description</a></li>
+<li><a href="#parameters_18">Parameters</a></li>
+<li><a href="#example_16">Example</a></li>
+</ul>
+</li>
+<li><a href="#wktAddPoint()">wkt.addPoint()</a><ul>
+<li><a href="#description_14">Description</a></li>
+<li><a href="#parameters_19">Parameters</a></li>
+<li><a href="#example_17">Example</a></li>
+</ul>
+</li>
+<li><a href="#wktProject()">wkt.project()</a><ul>
+<li><a href="#description_15">Description</a></li>
+<li><a href="#parameters_20">Parameters</a></li>
+<li><a href="#example_18">Example</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<h1 id="ratt-transformations">RATT transformations<a class="headerlink" href="#ratt-transformations" title="Permanent link">¶</a></h1>
+<p>RATT transformations are a core set of functions that are commonly used to change the content of TriplyETL Records.</p>
+<p>RATT transformations started out as <a href="../typescript/">TypeScript transformations</a> that turned out to be useful in a wide variety of TriplyETL pipelines. Triply maintains this core set of transformation functions to allow new ETLs to make use of off-the-shelf functionality that has proven useful in the past.</p>
+<h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">¶</a></h2>
+<p>The following transformation functions are currently available:</p>
+<table>
+<thead>
+<tr>
+<th>Function</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="#addhashediri">addHashedIri()</a></td>
+<td>Creates an IRI with a content-based hash as the local name.</td>
+</tr>
+<tr>
+<td><a href="#addiri">addIri()</a></td>
+<td>Create a new IRI based on a prefix and a local name.</td>
+</tr>
+<tr>
+<td><a href="#addliteral">addLiteral()</a></td>
+<td>Create a new literal based on a lexical for and a datatype IRI or language tag.</td>
+</tr>
+<tr>
+<td><a href="#addskolemiri">addSkolemIri()</a></td>
+<td>Create a new IRI with a random local name, which advertises that it may be consistently replaced with blank nodes.</td>
+</tr>
+<tr>
+<td><a href="#addtag">addTag()</a></td>
+<td>Create a language tag.</td>
+</tr>
+<tr>
+<td><a href="#addvalue">addValue()</a></td>
+<td>Create a TypeScript value.</td>
+</tr>
+<tr>
+<td><a href="#capitalize">capitalize()</a></td>
+<td>Transforms a string value to its capitalized variant.</td>
+</tr>
+<tr>
+<td><a href="#concat">concat()</a></td>
+<td>Combine multiple strings into a new string.</td>
+</tr>
+<tr>
+<td><a href="#copy">copy()</a></td>
+<td>Copy a value from an old into a new key.</td>
+</tr>
+<tr>
+<td><a href="#decodehtml">decodeHtml()</a></td>
+<td>Decode HTML entities that occur in strings.</td>
+</tr>
+<tr>
+<td><a href="#geojsontowkt">geojsonToWkt()</a></td>
+<td>Change GeoJSON strings to WKT strings.</td>
+</tr>
+<tr>
+<td><a href="#jpath">jpath()</a></td>
+<td>Uses the JSONPath query language to select a value from the record.</td>
+</tr>
+<tr>
+<td><a href="#lowercase">lowercase()</a></td>
+<td>Change strings to their lowercase variants.</td>
+</tr>
+<tr>
+<td><a href="#padend">padEnd()</a></td>
+<td>Pad the end of strings.</td>
+</tr>
+<tr>
+<td><a href="#padstart">padStart()</a></td>
+<td>Pad the start of strings.</td>
+</tr>
+<tr>
+<td><a href="#replace">replace()</a></td>
+<td>Replace part of a string.</td>
+</tr>
+<tr>
+<td><a href="#split">split()</a></td>
+<td>Split a string into multiple substrings.</td>
+</tr>
+<tr>
+<td><a href="#substring">substring()</a></td>
+<td>Extract a substring from a string.</td>
+</tr>
+<tr>
+<td><a href="#translateall">translateAll()</a></td>
+<td>Translate <em>all</em> string values to other values.</td>
+</tr>
+<tr>
+<td><a href="#translatesome">translateSome()</a></td>
+<td>Translate <em>some</em> string values to other strings.</td>
+</tr>
+<tr>
+<td><a href="#tryliteral">tryLiteral()</a></td>
+<td>Create literals for which the datatype is not know beforehand.</td>
+</tr>
+<tr>
+<td><a href="#uppercase">uppercase()</a></td>
+<td>Change a string to its uppercase variant.</td>
+</tr>
+<tr>
+<td><a href="#wktaddpoint">wkt.addPoint()</a></td>
+<td>Add a geospatial point using the Well-Known Text (WKT) format.</td>
+</tr>
+<tr>
+<td><a href="#wktproject">wkt.project()</a></td>
+<td>Change the projection of a Well-Known Text (WKT) literal from from Coordinate Reference System into another.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="addhashediri">addHashedIri()<a class="headerlink" href="#addhashediri" title="Permanent link">¶</a></h2>
+<p>Creates an IRI with a content-based hash as the local name.</p>
+<h3 id="signature">Signature<a class="headerlink" href="#signature" title="Permanent link">¶</a></h3>
+<p>This function has the following signature:</p>
+<pre><code class="language-ts">addHashedIri({ prefix, content, key })
+</code></pre>
+<h3 id="parameters">Parameters<a class="headerlink" href="#parameters" title="Permanent link">¶</a></h3>
+<ul>
+<li><code>prefix</code> is a dynamic or static IRI.</li>
+<li><code>content</code> is an array with static value, or a key that contains a dynamic arrays of values.</li>
+<li><code>key</code> is a new key where the created IRI is stored.</li>
+</ul>
+<h3 id="when-to-use">When to use?<a class="headerlink" href="#when-to-use" title="Permanent link">¶</a></h3>
+<p>This function is used under the following circumstances:</p>
+<ol>
+<li>Something must be identified with an IRI.</li>
+<li>The thing that must be identified does not have a readily available identifier.</li>
+<li>The thing that must be identified does have properties whose combination of values is unique, and can therefore act as a composite identifier. This is called a <em>composite key</em> in database theory.</li>
+<li>The composed URL is not allowed to be skolemised anymore, e.g. the <code>prefix</code> cannot be an IRI where the pathname starts with <code>/.well-known/genid/</code>. For this purpose, use transformation <a href="#addskolemiri">addskolemiri()</a> instead.</li>
+</ol>
+<p>Benefits:</p>
+<ul>
+<li>The created IRIs are the same across different ETL runs over the same source data. This supports important use cases like change managements / versioning and graph signing.</li>
+</ul>
+<p>Downsides:</p>
+<ul>
+<li>It can take a lot of time to figure out which set of properties make every IRI unique. In database theory this process is known as <em>composite key detection</em>. Furthermore, keeping the list of identifying properties up-to-date over time poses a maintenance burden.</li>
+</ul>
+<h3 id="example-lazy-identifiers">Example: lazy identifiers<a class="headerlink" href="#example-lazy-identifiers" title="Permanent link">¶</a></h3>
+<p>Some source data does not include good identifiers for all data items. For example, the following source table contains first names and last names of persons, but neither property is by itself unique:</p>
+<table>
+<thead>
+<tr>
+<th>First name</th>
+<th>Last name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Jane</td>
+<td>Doe</td>
+</tr>
+<tr>
+<td>Jane</td>
+<td>Smith</td>
+</tr>
+<tr>
+<td>John</td>
+<td>Doe</td>
+</tr>
+</tbody>
+</table>
+<p>In such cases it may be an option to take a combination of columns, and use that combined sequence of columns for identification.</p>
+<p>The following snippet uses the combination of the first name and last name fields (in that order) to create a locally unique hash. Together with an IRI prefix, this can be used to create globally unique IRIs:</p>
+<pre><code class="language-typescript">fromJson([{ 'First name': 'John', 'Last name': 'Doe' }]),
+addHashedIri({
+  prefix: prefix.person,
+  content: ['First name', 'Last name'],
+  key: '_person',
+}),
+pairs('_person',
+  [a, sdo.Person],
+  [sdo.givenName, 'First name'],
+  [sdo.familyName, 'Last name'],
+),
+</code></pre>
+<p>This results in the following linked data:</p>
+<pre><code class="language-turtle">person:70020947bea6c39cccea20d27e30fbdf
+  a sdo:Person;
+  sdo:givenName 'John';
+  familyName 'Doe'.
+</code></pre>
+<p>Or diagrammatically:</p>
+<div class="mermaid">graph LR
+  person -- a --&gt; Person
+  person -- sdo:givenName --&gt; john
+  person -- sdo:familyName --&gt; doe
+
+  Person[sdo:Person]:::model
+  doe['Doe']:::data
+  john['John']:::data
+  person([person:70020947bea6c39cccea20d27e30fbdf]):::data
+
+  classDef model fill:lightblue
+  classDef meta fill:sandybrown
+</div>
+<h3 id="example-dynamic-iri-prefix">Example: dynamic IRI prefix<a class="headerlink" href="#example-dynamic-iri-prefix" title="Permanent link">¶</a></h3>
+<p>It is possible to specify a dynamic IRI prefix to <code>addHashedIri()</code>.</p>
+<p>The following code snippet uses a dynamic IRI prefix from the data source record:</p>
+<pre><code class="language-ts">fromJson([
+  {
+    prefix: Iri('https://triplydb.com/my-account/my-dataset/id/person/'),
+    name: 'John Doe',
+  },
+  {
+    prefix: Iri('https://triplydb.com/my-account/my-dataset/id/product/'),
+    name: '123',
+  },
+]),
+addHashedIri({
+  prefix: 'prefix',
+  content: ['name'],
+  key: '_subject',
+}),
+triple('_subject', a, owl.NamedIndividual),
+</code></pre>
+<p>This results in the following linked data:</p>
+<pre><code class="language-turtle">prefix person: &lt;https://triplydb.com/my-account/my-dataset/id/person/&gt;
+prefix product: &lt;https://triplydb.com/my-account/my-dataset/id/product/&gt;
+
+person:76f294ac31199b65ec25048439b66f78 a owl:NamedIndividual.
+product:9154deaa364b289c6b012e99f947f30e a owl:NamedIndividual.
+</code></pre>
+<h3 id="example-statement-reification">Example: statement reification<a class="headerlink" href="#example-statement-reification" title="Permanent link">¶</a></h3>
+<p>The RDF standard allows individual statements to be identified by a node. This approach is called <em>statement reification</em> and can be used to assert metadata about statements or can represent modalities such as probability and belief.</p>
+<p>The following snippet uses <code>addHashedIri()</code> to create a unique identifier for each reified statement:</p>
+<pre><code class="language-ts">fromJson([{ id: '1', name: 'John Doe' }]),
+
+// Step 1. Create the subject, predicate, and object terms.
+addIri({ prefix: prefix.person, content: 'id', key: 'subject' }),
+addIri({ prefix: prefix.def, content: str('name'), key: 'predicate' }),
+addLiteral({ content: 'name', key: 'object' }),
+
+// Step 2. Create the triple statement.
+triple('subject', 'predicate', 'object'),
+
+// Step 3. Create the reified statement.
+addHashedIri({
+  prefix: prefix.statement,
+  content: ['subject', 'predicate', 'object'],
+  key: 'statement',
+}),
+pairs('statement',
+  [a, rdf.Statement],
+  [rdf.subject, 'subject'],
+  [rdf.predicate, 'predicate'],
+  [rdf.object, 'object'],
+),
+</code></pre>
+<p>This results in the following linked data:</p>
+<pre><code class="language-turtle">person:1 def:name 'John Doe'.
+statement:549decc4c44204a907aa32b4cc9bfaba
+  a rdf:Statement;
+  rdf:subject person:1;
+  rdf:predicate def:name;
+  rdf:object 'John Doe'.
+</code></pre>
+<p>Or diagrammatically:</p>
+<div class="mermaid">graph TB
+  person --- name
+  name --&gt; johndoe
+  statement -- a --&gt; Statement
+  statement -- rdf:subject --&gt; person
+  statement -- rdf:predicate --&gt; name
+  statement -- rdf:object --&gt; johndoe
+
+  Statement[rdf:Statement]:::model
+  person([person:1]):::data
+  name[def:name]:::model
+  johndoe([John Doe]):::data
+  statement([statement:549decc4c44204a907aa32b4cc9bfaba]):::meta
+
+  classDef model fill:lightblue
+  classDef meta fill:sandybrown
+</div>
+<h2 id="addiri">addIri()<a class="headerlink" href="#addiri" title="Permanent link">¶</a></h2>
+<p>Creates an IRI based on a specified local name.</p>
+<h3 id="signature_1">Signature<a class="headerlink" href="#signature_1" title="Permanent link">¶</a></h3>
+<pre><code class="language-ts">addIri({ prefix, content, key })
+</code></pre>
+<h3 id="parameters_1">Parameters<a class="headerlink" href="#parameters_1" title="Permanent link">¶</a></h3>
+<ul>
+<li><code>prefix</code> Optionally, a static or dynamic IRI. This IRI will appear before the local name specified for the <code>content</code> parameter. If the <code>prefix</code> parameter is absent, parameter <code>content</code> is must contain an absolute IRI.</li>
+<li><code>content</code> A string, or a key that contains a string. If the <code>prefix</code> parameter is specified, <code>content</code> specifies the IRI local name that appears after the IRI prefix. If the <code>prefix</code> argument is not specified, <code>content</code> is assumed to encode a full absolute IRI.</li>
+<li><code>key</code> A new key where the created IRI is stored.</li>
+</ul>
+<h3 id="when-to-use_1">When to use?<a class="headerlink" href="#when-to-use_1" title="Permanent link">¶</a></h3>
+<p>This transformation can be used in the following two ways:
+1. By using an IRI prefix and a local name.
+2. By using a full absolute IRI.
+3. The composed URL is not allowed to be skolemised anymore, e.g. the <code>prefix</code> cannot be an IRI where the pathname starts with <code>/.well-known/genid/</code>. For this purpose, use transformation <a href="#addskolemiri">addskolemiri()</a> instead.</p>
+<h3 id="see-also">See also<a class="headerlink" href="#see-also" title="Permanent link">¶</a></h3>
+<p>If the created IRI is used exactly once, it is often better to use inline function <a href="../../assert/ratt/terms/#iri-function">iri()</a> instead.</p>
+<h3 id="example-prefix-declaration-and-local-name">Example: Prefix declaration and local name<a class="headerlink" href="#example-prefix-declaration-and-local-name" title="Permanent link">¶</a></h3>
+<p>The following snippet creates an IRI based on the specified IRI prefix and local name:</p>
+<pre><code class="language-ts">addIri({
+  prefix: prefix.person,
+  content: 'username',
+  key: '_person',
+}),
+triple('_person', a, sdo.Person),
+</code></pre>
+<p>This results in the following linked data assertions:</p>
+<pre><code class="language-turtle">person:johndoe a sdo:Person.
+</code></pre>
+<p>Or diagrammatically:</p>
+<div class="mermaid">graph LR
+  johndoe -- a --&gt; Person
+
+  Person[sdo:Person]:::model
+  johndoe(person:johndoe):::data
+</div>
+<p>The following snippet makes the same assertion, but uses assertion <a href="../../assert/ratt/terms/#iri-function">iri()</a> instead of transformation <code>addIri()</code>:</p>
+<pre><code class="language-ts">triple(iri(prefix.person, 'username'), a, sdo.Person),
+</code></pre>
+<h3 id="example-absolute-iri">Example: Absolute IRI<a class="headerlink" href="#example-absolute-iri" title="Permanent link">¶</a></h3>
+<p>The following snippet creates the same IRI, but does not use a predefined prefix IRI:</p>
+<pre><code class="language-ts">addIri({
+  content: 'https://example.com/id/person/johndoe',
+  key: '_person',
+}),
+triple('_person', a, sdo.Person),
+</code></pre>
+<p>Or diagrammatically:</p>
+<div class="mermaid">graph LR
+  johndoe -- a --&gt; Person
+
+  Person[sdo:Person]:::model
+  johndoe(https://example.com/id/person/johndoe):::data
+</div>
+<p>The following snippet uses assertion <a href="../../assert/ratt/terms/#iri-function">iri()</a> instead of transformation <code>addIri()</code>:</p>
+<pre><code class="language-ts">triple(iri('https://example.com/id/person/johndoe'), a, sdo.Person),
+</code></pre>
+<h2 id="addliteral">addLiteral()<a class="headerlink" href="#addliteral" title="Permanent link">¶</a></h2>
+<p>Creates an new literal and adds it to the Record under the specified key.</p>
+<p>This transformation can be used in the following 3 ways:</p>
+<ol>
+<li>If a datatype (key: <code>datatype</code>) is given, a typed literal is created.</li>
+<li>If a language tag (key: <code>languageTag</code>) is given, a language-tagged string (datatype <code>rdf:langString</code>) is created.</li>
+<li>If neither a datatype not a language tag is given, a literal with datatype <code>xsd:string</code> is created.</li>
+</ol>
+<h3 id="when-to-use_2">When to use<a class="headerlink" href="#when-to-use_2" title="Permanent link">¶</a></h3>
+<p>This transformation is typically used when:</p>
+<ul>
+<li>The same literal occurs in two or more statement assertions (function <a href="../../assert/ratt/statements/#triple">triple()</a> or <a href="../../assert/ratt/statements/#quad">quad()</a>). This avoids having to specify the same literal multiple times using function <a href="../../assert/ratt/terms/#literal">literal()</a>.</li>
+<li>The datatype or language tag is derived from the source data record.</li>
+</ul>
+<h3 id="parameters_2">Parameters<a class="headerlink" href="#parameters_2" title="Permanent link">¶</a></h3>
+<ul>
+<li><code>content</code> A key that contains a string value, or a string specified with function <a href="../../assert/ratt/terms/#str">str()</a>.</li>
+<li><code>datatype</code> Optionally, a key that stores an IRI or a static IRI.</li>
+<li><code>language</code> Optionally, a language tag from the <a href="../../generic/declarations/#language-declarations"><code>lang</code></a> object, or a key that stores such a language tag.</li>
+<li><code>validate</code> Optionally provide a single validator condition or an array of validator conditions that the literal <code>content</code> should hold to, will return a boolean and throw and error when a validator condition does not hold.</li>
+<li><code>key</code> A new key where the created literal is stored.</li>
+</ul>
+<h3 id="see-also_1">See also<a class="headerlink" href="#see-also_1" title="Permanent link">¶</a></h3>
+<p>If the created literal is used exactly once, it is often better to use the inline function <a href="../../assert/ratt/terms/#literal">literal()</a> instead.</p>
+<h3 id="example-typed-literal">Example: Typed literal<a class="headerlink" href="#example-typed-literal" title="Permanent link">¶</a></h3>
+<p>The following snippet asserts a triple with a typed literal with datatype IRI <code>xsd:date</code>:</p>
+<pre><code class="language-ts">fromJson([{ id: '123', date: '2022-01-30' }]),
+addLiteral({
+  content: 'date',
+  datatype: xsd.date,
+  key: '_dateCreated',
+}),
+triple(iri(prefix.book, 'id'), sdo.dateCreated, '_dateCreated'),
+</code></pre>
+<p>This makes the following linked data assertion:</p>
+<pre><code class="language-turtle">book:123 sdo:dateCreated '2022-30-01'^^xsd:date.
+</code></pre>
+<p>Notice that the same linked data could have been asserted with the following use the the <a href="../../assert/ratt/terms/#literal">literal()</a> assertion middleware:</p>
+<pre><code class="language-ts">fromJson([{ id: '123', date: '2022-01-30' }]),
+triple(iri(prefix.book, 'id'), sdo.dateCreated, literal('date', xsd.date)),
+</code></pre>
+<h3 id="example-string-literal">Example: String literal<a class="headerlink" href="#example-string-literal" title="Permanent link">¶</a></h3>
+<p>The following snippet asserts a triple with a string literal in the object position:</p>
+<pre><code class="language-ts">fromJson([{name: 'London'}]),
+addLiteral({
+  content: 'name',
+  key: '_name',
+}),
+triple(iri(prefix.city, '_name'), skos.prefLabel, '_name')
+</code></pre>
+<p>This makes the following assertion:</p>
+<pre><code class="language-turtle">city:London sdo:name 'London'.
+</code></pre>
+<p>The literal 'London' has type <code>xsd:string</code>. This is the standard datatype IRI for typed literals in the linked data languages (i.e. Turtle, TriG, and SPARQL).</p>
+<p>Notice that the same linked data could have been asserted with the following snippet, where the string value <code>'London'</code> is automatically cast into a string literal:</p>
+<pre><code class="language-ts">fromJson([{ name: 'London' }]),
+triple(iri(prefix.city, 'name'), skos.prefLabel, 'name'),
+</code></pre>
+<h3 id="example-language-tagged-string">Example: Language-tagged string<a class="headerlink" href="#example-language-tagged-string" title="Permanent link">¶</a></h3>
+<p>The following snippet asserts a triple with a language-tagged string in the object position:</p>
+<pre><code class="language-ts">fromJson([{ name: 'London' }]),
+addLiteral({
+  content: 'name',
+  language: language.en,
+  key: '_name',
+}),
+triple(iri(prefix.city, 'name'), skos.prefLabel, '_name'),
+</code></pre>
+<p>This results in the following linked data assertion:</p>
+<pre><code class="language-turtle">city:London skos:prefLabel 'London'@en.
+</code></pre>
+<p>Notice that the same linked data could have been asserted with the following use the the <a href="../../assert/ratt/terms/#literal">literal()</a> assertion middleware:</p>
+<pre><code class="language-ts">fromJson([{ name: 'London' }]),
+triple(iri(prefix.city, 'name'), skos.prefLabel, literal('name', lang['en'])),
+</code></pre>
+<h3 id="example-validate-usage">Example: Validate usage<a class="headerlink" href="#example-validate-usage" title="Permanent link">¶</a></h3>
+<p>The following snippet asserts a triple of a person's email, with the email address being validated in the object position, and should throw an error when the record contains an invalid email address:</p>
+<pre><code class="language-ts">fromJson([{ name: "John", email: 'john.appleseed@example.com' }, {name: 'NA', email: 'notAnEmail' } ]),
+addLiteral({
+  content: 'email',
+  validate: isEmail(),
+  key: '_email',
+}),
+triple(iri(prefix.person, 'name'), foaf.mbox, '_email'),
+</code></pre>
+<p>This results in the following error for the second record:</p>
+<pre><code class="language-terminal"> ERROR (Record #2)  String "notAnEmail" is not an email address.
+</code></pre>
+<p>Notice that when using only correct email addresses:</p>
+<pre><code class="language-ts">fromJson([{ name: "John", email: 'john.appleseed@example.com' }, { name: "Lisa", email: 'lisa.appleseed@example.com' } ]),
+addLiteral({
+  content: 'email',
+  validate: isEmail(),
+  key: '_email',
+}),
+triple(iri(prefix.person, 'name'), foaf.mbox, '_email'),
+</code></pre>
+<p>It results in the following correct linked data assertion:</p>
+<pre><code class="language-turtle">person:John foaf:mbox "john.appleseed@example.com"
+person:Lisa foaf:mbox "lisa.appleseed@example.com"
+</code></pre>
+<h2 id="addskolemiri">addSkolemIri()<a class="headerlink" href="#addskolemiri" title="Permanent link">¶</a></h2>
+<p>Creates a globally unique IRI that is intended to be used as a blank node identifier.</p>
+<p>Blank nodes are nodes without identification. It relatively difficult to work which such nodes in graph data, since they cannot be identified or dereferenced online. For this reason TriplyETL uses Skolem IRIs to denote blank nodes. This allows blank nodes to be identified and dereferenced. This Skolemization approach is part of the RDF standard.</p>
+<p>Skolem IRIs are random IRIs whose root path starts with <code>.well-known/genid/</code>. This makes it easy to distinguish them from other random IRIs that are not used to denote blank nodes.</p>
+<ul>
+<li><code>prefix</code> A IRI or a key that contains an IRI whose path starts with <code>.well-known/genid/</code>.</li>
+<li><code>key</code> A new key where the created IRI is stored.</li>
+</ul>
+<h3 id="see-also_2">See also<a class="headerlink" href="#see-also_2" title="Permanent link">¶</a></h3>
+<p>Tne <a href="https://www.w3.org/TR/rdf11-concepts/#section-skolemization">Skolemization section</a> in the RDF standard explains what Skolem IRIs are and how they should be used.</p>
+<h3 id="example">Example<a class="headerlink" href="#example" title="Permanent link">¶</a></h3>
+<p>The following snippet uses a hashed IRI to create a predictable identifier for a geospatial feature, and a Skolem IRI to create an unpredictable identifier for the geometry.</p>
+<p>The snippet includes the prefix declarations to illustrate that the path of the Skolem IRI must start with <code>.well-known/genid.</code>.</p>
+<pre><code class="language-ts">const base = 'https://example.com/'
+const prefix = {
+  feature: declarePrefix(base('id/feature/')),
+  skolem: declarePrefix(base('.well-known/genid/')),
+}
+
+// Etc
+
+fromJson([{ point: 'Point(1.1 2.2)' }]),
+addHashedIri({
+  prefix: prefix.feature,
+  content: 'point',
+  key: '_feature',
+}),
+addSkolemIri({
+  prefix: prefix.skolem,
+  key: '_geometry',
+}),
+triple('_feature', geo.hasGeometry, '_geometry'),
+triple('_geometry', geo.asWKT, literal('point', geo.wktLiteral)),
+</code></pre>
+<p>This results in the following linked data assertions:</p>
+<pre><code class="language-turtle">feature:22238008e490f725979118f8f2dd9b5a geo:hasGeometry skolem:0cf4b63252a0476a8afc20735aa03da6.
+skolem:0cf4b63252a0476a8afc20735aa03da6 geo:asWKT 'Point(1.1 2.2)'^^geo:wktLiteral.
+</code></pre>
+<p>Notice that the feature IRI will be the same across ELT runs if the source
+data stays the same, but the Skolem will always be different.</p>
+<p>Since the Skolem IRIs can be identified by the start of their path
+(<code>.well-known/genid/</code>), the same linked data assertions can be displayed as
+follows:</p>
+<pre><code class="language-turtle">feature:22238008e490f725979118f8f2dd9b5a geo:hasGeometry
+  [ geo:asWKT 'Point(1.1 2.2)'^^geo:wktLiteral ].
+</code></pre>
+<h2 id="addtag">addTag()<a class="headerlink" href="#addtag" title="Permanent link">¶</a></h2>
+<p>This middleware creates a language tag based on a given string value.</p>
+<h3 id="parameters_3">Parameters<a class="headerlink" href="#parameters_3" title="Permanent link">¶</a></h3>
+<ul>
+<li><code>content</code> A string value that encodes a language tag according to the IANA language subtag registry.</li>
+<li><code>key</code> A new key where the language tag will be stored.</li>
+</ul>
+<h3 id="throws">Throws<a class="headerlink" href="#throws" title="Permanent link">¶</a></h3>
+<p>An error is emitted if the given string value does not follow the language tag
+format, or denotes a language tag that is not currently registered.</p>
+<h3 id="see-also_3">See also<a class="headerlink" href="#see-also_3" title="Permanent link">¶</a></h3>
+<ul>
+<li>The language tag format is defined in the <a href="https://www.rfc-editor.org/rfc/rfc5646.html">IETF BCP 47 standard (RFC 5646)</a>.</li>
+<li>Language tags are registered in the <a href="https://www.iana.org/assignments/language-subtag-registry/language-subtag-registry">IANA language subtag registry</a>.</li>
+</ul>
+<h3 id="example_1">Example<a class="headerlink" href="#example_1" title="Permanent link">¶</a></h3>
+<p>The following snippet created a language tag for the Dutch language as spoken in The Netherlands, and uses it to assert a language-tagged string:</p>
+<pre><code class="language-ts">fromJson([{ label: 'Amsterdam' }]),
+addTag({
+  content: 'nl-nl',
+  key: 'lang',
+}),
+triple(iri(prefix.city, 'label'), rdfs.label, literal('label', 'lang')),
+</code></pre>
+<h2 id="addvalue">addValue()<a class="headerlink" href="#addvalue" title="Permanent link">¶</a></h2>
+<p>This middleware allows any value to be added to the Record.</p>
+<h3 id="description">Description<a class="headerlink" href="#description" title="Permanent link">¶</a></h3>
+<p>This middleware is useful for data that is not present in the source data record, but must be used in one or more assertions.</p>
+<h3 id="parameters_4">Parameters<a class="headerlink" href="#parameters_4" title="Permanent link">¶</a></h3>
+<ul>
+<li><code>content</code> Any value that can be represented in TypeScript.</li>
+<li><code>key</code> A new key where the value is stored.</li>
+</ul>
+<h3 id="example_2">Example<a class="headerlink" href="#example_2" title="Permanent link">¶</a></h3>
+<p>The following snippet starts out with an empty source record (<code>{}</code>), and adds a new <code>data</code> key to it. The added value is an array that contains a string and a number (in that order).</p>
+<p>This new value is used in the triple assertion, where <code>'data[0]'</code> extracts the string element and <code>'data[1]'</code> extracts the number elements.</p>
+<pre><code class="language-ts">fromJson([{}]),
+addValue({
+  content: ['johndoe', 22],
+  key: 'data',
+}),
+triple(iri(prefix.person, 'data[0]'), foaf.age, 'data[1]'),
+</code></pre>
+<p>This results in the following linked data assertion:</p>
+<pre><code class="language-turtle">person:johndoe foaf:age 22.
+</code></pre>
+<h3 id="example_3">Example<a class="headerlink" href="#example_3" title="Permanent link">¶</a></h3>
+<p>The following snippet adds a key called <code>_startDate</code> that either contains the start date as specified in the data source record, or the value <code>'unknown'</code>:</p>
+<pre><code class="language-ts">fromJson([
+  { id: '123', start: '2022-02-12' },
+  { id: '456' },
+]),
+ifElse({
+  if: 'start',
+  then: addLiteral({
+    content: 'start',
+    datatype: xsd.date,
+    key: '_start',
+  }),
+}, {
+  else: addValue({
+    content: 'unknown',
+    key: '_start',
+  }),
+}),
+triple(iri(prefix.event, 'id'), sdo.startDate, '_start'),
+</code></pre>
+<p>This results in the following linked data assertions:</p>
+<pre><code class="language-turtle">event:123 sdo:startDate '2022-02-12'^^xsd:date.
+event:456 sdo:startDate 'unknown'.
+</code></pre>
+<h2 id="capitalize">capitalize()<a class="headerlink" href="#capitalize" title="Permanent link">¶</a></h2>
+<p>Transforms a string value to its capitalized variant.</p>
+<p>If the first character of a string has an uppercase variant, then that variant is used. If the first character does not have an uppercase variant -- because the character is already uppercase or is a punctuation character --  then the string remains unchanged.</p>
+<p>This transformation can uppercase the first character in any language; the Unicode Default Case Conversion algorithm is used.</p>
+<h3 id="parameters_5">Parameters<a class="headerlink" href="#parameters_5" title="Permanent link">¶</a></h3>
+<ul>
+<li><code>content</code> A key that contains a string value.</li>
+<li><code>key</code> A new key where the capitalized result is stored.</li>
+</ul>
+<h3 id="example-class-iris">Example: Class IRIs<a class="headerlink" href="#example-class-iris" title="Permanent link">¶</a></h3>
+<p>According to convention, classes in linked data are denoted by IRIs whose local name starts with a capital letter.</p>
+<p>The following source data contains nice values for the <code>type</code> key, but they do not start with a capital letter yet.</p>
+<p>The following snippet capitalizes the values of the <code>type</code> keys, and uses them to create class IRIs.</p>
+<pre><code class="language-ts">fromJson([
+  { id: '1', type: 'location' },
+  { id: '2', type: 'person' },
+]),
+capitalize({
+  content: 'type',
+  key: '_type',
+}),
+triple(iri(prefix.id, 'id'), a, iri(prefix.def, '_type')),
+</code></pre>
+<p>This results in the following linked data assertions:</p>
+<pre><code class="language-turtle">id:1 a def:Location.
+id:2 a def:Person.
+</code></pre>
+<h2 id="concat">concat()<a class="headerlink" href="#concat" title="Permanent link">¶</a></h2>
+<h3 id="description_1">Description<a class="headerlink" href="#description_1" title="Permanent link">¶</a></h3>
+<p>Concatenates an array of strings into one new string.</p>
+<p>An optionally specified separator is placed in between every two consecutive string values.</p>
+<h3 id="parameters_6">Parameters<a class="headerlink" href="#parameters_6" title="Permanent link">¶</a></h3>
+<ul>
+<li><code>content</code> An array of key that contain a string and/or strings specified with assertion <a href="../../assert/ratt/terms/#str">str()</a>.</li>
+<li><code>separator</code> Optionally, the string that is places between every two consecutive string values.</li>
+<li><code>key</code> A new key where the concatenated string is stored.</li>
+</ul>
+<h3 id="example_4">Example<a class="headerlink" href="#example_4" title="Permanent link">¶</a></h3>
+<p>The following snippet concatenates the first and last name of a person (in that order), using a space separator.</p>
+<pre><code class="language-ts">fromJson([{ id: '1', first: 'John', last: 'Doe' }]),
+concat({
+  content: ['first', 'last'],
+  separator: ' ',
+  key: '_name',
+}),
+triple(iri(prefix.person, 'id'), foaf.name, '_name'),
+</code></pre>
+<p>This results in the following linked data assertion:</p>
+<pre><code class="language-turtle">person:1 foaf:name 'John Doe'.
+</code></pre>
+<h2 id="copy">copy()<a class="headerlink" href="#copy" title="Permanent link">¶</a></h2>
+<p>Makes a plain copy from the value stored in the given key to a new key.</p>
+<h3 id="parameters_7">Parameters<a class="headerlink" href="#parameters_7" title="Permanent link">¶</a></h3>
+<ul>
+<li><code>content</code> A value of any type, or a key that contains a value of any type.</li>
+<li><code>type</code> Optionally, the name of the TypeScript type of the value. The default value is <code>'string'</code>.</li>
+<li><code>key</code> A new key where the plain copy is stored.</li>
+</ul>
+<h3 id="example_5">Example<a class="headerlink" href="#example_5" title="Permanent link">¶</a></h3>
+<p>Plain copies can be used to abbreviate long keys, especially in tree-shaped data like JSON or XML. In the following example, values stored in a long nested key are copies into a short and descriptive key. This is even more useful if the key is used many times in the script.</p>
+<pre><code class="language-ts">copy({
+  content: 'record[0].family[0].children.child[0].id.$text',
+  key: 'childId',
+}),
+</code></pre>
+<h3 id="example_6">Example<a class="headerlink" href="#example_6" title="Permanent link">¶</a></h3>
+<p>Since plain copies introduce a new name for an existing value, the new name can be used to store extra information about the value. The following example stores an English name, if available; or a Dutch name, if available; or no name at all. This is a relatively complex example that can only be accomplished by copying the names for the encountered languages under descriptive key names.</p>
+<pre><code class="language-ts">fromJson([
+  {
+    id: '1',
+    names: [
+      { language: 'en', value: 'London' },
+      { language: 'fr', value: 'Londres' },
+      { language: 'nl', value: 'Londen' },
+    ],
+  },
+  {
+    id: '2',
+    names: [
+      { language: 'fr', value: 'Paris' },
+      { language: 'nl', value: 'Parijs' },
+    ],
+  },
+]),
+forEach('names', [
+  _switch('language',
+    // Plain copy of the English label, if available.
+    ['en', copy({ content: 'value', key: '$parent.en' })],
+    // Plain copy of the Dutch label, if available.
+    ['nl', copy({ content: 'value', key: '$parent.nl' })],
+  ),
+]),
+ifElse({
+  // Prefer an English label over a Dutch label.
+  if: 'en',
+  then: copy({ content: 'en', key: '_preferredName' }),
+}, {
+  // If there is no English label, a Dutch label is a second-best option.
+  if: 'nl',
+  then: copy({ content: 'nl', key: '_preferredName' }),
+}),
+// If there is either an English or a Dutch label, assert it.
+when('_preferredName', [
+  triple(iri(prefix.city, 'id'), rdfs.label, '_preferredName'),
+]),
+</code></pre>
+<p>This results in the following linked data assertions:</p>
+<pre><code class="language-turtle">city:1 rdfs:label 'London'.
+city:2 rdfs:label 'Parijs'.
+</code></pre>
+<h2 id="encodehtml">encodeHtml()<a class="headerlink" href="#encodehtml" title="Permanent link">¶</a></h2>
+<h3 id="description_2">Description<a class="headerlink" href="#description_2" title="Permanent link">¶</a></h3>
+<p>This transformation decodes any HTML entities that appear in a given key.</p>
+<p>The following HTML entities are common in source data:</p>
+<table>
+<thead>
+<tr>
+<th>HTML entity</th>
+<th>Decoded</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>&amp;amp;</code></td>
+<td><code>&amp;</code></td>
+</tr>
+<tr>
+<td><code>&amp;gt;</code></td>
+<td><code>&gt;</code></td>
+</tr>
+<tr>
+<td><code>&amp;lt;</code></td>
+<td><code>&lt;</code></td>
+</tr>
+</tbody>
+</table>
+<p>You do <em>not</em> need to use this transformation if you want to assert literals with datatype IRI <code>rdf:HTML</code>. HTML entities are meaningful in HTML, so there they should be preserved.</p>
+<h3 id="parameters_8">Parameters<a class="headerlink" href="#parameters_8" title="Permanent link">¶</a></h3>
+<ul>
+<li><code>content</code> A key in the Record that contains string values with HTML entities.</li>
+<li><code>key</code> A new key where the decoded content is stored.</li>
+</ul>
+<h3 id="example_7">Example<a class="headerlink" href="#example_7" title="Permanent link">¶</a></h3>
+<p>The following snippet takes HTML texts from the source data and asserts them as regular text literals. Since HTML entities are meaningless in regular text, <code>decodeHtml</code> is used to denote these entities.</p>
+<pre><code class="language-ts">fromJson([
+  { id: '1', label: 'A&amp;amp;B' },
+  { id: '2', label: '1 &amp;lt; 2' },
+]),
+decodeHtml({
+  content: 'label',
+  key: '_label',
+}),
+triple(iri(prefix.id, 'id'), rdfs.label, '_label'),
+</code></pre>
+<p>This results in the following linked data assertions:</p>
+<pre><code class="language-turtle">id:1 rdfs:label 'A&amp;B'.
+id:2 rdfs:label '1 &lt; 2'.
+</code></pre>
+<h2 id="geojsontowkt">geojsonToWkt()<a class="headerlink" href="#geojsontowkt" title="Permanent link">¶</a></h2>
+<p>Transforms GeoJSON objects to their corresponding Well-Known Text (WKT) serialization strings.</p>
+<h3 id="parameters_9">Parameters<a class="headerlink" href="#parameters_9" title="Permanent link">¶</a></h3>
+<ul>
+<li><code>content</code> A key that stores a GeoJSON object.</li>
+<li><code>crs</code> Optionally, an IRI that denotes a Coordinate Reference System (CRS). You can use IRIs from the <a href="../../generic/declarations/#geospatial-declarations"><code>epsg</code></a> object. If absent, uses <a href="EPSG:4326/WGS84">https://epsg.io/4326</a> as the CRS.</li>
+<li><code>key</code> A new key where the WKT serialization string is stored</li>
+</ul>
+<h3 id="geojson-and-well-known-text-wkt">GeoJSON and Well-Known Text (WKT)<a class="headerlink" href="#geojson-and-well-known-text-wkt" title="Permanent link">¶</a></h3>
+<p>According to the <a href="https://www.rfc-editor.org/rfc/rfc7946">GeoJSON standard</a>, the only Coordinate Reference System (CRS) that is allowed to be used is EPSG:4326/WGS84. In practice, source data sometimes (incorrectly) stores GeoJSON formatted data in other CRSes. An example of this is the <a href="https://ec.europa.eu/eurostat/web/gisco/geodata">GISCO</a> dataset of the European Union, which uses the <a href="https://epsg.io/3857">EPSG:3857</a> CRS. For cases like these, the optional <code>crs</code> parameter comes in handy.</p>
+<h3 id="see-also_4">See also<a class="headerlink" href="#see-also_4" title="Permanent link">¶</a></h3>
+<ul>
+<li>The GeoJSON format is standardized in <a href="https://www.rfc-editor.org/rfc/rfc7946">RFC 7946</a>.</li>
+<li>The <a href="https://en.wikipedia.org/wiki/Well-known_text_representation_of_geometry">Well-Known Text (WKT)</a> serialization format is standardized as part of <a href="https://www.iso.org/standard/60343.html">ISO/IEC 13249-3:2016 standard</a>.</li>
+</ul>
+<h3 id="example_8">Example<a class="headerlink" href="#example_8" title="Permanent link">¶</a></h3>
+<p>The following snippet converts GeoJSON objects that denote traffic light
+locations to their GeoSPARQL representation.</p>
+<pre><code class="language-ts">fromJson([
+  {
+    id: '123',
+    geometry: {
+      type: 'Point',
+      coordinates: [6.256, 48.480],
+    },
+  },
+]),
+addIri({
+  prefix: prefix.feature,
+  content: 'id',
+  key: '_feature',
+}),
+geojsonToWkt({
+  content: 'geometry',
+  crs: epsg[3857],
+  key: '_wkt',
+}),
+addHashedIri({
+  prefix: prefix.geometry,
+  content: '_wkt',
+  key: '_geometry'
+}),
+pairs('_feature',
+  [a, def.TrafficLight],
+  [geo.hasGeometry, '_geometry'],
+),
+pairs('_geometry',
+  [a, geo.Geometry],
+  [geo.asWKT, literal('_wkt', geo.wktLiteral)],
+),
+</code></pre>
+<p>This results in the following linked data assertions:</p>
+<pre><code class="language-turtle">feature:123
+  a def:TrafficLight;
+  geo:hasGeometry geometry:197e6376c2bd8192c24911f88c330606.
+geometry:197e6376c2bd8192c24911f88c330606
+  a geo:Geometry;
+  geo:asWKT 'Point(6.256 48.480)'^^geo:wktLiteral.
+</code></pre>
+<p>Or diagrammatically:</p>
+<div class="mermaid">graph LR
+  feature -- a --&gt; TrafficLight
+  feature -- geo:hasGeometry --&gt; geometry
+  geometry -- a --&gt; Geometry
+  geometry -- geo:asWKT --&gt; wkt
+
+  Geometry[geo:Geometry]:::model
+  TrafficLight[def:TrafficLight]:::model
+  feature(feature:123):::data
+  geometry(geometry:197e6376c2bd8192c24911f88c330606):::data
+  wkt("'Point(6.256 48.480)'^^geo:wktLiteral"):::data
+</div>
+<h2 id="jpath">jpath()<a class="headerlink" href="#jpath" title="Permanent link">¶</a></h2>
+<h3 id="description_3">Description<a class="headerlink" href="#description_3" title="Permanent link">¶</a></h3>
+<p>Filters a value based on a JSON Path expression. JSON Path is a query language for JSON. For the syntax of JSON Path expressions, please visit the <a href="https://github.com/dchester/jsonpath#jsonpath-syntax">JSON Path documentation page</a>.</p>
+<h3 id="use-cases">Use cases<a class="headerlink" href="#use-cases" title="Permanent link">¶</a></h3>
+<p>This function simplifies the complex key specification to filter specific values. It can only be used for an object of a triple to create a literal. The result of a function must have a fundamental type.</p>
+<h3 id="parameters_10">Parameters<a class="headerlink" href="#parameters_10" title="Permanent link">¶</a></h3>
+<ul>
+<li><code>value</code>  A JSON Path expression.</li>
+</ul>
+<h3 id="example_9">Example<a class="headerlink" href="#example_9" title="Permanent link">¶</a></h3>
+<p>The following examples will create a literal based on key <code>value</code>:</p>
+<p>If key <code>'ISO_639-2'</code> exists:</p>
+<pre><code class="language-ts">fromJson({
+  language: [
+    { 'ISO_639-1': 'en', lcid: 2057, value: 'Paris' },
+    { 'ISO_639-1': 'nl', 'ISO_639-2': 'nld', lcid: 1043, value: 'Parijs' },
+  ],
+}),
+triple(
+  iri(prefix.city, '$recordId'),
+  rdfs.label,
+  literal(jpath("$.language[?(@['ISO_639-2'])].value"), language.nl)
+),
+</code></pre>
+<p>If key <code>'ISO_639-1'</code> is equal to <code>nl</code>:</p>
+<pre><code class="language-ts">fromJson({
+  language: [
+    { 'ISO_639-1': 'en', lcid: 2057, value: 'Paris' },
+    { 'ISO_639-1': 'nl', 'ISO_639-2': 'nld', lcid: 1043, value: 'Parijs' },
+  ],
+}),
+triple(
+  iri(prefix.city, '$recordId'),
+  rdfs.label,
+  literal(jpath("$.language[?(@['ISO_639-1'] =='nl')].value"), language.nl)
+),
+</code></pre>
+<p>If key <code>'lcid'</code> is lower than 1,100:</p>
+<pre><code class="language-ts">fromJson({
+  language: [
+    { 'ISO_639-1': 'en', lcid: 2057, value: 'Paris' },
+    { 'ISO_639-1': 'nl', 'ISO_639-2': 'nld', lcid: 1043, value: 'Parijs' },
+  ],
+}),
+triple(
+  iri(prefix.city, '$recordId'),
+  rdfs.label,
+  literal(jpath('$.language[?(@.lcid &lt; 1100)].value'), language.nl)
+),
+</code></pre>
+<p>All three examples generate the following linked data:</p>
+<pre><code class="language-turtle">record:1 rdfs:label 'Parijs'@nl.
+</code></pre>
+<h2 id="lowercase">lowercase()<a class="headerlink" href="#lowercase" title="Permanent link">¶</a></h2>
+<h3 id="description_4">Description<a class="headerlink" href="#description_4" title="Permanent link">¶</a></h3>
+<p>Translates a string value to its lowercase variant.</p>
+<p>This middleware can lowercase strings in any language; the Unicode Default Case Conversion algorithm is used.</p>
+<h3 id="use-cases_1">Use cases<a class="headerlink" href="#use-cases_1" title="Permanent link">¶</a></h3>
+<p>Older data formats sometimes use uppercase letters for header names or codes. The <code>lowercase</code> transformation middleware may be used to change such string values to lowercase.</p>
+<h3 id="parameters_11">Parameters<a class="headerlink" href="#parameters_11" title="Permanent link">¶</a></h3>
+<ul>
+<li><code>content</code> A key that contains a string value.</li>
+<li><code>key</code> A new key where the lowercase variant is stored.</li>
+</ul>
+<h3 id="example_10">Example<a class="headerlink" href="#example_10" title="Permanent link">¶</a></h3>
+<p>The following snippet starts out with header values that use uppercase characters exclusively. The <code>lowerCase</code> transformation is used to create lowercase names that can be used to create property IRIs.</p>
+<pre><code class="language-ts">fromJson([
+  { from: '1', rel: 'PARENT', to: '2' },
+  { from: '2', rel: 'CHILD', to: '1' },
+]),
+lowercase({
+  content: 'rel',
+  key: '_relationship',
+}),
+triple(
+  iri(prefix.id, 'from'),
+  iri(prefix.def, '_relationship'),
+  iri(prefix.id, 'to'),
+),
+</code></pre>
+<p>This results in the following linked data assertions:</p>
+<pre><code class="language-turtle">id:1 def:parent id:2.
+id:2 def:child id:1.
+</code></pre>
+<h2 id="padend">padEnd()<a class="headerlink" href="#padend" title="Permanent link">¶</a></h2>
+<h3 id="description_5">Description<a class="headerlink" href="#description_5" title="Permanent link">¶</a></h3>
+<p>Adds a given padding string zero or more times to the end of a string value, until the resulting string value is exactly a given number of characters long.</p>
+<h3 id="use-cases_2">Use cases<a class="headerlink" href="#use-cases_2" title="Permanent link">¶</a></h3>
+<p>This transformation is useful for identifiers that must have fixed length
+and that may be suffixed by zero's.</p>
+<h3 id="parameters_12">Parameters<a class="headerlink" href="#parameters_12" title="Permanent link">¶</a></h3>
+<ul>
+<li><code>content</code> A key that contains a string value. If the key contains a numeric value, that value is first cast to string.</li>
+<li><code>padString</code> The string that is added to the end of the string value in key <code>content</code>, until the result string has exactly <code>targetLength</code> characters. Can be a static string or a key.</li>
+<li><code>targetLength</code> The exact number of characters that the resulting string should have. The string value is copied over as-is when <code>targetLength</code> is smaller than or equal to the length of the string value in key <code>content</code>. This includes cases where <code>targetLength</code> is negative or zero.</li>
+<li><code>key</code> A new key where the padded string is stored.</li>
+</ul>
+<h3 id="example_11">Example<a class="headerlink" href="#example_11" title="Permanent link">¶</a></h3>
+<p>The following snippet processes identifiers of varying length, and ensures that they have the same length after suffixing <code>'0'</code> characters.</p>
+<pre><code class="language-ts">fromJson([
+  { id: '16784' },
+  { id: '129' },
+]),
+padEnd({
+  content: 'id',
+  padString: '0',
+  targetLength: 6,
+  key: '_id',
+}),
+</code></pre>
+<p>This results in the following two Records:</p>
+<pre><code class="language-json">[
+  {
+    "id": "16784",
+    "_id": "167840"
+  },
+  {
+    "id": "129",
+    "_id": "129000"
+  }
+]
+</code></pre>
+<h2 id="padstart">padStart()<a class="headerlink" href="#padstart" title="Permanent link">¶</a></h2>
+<h3 id="description_6">Description<a class="headerlink" href="#description_6" title="Permanent link">¶</a></h3>
+<p>Adds a given padding string zero or more times in front of a string value, until the resulting string value is exactly a given number of characters long.</p>
+<h3 id="use-cases_3">Use cases<a class="headerlink" href="#use-cases_3" title="Permanent link">¶</a></h3>
+<p>This transformation is useful for identifiers that must have fixed length and that may be prepended by zero's.</p>
+<p>If key <code>content</code> contains a numeric value, then that value is first cast to
+string.</p>
+<ul>
+<li><code>content</code> A key that contains a string value.</li>
+<li><code>padString</code> The string that is added in front of the string value in key <code>content</code>, until the result string has exactly <code>targetLength</code> characters.</li>
+<li><code>targetLength</code> The exact number of characters that the resulting string should have. The string value is copied over as-is when <code>targetLength</code> is smaller than or equal to the length of the string value in key <code>content</code>. This includes cases where <code>targetLength</code> is negative or zero.</li>
+<li><code>key</code> A new key where the lowercased string is stored.</li>
+</ul>
+<h3 id="example-fixed-length-identifiers">Example: Fixed-length identifiers<a class="headerlink" href="#example-fixed-length-identifiers" title="Permanent link">¶</a></h3>
+<p>The following snippet processes identifiers of varying length, and ensures that they have the same length after prefixing <code>'0'</code> characters.</p>
+<pre><code class="language-ts">fromJson([
+  { id: '16784' },
+  { id: '129' },
+]),
+padStart({
+  content: 'id',
+  padString: '0',
+  targetLength: 6,
+  key: '_id',
+}),
+</code></pre>
+<p>This results in the following two records:</p>
+<pre><code class="language-json">[
+  {
+    "id": "16784",
+    "_id": "016784"
+  },
+  {
+    "id": "129",
+    "_id": "000129"
+  }
+]
+</code></pre>
+<h3 id="example-create-year-literals">Example: Create year literals<a class="headerlink" href="#example-create-year-literals" title="Permanent link">¶</a></h3>
+<p>In order to create standards-conforming temporal literal, we need to pad the year component to be at least 4 decimal digits long. (This requirement is defined in the <a href="https://www.w3.org/TR/xmlschema11-2/#rf-lexicalMappings-datetime">XML Schema Datatypes 1.1: Part 2 Datatypes</a> standard.)</p>
+<p>Suppose that the source data looks as follows:</p>
+<table>
+<thead>
+<tr>
+<th>Artifact</th>
+<th>Year</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0001</td>
+<td>612</td>
+</tr>
+<tr>
+<td>0002</td>
+<td>1702</td>
+</tr>
+</tbody>
+</table>
+<p>We can ensure that all years have at least 4 decimal digits by calling the following function:</p>
+<pre><code class="language-ts">padStart({
+  content: 'Year',
+  padString: '0',
+  targetLength: 4,
+  key: '_lexicalForm',
+}),
+triple(
+  iri(prefix.id, 'Artifact'),
+  dct.created,
+  literal('_lexicalForm', xsd.gYear),
+),
+</code></pre>
+<p>This makes the following linked data assertions:</p>
+<pre><code class="language-turtle">id:0001 dct:created '0612'^^xsd:gYear.
+id:0002 dct:created '1702'^^xsd:gYear.
+</code></pre>
+<h2 id="replace">replace()<a class="headerlink" href="#replace" title="Permanent link">¶</a></h2>
+<h3 id="description_7">Description<a class="headerlink" href="#description_7" title="Permanent link">¶</a></h3>
+<p>Performs a regular expression replacement to the given input string, and stores the result in a new key.</p>
+<h3 id="parameters_13">Parameters<a class="headerlink" href="#parameters_13" title="Permanent link">¶</a></h3>
+<ul>
+<li><code>content</code> A key that contains a string value, or a static string specified with assertion <a href="../../assert/ratt/terms/#str">str()</a>.</li>
+<li><code>from</code> A <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions">JavaScript Regular Expression</a>.</li>
+<li><code>to</code> Optionally, a string that replaces potential matches of the Regular Expression (<code>from</code>). Use <code>$1</code>, <code>$2</code>, etc. to insert matches. If absent, the empty string is used.</li>
+<li><code>key</code> A new key where the result of the replacement is stored.</li>
+</ul>
+<h3 id="example_12">Example<a class="headerlink" href="#example_12" title="Permanent link">¶</a></h3>
+<p>Suppose the source data contains date/time strings, but only the date component is needed:</p>
+<pre><code class="language-json">{
+  "created": "2020-01-02T00:00:00.0Z"
+}
+</code></pre>
+<p>It is possible to extract only the date part (everything up to the <code>T</code>) in the following way:</p>
+<pre><code class="language-ts">replace({
+  content: 'created',
+  from: /^([^T]*).*$/,
+  to: '$1',
+  key: '_created',
+}),
+triple('_creativeWork', dct.created, literal('_created', xsd.date)),
+</code></pre>
+<p>This results in the following Record:</p>
+<pre><code class="language-json">{
+  "created": "2020-01-02T00:00:00.0Z",
+  "_created": "2020-01-02"
+}
+</code></pre>
+<h2 id="split">split()<a class="headerlink" href="#split" title="Permanent link">¶</a></h2>
+<h3 id="description_8">Description<a class="headerlink" href="#description_8" title="Permanent link">¶</a></h3>
+<p>Splits a string into an array of strings, and stores that array in a new key.</p>
+<h3 id="whitespace-handling">Whitespace handling<a class="headerlink" href="#whitespace-handling" title="Permanent link">¶</a></h3>
+<p>This transformation removes any trailing whitespace that remains after the strings are split. This ensures that irregular use of whitespace in the source data is taken care of automatically.</p>
+<h3 id="empty-values">Empty values<a class="headerlink" href="#empty-values" title="Permanent link">¶</a></h3>
+<p>This transformation removes any elements of the splitted string that are empty (after trimmimng). To keep empty entries, use the `` flag.</p>
+<h3 id="use-cases_4">Use cases<a class="headerlink" href="#use-cases_4" title="Permanent link">¶</a></h3>
+<p>The transformation is used when:
+- Tabular source data encodes multiple values inside singular cells. (Such concatenated storage inside cells is a data quality issue, because the table format cannot guarantee that the separator character does not (accidentally) occur inside individual values inside a cell. Tree-shaped source formats are able to store multiple values for the same key reliably, e.g. JSON and XML.)
+- Source data contains complex string values that can be decomposed into stand-alone components with distinct meaning.</p>
+<h3 id="parameters_14">Parameters<a class="headerlink" href="#parameters_14" title="Permanent link">¶</a></h3>
+<ul>
+<li><code>content</code> A key that stores a string, or a string specified with assertion <a href="../../assert/ratt/terms/#str">str()</a>.</li>
+<li><code>separator</code> A string or a regular expression that is used to separate the content.</li>
+<li><code>key</code> A new key where the array of split strings is stored.</li>
+<li><code>keepEmptyEntities</code> A boolean flag indicating if the empty values of a splitted string should be kept or not. By default empty values are removed.</li>
+</ul>
+<h3 id="example-multiple-values-in-singular-table-cells">Example: Multiple values in singular table cells<a class="headerlink" href="#example-multiple-values-in-singular-table-cells" title="Permanent link">¶</a></h3>
+<p>Tabular formats are unable to store more than one value in a cell. Because of this limitation, tabular data sources sometimes encode multiple values in cells by encoding them into one string. A separator character is typically used to distinguish between these multiple values.</p>
+<p>Suppose that the source data looks as follows:</p>
+<table>
+<thead>
+<tr>
+<th>Parent</th>
+<th>Child</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>John</td>
+<td>Jane, Jake ,</td>
+</tr>
+<tr>
+<td>Kate</td>
+<td>,,</td>
+</tr>
+</tbody>
+</table>
+<p>The following transformation splits the cells that encode zero or more children for each parent:</p>
+<pre><code class="language-ts">split({
+  content: 'Child',
+  separator: ',',
+  key: 'Children',
+}),
+</code></pre>
+<p>This results in the following transformed records:</p>
+<pre><code class="language-json">{
+  "Parent": "John",
+  "Child": "Jane, Jake , ",
+  "Children": [ "Jane", "Jake" ]
+}
+{
+  "Parent": "Kate",
+  "Child": ",, ",
+  "Children": []
+}
+</code></pre>
+<p>Notice that trailing whitespace and empty values are dealt with automatically.</p>
+<p>Since the <code>split()</code> transformation always results in an array of strings, we can use the term assertion <code>iris()</code> afterwards:</p>
+<pre><code class="language-ts">split({
+  content: 'children',
+  separator: ',',
+  key: '_children',
+}),
+triple(
+  iri(prefix.person, 'parent'),
+  sdo.children,
+  iris(prefix.person, '_children')
+),
+</code></pre>
+<p>This results in the following linked data assertions:</p>
+<pre><code class="language-turtle">person:johndoe
+  sdo:children
+    person:janedoe,
+    person:jakedoe.
+</code></pre>
+<h3 id="example-split-a-complex-string-into-components">Example: Split a complex string into components<a class="headerlink" href="#example-split-a-complex-string-into-components" title="Permanent link">¶</a></h3>
+<p>The following snippet uses a regular expression to split a KIX code. (A <a href="https://en.wikipedia.org/wiki/RM4SCC">KIX code</a> is a standardized format for representing postal addresses in The Netherlands.)</p>
+<pre><code class="language-ts">fromJson([{ id: '1', KIX: '1231FZ13Xhs' }]),
+split({
+  content: 'KIX',
+  separator: /^(\d{4}[A-Z]{2})(\d{1,5})(?:X(.{1,6}))/,
+  key: 'KIX_components',
+}),
+triple(iri(prefix.id, 'id'), sdo.postalCode, 'KIX_components[1]'),
+</code></pre>
+<p>This results in the following record:</p>
+<pre><code class="language-json">{
+  "id": "1",
+  "KIX": "1231FZ13Xhs",
+  "KIX_components": ["", "1231FZ", "13", "hs", ""]
+}
+</code></pre>
+<p>And in the following linked data assertion:</p>
+<pre><code class="language-turtle">id:1 sdo:postalCode '1231FZ'.
+</code></pre>
+<h2 id="substring">substring()<a class="headerlink" href="#substring" title="Permanent link">¶</a></h2>
+<h3 id="description_9">Description<a class="headerlink" href="#description_9" title="Permanent link">¶</a></h3>
+<p>This middleware takes a substring from the input string and stores the
+result in a new key.</p>
+<h3 id="parameters_15">Parameters<a class="headerlink" href="#parameters_15" title="Permanent link">¶</a></h3>
+<ul>
+<li><code>content</code> A key that stores a string value, or a string specified with assertion <a href="../../assert/ratt/terms/#str">str()</a>.</li>
+<li><code>start</code> The index of the first character that is included in the substring. The first character has index 0.</li>
+<li><code>end</code> Optionally, the index of the first character that is excluded from the substring. If absent, the substring ends at the end of the source string.</li>
+<li><code>key</code> The new key in which the substring is stored.</li>
+</ul>
+<h3 id="example_13">Example<a class="headerlink" href="#example_13" title="Permanent link">¶</a></h3>
+<p>The Library of Congress MARC format stores the type of record in the sixth character that appears in the leader key. We use <code>substring()</code> to extract this character, and then use transformation <a href="#translateall">translateAll()</a> to map them to a corresponding class IRI:</p>
+<pre><code class="language-ts">substring({
+  content: 'metadata.marc:record.marc:leader.$text',
+  start: 6,
+  end: 7,
+  key: '_typeOfRecord',
+}),
+translateAll({
+  content: '_typeOfRecord',
+  table: {
+    a: dcm.Text,
+    k: dcm.StillImage,
+  },
+  key: '_class',
+}),
+triple('_iri', a, '_class'),
+</code></pre>
+<h2 id="translateall">translateAll()<a class="headerlink" href="#translateall" title="Permanent link">¶</a></h2>
+<h3 id="description_10">Description<a class="headerlink" href="#description_10" title="Permanent link">¶</a></h3>
+<p>Translates all dynamic strings from a specific key to new values of an arbitrary type <code>To</code>, according to a specified translation table.</p>
+<p>Since this function translates <em>all</em> values, the mapped values can have any type <code>T</code>; they do not need to be strings. For example, this allows strings to be translated to IRIs or to literals.</p>
+<h3 id="when-to-use_3">When to use?<a class="headerlink" href="#when-to-use_3" title="Permanent link">¶</a></h3>
+<p>This approach is used when:</p>
+<ul>
+<li>The set of source data values is small.</li>
+<li>The set of source data values is known ahead of time.</li>
+<li>The corresponding linked data terms are known ahead of time.</li>
+<li>The appearance of a new value is considered to be an error in the source data.</li>
+</ul>
+<h3 id="parameters_16">Parameters<a class="headerlink" href="#parameters_16" title="Permanent link">¶</a></h3>
+<ul>
+<li><code>content</code> A key that contains a string value.</li>
+<li><code>table</code> A translation table from strings to values of some arbitrary type <code>T</code>.</li>
+<li><code>nulls</code> Optionally, a list of string values that are considered denote NULL values in the source data. When a NULL value is encountered, the special value <code>undefined</code> is added for the target <code>key</code>.</li>
+<li><code>default</code> Optionally, a default value or a default value-determining function that is used for string values that are neither in the translation table (<code>table</code>) nor in the NULL values list (<code>nulls</code>). The function must return a value of type <code>T</code>. Use of a default value <code>value</code> is equivalent to using the following value-determining function: <code>_ =&gt; value</code>.</li>
+<li><code>key</code> A new key where the results of the translation are stored.</li>
+</ul>
+<h3 id="example-map-source-data-to-iri-values">Example: Map source data to IRI values<a class="headerlink" href="#example-map-source-data-to-iri-values" title="Permanent link">¶</a></h3>
+<p>Suppose that source data contains country names. In linked data we want to use IRIs to denote countries, so that we can link additional information. Since the list of countries that appears in the source data is not that long, we can specify a translation table from names to IRIs by hand:</p>
+<pre><code class="language-ts">change.translateAll({
+  content: 'country',
+  table: {
+    'Belgium': country.be,
+    'Germany': country.de,
+    'England': country.gb,
+    ...,
+  },
+  nulls: ['Unknown'],
+  key: '_country',
+}),
+when('country', [
+  triple('_country', a, sdo.Country),
+]),
+</code></pre>
+<h3 id="example-map-source-data-to-iri-properties">Example: Map source data to IRI properties<a class="headerlink" href="#example-map-source-data-to-iri-properties" title="Permanent link">¶</a></h3>
+<p>When we relate a creative work to its creator, we sometimes know whether the creator was the actor, architect, author, etc. of the creative work. But in other cases we only know that there is a generic creator relationship. The <a href="https://triplydb.com/loc/relators">Library of Congress Relators vocabulary</a> allows us to express specific and generic predicates of this kind.</p>
+<pre><code class="language-ts">transform.translateAll({
+  table: {
+    'actor': rel.act,
+    'architect': rel.arc,
+    'author': rel.aut,
+    ...,
+  },
+  default: rel.oth, // generic relator
+  key: '_relator',
+}),
+triple('_creativeWork', '_relator', '_creator'),
+</code></pre>
+<h2 id="translatesome">translateSome()<a class="headerlink" href="#translatesome" title="Permanent link">¶</a></h2>
+<h3 id="description_11">Description<a class="headerlink" href="#description_11" title="Permanent link">¶</a></h3>
+<p>Translates some strings, according to the specified translation table, to other strings. Strings that are not translated according to the translation table are copied over as-is.</p>
+<h3 id="parameters_17">Parameters<a class="headerlink" href="#parameters_17" title="Permanent link">¶</a></h3>
+<ul>
+<li><code>content</code> A key that contains a string value.</li>
+<li><code>table</code> A translation table that specifies translations from strings to strings.</li>
+<li><code>key</code> A new key where the translated strings are stored.</li>
+</ul>
+<h3 id="use-cases_5">Use cases<a class="headerlink" href="#use-cases_5" title="Permanent link">¶</a></h3>
+<p>Source data often contains some strings that are correct and some that are incorrect. For example, if source data contains a key with city names, some of the names may be misspelled. In such cases, <code>translateSome()</code> can be used to translate the incorrect strings into correct ones.</p>
+<p>A <code>translateSome()</code> transformation is often performed directly before a <code>translateAll()</code> transformation. The former ensures that all string values are correct (e.g. fixing typo's in city names); the latter ensures that all strings are mapped onto IRIs (e.g. city names mapped onto city-denoting IRIs).</p>
+<h3 id="example_14">Example<a class="headerlink" href="#example_14" title="Permanent link">¶</a></h3>
+<p>The following example fixes an encoding issue that occurs in the source data:</p>
+<pre><code class="language-ts">transform.translateSome({
+  content: 'name',
+  table: {
+    'Frysl��n': 'Fryslân',
+    // Other entries for typographic fixes go here.
+    ...,
+  },
+  key: '_name',
+}),
+</code></pre>
+<h2 id="tryliteral">tryLiteral()<a class="headerlink" href="#tryliteral" title="Permanent link">¶</a></h2>
+<h3 id="description_12">Description<a class="headerlink" href="#description_12" title="Permanent link">¶</a></h3>
+<p>This transformation is used when string values must be mapped onto literals with varying datatype IRIs.</p>
+<p>The datatype IRIs that could apply are specified in a list. The specified datatype IRIs are tried out from left to right. The first datatype IRI that results in a valid literal is chosen.</p>
+<ul>
+<li><code>content</code> A key that contains a string value, or a string value specified with assertion <a href="../../assert/ratt/terms/#str">str()</a>.</li>
+<li><code>datatypes</code> An array of two or more datatype IRIs.</li>
+<li><code>key</code> A new key where the created literal is stored.</li>
+</ul>
+<h3 id="throws_1">Throws<a class="headerlink" href="#throws_1" title="Permanent link">¶</a></h3>
+<p>An exception is emitted if a string value does not belong to the lexical space of any of the specified datatype IRIs.</p>
+<h3 id="example_15">Example<a class="headerlink" href="#example_15" title="Permanent link">¶</a></h3>
+<p>A literal is valid if the given string value appears in the lexical space of a specific datatype IRI. This is best explained with an example:</p>
+<pre><code class="language-ts">tryLiteral({
+  content: 'date',
+  datatypes: [xsd.date, xsd.gYearMonth, xsd.gYear],
+  key: '_publicationDate',
+}),
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>Source data in key <code>'date'</code></th>
+<th>Result in key <code>'_date'</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>'1900-01-02'</code></td>
+<td><code>'1900-01-02'^^xsd:date</code></td>
+</tr>
+<tr>
+<td><code>'1900'</code></td>
+<td><code>'1900'^^xsd:gYear</code></td>
+</tr>
+<tr>
+<td><code>'02-01-1900'</code></td>
+<td>An error is emitted.</td>
+</tr>
+</tbody>
+</table>
+<p>If we do not want to emit errors for string values that cannot be satisfy any of the specified datatype IRIs, we may choose to include <code>xsd.string</code> as the last datatype IRI in the list. Do notice however that this will result in dates that cannot be compared on a timeline, since they were not transformed to an XSD date/time datatype.</p>
+<h3 id="see-also_5">See also<a class="headerlink" href="#see-also_5" title="Permanent link">¶</a></h3>
+<p>You only need to use <code>tryLiteral()</code> if the datatype IRI varies from record to record. If the datatype IRI is the same for every record, then the regular assertion function <a href="../../assert/ratt/terms/#literal">literal()</a> should be used instead.</p>
+<h2 id="uppercase">uppercase()<a class="headerlink" href="#uppercase" title="Permanent link">¶</a></h2>
+<h3 id="description_13">Description<a class="headerlink" href="#description_13" title="Permanent link">¶</a></h3>
+<p>Translates a string value to its uppercase variant.</p>
+<p>This middleware can uppercase strings in any language; the Unicode Default Case Conversion algorithm is used for this.</p>
+<h3 id="parameters_18">Parameters<a class="headerlink" href="#parameters_18" title="Permanent link">¶</a></h3>
+<ul>
+<li><code>content</code> A key that contains a string value.</li>
+<li><code>key</code> A new key where the uppercase variant is stored.</li>
+</ul>
+<h3 id="example_16">Example<a class="headerlink" href="#example_16" title="Permanent link">¶</a></h3>
+<p>In the following example, the string in the key <code>'countryCode'</code> becomes the uppercase string:</p>
+<pre><code class="language-ts">fromJson({ place: 'Amsterdam', countryCode: 'nl' }),
+uppercase({
+  content: 'countryCode',
+  key: '_countryCode'
+}),
+triple(iri(prefix.id, 'place'), iri(prefix.geonames, str('countryCode')), '_countryCode')
+</code></pre>
+<p>This results in the following linked data assertion:</p>
+<pre><code class="language-turtle">city:Amsterdam geonames:countryCode "NL"
+</code></pre>
+<h2 id="wktAddPoint()">wkt.addPoint()<a class="headerlink" href="#wktAddPoint()" title="Permanent link">¶</a></h2>
+<h3 id="description_14">Description<a class="headerlink" href="#description_14" title="Permanent link">¶</a></h3>
+<p>Creates a Well-Known Text (WKT) serialization string from the corresponding geospatial point.</p>
+<h3 id="parameters_19">Parameters<a class="headerlink" href="#parameters_19" title="Permanent link">¶</a></h3>
+<ul>
+<li><code>latitude</code> A key or a string assertion (<a href="../../assert/ratt/terms/#str">str()</a>) with latitude.</li>
+<li><code>longitude</code> A key or a string assertion (<a href="../../assert/ratt/terms/#str">str()</a>) with longitude.</li>
+<li><code>crs</code> Optionally, an IRI that denotes a Coordinate Reference System (CRS). You can use IRIs from the <a href="../../generic/declarations/#geospatial-declarations"><code>epsg</code></a> object. If absent, uses <a href="https://epsg.io/4326">EPSG:4326/WGS84</a> as the CRS.</li>
+<li><code>key</code> A new key where the WKT string is stored.</li>
+</ul>
+<h3 id="example_17">Example<a class="headerlink" href="#example_17" title="Permanent link">¶</a></h3>
+<p>The following example creates a WKT literal from the geo coordinates of Amsterdam:</p>
+<pre><code class="language-ts">fromJson({ place: 'Amsterdam', lat: 52.37308, long: 4.89245 }),
+wkt.addPoint({
+  latitude: 'lat',
+  longitude: 'long',
+  key: '_point'
+}),
+
+triple(iri(prefix.city, 'place'), geo.asWKT, '_point'),
+</code></pre>
+<p>This results in the following record of the key <code>'_point'</code>:</p>
+<pre><code class="language-json">{
+  "_point": {
+    "termType": "Literal",
+    "value": "Point (52.37308 4.89245)",
+    "language": "",
+    "datatype": {
+      "termType": "NamedNode",
+      "value": "http://www.opengis.net/ont/geosparql#wktLiteral",
+      "validationStatus": "canonical"
+    },
+    "validationStatus": "canonical"
+  }
+}
+
+</code></pre>
+<p>And in the following linked data assertion:</p>
+<pre><code>city:Amstedam geo:asWKT "Point (52.37308 4.89245)"^^geo:wktLiteral
+</code></pre>
+<h2 id="wktProject()">wkt.project()<a class="headerlink" href="#wktProject()" title="Permanent link">¶</a></h2>
+<h3 id="description_15">Description<a class="headerlink" href="#description_15" title="Permanent link">¶</a></h3>
+<p>Converts the projection of a Well-Known Text (WKT) literal from one Coordinate Reference System to another one.</p>
+<h3 id="parameters_20">Parameters<a class="headerlink" href="#parameters_20" title="Permanent link">¶</a></h3>
+<ul>
+<li><code>content</code> An array of keys or numbers.</li>
+<li><code>key</code> A new key where the new projection is stored.</li>
+<li><code>fromCrs</code>: an IRI that denotes a Coordinate Reference System (CRS) of the <code>content</code>.</li>
+<li><code>toCrs</code>: Optionally, an IRI that denotes a Coordinate Reference System (CRS) we want to convert to. If absent, uses <a href="https://epsg.io/4326">EPSG:4326/WGS84</a> as the CRS.</li>
+</ul>
+<h3 id="example_18">Example<a class="headerlink" href="#example_18" title="Permanent link">¶</a></h3>
+<p>The following example converts an array with latitude and longitude in <code>content</code> key from Dutch grid coordinates (Rijksdriehoeks-coordinates) to WGS84 coordinates.</p>
+<pre><code class="language-ts">fromJson({ place: 'Amsterdam', lat: 121307, long: 487360 }),
+wkt.project({
+    content: ['lat', 'long'],
+    key: '_coordinates',
+    fromCrs: epsg[666],
+    toCrs: epsg[4326]
+  }),
+
+</code></pre>
+<p>This results in the following record of the key <code>'_coordinates'</code>:</p>
+<pre><code class="language-json">{
+  "_coordinates": [
+    52.374671935135474,
+    4.892803721020475
+  ]
+}
+</code></pre>
+<p>We can now use the converted result to create a WKT <code>Point()</code> using <a href="#function-wktaddpoint-wktaddpoint">addPoint()</a>:</p>
+<pre><code class="language-ts">wkt.addPoint({
+  latitude: '_coordinates[0]',
+  longitude: '_coordinates[1]',
+  key: '_point'
+}),
+
+triple(iri(prefix.id, 'place'), geo.asWKT, '_point')
+</code></pre>
+<p>This code snippet creates the following linked data assertion:</p>
+<pre><code class="language-turtle">city:Amstedam geo:asWKT "Point (52.374671935135474 4.892803721020475)"^^geo:asWKT
+</code></pre>
+</div>
+</div><footer>
+<div aria-label="Footer Navigation" class="rst-footer-buttons" role="navigation">
+<a class="btn btn-neutral float-left" href="../" title="Overview"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+<a class="btn btn-neutral float-right" href="../rml/" title="RML">Next <span class="icon icon-circle-arrow-right"></span></a>
+</div>
+<hr/>
+<div role="contentinfo">
+<!-- Copyright etc -->
+</div>
+</footer>
+</div>
+</div>
+</section>
+</div>
+<div aria-label="Versions" class="rst-versions" role="note">
+<span class="rst-current-version" data-toggle="rst-current-version">
+<span><a href="../" style="color: #fcfcfc">« Previous</a></span>
+<span><a href="../rml/" style="color: #fcfcfc">Next »</a></span>
+</span>
+</div>
+<script>var base_url = '../../..';</script>
+<script defer="" src="../../../js/triply.js"></script>
+<script defer="" src="../../../js/highlight.min.js"></script>
+<script defer="" src="../../../search/main.js"></script>
+<script type="module">import mermaid from "https://unpkg.com/mermaid@10.4.0/dist/mermaid.esm.min.mjs";
+mermaid.initialize({});</script></body>
+</html>

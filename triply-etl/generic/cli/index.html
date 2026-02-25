@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <meta name="description" content="The official documentation for the Triply products: TriplyDB, TriplyDB.js, and TriplyETL." />
+      <link rel="shortcut icon" href="../../../img/favicon.ico" />
+    <title>Command Line Interface (CLI) - Triply Documentation</title>
+    <link rel="stylesheet" href="../../../css/theme.css" />
+    <link rel="stylesheet" href="../../../css/theme_extra.css" />
+        <link href="../../../css/intellij-light.css" rel="stylesheet" />
+        <link href="../../../css/triply.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Command Line Interface (CLI)";
+        var mkdocs_page_input_path = "triply-etl/generic/cli.md";
+        var mkdocs_page_url = null;
+      </script>
+     
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../../.." class="icon icon-home"> Triply Documentation
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../..">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">TriplyDB</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Getting started</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../../triply-db-getting-started/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../triply-db-getting-started/uploading-data/">Uploading Data</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../triply-db-getting-started/editing-data/">Editing (SKOS) Data</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../triply-db-getting-started/publishing-data/">Sharing Data</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../triply-db-getting-started/viewing-data/">Viewing Data</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../triply-db-getting-started/exporting-data/">Exporting Data</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../triply-db-getting-started/saved-queries/">Saved Queries</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../triply-db-getting-started/data-stories/">Data Stories</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../triply-db-getting-started/admin-settings-pages/">Admin Settings Pages</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../triply-db-getting-started/reference/">Reference</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../triply-api/">API</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">TriplyDB-JS</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../../triplydb-js/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../triplydb-js/app/">App</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../triplydb-js/account/">Account</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../triplydb-js/asset/">Asset</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../triplydb-js/dataset/">Dataset</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../triplydb-js/graph/">Graph</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../triplydb-js/organization/">Organization</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../triplydb-js/query/">Query</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../triplydb-js/service/">Service</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../triplydb-js/story/">Story</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../triplydb-js/user/">User</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../triplydb-js/faq/">FAQ</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../triply-cli/">Command-line Interface</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../triplydb-changelog/">Changelog</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">TriplyETL</span></p>
+              <ul class="current">
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Generic</a>
+    <ul class="current">
+                <li class="toctree-l2"><a class="reference internal" href="../../">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../getting-started/">Getting Started</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../changelog/">Changelog</a>
+                </li>
+                <li class="toctree-l2 current"><a class="reference internal current" href="./">Command Line Interface (CLI)</a>
+    <ul class="current">
+    <li class="toctree-l3"><a class="reference internal" href="#installing-dependencies">Installing dependencies</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#transpiling-to-javascript">Transpiling to JavaScript</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#triplyetl-runner">TriplyETL Runner</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#output-summary">Output summary</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#limit-the-number-of-records">Limit the number of records</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#specify-a-range-of-records">Specify a range of records</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#process-a-specific-record">Process a specific record</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#set-a-timeout">Set a timeout</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#verbose-mode">Verbose mode</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#secure-verbose-mode">Secure verbose mode</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#triplyetl-tools">TriplyETL Tools</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#compare">Compare</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#create-triplydb-api-token">Create TriplyDB API Token</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#print-triplydb-api-token">Print TriplyDB API Token</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#validate">Validate</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../declarations/">Declarations</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../control-structures/">Control Structures</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../debug/">Debug</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../internal-store/">Internal Store</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../maintenance/">Maintenance</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../record/">Record</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../vocabularies/">Vocabularies</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Sources</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../sources/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../sources/apis/">APIs</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../sources/inline-json/">Inline JSON</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../sources/inline-strings/">Inline Strings</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../sources/local-files/">Local Files</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../sources/online-files/">Online Files</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../sources/rml/">RML Sources</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../sources/triplydb-assets/">TriplyDB Assets</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../sources/triplydb-datasets/">TriplyDB Datasets</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../sources/triplydb-queries/">TriplyDB Queries</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Extract</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../extract/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../extract/csv/">CSV</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../extract/json/">JSON</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../extract/oai-pmh/">OAI-PMH</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../extract/postgres/">Postgres</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../extract/rdf/">RDF</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../extract/shapefile/">Shapefile</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../extract/tsv/">TSV</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../extract/xlsx/">XLSX</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../extract/xml/">XML</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Transform</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../transform/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../transform/ratt/">RATT</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../transform/rml/">RML</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../transform/typescript/">TypeScript</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../transform/xslt/">XSLT</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Assert</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../assert/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../assert/json-ld/">JSON-LD</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="#">RATT</a>
+    <ul>
+                <li class="toctree-l3"><a class="reference internal" href="../../assert/ratt/terms/">RATT Terms</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../../assert/ratt/statements/">RATT Statements</a>
+                </li>
+    </ul>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../assert/rml/">RML</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../assert/xslt/">XSLT</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Enrich</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../enrich/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="#">SHACL</a>
+    <ul>
+                <li class="toctree-l3"><a class="reference internal" href="../../enrich/shacl/">Overview</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../../enrich/shacl/triple-rules/">Triple Rules</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../../enrich/shacl/sparql-rules/">SPARQL Rules</a>
+                </li>
+    </ul>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="#">SPARQL</a>
+    <ul>
+                <li class="toctree-l3"><a class="reference internal" href="../../enrich/sparql/construct/">SPARQL Construct</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../../enrich/sparql/update/">SPARQL Update</a>
+                </li>
+    </ul>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Validate</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../validate/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../validate/graph-comparison/">Graph Comparison</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../validate/shacl/">SHACL</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../publish/">Publish</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Yasgui</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../yasgui/">Introduction</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../yasgui-api/">For Developers</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../..">Triply Documentation</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../.." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">TriplyETL</li>
+          <li class="breadcrumb-item">Generic</li>
+      <li class="breadcrumb-item active">Command Line Interface (CLI)</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <div class="toc"><span class="toctitle">On this page:</span><ul>
+<li><a href="#command-line-interface-cli">Command Line Interface (CLI)</a><ul>
+<li><a href="#installing-dependencies">Installing dependencies</a></li>
+<li><a href="#transpiling-to-javascript">Transpiling to JavaScript</a></li>
+<li><a href="#triplyetl-runner">TriplyETL Runner</a><ul>
+<li><a href="#output-summary">Output summary</a></li>
+<li><a href="#limit-the-number-of-records">Limit the number of records</a></li>
+<li><a href="#specify-a-range-of-records">Specify a range of records</a></li>
+<li><a href="#process-a-specific-record">Process a specific record</a></li>
+<li><a href="#set-a-timeout">Set a timeout</a></li>
+<li><a href="#verbose-mode">Verbose mode</a></li>
+<li><a href="#secure-verbose-mode">Secure verbose mode</a></li>
+</ul>
+</li>
+<li><a href="#triplyetl-tools">TriplyETL Tools</a><ul>
+<li><a href="#compare">Compare</a></li>
+<li><a href="#create-triplydb-api-token">Create TriplyDB API Token</a></li>
+<li><a href="#print-triplydb-api-token">Print TriplyDB API Token</a></li>
+<li><a href="#validate">Validate</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<h1 id="command-line-interface-cli">Command Line Interface (CLI)<a class="headerlink" href="#command-line-interface-cli" title="Permanent link">&para;</a></h1>
+<p>TriplyETL allows you to manually perform various tasks in a terminal application (a Command-Line Interface or CLI).</p>
+<ul>
+<li><a href="#installing-dependencies">Installing dependencies</a> must be repeated when dependencies were changed.</li>
+<li><a href="#transpiling-to-javascript">Transpiling to JavaScript</a> must be repeated when one or more TypeScript files are changed.</li>
+<li><a href="#triplyetl-runner">TriplyETL Runner</a> allows you to manually run local TriplyETL projects in your terminal.</li>
+<li><a href="#triplyetl-tools">TriplyETL Tools</a> explains how you can perform common ETL tasks.</li>
+</ul>
+<h2 id="installing-dependencies">Installing dependencies<a class="headerlink" href="#installing-dependencies" title="Permanent link">&para;</a></h2>
+<p>When you work on an existing TriplyETL project, you sometimes pull in changes made by your team members. Such changes are typically obtained by running the following Git command:</p>
+<pre><code class="language-sh">git pull
+</code></pre>
+<p>This command prints a list of files that were changed by your team members. If this list includes changes to the file <code>package.json</code>, this means that one or more dependencies were changed. In order to effectuate these changes in your local copy of the TriplyETL project, you must run the following command:</p>
+<pre><code class="language-sh">npm i
+</code></pre>
+<h2 id="transpiling-to-javascript">Transpiling to JavaScript<a class="headerlink" href="#transpiling-to-javascript" title="Permanent link">&para;</a></h2>
+<p>When you make changes to one or more TypeScript files, the corresponding JavaScript files will have become outdated. If you now use the <a href="#triplyetl-runner">TriplyETL Runner</a>, it will use one or more outdated JavaScript files, and will not take into account your most recent changes to the TypeScript files.</p>
+<p>In order to keep your JavaScript files up-to-date relative to your TypeScript files, you must run the following command after making changes to TypeScript files:</p>
+<pre><code class="language-sh">npm run build
+</code></pre>
+<p>If you edit your TypeScript files repeatedly, having to run this extra command may get tedious. In such cases, you can run the following command to automatically perform the transpile step in the background:</p>
+<pre><code class="language-sh">npm run dev
+</code></pre>
+<p>Notice that this prevents you from using the terminal application for new commands. It is typical to open a new terminal application window, and run the <code>npx etl</code> command from there.</p>
+<h2 id="triplyetl-runner">TriplyETL Runner<a class="headerlink" href="#triplyetl-runner" title="Permanent link">&para;</a></h2>
+<p>The TriplyETL Runner allows you to run a local TriplyETL project in your terminal application.</p>
+<p>We assume that you have a local TriplyETL project in which you can successfully run the <code>npx etl</code> command. Follow the <a href="../getting-started/#triplyetl-runner">Getting Started instructions for TriplyETL Runner</a> if this is not yet the case.</p>
+<p>Run the following command to run the ETL pipeline:</p>
+<pre><code class="language-sh">npx etl
+</code></pre>
+<p>This command implicitly uses the file <code>lib/main.js</code>, which is the transpiled JavaScript file that corresponds to the TypeScript file <code>src/main.ts</code>. The following command has the same behavior, but makes explicit which file is used:</p>
+<pre><code class="language-sh">npx etl lib/main.js
+</code></pre>
+<p>Some TriplyETL projects have multiple top-level scripts. In such cases, it is possible to run each of these scripts individually as follows:</p>
+<pre><code class="language-sh">npx etl lib/some-script.js
+</code></pre>
+<h3 id="output-summary">Output summary<a class="headerlink" href="#output-summary" title="Permanent link">&para;</a></h3>
+<p>TriplyETL Runner will start processing data. Depending on the size of the data source, the Runner may take more or less time to finish. When the Runner finishes successfully, it will print the following summary:</p>
+<pre><code> ┌──────────────────────────────────────────────────────────────┐
+ │ Etl:                #Error    0 | #Warning    0 | #Info    0 │
+ │ #Statements         2                                        │
+ │ #Records            2                                        │
+ │ Started at          2023-06-18 10:05:20                      │
+ │ Runtime             0 sec                                    │
+ └──────────────────────────────────────────────────────────────┘
+</code></pre>
+<p>This summary includes the following information:</p>
+<ul>
+<li>
+<p><strong>"#Error"</strong> shows the number of errors encountered. With default settings, this number is at most 1, since the Runner will immediately stop after an error occurs.</p>
+</li>
+<li>
+<p><strong>"#Warning"</strong> shows the number of warnings encountered. With default settings, this includes warnings emitted by the <a href="../../validate/shacl/">SHACL Validator</a>.</p>
+</li>
+<li>
+<p><strong>"#Info"</strong> shows the number of informational messages. With default settings, this includes informational messages emitted by the <a href="../../validate/shacl/">SHACL Validator</a>.</p>
+</li>
+<li>
+<p><strong>"#Statements"</strong> shows the number of triples or quads that was generated. This number is equal to or higher than the number of statements that is uploaded to the triple store. The reason for this is that TriplyETL processes records in parallel. If the same statement is generated for two records, the number of statements with be incremented by 2, but only 1 unique statement will be uploaded to the triple store.</p>
+</li>
+<li>
+<p><strong>"#Records"</strong> shows the number of records that was processed.</p>
+</li>
+<li>
+<p><strong>"Started at"</strong> shows the date and time at which the Runner started.</p>
+</li>
+<li>
+<p><strong>"Runtime"</strong> shows the wall time duration of the run.</p>
+</li>
+</ul>
+<h3 id="limit-the-number-of-records">Limit the number of records<a class="headerlink" href="#limit-the-number-of-records" title="Permanent link">&para;</a></h3>
+<p>When developing a pipeline, it is almost never necessary to process all records from the source data. Instead, it is common to run the ETL for a small number of example record, which results in quick feedback. The <code>--head</code> flag indicates the maximum number of records that is processed by the Runner:</p>
+<pre><code class="language-sh">npx etl --head 1
+npx etl --head 10
+</code></pre>
+<p>These commands run the ETL for the first record (if one is available) and for the first 10 records (if these are available).</p>
+<h3 id="specify-a-range-of-records">Specify a range of records<a class="headerlink" href="#specify-a-range-of-records" title="Permanent link">&para;</a></h3>
+<p>When developing a pipeline over a large source data collection, it is often standard practice to use the first 10 or 100 records most of the time.</p>
+<p>The benefit of this approach is that the feedback loop between making changes and receiving feedback is short. A downside of this approach is that the ETL may be overly optimized towards these first few records. For example, if a value is missing in the first 1.000 records, then transformations that are necessary for when the value is present will not be developed initially. An alternative is to run the entire ETL, but that takes a long time.</p>
+<p>To avoid the downsides of using <code>--head</code>, TriplyETL also supports the <code>--from-record-id</code> flag. This flag specifies the number of records that are skipped. This allows us to specify an arbitrary consecutive range of records. For example, the following processes the 1.001-st until and including the 1.010-th record:</p>
+<pre><code class="language-sh">npx etl --from-record-id 1000 --head 10
+</code></pre>
+<h3 id="process-a-specific-record">Process a specific record<a class="headerlink" href="#process-a-specific-record" title="Permanent link">&para;</a></h3>
+<p>When the <code>--head</code> flag is set to 1, the <code>--from-record-id</code> flag specifies the index of a single specific record that is processed. This is useful when a record is known to be problematic, for instance during debugging.</p>
+<p>The following command runs TriplyETL for the 27th record:</p>
+<pre><code class="language-sh">npx etl --from-record-id 26 --head 1
+</code></pre>
+<h3 id="set-a-timeout">Set a timeout<a class="headerlink" href="#set-a-timeout" title="Permanent link">&para;</a></h3>
+<p>For large ETL pipelines, it is sometimes useful to specify a maximum duration for which the TriplyETL Runner is allowed to run. In such cases, the <code>--timeout</code> flag can be used.</p>
+<p>The <code>--timeout</code> option accepts human-readable duration strings, such as '1h 30m 5s', '1hr', '1 hour', or '3hrs'.</p>
+<p>When the indicated timeout is reached before the pipeline finishes, the TriplyETL Runner will gracefully terminate the ETL by acting as if there are no more incoming records. As a result, the Runner will upload all linked data (graphs) that was produced up to that point, and it will write a performance log.</p>
+<p>For TriplyETLs that run in a CI/CD environment, the timeout must be set lower than the CI/CD timeout, in order for the Runner to be able to perform the termination step.</p>
+<h3 id="verbose-mode">Verbose mode<a class="headerlink" href="#verbose-mode" title="Permanent link">&para;</a></h3>
+<p>When TriplyETL is run normally, the following information is displayed:</p>
+<ul>
+<li>The number of added triples.</li>
+<li>The runtime of the script.</li>
+<li>An error message, if any occurred.</li>
+</ul>
+<p>It is possible to also show the following additional information by specifying the <code>--verbose</code> flag:</p>
+<ul>
+<li>In case of an error, the first 20 values from the last processed record.</li>
+<li>In case of an error, the full stack trace.</li>
+</ul>
+<p>The following example shows how the <code>--verbose</code> flag can be used:</p>
+<pre><code class="language-sh">npx etl --verbose
+</code></pre>
+<h3 id="secure-verbose-mode">Secure verbose mode<a class="headerlink" href="#secure-verbose-mode" title="Permanent link">&para;</a></h3>
+<p>Verbose mode may perform a reset of your current terminal session. If this happens you lose visible access to the commands that were run prior to the last TriplyETL invocation.</p>
+<p>This destructive behavior of verbose mode can be disabled by setting the following environment variable:</p>
+<pre><code class="language-sh">export CI=true
+</code></pre>
+<p>This fixes the reset issue, but also makes the output less colorful.</p>
+<h2 id="triplyetl-tools">TriplyETL Tools<a class="headerlink" href="#triplyetl-tools" title="Permanent link">&para;</a></h2>
+<p>TriplyETL Tools is a collection of small tools that can be used to run isolated tasks from your terminal application. TriplyETL Tools can be used when you are inside a TriplyETL project.</p>
+<p>If you do not have an ETL project yet, use the <a href="../getting-started/#triplyetl-generator">TriplyETL Generator</a> first to create one.</p>
+<p>The following command prints an overview of the supported tools:</p>
+<pre><code class="language-sh">npx tools
+</code></pre>
+<p>The following tools are supported:</p>
+<table>
+<thead>
+<tr>
+<th>Tool</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="#compare"><code>compare</code></a></td>
+<td>Compare the contents of two RDF files</td>
+</tr>
+<tr>
+<td><a href="#create-triplydb-api-token"><code>create-token</code></a></td>
+<td>Create a new TriplyDB API Token</td>
+</tr>
+<tr>
+<td><a href="#print-triplydb-api-token"><code>print-token</code></a></td>
+<td>Print the currently set TriplyDB API Token, if any</td>
+</tr>
+<tr>
+<td><a href="#validate"><code>validate</code></a></td>
+<td>Validate a data file against a SHACL shapes file</td>
+</tr>
+</tbody>
+</table>
+<!--
+| [`report`](#tool-report) | Generate a report file that describes the content of the currently configured TriplyDB instance, if any |
+| [`delete-datasets`](#tool-delete-datasets) | Bulk deleting of Datasets |
+| [`delete-graphs`](#tool-delete-graphs) | Bulk deleting of Graphs |
+| [`delete-queries`](#tool-delete-queries) | Bulk deleting of Queries |
+| [`download`](#tool-download) | Downloads information from the TriplyDB instance from your token |
+| [`report`](#tool-report) | Generate a report file that describes the content of the currently configured TriplyDB instance, if any |
+-->
+
+<p>For each tool, the following command prints more information on how to use it:</p>
+<pre><code class="language-sh">npx tools {name} --help
+</code></pre>
+<h3 id="compare">Compare<a class="headerlink" href="#compare" title="Permanent link">&para;</a></h3>
+<p>The compare tool checks whether two RDF files encode the same linked data:
+- If the two files contain the same data, the command succeeds and does not print any output.
+- If the two files do not contain the same data, the command exits with an error code, and the difference between the two files is printed.</p>
+<p>The compare tools is invoked over the two RDF files <code>one.ttl</code> and <code>two.ttl</code> as follows:</p>
+<pre><code class="language-sh">npx tools compare one.ttl two.ttl
+</code></pre>
+<p>This tool can be used to compare two RDF files that contain multiple graphs, for example:</p>
+<pre><code class="language-sh">npx tools compare one.trig two.trig
+</code></pre>
+<p>This tool uses the graph isomorphism property as defined in the RDF 1.1 standard: <a href="https://www.w3.org/TR/2014/REC-rdf11-concepts-20140225/#graph-isomorphism">link</a></p>
+<h3 id="create-triplydb-api-token">Create TriplyDB API Token<a class="headerlink" href="#create-triplydb-api-token" title="Permanent link">&para;</a></h3>
+<p>This tool creates a new TriplyDB API Token from the command-line. This command can be used as follows:</p>
+<pre><code class="language-sh">npx tools create-token
+</code></pre>
+<p>The command will ask a couple of questions in order to create the TriplyDB API Token:</p>
+<ul>
+<li>The hostname of the TriplyDB instance</li>
+<li>The name of the token</li>
+<li>Your TriplyDB account e-mail</li>
+<li>Your TriplyDB account password</li>
+</ul>
+<p>The command exists in case a TriplyDB API Token is already configured.</p>
+<!--
+## Delete dataset {#tool-delete-datasets}
+
+TODO
+
+## Delete graphs {#tool-delete-graphs}
+
+TODO
+
+## Delete queries {#tool-delete-queries}
+
+TODO
+
+## Download {#tool-download}
+
+TODO
+-->
+
+<h3 id="print-triplydb-api-token">Print TriplyDB API Token<a class="headerlink" href="#print-triplydb-api-token" title="Permanent link">&para;</a></h3>
+<p>This tool prints the currently configured TriplyDB API Token, if any. This command can be used as follows:</p>
+<pre><code class="language-sh">npx tools print-token
+</code></pre>
+<p>This command is useful when there are issues with configuring a TriplyDB API Token.</p>
+<!--
+## Report {#tool-report}
+
+TODO
+-->
+
+<h3 id="validate">Validate<a class="headerlink" href="#validate" title="Permanent link">&para;</a></h3>
+<p>This tool validates the content of one data file against the SHACL shapes in another file. The resulting SHACL validation report is printed to standard output.</p>
+<p>The command can be used as follows:</p>
+<pre><code class="language-sh">$ npx tools validate -d data.trig -s model.trig
+</code></pre>
+<p>See <a href="../../validate/shacl/#validation-report">this section</a> to learn more about the SHACL validation report.</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../changelog/" class="btn btn-neutral float-left" title="Changelog"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../declarations/" class="btn btn-neutral float-right" title="Declarations">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../changelog/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../declarations/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script>var base_url = '../../..';</script>
+      <script src="../../../js/triply.js" defer></script>
+      <script src="../../../js/highlight.min.js" defer></script>
+      <script src="../../../search/main.js" defer></script>
+
+</body>
+</html>

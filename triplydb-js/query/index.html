@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <meta name="description" content="The official documentation for the Triply products: TriplyDB, TriplyDB.js, and TriplyETL." />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Query - Triply Documentation</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link href="../../css/intellij-light.css" rel="stylesheet" />
+        <link href="../../css/triply.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Query";
+        var mkdocs_page_input_path = "triplydb-js/query/index.md";
+        var mkdocs_page_url = null;
+      </script>
+     
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> Triply Documentation
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">TriplyDB</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="#">Getting started</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-db-getting-started/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-db-getting-started/uploading-data/">Uploading Data</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-db-getting-started/editing-data/">Editing (SKOS) Data</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-db-getting-started/publishing-data/">Sharing Data</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-db-getting-started/viewing-data/">Viewing Data</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-db-getting-started/exporting-data/">Exporting Data</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-db-getting-started/saved-queries/">Saved Queries</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-db-getting-started/data-stories/">Data Stories</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-db-getting-started/admin-settings-pages/">Admin Settings Pages</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-db-getting-started/reference/">Reference</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../triply-api/">API</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">TriplyDB-JS</a>
+    <ul class="current">
+                <li class="toctree-l2"><a class="reference internal" href="../">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../app/">App</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../account/">Account</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../asset/">Asset</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../dataset/">Dataset</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../graph/">Graph</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../organization/">Organization</a>
+                </li>
+                <li class="toctree-l2 current"><a class="reference internal current" href="./">Query</a>
+    <ul class="current">
+    <li class="toctree-l3"><a class="reference internal" href="#querydelete">Query.delete()</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#querygetinfo">Query.getInfo()</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#querygetstringapivariables-object">Query.getString(apiVariables?: object)</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#examples">Examples</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#queryaddversionmetadata-object">Query.addVersion(metadata: object)</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#arguments">Arguments</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#querygetrunlink">Query.getRunLink()</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#queryresultsapivariables-object-options-object">Query.results(apiVariables?: object, options?: object)</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#examples_1">Examples</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#queryupdatemetadata-object">Query.update(metadata: object)</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#arguments_1">Arguments</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#queryuseversionversion-numberlatest">Query.useVersion(version: number|'latest')</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#example">Example</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#querycopyqueryname-string-accountobject-metadatatoreplace-object">Query.copy(queryName?: string, account?:object, metadataToReplace?: object)</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#arguments_2">Arguments</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#example_1">Example</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../service/">Service</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../story/">Story</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../user/">User</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../faq/">FAQ</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../triply-cli/">Command-line Interface</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../triplydb-changelog/">Changelog</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">TriplyETL</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Generic</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/generic/getting-started/">Getting Started</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/generic/changelog/">Changelog</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/generic/cli/">Command Line Interface (CLI)</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/generic/declarations/">Declarations</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/generic/control-structures/">Control Structures</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/generic/debug/">Debug</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/generic/internal-store/">Internal Store</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/generic/maintenance/">Maintenance</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/generic/record/">Record</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/generic/vocabularies/">Vocabularies</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Sources</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/sources/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/sources/apis/">APIs</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/sources/inline-json/">Inline JSON</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/sources/inline-strings/">Inline Strings</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/sources/local-files/">Local Files</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/sources/online-files/">Online Files</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/sources/rml/">RML Sources</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/sources/triplydb-assets/">TriplyDB Assets</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/sources/triplydb-datasets/">TriplyDB Datasets</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/sources/triplydb-queries/">TriplyDB Queries</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Extract</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/extract/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/extract/csv/">CSV</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/extract/json/">JSON</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/extract/oai-pmh/">OAI-PMH</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/extract/postgres/">Postgres</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/extract/rdf/">RDF</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/extract/shapefile/">Shapefile</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/extract/tsv/">TSV</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/extract/xlsx/">XLSX</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/extract/xml/">XML</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Transform</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/transform/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/transform/ratt/">RATT</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/transform/rml/">RML</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/transform/typescript/">TypeScript</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/transform/xslt/">XSLT</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Assert</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/assert/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/assert/json-ld/">JSON-LD</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="#">RATT</a>
+    <ul>
+                <li class="toctree-l3"><a class="reference internal" href="../../triply-etl/assert/ratt/terms/">RATT Terms</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../../triply-etl/assert/ratt/statements/">RATT Statements</a>
+                </li>
+    </ul>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/assert/rml/">RML</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/assert/xslt/">XSLT</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Enrich</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/enrich/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="#">SHACL</a>
+    <ul>
+                <li class="toctree-l3"><a class="reference internal" href="../../triply-etl/enrich/shacl/">Overview</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../../triply-etl/enrich/shacl/triple-rules/">Triple Rules</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../../triply-etl/enrich/shacl/sparql-rules/">SPARQL Rules</a>
+                </li>
+    </ul>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="#">SPARQL</a>
+    <ul>
+                <li class="toctree-l3"><a class="reference internal" href="../../triply-etl/enrich/sparql/construct/">SPARQL Construct</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../../triply-etl/enrich/sparql/update/">SPARQL Update</a>
+                </li>
+    </ul>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Validate</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/validate/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/validate/graph-comparison/">Graph Comparison</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/validate/shacl/">SHACL</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../triply-etl/publish/">Publish</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Yasgui</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../yasgui/">Introduction</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../yasgui-api/">For Developers</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">Triply Documentation</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">TriplyDB</li>
+          <li class="breadcrumb-item">TriplyDB-JS</li>
+      <li class="breadcrumb-item active">Query</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <div class="toc"><span class="toctitle">On this page:</span><ul>
+<li><a href="#query">Query</a><ul>
+<li><a href="#querydelete">Query.delete()</a></li>
+<li><a href="#querygetinfo">Query.getInfo()</a></li>
+<li><a href="#querygetstringapivariables-object">Query.getString(apiVariables?: object)</a><ul>
+<li><a href="#examples">Examples</a></li>
+</ul>
+</li>
+<li><a href="#queryaddversionmetadata-object">Query.addVersion(metadata: object)</a><ul>
+<li><a href="#arguments">Arguments</a></li>
+</ul>
+</li>
+<li><a href="#querygetrunlink">Query.getRunLink()</a></li>
+<li><a href="#queryresultsapivariables-object-options-object">Query.results(apiVariables?: object, options?: object)</a><ul>
+<li><a href="#examples_1">Examples</a></li>
+</ul>
+</li>
+<li><a href="#queryupdatemetadata-object">Query.update(metadata: object)</a><ul>
+<li><a href="#arguments_1">Arguments</a></li>
+</ul>
+</li>
+<li><a href="#queryuseversionversion-numberlatest">Query.useVersion(version: number|'latest')</a><ul>
+<li><a href="#example">Example</a></li>
+</ul>
+</li>
+<li><a href="#querycopyqueryname-string-accountobject-metadatatoreplace-object">Query.copy(queryName?: string, account?:object, metadataToReplace?: object)</a><ul>
+<li><a href="#arguments_2">Arguments</a></li>
+<li><a href="#example_1">Example</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<h1 id="query">Query<a class="headerlink" href="#query" title="Permanent link">&para;</a></h1>
+<p>A Saved Query is a versioned SPARQL query with its own URL. Using this URL,
+users are able to view any version of the query and its results. It can also be
+used to run the query and retrieve the results from a browser or a program,
+removing the hassle of figuring out how to run a SPARQL query.</p>
+<p>Saved queries come with a RESTful API that can be configured with the use a SPARQL API variables.</p>
+<h2 id="querydelete">Query.delete()<a class="headerlink" href="#querydelete" title="Permanent link">&para;</a></h2>
+<p>Permanently deletes this query and all of its versions.</p>
+<h2 id="querygetinfo">Query.getInfo()<a class="headerlink" href="#querygetinfo" title="Permanent link">&para;</a></h2>
+<p>The returned dictionary object includes the following keys:</p>
+<dl>
+  <dt><code>accessLevel</code></dt>
+  <dd>
+    <p>The access level of the query. The following values are possible:</p>
+    <dl>
+      <dt><code>'private'</code> (default)</dt>
+      <dd>The dataset can only be accessed by organization members.</dd>
+      <dt><code>'internal'</code></dt>
+      <dd>The dataset can only be accessed by users that are logged into the TriplyDB server.
+      <dt><code>'public'</code></dt>
+      <dd>The dataset can be accessed by everybody.</dd>
+    </dl>
+  </dd>
+
+  <dt><code>autoselectService</code></dt>
+  <dd>Whether the SPARQL service is automatically chosen (<code>true</code>), or whether a specific SPARQL service is configured (<code>false</code>).</dd>
+
+  <dt><code>createdAt</code></dt>
+  <dd>The date/time at which the query was created.</dd>
+
+  <dt><code>dataset</code></dt>
+  <dd>A dictionary object representing the dataset against which the query is evaluated.</dd>
+
+  <dt><code>description</code></dt>
+  <dd>The human-readable description of the query. This typically explains what the query does in natural language.</dd>
+
+  <dt><code>displayName</code></dt>
+  <dd>The human-readable name of the query. This name may include spaces and other characters that are not allowed in the URL-friendly name.</dd>
+
+  <dt><code>name</code></dt>
+  <dd>The URL-friendly name of the query that is used in URL paths. This name can only include ASCII letters and hyphens.</dd>
+
+  <dt><code>numberOfVersions</code></dt>
+  <dd>The number of currently stored versions of this query.</dd>
+
+  <dt><code>owner</code></dt>
+  <dd>A dictionary object representing the account (organization or user) to which the query belongs.</dd>
+
+  <dt>🚧<code>link</code></dt>
+  <dd>Stores part of the URL to run the query. Please use <a href='#querygetrunlink'><code>Query.getRunLink()</code> </a> to obtain the full URL to run the query.</dd>
+
+  <dt><code>service</code></dt>
+  <dd>The location of the SPARQL endpoint that is used to run the query.</dd>
+
+  <dt><code>updatedAt</code></dt>
+  <dd>The date/time at which the query was last modified.</dd>
+</dl>
+
+<h2 id="querygetstringapivariables-object">Query.getString(apiVariables?: object)<a class="headerlink" href="#querygetstringapivariables-object" title="Permanent link">&para;</a></h2>
+<p>Returns the query string of the current version of this query.</p>
+<p>Optionally, arguments can be specified for the API variables to this query.</p>
+<h3 id="examples">Examples<a class="headerlink" href="#examples" title="Permanent link">&para;</a></h3>
+<p>The following code stores the SPARQL query string for the <code>query</code> object:</p>
+<pre><code class="language-ts">const queryString = await query.getString()
+</code></pre>
+<h2 id="queryaddversionmetadata-object">Query.addVersion(metadata: object)<a class="headerlink" href="#queryaddversionmetadata-object" title="Permanent link">&para;</a></h2>
+<p>Adds a new version to the query used. It requires similar options to that of <code><code>Query.addQuery</code></code>.</p>
+<h3 id="arguments">Arguments<a class="headerlink" href="#arguments" title="Permanent link">&para;</a></h3>
+<p>At least one of the following arguments is required to create a new version. Any argument not given will be copied from the previous version of that query.</p>
+<dl>
+  <dt><code>queryString: string</code> </dt>
+  <dd>the SPARQL compliant query as a string value</dd>
+
+  <dt><code>output: string</code></dt>
+  <dd>The visualization plugin that is used to display the result set. If none is set it defaults to <code>'table'</code>. Other options may include: <code>'response'</code>, <code>'geo'</code>, <code>'gallery'</code>, <code>'markup'</code>, etc. Output will take priority over ldFrame</dd>
+
+  <dt><code> ldFrame: object</code></dt>
+  <dd>JSON LD frame object used to transform plain JSON LD into a framed JSON. Will be used only if an output is not provided.</dd>
+
+  <dt><code>variables: Variable[]</code></dt>
+  <dd>
+    <p>A list of objects with the following keys:</p>
+    <dl>
+      <dt>IRI variable</dt>
+      <dd>An object of the form `Variable`
+      (see  <a href="../account/index.md#accountaddqueryname-string-metadata-object">Account.addQuery()</a>)
+      </dd>
+  </dd>
+</dl>
+
+<ul>
+<li>You can see how many versions exist on a query accessing <a href="#querygetinfo"><code>Query.getInfo().numOfVersions</code></a></li>
+<li>You can use a specified version of a query accessing <a href="#queryuseversionversion-numberlatest"><code>Query.useVersion(x: number)</code></a></li>
+</ul>
+<h2 id="querygetrunlink">Query.getRunLink()<a class="headerlink" href="#querygetrunlink" title="Permanent link">&para;</a></h2>
+<p>Returns the URL link to run the query.
+It currently does not support the use of variables.</p>
+<h2 id="queryresultsapivariables-object-options-object">Query.results(apiVariables?: object, options?: object)<a class="headerlink" href="#queryresultsapivariables-object-options-object" title="Permanent link">&para;</a></h2>
+<p><code>Query.results()</code> function will automatically return all the results from a saved query. You can retrieve both results from a <code>select</code> or <code>ask</code> query and a <code>construct</code> or <code>describe</code> query. The results are returned as an <code>async iterator</code>.</p>
+<p>If there are more than 10 000 query results, they could be retrieved using <a href="../../triply-db-getting-started/saved-queries/#pagination-with-triplydbjs">pagination with TriplyDB.js</a>.</p>
+<h3 id="examples_1">Examples<a class="headerlink" href="#examples_1" title="Permanent link">&para;</a></h3>
+<p>Get the results of a query by setting a <code>results</code> variable. More specifically, for construct queries you use the <code>statements()</code> call:</p>
+<pre><code class="language-ts">const triply = App.get({token: process.env.TOKEN})
+const account = await triply.getAccount('account-name')
+const query = await account.getQuery('name-of-some-query')
+
+// For select queries you use the `statements()` call:
+const results = query.results().statements()
+// For select queries you use the `bindings()` call:
+const results = query.results().bindings()
+</code></pre>
+<p>Additionally, saved queries can have 'API variables' that allow you to specify variables that are used in the query. Thus, if you have query parameters, pass their values as the first argument to <code>results</code> as follows:</p>
+<pre><code class="language-ts">const triply = App.get({token: process.env.TOKEN})
+const account = await triply.getAccount('account-name')
+const query = await account.getQuery('name-of-some-query')
+// For SPARQL construct queries.
+const results = query.results({
+ someVariable: 'value of someVariable',
+ anotherVariable: 'value of anotherVariable'
+}).statements()
+// For SPARQL select queries.
+const results = query.results({
+ someVariable: 'value of someVariable',
+ anotherVariable: 'value of anotherVariable'
+}).bindings()
+</code></pre>
+<h2 id="queryupdatemetadata-object">Query.update(metadata: object)<a class="headerlink" href="#queryupdatemetadata-object" title="Permanent link">&para;</a></h2>
+<p>Updates the metadata for the saved query. This does not result in a new query version. It requires similar options to that of <code><code>Query.addQuery</code></code>.</p>
+<h3 id="arguments_1">Arguments<a class="headerlink" href="#arguments_1" title="Permanent link">&para;</a></h3>
+<p>At least one of the following arguments is required to update the metadata. Any argument given will be copied from the previous version of that query.</p>
+<dl>
+  <dt><code>accessLevel</code></dt>
+  <dd>
+    <p>The access level of the query. The following values are possible:</p>
+    <dl>
+      <dt><code>'private'</code> (default)</dt>
+      <dd>The dataset can only be accessed by organization members.</dd>
+      <dt><code>'internal'</code></dt>
+      <dd>The dataset can only be accessed by users that are logged into the TriplyDB server.
+      <dt><code>'public'</code></dt>
+      <dd>The dataset can be accessed by everybody.</dd>
+    </dl>
+  </dd>
+
+  <dt><code>autoselectService</code><dt>
+  <dd>Whether the SPARQL service is automatically chosen (<code>true</code>), or whether a specific SPARQL service is configured (<code>false</code>).</dd>
+
+  <dt><code>dataset</code></dt>
+  <dd>The Dataset object against which the query is evaluated.</dd>
+
+  <dt><code>description</code></dt>
+  <dd>The human-readable description of the query. This typically explains what the query does in natural language.</dd>
+
+  <dt><code>displayName</code></dt>
+  <dd>The human-readable name of the query. This name may include spaces and other characters that are not allowed in the URL-friendly name.</dd>
+
+  <dt><code>name</code></dt>
+  <dd>The URL-friendly name of the query that is used in URL paths. This name can only include ASCII letters and hyphens.</dd>
+
+  <dt><code>preferredService</code></dt>
+  <dd>If the <code>autoselectService</code> is not selected the user can set the preferred service.</dd>
+</dl>
+
+<h2 id="queryuseversionversion-numberlatest">Query.useVersion(version: number|'latest')<a class="headerlink" href="#queryuseversionversion-numberlatest" title="Permanent link">&para;</a></h2>
+<p>A saved query is saved with a version number. Each time the query or the visualization changes the version number is incremented with one. When you want to retrieve a saved query with a particular version you need the <code>useVersion</code> function. The function returns the query object corresponding to that version of the query. If you want to use the latest version of the query you need to set the version argument to <code>'latest'</code>.</p>
+<h3 id="example">Example<a class="headerlink" href="#example" title="Permanent link">&para;</a></h3>
+<pre><code class="language-ts">const user = await triply.getAccount('my-account')
+const query = await user.getQuery('my-query')
+const query_1 = await query.useVersion(1)
+</code></pre>
+<h2 id="querycopyqueryname-string-accountobject-metadatatoreplace-object">Query.copy(queryName?: string, account?:object, metadataToReplace?: object)<a class="headerlink" href="#querycopyqueryname-string-accountobject-metadatatoreplace-object" title="Permanent link">&para;</a></h2>
+<p>Copies a query using either the same name or a new name (if <code>queryName</code> is provided) to the current account or a new account (if <code>accountName</code> is provided) with the same metadata or overwritten metadata (if <code>metadataToReplace</code> is provided)</p>
+<h3 id="arguments_2">Arguments<a class="headerlink" href="#arguments_2" title="Permanent link">&para;</a></h3>
+<dl>
+  <dt><code>queryName</code></dt>
+  <dd>
+    <p>An optional parameter. The new URL-friendly name given to the duplicated query that is used in URL paths. This name can only include ASCII letters and hyphens. Defaults to the original query name.</p>
+  </dd>
+
+   <dt><code>account</code></dt>
+  <dd>
+    <p>An optional parameter.Expected to be either an User or an Organization object if provided. The new account to which the query will be copied to. Defaults to the current account</p>
+  </dd>
+
+  <dt><code>metadataToReplace</code><dt>
+  <dd>
+    <p>An optional metadata object with optionl properties that can be provided to override any of the existing metadata of the duplicated query if required</p>
+    <dl>
+      <dt><code>accessLevel</code></dt>
+      <dd>
+        <p>The access level of the query. The following values are possible:</p>
+        <dl>
+          <dt><code>'private'</code> (default)</dt>
+          <dd>The dataset can only be accessed by organization members.</dd>
+          <dt><code>'internal'</code></dt>
+          <dd>The dataset can only be accessed by users that are logged into the TriplyDB server.
+          <dt><code>'public'</code></dt>
+          <dd>The dataset can be accessed by everybody.</dd>
+        </dl>
+      </dd>
+      <dt><code>queryString: string</code></dt>
+      <dd>the SPARQL compliant query as a string value</dd>
+      <dt><code>output: string</code></dt>
+      <dd>The visualization plugin that is used to display the result set. If none is set it defaults to <code>'table'</code>. Other options may include: <code>'response'</code>, <code>'geo'</code>, <code>'gallery'</code>, <code>'markup'</code>, etc</dd>
+      <dt><code>dataset: Dataset</code></dt>
+      <dd>The Dataset object against which the query is evaluated.</dd>
+      <dt><code>description: string</code></dt>
+      <dd>The human-readable description of the query. This typically explains what the query does in natural language.</dd>
+      <dt><code>displayName: string</code></dt>
+      <dd>The human-readable name of the query. This name may include spaces and other characters that are not allowed in the URL-friendly name.</dd>
+      <dt><code>variables: Variable[]</code></dt>
+      <dd>
+        <p>A list of objects with the following keys:</p>
+        <dl>
+          <dt>IRI variable</dt>
+          <dd>An object of the form `Variable`
+          (see  <a href="../account/index.md#accountaddqueryname-string-metadata-object">Account.addQuery()</a>)
+          </dd>
+      </dd>
+      <dt><code>serviceType: string</code>("speedy" | "virtuoso" | "jena" | "blazegraph" | "prolog")</dt>
+      <dd>The SPARQL service type the duplicated query needs to be configured to</dd>
+    </dl>
+  </dd>
+</dl>
+
+<h3 id="example_1">Example<a class="headerlink" href="#example_1" title="Permanent link">&para;</a></h3>
+<pre><code class="language-ts">const user = await triply.getAccount('my-account')
+const query = await user.getQuery('my-query')
+const query_1 = await query.useVersion(1)
+const orgAccount = await triply.getAccount('org-account');
+
+// Within the same account under a new name
+const duplicatedQuery_1 = await query.copy('newDuplicateQuery')
+// To a new account with some metadata overwritten using the same query name
+const duplicatedQuery_2 = await query.copy(undefined, orgAccount , {
+  description: 'newDescription',
+  displayName: 'newDisplayName'
+})
+</code></pre>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../organization/" class="btn btn-neutral float-left" title="Organization"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../service/" class="btn btn-neutral float-right" title="Service">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../organization/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../service/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script>var base_url = '../..';</script>
+      <script src="../../js/triply.js" defer></script>
+      <script src="../../js/highlight.min.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+
+</body>
+</html>
