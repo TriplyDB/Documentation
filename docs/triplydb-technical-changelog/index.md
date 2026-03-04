@@ -8,6 +8,14 @@ path: "/docs/triplydb-technical-changelog"
 This changelog covers technical changes related to TriplyDB on-premise deployments. See [here](/triplydb-changelog) for the TriplyDB changelog that is user facing.
 
 
+## 26.3.100 {#26.3.100}
+
+**Release date:** 2026-03-04
+
+- New value `api.bodyLimitKb` has been added (default: `5120`). This controls the maximum request body size in kilobytes for JSON, form, text, and SPARQL POST requests on external API routes. 
+- Fixed an issue where the refresh-queries cronjob could hang indefinitely on certain saved queries, causing the entire cronjob to fail silently.
+- HAProxy rate limiting now correctly handles burst configuration by extending the rate-limit period, and both HAProxy and nginx now explicitly return HTTP 429 status codes for rate-limited requests.
+
 ## 26.2.200 {#26.2.200}
 
 **Release date:** 2026-02-18

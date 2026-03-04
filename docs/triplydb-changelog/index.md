@@ -6,6 +6,21 @@ path: "/docs/triplydb-changelog"
 [TOC]
 
 
+## 26.3.100 {#26.3.100}
+
+**Release date:** 2026-03-04
+
+**Features**
+
+- `#10367` [API] Added OpenAPI descriptions for public API routes. Developers integrating with the TriplyDB API can now discover available endpoints, parameters, and response formats through a standard OpenAPI specification.
+
+**Issues fixed**
+
+- `#11205` [Data Upload] Fixed an issue where importing certain XML files failed with an uninformative error message when the file's actual encoding did not match its declared encoding. The error message now clearly indicates the encoding problem.
+- `#11182` [Data Editor] Fixed an issue where the class navigator timed out on datasets with many statements, making it impossible to use the editor on large datasets.
+
+
+
 ## 26.2.200 {#26.2.200}
 
 **Release date:** 2026-02-18
