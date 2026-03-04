@@ -1,0 +1,808 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <meta name="description" content="The official documentation for the Triply products: TriplyDB, TriplyDB.js, and TriplyETL." />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>TriplyDB: On-Premise Deployment - Triply Documentation</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link href="../css/intellij-light.css" rel="stylesheet" />
+        <link href="../css/triply.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "TriplyDB: On-Premise Deployment";
+        var mkdocs_page_input_path = "triply-db-on-premise/index.md";
+        var mkdocs_page_url = null;
+      </script>
+     
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> Triply Documentation
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">TriplyDB</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Getting started</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../triply-db-getting-started/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../triply-db-getting-started/uploading-data/">Uploading Data</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../triply-db-getting-started/editing-data/">Editing (SKOS) Data</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../triply-db-getting-started/publishing-data/">Sharing Data</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../triply-db-getting-started/viewing-data/">Viewing Data</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../triply-db-getting-started/exporting-data/">Exporting Data</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../triply-db-getting-started/saved-queries/">Saved Queries</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../triply-db-getting-started/data-stories/">Data Stories</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../triply-db-getting-started/admin-settings-pages/">Admin Settings Pages</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../triply-db-getting-started/reference/">Reference</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../triply-api/">API</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">TriplyDB-JS</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../triplydb-js/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../triplydb-js/app/">App</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../triplydb-js/account/">Account</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../triplydb-js/asset/">Asset</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../triplydb-js/dataset/">Dataset</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../triplydb-js/graph/">Graph</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../triplydb-js/organization/">Organization</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../triplydb-js/query/">Query</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../triplydb-js/service/">Service</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../triplydb-js/story/">Story</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../triplydb-js/user/">User</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../triplydb-js/faq/">FAQ</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../triply-cli/">Command-line Interface</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../triplydb-changelog/">Changelog</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">TriplyETL</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Generic</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../triply-etl/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../triply-etl/generic/getting-started/">Getting Started</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../triply-etl/generic/changelog/">Changelog</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../triply-etl/generic/cli/">Command Line Interface (CLI)</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../triply-etl/generic/declarations/">Declarations</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../triply-etl/generic/control-structures/">Control Structures</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../triply-etl/generic/debug/">Debug</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../triply-etl/generic/internal-store/">Internal Store</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../triply-etl/generic/maintenance/">Maintenance</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../triply-etl/generic/record/">Record</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../triply-etl/generic/vocabularies/">Vocabularies</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Sources</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../triply-etl/sources/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../triply-etl/sources/apis/">APIs</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../triply-etl/sources/inline-json/">Inline JSON</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../triply-etl/sources/inline-strings/">Inline Strings</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../triply-etl/sources/local-files/">Local Files</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../triply-etl/sources/online-files/">Online Files</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../triply-etl/sources/rml/">RML Sources</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../triply-etl/sources/triplydb-assets/">TriplyDB Assets</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../triply-etl/sources/triplydb-datasets/">TriplyDB Datasets</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../triply-etl/sources/triplydb-queries/">TriplyDB Queries</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Extract</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../triply-etl/extract/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../triply-etl/extract/csv/">CSV</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../triply-etl/extract/json/">JSON</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../triply-etl/extract/oai-pmh/">OAI-PMH</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../triply-etl/extract/postgres/">Postgres</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../triply-etl/extract/rdf/">RDF</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../triply-etl/extract/shapefile/">Shapefile</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../triply-etl/extract/tsv/">TSV</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../triply-etl/extract/xlsx/">XLSX</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../triply-etl/extract/xml/">XML</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Transform</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../triply-etl/transform/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../triply-etl/transform/ratt/">RATT</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../triply-etl/transform/rml/">RML</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../triply-etl/transform/typescript/">TypeScript</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../triply-etl/transform/xslt/">XSLT</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Assert</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../triply-etl/assert/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../triply-etl/assert/json-ld/">JSON-LD</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="#">RATT</a>
+    <ul>
+                <li class="toctree-l3"><a class="reference internal" href="../triply-etl/assert/ratt/terms/">RATT Terms</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../triply-etl/assert/ratt/statements/">RATT Statements</a>
+                </li>
+    </ul>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../triply-etl/assert/rml/">RML</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../triply-etl/assert/xslt/">XSLT</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Enrich</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../triply-etl/enrich/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="#">SHACL</a>
+    <ul>
+                <li class="toctree-l3"><a class="reference internal" href="../triply-etl/enrich/shacl/">Overview</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../triply-etl/enrich/shacl/triple-rules/">Triple Rules</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../triply-etl/enrich/shacl/sparql-rules/">SPARQL Rules</a>
+                </li>
+    </ul>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="#">SPARQL</a>
+    <ul>
+                <li class="toctree-l3"><a class="reference internal" href="../triply-etl/enrich/sparql/construct/">SPARQL Construct</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../triply-etl/enrich/sparql/update/">SPARQL Update</a>
+                </li>
+    </ul>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Validate</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../triply-etl/validate/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../triply-etl/validate/graph-comparison/">Graph Comparison</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../triply-etl/validate/shacl/">SHACL</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../triply-etl/publish/">Publish</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Yasgui</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../yasgui/">Introduction</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../yasgui-api/">For Developers</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">Triply Documentation</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">TriplyDB: On-Premise Deployment</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="triplydb-on-premise-deployment">TriplyDB: On-Premise Deployment<a class="headerlink" href="#triplydb-on-premise-deployment" title="Permanent link">&para;</a></h1>
+<p>This document guides you through deploying TriplyDB on your own Kubernetes cluster. It is intended for someone with Kubernetes experience who has permission to create resources in the target namespace.</p>
+<h2 id="before-you-begin">Before you begin<a class="headerlink" href="#before-you-begin" title="Permanent link">&para;</a></h2>
+<p>Make sure you have received the following from Triply:</p>
+<ul>
+<li>A <strong>license file</strong> (<code>key.license</code>) to activate your TriplyDB instance. The license is linked to a specific API domain — the <code>api.domain</code> value in your configuration must match the domain for which the license was created.</li>
+<li>A <strong>registry access token</strong> to pull Helm charts and container images.</li>
+</ul>
+<p>Make sure the following is available on your cluster:</p>
+<ul>
+<li>A <strong>Kubernetes namespace</strong> in which TriplyDB will run.</li>
+<li>An <strong>Ingress controller</strong> (see <a href="#prerequisites">Prerequisites</a>).</li>
+<li><strong>HTTPS egress</strong> to <code>77.73.225.176/28</code> from the namespace, for periodic license validation.</li>
+</ul>
+<h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">&para;</a></h2>
+<p><img alt="Instance architecture" src="architecture.png" /></p>
+<p>TriplyDB consists of several components running inside a Kubernetes namespace:</p>
+<ul>
+<li>The <strong>Console</strong> provides the web UI. It proxies API requests through the <code>/_api</code> path.</li>
+<li>The <strong>API Server</strong> handles all application logic, stores metadata in MongoDB, and uses Redis for event signaling between worker processes. API data (linked data and assets) is stored on persistent volumes.</li>
+<li><strong>MongoDB</strong> stores instance metadata. It can be deployed as a Bitnami subchart, as an externally managed instance, or using the MongoDB community operator.</li>
+<li><strong>Redis</strong> handles event signaling between API worker processes and other pods.</li>
+<li>The <strong>Orchestrator</strong> interacts with the Kubernetes API to dynamically create and remove TDB-Services (e.g. Virtuoso, Jena, or ElasticSearch) and to manage background jobs such as long-running SPARQL queries.</li>
+<li>Several <strong>CronJobs</strong> run periodically for maintenance (cleanup, graph optimization, query cache refresh, and license validation).</li>
+<li>Optional <strong>TDB services</strong> are pods created by the API pods whenever a user starts a service (i.e. Virtuoso or Elastic) for a dataset in TriplyDB. These pods are not part of the helm deployment but will be created dynamically when requested by the user and permitted by the license.</li>
+</ul>
+<h2 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">&para;</a></h2>
+<h3 id="rbac">RBAC<a class="headerlink" href="#rbac" title="Permanent link">&para;</a></h3>
+<p>You need at least an Admin role within the namespace where TriplyDB will be deployed.</p>
+<h3 id="ingress-controller">Ingress Controller<a class="headerlink" href="#ingress-controller" title="Permanent link">&para;</a></h3>
+<p>TriplyDB requires an Ingress controller to be available on the cluster. TriplyDB strives to support any Ingress controller. The Ingress manifests have been tested with <a href="https://kubernetes.github.io/ingress-nginx/">Ingress NGINX</a> and <a href="https://haproxy-ingress.github.io/">HAProxy</a>, but other controllers should work as well. The request methods used by TriplyDB are GET, POST, PATCH, and DELETE.</p>
+<h3 id="network">Network<a class="headerlink" href="#network" title="Permanent link">&para;</a></h3>
+<p>In case of network or firewall restrictions, you will need to allow HTTPS egress traffic from the namespace to the IP range <code>77.73.225.176/28</code>. This is required for TriplyDB to periodically validate your license key.</p>
+<h2 id="configuration">Configuration<a class="headerlink" href="#configuration" title="Permanent link">&para;</a></h2>
+<p>Before installing TriplyDB, you need to prepare a <code>values.yaml</code> file. Below is a minimal starting point showing the values you will need to customize for your environment:</p>
+<pre><code class="language-yaml"># The api.domain must match the domain for which your license was created
+api:
+  domain: api.example.com         # Domain where the API server is accessed
+  persistentVolumeClaim:
+    storageClassName: my-storage-class
+    size: 10Gi
+  storagePersistentVolumeClaim:
+    storageClassName: my-storage-class
+    size: 10Gi
+
+console:
+  domain: example.com             # Domain where the Console is accessed
+
+redis:
+  persistentVolumeClaim:
+    storageClassName: my-storage-class
+    size: 1Gi
+
+mongodb:
+  deploymentStrategy: subChart
+  persistentVolumeClaim:
+    storageClassName: my-storage-class
+    size: 3Gi
+
+mongodbSubChart:
+  enabled: true
+
+tdbServices:
+  persistentVolumeClaim:
+    storageClassName: my-storage-class
+
+kubernetesApi:
+  cidr: 10.96.0.1/32              # CIDR of your cluster's Kubernetes API
+  port: 443
+
+ingress:
+  controller: nginx               # &quot;nginx&quot; or &quot;haproxy&quot;
+  sslMode: behind                 # &quot;behind&quot;, &quot;terminate&quot;, or &quot;none&quot;
+</code></pre>
+<p>The sections below describe each configuration area in detail. For a complete reference of all available options, run:</p>
+<pre><code class="language-sh">helm show readme triply/triplydb --version &lt;version&gt;
+</code></pre>
+<h3 id="domains-required">Domains (required)<a class="headerlink" href="#domains-required" title="Permanent link">&para;</a></h3>
+<p>You must configure the domain names for both the API server and the Console:</p>
+<pre><code class="language-yaml">api:
+  domain: api.example.com
+console:
+  domain: example.com
+</code></pre>
+<p>The <code>api.domain</code> value must match the domain for which your TriplyDB license was created. If the domain does not match, the license validation will fail.</p>
+<p>Ensure that DNS records for both domains point to your Ingress controller.</p>
+<h3 id="persistent-storage-required">Persistent storage (required)<a class="headerlink" href="#persistent-storage-required" title="Permanent link">&para;</a></h3>
+<p>TriplyDB requires persistent storage for API data, Redis, MongoDB, and TDB-Services. You must specify a storage class and size for each persistent volume claim. The sizes of the PVCs used by the TDB-Services are determined dynamically based on the data that will be loaded by the service.</p>
+<pre><code class="language-yaml">api:
+  persistentVolumeClaim:
+    storageClassName: my-storage-class
+    size: 10Gi
+  storagePersistentVolumeClaim:
+    storageClassName: my-storage-class
+    size: 10Gi
+
+redis:
+  persistentVolumeClaim:
+    storageClassName: my-storage-class
+    size: 1Gi
+
+mongodb:
+  persistentVolumeClaim:
+    storageClassName: my-storage-class
+    size: 3Gi
+
+tdbServices:
+  persistentVolumeClaim:
+    storageClassName: my-storage-class
+</code></pre>
+<h3 id="ingress">Ingress<a class="headerlink" href="#ingress" title="Permanent link">&para;</a></h3>
+<p>The ingress configuration controls how external traffic reaches TriplyDB:</p>
+<pre><code class="language-yaml">ingress:
+  controller: nginx          # Ingress controller type: &quot;nginx&quot; or &quot;haproxy&quot;
+  className: my-ingress      # Ingress class name (if required by your cluster)
+  sslMode: behind            # &quot;behind&quot; (proxy terminates SSL),
+                             #   &quot;terminate&quot; (TriplyDB terminates SSL), or &quot;none&quot;
+  annotations: {}            # Custom annotations, e.g. for cert-manager
+</code></pre>
+<p>If you use a TLS certificate manager such as cert-manager, you can specify the issuer through annotations:</p>
+<pre><code class="language-yaml">ingress:
+  annotations:
+    cert-manager.io/issuer: my-issuer
+</code></pre>
+<h3 id="mongodb">MongoDB<a class="headerlink" href="#mongodb" title="Permanent link">&para;</a></h3>
+<p>TriplyDB requires MongoDB as its database. There are three deployment strategies:</p>
+<ul>
+<li><strong><code>subChart</code></strong> (recommended): Deploys MongoDB using the Bitnami MongoDB Helm chart as a subchart. When using this strategy, also set <code>mongodbSubChart.enabled: true</code>.</li>
+<li><strong><code>external</code></strong> (recommended): Uses an externally managed MongoDB instance. This is ideal if your organization already operates a managed MongoDB service. You must manually create a Kubernetes secret containing the connection string and reference it in the values.</li>
+<li><strong><code>useOperator</code></strong>: Uses the MongoDB community operator to deploy and manage a MongoDB replica set. If the operator is not already installed on your cluster, you can deploy it as part of this chart by setting <code>mongodb-operator.enabled: true</code>.</li>
+</ul>
+<p>Example for the subchart strategy:</p>
+<pre><code class="language-yaml">mongodb:
+  deploymentStrategy: subChart
+mongodbSubChart:
+  enabled: true
+</code></pre>
+<p>Example for an external MongoDB:</p>
+<pre><code class="language-yaml">mongodb:
+  deploymentStrategy: external
+  secret:
+    name: my-mongodb-secret
+    key: connectionString.standard
+</code></pre>
+<p>Create the secret with:</p>
+<pre><code class="language-sh">kubectl -n &lt;namespace&gt; create secret generic my-mongodb-secret \
+  --from-literal=connectionString.standard=&quot;mongodb://&lt;user&gt;:&lt;password&gt;@&lt;host&gt;:&lt;port&gt;/triply?replicaSet=&lt;rs&gt;&amp;authSource=admin&quot;
+</code></pre>
+<h3 id="email-smtp">Email (SMTP)<a class="headerlink" href="#email-smtp" title="Permanent link">&para;</a></h3>
+<p>To enable TriplyDB to send emails (e.g. password resets and notifications), configure an SMTP server:</p>
+<pre><code class="language-yaml">email:
+  host: smtp.example.com
+  port: 587
+  secure: false
+  name: example.com      # Domain used in the &quot;From&quot; address of outgoing emails
+  ip: 10.0.0.50          # IP of the SMTP server, used for network policy egress rules
+  auth:
+    username: smtp-user
+    password: smtp-password
+</code></pre>
+<p>The <code>name</code> value is the domain used in the sender address of outgoing emails (e.g. <code>noreply@example.com</code>). Set this to the domain that your SMTP server is configured to send from.</p>
+<p>The <code>secure</code> option controls TLS behavior: when <code>true</code>, the connection uses TLS directly (port 465). When <code>false</code>, the connection starts in plaintext and upgrades via STARTTLS if the server supports it (port 587).</p>
+<h3 id="http-proxy">HTTP Proxy<a class="headerlink" href="#http-proxy" title="Permanent link">&para;</a></h3>
+<p>If your environment requires an HTTP proxy for access to external networks (e.g. for license validation or SPARQL federation), configure the proxy settings:</p>
+<pre><code class="language-yaml">httpProxy:
+  ip: 10.0.0.1
+  port: 8080
+  protocol: http    # &quot;http&quot; or &quot;https&quot;
+</code></pre>
+<h3 id="network-policies">Network policies<a class="headerlink" href="#network-policies" title="Permanent link">&para;</a></h3>
+<p>TriplyDB deploys Kubernetes network policies by default (<code>networkPolicies.enabled: true</code>), which include a default-deny-all rule and specific allow rules for internal communication. If your cluster uses a custom DNS setup or the Kubernetes API is not reachable from the default configuration, you may need to configure:</p>
+<pre><code class="language-yaml">kubernetesDns:
+  mode: pod             # &quot;pod&quot; or &quot;address&quot;
+  pod:
+    namespaceSelector: {}
+    podSelector:
+      matchLabels:
+        k8s-app: kube-dns
+</code></pre>
+<p>To disable network policies entirely (not recommended), set <code>networkPolicies.enabled: false</code>.</p>
+<h3 id="kubernetes-api-required">Kubernetes API (required)<a class="headerlink" href="#kubernetes-api-required" title="Permanent link">&para;</a></h3>
+<p>Several TriplyDB components need access to the Kubernetes API, including the API server and the Orchestrator. You must specify the CIDR and port of your cluster's Kubernetes API server:</p>
+<pre><code class="language-yaml">kubernetesApi:
+  cidr: 10.96.0.1/32
+  port: 443
+</code></pre>
+<h2 id="installation">Installation<a class="headerlink" href="#installation" title="Permanent link">&para;</a></h2>
+<h3 id="1-create-the-license-secret">1. Create the license secret<a class="headerlink" href="#1-create-the-license-secret" title="Permanent link">&para;</a></h3>
+<p>Replace <code>&lt;namespace&gt;</code> with your namespace and <code>/path/to/key.license</code> with the path to the license file:</p>
+<pre><code class="language-sh">kubectl -n &lt;namespace&gt; create secret generic triply-license-secret \
+  --from-literal=TRIPLY__LICENSE=&quot;$(cat /path/to/key.license)&quot;
+</code></pre>
+<h3 id="2-create-the-registry-secret">2. Create the registry secret<a class="headerlink" href="#2-create-the-registry-secret" title="Permanent link">&para;</a></h3>
+<p>Replace <code>&lt;token&gt;</code> with the registry access token provided by Triply:</p>
+<pre><code class="language-sh">kubectl -n &lt;namespace&gt; create secret docker-registry triply-registry-secret \
+  --docker-username=oauth2 \
+  --docker-password=&lt;token&gt; \
+  --docker-server=registry.triply.cc
+</code></pre>
+<h3 id="3-add-the-helm-chart-repository">3. Add the Helm chart repository<a class="headerlink" href="#3-add-the-helm-chart-repository" title="Permanent link">&para;</a></h3>
+<pre><code class="language-sh">helm repo add triply \
+  https://git.triply.cc/api/v4/projects/276/packages/helm/stable \
+  --username oauth2 \
+  --password &lt;token&gt;
+</code></pre>
+<h3 id="4-install-triplydb">4. Install TriplyDB<a class="headerlink" href="#4-install-triplydb" title="Permanent link">&para;</a></h3>
+<pre><code class="language-sh">helm -n &lt;namespace&gt; install triplydb triply/triplydb -f /path/to/values.yaml
+</code></pre>
+<h2 id="verifying-the-deployment">Verifying the deployment<a class="headerlink" href="#verifying-the-deployment" title="Permanent link">&para;</a></h2>
+<h3 id="check-pod-status">Check pod status<a class="headerlink" href="#check-pod-status" title="Permanent link">&para;</a></h3>
+<p>List the pods in the namespace and verify that all pods are running and all containers are ready:</p>
+<pre><code class="language-sh">kubectl -n &lt;namespace&gt; get pods
+</code></pre>
+<p>The output should look something like this:</p>
+<pre><code class="language-sh">NAME                                    READY   STATUS    RESTARTS
+api-84445bcc86-ckshd                    1/1     Running   0
+console-647fd854b6-j5zwh                1/1     Running   0
+mongodb-0                               2/2     Running   0
+redis-6bdbd4d968-lsb8l                  1/1     Running   0
+orchestrator-68ddbdb4f6-ljb54           1/1     Running   0
+</code></pre>
+<h3 id="retrieve-initial-credentials">Retrieve initial credentials<a class="headerlink" href="#retrieve-initial-credentials" title="Permanent link">&para;</a></h3>
+<p>The API init job creates an initial admin account during installation. Retrieve the credentials from the job logs:</p>
+<pre><code class="language-sh">kubectl -n &lt;namespace&gt; logs job/&lt;init-job-name&gt;
+</code></pre>
+<p>The job name can be found by running <code>kubectl -n &lt;namespace&gt; get jobs</code>. <strong>Save these credentials</strong> — you will need them to log in for the first time.</p>
+<h3 id="test-api-access">Test API access<a class="headerlink" href="#test-api-access" title="Permanent link">&para;</a></h3>
+<p>Verify that the API server is reachable by sending a request to the configured API domain:</p>
+<pre><code class="language-sh">curl https://api.example.com
+</code></pre>
+<p>The following response indicates that the API is accessible:</p>
+<pre><code class="language-json">{ &quot;message&quot;: &quot;Not found. For developer API documentation, go to https://triply.cc/docs/triply-api.&quot; }
+</code></pre>
+<h3 id="test-console-access">Test Console access<a class="headerlink" href="#test-console-access" title="Permanent link">&para;</a></h3>
+<p>Visit the Console domain in your browser (e.g. <code>https://example.com</code>). On a fresh instance, you should see a mostly empty page with a blue banner, a search field and a login button.</p>
+<h3 id="first-login">First login<a class="headerlink" href="#first-login" title="Permanent link">&para;</a></h3>
+<p>Log in with the credentials retrieved from the init job logs. You will be prompted to set an email address. You can then change the username and password through the user settings page, accessible through the drop-down menu in the upper right corner of the Console.</p>
+<p>If you encounter any issues during verification, please contact <a href="mailto:support@triply.cc">support@triply.cc</a>.</p>
+<h2 id="upgrading">Upgrading<a class="headerlink" href="#upgrading" title="Permanent link">&para;</a></h2>
+<p>To see all available versions of the TriplyDB Helm chart:</p>
+<pre><code class="language-sh">helm search repo triply -l
+</code></pre>
+<p>Functional changes (e.g. feature X has been added in version Y) can be found in the <a href="https://github.com/TriplyDB/Documentation/blob/master/docs/triplydb-changelog/index.md">changelog</a>. Technical changes (e.g. helm value X is no longer supported in version Y) can be found in the <a href="https://github.com/TriplyDB/Documentation/blob/master/docs/triplydb-technical-changelog/index.md">technical changelog</a>.</p>
+<p>To deploy a new version:</p>
+<pre><code class="language-sh">helm -n &lt;namespace&gt; upgrade triplydb triply/triplydb --version &lt;new_version&gt; -f /path/to/values.yaml
+</code></pre>
+<h2 id="authentication-optional">Authentication (optional)<a class="headerlink" href="#authentication-optional" title="Permanent link">&para;</a></h2>
+<p>TriplyDB supports SAML and OAuth2 for single sign-on. Both can be configured through Helm values. Authentication is optional — without it, TriplyDB uses built-in username/password authentication.</p>
+<h3 id="saml">SAML<a class="headerlink" href="#saml" title="Permanent link">&para;</a></h3>
+<ol>
+<li>
+<p>Run the following command in the API pod to generate the SAML service provider metadata:</p>
+<p><code>sh
+kubectl -n &lt;namespace&gt; exec &lt;api_pod&gt; -- yarn run bin getSamlServiceProviderMetadata --idp &lt;idp_id&gt;</code></p>
+</li>
+<li>
+<p>Use the outputted XML to configure a SAML application at the IDP side.</p>
+</li>
+<li>
+<p>Create a Kubernetes secret containing the IDP signing certificate:</p>
+<p><code>sh
+kubectl -n &lt;namespace&gt; create secret generic saml-idp-cert \
+  --from-literal=certificate="$(cat /path/to/idp-certificate.pem | base64 -w 0)"</code></p>
+</li>
+<li>
+<p>Add the SAML configuration to your values file (replacing <code>okta</code> with your IDP identifier):</p>
+<p><code>yaml
+auth:
+  saml:
+    okta:
+      label: "Okta"
+      entryPoint: "https://example.okta.com/app/triplydb/some_random_id/sso/saml"
+      issuer: "https://example.com"
+      idpCertSecret:
+        name: saml-idp-cert
+        key: certificate</code></p>
+</li>
+<li>
+<p>Upgrade the Helm deployment:</p>
+<p><code>sh
+helm -n &lt;namespace&gt; upgrade triplydb triply/triplydb -f /path/to/values.yaml</code></p>
+</li>
+</ol>
+<h4 id="persisting-saml-certificates">Persisting SAML certificates<a class="headerlink" href="#persisting-saml-certificates" title="Permanent link">&para;</a></h4>
+<p>By default, TriplyDB generates certificates for SAML communication during the initial deployment. These certificates are included in backups, so SAML does not need to be reconfigured when a backup is restored. To persist the certificates independently (e.g. for recreating the instance from scratch), you can store them in a Kubernetes TLS secret:</p>
+<ol>
+<li>
+<p>Copy the certificates from the API container:</p>
+<p><code>sh
+kubectl cp -n &lt;namespace&gt; &lt;api_pod&gt;:/home/triply/data/.samlCertificate.crt samlCertificate.crt
+kubectl cp -n &lt;namespace&gt; &lt;api_pod&gt;:/home/triply/data/.samlPrivateKey.key samlPrivateKey.key</code></p>
+</li>
+<li>
+<p>Create a TLS secret:</p>
+<p><code>sh
+kubectl create secret tls -n &lt;namespace&gt; saml-sp-certs \
+  --cert=samlCertificate.crt \
+  --key=samlPrivateKey.key</code></p>
+</li>
+<li>
+<p>Reference the secret in your values file:</p>
+<p><code>yaml
+auth:
+  saml:
+    okta:
+      spCertSecret:
+        name: saml-sp-certs</code></p>
+</li>
+<li>
+<p>Upgrade the Helm deployment.</p>
+</li>
+</ol>
+<h4 id="additional-saml-configuration">Additional SAML configuration<a class="headerlink" href="#additional-saml-configuration" title="Permanent link">&para;</a></h4>
+<p>TriplyDB uses <code>node-saml</code> for SAML support. Additional <code>node-saml</code> configuration parameters can be passed through the <code>additionalConfig</code> value. See the <a href="https://github.com/node-saml/node-saml?tab=readme-ov-file#config-parameter-details">node-saml documentation</a> for all available options.</p>
+<pre><code class="language-yaml">auth:
+  saml:
+    okta:
+      additionalConfig:
+        wantAuthnResponseSigned: false
+</code></pre>
+<h3 id="oauth2">OAuth2<a class="headerlink" href="#oauth2" title="Permanent link">&para;</a></h3>
+<p>TriplyDB can authenticate users through an OAuth2 provider:</p>
+<pre><code class="language-yaml">auth:
+  oauth2:
+    label: &quot;Login with SSO&quot;
+    authorizationURL: &quot;https://idp.example.com/oauth2/authorize&quot;
+    tokenURL: &quot;https://idp.example.com/oauth2/token&quot;
+    clientID: &quot;my-client-id&quot;
+    clientSecret: &quot;my-client-secret&quot;
+    scope:
+      - openid
+      - email
+      - profile
+</code></pre>
+<h2 id="backups-highly-recommended">Backups (highly recommended)<a class="headerlink" href="#backups-highly-recommended" title="Permanent link">&para;</a></h2>
+<p>Regular backups are highly recommended to protect your TriplyDB instance against data loss caused by storage failures or other unforeseen issues. Backups include all assets used and managed by the API, and all service metadata stored in MongoDB. Since every infrastructure setup is different, we provide a template rather than a full backup solution. The sections below describe the general approach to performing backups and restorations.</p>
+<h3 id="making-a-backup">Making a backup<a class="headerlink" href="#making-a-backup" title="Permanent link">&para;</a></h3>
+<p>Below is an example of a Kubernetes CronJob for periodically backing up a TriplyDB instance. Some parts are left open, since these depend on your infrastructure setup.</p>
+<p>The two init containers copy the required data to a temporary backup volume: one for MongoDB and one for the relevant files on the API persistent volumes. The CronJob should be deployed in the same namespace as TriplyDB, as it depends on the <code>mongodb-triply-triplydb</code> secret for the MongoDB connection string and on the persistent volumes used by the API pods.</p>
+<p>The main container then syncs the data from the temporary backup volume to your backup storage. This could be a container that syncs to an S3 bucket, copies to an NFS share, or any other approach that fits your infrastructure.</p>
+<pre><code class="language-yaml">apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: backup
+  labels:
+    cc.triply.type: api  # if network policies are used, this label is required to access mongo
+  ...
+spec:
+  jobTemplate:
+    spec:
+      template:
+        metadata:
+          labels:
+            cc.triply.type: api  # if network policies are used, this label is required to access mongo
+        spec:
+          initContainers:
+          - name: mongo-dump
+            image: 'some.registry/mongo:&lt;same_mongo_version&gt;'
+            command: ['sh', '-c', 'set -e; mongodump ${MONGODB_URI} --archive &gt; /backup/mongo.db']
+            env:
+            - name: MONGODB_URI
+              valueFrom:
+                secretKeyRef:
+                  name: mongodb-triply-triplydb
+                  key: connectionString.standard
+            volumeMounts:
+            - name: shared-backup-volume
+              mountPath: /backup
+            ...
+          - name: api-files-copy
+            image: &lt;image_containing_rsync&gt;
+            command:
+            - /bin/sh
+            - -c
+            - &gt;-
+              rsync -avzr
+              --files-from /home/triply/data-storage/.backup.include
+              --exclude-from /home/triply/data-storage/.backup.exclude
+              / /backup
+            volumeMounts:
+            - name: primary
+              mountPath: /home/triply/data
+            - name: storage
+              mountPath: /home/triply/data-storage
+            - name: shared-backup-volume
+              mountPath: /backup
+          containers:
+          - name: sync-to-backup-location
+            # Container that copies the contents of /backup to your backup storage
+            ...
+            volumeMounts:
+            - name: shared-backup-volume
+              mountPath: /backup
+          volumes:
+          - name: primary
+            persistentVolumeClaim:
+              claimName: primary
+          - name: storage
+            persistentVolumeClaim:
+              claimName: storage
+          - name: shared-backup-volume
+            emptyDir: {}
+          restartPolicy: Never
+</code></pre>
+<h3 id="restoring-a-backup">Restoring a backup<a class="headerlink" href="#restoring-a-backup" title="Permanent link">&para;</a></h3>
+<p>To restore a backup, prepare a Kubernetes Job that reverses the backup process. The first container should download the backup from your backup storage to a temporary backup volume.</p>
+<p>A second container can then restore the MongoDB database:</p>
+<pre><code class="language-sh">mongorestore --drop --archive=/backup/mongo.db --nsFrom=triply.* --nsTo=triply.* ${MONGODB_URI}
+</code></pre>
+<p>A third container restores the disk files by copying them from the backup to their original locations within the API persistent volumes.</p>
+<p>We recommend scheduling backups to run regularly (e.g. daily). Contact <a href="mailto:support@triply.cc">support@triply.cc</a> for detailed guidance on setting up backups for your infrastructure.</p>
+<h2 id="reference">Reference<a class="headerlink" href="#reference" title="Permanent link">&para;</a></h2>
+<h3 id="user-roles">User roles<a class="headerlink" href="#user-roles" title="Permanent link">&para;</a></h3>
+<p>TriplyDB has three kinds of users: regular users, site administrators, and super administrators.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Feature</th>
+<th style="text-align: center;">Regular user</th>
+<th style="text-align: center;">Site admin</th>
+<th style="text-align: center;">Super admin</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Read any public or internal dataset, query or story</td>
+<td style="text-align: center;"><strong>✓</strong></td>
+<td style="text-align: center;"><strong>✓</strong></td>
+<td style="text-align: center;"><strong>✓</strong></td>
+</tr>
+<tr>
+<td style="text-align: left;">Create, update and delete own datasets, queries or stories</td>
+<td style="text-align: center;"><strong>✓</strong></td>
+<td style="text-align: center;"><strong>✓</strong></td>
+<td style="text-align: center;"><strong>✓</strong></td>
+</tr>
+<tr>
+<td style="text-align: left;">Manage organizations that you own</td>
+<td style="text-align: center;"><strong>✓</strong></td>
+<td style="text-align: center;"><strong>✓</strong></td>
+<td style="text-align: center;"><strong>✓</strong></td>
+</tr>
+<tr>
+<td style="text-align: left;">Create organizations</td>
+<td style="text-align: center;"><strong>✓</strong></td>
+<td style="text-align: center;"><strong>✓</strong></td>
+<td style="text-align: center;"><strong>✓</strong></td>
+</tr>
+<tr>
+<td style="text-align: left;">Change your own account details</td>
+<td style="text-align: center;"><strong>✓</strong></td>
+<td style="text-align: center;"><strong>✓</strong></td>
+<td style="text-align: center;"><strong>✓</strong></td>
+</tr>
+<tr>
+<td style="text-align: left;">Change other users' details and content</td>
+<td style="text-align: center;">❌</td>
+<td style="text-align: center;"><strong>✓</strong></td>
+<td style="text-align: center;"><strong>✓</strong></td>
+</tr>
+<tr>
+<td style="text-align: left;">Assign site administrators</td>
+<td style="text-align: center;">❌</td>
+<td style="text-align: center;"><strong>✓</strong></td>
+<td style="text-align: center;"><strong>✓</strong></td>
+</tr>
+<tr>
+<td style="text-align: left;">Access admin pages (accounts, datasets, services overview)</td>
+<td style="text-align: center;">❌</td>
+<td style="text-align: center;"><strong>✓</strong></td>
+<td style="text-align: center;"><strong>✓</strong></td>
+</tr>
+<tr>
+<td style="text-align: left;">Configure security policies, site profile, prefixes, redirects</td>
+<td style="text-align: center;">❌</td>
+<td style="text-align: center;"><strong>✓</strong></td>
+<td style="text-align: center;"><strong>✓</strong></td>
+</tr>
+<tr>
+<td style="text-align: left;">Impersonate users, manage cache, assign super admins</td>
+<td style="text-align: center;">❌</td>
+<td style="text-align: center;">❌</td>
+<td style="text-align: center;"><strong>✓</strong></td>
+</tr>
+<tr>
+<td style="text-align: left;">Enable/disable features, configure debug flags</td>
+<td style="text-align: center;">❌</td>
+<td style="text-align: center;">❌</td>
+<td style="text-align: center;"><strong>✓</strong></td>
+</tr>
+</tbody>
+</table>
+<h3 id="helm-chart-documentation">Helm chart documentation<a class="headerlink" href="#helm-chart-documentation" title="Permanent link">&para;</a></h3>
+<p>For a complete reference of all available Helm values:</p>
+<pre><code class="language-sh">helm show readme triply/triplydb --version &lt;version&gt;
+</code></pre>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script>var base_url = '..';</script>
+      <script src="../js/triply.js" defer></script>
+      <script src="../js/highlight.min.js" defer></script>
+      <script src="../search/main.js" defer></script>
+
+</body>
+</html>

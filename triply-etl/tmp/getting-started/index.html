@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <meta name="description" content="The official documentation for the Triply products: TriplyDB, TriplyDB.js, and TriplyETL." />
+      <link rel="shortcut icon" href="../../../img/favicon.ico" />
+    <title>Getting started - Triply Documentation</title>
+    <link rel="stylesheet" href="../../../css/theme.css" />
+    <link rel="stylesheet" href="../../../css/theme_extra.css" />
+        <link href="../../../css/intellij-light.css" rel="stylesheet" />
+        <link href="../../../css/triply.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Getting started";
+        var mkdocs_page_input_path = "triply-etl/tmp/getting-started.md";
+        var mkdocs_page_url = null;
+      </script>
+     
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../../.." class="icon icon-home"> Triply Documentation
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../..">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">TriplyDB</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Getting started</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../../triply-db-getting-started/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../triply-db-getting-started/uploading-data/">Uploading Data</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../triply-db-getting-started/editing-data/">Editing (SKOS) Data</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../triply-db-getting-started/publishing-data/">Sharing Data</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../triply-db-getting-started/viewing-data/">Viewing Data</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../triply-db-getting-started/exporting-data/">Exporting Data</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../triply-db-getting-started/saved-queries/">Saved Queries</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../triply-db-getting-started/data-stories/">Data Stories</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../triply-db-getting-started/admin-settings-pages/">Admin Settings Pages</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../triply-db-getting-started/reference/">Reference</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../triply-api/">API</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">TriplyDB-JS</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../../triplydb-js/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../triplydb-js/app/">App</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../triplydb-js/account/">Account</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../triplydb-js/asset/">Asset</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../triplydb-js/dataset/">Dataset</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../triplydb-js/graph/">Graph</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../triplydb-js/organization/">Organization</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../triplydb-js/query/">Query</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../triplydb-js/service/">Service</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../triplydb-js/story/">Story</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../triplydb-js/user/">User</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../triplydb-js/faq/">FAQ</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../triply-cli/">Command-line Interface</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../triplydb-changelog/">Changelog</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">TriplyETL</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Generic</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../generic/getting-started/">Getting Started</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../generic/changelog/">Changelog</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../generic/cli/">Command Line Interface (CLI)</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../generic/declarations/">Declarations</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../generic/control-structures/">Control Structures</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../generic/debug/">Debug</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../generic/internal-store/">Internal Store</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../generic/maintenance/">Maintenance</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../generic/record/">Record</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../generic/vocabularies/">Vocabularies</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Sources</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../sources/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../sources/apis/">APIs</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../sources/inline-json/">Inline JSON</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../sources/inline-strings/">Inline Strings</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../sources/local-files/">Local Files</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../sources/online-files/">Online Files</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../sources/rml/">RML Sources</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../sources/triplydb-assets/">TriplyDB Assets</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../sources/triplydb-datasets/">TriplyDB Datasets</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../sources/triplydb-queries/">TriplyDB Queries</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Extract</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../extract/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../extract/csv/">CSV</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../extract/json/">JSON</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../extract/oai-pmh/">OAI-PMH</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../extract/postgres/">Postgres</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../extract/rdf/">RDF</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../extract/shapefile/">Shapefile</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../extract/tsv/">TSV</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../extract/xlsx/">XLSX</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../extract/xml/">XML</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Transform</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../transform/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../transform/ratt/">RATT</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../transform/rml/">RML</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../transform/typescript/">TypeScript</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../transform/xslt/">XSLT</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Assert</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../assert/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../assert/json-ld/">JSON-LD</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="#">RATT</a>
+    <ul>
+                <li class="toctree-l3"><a class="reference internal" href="../../assert/ratt/terms/">RATT Terms</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../../assert/ratt/statements/">RATT Statements</a>
+                </li>
+    </ul>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../assert/rml/">RML</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../assert/xslt/">XSLT</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Enrich</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../enrich/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="#">SHACL</a>
+    <ul>
+                <li class="toctree-l3"><a class="reference internal" href="../../enrich/shacl/">Overview</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../../enrich/shacl/triple-rules/">Triple Rules</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../../enrich/shacl/sparql-rules/">SPARQL Rules</a>
+                </li>
+    </ul>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="#">SPARQL</a>
+    <ul>
+                <li class="toctree-l3"><a class="reference internal" href="../../enrich/sparql/construct/">SPARQL Construct</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../../enrich/sparql/update/">SPARQL Update</a>
+                </li>
+    </ul>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Validate</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../validate/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../validate/graph-comparison/">Graph Comparison</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../validate/shacl/">SHACL</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../publish/">Publish</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Yasgui</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../yasgui/">Introduction</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../yasgui-api/">For Developers</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../..">Triply Documentation</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../.." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Getting started</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <div class="toc"><span class="toctitle">On this page:</span><ul>
+<li><a href="#getting-started">Getting started</a><ul>
+<li><a href="#transforming-rdf-data">Transforming RDF data</a></li>
+<li><a href="#connect-a-data-source">Connect a data source</a></li>
+<li><a href="#important-terms-before-starting-to-work-with-triplyetl">Important terms before starting to work with TriplyETL</a><ul>
+<li><a href="#middlewares">Middlewares</a></li>
+<li><a href="#what-is-a-record">What is a record?</a></li>
+<li><a href="#what-is-the-store">What is the store?</a></li>
+<li><a href="#what-is-the-contextctx">What is the context(ctx)?</a></li>
+</ul>
+</li>
+<li><a href="#a-json-data-source">A JSON data source</a></li>
+<li><a href="#an-xml-data-source">An XML data source</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<h1 id="getting-started">Getting started<a class="headerlink" href="#getting-started" title="Permanent link">&para;</a></h1>
+<h2 id="transforming-rdf-data">Transforming RDF data<a class="headerlink" href="#transforming-rdf-data" title="Permanent link">&para;</a></h2>
+<p>If you have RDF data that does not need to be transformed, see <a href="https://triply.cc/docs/ratt-working-with-ratt#direct-copying-of-source-data-to-destination">copying source data</a>.
+If you have RDF data that <em>does</em> need to be transformed, you can use the following pattern. This example renames the graph.</p>
+<pre><code class="language-ts">const etl = new Etl({ defaultGraph: graph.model })
+etl.use(
+  loadRdf(Source.file(`data/shapes.trig`)),
+  mapQuads(
+    (quad, ctx) =&gt; ctx.store.quad(
+      quad.subject,
+      quad.predicate,
+      quad.object,
+      iri(prefix.graph, 'new-graph')
+    )
+  ),
+  toRdf(Destination.TriplyDb.rdf('my-dataset', remoteOptions))
+)
+</code></pre>
+<p>Similarly, you can change all the subject, predicates or objects in your data.</p>
+<p>Also, you can choose to transform triples of a specific subject, predicate, object or graph name. in this case, you should use:</p>
+<pre><code class="language-ts">mapQuads(
+  (quad, ctx) =&gt; ctx.store.quad(
+    quad.subject,
+    app.prefix.example('new-predicate'),
+    quad.object,
+    quad.graph
+  ),
+  {predicate: app.prefix.example(&quot;old-predicate&quot;)}
+)
+</code></pre>
+<h2 id="connect-a-data-source">Connect a data source<a class="headerlink" href="#connect-a-data-source" title="Permanent link">&para;</a></h2>
+<p>This section extends the pipeline from <a href="#publish-to-triplydb">the previous section</a> by connecting a data source. TriplyETL can connect to database systems and web APIs, but to keep things simple we will use the following tabular input data from a local file:</p>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>NAME</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>00001</td>
+<td>Anna</td>
+</tr>
+<tr>
+<td>00002</td>
+<td>Bob</td>
+</tr>
+<tr>
+<td>00003</td>
+<td>Carol</td>
+</tr>
+</tbody>
+</table>
+<p>We then perform the following steps to build a pipelines that processes this data source:</p>
+<p>1. Create a text file called <code>example.csv</code> in a text editor, and copy/paste the following source data into that file:</p>
+<pre><code class="language-csv">ID,NAME
+00001,Anna
+00002,Bob
+00003,Carol
+</code></pre>
+<p>2. Open text file <code>main.ts</code> and add the following content:</p>
+<pre><code class="language-ts">import { Etl, declarePrefix, fromCsv, iri, literal, rdfs,
+        Source, toRdf, triple } from '@triplyetl/etl/generic'
+import { rdfs } from '@triplyetl/vocabularies'
+
+export default async function (): Promise&lt;Etl&gt; {
+  const etl = new Etl({
+    prefixes: {
+      ex: declarePrefix('https://example.com/'),
+    },
+  })
+  etl.use(
+    // Connects the tabular source data to the pipeline.
+    // Every row in the table is processed as a TriplyETL record.
+    fromCsv(Source.file('example.csv')),
+    // Create a linked data statement that is based on the
+    // source data.
+    triple(iri(etl.prefix.ex, 'ID'), rdfs.label, 'NAME'),
+    toRdf(Destination.file('example.ttl'))
+  )
+  return etl
+}
+</code></pre>
+<!--
+// Create a universally unique identifier (IRI) based
+// on the value in the 'ID' column and the declared
+// 'person' prefix.
+
+// Create a string literal based on the value in the
+// 'NAME' column.
+-->
+
+<p>3. Transpile the code with:</p>
+<pre><code class="language-sh">npm run build
+</code></pre>
+<p>4. Run the ETL with:</p>
+<pre><code class="language-sh">npx etl
+</code></pre>
+<p>The TriplyETL script will give you a link to the uploaded dataset. This dataset contains the following graph content:</p>
+<h2 id="important-terms-before-starting-to-work-with-triplyetl">Important terms before starting to work with TriplyETL<a class="headerlink" href="#important-terms-before-starting-to-work-with-triplyetl" title="Permanent link">&para;</a></h2>
+<h3 id="middlewares">Middlewares<a class="headerlink" href="#middlewares" title="Permanent link">&para;</a></h3>
+<p>The most common occurrence in ETL are the middlewares. Middlewares are essentially reusable pieces of code that execute a certain long and/or complex piece of functionality. An middleware is a piece of code that transforms a record and can be invoked with etl.use().</p>
+<p>Example of middleware function:</p>
+<pre><code class="language-ts">loadRdf(Source.TriplyDb.query('my-account', 'my-query')),
+</code></pre>
+<h3 id="what-is-a-record">What is a record?<a class="headerlink" href="#what-is-a-record" title="Permanent link">&para;</a></h3>
+<p>TriplyETL doesn't have infinite memory and not all data can be loaded at once. So instead of loading data all at once, first one part of data is processed and written to the file, and then the second one, third one, and so on. These parts are called records. Each record goes through all middlewares before a new record is started.</p>
+<h3 id="what-is-the-store">What is the store?<a class="headerlink" href="#what-is-the-store" title="Permanent link">&para;</a></h3>
+<p>As mentioned above, when ETL is running we go through data record by record. Together with the input data we also have output data. Before being written to the final destination (triplyDB or file), output data has to be kept somewhere and that's what store  is for. The store is for temporarily storing linked data. Every record has its own store.
+toRdf reads from the store.</p>
+<pre><code class="language-ts">etl.use(
+  toRdf(Ratt.Destination.file('example.ttl'))
+)
+</code></pre>
+<h3 id="what-is-the-contextctx">What is the context(ctx)?<a class="headerlink" href="#what-is-the-contextctx" title="Permanent link">&para;</a></h3>
+<p>In TriplyETL, the context is an object that represents the current record. The context gives us access to the triple store, the in memory storage of our triples. It also contains utility functions that will be used to modify and transform our source data into linked data. Some examples of ctx:</p>
+<pre><code class="language-ts">ctx.getString(&quot;address&quot;)
+ctx.getIri(...)
+ctx.getArray(...)
+ctx.store.addQuad(...)
+ctx.store.getQuad(...)
+//etc.
+</code></pre>
+<h2 id="a-json-data-source">A JSON data source<a class="headerlink" href="#a-json-data-source" title="Permanent link">&para;</a></h2>
+<p>The following code snippet uses extractor <a href="#fromJson">fromJson()</a> with two inline example records:</p>
+<pre><code class="language-ts">import { fromJson, logRecord, Etl } from '@triplydb/etl/generic'
+export default async function (): Promise&lt;Etl&gt; {
+  const etl = new Etl()
+  etl.use(
+    fromJson([
+      { id: '123', name: 'John' },
+      { id: '456', name: 'Jane' },
+    ]),
+    logRecord(),
+  )
+  return etl
+}
+</code></pre>
+<p>Debug function <code>logRecord()</code> prints the current record to standard output. When this pipeline is run, the two records are printed as follows:</p>
+<pre><code class="language-json">{
+  &quot;id&quot;: &quot;123&quot;,
+  &quot;name&quot;: &quot;John&quot;,
+  &quot;$recordId&quot;: 1,
+  &quot;$environment&quot;: &quot;Development&quot;
+}
+{
+  &quot;id&quot;: &quot;456&quot;,
+  &quot;name&quot;: &quot;Jane&quot;,
+  &quot;$recordId&quot;: 2,
+  &quot;$environment&quot;: &quot;Development&quot;
+}
+</code></pre>
+<p>Notice that TriplyETL adds two keys to both records: <code>$recordId</code> and <code>$environment</code> (see <a href="#special-keys">Special Key</a>).</p>
+<h2 id="an-xml-data-source">An XML data source<a class="headerlink" href="#an-xml-data-source" title="Permanent link">&para;</a></h2>
+<p>Now suppose that we change the source system. We no longer use in-line JSON, but will instead use an XML file. The contents of the XML file are as follows:</p>
+<pre><code class="language-xml">&lt;?xml version=&quot;1.0&quot;?&gt;
+&lt;persons&gt;
+  &lt;person&gt;
+    &lt;id&gt;123&lt;/id&gt;
+    &lt;name&gt;John&lt;/name&gt;
+  &lt;/person&gt;
+  &lt;person&gt;
+    &lt;id&gt;456&lt;/id&gt;
+    &lt;name&gt;Jane&lt;/name&gt;
+  &lt;/person&gt;
+&lt;/persons&gt;
+</code></pre>
+<p>Let us change the TriplyETL script to use the XML source connector:</p>
+<pre><code class="language-ts">import { Etl, fromXml, logRecord, Source } from '@triplyetl/etl/generic'
+export default async function (): Promise&lt;Etl&gt; {
+  const etl = new Etl()
+  etl.use(
+    fromXml(Source.file('example.xml')),
+    logRecord(),
+  )
+  return etl
+}
+</code></pre>
+<p>This new script logs the following two records:</p>
+<pre><code class="language-json">{
+  &quot;id&quot;: &quot;123&quot;,
+  &quot;name&quot;: &quot;John&quot;,
+  &quot;$recordId&quot;: 1,
+  &quot;$environment&quot;: &quot;Development&quot;
+}
+{
+  &quot;id&quot;: &quot;456&quot;,
+  &quot;name&quot;: &quot;Jane&quot;,
+  &quot;$recordId&quot;: 2,
+  &quot;$environment&quot;: &quot;Development&quot;
+}
+</code></pre>
+<p>Notice that the two records that are logged from an XML source are completely identical to the two records that were previously logged from a JSON source. This is an essential property of TriplyETL: it treats data from any source system in the same way, using the same intermediary record format. This makes it easy to write pipelines that process data from a large number of different data sources. This also makes replacing a data source in one format with a data source in another format a relatively cheap operation. More often than not, only the source connector needs to be changed, and all transformations and assertions remain as they were.</p>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script>var base_url = '../../..';</script>
+      <script src="../../../js/triply.js" defer></script>
+      <script src="../../../js/highlight.min.js" defer></script>
+      <script src="../../../search/main.js" defer></script>
+
+</body>
+</html>
