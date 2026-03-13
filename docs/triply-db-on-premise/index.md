@@ -429,6 +429,47 @@ By default, TriplyDB generates certificates for SAML communication during the in
 
 4. Upgrade the Helm deployment.
 
+#### SAML attribute mappings
+
+TriplyDB can use SAML assertion attributes to automatically set properties on user accounts when they are created (and optionally on every subsequent login). This is configured through the `attributeMappings` value:
+
+```yaml
+auth:
+  saml:
+    okta:
+      attributeMappings:
+        admin:
+          key: "role"                    # Name of the SAML attribute
+          allowOverwrite: true           # Update the role on every login
+          map:                           # Map IDP values to TriplyDB admin levels
+            "Administrator": "super"
+            "Manager": "site"
+        email:
+          key: "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress"
+        name:
+          key: "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name"
+          allowOverwrite: true
+```
+
+Each attribute mapping has the following properties:
+
+| Property | Description |
+| :---- | :---- |
+| `key` | The name of the SAML assertion attribute to read. |
+| `map` | An optional object that maps IDP attribute values to TriplyDB values. If no map is configured, the attribute value is used as-is. If a map is configured and the attribute value is not in the map, the attribute is ignored. |
+| `allowOverwrite` | When `true`, the attribute is updated on every login. When `false` (the default), the attribute is only set when the account is first created. |
+
+The following attributes can be mapped:
+
+| Attribute | Description |
+| :---- | :---- |
+| `admin` | The admin level of the account. Must resolve to `"super"` (super administrator) or `"site"` (site administrator). Users for which this attribute is absent or does not resolve to a valid value become regular users. See [User roles](#user-roles) for the differences between these roles. |
+| `email` | The email address of the account. |
+| `name` | The account name (used in URLs). |
+| `displayedName` | The display name of the account. |
+| `persistentId` | A persistent unique identifier for the account. |
+| `expiresAt` | An expiration date for the account (ISO 8601 format). |
+
 #### Additional SAML configuration
 
 TriplyDB uses `node-saml` for SAML support. Additional `node-saml` configuration parameters can be passed through the `additionalConfig` value. See the [node-saml documentation](https://github.com/node-saml/node-saml?tab=readme-ov-file#config-parameter-details) for all available options.
