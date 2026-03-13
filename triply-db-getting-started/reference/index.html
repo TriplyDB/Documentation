@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <meta name="description" content="The official documentation for the Triply products: TriplyDB, TriplyDB.js, and TriplyETL." />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Reference - Triply Documentation</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link href="../../css/intellij-light.css" rel="stylesheet" />
+        <link href="../../css/triply.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Reference";
+        var mkdocs_page_input_path = "triply-db-getting-started/reference/index.md";
+        var mkdocs_page_url = null;
+      </script>
+     
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> Triply Documentation
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">TriplyDB</span></p>
+              <ul class="current">
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Getting started</a>
+    <ul class="current">
+                <li class="toctree-l2"><a class="reference internal" href="../">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../uploading-data/">Uploading Data</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../editing-data/">Editing (SKOS) Data</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../publishing-data/">Sharing Data</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../viewing-data/">Viewing Data</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../exporting-data/">Exporting Data</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../saved-queries/">Saved Queries</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../data-stories/">Data Stories</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../admin-settings-pages/">Admin Settings Pages</a>
+                </li>
+                <li class="toctree-l2 current"><a class="reference internal current" href="./">Reference</a>
+    <ul class="current">
+    <li class="toctree-l3"><a class="reference internal" href="#access-levels">Access Levels</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#access-level-control">Access level control</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#access-level-meaning">Access Level meaning</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#access-level-dependencies">Access Level dependencies</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#access-levels-and-workflows">Access levels and workflows</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#markdown-support">Markdown support</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#headings">Headings</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#text-styling">Text styling</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#hyperlinks">Hyperlinks</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#code">Code</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#introspection">Introspection</a>
+    </li>
+    </ul>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../triply-api/">API</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">TriplyDB-JS</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../triplydb-js/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triplydb-js/app/">App</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triplydb-js/account/">Account</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triplydb-js/asset/">Asset</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triplydb-js/dataset/">Dataset</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triplydb-js/graph/">Graph</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triplydb-js/organization/">Organization</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triplydb-js/query/">Query</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triplydb-js/service/">Service</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triplydb-js/story/">Story</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triplydb-js/user/">User</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triplydb-js/faq/">FAQ</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../triply-cli/">Command-line Interface</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../triplydb-changelog/">Changelog</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">TriplyETL</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Generic</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/generic/getting-started/">Getting Started</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/generic/changelog/">Changelog</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/generic/cli/">Command Line Interface (CLI)</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/generic/declarations/">Declarations</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/generic/control-structures/">Control Structures</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/generic/debug/">Debug</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/generic/internal-store/">Internal Store</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/generic/maintenance/">Maintenance</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/generic/record/">Record</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/generic/vocabularies/">Vocabularies</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Sources</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/sources/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/sources/apis/">APIs</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/sources/inline-json/">Inline JSON</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/sources/inline-strings/">Inline Strings</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/sources/local-files/">Local Files</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/sources/online-files/">Online Files</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/sources/rml/">RML Sources</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/sources/triplydb-assets/">TriplyDB Assets</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/sources/triplydb-datasets/">TriplyDB Datasets</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/sources/triplydb-queries/">TriplyDB Queries</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Extract</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/extract/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/extract/csv/">CSV</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/extract/json/">JSON</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/extract/oai-pmh/">OAI-PMH</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/extract/postgres/">Postgres</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/extract/rdf/">RDF</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/extract/shapefile/">Shapefile</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/extract/tsv/">TSV</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/extract/xlsx/">XLSX</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/extract/xml/">XML</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Transform</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/transform/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/transform/ratt/">RATT</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/transform/rml/">RML</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/transform/typescript/">TypeScript</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/transform/xslt/">XSLT</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Assert</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/assert/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/assert/json-ld/">JSON-LD</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="#">RATT</a>
+    <ul>
+                <li class="toctree-l3"><a class="reference internal" href="../../triply-etl/assert/ratt/terms/">RATT Terms</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../../triply-etl/assert/ratt/statements/">RATT Statements</a>
+                </li>
+    </ul>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/assert/rml/">RML</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/assert/xslt/">XSLT</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Enrich</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/enrich/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="#">SHACL</a>
+    <ul>
+                <li class="toctree-l3"><a class="reference internal" href="../../triply-etl/enrich/shacl/">Overview</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../../triply-etl/enrich/shacl/triple-rules/">Triple Rules</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../../triply-etl/enrich/shacl/sparql-rules/">SPARQL Rules</a>
+                </li>
+    </ul>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="#">SPARQL</a>
+    <ul>
+                <li class="toctree-l3"><a class="reference internal" href="../../triply-etl/enrich/sparql/construct/">SPARQL Construct</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../../triply-etl/enrich/sparql/update/">SPARQL Update</a>
+                </li>
+    </ul>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Validate</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/validate/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/validate/graph-comparison/">Graph Comparison</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/validate/shacl/">SHACL</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../triply-etl/publish/">Publish</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Yasgui</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../yasgui/">Introduction</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../yasgui-api/">For Developers</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">Triply Documentation</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">TriplyDB</li>
+          <li class="breadcrumb-item">Getting started</li>
+      <li class="breadcrumb-item active">Reference</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <div class="toc"><span class="toctitle">On this page:</span><ul>
+<li><a href="#reference">Reference</a><ul>
+<li><a href="#access-levels">Access Levels</a><ul>
+<li><a href="#access-level-control">Access level control</a></li>
+<li><a href="#access-level-meaning">Access Level meaning</a></li>
+<li><a href="#access-level-dependencies">Access Level dependencies</a></li>
+<li><a href="#access-levels-and-workflows">Access levels and workflows</a></li>
+</ul>
+</li>
+<li><a href="#markdown-support">Markdown support</a><ul>
+<li><a href="#headings">Headings</a></li>
+<li><a href="#text-styling">Text styling</a></li>
+<li><a href="#hyperlinks">Hyperlinks</a></li>
+<li><a href="#code">Code</a><ul>
+<li><a href="#in-line-code">In-line code</a></li>
+<li><a href="#multi-line-code-blocks">Multi-line code blocks</a></li>
+<li><a href="#code-language">Code language</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#introspection">Introspection</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<h1 id="reference">Reference<a class="headerlink" href="#reference" title="Permanent link">&para;</a></h1>
+<h2 id="access-levels">Access Levels<a class="headerlink" href="#access-levels" title="Permanent link">&para;</a></h2>
+<p>TriplyDB uses Access Levels that determine who can access content.</p>
+<p>Access Levels can be specified for the following content:</p>
+<ul>
+<li>Datasets, including everything that exist at the dataset level, such as metadata, settings, graphs, and services.</li>
+<li>Queries</li>
+<li>Stories</li>
+</ul>
+<h3 id="access-level-control">Access level control<a class="headerlink" href="#access-level-control" title="Permanent link">&para;</a></h3>
+<p>The Access Level control (see <a href="#fig-access-level-control">Figure 1</a>) is available on the settings page for these content types. The Access Level control also appears on the create dialog for these content types. The standard Access Level is always "Private". An explicit user action is needed to set the Access Level to "Internal" or "Public".</p>
+<figure id="fig-access-level-control">
+  <img src="../../assets/access-level-control.png">
+  <figcaption>Figure 1. The Access Level control for content in TriplyDB.</figcaption>
+</figure>
+
+<h3 id="access-level-meaning">Access Level meaning<a class="headerlink" href="#access-level-meaning" title="Permanent link">&para;</a></h3>
+<p>What an Access Level means, depends on whether content belongs to a user or to an organization. The following table contains the meaning of the Access Levels for content that belongs to a user:</p>
+<table>
+<thead>
+<tr>
+<th><strong>Icon</strong></th>
+<th><strong>Access Level</strong></th>
+<th><strong>Meaning</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img alt="" src="../../assets/private.png" /></td>
+<td>Private</td>
+<td>Content is only accessible to you.</td>
+</tr>
+<tr>
+<td><img alt="" src="../../assets/internal.png" /></td>
+<td>Internal</td>
+<td>Content is accessible to anyone who is logged into the same TriplyDB environment.</td>
+</tr>
+<tr>
+<td><img alt="" src="../../assets/public.png" /></td>
+<td>Public</td>
+<td>Content is accessible to anyone on the Internet.</td>
+</tr>
+</tbody>
+</table>
+<p>The following table contains the meaning of the Access Levels for content that belongs to an organization:</p>
+<table>
+<thead>
+<tr>
+<th><strong>Icon</strong></th>
+<th><strong>Access Level</strong></th>
+<th><strong>Meaning</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img alt="" src="../../assets/private.png" /></td>
+<td>Private</td>
+<td>Content is only accessible to organization members.</td>
+</tr>
+<tr>
+<td><img alt="" src="../../assets/internal.png" /></td>
+<td>Internal</td>
+<td>Content is accessible to anyone who is logged into the same TriplyDB environment.</td>
+</tr>
+<tr>
+<td><img alt="" src="../../assets/public.png" /></td>
+<td>Public</td>
+<td>Content is accessible to anyone on the Internet.</td>
+</tr>
+</tbody>
+</table>
+<p>Access Levels cannot be specified for the following content. This means that this content is always publicly accessible:</p>
+<ul>
+<li>Organizations, including their metadata and members.</li>
+<li>Users, including their metadata.</li>
+</ul>
+<h3 id="access-level-dependencies">Access Level dependencies<a class="headerlink" href="#access-level-dependencies" title="Permanent link">&para;</a></h3>
+<p>The Access Levels for datasets, queries, and stories may affect each other. For example, a public query may use a private dataset. This means that visitors who are not logged in, can see the query, its metadata, and its query string; however, such visitors will never receive query results from the private dataset. This ensures that private content always stays private, as intended.</p>
+<p>A warning is shown to the user when a dependency is introduced to content with a stricter Access Level (see <a href="#fig-access-level-dependencies">Figure 2</a>). This allows the user to change the Access Levels to a consistent state.</p>
+<figure id="fig-access-level-dependencies">
+  <img src="../../assets/access-level-dependencies.png">
+  <figcaption>Figure 2. A public query over a private dataset.</figcaption>
+</figure>
+
+<h3 id="access-levels-and-workflows">Access levels and workflows<a class="headerlink" href="#access-levels-and-workflows" title="Permanent link">&para;</a></h3>
+<p>These access levels are often used for the following workflow:</p>
+<ul>
+<li>You create a new dataset/query/story starts with access level ‘Private’.</li>
+<li>As the dataset/query/story progresses, give it access level ‘Internal’ to receive feedback from other users.</li>
+<li>Once the dataset/query/story is ready, give it access level ‘Public’ to publish it to the world.</li>
+</ul>
+<h2 id="markdown-support">Markdown support<a class="headerlink" href="#markdown-support" title="Permanent link">&para;</a></h2>
+<p>Triply allows rich text formatting to be used in the following places:</p>
+<ul>
+<li>Dataset description</li>
+<li>Account description</li>
+<li>Saved Query description</li>
+<li>Data Story elements</li>
+<li>Site welcome message</li>
+</ul>
+<p>The following Markdown elements are supported:</p>
+<h3 id="headings">Headings<a class="headerlink" href="#headings" title="Permanent link">&para;</a></h3>
+<p>Headings are used to divide a text into different sections. The hash
+character (<code>#</code>) at the beginning of a line indicates a heading is
+used. Multiple hash characters indicate nested headings.</p>
+<pre><code class="language-md"># Heading 1
+
+## Heading 2
+
+### Heading 3
+
+#### Heading 4
+
+##### Heading 5
+
+###### Heading 6
+</code></pre>
+<h3 id="text-styling">Text styling<a class="headerlink" href="#text-styling" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th><em>Style</em></th>
+<th><em>Syntax</em></th>
+<th><em>Output</em></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Bold</td>
+<td><code>**bold**</code></td>
+<td><strong>bold</strong></td>
+</tr>
+<tr>
+<td>Italic</td>
+<td><code>_italic_</code></td>
+<td><em>italic</em></td>
+</tr>
+<tr>
+<td>Strikethrough</td>
+<td><code>~~strikethrough~~</code></td>
+<td>~~strikethrough~~</td>
+</tr>
+</tbody>
+</table>
+<h3 id="hyperlinks">Hyperlinks<a class="headerlink" href="#hyperlinks" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th><em>Style</em></th>
+<th><em>Syntax</em></th>
+<th><em>Output</em></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Raw URL</td>
+<td><code>&lt;https://triply.cc&gt;</code></td>
+<td><a href="https://triply.cc">https://triply.cc</a></td>
+</tr>
+<tr>
+<td>Labeled URL</td>
+<td><code>[label](https://triply.cc)</code></td>
+<td><a href="https://triply.cc">label</a></td>
+</tr>
+</tbody>
+</table>
+<p>Notice that URLs can also be relative. This allows you to refer to
+other datasets, saved queries, etc. by using relative paths.</p>
+<h3 id="code">Code<a class="headerlink" href="#code" title="Permanent link">&para;</a></h3>
+<p>There are options for formatting in-line code as well as multi-line
+code blocks.</p>
+<h4 id="in-line-code">In-line code<a class="headerlink" href="#in-line-code" title="Permanent link">&para;</a></h4>
+<p>Code can also be used in-line with single backticks:</p>
+<pre><code class="language-md">Use `code` inside a sentence.
+</code></pre>
+<h4 id="multi-line-code-blocks">Multi-line code blocks<a class="headerlink" href="#multi-line-code-blocks" title="Permanent link">&para;</a></h4>
+<p>Multi-line code blocks start and end with three consecutive backticks.
+The following Markdown denotes two lines of Turtle:</p>
+<pre>
+
+<pre><code class="language-sparql">select * {
+  graph ?g {
+    ?s ?p ?o.
+  }
+}
+</code></pre>
+
+</pre>
+
+<p>The above is rendered as follows:</p>
+<pre><code class="language-sparql">select * {
+  graph ?g {
+    ?s ?p ?o.
+  }
+}
+</code></pre>
+<h4 id="code-language">Code language<a class="headerlink" href="#code-language" title="Permanent link">&para;</a></h4>
+<p>The opening backticks are optionally following by the name of the code
+language. The following code languages are supported:</p>
+<table>
+<thead>
+<tr>
+<th><strong>Language</strong></th>
+<th><strong>Syntax</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SPARQL</td>
+<td><code>sparql</code></td>
+</tr>
+<tr>
+<td>Turtle</td>
+<td><code>ttl</code></td>
+</tr>
+<tr>
+<td>TypeScript</td>
+<td><code>typescript</code></td>
+</tr>
+<tr>
+<td>R</td>
+<td><code>r</code></td>
+</tr>
+<tr>
+<td>Python</td>
+<td><code>python</code></td>
+</tr>
+</tbody>
+</table>
+<p>The other supported languages are: Bash (<code>bash</code>), C (<code>c</code>), C++
+(<code>cpp</code>), C# (<code>csharp</code>), Extended Backus-Naur Form (<code>ebnf</code>), Go (<code>go</code>),
+Haskell (<code>haskell</code>), Java (<code>java</code>), JavaScript (<code>javascript</code>), LaTeX
+(<code>latex</code>), Makefile (<code>makefile</code>), Markdown (<code>markdown</code>), Objective C
+(<code>objectivec</code>), Pascal (<code>pascal</code>), Perl (<code>perl</code>), Powershell
+(<code>powershell</code>), Prolog (<code>prolog</code>), Regular Expression (<code>regex</code>), Ruby
+(<code>ruby</code>), Scala (<code>scala</code>), SQL (<code>sql</code>), Yaml (<code>yaml</code>).</p>
+<h2 id="introspection">Introspection<a class="headerlink" href="#introspection" title="Permanent link">&para;</a></h2>
+<p>TriplyDB provides SPARQL functions that can be used to obtain data about the current working environment. Examples are the name and URL of the current dataset, or the name and URL of the current user. This concept is called <em>introspection</em>. Introspection is supported for TriplyDB's default SPARQL Engine, Speedy. This means that in order to use introspection, <strong>service</strong> should be set to "Speedy" for (saved) SPARQL queries.</p>
+<p>All the introspection functions are identified by IRIs in the namespace <code>https://triplydb.com/Triply/function/</code>. In the rest of this section, the following prefix is assumed:</p>
+<p><code>prefix tf: &lt;https://triplydb.com/Triply/function/&gt;</code></p>
+<p>The table below lists the introspection functions and the datatype of their result. The introspection functions do not need input parameters. </p>
+<table>
+<thead>
+<tr>
+<th><strong>Function</strong></th>
+<th><strong>Returns datatype</strong></th>
+<th><strong>Explanation</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>tf:instance_url()</td>
+<td>xsd:anyURI</td>
+<td>The URL of the TriplyDB instance</td>
+</tr>
+<tr>
+<td>tf:authenticated_user_url()</td>
+<td>xsd:anyURI</td>
+<td>The URL of the user executing the SPARQL query</td>
+</tr>
+<tr>
+<td>tf:authenticated_user_name()</td>
+<td>xsd:string</td>
+<td>The name of the user executing the SPARQL query</td>
+</tr>
+<tr>
+<td>tf:queried_dataset_url()</td>
+<td>xsd:anyURI</td>
+<td>The URL of the dataset that is being queried</td>
+</tr>
+<tr>
+<td>tf:queried_dataset_name()</td>
+<td>xsd:string</td>
+<td>The name of the dataset that is being queried</td>
+</tr>
+<tr>
+<td>tf:queried_dataset_owner_url()</td>
+<td>xsd:anyURI</td>
+<td>The URL of the owner of the dataset that is being queried</td>
+</tr>
+<tr>
+<td>tf:queried_dataset_owner_name()</td>
+<td>xsd:string</td>
+<td>The name of the owner of the dataset that is being queried</td>
+</tr>
+</tbody>
+</table>
+<p>One way in which introspection functions can be put to use is in making dynamic overviews in <a href="https://docs.triply.cc/triply-db-getting-started/data-stories/">data stories</a>. The example below shows how the URL of the current user can be matched to provenance data in the <a href="https://docs.triply.cc/triply-db-getting-started/editing-data/">Editor</a> to create a personalised overview of Editor operations:</p>
+<pre><code class="language-sparql">prefix tf: &lt;https://triplydb.com/Triply/function/&gt;
+prefix editor: &lt;https://triplydb.com/Triply/TriplyDB-instance-editor-vocabulary/&gt;
+select ?action ?time
+where {
+  bind (iri(tf:authenticated_user_url()) as ?userIri)
+  ?event
+    editor:actor ?userIri ;
+    editor:action ?action ;
+    editor:time ?time
+  .
+}
+</code></pre>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../admin-settings-pages/" class="btn btn-neutral float-left" title="Admin Settings Pages"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../../triply-api/" class="btn btn-neutral float-right" title="API">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../admin-settings-pages/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../../triply-api/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script>var base_url = '../..';</script>
+      <script src="../../js/triply.js" defer></script>
+      <script src="../../js/highlight.min.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+
+</body>
+</html>
