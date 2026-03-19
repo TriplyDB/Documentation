@@ -8,6 +8,14 @@ path: "/docs/triplydb-technical-changelog"
 This changelog covers technical changes related to TriplyDB on-premise deployments. See [here](/triplydb-changelog) for the TriplyDB changelog that is user facing.
 
 
+## 26.3.200 {#26.3.200}
+
+**Release date:** 2026-03-19
+
+- Simplified the ingress path rewrite annotations for the `/_api/` prefix. The generic `ingress-annotation-rewrite` helper has been replaced with a dedicated `ingress-annotation-strip-api-prefix` helper. This change is functionally equivalent for both nginx and HAProxy controllers, but if you have custom ingress overrides referencing the old helper name, they will need to be updated.
+- Added IDP certificate caching for SAML authentication. SAML identity provider certificates are now cached locally and refreshed periodically by a janitor task, reducing the number of outbound requests during authentication and improving resilience when the IDP metadata endpoint is temporarily unavailable.
+- Fixed the role attribute overwrite behavior for legacy SAML configurations.
+
 ## 26.3.100 {#26.3.100}
 
 **Release date:** 2026-03-04

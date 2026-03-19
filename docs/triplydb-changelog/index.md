@@ -6,6 +6,20 @@ path: "/docs/triplydb-changelog"
 [TOC]
 
 
+## 26.3.200 {#26.3.200}
+
+**Release date:** 2026-03-19
+
+**Features**
+
+
+- `#11160` [Data Editor] The Editor and Data Model pages now allow configuring which named graph changes are written to. Previously, all edits were silently written to a default graph, which was not always the desired behavior.
+
+**Issues fixed**
+
+- `#11216` [SPARQL] Fixed an issue where certain HTML/SVG visualizations in the SPARQL Gallery caused an error, preventing the gallery from rendering correctly. 
+
+
 ## 26.3.100 {#26.3.100}
 
 **Release date:** 2026-03-04
