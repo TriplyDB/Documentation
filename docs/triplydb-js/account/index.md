@@ -852,7 +852,7 @@ This is a destructive operation: if a story with the same name already exists in
 
 ### Examples
 
-The following snippet imports a story from TriplyDB.com. Queries that cannot be found on the target instance are imported on the fly:
+The following snippet imports a story from TriplyDB.com. The `fallbackQuery` callback uses `importQuery` to import queries that cannot be found on the target instance:
 
 ```ts
 const sourceApp = App.get({ url: 'https://api.triplydb.com' })
