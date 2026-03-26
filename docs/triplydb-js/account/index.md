@@ -742,6 +742,138 @@ for await (const story of account.getStories()) {
 See class [Story](../story/index.md#story) for an overview of the methods for story objects.
 
 
+## Account.importDataset(sourceDataset: Dataset, options: object)
+
+Imports a dataset from a different TriplyDB instance into the current account. The import copies the dataset metadata, prefixes, graphs, assets, and services.
+
+The source and target must be on different TriplyDB instances.
+
+This is a destructive operation: if a dataset with the same name already exists in the target account, it will be deleted and recreated.
+
+This is used to move data between TriplyDB instances, for example from an acceptance instance to a production instance.
+
+### Arguments
+
+**Required:**
+
+<dl>
+  <dt><code>sourceDataset: Dataset</code></dt>
+  <dd>The dataset object from the source TriplyDB instance to import.</dd>
+
+  <dt><code>options.overwrite: true</code></dt>
+  <dd>Must be set to <code>true</code> to confirm that this is a destructive operation.</dd>
+</dl>
+
+### Examples
+
+The following snippet imports a dataset from TriplyDB.com into the current user's account on a different instance:
+
+```ts
+const sourceApp = App.get({ url: 'https://api.triplydb.com' })
+const sourceAccount = await sourceApp.getAccount('Triply')
+const sourceDataset = await sourceAccount.getDataset('iris')
+
+const targetApp = App.get({ token: process.env.TOKEN })
+const targetAccount = await targetApp.getUser()
+
+await targetAccount.importDataset(sourceDataset, { overwrite: true })
+```
+
+
+## Account.importQuery(sourceQuery: Query, options: object)
+
+Imports a query from a different TriplyDB instance into the current account. This is used to move queries between TriplyDB instances together with their configuration.
+
+The source and target must be on different TriplyDB instances.
+
+The import first tries to automatically resolve the query's source dataset on the target instance (by matching the dataset name). If no matching dataset is found, the `fallbackDataset` function is called to provide one.
+
+This is a destructive operation: if a query with the same name already exists in the target account, it will be deleted and recreated.
+
+### Arguments
+
+**Required:**
+
+<dl>
+  <dt><code>sourceQuery: Query</code></dt>
+  <dd>The query object from the source TriplyDB instance to import.</dd>
+
+  <dt><code>options.fallbackDataset: (sourceDataset?: Dataset) => Promise&lt;Dataset | undefined&gt;</code></dt>
+  <dd>A function that is called when the query's dataset cannot be automatically resolved on the target instance. The function receives the source dataset (if known) and must return a dataset on the target instance, or <code>undefined</code>.</dd>
+
+  <dt><code>options.overwrite: true</code></dt>
+  <dd>Must be set to <code>true</code> to confirm that this is a destructive operation.</dd>
+</dl>
+
+### Examples
+
+The following snippet imports a query from TriplyDB.com. If the query's dataset cannot be found on the target instance, a specific dataset is used as a fallback:
+
+```ts
+const sourceApp = App.get({ url: 'https://api.triplydb.com' })
+const sourceAccount = await sourceApp.getAccount('Triply')
+const sourceQuery = await sourceAccount.getQuery('animal-gallery')
+
+const targetApp = App.get({ token: process.env.TOKEN })
+const targetUser = await targetApp.getUser()
+const fallbackDs = await targetUser.getDataset('my-dataset')
+
+await targetUser.importQuery(sourceQuery, {
+  overwrite: true,
+  fallbackDataset: async () => fallbackDs,
+})
+```
+
+
+## Account.importStory(sourceStory: Story, options: object)
+
+Imports a data story from a different TriplyDB instance into the current account. This is used to move stories between TriplyDB instances together with their content and query references.
+
+The source and the target must be on different TriplyDB instances.
+
+The import processes each story element. For query elements, it first tries to resolve the query by name on the target instance. If the query is not found, the `fallbackQuery` function is called. Paragraph elements are copied as-is. Banner images are also migrated.
+
+This is a destructive operation: if a story with the same name already exists in the target account, it will be deleted and recreated.
+
+### Arguments
+
+**Required:**
+
+<dl>
+  <dt><code>sourceStory: Story</code></dt>
+  <dd>The story object from the source TriplyDB instance to import.</dd>
+
+  <dt><code>options.fallbackQuery: (sourceQuery: Query) => Promise&lt;Query&gt;</code></dt>
+  <dd>A function that is called when a query referenced in the story cannot be found on the target instance. The function receives the source query and must return a query on the target instance.</dd>
+
+  <dt><code>options.overwrite: true</code></dt>
+  <dd>Must be set to <code>true</code> to confirm that this is a destructive operation.</dd>
+</dl>
+
+### Examples
+
+The following snippet imports a story from TriplyDB.com. Queries that cannot be found on the target instance are imported on the fly:
+
+```ts
+const sourceApp = App.get({ url: 'https://api.triplydb.com' })
+const sourceAccount = await sourceApp.getAccount('Triply')
+const sourceStory = await sourceAccount.getStory('the-iris-dataset')
+
+const targetApp = App.get({ token: process.env.TOKEN })
+const targetUser = await targetApp.getUser()
+const fallbackDs = await targetUser.getDataset('my-dataset')
+
+await targetUser.importStory(sourceStory, {
+  overwrite: true,
+  fallbackQuery: async (sourceQuery) => {
+    return await targetUser.importQuery(sourceQuery, {
+      overwrite: true,
+      fallbackDataset: async () => fallbackDs,
+    })
+  },
+})
+```
+
 ## Account.pinItems(items: array[Dataset|Story|Query])
 
 Pins the given datasets, stores, and/or queries to the home page of this account.
