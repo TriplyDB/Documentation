@@ -6,6 +6,24 @@ path: "/docs/triplydb-changelog"
 [TOC]
 
 
+## 26.4.100 {#26.4.100}
+
+**Release date:** 2026-04-01
+
+**Features**
+
+- `#11192` [Access Control] Added support for configurable ACL roles. Administrators can now define custom roles with fine-grained permissions, allowing more flexible access control configurations beyond the default role set.
+- `#11252` [Access Control] Added support for better API token support. Users can now
+  create API keys with fine-grained permissions, allowing for more flexibility and control
+ over the permissions of an API key.
+  against misconfiguration when one permission implies another.
+- `#11222` [SPARQL] Added support for the `math:sqrt` function in the Speedy SPARQL engine.
+
+**Issues fixed**
+
+- `#11249` [TriplyDB.js] Fixed an issue where `importDataset` failed when assets were disabled on the target instance.
+
+
 ## 26.3.200 {#26.3.200}
 
 **Release date:** 2026-03-19

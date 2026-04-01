@@ -8,6 +8,16 @@ path: "/docs/triplydb-technical-changelog"
 This changelog covers technical changes related to TriplyDB on-premise deployments. See [here](/triplydb-changelog) for the TriplyDB changelog that is user facing.
 
 
+## 26.4.100 {#26.4.100}
+
+**Release date:** 2026-04-01
+
+- Network policies for the API pod have been updated. A new rule allows API-to-API pod communication on the worker port, and `additionalIngress` entries with a `networkPolicySelector` are now included in ingress rules for both API and console pods. If you maintain custom network policies that override the chart defaults, review the updated templates.
+- The backup job now passes the `MONGO_DB` environment variable, sourced from the MongoDB secret (`mongodb-database` key) for external deployments or from `mongodb.db` for in-cluster deployments. This fixes backup failures when the database name differs from the default.
+- Removed the `serverSelectionTimeoutMS` MongoDB connection option. The default MongoDB driver timeout is now used, which improves behavior in environments with transient DNS or network delays.
+- Fixed JSON log timestamps to use the correct format.
+
+
 ## 26.3.200 {#26.3.200}
 
 **Release date:** 2026-03-19
