@@ -12,6 +12,8 @@ the Triply instance to working with your data, is done through the API. This
 document describes the general setup of the API, contact
 [support@triply.cc](mailto:support@triply.cc) for more information.
 
+For a complete, interactive API reference with all endpoints, request/response schemas, and try-it-out functionality, see the **[TriplyDB OpenAPI documentation](https://api.triplydb.com/api-docs)**. This page provides guides, conceptual explanations, and documentation for features not covered by the OpenAPI specification.
+
 ## Authentication
 
 When a dataset is published publicly, most of the read operation on
@@ -22,19 +24,7 @@ internally or privately require authentication.
 
 ### Creating an API token
 
-Authentication is implemented through API tokens. An API token can be
-created within the TriplyDB UI in the following way:
-
-1. Log into your TriplyDB instance.
-2. Click on the user menu in the top-right corner and click on “User settings”.
-3. Go to the “API tokens” tab.
-4. Click the “Create token” button, enter a description for the
-   token (e.g., “test-token”) and select the appropriate access
-   rights.
-5. Click on “Create” and copy the created API token (a lengthy
-   string of characters). This string is only shown once, upon
-   creation, and must not be shared with others. (Other users
-   can create their own token in the here described way.)
+Authentication is implemented through API tokens. Follow the steps in the [API Token guide](../generics/api-token.md) to create a new API token in the TriplyDB UI.
 
 ### Using the API token
 
@@ -98,106 +88,25 @@ https://api.triplydb.com/datasets/academy/pokemon/
 
 ### Create a dataset
 
-You can create a new dataset via the Triply API. You need to [use the API Token](#using-the-api-token) and send an HTTP POST request with data specifying: `name`, `accessLevel` and `displayName`.
-
-
-The  example of the URI:
-```sh
-curl -H 'Authorization: Bearer TOKEN' -H 'Content-Type: application/json' -X POST https://api.INSTANCE/datasets/ACCOUNT/ -d '{"name": "NAME", "accessLevel": "ACCESS_LEVEL", "displayName": "DISPLAY_NAME"}'
-
-```
-Upper-case letter words in json after `-d` must be replaced by the following values:
-
-- `NAME` :: The name of the dataset in the url.
-- `ACCESS_LEVEL` ::  *public*, *private* or *internal*. For more information visit [Access levels in TriplyDB](../triply-db-getting-started/reference/index.md#access-levels).
-- `DISPLAY_NAME` :: The display name of the dataset.
-
+See the [OpenAPI documentation](https://api.triplydb.com/api-docs#tag/Datasets) for creating and managing datasets via the API.
 
 ### Upload linked data
 
-You can upload linked data via the Triply API. You need to [use the API Token](#using-the-api-token) and send an HTTP POST request with data specifying the local file path.
-The list of supported file extensions can be checked in [Adding data: File upload](../triply-db-getting-started/uploading-data/index.md#adding-data-file-upload) documentation.
-
-The example of such a request:
-```sh
-curl -H 'Authorization: Bearer TOKEN' -X POST https://api.INSTANCE/datasets/ACCOUNT/DATASET/jobs  -F file=@FILENAME
-```
-Upper-case letter words must be replaced by the following values:
-
-- `TOKEN` :: Your TriplyDB token.
-- `INSTANCE` :: The domain of your instance
-- `ACCOUNT` :: Your account name
-- `DATASET` :: The dataset name
-- `FILENAME` :: The path to the file you want to upload
-
-A request looks like this:
-```sh
-curl -H 'Authorization: Bearer xxxxxx' -X POST https://api.triplydb.com/datasets/my-account-name/my-dataset-name/jobs  -F file=@./myfile.trig
-```
-
-**Limitations**: We only support this API route for uploads less than 5MB. To upload more data, use:
+See the [OpenAPI documentation](https://api.triplydb.com/api-docs#tag/Jobs) for uploading linked data. Note: the simple upload API route only supports uploads less than 5MB. To upload more data, use:
 
 1. [TriplyDB-JS](../triplydb-js/index.md): See the `importFrom*` methods under [the `Dataset` class](../triplydb-js/dataset/index.md).
 2. [TriplyDB Command-line Interface](../triply-cli/index.md)
 
 ### Upload assets
 
-You can upload assets via the Triply API. You need to [use the API Token](#using-the-api-token) and send an HTTP POST request with data specifying the local file path.
-
-To add a new asset:
-```sh
-curl -H "Authorization: Bearer TOKEN" -X POST https://api.INSTANCE/datasets/ACCOUNT/DATASET/assets -F file=@FILENAME
-```
-
-To add a version to an existing asset:
-```sh
-curl -H "Authorization: Bearer TOKEN" -X POST https://api.INSTANCE/datasets/ACCOUNT/DATASET/assets/IDENTIFIER -F file=@FILENAME
-```
-
-Upper-case letter words must be replaced by the following values:
-
-- `TOKEN` :: Your TriplyDB token.
-- `INSTANCE` :: The domain of your instance
-- `ACCOUNT` :: Your account name
-- `DATASET` :: The dataset name
-- `IDENTIFIER` :: The asset identifier where you'd like to add a new version to.
-- `FILENAME` :: The path to the file you want to upload
-
-This request returns a JSON object, that includes (among other things) an `identifier` key, which can be used as a persistent identifier for this asset.
-
-A request to add a new asset looks like this:
-```sh
-curl -H 'Authorization: Bearer xxxxxx' -X POST https://api.triplydb.com/datasets/my-account-name/my-dataset-name/assets -F file=@./myfile.txt
-```
-
-A request to add a version to an existing asset looks like this:
-```sh
-curl -H 'Authorization: Bearer xxxxxx' -X POST https://api.triplydb.com/datasets/my-account-name/my-dataset-name/assets/yyyyy -F file=@./myfile.txt
-```
-
-
-**Limitations**: We only support this API route for uploads less than 5MB. To upload more data, use:
+See the [OpenAPI documentation](https://api.triplydb.com/api-docs#tag/Assets) for uploading and managing assets. Note: the simple upload API route only supports uploads less than 5MB. To upload more data, use:
 
 1. [TriplyDB-JS](../triplydb-js/index.md): See the `uploadAsset` methods under [the `Dataset` class](../triplydb-js/dataset/index.md).
 2. [TriplyDB Command-line Interface](../triply-cli/index.md)
 
 ## Accounts
 
-Information about TriplyDB accounts (organizations and users) can be retrieved from the following API path:
-
-```none
-https://api.INSTANCE/accounts
-```
-
-Upper-case letter words must be replaced by the following values:
-
-- `INSTANCE` :: The host name of the TriplyDB instance that you want to use.
-
-Here is an example of a URI path that points to the Triply API for the Triply organization account:
-
-```none
-https://api.triplydb.com/accounts/Triply
-```
+See the [OpenAPI documentation](https://api.triplydb.com/api-docs#tag/Accounts) for account management endpoints.
 
 
 
@@ -399,35 +308,7 @@ See the following sections for more information on how to query the endpoints pr
 
 - [Elasticsearch](#elasticsearch)
 
-### Create a service
-
-You can create a service for a dataset via TriplyDB API. You need to [use the API Token](#using-the-api-token) and send an HTTP POST request with data specifying: `"type"` and `"name"`.
-
-The  example of the URI:
-
-```sh
-curl -H 'Authorization: Bearer TOKEN' -H 'Content-Type: application/json' -X POST https://api.INSTANCE/datasets/ACCOUNT/DATASET/services/ -d '{"type": "TYPE", "name": "NAME"}'
-```
-
-Upper-case letter words in json after `-d` must be replaced by the following values:
-
-- `TYPE` :: [SPARQL](#sparql) (`virtuoso` or `jena`) or [Elasticsearch](#elasticsearch)
-
-- `NAME` :: The name of the service
-
-### Synchronize a service
-
-You can synchronize existing service for a dataset via TriplyDB API. You need to [use the API Token](#using-the-api-token) and send an HTTP POST request with data:
-
-```json
-{"sync": "true"}
-```
-
-The  example of the URI:
-
-```sh
-curl -H 'Authorization: Bearer TOKEN' -H 'Content-Type: application/json' -X POST https://api.INSTANCE/datasets/ACCOUNT/DATASET/services/SERVICE -d '{"sync": "true"}'
-```
+See the [OpenAPI documentation](https://api.triplydb.com/api-docs#tag/Services) for creating, synchronizing, and managing services.
 
 
 ## SPARQL
@@ -491,7 +372,7 @@ According to the SPARQL 1.1 Protocol, queries can be send in the 3 different way
 
 ### SPARQL Query result formats
 
-SPARQL services are able to return results in different formats. The user can specify the preferred format by specifying the corresponding Media Type in the HTTP `Accept` header. TriplyDB supports the Media Types in the following table. Notice that the chosen result format must be supported for your query form. Alternatively, it is possible (but not preferred) to specify the requested format as an URI path suffix; see the [GET request](#get-request) section for an example.
+SPARQL services are able to return results in different formats. The user can specify the preferred format by specifying the corresponding Media Type in the HTTP `Accept` header. TriplyDB supports the Media Types in the following table. Notice that the chosen result format must be supported for your query form. Alternatively, it is possible to specify the requested format as a URI path suffix (e.g., `/sparql.csv`).
 
 | Result format | Media Type                        | Query forms         | Suffix    |
 | ------------- | --------------------------------- | ------------------- | --------- |
@@ -506,360 +387,15 @@ SPARQL services are able to return results in different formats. The user can sp
 | TSV           | `text/tab-separated-values`       | Select              | `.tsv`    |
 | Turtle        | `text/turtle`                     | Construct, Describe | `.ttl`    |
 
-### Examples of SPARQL Query requests
+For interactive examples of SPARQL requests and responses in all supported formats, see the [OpenAPI documentation](https://api.triplydb.com/api-docs#tag/SPARQL).
 
-This section contains examples of SPARQL HTTP requests. The requests run either of the following two SPARQL queries against a public SPARQL endpoint that contains data about Pokemon:
-
-```sparql
-select * { ?s ?p ?o. } limit 1
-```
-
-```sparql
-construct where { ?s ?p ?o. } limit 1
-```
-
-The examples made use of the popular command-line tool [cURL](https://curl.se). These examples should also work in any other HTTP client tool or library.
-
-### GET request
-
-```sh
-curl https://api.triplydb.com/datasets/academy/pokemon/services/pokemon/sparql?query=select%20%2A%20%7B%20%3Fs%20%3Fp%20%3Fo.%20%7D%20limit%201
-```
-
-Result:
-
-```json
-[
-  {
-    "s": "https://triplydb.com/academy/pokemon/vocab/",
-    "p": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
-    "o": "http://www.w3.org/2002/07/owl#Ontology"
-  }
-]
-```
-
-The following request is identical to the previous one, but adds the ".srj" suffix to the URI path (see `/sparql.srj`). All suffixes from the table in Section [SPARQL Query result formats](#sparql-query-result-formats) are supported.
-
-```sh
-curl https://api.triplydb.com/datasets/academy/pokemon/services/pokemon/sparql.srj?query=select%20%2A%20%7B%20%3Fs%20%3Fp%20%3Fo.%20%7D%20limit%201
-```
-
-This returns the official SPARQL Result Set JSON (SRJ) format. Notice that this official format is more verbose than the standard JSON format:
-
-```json
-{
-  "head": {
-    "link": [],
-    "vars": [
-      "s",
-      "p",
-      "o"
-    ]
-  },
-  "results": {
-    "bindings": [
-      {
-        "s": {
-          "type": "uri",
-          "value": "https://triplydb.com/academy/pokemon/"
-        },
-        "p": {
-          "type": "uri",
-          "value": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
-        },
-        "o": {
-          "type": "uri",
-          "value": "http://rdfs.org/ns/void#Dataset"
-        }
-      }
-    ]
-  }
-}
-```
-
-
-
-### URL-encoded POST request
-
-```sh
-curl -X POST https://api.triplydb.com/datasets/academy/pokemon/services/pokemon/sparql \
-  -H 'Content-Type: application/x-www-form-urlencoded' \
-  --data query=select%20%2A%20%7B%20%3Fs%20%3Fp%20%3Fo.%20%7D%20limit%201
-```
-
-Result:
-
-```json
-[
-  {
-    "s": "https://triplydb.com/academy/pokemon/vocab/",
-    "p": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
-    "o": "http://www.w3.org/2002/07/owl#Ontology"
-  }
-]
-```
-
-### Direct POST request
-
-```sh
-curl -X POST https://api.triplydb.com/datasets/academy/pokemon/services/pokemon/sparql \
-  -H 'Content-Type: application/sparql-query' \
-  -d 'select * { ?s ?p ?o } limit 1'
-```
-
-Result:
-
-```json
-[
-  {
-    "s": "https://triplydb.com/academy/pokemon/vocab/",
-    "p": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
-    "o": "http://www.w3.org/2002/07/owl#Ontology"
-  }
-]
-```
-
-#### SPARQL JSON
-
-Like the previous example, but with an `Accept` header that specifies Media Type `application/sparql-results+json`:
-
-```sh
-curl -X POST https://api.triplydb.com/datasets/academy/pokemon/services/pokemon/sparql \
-  -H 'Accept: application/sparql-results+json' \
-  -H 'Content-Type: application/sparql-query' \
-  -d 'select * { ?s ?p ?o } limit 1'
-```
-
-Result:
-
-```json
-{
-  "head": {
-    "vars": ["s", "p", "o"]
-  },
-  "results": {
-    "bindings": [
-      {
-        "s": {
-          "type": "uri",
-          "value": "https://triplydb.com/academy/pokemon/vocab/"
-        },
-        "p": {
-          "type": "uri",
-          "value": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
-        },
-        "o": {
-          "type": "uri",
-          "value": "http://www.w3.org/2002/07/owl#Ontology"
-        }
-      }
-    ]
-  }
-}
-```
-
-#### SPARQL XML
-
-Like the previous example, but with Media Type `application/sparql-results+xml` in the `Accept` header:
-
-```sh
-curl -X POST https://api.triplydb.com/datasets/academy/pokemon/services/pokemon/sparql \
-  -H 'Accept: application/sparql-results+xml' \
-  -H 'Content-Type: application/sparql-query' \
-  -d 'select * { ?s ?p ?o } limit 1'
-```
-
-Result:
-
-```xml
-<sparql xmlns="http://www.w3.org/2005/sparql-results#" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/2001/sw/DataAccess/rf1/result2.xsd">
-  <head>
-    <variable name="s"/>
-    <variable name="p"/>
-    <variable name="o"/>
-  </head>
-  <results distinct="false" ordered="true">
-    <result>
-      <binding name="s">
-        <uri>https://triplydb.com/academy/pokemon/vocab/</uri>
-      </binding>
-      <binding name="p">
-        <uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
-      </binding>
-      <binding name="o">
-        <uri>http://www.w3.org/2002/07/owl#Ontology</uri>
-      </binding>
-    </result>
-  </results>
-</sparql>
-```
-
-#### SPARQL tab-separated values
-
-Like the previous examples, but with Media Type `text/tab-separated-values` in the `Accept` header:
-
-```sh
-curl -X POST https://api.triplydb.com/datasets/academy/pokemon/services/pokemon/sparql \
-  -H 'Accept: text/tab-separated-values' \
-  -H 'Content-Type: application/sparql-query' \
-  -d 'select * { ?s ?p ?o } limit 1'
-```
-
-```tsv
-"s"	"p"	"o"
-"https://triplydb.com/academy/pokemon/vocab/"	"http://www.w3.org/1999/02/22-rdf-syntax-ns#type"	"http://www.w3.org/2002/07/owl#Ontology"
-```
-
-#### SPARQL comma-separated values
-
-Like the previous examples, but with Media Type `text/csv` in the `Accept` header:
-
-```sh
-curl -X POST https://api.triplydb.com/datasets/academy/pokemon/services/pokemon/sparql \
-  -H 'Accept: text/csv' \
-  -H 'Content-Type: application/sparql-query' \
-  -d 'select * { ?s ?p ?o } limit 1'
-```
-
-Result:
-
-```csv
-"s","p","o"
-"https://triplydb.com/academy/pokemon/vocab/","http://www.w3.org/1999/02/22-rdf-syntax-ns#type","http://www.w3.org/2002/07/owl#Ontology"
-```
-
-#### JSON-LD
-
-Like the previous examples, but with a SPARQL construct query and Media Type `application/ld+json` in the `Accept` header:
-
-```sh
-curl -X POST https://api.triplydb.com/datasets/academy/pokemon/services/pokemon/sparql \
-  -H 'Accept: application/ld+json' \
-  -H 'Content-Type: application/sparql-query' \
-  -d 'construct where { ?s ?p ?o } limit 1'
-```
-
-Result:
-
-```json
-{ "@graph": [
-    { "@id": "https://triplydb.com/academy/pokemon/vocab/",
-      "@type": "http://www.w3.org/2002/07/owl#Ontology" }
-] }
-```
-
-#### N-Quads
-
-Like the previous examples, but with Media Type `application/n-quads` in the `Accept` header:
-
-```sh
-curl -X POST https://api.triplydb.com/datasets/academy/pokemon/services/pokemon/sparql \
-  -H 'Accept: application/n-quads' \
-  -H 'Content-Type: application/sparql-query' \
-  -d 'construct where { ?s ?p ?o } limit 1'
-```
-
-Result:
-<!-- TODO -->
-```json
-{ "@graph": [
-    { "@id": "https://triplydb.com/academy/pokemon/vocab/",
-      "@type": "http://www.w3.org/2002/07/owl#Ontology" }
-] }
-```
-
-#### N-Triples
-
-Like the previous examples, but with Media Type `application/n-triples` in the `Accept` header:
-
-```sh
-curl -X POST https://api.triplydb.com/datasets/academy/pokemon/services/pokemon/sparql \
-  -H 'Accept: application/n-triples' \
-  -H 'Content-Type: application/sparql-query' \
-  -d 'construct where { ?s ?p ?o } limit 1'
-```
-
-Result:
-
-```turtle
-<https://triplydb.com/academy/pokemon/vocab/>	<http://www.w3.org/1999/02/22-rdf-syntax-ns#type>	<http://www.w3.org/2002/07/owl#Ontology> .
-```
-
-#### TriG
-
-Like the previous examples, but with Media Type `application/trig` in the `Accept` header:
-
-```sh
-curl -X POST https://api.triplydb.com/datasets/academy/pokemon/services/pokemon/sparql \
-  -H 'Accept: application/trig' \
-  -H 'Content-Type: application/sparql-query' \
-  -d 'construct where { ?s ?p ?o } limit 1'
-```
-
-Result:
-
-```turtle
-@prefix rdf:	<http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
-@prefix owl:	<http://www.w3.org/2002/07/owl#> .
-<https://triplydb.com/academy/pokemon/vocab/>	rdf:type	owl:Ontology .
-```
-
-#### Turtle
-
-Like the previous examples, but with Media Type `text/turtle` in the `Accept` header:
-
-```sh
-curl -X POST https://api.triplydb.com/datasets/academy/pokemon/services/pokemon/sparql \
-  -H 'Accept: text/turtle' \
-  -H 'Content-Type: application/sparql-query' \
-  -d 'construct where { ?s ?p ?o } limit 1'
-```
-
-Result:
-
-```turtle
-@prefix rdf:	<http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
-@prefix owl:	<http://www.w3.org/2002/07/owl#> .
-<https://triplydb.com/academy/pokemon/vocab/>	rdf:type	owl:Ontology .
-```
+For professional use, consider using [saved queries](../triply-db-getting-started/saved-queries/index.md), which support [pagination](../generics/sparql-pagination.md) for large result sets.
 
 ## GraphQL
 
-Some TriplyDB instances publish a GraphQL endpoint for every dataset. This endpoint can be used for GraphQL queries. It uses information from user-provided SHACL shapes to generate the GraphQL schema. See more information about this subject [here](../generics/Graphql.md).
+Some TriplyDB instances publish a GraphQL endpoint for every dataset. This endpoint uses information from user-provided SHACL shapes to generate the GraphQL schema.
 
-
-### URI path
-
-GraphQL requests are sent to the following URI path:
-
-```iri
-https://api.INSTANCE/datasets/ACCOUNT/DATASET/graphql
-```
-
-### Requests and Response
-The format of requests and corresponding responses are described by [graphql.org](https://graphql.org/learn/serving-over-http/)
-
-
-### Example
-
-
-Perform a search using the custom query:
-
-```json
-{
-  "query": {
-    "{ CapitalConnection { edges { node { label } } } }"
-  }
-}
-```
-
-This request is issued in the following way with the cURL command-line tool:
-
-```sh
-  curl -X POST https://api.triplydb.com/datasets/iish/cshapes/graphql \
-       -d '{ "query":"{ CapitalConnection { edges { node { label } } } }"}' \
-       -H "Content-Type: application/json"
-```
+See the [OpenAPI documentation](https://api.triplydb.com/api-docs#tag/GraphQL) for endpoint reference, and the [GraphQL implementation guide](../generics/Graphql.md) for details on schema generation from SHACL shapes, queries, filtering, and pagination.
 
 
 ## Elasticsearch
@@ -911,60 +447,7 @@ The following code snippet shows part of the reply for the below example request
 ```
 
 
-### Examples
-
-#### Simple search
-
-Perform a search for the string *mew*:
-
-```sh
-curl 'https://api.triplydb.com/datasets/academy/pokemon/services/search/search?query=mew'
-```
-
-#### Custom search
-
-Perform a search using the custom query:
-
-```json
-{
-  "query": {
-    "simple_query_string": {
-      "query": "pikachu"
-    }
-  }
-}
-```
-
-This request is issued in the following way with the cURL command-line tool:
-
-```sh
-curl -X POST 'https://api.triplydb.com/datasets/academy/pokemon/services/search/search' \
-     -d '{"query":{"simple_query_string":{"query":"pikachu"}}}' \
-     -H 'content-type: application/json'
-```
-
-#### Count API
-
-Elasticsearch allows the number of results to be determined without having to actually retrieve all these results. This is done with the "Count API". This API comes in handy when the number of results is shown in applications such as faceted search interfaces.
-
-The following two requests return the number of results for the search strings "Iris" and "Setosa". Notice that "Iris" occurs more often (184 times) than "Setosa" (52 times):
-
-```sh
-curl 'https://api.triplydb.com/datasets/Triply/iris/services/iris-es/_count'
-     -H 'Content-Type: application/json'
-     --data-raw $'{"query": { "simple_query_string": { "query": "Iris" } } }'
-{"count":184,"_shards":{"total":1,"successful":1,"skipped":0,"failed":0}}
-```
-
-and:
-
-```sh
-curl 'https://api.triplydb.com/datasets/Triply/iris/services/iris-es/_count'
-     -H 'Content-Type: application/json'
-     --data-raw $'{"query": { "simple_query_string": { "query": "Setosa" } } }'
-{"count":52,"_shards":{"total":1,"successful":1,"skipped":0,"failed":0}}
-```
-
+For interactive examples of search, query DSL, and count API requests, see the [OpenAPI documentation](https://api.triplydb.com/api-docs#tag/Search).
 
 
 ## Setting up index templates for ElasticSearch
