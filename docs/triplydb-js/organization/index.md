@@ -33,21 +33,23 @@ Inherited from [`Account.addDataset(name: string, metadata?: object)`](../accoun
 
 ## Organization.addMember(user: User, role?: Role)
 
-Adds a member to the given `Organization`, with the given `role` of either member or owner.
+Adds a member to the given `Organization`, with the given `role`.
 
 ### Arguments
 
 - The `user` argument has to be a user object of the user which should be added to the organization.
 
-- The `role` argument can be either `'member'` or `'owner'`. If this argument is not specified, then `'member'` is used as the default.
+- The `role` argument specifies the role to assign to the new member. If this argument is not specified, then `'member'` is used as the default. The following system roles are always available:
 
 <dl>
-  <dt><code>'member'</code></dt>
-  <dd>A regular member that is allowed to read and write the datasets that are published under the organization.</dd>
+  <dt><code>'member'</code> (default)</dt>
+  <dd>Can manage resources (datasets, queries, stories) but cannot manage organization members or delete the organization.</dd>
 
   <dt><code>'owner'</code></dt>
-  <dd>An owner of the organization. Owners have all the rights of regular users, plus the ability to add/remove users to/from the organization, the ability to change the roles of existing users, and the ability to delete the organization.</dd>
+  <dd>Full access to all account resources and settings, including the ability to add/remove users to/from the organization, the ability to change the roles of existing users, and the ability to delete the organization.</dd>
 </dl>
+
+In addition to the system roles, administrators can configure custom roles with specific permissions. Any custom role name that has been configured on the TriplyDB instance can be passed as the `role` argument. See the [Roles](../../triply-db-getting-started/admin-settings-pages/index.md#roles-page) documentation for more information.
 
 ### Examples
 user
@@ -131,7 +133,7 @@ A membership contains the following components:
 
 <dl>
   <dt><code>role</code></dt>
-  <dd>The role of the membership (<code>OrgRole</code>): either <code>'owner'</code> for owners of the organization, or <code>'member'</code> for regular members. The difference between owners and regular members is that owners can perform user management for the organization (add/remove/change memberships).</dd>
+  <dd>The role of the membership. This is one of the system roles (<code>'owner'</code> or <code>'member'</code>) or a custom role name configured by an administrator. See the <a href='../../triply-db-getting-started/admin-settings-pages/index.md#roles-page'>Roles</a> documentation for more information.</dd>
 
   <dt><code>user</code></dt>
   <dd>An instance of class <a href='#user'><code>User</code></a>.</dd>

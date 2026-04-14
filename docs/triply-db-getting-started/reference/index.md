@@ -63,6 +63,32 @@ These access levels are often used for the following workflow:
 - As the dataset/query/story progresses, give it access level ‘Internal’ to receive feedback from other users.
 - Once the dataset/query/story is ready, give it access level ‘Public’ to publish it to the world.
 
+## Roles
+
+TriplyDB uses roles to control what actions organization members can perform. While [Access Levels](#access-levels) control *who can see* content (visibility), roles control *what actions* members are allowed to take within an organization.
+
+Roles only apply to organization members. Personal user accounts are not affected by roles.
+
+### System roles
+
+Two system roles are always available:
+
+| **Role**     | **Description**                                                                                      |
+| ------------ | ---------------------------------------------------------------------------------------------------- |
+| `owner`      | Full access to all account resources and settings, including member management.                       |
+| `member`     | Can manage resources (datasets, queries, stories) but cannot manage members or delete the organization. |
+
+### Custom roles
+
+Administrators can create custom roles with a specific subset of permissions. This allows organizations to grant exactly the level of access that is appropriate for each member. For example, a custom role could allow read access to all datasets without the ability to create new ones, or grant write access without the ability to manage SPARQL services.
+
+Custom roles are configured by administrators in the [Admin Settings](../admin-settings-pages/index.md#roles-page). Roles are assigned to members in each organization's member settings.
+
+### API token permissions
+
+API token permissions follow the same model as roles. Tokens can be configured with individually selectable permissions. A token can never grant more permissions than the user already has through the user interface. See the [API Token](../../generics/api-token.md) documentation for details on creating and configuring tokens.
+
+
 ## Markdown support
 
 Triply allows rich text formatting to be used in the following places:

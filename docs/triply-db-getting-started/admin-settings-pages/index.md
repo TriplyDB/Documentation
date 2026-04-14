@@ -124,6 +124,50 @@ For editing the side-wide prefixes follow the next steps:
 
 
 
+## Roles page
+
+The roles page allows administrators to manage the roles that can be assigned to organization members. Roles define which actions organization members can perform within an organization. Roles only apply to organization members, not to personal accounts.
+
+The roles page is accessible by clicking on the "Admin settings" link in the user menu (top-right corner) and clicking the "Roles" tab.
+
+
+### System roles
+
+TriplyDB includes two built-in system roles that cannot be deleted:
+
+<dl>
+  <dt><code>owner</code></dt>
+  <dd>Full access to all account resources and settings, including the ability to manage organization members and their roles.</dd>
+
+  <dt><code>member</code></dt>
+  <dd>Can manage resources (datasets, queries, stories) but cannot manage organization members or delete the organization.</dd>
+</dl>
+
+
+### Custom roles
+
+Administrators can create custom roles with any subset of permissions. This allows for more flexible access control configurations beyond the default system roles. For example, you could create a role that grants read/write access to datasets but does not allow creating or managing SPARQL services.
+
+To create a custom role, follow these steps:
+
+1. Click on the "Admin settings" link in the user menu (top-right corner) and click the "Roles" tab.
+
+2. Click the "Create rols" button.
+
+3. Enter a name and description for the role. The name should clearly describe the purpose of the role.
+
+4. Select the permissions that this role should have. Each permission has a description of the action it allows. You can use the category filters and search field to find specific permissions.
+
+5. Click "Create" to save the role.
+
+Custom roles can be edited or deleted at any time from the roles page using the "Edit" and "Delete" buttons next to each role.
+
+
+### Assigning roles
+
+Roles are assigned to organization members in the member settings of each organization. Organization members with sufficient permissions (such as owners) can assign roles to other members. See [Organization.addMember()](../../triplydb-js/organization/index.md#organizationaddmemberuser-user-role-role) for how to assign roles programmatically.
+
+
 ## Account overview page
 
 The account page governs all the accounts of an instance. The paginated table shows all the accounts of the instance. The table is equipped with filters and sorting mechanisms to quickly search for and locate specific accounts according to search and filter criteria. The table also has a search field at the right side to quickly do wildcard searching.

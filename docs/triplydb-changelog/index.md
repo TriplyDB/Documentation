@@ -12,11 +12,8 @@ path: "/docs/triplydb-changelog"
 
 **Features**
 
-- `#11192` [Access Control] Added support for configurable ACL roles. Administrators can now define custom roles with fine-grained permissions, allowing more flexible access control configurations beyond the default role set.
-- `#11252` [Access Control] Added support for better API token support. Users can now
-  create API keys with fine-grained permissions, allowing for more flexibility and control
- over the permissions of an API key.
-  against misconfiguration when one permission implies another.
+- `#11192` [Access Control] Added support for configurable ACL roles. Administrators can now define custom roles with fine-grained permissions, allowing more flexible access control configurations beyond the default role set. See the [Roles](https://docs.triply.cc/triply-db-getting-started/admin-settings-pages/#roles-page) documentation for details.
+- `#11252` [Access Control] Added support for fine-grained API token permissions. Users can now create API tokens with individually configurable permissions, replacing the previous three fixed permission levels (read, write, management). See the [API Token](https://docs.triply.cc/generics/api-token/) documentation for details.
 - `#11222` [SPARQL] Added support for the `math:sqrt` function in the Speedy SPARQL engine.
 
 **Issues fixed**
