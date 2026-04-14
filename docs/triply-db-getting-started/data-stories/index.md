@@ -48,6 +48,6 @@ Data sometimes needs accompanying text to be completely understandable. TriplyDB
 
 Before you know it, you will have created your first data story. Congratulations! Now it is time to share it with the world, but don’t forget to set the access level to “public”. Then you have two options:
 1. You can simply share the URL in TriplyDB.
-2. You can embed the Data Story on your own webpage. Scroll all the way to the end of your Data Story and click the “</> Embed” button. This brings up a code snippet that you can copy/paste into your own HTML web page.
+2. You can embed the Data Story on your own webpage. Scroll all the way to the end of your Data Story and click the “&lt;/&gt; Embed” button. This brings up a code snippet that you can copy/paste into your own HTML web page.
 
 ![Dialog for embedding a Data Story](../../assets/data-stories-embed.png)

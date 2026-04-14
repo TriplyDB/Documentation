@@ -8,7 +8,6 @@ This is the documentation repository for Triply products, which includes documen
 - **TriplyDB**: An integrated linked data environment for publishing and using linked data knowledge graphs
 - **TriplyETL**: A library optimized for building production-grade linked data pipelines  
 - **TriplyDB.js**: A library for automating tasks in TriplyDB instances and building applications that tap into linked data knowledge graphs
-- **Yasgui**: SPARQL query interface
 
 The documentation is built using MkDocs and published to https://docs.triply.cc/.
 
@@ -43,7 +42,6 @@ Changes pushed to the master branch automatically deploy to the live documentati
 The site navigation is defined in `mkdocs.yml` with a hierarchical structure:
 - TriplyDB section includes getting started guides, API docs, TriplyDB-JS library docs, CLI docs, and changelog
 - TriplyETL section covers the ETL pipeline stages: Sources → Extract → Transform → Assert → Enrich → Validate → Publish
-- Yasgui section for SPARQL query interface documentation
 
 ### Key Files
 - `mkdocs.yml` - Main configuration file defining navigation, plugins, and theme settings

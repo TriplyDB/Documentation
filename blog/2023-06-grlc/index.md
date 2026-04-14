@@ -69,7 +69,7 @@ Here is an example that retrieves the GRLC format for the Pokémon query that we
 curl -vL -H 'Accept: text/plain' 'https://api.triplydb.com/queries/JD/pokemonNetwork'
 ```
 
-See the [TriplyDB API documentation](/triply-api#grlc) for more information.
+See the [TriplyDB API documentation](/triply-api#query-metadata-grlc) for more information.
 
 ## Using GRLC metadata in applications
 

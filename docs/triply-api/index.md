@@ -169,67 +169,9 @@ To make an API request for a specific instance, you can use the following URI pa
 https://api.triplydb.com/datasets/ACCOUNT/DATASET/describe.nt?resource=RESOURCE
 ```
 
-To illustrate this, let's take the example of the DBpedia dataset and the [specific instance of 'Mona Lisa'](https://triplydb.com/DBpedia-association/dbpedia/browser?resource=http%3A%2F%2Fdbpedia.org%2Fresource%2FMona_Lisa). If you use this URI path:
-
-```iri
-https://api.triplydb.com/datasets/DBpedia-association/dbpedia/describe.nt?resource=http%3A%2F%2Fdbpedia.org%2Fresource%2FMona_Lisa
-```
-
-In your browser, the `.nt` document describing the 'Mona Lisa' instance will be automatically downloaded. You can then upload this file to a dataset and [visualize it in a graph](../yasgui/index.md#network-triplydb-plugin). Figure 1 illustrates the retrieved graph for the ‘Mona Lisa’ instance.
-
-![Figure 1](../assets/MonaLisaGraph.png)
-
-The requested resource will be displayed in the center of the graph, forming an 'ego graph'. It will include all direct properties, as well as some indirect properties that are also pulled in by LD Browser. The labels for all classes and properties will be included for easy human-readable display.
-
-In addition, this API also supports traversing blank node-replacing well-known IRIs (CBD style), and limits the number of objects per subject/property to manage the description size. This corresponds to the "Show more" button in the LD Browser GUI, ensuring a manageable and user-friendly experience.
 
 
-
-## Triple Pattern Fragments (TPF)
-
-Triple Pattern Fragments (TPF) is a community standard that allows individual linked datasets to be queried for Triple Patterns (TP), a subset of the more complex SPARQL query language. The Triply API implements [Triple Pattern Fragments](http://www.hydra-cg.com/spec/latest/triple-pattern-fragments/) version 2019-01-18 and [Linked Data Fragments](http://www.hydra-cg.com/spec/latest/linked-data-fragments/) version 2016-06-05.
-
-The Triple Pattern Fragments (TPF) API is available for all datasets in Triply and does not require running a dedicated service.
-
-
-### URI path
-
-TPF requests are sent to the following URI path:
-
-```iri
-https://api.INSTANCE/datasets/ACCOUNT/DATATSET/fragments
-```
-
-
-### Reply format
-
-Since TPF replies distinguish between data and metadata that are stored in different graphs, it is recommended to request the TriG content type with the following HTTP request header:
-
-```http
-Accept: application/trig
-```
-
-#### Query parameters
-
-Triple Pattern Fragments (TPF) uses the following query parameters in order to retrieve only those triples that adhere to a specified Triple Pattern:
-
-| _Key_       | _Value_                       | _Purpose_                                                                          |
-| ----------- | ----------------------------- | ---------------------------------------------------------------------------------- |
-| `subject`   | A URL-encoded IRI.           | Only return triples where the given IRI appears in the subject position.          |
-| `predicate` | A URL-encoded IRI.           | Only return triples where the given IRI appears in the predicate position.        |
-| `object`    | A URL-encoded IRI or literal. | Only return triples where the given IRI or literal appears in the object position. |
-
-#### Example request
-
-```sh
-curl -G \
-       'https://api.triplydb.com/datasets/academy/pokemon/fragments' \
-       --data-urlencode 'predicate=http://www.w3.org/2000/01/rdf-schema#label' \
-       -H 'Accept: application/trig'
-```
-
-
-### Exporting data
+## Exporting data
 
 To export the linked data, use the following path:
 
@@ -237,7 +179,7 @@ To export the linked data, use the following path:
 https://api.INSTANCE/datasets/ACCOUNT/DATATSET/download
 ```
 
-#### Query parameters
+### Query parameters
 
 By default, an export includes all linked data graphs. Use a query argument to specify a particular graph.
 
@@ -257,7 +199,7 @@ To find out which graphs are available, use the following path:
 https://api.INSTANCE/datasets/ACCOUNT/DATATSET/graphs
 ```
 
-#### Example requests
+### Example requests
 
 Export a dataset:
 

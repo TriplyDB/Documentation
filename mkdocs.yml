@@ -97,9 +97,6 @@ nav:
           - Graph Comparison: triply-etl/validate/graph-comparison.md
           - SHACL: triply-etl/validate/shacl.md
       - Publish: triply-etl/publish/index.md
-  - Yasgui:
-      - Introduction: yasgui/index.md
-      - For Developers:  yasgui-api/index.md
 markdown_extensions:
   - attr_list:
   - toc:

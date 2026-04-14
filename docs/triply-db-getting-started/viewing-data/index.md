@@ -113,7 +113,7 @@ The linked data Table can be used to perform simple queries by filling in the su
 
 Terms in the linked data Table can be dragged and dropped between columns. This allows a simple form of graph navigation. For example, an object term can be dragged to the subject column in order to show the triples in which that term appears in the subject position.
 
-Queries in the linked data Table can also be performed automatically through the Statements API and the [Triple Pattern Fragments API](../../triply-api/index.md#triple-pattern-fragments-tpf).
+
 
 ## SPARQL IDE
 
