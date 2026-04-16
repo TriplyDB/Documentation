@@ -8,6 +8,17 @@ path: "/docs/triplydb-technical-changelog"
 This changelog covers technical changes related to TriplyDB on-premise deployments. See [here](/triplydb-changelog) for the TriplyDB changelog that is user facing.
 
 
+## 26.4.200 {#26.4.200}
+
+**Release date:** 2026-04-16
+
+- **Breaking** The `console.theme.material` property has been removed from the values file. MUI theme colors are now derived from the existing `console.theme` properties directly (e.g., `console.theme.primary`, `console.theme.secondary`). If you have `console.theme.material` set in your values file, remove it — the deployment will fail validation otherwise.
+- New value `flows.nodejsMemoryLimit` (default: `5120`, in MB). Controls the V8 `--max-old-space-size` for flow worker processes. Previously this was hardcoded. Increase this value if flow tasks process large datasets and run into out-of-memory errors.
+- Auth rate limiting ingress rules now target only `/web/auth/local/` paths instead of the broader `/web/` prefix. This prevents rate limiting of innocuous endpoints like logout, OAuth redirects, and session loading. No action needed unless you have custom ingress overrides referencing `/web/` auth paths.
+- Added `/web/`, `/__sm`, and `/sitemap.xml` path routing to the console ingress for proper request routing.
+- HAProxy ingress improvements: updated rate limiting burst documentation and annotations for better accuracy.
+
+
 ## 26.4.100 {#26.4.100}
 
 **Release date:** 2026-04-01

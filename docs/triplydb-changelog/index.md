@@ -6,6 +6,17 @@ path: "/docs/triplydb-changelog"
 [TOC]
 
 
+## 26.4.200 {#26.4.200}
+
+**Release date:** 2026-04-16
+
+**Issues fixed**
+
+- `#11268` [Console] Instances with custom color themes now render faster with more consistent color rendering.
+- [Console] Fixed an issue in the data editor leading to inconsistent editor state.
+- [Data Upload] Fixed an issue where dump files could include empty or truncated files.
+
+
 ## 26.4.100 {#26.4.100}
 
 **Release date:** 2026-04-01
