@@ -13,7 +13,7 @@ path: "/docs/triplydb-changelog"
 **Issues fixed**
 
 - `#11268` [Console] Instances with custom color themes now render faster with more consistent color rendering.
-- [Console] Fixed an issue in the data editor leading to inconsistent editor state.
+- [Editor history] Fix regression where Editor change events were not saved.
 - [Data Upload] Fixed an issue where dump files could include empty or truncated files.
 
 
