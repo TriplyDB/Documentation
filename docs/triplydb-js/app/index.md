@@ -23,7 +23,7 @@ Notice that the URL must point to the API of the TriplyDB server that the `App` 
 When an API token is specified, the operations that can be performed through the `App` object are determined by:
 
 1. The access level of the token: either “Read access”, “Write access”, or “Management access”.
-2. The credentials of the user account for which the API token is created. When a user is a member of an organization, she has access to all its datasets, stories, and queries; a user always has access to her own datasets, stores and queries.
+2. The credentials of the user account for which the API token is created. When a user is a member of a group, she has access to all its datasets, stories, and queries; a user always has access to her own datasets, stores and queries.
 
 The following token access levels are available:
 
@@ -35,7 +35,7 @@ The following token access levels are available:
 
    - Read operations over data with access level “Private” that belongs to the user who created the token.
 
-   - Read operations over data with access level “Private” that belongs to organizations to which the user who created the token is a member.
+   - Read operations over data with access level “Private” that belongs to groups of which the user who created the token is a member.
 
 2\. “Write access” allows:
 
@@ -45,7 +45,7 @@ The following token access levels are available:
 
    - Write operations over data
 
-3\. “Management access” allows the following operations to be performed: creating organizations, adding/removing members to/from organizations.
+3\. “Management access” allows the following operations to be performed: creating groups, adding/removing members to/from groups.
 
 The following creates an `App` object with an API token that is made available through an environment variable:
 
@@ -81,9 +81,9 @@ const account = await triply.getAccount()
 
 This method returns an account object. See class [Account](../account/index.md#account) for an overview of the methods that can be called on such objects.
 
-Class [Account](../account/index.md#account) has two specializations: class [Organization](../organization/index.md#organization) and class [User](../user/index.md#user). In line with these class specializations, there are also two method specializations:
+Class [Account](../account/index.md#account) has two specializations: class [Group](../group/index.md#group) and class [User](../user/index.md#user). In line with these class specializations, there are also two method specializations:
 
-- Method [`App.getOrganization(name: string)`](#appgetorganizationname-string) returns an organization object.
+- Method [`App.getGroup(name: string)`](#appgetgroupname-string) returns a group object.
 
 - Method [`App.getUser(name?: string)`](#appgetusername-string) returns a user object.
 
@@ -133,25 +133,26 @@ console.log(await triply.getInfo())
 ```
 
 
-## App.getOrganization(name: string)
+<a id="appgetorganizationname-string"></a>
+## App.getGroup(name: string)
 
-Returns the TriplyDB organization with the given `name`.
+Returns the TriplyDB group with the given `name`.
 
 This method is similar to [`App.getAccount(name?: string)`](#appgetaccountname-string), but differs in the following ways:
 
-- This method only works for accounts that represent TriplyDB organizations.
+- This method only works for accounts that represent TriplyDB groups.
 
-- This method returns an organization object. Class [Organization](../organization/index.md#organization) is a specialization of class [Account](../account/index.md#account).
+- This method returns a group object. Class [Group](../group/index.md#group) is a specialization of class [Account](../account/index.md#account).
 
 ### Examples
 
-The following snippet returns the organization called `'Triply'`:
+The following snippet returns the group called `'Triply'`:
 
 ```ts
-const organization = await triply.getOrganization('Triply')
+const group = await triply.getGroup('Triply')
 ```
 
-See class [Organization](../organization/index.md#organization) for an overview of the methods that can be used with organization objects.
+See class [Group](../group/index.md#group) for an overview of the methods that can be used with group objects.
 
 ### Alternatives
 
@@ -159,18 +160,18 @@ This method is a shorthand for calling the following two methods:
 
 - Call method [`App.getAccount(name?: string)`](#appgetaccountname-string) to retrieve an account object.
 
-- Then call method [`Account.asOrganization()`](../account/index.md#accountasorganization) to cast the account object into an organization object.
+- Then call method [`Account.asGroup()`](../account/index.md#accountasgroup) to cast the account object into a group object.
 
 The following snippet returns the same result as the previous example, but uses two methods instead of one:
 
 ```ts
 const account = await triply.getAccount('Triply')
-const organization = account.asOrganization()
+const group = account.asGroup()
 ```
 
 ### See also
 
-This method returns an organization object. See class [Organization](../organization/index.md#organization) for an overview of the methods that can be called on such objects.
+This method returns a group object. See class [Group](../group/index.md#group) for an overview of the methods that can be called on such objects.
 
 
 ## App.getUser(name?: string)

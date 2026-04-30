@@ -137,7 +137,7 @@ It is sometimes useful to share a SPARQL query with somebody else, or to have a 
 
 ### Transfer a SPARQL query
 
-The SPARQL queries could be transferred to another account or an organization. To do that, go to the setting field at the query page,
+The SPARQL queries could be transferred to another account or a group. To do that, go to the setting field at the query page,
 
 ![Transfer a SPARQL query](../../assets/where-find-transfer.png)
 
@@ -149,19 +149,19 @@ and then choose where the SPARQL query should be moved to:
 
 ![Transfer a SPARQL query](../../assets/transfer-to-organization.png)
 
-After the destination is set you would be redirected to the SPARQL query new page. The SPARQL query could be transferred from an account to an organization and vice versa.
+After the destination is set you would be redirected to the SPARQL query new page. The SPARQL query could be transferred from an account to a group and vice versa.
 
 ### Copy a SPARQL query
 
-Users can copy SPARQL queries to another account or an organization. To do that, click on three dots in the upper right corner of the query and choose the copy option:
+Users can copy SPARQL queries to another account or a group. To do that, click on three dots in the upper right corner of the query and choose the copy option:
 
 ![Copy query](../../assets/copyQuery.png)
 
 Then, choose where the SPARQL query should be moved to:
 
-![Select organization](../../assets/selectOrganization.png)
+![Select group](../../assets/selectOrganization.png)
 
-After setting the destination, you will be redirected to the SPARQL query new page. The SPARQL query can be copied from an account to an organization and vice versa.
+After setting the destination, you will be redirected to the SPARQL query new page. The SPARQL query can be copied from an account to a group and vice versa.
 
 ## ElasticSearch
 

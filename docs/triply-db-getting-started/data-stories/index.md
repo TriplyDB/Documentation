@@ -18,8 +18,8 @@ As shown in the image below, in the top right corner of the page, there is a men
 
 - **Story settings**: Here you can change the title and the access level of your story.
 - **Change banner**: Here you can change the banner, just choose an image that you want as your banner (wide images work best).
-- **Copy**: To copy the story to a different user or organization.
-- **Transfer**: To transfer the story to a different user or organization.
+- **Copy**: To copy the story to a different user or group.
+- **Transfer**: To transfer the story to a different user or group.
 - **Embed**: HTML to embed the story in a web page using an iFrame.
 - **Print**: Dialog and print options to print the story.
 - **Delete**: To delete the story.

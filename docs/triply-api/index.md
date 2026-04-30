@@ -77,7 +77,7 @@ https://api.INSTANCE/datasets/ACCOUNT/DATASET/
 Upper-case letter words must be replaced by the following values:
 
 - `INSTANCE` :: The host name of the TriplyDB instance that you want to use.
-- `ACCOUNT` :: The name of a specific user or a specific organization.
+- `ACCOUNT` :: The name of a specific user or a specific group.
 - `DATASET` :: The name of a specific dataset.
 
 Here is an example of a URI path that points to the Triply API for the Pokémon dataset:

@@ -57,9 +57,10 @@ Adds a new TriplyDB story with the given `name` to the current user.
 Inherited from [`Account.addStory(name: string, metadata?: object)`](../account/index.md#accountaddstoryname-string-metadata-object).
 
 
-## User.createOrganization(name: string, metadata?: object)
+<a id="usercreateorganizationname-string-metadata-object"></a>
+## User.createGroup(name: string, metadata?: object)
 
-Creates a new organization for which this user will be the owner.
+Creates a new group for which this user will be the owner.
 
 ### Access restrictions
 
@@ -67,28 +68,28 @@ This method requires an API token with write access for this user.
 
 ### Arguments
 
-- Argument `name` is the URL-friendly name of the new organization. This name can only contain alphanumeric characters and hyphens (`[A-Za-z0-9\-]`).
+- Argument `name` is the URL-friendly name of the new group. This name can only contain alphanumeric characters and hyphens (`[A-Za-z0-9\-]`).
 
 - The optional `metadata` argument can be used to specify additional metadata. This is a dictionary object with the following optional keys:
 
 <dl>
   <dt><code>description</code></dt>
-  <dd>The description of the organization. This description can make use of Markdown.</dd>
+  <dd>The description of the group. This description can make use of Markdown.</dd>
 
   <dt><code>email</code></dt>
-  <dd>The email address at which the organization can be reached.</dd>
+  <dd>The email address at which the group can be reached.</dd>
 
   <dt><code>name</code></dt>
-  <dd>The human-readable name of the organization. This name may contain spaces and other non-alphanumeric characters.</dd>
+  <dd>The human-readable name of the group. This name may contain spaces and other non-alphanumeric characters.</dd>
 </dl>
 
 ### Examples
 
-The following snippet creates a new organization for which John Doe will be the owner. Notice that both a required URL-friendly name (`'my-organization'`) and an optional display name (`'My Organization'`) are specified.
+The following snippet creates a new group for which John Doe will be the owner. Notice that both a required URL-friendly name (`'my-group'`) and an optional display name (`'My Group'`) are specified.
 
 ```ts
 const user = await triply.getUser('john-doe')
-await user.createOrganization(my-organization, {name: 'My Organization'}))
+await user.createGroup('my-group', {name: 'My Group'})
 ```
 
 
@@ -153,7 +154,7 @@ The information object for users includes the following keys:
   <dd>The role of the user. Either 'light', 'regular' or 'siteAdmin'.</dd>
 
   <dt><code>orgs</code></dt>
-  <dd>An array of organizations of which the user is a member.</dd>
+  <dd>An array of groups of which the user is a member. The <code>orgs</code> key name is preserved for backwards compatibility — groups were previously called organizations.</dd>
 
   <dt><code>Email address</code></dt>
   <dd>The email address of the user.</dd>
@@ -175,28 +176,29 @@ console.log(await user.getInfo())
 ```
 
 
-## User.getOrganizations()
+<a id="usergetorganizations"></a>
+## User.getGroups()
 
-Returns an [async iterator](../faq/index.md#what-is-an-async-iterator) over the organizations that this user is a member of.
+Returns an [async iterator](../faq/index.md#what-is-an-async-iterator) over the groups that this user is a member of.
 
 ### Order considerations
 
-The order in the list reflects the order in which the organizations appear on the user page in the Triply GUI.
+The order in the list reflects the order in which the groups appear on the user page in the Triply GUI.
 
 ### Examples
 
-The following snippet prints the list of organizations that John Doe is a member of:
+The following snippet prints the list of groups that John Doe is a member of:
 
 ```ts
 const user = await triply.getUser('john-doe')
-for await (const organization of await user.getOrganizations()) {
-  console.log((await organization.getInfo()).name)
+for await (const group of await user.getGroups()) {
+  console.log((await group.getInfo()).name)
 }
 ```
 
 ### See also
 
-The [async iterator](../faq/index.md#what-is-an-async-iterator) contains organization objects. See the section about the [`Organization`](../organization/index.md#organization) class for methods that can be used on such objects.
+The [async iterator](../faq/index.md#what-is-an-async-iterator) contains group objects. See the section about the [`Group`](../group/index.md#group) class for methods that can be used on such objects.
 
 
 ## User.getPinnedItems()

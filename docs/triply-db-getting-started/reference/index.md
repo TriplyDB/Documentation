@@ -23,7 +23,7 @@ The Access Level control (see [Figure 1](#fig-access-level-control)) is availabl
 
 ### Access Level meaning
 
-What an Access Level means, depends on whether content belongs to a user or to an organization. The following table contains the meaning of the Access Levels for content that belongs to a user:
+What an Access Level means, depends on whether content belongs to a user or to a group. The following table contains the meaning of the Access Levels for content that belongs to a user:
 
 | **Icon**                       | **Access Level** | **Meaning**                                                                       |
 | ------------------------------ | ---------------- | --------------------------------------------------------------------------------- |
@@ -31,17 +31,17 @@ What an Access Level means, depends on whether content belongs to a user or to a
 | ![](../../assets/internal.png) | Internal         | Content is accessible to anyone who is logged into the same TriplyDB environment. |
 | ![](../../assets/public.png)   | Public           | Content is accessible to anyone on the Internet.                                  |
 
-The following table contains the meaning of the Access Levels for content that belongs to an organization:
+The following table contains the meaning of the Access Levels for content that belongs to a group:
 
 | **Icon**                       | **Access Level** | **Meaning**                                                                       |
 | ------------------------------ | ---------------- | --------------------------------------------------------------------------------- |
-| ![](../../assets/private.png)  | Private          | Content is only accessible to organization members.                               |
+| ![](../../assets/private.png)  | Private          | Content is only accessible to group members.                                      |
 | ![](../../assets/internal.png) | Internal         | Content is accessible to anyone who is logged into the same TriplyDB environment. |
 | ![](../../assets/public.png)   | Public           | Content is accessible to anyone on the Internet.                                  |
 
 Access Levels cannot be specified for the following content. This means that this content is always publicly accessible:
 
-- Organizations, including their metadata and members.
+- Groups, including their metadata and members.
 - Users, including their metadata.
 
 ### Access Level dependencies
@@ -65,9 +65,9 @@ These access levels are often used for the following workflow:
 
 ## Roles
 
-TriplyDB uses roles to control what actions organization members can perform. While [Access Levels](#access-levels) control *who can see* content (visibility), roles control *what actions* members are allowed to take within an organization.
+TriplyDB uses roles to control what actions group members can perform. While [Access Levels](#access-levels) control *who can see* content (visibility), roles control *what actions* members are allowed to take within a group.
 
-Roles only apply to organization members. Personal user accounts are not affected by roles.
+Roles only apply to group members. Personal user accounts are not affected by roles.
 
 ### System roles
 
@@ -76,13 +76,13 @@ Two system roles are always available:
 | **Role**     | **Description**                                                                                      |
 | ------------ | ---------------------------------------------------------------------------------------------------- |
 | `owner`      | Full access to all account resources and settings, including member management.                       |
-| `member`     | Can manage resources (datasets, queries, stories) but cannot manage members or delete the organization. |
+| `member`     | Can manage resources (datasets, queries, stories) but cannot manage members or delete the group.      |
 
 ### Custom roles
 
-Administrators can create custom roles with a specific subset of permissions. This allows organizations to grant exactly the level of access that is appropriate for each member. For example, a custom role could allow read access to all datasets without the ability to create new ones, or grant write access without the ability to manage SPARQL services.
+Administrators can create custom roles with a specific subset of permissions. This allows groups to grant exactly the level of access that is appropriate for each member. For example, a custom role could allow read access to all datasets without the ability to create new ones, or grant write access without the ability to manage SPARQL services.
 
-Custom roles are configured by administrators in the [Admin Settings](../admin-settings-pages/index.md#roles-page). Roles are assigned to members in each organization's member settings.
+Custom roles are configured by administrators in the [Admin Settings](../admin-settings-pages/index.md#roles-page). Roles are assigned to members in each group's member settings.
 
 ### API token permissions
 

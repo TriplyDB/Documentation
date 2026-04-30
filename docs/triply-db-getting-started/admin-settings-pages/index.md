@@ -20,7 +20,7 @@ The general overview gives an insight into the software version of the instance.
 
 ### Accounts overview
 
-The accounts overview shows how many organizations and users are in this instance. The organizations and users are shown in a counter if no limit is set. If a limit is set on the number of organizations and/or users of the instance a gauge is shown.
+The accounts overview shows how many groups and users are in this instance. The groups and users are shown in a counter if no limit is set. If a limit is set on the number of groups and/or users of the instance a gauge is shown.
 
 
 ### Data overview
@@ -126,7 +126,7 @@ For editing the side-wide prefixes follow the next steps:
 
 ## Roles page
 
-The roles page allows administrators to manage the roles that can be assigned to organization members. Roles define which actions organization members can perform within an organization. Roles only apply to organization members, not to personal accounts.
+The roles page allows administrators to manage the roles that can be assigned to group members. Roles define which actions group members can perform within a group. Roles only apply to group members, not to personal accounts.
 
 The roles page is accessible by clicking on the "Admin settings" link in the user menu (top-right corner) and clicking the "Roles" tab.
 
@@ -137,10 +137,10 @@ TriplyDB includes two built-in system roles that cannot be deleted:
 
 <dl>
   <dt><code>owner</code></dt>
-  <dd>Full access to all account resources and settings, including the ability to manage organization members and their roles.</dd>
+  <dd>Full access to all account resources and settings, including the ability to manage group members and their roles.</dd>
 
   <dt><code>member</code></dt>
-  <dd>Can manage resources (datasets, queries, stories) but cannot manage organization members or delete the organization.</dd>
+  <dd>Can manage resources (datasets, queries, stories) but cannot manage group members or delete the group.</dd>
 </dl>
 
 
@@ -165,7 +165,7 @@ Custom roles can be edited or deleted at any time from the roles page using the 
 
 ### Assigning roles
 
-Roles are assigned to organization members in the member settings of each organization. Organization members with sufficient permissions (such as owners) can assign roles to other members. See [Organization.addMember()](../../triplydb-js/organization/index.md#organizationaddmemberuser-user-role-role) for how to assign roles programmatically.
+Roles are assigned to group members in the member settings of each group. Group members with sufficient permissions (such as owners) can assign roles to other members. See [Group.addMember()](../../triplydb-js/group/index.md#groupaddmemberuser-user-role-role) for how to assign roles programmatically.
 
 
 ## Account overview page
@@ -180,7 +180,7 @@ The filters on top of the table can be used to filter the following columns:
   <dd>The name of the account, you can order the table based on the alphanumeric ordering, and filter based on the sequence of characters appearing in the filter. The name is also a URL that brings you to the location of the account. </dd>
 
   <dt>Type</dt>
-  <dd>Type of the account, this can either be 'Organization' or 'User'. In the filter you can select a specific account type or 'All' account types.</dd>
+  <dd>Type of the account, this can either be 'Group' or 'User'. In the filter you can select a specific account type or 'All' account types.</dd>
 
   <dt>Display name</dt>
   <dd>The display name of the account, often an account has both a name and a display name. The display name is not limited to a specific set of characters, as it is not used as an URL. You can order the table based on the alphanumeric ordering, and filter based on the sequence of characters appearing in the filter. </dd>
@@ -214,7 +214,7 @@ For each account you can execute the following actions:
 
 <dl>
   <dt>Open account settings</dt>
-  <dd>For each account, there is a button such that the administrator can directly go to the account settings of the user or organization. The account settings are behind the `cogwheel` button. </dd>
+  <dd>For each account, there is a button such that the administrator can directly go to the account settings of the user or group. The account settings are behind the `cogwheel` button. </dd>
 </dl>
 
 
@@ -227,7 +227,7 @@ The type of account can be observed based on the following icons:
 
 | **Icon**              | **Account type** |
 | --------------------- | ---------------- |
-| ![](../../assets/organization.png) | organization     |
+| ![](../../assets/organization.png) | group            |
 | ![](../../assets/user.png)         | user             |
 
 
@@ -235,7 +235,7 @@ The type of account can be observed based on the following icons:
 
 New users can only be created by administrators by performing the following steps:
 
-1. Click on the “Admin settings” link in the user menu (top-right corner) and click the “Accounts” tab. This brings up an overview of all users and organizations on the TriplyDB instance.
+1. Click on the “Admin settings” link in the user menu (top-right corner) and click the “Accounts” tab. This brings up an overview of all users and groups on the TriplyDB instance.
 
 2. Click the “Add user” button.
 

@@ -26,7 +26,7 @@ nav:
           - Asset: triplydb-js/asset/index.md
           - Dataset: triplydb-js/dataset/index.md
           - Graph: triplydb-js/graph/index.md
-          - Organization: triplydb-js/organization/index.md
+          - Group: triplydb-js/group/index.md
           - Query: triplydb-js/query/index.md
           - Service: triplydb-js/service/index.md
           - Story: triplydb-js/story/index.md
@@ -115,6 +115,7 @@ plugins:
        #'triply-db-getting-started/saved-queries/index.md': 'triply-db/saved-queries/index.md'
        #'triply-db-getting-started/uploading-data/index.md': 'triply-db/adding-data/index.md'
        #'triply-db-getting-started/viewing-data/index.md': 'triply-db/viewing-data/index.md'
+        'triplydb-js/organization/index.md': 'triplydb-js/group/index.md'
         'triply-etl/assert/ratt/statement/index.md': 'triply-etl/assert/ratt/statements.md'
         'triply-etl/assert/ratt/term/index.md': 'triply-etl/assert/ratt/terms.md'
         'triply-etl/changelog/index.md': 'triply-etl/generic/changelog.md'

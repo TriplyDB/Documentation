@@ -2,7 +2,7 @@
 
 # Account
 
-Instances of the `Account` class denote TriplyDB accounts. Accounts can be either organizations ([`Organization`](../organization/index.md#organization)) or users ([`User`](../user/index.md#user)).
+Instances of the `Account` class denote TriplyDB accounts. Accounts can be either groups ([`Group`](../group/index.md#group)) or users ([`User`](../user/index.md#user)).
 
 Account objects are obtained by calling the following method:
 
@@ -39,7 +39,7 @@ The `metadata` argument optionally specifies the access level and other importan
     <p>The access level of the dataset. The following values are supported:</p>
     <dl>
       <dt><code>'private'</code> (default)</dt>
-      <dd>The dataset can only be accessed by organization members.</dd>
+      <dd>The dataset can only be accessed by group members.</dd>
       <dt><code>'internal'</code> </dt>
       <dd>The dataset can only be accessed by users that are logged into the TriplyDB server.</dd>
       <dt><code>'public'</code></dt>
@@ -309,36 +309,37 @@ const newStory = await user.addStory('name-of-story', {
 ```
 
 
-## Account.asOrganization()
+<a id="accountasorganization"></a>
+## Account.asGroup()
 
-Casts the TriplyDB account object to its corresponding organization object.
+Casts the TriplyDB account object to its corresponding group object.
 
-Class [Organization](../organization/index.md#organization) is a specialization of class [Account](#account).
+Class [Group](../group/index.md#group) is a specialization of class [Account](#account).
 
-Calling this method on an `Organization` object does nothing.
+Calling this method on a `Group` object does nothing.
 
 ### Examples
 
-The following snippet retrieves the account named `'Triply'` and casts it to an organization:
+The following snippet retrieves the account named `'Triply'` and casts it to a group:
 
 ```ts
 const account = await triply.getAccount('Triply')
-const organization = account.asOrganization()
+const group = account.asGroup()
 ```
 
 ### Alternatives
 
-This method is not needed if the organization is directly retrieved with the specialization method [`App.getOrganization(name: string)`](../app/index.md#appgetorganizationname-string).
+This method is not needed if the group is directly retrieved with the specialization method [`App.getGroup(name: string)`](../app/index.md#appgetgroupname-string).
 
 The following snippet returns the same result as the above example, but in a more direct way:
 
 ```ts
-const organization = await triply.getOrganization('Triply')
+const group = await triply.getGroup('Triply')
 ```
 
 ### See also
 
-This method returns an organization object. See class [Organization](../organization/index.md#organization) for an overview of the methods that can be called on such objects.
+This method returns a group object. See class [Group](../group/index.md#group) for an overview of the methods that can be called on such objects.
 
 
 ## Account.asUser()
@@ -370,7 +371,7 @@ const user = await triply.getUser()
 
 ### See also
 
-This method returns an organization object. See class [Organization](../organization/index.md#organization) for an overview of the methods that can be called on such objects.
+This method returns a user object. See class [User](../user/index.md#user) for an overview of the methods that can be called on such objects.
 
 
 ## Account.ensureDataset(name: string, metadata?: object)
@@ -490,13 +491,13 @@ The information object for accounts includes the following keys:
   <dd>An array containing the pinned items (datasets, stories and queries) for the account.</dd>
 
   <dt><code>type</code></dt>
-  <dd>The account type: either <code>organization</code> or <code>user</code>.</dd>
+  <dd>The account type: either <code>org</code> (for a group) or <code>user</code>. The <code>org</code> value is preserved for backwards compatibility — groups were previously called organizations.</dd>
 
   <dt><code>role</code></dt>
   <dd>The role of the account</dd>
 
   <dt><code>orgs</code></dt>
-  <dd>An array of organizations of which the account is a member.</dd>
+  <dd>An array of groups of which the account is a member.</dd>
 
   <dt><code>Email address</code></dt>
   <dd>The email address of the account.</dd>
@@ -549,7 +550,7 @@ A pinned item is an item that is displayed in a prominent way on the account web
 
 ### Order considerations
 
-The order in which the pinned datasets are returned reflects the order in which they appear on the organization homepage (from top-left to bottom-right).
+The order in which the pinned datasets are returned reflects the order in which they appear on the group homepage (from top-left to bottom-right).
 
 ### Examples
 
@@ -939,8 +940,8 @@ async (ctx) => {
   // Specify the environment variable, if necessary
   const _dataset =
     process.env['MODE'] === 'Production'
-      ? (await app.triplyDb.getOrganization(organization)).getDataset(dataset)
-      : (await app.triplyDb.getUser()).getDataset(organization + '-' + dataset)
+      ? (await app.triplyDb.getGroup(group)).getDataset(dataset)
+      : (await app.triplyDb.getUser()).getDataset(group + '-' + dataset)
 
   // Update the display name
   if (displayName) await (await _dataset).update({ displayName })

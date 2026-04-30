@@ -16,8 +16,8 @@ The `prefixes` argument is a dictionary object whose keys are aliases and whose 
 The following snippet adds prefix declarations for aliases `id` and `def` to the Iris dataset:
 
 ```ts
-const organization = await triply.getOrganization('Triply')
-const dataset = await organization.getDataset(iris)
+const group = await triply.getGroup('Triply')
+const dataset = await group.getDataset(iris)
 await dataset.addPrefixes({
   def: 'https://triplydb.com/Triply/iris/def/',
   id: 'https://triplydb.com/Triply/iris/id/',
@@ -172,7 +172,7 @@ await dataset.clear('graphs', 'services')
 
 Creates a copy of the current dataset.
 
-The owner (user or organization) of the copy is specified with parameter `account`. The name of the copy is specified with parameter `dataset`.
+The owner (user or group) of the copy is specified with parameter `account`. The name of the copy is specified with parameter `dataset`.
 
 This operation does not overwrite existing datasets: if the copied-to dataset already exists, a new dataset with suffix `-1` will be created.
 
@@ -365,8 +365,8 @@ Returns the service with the given `name` for this dataset.
 The following snippet retrieves the acceptance service for the product catalog of an imaginary company:
 
 ```ts
-const organization = triply.getOrganization('some-company')
-const dataset = organization.getDataset('product-catalog')
+const group = triply.getGroup('some-company')
+const dataset = group.getDataset('product-catalog')
 const service = dataset.getService('acceptance')
 ```
 
@@ -424,7 +424,7 @@ for await (const statement of dataset.getStatements()) {
 The following prints the description of the Amsterdam resource in the DBpedia dataset:
 
 ```ts
-const association = triply.getOrganization('DBpedia-association')
+const association = triply.getGroup('DBpedia-association')
 const dbpedia = association.getDataset('dbpedia')
 for await (const statement of dbpedia.getStatements({subject: 'http://dbpedia.org/resource/Amsterdam'})) {
   console.log(statement)
