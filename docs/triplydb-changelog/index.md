@@ -6,6 +6,24 @@ path: "/docs/triplydb-changelog"
 [TOC]
 
 
+## 26.4.300 {#26.4.300}
+
+**Release date:** 2026-04-30
+
+**Features**
+
+- `#11193` [Console / API / TriplyDB.js] Renamed "organizations" to "groups" across the UI, API, TriplyDB.js, and CLI. Organizations were never required to map to a real-world organization — most instances use them to group users or resources for projects, environments (DTAP), or other purposes — and the new name reflects that. The API and TriplyDB.js remain backwards compatible, so existing integrations continue to work without changes.
+
+
+**Issues fixed**
+
+- `#11294` [SPARQL] The terms route timed out on large datasets, making it impossible to browse terms in the data viewer for those datasets.
+- `#11225` [SPARQL] Simple requests to Virtuoso could time out.
+- `#11354` [SPARQL] The timeline visualization prevented users from interacting with other input fields on the page.
+- `#11329` [Data Editor] The workflow editor crashed when a status was in an error state.
+- [API] Legacy patch headers were not handled correctly after a Koa upgrade.
+
+
 ## 26.4.200 {#26.4.200}
 
 **Release date:** 2026-04-16

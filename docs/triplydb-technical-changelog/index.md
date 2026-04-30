@@ -8,6 +8,16 @@ path: "/docs/triplydb-technical-changelog"
 This changelog covers technical changes related to TriplyDB on-premise deployments. See [here](/triplydb-changelog) for the TriplyDB changelog that is user facing.
 
 
+## 26.4.300 {#26.4.300}
+
+**Release date:** 2026-04-30
+
+- **Breaking** The `addUser` bin script flag `-r, --role <role>` has been replaced with `-a, --admin <admin>`, where the value is either `site` or `super`. Provisioning scripts that invoke `addUser` with `--role` must be updated to the new flag.
+- **Breaking** The `addOrg` and `deleteOrg` bin scripts have been renamed to `addGroup` and `deleteGroup` as part of the organizations-to-groups rename. Update any operator scripts or runbooks that invoke these binaries.
+- HAProxy ingress on OpenShift: the `haproxy.router.openshift.io/rewrite-target` annotation for the `/_api/web/auth/local/` route now uses `/web/auth/local/` instead of `/`, fixing an authentication redirect bug on OpenShift HAProxy Router deployments. The default rewrite-target for other `/_api/...` routes remains `/`. No action is required for nginx or HAProxy community-controller deployments.
+
+
+
 ## 26.4.200 {#26.4.200}
 
 **Release date:** 2026-04-16
