@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <meta name="description" content="The official documentation for the Triply products: TriplyDB, TriplyDB.js, and TriplyETL." />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Group - Triply Documentation</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link href="../../css/intellij-light.css" rel="stylesheet" />
+        <link href="../../css/triply.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Group";
+        var mkdocs_page_input_path = "triplydb-js/group/index.md";
+        var mkdocs_page_url = null;
+      </script>
+     
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> Triply Documentation
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">TriplyDB</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="#">Getting started</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-db-getting-started/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-db-getting-started/uploading-data/">Uploading Data</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-db-getting-started/editing-data/">Editing (SKOS) Data</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-db-getting-started/publishing-data/">Sharing Data</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-db-getting-started/viewing-data/">Viewing Data</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-db-getting-started/exporting-data/">Exporting Data</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-db-getting-started/saved-queries/">Saved Queries</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-db-getting-started/data-stories/">Data Stories</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-db-getting-started/admin-settings-pages/">Admin Settings Pages</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-db-getting-started/reference/">Reference</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../triply-api/">API</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">TriplyDB-JS</a>
+    <ul class="current">
+                <li class="toctree-l2"><a class="reference internal" href="../">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../app/">App</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../account/">Account</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../asset/">Asset</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../dataset/">Dataset</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../graph/">Graph</a>
+                </li>
+                <li class="toctree-l2 current"><a class="reference internal current" href="./">Group</a>
+    <ul class="current">
+    <li class="toctree-l3"><a class="reference internal" href="#obtaining-instances">Obtaining instances</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#inheritance">Inheritance</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#groupadddatasetname-string-metadata-object">Group.addDataset(name: string, metadata?: object)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#groupaddmemberuser-user-role-role">Group.addMember(user: User, role?: Role)</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#arguments">Arguments</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#examples">Examples</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#groupaddqueryname-string-metadata-object">Group.addQuery(name: string, metadata: object)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#groupensurestoryname-string-metadata-object">Group.ensureStory(name: string, metadata: object)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#groupaddstoryname-string-metadata-object">Group.addStory(name: string, metadata?: object)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#groupdelete">Group.delete()</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#examples_1">Examples</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#groupensuredatasetname-string-metadata-object">Group.ensureDataset(name: string, metadata?: object)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#groupgetdatasetname-string">Group.getDataset(name: string)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#groupgetdatasets">Group.getDatasets()</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#groupgetmembers">Group.getMembers()</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#return-type">Return type</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#examples_2">Examples</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#see-also">See also</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#groupgetpinneditems">Group.getPinnedItems()</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#groupremovememberuser-user">Group.removeMember(user: User)</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#arguments_1">Arguments</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#existence-considerations">Existence considerations</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#examples_3">Examples</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#groupsetavatarfile-string">Group.setAvatar(file: string)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#groupupdatemetadata-object">Group.update(metadata: object)</a>
+    </li>
+    </ul>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../query/">Query</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../service/">Service</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../story/">Story</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../user/">User</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../faq/">FAQ</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../triply-cli/">Command-line Interface</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../triplydb-changelog/">Changelog</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">TriplyETL</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Generic</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/generic/getting-started/">Getting Started</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/generic/changelog/">Changelog</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/generic/cli/">Command Line Interface (CLI)</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/generic/declarations/">Declarations</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/generic/control-structures/">Control Structures</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/generic/debug/">Debug</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/generic/internal-store/">Internal Store</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/generic/maintenance/">Maintenance</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/generic/record/">Record</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/generic/vocabularies/">Vocabularies</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Sources</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/sources/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/sources/apis/">APIs</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/sources/inline-json/">Inline JSON</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/sources/inline-strings/">Inline Strings</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/sources/local-files/">Local Files</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/sources/online-files/">Online Files</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/sources/rml/">RML Sources</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/sources/triplydb-assets/">TriplyDB Assets</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/sources/triplydb-datasets/">TriplyDB Datasets</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/sources/triplydb-queries/">TriplyDB Queries</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Extract</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/extract/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/extract/csv/">CSV</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/extract/json/">JSON</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/extract/oai-pmh/">OAI-PMH</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/extract/postgres/">Postgres</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/extract/rdf/">RDF</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/extract/shapefile/">Shapefile</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/extract/tsv/">TSV</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/extract/xlsx/">XLSX</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/extract/xml/">XML</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Transform</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/transform/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/transform/ratt/">RATT</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/transform/rml/">RML</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/transform/typescript/">TypeScript</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/transform/xslt/">XSLT</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Assert</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/assert/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/assert/json-ld/">JSON-LD</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="#">RATT</a>
+    <ul>
+                <li class="toctree-l3"><a class="reference internal" href="../../triply-etl/assert/ratt/terms/">RATT Terms</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../../triply-etl/assert/ratt/statements/">RATT Statements</a>
+                </li>
+    </ul>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/assert/rml/">RML</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/assert/xslt/">XSLT</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Enrich</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/enrich/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="#">SHACL</a>
+    <ul>
+                <li class="toctree-l3"><a class="reference internal" href="../../triply-etl/enrich/shacl/">Overview</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../../triply-etl/enrich/shacl/triple-rules/">Triple Rules</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../../triply-etl/enrich/shacl/sparql-rules/">SPARQL Rules</a>
+                </li>
+    </ul>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="#">SPARQL</a>
+    <ul>
+                <li class="toctree-l3"><a class="reference internal" href="../../triply-etl/enrich/sparql/construct/">SPARQL Construct</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../../triply-etl/enrich/sparql/update/">SPARQL Update</a>
+                </li>
+    </ul>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Validate</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/validate/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/validate/graph-comparison/">Graph Comparison</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/validate/shacl/">SHACL</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../triply-etl/publish/">Publish</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">Triply Documentation</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">TriplyDB</li>
+          <li class="breadcrumb-item">TriplyDB-JS</li>
+      <li class="breadcrumb-item active">Group</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <div class="toc"><span class="toctitle">On this page:</span><ul>
+<li><a href="#group">Group</a><ul>
+<li><a href="#obtaining-instances">Obtaining instances</a></li>
+<li><a href="#inheritance">Inheritance</a></li>
+<li><a href="#groupadddatasetname-string-metadata-object">Group.addDataset(name: string, metadata?: object)</a></li>
+<li><a href="#groupaddmemberuser-user-role-role">Group.addMember(user: User, role?: Role)</a><ul>
+<li><a href="#arguments">Arguments</a></li>
+<li><a href="#examples">Examples</a></li>
+</ul>
+</li>
+<li><a href="#groupaddqueryname-string-metadata-object">Group.addQuery(name: string, metadata: object)</a></li>
+<li><a href="#groupensurestoryname-string-metadata-object">Group.ensureStory(name: string, metadata: object)</a></li>
+<li><a href="#groupaddstoryname-string-metadata-object">Group.addStory(name: string, metadata?: object)</a></li>
+<li><a href="#groupdelete">Group.delete()</a><ul>
+<li><a href="#examples_1">Examples</a></li>
+</ul>
+</li>
+<li><a href="#groupensuredatasetname-string-metadata-object">Group.ensureDataset(name: string, metadata?: object)</a></li>
+<li><a href="#groupgetdatasetname-string">Group.getDataset(name: string)</a></li>
+<li><a href="#groupgetdatasets">Group.getDatasets()</a></li>
+<li><a href="#groupgetmembers">Group.getMembers()</a><ul>
+<li><a href="#return-type">Return type</a></li>
+<li><a href="#examples_2">Examples</a></li>
+<li><a href="#see-also">See also</a></li>
+</ul>
+</li>
+<li><a href="#groupgetpinneditems">Group.getPinnedItems()</a></li>
+<li><a href="#groupremovememberuser-user">Group.removeMember(user: User)</a><ul>
+<li><a href="#arguments_1">Arguments</a></li>
+<li><a href="#existence-considerations">Existence considerations</a></li>
+<li><a href="#examples_3">Examples</a></li>
+</ul>
+</li>
+<li><a href="#groupsetavatarfile-string">Group.setAvatar(file: string)</a></li>
+<li><a href="#groupupdatemetadata-object">Group.update(metadata: object)</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<h1 id="group">Group<a class="headerlink" href="#group" title="Permanent link">&para;</a></h1>
+<p>Instances of class <code>Group</code> denote groups in TriplyDB. Groups were previously called <em>organizations</em> — for backwards compatibility, every <code>Organization</code>-named import and method (e.g. the <code>Organization</code> class, <code>App.getOrganization</code>, <code>Account.asOrganization</code>, <code>User.createOrganization</code>, <code>User.getOrganizations</code>, <code>User.ensureOrganization</code>) is still available as a deprecated alias of the corresponding <code>Group</code> method, so existing TriplyDB.js code continues to work without changes.</p>
+<h3 id="obtaining-instances">Obtaining instances<a class="headerlink" href="#obtaining-instances" title="Permanent link">&para;</a></h3>
+<p>Groups are obtained with method <a href="../app/#appgetgroupname-string"><code>App.getGroup(name: string)</code></a>:</p>
+<pre><code class="language-ts">const group = await triply.getGroup('Triply')
+</code></pre>
+<p>Alternatively, groups are obtained by first obtaining an account (<a href="../app/#appgetaccountname-string"><code>App.getAccount(name?: string)</code></a>) and then casting it to a group (<a href="../account/#accountasgroup"><code>Account.asGroup()</code></a>):</p>
+<pre><code class="language-ts">const account = await triply.getAccount('Triply')
+const group = account.asGroup()
+</code></pre>
+<h3 id="inheritance">Inheritance<a class="headerlink" href="#inheritance" title="Permanent link">&para;</a></h3>
+<p><code>Group</code> is a subclass of <a href="../account/#account"><code>Account</code></a>, from which it inherits most of its methods.</p>
+<p><a id="organizationadddatasetname-string-metadata-object"></a></p>
+<h2 id="groupadddatasetname-string-metadata-object">Group.addDataset(name: string, metadata?: object)<a class="headerlink" href="#groupadddatasetname-string-metadata-object" title="Permanent link">&para;</a></h2>
+<p>Adds a new TriplyDB dataset with the given <code>name</code> to the current group.</p>
+<p>Inherited from <a href="../account/#accountadddatasetname-string-metadata-object"><code>Account.addDataset(name: string, metadata?: object)</code></a>.</p>
+<p><a id="organizationaddmemberuser-user-role-role"></a></p>
+<h2 id="groupaddmemberuser-user-role-role">Group.addMember(user: User, role?: Role)<a class="headerlink" href="#groupaddmemberuser-user-role-role" title="Permanent link">&para;</a></h2>
+<p>Adds a member to the given <code>Group</code>, with the given <code>role</code>.</p>
+<h3 id="arguments">Arguments<a class="headerlink" href="#arguments" title="Permanent link">&para;</a></h3>
+<ul>
+<li>
+<p>The <code>user</code> argument has to be a user object of the user which should be added to the group.</p>
+</li>
+<li>
+<p>The <code>role</code> argument specifies the role to assign to the new member. If this argument is not specified, then <code>'member'</code> is used as the default. The following system roles are always available:</p>
+</li>
+</ul>
+<dl>
+  <dt><code>'member'</code> (default)</dt>
+  <dd>Can manage resources (datasets, queries, stories) but cannot manage group members or delete the group.</dd>
+
+  <dt><code>'owner'</code></dt>
+  <dd>Full access to all account resources and settings, including the ability to add/remove users to/from the group, the ability to change the roles of existing users, and the ability to delete the group.</dd>
+</dl>
+
+<p>In addition to the system roles, administrators can configure custom roles with specific permissions. Any custom role name that has been configured on the TriplyDB instance can be passed as the <code>role</code> argument. See the <a href="../../triply-db-getting-started/admin-settings-pages/#roles-page">Roles</a> documentation for more information.</p>
+<h3 id="examples">Examples<a class="headerlink" href="#examples" title="Permanent link">&para;</a></h3>
+<p>The following snippet adds user John Doe to the Triply group as a regular member.</p>
+<pre><code class="language-ts">const group = await triply.getGroup('Triply')
+const johnDoe = await app.getUser('john-doe')
+await group.addMember(johnDoe)
+</code></pre>
+<p><a id="organizationaddqueryname-string-metadata-object"></a></p>
+<h2 id="groupaddqueryname-string-metadata-object">Group.addQuery(name: string, metadata: object)<a class="headerlink" href="#groupaddqueryname-string-metadata-object" title="Permanent link">&para;</a></h2>
+<p>Adds a new TriplyDB query to the current group.</p>
+<p>Inherited from <a href="../account/#accountaddqueryname-string-metadata-object"><code>Account.addQuery(name: string, metadata: object)</code></a>.</p>
+<p><a id="organizationensurestoryname-string-metadata-object"></a></p>
+<h2 id="groupensurestoryname-string-metadata-object">Group.ensureStory(name: string, metadata: object)<a class="headerlink" href="#groupensurestoryname-string-metadata-object" title="Permanent link">&para;</a></h2>
+<p>Ensures the existence of a story with the given <code>name</code> and with the specified <code>metadata</code>.</p>
+<p>Inherited from <a href="../account/#accountensurestoryname-string-metadata-object"><code>Account.ensureStory(name: string, metadata: object)</code></a>.</p>
+<p><a id="organizationaddstoryname-string-metadata-object"></a></p>
+<h2 id="groupaddstoryname-string-metadata-object">Group.addStory(name: string, metadata?: object)<a class="headerlink" href="#groupaddstoryname-string-metadata-object" title="Permanent link">&para;</a></h2>
+<p>Adds a new TriplyDB story with the given <code>name</code> to the current group.</p>
+<p>Inherited from <a href="../account/#accountaddstoryname-string-metadata-object"><code>Account.addStory(name: string, metadata?: object)</code></a>.</p>
+<p><a id="organizationdelete"></a></p>
+<h2 id="groupdelete">Group.delete()<a class="headerlink" href="#groupdelete" title="Permanent link">&para;</a></h2>
+<p>Deletes this account. This also deletes all datasets, stories and queries that belong to this group.</p>
+<h3 id="examples_1">Examples<a class="headerlink" href="#examples_1" title="Permanent link">&para;</a></h3>
+<p>The following code example deletes the specified group:</p>
+<pre><code class="language-ts">const group = await triply.getGroup('Neo4j')
+await group.delete()
+</code></pre>
+<p><a id="organizationensuredatasetname-string-metadata-object"></a></p>
+<h2 id="groupensuredatasetname-string-metadata-object">Group.ensureDataset(name: string, metadata?: object)<a class="headerlink" href="#groupensuredatasetname-string-metadata-object" title="Permanent link">&para;</a></h2>
+<p>Ensures the existence of a dataset with the given <code>name</code> and with the specified <code>metadata</code>.</p>
+<p>Inherited from <a href="../account/#accountensuredatasetname-string-metadata-object"><code>Account.ensureDataset(name: string, metadata?: object)</code></a>.</p>
+<p><a id="organizationgetdatasetname-string"></a></p>
+<h2 id="groupgetdatasetname-string">Group.getDataset(name: string)<a class="headerlink" href="#groupgetdatasetname-string" title="Permanent link">&para;</a></h2>
+<p>Returns the dataset with the given <code>name</code> that is published by this group.</p>
+<p>Inherited from <a href="../account/#accountgetdatasetname-string"><code>Account.getDataset(name: string)</code></a>.</p>
+<p><a id="organizationgetdatasets"></a></p>
+<h2 id="groupgetdatasets">Group.getDatasets()<a class="headerlink" href="#groupgetdatasets" title="Permanent link">&para;</a></h2>
+<p>Returns an <a href="../faq/#what-is-an-async-iterator">async iterator</a> over the accessible datasets that belong to this group.</p>
+<p>Inherited from <a href="../account/#accountgetdatasets"><code>Account.getDatasets()</code></a>.</p>
+<p><a id="organizationgetmembers"></a></p>
+<h2 id="groupgetmembers">Group.getMembers()<a class="headerlink" href="#groupgetmembers" title="Permanent link">&para;</a></h2>
+<p>Returns the list of memberships for the given group.</p>
+<h3 id="return-type">Return type<a class="headerlink" href="#return-type" title="Permanent link">&para;</a></h3>
+<p>A membership contains the following components:</p>
+<dl>
+  <dt><code>role</code></dt>
+  <dd>The role of the membership. This is one of the system roles (<code>'owner'</code> or <code>'member'</code>) or a custom role name configured by an administrator. See the <a href='../../triply-db-getting-started/admin-settings-pages/index.md#roles-page'>Roles</a> documentation for more information.</dd>
+
+  <dt><code>user</code></dt>
+  <dd>An instance of class <a href='#user'><code>User</code></a>.</dd>
+
+  <dt><code>createdAt</code></dt>
+  <dd>A date/time string.</dd>
+
+  <dt>updatedAt</dt>
+  <dd>A date/time string.</dd>
+</dl>
+
+<h3 id="examples_2">Examples<a class="headerlink" href="#examples_2" title="Permanent link">&para;</a></h3>
+<pre><code class="language-ts">const group = await triply.getGroup('acme')
+for (const membership of await group.getMembers()) {
+  console.log(user)
+}
+</code></pre>
+<h3 id="see-also">See also<a class="headerlink" href="#see-also" title="Permanent link">&para;</a></h3>
+<p>Memberships of a group are TriplyDB <a href="../user/#user">users</a>.</p>
+<p><a id="organizationgetpinneditems"></a></p>
+<h2 id="groupgetpinneditems">Group.getPinnedItems()<a class="headerlink" href="#groupgetpinneditems" title="Permanent link">&para;</a></h2>
+<p>Returns the list of datasets, stories and queries that are pinned for the current group.</p>
+<p>Inherited from <a href="../account/#accountgetpinneditems"><code>Account.getPinnedItems()</code></a>.</p>
+<p><a id="organizationremovememberuser-user"></a>
+<a id="organizationremovememberuser-user_1"></a></p>
+<h2 id="groupremovememberuser-user">Group.removeMember(user: User)<a class="headerlink" href="#groupremovememberuser-user" title="Permanent link">&para;</a></h2>
+<p>Removes the specified <code>user</code> from this group.</p>
+<h3 id="arguments_1">Arguments<a class="headerlink" href="#arguments_1" title="Permanent link">&para;</a></h3>
+<p>The <code>user</code> argument has to be a <a href="../user/#user"><code>User</code></a> object of a user.</p>
+<h3 id="existence-considerations">Existence considerations<a class="headerlink" href="#existence-considerations" title="Permanent link">&para;</a></h3>
+<p>The user must be a current member of the group for this method to succeed. If the user is not a current member of the group, an error is thrown.</p>
+<h3 id="examples_3">Examples<a class="headerlink" href="#examples_3" title="Permanent link">&para;</a></h3>
+<ul>
+<li>The following snippet removes John Doe from the Triply group, using a string argument:</li>
+</ul>
+<pre><code class="language-ts">const group = await triply.getGroup('Triply')
+const johnDoe = await app.getUser('john-doe')
+await group.removeMember(johnDoe)
+</code></pre>
+<ul>
+<li>The following snippet removes John Doe from the Triply group, using a <a href="../user/#user"><code>User</code></a> object:</li>
+</ul>
+<pre><code class="language-ts">const group = await triply.getGroup('Triply')
+const user = await triply.getUser('john-doe')
+await group.removeMember(user)
+</code></pre>
+<p><a id="organizationsetavatarfile-string"></a></p>
+<h2 id="groupsetavatarfile-string">Group.setAvatar(file: string)<a class="headerlink" href="#groupsetavatarfile-string" title="Permanent link">&para;</a></h2>
+<p>Sets a new image that characterizes this group.</p>
+<p>Inherited from <a href="../account/#accountsetavatarfile-string"><code>Account.setAvatar(file: string)</code></a>.</p>
+<p><a id="organizationupdatemetadata-object"></a></p>
+<h2 id="groupupdatemetadata-object">Group.update(metadata: object)<a class="headerlink" href="#groupupdatemetadata-object" title="Permanent link">&para;</a></h2>
+<p>Updates the metadata for this account.</p>
+<p>Inherited from <a href="../account/#accountupdatemetadata-object"><code>Account.update(metadata: object)</code></a>.</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../graph/" class="btn btn-neutral float-left" title="Graph"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../query/" class="btn btn-neutral float-right" title="Query">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../graph/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../query/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script>var base_url = '../..';</script>
+      <script src="../../js/triply.js" defer></script>
+      <script src="../../js/highlight.min.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+
+</body>
+</html>
