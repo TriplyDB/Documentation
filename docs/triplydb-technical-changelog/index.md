@@ -8,6 +8,16 @@ path: "/docs/triplydb-technical-changelog"
 This changelog covers technical changes related to TriplyDB on-premise deployments. See [here](/triplydb-changelog) for the TriplyDB changelog that is user facing.
 
 
+## 26.5.100 {#26.5.100}
+
+**Release date:** 2026-05-14
+
+- New values block `oauthServer` with property `maxRefreshTokenInactivityDays` (default: `90`). Configures the inactivity window for OAuth refresh tokens — each successful rotation resets the expiry to now + this many days. After this many days of inactivity the token expires and the user must re-consent.
+- The API ingress now exposes three new public OAuth 2.1 endpoints: `/oauth/register`, `/oauth/token`, and `/oauth/revoke`. These are used by OAuth clients. No action needed unless you have custom ingress overrides that restrict the routes exposed by the API.
+- Resolved a janitor regression that caused file cleanup to conflict with parallel TriplyDB operations and surface as transient errors in production.
+- Silenced an unactionable Redis subscriber error that was noisy in logs without indicating an actual failure.
+
+
 ## 26.4.300 {#26.4.300}
 
 **Release date:** 2026-04-30

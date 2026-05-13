@@ -6,6 +6,21 @@ path: "/docs/triplydb-changelog"
 [TOC]
 
 
+## 26.5.100 {#26.5.100}
+
+**Release date:** 2026-05-14
+
+**Features**
+
+- `#11257` [Access Control] Added an OAuth 2.1 authorization server. Users and third-party applications can now authenticate via OAuth instead of long-lived API tokens, and a new "Connected applications" page lets users review and revoke the apps that have been granted access to their account.
+
+**Issues fixed**
+
+- [Console] Renamed the user-facing "action" terminology to "permission" so it matches the wording used elsewhere in the access-control UI.
+- [SPARQL] The linked data parser failed to parse language-tagged literals in certain edge cases.
+- [Data Upload] Starting an Elasticsearch service on an atypical dataset returned an unrelated error message instead of the actual cause.
+
+
 ## 26.4.300 {#26.4.300}
 
 **Release date:** 2026-04-30
