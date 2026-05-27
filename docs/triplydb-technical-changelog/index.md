@@ -8,6 +8,14 @@ path: "/docs/triplydb-technical-changelog"
 This changelog covers technical changes related to TriplyDB on-premise deployments. See [here](/triplydb-changelog) for the TriplyDB changelog that is user facing.
 
 
+## 26.5.200 {#26.5.200}
+
+**Release date:** 2026-05-28
+
+- **Breaking** The cert-manager HTTP-01 solver network policy is no longer hardcoded to the `ingress-nginx` namespace. The `allow-cert-manager-resolver` NetworkPolicy now derives its allowed ingress sources from the new `networkPolicies.ingressSelector` value and from any `additionalIngress[].networkPolicySelector` entries. If you deploy with network policies enabled and use cert-manager HTTP-01 ACME challenges behind an nginx ingress controller, you must now set `networkPolicies.ingressSelector` to a peer matching your ingress controller's namespace, e.g. `{ namespaceSelector: { matchLabels: { kubernetes.io/metadata.name: ingress-nginx } } }`. Without it, the ACME HTTP-01 challenge can no longer reach the solver pod and certificate issuance/renewal will fail. The now-redundant `acme.cert-manager.io/http01-ingress-class` ingress annotation was removed as part of this rework.
+- New value `api.pathTimeouts` (default: `[]`). Per-path timeout overrides: each entry maps a path `prefix` (must start with `/`) to a `timeout` in milliseconds. The longest matching prefix wins; when no prefix matches, the existing `api.timeout` applies. 
+
+
 ## 26.5.100 {#26.5.100}
 
 **Release date:** 2026-05-14

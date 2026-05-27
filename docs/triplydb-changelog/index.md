@@ -6,6 +6,24 @@ path: "/docs/triplydb-changelog"
 [TOC]
 
 
+## 26.5.200 {#26.5.200}
+
+**Release date:** 2026-05-28
+
+**Features**
+
+
+none
+
+**Issues fixed**
+
+- `#8506` [SPARQL] Queries using `MINUS` could fail to finish on large datasets.
+- `#11408` [Data Model] Autocomplete did not work in the "Create a new class" dialog, forcing class IRIs to be typed by hand even when a knowledge model was loaded.
+- `#11474` [Data Editor] For an atypical data model, saving a valid hierarchical SKOS concept failed.
+- `#10798` [Data Editor] Exact matches in the editor's autocomplete search were not sorted to the top of the result list.
+- [API] Requests with an invalid `Accept` header returned an uninformative error.
+
+
 ## 26.5.100 {#26.5.100}
 
 **Release date:** 2026-05-14
