@@ -96,3 +96,17 @@ The _edit_ button can be used to edit the properties of an instance.
 
 To remove an instance, press the _delete_ button. You will be asked for a confirmation before the instance is really deleted.
 
+## Data model: augmenting an ontology with SHACL shapes
+
+The Editor renders forms based on the SHACL node shapes in a dataset's shapes graph. When you import an ontology that defines classes (via `rdfs:Class` / `owl:Class`) but does not yet provide SHACL node shapes for them, those classes can now be edited directly from the data model.
+
+Such shapeless classes — including classes that only appear as the parent of another class — are shown in the data model tree alongside fully shaped classes. Selecting one and editing it adds a SHACL node shape for that class in the background, so you can start defining its properties without first authoring the shape by hand.
+
+When you create a class, the picker suggests the ontology classes that do not yet have a shape. Choosing one pre-fills the label, description, and parent class from the ontology. The "create a class" dialog also blocks reusing the IRI of an existing class, preventing you from accidentally overwriting it.
+
+## Deprecated terms
+
+Classes, properties, and SKOS concepts that are marked as deprecated with [`owl:deprecated`](https://www.w3.org/TR/owl2-syntax/#Annotation_Properties) (value `true`) are visually indicated in the Editor. Deprecated terms are shown with strikethrough styling in the class navigator and the SKOS concept tree, so they are easy to recognise while browsing.
+
+When a deprecated resource is opened, its title in the instance detail pane is also struck through, and a warning is displayed: _"This resource is deprecated."_ Deprecated terms remain fully viewable and editable — the marking is informational only.
+

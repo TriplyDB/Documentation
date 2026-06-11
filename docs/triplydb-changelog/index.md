@@ -6,6 +6,29 @@ path: "/docs/triplydb-changelog"
 [TOC]
 
 
+## 26.6.100 {#26.6.100}
+
+**Release date:** 2026-06-11
+
+**Features**
+
+- `#11440` [Data Model] Classes that come from an imported ontology but do not yet have a SHACL shape are now shown in the data model and can be edited directly — editing such a class adds a node shape for it in the background. The "create a class" dialog now also blocks accidentally overwriting an existing class.
+- `#11451` [Data Editor] Added support for `owl:deprecated`. Deprecated classes, properties, and SKOS concepts are now visually marked in the data model and SKOS navigators, so deprecated terms are easy to recognise while editing.
+
+**Issues fixed**
+
+- `#11571` [Data Editor] The editor could take several minutes to load on large datasets and emitted 5xx errors while doing so.
+- `#11602` [Query Jobs] A construct query job could report a green ("finished") status even when importing its results failed (for example when HDT creation ran out of memory), leaving the user with an empty graph and no error.
+- `#11387` [Data Upload] Incremental uploads to a large existing graph were slow when merging graphs.
+- `#11665` [Data Editor] The SKOS tree crashed on concept schemes with cyclic hierarchies and showed blank rows for concepts without a label.
+- `#11667` [Data Editor] A resource without an `rdf:type` was incorrectly shown as "Resource not found".
+- `#11475` [Data Editor] Autocomplete lookups were cancelled when the browser window lost focus, so suggestions failed to appear after switching back to the tab.
+- `#10854` [Data Editor] Literals in nested nodes ran off the edge of the page.
+- `#11353` [Data Editor] `xsd:anyURI` literals (URLs) were rendered inconsistently.
+- `#11445` [SPARQL] Federated queries against endpoints that return relative IRIs (such as the Linked Open Vocabularies endpoint) failed with a parse error instead of handling the relative IRI.
+- `#11446` [Data Upload] Importing a nquads file that contained a relative IRI failed, following the [N-Quads 1.2 spec](https://www.w3.org/TR/rdf12-n-quads/) 
+
+
 ## 26.5.200 {#26.5.200}
 
 **Release date:** 2026-05-28

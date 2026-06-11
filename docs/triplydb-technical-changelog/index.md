@@ -8,6 +8,14 @@ path: "/docs/triplydb-technical-changelog"
 This changelog covers technical changes related to TriplyDB on-premise deployments. See [here](/triplydb-changelog) for the TriplyDB changelog that is user facing.
 
 
+## 26.6.100 {#26.6.100}
+
+**Release date:** 2026-06-11
+
+- Two new values control the query-time vs. index-time trade-off for incremental uploads to existing graphs: `indexJobs.mergeRatioThreshold` (default: `10`) and `indexJobs.mergeAbsoluteThreshold` (default: `10000`). On an incremental upload, the existing index is folded into a new combined index only when it is at most `mergeRatioThreshold` times larger than the upload; indices smaller than `mergeAbsoluteThreshold` statements are always folded in regardless of the ratio. Raise `mergeRatioThreshold` to favour query speed, lower it to favour index-time on graphs that receive many small uploads. The defaults preserve the previous behaviour for most deployments.
+- The `adminApiTokens` flag now only governs static API tokens. OAuth access tokens are short-lived (1h) credentials minted through an interactive authorization grant and are treated like a web session, so they always carry admin privileges for admin users regardless of this flag. No action is required.
+
+
 ## 26.5.200 {#26.5.200}
 
 **Release date:** 2026-05-28
