@@ -8,6 +8,14 @@ path: "/docs/triplydb-technical-changelog"
 This changelog covers technical changes related to TriplyDB on-premise deployments. See [here](/triplydb-changelog) for the TriplyDB changelog that is user facing.
 
 
+## 26.7.100 {#26.7.100}
+
+**Release date:** 2026-07-06
+
+- New value `graphqlDescribeLruCacheSize` (default: `1000`). Independently bounds each of the GraphQL describe route's three in-memory LRU caches (outgoing predicates, incoming predicates, quad lookups). These caches speed up linked-data browsing; raise the value to cache more entries at the cost of memory per API pod.
+- The API `ServiceMonitor` now scrapes a second endpoint, `/metrics/pod`, on **every** API replica, in addition to the existing single-pod `/metrics` scrape. It exposes per-pod metrics for the describe LRU caches (which differ per replica); the expensive instance-wide metrics are still scraped from a single pod via hashmod to avoid duplicates. No action is required.
+
+
 ## 26.6.100 {#26.6.100}
 
 **Release date:** 2026-06-11

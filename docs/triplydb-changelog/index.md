@@ -6,6 +6,24 @@ path: "/docs/triplydb-changelog"
 [TOC]
 
 
+## 26.7.100 {#26.7.100}
+
+**Release date:** 2026-07-06
+
+
+**Features**
+
+None
+
+**Issues fixed**
+
+- `#11262` [SPARQL] `isURI` returned different results from `isIRI`, even though the SPARQL specification defines the two as equivalent.
+- `#11580` [SPARQL] Federated `SERVICE` queries could fail with a "response too large" error.
+- `#9933` [SPARQL] A `SERVICE` clause could not query a private or non-public dataset hosted on the same instance.
+- `#11734` [Data Editor] The data editor over-fetched class information and could freeze when opening datasets with large class hierarchies.
+- [Data Editor] Exact matches were not sorted to the top of the autocomplete results in the SKOS editor, matching the behaviour already corrected for other autocompletes.
+
+
 ## 26.6.100 {#26.6.100}
 
 **Release date:** 2026-06-11
