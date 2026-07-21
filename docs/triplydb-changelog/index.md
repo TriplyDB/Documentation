@@ -6,6 +6,18 @@ path: "/docs/triplydb-changelog"
 [TOC]
 
 
+## 26.7.200 {#26.7.200}
+
+**Release date:** 2026-07-21
+
+
+**Features**
+
+- `#11548` [Data Model] The schema view now visualizes `owl:equivalentClass` relations between classes, drawn as a distinct edge type, so class alignments and mappings between ontologies are visible at a glance.
+
+
+
+
 ## 26.7.100 {#26.7.100}
 
 **Release date:** 2026-07-06

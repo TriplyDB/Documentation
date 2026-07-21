@@ -8,6 +8,13 @@ path: "/docs/triplydb-technical-changelog"
 This changelog covers technical changes related to TriplyDB on-premise deployments. See [here](/triplydb-changelog) for the TriplyDB changelog that is user facing.
 
 
+## 26.7.200 {#26.7.200}
+
+**Release date:** 2026-07-21
+
+- `console.replicas` now defaults to `2` 
+
+
 ## 26.7.100 {#26.7.100}
 
 **Release date:** 2026-07-06
