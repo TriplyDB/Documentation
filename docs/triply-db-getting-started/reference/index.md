@@ -11,10 +11,13 @@ Access Levels can be specified for the following content:
 - Datasets, including everything that exist at the dataset level, such as metadata, settings, graphs, and services.
 - Queries
 - Stories
+- Groups
 
 ### Access level control
 
-The Access Level control (see [Figure 1](#fig-access-level-control)) is available on the settings page for these content types. The Access Level control also appears on the create dialog for these content types. The standard Access Level is always "Private". An explicit user action is needed to set the Access Level to "Internal" or "Public".
+The Access Level control (see [Figure 1](#fig-access-level-control)) is available on the settings page for datasets, queries, and stories. The Access Level control also appears on the create dialog for these content types. The standard Access Level is always "Private". An explicit user action is needed to set the Access Level to "Internal" or "Public".
+
+Groups behave differently: they are "Public" by default, and their Access Level is currently set through the [API](../../triply-api/index.md) or [TriplyDB.js](../../triplydb-js/group/index.md#groupupdatemetadata-object) rather than through this control. See [Access Levels for groups](#access-levels-for-groups).
 
 <figure id="fig-access-level-control">
   <img src="../../assets/access-level-control.png">
@@ -41,8 +44,28 @@ The following table contains the meaning of the Access Levels for content that b
 
 Access Levels cannot be specified for the following content. This means that this content is always publicly accessible:
 
-- Groups, including their metadata and members.
 - Users, including their metadata.
+
+### Access Levels for groups
+
+Next to the Access Levels of the content it owns, a group has an Access Level of its own. It determines who can find the group in the list of accounts and open its page:
+
+| **Icon**                       | **Access Level** | **Meaning**                                                                       |
+| ------------------------------ | ---------------- | --------------------------------------------------------------------------------- |
+| ![](../../assets/private.png)  | Private          | The group is only visible to its members.                                         |
+| ![](../../assets/internal.png) | Internal         | The group is visible to anyone who is logged into the same TriplyDB environment.  |
+| ![](../../assets/public.png)   | Public           | The group is visible to anyone on the Internet.                                   |
+
+Groups can be nested: a group can contain subgroups. Membership is inherited downwards, so a member of a group is also a member of every subgroup below it, with the same role.
+
+Unlike datasets, queries, and stories, a newly created group is "Public" by default. A newly created subgroup instead takes the Access Level of its parent group. Changing the Access Level of a group requires the "Manage group" permission (see [Roles](#roles)), and is done through the [API](../../triply-api/index.md) or [TriplyDB.js](../../triplydb-js/group/index.md#groupupdatemetadata-object).
+
+A group that you are not allowed to see is indistinguishable from a group that does not exist: opening its page gives the same "not found" result. If you are a member of a group nested below it, you do see its name and avatar — its name is part of your own group's name anyway — but not its members, content, or settings.
+
+Two rules keep the Access Level of a group consistent with its surroundings:
+
+- **A group caps the content it owns.** The datasets, queries, and stories owned by a group can never be more accessible than the group itself. Making a group stricter therefore fails as long as it still owns content that is more accessible; that content must be changed first.
+- **A subgroup can never be more accessible than its parent group.** Making a parent group stricter fails as long as it still has a more accessible subgroup.
 
 ### Access Level dependencies
 

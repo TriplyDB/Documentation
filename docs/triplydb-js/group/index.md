@@ -216,6 +216,30 @@ Inherited from [`Account.setAvatar(file: string)`](../account/index.md#accountse
 <a id="organizationupdatemetadata-object"></a>
 ## Group.update(metadata: object)
 
-Updates the metadata for this account.
+Updates the metadata for this group.
 
-Inherited from [`Account.update(metadata: object)`](../account/index.md#accountupdatemetadata-object).
+Inherited from [`Account.update(metadata: object)`](../account/index.md#accountupdatemetadata-object), and next to the keys documented there the metadata object also accepts a key that only applies to groups:
+
+<dl>
+  <dt><code>accessLevel</code></dt>
+  <dd>
+    <p>The access level of the group, which determines who can find the group and open its page. The following values are supported:</p>
+    <dl>
+      <dt><code>'private'</code></dt>
+      <dd>The group can only be seen by its members.</dd>
+      <dt><code>'internal'</code></dt>
+      <dd>The group can be seen by people who are logged into the same TriplyDB instance.</dd>
+      <dt><code>'public'</code></dt>
+      <dd>The group can be seen by everybody on the Internet.</dd>
+    </dl>
+    <p>Changing the access level requires the "Manage group" permission. The change is rejected when the group would end up more accessible than its parent group, or stricter than a dataset, query, story, or subgroup that it owns — lower the access level of that content first. See <a href='../../triply-db-getting-started/reference/index.md#access-levels-for-groups'>Access Levels for groups</a> for details.</p>
+    <p>Requires TriplyDB API version 26.8.100 or greater; setting it against an older instance throws an <code>IncompatibleError</code>.</p>
+  </dd>
+</dl>
+
+### Examples
+
+```ts
+const group = await triply.getGroup('my-group')
+await group.update({accessLevel: 'internal'})
+```

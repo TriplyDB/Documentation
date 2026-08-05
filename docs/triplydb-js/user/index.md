@@ -73,6 +73,21 @@ This method requires an API token with write access for this user.
 - The optional `metadata` argument can be used to specify additional metadata. This is a dictionary object with the following optional keys:
 
 <dl>
+  <dt><code>accessLevel</code></dt>
+  <dd>
+    <p>The access level of the group, which determines who can find the group and open its page. The following values are supported:</p>
+    <dl>
+      <dt><code>'private'</code></dt>
+      <dd>The group can only be seen by its members.</dd>
+      <dt><code>'internal'</code></dt>
+      <dd>The group can be seen by people who are logged into the same TriplyDB instance.</dd>
+      <dt><code>'public'</code> (default)</dt>
+      <dd>The group can be seen by everybody on the Internet.</dd>
+    </dl>
+    <p>A subgroup defaults to the access level of its parent group instead of to <code>'public'</code>, and can never be more accessible than its parent. See <a href='../../triply-db-getting-started/reference/index.md#access-levels-for-groups'>Access Levels for groups</a> for details.</p>
+    <p>Requires TriplyDB API version 26.8.100 or greater; setting it against an older instance throws an <code>IncompatibleError</code>.</p>
+  </dd>
+
   <dt><code>description</code></dt>
   <dd>The description of the group. This description can make use of Markdown.</dd>
 
@@ -92,12 +107,41 @@ const user = await triply.getUser('john-doe')
 await user.createGroup('my-group', {name: 'My Group'})
 ```
 
+The following snippet creates a group that is only visible to its members:
+
+```ts
+const user = await triply.getUser('john-doe')
+await user.createGroup('my-group', {name: 'My Group', accessLevel: 'private'})
+```
+
 
 ## User.ensureDataset(name: string, metadata?: object)
 
 Ensures the existence of a dataset with the given `name` and with the specified `metadata`.
 
 Inherited from [`Account.ensureDataset(name: string, metadata?: object)`](../account/index.md#accountensuredatasetname-string-metadata-object).
+
+
+## User.ensureGroup(name: string, metadata?: object)
+
+Ensures the existence of a group with the given `name`. If no such group exists yet, it is created with the specified `metadata` and this user as its owner; if it already exists, it is returned unchanged.
+
+### Access restrictions
+
+This method requires an API token with write access for this user.
+
+### Arguments
+
+The `name` and `metadata` arguments are the same as for [`User.createGroup(name: string, metadata?: object)`](#usercreategroupname-string-metadata-object).
+
+If the group already exists and `metadata` specifies an `accessLevel` that differs from the access level of the existing group, an error is thrown rather than the existing group being returned. This prevents code from continuing under the assumption that it ensured, for example, a private group while the group is in fact public. Either change the access level of the group so that it matches, or omit the `accessLevel` key entirely.
+
+### Examples
+
+```ts
+const user = await triply.getUser('john-doe')
+const group = await user.ensureGroup('my-group', {name: 'My Group'})
+```
 
 
 ## User.getDataset(name: string)
