@@ -9,8 +9,6 @@ This repository includes documentation for the following Triply products:
 <dl>
   <dt>TriplyDB</dt>
   <dd>An integrated linked data environment for publishing and using linked data knowledge graphs.</dd>
-  <dt>TriplyETL</dt>
-  <dd>A library that is optimized for building production-grade linked data pipelines.</dd>
   <dt>TriplyDB.js</dt>
   <dd>A library for automating tasks in TriplyDB instances and for building applications that tap into a linked data knowledge graph.</dd>
 </dl>
