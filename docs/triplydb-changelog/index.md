@@ -6,6 +6,26 @@ path: "/docs/triplydb-changelog"
 [TOC]
 
 
+## 26.8.200 {#26.8.200}
+
+**Release date:** 2026-08-19
+
+**Features**
+
+
+- [SPARQL] The query planner now carries known variable bindings across `SERVICE` and `ORDER BY`, instead of treating them as a barrier. Joins that follow such an operation can use the bindings established before it, which makes federated queries in particular considerably faster — one benchmark query dropped from 1.4 seconds to 0.49 seconds.
+
+
+**Issues fixed**
+
+- `#13613` [Access Control] API tokens could not delete a group any more, and the call failed with `401 Unauthorized`. 
+- `#13614` [API] The API response for pinned account items had an unintended breaking schema change, causing possible breakage in third party application
+- `#13306` `#13500` [SPARQL] Very large SPARQL Update queries could fail with a "response too large" error. 
+- `#13449` [SPARQL] An aggregate ignored a value that its output variable was already bound to, returning every group instead of only the groups that matched. 
+- `#13429` [Saved Queries] Navigating away from a saved query with unsaved changes showed the "are you sure" prompt twice.
+- [Console] Links that open a dialog — configuring pinned items, adding a user, showing code snippets — replaced the current browser history entry instead of adding one, so the browser's back button could not be used to close the dialog.
+
+
 ## 26.8.100 {#26.8.100}
 
 **Release date:** 2026-08-05
