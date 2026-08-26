@@ -7,6 +7,18 @@ path: "/docs/triplydb-technical-changelog"
 
 This changelog covers technical changes related to TriplyDB on-premise deployments. See [here](/triplydb-changelog) for the TriplyDB changelog that is user facing.
 
+## 26.8.200 {#26.8.200}
+
+**Release date:** 2026-08-20
+
+- **Breaking** The private address ranges that the `api` and service NetworkPolicies exclude from outbound HTTP(S) have been widened: `172.16.0.0/20` became the full `172.16.0.0/12`, and the link-local range `169.254.0.0/16` is now excluded as well. Requests from API, cron job and service pods to hosts in the newly excluded ranges — federated SPARQL endpoints, "download from URL" sources, webhook targets — are now blocked at the network layer. If such hosts are in use, allow them explicitly through `networkPolicies.apiAdditionalEgress`, or route them through an HTTP proxy (see below). Service pods have no additional-egress value of their own, so for those a proxy is the only route.
+- All ingresses whose latency ceiling is the API's — the `api` ingresses, and the console and console-beta root and `/_api/` ingresses — now set an explicit proxy timeout, derived from `api.timeout` plus two seconds. They previously relied on the ingress controller's default, which is 60 seconds for nginx and 50 seconds for haproxy; on haproxy that silently undercut the default `api.timeout` of 58 seconds, so the controller severed the connection and returned its own 504 instead of the API's timeout response. If `api.timeout` is raised, the ingress timeouts now follow it automatically.
+- New value `httpProxy.interface` (default: `ip`). It selects how the proxy is addressed: `ip` uses `httpProxy.ip` as before, while `service` uses `httpProxy.host` (the hostname of a Kubernetes Service) together with `httpProxy.namespaceLabels`, the labels of the namespace the proxy runs in — a service address is translated to a pod address before a NetworkPolicy is evaluated, so the traffic must be permitted by namespace selector rather than by IP. The two sets of fields are mutually exclusive and the schema rejects mixing them. Existing values files that set `httpProxy.ip` need no change.
+- New value `networkPolicies.httpProxyEgressOnly` (default: `false`). When enabled, and a proxy is configured, the API pods' direct egress rule to external networks is dropped, so the proxy becomes the only route out. It has no effect when `httpProxy` is unconfigured.
+- More code paths now honour the configured `httpProxy`: dataset webhooks, avatar and image downloads, JSON-LD context resolution, file parsing in index jobs, and the Jena and Elasticsearch services. Virtuoso services are not covered (used in the context of federative queries), as that requires recreating them.
+
+
+
 ## 26.8.100 {#26.8.100}
 
 **Release date:** 2026-08-06
