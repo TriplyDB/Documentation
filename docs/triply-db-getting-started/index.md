@@ -1,10 +1,13 @@
 [TOC]
 
-# TriplyDB Overview
+# TriplyDB documentation
+## Getting started
+
+Welcome to the TriplyDB documentation pages on how to get started. For more in-depth explanations you can visit our how-to pages. 
 
 TriplyDB allows you to store, share, and use linked data knowledge graphs. TriplyDB makes it easy to upload linked data and expose it through various APIs, including SPARQL, GraphQL, Elasticsearch, Linked Data Fragments, and REST.
 
-Learn more about the following features:
+We guide you through the first steps, please select the step you want to explore further:
 
 - [Uploading data](./uploading-data/index.md)
 - [Sharing data](./publishing-data/index.md)

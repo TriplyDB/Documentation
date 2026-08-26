@@ -14,18 +14,18 @@ You must be logged in before you can create a new dataset.
 
 You can create a new dataset in either of the following two ways:
 
-1. From the home screen (see [Figure 1a](#fig-home-screen-logged-in)), click on the `+` button next to "Your datasets", on the right-hand side of the screen.
+1. From the home screen (see [Figure a](#fig-home-screen-logged-in)), click on the `+` button next to "Your datasets", on the right-hand side of the screen.
 
-2. From the user screen (see [Figure 1b](#fig-user-screen-logged-in)), click on the “Create dataset” button on the right-hand side.
+2. From the user screen (see [Figure b](#fig-user-screen-logged-in)), click on the “Create dataset” button on the right-hand side.
 
 <figure id="fig-home-screen-logged-in">
-  <img src="../../assets/home-screen-logged-in.png">
-  <figcaption>Figure 1a. The home screen for a logged in user.</figcaption>
+  <img src="../../assets/home-screen-logged-in-2026.png">
+  <figcaption>Figure a. The home screen for a logged in user.</figcaption>
 </figure>
 
 <figure id="fig-user-screen-logged-in">
-  <img src="../../assets/user-screen-logged-in.png">
-  <figcaption>Figure 1b. The user screen for a logged in user.</figcaption>
+  <img src="../../assets/user-screen-logged-in-2026.png">
+  <figcaption>Figure b. The user screen for a logged in user.</figcaption>
 </figure>
 
 ### Inside the “Create dataset” dialog
