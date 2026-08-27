@@ -49,7 +49,7 @@ it, and the same applies to an embedded story.
 **How do I put a story on my own website?**
 
 Scroll to the end of the story and click the **&lt;/&gt; Embed** button. Copy the snippet into
-your HTML page. See [Share or embed a story](../how-to/share-and-embed.md).
+your HTML page. See [Share or embed a story](../How-to/share-and-embed.md).
 
 **Can I print a story or save it as a PDF?**
 

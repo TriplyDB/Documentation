@@ -151,6 +151,33 @@ Navigate to "Site-wide prefixes", where you can:
 See [Linked data](../../academy/linked-data.md#namespaces-and-prefixes) for what a
 prefix is.
 
+## Accounts page
+
+The accounts page governs every account on the instance: a paginated table with
+filters, sorting and a wildcard search field on the right. It sorts by creation
+date, newest first.
+
+| Column | Shows |
+| --- | --- |
+| Name | The account name, linking to the account. Sortable and filterable |
+| Type | Group or User. Filterable, or All |
+| Display name | The unrestricted name, not used as a URL. Sortable and filterable |
+| Email | The account's email address. Sortable and filterable |
+| Created at | How long ago it was created; hover for the exact moment |
+| Updated at | How long ago its metadata last changed, such as display name or password |
+| Last activity | How long ago the account was last active |
+| Role | light, regular or administrator. Filterable, or All |
+| Verified | Whether the user has confirmed their account. Users only |
+| Disabled | Whether the account has been disabled |
+| Legal consent | Whether the user has accepted the legal terms. Users only |
+
+One action is available per row: the cogwheel button opens that account's
+settings directly.
+
+For creating users, sign-up restrictions and what the account states mean, see
+[Accounts and authentication](../../access-security/accounts-and-authentication.md).
+
+
 ## Datasets page
 
 The datasets page governs every dataset on the instance: a paginated table with

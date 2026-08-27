@@ -11,7 +11,7 @@ By the end of this page you have a data story containing a paragraph of text and
 result, and you know how to switch between editing it and seeing what your readers will see.
 
 To create a story you need a TriplyDB account. To add a query element you also need at least one
-[saved query](../../saved-queries/overview/index.md) — either your own or one shared with you.
+[saved query](../../Saved-queries/overview/index.md) — either your own or one shared with you.
 
 ## Step 1 — Open the stories tab
 
@@ -35,7 +35,7 @@ You are taken to the new story, ready to customise.
 
 In the top-right corner is a menu button holding everything you can do to the story as a whole —
 settings, banner, copy, transfer, embed, print and delete. See
-[the story menu](../reference/index.md#the-story-menu) for what each one does.
+[the story menu](../Reference/index.md#the-story-menu) for what each one does.
 
 In the bottom-right corner is a button with a notepad on it. This toggles between the **edit
 view**, where you build the story, and the **reader view**, which is how your readers will see
@@ -76,8 +76,8 @@ write around the results.
 
 From here:
 
-- [Share or embed your story](../how-to/share-and-embed.md) — including the access level change
+- [Share or embed your story](../How-to/share-and-embed.md) — including the access level change
   that has to happen first.
 - [How-to guides](../how-to/index.md) — banner, copying, transferring, printing, deleting.
-- [Concepts](../concepts/index.md) — how stories, elements and saved queries relate.
+- [Concepts](../Concepts/index.md) — how stories, elements and saved queries relate.
 

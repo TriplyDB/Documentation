@@ -10,7 +10,7 @@
 Each guide covers one job you might want to finish with a data story.
 
 For the shortest path through stories, start with
-[Getting Started](../getting-started/index.md) instead.
+[Getting Started](../Getting-started/index.md) instead.
 
 ## Written
 
@@ -51,7 +51,7 @@ Removing a story, and what happens to the saved queries its elements referenced.
 
 ---
 
-**Chapter navigation:** [Overview](../overview/index.md) ·
-[Getting Started](../getting-started/index.md) · [Concepts](../concepts/index.md) ·
-How-to guides · [Reference](../reference/index.md) · [FAQ](../faq/index.md)
+**Chapter navigation:** [Overview](../index.md) ·
+[Getting Started](../Getting-started/index.md) · [Concepts](../Concepts/index.md) ·
+How-to guides · [Reference](../Reference/index.md) · [FAQ](../FAQ/index.md)
 

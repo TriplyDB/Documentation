@@ -30,7 +30,7 @@ One block in a story. Elements are stacked in order and come in two kinds:
 ## How a query element relates to its query
 
 A query element does not contain a query. It points at a
-[saved query](../../saved-queries/overview/index.md) that exists independently of the story, and
+[saved query](../../Saved-queries/overview/index.md) that exists independently of the story, and
 the result is produced by running that query when the story is opened.
 
 Two things follow. The result a reader sees is current, not a snapshot from when the story was

@@ -41,6 +41,9 @@ Select the **waste basket** symbol next to the value you want to remove.
 
 Yes. The instance detail panel shows **Modified by** and **Modified** for the most recent change. To see the full history, select the backward-clock symbol.
 
+**How do I delete an instance?**
+Open the instance and select the **delete** button. You are asked to confirm before the instance is actually deleted.
+
 ### SKOS-specific questions
 
 **How do I work with more than one concept scheme at the same time?**

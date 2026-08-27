@@ -8,7 +8,7 @@
 # Reference
 
 Look-up material for data stories. For procedures, see the
-[how-to guides](../how-to/index.md).
+[how-to guides](../How-to/index.md).
 
 ## The story menu
 
@@ -43,6 +43,6 @@ else it applies, see [Markdown support](../../../triplydb/Reference/markdown.md)
 | Subject | Where |
 | :---- | :---- |
 | Creating, deleting and reading stories programmatically | [TriplyDB.js `Story`](../../../triplydb-js/story/index.md) |
-| The saved queries a story's elements point at | [Saved queries](../../saved-queries/overview/index.md) |
+| The saved queries a story's elements point at | [Saved queries](../../Saved-queries/overview/index.md) |
 | Access levels | [Access and security](../../../access-security/index.md) |
 

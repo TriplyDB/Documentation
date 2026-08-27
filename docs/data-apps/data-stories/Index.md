@@ -35,12 +35,12 @@ Stories can be kept private, shared by URL, or embedded in your own web page.
 
 ## How it fits into the Triply datacloud
 
-A story sits on top of [saved queries](../../saved-queries/overview/index.md) — each query
+A story sits on top of [saved queries](../../Saved-queries/index.md) — each query
 element points at a saved query, optionally pinned to a specific version. The query in turn runs
 against a dataset in TriplyDB.
 
 That layering is worth knowing: a story is a presentation layer, not a copy. Change the query and
 every story that uses it changes too, unless the element pinned a version.
 
-Next: [Getting Started](../getting-started/index.md) walks you through creating a story and
+Next: [Getting Started](../Getting-started/index.md) walks you through creating a story and
 adding your first two elements.
