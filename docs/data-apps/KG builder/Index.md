@@ -1,36 +1,15 @@
-[TOC]
+# Reference
 
-# TriplyDB Knowledge graph builder
+This chapter is look-up material: the settings, fields, options, supported formats and limits of
+the Knowledge Graph Builder, with their defaults and permitted values. Use it to check a detail,
+not to read from start to finish.
 
-## Overview
+*More content will follow shortly.*
 
-DKG Builder is a TriplyDB add-on that extracts a structured ontology from unstructured text. You provide one or more text documents — and optionally existing ontologies or additional modelling instructions — and KG Builder uses a confidential LLM pipeline to extract classes, properties, and simple constraints, storing the result as RDF in a TriplyDB dataset. The extracted ontology is immediately viewable and editable in the TriplyDB Data Model Editor.
+---
 
-KG Builder is for knowledge engineers and data modelers who need to turn textual sources into machine-interpretable ontologies quickly. It is particularly suited to projects where:
+**Previous:** [How-to guides](../how-to/index.md) 
 
-- The source text is a document, regulation, or other structured text that can be provided as a `.txt`, `.rtf`, or `.doc` file.
-- You have domain knowledge to encode — existing ontologies or modelling preferences you want the extraction to respect.
-- The output needs to be stored, refined, and queried as a knowledge graph in TriplyDB.
+**Next:** [FAQ](../faq.md) 
 
-The problem it solves: manually extracting structured knowledge from textual sources is time-consuming and error-prone. Legal articles, technical specifications, and domain documents use dense, implicit structure that requires expert interpretation to turn into semantically correct RDF. KG Builder automates the first pass — extracting candidate classes, properties, and constraints — so knowledge engineers can focus on review and refinement rather than blank-page modelling.
-
-**Data confidentiality**: your input data is processed using a Triply-provided LLM that operates in a confidential environment. Your data is not sent to a public LLM and is not used for model training.
-
-**Language support**: input documents in both Dutch and English are supported.
-
-**Quality targets**: with the default Triply-provided LLM, the extraction process targets recall ≥ 80% and precision ≥ 60%. This means the extracted ontology is a useful starting point, but review by a knowledge engineer is expected.
-
-KG Builder runs as a Flow within your TriplyDB instance. To get started, continue to the next section — Getting Started.
-
-- [Getting started](./getting-started/index.md)
-- [Concepts](./concepts/index.md)
-- [How to](./how-to/index.md)
-- [Reference](./reference/index.md)
-- [FAQ](./faq/index.md)
-
-<!--
-configure APIs
-reference:
-access levels
-markdown support
--->
+[Back to overview](../overview.md)
