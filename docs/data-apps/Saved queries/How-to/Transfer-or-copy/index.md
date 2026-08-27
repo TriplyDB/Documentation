@@ -23,7 +23,7 @@ in the three-dot menu. Look in the wrong one and you will not find it.
 
 On the query page, open the settings field:
 
-![Where to find the transfer option on a query page](../../../assets/where-find-transfer.png)
+![Where to find the transfer option on a query page](../../../../assets/where-find-transfer.png)
 
 Choose transfer:
 
@@ -31,7 +31,7 @@ Choose transfer:
 
 Then choose the destination:
 
-![Choosing the organisation to transfer the query to](../../../assets/transfer-to-organization.png)
+![Choosing the organisation to transfer the query to](../../../../assets/transfer-to-organization.png)
 
 You are redirected to the query's new page.
 
@@ -39,11 +39,11 @@ You are redirected to the query's new page.
 
 Click the three dots in the top-right corner of the query and choose copy:
 
-![The copy option on a query](../../../assets/copyQuery.png)
+![The copy option on a query](../../../../assets/copyQuery.png)
 
 Then choose the destination:
 
-![Choosing the group to copy the query to](../../../assets/selectOrganization.png)
+![Choosing the group to copy the query to](../../../../assets/selectOrganization.png)
 
 You are redirected to the new query's page.
 
@@ -52,16 +52,3 @@ You are redirected to the new query's page.
 Transferring moves the query, not the dataset it runs against. A transferred query still points
 at its original dataset and service — see [the service binding](../concepts/index.md).
 
----
-
-## ⚠ Needs input before publishing
-
-- **Image paths are now resolved, not guessed.** They assume the chapter-folder layout used
-  throughout this chapter. If the chapter is flattened, all five need adjusting.
-- **The settings-field versus three-dot-menu difference** is stated here but is not in the
-  original text. Confirm it is still accurate.
-- **Nothing has been reviewed against the current interface.** The text was written for the
-  viewing-data page and has been moved twice since.
-- **What happens to versions on transfer or copy** is not documented. Does a copy start again at
-  version 1?
-- **Repoint the pointer in `triplydb/how-to/view-data.md`** to this page.

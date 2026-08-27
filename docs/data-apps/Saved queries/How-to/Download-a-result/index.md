@@ -14,9 +14,9 @@ The result of a query can be downloaded from the TriplyDB interface.
 2. Select the visualisation option matching the format you want. For JSON, select **Response**.
 3. Click the download icon, or scroll down and click **Download result**.
 
-![Download the query result via the download icon](../../../assets/queryResult.png)
+![Download the query result via the download icon](../../../../assets/queryResult.png)
 
-![Download the query result via the Download result button](../../../assets/queryResult2.png)
+![Download the query result via the Download result button](../../../../assets/queryResult2.png)
 
 The file is stored in your `Downloads` folder and named after the query — in this example,
 `timeline-cars.json`. It contains the query result as a JSON object, the same object TriplyDB

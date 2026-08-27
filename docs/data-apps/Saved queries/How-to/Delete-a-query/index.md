@@ -7,7 +7,7 @@
 
 Click the three dots in the top-right corner of the query, then click **Delete**.
 
-![Deleting a saved query](../../../assets/delete-query.png)
+![Deleting a saved query](../../../../assets/delete-query.png)
 
 Deleting removes the query and all of its versions.
 

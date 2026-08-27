@@ -22,7 +22,7 @@ Every saved query has a metadata section.
 | Dataset | System | Links to the dataset homepage |
 | Service | System | Links to the services page containing that service |
 
-![Metadata fields for a saved query in TriplyDB](../../../assets/saved-query-metadata.png)
+![Metadata fields for a saved query in TriplyDB](../../../../assets/saved-query-metadata.png)
 
 ## GRLC annotations
 
