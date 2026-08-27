@@ -32,7 +32,7 @@ This page lists the Markdown that is supported.
 A hash character (`#`) at the start of a line marks a heading. More hashes mean a
 deeper level.
 
-```md
+```markdown
 # Heading 1
 
 ## Heading 2

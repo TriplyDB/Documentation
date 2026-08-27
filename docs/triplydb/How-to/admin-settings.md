@@ -204,6 +204,43 @@ date, newest first.
 One action is available per row: the cogwheel button opens that dataset's
 settings directly.
 
+## Services page
+
+The services page governs every service on the instance: a paginated table with
+filters, sorting and a wildcard search field on the right. Services in an error
+state are sorted to the top, so problems are visible without searching for them.
+
+| Column | Shows |
+| --- | --- |
+| Name | The service name, linking to the service. Sortable and filterable |
+| Type | Virtuoso, Jena, Blazegraph, Prolog or Elasticsearch. Filterable, or All |
+| Status | Starting, Running, Stopped, Updating or Error. Filterable, or All |
+| Statements | Statements loaded in the service. Filtered with a slider |
+| Loaded graphs | Graphs loaded in the service |
+| Dataset | The dataset the service belongs to, linked. Filterable |
+| Owner | The dataset's owner, linked. Filterable |
+| Created | How long ago it was created; hover for the exact moment |
+| Last queried | How long ago it was last queried; hover for the exact moment |
+| Auto stops | How long until the service auto-stops. Some services free up memory when they go unqueried; the timer resets on every use |
+| Version | The service's version. Services are not updated automatically, because updating can cause downtime |
+
+Five actions are available per row:
+
+| Action | Where |
+| --- | --- |
+| Update | An orange arrow appears below a service when a newer version exists |
+| Additional information | The `i` button — graphs in the dataset, and the raw service metadata |
+| Inspect the logs | The text button |
+| Synchronize | Brings the service back in step with its dataset when the two have diverged |
+| Remove | Deletes the service |
+
+Doing these one at a time is slow. The tickbox on the left of the table selects
+every service matching the current search, or all of them when no search is
+active, so you can remove or update them in one go.
+
+For services on a single dataset, see
+[Manage services](manage-services.md).
+
 ## Redirects page
 
 IRIs are meant to be visited — you follow one and find information about the
