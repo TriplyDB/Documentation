@@ -15,11 +15,11 @@ The Editor lives inside TriplyDB and operates on an existing dataset. All change
 To start using the Editor, you need an active TriplyDB dataset. If you do not have one yet, see the [TriplyDB Getting Started guide](https://docs.triply.cc/triply-db-getting-started/).
 
 This helps you navigate the documentation:
-- [Getting started](./getting-started/index.md)
-- [Concepts](./concepts/index.md)
-- [How to](./how-to/index.md)
-- [Reference](./reference/index.md)
-- [FAQ](./faq/index.md)
+- [Getting started](./Getting-started/index.md)
+- [Concepts](./Concepts/index.md)
+- [How to](./How-to/index.md)
+- [Reference](./Reference/index.md)
+- [FAQ](./FAQ/index.md)
 
 <!--
 configure APIs

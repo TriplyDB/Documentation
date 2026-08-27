@@ -4,7 +4,7 @@
 
 By the end of this section you will have opened the Editor, selected a view, found an existing instance, and made a change to it.
 
-> **Prerequisite:** To use the Editor, you need an active TriplyDB dataset that has a SHACL shapes graph and for which the Editor feature has been enabled. If your dataset does not yet have a shapes graph, see [Data model: augmenting an ontology with SHACL shapes](#4-key-concepts) in the Key Concepts section.
+> **Prerequisite:** To use the Editor, you need an active TriplyDB dataset that has a SHACL shapes graph and for which the Editor feature has been enabled. If your dataset does not yet have a shapes graph, see [Concepts](../Concepts/index.md) section.
 
 ### Step 1 — Open the Editor
 
@@ -45,4 +45,4 @@ Mandatory properties are marked with an asterisk (*). You cannot save the instan
 
 After making your changes, save the instance. The change is written to the dataset immediately and recorded in the instance's modification history.
 
-You now have a working knowledge of the core editing flow. See Section 4 (Q&A) for guidance on less common tasks, and Section 3 (Key Concepts) for definitions of terms used throughout the Editor.
+You now have a working knowledge of the core editing flow. See Q&A for guidance on less common tasks, and Concepts for definitions of terms used throughout the Editor.
