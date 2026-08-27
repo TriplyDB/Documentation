@@ -13,6 +13,9 @@ You can use the Editor on any dataset that has a SHACL shapes graph and for whic
 ### Creating instances
 
 **How do I create a new instance?**
+
+![The Editor entry in the left-hand navigation panel](../../../assets/editor-create.png)
+
 Select the **create** button in the top-right corner of the Editor pane. Choose the class for the new instance from the picker. The Editor generates an IRI automatically; you can change it if needed. Fill in the required properties and save.
 
 **Can I reuse the IRI of an existing instance?**
@@ -33,6 +36,9 @@ Yes, for properties that allow multiple values. Select the **+** symbol next to 
 Select the **waste basket** symbol next to the value you want to remove.
 
 **Can I see who last changed an instance?**
+
+![The Editor entry in the left-hand navigation panel](../../../assets/editor-history.png)
+
 Yes. The instance detail panel shows **Modified by** and **Modified** for the most recent change. To see the full history, select the backward-clock symbol.
 
 ### SKOS-specific questions
