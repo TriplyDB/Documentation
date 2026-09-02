@@ -47,7 +47,7 @@ request.
 Because the query is versioned, each of those consumers can pin the version it was built
 against, or follow the latest one.
 
-Next: [Getting Started](../Getting-started/index.md) walks you through saving your first query
+Next: [Getting Started](./Getting-started/index.md) walks you through saving your first query
 and running it from its own URL.
 
 
