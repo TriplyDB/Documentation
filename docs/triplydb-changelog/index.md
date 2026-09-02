@@ -6,6 +6,22 @@ path: "/docs/triplydb-changelog"
 [TOC]
 
 
+## 26.9.100 {#26.9.100}
+
+**Release date:** 2026-09-02
+
+**Features**
+
+- `#10520` [Data Upload] JSON files can now be uploaded, and are converted to RDF following the same [Facade-X](https://sparql-anything.readthedocs.io/stable/formats/JSON/) mapping that XML and tabular uploads already use. JSON Lines is supported as well, through the `.jsonl` and `.ndjson` extensions. Note that `.json` files are now read as plain JSON rather than as JSON-LD: use the `.jsonld` extension for JSON-LD documents. See [Supported data formats](https://docs.triply.cc/triply-db-getting-started/uploading-data/#supported-data-formats).
+- `#9715` [SPARQL] Optimized query planning, so that sorting (via `order by`) a smaller intermediate result is cheaper, so queries that sort before an operation which multiplies rows — several triple patterns on the same subject, a union, a property path — get faster.
+- `#11338` [SaaS] SSL (`https`) connections to TriplyDB deployments now negotiate post-quantum key exchange, and the accepted cipher suites have been narrowed to the current recommendations. This guards traffic captured today against decryption by a future quantum computer.
+
+
+**Issues fixed**
+
+- [SPARQL-IDE] Autocomplete suggestions are slow, causing a decrease in user experience
+
+
 ## 26.8.200 {#26.8.200}
 
 **Release date:** 2026-08-19

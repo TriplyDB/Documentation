@@ -7,6 +7,15 @@ path: "/docs/triplydb-technical-changelog"
 
 This changelog covers technical changes related to TriplyDB on-premise deployments. See [here](/triplydb-changelog) for the TriplyDB changelog that is user facing.
 
+## 26.9.100 {#26.9.100}
+
+**Release date:** 2026-09-02
+
+- A preview of the redesign is available. To use it, set `console.frontends` to `["classic", "next"]`. See the helm chart documentation for more details. For more information about the configuration options of the next interface, run `helm show readme triply/triplydb --version 26.9.100`
+- The API deployment likewise now rolls on a change to `httpProxy`, `accountNameBlacklist` or `mongodb.secret.key`, which the API reads once at start-up.
+- The backup and restore cron jobs now honour the configured `httpProxy`, so an instance whose egress goes through a proxy can reach a possibly remote backup location.
+
+
 ## 26.8.200 {#26.8.200}
 
 **Release date:** 2026-08-20
