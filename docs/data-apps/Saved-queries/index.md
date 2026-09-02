@@ -22,7 +22,7 @@ Saved queries are used by three kinds of people, often on the same query:
 
 ## What it solves
 
-A SPARQL query written in the [SPARQL IDE](../../triplydb/how-to/view-data.md) exists only in
+A SPARQL query written in the [SPARQL IDE](../../triplydb/How-to/view-data.md) exists only in
 the browser tab it was typed in. Sharing it means sharing a query string, and running it again
 means pasting that string back into an editor. Nothing records which version produced which
 result.
@@ -47,7 +47,7 @@ request.
 Because the query is versioned, each of those consumers can pin the version it was built
 against, or follow the latest one.
 
-Next: [Getting Started](../../Getting-started/index.md) walks you through saving your first query
+Next: [Getting Started](../Getting-started/index.md) walks you through saving your first query
 and running it from its own URL.
 
 
