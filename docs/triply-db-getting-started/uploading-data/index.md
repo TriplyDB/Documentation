@@ -148,17 +148,19 @@ Only files that contain supported data formats will be added. See Section [Suppo
 
 ### Supported data formats
 
-Files must contain RDF, CSV, TSV or XML data, and must use one of the supported file name extensions:
+Files must contain RDF, CSV, TSV, XML or JSON data, and must use one of the supported file name extensions:
 
 | **Data Format**                                     | **File name extension** |
 | --------------------------------------------------- | ----------------------- |
 | [Comma-Separated Values (CSV)](#csv-and-tsv-format) | `.csv`                  |
 | [Tab-Separated Values (CSV)](#csv-and-tsv-format)   | `.tsv`                  |
 | [XML](#xml-format)                                  | `.xml`                  |
-| JSON-LD                                             | `.jsonld`, `.json`      |
+| [GPX](#xml-format)                                  | `.gpx`                  |
+| [JSON](#json-format)                                | `.json`, `.jsonl`, `.ndjson` |
+| JSON-LD                                             | `.jsonld`               |
 | N-Quads                                             | `.nq`                   |
 | N-Triples                                           | `.nt`                   |
-| RDF/XML                                             | `.rdf`, `.owl`, `.owx`  |
+| RDF/XML                                             | `.rdf`, `.rdfs`, `.owl`, `.owx` |
 | TriG                                                | `.trig`                 |
 | Turtle                                              | `.ttl`, `.n3`           |
 
@@ -168,7 +170,7 @@ It is possible to upload up to 1,000 separate files in this way. When you have a
 | ------------------ | ----------------------- |
 | gzip               | `.gz`                   |
 | bzip2              | `.bz2`                  |
-| tar                | `tar`                   |
+| tar                | `.tar`, `.tgz`          |
 | XZ                 | `.xz`                   |
 | ZIP                | `.zip`                  |
 
@@ -219,6 +221,71 @@ select ?name ?category ?price where {
 
 When you upload XML files to TriplyDB, they are automatically converted to RDF using the Facade-X data model. This preserves the hierarchical structure of the XML document, making it queryable via SPARQL.
 See [here](https://sparql-anything.readthedocs.io/stable/formats/XML/) for more details on the Facade-X XML data model.
+
+### JSON format
+
+When you upload JSON files to TriplyDB, they are automatically converted to RDF using the Facade-X
+data model, the same model that is used for [XML](#xml-format) and [tabular](#csv-and-tsv-format)
+uploads. This preserves the structure of the JSON document, making it queryable via SPARQL. See
+[here](https://sparql-anything.readthedocs.io/stable/formats/JSON/) for more details on the Facade-X
+JSON data model.
+
+Note that `.json` files are read as plain JSON. Use the `.jsonld` extension for
+[JSON-LD](https://www.w3.org/TR/json-ld11/) documents, so that their `@context` is interpreted.
+
+Objects and arrays are both mapped to containers: the members of an object are linked by their key,
+the members of an array by their position.
+
+- The document itself is typed `<http://sparql.xyz/facade-x/ns/root>`.
+- Object keys become properties in the `https://triplydb.com/json/def/` namespace. Spaces and
+  non-ASCII characters in a key are percent-encoded, so the key `with space` becomes
+  `https://triplydb.com/json/def/with%20space`.
+- Array members are linked by the container membership properties `rdf:_1`, `rdf:_2`, and so on, in
+  the order in which they appear.
+- Strings become plain literals, booleans become `xsd:boolean` literals, and numbers become
+  `xsd:decimal` literals. An exponent is expanded, because it is not part of the lexical space of
+  `xsd:decimal`: `1e10` becomes `10000000000`. Digits are never rounded away, so a number that does
+  not fit a 64-bit float — `1234567890123456789`, `0.000000000000000001` — keeps its full precision.
+- Uploads are information-preserving: a `null` is kept as the IRI
+  `https://triplydb.com/json/def/null` rather than dropped, and a key that occurs twice in the same
+  object yields both values.
+
+Take for example this JSON file:
+
+```json
+{
+  "name": "Friends",
+  "genres": ["Comedy", "Romance"],
+  "cast": [
+    { "actor": "Jennifer Aniston", "role": "Rachel" },
+    { "actor": "Matt LeBlanc", "role": "Joey" }
+  ]
+}
+```
+
+This can be queried as such:
+
+```sparql
+prefix def: <https://triplydb.com/json/def/>
+prefix fx: <http://sparql.xyz/facade-x/ns/>
+
+select ?name ?actor ?role where {
+  ?show a fx:root ;
+        def:name ?name ;
+        def:cast ?cast .
+  ?cast ?position ?member .
+  ?member def:actor ?actor ;
+          def:role ?role .
+}
+```
+
+The position of an array member is part of its predicate, so a variable in that position —
+`?position` above — iterates over every member, while `rdf:_1` selects only the first one.
+
+A single file may hold several JSON documents, one after the other; each becomes its own root
+resource. This is what the `.jsonl` and `.ndjson` extensions of
+[JSON Lines](https://jsonlines.org) are for, but it works for a `.json` file with concatenated
+documents as well.
 
 ### Adding malformed data
 
