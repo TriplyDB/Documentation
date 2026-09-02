@@ -22,7 +22,7 @@ Saved queries are used by three kinds of people, often on the same query:
 
 ## What it solves
 
-A SPARQL query written in the [SPARQL IDE](../../../triplydb/how-to/view-data.md) exists only in
+A SPARQL query written in the [SPARQL IDE](../../triplydb/how-to/view-data.md) exists only in
 the browser tab it was typed in. Sharing it means sharing a query string, and running it again
 means pasting that string back into an editor. Nothing records which version produced which
 result.
@@ -40,15 +40,14 @@ Saving the query changes four things:
 
 A saved query sits between a dataset and everything that consumes it. It is created from the
 SPARQL IDE over a dataset in TriplyDB, and it is consumed by
-[data stories](../../data-stories/index.md), by
-[TriplyETL](../../../triply-etl/sources/triplydb-queries.md) as a data source, by
-[TriplyDB.js](../../../triplydb-js/query.md), and by any application that can make an HTTP
+[TriplyETL](../../triply-etl/sources/triplydb-queries.md) as a data source, by
+[TriplyDB.js](../../triplydb-js/query.md), and by any application that can make an HTTP
 request.
 
 Because the query is versioned, each of those consumers can pin the version it was built
 against, or follow the latest one.
 
-Next: [Getting Started](../Getting-started/index.md) walks you through saving your first query
+Next: [Getting Started](../../Getting-started/index.md) walks you through saving your first query
 and running it from its own URL.
 
 
