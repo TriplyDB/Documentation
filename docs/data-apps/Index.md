@@ -6,12 +6,12 @@ Data apps are features of TriplyDB, not separate products. Each app runs inside 
 
 Make your first steps with the following features:
 
-- [Saved queries](./uploading-data/index.md)
-- [Stories](./publishing-data/index.md)
-- [Editor](./viewing-data/index.md)
-- [Flows](./exporting-data/index.md)
-- [Knowledge graph builder](./saved-queries/index.md)
-- [Knowledge graph quality test](./data-stories/index.md)
+- [Saved queries](./Saved-queries/index.md)
+- [Stories](./data-stories/index.md)
+- [Editor](./Editor/index.md)
+- [Flows](./Flows/index.md)
+- [Knowledge graph builder](./KG-builder/index.md)
+- [Knowledge graph quality test](./KG-quality/index.md)
 
 <!--
 configure APIs
