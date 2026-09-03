@@ -120,6 +120,6 @@ PowerShell (`powershell`), Prolog (`prolog`), regular expressions (`regex`), Rub
 
 ## Related
 
-- [Publish data](../how-to/publish-data.md) — where dataset descriptions are set
-- [Upload data](../how-to/upload-data.md) — where a description is first entered
+- [Publish data](../How-to/publish-data.md) — where dataset descriptions are set
+- [Upload data](../How-to/upload-data.md) — where a description is first entered
 

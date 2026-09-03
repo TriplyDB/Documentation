@@ -78,5 +78,5 @@ data.
 
 - [SPARQL: the basics](../../academy/sparql.md) — `bind` and the rest of the
   syntax used above
-- [View data](../how-to/view-data.md) — running a query in the SPARQL IDE
+- [View data](../How-to/view-data.md) — running a query in the SPARQL IDE
 

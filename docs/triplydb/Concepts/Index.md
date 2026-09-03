@@ -149,8 +149,8 @@ Three properties are worth knowing:
 - A service has a type, and the types available depend on how the instance is
   configured.
 
-See [Manage services](../how-to/manage-services.md) and
-[Service types](../reference/service-types.md).
+See [Manage services](../How-to/manage-services.md) and
+[Service types](../Reference/service-types.md).
 <!-- LINK-TODO: service-types.md is a skeleton awaiting a developer. -->
 
 ## Access level
@@ -190,8 +190,8 @@ Both are documented with the data apps rather than here.
 
 ## Related
 
-- [Getting started](../getting-started/index.md) — these concepts in practice
+- [Getting started](../Getting-started/index.md) — these concepts in practice
   <!-- LINK-TODO: page not written yet. -->
-- [How to](../how-to/index.md) — the tasks that use them
+- [How to](../How-to/index.md) — the tasks that use them
 - [Triply Academy](../../academy/index.md) — the standards underneath
 

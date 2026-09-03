@@ -48,10 +48,11 @@ Using the print dialog and its options.
 Removing a story, and what happens to the saved queries its elements referenced.
 
 
+**Chapter navigation:**
 
----
-
-**Chapter navigation:** [Overview](../index.md) ·
-[Getting Started](../Getting-started/index.md) · [Concepts](../Concepts/index.md) ·
-How-to guides · [Reference](../Reference/index.md) · [FAQ](../FAQ/index.md)
+[Overview](../Index.md) 
+[Getting Started](../Getting-started/index.md) 
+[Concepts](../Concepts/index.md) 
+[Reference](../Reference/index.md) 
+[FAQ](../FAQ/index.md)
 

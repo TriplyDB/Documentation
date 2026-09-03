@@ -258,8 +258,8 @@ pointer; clicking zooms in. Zooming out differs per visualisation:
 
 ## Related
 
-- [Supported file formats](../reference/file-formats.md) — what you can load
-- [GraphQL](../reference/graphql.md) — the other query language
+- [Supported file formats](../Reference/file-formats.md) — what you can load
+- [GraphQL](../Reference/graphql.md) — the other query language
   <!-- LINK-TODO: page not written yet -->
 - [SPARQL: the basics](../../academy/sparql.md) — writing the queries this page runs
 - [Linked data](../../academy/linked-data.md) — what the table and browser show

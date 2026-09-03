@@ -41,8 +41,8 @@ own sections:
 
 ## Related
 
-- [How to](../how-to/index.md) — the procedures this material supports
-- [Concepts](../concepts/index.md) — what a dataset, graph, service and asset are
+- [How to](../How-to/index.md) — the procedures this material supports
+- [Concepts](../Concepts/index.md) — what a dataset, graph, service and asset are
   <!-- LINK-TODO: concepts not written yet. -->
 - [Triply Academy](../../academy/index.md) — the standards behind the formats and
   query languages listed here

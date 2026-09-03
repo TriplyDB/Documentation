@@ -70,7 +70,7 @@ inside it.
 ## Related
 
 - [Upload data](upload-data.md) — the reverse trip
-- [Supported file formats](../reference/file-formats.md) — what TriG and the other
+- [Supported file formats](../Reference/file-formats.md) — what TriG and the other
   serialisations are
 - [Linked data](../../academy/linked-data.md) — why the graph column matters
 

@@ -148,7 +148,7 @@ TriplyDB as **assets** and integrated into the knowledge graph.
 
 ## Related
 
-- [Supported file formats](../reference/file-formats.md) — what TriplyDB accepts,
+- [Supported file formats](../Reference/file-formats.md) — what TriplyDB accepts,
   and how CSV, TSV and XML are converted
 - [Publish data](publish-data.md) — making a dataset available to others
   <!-- LINK-TODO: page not written yet -->

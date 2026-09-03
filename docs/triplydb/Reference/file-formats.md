@@ -123,7 +123,7 @@ for the model.
 
 ## Related
 
-- [Upload data](../how-to/upload-data.md) — the procedure these formats apply to
+- [Upload data](../How-to/upload-data.md) — the procedure these formats apply to
 - [Linked data](../../academy/linked-data.md) — what the RDF formats above encode
 
 

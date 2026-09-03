@@ -44,3 +44,14 @@ every story that uses it changes too, unless the element pinned a version.
 
 Next: [Getting Started](../Getting-started/index.md) walks you through creating a story and
 adding your first two elements.
+
+**Chapter navigation:**
+
+[Overview](../Index.md) 
+[Getting Started](../Getting-started/index.md) 
+[Concepts](../Concepts/index.md) 
+[Reference](../Reference/index.md) 
+[FAQ](../FAQ/index.md)
+
+
+

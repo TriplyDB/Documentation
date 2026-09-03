@@ -489,6 +489,6 @@ Combined filters are evaluated with **and** logic. There is no **or**.
 ## Related
 
 - [SHACL](../../academy/shacl.md) — the shapes this schema is generated from
-- [View data](../how-to/view-data.md) — where GraphQL sits among the query options
+- [View data](../How-to/view-data.md) — where GraphQL sits among the query options
 - [Triply API](../../triply-api/index.md) — endpoint reference
 

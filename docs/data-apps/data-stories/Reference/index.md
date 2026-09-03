@@ -38,11 +38,11 @@ Paragraph text is Markdown compliant and rendered as HTML. Syntax highlighting i
 the common linked data and programming languages. For which Markdown TriplyDB supports and where
 else it applies, see [Markdown support](../../../triplydb/Reference/markdown.md).
 
-## Elsewhere
+**Chapter navigation:**
 
-| Subject | Where |
-| :---- | :---- |
-| Creating, deleting and reading stories programmatically | [TriplyDB.js `Story`](../../../triplydb-js/story/index.md) |
-| The saved queries a story's elements point at | [Saved queries](../../Saved-queries/overview/index.md) |
-| Access levels | [Access and security](../../../access-security/index.md) |
+[Overview](../Index.md) 
+[Getting Started](../Getting-started/index.md) 
+[Concepts](../Concepts/index.md) 
+[Reference](../Reference/index.md) 
+[FAQ](../FAQ/index.md)
 

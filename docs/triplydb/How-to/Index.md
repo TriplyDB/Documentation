@@ -56,11 +56,11 @@ documented in one place. Authentication, roles and user accounts are in
 
 ## Related
 
-- [Concepts](../concepts/index.md) — what a dataset, graph, service and asset are
+- [Concepts](../Concepts/index.md) — what a dataset, graph, service and asset are
   <!-- LINK-TODO: concepts not written yet. -->
-- [Reference](../reference/index.md) — supported formats, and other lookup material
+- [Reference](../Reference/Index.md) — supported formats, and other lookup material
   <!-- LINK-TODO: reference index not written yet. -->
 - [Access and security](../../access-security/index.md) — access levels, roles and
   API tokens
-- [FAQ](../faq/index.md) — shorter answers to common questions
+- [FAQ](../FAQ/index.md) — shorter answers to common questions
   <!-- LINK-TODO: faq not written yet. -->

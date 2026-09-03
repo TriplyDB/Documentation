@@ -140,8 +140,8 @@ questions, start with [SPARQL: the basics](../../academy/sparql.md).
 | If you want to | Go to |
 | --- | --- |
 | Share the dataset with others | [Publish data](../how-to/publish-data.md) |
-| Understand what a graph or service is | [Concepts](../concepts/index.md) |
+| Understand what a graph or service is | [Concepts](../Concepts/index.md) |
 | Learn to write queries | [SPARQL: the basics](../../academy/sparql.md) |
-| Get the data back out | [Export data](../how-to/export-data.md) |
+| Get the data back out | [Export data](../How-to/export-data.md) |
 | Automate loading it | [TriplyETL](../../triply-etl/index.md) |
 

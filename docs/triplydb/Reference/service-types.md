@@ -74,28 +74,8 @@ See [Introspection](introspection.md), which requires Speedy.
 
 ## Related
 
-- [Manage services](../how-to/manage-services.md) — creating and maintaining
+- [Manage services](../How-to/manage-services.md) — creating and maintaining
   services
-- [View data](../how-to/view-data.md) — the query interfaces services enable
+- [View data](../How-to/view-data.md) — the query interfaces services enable
 - [SPARQL: the basics](../../academy/sparql.md) — what a SPARQL service is for
 
----
-
-## ⚠ Needs input before publishing
-
-- **This page is a skeleton and must not be published as it stands.** It has six
-  `TO CONFIRM` questions in the source, each marking something I could not
-  establish from the documentation.
-- **The most important question is the first**: what the complete list is, and
-  whether this page names interface options, underlying engines, or both. Two
-  columns is my suggestion — what you pick in the dialog, and what runs underneath
-  — because the existing docs use both vocabularies interchangeably and that is
-  probably the root of the confusion.
-- **The Speedy question is the one most likely to be a real inconsistency.**
-  Introspection is documented as requiring a Speedy service, and Speedy appears in
-  none of the three service lists. Either the lists are incomplete or the
-  introspection page uses a different name for something already listed.
-- **Once this page is filled in**, the "e.g." phrasing in `manage-services.md` can
-  stay as it is — those sentences are already written to defer here.
-- **Add to `mkdocs.yml`** only once it has content:
-  `- Service types: triplydb/reference/service-types.md`
