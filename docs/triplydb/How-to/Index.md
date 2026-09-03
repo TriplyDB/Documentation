@@ -1,5 +1,3 @@
-[TOC]
-
 <!-- PROVENANCE KEY (delete this block before publishing)
      <!- - SOURCE: x - ->     text recycled from an existing page, path given
      <!- - NEW: x - ->        written for this page, with the reason
@@ -11,8 +9,7 @@
      Administrator settings stays in this chapter, by decision, under its own
      heading. The dividing line is whether a task needs administrator privileges
      on the instance. -->
-
-# How to
+# TriplyDB How to
 
 Task-based guides for working with TriplyDB. Each one assumes you know what you
 want to do and shows you how to do it.
@@ -57,10 +54,8 @@ documented in one place. Authentication, roles and user accounts are in
 ## Related
 
 - [Concepts](../Concepts/index.md) — what a dataset, graph, service and asset are
-  <!-- LINK-TODO: concepts not written yet. -->
 - [Reference](../Reference/Index.md) — supported formats, and other lookup material
-  <!-- LINK-TODO: reference index not written yet. -->
 - [Access and security](../../access-security/index.md) — access levels, roles and
   API tokens
 - [FAQ](../FAQ/index.md) — shorter answers to common questions
-  <!-- LINK-TODO: faq not written yet. -->
+  

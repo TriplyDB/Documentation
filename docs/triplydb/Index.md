@@ -1,5 +1,3 @@
-[TOC]
-
 # TriplyDB
 
 TriplyDB allows you to store, share, and use linked data knowledge graphs. It
@@ -34,3 +32,12 @@ those in one place, with access control over the whole thing.
 [Data apps](../data-apps/Index.md) are features of TriplyDB with their own
 documentation: the Editor, Flows, KG Builder, KG Quality, Saved queries and Data
 stories.
+
+[TriplyDB changelog](../../triplydb-changelog/index.md) 
+## For developers
+[TriplyDB JS](../../triplydb-js/index.md) 
+[TriplyDB technical changelog](../../triplydb-technical-changelog/index.md) 
+[TriplyDB cli](../../triplydb-cli/index.md) 
+[TriplyDB API](../../triplydb-api/index.md) 
+
+

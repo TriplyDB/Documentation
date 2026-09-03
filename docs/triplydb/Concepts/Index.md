@@ -1,5 +1,3 @@
-[TOC]
-
 <!-- PROVENANCE KEY (delete this block before publishing)
      <!- - SOURCE: x - ->     definition assembled from an existing page, path given
      <!- - NEW: x - ->        written for this page, with the reason
@@ -11,7 +9,7 @@
      definition anywhere, because the documentation defines almost none of these
      terms. Each section names where its definition came from. -->
 
-# Concepts
+# TriplyDB Concepts
 
 This page defines the words TriplyDB uses for its own parts. It is worth ten
 minutes before you start, because several of these terms mean something narrower

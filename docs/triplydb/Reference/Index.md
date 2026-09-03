@@ -1,5 +1,3 @@
-[TOC]
-
 <!-- PROVENANCE KEY (delete this block before publishing)
      <!- - SOURCE: x - ->     text recycled from an existing page, path given
      <!- - NEW: x - ->        written for this page, with the reason
@@ -13,7 +11,7 @@
      service-types.md exists but is a skeleton, so it is deliberately absent from
      the table below. Add a row once it has content. -->
 
-# Reference
+# TriplyDB Reference
 
 Lookup material: tables, lists and specifications you consult rather than read.
 For step-by-step instructions, see [How to](../how-to/index.md).

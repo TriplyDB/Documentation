@@ -7,7 +7,7 @@
 
      Links use the capitalised folder names as they currently stand in the repository. -->
 
-# FAQ
+# TriplyDB FAQ
 
 ## Datasets and data
 

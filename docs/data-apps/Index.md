@@ -11,6 +11,7 @@ Make your first steps with the following features:
 - [Knowledge graph builder](./KG-builder/index.md)
 - [Knowledge graph quality test](./KG-quality/index.md)
 
+- [TriplyDB changelog](../triplydb-changelog/index.md) 
 <!--
 configure APIs
 reference:

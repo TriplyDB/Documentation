@@ -1,5 +1,3 @@
-[TOC]
-
 <!-- PROVENANCE KEY (delete this block before publishing)
      <!- - SOURCE: x - ->     step condensed from an existing page, path given
      <!- - NEW: x - ->        written for this page, with the reason
@@ -13,7 +11,7 @@
      RULE APPLIED: nothing optional. Anything a reader can skip and still end up
      with a queryable dataset belongs in How to, not here. -->
 
-# Getting started
+# TriplyDB Getting started
 
 This page takes you from nothing to a dataset you can query, in four steps. It
 should take about fifteen minutes.
