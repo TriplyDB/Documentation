@@ -10,5 +10,6 @@ start to finish.
 
 ---
 
-**Previous:** [How-to guides](../how-to/index.md) · **Next:** [FAQ](../faq.md) ·
-[Back to overview](../overview.md)
+**Previous:** [How-to guides](../how-to/index.md) 
+**Next:** [FAQ](../faq.md) 
+**Back:** [Back to overview](../overview.md)

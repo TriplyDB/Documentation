@@ -78,6 +78,19 @@ datasets.
 Output datasets produced by a flow are ordinary TriplyDB datasets — they can be queried,
 published, and used as input to other add-ons without any additional steps.
 
-Next: [Getting Started](getting-started/index.md) walks you through building and running your
+Next: [Getting Started](Getting-started/index.md) walks you through building and running your
 first flow.
+
+**Chapter navigation:**
+
+[Overview](../Index.md) 
+
+[Getting Started](../Getting-started/index.md) 
+
+[Concepts](../Concepts/index.md) 
+
+[Reference](../Reference/index.md) 
+
+[FAQ](../FAQ/index.md)
+
 

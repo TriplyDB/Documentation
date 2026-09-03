@@ -49,3 +49,17 @@ A W3C standard for representing controlled vocabularies, taxonomies, and thesaur
 ### View
 
 A configured perspective on the data in the Editor. A view determines which classes and concept schemes are shown, and how the data is presented. For example, the SKOS view shows a concept tree; other views may present data differently. A single dataset can have multiple views. You switch between views using the **view** button in the top-left corner of the Editor pane.
+
+**Chapter navigation:**
+
+[Overview](../index.md) 
+
+[Getting Started](../Getting-started/index.md) 
+
+[Concepts](../Concepts/index.md) 
+
+[Reference](../Reference/index.md) 
+
+[FAQ](../FAQ/index.md)
+
+

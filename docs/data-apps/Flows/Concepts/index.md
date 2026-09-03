@@ -145,3 +145,18 @@ A mechanism for plugging custom code into a flow. Connectors are intended for ta
 built-in catalogue does not yet cover. They let developers supply logic in their own code while
 still running it within the governed Flows environment. Connectors can be connected to private
 infrastructure.
+
+**Chapter navigation:**
+
+[Overview](../Index.md) 
+
+[Getting Started](../Getting-started/index.md) 
+
+[Concepts](../Concepts/index.md) 
+
+[Reference](../Reference/index.md) 
+
+[FAQ](../FAQ/index.md)
+
+
+

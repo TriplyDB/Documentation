@@ -53,4 +53,18 @@ Mandatory properties are marked with an asterisk (*). You cannot save the instan
 
 After making your changes, save the instance. The change is written to the dataset immediately and recorded in the instance's modification history.
 
-You now have a working knowledge of the core editing flow. See Q&A for guidance on less common tasks, and Concepts for definitions of terms used throughout the Editor.
+You now have a working knowledge of the core editing flow. See FAQ for guidance on less common tasks, and Concepts for definitions of terms used throughout the Editor.
+
+**Chapter navigation:**
+
+[Overview](../index.md) 
+
+[Getting Started](../Getting-started/index.md) 
+
+[Concepts](../Concepts/index.md) 
+
+[Reference](../Reference/index.md) 
+
+[FAQ](../FAQ/index.md)
+
+

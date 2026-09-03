@@ -80,4 +80,17 @@ presets, and set per schedule. Multi-line values are not supported.
 | Run SHACL validation and produce a report | Yes |
 
 
+**Chapter navigation:**
+
+[Overview](../Index.md) 
+
+[Getting Started](../Getting-started/index.md) 
+
+[Concepts](../Concepts/index.md) 
+
+[Reference](../Reference/index.md) 
+
+[FAQ](../FAQ/index.md)
+
+
 

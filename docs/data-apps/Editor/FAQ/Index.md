@@ -78,3 +78,17 @@ Yes. In the instance detail panel, the IRI of an instance is shown as a hyperlin
 
 **Can I open a specific instance in the Editor directly, without navigating through the tree?**
 Yes. Instance hyperlinks from other TriplyDB views (such as Browser) can be dragged and dropped onto the **Editor** entry in the left-hand navigation. The Editor opens and shows that instance directly.
+
+**Chapter navigation:**
+
+[Overview](../index.md) 
+
+[Getting Started](../Getting-started/index.md) 
+
+[Concepts](../Concepts/index.md) 
+
+[Reference](../Reference/index.md) 
+
+[FAQ](../FAQ/index.md)
+
+

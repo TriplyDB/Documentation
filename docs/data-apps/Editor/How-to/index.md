@@ -76,7 +76,7 @@ dragging a hyperlink from another view onto Editor to open that instance directl
 
 **Chapter navigation:**
 
-[Overview](../Index.md) 
+[Overview](../index.md) 
 
 [Getting Started](../Getting-started/index.md) 
 
@@ -84,6 +84,6 @@ dragging a hyperlink from another view onto Editor to open that instance directl
 
 [Reference](../Reference/index.md) 
 
-[FAQ](../FAQ/Index.md)
+[FAQ](../FAQ/index.md)
 
 
