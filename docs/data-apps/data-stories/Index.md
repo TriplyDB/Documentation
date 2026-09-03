@@ -45,11 +45,11 @@ adding your first two elements.
 
 **Chapter navigation:**
 
-[Overview](../Index.md) 
-[Getting Started](../Getting-started/index.md) 
-[Concepts](../Concepts/index.md) 
-[Reference](../Reference/index.md) 
-[FAQ](../FAQ/index.md)
+[Overview](./Index.md) 
+[Getting Started](./Getting-started/index.md) 
+[Concepts](./Concepts/index.md) 
+[Reference](./Reference/index.md) 
+[FAQ](./FAQ/index.md)
 
 
 
