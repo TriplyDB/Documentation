@@ -21,6 +21,6 @@ The problem it solves: manually extracting structured knowledge from textual sou
 KG Builder runs as a Flow within your TriplyDB instance. To get started, continue to Getting Started.
 
 **Chapter navigation:** 
-[Getting Started](../Getting-started/index.md) · [Concepts](../Concepts/index.md) ·
-[How-to guides](../How-to/index.md) · [Reference](../Reference/index.md) · [FAQ](../FAQ/index.md)
+[Getting Started](./Getting-started/index.md) · [Concepts](./Concepts/index.md) ·
+[How-to guides](./How-to/index.md) · [Reference](./Reference/index.md) · [FAQ](./FAQ/index.md)
 
