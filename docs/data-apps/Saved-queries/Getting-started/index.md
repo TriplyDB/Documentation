@@ -14,7 +14,7 @@ By the end of this page you have a saved query with its own URL, a second versio
 RESTful API link that runs it.
 
 To use this app, you need an active TriplyDB dataset. If you don't have one yet, see the
-[TriplyDB Getting Started guide](../../../triplydb/getting-started/index.md).
+[TriplyDB Getting Started guide](../../../triplydb/Getting-started/index.md).
 
 You also need to be logged in and have authorisation rights on the dataset. Without them the save
 button does not appear.
@@ -22,7 +22,7 @@ button does not appear.
 ## Step 1 — Open the SPARQL IDE
 
 Open your dataset and start a SPARQL service if none is running. Go to the
-[SPARQL IDE](../../../triplydb/how-to/view-data.md) tab. The editor opens with an empty query.
+[SPARQL IDE](../../../triplydb/How-to/view-data.md) tab. The editor opens with an empty query.
 
 ## Step 2 — Write a query and run it
 
@@ -82,8 +82,8 @@ API endpoint you can call from anything that speaks HTTP.
 
 From here:
 
-- [How-to guides](../how-to/index.md) — sharing, downloading results, paging past 10 000 results,
+- [How-to guides](../How-to/index.md) — sharing, downloading results, paging past 10 000 results,
   calling the API from Python or R, transferring a query to another account.
-- [Concepts](../concepts/index.md) — how versions, the service binding and API variables relate
+- [Concepts](../Concepts/index.md) — how versions, the service binding and API variables relate
   to each other.
 

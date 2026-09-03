@@ -14,7 +14,7 @@
 
 # Reference
 
-Look-up material for Flows. For procedures, see the [how-to guides](../how-to/index.md).
+Look-up material for Flows. For procedures, see the [how-to guides](../How-to/index.md).
 
 ## Run statuses
 

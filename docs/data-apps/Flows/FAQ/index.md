@@ -25,7 +25,7 @@ support if you cannot see Flows in the left-hand navigation panel.
 
 Flows can import RDF from a public URL, and read CSV and XML. JSON and Excel are not supported
 yet. For anything else, including relational databases and files on your own network, use a
-[connector](../concepts/index.md#connector). See [Input data](../reference/index.md#input-data).
+[connector](../Concepts/index.md#connector). See [Input data](../Reference/index.md#input-data).
 
 
 **Can I use Flows as a replacement for TriplyETL?**
@@ -60,19 +60,19 @@ Copying flows between TriplyDB instances is not yet fully supported. This is on 
 **Can I connect Flows to data sources inside my organisation's private network?**
 
 Yes. Flows supports connecting to private infrastructure through
-[connectors](../concepts/index.md#connector).
+[connectors](../Concepts/index.md#connector).
 
 ## Variables and credentials
 
 **How do I pass different input files or dataset names without editing the flow each time?**
 
-Define a [parameterized variable](../concepts/index.md#parameterized-variables) for the value that
+Define a [parameterized variable](../Concepts/index.md#parameterized-variables) for the value that
 changes, reference it in the relevant task configuration fields, and set the variable value per
 run or per schedule. This keeps the flow definition stable while the inputs vary.
 
 **Can other users in my organisation trigger a flow that uses sensitive credentials?**
 
-Yes. Store credentials as [masked variables](../concepts/index.md#masked-variables). Users with
+Yes. Store credentials as [masked variables](../Concepts/index.md#masked-variables). Users with
 execution rights can trigger flows that use them without seeing the underlying value, and the
 value is not exposed in logs or error messages.
 

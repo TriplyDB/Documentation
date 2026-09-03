@@ -103,18 +103,18 @@ them, configure them, run.
 From here you can:
 
 - **Add variables** to make the flow reusable across environments or datasets — see
-  [parameterized variables](../concepts/index.md#parameterized-variables).
+  [parameterized variables](../Concepts/index.md#parameterized-variables).
 - **Store credentials securely** using masked variables, so other team members can trigger the
   flow without seeing sensitive values — see [masked variables](../concepts/index.md#masked-variables).
 - **Add a SHACL validation step** between Transform and Store to catch data quality issues before
   they reach your production dataset — see
-  [SHACL validation](../concepts/index.md#shacl-validation).
+  [SHACL validation](../Concepts/index.md#shacl-validation).
 - **Set a schedule** so the flow runs automatically at a fixed interval — open the **Schedule**
   tab on the flow canvas. Schedules can carry their own variable values.
 - **Validate before production** by changing a dataset's access level from within the flow, so
   data only becomes visible once it has passed its checks.
 - **Monitor all flows** in your organisation from the Flows overview page — see
-  [the management overview](../concepts/index.md#the-management-overview).
+  [the management overview](../Concepts/index.md#the-management-overview).
 
 **Chapter navigation:**
 

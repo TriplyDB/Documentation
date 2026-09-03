@@ -1,10 +1,8 @@
-[TOC]
-
 <!-- SOURCE: triply-db-getting-started/data-stories/index.md — the opening paragraph,
      expanded into the four Overview questions. That page is the only prose source; the
      audience and "how it fits" sections are new writing, flagged below. -->
 
-# Data stories
+# TriplyDB Data stories
 
 A TriplyDB data story is a way of communicating information about your linked data along with
 explanatory text, while also being able to integrate query results.

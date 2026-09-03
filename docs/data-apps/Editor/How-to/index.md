@@ -25,14 +25,14 @@
      normalised to lowercase, these need updating with them. -->
 # TriplyDB Editor
 
-# How to guides
+## How to guides
 For the shortest path through the Editor, start with
 [Getting Started](../Getting-started/index.md) instead. For definitions of the terms used here,
 see [Concepts](../Concepts/index.md).
 
-## Working with data
+### Working with data
 
-### Work with instances
+#### Work with instances
 
 Creating an instance and picking its class, letting the Editor generate an IRI or setting your
 own, copying an existing instance when you need a similar one, editing its properties, and
@@ -40,14 +40,14 @@ deleting an instance you no longer want.
 
 ![The class picker when creating a new instance, with the generated IRI](../../../assets/editor-new-instance.png)
 
-### Find and navigate your data
+#### Find and navigate your data
 
 Searching for an instance by label from the search box, browsing the concept tree, expanding and
 collapsing concepts, and searching within the hierarchy once a scheme is open.
 
 ![The concept hierarchy shown as a tree, with expandable concepts](../../../assets/editor-concept-tree.png)
 
-### Work with multiple concept schemes
+#### Work with multiple concept schemes
 
 Selecting a concept scheme, chaining schemes that are linked by `skos:narrowMatch` and
 `skos:broadMatch`, and reading the colour coding that tells you which scheme a concept comes
@@ -55,17 +55,17 @@ from.
 
 ![Two chained concept schemes, each shown in a different colour](../../../assets/editor-chained-concept-schemes.png)
 
-## Working with the data model
+### Working with the data model#
 
-### Add SHACL shapes to an unshaped ontology
+#### Add SHACL shapes to an unshaped ontology
 
 Finding classes that are defined in your ontology but have no SHACL node shape yet, editing one
 so that a shape is created for it in the background, and using the class picker to pre-fill the
 label, description and parent class from the ontology.
 
-## Working alongside other TriplyDB views
+### Working alongside other TriplyDB views
 
-### Move between the Editor and other views
+#### Move between the Editor and other views
 
 Dragging an instance hyperlink onto Browser or Triples to see the same resource there, and
 dragging a hyperlink from another view onto Editor to open that instance directly.

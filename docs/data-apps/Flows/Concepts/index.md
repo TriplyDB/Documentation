@@ -50,7 +50,7 @@ Use the search bar at the top of the catalogue to find a specific task type.
 
 The logical stages a flow can move data through: **Ingest**, **Clean**, **Transform**,
 **Enrich**, **Store**, and **Serve**. Not every flow uses all six — you connect only the stages
-your data requires. See [the pipeline model](../index.md#the-pipeline-model) for what each stage
+your data requires. See [the pipeline model](../Index.md#the-pipeline-model) for what each stage
 covers.
 
 ### Conditional

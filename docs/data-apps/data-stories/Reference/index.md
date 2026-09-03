@@ -1,16 +1,16 @@
-[TOC]
 
 <!-- SOURCE: triply-db-getting-started/data-stories/index.md — the menu list under "Editing a
      data story", turned into a table, plus the element types from "Adding elements".
      The TriplyDB.js row points at triplydb-js/story/index.md, which is out of scope for this
      restructure and stays where it is. -->
+# TriplyDB data stories
 
-# Reference
+## Reference
 
 Look-up material for data stories. For procedures, see the
 [how-to guides](../How-to/index.md).
 
-## The story menu
+### The story menu
 
 Reached from the menu button in the top-right corner of a story.
 
@@ -24,7 +24,7 @@ Reached from the menu button in the top-right corner of a story.
 | Print | Print dialog and options |
 | Delete | Delete the story |
 
-## Element types
+### Element types
 
 | Type | Contains | Notes |
 | :---- | :---- | :---- |
@@ -32,7 +32,7 @@ Reached from the menu button in the top-right corner of a story.
 | Existing query | A reference to a saved query | Optional version selector and caption |
 | New query | A query created from within the story | Not documented — see the review block |
 
-## Markdown in paragraphs
+### Markdown in paragraphs
 
 Paragraph text is Markdown compliant and rendered as HTML. Syntax highlighting is available for
 the common linked data and programming languages. For which Markdown TriplyDB supports and where

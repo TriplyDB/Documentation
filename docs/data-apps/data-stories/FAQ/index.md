@@ -3,10 +3,11 @@
 <!-- SOURCE: no source page. Every question is derived from a statement in
      triply-db-getting-started/data-stories/index.md — the answers are reused, the questions
      are new. Nothing has been mined from Zoho Desk, so this is a seed, not a real FAQ. -->
+# TriplyDB data stories
 
-# FAQ
+## FAQ
 
-## Creating and editing
+### Creating and editing
 
 **Where do I create a story?**
 
@@ -22,7 +23,7 @@ view.
 Yes, in paragraph elements. Paragraph text is Markdown, so images, links and syntax-highlighted
 code blocks all work.
 
-## Query results
+### Query results
 
 **Do the query results update when the data changes?**
 
@@ -39,7 +40,7 @@ query as it changes.
 The element form offers this alongside choosing an existing query, but the documentation does not
 yet describe what happens next.
 
-## Sharing
+### Sharing
 
 **I shared a link and my colleague sees nothing.**
 
@@ -55,7 +56,7 @@ your HTML page. See [Share or embed a story](../How-to/share-and-embed.md).
 
 There is a print option in the story menu, with a dialog and print options.
 
-## Managing stories
+### Managing stories
 
 **Can I move a story to an organisation?**
 

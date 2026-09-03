@@ -70,8 +70,8 @@ Not every pipeline uses all six stages. Flows lets you connect only the steps yo
 ## How it fits into the TriplyDB datacloud
 
 Flows is one of several TriplyDB add-ons that together cover the full knowledge graph lifecycle.
-Where [KG Builder](../kg-builder/index.md) assembles graph structures from scratch and the
-[Editor](../editor/index.md) supports day-to-day curation of individual instances, Flows handles
+Where [KG Builder](../KG-builder/index.md) assembles graph structures from scratch and the
+[Editor](../Editor/index.md) supports day-to-day curation of individual instances, Flows handles
 the systematic loading and transformation of data from source systems into your TriplyDB
 datasets.
 
