@@ -16,7 +16,7 @@ If you do not see **Editor** in the left-hand navigation, the feature has not be
 
 ### Step 2 — Choose a view
 
-![The Editor entry in the left-hand navigation panel](../../../assets/editor-view-skos-2026.png)
+![The Editor skos-view](../../../assets/editor-view-skos-2026.png)
 
 In the top-left corner of the Editor pane, select the **view** button. A dropdown list shows all views that have been configured for this dataset. Select the view you want to work with. For datasets that contain a SKOS vocabulary, select the **SKOS** view.
 
@@ -24,14 +24,14 @@ If only one view is configured, the view button is still present but only one op
 
 ### Step 3 — Select a concept scheme (SKOS view only)
 
-![The Editor entry in the left-hand navigation panel](../../../assets/editor-select-concept-scheme.png)
+![The Editor concept scheme](../../../assets/editor-select-concept-scheme.png)
 If you are working in the SKOS view, select a concept scheme from the **concept scheme(s)** input field. You can pick from the dropdown list or start typing to filter by name. Once a concept scheme is selected, the concept hierarchy appears in the left panel of the Editor pane.
 
 To work with multiple chained concept schemes, press in the space behind the name of the selected scheme and select an additional scheme. Each scheme in the chain is shown in a different colour.
 
 ### Step 4 — Find an instance
 
-![The Editor entry in the left-hand navigation panel](../../../assets/editor-find.png)
+![The Editor find button](../../../assets/editor-find.png)
 
 Use the search box next to the **create** button to find an existing instance by label. Start typing to see a dropdown list of matching resources. Matching characters are shown in bold. Select an instance to open its details in the right panel.
 
