@@ -1,4 +1,4 @@
-# KG Builder
+# TriplyDB Knowledge graph Builder
 
 ## Introduction
 

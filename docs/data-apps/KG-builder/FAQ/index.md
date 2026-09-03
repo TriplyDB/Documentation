@@ -55,3 +55,6 @@ The ontology KG Builder produces is stored as a standard TriplyDB graph. You can
 
 **Does KG Builder replace manual knowledge modelling?**
 No. KG Builder automates a time-consuming first pass — extracting candidate classes, properties, and constraints — but the result should be reviewed and refined by a knowledge engineer. Think of it as a starting point, not a finished ontology.
+
+**Previous:** [Concepts](../Concepts/index.md) 
+**Back:**[Back to overview](../index.md)

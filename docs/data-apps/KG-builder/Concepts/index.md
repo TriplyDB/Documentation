@@ -48,3 +48,7 @@ The base URI that KG Builder uses to construct URIs for the generated SHACL shap
 
 **TriplyDB dataset**
 A container in TriplyDB that holds one or more named graphs, together with associated metadata, services, and assets. KG Builder writes its output to a dataset you specify.
+
+**Previous:** [Getting started](../Getting-started/index.md) 
+**Next:** [Reference](../Reference/index.md) 
+**Back:**[Back to overview](../index.md)

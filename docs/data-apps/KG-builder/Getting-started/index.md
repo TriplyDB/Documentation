@@ -1,5 +1,3 @@
-[TOC]
-
 # TriplyDB Knowledge graph builder 
 
 ## Getting Started
@@ -56,11 +54,8 @@ When all required fields are filled and you have reviewed the cost estimate, cli
 
 You now have a draft ontology extracted from your source text. For guidance on improving results, understanding the output, and integrating with other Triply tools, see the section How-to.
 
-- [Overview](./index.md)
-- [Concepts](./concepts/index.md)
-- [How to](./how-to/index.md)
-- [Reference](./reference/index.md)
-- [FAQ](./faq/index.md)
+**Next:** [Concepts](../Concepts/index.md) 
+**Back:**[Back to overview](../index.md)
 
 <!--
 configure APIs
