@@ -55,7 +55,7 @@ from.
 
 ![Two chained concept schemes, each shown in a different colour](../../../assets/editor-chained-concept-schemes.png)
 
-### Working with the data model#
+### Working with the data model
 
 #### Add SHACL shapes to an unshaped ontology
 

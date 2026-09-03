@@ -40,7 +40,7 @@ against a dataset in TriplyDB.
 That layering is worth knowing: a story is a presentation layer, not a copy. Change the query and
 every story that uses it changes too, unless the element pinned a version.
 
-Next: [Getting Started](../Getting-started/index.md) walks you through creating a story and
+Next: [Getting Started](./Getting-started/index.md) walks you through creating a story and
 adding your first two elements.
 
 **Chapter navigation:**

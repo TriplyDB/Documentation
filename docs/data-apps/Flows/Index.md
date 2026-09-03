@@ -83,14 +83,14 @@ first flow.
 
 **Chapter navigation:**
 
-[Overview](../Index.md) 
+[Overview](./Index.md) 
 
-[Getting Started](../Getting-started/index.md) 
+[Getting Started](./Getting-started/index.md) 
 
-[Concepts](../Concepts/index.md) 
+[Concepts](./Concepts/index.md) 
 
-[Reference](../Reference/index.md) 
+[Reference](./Reference/index.md) 
 
-[FAQ](../FAQ/index.md)
+[FAQ](./FAQ/index.md)
 
 

@@ -22,7 +22,7 @@ addressable.
 
 | Guide | What it covers |
 |---|---|
-| [Download a query result](download-results.md) | Downloading from the interface, and which visualisation produces which file format |
+| [Download a query result](download-a-result.md) | Downloading from the interface, and which visualisation produces which file format |
 | [Retrieve more than 10 000 results](paginate-results.md) | Paging through large result sets, via the API or via TriplyDB.js |
 | [Use a query as a RESTful API](use-as-restful-api.md) | The `run` endpoint, and calling it from an application |
 | [Use a query in Python or R](use-in-python-or-r.md) | The code snippet generator, and authorising non-public queries |

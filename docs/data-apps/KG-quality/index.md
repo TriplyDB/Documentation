@@ -33,11 +33,11 @@ Editor, and complements SHACL validation rather than replacing it — SHACL enfo
 can state explicitly, KG Quality surfaces the ones that are harder to express as formal
 constraints. To get started, continue to Getting Started.
 
-- [Getting started](../Getting-started/index.md)
-- [Concepts](../Concepts/index.md)
-- [How to](../How-to/index.md)
-- [Reference](../Reference/index.md)
-- [FAQ](../FAQ/index.md)
+- [Getting started](./Getting-started/index.md)
+- [Concepts](./Concepts/index.md)
+- [How to](./How-to/index.md)
+- [Reference](./Reference/index.md)
+- [FAQ](./FAQ/index.md)
 
 <!--
 configure APIs

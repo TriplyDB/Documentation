@@ -58,7 +58,7 @@ to call the API. It behaves the same way here as everywhere else in TriplyDB —
 
 Metadata can also be written inside the query string itself, using GRLC annotations. These are
 SPARQL comments beginning with `#+`, which means they travel with the query text and are still
-valid SPARQL. See [Query metadata](../reference/query-metadata.md) for the annotation format.
+valid SPARQL. See [Query metadata](../Reference/query-metadata.md) for the annotation format.
 
 ## Results, and the 10 000 limit
 
@@ -73,7 +73,7 @@ rest, you page through the result set. Two mechanisms do this:
 - **TriplyDB.js** handles paging internally, so a large result set can be iterated, written to a
   file, or loaded into memory without managing pages yourself.
 
-Both are described in [Retrieve more than 10 000 results](../how-to/paginate-results.md). Which
+Both are described in [Retrieve more than 10 000 results](../How-to/paginate-results.md). Which
 to choose is a question of what you are writing: an HTTP client of any language can do the first;
 the second needs TypeScript, but is less to get wrong.
 

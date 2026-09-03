@@ -105,7 +105,7 @@ From here you can:
 - **Add variables** to make the flow reusable across environments or datasets — see
   [parameterized variables](../Concepts/index.md#parameterized-variables).
 - **Store credentials securely** using masked variables, so other team members can trigger the
-  flow without seeing sensitive values — see [masked variables](../concepts/index.md#masked-variables).
+  flow without seeing sensitive values — see [masked variables](../Concepts/index.md#masked-variables).
 - **Add a SHACL validation step** between Transform and Store to catch data quality issues before
   they reach your production dataset — see
   [SHACL validation](../Concepts/index.md#shacl-validation).

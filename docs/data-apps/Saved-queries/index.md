@@ -41,7 +41,7 @@ Saving the query changes four things:
 A saved query sits between a dataset and everything that consumes it. It is created from the
 SPARQL IDE over a dataset in TriplyDB, and it is consumed by
 [TriplyETL](../../triply-etl/sources/triplydb-queries.md) as a data source, by
-[TriplyDB.js](../../triplydb-js/query.md), and by any application that can make an HTTP
+[TriplyDB.js](../../triplydb-js/query/index.md), and by any application that can make an HTTP
 request.
 
 Because the query is versioned, each of those consumers can pin the version it was built

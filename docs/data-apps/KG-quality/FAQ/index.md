@@ -1,4 +1,5 @@
-# TriplyDB knowledgraph quality 
+# TriplyDB knowledge graph quality 
+
 ## FAQ
 
 ### Running assessments

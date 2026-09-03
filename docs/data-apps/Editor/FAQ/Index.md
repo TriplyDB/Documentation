@@ -1,6 +1,6 @@
 # TriplyDB Editor
 
-## Q&A
+## FAQ
 
 ### Opening and access
 

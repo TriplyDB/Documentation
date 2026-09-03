@@ -56,7 +56,7 @@ https://triplydb.com/DBpedia-association/-/queries/timeline-cars
 ```
 
 Both forms are shareable. Which one to use is a decision, not a detail — see
-[Share a query](../how-to/share-a-query.md).
+[Share a query](../How-to/share-a-query.md).
 
 ## Step 5 — Create a second version
 
