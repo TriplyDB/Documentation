@@ -3,7 +3,7 @@
 ## Reference
 
 This chapter is look-up material: the settings, fields, options, supported formats and limits
-of the Knowledge Graph Builder, with their defaults and permitted values. Use it to check a
+of the Knowledge graph builder, with their defaults and permitted values. Use it to check a
 detail, not to read from start to finish.
 
 *More content will follow shortly.*

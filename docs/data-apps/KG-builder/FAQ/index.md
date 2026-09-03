@@ -1,4 +1,4 @@
-# TriplyDB knowledge graph builder 
+# TriplyDB Knowledge graph builder 
 
 ## FAQ
 
@@ -14,10 +14,10 @@ Yes — and this is recommended for domain-specific or complex texts. You can pr
 Input documents in both Dutch and English are supported.
 
 **How does the cost estimate work?**
-Before the LLM pipeline runs, KG Builder calculates an estimate of the expected execution time and cost based on the size and number of input documents. This estimate is shown to you before you confirm the run. You can also set a maximum cost ceiling; if the estimate exceeds your ceiling, the run is cancelled automatically.
+Before the LLM pipeline runs, Knowledge graph builder calculates an estimate of the expected execution time and cost based on the size and number of input documents. This estimate is shown to you before you confirm the run. You can also set a maximum cost ceiling; if the estimate exceeds your ceiling, the run is cancelled automatically.
 
 **Is my data kept confidential?**
-Yes. KG Builder uses a Triply-provided LLM that runs in a confidential environment. Your input documents are not sent to a public LLM and are not used for model training.
+Yes. Knowledge graph builder uses a Triply-provided LLM that runs in a confidential environment. Your input documents are not sent to a public LLM and are not used for model training.
 
 **How long does a run take?**
 It depends on the size and number of input documents. The pre-run estimate includes an expected execution time. Larger documents with more concepts will take more time.
@@ -34,7 +34,7 @@ Check the following: (1) the input file format is `.txt`, `.rtf`, or `.doc`; (2)
 The output consists of **classes**, **properties**, and **simple constraints** (expressed as SHACL shapes), stored as RDF triples in the output dataset graph you specified. The classes and properties reflect the entity types and relationships found in the source text.
 
 **How accurate is the extraction?**
-With the default Triply-provided LLM, KG Builder targets **recall ≥ 80%** (most relevant concepts are captured) and **precision ≥ 60%** (most extracted elements are correct). These are targets, not guarantees — results vary with text quality and domain complexity. Review by a knowledge engineer is always recommended before using the output in production.
+With the default Triply-provided LLM, Knowledge graph builder targets **recall ≥ 80%** (most relevant concepts are captured) and **precision ≥ 60%** (most extracted elements are correct). These are targets, not guarantees — results vary with text quality and domain complexity. Review by a knowledge engineer is always recommended before using the output in production.
 
 **Where do I view and edit the extracted ontology?**
 Navigate to the output dataset in TriplyDB and open the **Data Model Editor**. This shows the extracted classes, properties, and constraints in a structured editing interface where you can review, correct, and extend the output.
@@ -51,10 +51,10 @@ Yes. Each run writes to the specified output graph. New triples are added to any
 ### Integration with the Triply ecosystem
 
 **How does KG Builder relate to other TriplyDB tools?**
-The ontology KG Builder produces is stored as a standard TriplyDB graph. You can immediately open it in the **Data Model Editor** to refine it, validate it with the **KG Quality** add-on, visualise it with the schema viewer, query it with SPARQL, and use it as input for further ETL pipelines in TriplyETL.
+The ontology Knowledge graph builder produces is stored as a standard TriplyDB graph. You can immediately open it in the **Data Model Editor** to refine it, validate it with the **KG Quality** add-on, visualise it with the schema viewer, query it with SPARQL, and use it as input for further ETL pipelines in TriplyETL.
 
 **Does KG Builder replace manual knowledge modelling?**
-No. KG Builder automates a time-consuming first pass — extracting candidate classes, properties, and constraints — but the result should be reviewed and refined by a knowledge engineer. Think of it as a starting point, not a finished ontology.
+No. Knowledge graph builder automates a time-consuming first pass — extracting candidate classes, properties, and constraints — but the result should be reviewed and refined by a knowledge engineer. Think of it as a starting point, not a finished ontology.
 
 **Previous:** [Concepts](../Concepts/index.md) 
 **Back:**[Back to overview](../index.md)

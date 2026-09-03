@@ -2,23 +2,36 @@
 
 ## Overview
 
-KG Builder is a TriplyDB add-on that extracts a structured ontology from unstructured text. You provide one or more text documents — and optionally existing ontologies or additional modelling instructions — and KG Builder uses a confidential LLM pipeline to extract classes, properties, and simple constraints, storing the result as RDF in a TriplyDB dataset. The extracted ontology is immediately viewable and editable in the TriplyDB Data Model Editor.
+KG Quality is a TriplyDB add-on that runs a set of automated quality tests against a knowledge
+graph and produces a report of the issues it finds. You point it at a SPARQL endpoint, choose one
+of twelve available tests, and KG Quality checks the graph for that specific kind of problem —
+from duplicate classes to poorly written definitions — and writes the results to an HTML and
+Markdown report.
 
-KG Builder is for knowledge engineers and data modelers who need to turn textual sources into machine-interpretable ontologies quickly. It is particularly suited to projects where:
+KG Quality is for knowledge engineers and data stewards responsible for the ongoing quality of a
+knowledge graph or ontology, especially once it has grown too large to review by hand. It is
+particularly useful after a bulk import, an extraction pass (such as with KG Builder), or before
+publishing a graph for others to rely on.
 
-- The source text is a document, regulation, or other structured text that can be provided as a `.txt`, `.rtf`, or `.doc` file.
-- You have domain knowledge to encode — existing ontologies or modelling preferences you want the extraction to respect.
-- The output needs to be stored, refined, and queried as a knowledge graph in TriplyDB.
+**The problem it solves:** SHACL constraints are good at enforcing rules you can state explicitly
+up front — a property must be present, a value must have a certain type. Many real quality
+problems aren't like that. Two classes that mean the same thing but were named differently.
+A subclass relationship that looks plausible but isn't actually correct. A definition that's
+present but too circular to be useful. These are "soft" problems: real, but hard to express as a
+formal constraint, and slow to find by reading through a large graph term by term. KG Quality
+automates that first pass, checking the graph across five quality dimensions — Semantic Accuracy,
+Completeness, Consistency, Conciseness, and Clarity and Understandability — using SPARQL queries,
+embedding-based similarity, and, for the most nuanced checks, an LLM. The output is a report a
+knowledge engineer can work through, not an automatic fix.
 
-The problem it solves: manually extracting structured knowledge from textual sources is time-consuming and error-prone. Legal articles, technical specifications, and domain documents use dense, implicit structure that requires expert interpretation to turn into semantically correct RDF. KG Builder automates the first pass — extracting candidate classes, properties, and constraints — so knowledge engineers can focus on review and refinement rather than blank-page modelling.
+**Quality targets and confidentiality**: KG Quality is a diagnostic tool — every finding is a
+flag to review, not a guaranteed error. It works against any SPARQL endpoint that is reachable
+over HTTP(S), not only datasets hosted in TriplyDB.
 
-**Data confidentiality**: your input data is processed using a Triply-provided LLM that operates in a confidential environment. Your data is not sent to a public LLM and is not used for model training.
-
-**Language support**: input documents in both Dutch and English are supported.
-
-**Quality targets**: with the default Triply-provided LLM, the extraction process targets recall ≥ 80% and precision ≥ 60%. This means the extracted ontology is a useful starting point, but review by a knowledge engineer is expected.
-
-KG Builder runs as a Flow within your TriplyDB instance. To get started, continue to the next section: Getting Started.
+KG Quality runs as a Flow within your TriplyDB instance, alongside tools like KG Builder and the
+Editor, and complements SHACL validation rather than replacing it — SHACL enforces the rules you
+can state explicitly, KG Quality surfaces the ones that are harder to express as formal
+constraints. To get started, continue to Getting Started.
 
 - [Getting started](../Getting-started/index.md)
 - [Concepts](../Concepts/index.md)

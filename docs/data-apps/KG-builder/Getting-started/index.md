@@ -4,7 +4,7 @@
 
 > To use this add-on, you need an active TriplyDB account with the KG Builder flow enabled. If you don't have one yet, see the [TriplyDB Getting Started guide](#).
 
-By the end of this section you will have run KG Builder against a text document and verified that the extracted ontology appears in the TriplyDB Data Model Editor.
+By the end of this section you will have run Knowledge graph builder against a text document and verified that the extracted ontology appears in the TriplyDB Data Model Editor.
 
 **Step 1.** Log in to your TriplyDB account. From your profile page, click the **Flows** tab in the top navigation. You will see the `KG_builder` flow listed there.
 

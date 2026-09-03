@@ -43,6 +43,5 @@ else it applies, see [Markdown support](../../../triplydb/Reference/markdown.md)
 [Overview](../Index.md) 
 [Getting Started](../Getting-started/index.md) 
 [Concepts](../Concepts/index.md) 
-[Reference](../Reference/index.md) 
 [FAQ](../FAQ/index.md)
 

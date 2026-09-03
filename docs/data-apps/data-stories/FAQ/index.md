@@ -71,6 +71,6 @@ Yes, from **Change banner** in the story menu. Wide images work best.
 [Getting Started](../Getting-started/index.md) 
 [Concepts](../Concepts/index.md) 
 [Reference](../Reference/index.md) 
-[FAQ](../FAQ/index.md)
+
 
 
