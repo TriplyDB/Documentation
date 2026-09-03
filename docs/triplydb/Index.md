@@ -1,4 +1,5 @@
-# TriplyDB
+<img src="https://triplydb.com/imgs/logos/logo-lg.svg?v=0" style="height: 100px;"/>
+# TriplyDB documentation
 
 TriplyDB allows you to store, share, and use linked data knowledge graphs. It
 makes it easy to upload linked data and expose it through various APIs,
@@ -33,11 +34,18 @@ those in one place, with access control over the whole thing.
 documentation: the Editor, Flows, KG Builder, KG Quality, Saved queries and Data
 stories.
 
+## Changelog
+
 [TriplyDB changelog](../../triplydb-changelog/index.md) 
+
 ## For developers
+
 [TriplyDB JS](../../triplydb-js/index.md) 
+
 [TriplyDB technical changelog](../../triplydb-technical-changelog/index.md) 
+
 [TriplyDB cli](../../triplydb-cli/index.md) 
+
 [TriplyDB API](../../triplydb-api/index.md) 
 
 
