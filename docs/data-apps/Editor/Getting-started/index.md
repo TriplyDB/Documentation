@@ -1,4 +1,4 @@
-#TriplyDB Editor
+# TriplyDB Editor
 
 ## Getting Started
 
@@ -8,7 +8,7 @@ By the end of this section you will have opened the Editor, selected a view, fou
 
 ### Step 1 — Open the Editor
 
-![The Editor entry in the left-hand navigation panel](../../../assets/editor-open.png)
+![The Editor entry in the left-hand navigation panel](../../../assets/editor-open-2026.png)
 
 Open the dataset you want to work with in TriplyDB. In the left-hand navigation panel, select **Editor**. The Editor pane opens.
 
@@ -16,7 +16,7 @@ If you do not see **Editor** in the left-hand navigation, the feature has not be
 
 ### Step 2 — Choose a view
 
-![The Editor entry in the left-hand navigation panel](../../../assets/editor-view-skos.png)
+![The Editor entry in the left-hand navigation panel](../../../assets/editor-view-skos-2026.png)
 
 In the top-left corner of the Editor pane, select the **view** button. A dropdown list shows all views that have been configured for this dataset. Select the view you want to work with. For datasets that contain a SKOS vocabulary, select the **SKOS** view.
 

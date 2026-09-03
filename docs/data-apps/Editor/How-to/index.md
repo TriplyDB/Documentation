@@ -1,4 +1,4 @@
-[TOC]
+
 <!-- SOURCES: no how-to prose exists yet. The guides below are groupings of material that
      already sits in two places:
      1. data-apps/Editor/FAQ/Index.md — several answers are step-by-step procedures rather
@@ -23,8 +23,9 @@
      Links use the capitalised folder names as they currently stand in the repository
      (Concepts, FAQ, Getting-started, How-to, Reference). If the Editor folders are
      normalised to lowercase, these need updating with them. -->
+# TriplyDB Editor
 
-## How to guides
+# How to guides
 For the shortest path through the Editor, start with
 [Getting Started](../Getting-started/index.md) instead. For definitions of the terms used here,
 see [Concepts](../Concepts/index.md).

@@ -1,5 +1,3 @@
-[TOC]
-
 # TriplyDB Editor
 
 ## Overview
@@ -19,7 +17,7 @@ This helps you navigate the documentation:
 - [Concepts](./Concepts/index.md)
 - [How to](./How-to/index.md)
 - [Reference](./Reference/index.md)
-- [FAQ](./FAQ/index.md)
+- [FAQ](./FAQ/Index.md)
 
 <!--
 configure APIs

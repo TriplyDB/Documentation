@@ -1,4 +1,4 @@
-#TriplyDB Editor
+# TriplyDB Editor
 
 ## Q&A
 
@@ -14,7 +14,7 @@ You can use the Editor on any dataset that has a SHACL shapes graph and for whic
 
 **How do I create a new instance?**
 
-![The Editor entry in the left-hand navigation panel](../../../assets/editor-create.png)
+![The Editor entry in the left-hand navigation panel](../../../assets/editor-create-2026.png)
 
 Select the **create** button in the top-right corner of the Editor pane. Choose the class for the new instance from the picker. The Editor generates an IRI automatically; you can change it if needed. Fill in the required properties and save.
 
