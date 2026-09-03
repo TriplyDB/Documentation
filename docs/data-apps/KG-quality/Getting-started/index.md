@@ -1,4 +1,5 @@
 # TriplyDB knowledge graph quality 
+
 ## Getting Started
 
 > To use this add-on, you need an active TriplyDB instance. If you don't have one yet, see the [TriplyDB Getting Started guide](#).
@@ -29,9 +30,5 @@ By the end of this section you will have run a quality test against a SPARQL end
 
 You now have your first KG Quality report. For guidance on what to do with specific findings, see our FAQ. For a full description of all available tests, see Available Quality Tests in the How to section.
 
-
-- [Overview](./index.md)
-- [Concepts](./concepts/index.md)
-- [How to](./how-to/index.md)
-- [Reference](./reference/index.md)
-- [FAQ](./faq/index.md)
+**Next:** [How to](../How-to/index.md) 
+**Back:**[Back to overview](../index.md)

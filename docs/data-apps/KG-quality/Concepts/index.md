@@ -46,9 +46,6 @@ A URL that accepts SPARQL queries and returns results over HTTP(S). KG Quality c
 **Understandability**
 See *Clarity and understandability*.
 
-Continue to
-- [Getting started](./getting-started/index.md)
-- [How to](./how-to/index.md)
-- [Reference](./reference/index.md)
-- [FAQ](./faq/index.md)
-- [Overview](./index.md)
+**Previous:** [Getting started](../Getting-started/index.md) 
+**Next:** [Reference](../Reference/index.md) 
+**Back:**[Back to overview](../index.md)

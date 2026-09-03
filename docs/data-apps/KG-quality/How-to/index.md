@@ -1,4 +1,5 @@
 # TriplyDB knowledge graph quality
+
 ## Available quality tests
 
 ### T001 — Duplicate classes
@@ -137,11 +138,5 @@ For each class that carries a definition, gathers its definition text (from `sko
 
 *Note: Runtime and cost are governed by model provider rate limits and pricing rather than graph size.*
 
-Continue to
-
-- [Getting started](./getting-started/index.md)
-- [Concepts](./concepts/index.md)
-- [Reference](./reference/index.md)
-- [FAQ](./faq/index.md)
-- [Overview](./index.md)
-
+**Next:** [Concepts](../Concepts/index.md) 
+**Back:**[Back to overview](../index.md)

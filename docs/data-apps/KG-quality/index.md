@@ -1,6 +1,4 @@
-[TOC]
-
-# TriplyDB Knowledge graph quality test
+# TriplyDB Knowledge graph quality
 
 ## Overview
 
@@ -22,11 +20,11 @@ The problem it solves: manually extracting structured knowledge from textual sou
 
 KG Builder runs as a Flow within your TriplyDB instance. To get started, continue to the next section: Getting Started.
 
-- [Getting started](./getting-started/index.md)
-- [Concepts](./concepts/index.md)
-- [How to](./how-to/index.md)
-- [Reference](./reference/index.md)
-- [FAQ](./faq/index.md)
+- [Getting started](../Getting-started/index.md)
+- [Concepts](../Concepts/index.md)
+- [How to](../How-to/index.md)
+- [Reference](../Reference/index.md)
+- [FAQ](../FAQ/index.md)
 
 <!--
 configure APIs

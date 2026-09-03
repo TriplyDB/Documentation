@@ -34,9 +34,5 @@ No. SHACL and KG Quality are complementary. Use SHACL to enforce constraints you
 **Can I schedule KG Quality to run automatically?**
 This depends on your TriplyDB configuration. Contact your TriplyDB administrator or Triply support for information about scheduling Flows runs.
 
-Continue to
-- [Getting started](./getting-started/index.md)
-- [Concepts](./concepts/index.md)
-- [How to](./how-to/index.md)
-- [Reference](./reference/index.md)
-- [Overview](./index.md)
+**Previous:** [Concepts](../Concepts/index.md) 
+**Back:**[Back to overview](../index.md)
