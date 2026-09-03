@@ -44,7 +44,6 @@ Next: [Getting Started](../Getting-started/index.md) walks you through creating 
 adding your first two elements.
 
 **Chapter navigation:**
-
 [Overview](./Index.md) 
 [Getting Started](./Getting-started/index.md) 
 [Concepts](./Concepts/index.md) 
