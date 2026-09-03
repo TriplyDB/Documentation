@@ -1,5 +1,3 @@
-[TOC]
-
 <!-- PROVENANCE KEY (delete this block before publishing)
      <!- - SOURCE: x - ->     text recycled from an existing page, path given
      <!- - NEW: x - ->        written for this page, with the reason

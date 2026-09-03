@@ -42,7 +42,7 @@ dialog is optional and can be filled in later.
 New datasets are **Private**, which is the right setting while you are
 experimenting. Nobody else can see it.
 
-Full guide: [Upload data](../how-to/upload-data.md).
+Full guide: [Upload data](../How-to/upload-data.md).
 
 ## 2. Add data
 
@@ -55,7 +55,7 @@ three routes, and which one suits you depends on what you have to hand.
 **If you have a data file**, drag it onto the cloud icon, or click the icon to
 browse for it. This is the most reliable route, because it does not depend on
 what the instance already holds. The file must be RDF, CSV, TSV or XML — see
-[Supported file formats](../reference/file-formats.md).
+[Supported file formats](../Reference/file-formats.md).
 
 **If the instance already publishes datasets**, type in the **"Add data from an
 existing dataset"** field, pick one from the dropdown, choose its graphs and click
@@ -78,10 +78,10 @@ at, and it replaces steps 1 and 2 entirely.
 
 Whether a starter dataset exists depends on whether an administrator has
 configured one. See
-[Administrator settings](../how-to/admin-settings.md#starter-dataset).
+[Administrator settings](../How-to/admin-settings.md#starter-dataset).
 
 Your data now lives in one or more **graphs** inside the dataset. See
-[Concepts](../concepts/index.md).
+[Concepts](../Concepts/index.md).
 
 ## 3. Look at what you loaded
 
@@ -95,7 +95,7 @@ Two views are available immediately, with no further setup:
 - The **linked data table** shows every triple, with columns for subject,
   predicate, object and graph.
 
-Full guide: [View data](../how-to/view-data.md).
+Full guide: [View data](../How-to/view-data.md).
 
 ## 4. SPARQL
 
@@ -137,7 +137,7 @@ questions, start with [SPARQL: the basics](../../academy/sparql.md).
 
 | If you want to | Go to |
 | --- | --- |
-| Share the dataset with others | [Publish data](../how-to/publish-data.md) |
+| Share the dataset with others | [Publish data](../How-to/publish-data.md) |
 | Understand what a graph or service is | [Concepts](../Concepts/index.md) |
 | Learn to write queries | [SPARQL: the basics](../../academy/sparql.md) |
 | Get the data back out | [Export data](../How-to/export-data.md) |

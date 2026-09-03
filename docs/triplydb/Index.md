@@ -1,4 +1,5 @@
 <img src="https://triplydb.com/imgs/logos/logo-lg.svg?v=0" style="height: 100px;"/>
+
 # TriplyDB documentation
 
 TriplyDB allows you to store, share, and use linked data knowledge graphs. It

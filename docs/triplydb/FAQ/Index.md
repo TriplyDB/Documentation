@@ -1,5 +1,3 @@
-[TOC]
-
 <!-- SOURCE: no source page. The old documentation had no FAQ. Every question here is
      derived from a statement in the TriplyDB how-to and reference chapters — the answers
      are recycled, the questions are new. Nothing has been mined from Zoho Desk yet, so
@@ -100,8 +98,12 @@ Yes, a whole dataset or one graph at a time. Exports are compressed. See
 **Chapter navigation:**
 
 [Overview](../index.md) 
+
 [Getting Started](../Getting-started/index.md) 
+
 [Concepts](../Concepts/index.md) 
+
 [Reference](../Reference/Index.md) 
+
 [FAQ](../FAQ/index.md)
 
