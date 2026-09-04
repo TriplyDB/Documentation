@@ -13,7 +13,31 @@ Make your first steps with the following features:
 - [Knowledge graph builder](./KG-builder/index.md)
 - [Knowledge graph quality test](./KG-quality/index.md)
 
-- [TriplyDB changelog](../triplydb-changelog/index.md) 
+
+
+## Changelog
+- [TriplyDB changelog](../triplydb-changelog/index.md)
+[TriplyDB changelog](../../triplydb-changelog/index.md) 
+
+## Triply Academy
+
+The [Academy](../../triplydb-changelog/index.md) explains the ideas the Triply products are built on: linked data,
+knowledge graphs, ontologies, and the standards for querying and validating them.
+
+It is deliberately product-neutral. You do not need any of it to use a Triply
+product, and none of it tells you what to click (the product documentation does
+that). Read the Academy when you want to understand *why* things work the way they
+do, or when a term in the product documentation turns out to have more behind it
+than a definition.
+
+
+<img src="https://triplydb.com/imgs/logos/logo-lg.svg?v=0" style="height: 100px;"/>
+
+## Triply company - about us
+
+You are also welcome to visit our [website](www.triply.cc)
+Have a question? Send us a message through info@triply.cc
+
 <!--
 configure APIs
 reference:
