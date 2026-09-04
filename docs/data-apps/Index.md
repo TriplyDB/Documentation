@@ -17,7 +17,6 @@ Make your first steps with the following features:
 
 ## Changelog
 - [TriplyDB changelog](../triplydb-changelog/index.md)
-[TriplyDB changelog](../../triplydb-changelog/index.md) 
 
 ## Triply Academy
 

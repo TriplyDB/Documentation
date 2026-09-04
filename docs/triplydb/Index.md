@@ -37,7 +37,7 @@ stories.
 
 ## Changelog
 
-[TriplyDB changelog](../../triplydb-changelog/index.md) 
+- [TriplyDB changelog](../triplydb-changelog/index.md)
 
 ## Triply Academy
 
