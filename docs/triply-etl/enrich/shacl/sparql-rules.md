@@ -91,7 +91,7 @@ Notice the following details:
 - We introduce a node shape that targets all instances of `sdo:Person`.
 - The node shape is connected to a SPARQL Rule via the `sh:rule` property.
 - The SPARQL Rule has its own RDF resource, and is connected to the query string via the `sh:construct` property.
-- The SPARQL Construct query from [Step 1](#step-1-implement-the-sparql-construct-query) no longer include the `a sdo:Person` line. This line is no longer needed, since the node shape will only trigger for instances of `sdo:Person` in the first place.
+- The SPARQL Construct query from [Step 1](#step-1a-implement-the-sparql-construct-query) no longer include the `a sdo:Person` line. This line is no longer needed, since the node shape will only trigger for instances of `sdo:Person` in the first place.
 - The SPARQL Construct query uses variable name `$this` to bind to the instances for which the rule will be executed. While this name is only a convention in the SPARQL query language, it has a special meaning in the SPARQL Rule. This variable will be bound for all targets of the node shape (i.e. for every person in the data).
 - The literal that contains the SPARQL Construct query uses triple quoted literals notation (`'''...'''`). This notation allows us to use unescaped newlines inside the literal, which allows us to inline the query string in a readable way.
 
@@ -102,7 +102,7 @@ The following script is completely self-contained. By copy/pasting it into Tripl
 
 Notice that the script includes the following components:
 
-  1. Load the instance data from [Step 1A](#step-1a-load-instance-data) with [loadRdf()](../../extract/rdf.md).
+  1. Load the instance data from [Step 1A](#step-1a-implement-the-sparql-construct-query) with [loadRdf()](../../extract/rdf.md).
   2. Execute the rule from [Step 1B](#step-1b-create-the-node-shape) with [executeRules()](./index.md).
   3. Print the contents of the internal store with [logQuads()](../../generic/debug.md#function-logquads).
 

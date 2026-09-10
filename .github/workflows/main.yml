@@ -4,21 +4,37 @@ on:
     branches:
       - master
 
+# `mkdocs gh-deploy` pushes the built site to the gh-pages branch.
+permissions:
+  contents: write
+
 jobs:
   build:
     name: Deploy docs
     runs-on: ubuntu-latest
     steps:
       - name: Checkout master
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
         with:
+          # gh-deploy commits on top of the existing gh-pages branch, so it needs the history.
           fetch-depth: 0
-          lfs: 'true'
+          lfs: true
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: requirements.txt
+
+      - name: Install build dependencies
+        run: pip install -r requirements.txt
 
       - name: Deploy docs
-        uses: mhausenblas/mkdocs-deploy-gh-pages@nomaterial
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          CUSTOM_DOMAIN: docs.triply.cc
-          EXTRA_PACKAGES: git-lfs
-          REQUIREMENTS: requirements.txt
+        # --strict turns a broken internal link into a failed build rather than a broken page,
+        # which matters because the deploy that follows force-pushes over the live site.
+        # The custom domain travels with the site as docs/CNAME, not as a CI setting.
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          mkdocs gh-deploy --strict --force

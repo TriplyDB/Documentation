@@ -38,7 +38,7 @@ The dataset settings page contains the following items:
 
 The "Update dataset profile" pane (see [Figure 2](#fig-update-dataset-profile-pane)) allows the following things to be configured:
 
-- Dataset Access Level, see Section [Access Levels](../reference/index.md#access-levels).
+- Dataset Access Level, see Section [Access Levels](../access-control/index.md#access-levels).
 - Dataset metadata, see Section [Dataset metadata](#dataset-metadata).
 
 <figure id="fig-update-dataset-profile-pane">

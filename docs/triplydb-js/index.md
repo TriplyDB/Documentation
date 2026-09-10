@@ -3,42 +3,38 @@ title: 'TriplyDB.js'
 path: '/docs/triplydb-js'
 ---
 
-[TOC]
+# TriplyDB.js
 
-**TriplyDB.js** is the official programming library for interacting with [TriplyDB](../triply-db-getting-started/index.md). TriplyDB.js allows you to automate operations that would otherwise be performed in the TriplyDB GUI.
+**TriplyDB.js** is the official JavaScript and TypeScript client for [TriplyDB](../triply-db-getting-started/index.md). It automates what you would otherwise do by hand in the TriplyDB web interface: creating datasets and loading data into them, managing services, running saved queries, and reading data back.
 
-TriplyDB.js is implemented in [TypeScript](https://www.typescriptlang.org). TypeScript is a type-safe language that transpiles to [JavaScript](https://en.wikipedia.org/wiki/JavaScript). This allows you to use TriplyDB.js in web browsers as well as on servers (using [Node.js](https://nodejs.org)). TriplyDB.js is open source and its source code is published on [GitHub](https://github.com/TriplyDB/TriplyDB-JS).
+## Reference documentation
 
-Please contact [support@triply.cc](mailto:support@triply.cc) for questions and suggestions.
+The API reference is **generated from the source code**, so it always matches the released package:
 
+- **[TriplyDB.js API reference](https://static.triply.cc/triplydb-js/)** — every class, method and type, each with examples.
+- **[Changelog](https://static.triply.cc/triplydb-js/documents/CHANGELOG.html)** — breaking changes, additions and fixes per release, with the replacement for anything that was removed.
 
+The reference's landing page covers installation and a first script. The pages below cover the things that are not part of the API surface itself.
 
-# Overview
+## Installation
 
-TriplyDB.js contains several classes, each with their own methods. The documentation for every method includes at least one code example. These code examples can be run by inserting them into the following overall script.
-
-Notice that `process.env.TOKEN` picks up an API token that is stored in the environment variable called `TOKEN`. Follow the steps on [this page](../triply-api/index.md#creating-an-api-token) to create a new API token in the TriplyDB GUI.
-
-```ts
-import App from '@triply/triplydb'
-const triply = App.get({ token: process.env.TOKEN })
-async function run() {
-  // This is where the code examples in this reference section should be placed.
-}
-run().catch(e => {
-  console.error(e)
-  process.exit(1)
-})
-process.on('uncaughtException', function (e) {
-  console.error('Uncaught exception', e)
-  process.exit(1)
-})
-process.on('unhandledRejection', (reason, p) => {
-  console.error('Unhandled Rejection at: Promise', p, 'reason:', reason)
-  process.exit(1)
-})
+```sh
+npm install @triply/triplydb
 ```
 
-The following sections document the various TriplyDB.js classes. Each class comes with its own methods. Classes are related through methods that connect them. For example, calling the `getAccount` method on a `App` object returns an `Account` object.
+TriplyDB.js requires Node.js 20 or newer. Reading non-public data, and writing any data, requires an [API token](../generics/api-token.md).
 
-![](../assets/ClassDiagram.png)
+## Where to look
+
+| I want to… | Go to |
+| --- | --- |
+| Connect, and make a first call | [Reference — getting started](https://static.triply.cc/triplydb-js/) |
+| Create a dataset, upload data, manage graphs | [`Dataset`](https://static.triply.cc/triplydb-js/classes/Dataset.html) |
+| Run a SPARQL query or update directly | [`Dataset.sparqlQuery`](https://static.triply.cc/triplydb-js/classes/Dataset.html#sparqlquery), [`Dataset.sparqlUpdate`](https://static.triply.cc/triplydb-js/classes/Dataset.html#sparqlupdate) |
+| Start, synchronise or configure a service | [`Service`](https://static.triply.cc/triplydb-js/classes/Service.html) |
+| Run a saved query and read its results | [`Query`](https://static.triply.cc/triplydb-js/classes/Query.html) |
+| Work with accounts, users and groups | [`User`](https://static.triply.cc/triplydb-js/classes/User.html), [`Group`](https://static.triply.cc/triplydb-js/classes/Group.html) |
+| Retrieve more than one page of query results | [SPARQL pagination](../generics/sparql-pagination.md) |
+| Understand async iterators, and other common questions | [FAQ](faq/index.md) |
+
+Please contact [support@triply.cc](mailto:support@triply.cc) for questions and suggestions.

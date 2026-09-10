@@ -351,7 +351,7 @@ This transformation is typically used when:
 
 - `content` A key that contains a string value, or a string specified with function [str()](../assert/ratt/terms.md#str).
 - `datatype` Optionally, a key that stores an IRI or a static IRI.
-- `language` Optionally, a language tag from the [`lang`](../generic/declarations.md#language-declarations) object, or a key that stores such a language tag.
+- `language` Optionally, a language tag from the [`lang`](../generic/declarations.md#language-tag-declarations) object, or a key that stores such a language tag.
 - `validate` Optionally provide a single validator condition or an array of validator conditions that the literal `content` should hold to, will return a boolean and throw and error when a validator condition does not hold.
 - `key` A new key where the created literal is stored.
 
@@ -801,7 +801,7 @@ city:2 rdfs:label 'Parijs'.
 
 
 
-## encodeHtml()
+## decodeHtml()
 
 ### Description
 
@@ -1573,7 +1573,7 @@ This results in the following linked data assertion:
 city:Amsterdam geonames:countryCode "NL"
 ```
 
-## wkt.addPoint() {#wktAddPoint()}
+## wkt.addPoint()
 ### Description
 Creates a Well-Known Text (WKT) serialization string from the corresponding geospatial point.
 ### Parameters
@@ -1614,7 +1614,7 @@ And in the following linked data assertion:
 ```
 city:Amstedam geo:asWKT "Point (52.37308 4.89245)"^^geo:wktLiteral
 ```
-## wkt.project() {#wktProject()}
+## wkt.project()
 ### Description
 Converts the projection of a Well-Known Text (WKT) literal from one Coordinate Reference System to another one.
 ### Parameters
@@ -1643,7 +1643,7 @@ This results in the following record of the key `'_coordinates'`:
   ]
 }
 ```
-We can now use the converted result to create a WKT `Point()` using [addPoint()](#function-wktaddpoint-wktaddpoint):
+We can now use the converted result to create a WKT `Point()` using [addPoint()](#wktaddpoint):
 ```ts
 wkt.addPoint({
   latitude: '_coordinates[0]',

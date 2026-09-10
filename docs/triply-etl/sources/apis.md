@@ -42,4 +42,4 @@ Raw SPARQL endpoints lack several features that are essential for use in product
 - API variables
 - versioning
 
-These features are all supported by [TriplyDB queries](#triplydb-queries). It is therefore simpler and safer to use TriplyDB queries. Still, when used outside of production systems, raw SPARQL endpoints can still be used as regular web APIs.
+These features are all supported by [TriplyDB queries](triplydb-queries.md). It is therefore simpler and safer to use TriplyDB queries. Still, when used outside of production systems, raw SPARQL endpoints can still be used as regular web APIs.

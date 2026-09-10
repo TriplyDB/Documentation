@@ -250,8 +250,8 @@ It's important to be aware that runtime differences can occur when comparing Tri
 
 1. `Overhead in CI Jobs`: GitLab CI jobs may introduce overhead beyond the actual ETL computation, such as setting up a containerized environment and additional CI-specific steps. A difference of 1 to 5 minutes between GitLab CI and TriplyETL runtimes is normal due to this overhead.
 
-2. `Use of copySource() Function`: Significant runtime differences exceeding 5 minutes can be attributed to the use of the [copySource()](../publish/index.md#direct-copying-of-source-data-to-destination) function, which operates outside of the ETL application and contributes to the total runtime but not the middleware runtime.
+2. `Use of copySource() Function`: Significant runtime differences exceeding 5 minutes can be attributed to the use of the [copySource()](../publish/index.md#direct-copying-from-source-to-destination) function, which operates outside of the ETL application and contributes to the total runtime but not the middleware runtime.
 
-If you encounter a runtime difference greater than 5 minutes, and the [copySource()](../publish/index.md#direct-copying-of-source-data-to-destination) function hasn't been used, it is recommended to report the issue to Triply. The issue will be further investigated to identify and address any potential causes.
+If you encounter a runtime difference greater than 5 minutes, and the [copySource()](../publish/index.md#direct-copying-from-source-to-destination) function hasn't been used, it is recommended to report the issue to Triply. The issue will be further investigated to identify and address any potential causes.
 
 Understanding these factors and taking appropriate action will help you manage your TriplyETL pipelines effectively in a CI/CD environment.

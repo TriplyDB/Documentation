@@ -57,7 +57,7 @@ https://triplydb.com/DBpedia-association/-/queries/timeline-cars
 
 The result of a query can be downloaded via the TriplyDB interface. After saving the query, open it in TriplyDB. e.g. <https://triplydb.com/DBpedia-association/-/queries/timeline-cars/>.
 
-You can download results in different data format, depending on which [visualization option](../../yasgui/index.md#visualizations) you use. For example, if you want to download the results in a `.json` format, you can choose the option `Response` and click on the download icon or scroll down and click on `Download result`.
+You can download results in different data format, depending on which visualization option you use. For example, if you want to download the results in a `.json` format, you can choose the option `Response` and click on the download icon or scroll down and click on `Download result`.
 
 ![Download the query result via the download icon.](../../assets/queryResult.png)
 
@@ -67,18 +67,18 @@ The downloaded file is automatically stored in the `Downloads`-folder and has th
 
 Below is a table of all supported visualizations and what format of results they produce.
 
-| **Visualization option**                                       | **Result data format** |
-| -------------------------------------------------------------- | ---------------------- |
-| [Table](../../yasgui/index.md#table)                           | `.csv`                 |
-| [Response](../../yasgui/index.md#response)                     | `.json`                |
-| [Gallery](../../yasgui/index.md#gallery-triplydb-plugin)       | Download not supported |
-| [Chart](../../yasgui/index.md#chart-triplydb-plugin)           | `.svg`                 |
-| [Geo](../../yasgui/index.md#geo-triplydb-plugin)               | Download not supported |
-| [Geo-3D](../../yasgui/index.md#geo-3d-triplydb-only)           | Download not supported |
-| [Geo events](../../yasgui/index.md#geo-events-triplydb-plugin) | Download not supported |
-| [Markup](../../yasgui/index.md#markup-triplydb-plugin)         | `.svg`, `.html`        |
-| [Network](../../yasgui/index.md#network-triplydb-plugin)       | `.png`                 |
-| [Timeline](../../yasgui/index.md#timeline-triplydb-plugin)     | Download not supported |
+| **Visualization option** | **Result data format** |
+| ------------------------ | ---------------------- |
+| Table                    | `.csv`                 |
+| Response                 | `.json`                |
+| Gallery                  | Download not supported |
+| Chart                    | `.svg`                 |
+| Geo                      | Download not supported |
+| Geo-3D                   | Download not supported |
+| Geo events               | Download not supported |
+| Markup                   | `.svg`, `.html`        |
+| Network                  | `.png`                 |
+| Timeline                 | Download not supported |
 
 As another example, to download the query result in CSV-format, select the option `Table` and click on the download icon. The downloaded file is named after the query with the suffix `.csv`.
 
@@ -226,4 +226,4 @@ Users can specify additional metadata inside the query string, by using the GRLC
 #+ frequency: hourly
 ```
 
-See the [Triply API documentation](../../triply-api/index.md#queries) for how to retrieve query metadata, including how to retrieve GRLC annotations.
+See the [Queries endpoints](https://api.triplydb.com/api-docs) in the OpenAPI documentation for how to retrieve a saved query's metadata.

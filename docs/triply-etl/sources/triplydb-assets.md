@@ -75,7 +75,7 @@ Since TriplyDB assets are part of a TriplyDB dataset:
 - they are accessible under the same access level as the rest of the dataset, and
 - they are accessible with the same API Token that allows linked data to be published in that dataset.
 
-Notice that this makes it *easier* and *safer* to deal with source data that is not public. When private data is retrieved from [online files](#online-files) or [APIs](#apis), authorization information must be configured at the HTTP level. This is possible but cumbersome. And, depending on the authentication approach, it is required to create a new API Token and securely configure that in addition to the TriplyDB API Token.
+Notice that this makes it *easier* and *safer* to deal with source data that is not public. When private data is retrieved from [online files](online-files.md) or [APIs](apis.md), authorization information must be configured at the HTTP level. This is possible but cumbersome. And, depending on the authentication approach, it is required to create a new API Token and securely configure that in addition to the TriplyDB API Token.
 
 Notice that access also is more *transparent* when TriplyDB assets are used. All and only collaborators that have access to the TriplyDB dataset also have access to the source data. It is clear for all collaborators which source files should be used, and which versions are available. This is more transparent than having to share (multiple versions of) source files over email or by other indirect means.
 

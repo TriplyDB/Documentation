@@ -88,7 +88,7 @@ fromCsv(Source.file('example.csv'), { separator: ';' }),
 
 ## CSV with tab separators is not TSV
 
-Notice that the popular Tab-Separate Values (TSV) format is not the same as the standardized CSV format with a tab separator character. If you want to process standards-conforming TSV source data, use the [`fromTsv()` extractor](#extractor-fromtsv) instead.
+Notice that the popular Tab-Separate Values (TSV) format is not the same as the standardized CSV format with a tab separator character. If you want to process standards-conforming TSV source data, use the [`fromTsv()` extractor](tsv.md) instead.
 
 
 

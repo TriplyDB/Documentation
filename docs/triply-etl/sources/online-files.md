@@ -72,4 +72,4 @@ loadRdf(
 
 Online files are typically not used in production pipelines, because the availability of many Internet resources is outside of the control of the project team. Internet resources that are not maintained by team members may be subject to content-wise changes, which may affect the production pipeline.
 
-If the project team controls the Internet resources, then risks are smaller. But at that point it is even better to upload the online files as [TriplyDB asset](#triplydb-assets) for additional benefits such as access controls.
+If the project team controls the Internet resources, then risks are smaller. But at that point it is even better to upload the online files as [TriplyDB asset](triplydb-assets.md) for additional benefits such as access controls.

@@ -294,4 +294,4 @@ The command can be used as follows:
 $ npx tools validate -d data.trig -s model.trig
 ```
 
-See [this section](../validate/shacl.md#validation-report) to learn more about the SHACL validation report.
+See [this section](../validate/shacl.md) to learn more about the SHACL validation report.

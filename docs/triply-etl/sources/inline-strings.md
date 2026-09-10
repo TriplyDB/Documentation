@@ -91,6 +91,6 @@ fromJson(Source.string(`
 ]`)),
 ```
 
-Notice that the [inline JSON](#inline-json) source is often a more intuitive specification format for the `fromJson()` source extractor than its corresponding string source.
+Notice that the [inline JSON](inline-json.md) source is often a more intuitive specification format for the `fromJson()` source extractor than its corresponding string source.
 
-While [inline JSON](#inline-json) and [string sources](#strings) are mostly used for small examples, local files are somewhat more widely used.
+While [inline JSON](inline-json.md) and [string sources](#inline-strings) are mostly used for small examples, local files are somewhat more widely used.

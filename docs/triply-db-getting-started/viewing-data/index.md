@@ -117,7 +117,7 @@ Terms in the linked data Table can be dragged and dropped between columns. This 
 
 ## SPARQL IDE
 
-When a dataset has a running SPARQL service, the data can be queried from the SPARQL IDE. The SPARQL IDE is an extended version of the Open Source [Yasgui](../../yasgui/index.md) query editor.
+When a dataset has a running SPARQL service, the data can be queried from the SPARQL IDE. The SPARQL IDE is an extended version of the Open Source [Yasgui](https://github.com/TriplyDB/Yasgui) query editor.
 
 ### Saving a SPARQL query
 

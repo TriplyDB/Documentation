@@ -33,7 +33,7 @@ insert data { <john> <knows> <mary>. }`),
 }
 ```
 
-Debug function [logQuads()](../../generic/debug.md#logquads) prints the content of the internal store to standard output:
+Debug function [logQuads()](../../generic/debug.md#function-logquads) prints the content of the internal store to standard output:
 
 ```turtle
 base <https://triplydb.com/>
@@ -98,7 +98,7 @@ prefix sdo: <${sdo.$namespace}>
 delete data { <john> sdo:children <mary>. }`),
 ```
 
-You can use the debug function [logQuads()](../../generic/debug.md#logquads) before and after this function call, to see the effects on the internal store.
+You can use the debug function [logQuads()](../../generic/debug.md#function-logquads) before and after this function call, to see the effects on the internal store.
 
 
 

@@ -44,7 +44,7 @@ fromXlsx(Source.file('example.xlsx'), { sheetNames: ['people', 'projects'] }),
 
 ## Record representation
 
-TriplyETL treats every row in XLSX sheet as one [record](../generic/record.md). The columns are emitted as keys and the cells are emitted as values. Unlike other tabular formats like [CSV](#extractor-fromcsv) and [TSV](#extractor-fromtsv), values in XLSX can have different types.
+TriplyETL treats every row in XLSX sheet as one [record](../generic/record.md). The columns are emitted as keys and the cells are emitted as values. Unlike other tabular formats like [CSV](csv.md) and [TSV](tsv.md), values in XLSX can have different types.
 
 For example, the following table:
 

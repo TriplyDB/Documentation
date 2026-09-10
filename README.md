@@ -46,31 +46,40 @@ This will result in link `http://docs.triply.cc/path-to-file/#my-custom-header-i
 
 ## Installation
 
-This website uses [MkDocs](https://www.mkdocs.org/) to convert Markdown to HTML so the documentation can be viewed in a web browser. Follow the instructions on their website to install MkDocs.
+This website is built with [ProperDocs](https://properdocs.org/), the maintained community fork of MkDocs, which converts Markdown to HTML so the documentation can be viewed in a web browser. Three packages are needed alongside it:
 
-Required plugins:
-- To render `mermaid` you will need to install [this plugin](https://github.com/fralau/mkdocs-mermaid2-plugin).
+- [mkdocs-mermaid2-plugin](https://github.com/fralau/mkdocs-mermaid2-plugin), to render `mermaid` diagrams.
+- [mkdocs-redirects](https://github.com/mkdocs/mkdocs-redirects), to serve the redirects configured in `mkdocs.yml`.
+- `properdocs-theme-readthedocs`, which supplies the `readthedocs` theme that `readthedocs-triply/` builds on. MkDocs bundled this theme; ProperDocs ships it separately.
 
-The following steps often work/suffice:
-1. Install Python and Pip.
-2. Run `pip install mkdocs`
-3. Run `pip install mkdocs-mermaid2-plugin`
-4. Run `pip install mkdocs-redirects`
+The only thing you need to install yourself is [`uv`](https://docs.astral.sh/uv/getting-started/installation/). Its `uvx` command fetches ProperDocs and the three packages on first use and caches them, so nothing is installed system-wide and there is no environment to activate.
+
+Do not install with a bare `pip install`. On most current Linux distributions and on Homebrew Python that fails with `error: externally-managed-environment`, because the system Python refuses global installs ([PEP 668](https://peps.python.org/pep-0668/)).
 
 ## Building and running the Documentation website
 
-After you have successfully installed MkDocs, you can run a local web server with the following command (run from the root of this repository):
+Run these commands from the root of this repository. To start a local web server that reloads whenever you edit a page:
 
 ```sh
-mkdocs serve --strict
+uvx --with mkdocs-mermaid2-plugin --with mkdocs-redirects --with properdocs-theme-readthedocs properdocs serve -o -f mkdocs.yml
+```
+
+Add `--strict` to turn warnings, such as links that point at a page or anchor that does not exist, into build errors:
+
+```sh
+uvx --with mkdocs-mermaid2-plugin --with mkdocs-redirects --with properdocs-theme-readthedocs properdocs serve -o -f mkdocs.yml --strict
 ```
 
 To build a static HTML website for deployment, run this command:
 
 ```sh
-mkdocs build
+uvx --with mkdocs-mermaid2-plugin --with mkdocs-redirects --with properdocs-theme-readthedocs properdocs build -f mkdocs.yml
 ```
 This will generate the required HTML and CSS in a folder `./site`.
+
+`-o` opens the site in a browser once the first build finishes. It is worth having: ProperDocs does print `Serving on http://127.0.0.1:8000/`, but as the last of roughly eighty lines of INFO output, so it is easy to miss.
+
+The `-f mkdocs.yml` flag is needed because ProperDocs looks for `properdocs.yml` by default. The configuration file keeps its current name because the deployment workflow builds with MkDocs and expects `mkdocs.yml`; without the flag ProperDocs still finds it, but logs a notice that the fallback will eventually be removed.
 
 
 To publish this website, push your changes to the master branch. The live documentation site should be updated shortly after that. If there are any errors, you can find more details in [the GitHub Actions](https://github.com/TriplyDB/Documentation/actions).

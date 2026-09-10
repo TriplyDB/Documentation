@@ -45,12 +45,12 @@ In the “Create dataset” dialog, perform the following steps:
 
 3. Optional: Enter a dataset description. This description will be shown in the GUI, and will be included in dataset metadata. The description can be formatted with Markdown. See Section [Markdown](../reference/index.md#markdown-support) for details.
 
-4. Optional: Change the access level of the dataset. The standard access level is “Private”. See Section [Dataset Access Levels](../reference/index.md#access-levels) for more information.
+4. Optional: Change the access level of the dataset. The standard access level is “Private”. See Section [Dataset Access Levels](../access-control/index.md#access-levels) for more information.
 
 This creates a new dataset, and displays the “Add data” page (see Section [Adding data](#adding-data)).
 
 <!-- move
-When datasets are Public (see [Access Levels](../reference/index.md#access-levels)), they automatically expose metadata and are automatically crawled and indexed by popular search engines (see [Metadata](../publishing-data/index.md#entering-metadata)).
+When datasets are Public (see [Access Levels](../access-control/index.md#access-levels)), they automatically expose metadata and are automatically crawled and indexed by popular search engines (see [Metadata](../publishing-data/index.md#entering-metadata)).
 -->
 
 ## Adding data

@@ -6,21 +6,18 @@ This section includes answers to frequently asked questions. Please contact [inf
 
 ## How to perform a SPARQL query?
 
-The SPARQL 1.1 Protocol standard specifies a native HTTP API for performing SPARQL requests. Such requests can be performed with regular HTTP libraries.
-
-Here we give an example indicating how such an HTTP library can be used:
+TriplyDB.js runs SPARQL for you — there is no need to build HTTP requests by hand:
 
 ```ts
-import SuperAgent from 'superagent';
-const reply = await SuperAgent.post('SPARQL_ENDPOINT')
-  .set('Accept', 'application/sparql-results+json')
-  .set('Authorization', 'Bearer ' + process.env.TOKEN)
-  .buffer(true)
-  .send({ query: 'select * { WHERE_CLAUSE } offset 0 limit 10000' })
-// break condition when the result set is empty.
-
-// downsides: caching, string manipulation
+const dataset = await account.getDataset('my-dataset')
+const bindings = await dataset.sparqlQuery('select * { ?s ?p ?o } limit 10').bindings()
 ```
+
+[`Dataset.sparqlQuery`](https://static.triply.cc/triplydb-js/classes/Dataset.html#sparqlquery) is answered by TriplyDB's built-in engine, so the dataset needs no service. To query a specific service instead, use [`Service.sparqlQuery`](https://static.triply.cc/triplydb-js/classes/Service.html#sparqlquery). Pick a result form on what either returns — `bindings()`, `statements()`, `boolean()` or `toFile()`; see [`SparqlResults`](https://static.triply.cc/triplydb-js/classes/SparqlResults.html).
+
+For SPARQL Update, use [`Dataset.sparqlUpdate`](https://static.triply.cc/triplydb-js/classes/Dataset.html#sparqlupdate).
+
+Each of these is a single request returning the whole result set. For a large result set, use a [saved query](#how-do-i-get-the-results-of-a-saved-query-using-triplydbjs), whose results are paged for you.
 
 ## What is the latest version of TriplyDB.js?
 
@@ -142,7 +139,7 @@ const array = await results.toArray()
 
 TriplyDB.js makes use of async iterators for retrieving lists of objects. Async iterators are a method of fetching and iterating through large lists, without having to first fetch the whole set.
 
-An example of an async iterator in TriplyDB.js is [`App.getAccounts()`](../app/index.md#appgetaccounts). The following code illustrates how it can be used.
+An example of an async iterator in TriplyDB.js is [`App.getAccounts()`](https://static.triply.cc/triplydb-js/classes/App.html#getaccounts). The following code illustrates how it can be used.
 
 ```ts
 for await (const account of triply.getAccounts()) {
@@ -158,13 +155,13 @@ const accounts = await triply.getAccounts().toArray()
 
 TriplyDB.js returns async iterators from the following methods:
 
-- [`App.getAccounts()`](../app/index.md#appgetaccounts)
-- [`Account.getDatasets()`](../account/index.md#accountgetdatasets)
-- [`Account.getQueries()`](../account/index.md#accountgetqueries)
-- [`Account.getStories()`](../account/index.md#accountgetstories)
-- [`Dataset.getServices()`](../dataset/index.md#datasetgetservices)
-- [`Dataset.getAssets()`](../dataset/index.md#datasetgetassets)
-- [`Dataset.getGraphs()`](../dataset/index.md#datasetgetgraphs)
-- [`Dataset.getStatements()`](../dataset/index.md#datasetgetstatementssubject-string-predicate-string-object-string-graph-string)
-- [`Query.results().statements()`](../query/index.md#queryresultsapivariables-object-options-object) for SPARQL `construct` and `describe` queries
-- [`Query.results().bindings()`](../query/index.md#queryresultsapivariables-object-options-object) for SPARQL `select` queries
+- [`App.getAccounts()`](https://static.triply.cc/triplydb-js/classes/App.html#getaccounts)
+- [`Account.getDatasets()`](https://static.triply.cc/triplydb-js/interfaces/AccountBase.html#getdatasets)
+- [`Account.getQueries()`](https://static.triply.cc/triplydb-js/interfaces/AccountBase.html#getqueries)
+- [`Account.getStories()`](https://static.triply.cc/triplydb-js/interfaces/AccountBase.html#getstories)
+- [`Dataset.getServices()`](https://static.triply.cc/triplydb-js/classes/Dataset.html#getservices)
+- [`Dataset.getAssets()`](https://static.triply.cc/triplydb-js/classes/Dataset.html#getassets)
+- [`Dataset.getGraphs()`](https://static.triply.cc/triplydb-js/classes/Dataset.html#getgraphs)
+- [`Dataset.getStatements()`](https://static.triply.cc/triplydb-js/classes/Dataset.html#getstatements)
+- [`Query.results().statements()`](https://static.triply.cc/triplydb-js/classes/Query.html#results) for SPARQL `construct` and `describe` queries
+- [`Query.results().bindings()`](https://static.triply.cc/triplydb-js/classes/Query.html#results) for SPARQL `select` queries

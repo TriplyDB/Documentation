@@ -37,7 +37,7 @@ link:
 
 To get the output for a `construct` or `select` query, follow these steps:
 
-1\. Import the triplyDB.js library and set your parameters, regarding the TriplyDB instance and the account in which you have saved the query as well as the name of the query. Do not forget that we perform TriplyDB.js requests within an [async context](#create-your-first-script).
+1\. Import the triplyDB.js library and set your parameters, regarding the TriplyDB instance and the account in which you have saved the query as well as the name of the query. Do not forget that we perform TriplyDB.js requests within an async context.
 
 ```ts
 import Client from '@triply/triplydb'

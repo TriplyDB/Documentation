@@ -48,7 +48,6 @@ path: "/docs/triplydb-changelog"
 
 **Features**
 
-- `#12498` [Access Control] Groups now have an access level — `public`, `internal`, or `private` — just like datasets. The access level determines who can find the group in account listings and open its page, and it caps the access level of the datasets, queries, stories, and subgroups that the group owns. New groups are `public` by default, and a subgroup takes its parent's access level and can never be more open than its parent. The level is set through the API or with the `accessLevel` key in [TriplyDB.js](https://docs.triply.cc/triplydb-js/group/), when creating, ensuring, or updating a group; see [Access Levels for groups](https://docs.triply.cc/triply-db-getting-started/reference/#access-levels-for-groups).
 - `#11638` [SPARQL] The query optimizer now interleaves operations across independent parts of a join, instead of running each part to completion before starting the next. This produces cheaper query plans in some cases; queries are never slower and are sometimes faster.
 - [Data Upload] Each URL in a "download from URL" job can now carry its own HTTP headers, so data can be imported from sources that require for example an `Authorization` header. Requests that point at the TriplyDB instance itself automatically reuse the caller's own authorization, and need no header of their own.
 

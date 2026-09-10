@@ -128,31 +128,25 @@ For editing the side-wide prefixes follow the next steps:
 
 The roles page allows administrators to manage the roles that can be assigned to group members. Roles define which actions group members can perform within a group. Roles only apply to group members, not to personal accounts.
 
+See [Access Control](../access-control/index.md#roles) for how roles fit together with Access Levels, what every role can always do, and which permissions only affect the interface.
+
 The roles page is accessible by clicking on the "Admin settings" link in the user menu (top-right corner) and clicking the "Roles" tab.
 
 
 ### System roles
 
-TriplyDB includes two built-in system roles that cannot be deleted:
-
-<dl>
-  <dt><code>owner</code></dt>
-  <dd>Full access to all account resources and settings, including the ability to manage group members and their roles.</dd>
-
-  <dt><code>member</code></dt>
-  <dd>Can manage resources (datasets, queries, stories) but cannot manage group members or delete the group.</dd>
-</dl>
+TriplyDB includes two built-in system roles, `owner` and `member`, that cannot be edited or deleted. See [System roles](../access-control/index.md#system-roles) for what each one allows.
 
 
 ### Custom roles
 
-Administrators can create custom roles with any subset of permissions. This allows for more flexible access control configurations beyond the default system roles. For example, you could create a role that grants read/write access to datasets but does not allow creating or managing SPARQL services.
+Administrators can create custom roles with any subset of permissions, for access control configurations that neither system role covers. For example, you could create a role that grants read/write access to datasets but does not allow creating or managing SPARQL services.
 
 To create a custom role, follow these steps:
 
 1. Click on the "Admin settings" link in the user menu (top-right corner) and click the "Roles" tab.
 
-2. Click the "Create rols" button.
+2. Click the "Create role" button.
 
 3. Enter a name and description for the role. The name should clearly describe the purpose of the role.
 
@@ -165,7 +159,9 @@ Custom roles can be edited or deleted at any time from the roles page using the 
 
 ### Assigning roles
 
-Roles are assigned to group members in the member settings of each group. Group members with sufficient permissions (such as owners) can assign roles to other members. See [Group.addMember()](../../triplydb-js/group/index.md#groupaddmemberuser-user-role-role) for how to assign roles programmatically.
+Roles are assigned to group members in the member settings of each group. Group members with the "Manage group" permission (such as owners) can assign roles to other members. See [Group.addMember()](https://static.triply.cc/triplydb-js/classes/Group.html#addmember) for how to assign roles programmatically.
+
+A member of a parent group is also a member of its subgroups, so assigning a role in a subgroup adds to what they already have there rather than replacing it — see [Direct and inherited membership](../access-control/index.md#direct-and-inherited-membership).
 
 
 ## Account overview page

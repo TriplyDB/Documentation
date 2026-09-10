@@ -14,17 +14,14 @@ The documentation is built using MkDocs and published to https://docs.triply.cc/
 ## Common Commands
 
 ### Development and Building
-```bash
-# Install dependencies (run these in order)
-pip install mkdocs
-pip install mkdocs-mermaid2-plugin
-pip install mkdocs-redirects
+The site is built with [ProperDocs](https://properdocs.org/), the maintained community fork of MkDocs, run through `uvx` so nothing needs installing first. It needs three companion packages: `mkdocs-mermaid2-plugin`, `mkdocs-redirects`, and `properdocs-theme-readthedocs` (MkDocs bundled the `readthedocs` theme, ProperDocs ships it separately). `-f mkdocs.yml` is required because ProperDocs defaults to `properdocs.yml`; the file keeps its name because the deploy workflow still builds with MkDocs.
 
+```bash
 # Serve documentation locally with strict mode (catches broken links/references)
-mkdocs serve --strict
+uvx --with mkdocs-mermaid2-plugin --with mkdocs-redirects --with properdocs-theme-readthedocs properdocs serve -o -f mkdocs.yml --strict
 
 # Build static HTML site for deployment
-mkdocs build
+uvx --with mkdocs-mermaid2-plugin --with mkdocs-redirects --with properdocs-theme-readthedocs properdocs build -f mkdocs.yml
 ```
 
 ### Deployment

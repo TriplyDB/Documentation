@@ -132,7 +132,7 @@ fromJson([
 triple('url', owl:sameAs, iri('url')),
 ```
 
-See the section on [automatic casts](./statements.md#automatic-casts) for more information.
+See the section on [automatic casts](./statements.md#implicit-casts) for more information.
 
 
 ### Example: dynamic IRI

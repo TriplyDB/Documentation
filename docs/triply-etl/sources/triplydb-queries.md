@@ -124,7 +124,7 @@ statement.graph = graph('enrichment')
 
 ## Pagination
 
-When a bare SPARQL endpoint is queried as an [online API](#apis), there are sometimes issues with retrieving the full result set for larger queries. With TriplyDB saved queries, the process of obtaining all results is abstracted away from the user, with the TriplyETL source performing multiple requests in the background as needed.
+When a bare SPARQL endpoint is queried as an [online API](apis.md), there are sometimes issues with retrieving the full result set for larger queries. With TriplyDB saved queries, the process of obtaining all results is abstracted away from the user, with the TriplyETL source performing multiple requests in the background as needed.
 
 
 

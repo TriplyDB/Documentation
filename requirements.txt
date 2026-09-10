@@ -1,2 +1,7 @@
-mkdocs-mermaid2-plugin
-mkdocs-redirects
+# Pinned deliberately: this file is the only thing that decides which MkDocs builds
+# docs.triply.cc, and the deploy pushes with --force. MkDocs is listed explicitly even
+# though the two plugins already depend on it, so an unpinned transitive resolve cannot
+# swap the build tool out from under us.
+mkdocs==1.6.1
+mkdocs-mermaid2-plugin==1.2.3
+mkdocs-redirects==1.2.3

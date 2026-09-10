@@ -777,7 +777,7 @@ In previous releases, the extractor functions [fromCsv()](../extract/csv.md), [f
 
 ## [Enhanced] Default CRS for 'wkt.addPoint()'
 
-In previous releases, the Coordinate Reference System (CRS) was a required attribute for transformation function [wkt.addPoint()](../transform/ratt.md#wkt-addpoint). Starting in this release, the CRS argument has become optional. When not specified, the default CRS <http://www.opengis.net/def/crs/OGC/1.3/CRS84> is used.
+In previous releases, the Coordinate Reference System (CRS) was a required attribute for transformation function [wkt.addPoint()](../transform/ratt.md#wktaddpoint). Starting in this release, the CRS argument has become optional. When not specified, the default CRS <http://www.opengis.net/def/crs/OGC/1.3/CRS84> is used.
 
 
 ### [Enhanced] Handle conflicting TriplyDB instance specifications
@@ -830,7 +830,7 @@ See the documentation on [external vocabulary declarations](./declarations.md#ex
 
 ### [Added] New debug function logMemory()
 
-A new debug function [logMemory()](./debug.md#logmemory) is added. This function prints an overview of the current memory usage of TriplyETL. This allows users to detect fluctuations in memory consumption inside their pipelines.
+A new debug function [logMemory()](./debug.md#function-logmemory) is added. This function prints an overview of the current memory usage of TriplyETL. This allows users to detect fluctuations in memory consumption inside their pipelines.
 
 
 ### [Added] Support for the 'ListIdentifiers' verb in the OAI-PMH extractor

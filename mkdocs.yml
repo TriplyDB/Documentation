@@ -12,6 +12,7 @@ nav:
           - Uploading Data: triply-db-getting-started/uploading-data/index.md
           - Editing (SKOS) Data: triply-db-getting-started/editing-data/index.md
           - Sharing Data: triply-db-getting-started/publishing-data/index.md
+          - Access Control: triply-db-getting-started/access-control/index.md
           - Viewing Data: triply-db-getting-started/viewing-data/index.md
           - Exporting Data: triply-db-getting-started/exporting-data/index.md
           - Saved Queries: triply-db-getting-started/saved-queries/index.md
@@ -21,18 +22,9 @@ nav:
       - API: triply-api/index.md
       - TriplyDB-JS:
           - Overview: triplydb-js/index.md
-          - App: triplydb-js/app/index.md
-          - Account: triplydb-js/account/index.md
-          - Asset: triplydb-js/asset/index.md
-          - Dataset: triplydb-js/dataset/index.md
-          - Graph: triplydb-js/graph/index.md
-          - Group: triplydb-js/group/index.md
-          - Query: triplydb-js/query/index.md
-          - Service: triplydb-js/service/index.md
-          - Story: triplydb-js/story/index.md
-          - User: triplydb-js/user/index.md
+          - API reference: https://static.triply.cc/triplydb-js/
           - FAQ: triplydb-js/faq/index.md
-      - Command-line Interface: triply-cli/index.md
+      - Command-line Interface: https://static.triply.cc/cli/
       - Changelog: triplydb-changelog/index.md
   - TriplyETL:
       - Generic:
@@ -115,7 +107,23 @@ plugins:
        #'triply-db-getting-started/saved-queries/index.md': 'triply-db/saved-queries/index.md'
        #'triply-db-getting-started/uploading-data/index.md': 'triply-db/adding-data/index.md'
        #'triply-db-getting-started/viewing-data/index.md': 'triply-db/viewing-data/index.md'
-        'triplydb-js/organization/index.md': 'triplydb-js/group/index.md'
+       # The TriplyDB.js class reference is generated from the source of `@triply/triplydb` and
+       # published to static.triply.cc, so it cannot drift from the released package. The
+       # hand-written pages that used to live here are gone; these send their URLs to the
+       # generated page for the same class. `triplydb-js/index.md` stays as a landing page,
+       # because the console links to it by name.
+        'triplydb-js/app/index.md': 'https://static.triply.cc/triplydb-js/classes/App.html'
+        'triplydb-js/account/index.md': 'https://static.triply.cc/triplydb-js/interfaces/AccountBase.html'
+        'triplydb-js/asset/index.md': 'https://static.triply.cc/triplydb-js/classes/Asset.html'
+        'triplydb-js/dataset/index.md': 'https://static.triply.cc/triplydb-js/classes/Dataset.html'
+        'triplydb-js/graph/index.md': 'https://static.triply.cc/triplydb-js/classes/Graph.html'
+        'triplydb-js/group/index.md': 'https://static.triply.cc/triplydb-js/classes/Group.html'
+        'triplydb-js/organization/index.md': 'https://static.triply.cc/triplydb-js/classes/Group.html'
+        'triplydb-js/query/index.md': 'https://static.triply.cc/triplydb-js/classes/Query.html'
+        'triplydb-js/service/index.md': 'https://static.triply.cc/triplydb-js/classes/Service.html'
+        'triplydb-js/story/index.md': 'https://static.triply.cc/triplydb-js/classes/Story.html'
+        'triplydb-js/user/index.md': 'https://static.triply.cc/triplydb-js/classes/User.html'
+        'triply-cli/index.md': 'https://static.triply.cc/cli/'
         'triply-etl/assert/ratt/statement/index.md': 'triply-etl/assert/ratt/statements.md'
         'triply-etl/assert/ratt/term/index.md': 'triply-etl/assert/ratt/terms.md'
         'triply-etl/changelog/index.md': 'triply-etl/generic/changelog.md'
