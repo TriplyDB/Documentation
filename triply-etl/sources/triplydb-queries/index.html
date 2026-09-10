@@ -52,6 +52,8 @@
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../../triply-db-getting-started/publishing-data/">Sharing Data</a>
                 </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../triply-db-getting-started/access-control/">Access Control</a>
+                </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../../triply-db-getting-started/viewing-data/">Viewing Data</a>
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../../triply-db-getting-started/exporting-data/">Exporting Data</a>
@@ -72,31 +74,13 @@
     <ul>
                 <li class="toctree-l2"><a class="reference internal" href="../../../triplydb-js/">Overview</a>
                 </li>
-                <li class="toctree-l2"><a class="reference internal" href="../../../triplydb-js/app/">App</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="../../../triplydb-js/account/">Account</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="../../../triplydb-js/asset/">Asset</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="../../../triplydb-js/dataset/">Dataset</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="../../../triplydb-js/graph/">Graph</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="../../../triplydb-js/group/">Group</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="../../../triplydb-js/query/">Query</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="../../../triplydb-js/service/">Service</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="../../../triplydb-js/story/">Story</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="../../../triplydb-js/user/">User</a>
+                <li class="toctree-l2"><a class="" href="https://static.triply.cc/triplydb-js/">API reference</a>
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../../triplydb-js/faq/">FAQ</a>
                 </li>
     </ul>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../../triply-cli/">Command-line Interface</a>
+                  <li class="toctree-l1"><a class="" href="https://static.triply.cc/cli/">Command-line Interface</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../triplydb-changelog/">Changelog</a>
                   </li>
@@ -405,7 +389,7 @@ The following line is used to configure the graph where the results from the que
 -->
 
 <h2 id="pagination">Pagination<a class="headerlink" href="#pagination" title="Permanent link">&para;</a></h2>
-<p>When a bare SPARQL endpoint is queried as an <a href="#apis">online API</a>, there are sometimes issues with retrieving the full result set for larger queries. With TriplyDB saved queries, the process of obtaining all results is abstracted away from the user, with the TriplyETL source performing multiple requests in the background as needed.</p>
+<p>When a bare SPARQL endpoint is queried as an <a href="../apis/">online API</a>, there are sometimes issues with retrieving the full result set for larger queries. With TriplyDB saved queries, the process of obtaining all results is abstracted away from the user, with the TriplyETL source performing multiple requests in the background as needed.</p>
 <h2 id="result-graph">Result graph<a class="headerlink" href="#result-graph" title="Permanent link">&para;</a></h2>
 <p>It is often useful to store the results of SPARQL Construct and Describe queries in a specific graph. For example, when internal data is enriched with external sources, it is often useful to store the external enrichments in a separate graph. Another example is the use of a query that applies RDF(S) and/or OWL reasoning. In such cases the results of the reasoner may be stored in a specific graph.</p>
 <p>The following snippet stores the results of the specified <code>construct</code> query in a special enrichment graph:</p>

@@ -48,6 +48,8 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../../../triply-db-getting-started/publishing-data/">Sharing Data</a>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../triply-db-getting-started/access-control/">Access Control</a>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="../../../../triply-db-getting-started/viewing-data/">Viewing Data</a>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../../../triply-db-getting-started/exporting-data/">Exporting Data</a>
@@ -68,31 +70,13 @@
 <ul>
 <li class="toctree-l2"><a class="reference internal" href="../../../../triplydb-js/">Overview</a>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../../../../triplydb-js/app/">App</a>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="../../../../triplydb-js/account/">Account</a>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="../../../../triplydb-js/asset/">Asset</a>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="../../../../triplydb-js/dataset/">Dataset</a>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="../../../../triplydb-js/graph/">Graph</a>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="../../../../triplydb-js/group/">Group</a>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="../../../../triplydb-js/query/">Query</a>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="../../../../triplydb-js/service/">Service</a>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="../../../../triplydb-js/story/">Story</a>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="../../../../triplydb-js/user/">User</a>
+<li class="toctree-l2"><a class="" href="https://static.triply.cc/triplydb-js/">API reference</a>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../../../triplydb-js/faq/">FAQ</a>
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../../../../triply-cli/">Command-line Interface</a>
+<li class="toctree-l1"><a class="" href="https://static.triply.cc/cli/">Command-line Interface</a>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../triplydb-changelog/">Changelog</a>
 </li>
@@ -419,7 +403,7 @@ triple(iri('url'), owl:sameAs, iri('url')),
 ]),
 triple('url', owl:sameAs, iri('url')),
 </code></pre>
-<p>See the section on <a href="../statements/#automatic-casts">automatic casts</a> for more information.</p>
+<p>See the section on <a href="../statements/#implicit-casts">automatic casts</a> for more information.</p>
 <h3 id="example-dynamic-iri">Example: dynamic IRI<a class="headerlink" href="#example-dynamic-iri" title="Permanent link">¶</a></h3>
 <p>The following code snippet asserts an IRI based on a declared prefix (<code>prefix.ex</code>) and the string stored in key (<code>'firstName'</code>):</p>
 <pre><code class="language-ts">fromJson([{ firstName: 'Jane' }, { firstName: 'John' }]),

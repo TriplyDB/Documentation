@@ -52,6 +52,8 @@
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../../triply-db-getting-started/publishing-data/">Sharing Data</a>
                 </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../triply-db-getting-started/access-control/">Access Control</a>
+                </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../../triply-db-getting-started/viewing-data/">Viewing Data</a>
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../../triply-db-getting-started/exporting-data/">Exporting Data</a>
@@ -72,31 +74,13 @@
     <ul>
                 <li class="toctree-l2"><a class="reference internal" href="../../../triplydb-js/">Overview</a>
                 </li>
-                <li class="toctree-l2"><a class="reference internal" href="../../../triplydb-js/app/">App</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="../../../triplydb-js/account/">Account</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="../../../triplydb-js/asset/">Asset</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="../../../triplydb-js/dataset/">Dataset</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="../../../triplydb-js/graph/">Graph</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="../../../triplydb-js/group/">Group</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="../../../triplydb-js/query/">Query</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="../../../triplydb-js/service/">Service</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="../../../triplydb-js/story/">Story</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="../../../triplydb-js/user/">User</a>
+                <li class="toctree-l2"><a class="" href="https://static.triply.cc/triplydb-js/">API reference</a>
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../../triplydb-js/faq/">FAQ</a>
                 </li>
     </ul>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../../triply-cli/">Command-line Interface</a>
+                  <li class="toctree-l1"><a class="" href="https://static.triply.cc/cli/">Command-line Interface</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../triplydb-changelog/">Changelog</a>
                   </li>
@@ -1294,7 +1278,7 @@ Below are some examples of this being used.</p>
 <h3 id="enhanced-better-error-reporting-for-csv-tsv-and-xml-sources">[Enhanced] Better error reporting for CSV, TSV, and XML sources.<a class="headerlink" href="#enhanced-better-error-reporting-for-csv-tsv-and-xml-sources" title="Permanent link">&para;</a></h3>
 <p>In previous releases, the extractor functions <a href="../../extract/csv/">fromCsv()</a>, <a href="../../extract/tsv/">fromTsv()</a>, and <a href="../../extract/xml/">fromXml()</a> would not emit the file name in case an error occurred. This was specifically problematic when a large number of data source files were used. Starting in this release, the file name is included in error message.</p>
 <h2 id="enhanced-default-crs-for-wktaddpoint">[Enhanced] Default CRS for 'wkt.addPoint()'<a class="headerlink" href="#enhanced-default-crs-for-wktaddpoint" title="Permanent link">&para;</a></h2>
-<p>In previous releases, the Coordinate Reference System (CRS) was a required attribute for transformation function <a href="../../transform/ratt/#wkt-addpoint">wkt.addPoint()</a>. Starting in this release, the CRS argument has become optional. When not specified, the default CRS <a href="http://www.opengis.net/def/crs/OGC/1.3/CRS84">http://www.opengis.net/def/crs/OGC/1.3/CRS84</a> is used.</p>
+<p>In previous releases, the Coordinate Reference System (CRS) was a required attribute for transformation function <a href="../../transform/ratt/#wktaddpoint">wkt.addPoint()</a>. Starting in this release, the CRS argument has become optional. When not specified, the default CRS <a href="http://www.opengis.net/def/crs/OGC/1.3/CRS84">http://www.opengis.net/def/crs/OGC/1.3/CRS84</a> is used.</p>
 <h3 id="enhanced-handle-conflicting-triplydb-instance-specifications">[Enhanced] Handle conflicting TriplyDB instance specifications<a class="headerlink" href="#enhanced-handle-conflicting-triplydb-instance-specifications" title="Permanent link">&para;</a></h3>
 <p>In previous releases, it was possible to introduce an ambiguity in specify the TriplyDB instance to publish data to. This was possible by (1) specifying a TriplyDB API Token in the environment (e.g. though an <code>.env</code> file), and (2) by configuring the <code>triplyDb</code> option in the <a href="../../extract/rdf/">loadRdf()</a> function. Starting in this release, TriplyETL will emit an error if the TriplyDB instance in the API Token differs from the TriplyDB instance configured in the <code>triplyDb</code> option.</p>
 <h3 id="enhanced-more-information-for-failing-http-calls">[Enhanced] More information for failing HTTP calls<a class="headerlink" href="#enhanced-more-information-for-failing-http-calls" title="Permanent link">&para;</a></h3>
@@ -1319,7 +1303,7 @@ Below are some examples of this being used.</p>
 </code></pre>
 <p>See the documentation on <a href="../declarations/#external-vocabularies">external vocabulary declarations</a> for more information.</p>
 <h3 id="added-new-debug-function-logmemory">[Added] New debug function logMemory()<a class="headerlink" href="#added-new-debug-function-logmemory" title="Permanent link">&para;</a></h3>
-<p>A new debug function <a href="../debug/#logmemory">logMemory()</a> is added. This function prints an overview of the current memory usage of TriplyETL. This allows users to detect fluctuations in memory consumption inside their pipelines.</p>
+<p>A new debug function <a href="../debug/#function-logmemory">logMemory()</a> is added. This function prints an overview of the current memory usage of TriplyETL. This allows users to detect fluctuations in memory consumption inside their pipelines.</p>
 <h3 id="added-support-for-the-listidentifiers-verb-in-the-oai-pmh-extractor">[Added] Support for the 'ListIdentifiers' verb in the OAI-PMH extractor<a class="headerlink" href="#added-support-for-the-listidentifiers-verb-in-the-oai-pmh-extractor" title="Permanent link">&para;</a></h3>
 <p>The <a href="../../extract/oai-pmh/">fromOai()</a> extractor already supported the <code>ListRecords</code> verb. This release adds support for the <a href="../../extract/oai-pmh/#verb-listidentifiers">ListIdentifiers</a> verb as well. This new verb allows users to stream through the headers of all records in an OAI-PMH collection, without requiring the full record (i.e. body) to be retrieved.</p>
 <h2 id="triplyetl-205">TriplyETL 2.0.5<a class="headerlink" href="#triplyetl-205" title="Permanent link">&para;</a></h2>

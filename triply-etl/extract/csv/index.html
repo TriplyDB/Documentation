@@ -52,6 +52,8 @@
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../../triply-db-getting-started/publishing-data/">Sharing Data</a>
                 </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../triply-db-getting-started/access-control/">Access Control</a>
+                </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../../triply-db-getting-started/viewing-data/">Viewing Data</a>
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../../triply-db-getting-started/exporting-data/">Exporting Data</a>
@@ -72,31 +74,13 @@
     <ul>
                 <li class="toctree-l2"><a class="reference internal" href="../../../triplydb-js/">Overview</a>
                 </li>
-                <li class="toctree-l2"><a class="reference internal" href="../../../triplydb-js/app/">App</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="../../../triplydb-js/account/">Account</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="../../../triplydb-js/asset/">Asset</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="../../../triplydb-js/dataset/">Dataset</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="../../../triplydb-js/graph/">Graph</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="../../../triplydb-js/group/">Group</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="../../../triplydb-js/query/">Query</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="../../../triplydb-js/service/">Service</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="../../../triplydb-js/story/">Story</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="../../../triplydb-js/user/">User</a>
+                <li class="toctree-l2"><a class="" href="https://static.triply.cc/triplydb-js/">API reference</a>
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../../triplydb-js/faq/">FAQ</a>
                 </li>
     </ul>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../../triply-cli/">Command-line Interface</a>
+                  <li class="toctree-l1"><a class="" href="https://static.triply.cc/cli/">Command-line Interface</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../triplydb-changelog/">Changelog</a>
                   </li>
@@ -375,7 +359,7 @@
 <pre><code class="language-ts">fromCsv(Source.file('example.csv'), { separator: ';' }),
 </code></pre>
 <h2 id="csv-with-tab-separators-is-not-tsv">CSV with tab separators is not TSV<a class="headerlink" href="#csv-with-tab-separators-is-not-tsv" title="Permanent link">&para;</a></h2>
-<p>Notice that the popular Tab-Separate Values (TSV) format is not the same as the standardized CSV format with a tab separator character. If you want to process standards-conforming TSV source data, use the <a href="#extractor-fromtsv"><code>fromTsv()</code> extractor</a> instead.</p>
+<p>Notice that the popular Tab-Separate Values (TSV) format is not the same as the standardized CSV format with a tab separator character. If you want to process standards-conforming TSV source data, use the <a href="../tsv/"><code>fromTsv()</code> extractor</a> instead.</p>
 <h2 id="record-representation">Record representation<a class="headerlink" href="#record-representation" title="Permanent link">&para;</a></h2>
 <p>TriplyETL treats every row in a CSV source as one <a href="../../sources/">record</a>. The columns are emitted as keys and the cells are emitted as values. All values are of type <code>string</code>. Empty cells (i.e. those containing the empty string) are treated as denoting a null value and are therefore excluded from the record. Any trailing whitespace that appears in headers or cells is removed from the keys and values in the record.</p>
 <p>For example, the following table:</p>

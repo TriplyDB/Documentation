@@ -48,6 +48,8 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../../triply-db-getting-started/publishing-data/">Sharing Data</a>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="../../../triply-db-getting-started/access-control/">Access Control</a>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="../../../triply-db-getting-started/viewing-data/">Viewing Data</a>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../../triply-db-getting-started/exporting-data/">Exporting Data</a>
@@ -68,31 +70,13 @@
 <ul>
 <li class="toctree-l2"><a class="reference internal" href="../../../triplydb-js/">Overview</a>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../../../triplydb-js/app/">App</a>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="../../../triplydb-js/account/">Account</a>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="../../../triplydb-js/asset/">Asset</a>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="../../../triplydb-js/dataset/">Dataset</a>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="../../../triplydb-js/graph/">Graph</a>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="../../../triplydb-js/group/">Group</a>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="../../../triplydb-js/query/">Query</a>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="../../../triplydb-js/service/">Service</a>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="../../../triplydb-js/story/">Story</a>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="../../../triplydb-js/user/">User</a>
+<li class="toctree-l2"><a class="" href="https://static.triply.cc/triplydb-js/">API reference</a>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../../triplydb-js/faq/">FAQ</a>
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../../../triply-cli/">Command-line Interface</a>
+<li class="toctree-l1"><a class="" href="https://static.triply.cc/cli/">Command-line Interface</a>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../../triplydb-changelog/">Changelog</a>
 </li>
@@ -291,7 +275,7 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#encodehtml">encodeHtml()</a>
+<li class="toctree-l3"><a class="reference internal" href="#decodehtml">decodeHtml()</a>
 <ul>
 <li class="toctree-l4"><a class="reference internal" href="#description_2">Description</a>
 </li>
@@ -447,7 +431,7 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#wktAddPoint()">wkt.addPoint()</a>
+<li class="toctree-l3"><a class="reference internal" href="#wktaddpoint">wkt.addPoint()</a>
 <ul>
 <li class="toctree-l4"><a class="reference internal" href="#description_14">Description</a>
 </li>
@@ -457,7 +441,7 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#wktProject()">wkt.project()</a>
+<li class="toctree-l3"><a class="reference internal" href="#wktproject">wkt.project()</a>
 <ul>
 <li class="toctree-l4"><a class="reference internal" href="#description_15">Description</a>
 </li>
@@ -623,7 +607,7 @@
 <li><a href="#example_6">Example</a></li>
 </ul>
 </li>
-<li><a href="#encodehtml">encodeHtml()</a><ul>
+<li><a href="#decodehtml">decodeHtml()</a><ul>
 <li><a href="#description_2">Description</a></li>
 <li><a href="#parameters_8">Parameters</a></li>
 <li><a href="#example_7">Example</a></li>
@@ -714,13 +698,13 @@
 <li><a href="#example_16">Example</a></li>
 </ul>
 </li>
-<li><a href="#wktAddPoint()">wkt.addPoint()</a><ul>
+<li><a href="#wktaddpoint">wkt.addPoint()</a><ul>
 <li><a href="#description_14">Description</a></li>
 <li><a href="#parameters_19">Parameters</a></li>
 <li><a href="#example_17">Example</a></li>
 </ul>
 </li>
-<li><a href="#wktProject()">wkt.project()</a><ul>
+<li><a href="#wktproject">wkt.project()</a><ul>
 <li><a href="#description_15">Description</a></li>
 <li><a href="#parameters_20">Parameters</a></li>
 <li><a href="#example_18">Example</a></li>
@@ -1082,7 +1066,7 @@ triple('_person', a, sdo.Person),
 <ul>
 <li><code>content</code> A key that contains a string value, or a string specified with function <a href="../../assert/ratt/terms/#str">str()</a>.</li>
 <li><code>datatype</code> Optionally, a key that stores an IRI or a static IRI.</li>
-<li><code>language</code> Optionally, a language tag from the <a href="../../generic/declarations/#language-declarations"><code>lang</code></a> object, or a key that stores such a language tag.</li>
+<li><code>language</code> Optionally, a language tag from the <a href="../../generic/declarations/#language-tag-declarations"><code>lang</code></a> object, or a key that stores such a language tag.</li>
 <li><code>validate</code> Optionally provide a single validator condition or an array of validator conditions that the literal <code>content</code> should hold to, will return a boolean and throw and error when a validator condition does not hold.</li>
 <li><code>key</code> A new key where the created literal is stored.</li>
 </ul>
@@ -1392,7 +1376,7 @@ when('_preferredName', [
 <pre><code class="language-turtle">city:1 rdfs:label 'London'.
 city:2 rdfs:label 'Parijs'.
 </code></pre>
-<h2 id="encodehtml">encodeHtml()<a class="headerlink" href="#encodehtml" title="Permanent link">¶</a></h2>
+<h2 id="decodehtml">decodeHtml()<a class="headerlink" href="#decodehtml" title="Permanent link">¶</a></h2>
 <h3 id="description_2">Description<a class="headerlink" href="#description_2" title="Permanent link">¶</a></h3>
 <p>This transformation decodes any HTML entities that appear in a given key.</p>
 <p>The following HTML entities are common in source data:</p>
@@ -2007,7 +1991,7 @@ triple(iri(prefix.id, 'place'), iri(prefix.geonames, str('countryCode')), '_coun
 <p>This results in the following linked data assertion:</p>
 <pre><code class="language-turtle">city:Amsterdam geonames:countryCode "NL"
 </code></pre>
-<h2 id="wktAddPoint()">wkt.addPoint()<a class="headerlink" href="#wktAddPoint()" title="Permanent link">¶</a></h2>
+<h2 id="wktaddpoint">wkt.addPoint()<a class="headerlink" href="#wktaddpoint" title="Permanent link">¶</a></h2>
 <h3 id="description_14">Description<a class="headerlink" href="#description_14" title="Permanent link">¶</a></h3>
 <p>Creates a Well-Known Text (WKT) serialization string from the corresponding geospatial point.</p>
 <h3 id="parameters_19">Parameters<a class="headerlink" href="#parameters_19" title="Permanent link">¶</a></h3>
@@ -2047,7 +2031,7 @@ triple(iri(prefix.city, 'place'), geo.asWKT, '_point'),
 <p>And in the following linked data assertion:</p>
 <pre><code>city:Amstedam geo:asWKT "Point (52.37308 4.89245)"^^geo:wktLiteral
 </code></pre>
-<h2 id="wktProject()">wkt.project()<a class="headerlink" href="#wktProject()" title="Permanent link">¶</a></h2>
+<h2 id="wktproject">wkt.project()<a class="headerlink" href="#wktproject" title="Permanent link">¶</a></h2>
 <h3 id="description_15">Description<a class="headerlink" href="#description_15" title="Permanent link">¶</a></h3>
 <p>Converts the projection of a Well-Known Text (WKT) literal from one Coordinate Reference System to another one.</p>
 <h3 id="parameters_20">Parameters<a class="headerlink" href="#parameters_20" title="Permanent link">¶</a></h3>
@@ -2076,7 +2060,7 @@ wkt.project({
   ]
 }
 </code></pre>
-<p>We can now use the converted result to create a WKT <code>Point()</code> using <a href="#function-wktaddpoint-wktaddpoint">addPoint()</a>:</p>
+<p>We can now use the converted result to create a WKT <code>Point()</code> using <a href="#wktaddpoint">addPoint()</a>:</p>
 <pre><code class="language-ts">wkt.addPoint({
   latitude: '_coordinates[0]',
   longitude: '_coordinates[1]',

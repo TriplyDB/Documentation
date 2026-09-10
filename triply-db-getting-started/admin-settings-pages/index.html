@@ -52,6 +52,8 @@
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../publishing-data/">Sharing Data</a>
                 </li>
+                <li class="toctree-l2"><a class="reference internal" href="../access-control/">Access Control</a>
+                </li>
                 <li class="toctree-l2"><a class="reference internal" href="../viewing-data/">Viewing Data</a>
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../exporting-data/">Exporting Data</a>
@@ -132,31 +134,13 @@
     <ul>
                 <li class="toctree-l2"><a class="reference internal" href="../../triplydb-js/">Overview</a>
                 </li>
-                <li class="toctree-l2"><a class="reference internal" href="../../triplydb-js/app/">App</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="../../triplydb-js/account/">Account</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="../../triplydb-js/asset/">Asset</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="../../triplydb-js/dataset/">Dataset</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="../../triplydb-js/graph/">Graph</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="../../triplydb-js/group/">Group</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="../../triplydb-js/query/">Query</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="../../triplydb-js/service/">Service</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="../../triplydb-js/story/">Story</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="../../triplydb-js/user/">User</a>
+                <li class="toctree-l2"><a class="" href="https://static.triply.cc/triplydb-js/">API reference</a>
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../triplydb-js/faq/">FAQ</a>
                 </li>
     </ul>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../triply-cli/">Command-line Interface</a>
+                  <li class="toctree-l1"><a class="" href="https://static.triply.cc/cli/">Command-line Interface</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../triplydb-changelog/">Changelog</a>
                   </li>
@@ -470,26 +454,19 @@ Only users with e-mail addresses that match these domains are allowed to sign-up
 </ol>
 <h2 id="roles-page">Roles page<a class="headerlink" href="#roles-page" title="Permanent link">&para;</a></h2>
 <p>The roles page allows administrators to manage the roles that can be assigned to group members. Roles define which actions group members can perform within a group. Roles only apply to group members, not to personal accounts.</p>
+<p>See <a href="../access-control/#roles">Access Control</a> for how roles fit together with Access Levels, what every role can always do, and which permissions only affect the interface.</p>
 <p>The roles page is accessible by clicking on the "Admin settings" link in the user menu (top-right corner) and clicking the "Roles" tab.</p>
 <h3 id="system-roles">System roles<a class="headerlink" href="#system-roles" title="Permanent link">&para;</a></h3>
-<p>TriplyDB includes two built-in system roles that cannot be deleted:</p>
-<dl>
-  <dt><code>owner</code></dt>
-  <dd>Full access to all account resources and settings, including the ability to manage group members and their roles.</dd>
-
-  <dt><code>member</code></dt>
-  <dd>Can manage resources (datasets, queries, stories) but cannot manage group members or delete the group.</dd>
-</dl>
-
+<p>TriplyDB includes two built-in system roles, <code>owner</code> and <code>member</code>, that cannot be edited or deleted. See <a href="../access-control/#system-roles">System roles</a> for what each one allows.</p>
 <h3 id="custom-roles">Custom roles<a class="headerlink" href="#custom-roles" title="Permanent link">&para;</a></h3>
-<p>Administrators can create custom roles with any subset of permissions. This allows for more flexible access control configurations beyond the default system roles. For example, you could create a role that grants read/write access to datasets but does not allow creating or managing SPARQL services.</p>
+<p>Administrators can create custom roles with any subset of permissions, for access control configurations that neither system role covers. For example, you could create a role that grants read/write access to datasets but does not allow creating or managing SPARQL services.</p>
 <p>To create a custom role, follow these steps:</p>
 <ol>
 <li>
 <p>Click on the "Admin settings" link in the user menu (top-right corner) and click the "Roles" tab.</p>
 </li>
 <li>
-<p>Click the "Create rols" button.</p>
+<p>Click the "Create role" button.</p>
 </li>
 <li>
 <p>Enter a name and description for the role. The name should clearly describe the purpose of the role.</p>
@@ -503,7 +480,8 @@ Only users with e-mail addresses that match these domains are allowed to sign-up
 </ol>
 <p>Custom roles can be edited or deleted at any time from the roles page using the "Edit" and "Delete" buttons next to each role.</p>
 <h3 id="assigning-roles">Assigning roles<a class="headerlink" href="#assigning-roles" title="Permanent link">&para;</a></h3>
-<p>Roles are assigned to group members in the member settings of each group. Group members with sufficient permissions (such as owners) can assign roles to other members. See <a href="../../triplydb-js/group/#groupaddmemberuser-user-role-role">Group.addMember()</a> for how to assign roles programmatically.</p>
+<p>Roles are assigned to group members in the member settings of each group. Group members with the "Manage group" permission (such as owners) can assign roles to other members. See <a href="https://static.triply.cc/triplydb-js/classes/Group.html#addmember">Group.addMember()</a> for how to assign roles programmatically.</p>
+<p>A member of a parent group is also a member of its subgroups, so assigning a role in a subgroup adds to what they already have there rather than replacing it — see <a href="../access-control/#direct-and-inherited-membership">Direct and inherited membership</a>.</p>
 <h2 id="account-overview-page">Account overview page<a class="headerlink" href="#account-overview-page" title="Permanent link">&para;</a></h2>
 <p>The account page governs all the accounts of an instance. The paginated table shows all the accounts of the instance. The table is equipped with filters and sorting mechanisms to quickly search for and locate specific accounts according to search and filter criteria. The table also has a search field at the right side to quickly do wildcard searching.
 The table sorts all accounts automatically on the created at date with the latest created at date accounts first.</p>

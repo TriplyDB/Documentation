@@ -52,6 +52,8 @@
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../../../triply-db-getting-started/publishing-data/">Sharing Data</a>
                 </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../triply-db-getting-started/access-control/">Access Control</a>
+                </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../../../triply-db-getting-started/viewing-data/">Viewing Data</a>
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../../../triply-db-getting-started/exporting-data/">Exporting Data</a>
@@ -72,31 +74,13 @@
     <ul>
                 <li class="toctree-l2"><a class="reference internal" href="../../../../triplydb-js/">Overview</a>
                 </li>
-                <li class="toctree-l2"><a class="reference internal" href="../../../../triplydb-js/app/">App</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="../../../../triplydb-js/account/">Account</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="../../../../triplydb-js/asset/">Asset</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="../../../../triplydb-js/dataset/">Dataset</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="../../../../triplydb-js/graph/">Graph</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="../../../../triplydb-js/group/">Group</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="../../../../triplydb-js/query/">Query</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="../../../../triplydb-js/service/">Service</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="../../../../triplydb-js/story/">Story</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="../../../../triplydb-js/user/">User</a>
+                <li class="toctree-l2"><a class="" href="https://static.triply.cc/triplydb-js/">API reference</a>
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../../../triplydb-js/faq/">FAQ</a>
                 </li>
     </ul>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../../../triply-cli/">Command-line Interface</a>
+                  <li class="toctree-l1"><a class="" href="https://static.triply.cc/cli/">Command-line Interface</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../triplydb-changelog/">Changelog</a>
                   </li>
@@ -363,7 +347,7 @@ prefix sh: &lt;http://www.w3.org/ns/shacl#&gt;
 <li>We introduce a node shape that targets all instances of <code>sdo:Person</code>.</li>
 <li>The node shape is connected to a SPARQL Rule via the <code>sh:rule</code> property.</li>
 <li>The SPARQL Rule has its own RDF resource, and is connected to the query string via the <code>sh:construct</code> property.</li>
-<li>The SPARQL Construct query from <a href="#step-1-implement-the-sparql-construct-query">Step 1</a> no longer include the <code>a sdo:Person</code> line. This line is no longer needed, since the node shape will only trigger for instances of <code>sdo:Person</code> in the first place.</li>
+<li>The SPARQL Construct query from <a href="#step-1a-implement-the-sparql-construct-query">Step 1</a> no longer include the <code>a sdo:Person</code> line. This line is no longer needed, since the node shape will only trigger for instances of <code>sdo:Person</code> in the first place.</li>
 <li>The SPARQL Construct query uses variable name <code>$this</code> to bind to the instances for which the rule will be executed. While this name is only a convention in the SPARQL query language, it has a special meaning in the SPARQL Rule. This variable will be bound for all targets of the node shape (i.e. for every person in the data).</li>
 <li>The literal that contains the SPARQL Construct query uses triple quoted literals notation (<code>'''...'''</code>). This notation allows us to use unescaped newlines inside the literal, which allows us to inline the query string in a readable way.</li>
 </ul>
@@ -371,7 +355,7 @@ prefix sh: &lt;http://www.w3.org/ns/shacl#&gt;
 <p>The following script is completely self-contained. By copy/pasting it into TriplyETL, you can execute the rule over the instance data, and deduce the fact that John is a father.</p>
 <p>Notice that the script includes the following components:</p>
 <ol>
-<li>Load the instance data from <a href="#step-1a-load-instance-data">Step 1A</a> with <a href="../../../extract/rdf/">loadRdf()</a>.</li>
+<li>Load the instance data from <a href="#step-1a-implement-the-sparql-construct-query">Step 1A</a> with <a href="../../../extract/rdf/">loadRdf()</a>.</li>
 <li>Execute the rule from <a href="#step-1b-create-the-node-shape">Step 1B</a> with <a href="../">executeRules()</a>.</li>
 <li>Print the contents of the internal store with <a href="../../../generic/debug/#function-logquads">logQuads()</a>.</li>
 </ol>

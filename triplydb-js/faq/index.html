@@ -52,6 +52,8 @@
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../triply-db-getting-started/publishing-data/">Sharing Data</a>
                 </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-db-getting-started/access-control/">Access Control</a>
+                </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../triply-db-getting-started/viewing-data/">Viewing Data</a>
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../triply-db-getting-started/exporting-data/">Exporting Data</a>
@@ -72,25 +74,7 @@
     <ul class="current">
                 <li class="toctree-l2"><a class="reference internal" href="../">Overview</a>
                 </li>
-                <li class="toctree-l2"><a class="reference internal" href="../app/">App</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="../account/">Account</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="../asset/">Asset</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="../dataset/">Dataset</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="../graph/">Graph</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="../group/">Group</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="../query/">Query</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="../service/">Service</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="../story/">Story</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="../user/">User</a>
+                <li class="toctree-l2"><a class="" href="https://static.triply.cc/triplydb-js/">API reference</a>
                 </li>
                 <li class="toctree-l2 current"><a class="reference internal current" href="./">FAQ</a>
     <ul class="current">
@@ -108,7 +92,7 @@
                 </li>
     </ul>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../triply-cli/">Command-line Interface</a>
+                  <li class="toctree-l1"><a class="" href="https://static.triply.cc/cli/">Command-line Interface</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../triplydb-changelog/">Changelog</a>
                   </li>
@@ -299,18 +283,13 @@
 <h1 id="faq">FAQ<a class="headerlink" href="#faq" title="Permanent link">&para;</a></h1>
 <p>This section includes answers to frequently asked questions. Please contact <a href="mailto:info@triply.cc">info@triply.cc</a> if you have a question that does not appear in this list.</p>
 <h2 id="how-to-perform-a-sparql-query">How to perform a SPARQL query?<a class="headerlink" href="#how-to-perform-a-sparql-query" title="Permanent link">&para;</a></h2>
-<p>The SPARQL 1.1 Protocol standard specifies a native HTTP API for performing SPARQL requests. Such requests can be performed with regular HTTP libraries.</p>
-<p>Here we give an example indicating how such an HTTP library can be used:</p>
-<pre><code class="language-ts">import SuperAgent from 'superagent';
-const reply = await SuperAgent.post('SPARQL_ENDPOINT')
-  .set('Accept', 'application/sparql-results+json')
-  .set('Authorization', 'Bearer ' + process.env.TOKEN)
-  .buffer(true)
-  .send({ query: 'select * { WHERE_CLAUSE } offset 0 limit 10000' })
-// break condition when the result set is empty.
-
-// downsides: caching, string manipulation
+<p>TriplyDB.js runs SPARQL for you — there is no need to build HTTP requests by hand:</p>
+<pre><code class="language-ts">const dataset = await account.getDataset('my-dataset')
+const bindings = await dataset.sparqlQuery('select * { ?s ?p ?o } limit 10').bindings()
 </code></pre>
+<p><a href="https://static.triply.cc/triplydb-js/classes/Dataset.html#sparqlquery"><code>Dataset.sparqlQuery</code></a> is answered by TriplyDB's built-in engine, so the dataset needs no service. To query a specific service instead, use <a href="https://static.triply.cc/triplydb-js/classes/Service.html#sparqlquery"><code>Service.sparqlQuery</code></a>. Pick a result form on what either returns — <code>bindings()</code>, <code>statements()</code>, <code>boolean()</code> or <code>toFile()</code>; see <a href="https://static.triply.cc/triplydb-js/classes/SparqlResults.html"><code>SparqlResults</code></a>.</p>
+<p>For SPARQL Update, use <a href="https://static.triply.cc/triplydb-js/classes/Dataset.html#sparqlupdate"><code>Dataset.sparqlUpdate</code></a>.</p>
+<p>Each of these is a single request returning the whole result set. For a large result set, use a <a href="#how-do-i-get-the-results-of-a-saved-query-using-triplydbjs">saved query</a>, whose results are paged for you.</p>
 <h2 id="what-is-the-latest-version-of-triplydbjs">What is the latest version of TriplyDB.js?<a class="headerlink" href="#what-is-the-latest-version-of-triplydbjs" title="Permanent link">&para;</a></h2>
 <p>The latest version of TriplyDB.js can be found in <a href="https://www.npmjs.com/package/@triply/triplydb">the NPM repository</a>.</p>
 <h2 id="what-to-do-when-the-error-unauthorized-appears">What to do when the “Error: Unauthorized” appears?<a class="headerlink" href="#what-to-do-when-the-error-unauthorized-appears" title="Permanent link">&para;</a></h2>
@@ -383,7 +362,7 @@ const array = await results.toArray()
 </code></pre>
 <h2 id="what-is-an-async-iterator">What is an async iterator?<a class="headerlink" href="#what-is-an-async-iterator" title="Permanent link">&para;</a></h2>
 <p>TriplyDB.js makes use of async iterators for retrieving lists of objects. Async iterators are a method of fetching and iterating through large lists, without having to first fetch the whole set.</p>
-<p>An example of an async iterator in TriplyDB.js is <a href="../app/#appgetaccounts"><code>App.getAccounts()</code></a>. The following code illustrates how it can be used.</p>
+<p>An example of an async iterator in TriplyDB.js is <a href="https://static.triply.cc/triplydb-js/classes/App.html#getaccounts"><code>App.getAccounts()</code></a>. The following code illustrates how it can be used.</p>
 <pre><code class="language-ts">for await (const account of triply.getAccounts()) {
   console.log(account)
 }
@@ -393,23 +372,23 @@ const array = await results.toArray()
 </code></pre>
 <p>TriplyDB.js returns async iterators from the following methods:</p>
 <ul>
-<li><a href="../app/#appgetaccounts"><code>App.getAccounts()</code></a></li>
-<li><a href="../account/#accountgetdatasets"><code>Account.getDatasets()</code></a></li>
-<li><a href="../account/#accountgetqueries"><code>Account.getQueries()</code></a></li>
-<li><a href="../account/#accountgetstories"><code>Account.getStories()</code></a></li>
-<li><a href="../dataset/#datasetgetservices"><code>Dataset.getServices()</code></a></li>
-<li><a href="../dataset/#datasetgetassets"><code>Dataset.getAssets()</code></a></li>
-<li><a href="../dataset/#datasetgetgraphs"><code>Dataset.getGraphs()</code></a></li>
-<li><a href="../dataset/#datasetgetstatementssubject-string-predicate-string-object-string-graph-string"><code>Dataset.getStatements()</code></a></li>
-<li><a href="../query/#queryresultsapivariables-object-options-object"><code>Query.results().statements()</code></a> for SPARQL <code>construct</code> and <code>describe</code> queries</li>
-<li><a href="../query/#queryresultsapivariables-object-options-object"><code>Query.results().bindings()</code></a> for SPARQL <code>select</code> queries</li>
+<li><a href="https://static.triply.cc/triplydb-js/classes/App.html#getaccounts"><code>App.getAccounts()</code></a></li>
+<li><a href="https://static.triply.cc/triplydb-js/interfaces/AccountBase.html#getdatasets"><code>Account.getDatasets()</code></a></li>
+<li><a href="https://static.triply.cc/triplydb-js/interfaces/AccountBase.html#getqueries"><code>Account.getQueries()</code></a></li>
+<li><a href="https://static.triply.cc/triplydb-js/interfaces/AccountBase.html#getstories"><code>Account.getStories()</code></a></li>
+<li><a href="https://static.triply.cc/triplydb-js/classes/Dataset.html#getservices"><code>Dataset.getServices()</code></a></li>
+<li><a href="https://static.triply.cc/triplydb-js/classes/Dataset.html#getassets"><code>Dataset.getAssets()</code></a></li>
+<li><a href="https://static.triply.cc/triplydb-js/classes/Dataset.html#getgraphs"><code>Dataset.getGraphs()</code></a></li>
+<li><a href="https://static.triply.cc/triplydb-js/classes/Dataset.html#getstatements"><code>Dataset.getStatements()</code></a></li>
+<li><a href="https://static.triply.cc/triplydb-js/classes/Query.html#results"><code>Query.results().statements()</code></a> for SPARQL <code>construct</code> and <code>describe</code> queries</li>
+<li><a href="https://static.triply.cc/triplydb-js/classes/Query.html#results"><code>Query.results().bindings()</code></a> for SPARQL <code>select</code> queries</li>
 </ul>
               
             </div>
           </div><footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
-        <a href="../user/" class="btn btn-neutral float-left" title="User"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-        <a href="../../triply-cli/" class="btn btn-neutral float-right" title="Command-line Interface">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../" class="btn btn-neutral float-left" title="Overview"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../../triplydb-changelog/" class="btn btn-neutral float-right" title="Changelog">Next <span class="icon icon-circle-arrow-right"></span></a>
     </div>
 
   <hr/>
@@ -430,10 +409,10 @@ const array = await results.toArray()
   <span class="rst-current-version" data-toggle="rst-current-version">
     
     
-      <span><a href="../user/" style="color: #fcfcfc">&laquo; Previous</a></span>
+      <span><a href="../" style="color: #fcfcfc">&laquo; Previous</a></span>
     
     
-      <span><a href="../../triply-cli/" style="color: #fcfcfc">Next &raquo;</a></span>
+      <span><a href="../../triplydb-changelog/" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>

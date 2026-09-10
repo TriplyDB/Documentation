@@ -52,6 +52,8 @@
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../../triply-db-getting-started/publishing-data/">Sharing Data</a>
                 </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../triply-db-getting-started/access-control/">Access Control</a>
+                </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../../triply-db-getting-started/viewing-data/">Viewing Data</a>
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../../triply-db-getting-started/exporting-data/">Exporting Data</a>
@@ -72,31 +74,13 @@
     <ul>
                 <li class="toctree-l2"><a class="reference internal" href="../../../triplydb-js/">Overview</a>
                 </li>
-                <li class="toctree-l2"><a class="reference internal" href="../../../triplydb-js/app/">App</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="../../../triplydb-js/account/">Account</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="../../../triplydb-js/asset/">Asset</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="../../../triplydb-js/dataset/">Dataset</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="../../../triplydb-js/graph/">Graph</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="../../../triplydb-js/group/">Group</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="../../../triplydb-js/query/">Query</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="../../../triplydb-js/service/">Service</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="../../../triplydb-js/story/">Story</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="../../../triplydb-js/user/">User</a>
+                <li class="toctree-l2"><a class="" href="https://static.triply.cc/triplydb-js/">API reference</a>
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../../triplydb-js/faq/">FAQ</a>
                 </li>
     </ul>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../../triply-cli/">Command-line Interface</a>
+                  <li class="toctree-l1"><a class="" href="https://static.triply.cc/cli/">Command-line Interface</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../triplydb-changelog/">Changelog</a>
                   </li>
@@ -610,7 +594,7 @@ country:2 rdfs:label 'Italy'.
 }
 </code></pre>
 <h2 id="iterating-over-lists-of-primitives">Iterating over lists of primitives<a class="headerlink" href="#iterating-over-lists-of-primitives" title="Permanent link">&para;</a></h2>
-<p>Notice that <a href="#iterating-over-lists-of-objects-foreach">forEach()</a> can only iterate over Records. Sometimes, it is necessary to iterate over primitive values, for example strings. If the iteration directly results in RDF assertions, <a href="#iris">iris()</a> and <a href="#literals">literals()</a> can be used. But in other cases, we must map the primitive values to objects. These objects can then be processed as regular Records.</p>
+<p>Notice that <a href="#iterating-over-lists-of-objects-foreach">forEach()</a> can only iterate over Records. Sometimes, it is necessary to iterate over primitive values, for example strings. If the iteration directly results in RDF assertions, <a href="../../assert/ratt/terms/#iris">iris()</a> and <a href="../../assert/ratt/terms/#literals">literals()</a> can be used. But in other cases, we must map the primitive values to objects. These objects can then be processed as regular Records.</p>
 <p>Here is an example:</p>
 <pre><code class="language-ts">fromJson({value: 'a b c'}),
 split({content: 'value', separator: ' ', key: 'valueStrings'}),

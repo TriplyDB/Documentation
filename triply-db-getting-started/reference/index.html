@@ -52,6 +52,8 @@
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../publishing-data/">Sharing Data</a>
                 </li>
+                <li class="toctree-l2"><a class="reference internal" href="../access-control/">Access Control</a>
+                </li>
                 <li class="toctree-l2"><a class="reference internal" href="../viewing-data/">Viewing Data</a>
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../exporting-data/">Exporting Data</a>
@@ -65,28 +67,8 @@
                 <li class="toctree-l2 current"><a class="reference internal current" href="./">Reference</a>
     <ul class="current">
     <li class="toctree-l3"><a class="reference internal" href="#access-levels">Access Levels</a>
-        <ul>
-    <li class="toctree-l4"><a class="reference internal" href="#access-level-control">Access level control</a>
-    </li>
-    <li class="toctree-l4"><a class="reference internal" href="#access-level-meaning">Access Level meaning</a>
-    </li>
-    <li class="toctree-l4"><a class="reference internal" href="#access-levels-for-groups">Access Levels for groups</a>
-    </li>
-    <li class="toctree-l4"><a class="reference internal" href="#access-level-dependencies">Access Level dependencies</a>
-    </li>
-    <li class="toctree-l4"><a class="reference internal" href="#access-levels-and-workflows">Access levels and workflows</a>
-    </li>
-        </ul>
     </li>
     <li class="toctree-l3"><a class="reference internal" href="#roles">Roles</a>
-        <ul>
-    <li class="toctree-l4"><a class="reference internal" href="#system-roles">System roles</a>
-    </li>
-    <li class="toctree-l4"><a class="reference internal" href="#custom-roles">Custom roles</a>
-    </li>
-    <li class="toctree-l4"><a class="reference internal" href="#api-token-permissions">API token permissions</a>
-    </li>
-        </ul>
     </li>
     <li class="toctree-l3"><a class="reference internal" href="#markdown-support">Markdown support</a>
         <ul>
@@ -112,31 +94,13 @@
     <ul>
                 <li class="toctree-l2"><a class="reference internal" href="../../triplydb-js/">Overview</a>
                 </li>
-                <li class="toctree-l2"><a class="reference internal" href="../../triplydb-js/app/">App</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="../../triplydb-js/account/">Account</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="../../triplydb-js/asset/">Asset</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="../../triplydb-js/dataset/">Dataset</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="../../triplydb-js/graph/">Graph</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="../../triplydb-js/group/">Group</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="../../triplydb-js/query/">Query</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="../../triplydb-js/service/">Service</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="../../triplydb-js/story/">Story</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="../../triplydb-js/user/">User</a>
+                <li class="toctree-l2"><a class="" href="https://static.triply.cc/triplydb-js/">API reference</a>
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../triplydb-js/faq/">FAQ</a>
                 </li>
     </ul>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../triply-cli/">Command-line Interface</a>
+                  <li class="toctree-l1"><a class="" href="https://static.triply.cc/cli/">Command-line Interface</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../triplydb-changelog/">Changelog</a>
                   </li>
@@ -315,20 +279,8 @@
               
                 <div class="toc"><span class="toctitle">On this page:</span><ul>
 <li><a href="#reference">Reference</a><ul>
-<li><a href="#access-levels">Access Levels</a><ul>
-<li><a href="#access-level-control">Access level control</a></li>
-<li><a href="#access-level-meaning">Access Level meaning</a></li>
-<li><a href="#access-levels-for-groups">Access Levels for groups</a></li>
-<li><a href="#access-level-dependencies">Access Level dependencies</a></li>
-<li><a href="#access-levels-and-workflows">Access levels and workflows</a></li>
-</ul>
-</li>
-<li><a href="#roles">Roles</a><ul>
-<li><a href="#system-roles">System roles</a></li>
-<li><a href="#custom-roles">Custom roles</a></li>
-<li><a href="#api-token-permissions">API token permissions</a></li>
-</ul>
-</li>
+<li><a href="#access-levels">Access Levels</a></li>
+<li><a href="#roles">Roles</a></li>
 <li><a href="#markdown-support">Markdown support</a><ul>
 <li><a href="#headings">Headings</a></li>
 <li><a href="#text-styling">Text styling</a></li>
@@ -348,160 +300,9 @@
 </div>
 <h1 id="reference">Reference<a class="headerlink" href="#reference" title="Permanent link">&para;</a></h1>
 <h2 id="access-levels">Access Levels<a class="headerlink" href="#access-levels" title="Permanent link">&para;</a></h2>
-<p>TriplyDB uses Access Levels that determine who can access content.</p>
-<p>Access Levels can be specified for the following content:</p>
-<ul>
-<li>Datasets, including everything that exist at the dataset level, such as metadata, settings, graphs, and services.</li>
-<li>Queries</li>
-<li>Stories</li>
-<li>Groups</li>
-</ul>
-<h3 id="access-level-control">Access level control<a class="headerlink" href="#access-level-control" title="Permanent link">&para;</a></h3>
-<p>The Access Level control (see <a href="#fig-access-level-control">Figure 1</a>) is available on the settings page for datasets, queries, and stories. The Access Level control also appears on the create dialog for these content types. The standard Access Level is always "Private". An explicit user action is needed to set the Access Level to "Internal" or "Public".</p>
-<p>Groups behave differently: they are "Public" by default, and their Access Level is currently set through the <a href="../../triply-api/">API</a> or <a href="../../triplydb-js/group/#groupupdatemetadata-object">TriplyDB.js</a> rather than through this control. See <a href="#access-levels-for-groups">Access Levels for groups</a>.</p>
-<figure id="fig-access-level-control">
-  <img src="../../assets/access-level-control.png">
-  <figcaption>Figure 1. The Access Level control for content in TriplyDB.</figcaption>
-</figure>
-
-<h3 id="access-level-meaning">Access Level meaning<a class="headerlink" href="#access-level-meaning" title="Permanent link">&para;</a></h3>
-<p>What an Access Level means, depends on whether content belongs to a user or to a group. The following table contains the meaning of the Access Levels for content that belongs to a user:</p>
-<table>
-<thead>
-<tr>
-<th><strong>Icon</strong></th>
-<th><strong>Access Level</strong></th>
-<th><strong>Meaning</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><img alt="" src="../../assets/private.png" /></td>
-<td>Private</td>
-<td>Content is only accessible to you.</td>
-</tr>
-<tr>
-<td><img alt="" src="../../assets/internal.png" /></td>
-<td>Internal</td>
-<td>Content is accessible to anyone who is logged into the same TriplyDB environment.</td>
-</tr>
-<tr>
-<td><img alt="" src="../../assets/public.png" /></td>
-<td>Public</td>
-<td>Content is accessible to anyone on the Internet.</td>
-</tr>
-</tbody>
-</table>
-<p>The following table contains the meaning of the Access Levels for content that belongs to a group:</p>
-<table>
-<thead>
-<tr>
-<th><strong>Icon</strong></th>
-<th><strong>Access Level</strong></th>
-<th><strong>Meaning</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><img alt="" src="../../assets/private.png" /></td>
-<td>Private</td>
-<td>Content is only accessible to group members.</td>
-</tr>
-<tr>
-<td><img alt="" src="../../assets/internal.png" /></td>
-<td>Internal</td>
-<td>Content is accessible to anyone who is logged into the same TriplyDB environment.</td>
-</tr>
-<tr>
-<td><img alt="" src="../../assets/public.png" /></td>
-<td>Public</td>
-<td>Content is accessible to anyone on the Internet.</td>
-</tr>
-</tbody>
-</table>
-<p>Access Levels cannot be specified for the following content. This means that this content is always publicly accessible:</p>
-<ul>
-<li>Users, including their metadata.</li>
-</ul>
-<h3 id="access-levels-for-groups">Access Levels for groups<a class="headerlink" href="#access-levels-for-groups" title="Permanent link">&para;</a></h3>
-<p>Next to the Access Levels of the content it owns, a group has an Access Level of its own. It determines who can find the group in the list of accounts and open its page:</p>
-<table>
-<thead>
-<tr>
-<th><strong>Icon</strong></th>
-<th><strong>Access Level</strong></th>
-<th><strong>Meaning</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><img alt="" src="../../assets/private.png" /></td>
-<td>Private</td>
-<td>The group is only visible to its members.</td>
-</tr>
-<tr>
-<td><img alt="" src="../../assets/internal.png" /></td>
-<td>Internal</td>
-<td>The group is visible to anyone who is logged into the same TriplyDB environment.</td>
-</tr>
-<tr>
-<td><img alt="" src="../../assets/public.png" /></td>
-<td>Public</td>
-<td>The group is visible to anyone on the Internet.</td>
-</tr>
-</tbody>
-</table>
-<p>Groups can be nested: a group can contain subgroups. Membership is inherited downwards, so a member of a group is also a member of every subgroup below it, with the same role.</p>
-<p>Unlike datasets, queries, and stories, a newly created group is "Public" by default. A newly created subgroup instead takes the Access Level of its parent group. Changing the Access Level of a group requires the "Manage group" permission (see <a href="#roles">Roles</a>), and is done through the <a href="../../triply-api/">API</a> or <a href="../../triplydb-js/group/#groupupdatemetadata-object">TriplyDB.js</a>.</p>
-<p>A group that you are not allowed to see is indistinguishable from a group that does not exist: opening its page gives the same "not found" result. If you are a member of a group nested below it, you do see its name and avatar — its name is part of your own group's name anyway — but not its members, content, or settings.</p>
-<p>Two rules keep the Access Level of a group consistent with its surroundings:</p>
-<ul>
-<li><strong>A group caps the content it owns.</strong> The datasets, queries, and stories owned by a group can never be more accessible than the group itself. Making a group stricter therefore fails as long as it still owns content that is more accessible; that content must be changed first.</li>
-<li><strong>A subgroup can never be more accessible than its parent group.</strong> Making a parent group stricter fails as long as it still has a more accessible subgroup.</li>
-</ul>
-<h3 id="access-level-dependencies">Access Level dependencies<a class="headerlink" href="#access-level-dependencies" title="Permanent link">&para;</a></h3>
-<p>The Access Levels for datasets, queries, and stories may affect each other. For example, a public query may use a private dataset. This means that visitors who are not logged in, can see the query, its metadata, and its query string; however, such visitors will never receive query results from the private dataset. This ensures that private content always stays private, as intended.</p>
-<p>A warning is shown to the user when a dependency is introduced to content with a stricter Access Level (see <a href="#fig-access-level-dependencies">Figure 2</a>). This allows the user to change the Access Levels to a consistent state.</p>
-<figure id="fig-access-level-dependencies">
-  <img src="../../assets/access-level-dependencies.png">
-  <figcaption>Figure 2. A public query over a private dataset.</figcaption>
-</figure>
-
-<h3 id="access-levels-and-workflows">Access levels and workflows<a class="headerlink" href="#access-levels-and-workflows" title="Permanent link">&para;</a></h3>
-<p>These access levels are often used for the following workflow:</p>
-<ul>
-<li>You create a new dataset/query/story starts with access level ‘Private’.</li>
-<li>As the dataset/query/story progresses, give it access level ‘Internal’ to receive feedback from other users.</li>
-<li>Once the dataset/query/story is ready, give it access level ‘Public’ to publish it to the world.</li>
-</ul>
+<p>Access Levels determine who can see a dataset, query, story, or group. They are documented on the <a href="../access-control/#access-levels">Access Control</a> page, together with the rules that constrain them.</p>
 <h2 id="roles">Roles<a class="headerlink" href="#roles" title="Permanent link">&para;</a></h2>
-<p>TriplyDB uses roles to control what actions group members can perform. While <a href="#access-levels">Access Levels</a> control <em>who can see</em> content (visibility), roles control <em>what actions</em> members are allowed to take within a group.</p>
-<p>Roles only apply to group members. Personal user accounts are not affected by roles.</p>
-<h3 id="system-roles">System roles<a class="headerlink" href="#system-roles" title="Permanent link">&para;</a></h3>
-<p>Two system roles are always available:</p>
-<table>
-<thead>
-<tr>
-<th><strong>Role</strong></th>
-<th><strong>Description</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>owner</code></td>
-<td>Full access to all account resources and settings, including member management.</td>
-</tr>
-<tr>
-<td><code>member</code></td>
-<td>Can manage resources (datasets, queries, stories) but cannot manage members or delete the group.</td>
-</tr>
-</tbody>
-</table>
-<h3 id="custom-roles">Custom roles<a class="headerlink" href="#custom-roles" title="Permanent link">&para;</a></h3>
-<p>Administrators can create custom roles with a specific subset of permissions. This allows groups to grant exactly the level of access that is appropriate for each member. For example, a custom role could allow read access to all datasets without the ability to create new ones, or grant write access without the ability to manage SPARQL services.</p>
-<p>Custom roles are configured by administrators in the <a href="../admin-settings-pages/#roles-page">Admin Settings</a>. Roles are assigned to members in each group's member settings.</p>
-<h3 id="api-token-permissions">API token permissions<a class="headerlink" href="#api-token-permissions" title="Permanent link">&para;</a></h3>
-<p>API token permissions follow the same model as roles. Tokens can be configured with individually selectable permissions. A token can never grant more permissions than the user already has through the user interface. See the <a href="../../generics/api-token/">API Token</a> documentation for details on creating and configuring tokens.</p>
+<p>Roles determine what a member of a group may do. They are documented on the <a href="../access-control/#roles">Access Control</a> page, together with custom roles and API token permissions.</p>
 <h2 id="markdown-support">Markdown support<a class="headerlink" href="#markdown-support" title="Permanent link">&para;</a></h2>
 <p>Triply allows rich text formatting to be used in the following places:</p>
 <ul>

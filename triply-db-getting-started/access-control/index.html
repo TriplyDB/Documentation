@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <meta name="description" content="The official documentation for the Triply products: TriplyDB, TriplyDB.js, and TriplyETL." />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Access Control - Triply Documentation</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link href="../../css/intellij-light.css" rel="stylesheet" />
+        <link href="../../css/triply.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Access Control";
+        var mkdocs_page_input_path = "triply-db-getting-started/access-control/index.md";
+        var mkdocs_page_url = null;
+      </script>
+     
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> Triply Documentation
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">TriplyDB</span></p>
+              <ul class="current">
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Getting started</a>
+    <ul class="current">
+                <li class="toctree-l2"><a class="reference internal" href="../">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../uploading-data/">Uploading Data</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../editing-data/">Editing (SKOS) Data</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../publishing-data/">Sharing Data</a>
+                </li>
+                <li class="toctree-l2 current"><a class="reference internal current" href="./">Access Control</a>
+    <ul class="current">
+    <li class="toctree-l3"><a class="reference internal" href="#what-is-access-controlled">What is access-controlled</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#access-levels">Access Levels</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#access-level-control">Access level control</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#access-level-meaning">Access Level meaning</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#access-levels-for-groups">Access Levels for groups</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#two-rules-that-constrain-access-levels">Two rules that constrain Access Levels</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#access-level-dependencies">Access Level dependencies</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#a-typical-workflow">A typical workflow</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#members">Members</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#direct-and-inherited-membership">Direct and inherited membership</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#requesting-access">Requesting access</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#roles">Roles</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#system-roles">System roles</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#custom-roles">Custom roles</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#every-role-can-always-read">Every role can always read</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#some-permissions-gate-the-interface-not-the-data">Some permissions gate the interface, not the data</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#permissions-can-depend-on-other-permissions">Permissions can depend on other permissions</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#personal-permissions-are-not-part-of-any-role">Personal permissions are not part of any role</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#api-tokens">API tokens</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#administrators">Administrators</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#common-setups">Common setups</a>
+    </li>
+    </ul>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../viewing-data/">Viewing Data</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../exporting-data/">Exporting Data</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../saved-queries/">Saved Queries</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../data-stories/">Data Stories</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../admin-settings-pages/">Admin Settings Pages</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../reference/">Reference</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../triply-api/">API</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">TriplyDB-JS</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../triplydb-js/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="" href="https://static.triply.cc/triplydb-js/">API reference</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triplydb-js/faq/">FAQ</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="https://static.triply.cc/cli/">Command-line Interface</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../triplydb-changelog/">Changelog</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">TriplyETL</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Generic</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/generic/getting-started/">Getting Started</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/generic/changelog/">Changelog</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/generic/cli/">Command Line Interface (CLI)</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/generic/declarations/">Declarations</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/generic/control-structures/">Control Structures</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/generic/debug/">Debug</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/generic/internal-store/">Internal Store</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/generic/maintenance/">Maintenance</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/generic/record/">Record</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/generic/vocabularies/">Vocabularies</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Sources</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/sources/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/sources/apis/">APIs</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/sources/inline-json/">Inline JSON</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/sources/inline-strings/">Inline Strings</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/sources/local-files/">Local Files</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/sources/online-files/">Online Files</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/sources/rml/">RML Sources</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/sources/triplydb-assets/">TriplyDB Assets</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/sources/triplydb-datasets/">TriplyDB Datasets</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/sources/triplydb-queries/">TriplyDB Queries</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Extract</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/extract/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/extract/csv/">CSV</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/extract/json/">JSON</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/extract/oai-pmh/">OAI-PMH</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/extract/postgres/">Postgres</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/extract/rdf/">RDF</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/extract/shapefile/">Shapefile</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/extract/tsv/">TSV</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/extract/xlsx/">XLSX</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/extract/xml/">XML</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Transform</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/transform/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/transform/ratt/">RATT</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/transform/rml/">RML</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/transform/typescript/">TypeScript</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/transform/xslt/">XSLT</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Assert</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/assert/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/assert/json-ld/">JSON-LD</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="#">RATT</a>
+    <ul>
+                <li class="toctree-l3"><a class="reference internal" href="../../triply-etl/assert/ratt/terms/">RATT Terms</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../../triply-etl/assert/ratt/statements/">RATT Statements</a>
+                </li>
+    </ul>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/assert/rml/">RML</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/assert/xslt/">XSLT</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Enrich</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/enrich/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="#">SHACL</a>
+    <ul>
+                <li class="toctree-l3"><a class="reference internal" href="../../triply-etl/enrich/shacl/">Overview</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../../triply-etl/enrich/shacl/triple-rules/">Triple Rules</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../../triply-etl/enrich/shacl/sparql-rules/">SPARQL Rules</a>
+                </li>
+    </ul>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="#">SPARQL</a>
+    <ul>
+                <li class="toctree-l3"><a class="reference internal" href="../../triply-etl/enrich/sparql/construct/">SPARQL Construct</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../../triply-etl/enrich/sparql/update/">SPARQL Update</a>
+                </li>
+    </ul>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Validate</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/validate/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/validate/graph-comparison/">Graph Comparison</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../triply-etl/validate/shacl/">SHACL</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../triply-etl/publish/">Publish</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">Triply Documentation</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">TriplyDB</li>
+          <li class="breadcrumb-item">Getting started</li>
+      <li class="breadcrumb-item active">Access Control</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <div class="toc"><span class="toctitle">On this page:</span><ul>
+<li><a href="#access-control">Access Control</a><ul>
+<li><a href="#what-is-access-controlled">What is access-controlled</a></li>
+<li><a href="#access-levels">Access Levels</a><ul>
+<li><a href="#access-level-control">Access level control</a></li>
+<li><a href="#access-level-meaning">Access Level meaning</a></li>
+<li><a href="#access-levels-for-groups">Access Levels for groups</a></li>
+<li><a href="#two-rules-that-constrain-access-levels">Two rules that constrain Access Levels</a></li>
+<li><a href="#access-level-dependencies">Access Level dependencies</a></li>
+<li><a href="#a-typical-workflow">A typical workflow</a></li>
+</ul>
+</li>
+<li><a href="#members">Members</a><ul>
+<li><a href="#direct-and-inherited-membership">Direct and inherited membership</a></li>
+<li><a href="#requesting-access">Requesting access</a></li>
+</ul>
+</li>
+<li><a href="#roles">Roles</a><ul>
+<li><a href="#system-roles">System roles</a></li>
+<li><a href="#custom-roles">Custom roles</a></li>
+<li><a href="#every-role-can-always-read">Every role can always read</a></li>
+<li><a href="#some-permissions-gate-the-interface-not-the-data">Some permissions gate the interface, not the data</a></li>
+<li><a href="#permissions-can-depend-on-other-permissions">Permissions can depend on other permissions</a></li>
+<li><a href="#personal-permissions-are-not-part-of-any-role">Personal permissions are not part of any role</a></li>
+</ul>
+</li>
+<li><a href="#api-tokens">API tokens</a></li>
+<li><a href="#administrators">Administrators</a></li>
+<li><a href="#common-setups">Common setups</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<h1 id="access-control">Access Control<a class="headerlink" href="#access-control" title="Permanent link">&para;</a></h1>
+<p>Read this before you set up a group, invite someone, or publish something. Access control in TriplyDB has two independent parts:</p>
+<ul>
+<li><strong>Access Levels</strong> decide <strong>who can see</strong> something. They apply to the content itself, and they apply to everyone — including people who are not logged in.</li>
+<li><strong>Roles</strong> decide <strong>what a member of a group may do</strong>. They apply only to members of a group, and only ever <em>add</em> to what the Access Level already allows.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>To do this</th>
+<th>Go here</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Change who can see a dataset, query or story</td>
+<td>Its settings page, or the create dialog — see <a href="#access-levels">Access Levels</a></td>
+</tr>
+<tr>
+<td>Change who can see a group</td>
+<td>The API or <a href="https://static.triply.cc/triplydb-js/classes/Group.html#update">TriplyDB.js</a> — see <a href="#access-levels-for-groups">Access Levels for groups</a></td>
+</tr>
+<tr>
+<td>Add someone to a group, or change their role</td>
+<td>The group's member settings — see <a href="#members">Members</a></td>
+</tr>
+<tr>
+<td>Create a role, or change what a role may do</td>
+<td><a href="../admin-settings-pages/#roles-page">Admin settings → Roles</a></td>
+</tr>
+<tr>
+<td>Give a script or pipeline access</td>
+<td><a href="#api-tokens">API tokens</a></td>
+</tr>
+</tbody>
+</table>
+<h2 id="what-is-access-controlled">What is access-controlled<a class="headerlink" href="#what-is-access-controlled" title="Permanent link">&para;</a></h2>
+<p>Access Levels can be set on:</p>
+<ul>
+<li><strong>Datasets</strong>, including everything at the dataset level: metadata, settings, graphs, and services.</li>
+<li><strong>Queries</strong></li>
+<li><strong>Stories</strong></li>
+<li><strong>Groups</strong></li>
+</ul>
+<p>They cannot be set on <strong>users</strong>. A user account and its metadata are always publicly visible.</p>
+<h2 id="access-levels">Access Levels<a class="headerlink" href="#access-levels" title="Permanent link">&para;</a></h2>
+<p>TriplyDB has three Access Levels. The standard Access Level for new content is always "Private"; an explicit action is needed to make something "Internal" or "Public".</p>
+<h3 id="access-level-control">Access level control<a class="headerlink" href="#access-level-control" title="Permanent link">&para;</a></h3>
+<p>The Access Level control (see <a href="#fig-access-level-control">Figure 1</a>) is available on the settings page for datasets, queries, and stories, and on the create dialog for these content types.</p>
+<p>Groups behave differently: they are "Public" by default, and their Access Level is set through the <a href="../../triply-api/">API</a> or <a href="https://static.triply.cc/triplydb-js/classes/Group.html#update">TriplyDB.js</a> rather than through this control. See <a href="#access-levels-for-groups">Access Levels for groups</a>.</p>
+<figure id="fig-access-level-control">
+  <img src="../../assets/access-level-control.png">
+  <figcaption>Figure 1. The Access Level control for content in TriplyDB.</figcaption>
+</figure>
+
+<h3 id="access-level-meaning">Access Level meaning<a class="headerlink" href="#access-level-meaning" title="Permanent link">&para;</a></h3>
+<p>What an Access Level means depends on whether the content belongs to a user or to a group. For content that belongs to a <strong>user</strong>:</p>
+<table>
+<thead>
+<tr>
+<th><strong>Icon</strong></th>
+<th><strong>Access Level</strong></th>
+<th><strong>Meaning</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img alt="" src="../../assets/private.png" /></td>
+<td>Private</td>
+<td>Content is only accessible to you.</td>
+</tr>
+<tr>
+<td><img alt="" src="../../assets/internal.png" /></td>
+<td>Internal</td>
+<td>Content is accessible to anyone who is logged into the same TriplyDB environment.</td>
+</tr>
+<tr>
+<td><img alt="" src="../../assets/public.png" /></td>
+<td>Public</td>
+<td>Content is accessible to anyone on the Internet.</td>
+</tr>
+</tbody>
+</table>
+<p>For content that belongs to a <strong>group</strong>:</p>
+<table>
+<thead>
+<tr>
+<th><strong>Icon</strong></th>
+<th><strong>Access Level</strong></th>
+<th><strong>Meaning</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img alt="" src="../../assets/private.png" /></td>
+<td>Private</td>
+<td>Content is only accessible to group members.</td>
+</tr>
+<tr>
+<td><img alt="" src="../../assets/internal.png" /></td>
+<td>Internal</td>
+<td>Content is accessible to anyone who is logged into the same TriplyDB environment.</td>
+</tr>
+<tr>
+<td><img alt="" src="../../assets/public.png" /></td>
+<td>Public</td>
+<td>Content is accessible to anyone on the Internet.</td>
+</tr>
+</tbody>
+</table>
+<p>Whatever the Access Level, someone who is not logged in can only ever read. Changing anything requires being logged in, and being allowed to by a role.</p>
+<h3 id="access-levels-for-groups">Access Levels for groups<a class="headerlink" href="#access-levels-for-groups" title="Permanent link">&para;</a></h3>
+<p>Next to the Access Levels of the content it owns, a group has an Access Level of its own. It determines who can find the group in the list of accounts and open its page:</p>
+<table>
+<thead>
+<tr>
+<th><strong>Icon</strong></th>
+<th><strong>Access Level</strong></th>
+<th><strong>Meaning</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img alt="" src="../../assets/private.png" /></td>
+<td>Private</td>
+<td>The group is only visible to its members.</td>
+</tr>
+<tr>
+<td><img alt="" src="../../assets/internal.png" /></td>
+<td>Internal</td>
+<td>The group is visible to anyone who is logged into the same TriplyDB environment.</td>
+</tr>
+<tr>
+<td><img alt="" src="../../assets/public.png" /></td>
+<td>Public</td>
+<td>The group is visible to anyone on the Internet.</td>
+</tr>
+</tbody>
+</table>
+<p>Unlike datasets, queries, and stories, a newly created group is "Public" by default. A newly created subgroup instead takes the Access Level of its parent group. Changing the Access Level of a group requires the "Manage group" permission.</p>
+<p>A group that you are not allowed to see is indistinguishable from a group that does not exist: opening its page gives the same "not found" result. If you are a member of a group nested below it, you do see its name and avatar — its name is part of your own group's name anyway — but not its members, content, or settings.</p>
+<h3 id="two-rules-that-constrain-access-levels">Two rules that constrain Access Levels<a class="headerlink" href="#two-rules-that-constrain-access-levels" title="Permanent link">&para;</a></h3>
+<p>Content can never be more accessible than what contains it:</p>
+<ul>
+<li><strong>A group caps the content it owns.</strong> The datasets, queries, and stories owned by a group can never be more accessible than the group itself. Making a group stricter therefore fails as long as it still owns content that is more accessible; that content must be changed first.</li>
+<li><strong>A subgroup can never be more accessible than its parent group.</strong> Making a parent group stricter fails as long as it still has a more accessible subgroup.</li>
+</ul>
+<h3 id="access-level-dependencies">Access Level dependencies<a class="headerlink" href="#access-level-dependencies" title="Permanent link">&para;</a></h3>
+<p>The Access Levels of datasets, queries, and stories may affect each other. For example, a public query may use a private dataset. Visitors who are not logged in can then see the query, its metadata, and its query string — but they will never receive query results from the private dataset. Private content stays private.</p>
+<p>A warning is shown when a dependency is introduced to content with a stricter Access Level (see <a href="#fig-access-level-dependencies">Figure 2</a>), so that the Access Levels can be brought into a consistent state.</p>
+<figure id="fig-access-level-dependencies">
+  <img src="../../assets/access-level-dependencies.png">
+  <figcaption>Figure 2. A public query over a private dataset.</figcaption>
+</figure>
+
+<h3 id="a-typical-workflow">A typical workflow<a class="headerlink" href="#a-typical-workflow" title="Permanent link">&para;</a></h3>
+<p>Access Levels are often used like this:</p>
+<ul>
+<li>A new dataset, query, or story starts out "Private".</li>
+<li>As it progresses, it becomes "Internal", to gather feedback from colleagues.</li>
+<li>Once it is ready, it becomes "Public", publishing it to the world.</li>
+</ul>
+<h2 id="members">Members<a class="headerlink" href="#members" title="Permanent link">&para;</a></h2>
+<p>Roles apply to group members. A personal user account has no members and no roles: you have full control over your own account and everything in it.</p>
+<h3 id="direct-and-inherited-membership">Direct and inherited membership<a class="headerlink" href="#direct-and-inherited-membership" title="Permanent link">&para;</a></h3>
+<p>Groups can be nested: a group can contain subgroups. <strong>Membership is inherited downwards.</strong> Adding someone to a group also makes them a member of every subgroup below it, with the same permissions. They do not appear as a member of those subgroups; their access comes from the parent.</p>
+<p>Someone can be both an inherited member and a direct member of the same subgroup, with different roles. In that case their permissions are the <strong>union of both roles</strong> — everything either role allows. Adding someone to a subgroup can therefore only ever grant more; it cannot be used to take something away.</p>
+<p>For example, in a group <code>acme</code> with a subgroup <code>acme/research</code>:</p>
+<ul>
+<li><strong>Ada</strong> is a <code>member</code> of <code>acme</code>. She is also a member of <code>acme/research</code>, with the same permissions, without appearing in its member list.</li>
+<li><strong>Ben</strong> is added directly to <code>acme/research</code> with a custom role that only allows writing queries. He is not a member of <code>acme</code>, so in <code>acme</code> itself he sees only what its Access Level shows to anyone.</li>
+<li><strong>Cleo</strong> is a <code>member</code> of <code>acme</code> <em>and</em> is added directly to <code>acme/research</code> with Ben's narrower role. In <code>acme/research</code> she keeps everything <code>member</code> gives her — the narrower role adds to it rather than replacing it. To reduce what Cleo may do, change her role in <code>acme</code>, or remove her from it.</li>
+</ul>
+<h3 id="requesting-access">Requesting access<a class="headerlink" href="#requesting-access" title="Permanent link">&para;</a></h3>
+<p>Someone who cannot see a group cannot ask to join it. Give them the group name, or add them yourself.</p>
+<h2 id="roles">Roles<a class="headerlink" href="#roles" title="Permanent link">&para;</a></h2>
+<p>A role is a named set of permissions. Every member of a group has exactly one role per group they are a direct member of.</p>
+<h3 id="system-roles">System roles<a class="headerlink" href="#system-roles" title="Permanent link">&para;</a></h3>
+<p>Two roles are built in and cannot be changed or deleted:</p>
+<table>
+<thead>
+<tr>
+<th><strong>Role</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>owner</code></td>
+<td>Full access to everything the group owns and to the group's own settings, including its members.</td>
+</tr>
+<tr>
+<td><code>member</code></td>
+<td>Can work with everything the group owns, but cannot manage members and cannot delete the group.</td>
+</tr>
+</tbody>
+</table>
+<p>The difference between them is exactly two permissions: <strong>"Manage group"</strong> (managing members and roles, and changing the group's Access Level) and <strong>"Delete group"</strong>. Everything else, <code>member</code> already has.</p>
+<h3 id="custom-roles">Custom roles<a class="headerlink" href="#custom-roles" title="Permanent link">&para;</a></h3>
+<p>When neither system role fits, an administrator can create a custom role with any subset of permissions — for instance a role that may write queries but not touch services, or one that may read everything and change nothing.</p>
+<p>Custom roles are created in <a href="../admin-settings-pages/#roles-page">Admin settings → Roles</a> and assigned in each group's member settings. Each permission in that editor carries a description of what it allows, and the editor is the authoritative list — it is generated from the same definitions the server enforces. What follows is the part of the model the editor cannot tell you.</p>
+<h3 id="every-role-can-always-read">Every role can always read<a class="headerlink" href="#every-role-can-always-read" title="Permanent link">&para;</a></h3>
+<p>Two separate rules mean a role can never be narrowed to nothing:</p>
+<ol>
+<li><strong>Every role includes the read permissions.</strong> Reading accounts, datasets, queries, and stories is part of every role, including custom ones, and cannot be deselected.</li>
+<li><strong>Access Level grants reads regardless of role.</strong> A member is never given less than a visitor who is not a member at all. If content is Public, a member can read it; if it is Internal, any logged-in member can read it — whatever their role says.</li>
+</ol>
+<p>So a narrow custom role limits what someone can <em>change</em>, and which parts of the interface they see. It does not limit what they can <em>see</em> below what the Access Level already permits. Use Access Levels for that.</p>
+<h3 id="some-permissions-gate-the-interface-not-the-data">Some permissions gate the interface, not the data<a class="headerlink" href="#some-permissions-gate-the-interface-not-the-data" title="Permanent link">&para;</a></h3>
+<p>A number of permissions control whether a part of the web interface is available — the linked data browser, the table view, the SPARQL IDE, the GraphQL and Elasticsearch editors, the insights dashboard, the graph, service and asset tabs, and the data editor.</p>
+<p><strong>These hide interface, not data.</strong> Removing "Use SPARQL IDE" from a role removes the query editor from that person's view of a dataset they can read; it does not stop them querying that dataset over the <a href="../../triply-api/">API</a> or with <a href="../../triplydb-js/">TriplyDB.js</a>. Use them to simplify what a group of users sees, not as a security measure.</p>
+<h3 id="permissions-can-depend-on-other-permissions">Permissions can depend on other permissions<a class="headerlink" href="#permissions-can-depend-on-other-permissions" title="Permanent link">&para;</a></h3>
+<p>Some permissions only mean something together with another: managing services, for example, requires being able to see the services tab. The role editor enforces this, and will tell you when a selection is incomplete.</p>
+<h3 id="personal-permissions-are-not-part-of-any-role">Personal permissions are not part of any role<a class="headerlink" href="#personal-permissions-are-not-part-of-any-role" title="Permanent link">&para;</a></h3>
+<p>Managing your own API tokens, configuring multi-factor authentication, deleting your own account, and managing your favourites are always and only yours. They belong to your personal account and cannot be granted to anyone through a role — not even to a group owner.</p>
+<h2 id="api-tokens">API tokens<a class="headerlink" href="#api-tokens" title="Permanent link">&para;</a></h2>
+<p>Scripts, pipelines and applications authenticate with an <a href="../../generics/api-token/">API token</a> rather than with a password. A token carries an individually selected set of permissions, following the same model as roles.</p>
+<p>Two rules keep tokens from becoming a way around the above:</p>
+<ul>
+<li><strong>A token can never do more than the person who created it.</strong> Its permissions are intersected with what its owner is allowed at the time of each request, so it shrinks automatically when its owner's roles do.</li>
+<li><strong>A token cannot manage credentials.</strong> Creating or revoking API tokens, changing multi-factor authentication, and deleting an account require a logged-in session, so a token can never be used to mint another token or to widen its own reach.</li>
+</ul>
+<p>Give a token the smallest set of permissions that its job needs, and a name that says what uses it — that is what makes it possible to revoke the right one later.</p>
+<h2 id="administrators">Administrators<a class="headerlink" href="#administrators" title="Permanent link">&para;</a></h2>
+<p>Administrators of a TriplyDB instance can see and change everything on it, regardless of Access Levels and roles. They are also the ones who create custom roles.</p>
+<p>If you need something that no role you can assign allows — a new custom role, a dataset moved between accounts, an account restored — ask your instance administrator.</p>
+<h2 id="common-setups">Common setups<a class="headerlink" href="#common-setups" title="Permanent link">&para;</a></h2>
+<p><strong>A team that publishes data.</strong> One group, everyone a <code>member</code>, one or two people <code>owner</code>. Datasets start Private, become Public when ready. The <code>owner</code>s are the only ones who can change the group itself.</p>
+<p><strong>A group of read-only consumers.</strong> A custom role with none of the write permissions selected, assigned to everyone who should only look. Remember that this does not restrict what they can see — set the Access Levels of the content accordingly.</p>
+<p><strong>An external collaborator on one dataset.</strong> Put that dataset in its own subgroup and add the collaborator there. They get access to that subgroup only; the parent group's other content stays out of reach, provided it is not Public or Internal.</p>
+<p><strong>A pipeline that loads data nightly.</strong> An API token owned by a member of the group, with the permissions to import data into a dataset and nothing else. Not an <code>owner</code>'s token — if the pipeline is compromised, the damage is bounded by what the token may do.</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../publishing-data/" class="btn btn-neutral float-left" title="Sharing Data"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../viewing-data/" class="btn btn-neutral float-right" title="Viewing Data">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../publishing-data/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../viewing-data/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script>var base_url = '../..';</script>
+      <script src="../../js/triply.js" defer></script>
+      <script src="../../js/highlight.min.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+
+</body>
+</html>

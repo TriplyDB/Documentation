@@ -52,6 +52,8 @@
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../../triply-db-getting-started/publishing-data/">Sharing Data</a>
                 </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../triply-db-getting-started/access-control/">Access Control</a>
+                </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../../triply-db-getting-started/viewing-data/">Viewing Data</a>
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../../triply-db-getting-started/exporting-data/">Exporting Data</a>
@@ -72,31 +74,13 @@
     <ul>
                 <li class="toctree-l2"><a class="reference internal" href="../../../triplydb-js/">Overview</a>
                 </li>
-                <li class="toctree-l2"><a class="reference internal" href="../../../triplydb-js/app/">App</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="../../../triplydb-js/account/">Account</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="../../../triplydb-js/asset/">Asset</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="../../../triplydb-js/dataset/">Dataset</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="../../../triplydb-js/graph/">Graph</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="../../../triplydb-js/group/">Group</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="../../../triplydb-js/query/">Query</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="../../../triplydb-js/service/">Service</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="../../../triplydb-js/story/">Story</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="../../../triplydb-js/user/">User</a>
+                <li class="toctree-l2"><a class="" href="https://static.triply.cc/triplydb-js/">API reference</a>
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../../triplydb-js/faq/">FAQ</a>
                 </li>
     </ul>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../../triply-cli/">Command-line Interface</a>
+                  <li class="toctree-l1"><a class="" href="https://static.triply.cc/cli/">Command-line Interface</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../triplydb-changelog/">Changelog</a>
                   </li>
@@ -344,7 +328,7 @@
 <p>Since TriplyDB assets are part of a TriplyDB dataset:
 - they are accessible under the same access level as the rest of the dataset, and
 - they are accessible with the same API Token that allows linked data to be published in that dataset.</p>
-<p>Notice that this makes it <em>easier</em> and <em>safer</em> to deal with source data that is not public. When private data is retrieved from <a href="#online-files">online files</a> or <a href="#apis">APIs</a>, authorization information must be configured at the HTTP level. This is possible but cumbersome. And, depending on the authentication approach, it is required to create a new API Token and securely configure that in addition to the TriplyDB API Token.</p>
+<p>Notice that this makes it <em>easier</em> and <em>safer</em> to deal with source data that is not public. When private data is retrieved from <a href="../online-files/">online files</a> or <a href="../apis/">APIs</a>, authorization information must be configured at the HTTP level. This is possible but cumbersome. And, depending on the authentication approach, it is required to create a new API Token and securely configure that in addition to the TriplyDB API Token.</p>
 <p>Notice that access also is more <em>transparent</em> when TriplyDB assets are used. All and only collaborators that have access to the TriplyDB dataset also have access to the source data. It is clear for all collaborators which source files should be used, and which versions are available. This is more transparent than having to share (multiple versions of) source files over email or by other indirect means.</p>
 <h2 id="triplydb-instance">TriplyDB instance<a class="headerlink" href="#triplydb-instance" title="Permanent link">&para;</a></h2>
 <p>By default, assets are loaded from the TriplyDB instance that is associated with the currently used API Token. In some situations it is useful to connect to a linked dataset from a different TriplyDB instance. This can be configured with the <code>triplyDb</code> option.</p>
