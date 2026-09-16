@@ -256,6 +256,7 @@
             <div class="section" itemprop="articleBody">
               
                 <div class="toc"><span class="toctitle">On this page:</span><ul>
+<li><a href="#26.9.200">26.9.200</a></li>
 <li><a href="#26.9.100">26.9.100</a></li>
 <li><a href="#26.8.200">26.8.200</a></li>
 <li><a href="#26.8.100">26.8.100</a></li>
@@ -318,6 +319,15 @@
 </ul>
 </div>
 <p>This changelog covers technical changes related to TriplyDB on-premise deployments. See <a href="/triplydb-changelog">here</a> for the TriplyDB changelog that is user facing.</p>
+<h2 id="26.9.200">26.9.200<a class="headerlink" href="#26.9.200" title="Permanent link">&para;</a></h2>
+<p><strong>Release date:</strong> 2026-09-16</p>
+<ul>
+<li><code>email.port</code> is now defaulted where the <code>api</code> NetworkPolicy's SMTP egress rule is rendered: <code>465</code> when <code>email.secure</code> is true (the chart default), <code>587</code> otherwise. An unset <code>email.port</code> previously rendered a rule with an empty port and — with <code>email.ip</code> unset — no destination either, which allowed all TCP egress from the API pods to anywhere. If the SMTP server listens on another port, set <code>email.port</code> explicitly, or outgoing mail is blocked at the network layer.</li>
+<li><code>api.pathTimeouts</code> no longer defaults to an empty list. It now carries one entry, granting the graph-store endpoint (<code>^/datasets/[^/]+/[^/]+/graph-store</code>) an hour. A values file that sets <code>api.pathTimeouts</code> itself replaces the default wholesale, so repeat that entry there, or graph-store ups <code>api.timeout</code>.</li>
+<li><code>deploymentStrategy</code> (on <code>api</code>, <code>console</code>, <code>console.next</code> and <code>orchestrator</code>) is validated against a schema, which accepts only <code>type</code> (<code>RollingUpdate</code> or <code>Recreate</code>) and <code>rollingUpdate.maxSurge</code>/<code>rollingUpdate.maxUnavailable</code>. Any other key is now rejected rather than passed through to the Deployment.</li>
+<li>The graph store endpoint is a bulk-upload interface, so it is exempt from the general proxy timeout and from <code>api.bodyLimitKb</code>. On nginx that takes two additional Ingress objects, <code>api-graph-store</code> and <code>console-api-proxy-graph-store</code>, which match the path by regex and set request buffering off, no body-size limit, and an hour's timeout. On haproxy the same hour comes from a <code>path_reg</code> ACL in the <code>api</code> Service's backend-config snippet, which needs HAProxy 2.4 or newer for <code>set-timeout client</code>.</li>
+<li>Optional chart values can be set to <code>null</code> to mean "unset", so a value that a shared values file supplies can be cleared without the key being removed.</li>
+</ul>
 <h2 id="26.9.100">26.9.100<a class="headerlink" href="#26.9.100" title="Permanent link">&para;</a></h2>
 <p><strong>Release date:</strong> 2026-09-02</p>
 <ul>

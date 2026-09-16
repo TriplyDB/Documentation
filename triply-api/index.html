@@ -77,6 +77,10 @@
         </ul>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#uploading-data">Uploading data</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#graph-store-protocol">Graph Store Protocol</a>
+    </li>
+        </ul>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#sparql">SPARQL</a>
     </li>
@@ -284,7 +288,10 @@
 <li><a href="#creating-an-api-token">Creating an API token</a></li>
 </ul>
 </li>
-<li><a href="#uploading-data">Uploading data</a></li>
+<li><a href="#uploading-data">Uploading data</a><ul>
+<li><a href="#graph-store-protocol">Graph Store Protocol</a></li>
+</ul>
+</li>
 <li><a href="#sparql">SPARQL</a></li>
 <li><a href="#graphql">GraphQL</a></li>
 <li><a href="#elasticsearch">Elasticsearch</a><ul>
@@ -316,6 +323,16 @@
 <li><a href="https://static.triply.cc/cli/">The TriplyDB Command-line Interface</a>.</li>
 </ol>
 <p>Both handle resuming, retrying and progress reporting for you.</p>
+<p>If neither fits — a language other than JavaScript, or a runtime you cannot add a dependency to — <a href="https://github.com/TriplyDB/TriplyDBUploads">TriplyDBUploads</a> holds reference implementations of the tus flow in Java and Python: creating the upload job, sending the file in 5 MB chunks, starting the job, and polling until it finishes.</p>
+<h3 id="graph-store-protocol">Graph Store Protocol<a class="headerlink" href="#graph-store-protocol" title="Permanent link">&para;</a></h3>
+<p>The one exception to the 5 MB limit is the <a href="https://www.w3.org/TR/sparql11-http-rdf-update/">SPARQL 1.1 Graph Store HTTP Protocol</a>, which TriplyDB implements at <code>/datasets/ACCOUNT/DATASET/graph-store</code>. A <code>PUT</code> or <code>POST</code> there writes a whole graph in a single request, of any size, and the payload is parsed as it arrives — so a file that turns out to be malformed halfway through is refused without ever being stored. See the Graphs endpoints in the <a href="https://api.triplydb.com/api-docs">OpenAPI reference</a> for the methods, the graph identification parameters and the response codes.</p>
+<p>That single request is also the trade-off: it is not resumable, so a dropped connection takes the upload with it, and nothing reports progress while it runs. Reach for it when a program already speaks the protocol, or for a one-off from the shell:</p>
+<pre><code class="language-sh">curl -H &quot;Authorization: Bearer TRIPLYDB_TOKEN&quot; \
+  -H &quot;Content-Type: text/turtle&quot; \
+  -X PUT &quot;https://api.triplydb.com/datasets/ACCOUNT/DATASET/graph-store?graph=https%3A%2F%2Fexample.org%2Fgraph&quot; \
+  --data-binary @data.ttl
+</code></pre>
+<p>Prefer TriplyDB.js or the command-line interface for anything large or unattended.</p>
 <h2 id="sparql">SPARQL<a class="headerlink" href="#sparql" title="Permanent link">&para;</a></h2>
 <p>TriplyDB implements the <a href="https://www.w3.org/TR/sparql11-protocol/">SPARQL 1.1 Query Protocol</a>. See the <a href="https://api.triplydb.com/api-docs">SPARQL endpoints</a> for the ways a query can be sent and the result formats each endpoint returns.</p>
 <p>Everybody who has access to a dataset also has access to its services, including its SPARQL services:</p>

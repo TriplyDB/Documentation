@@ -308,7 +308,12 @@
 <li><a href="#add-data-from-files">Add data from files</a></li>
 <li><a href="#supported-data-formats">Supported data formats</a></li>
 <li><a href="#csv-and-tsv-format">CSV and TSV format</a></li>
-<li><a href="#xml-format">XML format</a></li>
+<li><a href="#xml-format">XML format</a><ul>
+<li><a href="#namespaces">Namespaces</a></li>
+<li><a href="#example">Example</a></li>
+<li><a href="#rdfxml">RDF/XML</a></li>
+</ul>
+</li>
 <li><a href="#json-format">JSON format</a></li>
 <li><a href="#adding-malformed-data">Adding malformed data</a></li>
 </ul>
@@ -570,8 +575,124 @@ select ?name ?category ?price where {
 }
 </code></pre>
 <h3 id="xml-format">XML format<a class="headerlink" href="#xml-format" title="Permanent link">&para;</a></h3>
-<p>When you upload XML files to TriplyDB, they are automatically converted to RDF using the Facade-X data model. This preserves the hierarchical structure of the XML document, making it queryable via SPARQL.
-See <a href="https://sparql-anything.readthedocs.io/stable/formats/XML/">here</a> for more details on the Facade-X XML data model.</p>
+<p>When you upload XML files to TriplyDB, they are automatically converted to RDF using the Facade-X
+data model, the same model that is used for <a href="#json-format">JSON</a> and <a href="#csv-and-tsv-format">tabular</a>
+uploads. This preserves the hierarchical structure of the document, making it queryable via SPARQL.
+See <a href="https://sparql-anything.readthedocs.io/stable/formats/XML/">here</a> for the Facade-X XML data
+model in general; the rest of this section describes how TriplyDB fills it in.</p>
+<p>An element becomes a resource, and its children are attached to it twice: once by a predicate
+derived from the child's own name, and once by the container membership property <code>rdf:_1</code>, <code>rdf:_2</code>
+and so on, which records the order the children appear in.</p>
+<ul>
+<li>Every element is typed by its own name, so a <code>&lt;name&gt;</code> element is both the object of a <code>name</code>
+  predicate and an instance of a <code>name</code> class. The root element is additionally typed
+  <code>&lt;http://sparql.xyz/facade-x/ns/root&gt;</code>.</li>
+<li>Element resources get an opaque IRI in the dataset's <code>id/</code> namespace, built from the local name
+  and a UUID. The structure, not the IRI, is what identifies an element.</li>
+<li>Text content is attached by <code>rdf:_N</code> as a plain literal, in the same numbering as the child
+  elements — so a mixed element's text and children keep their relative order. Leading and trailing
+  whitespace is trimmed, because a line break between a tag and its text is rarely meant as data.</li>
+<li>Comments, the XML declaration and entity declarations are not represented.</li>
+</ul>
+<h4 id="namespaces">Namespaces<a class="headerlink" href="#namespaces" title="Permanent link">&para;</a></h4>
+<p>A namespace IRI is normalised to end in <code>/</code>, so that a local name can be appended to it. This is why
+<code>xml:lang</code> becomes <code>&lt;http://www.w3.org/XML/1998/namespace/lang&gt;</code>, with a slash that the namespace
+name in <a href="https://www.w3.org/TR/xml-names/">XML Namespaces</a> does not itself carry.</p>
+<p>Which namespace a name lands in depends on how it is written:</p>
+<table>
+<thead>
+<tr>
+<th>In the document</th>
+<th>Becomes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A prefixed name, <code>xx:someThing</code></td>
+<td>The prefix's namespace plus the local name</td>
+</tr>
+<tr>
+<td>An unprefixed element, with <code>xmlns</code> in scope</td>
+<td>The default namespace plus the local name</td>
+</tr>
+<tr>
+<td>An unprefixed element, with no <code>xmlns</code> in scope</td>
+<td><code>https://triplydb.com/xml/def/someThing</code></td>
+</tr>
+<tr>
+<td>An unprefixed attribute, with <code>xmlns</code> in scope</td>
+<td>The default namespace, plus <code>attr/</code> and the local name</td>
+</tr>
+<tr>
+<td>An unprefixed attribute, with no <code>xmlns</code> in scope</td>
+<td><code>https://triplydb.com/xml/def/attr/someThing</code></td>
+</tr>
+<tr>
+<td>A prefixed name whose prefix was never declared</td>
+<td><code>https://triplydb.com/xml/def/ns/xx/someThing</code></td>
+</tr>
+</tbody>
+</table>
+<p>Two things are worth singling out. An unprefixed attribute is given the element's default namespace,
+even though <a href="https://www.w3.org/TR/xml-names/#defaulting">XML Namespaces</a> says such an attribute has
+no namespace at all — linked data needs an IRI, and the document's own namespace is a better guess
+than a TriplyDB one. The <code>attr/</code> segment in that IRI is what keeps an attribute apart from a child
+element of the same name; a local name can never contain a slash, so the two cannot collide.</p>
+<p>Namespace declarations themselves (<code>xmlns</code> and <code>xmlns:*</code>) produce no triples. They are XML syntax
+rather than content, and they are already reflected in the IRIs of the names they scope.</p>
+<p>Prefixes declared in the document are registered as prefixes on the dataset, alongside <code>id</code> for the
+element IRIs, <code>def</code> and <code>attr</code> for the namespaces above, and <code>txml</code> for
+<code>https://triplydb.com/xml/</code>, which is where properties that the parser itself introduces live. The
+prefix <code>xml</code> is not reassigned: it denotes the XML namespace, and is
+<a href="../admin-settings-pages/#setting-site-wide-prefixes">registered instance-wide</a>.</p>
+<h4 id="example">Example<a class="headerlink" href="#example" title="Permanent link">&para;</a></h4>
+<p>Take this XML file:</p>
+<pre><code class="language-xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;model xmlns=&quot;http://www.opengroup.org/xsd/archimate/3.0/&quot; identifier=&quot;id-1&quot;&gt;
+  &lt;element identifier=&quot;id-2&quot;&gt;
+    &lt;name xml:lang=&quot;nl&quot;&gt;Reads&lt;/name&gt;
+  &lt;/element&gt;
+&lt;/model&gt;
+</code></pre>
+<p>It becomes the following, where each <code>UUID</code> stands for a freshly generated identifier:</p>
+<pre><code class="language-turtle">prefix archi: &lt;http://www.opengroup.org/xsd/archimate/3.0/&gt;
+prefix fx: &lt;http://sparql.xyz/facade-x/ns/&gt;
+prefix id: &lt;https://triplydb.com/ACCOUNT/DATASET/id/&gt;
+prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;
+prefix xml: &lt;http://www.w3.org/XML/1998/namespace/&gt;
+
+id:model-UUID a fx:root, archi:model;
+  &lt;http://www.opengroup.org/xsd/archimate/3.0/attr/identifier&gt; &quot;id-1&quot;;
+  archi:element id:element-UUID;
+  rdf:_1 id:element-UUID .
+
+id:element-UUID a archi:element;
+  &lt;http://www.opengroup.org/xsd/archimate/3.0/attr/identifier&gt; &quot;id-2&quot;;
+  archi:name id:name-UUID;
+  rdf:_1 id:name-UUID .
+
+id:name-UUID a archi:name;
+  xml:lang &quot;nl&quot;;
+  rdf:_1 &quot;Reads&quot; .
+</code></pre>
+<p>Note that the attribute predicates are written out in full: <code>attr/identifier</code> contains a slash, which
+a prefixed name cannot hold, and which SPARQL would otherwise read as a property path.</p>
+<p>Which can be queried as such:</p>
+<pre><code class="language-sparql">prefix archi: &lt;http://www.opengroup.org/xsd/archimate/3.0/&gt;
+prefix fx: &lt;http://sparql.xyz/facade-x/ns/&gt;
+prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;
+
+select ?identifier ?name where {
+  ?model a fx:root ;
+         archi:element ?element .
+  ?element &lt;http://www.opengroup.org/xsd/archimate/3.0/attr/identifier&gt; ?identifier ;
+           archi:name/rdf:_1 ?name .
+}
+</code></pre>
+<h4 id="rdfxml">RDF/XML<a class="headerlink" href="#rdfxml" title="Permanent link">&para;</a></h4>
+<p>An XML document whose root element is <code>&lt;rdf:RDF&gt;</code> is RDF/XML rather than arbitrary XML, and is
+refused with a message saying so: upload it under the <code>.rdf</code> extension, which parses it as RDF
+instead of mapping it into Facade-X.</p>
 <h3 id="json-format">JSON format<a class="headerlink" href="#json-format" title="Permanent link">&para;</a></h3>
 <p>When you upload JSON files to TriplyDB, they are automatically converted to RDF using the Facade-X
 data model, the same model that is used for <a href="#xml-format">XML</a> and <a href="#csv-and-tsv-format">tabular</a>

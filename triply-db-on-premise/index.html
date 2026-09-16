@@ -285,7 +285,7 @@
 <h3 id="rbac">RBAC<a class="headerlink" href="#rbac" title="Permanent link">&para;</a></h3>
 <p>You need at least an Admin role within the namespace where TriplyDB will be deployed.</p>
 <h3 id="ingress-controller">Ingress Controller<a class="headerlink" href="#ingress-controller" title="Permanent link">&para;</a></h3>
-<p>TriplyDB requires an Ingress controller to be available on the cluster. TriplyDB strives to support any Ingress controller. The Ingress manifests have been tested with <a href="https://kubernetes.github.io/ingress-nginx/">Ingress NGINX</a> and <a href="https://haproxy-ingress.github.io/">HAProxy</a>, but other controllers should work as well. The request methods used by TriplyDB are GET, POST, PATCH, and DELETE.</p>
+<p>TriplyDB requires an Ingress controller to be available on the cluster. TriplyDB strives to support any Ingress controller. The Ingress manifests have been tested with <a href="https://kubernetes.github.io/ingress-nginx/">Ingress NGINX</a> and <a href="https://haproxy-ingress.github.io/">HAProxy</a>, but other controllers should work as well. The request methods used by TriplyDB are GET, HEAD, POST, PUT, PATCH, and DELETE. One endpoint asks something extra of the controller: the <a href="../triply-api/#graph-store-protocol">Graph Store Protocol</a> accepts a body of any size and needs a timeout of its own, which the chart grants it either through a regex-matched Ingress (on nginx) or through a HAProxy backend snippet — the latter needs HAProxy 2.4 or newer, where <code>set-timeout client</code> became available.</p>
 <h3 id="network">Network<a class="headerlink" href="#network" title="Permanent link">&para;</a></h3>
 <p>In case of network or firewall restrictions, you will need to allow HTTPS egress traffic from the namespace to the IP range <code>77.73.225.176/28</code>. This is required for TriplyDB to periodically validate your license key.</p>
 <h2 id="configuration">Configuration<a class="headerlink" href="#configuration" title="Permanent link">&para;</a></h2>
@@ -417,6 +417,7 @@ mongodbSubChart:
 </code></pre>
 <p>The <code>name</code> value is the domain used in the sender address of outgoing emails (e.g. <code>noreply@example.com</code>). Set this to the domain that your SMTP server is configured to send from.</p>
 <p>The <code>secure</code> option controls TLS behavior: when <code>true</code>, the connection uses TLS directly (port 465). When <code>false</code>, the connection starts in plaintext and upgrades via STARTTLS if the server supports it (port 587).</p>
+<p>The <code>port</code> is also what the API's network policy allows outgoing SMTP traffic on, so it must match the port the server actually listens on. Leaving it out defaults it to 465 when <code>secure</code> is <code>true</code> and 587 when it is <code>false</code>; an SMTP server on any other port needs <code>port</code> set explicitly, or outgoing mail is blocked at the network layer.</p>
 <h3 id="http-proxy">HTTP Proxy<a class="headerlink" href="#http-proxy" title="Permanent link">&para;</a></h3>
 <p>If your environment requires an HTTP proxy for access to external networks (e.g. for license validation or SPARQL federation), configure the proxy settings:</p>
 <pre><code class="language-yaml">httpProxy:

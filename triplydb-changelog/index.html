@@ -259,6 +259,7 @@
             <div class="section" itemprop="articleBody">
               
                 <div class="toc"><span class="toctitle">On this page:</span><ul>
+<li><a href="#26.9.200">26.9.200</a></li>
 <li><a href="#26.9.100">26.9.100</a></li>
 <li><a href="#26.8.200">26.8.200</a></li>
 <li><a href="#26.8.100">26.8.100</a></li>
@@ -331,6 +332,23 @@
 <li><a href="#23.11.0">23.11.0</a></li>
 </ul>
 </div>
+<h2 id="26.9.200">26.9.200<a class="headerlink" href="#26.9.200" title="Permanent link">&para;</a></h2>
+<p><strong>Release date:</strong> 2026-09-16</p>
+<p><strong>Features</strong></p>
+<ul>
+<li><code>#9439</code> [API] TriplyDB implements the <a href="https://www.w3.org/TR/sparql11-http-rdf-update/">SPARQL 1.1 Graph Store HTTP Protocol</a>, at <code>/datasets/{account}/{dataset}/graph-store</code>. A graph can be read with <code>GET</code> (with content negotiation, and conditional requests through <code>ETag</code> and <code>Last-Modified</code>), replaced with <code>PUT</code>, merged into with <code>POST</code>, and removed with <code>DELETE</code>. The writing methods are a bulk-upload route: they impose no size limit and parse the payload as it arrives, so a file that turns out to be malformed on its third line is refused without ever being stored. See the Graphs endpoints in the <a href="https://api.triplydb.com/api-docs">OpenAPI reference</a>.</li>
+</ul>
+<p><strong>Issues fixed</strong></p>
+<ul>
+<li><code>#14225</code> [Data Upload] An upload that merged into an existing graph and ran for more than two days could lose data. </li>
+<li><code>#14345</code> [SPARQL] A query opening with a property path whose far end a <code>values</code> clause binds, feeding a pattern with a variable predicate, could become several times slower, often leading to timeouts. These now resolve in time.</li>
+<li><code>#13367</code> [Data Upload] Uploading XML registered a TriplyDB-specific namespace under the standard <code>xml</code> prefix, so the standard XML namespace could not be configured for a dataset holding uploaded XML. That vendor namespace moved to the <code>txml</code> prefix, <code>xmlns</code> declarations no longer produce triples of their own, and an attribute without a prefix now takes the namespace of the element it belongs to rather than a generic one.</li>
+<li><code>#14191</code> [SPARQL] The performance of a query could differ under the same conditions it was executed it. This performance difference is now gone, and performance is fully deterministic.</li>
+<li>[SPARQL] A query that Virtuoso rejects because of the query itself now answers <code>400</code> with Virtuoso's own reason, instead of a generic server error.</li>
+<li>[Saved Queries] Requesting a saved query's metadata or its OpenAPI description without naming a version answered <code>404</code> instead of describing the latest version, and asking for either on a query with no saved version at all answered with a document that could not be used.</li>
+<li>[Saved Queries] A SPARQL update sent to a saved query that runs against a dedicated service now explains that updates only run against the dataset itself, instead of failing with a service error.</li>
+<li>[Access Control] Deleting a user who was the only owner of a group failed without saying why. The message now names the group, and is rendered properly in the account settings.</li>
+</ul>
 <h2 id="26.9.100">26.9.100<a class="headerlink" href="#26.9.100" title="Permanent link">&para;</a></h2>
 <p><strong>Release date:</strong> 2026-09-02</p>
 <p><strong>Features</strong></p>
