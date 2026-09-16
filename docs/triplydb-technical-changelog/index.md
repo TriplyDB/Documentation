@@ -7,6 +7,17 @@ path: "/docs/triplydb-technical-changelog"
 
 This changelog covers technical changes related to TriplyDB on-premise deployments. See [here](/triplydb-changelog) for the TriplyDB changelog that is user facing.
 
+## 26.9.200 {#26.9.200}
+
+**Release date:** 2026-09-16
+
+- `email.port` is now defaulted where the `api` NetworkPolicy's SMTP egress rule is rendered: `465` when `email.secure` is true (the chart default), `587` otherwise. An unset `email.port` previously rendered a rule with an empty port and — with `email.ip` unset — no destination either, which allowed all TCP egress from the API pods to anywhere. If the SMTP server listens on another port, set `email.port` explicitly, or outgoing mail is blocked at the network layer.
+- `api.pathTimeouts` no longer defaults to an empty list. It now carries one entry, granting the graph-store endpoint (`^/datasets/[^/]+/[^/]+/graph-store`) an hour. A values file that sets `api.pathTimeouts` itself replaces the default wholesale, so repeat that entry there, or graph-store ups `api.timeout`.
+- `deploymentStrategy` (on `api`, `console`, `console.next` and `orchestrator`) is validated against a schema, which accepts only `type` (`RollingUpdate` or `Recreate`) and `rollingUpdate.maxSurge`/`rollingUpdate.maxUnavailable`. Any other key is now rejected rather than passed through to the Deployment.
+- The graph store endpoint is a bulk-upload interface, so it is exempt from the general proxy timeout and from `api.bodyLimitKb`. On nginx that takes two additional Ingress objects, `api-graph-store` and `console-api-proxy-graph-store`, which match the path by regex and set request buffering off, no body-size limit, and an hour's timeout. On haproxy the same hour comes from a `path_reg` ACL in the `api` Service's backend-config snippet, which needs HAProxy 2.4 or newer for `set-timeout client`.
+- Optional chart values can be set to `null` to mean "unset", so a value that a shared values file supplies can be cleared without the key being removed.
+
+
 ## 26.9.100 {#26.9.100}
 
 **Release date:** 2026-09-02

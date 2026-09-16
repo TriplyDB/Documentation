@@ -6,6 +6,26 @@ path: "/docs/triplydb-changelog"
 [TOC]
 
 
+## 26.9.200 {#26.9.200}
+
+**Release date:** 2026-09-16
+
+**Features**
+
+- `#9439` [API] TriplyDB implements the [SPARQL 1.1 Graph Store HTTP Protocol](https://www.w3.org/TR/sparql11-http-rdf-update/), at `/datasets/{account}/{dataset}/graph-store`. A graph can be read with `GET` (with content negotiation, and conditional requests through `ETag` and `Last-Modified`), replaced with `PUT`, merged into with `POST`, and removed with `DELETE`. The writing methods are a bulk-upload route: they impose no size limit and parse the payload as it arrives, so a file that turns out to be malformed on its third line is refused without ever being stored. See the Graphs endpoints in the [OpenAPI reference](https://api.triplydb.com/api-docs).
+
+**Issues fixed**
+
+- `#14225` [Data Upload] An upload that merged into an existing graph and ran for more than two days could lose data. 
+- `#14345` [SPARQL] A query opening with a property path whose far end a `values` clause binds, feeding a pattern with a variable predicate, could become several times slower, often leading to timeouts. These now resolve in time.
+- `#13367` [Data Upload] Uploading XML registered a TriplyDB-specific namespace under the standard `xml` prefix, so the standard XML namespace could not be configured for a dataset holding uploaded XML. That vendor namespace moved to the `txml` prefix, `xmlns` declarations no longer produce triples of their own, and an attribute without a prefix now takes the namespace of the element it belongs to rather than a generic one.
+- `#14191` [SPARQL] The performance of a query could differ under the same conditions it was executed it. This performance difference is now gone, and performance is fully deterministic.
+- [SPARQL] A query that Virtuoso rejects because of the query itself now answers `400` with Virtuoso's own reason, instead of a generic server error.
+- [Saved Queries] Requesting a saved query's metadata or its OpenAPI description without naming a version answered `404` instead of describing the latest version, and asking for either on a query with no saved version at all answered with a document that could not be used.
+- [Saved Queries] A SPARQL update sent to a saved query that runs against a dedicated service now explains that updates only run against the dataset itself, instead of failing with a service error.
+- [Access Control] Deleting a user who was the only owner of a group failed without saying why. The message now names the group, and is rendered properly in the account settings.
+
+
 ## 26.9.100 {#26.9.100}
 
 **Release date:** 2026-09-02

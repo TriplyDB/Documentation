@@ -219,8 +219,118 @@ select ?name ?category ?price where {
 
 ### XML format
 
-When you upload XML files to TriplyDB, they are automatically converted to RDF using the Facade-X data model. This preserves the hierarchical structure of the XML document, making it queryable via SPARQL.
-See [here](https://sparql-anything.readthedocs.io/stable/formats/XML/) for more details on the Facade-X XML data model.
+When you upload XML files to TriplyDB, they are automatically converted to RDF using the Facade-X
+data model, the same model that is used for [JSON](#json-format) and [tabular](#csv-and-tsv-format)
+uploads. This preserves the hierarchical structure of the document, making it queryable via SPARQL.
+See [here](https://sparql-anything.readthedocs.io/stable/formats/XML/) for the Facade-X XML data
+model in general; the rest of this section describes how TriplyDB fills it in.
+
+An element becomes a resource, and its children are attached to it twice: once by a predicate
+derived from the child's own name, and once by the container membership property `rdf:_1`, `rdf:_2`
+and so on, which records the order the children appear in.
+
+- Every element is typed by its own name, so a `<name>` element is both the object of a `name`
+  predicate and an instance of a `name` class. The root element is additionally typed
+  `<http://sparql.xyz/facade-x/ns/root>`.
+- Element resources get an opaque IRI in the dataset's `id/` namespace, built from the local name
+  and a UUID. The structure, not the IRI, is what identifies an element.
+- Text content is attached by `rdf:_N` as a plain literal, in the same numbering as the child
+  elements — so a mixed element's text and children keep their relative order. Leading and trailing
+  whitespace is trimmed, because a line break between a tag and its text is rarely meant as data.
+- Comments, the XML declaration and entity declarations are not represented.
+
+#### Namespaces
+
+A namespace IRI is normalised to end in `/`, so that a local name can be appended to it. This is why
+`xml:lang` becomes `<http://www.w3.org/XML/1998/namespace/lang>`, with a slash that the namespace
+name in [XML Namespaces](https://www.w3.org/TR/xml-names/) does not itself carry.
+
+Which namespace a name lands in depends on how it is written:
+
+| In the document                                   | Becomes                                              |
+| ------------------------------------------------- | ---------------------------------------------------- |
+| A prefixed name, `xx:someThing`                   | The prefix's namespace plus the local name           |
+| An unprefixed element, with `xmlns` in scope       | The default namespace plus the local name            |
+| An unprefixed element, with no `xmlns` in scope    | `https://triplydb.com/xml/def/someThing`             |
+| An unprefixed attribute, with `xmlns` in scope     | The default namespace, plus `attr/` and the local name |
+| An unprefixed attribute, with no `xmlns` in scope  | `https://triplydb.com/xml/def/attr/someThing`        |
+| A prefixed name whose prefix was never declared    | `https://triplydb.com/xml/def/ns/xx/someThing`       |
+
+Two things are worth singling out. An unprefixed attribute is given the element's default namespace,
+even though [XML Namespaces](https://www.w3.org/TR/xml-names/#defaulting) says such an attribute has
+no namespace at all — linked data needs an IRI, and the document's own namespace is a better guess
+than a TriplyDB one. The `attr/` segment in that IRI is what keeps an attribute apart from a child
+element of the same name; a local name can never contain a slash, so the two cannot collide.
+
+Namespace declarations themselves (`xmlns` and `xmlns:*`) produce no triples. They are XML syntax
+rather than content, and they are already reflected in the IRIs of the names they scope.
+
+Prefixes declared in the document are registered as prefixes on the dataset, alongside `id` for the
+element IRIs, `def` and `attr` for the namespaces above, and `txml` for
+`https://triplydb.com/xml/`, which is where properties that the parser itself introduces live. The
+prefix `xml` is not reassigned: it denotes the XML namespace, and is
+[registered instance-wide](../admin-settings-pages/index.md#setting-site-wide-prefixes).
+
+#### Example
+
+Take this XML file:
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<model xmlns="http://www.opengroup.org/xsd/archimate/3.0/" identifier="id-1">
+  <element identifier="id-2">
+    <name xml:lang="nl">Reads</name>
+  </element>
+</model>
+```
+
+It becomes the following, where each `UUID` stands for a freshly generated identifier:
+
+```turtle
+prefix archi: <http://www.opengroup.org/xsd/archimate/3.0/>
+prefix fx: <http://sparql.xyz/facade-x/ns/>
+prefix id: <https://triplydb.com/ACCOUNT/DATASET/id/>
+prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+prefix xml: <http://www.w3.org/XML/1998/namespace/>
+
+id:model-UUID a fx:root, archi:model;
+  <http://www.opengroup.org/xsd/archimate/3.0/attr/identifier> "id-1";
+  archi:element id:element-UUID;
+  rdf:_1 id:element-UUID .
+
+id:element-UUID a archi:element;
+  <http://www.opengroup.org/xsd/archimate/3.0/attr/identifier> "id-2";
+  archi:name id:name-UUID;
+  rdf:_1 id:name-UUID .
+
+id:name-UUID a archi:name;
+  xml:lang "nl";
+  rdf:_1 "Reads" .
+```
+
+Note that the attribute predicates are written out in full: `attr/identifier` contains a slash, which
+a prefixed name cannot hold, and which SPARQL would otherwise read as a property path.
+
+Which can be queried as such:
+
+```sparql
+prefix archi: <http://www.opengroup.org/xsd/archimate/3.0/>
+prefix fx: <http://sparql.xyz/facade-x/ns/>
+prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+
+select ?identifier ?name where {
+  ?model a fx:root ;
+         archi:element ?element .
+  ?element <http://www.opengroup.org/xsd/archimate/3.0/attr/identifier> ?identifier ;
+           archi:name/rdf:_1 ?name .
+}
+```
+
+#### RDF/XML
+
+An XML document whose root element is `<rdf:RDF>` is RDF/XML rather than arbitrary XML, and is
+refused with a message saying so: upload it under the `.rdf` extension, which parses it as RDF
+instead of mapping it into Facade-X.
 
 ### JSON format
 

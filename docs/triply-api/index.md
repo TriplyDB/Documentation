@@ -40,6 +40,23 @@ The API accepts a file directly only up to 5 MB. Above that, an upload becomes a
 
 Both handle resuming, retrying and progress reporting for you.
 
+If neither fits — a language other than JavaScript, or a runtime you cannot add a dependency to — [TriplyDBUploads](https://github.com/TriplyDB/TriplyDBUploads) holds reference implementations of the tus flow in Java and Python: creating the upload job, sending the file in 5 MB chunks, starting the job, and polling until it finishes.
+
+### Graph Store Protocol
+
+The one exception to the 5 MB limit is the [SPARQL 1.1 Graph Store HTTP Protocol](https://www.w3.org/TR/sparql11-http-rdf-update/), which TriplyDB implements at `/datasets/ACCOUNT/DATASET/graph-store`. A `PUT` or `POST` there writes a whole graph in a single request, of any size, and the payload is parsed as it arrives — so a file that turns out to be malformed halfway through is refused without ever being stored. See the Graphs endpoints in the [OpenAPI reference](https://api.triplydb.com/api-docs) for the methods, the graph identification parameters and the response codes.
+
+That single request is also the trade-off: it is not resumable, so a dropped connection takes the upload with it, and nothing reports progress while it runs. Reach for it when a program already speaks the protocol, or for a one-off from the shell:
+
+```sh
+curl -H "Authorization: Bearer TRIPLYDB_TOKEN" \
+  -H "Content-Type: text/turtle" \
+  -X PUT "https://api.triplydb.com/datasets/ACCOUNT/DATASET/graph-store?graph=https%3A%2F%2Fexample.org%2Fgraph" \
+  --data-binary @data.ttl
+```
+
+Prefer TriplyDB.js or the command-line interface for anything large or unattended.
+
 ## SPARQL
 
 TriplyDB implements the [SPARQL 1.1 Query Protocol](https://www.w3.org/TR/sparql11-protocol/). See the [SPARQL endpoints](https://api.triplydb.com/api-docs) for the ways a query can be sent and the result formats each endpoint returns.

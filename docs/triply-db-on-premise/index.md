@@ -38,7 +38,7 @@ You need at least an Admin role within the namespace where TriplyDB will be depl
 
 ### Ingress Controller
 
-TriplyDB requires an Ingress controller to be available on the cluster. TriplyDB strives to support any Ingress controller. The Ingress manifests have been tested with [Ingress NGINX](https://kubernetes.github.io/ingress-nginx/) and [HAProxy](https://haproxy-ingress.github.io/), but other controllers should work as well. The request methods used by TriplyDB are GET, POST, PATCH, and DELETE.
+TriplyDB requires an Ingress controller to be available on the cluster. TriplyDB strives to support any Ingress controller. The Ingress manifests have been tested with [Ingress NGINX](https://kubernetes.github.io/ingress-nginx/) and [HAProxy](https://haproxy-ingress.github.io/), but other controllers should work as well. The request methods used by TriplyDB are GET, HEAD, POST, PUT, PATCH, and DELETE. One endpoint asks something extra of the controller: the [Graph Store Protocol](../triply-api/index.md#graph-store-protocol) accepts a body of any size and needs a timeout of its own, which the chart grants it either through a regex-matched Ingress (on nginx) or through a HAProxy backend snippet — the latter needs HAProxy 2.4 or newer, where `set-timeout client` became available.
 
 ### Network
 
@@ -212,6 +212,8 @@ email:
 The `name` value is the domain used in the sender address of outgoing emails (e.g. `noreply@example.com`). Set this to the domain that your SMTP server is configured to send from.
 
 The `secure` option controls TLS behavior: when `true`, the connection uses TLS directly (port 465). When `false`, the connection starts in plaintext and upgrades via STARTTLS if the server supports it (port 587).
+
+The `port` is also what the API's network policy allows outgoing SMTP traffic on, so it must match the port the server actually listens on. Leaving it out defaults it to 465 when `secure` is `true` and 587 when it is `false`; an SMTP server on any other port needs `port` set explicitly, or outgoing mail is blocked at the network layer.
 
 ### HTTP Proxy
 
