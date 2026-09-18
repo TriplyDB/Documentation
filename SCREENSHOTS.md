@@ -35,7 +35,12 @@ Afterwards, log back in as `John` before shooting anything else.
 | `Documentation/iris` | 5 graphs, 1,749 statements. Imported from production `Triply/iris`, so it matches the figures the prose quotes. |
 | `Documentation/pokemon` | Graphs `data` (28,588) and `vocab` (185) = 28,773. Imported from production `academy/pokemon`. **`exporting-data/index.md` narrates these exact numbers**, so keep them in sync. |
 | `Documentation/ld-browser-examples` | Purpose-built for the LD-Browser property shots. One resource carries `rdfs:label`, `rdfs:comment`, `foaf:depiction`, `geo:hasGeometry` and two types at once; separate resources carry `sdo:audio` and `sdo:contentUrl`. Media are stable Wikimedia Commons URLs. |
+| `Documentation/skos-example` | A small thesaurus with two concept schemes ("Pokemon types", "Habitats"), for the Editor's SKOS views. |
+| `Documentation/json-ld-frame-example` | 18 statements shaped to match the frame printed on the JSON-LD Framing page — `ex:Object` with `ex:label` and `ex:address`, `ex:Address` with `ex:street` and `ex:number` — so the figures can use that page's own script verbatim. |
 | `John/my-dataset` | Deliberately empty — it is what the "dataset with no data yet" figure illustrates. |
+
+Saved queries: `Strongest Pokemon` (SELECT, for Saved Queries and the transfer/copy figures) and
+`JSON-LD frame` (CONSTRUCT plus the frame, for the JSON-LD Framing figures).
 
 Datasets are imported by URL from production's public download endpoints, e.g.
 `https://api.triplydb.com/datasets/academy/pokemon/download.trig.gz`.
