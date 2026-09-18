@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head><meta name="robots" content="noindex,nofollow">
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <meta name="description" content="The official documentation for the Triply products: TriplyDB, TriplyDB.js, and TriplyETL." />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Triply API - Triply Documentation</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link href="../css/triply-fonts.css" rel="stylesheet" />
+        <link href="../css/triply-tokens.css" rel="stylesheet" />
+        <link href="../css/triply-highlight.css" rel="stylesheet" />
+        <link href="../css/triply.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "API";
+        var mkdocs_page_input_path = "triply-api/index.md";
+        var mkdocs_page_url = null;
+      </script>
+     
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href=".." class="triply-masthead">
+            <img src="../assets/triply-logo.svg" class="logo" alt=""/>
+          <span class="triply-masthead-name">Triply Documentation</span>
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1">
+<a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1">
+<details class="nav-section">
+  <summary class="nav-section-title">
+    <span class="fa fa-angle-right nav-section-chevron" aria-hidden="true"></span>Getting started
+  </summary>
+  <ul>
+      <li class="toctree-l2">
+<a class="reference internal" href="../triply-db-getting-started/">Overview</a>
+      </li>
+      <li class="toctree-l2">
+<a class="reference internal" href="../triply-db-getting-started/uploading-data/">Uploading Data</a>
+      </li>
+      <li class="toctree-l2">
+<a class="reference internal" href="../triply-db-getting-started/editing-data/">Editing (SKOS) Data</a>
+      </li>
+      <li class="toctree-l2">
+<a class="reference internal" href="../triply-db-getting-started/publishing-data/">Sharing Data</a>
+      </li>
+      <li class="toctree-l2">
+<a class="reference internal" href="../triply-db-getting-started/access-control/">Access Control</a>
+      </li>
+      <li class="toctree-l2">
+<a class="reference internal" href="../triply-db-getting-started/viewing-data/">Viewing Data</a>
+      </li>
+      <li class="toctree-l2">
+<a class="reference internal" href="../triply-db-getting-started/exporting-data/">Exporting Data</a>
+      </li>
+      <li class="toctree-l2">
+<a class="reference internal" href="../triply-db-getting-started/saved-queries/">Saved Queries</a>
+      </li>
+      <li class="toctree-l2">
+<a class="reference internal" href="../triply-db-getting-started/data-stories/">Data Stories</a>
+      </li>
+      <li class="toctree-l2">
+<a class="reference internal" href="../triply-db-getting-started/admin-settings-pages/">Admin Settings Pages</a>
+      </li>
+      <li class="toctree-l2">
+<a class="reference internal" href="../triply-db-getting-started/reference/">Reference</a>
+      </li>
+  </ul>
+</details>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current">
+<a class="reference internal current current-page" href="./">API</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1">
+<a class=" external" href="https://static.triply.cc/triplydb-js/">TriplyDB-JS<span class="fa fa-external-link external-icon" aria-hidden="true"></span><span class="sr-only"> (external)</span></a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1">
+<a class=" external" href="https://static.triply.cc/cli/">Command-line Interface<span class="fa fa-external-link external-icon" aria-hidden="true"></span><span class="sr-only"> (external)</span></a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1">
+<a class="reference internal" href="../triplydb-changelog/">Changelog</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1">
+<details class="nav-section">
+  <summary class="nav-section-title">
+    <span class="fa fa-angle-right nav-section-chevron" aria-hidden="true"></span>TriplyETL
+  </summary>
+  <ul>
+      <li class="toctree-l2">
+<details class="nav-section">
+  <summary class="nav-section-title">
+    <span class="fa fa-angle-right nav-section-chevron" aria-hidden="true"></span>Generic
+  </summary>
+  <ul>
+      <li class="toctree-l3">
+<a class="reference internal" href="../triply-etl/">Overview</a>
+      </li>
+      <li class="toctree-l3">
+<a class="reference internal" href="../triply-etl/generic/getting-started/">Getting Started</a>
+      </li>
+      <li class="toctree-l3">
+<a class="reference internal" href="../triply-etl/generic/changelog/">Changelog</a>
+      </li>
+      <li class="toctree-l3">
+<a class="reference internal" href="../triply-etl/generic/cli/">Command Line Interface (CLI)</a>
+      </li>
+      <li class="toctree-l3">
+<a class="reference internal" href="../triply-etl/generic/declarations/">Declarations</a>
+      </li>
+      <li class="toctree-l3">
+<a class="reference internal" href="../triply-etl/generic/control-structures/">Control Structures</a>
+      </li>
+      <li class="toctree-l3">
+<a class="reference internal" href="../triply-etl/generic/debug/">Debug</a>
+      </li>
+      <li class="toctree-l3">
+<a class="reference internal" href="../triply-etl/generic/internal-store/">Internal Store</a>
+      </li>
+      <li class="toctree-l3">
+<a class="reference internal" href="../triply-etl/generic/maintenance/">Maintenance</a>
+      </li>
+      <li class="toctree-l3">
+<a class="reference internal" href="../triply-etl/generic/record/">Record</a>
+      </li>
+      <li class="toctree-l3">
+<a class="reference internal" href="../triply-etl/generic/vocabularies/">Vocabularies</a>
+      </li>
+  </ul>
+</details>
+      </li>
+      <li class="toctree-l2">
+<details class="nav-section">
+  <summary class="nav-section-title">
+    <span class="fa fa-angle-right nav-section-chevron" aria-hidden="true"></span>Sources
+  </summary>
+  <ul>
+      <li class="toctree-l3">
+<a class="reference internal" href="../triply-etl/sources/">Overview</a>
+      </li>
+      <li class="toctree-l3">
+<a class="reference internal" href="../triply-etl/sources/apis/">APIs</a>
+      </li>
+      <li class="toctree-l3">
+<a class="reference internal" href="../triply-etl/sources/inline-json/">Inline JSON</a>
+      </li>
+      <li class="toctree-l3">
+<a class="reference internal" href="../triply-etl/sources/inline-strings/">Inline Strings</a>
+      </li>
+      <li class="toctree-l3">
+<a class="reference internal" href="../triply-etl/sources/local-files/">Local Files</a>
+      </li>
+      <li class="toctree-l3">
+<a class="reference internal" href="../triply-etl/sources/online-files/">Online Files</a>
+      </li>
+      <li class="toctree-l3">
+<a class="reference internal" href="../triply-etl/sources/rml/">RML Sources</a>
+      </li>
+      <li class="toctree-l3">
+<a class="reference internal" href="../triply-etl/sources/triplydb-assets/">TriplyDB Assets</a>
+      </li>
+      <li class="toctree-l3">
+<a class="reference internal" href="../triply-etl/sources/triplydb-datasets/">TriplyDB Datasets</a>
+      </li>
+      <li class="toctree-l3">
+<a class="reference internal" href="../triply-etl/sources/triplydb-queries/">TriplyDB Queries</a>
+      </li>
+  </ul>
+</details>
+      </li>
+      <li class="toctree-l2">
+<details class="nav-section">
+  <summary class="nav-section-title">
+    <span class="fa fa-angle-right nav-section-chevron" aria-hidden="true"></span>Extract
+  </summary>
+  <ul>
+      <li class="toctree-l3">
+<a class="reference internal" href="../triply-etl/extract/">Overview</a>
+      </li>
+      <li class="toctree-l3">
+<a class="reference internal" href="../triply-etl/extract/csv/">CSV</a>
+      </li>
+      <li class="toctree-l3">
+<a class="reference internal" href="../triply-etl/extract/json/">JSON</a>
+      </li>
+      <li class="toctree-l3">
+<a class="reference internal" href="../triply-etl/extract/oai-pmh/">OAI-PMH</a>
+      </li>
+      <li class="toctree-l3">
+<a class="reference internal" href="../triply-etl/extract/postgres/">Postgres</a>
+      </li>
+      <li class="toctree-l3">
+<a class="reference internal" href="../triply-etl/extract/rdf/">RDF</a>
+      </li>
+      <li class="toctree-l3">
+<a class="reference internal" href="../triply-etl/extract/shapefile/">Shapefile</a>
+      </li>
+      <li class="toctree-l3">
+<a class="reference internal" href="../triply-etl/extract/tsv/">TSV</a>
+      </li>
+      <li class="toctree-l3">
+<a class="reference internal" href="../triply-etl/extract/xlsx/">XLSX</a>
+      </li>
+      <li class="toctree-l3">
+<a class="reference internal" href="../triply-etl/extract/xml/">XML</a>
+      </li>
+  </ul>
+</details>
+      </li>
+      <li class="toctree-l2">
+<details class="nav-section">
+  <summary class="nav-section-title">
+    <span class="fa fa-angle-right nav-section-chevron" aria-hidden="true"></span>Transform
+  </summary>
+  <ul>
+      <li class="toctree-l3">
+<a class="reference internal" href="../triply-etl/transform/">Overview</a>
+      </li>
+      <li class="toctree-l3">
+<a class="reference internal" href="../triply-etl/transform/ratt/">RATT</a>
+      </li>
+      <li class="toctree-l3">
+<a class="reference internal" href="../triply-etl/transform/rml/">RML</a>
+      </li>
+      <li class="toctree-l3">
+<a class="reference internal" href="../triply-etl/transform/typescript/">TypeScript</a>
+      </li>
+      <li class="toctree-l3">
+<a class="reference internal" href="../triply-etl/transform/xslt/">XSLT</a>
+      </li>
+  </ul>
+</details>
+      </li>
+      <li class="toctree-l2">
+<details class="nav-section">
+  <summary class="nav-section-title">
+    <span class="fa fa-angle-right nav-section-chevron" aria-hidden="true"></span>Assert
+  </summary>
+  <ul>
+      <li class="toctree-l3">
+<a class="reference internal" href="../triply-etl/assert/">Overview</a>
+      </li>
+      <li class="toctree-l3">
+<a class="reference internal" href="../triply-etl/assert/json-ld/">JSON-LD</a>
+      </li>
+      <li class="toctree-l3">
+<details class="nav-section">
+  <summary class="nav-section-title">
+    <span class="fa fa-angle-right nav-section-chevron" aria-hidden="true"></span>RATT
+  </summary>
+  <ul>
+      <li class="toctree-l4">
+<a class="reference internal" href="../triply-etl/assert/ratt/terms/">RATT Terms</a>
+      </li>
+      <li class="toctree-l4">
+<a class="reference internal" href="../triply-etl/assert/ratt/statements/">RATT Statements</a>
+      </li>
+  </ul>
+</details>
+      </li>
+      <li class="toctree-l3">
+<a class="reference internal" href="../triply-etl/assert/rml/">RML</a>
+      </li>
+      <li class="toctree-l3">
+<a class="reference internal" href="../triply-etl/assert/xslt/">XSLT</a>
+      </li>
+  </ul>
+</details>
+      </li>
+      <li class="toctree-l2">
+<details class="nav-section">
+  <summary class="nav-section-title">
+    <span class="fa fa-angle-right nav-section-chevron" aria-hidden="true"></span>Enrich
+  </summary>
+  <ul>
+      <li class="toctree-l3">
+<a class="reference internal" href="../triply-etl/enrich/">Overview</a>
+      </li>
+      <li class="toctree-l3">
+<details class="nav-section">
+  <summary class="nav-section-title">
+    <span class="fa fa-angle-right nav-section-chevron" aria-hidden="true"></span>SHACL
+  </summary>
+  <ul>
+      <li class="toctree-l4">
+<a class="reference internal" href="../triply-etl/enrich/shacl/">Overview</a>
+      </li>
+      <li class="toctree-l4">
+<a class="reference internal" href="../triply-etl/enrich/shacl/triple-rules/">Triple Rules</a>
+      </li>
+      <li class="toctree-l4">
+<a class="reference internal" href="../triply-etl/enrich/shacl/sparql-rules/">SPARQL Rules</a>
+      </li>
+  </ul>
+</details>
+      </li>
+      <li class="toctree-l3">
+<details class="nav-section">
+  <summary class="nav-section-title">
+    <span class="fa fa-angle-right nav-section-chevron" aria-hidden="true"></span>SPARQL
+  </summary>
+  <ul>
+      <li class="toctree-l4">
+<a class="reference internal" href="../triply-etl/enrich/sparql/construct/">SPARQL Construct</a>
+      </li>
+      <li class="toctree-l4">
+<a class="reference internal" href="../triply-etl/enrich/sparql/update/">SPARQL Update</a>
+      </li>
+  </ul>
+</details>
+      </li>
+  </ul>
+</details>
+      </li>
+      <li class="toctree-l2">
+<details class="nav-section">
+  <summary class="nav-section-title">
+    <span class="fa fa-angle-right nav-section-chevron" aria-hidden="true"></span>Validate
+  </summary>
+  <ul>
+      <li class="toctree-l3">
+<a class="reference internal" href="../triply-etl/validate/">Overview</a>
+      </li>
+      <li class="toctree-l3">
+<a class="reference internal" href="../triply-etl/validate/graph-comparison/">Graph Comparison</a>
+      </li>
+      <li class="toctree-l3">
+<a class="reference internal" href="../triply-etl/validate/shacl/">SHACL</a>
+      </li>
+  </ul>
+</details>
+      </li>
+      <li class="toctree-l2">
+<a class="reference internal" href="../triply-etl/publish/">Publish</a>
+      </li>
+  </ul>
+</details>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">Triply Documentation</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">API</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <div class="toc"><span class="toctitle">On this page:</span><ul>
+<li><a href="#triply-api">Triply API</a><ul>
+<li><a href="#authentication">Authentication</a><ul>
+<li><a href="#creating-an-api-token">Creating an API token</a></li>
+</ul>
+</li>
+<li><a href="#uploading-data">Uploading data</a><ul>
+<li><a href="#graph-store-protocol">Graph Store Protocol</a></li>
+</ul>
+</li>
+<li><a href="#sparql">SPARQL</a></li>
+<li><a href="#graphql">GraphQL</a></li>
+<li><a href="#elasticsearch">Elasticsearch</a><ul>
+<li><a href="#setting-up-index-templates">Setting up index templates</a></li>
+</ul>
+</li>
+<li><a href="#related-guides">Related guides</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<h1 id="triply-api">Triply API<a class="headerlink" href="#triply-api" title="Permanent link">&para;</a></h1>
+<p>Each Triply instance has a fully RESTful API. All functionality, from managing the Triply instance to working with your data, is available through it.</p>
+<p><strong>The reference documentation is the <a href="https://api.triplydb.com/api-docs">TriplyDB OpenAPI specification</a>.</strong> It is generated from the running instance, so it always matches the deployed version, and it covers every endpoint with its parameters, request and response schemas, and a "try it out" button. It also documents <a href="https://api.triplydb.com/api-docs">authentication</a>, pagination through the <code>Link</code> header, and content negotiation.</p>
+<p>Each instance serves its own: replace <code>api.triplydb.com</code> with the host name of the instance you use. The raw specification is at <code>/openapi.yaml</code> on the same host.</p>
+<p>This page covers the things that are not part of the endpoint reference: how to get a token, what to use instead of the API for large uploads, and where the conceptual guides live.</p>
+<p>Contact <a href="mailto:support@triply.cc">support@triply.cc</a> for more information.</p>
+<h2 id="authentication">Authentication<a class="headerlink" href="#authentication" title="Permanent link">&para;</a></h2>
+<p>Reading public data needs no authentication. Writing any data, and reading internal or private data, requires an API token, sent as an HTTP header:</p>
+<pre><code class="language-none">Authorization: Bearer TOKEN
+</code></pre>
+<h3 id="creating-an-api-token">Creating an API token<a class="headerlink" href="#creating-an-api-token" title="Permanent link">&para;</a></h3>
+<p>Follow the <a href="../generics/api-token/">API token guide</a>, which walks through creating a token in the web interface and choosing its permissions.</p>
+<p>Treat a token as a credential: never commit one to a Git repository, never share it with anyone who should not have access to your TriplyDB resources, and replace it periodically — especially if you suspect it has been exposed.</p>
+<h2 id="uploading-data">Uploading data<a class="headerlink" href="#uploading-data" title="Permanent link">&para;</a></h2>
+<p>The API accepts a file directly only up to 5 MB. Above that, an upload becomes a multi-step <a href="https://tus.io/protocols/resumable-upload">tus</a> flow — see the <a href="https://api.triplydb.com/api-docs">Jobs endpoints</a> — which you rarely want to implement yourself. Use one of these instead, for both linked data and assets:</p>
+<ol>
+<li><a href="https://static.triply.cc/triplydb-js/">TriplyDB.js</a> — the <code>importFrom*</code> and <code>uploadAsset</code> methods on <a href="https://static.triply.cc/triplydb-js/classes/Dataset.html">the <code>Dataset</code> class</a>.</li>
+<li><a href="https://static.triply.cc/cli/">The TriplyDB Command-line Interface</a>.</li>
+</ol>
+<p>Both handle resuming, retrying and progress reporting for you.</p>
+<p>If neither fits — a language other than JavaScript, or a runtime you cannot add a dependency to — <a href="https://github.com/TriplyDB/TriplyDBUploads">TriplyDBUploads</a> holds reference implementations of the tus flow in Java and Python: creating the upload job, sending the file in 5 MB chunks, starting the job, and polling until it finishes.</p>
+<h3 id="graph-store-protocol">Graph Store Protocol<a class="headerlink" href="#graph-store-protocol" title="Permanent link">&para;</a></h3>
+<p>The one exception to the 5 MB limit is the <a href="https://www.w3.org/TR/sparql11-http-rdf-update/">SPARQL 1.1 Graph Store HTTP Protocol</a>, which TriplyDB implements at <code>/datasets/ACCOUNT/DATASET/graph-store</code>. A <code>PUT</code> or <code>POST</code> there writes a whole graph in a single request, of any size, and the payload is parsed as it arrives — so a file that turns out to be malformed halfway through is refused without ever being stored. See the Graphs endpoints in the <a href="https://api.triplydb.com/api-docs">OpenAPI reference</a> for the methods, the graph identification parameters and the response codes.</p>
+<p>That single request is also the trade-off: it is not resumable, so a dropped connection takes the upload with it, and nothing reports progress while it runs. Reach for it when a program already speaks the protocol, or for a one-off from the shell:</p>
+<pre><code class="language-sh">curl -H &quot;Authorization: Bearer TRIPLYDB_TOKEN&quot; \
+  -H &quot;Content-Type: text/turtle&quot; \
+  -X PUT &quot;https://api.triplydb.com/datasets/ACCOUNT/DATASET/graph-store?graph=https%3A%2F%2Fexample.org%2Fgraph&quot; \
+  --data-binary @data.ttl
+</code></pre>
+<p>Prefer TriplyDB.js or the command-line interface for anything large or unattended.</p>
+<h2 id="sparql">SPARQL<a class="headerlink" href="#sparql" title="Permanent link">&para;</a></h2>
+<p>TriplyDB implements the <a href="https://www.w3.org/TR/sparql11-protocol/">SPARQL 1.1 Query Protocol</a>. See the <a href="https://api.triplydb.com/api-docs">SPARQL endpoints</a> for the ways a query can be sent and the result formats each endpoint returns.</p>
+<p>Everybody who has access to a dataset also has access to its services, including its SPARQL services:</p>
+<ul>
+<li>For <em>public</em> datasets, everybody on the Internet or intranet can issue queries.</li>
+<li>For <em>internal</em> datasets, only users that are logged in can issue queries.</li>
+<li>For <em>private</em> datasets, only logged-in users who are members of the owning account can issue queries.</li>
+</ul>
+<p>For professional use, prefer <a href="../triply-db-getting-started/saved-queries/">saved queries</a> over ad-hoc requests. Saved queries have persistent URLs, descriptive metadata, versioning, and a <code>run</code> endpoint that supports <a href="../generics/sparql-pagination/">reliable large-scale pagination</a>.</p>
+<h2 id="graphql">GraphQL<a class="headerlink" href="#graphql" title="Permanent link">&para;</a></h2>
+<p>Some TriplyDB instances publish a GraphQL endpoint for every dataset, whose schema is generated from user-provided SHACL shapes. See the <a href="../generics/Graphql/">GraphQL implementation guide</a> for how the schema is derived, and for queries, filtering and pagination.</p>
+<h2 id="elasticsearch">Elasticsearch<a class="headerlink" href="#elasticsearch" title="Permanent link">&para;</a></h2>
+<p>The text search API returns linked data entities matching a text string, matched against the literals and IRIs in each entity's description. It is available for a dataset only once an Elasticsearch service has been created for it.</p>
+<p>Two kinds of search are possible. A <em>simple</em> search takes a single term and builds a fuzzy query from it. A <em>custom</em> search accepts a JSON body conforming to <a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl.html">the Elasticsearch query DSL</a>. See the <a href="https://api.triplydb.com/api-docs">Search endpoints</a> for both.</p>
+<h3 id="setting-up-index-templates">Setting up index templates<a class="headerlink" href="#setting-up-index-templates" title="Permanent link">&para;</a></h3>
+<p>By default the service indexes every literal with Elasticsearch's own defaults. <a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/index-templates.html">Index templates</a> and <a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-component-template.html">component templates</a> let you say more than that — for example that a property holds a date, so that it can be sorted or used in a range query.</p>
+<p>Templates are passed in <code>config</code> when the service is created, and are read only then: changing one means creating the service again. Three constraints are specific to TriplyDB:</p>
+<ul>
+<li>The service builds a single index named <code>index</code>, so every index template must have <code>"index_patterns": "index"</code>. A template matching anything else is silently unused.</li>
+<li>A component template only takes effect once an index template names it in <code>composed_of</code>, so the two are always created together.</li>
+<li>A property's field name is its IRI with every <code>.</code> replaced by a space, because Elasticsearch reads a dot in a field name as a path separator. Write mappings that way, and expect hits that way.</li>
+</ul>
+<p>The example below maps <code>https://schema.org/dateCreated</code> to a date:</p>
+<pre><code class="language-sh">curl -H &quot;Authorization: Bearer TRIPLYDB_TOKEN&quot; -H &quot;Content-Type: application/json&quot; \
+  -X POST &quot;https://api.INSTANCE/datasets/ACCOUNT/DATASET/services&quot; \
+  -d '{
+    &quot;type&quot;: &quot;elasticSearch&quot;,
+    &quot;name&quot;: &quot;SERVICE_NAME&quot;,
+    &quot;config&quot;: {
+      &quot;indexTemplates&quot;: [
+        { &quot;name&quot;: &quot;my-template&quot;, &quot;index_patterns&quot;: &quot;index&quot;, &quot;composed_of&quot;: [&quot;dates&quot;] }
+      ],
+      &quot;componentTemplates&quot;: [
+        { &quot;name&quot;: &quot;dates&quot;,
+          &quot;template&quot;: { &quot;mappings&quot;: { &quot;properties&quot;: { &quot;https://schema org/dateCreated&quot;: { &quot;type&quot;: &quot;date&quot; } } } } }
+      ]
+    }
+  }'
+</code></pre>
+<p>The equivalent in TriplyDB.js is <a href="https://static.triply.cc/triplydb-js/classes/Dataset.html#addservice"><code>Dataset.addService</code></a>.</p>
+<h2 id="related-guides">Related guides<a class="headerlink" href="#related-guides" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="../generics/api-token/">API token</a> — creating a token and choosing its permissions.</li>
+<li><a href="../generics/sparql-pagination/">SPARQL pagination</a> — retrieving result sets larger than one page.</li>
+<li><a href="../generics/Graphql/">GraphQL</a> — how the schema is generated from SHACL shapes.</li>
+<li><a href="../generics/JSON-LD-frames/">JSON-LD framing</a> — shaping JSON-LD output.</li>
+<li><a href="../triply-db-getting-started/saved-queries/">Saved queries</a> — saving, versioning and sharing a query, and using it as a RESTful API.</li>
+<li><a href="https://static.triply.cc/triplydb-js/">TriplyDB.js</a> — the JavaScript and TypeScript client.</li>
+</ul>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../triply-db-getting-started/reference/" class="btn btn-neutral float-left" title="Reference"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../triplydb-changelog/" class="btn btn-neutral float-right" title="Changelog">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../triply-db-getting-started/reference/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../triplydb-changelog/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script>var base_url = '..';</script>
+      <script src="../js/triply.js" defer></script>
+      <script src="../js/highlight.min.js" defer></script>
+      <script src="../search/main.js" defer></script>
+
+</body>
+</html>
