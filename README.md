@@ -84,6 +84,24 @@ The `-f mkdocs.yml` flag is needed because ProperDocs looks for `properdocs.yml`
 
 To publish this website, push your changes to the master branch. The live documentation site should be updated shortly after that. If there are any errors, you can find more details in [the GitHub Actions](https://github.com/TriplyDB/Documentation/actions).
 
+### The `next` branch
+
+Documentation for a TriplyDB version that has not been released yet goes on the long-lived `next`
+branch, which publishes to <https://docs.triply.cc/next/> instead of to the live site. Both sites
+are served from the same `gh-pages` branch: `master` owns everything at the root, `next` owns the
+`next/` subdirectory, and neither deploy touches the other's files.
+
+- Writing about an unreleased feature? Branch off `next` and merge back into `next`.
+- Correcting documentation for a version that has shipped? That goes to `master`, and `master` is
+  merged into `next` afterwards so the preview does not fall behind.
+- Releasing? Merge `next` into `master`. The content becomes the live documentation on the next
+  deploy, and `next` continues from there.
+
+The preview is excluded from search engines by `docs/robots.txt` plus a `noindex` meta tag that the
+deploy injects, so it cannot compete with the live site in search results. It is otherwise
+indistinguishable from the live site, so check which URL you are reading before quoting it to
+anyone.
+
 ### Notes about syntax highlighting
 This project uses [highlightjs.org](https://highlightjs.org) for rendering code blocks with syntax highlighting. This projects does not have support for Turtle/SPARQL by default. We use a custom build to provide syntax highlighting for these.
 

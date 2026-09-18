@@ -1,8 +1,8 @@
-name: Publish Triply Documentation website
+name: Publish Triply Documentation preview
 on:
   push:
     branches:
-      - master
+      - next
 
 # The publish step commits to the gh-pages branch.
 permissions:
@@ -16,10 +16,10 @@ concurrency:
 
 jobs:
   build:
-    name: Deploy docs
+    name: Deploy preview docs
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout master
+      - name: Checkout next
         uses: actions/checkout@v4
         with:
           # The publish step commits on top of the existing gh-pages branch, so it needs the history.
@@ -36,27 +36,30 @@ jobs:
       - name: Install build dependencies
         run: pip install -r requirements.txt
 
-      - name: Build site
-        # --strict turns a broken internal link into a failed build rather than a broken page,
-        # which matters because the publish that follows overwrites the live site.
-        # The custom domain travels with the site as docs/CNAME, not as a CI setting.
-        # `mkdocs gh-deploy` used to add .nojekyll for us; `mkdocs build` does not.
+      - name: Build preview site
+        # No site_url is configured, so every generated link is relative and the same build
+        # serves correctly from the /next/ prefix without any config change.
         run: |
           mkdocs build --strict
-          touch site/.nojekyll
+          # The custom domain belongs to the root site only; a CNAME under next/ is meaningless.
+          rm -f site/CNAME
+          # docs/robots.txt on master keeps crawlers out of /next/, but a robots.txt inside a
+          # subdirectory is ignored, so mark the pages themselves as well.
+          find site -name '*.html' -exec \
+            sed -i 's|<head>|<head><meta name="robots" content="noindex,nofollow">|' {} +
 
-      - name: Publish to gh-pages root
-        # Replaces the whole published tree EXCEPT next/, which the `next` branch owns
-        # (see .github/workflows/next.yml). This is why we no longer use `gh-deploy --force`:
-        # that replaces everything and would delete the preview site on every release.
+      - name: Publish to gh-pages:/next
+        # Touches next/ only. Everything else on gh-pages belongs to master
+        # (see .github/workflows/main.yml).
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git fetch origin gh-pages:refs/remotes/origin/gh-pages
           git worktree add -B gh-pages ../gh-pages origin/gh-pages
-          find ../gh-pages -mindepth 1 -maxdepth 1 ! -name .git ! -name next -exec rm -rf {} +
-          cp -a site/. ../gh-pages/
+          rm -rf ../gh-pages/next
+          mkdir -p ../gh-pages/next
+          cp -a site/. ../gh-pages/next/
           git -C ../gh-pages add -A
           git -C ../gh-pages diff --quiet --cached || \
-            git -C ../gh-pages commit -m "Deployed ${GITHUB_SHA} from master"
+            git -C ../gh-pages commit -m "Deployed ${GITHUB_SHA} from next"
           git -C ../gh-pages push origin gh-pages

@@ -854,7 +854,7 @@ Transforms GeoJSON objects to their corresponding Well-Known Text (WKT) serializ
 ### Parameters
 
 - `content` A key that stores a GeoJSON object.
-- `crs` Optionally, an IRI that denotes a Coordinate Reference System (CRS). You can use IRIs from the [`epsg`](../generic/declarations.md#geospatial-declarations) object. If absent, uses [https://epsg.io/4326](EPSG:4326/WGS84) as the CRS.
+- `crs` Optionally, an IRI that denotes a Coordinate Reference System (CRS). You can use IRIs from the [`epsg`](../generic/declarations.md#geospatial-declarations) object. If absent, uses [EPSG:4326/WGS84](https://epsg.io/4326) as the CRS.
 - `key` A new key where the WKT serialization string is stored
 
 ### GeoJSON and Well-Known Text (WKT)

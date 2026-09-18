@@ -27,6 +27,21 @@ uvx --with mkdocs-mermaid2-plugin --with mkdocs-redirects --with properdocs-them
 ### Deployment
 Changes pushed to the master branch automatically deploy to the live documentation site via GitHub Actions.
 
+Changes pushed to the long-lived `next` branch — documentation for the unreleased TriplyDB version —
+deploy to <https://docs.triply.cc/next/> instead. Both sites live on the same `gh-pages` branch:
+`.github/workflows/main.yml` replaces everything at the root except `next/`, and
+`.github/workflows/next.yml` replaces only `next/`. A `concurrency: gh-pages` group keeps the two
+from pushing at once. This is why neither workflow uses `mkdocs gh-deploy --force` any more: it
+replaces the entire published tree.
+
+Because `mkdocs.yml` sets no `site_url`, every generated link is relative, which is what lets the
+same build serve correctly from both `/` and `/next/`. Keep it that way — do not add `site_url`, and
+write internal links as relative paths rather than as `/foo/` or `https://docs.triply.cc/foo/`, both
+of which would send preview readers back to the live site.
+
+Fixes for released documentation go to `master` and are merged forward into `next`; `next` is merged
+into `master` at release time.
+
 ## Architecture and Structure
 
 ### Content Organization

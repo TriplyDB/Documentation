@@ -5,7 +5,7 @@ path: "/docs/triplydb-technical-changelog"
 
 [TOC]
 
-This changelog covers technical changes related to TriplyDB on-premise deployments. See [here](/triplydb-changelog) for the TriplyDB changelog that is user facing.
+This changelog covers technical changes related to TriplyDB on-premise deployments. See [here](../triplydb-changelog/) for the TriplyDB changelog that is user facing.
 
 ## 26.9.200 {#26.9.200}
 
