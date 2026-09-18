@@ -1,35 +1,8 @@
 // This file we can use to create more customization using Javascript.
 const onLoad = window.onload
 
-const prefix = window.location.hostname === 'triplydb.github.io' ? '/Documentation' : ''
-
-const customUrlMappingLevel1 = new Map([
-  ['Generic', '/triply-etl'],
-  ['Sources', '/triply-etl/sources'],
-  ['Extract', '/triply-etl/extract'],
-  ['Transform', '/triply-etl/transform'],
-  ['Assert', '/triply-etl/assert'],
-  ['Enrich', '/triply-etl/enrich'],
-  ['Validate', '/triply-etl/validate'],
-  ['Getting started', '/triply-db-getting-started'],
-  ['TriplyDB-JS', '/triplydb-js'],
-  ['Sources', '/triply-etl/sources']
-])
-
-const customUrlMappingLevel2 = new Map([
-  ['RATT', '/triply-etl/assert/ratt/statements'],
-  ['SPARQL', '/triply-etl/enrich/sparql/construct'],
-])
-
 window.onload = () => {
   hljs.highlightAll()
-  Array.from(document.querySelectorAll('.toctree-l1 a'))
-    .filter(el => customUrlMappingLevel1.has(el.innerText))
-    .map(el => el.href = prefix + customUrlMappingLevel1.get(el.innerText))
-
-  Array.from(document.querySelectorAll('.toctree-l2 a'))
-    .filter(el => customUrlMappingLevel2.has(el.innerText) && el.href.endsWith('#'))
-    .map(el => el.href = prefix + customUrlMappingLevel2.get(el.innerText))
 
   if (window.location.pathname.endsWith('search.html')) {
     const li = document.createElement('li')

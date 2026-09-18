@@ -35,7 +35,7 @@ Treat a token as a credential: never commit one to a Git repository, never share
 
 The API accepts a file directly only up to 5 MB. Above that, an upload becomes a multi-step [tus](https://tus.io/protocols/resumable-upload) flow — see the [Jobs endpoints](https://api.triplydb.com/api-docs) — which you rarely want to implement yourself. Use one of these instead, for both linked data and assets:
 
-1. [TriplyDB.js](../triplydb-js/index.md) — the `importFrom*` and `uploadAsset` methods on [the `Dataset` class](https://static.triply.cc/triplydb-js/classes/Dataset.html).
+1. [TriplyDB.js](https://static.triply.cc/triplydb-js/) — the `importFrom*` and `uploadAsset` methods on [the `Dataset` class](https://static.triply.cc/triplydb-js/classes/Dataset.html).
 2. [The TriplyDB Command-line Interface](https://static.triply.cc/cli/).
 
 Both handle resuming, retrying and progress reporting for you.
@@ -118,4 +118,4 @@ The equivalent in TriplyDB.js is [`Dataset.addService`](https://static.triply.cc
 - [GraphQL](../generics/Graphql.md) — how the schema is generated from SHACL shapes.
 - [JSON-LD framing](../generics/JSON-LD-frames.md) — shaping JSON-LD output.
 - [Saved queries](../triply-db-getting-started/saved-queries/index.md) — saving, versioning and sharing a query, and using it as a RESTful API.
-- [TriplyDB.js](../triplydb-js/index.md) — the JavaScript and TypeScript client.
+- [TriplyDB.js](https://static.triply.cc/triplydb-js/) — the JavaScript and TypeScript client.

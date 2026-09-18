@@ -161,7 +161,7 @@ So a narrow custom role limits what someone can *change*, and which parts of the
 
 A number of permissions control whether a part of the web interface is available — the linked data browser, the table view, the SPARQL IDE, the GraphQL and Elasticsearch editors, the insights dashboard, the graph, service and asset tabs, and the data editor.
 
-**These hide interface, not data.** Removing "Use SPARQL IDE" from a role removes the query editor from that person's view of a dataset they can read; it does not stop them querying that dataset over the [API](../../triply-api/index.md) or with [TriplyDB.js](../../triplydb-js/index.md). Use them to simplify what a group of users sees, not as a security measure.
+**These hide interface, not data.** Removing "Use SPARQL IDE" from a role removes the query editor from that person's view of a dataset they can read; it does not stop them querying that dataset over the [API](../../triply-api/index.md) or with [TriplyDB.js](https://static.triply.cc/triplydb-js/). Use them to simplify what a group of users sees, not as a security measure.
 
 ### Permissions can depend on other permissions
 

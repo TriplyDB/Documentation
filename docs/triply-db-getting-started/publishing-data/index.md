@@ -75,7 +75,7 @@ Search engines and social media applications can recognize the metadata that is 
 
 ## Starting services
 
-By default, datasets in TriplyDB can be queried through [TriplyDB-js](../../triplydb-js/index.md) as well as through the Linked Data Fragments API.
+By default, datasets in TriplyDB can be queried through [TriplyDB-js](https://static.triply.cc/triplydb-js/) as well as through the Linked Data Fragments API.
 
 In order to allow additional query paradigms, specific services can be
 started from the “Create service” page. This page is accessed by

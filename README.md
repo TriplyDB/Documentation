@@ -98,5 +98,21 @@ ln -s ../../../highlightjs-turtle/src/turtle.js
 cd ../../
 node tools/build.js turtle sparql typescript javascript
 cp build/highlight.min.js <path-to-this-repo>/js
-cp build/demo/styles/intellij-light.css <path-to-this-repo>/css
 ```
+
+The colours are not taken from highlight.js' own themes: `docs/css/triply-highlight.css` maps its
+token classes onto the design tokens in `docs/css/triply-tokens.css`, so code here is highlighted the
+way the TriplyDB query editor highlights it.
+
+### Notes about the theme
+
+The site follows the TriplyDB console's design. Three stylesheets carry that, loaded in this order
+(see `extra_css` in `mkdocs.yml`):
+
+- `docs/css/triply-fonts.css` — Outfit and Source Code Pro, self-hosted from `docs/fonts/`.
+- `docs/css/triply-tokens.css` — the console's design tokens. The colour block is generated from
+  `core/packages/console-beta/src/theme/cssVars.ts`; regenerate it there rather than editing it
+  here, so the documentation cannot drift from the product.
+- `docs/css/triply.css` — the theme layer over MkDocs' `readthedocs` theme. It refers to the
+  semantic tokens (`--color-surface-*`, `--color-text-*`, `--color-fill-*`, `--color-border-*`)
+  only, never to a hex or to a raw `--color-brand-*`/`--color-chrome-*` ramp step.

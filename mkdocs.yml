@@ -1,31 +1,36 @@
 extra_css:
-  - css/intellij-light.css
+  # The order matters: fonts and tokens first, then the syntax colours and the theme layer that
+  # reference them.
+  - css/triply-fonts.css
+  - css/triply-tokens.css
+  - css/triply-highlight.css
   - css/triply.css
 extra_javascript:
   - js/triply.js
   - js/highlight.min.js
+# This site is TriplyDB's documentation first: its pages sit at the top level, unlabelled, and
+# TriplyETL is one entry beside them rather than a second heading of equal weight. Every entry with
+# children below is a section, which the navigation panel renders as a branch that opens and closes
+# (see `readthedocs-triply/nav.html`), so a product with a dozen pages under it costs one row until
+# someone wants it.
 nav:
   - Home: index.md
-  - TriplyDB:
-      - Getting started:
-          - Overview: triply-db-getting-started/index.md
-          - Uploading Data: triply-db-getting-started/uploading-data/index.md
-          - Editing (SKOS) Data: triply-db-getting-started/editing-data/index.md
-          - Sharing Data: triply-db-getting-started/publishing-data/index.md
-          - Access Control: triply-db-getting-started/access-control/index.md
-          - Viewing Data: triply-db-getting-started/viewing-data/index.md
-          - Exporting Data: triply-db-getting-started/exporting-data/index.md
-          - Saved Queries: triply-db-getting-started/saved-queries/index.md
-          - Data Stories: triply-db-getting-started/data-stories/index.md
-          - Admin Settings Pages: triply-db-getting-started/admin-settings-pages/index.md
-          - Reference: triply-db-getting-started/reference/index.md
-      - API: triply-api/index.md
-      - TriplyDB-JS:
-          - Overview: triplydb-js/index.md
-          - API reference: https://static.triply.cc/triplydb-js/
-          - FAQ: triplydb-js/faq/index.md
-      - Command-line Interface: https://static.triply.cc/cli/
-      - Changelog: triplydb-changelog/index.md
+  - Getting started:
+      - Overview: triply-db-getting-started/index.md
+      - Uploading Data: triply-db-getting-started/uploading-data/index.md
+      - Editing (SKOS) Data: triply-db-getting-started/editing-data/index.md
+      - Sharing Data: triply-db-getting-started/publishing-data/index.md
+      - Access Control: triply-db-getting-started/access-control/index.md
+      - Viewing Data: triply-db-getting-started/viewing-data/index.md
+      - Exporting Data: triply-db-getting-started/exporting-data/index.md
+      - Saved Queries: triply-db-getting-started/saved-queries/index.md
+      - Data Stories: triply-db-getting-started/data-stories/index.md
+      - Admin Settings Pages: triply-db-getting-started/admin-settings-pages/index.md
+      - Reference: triply-db-getting-started/reference/index.md
+  - API: triply-api/index.md
+  - TriplyDB-JS: https://static.triply.cc/triplydb-js/
+  - Command-line Interface: https://static.triply.cc/cli/
+  - Changelog: triplydb-changelog/index.md
   - TriplyETL:
       - Generic:
           - Overview: triply-etl/index.md
@@ -107,11 +112,13 @@ plugins:
        #'triply-db-getting-started/saved-queries/index.md': 'triply-db/saved-queries/index.md'
        #'triply-db-getting-started/uploading-data/index.md': 'triply-db/adding-data/index.md'
        #'triply-db-getting-started/viewing-data/index.md': 'triply-db/viewing-data/index.md'
-       # The TriplyDB.js class reference is generated from the source of `@triply/triplydb` and
-       # published to static.triply.cc, so it cannot drift from the released package. The
-       # hand-written pages that used to live here are gone; these send their URLs to the
-       # generated page for the same class. `triplydb-js/index.md` stays as a landing page,
-       # because the console links to it by name.
+       # The TriplyDB.js documentation is generated from the source of `@triply/triplydb` and
+       # published to static.triply.cc, so it cannot drift from the released package. Nothing is
+       # written about the library here any more, and the navigation links straight out to it;
+       # these keep every URL this site ever had for it working, the landing page included --
+       # the console links to that one by name.
+        'triplydb-js/index.md': 'https://static.triply.cc/triplydb-js/'
+        'triplydb-js/faq/index.md': 'https://static.triply.cc/triplydb-js/'
         'triplydb-js/app/index.md': 'https://static.triply.cc/triplydb-js/classes/App.html'
         'triplydb-js/account/index.md': 'https://static.triply.cc/triplydb-js/interfaces/AccountBase.html'
         'triplydb-js/asset/index.md': 'https://static.triply.cc/triplydb-js/classes/Asset.html'
@@ -146,4 +153,8 @@ theme:
   custom_dir: readthedocs-triply/
   highlightjs: false
   locale: en
+  logo: assets/triply-logo.svg
   name: readthedocs
+  # The navigation panel lists pages, not the headings inside them: every page renders its own
+  # headings from `[TOC]`, as the "On this page" panel beside the content.
+  titles_only: true

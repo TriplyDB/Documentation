@@ -86,15 +86,16 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
     <div class="wy-side-scroll">
       <div class="wy-side-nav-search">
+      {#- The masthead, after the console's sidebar: the Triply symbol beside what the site is
+          called. The stock block drops the site name as soon as a logo is configured; here the two
+          sit side by side, as they do in the product. The logo is decorative -- the name beside it
+          already labels the link. #}
       {%- block site_name %}
-        {%- if config.theme.logo %}
-          <a href="{{ nav.homepage.url|url }}">
-        {%- else %}
-          <a href="{{ nav.homepage.url|url }}" class="icon icon-home"> {{ config.site_name }}
-        {%- endif %}
-        {%- if config.theme.logo %}
-          <img src="{{ config.theme.logo|url }}" class="logo" alt="{% trans %}Logo{% endtrans %}"/>
-        {%- endif %}
+        <a href="{{ nav.homepage.url|url }}" class="triply-masthead">
+          {%- if config.theme.logo %}
+            <img src="{{ config.theme.logo|url }}" class="logo" alt=""/>
+          {%- endif %}
+          <span class="triply-masthead-name">{{ config.site_name }}</span>
         </a>
       {%- endblock %}
       {%- if config.extra.version %}
@@ -108,19 +109,14 @@
       </div>
 
       <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="{% trans %}Navigation menu{% endtrans %}">
+        {#- Sections and pages render the same way at every level -- `nav.html` decides which it
+            is. The stock template instead printed a top-level section as a caption above a list
+            that was always open, which is what made a second product cost a dozen permanent
+            rows. -#}
         {%- block site_nav %}
           {%- set navlevel = 1 %}
           {%- for nav_item in nav %}
-            {%- if nav_item.is_section %}
-              <p class="caption"><span class="caption-text">{{ nav_item.title }}</span></p>
-              <ul{% if nav_item.active %} class="current"{% endif %}>
-                {%- for nav_item in nav_item.children %}
-                  <li class="toctree-l{{ navlevel }}{% if nav_item.active %} current{% endif %}">
-                    {%- include 'nav.html' %}
-                  </li>
-                {%- endfor %}
-              </ul>
-            {%- elif config.theme.include_homepage_in_sidebar or (not nav_item == nav.homepage) %}
+            {%- if config.theme.include_homepage_in_sidebar or (not nav_item == nav.homepage) %}
               <ul{% if nav_item.active %} class="current"{% endif %}>
                 <li class="toctree-l{{ navlevel }}{% if nav_item.active %} current{% endif %}">
                   {%- include 'nav.html' %}

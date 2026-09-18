@@ -1,22 +1,46 @@
-<a class="{% if not nav_item.is_link %}reference internal{% endif %}{% if nav_item.active%} current{%endif%}" href="{% if not nav_item.is_section %}{{ nav_item.url|url }}{% else %}#{% endif %}">{{ nav_item.title }}</a>
+{#- One navigation entry.
+
+    A page is a link. A section is a branch that opens and closes: `<details>` gives that for free,
+    with the keyboard handling and the expanded state that a pair of divs and a click handler would
+    have to reimplement. The branch holding the open page is rendered `open`, so arriving on a page
+    deep in TriplyETL still shows where you are.
+
+    Sections used to render as an anchor going nowhere (`href="#"`), which is why `js/triply.js`
+    carried a table of section titles to send them somewhere instead; the summary row is what that
+    table was working around. -#}
+{%- if nav_item.is_section %}
+<details class="nav-section"{% if nav_item.active %} open{% endif %}>
+  <summary class="nav-section-title">
+    <span class="fa fa-angle-right nav-section-chevron" aria-hidden="true"></span>{{ nav_item.title }}
+  </summary>
+  {%- set navlevel = navlevel + 1 %}
+  {%- if navlevel <= config.theme.navigation_depth and nav_item.children %}
+  <ul>
+    {%- for nav_item in nav_item.children %}
+      <li class="toctree-l{{ navlevel }}{% if nav_item.active %} current{% endif %}">
+        {%- include 'nav.html' %}
+      </li>
+    {%- endfor %}
+  </ul>
+  {%- endif %}
+  {%- set navlevel = navlevel - 1 %}
+</details>
+{%- else %}
+<a class="{% if not nav_item.is_link %}reference internal{% endif %}{% if nav_item.active %} current{% endif %}{% if nav_item == page %} current-page{% endif %}{% if nav_item.is_link %} external{% endif %}" href="{{ nav_item.url|url }}">{{ nav_item.title }}
+  {#- An entry that leaves this site (TriplyDB-JS, the CLI reference) is marked as such, rather than
+      looking like one more page of the documentation. The icon is decorative; the words beside it
+      are what a screen reader reads out. -#}
+  {%- if nav_item.is_link %}<span class="fa fa-external-link external-icon" aria-hidden="true"></span><span class="sr-only"> ({% trans %}external{% endtrans %})</span>{% endif %}</a>
 {%- set navlevel = navlevel + 1 %}
 {%- if navlevel <= config.theme.navigation_depth
-    and ((nav_item.is_page and nav_item.toc.items
+    and nav_item.is_page and nav_item.toc.items
     and (not config.theme.titles_only
-    and (nav_item == page or not config.theme.collapse_navigation)))
-    or (nav_item.is_section and nav_item.children)) %}
+    and (nav_item == page or not config.theme.collapse_navigation)) %}
     <ul{% if nav_item.active %} class="current"{% endif %}>
-        {%- if nav_item.is_page %}
-            {#- Skip first level of toc which is page title. #}
-            {%- set toc_item = nav_item.toc.items[0] %}
-            {%- include 'toc.html' %}
-        {%- elif nav_item.is_section %}
-            {%- for nav_item in nav_item.children %}
-                <li class="toctree-l{{ navlevel }}{% if nav_item.active%} current{%endif%}">
-                    {%- include 'nav.html' %}
-                </li>
-            {%- endfor %}
-        {%- endif %}
+        {#- Skip first level of toc which is page title. #}
+        {%- set toc_item = nav_item.toc.items[0] %}
+        {%- include 'toc.html' %}
     </ul>
 {%- endif %}
 {%- set navlevel = navlevel - 1 %}
+{%- endif %}

@@ -7,7 +7,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 This is the documentation repository for Triply products, which includes documentation for:
 - **TriplyDB**: An integrated linked data environment for publishing and using linked data knowledge graphs
 - **TriplyETL**: A library optimized for building production-grade linked data pipelines  
-- **TriplyDB.js**: A library for automating tasks in TriplyDB instances and building applications that tap into linked data knowledge graphs
+- **TriplyDB.js**: A library for automating tasks in TriplyDB instances and building applications that tap into linked data knowledge graphs. Its documentation is *not* written here: it is generated from the library's own source and published to https://static.triply.cc/triplydb-js/, which the navigation links out to. Old in-repo URLs are kept alive by the redirects in `mkdocs.yml`.
 
 The documentation is built using MkDocs and published to https://docs.triply.cc/.
 
@@ -36,21 +36,27 @@ Changes pushed to the master branch automatically deploy to the live documentati
 - `readthedocs-triply/` - Custom MkDocs theme files
 
 ### Navigation Structure
-The site navigation is defined in `mkdocs.yml` with a hierarchical structure:
-- TriplyDB section includes getting started guides, API docs, TriplyDB-JS library docs, CLI docs, and changelog
-- TriplyETL section covers the ETL pipeline stages: Sources → Extract → Transform → Assert → Enrich → Validate → Publish
+The site navigation is defined in `mkdocs.yml`:
+- TriplyDB's own pages sit at the top level, unlabelled — this site is its documentation first: getting started guides, API docs, changelog, and external links out to the generated TriplyDB-JS and CLI references (marked with an icon; see `readthedocs-triply/nav.html`)
+- TriplyETL is one entry beside them, covering the ETL pipeline stages: Sources → Extract → Transform → Assert → Enrich → Validate → Publish
+- Any entry with children is a section, rendered as a `<details>` branch that opens and closes; the branch holding the current page is rendered `open`
 
 ### Key Files
 - `mkdocs.yml` - Main configuration file defining navigation, plugins, and theme settings
-- `docs/js/triply.js` - Custom JavaScript for navigation URL mappings and UI enhancements
+- `docs/css/triply-tokens.css` - Design tokens from the TriplyDB console; the colour block is generated output from `core/packages/console-beta/src/theme/cssVars.ts` (regenerate, don't hand-edit)
+- `docs/css/triply.css` - Theme layer over the `readthedocs` theme; refer to semantic tokens (`--color-surface-*`, `--color-text-*`, `--color-fill-*`, `--color-border-*`), never to a hex or a raw `--color-brand-*`/`--color-chrome-*` ramp step
+- `docs/css/triply-fonts.css`, `docs/fonts/` - Outfit and Source Code Pro, self-hosted (the console's two families)
+- `docs/css/triply-highlight.css` - highlight.js token colours, mapped onto the same tokens
+- `docs/js/triply.js` - Custom JavaScript for syntax highlighting and UI enhancements
 - `requirements.txt` - Python dependencies for MkDocs plugins
 
 ### Custom Features
+- Theme styled after the TriplyDB console (`core/packages/console-beta`): dark navigation panel, white content paper, pink accent
 - Custom ID headers using `{: #custom-id}` syntax for deep linking
 - Mermaid diagram support via mkdocs-mermaid2-plugin
 - Custom redirects for URL changes defined in mkdocs.yml
 - Custom syntax highlighting for Turtle/SPARQL using highlight.js
-- Level 1 menu items with only subpages require URL mappings in triply.js
+- Navigation sections are collapsible branches (`readthedocs-triply/nav.html`); a section is a toggle, not a link, so no page needs to stand in for one
 
 ### Documentation Guidelines
 - Always start pages with a level 1 heading (single #)

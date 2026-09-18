@@ -171,7 +171,7 @@ Please note that the `copySource` function is not considered part of the middlew
 
 ## Using TriplyDB.js in TriplyETL
 
-All operations that can be performed in a TriplyDB instance can be automated with classes and methods in the [TriplyDB.js](../../triplydb-js/index.md) library. This library is also used by TriplyETL in the background to implement many of the TriplyETL functionalities.
+All operations that can be performed in a TriplyDB instance can be automated with classes and methods in the [TriplyDB.js](https://static.triply.cc/triplydb-js/) library. This library is also used by TriplyETL in the background to implement many of the TriplyETL functionalities.
 
 Sometimes it is useful to use classes and methods in TriplyDB.js directly. This is done in the following way:
 
@@ -183,7 +183,7 @@ const etl = new Etl()
 console.log((await etl.triplyDb.getInfo()).name)
 ```
 
-The above example prints the name of the TriplyDB instance. But any other [TriplyDB.js](../../triplydb-js/index.md) operations can be performed. For example, the user of the current API Token can change their avatar image in TriplyDB:
+The above example prints the name of the TriplyDB instance. But any other [TriplyDB.js](https://static.triply.cc/triplydb-js/) operations can be performed. For example, the user of the current API Token can change their avatar image in TriplyDB:
 
 
 ```ts
