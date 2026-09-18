@@ -105,6 +105,14 @@ the same commit. Draw them at capture time instead — reproducible, pixel-align
 - **Not every red squiggle is spell-check.** In the import-error excerpt the wavy underline is the
   editor's own syntax-error marker and should stay. In a plain URL field it is the browser's, and
   should go.
+- **When lifting an icon out of a control, check which `<svg>` you grabbed, then open the file and
+  look at it.** Each access-level option contains two: the MUI radio indicator first, and the actual
+  glyph under `[class*="_cardIcon_"]`. Taking the first one silently produced three identical empty
+  circles for private/internal/public, which shipped before anyone noticed.
+- **A visualization missing from the SPARQL IDE has not necessarily been removed.** LD-Frame is
+  hidden there on purpose — `hiddenVisualizations = ["LDFrame"]` in
+  `containers/SparqlIde/SparqlQuery.tsx` — and is offered on saved-query pages instead, where it
+  appears only for CONSTRUCT queries (`isConstructResponse`).
 - **A native OS file dialog cannot be captured at all.** The "add data from files" figure used to be
   a Windows file picker; it is now the console's own drop-zone pane, which also happens to match the
   prose better.
