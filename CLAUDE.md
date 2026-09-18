@@ -39,6 +39,10 @@ same build serve correctly from both `/` and `/next/`. Keep it that way — do n
 write internal links as relative paths rather than as `/foo/` or `https://docs.triply.cc/foo/`, both
 of which would send preview readers back to the live site.
 
+The preview marks itself: `docs/js/triply.js` adds a notice bar when `location.pathname` starts with
+`/next/`, styled at the end of `docs/css/triply.css`. It keys off the path rather than a build flag
+so that both branches carry the same file and it never merge-conflicts.
+
 Fixes for released documentation go to `master` and are merged forward into `next`; `next` is merged
 into `master` at release time.
 

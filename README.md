@@ -97,10 +97,10 @@ are served from the same `gh-pages` branch: `master` owns everything at the root
 - Releasing? Merge `next` into `master`. The content becomes the live documentation on the next
   deploy, and `next` continues from there.
 
-The preview is excluded from search engines by `docs/robots.txt` plus a `noindex` meta tag that the
-deploy injects, so it cannot compete with the live site in search results. It is otherwise
-indistinguishable from the live site, so check which URL you are reading before quoting it to
-anyone.
+Every page of the preview carries a notice along the bottom of the window saying which site it is
+and linking to the live one. It is added by `docs/js/triply.js` when the path starts with `/next/`,
+so the file stays identical on both branches. The preview is also kept out of search results by
+`docs/robots.txt` and a `noindex` meta tag the deploy injects.
 
 ### Notes about syntax highlighting
 This project uses [highlightjs.org](https://highlightjs.org) for rendering code blocks with syntax highlighting. This projects does not have support for Turtle/SPARQL by default. We use a custom build to provide syntax highlighting for these.
