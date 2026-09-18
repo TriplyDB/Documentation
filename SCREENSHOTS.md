@@ -97,8 +97,13 @@ the same commit. Draw them at capture time instead — reproducible, pixel-align
 - **A native OS file dialog cannot be captured at all.** The "add data from files" figure used to be
   a Windows file picker; it is now the console's own drop-zone pane, which also happens to match the
   prose better.
-- **`fill_form` can silently skip a multiline textarea.** Fill those individually and check the value
-  in the next snapshot.
+- **Setting a field's value is not the same as changing it.** Typing into the console's description
+  editors through automation can leave the text on screen while React never registers the change —
+  the Save button stays disabled and the value is silently dropped on submit. This ate a dataset
+  description twice before it was noticed. Set the value through the native setter and then fire
+  `input`, `change` **and** `blur`, all bubbling; the Save button going from disabled to enabled is
+  the signal that it took. Always confirm against the API afterwards, e.g.
+  `curl -s https://api.demo.triplydb.com/datasets/Documentation/pokemon`.
 - **Scripted `.click()` inside an injected script is blocked** by the agent permission layer. Use the
   browser tool's own click. Reading and patching DOM attributes is fine.
 
