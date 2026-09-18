@@ -1048,3 +1048,58 @@ div.toc a.active {
     width: 85%;
   }
 }
+
+/* ---------------------------------------------------------------------------------------------
+ * Preview notice (docs.triply.cc/next/ only)
+ *
+ * Added by `docs/js/triply.js` when the path says this is the preview site, never on the live one.
+ * The bar sits at the bottom rather than the top because the top of this layout is spoken for:
+ * `.wy-nav-side` and, from 1280px, `div.toc` are both fixed against it, the second at a `left` and
+ * `top` computed from the panel and paper widths. A top bar would have to be subtracted from each
+ * of those again; a bottom bar is answerable to nothing above it.
+ * ------------------------------------------------------------------------------------------- */
+
+.triply-preview-banner {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  /* Over the navigation panel, which the base theme puts at 200. */
+  z-index: 300;
+  padding: var(--spacing-8) var(--spacing-20);
+  background: var(--color-fill-functional-warning);
+  border-top: 1px solid var(--color-border-functional-warning);
+  color: var(--color-text-functional-warning);
+  font-size: 0.875rem;
+  line-height: 1.4;
+  text-align: center;
+}
+
+.triply-preview-banner a {
+  color: inherit;
+  text-decoration: underline;
+}
+
+/* The theme's previous/next widget is fixed to this same corner, and at a higher z-index than the
+ * bar, so raising the bar would only bury its buttons. Lift the widget by the bar's height instead
+ * and the two never meet. */
+.triply-preview .rst-versions {
+  bottom: var(--preview-banner-height, 2.5rem);
+}
+
+/* What the bar covers, given back. `--preview-banner-height` is measured in the script, because
+ * where the sentence wraps depends on the viewport. The fallback keeps a sane gap in the moment
+ * before the first measurement, and if the script never runs there is no bar to make room for. */
+.triply-preview .wy-side-scroll,
+.triply-preview .wy-nav-content-wrap {
+  padding-bottom: calc(var(--preview-banner-height, 2.5rem) + var(--spacing-20));
+}
+
+@media screen and (min-width: 1280px) {
+  /* The page-contents panel is fixed too, and its height is measured from the viewport. */
+  .triply-preview div.toc {
+    max-height: calc(
+      100vh - 2 * var(--spacing-20) - var(--preview-banner-height, 2.5rem)
+    );
+  }
+}
