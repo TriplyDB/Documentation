@@ -1,0 +1,196 @@
+/* Design tokens from the TriplyDB console.
+ *
+ * The colour block below is generated output: it is `getThemeCssText()` from
+ * `core/packages/console-beta/src/theme/cssVars.ts`, which is what the console itself writes into
+ * its `:root`. Regenerate it rather than editing it by hand, so the documentation cannot drift from
+ * the product:
+ *
+ *     node --experimental-strip-types -e 'import("…/console-beta/src/theme/cssVars.ts")
+ *       .then(m => console.log(m.getThemeCssText()))'
+ *
+ * The base ramps are named by the role they fill -- `--color-brand-*` (TriplyDB's pink) and
+ * `--color-chrome-*` (its "misty forest" greys) -- and the semantic tokens layered on top
+ * (`--color-surface-*`, `--color-text-*`, `--color-fill-*`, `--color-border-*`) are what the
+ * stylesheet should actually reference. `triply.css` never names a hex or a raw ramp step, for the
+ * same reason the console doesn't: the role is what survives a rebrand.
+ *
+ * The spacing, radius, shadow and font tokens under the colours are transcribed from
+ * `console-beta/src/theme/global.scss` and `vars.scss`; only the ones this site uses are kept.
+ */
+
+:root {
+  --color-brand-50-hsl: 329, 87%, 47%;
+  --color-neutral-0: #FFFFFF;
+  --color-neutral-10: #ffffff1a;
+  --color-neutral-20: #ffffff33;
+  --color-neutral-100: #000000;
+  --color-info-10: #E0F7FA;
+  --color-info-30: #B2ECF5;
+  --color-info-40: #6ED3E2;
+  --color-info-50: #00B5D1;
+  --color-info-70: #0891B2;
+  --color-info-80: #007E94;
+  --color-info-90: #006D7D;
+  --color-error-10: #FEE2E2;
+  --color-error-30: #FECACA;
+  --color-error-50: #EF4444;
+  --color-error-70: #DC2626;
+  --color-error-90: #BE1C1C;
+  --color-warning-10: #FFF3CD;
+  --color-warning-30: #FDE047;
+  --color-warning-50: #F59E0B;
+  --color-warning-70: #D97706;
+  --color-warning-90: #A65422;
+  --color-success-10: #DCFCE7;
+  --color-success-30: #86EFAC;
+  --color-success-50: #22C55E;
+  --color-success-70: #16A34A;
+  --color-success-90: #15803D;
+  --color-glaucous-10: #D0D8E2;
+  --color-glaucous-50: #637D9D;
+  --color-prussian-blue-10: #B6C4CC;
+  --color-prussian-blue-50: #0B3954;
+  --color-mindaro-10: #ECF4D5;
+  --color-mindaro-50: #C0DA74;
+  --color-hunter-green-10: #D7DED6;
+  --color-hunter-green-50: #355834;
+  --color-pink-lavender-10: #F0E5E8;
+  --color-pink-lavender-50: #CEA8B3;
+  --color-categorical-1: #CB615C;
+  --color-categorical-2: #009CAD;
+  --color-categorical-3: #B97500;
+  --color-categorical-4: #3D8AD4;
+  --color-categorical-5: #848F14;
+  --color-categorical-6: #BA63A0;
+  --color-categorical-7: #179E69;
+  --color-categorical-8: #8D73CE;
+  --color-brand-10: #F7E6F0;
+  --color-brand-20: #F1B0D2;
+  --color-brand-30: #EB7BB5;
+  --color-brand-40: #E54597;
+  --color-brand-50: #DF0F79;
+  --color-brand-60: #B60F65;
+  --color-brand-70: #8D0F51;
+  --color-brand-80: #630F3C;
+  --color-brand-90: #3A0F28;
+  --color-chrome-05: #F0F4F7;
+  --color-chrome-10: #E4EAED;
+  --color-chrome-15: #D7E0E3;
+  --color-chrome-20: #CBD5D9;
+  --color-chrome-30: #B2C1C5;
+  --color-chrome-40: #9AACB1;
+  --color-chrome-50: #81989D;
+  --color-chrome-60: #6A8489;
+  --color-chrome-70: #536F75;
+  --color-chrome-80: #3C5B62;
+  --color-chrome-85: #315058;
+  --color-chrome-90: #25464E;
+  --color-chrome-95: #1A3C44;
+  --color-surface-default-base: var(--color-chrome-05);
+  --color-surface-default-level-1: var(--color-neutral-0);
+  --color-surface-default-level-2: var(--color-chrome-05);
+  --color-surface-default-level-3: var(--color-chrome-10);
+  --color-surface-default-level-4: var(--color-chrome-15);
+  --color-surface-inverted-base: var(--color-chrome-95);
+  --color-surface-inverted-level-1: var(--color-chrome-90);
+  --color-surface-inverted-level-2: var(--color-chrome-85);
+  --color-surface-inverted-level-3: var(--color-chrome-80);
+  --color-surface-inverted-backdrop: color-mix(in srgb, var(--color-chrome-95) 30%, transparent);
+  --color-text-default-inverted: var(--color-neutral-0);
+  --color-text-default-disabled: var(--color-chrome-30);
+  --color-text-default-muted: var(--color-chrome-50);
+  --color-text-default-subtle: var(--color-chrome-70);
+  --color-text-default-default: var(--color-chrome-80);
+  --color-text-default-strong: var(--color-chrome-90);
+  --color-text-action-muted: var(--color-brand-30);
+  --color-text-action-subtle: var(--color-brand-40);
+  --color-text-action-default: var(--color-brand-50);
+  --color-text-action-strong: var(--color-brand-60);
+  --color-text-action-dark: var(--color-brand-80);
+  --color-text-functional-info: var(--color-info-90);
+  --color-text-functional-info-inverted: var(--color-neutral-0);
+  --color-text-functional-error: var(--color-error-90);
+  --color-text-functional-error-inverted: var(--color-neutral-0);
+  --color-text-functional-warning: var(--color-warning-90);
+  --color-text-functional-warning-inverted: var(--color-neutral-0);
+  --color-text-functional-success: var(--color-success-90);
+  --color-text-functional-success-inverted: var(--color-neutral-0);
+  --color-fill-default-light: var(--color-neutral-0);
+  --color-fill-default-soft: var(--color-chrome-10);
+  --color-fill-default-muted: var(--color-chrome-15);
+  --color-fill-default-subtle: var(--color-chrome-20);
+  --color-fill-default-subtle-strong: var(--color-chrome-30);
+  --color-fill-default-default: var(--color-chrome-60);
+  --color-fill-default-strong: var(--color-chrome-70);
+  --color-fill-default-stronger: var(--color-chrome-80);
+  --color-fill-default-strongest: var(--color-chrome-90);
+  --color-fill-functional-info: var(--color-info-10);
+  --color-fill-functional-info-strong: var(--color-info-30);
+  --color-fill-functional-info-inverted: var(--color-info-70);
+  --color-fill-functional-error: var(--color-error-10);
+  --color-fill-functional-error-strong: var(--color-error-30);
+  --color-fill-functional-error-inverted: var(--color-error-70);
+  --color-fill-functional-warning: var(--color-warning-10);
+  --color-fill-functional-warning-strong: var(--color-warning-30);
+  --color-fill-functional-warning-inverted: var(--color-warning-70);
+  --color-fill-functional-success: var(--color-success-10);
+  --color-fill-functional-success-strong: var(--color-success-30);
+  --color-fill-functional-success-inverted: var(--color-success-70);
+  --color-fill-action-soft: var(--color-brand-10);
+  --color-fill-action-muted: var(--color-brand-20);
+  --color-fill-action-muted-strong: var(--color-brand-30);
+  --color-fill-action-subtle: var(--color-brand-40);
+  --color-fill-action-default: var(--color-brand-50);
+  --color-fill-action-strong: var(--color-brand-60);
+  --color-fill-action-stronger: var(--color-brand-70);
+  --color-fill-neutral-light: var(--color-neutral-0);
+  --color-fill-neutral-lighter: var(--color-neutral-10);
+  --color-fill-neutral-lightest: var(--color-neutral-20);
+  --color-border-default-light: var(--color-neutral-0);
+  --color-border-default-subtle: var(--color-chrome-10);
+  --color-border-default-default: var(--color-chrome-20);
+  --color-border-default-strong: var(--color-chrome-30);
+  --color-border-action-subtle: var(--color-brand-20);
+  --color-border-action-default: var(--color-brand-50);
+  --color-border-action-focus: var(--color-info-70);
+  --color-border-action-focus-inverted: var(--color-info-40);
+  --color-border-functional-info: var(--color-info-70);
+  --color-border-functional-error: var(--color-error-70);
+  --color-border-functional-warning: var(--color-warning-70);
+  --color-border-functional-success: var(--color-success-70);
+
+  /* Typography, from `global.scss` and the MUI typography scale in `mui.ts`. */
+  --font-family-ui: "Outfit", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font-family-code: "Source Code Pro", "Cascadia Code", monospace;
+
+  /* Spacing scale. */
+  --spacing-2: 2px;
+  --spacing-4: 4px;
+  --spacing-6: 6px;
+  --spacing-8: 8px;
+  --spacing-12: 12px;
+  --spacing-16: 16px;
+  --spacing-20: 20px;
+  --spacing-24: 24px;
+  --spacing-32: 32px;
+  --spacing-40: 40px;
+
+  --border-radius-xs: var(--spacing-2);
+  --border-radius-sm: var(--spacing-4);
+  --border-radius-md: var(--spacing-8);
+  --border-radius-lg: var(--spacing-16);
+  --border-radius-xl: var(--spacing-24);
+
+  /* How far the keyboard focus ring sits outside the element it marks (`global.scss`). */
+  --focus-ring-offset: var(--spacing-2);
+
+  /* `$shadow` and `--shadow-dropdown` from the console; the first lifts a resting surface off the
+   * page, the second separates a panel that floats over it. */
+  --shadow-resting: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 1px 0 rgba(0, 0, 0, 0.07),
+    0 2px 1px -1px rgba(0, 0, 0, 0.06);
+  --shadow-dropdown: 0 4px 24px -4px rgba(0, 0, 0, 0.1), 0 4px 4px -4px rgba(0, 0, 0, 0.05);
+
+  /* The sidebar's own width. The console's is 220px; this site's navigation is deeper, so it gets
+   * a little more room. */
+  --sidebar-width: 280px;
+}

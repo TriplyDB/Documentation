@@ -1,139 +1,1050 @@
-:not(pre) > code {
-  background: #f8f8f8 !important;
-  color: #000 !important;
-  padding: .3em .4em !important;
-  border-radius: .3em !important;
+/* Triply documentation theme.
+ *
+ * A layer over MkDocs' `readthedocs` theme that brings this site in line with the TriplyDB console
+ * (`core/packages/console-beta`): the same two typefaces, the same misty-forest/pink palette, the
+ * same dark navigation panel with a pink gradient on the current row, and the same white content
+ * paper floating on a tinted page.
+ *
+ * Every colour here is a semantic token from `triply-tokens.css` -- `--color-surface-*`,
+ * `--color-text-*`, `--color-fill-*`, `--color-border-*` -- never a hex and never a raw ramp step,
+ * which is the rule the console holds itself to: the role is what carries a rebrand.
+ *
+ * The base theme is loaded first, so a rule of equal specificity here wins. `!important` appears
+ * only twice: where the base theme itself used it (the buttons), and on the navigation panel's
+ * background states, which it paints through selectors indexed by nesting depth -- see there.
+ */
+
+/* ---------------------------------------------------------------------------------------------
+ * Base
+ * ------------------------------------------------------------------------------------------- */
+
+:root {
+  /* The content paper's width, and the page-contents panel that floats beside it. Both the paper's
+   * own centring and the panel's position are derived from these three, so the two cannot drift
+   * apart. */
+  --content-max-width: 1000px;
+  --toc-width: 260px;
+  --toc-gap: var(--spacing-20);
 }
 
-h1 {
-  font-size: 190% !important;
+body {
+  font-family: var(--font-family-ui);
+  font-size: 16px;
+  line-height: 1.5; /* 24/16, matching the console's bodyLg */
+  letter-spacing: 0.02em;
+  color: var(--color-text-default-default);
+  background: var(--color-surface-default-base);
 }
 
-h2 {
-  font-size: 160% !important;
+/* The base theme sets Roboto Slab on every heading. */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+legend,
+.rst-content .toctree-wrapper > p.caption {
+  font-family: var(--font-family-ui);
+  color: var(--color-text-default-strong);
 }
 
-h3 {
-  font-size: 120% !important;
-  margin-bottom: 10px !important;
+/* The console's heading scale (`mui.ts`): 32/24/20 semibold, each with its own tracking. h4 and h5
+ * step down further than the console's do -- it has no use for a fourth level yet, and this site
+ * nests that deep. */
+.rst-content h1 {
+  font-size: 2rem;
+  font-weight: 600;
+  line-height: 1.125;
+  letter-spacing: 0.01em;
 }
 
-h4 {
-  font-size: 100% !important;
-  margin-bottom: 10px !important;
+.rst-content h2 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  line-height: 1.1667;
+  letter-spacing: 0.02em;
 }
 
-
-h5 {
-  font-size: 85% !important;
+.rst-content h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: 0.02em;
 }
 
-
-
-
-ul + pre {
-  margin-bottom: 2rem;
+.rst-content h4 {
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.25;
+  letter-spacing: 0.02em;
 }
 
-div.document p ~ ul {
-  margin-top: 0px;
+.rst-content h5,
+.rst-content h6 {
+  font-size: 0.875rem;
+  font-weight: 600;
+  line-height: 1.4286;
+  letter-spacing: 0.03em;
 }
 
-code {
-  line-height: 170% !important;
+.rst-content h1,
+.rst-content h2 {
+  margin-bottom: var(--spacing-16);
 }
 
-div.mermaid svg {
-  max-width: 100% !important;
+.rst-content h3,
+.rst-content h4,
+.rst-content h5,
+.rst-content h6 {
+  margin-bottom: var(--spacing-8);
 }
 
-table th, table td {
-  white-space: normal !important;
-  padding: 4px;
+.rst-content h2,
+.rst-content h3,
+.rst-content h4 {
+  margin-top: var(--spacing-32);
 }
 
-table {
-  margin-bottom: 10px;
+/* Inline text links, with the console's underline treatment: a real `text-decoration` underline
+ * (so it wraps per line) that lifts toward the text on hover. */
+a,
+a:visited {
+  color: var(--color-text-action-default);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+  transition: text-underline-offset 200ms ease;
 }
 
-p {
-  text-align: justify !important;
+a:hover,
+a:focus {
+  color: var(--color-text-action-strong);
+  text-underline-offset: 1px;
 }
 
-
-div[itemprop="articleBody"] {
-	counter-reset: h2;
+/* A link around a code chip or an image carries no underline: the chip is already boxed, and the
+ * console likewise underlines only links whose content is plain text. */
+.rst-content a:has(> code),
+.rst-content a:has(> img) {
+  text-decoration: none;
 }
 
-h2 { counter-reset: h3; }
-h3 { counter-reset: h4; }
-h4 { counter-reset: h5; }
-h5 { counter-reset: h6; }
-h1:before, h2:before, h3:before, h4:before, h5:before {
-  color: #666;
+/* The keyboard focus ring, matching `$focus-border` and `--focus-ring-offset`. */
+:focus-visible {
+  outline: 2px solid var(--color-border-action-focus);
+  outline-offset: var(--focus-ring-offset);
+  border-radius: var(--border-radius-sm);
 }
-h2:before { content: counter(h2)". "; counter-increment: h2; }
-h3:before { content: counter(h2) "." counter(h3) ". "; counter-increment: h3; }
-h4:before { content: counter(h2) "." counter(h3) "." counter(h4) ". "; counter-increment: h4; }
-h5:before { content: counter(h2) "." counter(h3) "." counter(h4) "." counter(h5) ". "; counter-increment: h5; }
 
-h1#search::before,
-[id$="-search-results"] h3::before
- {
+/* ---------------------------------------------------------------------------------------------
+ * Shell: dark navigation panel, white content paper on a tinted page
+ * ------------------------------------------------------------------------------------------- */
+
+.wy-nav-side {
+  width: var(--sidebar-width);
+  background: var(--color-surface-inverted-level-1);
+  color: var(--color-text-default-inverted);
+  padding-bottom: 0;
+}
+
+/* The base theme hides the panel's overflow and makes this inner element 20px wider than the panel
+ * so the scrollbar falls outside it. A thin, tinted scrollbar is the tidier way to the same end,
+ * and it keeps the panel's width in one place. */
+.wy-side-scroll {
+  width: 100%;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-chrome-70) transparent;
+}
+
+/* The gap around the content is the wrapper's padding, not the paper's margin: a margin on the
+ * paper collapses straight out through this element -- there is nothing here to stop it -- which
+ * pushes the whole wrapper down, shows the page behind it as a white strip along the top, and adds
+ * its own height to the document, so short pages end up with a scrollbar over nothing. */
+.wy-nav-content-wrap {
+  margin-left: var(--sidebar-width);
+  padding: var(--spacing-20);
+  background: var(--color-surface-default-base);
+}
+
+/* The content paper: a white surface with the console's 16px corner, floating on the tinted page
+ * with the same 20px gap the console leaves around its own content (`--console-content-margin`).
+ * Centred in whatever the navigation panel leaves -- and, once the page-contents panel is in view,
+ * in what that leaves as well, since the wrapper reserves its column as padding (see there). */
+.wy-nav-content {
+  max-width: var(--content-max-width);
+  margin: 0 auto;
+  padding: var(--spacing-32) var(--spacing-40) var(--spacing-40);
+  background: var(--color-surface-default-level-1);
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--shadow-resting);
+  min-height: calc(100vh - 2 * var(--spacing-20));
+}
+
+/* ---------------------------------------------------------------------------------------------
+ * Navigation panel
+ * ------------------------------------------------------------------------------------------- */
+
+/* Masthead and search, on the slightly lighter band the console gives them, so they read as one
+ * top section rather than controls floating on the menu. */
+.wy-side-nav-search {
+  width: auto;
+  margin-bottom: var(--spacing-8);
+  padding: var(--spacing-16) var(--spacing-12) var(--spacing-12);
+  background: var(--color-surface-inverted-level-2);
+  text-align: left;
+}
+
+.wy-side-nav-search .triply-masthead,
+.wy-side-nav-search > a {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-8);
+  margin-bottom: var(--spacing-12);
+  padding: 0;
+  color: var(--color-text-default-inverted);
+  font-size: 0.875rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  text-decoration: none;
+}
+
+.wy-side-nav-search > a:hover {
+  background: transparent;
+  color: var(--color-text-default-inverted);
+}
+
+/* The console's sidebar logo slot: a fixed height, the artwork's own aspect ratio deciding the
+ * width. No plate -- that is for logos drawn for who-knows-which background, and Triply's own
+ * symbol reads on the dark panel as it is. */
+.wy-side-nav-search img,
+.wy-side-nav-search > a img.logo {
+  display: block;
+  height: 32px;
+  width: auto;
+  max-width: 64px;
+  margin: 0;
+  padding: 0;
+  background: transparent;
+  border-radius: 0;
+}
+
+.wy-side-nav-search input[type="text"] {
+  padding: var(--spacing-6) var(--spacing-12);
+  background: var(--color-surface-inverted-level-1);
+  border: none;
+  border-radius: var(--border-radius-md);
+  box-shadow: none;
+  color: var(--color-text-default-inverted);
+  font-family: var(--font-family-ui);
+  font-size: 0.875rem;
+}
+
+.wy-side-nav-search input[type="text"]:hover {
+  background: var(--color-surface-inverted-base);
+}
+
+.wy-side-nav-search input[type="text"]::placeholder {
+  color: var(--color-text-default-disabled);
+  opacity: 1;
+}
+
+.wy-side-nav-search > div.version {
+  margin: 0 0 var(--spacing-8);
+  color: var(--color-text-default-disabled);
+  font-size: 0.75rem;
+}
+
+.wy-menu-vertical {
+  width: auto;
+  /* Clears the previous/next bar pinned to the bottom of the panel, so the last rows stay
+   * reachable. */
+  padding-bottom: var(--spacing-40);
+}
+
+/* Menu rows, after `SidebarMenuItem`: the row is inset from the panel edge so its hover and its
+ * active fill read as a rounded pill rather than a full-width band. */
+.wy-menu-vertical li {
+  padding: 1px var(--spacing-8) 1px var(--spacing-12);
+}
+
+/* The base theme paints these rows by depth -- `li.toctree-l2.current li.toctree-l3 > a` and a
+ * dozen selectors like it, four classes deep -- so a rule that matches a row by what it *is* rather
+ * than by how deep it sits cannot outrank them by specificity alone. The panel's three background
+ * states are therefore declared `!important` and the depth cascade is overruled wherever it lands.
+ * Among themselves they still order by specificity, so the current row's fill beats the hover fill,
+ * which beats the resting one. */
+/* `.wy-nav-side` earns the weight to beat the base theme's own per-depth colours
+ * (`li.toctree-l2 a { color: #404040 }` and its siblings), which are written for a light menu. They
+ * only ever showed on a branch outside the current page's -- which nothing could open until
+ * sections became branches, and which then rendered near-black on the dark panel. */
+.wy-nav-side .wy-menu-vertical li a,
+.wy-menu-vertical a,
+.wy-menu-vertical li.current a,
+.wy-menu-vertical li ul li a {
+  display: block;
+  padding: var(--spacing-6) var(--spacing-12);
+  border: none;
+  border-radius: var(--border-radius-md);
+  background: transparent !important;
+  color: var(--color-text-default-inverted);
+  font-size: 0.875rem;
+  font-weight: 400;
+  line-height: 1.4286;
+  letter-spacing: 0.02em;
+  text-decoration: none;
+}
+
+.wy-nav-side .wy-menu-vertical li a:hover,
+.wy-menu-vertical a:hover,
+.wy-menu-vertical li.current a:hover,
+.wy-menu-vertical li.current > a:hover,
+.wy-menu-vertical li.on a:hover {
+  background: var(--color-surface-inverted-level-2) !important;
+  color: var(--color-text-default-inverted);
+}
+
+/* The open branch itself: the base theme tints it light grey, the panel stays dark. */
+.wy-menu-vertical li.current {
+  background: transparent;
+}
+
+.wy-menu-vertical li.toctree-l1.current > a {
+  border-top: none;
+  border-bottom: none;
+}
+
+.wy-menu-vertical li.toctree-l2,
+.wy-menu-vertical li.toctree-l3,
+.wy-menu-vertical li.toctree-l4 {
+  font-size: 100%;
+}
+
+.wy-menu-vertical li.toctree-l2 {
+  padding-left: var(--spacing-24);
+}
+
+.wy-menu-vertical li.toctree-l3 {
+  padding-left: var(--spacing-32);
+}
+
+.wy-menu-vertical li.toctree-l4 {
+  padding-left: var(--spacing-40);
+}
+
+/* The base theme re-indents nested rows with padding on the anchor itself, which would double up
+ * with the indentation the list items now carry. */
+.wy-menu-vertical li.toctree-l2.current > a,
+.wy-menu-vertical li.toctree-l2.current li.toctree-l3 > a,
+.wy-menu-vertical li.toctree-l3.current > a,
+.wy-menu-vertical li.toctree-l3.current li.toctree-l4 > a,
+.wy-menu-vertical li.toctree-l4.current > a,
+.wy-menu-vertical li.toctree-l4.current li.toctree-l5 > a,
+.wy-menu-vertical li.toctree-l5.current > a {
+  padding: var(--spacing-6) var(--spacing-12);
+}
+
+/* A section's summary row: a menu row like any other, plus the chevron that says it opens. The
+ * default disclosure triangle is replaced rather than kept, so the row matches the links around it
+ * and the mark sits where the eye already expects one. */
+.wy-menu-vertical .nav-section-title {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-8);
+  padding: var(--spacing-6) var(--spacing-12);
+  border-radius: var(--border-radius-md);
+  color: var(--color-text-default-inverted);
+  font-size: 0.875rem;
+  line-height: 1.4286;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  list-style: none;
+}
+
+.wy-menu-vertical .nav-section-title::-webkit-details-marker {
   display: none;
 }
 
-div.toc {
-    display: none;
-    position: fixed;
-    left: 1100px;
-    top: 0px;
-    border-left: 2px solid #ddd;
-    display: table;
-    font-size: 90%;
-    padding: 20px;
-    width: auto;
+.wy-menu-vertical .nav-section-title:hover {
+  background: var(--color-surface-inverted-level-2);
 }
 
-div.toc li, div.toc  ul, div.toc  ul li{
-  list-style: outside none none !important;
+.wy-menu-vertical .nav-section-chevron {
+  width: 10px;
+  color: var(--color-text-default-disabled);
+  font-size: 0.875em;
+  transition: transform 150ms ease;
+}
+
+.wy-menu-vertical details[open] > .nav-section-title > .nav-section-chevron {
+  transform: rotate(90deg);
+}
+
+/* Which branches are open is the `<details>`' business, and the base theme has opinions of its own
+ * about nested lists that have to be overruled in both directions: `li ul { display: none }` would
+ * keep an opened branch empty, and `li.current ul { display: block }` -- written for a menu that
+ * opened the whole branch of the current page -- would spring every sub-branch under TriplyETL
+ * open as soon as one page inside it was being read. The UA rule that hides a closed `<details>`'
+ * content loses to both, so neither can be left standing. */
+.wy-menu-vertical details[open] > ul {
+  display: block;
+}
+
+.wy-menu-vertical details:not([open]) > ul {
+  display: none;
+}
+
+.wy-menu-vertical .nav-section > ul {
+  margin: 0;
+}
+
+/* An entry that leaves the documentation (see `nav.html`): the mark sits after the label, quieter
+ * than it, so it reads as a property of the row rather than a second thing in it. */
+.wy-menu-vertical a .external-icon {
+  margin-left: var(--spacing-6);
+  color: var(--color-text-default-disabled);
+  font-size: 0.75em;
+  vertical-align: baseline;
+}
+
+.wy-menu-vertical a:hover .external-icon {
+  color: var(--color-text-default-inverted);
+}
+
+/* The row that is the open page. `current-page` is set by `nav.html` on that row alone -- every
+ * section above it carries `current` as well, and only the page itself should take the fill. */
+.wy-nav-side .wy-menu-vertical li.current > a.current-page {
+  background: linear-gradient(to right, var(--color-fill-action-default), var(--color-fill-action-subtle)) !important;
+  color: var(--color-text-default-inverted);
+  font-weight: 600;
+  box-shadow:
+    0 4px 4px rgba(0, 0, 0, 0.15),
+    0 1px 1.5px rgba(0, 0, 0, 0.3);
+}
+
+.wy-nav-side .wy-menu-vertical li.current > a.current-page:hover {
+  background: linear-gradient(to right, var(--color-fill-action-strong), var(--color-fill-action-default)) !important;
+  color: var(--color-text-default-inverted);
+}
+
+/* The focus ring is cyan, which is only 2.2:1 on the pink gradient; white clears 3:1 on both
+ * stops -- the same swap the console makes on this row. */
+.wy-nav-side .wy-menu-vertical li.current > a.current-page:focus-visible {
+  outline-color: var(--color-border-default-light);
+}
+
+/* The previous/next bar pinned under the navigation panel: the base theme's near-black, on the
+ * panel's own darkest surface instead. */
+.rst-versions {
+  width: var(--sidebar-width);
+  background: var(--color-surface-inverted-base);
+  font-family: var(--font-family-ui);
+}
+
+.rst-versions .rst-current-version {
+  display: flex;
+  justify-content: space-between;
+  padding: var(--spacing-12) var(--spacing-16);
+  background: var(--color-surface-inverted-base);
+  border-top: 1px solid var(--color-surface-inverted-level-2);
+  color: var(--color-text-default-inverted);
+  font-size: 0.8125rem;
+}
+
+.rst-versions a,
+.rst-versions a:visited {
+  color: var(--color-text-default-inverted);
+  text-decoration: none;
+}
+
+.rst-versions a:hover {
+  text-decoration: underline;
+}
+
+/* Mobile: the bar that opens the panel. */
+.wy-nav-top {
+  background: var(--color-surface-inverted-level-2);
+  color: var(--color-text-default-inverted);
+  line-height: 40px;
+  padding: var(--spacing-8) var(--spacing-16);
+}
+
+.wy-nav-top a,
+.wy-nav-top a:visited {
+  color: var(--color-text-default-inverted);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.wy-nav-top i {
+  padding-top: var(--spacing-4);
+  font-size: 24px;
+}
+
+/* ---------------------------------------------------------------------------------------------
+ * Content
+ * ------------------------------------------------------------------------------------------- */
+
+.wy-breadcrumbs {
+  margin-bottom: var(--spacing-16);
+  font-size: 0.875rem;
+  color: var(--color-text-default-muted);
+}
+
+.wy-breadcrumbs a {
+  color: var(--color-text-default-subtle);
+}
+
+.wy-breadcrumbs a:hover {
+  color: var(--color-text-action-default);
+}
+
+.breadcrumb-item:before {
+  color: var(--color-text-default-disabled);
+}
+
+.rst-content p {
+  margin-bottom: var(--spacing-16);
+}
+
+.rst-content li {
+  line-height: 1.5;
+}
+
+.rst-content ul + pre {
+  margin-bottom: var(--spacing-32);
+}
+
+.rst-content div.document p ~ ul {
+  margin-top: 0;
+}
+
+/* Section numbering. The counters are this site's own; the colour is the console's muted text, so
+ * the numbers sit behind the heading they label rather than competing with it. */
+div[itemprop="articleBody"] {
+  counter-reset: h2;
+}
+
+h2 {
+  counter-reset: h3;
+}
+
+h3 {
+  counter-reset: h4;
+}
+
+h4 {
+  counter-reset: h5;
+}
+
+h5 {
+  counter-reset: h6;
+}
+
+h1:before,
+h2:before,
+h3:before,
+h4:before,
+h5:before {
+  color: var(--color-text-default-muted);
+  font-weight: 400;
+}
+
+h2:before {
+  content: counter(h2) ". ";
+  counter-increment: h2;
+}
+
+h3:before {
+  content: counter(h2) "." counter(h3) ". ";
+  counter-increment: h3;
+}
+
+h4:before {
+  content: counter(h2) "." counter(h3) "." counter(h4) ". ";
+  counter-increment: h4;
+}
+
+h5:before {
+  content: counter(h2) "." counter(h3) "." counter(h4) "." counter(h5) ". ";
+  counter-increment: h5;
+}
+
+h1#search::before,
+[id$="-search-results"] h3::before {
+  display: none;
+}
+
+/* A heading that is itself a link keeps the accent colour, so it still reads as one, but not the
+ * underline -- a rule the width of a heading is a lot of ink. */
+.rst-content h1 > a:not(.headerlink),
+.rst-content h2 > a:not(.headerlink),
+.rst-content h3 > a:not(.headerlink),
+.rst-content h4 > a:not(.headerlink),
+.rst-content h5 > a:not(.headerlink),
+.rst-content h6 > a:not(.headerlink) {
+  text-decoration: none;
+}
+
+.rst-content h1 > a:not(.headerlink):hover,
+.rst-content h2 > a:not(.headerlink):hover,
+.rst-content h3 > a:not(.headerlink):hover,
+.rst-content h4 > a:not(.headerlink):hover,
+.rst-content h5 > a:not(.headerlink):hover,
+.rst-content h6 > a:not(.headerlink):hover {
+  text-decoration: underline;
+}
+
+/* The permalink the `toc` extension appends to each heading: a quiet mark that only colours in on
+ * hover, so it does not compete with the numbering on its other side. */
+.rst-content .headerlink {
+  color: var(--color-text-default-disabled);
+  font-size: 0.75em;
+  text-decoration: none;
+}
+
+.rst-content .headerlink:hover {
+  color: var(--color-text-action-default);
+}
+
+/* Code: Source Code Pro throughout, inline code as a chip on the page's own soft fill. */
+code,
+kbd,
+pre,
+samp,
+.rst-content code,
+.rst-content tt,
+.rst-content .linenodiv pre,
+.rst-content div[class^="highlight"] pre,
+.rst-content pre.literal-block {
+  font-family: var(--font-family-code);
+}
+
+.rst-content :not(pre) > code {
+  padding: 0.15em 0.4em;
+  background: var(--color-fill-default-soft);
+  border: 1px solid var(--color-border-default-subtle);
+  border-radius: var(--border-radius-sm);
+  color: var(--color-text-default-strong);
+  font-size: 0.875em;
+  line-height: 1.5;
+  white-space: normal;
+  overflow-wrap: break-word;
+}
+
+.rst-content a > code,
+.rst-content a code.literal {
+  color: var(--color-text-action-default);
+}
+
+.rst-content div[class^="highlight"],
+.rst-content pre.literal-block {
+  margin: 0 0 var(--spacing-24);
+  background: var(--color-surface-default-level-2);
+  border: 1px solid var(--color-border-default-subtle);
+  border-radius: var(--border-radius-md);
+  overflow: hidden;
+}
+
+.rst-content div[class^="highlight"] pre,
+.rst-content pre.literal-block {
+  padding: var(--spacing-12) var(--spacing-16);
+  background: transparent;
+  font-size: 0.8125rem;
+  line-height: 1.5;
+}
+
+/* Tables: the console's own -- a soft header row, subtle rules, a rounded outer edge. Markdown
+ * tables arrive as a bare `<table>`, so the base theme's `.docutils` selectors never reach them;
+ * these match both. `theme_extra.css` puts `!important` on every cell border, hence the answer in
+ * kind: a full grid is heavier than the console's tables, which rule rows only. */
+.rst-content table,
+.rst-content table.docutils,
+.wy-table {
+  width: 100%;
+  margin-bottom: var(--spacing-24);
+  border: 1px solid var(--color-border-default-default);
+  border-radius: var(--border-radius-md);
+  border-collapse: separate;
+  border-spacing: 0;
+  overflow: hidden;
+  font-size: 0.875rem;
+}
+
+.rst-content table thead,
+.wy-table thead {
+  background: var(--color-fill-default-soft);
+}
+
+.rst-content table thead th,
+.wy-table thead th {
+  color: var(--color-text-default-strong);
+  font-weight: 600;
+  text-align: left;
+  white-space: normal;
+}
+
+.rst-content table th,
+.rst-content table td,
+.wy-table th,
+.wy-table td {
+  padding: var(--spacing-8) var(--spacing-12);
+  border: none !important;
+  border-bottom: 1px solid var(--color-border-default-subtle) !important;
+  vertical-align: top;
+  white-space: normal;
+}
+
+.rst-content table thead th,
+.wy-table thead th {
+  border-bottom: 1px solid var(--color-border-default-default) !important;
+}
+
+.rst-content table tbody > tr:last-child td,
+.wy-table tbody > tr:last-child td {
+  border-bottom: none !important;
+}
+
+/* The base theme stripes alternate rows in its own grey. */
+.rst-content table.docutils:not(.field-list) tr:nth-child(2n-1) td,
+.wy-table-odd td,
+.wy-table-striped tr:nth-child(2n-1) td {
+  background-color: var(--color-surface-default-level-2);
+}
+
+.wy-table-responsive table td,
+.wy-table-responsive table th {
+  white-space: normal;
+}
+
+.rst-content blockquote {
+  margin: 0 0 var(--spacing-24);
+  padding: var(--spacing-8) var(--spacing-16);
+  border-left: 3px solid var(--color-border-action-subtle);
+  color: var(--color-text-default-subtle);
+}
+
+.rst-content hr {
+  border-top: 1px solid var(--color-border-default-subtle);
+}
+
+/* Screenshots, so a shot of a white console page still has an edge on the white paper. Vector
+ * artwork is left alone: a logo or a diagram is drawn on transparency, and a frame around its
+ * bounding box is a frame around nothing. */
+.rst-content .section img:not([src*=".svg"]) {
+  border: 1px solid var(--color-border-default-subtle);
+  border-radius: var(--border-radius-md);
+}
+
+.rst-content div.mermaid svg {
+  max-width: 100%;
+}
+
+/* Admonitions, should the `admonition` extension ever be switched on: the console's functional
+ * fills, one per kind. */
+.rst-content .admonition,
+.rst-content .note,
+.rst-content .seealso,
+.wy-alert {
+  padding: var(--spacing-12) var(--spacing-16);
+  background: var(--color-fill-functional-info);
+  border: 1px solid var(--color-border-functional-info);
+  border-radius: var(--border-radius-md);
+  color: var(--color-text-default-default);
+}
+
+.rst-content .admonition-title,
+.wy-alert-title {
+  margin: 0 0 var(--spacing-4);
+  padding: 0;
+  background: transparent;
+  color: var(--color-text-functional-info);
+  font-weight: 600;
+}
+
+.rst-content .warning,
+.rst-content .caution,
+.rst-content .attention {
+  background: var(--color-fill-functional-warning);
+  border-color: var(--color-border-functional-warning);
+}
+
+.rst-content .warning .admonition-title,
+.rst-content .caution .admonition-title,
+.rst-content .attention .admonition-title {
+  color: var(--color-text-functional-warning);
+}
+
+.rst-content .danger,
+.rst-content .error {
+  background: var(--color-fill-functional-error);
+  border-color: var(--color-border-functional-error);
+}
+
+.rst-content .danger .admonition-title,
+.rst-content .error .admonition-title {
+  color: var(--color-text-functional-error);
+}
+
+.rst-content .hint,
+.rst-content .tip,
+.rst-content .important {
+  background: var(--color-fill-functional-success);
+  border-color: var(--color-border-functional-success);
+}
+
+.rst-content .hint .admonition-title,
+.rst-content .tip .admonition-title,
+.rst-content .important .admonition-title {
+  color: var(--color-text-functional-success);
+}
+
+/* ---------------------------------------------------------------------------------------------
+ * Buttons and footer
+ * ------------------------------------------------------------------------------------------- */
+
+/* The previous/next pair, as the console's secondary button: a white fill with a real border,
+ * darkening a step on hover. */
+.btn,
+.btn-neutral {
+  padding: var(--spacing-6) var(--spacing-12);
+  background-color: var(--color-fill-default-light) !important;
+  border: 1px solid var(--color-border-default-default);
+  border-radius: var(--border-radius-md);
+  box-shadow: none;
+  color: var(--color-text-default-default) !important;
+  font-family: var(--font-family-ui);
+  font-size: 0.875rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  text-decoration: none;
+  transition: background-color 150ms ease;
+}
+
+.btn:hover,
+.btn-neutral:hover {
+  background-color: var(--color-fill-default-soft) !important;
+  color: var(--color-text-default-strong) !important;
+}
+
+.btn:active {
+  padding: var(--spacing-6) var(--spacing-12);
+  box-shadow: none;
+}
+
+.rst-footer-buttons {
+  margin-top: var(--spacing-32);
+}
+
+footer {
+  margin-top: var(--spacing-24);
+  color: var(--color-text-default-muted);
+  font-size: 0.875rem;
+}
+
+footer p {
+  margin-bottom: var(--spacing-8);
+}
+
+/* ---------------------------------------------------------------------------------------------
+ * Search results
+ * ------------------------------------------------------------------------------------------- */
+
+/* Results are keyed off the container's class rather than its id: MkDocs and ProperDocs prefix the
+ * ids differently (`search.html` derives which), the class is the same in both. */
+.search-results article {
+  margin-bottom: var(--spacing-16);
+  padding: var(--spacing-16);
+  background: var(--color-surface-default-level-2);
+  border: 1px solid var(--color-border-default-subtle);
+  border-radius: var(--border-radius-md);
+}
+
+.search-results article h3 {
+  margin: 0 0 var(--spacing-4);
+}
+
+.search-results article p {
+  margin: 0;
+  color: var(--color-text-default-subtle);
+}
+
+/* The base theme leaves the search page's own field looking like a form control from another site.
+ * `.wy-form` styling reaches it, so this restates the console's text field. */
+#content_search input[type="text"] {
+  width: 100%;
+  padding: var(--spacing-8) var(--spacing-12);
+  background: var(--color-fill-default-light);
+  border: 1px solid var(--color-border-default-default);
+  border-radius: var(--border-radius-md);
+  box-shadow: none;
+  color: var(--color-text-default-default);
+  font-family: var(--font-family-ui);
+  font-size: 1rem;
+}
+
+#content_search input[type="text"]:focus {
+  border-color: var(--color-border-action-default);
+}
+
+/* ---------------------------------------------------------------------------------------------
+ * Page contents ("On this page")
+ * ------------------------------------------------------------------------------------------- */
+
+/* The headings of the open page, from the `[TOC]` marker at the top of each one. The navigation
+ * panel lists pages only (`titles_only`), so this is the sole in-page navigation -- which is why it
+ * is a card at the head of the content by default, and only floats beside the paper once the
+ * viewport is wide enough to hold it there (see the media query below). */
+div.toc {
+  margin-bottom: var(--spacing-24);
+  padding: var(--spacing-12) var(--spacing-16);
+  max-width: 520px;
+  /* A page with fifty headings would otherwise push its own first paragraph off the screen. */
+  max-height: 40vh;
+  overflow-y: auto;
+  background: var(--color-surface-default-level-2);
+  border: 1px solid var(--color-border-default-subtle);
+  border-radius: var(--border-radius-lg);
+  font-size: 0.8125rem;
 }
 
 div.toc .toctitle {
   display: block;
-  font-weight: bold;
-  margin-bottom: 10px;
-}
-div.toc  ul {
-  margin: 0px !important;
-}
-
-div.toc > ul > li  {
-  margin: 0 !important;
+  margin-bottom: var(--spacing-4);
+  color: var(--color-text-default-muted);
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
 }
 
-
-div.toc  ul li {
-  margin-left: 10px !important;
-  line-height: 18px;
+/* The base theme gives list items in the content a 24px indent, a 12px rhythm and a 24px line
+ * height -- the measure of body copy, which leaves this list of short headings full of holes. Here
+ * the rows are set tight and the markers dropped; depth is carried by the indent below.
+ *
+ * The markers take a rule per level because the base theme sets them that way (disc, then circle,
+ * then square), each one deeper and so harder to outrank than the last. */
+.rst-content div.toc ul,
+.rst-content div.toc li {
+  margin: 0;
+  padding: 0;
+  line-height: 1.35;
 }
 
-div.toc a {
-  padding: 2px;
+.rst-content div.toc ul,
+.rst-content div.toc ul li,
+.rst-content div.toc ul li li,
+.rst-content div.toc ul li li li {
+  list-style: none;
 }
+
+/* `.rst-content .section ul li > *` gives every child of a list item 12px of vertical margin --
+ * the rhythm body copy wants between paragraphs, and a hole between two headings in a list. */
+.rst-content div.toc li > * {
+  margin: 0;
+}
+
+.rst-content div.toc ul ul {
+  margin-left: var(--spacing-8);
+}
+
+div.toc a,
 div.toc a:visited {
-  color: inherit;
-}
-div.toc a:hover {
-  color: #55a5d9;
-}
-div.toc a.active {
-  background-color: #55a5d9;
-  color: #fff;
+  display: block;
+  padding: var(--spacing-2) var(--spacing-8);
+  border-radius: var(--border-radius-sm);
+  color: var(--color-text-default-subtle);
+  text-decoration: none;
 }
 
-@media screen and (min-width: 1300px) {
+div.toc a:hover {
+  background: var(--color-fill-default-soft);
+  color: var(--color-text-action-default);
+}
+
+div.toc a.active {
+  background: var(--color-fill-action-soft);
+  color: var(--color-text-action-strong);
+  font-weight: 600;
+}
+
+/* Once the viewport can hold the navigation panel, the paper and the page contents side by side:
+ * 280 + 260 + 20 of gap + 40 of page margin leaves ~680px of paper at this width, and the paper
+ * takes its full 1000 from about 1600 on. Below this the card above stands in. */
+@media screen and (min-width: 1280px) {
+  /* Reserving the panel's column here rather than positioning the paper against it keeps the paper
+   * centred by its own `margin: auto` -- in the narrower box, which centres the pair. */
+  .wy-nav-content-wrap {
+    padding-right: calc(var(--spacing-20) + var(--toc-width) + var(--toc-gap));
+  }
+
   div.toc {
-    display: block;
+    position: fixed;
+    top: var(--spacing-20);
+    /* Against the paper's right edge, derived from the same numbers the paper is laid out by:
+     * `--toc-room` is the wrapper's content box (what the navigation panel, the page margins and
+     * this panel's own reserved column leave), `--toc-paper` the paper's width in it -- its cap,
+     * or the whole room when that is narrower -- and the paper sits centred in the remainder. */
+    --toc-room: calc(
+      100% - var(--sidebar-width) - 2 * var(--spacing-20) - var(--toc-width) - var(--toc-gap)
+    );
+    --toc-paper: min(var(--content-max-width), var(--toc-room));
+    left: calc(
+      var(--sidebar-width) + var(--spacing-20) + (var(--toc-room) - var(--toc-paper)) / 2 + var(--toc-paper) +
+        var(--toc-gap)
+    );
+    width: var(--toc-width);
+    max-width: none;
+    max-height: calc(100vh - 2 * var(--spacing-20));
+    /* Back to the full height the floating panel can use. */
+    margin-bottom: 0;
+    padding: var(--spacing-16);
+    background: var(--color-surface-default-level-1);
+    box-shadow: var(--shadow-dropdown);
+    overflow-y: auto;
+    scrollbar-width: thin;
+  }
+}
+
+/* ---------------------------------------------------------------------------------------------
+ * Narrow viewports
+ * ------------------------------------------------------------------------------------------- */
+
+@media screen and (max-width: 768px) {
+  /* The panel slides in from off-screen instead of holding a column, so the content reclaims the
+   * width the desktop rules gave it. Restated here because those rules sit later in the file than
+   * the base theme's own mobile block and would otherwise outrank it. */
+  .wy-nav-content-wrap {
+    margin-left: 0;
+  }
+
+  .wy-nav-side {
+    left: calc(-1 * var(--sidebar-width));
+  }
+
+  .wy-nav-side.shift {
+    left: 0;
+  }
+
+  /* The console drops its own content margin below this width; the paper runs to the edges and
+   * keeps only its padding. */
+  .wy-nav-content-wrap {
+    padding: 0;
+  }
+
+  .wy-nav-content {
+    padding: var(--spacing-20) var(--spacing-16);
+    border-radius: 0;
+    box-shadow: none;
+    min-height: 100vh;
+  }
+
+  .wy-nav-content-wrap.shift {
+    background: var(--color-surface-default-base);
+  }
+
+  .wy-nav-side.shift {
+    width: 85%;
   }
 }

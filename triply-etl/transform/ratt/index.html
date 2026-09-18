@@ -10,7 +10,9 @@
 <title>RATT - Triply Documentation</title>
 <link href="../../../css/theme.css" rel="stylesheet"/>
 <link href="../../../css/theme_extra.css" rel="stylesheet"/>
-<link href="../../../css/intellij-light.css" rel="stylesheet"/>
+<link href="../../../css/triply-fonts.css" rel="stylesheet"/>
+<link href="../../../css/triply-tokens.css" rel="stylesheet"/>
+<link href="../../../css/triply-highlight.css" rel="stylesheet"/>
 <link href="../../../css/triply.css" rel="stylesheet"/>
 <script>
         // Current page data
@@ -24,8 +26,10 @@
 <nav class="wy-nav-side stickynav" data-toggle="wy-nav-shift">
 <div class="wy-side-scroll">
 <div class="wy-side-nav-search">
-<a class="icon icon-home" href="../../.."> Triply Documentation
-        </a><div role="search">
+<a class="triply-masthead" href="../../..">
+<img alt="" class="logo" src="../../../assets/triply-logo.svg"/>
+<span class="triply-masthead-name">Triply Documentation</span>
+</a><div role="search">
 <form action="../../../search.html" class="wy-form" id="rtd-search-form" method="get">
 <input aria-label="Search docs" name="q" placeholder="Search docs" title="Type search term here" type="text"/>
 </form>
@@ -33,489 +37,329 @@
 </div>
 <div aria-label="Navigation menu" class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../..">Home</a>
+<li class="toctree-l1">
+<a class="reference internal" href="../../..">Home</a>
 </li>
 </ul>
-<p class="caption"><span class="caption-text">TriplyDB</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="#">Getting started</a>
+<li class="toctree-l1">
+<details class="nav-section">
+<summary class="nav-section-title">
+<span aria-hidden="true" class="fa fa-angle-right nav-section-chevron"></span>Getting started
+  </summary>
 <ul>
-<li class="toctree-l2"><a class="reference internal" href="../../../triply-db-getting-started/">Overview</a>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../triply-db-getting-started/">Overview</a>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../../../triply-db-getting-started/uploading-data/">Uploading Data</a>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../triply-db-getting-started/uploading-data/">Uploading Data</a>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../../../triply-db-getting-started/editing-data/">Editing (SKOS) Data</a>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../triply-db-getting-started/editing-data/">Editing (SKOS) Data</a>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../../../triply-db-getting-started/publishing-data/">Sharing Data</a>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../triply-db-getting-started/publishing-data/">Sharing Data</a>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../../../triply-db-getting-started/access-control/">Access Control</a>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../triply-db-getting-started/access-control/">Access Control</a>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../../../triply-db-getting-started/viewing-data/">Viewing Data</a>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../triply-db-getting-started/viewing-data/">Viewing Data</a>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../../../triply-db-getting-started/exporting-data/">Exporting Data</a>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../triply-db-getting-started/exporting-data/">Exporting Data</a>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../../../triply-db-getting-started/saved-queries/">Saved Queries</a>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../triply-db-getting-started/saved-queries/">Saved Queries</a>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../../../triply-db-getting-started/data-stories/">Data Stories</a>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../triply-db-getting-started/data-stories/">Data Stories</a>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../../../triply-db-getting-started/admin-settings-pages/">Admin Settings Pages</a>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../triply-db-getting-started/admin-settings-pages/">Admin Settings Pages</a>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../../../triply-db-getting-started/reference/">Reference</a>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../triply-db-getting-started/reference/">Reference</a>
 </li>
 </ul>
+</details>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../../../triply-api/">API</a>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="#">TriplyDB-JS</a>
+</ul>
 <ul>
-<li class="toctree-l2"><a class="reference internal" href="../../../triplydb-js/">Overview</a>
-</li>
-<li class="toctree-l2"><a class="" href="https://static.triply.cc/triplydb-js/">API reference</a>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="../../../triplydb-js/faq/">FAQ</a>
+<li class="toctree-l1">
+<a class="reference internal" href="../../../triply-api/">API</a>
 </li>
 </ul>
-</li>
-<li class="toctree-l1"><a class="" href="https://static.triply.cc/cli/">Command-line Interface</a>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="../../../triplydb-changelog/">Changelog</a>
+<ul>
+<li class="toctree-l1">
+<a class="external" href="https://static.triply.cc/triplydb-js/">TriplyDB-JS<span aria-hidden="true" class="fa fa-external-link external-icon"></span><span class="sr-only"> (external)</span></a>
 </li>
 </ul>
-<p class="caption"><span class="caption-text">TriplyETL</span></p>
+<ul>
+<li class="toctree-l1">
+<a class="external" href="https://static.triply.cc/cli/">Command-line Interface<span aria-hidden="true" class="fa fa-external-link external-icon"></span><span class="sr-only"> (external)</span></a>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1">
+<a class="reference internal" href="../../../triplydb-changelog/">Changelog</a>
+</li>
+</ul>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="#">Generic</a>
+<li class="toctree-l1 current">
+<details class="nav-section" open="">
+<summary class="nav-section-title">
+<span aria-hidden="true" class="fa fa-angle-right nav-section-chevron"></span>TriplyETL
+  </summary>
 <ul>
-<li class="toctree-l2"><a class="reference internal" href="../../">Overview</a>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="../../generic/getting-started/">Getting Started</a>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="../../generic/changelog/">Changelog</a>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="../../generic/cli/">Command Line Interface (CLI)</a>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="../../generic/declarations/">Declarations</a>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="../../generic/control-structures/">Control Structures</a>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="../../generic/debug/">Debug</a>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="../../generic/internal-store/">Internal Store</a>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="../../generic/maintenance/">Maintenance</a>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="../../generic/record/">Record</a>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="../../generic/vocabularies/">Vocabularies</a>
-</li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="#">Sources</a>
+<li class="toctree-l2">
+<details class="nav-section">
+<summary class="nav-section-title">
+<span aria-hidden="true" class="fa fa-angle-right nav-section-chevron"></span>Generic
+  </summary>
 <ul>
-<li class="toctree-l2"><a class="reference internal" href="../../sources/">Overview</a>
+<li class="toctree-l3">
+<a class="reference internal" href="../../">Overview</a>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../../sources/apis/">APIs</a>
+<li class="toctree-l3">
+<a class="reference internal" href="../../generic/getting-started/">Getting Started</a>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../../sources/inline-json/">Inline JSON</a>
+<li class="toctree-l3">
+<a class="reference internal" href="../../generic/changelog/">Changelog</a>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../../sources/inline-strings/">Inline Strings</a>
+<li class="toctree-l3">
+<a class="reference internal" href="../../generic/cli/">Command Line Interface (CLI)</a>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../../sources/local-files/">Local Files</a>
+<li class="toctree-l3">
+<a class="reference internal" href="../../generic/declarations/">Declarations</a>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../../sources/online-files/">Online Files</a>
+<li class="toctree-l3">
+<a class="reference internal" href="../../generic/control-structures/">Control Structures</a>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../../sources/rml/">RML Sources</a>
+<li class="toctree-l3">
+<a class="reference internal" href="../../generic/debug/">Debug</a>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../../sources/triplydb-assets/">TriplyDB Assets</a>
+<li class="toctree-l3">
+<a class="reference internal" href="../../generic/internal-store/">Internal Store</a>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../../sources/triplydb-datasets/">TriplyDB Datasets</a>
+<li class="toctree-l3">
+<a class="reference internal" href="../../generic/maintenance/">Maintenance</a>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../../sources/triplydb-queries/">TriplyDB Queries</a>
+<li class="toctree-l3">
+<a class="reference internal" href="../../generic/record/">Record</a>
+</li>
+<li class="toctree-l3">
+<a class="reference internal" href="../../generic/vocabularies/">Vocabularies</a>
 </li>
 </ul>
+</details>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="#">Extract</a>
+<li class="toctree-l2">
+<details class="nav-section">
+<summary class="nav-section-title">
+<span aria-hidden="true" class="fa fa-angle-right nav-section-chevron"></span>Sources
+  </summary>
 <ul>
-<li class="toctree-l2"><a class="reference internal" href="../../extract/">Overview</a>
+<li class="toctree-l3">
+<a class="reference internal" href="../../sources/">Overview</a>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../../extract/csv/">CSV</a>
+<li class="toctree-l3">
+<a class="reference internal" href="../../sources/apis/">APIs</a>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../../extract/json/">JSON</a>
+<li class="toctree-l3">
+<a class="reference internal" href="../../sources/inline-json/">Inline JSON</a>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../../extract/oai-pmh/">OAI-PMH</a>
+<li class="toctree-l3">
+<a class="reference internal" href="../../sources/inline-strings/">Inline Strings</a>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../../extract/postgres/">Postgres</a>
+<li class="toctree-l3">
+<a class="reference internal" href="../../sources/local-files/">Local Files</a>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../../extract/rdf/">RDF</a>
+<li class="toctree-l3">
+<a class="reference internal" href="../../sources/online-files/">Online Files</a>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../../extract/shapefile/">Shapefile</a>
+<li class="toctree-l3">
+<a class="reference internal" href="../../sources/rml/">RML Sources</a>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../../extract/tsv/">TSV</a>
+<li class="toctree-l3">
+<a class="reference internal" href="../../sources/triplydb-assets/">TriplyDB Assets</a>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../../extract/xlsx/">XLSX</a>
+<li class="toctree-l3">
+<a class="reference internal" href="../../sources/triplydb-datasets/">TriplyDB Datasets</a>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../../extract/xml/">XML</a>
+<li class="toctree-l3">
+<a class="reference internal" href="../../sources/triplydb-queries/">TriplyDB Queries</a>
 </li>
 </ul>
+</details>
 </li>
-<li class="toctree-l1 current"><a class="reference internal current" href="#">Transform</a>
-<ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="../">Overview</a>
-</li>
-<li class="toctree-l2 current"><a class="reference internal current" href="./">RATT</a>
-<ul class="current">
-<li class="toctree-l3"><a class="reference internal" href="#overview">Overview</a>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="#addhashediri">addHashedIri()</a>
+<li class="toctree-l2">
+<details class="nav-section">
+<summary class="nav-section-title">
+<span aria-hidden="true" class="fa fa-angle-right nav-section-chevron"></span>Extract
+  </summary>
 <ul>
-<li class="toctree-l4"><a class="reference internal" href="#signature">Signature</a>
+<li class="toctree-l3">
+<a class="reference internal" href="../../extract/">Overview</a>
 </li>
-<li class="toctree-l4"><a class="reference internal" href="#parameters">Parameters</a>
+<li class="toctree-l3">
+<a class="reference internal" href="../../extract/csv/">CSV</a>
 </li>
-<li class="toctree-l4"><a class="reference internal" href="#when-to-use">When to use?</a>
+<li class="toctree-l3">
+<a class="reference internal" href="../../extract/json/">JSON</a>
 </li>
-<li class="toctree-l4"><a class="reference internal" href="#example-lazy-identifiers">Example: lazy identifiers</a>
+<li class="toctree-l3">
+<a class="reference internal" href="../../extract/oai-pmh/">OAI-PMH</a>
 </li>
-<li class="toctree-l4"><a class="reference internal" href="#example-dynamic-iri-prefix">Example: dynamic IRI prefix</a>
+<li class="toctree-l3">
+<a class="reference internal" href="../../extract/postgres/">Postgres</a>
 </li>
-<li class="toctree-l4"><a class="reference internal" href="#example-statement-reification">Example: statement reification</a>
+<li class="toctree-l3">
+<a class="reference internal" href="../../extract/rdf/">RDF</a>
+</li>
+<li class="toctree-l3">
+<a class="reference internal" href="../../extract/shapefile/">Shapefile</a>
+</li>
+<li class="toctree-l3">
+<a class="reference internal" href="../../extract/tsv/">TSV</a>
+</li>
+<li class="toctree-l3">
+<a class="reference internal" href="../../extract/xlsx/">XLSX</a>
+</li>
+<li class="toctree-l3">
+<a class="reference internal" href="../../extract/xml/">XML</a>
 </li>
 </ul>
+</details>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#addiri">addIri()</a>
+<li class="toctree-l2 current">
+<details class="nav-section" open="">
+<summary class="nav-section-title">
+<span aria-hidden="true" class="fa fa-angle-right nav-section-chevron"></span>Transform
+  </summary>
 <ul>
-<li class="toctree-l4"><a class="reference internal" href="#signature_1">Signature</a>
+<li class="toctree-l3">
+<a class="reference internal" href="../">Overview</a>
 </li>
-<li class="toctree-l4"><a class="reference internal" href="#parameters_1">Parameters</a>
+<li class="toctree-l3 current">
+<a class="reference internal current current-page" href="./">RATT</a>
 </li>
-<li class="toctree-l4"><a class="reference internal" href="#when-to-use_1">When to use?</a>
+<li class="toctree-l3">
+<a class="reference internal" href="../rml/">RML</a>
 </li>
-<li class="toctree-l4"><a class="reference internal" href="#see-also">See also</a>
+<li class="toctree-l3">
+<a class="reference internal" href="../typescript/">TypeScript</a>
 </li>
-<li class="toctree-l4"><a class="reference internal" href="#example-prefix-declaration-and-local-name">Example: Prefix declaration and local name</a>
-</li>
-<li class="toctree-l4"><a class="reference internal" href="#example-absolute-iri">Example: Absolute IRI</a>
+<li class="toctree-l3">
+<a class="reference internal" href="../xslt/">XSLT</a>
 </li>
 </ul>
+</details>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#addliteral">addLiteral()</a>
+<li class="toctree-l2">
+<details class="nav-section">
+<summary class="nav-section-title">
+<span aria-hidden="true" class="fa fa-angle-right nav-section-chevron"></span>Assert
+  </summary>
 <ul>
-<li class="toctree-l4"><a class="reference internal" href="#when-to-use_2">When to use</a>
+<li class="toctree-l3">
+<a class="reference internal" href="../../assert/">Overview</a>
 </li>
-<li class="toctree-l4"><a class="reference internal" href="#parameters_2">Parameters</a>
+<li class="toctree-l3">
+<a class="reference internal" href="../../assert/json-ld/">JSON-LD</a>
 </li>
-<li class="toctree-l4"><a class="reference internal" href="#see-also_1">See also</a>
-</li>
-<li class="toctree-l4"><a class="reference internal" href="#example-typed-literal">Example: Typed literal</a>
-</li>
-<li class="toctree-l4"><a class="reference internal" href="#example-string-literal">Example: String literal</a>
-</li>
-<li class="toctree-l4"><a class="reference internal" href="#example-language-tagged-string">Example: Language-tagged string</a>
-</li>
-<li class="toctree-l4"><a class="reference internal" href="#example-validate-usage">Example: Validate usage</a>
-</li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="#addskolemiri">addSkolemIri()</a>
+<li class="toctree-l3">
+<details class="nav-section">
+<summary class="nav-section-title">
+<span aria-hidden="true" class="fa fa-angle-right nav-section-chevron"></span>RATT
+  </summary>
 <ul>
-<li class="toctree-l4"><a class="reference internal" href="#see-also_2">See also</a>
+<li class="toctree-l4">
+<a class="reference internal" href="../../assert/ratt/terms/">RATT Terms</a>
 </li>
-<li class="toctree-l4"><a class="reference internal" href="#example">Example</a>
+<li class="toctree-l4">
+<a class="reference internal" href="../../assert/ratt/statements/">RATT Statements</a>
 </li>
 </ul>
+</details>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#addtag">addTag()</a>
+<li class="toctree-l3">
+<a class="reference internal" href="../../assert/rml/">RML</a>
+</li>
+<li class="toctree-l3">
+<a class="reference internal" href="../../assert/xslt/">XSLT</a>
+</li>
+</ul>
+</details>
+</li>
+<li class="toctree-l2">
+<details class="nav-section">
+<summary class="nav-section-title">
+<span aria-hidden="true" class="fa fa-angle-right nav-section-chevron"></span>Enrich
+  </summary>
 <ul>
-<li class="toctree-l4"><a class="reference internal" href="#parameters_3">Parameters</a>
+<li class="toctree-l3">
+<a class="reference internal" href="../../enrich/">Overview</a>
 </li>
-<li class="toctree-l4"><a class="reference internal" href="#throws">Throws</a>
-</li>
-<li class="toctree-l4"><a class="reference internal" href="#see-also_3">See also</a>
-</li>
-<li class="toctree-l4"><a class="reference internal" href="#example_1">Example</a>
-</li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="#addvalue">addValue()</a>
+<li class="toctree-l3">
+<details class="nav-section">
+<summary class="nav-section-title">
+<span aria-hidden="true" class="fa fa-angle-right nav-section-chevron"></span>SHACL
+  </summary>
 <ul>
-<li class="toctree-l4"><a class="reference internal" href="#description">Description</a>
+<li class="toctree-l4">
+<a class="reference internal" href="../../enrich/shacl/">Overview</a>
 </li>
-<li class="toctree-l4"><a class="reference internal" href="#parameters_4">Parameters</a>
+<li class="toctree-l4">
+<a class="reference internal" href="../../enrich/shacl/triple-rules/">Triple Rules</a>
 </li>
-<li class="toctree-l4"><a class="reference internal" href="#example_2">Example</a>
-</li>
-<li class="toctree-l4"><a class="reference internal" href="#example_3">Example</a>
+<li class="toctree-l4">
+<a class="reference internal" href="../../enrich/shacl/sparql-rules/">SPARQL Rules</a>
 </li>
 </ul>
+</details>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#capitalize">capitalize()</a>
+<li class="toctree-l3">
+<details class="nav-section">
+<summary class="nav-section-title">
+<span aria-hidden="true" class="fa fa-angle-right nav-section-chevron"></span>SPARQL
+  </summary>
 <ul>
-<li class="toctree-l4"><a class="reference internal" href="#parameters_5">Parameters</a>
+<li class="toctree-l4">
+<a class="reference internal" href="../../enrich/sparql/construct/">SPARQL Construct</a>
 </li>
-<li class="toctree-l4"><a class="reference internal" href="#example-class-iris">Example: Class IRIs</a>
+<li class="toctree-l4">
+<a class="reference internal" href="../../enrich/sparql/update/">SPARQL Update</a>
 </li>
 </ul>
+</details>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#concat">concat()</a>
+</ul>
+</details>
+</li>
+<li class="toctree-l2">
+<details class="nav-section">
+<summary class="nav-section-title">
+<span aria-hidden="true" class="fa fa-angle-right nav-section-chevron"></span>Validate
+  </summary>
 <ul>
-<li class="toctree-l4"><a class="reference internal" href="#description_1">Description</a>
+<li class="toctree-l3">
+<a class="reference internal" href="../../validate/">Overview</a>
 </li>
-<li class="toctree-l4"><a class="reference internal" href="#parameters_6">Parameters</a>
+<li class="toctree-l3">
+<a class="reference internal" href="../../validate/graph-comparison/">Graph Comparison</a>
 </li>
-<li class="toctree-l4"><a class="reference internal" href="#example_4">Example</a>
-</li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="#copy">copy()</a>
-<ul>
-<li class="toctree-l4"><a class="reference internal" href="#parameters_7">Parameters</a>
-</li>
-<li class="toctree-l4"><a class="reference internal" href="#example_5">Example</a>
-</li>
-<li class="toctree-l4"><a class="reference internal" href="#example_6">Example</a>
+<li class="toctree-l3">
+<a class="reference internal" href="../../validate/shacl/">SHACL</a>
 </li>
 </ul>
+</details>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#decodehtml">decodeHtml()</a>
-<ul>
-<li class="toctree-l4"><a class="reference internal" href="#description_2">Description</a>
-</li>
-<li class="toctree-l4"><a class="reference internal" href="#parameters_8">Parameters</a>
-</li>
-<li class="toctree-l4"><a class="reference internal" href="#example_7">Example</a>
+<li class="toctree-l2">
+<a class="reference internal" href="../../publish/">Publish</a>
 </li>
 </ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="#geojsontowkt">geojsonToWkt()</a>
-<ul>
-<li class="toctree-l4"><a class="reference internal" href="#parameters_9">Parameters</a>
-</li>
-<li class="toctree-l4"><a class="reference internal" href="#geojson-and-well-known-text-wkt">GeoJSON and Well-Known Text (WKT)</a>
-</li>
-<li class="toctree-l4"><a class="reference internal" href="#see-also_4">See also</a>
-</li>
-<li class="toctree-l4"><a class="reference internal" href="#example_8">Example</a>
-</li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="#jpath">jpath()</a>
-<ul>
-<li class="toctree-l4"><a class="reference internal" href="#description_3">Description</a>
-</li>
-<li class="toctree-l4"><a class="reference internal" href="#use-cases">Use cases</a>
-</li>
-<li class="toctree-l4"><a class="reference internal" href="#parameters_10">Parameters</a>
-</li>
-<li class="toctree-l4"><a class="reference internal" href="#example_9">Example</a>
-</li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="#lowercase">lowercase()</a>
-<ul>
-<li class="toctree-l4"><a class="reference internal" href="#description_4">Description</a>
-</li>
-<li class="toctree-l4"><a class="reference internal" href="#use-cases_1">Use cases</a>
-</li>
-<li class="toctree-l4"><a class="reference internal" href="#parameters_11">Parameters</a>
-</li>
-<li class="toctree-l4"><a class="reference internal" href="#example_10">Example</a>
-</li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="#padend">padEnd()</a>
-<ul>
-<li class="toctree-l4"><a class="reference internal" href="#description_5">Description</a>
-</li>
-<li class="toctree-l4"><a class="reference internal" href="#use-cases_2">Use cases</a>
-</li>
-<li class="toctree-l4"><a class="reference internal" href="#parameters_12">Parameters</a>
-</li>
-<li class="toctree-l4"><a class="reference internal" href="#example_11">Example</a>
-</li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="#padstart">padStart()</a>
-<ul>
-<li class="toctree-l4"><a class="reference internal" href="#description_6">Description</a>
-</li>
-<li class="toctree-l4"><a class="reference internal" href="#use-cases_3">Use cases</a>
-</li>
-<li class="toctree-l4"><a class="reference internal" href="#example-fixed-length-identifiers">Example: Fixed-length identifiers</a>
-</li>
-<li class="toctree-l4"><a class="reference internal" href="#example-create-year-literals">Example: Create year literals</a>
-</li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="#replace">replace()</a>
-<ul>
-<li class="toctree-l4"><a class="reference internal" href="#description_7">Description</a>
-</li>
-<li class="toctree-l4"><a class="reference internal" href="#parameters_13">Parameters</a>
-</li>
-<li class="toctree-l4"><a class="reference internal" href="#example_12">Example</a>
-</li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="#split">split()</a>
-<ul>
-<li class="toctree-l4"><a class="reference internal" href="#description_8">Description</a>
-</li>
-<li class="toctree-l4"><a class="reference internal" href="#whitespace-handling">Whitespace handling</a>
-</li>
-<li class="toctree-l4"><a class="reference internal" href="#empty-values">Empty values</a>
-</li>
-<li class="toctree-l4"><a class="reference internal" href="#use-cases_4">Use cases</a>
-</li>
-<li class="toctree-l4"><a class="reference internal" href="#parameters_14">Parameters</a>
-</li>
-<li class="toctree-l4"><a class="reference internal" href="#example-multiple-values-in-singular-table-cells">Example: Multiple values in singular table cells</a>
-</li>
-<li class="toctree-l4"><a class="reference internal" href="#example-split-a-complex-string-into-components">Example: Split a complex string into components</a>
-</li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="#substring">substring()</a>
-<ul>
-<li class="toctree-l4"><a class="reference internal" href="#description_9">Description</a>
-</li>
-<li class="toctree-l4"><a class="reference internal" href="#parameters_15">Parameters</a>
-</li>
-<li class="toctree-l4"><a class="reference internal" href="#example_13">Example</a>
-</li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="#translateall">translateAll()</a>
-<ul>
-<li class="toctree-l4"><a class="reference internal" href="#description_10">Description</a>
-</li>
-<li class="toctree-l4"><a class="reference internal" href="#when-to-use_3">When to use?</a>
-</li>
-<li class="toctree-l4"><a class="reference internal" href="#parameters_16">Parameters</a>
-</li>
-<li class="toctree-l4"><a class="reference internal" href="#example-map-source-data-to-iri-values">Example: Map source data to IRI values</a>
-</li>
-<li class="toctree-l4"><a class="reference internal" href="#example-map-source-data-to-iri-properties">Example: Map source data to IRI properties</a>
-</li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="#translatesome">translateSome()</a>
-<ul>
-<li class="toctree-l4"><a class="reference internal" href="#description_11">Description</a>
-</li>
-<li class="toctree-l4"><a class="reference internal" href="#parameters_17">Parameters</a>
-</li>
-<li class="toctree-l4"><a class="reference internal" href="#use-cases_5">Use cases</a>
-</li>
-<li class="toctree-l4"><a class="reference internal" href="#example_14">Example</a>
-</li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="#tryliteral">tryLiteral()</a>
-<ul>
-<li class="toctree-l4"><a class="reference internal" href="#description_12">Description</a>
-</li>
-<li class="toctree-l4"><a class="reference internal" href="#throws_1">Throws</a>
-</li>
-<li class="toctree-l4"><a class="reference internal" href="#example_15">Example</a>
-</li>
-<li class="toctree-l4"><a class="reference internal" href="#see-also_5">See also</a>
-</li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="#uppercase">uppercase()</a>
-<ul>
-<li class="toctree-l4"><a class="reference internal" href="#description_13">Description</a>
-</li>
-<li class="toctree-l4"><a class="reference internal" href="#parameters_18">Parameters</a>
-</li>
-<li class="toctree-l4"><a class="reference internal" href="#example_16">Example</a>
-</li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="#wktaddpoint">wkt.addPoint()</a>
-<ul>
-<li class="toctree-l4"><a class="reference internal" href="#description_14">Description</a>
-</li>
-<li class="toctree-l4"><a class="reference internal" href="#parameters_19">Parameters</a>
-</li>
-<li class="toctree-l4"><a class="reference internal" href="#example_17">Example</a>
-</li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="#wktproject">wkt.project()</a>
-<ul>
-<li class="toctree-l4"><a class="reference internal" href="#description_15">Description</a>
-</li>
-<li class="toctree-l4"><a class="reference internal" href="#parameters_20">Parameters</a>
-</li>
-<li class="toctree-l4"><a class="reference internal" href="#example_18">Example</a>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="../rml/">RML</a>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="../typescript/">TypeScript</a>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="../xslt/">XSLT</a>
-</li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="#">Assert</a>
-<ul>
-<li class="toctree-l2"><a class="reference internal" href="../../assert/">Overview</a>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="../../assert/json-ld/">JSON-LD</a>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="#">RATT</a>
-<ul>
-<li class="toctree-l3"><a class="reference internal" href="../../assert/ratt/terms/">RATT Terms</a>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="../../assert/ratt/statements/">RATT Statements</a>
-</li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="../../assert/rml/">RML</a>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="../../assert/xslt/">XSLT</a>
-</li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="#">Enrich</a>
-<ul>
-<li class="toctree-l2"><a class="reference internal" href="../../enrich/">Overview</a>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="#">SHACL</a>
-<ul>
-<li class="toctree-l3"><a class="reference internal" href="../../enrich/shacl/">Overview</a>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="../../enrich/shacl/triple-rules/">Triple Rules</a>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="../../enrich/shacl/sparql-rules/">SPARQL Rules</a>
-</li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="#">SPARQL</a>
-<ul>
-<li class="toctree-l3"><a class="reference internal" href="../../enrich/sparql/construct/">SPARQL Construct</a>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="../../enrich/sparql/update/">SPARQL Update</a>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="#">Validate</a>
-<ul>
-<li class="toctree-l2"><a class="reference internal" href="../../validate/">Overview</a>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="../../validate/graph-comparison/">Graph Comparison</a>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="../../validate/shacl/">SHACL</a>
-</li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="../../publish/">Publish</a>
+</details>
 </li>
 </ul>
 </div>

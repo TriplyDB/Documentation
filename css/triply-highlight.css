@@ -1,0 +1,99 @@
+/* Syntax highlighting for highlight.js, in the console's own code colours.
+ *
+ * The mapping is taken from the TriplyDB query editor's theme
+ * (`core/packages/console-beta/src/theme/codeMirrorTheme.ts`): code is near-monochrome, with
+ * keywords in the brand accent, IRIs and element names in the darkest brand blue that still clears
+ * AA on a light surface, comments in green italics, and literals carried by weight rather than by a
+ * colour of their own. Replaces the `intellij-light` theme this site used before, whose blues and
+ * purples came from somewhere else entirely.
+ */
+
+.hljs {
+  background: transparent;
+  color: var(--color-text-default-strong);
+}
+
+pre code.hljs {
+  display: block;
+  overflow-x: auto;
+}
+
+/* Keywords and the words that behave like them: SELECT, PREFIX, FILTER, import, const, … */
+.hljs-keyword,
+.hljs-selector-tag,
+.hljs-literal,
+.hljs-built_in,
+.hljs-meta .hljs-keyword,
+.hljs-doctag,
+.hljs-template-tag {
+  color: var(--color-text-action-strong);
+}
+
+/* IRIs, prefixed names, element and tag names. */
+.hljs-tag,
+.hljs-name,
+.hljs-property,
+.hljs-attr,
+.hljs-attribute,
+.hljs-link,
+.hljs-symbol,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-selector-attr,
+.hljs-selector-pseudo {
+  color: var(--color-text-functional-info);
+}
+
+/* Literals: carried by weight, as in the editor. */
+.hljs-string,
+.hljs-meta .hljs-string,
+.hljs-regexp,
+.hljs-char.escape_ {
+  color: var(--color-text-default-strong);
+  font-weight: 600;
+}
+
+/* Everything the editor leaves as plain text. */
+.hljs-number,
+.hljs-variable,
+.hljs-variable.language_,
+.hljs-template-variable,
+.hljs-type,
+.hljs-class .hljs-title,
+.hljs-title,
+.hljs-title.function_,
+.hljs-section,
+.hljs-subst,
+.hljs-params,
+.hljs-bullet,
+.hljs-operator,
+.hljs-punctuation {
+  color: var(--color-text-default-strong);
+}
+
+.hljs-comment,
+.hljs-quote,
+.hljs-code {
+  color: var(--color-text-functional-success);
+  font-style: italic;
+}
+
+.hljs-meta {
+  color: var(--color-text-default-subtle);
+}
+
+.hljs-addition {
+  background: var(--color-fill-functional-success);
+}
+
+.hljs-deletion {
+  background: var(--color-fill-functional-error);
+}
+
+.hljs-emphasis {
+  font-style: italic;
+}
+
+.hljs-strong {
+  font-weight: 700;
+}
