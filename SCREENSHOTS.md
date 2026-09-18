@@ -17,6 +17,17 @@ This file records how the current set was captured, so the next refresh does not
 Shoot as `John`, never as your own account: the home screen, the user menu and the "Your datasets"
 panel all show whoever is logged in.
 
+**Except the Admin Settings page.** `John` is not an instance admin — its user menu has no "Admin
+settings" entry and `/_admin` does not resolve for it — so those screenshots have to be taken from a
+real admin session. When you do, hide the whole user chip, not just the "New design" toggle, or a
+real person's name ships with the image:
+
+```css
+[class*="_bottomSection_"] { visibility: hidden !important; }
+```
+
+Afterwards, log back in as `John` before shooting anything else.
+
 ### Seeded datasets
 
 | Dataset | Why it exists |
