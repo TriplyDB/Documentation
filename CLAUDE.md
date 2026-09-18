@@ -49,6 +49,7 @@ The site navigation is defined in `mkdocs.yml`:
 - `docs/css/triply-highlight.css` - highlight.js token colours, mapped onto the same tokens
 - `docs/js/triply.js` - Custom JavaScript for syntax highlighting and UI enhancements
 - `requirements.txt` - Python dependencies for MkDocs plugins
+- `SCREENSHOTS.md` - How the console screenshots in `docs/assets/` are captured: which demo instance and account to shoot from, the seeded datasets the prose depends on, the viewport conventions, and the traps. Read it before re-taking any screenshot.
 
 ### Custom Features
 - Theme styled after the TriplyDB console (`core/packages/console-beta`): dark navigation panel, white content paper, pink accent
@@ -57,6 +58,7 @@ The site navigation is defined in `mkdocs.yml`:
 - Custom redirects for URL changes defined in mkdocs.yml
 - Custom syntax highlighting for Turtle/SPARQL using highlight.js
 - Navigation sections are collapsible branches (`readthedocs-triply/nav.html`); a section is a toggle, not a link, so no page needs to stand in for one
+- Screenshots in `docs/assets/` are captured from the new console on `demo.triplydb.com`, at a 1280x800 viewport with devicePixelRatio 2; raster images are tracked with git LFS. See `SCREENSHOTS.md`
 
 ### Documentation Guidelines
 - Always start pages with a level 1 heading (single #)
