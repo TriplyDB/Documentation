@@ -35,7 +35,7 @@ Afterwards, log back in as `John` before shooting anything else.
 | `Documentation/iris` | 5 graphs, 1,749 statements. Imported from production `Triply/iris`, so it matches the figures the prose quotes. |
 | `Documentation/pokemon` | Graphs `data` (28,588) and `vocab` (185) = 28,773. Imported from production `academy/pokemon`. **`exporting-data/index.md` narrates these exact numbers**, so keep them in sync. |
 | `Documentation/ld-browser-examples` | Purpose-built for the LD-Browser property shots. One resource carries `rdfs:label`, `rdfs:comment`, `foaf:depiction`, `geo:hasGeometry` and two types at once; separate resources carry `sdo:audio` and `sdo:contentUrl`. Media are stable Wikimedia Commons URLs. |
-| `Documentation/skos-example` | A small thesaurus with two concept schemes ("Pokemon types", "Habitats"), for the Editor's SKOS views. |
+| `Documentation/skos-example` | A small thesaurus with two concept schemes ("Pokemon types", "Habitats"), for the Editor's SKOS views. Four graphs: `data`, `data-model` (the SHACL shapes), `mappings` (the cross-scheme `skos:narrowMatch` / `skos:broadMatch` links) and `data-editor` (provenance the Editor writes itself). See [What the Editor needs](#what-the-editor-needs). |
 | `Documentation/json-ld-frame-example` | 18 statements shaped to match the frame printed on the JSON-LD Framing page — `ex:Object` with `ex:label` and `ex:address`, `ex:Address` with `ex:street` and `ex:number` — so the figures can use that page's own script verbatim. |
 | `John/my-dataset` | Deliberately empty — it is what the "dataset with no data yet" figure illustrates. |
 
@@ -99,6 +99,32 @@ the same commit. Draw them at capture time instead — reproducible, pixel-align
 }
 ```
 
+## What the Editor needs
+
+The Editor pane is empty — no Create button, no forms, just a welcome text — until the dataset has
+SHACL shapes, and it only looks for them in **one** place.
+
+- **Shapes go in the dataset's `data-model` graph, not in `data`.** The Editor finds editable classes
+  with `?class ^sh:targetClass ?nodeShape` over that graph
+  (`containers/DataEditor/InstanceForm/useClasses.ts`), and renders each form from
+  `?class rdfs:subClassOf*/^sh:targetClass/sh:property ?propertyShape`.
+- **Each node shape needs a `dash:stem`**, the IRI prefix the Editor mints new instances under. Write
+  it as a full IRI: `id:concept/` is not a legal prefixed name (the trailing slash is outside
+  `PN_LOCAL`), and neither `rapper` nor TriplyDB will take it.
+- **`sh:name` and `sh:description` on the property shapes are what the form shows** as the field
+  label and the ⓘ tooltip. `sh:minCount ≥ 1` draws the red asterisk; `sh:maxCount 1` hides the ⊕.
+- **The class picker in "Create a new instance" shows the class IRI, not the shape's label** —
+  `skos:Concept`, not "Concept". Give the *class* an `rdfs:label` if a figure needs a nicer name.
+- **Concept schemes only chain over `skos:narrowMatch` / `skos:broadMatch` links between their
+  concepts.** With none, the "Concept scheme(s)" selector opens an empty popper and the
+  chained-schemes figure cannot be taken. `skos-example` carries six such links in its `mappings`
+  graph purely so the figure exists.
+- **Editing through the Editor leaves the instance in `DRAFT`** and creates a `data-editor` graph
+  holding the provenance. That is what puts _Status_, _Modified by_, _Modified_ and the history clock
+  in the instance pane — so at least one real edit is needed before the instance-details and history
+  figures can be shot. The overflow menu offers Copy / Stage / Delete; there is no "discard draft",
+  so a botched edit stays in the history for good. Get the value right the first time.
+
 ## Traps
 
 - **Filter any instance-wide picker before shooting it.** The "Import from a dataset" dropdown lists
@@ -130,6 +156,18 @@ the same commit. Draw them at capture time instead — reproducible, pixel-align
   `curl -s https://api.demo.triplydb.com/datasets/Documentation/pokemon`.
 - **Scripted `.click()` inside an injected script is blocked** by the agent permission layer. Use the
   browser tool's own click. Reading and patching DOM attributes is fine.
+- **`fill` appends to a field that already has a value** instead of replacing it — how
+  "Dense woodland." quietly became "Dense woodland.A habitat of dense woodland." and had to be undone
+  in a second edit that the history now records for ever. Clear first: focus the element, `select()`
+  it, then type over the selection. Read the value back before saving.
+- **The element screenshot only takes a `uid` from the accessibility snapshot**, and most layout
+  containers are not in it. Two ways round: give the node a temporary
+  `role="region"` + `aria-label="…"` so it appears in the next snapshot, or take a viewport shot and
+  crop it with `magick … -crop WxH+X+Y +repage` at twice the CSS coordinates. The crop is the better
+  one for a control plus its open dropdown, which are separate DOM trees.
+- **Uploading a TriG whose graph IRI already exists makes a second graph** called `<name>-1`; it does
+  not merge. Rename it to something meaningful afterwards ("Edit graph name" on the Graphs page) or
+  the dataset ends up with `graph:data-1` in every figure that lists graphs.
 
 ## Images that are not console screenshots
 
